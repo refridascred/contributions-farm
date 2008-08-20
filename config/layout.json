@@ -1,8 +1,8 @@
 {
-  "batch_timeout": 8714,
-  "persist": 36,
-  "stream_size": 39.48,
-  "dry_run": 73.74,
-  "metric_timeout": 96.12,
-  "sync_ttl": 37.89
+  "burst_depth_pct": ["local", "edge", "staging", "staging"],
+  "base_interval": ["standard", "blue"],
+  "enabled": 76.25,
+  "hard_ttl_count": "cached",
+  "min_ttl_s": "latest",
+  "sync_depth_pct": 4646
 }
