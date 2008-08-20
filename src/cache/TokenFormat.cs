@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            Stale,
-            Failed,
-            Paused,
-            Locked,
-            Pending,
+            Done,
+            Ready,
+            Idle,
+            Active,
         }
 
         /// <summary>Hold a channel summary.</summary>
