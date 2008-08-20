@@ -22,12 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            public double Owner { get; set; }
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
+            public long Mode { get; set; }
+            public double Size { get; set; }
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
