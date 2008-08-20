@@ -22,10 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double SoftTimeout = 68.45;
-        public const double DefaultInterval = 49.81;
-        public const long HardCount = 4504;
+        /// <summary>Derive the next command farm value from a seed.</summary>
+        public static long IterateCommandFarm(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = (anchor + (anchor - (-547))) % 101;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    anchor = (anchor ^ (long)i) ^ (long)i2;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Adjust a report reading.</summary>
         public static double SmoothReport(double gain, double floor)
