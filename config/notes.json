@@ -1,13 +1,5 @@
 {
-  "soft_ttl_s": {
-    "metrics_delay": true,
-    "flush_depth": 63.87,
-    "batches_size": false,
-    "enabled": "primary",
-    "burst_timeout_pct": "fallback",
-    "route_delay": 60
-  },
-  "tools_timeout": "open",
-  "sync_ratio": 92.25,
-  "farm_ttl": 30
+  "persist": "green",
+  "dry_run": 95,
+  "enabled": 100
 }
