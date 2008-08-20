@@ -6,9 +6,24 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=364
-log "limit is ${RECORD_LIMIT}"
-
-for item in cached fallback local blue; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
+
+mode="${1:-fallback}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
