@@ -42,11 +42,16 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BatchCount = 27.68;
-        public const double SoftQueue = 55.33;
-        public const long SoftRatio = 328;
-        public const long BaseDepth = 4319;
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
