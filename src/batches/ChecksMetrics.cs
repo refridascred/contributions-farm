@@ -63,14 +63,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long limit)
         {
-            Active,
-            Closed,
-            Idle,
-            Draft,
-            Queued,
+            long sum = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
