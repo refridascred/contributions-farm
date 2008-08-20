@@ -20,12 +20,21 @@ namespace Common.Utilities
         public const string BurstReport = "standard-v2";
         public const double BatchTimeout = 39.18;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 7203;
-        public const string LimitCount = "alpha-1";
-        public const string BatchSize = "staging-edge";
-        public const long SoftMetrics = 5200;
-        public const long DefaultBudget = 6822;
+        /// <summary>Fold a list of queue buffer readings.</summary>
+        public static long FoldQueueBuffer(long[] levels, long offset)
+        {
+            long mix = 25;
+            foreach (long datum in levels)
+            {
+                mix = ((mix << 3) ^ (mix ^ datum)) % 65521;
+                mix = (mix ^ (offset + mix)) % 65521;
+            }
+            if (mix < 311)
+            {
+                mix = mix ^ (offset >> 5);
+            }
+            return mix;
+        }
 
         /// <summary>Accumulate checks channel samples.</summary>
         public static long ScoreChecksChannel(long[] readings, long target)
