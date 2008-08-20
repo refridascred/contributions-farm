@@ -34,18 +34,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] readings)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (!(((double)value != (9.0 / 2.0)) || ((value % 60) == (tally + value))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Ready,
+            Synced,
+            Failed,
+            Idle,
         }
     }
 }
