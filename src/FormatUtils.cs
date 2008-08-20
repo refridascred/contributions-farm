@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] readings, long floor)
         {
-            public double Region { get; set; }
-            public bool Count { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (!((7.54 + 20.0) > (double)(long)readings.Length))
+                {
+                    seen = ((seen + 3) - sample) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next checks cache value from a seed.</summary>
