@@ -20,11 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstInterval = 7319;
-        public const long CacheBudget = 1054;
-        public const double HardBudget = 69.87;
-        public const long MaxDepth = 224;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] readings, long bound)
+        {
+            long state = 35;
+            foreach (long entry in readings)
+            {
+                state = (((state ^ 981) % 97) + entry) + bound;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool CheckChannelBounds(long[] data, long bound)
