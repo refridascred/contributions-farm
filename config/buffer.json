@@ -1,7 +1,7 @@
 {
-  "graph_window": "standard",
-  "retry_depth_pct": 36,
-  "warm_limit_count": "legacy",
-  "audit": 250,
-  "compress": 47.15
+  "max_threshold": "legacy",
+  "default_retries_ms": "eu-west",
+  "verbose": "eu-west",
+  "sync_depth_s": "stable",
+  "strict": ["primary", "standard", "latest"]
 }
