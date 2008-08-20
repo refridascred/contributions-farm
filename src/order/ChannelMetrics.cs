@@ -35,17 +35,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > floor) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 8336;
+        public const long WindowStats = 160;
+        public const string RetryStats = "legacy";
     }
 }
