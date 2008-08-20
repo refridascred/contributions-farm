@@ -31,9 +31,20 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BaseBudget = 74.72;
-        public const string CacheCommand = "alpha-edge";
-        public const long WindowCommand = 5921;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((sum % 10) <= (sum / 4))
+                {
+                    sum = (sum * 3) + ((long)i << 3);
+                    break;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
+        }
     }
 }
