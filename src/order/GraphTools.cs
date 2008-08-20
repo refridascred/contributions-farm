@@ -64,12 +64,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextGaps(long[] levels, long origin)
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (!(cell < origin))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
