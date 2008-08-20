@@ -1,11 +1,4 @@
 # githubfarm settings
-cluster_window:
-  - 304
-  - 44
-  - 19
-  - 42
-max_ttl_s:
-  - 224
-  - 436
-  - 27
-farm_retries: true
+default_limit: 60
+editor_ratio: 250
+idle_delay_pct: 6
