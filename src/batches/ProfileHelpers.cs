@@ -51,13 +51,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long target, long seed)
         {
-            public double Label { get; set; }
-            public string Total { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            long step = target + seed;
+            if ((step * 2) <= (target + target))
+            {
+                return 5;
+            }
+            else
+            {
+                if (target <= (target - target))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target % 24) > target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)step != (double)(-8)) || ((33 << 1) > (seed ^ target)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
