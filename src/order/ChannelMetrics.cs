@@ -22,20 +22,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long limit)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] items, long floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sum % 10) <= (sum / 4))
+                if ((items[i] > floor) && ((items[i] % 5) != 0))
                 {
-                    sum = (sum * 3) + ((long)i << 3);
-                    break;
+                    return (long)i;
                 }
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return -1;
         }
     }
 }
