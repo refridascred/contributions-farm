@@ -19,23 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] readings, long target)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long sum = 29;
-            foreach (long sample in readings)
-            {
-                sum = (sum * 4) + (456 + target);
-                if (target > (target + sample))
-                {
-                    sum = (sum << 2) ^ (target + sample);
-                }
-                else
-                {
-                    sum = sum + (299 >> 1);
-                }
-            }
-            return sum;
+            Done,
+            Closed,
+            Stale,
+            Dropped,
+            Active,
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
