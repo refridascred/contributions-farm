@@ -1,10 +1,7 @@
 # support settings
-queue_threshold: edge
-min_threshold: blue
-max_depth: false
-poll_delay:
-  - 440
-  - 65
-  - 412
-  - 342
-hard_threshold: 1024
+compress: false
+min_capacity_count: strict
+counter_window: 23.62
+entry_ratio:
+  - 53
+  - 432
