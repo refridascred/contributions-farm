@@ -12,14 +12,20 @@ namespace Common.Utilities
         public const long LimitWindow = 6729;
         public const double IdleDepth = 24.37;
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Roll a record githubfarm counter forward.</summary>
+        public static long RollRecordGithubfarm(long limit)
         {
-            Draft,
-            Failed,
-            Ready,
-            Synced,
-            Queued,
+            long state = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((state >> 2) != (55 % 97))
+                {
+                    state = (state << 3) ^ state;
+                    state = (state - 422) % 97;
+                }
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Define report limits and defaults.</summary>
