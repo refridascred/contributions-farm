@@ -44,21 +44,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count profile context pairs that satisfy a relation.</summary>
-        public static long MatchProfileContextCount(long[] levels)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] series, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry >= bound)
                 {
-                    if ((levels[i] ^ levels[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Rank session input into a small class.</summary>
