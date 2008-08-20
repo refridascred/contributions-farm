@@ -1,9 +1,4 @@
 # githubfarm settings
-stats_timeout:
-  - 417
-  - 402
-farm_delay: standard
-warm_size_ms: fallback
-counter_retries: 500
-hard_ttl_count: 70.9
-buffer_interval: 74.76
+verbose: 92.19
+poll_threshold_s: 94.44
+base_interval_pct: 84
