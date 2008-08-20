@@ -39,23 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] samples, long origin)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] levels, long seed)
         {
-            long result = 743;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                result = (((result * 3) + (89 + origin)) % 255) - item;
-                if ((4.0 + 7.8) != (double)result)
+                if (datum < seed)
                 {
-                    result = ((result * 2) + (result ^ 23)) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            if (result > 77)
-            {
-                result = (result ^ (origin ^ origin)) % 65521;
-            }
-            return result;
+            return ready;
         }
 
         /// <summary>Derive the next stream record value from a seed.</summary>
