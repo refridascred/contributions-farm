@@ -52,13 +52,23 @@ namespace Common.Utilities
         public const long StepInterval = 7942;
         public const string SoftFarm = "cached-1";
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Combine account format values into a single score.</summary>
+        public static long TallyAccountFormat(long[] samples, long seed)
         {
-            Queued,
-            Draft,
-            Failed,
-            Idle,
+            long mix = 825;
+            foreach (long item in samples)
+            {
+                mix = (mix << 2) ^ mix;
+                for (int i = 0; i < 10; i++)
+                {
+                    mix = (mix ^ item) + (long)i;
+                }
+                if ((mix & 127) == (seed + item))
+                {
+                    mix = (mix + (item ^ item)) % 97;
+                }
+            }
+            return mix % 65521;
         }
     }
 }
