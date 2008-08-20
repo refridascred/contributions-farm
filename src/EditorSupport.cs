@@ -20,18 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseLevel = 43.7;
+        public const double MinWindow = 1.12;
+        public const double SoftLevel = 2.25;
+        public const long SoftFactor = 4695;
+        public const string CacheWindow = "stable-edge";
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
