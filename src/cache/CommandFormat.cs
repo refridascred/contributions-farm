@@ -23,19 +23,19 @@ namespace Common.Utilities
             return mean - 8.0;
         }
 
-        /// <summary>Adjust a channel report reading.</summary>
-        public static double ProjectChannelReport(double weight, double offset)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] series, long bound)
         {
-            double mean = weight - (weight / 5.0);
-            if (mean < (20.0 * 3.0))
+            bool ok = true;
+            foreach (long value in series)
             {
-                mean = (mean - weight) - offset;
+                if (value > bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + 6.3;
-            }
-            return mean + (double)(-924);
+            return ok;
         }
 
         /// <summary>Match up command samples.</summary>
