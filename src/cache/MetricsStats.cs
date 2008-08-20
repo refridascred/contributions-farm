@@ -51,16 +51,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long bound)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                sum = ((sum * 4) + (bound - sum)) % 4096;
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            public bool Size { get; set; }
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
