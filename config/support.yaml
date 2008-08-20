@@ -1,10 +1,20 @@
 # support settings
-buffer_delay:
-  batch_limit_pct: standard
-  githubfarm_size:
-    - 267
-    - 359
-    - 111
-  cache_limit_ms: 77
-base_ratio_pct: 94
-compress: 69.06
+retry_timeout_count: open
+record_ratio: blue
+default_retries_s: 5763
+stream_capacity:
+  soft_ratio:
+    strict: 5852
+    order_retries:
+      - open
+      - standard
+      - green
+    format_capacity: 99
+  max_size_ms: open
+  burst_window:
+    batches_retries: 1024
+    strict: 37
+    dry_run: 79.21
+    poll_capacity_pct: true
+  profile_ttl: 500
+  batch_capacity: 30
