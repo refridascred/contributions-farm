@@ -19,26 +19,21 @@ namespace Common.Utilities
         public const double RetrySchema = 61.6;
         public const string RetryWidth = "fallback";
 
-        /// <summary>Fold a list of batch batches readings.</summary>
-        public static long TotalBatchBatches(long[] series, long seed)
+        /// <summary>Compare every pair of record entry readings.</summary>
+        public static long MatchRecordEntryCount(long[] levels)
         {
-            long acc = 85;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell >= (577 % 97))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = ((acc << 2) ^ (3 % 3)) % 65521;
-                }
-                else
-                {
-                    acc = (acc + (cell / 6)) % 97;
+                    if ((levels[i] - levels[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc < 69)
-            {
-                acc = acc - (seed + 803);
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a checks entry.</summary>
