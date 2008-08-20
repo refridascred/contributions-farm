@@ -14,12 +14,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] data, long limit)
         {
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public bool Total { get; set; }
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
