@@ -20,26 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] series, long limit)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] levels, long origin)
         {
-            long total = -684;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if ((double)cell < (double)81)
+                if (entry > origin)
                 {
-                    total = (total * 5) + limit;
-                }
-                else
-                {
-                    total = ((total * 3) + cell) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            if (total > 91)
-            {
-                total = total ^ (total + (long)series.Length);
-            }
-            return total;
+            return found;
         }
 
         /// <summary>Digest a series of report entries.</summary>
