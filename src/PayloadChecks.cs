@@ -27,20 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine batch already values into a single score.</summary>
-        public static long WeighBatchAlready(long[] samples)
+        /// <summary>Validate route batch readings against a bound.</summary>
+        public static bool ValidateRouteBatchRange(long[] readings, long floor)
         {
-            long mix = 901;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                mix = (mix ^ (mix + mix)) % 101;
-                mix = (mix * 3) + (datum - datum);
-                if ((mix + (long)samples.Length) > (835 / 7))
+                if (sample > floor)
                 {
-                    mix = mix ^ (mix + datum);
+                    found = false;
+                    break;
                 }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Accumulate channel samples.</summary>
