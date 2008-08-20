@@ -1,6 +1,9 @@
-id,weight,level,token
-1,44.09,452,69.36
-2,31.09,17,standard
-3,blue,39.92,35.35
-4,blue,edge,open
-5,legacy,latest,53.75
+id,region,count,rank,owner
+1,57.95,legacy,green,537
+2,blue,stable,80.09,open
+3,51.91,609,229,cached
+4,93.34,stable,18.21,169
+5,6.98,primary,352,334
+6,526,63.91,739,484
+7,30.4,694,strict,263
+8,69.5,85,288,green
