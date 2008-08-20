@@ -34,13 +34,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] readings)
         {
-            public bool Score { get; set; }
-            public bool Flag { get; set; }
-            public double Rank { get; set; }
-            public bool Total { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the farm level values.</summary>
