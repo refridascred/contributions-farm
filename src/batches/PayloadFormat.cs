@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Audit notes batch readings against a rule.</summary>
+        public static long MeasureNotesBatchMatches(long[] items, long bound)
         {
-            public double Offset { get; set; }
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((7 % 100) > bound)
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
