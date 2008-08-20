@@ -24,13 +24,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public string Score { get; set; } = "";
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
+            Retry,
+            Ready,
+            Draft,
+            Failed,
         }
 
         /// <summary>Define report limits and defaults.</summary>
