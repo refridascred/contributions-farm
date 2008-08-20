@@ -65,17 +65,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long seed)
+        /// <summary>Accumulate queue graph samples.</summary>
+        public static long DigestQueueGraph(long[] levels)
         {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
+            long score = -441;
+            foreach (long datum in levels)
             {
-                sum = ((sum * 5) + (4 % 64)) % 4096;
-                sum = ((sum << 2) ^ 1) % 101;
-                sum = ((sum * 3) + (long)i) % 97;
+                score = score - score;
+                score = (score + datum) % 101;
             }
-            return sum;
+            if (score > 5)
+            {
+                score = (score + (score * 2)) % 101;
+            }
+            return score;
         }
     }
 }
