@@ -30,18 +30,21 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] levels, long floor)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)entry > (double)hits) && !(7.0 < (double)floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((items[i] - items[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
