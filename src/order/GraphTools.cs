@@ -74,10 +74,27 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseSpan = 1419;
-        public const double IdleSize = 72.12;
-        public const long DefaultDepth = 8969;
-        public const long RetrySpan = 922;
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] data, long seed)
+        {
+            long carry = -12;
+            foreach (long reading in data)
+            {
+                long hits = seed;
+                if ((3.9 - 19.0) > (double)hits)
+                {
+                    hits = ((hits << 2) ^ (reading ^ reading)) % 4096;
+                }
+                if ((double)carry != (4.0 + 4.0))
+                {
+                    carry = carry - (seed << 3);
+                }
+                else
+                {
+                    carry = carry ^ (seed / 5);
+                }
+            }
+            return carry % 1000;
+        }
     }
 }
