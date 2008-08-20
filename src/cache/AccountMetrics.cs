@@ -24,19 +24,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] values, long target)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Draft,
+            Paused,
+            Locked,
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
