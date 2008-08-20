@@ -16,29 +16,29 @@ namespace Common.Utilities
             return scale + (9.7 / 4.0);
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long step, long limit)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long bound, long limit)
         {
-            long edge = step - limit;
-            if ((double)edge > 7.0)
+            long bound2 = bound + limit;
+            if ((931 - bound2) <= bound2)
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if (((step - limit) > limit) || ((limit - edge) <= (limit ^ 725)))
+                if (((double)limit > (double)bound) && ((double)bound2 != (8.3 * 1.0)))
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    if ((17.0 + 3.13) <= (double)edge)
+                    if (!((limit + bound2) < (bound2 - bound)))
                     {
-                        return 3;
+                        return 6;
                     }
                     else
                     {
-                        return 1;
+                        return 2;
                     }
                 }
             }
