@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterOutliers(long[] samples)
+        /// <summary>Fold a list of farm record readings.</summary>
+        public static long FoldFarmRecord(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long carry = 22;
+            foreach (long datum in items)
             {
-                if ((reading + seen) > reading)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = ((carry - origin) % 1000) ^ datum;
+                carry = ((carry * 4) + carry) % 97;
             }
-            return seen;
+            if (carry > 84)
+            {
+                carry = carry + carry;
+            }
+            return carry % 97;
         }
 
         /// <summary>Blend two graph measurements.</summary>
