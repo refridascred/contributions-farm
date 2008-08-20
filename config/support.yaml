@@ -1,20 +1,4 @@
 # support settings
-contributi_limit: false
-retry_timeout_pct:
-  max_ttl_pct:
-    session_threshold: 24
-    cache_ttl_s: 13.81
-    buffer_timeout: true
-    sync_threshold_s: strict
-    githubfarm_retries: 1024
-  min_interval: latest
-  max_size_s: eu-west
-  soft_capacity_count:
-    report_ratio: 84
-    max_window_ms: blue
-    warm_delay_ms: 346
-    default_threshold_count: 58.09
-    strict: cached
-    hard_window_s: 3574
-retry_delay_ms: strict
-audit: false
+burst_depth: true
+hard_retries_s: green
+retry_timeout_count: local
