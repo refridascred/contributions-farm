@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultWidth = 2396;
-        public const double WindowSize = 68.15;
-        public const long MinCount = 9452;
-        public const string HardGraph = "open-v2";
-        public const double CacheSize = 52.55;
+        /// <summary>Check that every stream editor entry stays within the limit.</summary>
+        public static bool ValidateStreamEditorBounds(long[] samples, long seed)
+        {
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Measure how many order report samples are out of range.</summary>
         public static long AuditOrderReportOutliers(long[] data)
