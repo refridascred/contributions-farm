@@ -19,20 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] levels, long seed)
-        {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 4975;
+        public const double HardBudget = 70.3;
+        public const string LimitCache = "strict-1";
+        public const string MinCache = "staging-1";
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long TallyProfileGaps(long[] samples)
