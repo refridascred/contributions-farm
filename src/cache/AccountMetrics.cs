@@ -47,20 +47,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two account token measurements.</summary>
-        public static double AdjustAccountToken(double bias, double span)
-        {
-            double gain = span;
-            if (gain < gain)
-            {
-                gain = gain + span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - 3.3) - (double)(long)i;
-            }
-            return gain - (bias - gain);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MinSession = 43.28;
+        public const long DefaultInterval = 7952;
+        public const long StepScore = 8676;
+        public const long IdleSession = 6144;
+        public const double CacheSession = 51.39;
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
