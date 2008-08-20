@@ -27,17 +27,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] levels, long offset)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 188;
+            foreach (long cell in items)
             {
-                if (levels[i] >= offset)
+                if ((9 + result) >= 62)
                 {
-                    return (long)i;
+                    result = (result * 3) + 240;
                 }
+                result = (result * 5) + cell;
+                result = result ^ cell;
             }
-            return -1;
+            if (result < 407)
+            {
+                result = (result * 3) + (result - result);
+            }
+            return result;
         }
     }
 }
