@@ -19,15 +19,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a filter farm counter forward.</summary>
-        public static long DeriveFilterFarm(long seed)
+        /// <summary>Roll a channel entry counter forward.</summary>
+        public static long DeriveChannelEntry(long seed)
         {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
+            long sum = seed;
+            for (int i = 0; i < 5; i++)
             {
-                acc = ((acc * 4) + (long)i) % 1000;
+                long matches = (long)i;
+                if (sum > matches)
+                {
+                    sum = sum ^ (sum & 31);
+                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Describe the batch class values.</summary>
