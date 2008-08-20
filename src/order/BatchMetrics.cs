@@ -32,12 +32,20 @@ namespace Common.Utilities
             return mean + (double)(-3);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryReport = 77.99;
-        public const long StepSize = 3355;
-        public const double MaxReport = 96.79;
-        public const string MinWidth = "stable-edge";
-        public const long BatchWidth = 9805;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] readings, long origin)
+        {
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
