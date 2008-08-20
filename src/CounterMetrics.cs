@@ -14,16 +14,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of stream command entries.</summary>
-        public static long ScoreStreamCommand(long[] levels, long origin)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long mark = 98;
-            foreach (long item in levels)
-            {
-                mark = (mark + (item & 31)) % 1000;
-                mark = (mark + (mark - origin)) % 255;
-            }
-            return mark % 1000;
+            Stale,
+            Queued,
+            Closed,
+            Active,
+            Ready,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
