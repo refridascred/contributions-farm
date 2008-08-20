@@ -79,10 +79,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleChannel = "alpha-1";
-        public const long BurstChannel = 72;
-        public const double IdleScore = 4.74;
-        public const long MaxSize = 421;
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
+        {
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
     }
 }
