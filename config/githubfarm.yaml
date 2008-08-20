@@ -1,8 +1,5 @@
 # githubfarm settings
-commits_depth: 250
-graph_delay: false
-min_ratio: cached
-report_retries:
-  - 456
-  - 323
-verbose: standard
+persist: 94.24
+sync_limit_pct: 67.89
+editor_limit: green
+token_retries: false
