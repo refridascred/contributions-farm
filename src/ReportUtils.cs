@@ -14,10 +14,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryWindow = "staging-edge";
-        public const long CacheSpan = 2504;
-        public const string RetrySpan = "local-edge";
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
+        {
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long SeriesSchema(long target)
