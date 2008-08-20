@@ -28,11 +28,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] readings, long limit)
         {
-            public long Flag { get; set; }
-            public double Limit { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
