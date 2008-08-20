@@ -35,13 +35,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Look up the position of a batch stats sample.</summary>
+        public static long FindBatchStatsIndex(long[] items, long target)
         {
-            New,
-            Failed,
-            Dropped,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
