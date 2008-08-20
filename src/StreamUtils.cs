@@ -59,39 +59,9 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Rank layout format input into a small class.</summary>
-        public static long RankLayoutFormat(long step, long seed)
-        {
-            long prev = step - seed;
-            if ((step % 10) > (prev + step))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)prev >= 13.0)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((prev * 5) < (5 ^ 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((854 + seed) < (69 - 644)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 5668;
+        public const long IdleStream = 8868;
+        public const long HardRatio = 1054;
     }
 }
