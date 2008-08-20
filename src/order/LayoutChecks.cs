@@ -70,9 +70,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstChannel = 4229;
-        public const string HardChannel = "latest-v2";
-        public const long LimitChannel = 9156;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
+        }
     }
 }
