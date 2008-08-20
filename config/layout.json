@@ -1,8 +1,7 @@
 {
-  "default_interval": 64.27,
-  "soft_delay_pct": "green",
-  "batches_interval": [84, 167, 460],
-  "base_ttl_s": "latest",
-  "sync_ttl": 53,
-  "batch_retries_s": "latest"
+  "base_depth_s": "stable",
+  "layout_retries": ["cached", "eu-west", "open"],
+  "token_limit": true,
+  "command_size": 0.77,
+  "enabled": 500
 }
