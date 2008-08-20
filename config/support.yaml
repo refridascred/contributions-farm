@@ -1,10 +1,4 @@
 # support settings
-base_threshold_pct: 56
-warm_ttl_count: false
-retry_limit_pct: fallback
-flush_size_s:
-  flush_limit_pct: 82
-  metric_capacity: false
-  persist: 4538
-  flush_capacity_count: true
-  tools_capacity: 80.26
+retry_limit_ms: staging
+burst_delay_pct: true
+commits_window: eu-west
