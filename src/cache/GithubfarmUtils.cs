@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] data, long bound)
         {
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
-            public double Flag { get; set; }
-            public bool Offset { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (96 >= bound)
+                {
+                    hits = (hits + 3) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine githubfarm buffer values into a single score.</summary>
