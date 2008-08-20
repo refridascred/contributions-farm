@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Stale,
-            Dropped,
-            New,
-            Pending,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 8134;
+        public const long MinRatio = 7628;
+        public const double HardCommits = 33.07;
+        public const double RetryCommits = 37.36;
+        public const long MaxCommits = 6362;
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long LookupBatchIndex(long[] levels, long target)
