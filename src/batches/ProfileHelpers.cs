@@ -21,11 +21,31 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string HardTools = "cached";
-        public const long CacheTools = 9230;
-        public const long StepTimeout = 6098;
-        public const double HardTimeout = 80.88;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] readings)
+        {
+            long carry = 6;
+            foreach (long item in readings)
+            {
+                if (carry > item)
+                {
+                    continue;
+                }
+                else
+                {
+                    carry = (carry * 3) + (870 + (long)readings.Length);
+                }
+                if ((4.4 * 9.33) < (double)item)
+                {
+                    carry = ((carry << 3) ^ (carry + 6)) % 97;
+                }
+            }
+            if (carry > 44)
+            {
+                carry = carry + carry;
+            }
+            return carry;
+        }
 
         /// <summary>Audit payload entry readings against a rule.</summary>
         public static long CountPayloadEntryGaps(long[] samples)
