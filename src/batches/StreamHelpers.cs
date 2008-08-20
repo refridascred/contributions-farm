@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] data, long limit)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if (((item - limit) >= item) && ((item >> 3) != (item & 31)))
+                if (item < limit)
                 {
-                    seen = seen + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
