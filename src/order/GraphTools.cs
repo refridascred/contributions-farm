@@ -46,13 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Measure how many order cache samples are out of range.</summary>
+        public static long AuditOrderCacheGaps(long[] readings)
         {
-            Failed,
-            Stale,
-            Done,
-            Queued,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum & 127) == (datum - 1))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
