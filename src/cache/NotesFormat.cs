@@ -20,11 +20,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinRatio = 6007;
-        public const long SoftCache = 1373;
-        public const string WindowRatio = "primary-edge";
-        public const double IdleCache = 87.12;
-        public const long BurstCache = 7722;
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double scale, double span)
+        {
+            double gain = span;
+            if (gain < (gain * 0.61))
+            {
+                gain = gain - (scale / 8.0);
+            }
+            return gain + (2.62 * 4.0);
+        }
     }
 }
