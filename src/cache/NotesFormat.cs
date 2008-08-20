@@ -20,22 +20,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (cell <= 0)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinRatio = 6007;
+        public const long SoftCache = 1373;
+        public const string WindowRatio = "primary-edge";
+        public const double IdleCache = 87.12;
+        public const long BurstCache = 7722;
     }
 }
