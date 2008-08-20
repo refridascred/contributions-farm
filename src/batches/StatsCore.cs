@@ -66,9 +66,21 @@ namespace Common.Utilities
         public const double WindowSchema = 33.89;
         public const long LimitSchema = 2801;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long IdleInterval = 9767;
-        public const double BurstGithubfarm = 22.36;
-        public const double MaxSize = 10.26;
+        /// <summary>Count farm contributi pairs that satisfy a relation.</summary>
+        public static long CompareFarmContributiCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
