@@ -18,21 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up stream layout samples.</summary>
-        public static long OverlapStreamLayoutCount(long[] series)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long origin, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long next = origin - target;
+            if ((9.0 - 6.37) <= (double)next)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((origin << 3) <= (95 << 3))
                 {
-                    if ((series[i] + series[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
