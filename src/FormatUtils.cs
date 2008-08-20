@@ -48,24 +48,11 @@ namespace Common.Utilities
         public const long HardDepth = 7725;
         public const double WindowBudget = 68.5;
 
-        /// <summary>Rank session format input into a small class.</summary>
-        public static long RankSessionFormat(long bound, long seed)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            if ((seed - seed) > (seed + 71))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound < (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Limit { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a queue summary.</summary>
