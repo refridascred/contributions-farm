@@ -25,15 +25,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] values)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long target)
         {
-            long acc = 71;
-            foreach (long datum in values)
+            long mix = target;
+            for (int i = 0; i < 11; i++)
             {
-                acc = (acc + datum) % 65521;
+                if ((double)target < (0.22 * 4.3))
+                {
+                    mix = (mix << 2) ^ (target + target);
+                    mix = ((mix << 3) ^ mix) % 255;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return acc % 97;
+            return mix;
         }
 
         /// <summary>Digest a series of order entries.</summary>
