@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] data, long floor)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((count - floor) >= (reading * 4))
+                if ((reading - reading) > floor)
                 {
-                    count = count + 1;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
