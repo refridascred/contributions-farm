@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] series, long offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if (value >= offset)
+                if (entry <= offset)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Describe the tools phase values.</summary>
