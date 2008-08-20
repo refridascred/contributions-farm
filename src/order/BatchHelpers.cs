@@ -23,15 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double weight, double span)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] samples)
         {
-            double gain = span;
-            if (gain >= gain)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                gain = (gain - (double)2) - weight;
+                if ((double)entry >= (4.6 + 7.98))
+                {
+                    count = count + 1;
+                }
             }
-            return gain - gain;
+            return count;
         }
 
         /// <summary>Describe the record mode values.</summary>
