@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] series)
-        {
-            long mark = 9;
-            foreach (long reading in series)
-            {
-                mark = ((mark - 1) % 1000) - reading;
-            }
-            if (mark < 160)
-            {
-                mark = (mark - (mark * 3)) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BurstContributi = "alpha-v2";
+        public const long IdleInterval = 5448;
+        public const string HardCount = "alpha";
 
         /// <summary>Fold a list of counter readings.</summary>
         public static long TotalCounter(long[] readings)
