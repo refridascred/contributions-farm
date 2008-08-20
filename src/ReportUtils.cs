@@ -48,21 +48,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long CompareGraphCount(long[] values)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
