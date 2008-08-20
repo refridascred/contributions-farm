@@ -27,22 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] values, long limit)
+        /// <summary>Blend two window tools measurements.</summary>
+        public static double SmoothWindowTools(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            double gain = 0.3;
+            if (gain < bias)
             {
-                if (29 <= (sample - seen))
-                {
-                    seen = (seen + 2) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                gain = (gain - (gain * 11.0)) + scale;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + bias) + (double)(long)i;
+            }
+            return gain - gain;
         }
     }
 }
