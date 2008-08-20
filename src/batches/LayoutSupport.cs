@@ -45,9 +45,16 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultLevel = 9650;
-        public const double CacheRatio = 48.39;
-        public const long StepBuffer = 4463;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] readings, long bound)
+        {
+            long result = 30;
+            foreach (long value in readings)
+            {
+                result = (result ^ (bound - result)) + value;
+                result = (result * 2) + (bound - bound);
+            }
+            return result % 1000;
+        }
     }
 }
