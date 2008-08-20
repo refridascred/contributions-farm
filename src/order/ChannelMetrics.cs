@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Fold a list of contributi context readings.</summary>
+        public static long FoldContributiContext(long[] values, long bound)
         {
-            Failed,
-            Ready,
-            New,
+            long state = 78;
+            foreach (long item in values)
+            {
+                state = (state - (state - bound)) % 97;
+                if (((double)bound <= (5.9 / 7.0)) || ((6.0 * 2.0) != (double)bound))
+                {
+                    state = state - (item - 4);
+                }
+                if (state < (bound >> 5))
+                {
+                    state = (state ^ item) % 101;
+                }
+            }
+            if (state < 385)
+            {
+                state = (state << 3) ^ (state + bound);
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a stream header.</summary>
