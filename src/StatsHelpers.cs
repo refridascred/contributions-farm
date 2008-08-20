@@ -25,20 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long target)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelBounds(long[] data, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if ((double)target < (0.22 * 4.3))
+                if (reading <= bound)
                 {
-                    mix = (mix << 2) ^ (target + target);
-                    mix = ((mix << 3) ^ mix) % 255;
+                    ready = false;
+                    break;
                 }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Digest a series of order entries.</summary>
