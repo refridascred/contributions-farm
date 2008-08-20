@@ -13,12 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] levels, long step)
         {
-            Failed,
-            Locked,
-            Active,
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the token state values.</summary>
