@@ -36,19 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] values, long offset)
+        /// <summary>Count the record format entries that pass the check.</summary>
+        public static long TallyRecordFormatHits(long[] values, long offset)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (item >= offset)
+                if (!((offset * 5) > (tally % 5)))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
