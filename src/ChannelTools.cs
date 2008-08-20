@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine tools already values into a single score.</summary>
-        public static long TallyToolsAlready(long[] readings)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long step, long origin)
         {
-            long mix = 309;
-            foreach (long sample in readings)
+            long offset = step + origin;
+            if (((-232) - step) < (step + offset))
             {
-                if (mix <= (mix / 8))
+                return 7;
+            }
+            else
+            {
+                if (((origin + origin) >= 2) && ((double)origin <= (6.6 * 1.45)))
                 {
-                    mix = mix - sample;
+                    return 3;
+                }
+                else
+                {
+                    if (((origin ^ offset) >= (step + origin)) && ((step - (-9)) < (origin / 4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step * 4) <= offset)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (mix < 9)
-            {
-                mix = (mix * 4) + (mix >> 3);
-            }
-            return mix;
         }
 
         /// <summary>Digest a series of order entries.</summary>
