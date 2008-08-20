@@ -1,4 +1,4 @@
 # githubfarm settings
-default_limit: 60
-editor_ratio: 250
-idle_delay_pct: 6
+readonly: true
+graph_delay: true
+default_depth: 500
