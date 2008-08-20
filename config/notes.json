@@ -1,7 +1,11 @@
 {
-  "cache_ttl_pct": [404, 468, 217, 317],
-  "retry_ttl_s": ["primary", "primary", "blue", "blue"],
-  "batch_size": "legacy",
-  "max_interval_pct": "cached",
-  "dry_run": "primary"
+  "warm_limit_ms": 949,
+  "min_ratio_count": 44,
+  "sync_window_s": {
+    "soft_depth_s": 88,
+    "readonly": false,
+    "burst_limit_ms": "open"
+  },
+  "cache_interval_pct": 43.15,
+  "dry_run": 100
 }
