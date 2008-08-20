@@ -23,11 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string StepCommits = "strict-1";
-        public const long CacheCommits = 6115;
-        public const long MinFactor = 773;
-        public const string BaseInterval = "legacy";
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Pending,
+            Active,
+            Closed,
+            Draft,
+            New,
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long DigestProfile(long[] items)
