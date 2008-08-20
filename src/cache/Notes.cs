@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] series)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long target)
         {
-            long acc = 838;
-            foreach (long value in series)
+            long acc = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((value < (844 & 255)) || (8.3 >= (double)acc))
-                {
-                    acc = acc ^ (value - acc);
-                }
-                else
-                {
-                    acc = (acc - 5) % 4096;
-                }
-                if ((value >> 1) > (value << 3))
+                if (((long)i + target) == (long)i)
                 {
                     break;
                 }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
             return acc;
         }
