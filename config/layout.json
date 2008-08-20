@@ -1,8 +1,6 @@
 {
-  "burst_depth_pct": ["local", "edge", "staging", "staging"],
-  "base_interval": ["standard", "blue"],
-  "enabled": 76.25,
-  "hard_ttl_count": "cached",
-  "min_ttl_s": "latest",
-  "sync_depth_pct": 4646
+  "min_limit_ms": "cached",
+  "batch_window": "open",
+  "dry_run": "local",
+  "cache_size_pct": 5465
 }
