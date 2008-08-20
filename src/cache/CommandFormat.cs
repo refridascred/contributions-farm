@@ -43,15 +43,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] readings)
+        /// <summary>Iterate the payload profile series from a seed.</summary>
+        public static long StepPayloadProfile(long origin)
         {
-            long score = 26;
-            foreach (long sample in readings)
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
             {
-                score = ((score * 4) + (sample % 24)) % 97;
+                carry = (carry - carry) % 4096;
+                carry = (carry - origin) % 1000;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return score % 4096;
+            return carry;
         }
     }
 }
