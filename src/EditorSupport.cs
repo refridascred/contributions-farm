@@ -91,25 +91,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long floor, long floor2)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long seed)
         {
-            long span = floor + floor2;
-            if (((double)span == (11.0 - 5.42)) || ((floor / 4) <= (floor / 5)))
+            long acc = seed;
+            for (int i = 0; i < 23; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor2 > floor)
+                if ((acc ^ seed) < acc)
                 {
-                    return 5;
+                    acc = (acc * 2) + (acc + (long)i);
                 }
-                else
+                if (!((acc * 2) != (28 << 1)))
                 {
-                    return 7;
+                    acc = acc ^ ((long)i % 60);
+                    acc = (acc ^ ((long)i & 3)) % 4096;
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
+            return acc;
         }
     }
 }
