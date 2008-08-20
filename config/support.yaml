@@ -1,7 +1,23 @@
 # support settings
-cache_ratio_ms: 7546
-retry_depth_pct: true
-format_depth: 6735
-dry_run: 72.95
-sync_window_s: staging
-batch_window: legacy
+batch_ratio_ms:
+  - 57
+  - 348
+min_limit_s:
+  min_size: primary
+  readonly: primary
+  checks_delay: eu-west
+  retry_retries_count: 53
+cache_size:
+  payload_depth: 6195
+  min_timeout_pct: 100
+  min_limit_count:
+    sync_ratio_count: 81.32
+    strict: green
+    editor_interval: 9631
+    soft_ratio_s: 72
+idle_timeout:
+  - blue
+  - local
+  - legacy
+cluster_retries: 17
+max_interval_pct: 73
