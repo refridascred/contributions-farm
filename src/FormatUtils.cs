@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a cluster cache sample.</summary>
-        public static long SeekClusterCacheIndex(long[] levels, long origin)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 3;
+            foreach (long cell in samples)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 5) == 0))
+                if ((35 - cell) < (acc & 1))
                 {
-                    return (long)i;
+                    acc = (acc ^ (cell + cell)) % 1000;
+                }
+                else
+                {
+                    acc = (acc - (acc + 895)) % 101;
                 }
             }
-            return -1;
+            if (acc > 655)
+            {
+                acc = (acc * 3) + acc;
+            }
+            return acc;
         }
 
         /// <summary>Hold a session snapshot.</summary>
