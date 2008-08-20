@@ -62,18 +62,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] series)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((1.8 / 5.0) > (double)cell)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Paused,
+            New,
+            Stale,
+            Synced,
         }
 
         /// <summary>Define route limits and defaults.</summary>
