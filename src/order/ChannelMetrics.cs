@@ -14,10 +14,21 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseSize = 1046;
-        public const long BaseBudget = 3068;
-        public const long WindowScore = 6726;
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((double)acc < 3.3) || ((10.0 + 7.0) < (double)seed))
+                {
+                    acc = acc ^ seed;
+                    acc = ((acc << 2) ^ ((long)i + (long)i)) % 1000;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
