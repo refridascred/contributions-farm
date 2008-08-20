@@ -39,14 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] series)
         {
-            Idle,
-            Pending,
-            Synced,
-            Done,
-            Retry,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (((70 << 3) <= (cell % 5)) || ((cell + hits) <= (cell >> 4)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next stream record value from a seed.</summary>
