@@ -1,5 +1,5 @@
 {
-  "already_timeout": false,
-  "max_window_ms": ["staging", "primary", "blue"],
-  "base_depth_pct": ["green", "stable", "green"]
+  "compress": "edge",
+  "enabled": "latest",
+  "retry_ratio": 11.45
 }
