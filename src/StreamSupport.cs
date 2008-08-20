@@ -32,11 +32,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two entry window measurements.</summary>
-        public static double ScaleEntryWindow(double ratio, double offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] samples)
         {
-            double bias = (offset + ratio) * 8.93;
-            return bias - bias;
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (((hits << 1) == (value % 2)) || (((long)samples.Length + hits) > (90 >> 2)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
