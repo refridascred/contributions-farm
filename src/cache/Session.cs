@@ -45,18 +45,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenOutliers(long[] readings, long seed)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long seed, long target)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            if ((target ^ target) == (seed * 4))
             {
-                if ((double)seed < (8.8 / 3.0))
+                return 7;
+            }
+            else
+            {
+                if (((4.0 + 1.5) <= (double)seed) && (22 <= (seed / 5)))
                 {
-                    hits = (hits + 3) + reading;
+                    return 0;
+                }
+                else
+                {
+                    if ((18.0 + 5.78) < (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed << 2) == (target + 7))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
