@@ -1,5 +1,7 @@
 {
-  "soft_size_pct": "eu-west",
-  "soft_threshold_count": 95,
-  "stats_delay": "standard"
+  "audit": "green",
+  "poll_timeout_ms": ["green", "staging"],
+  "contributi_timeout": "green",
+  "cluster_limit": 30,
+  "retry_limit": 2922
 }
