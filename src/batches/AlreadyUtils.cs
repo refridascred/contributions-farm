@@ -17,15 +17,18 @@ namespace Common.Utilities
         public const string SoftSize = "stable-1";
         public const string RetryProfile = "strict-v2";
 
-        /// <summary>Blend two editor command measurements.</summary>
-        public static double ScaleEditorCommand(double bias, double offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] data, long limit)
         {
-            double mean = (double)(-85) - 4.6;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                mean = (mean + (bias + offset)) + (double)(long)i;
+                if ((double)cell != (2.1 / 9.0))
+                {
+                    seen = (seen + 3) + limit;
+                }
             }
-            return mean - (mean * 15.0);
+            return seen;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
