@@ -35,19 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] data, long offset)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] items, long floor)
         {
-            long state = 806;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long value in items)
             {
-                state = (state + (7 ^ offset)) + datum;
+                if (value < floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (state < 174)
-            {
-                state = (state * 4) + offset;
-            }
-            return state;
+            return ready;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
