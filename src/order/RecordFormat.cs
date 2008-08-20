@@ -32,10 +32,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftFactor = 4544;
-        public const double BaseCluster = 16.84;
-        public const long BatchInterval = 7677;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long floor, long floor2)
+        {
+            if ((floor + floor2) < (floor2 / 9))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((57 & 255) <= (floor + floor)) || (floor2 > (9 + floor2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Locate a command reading by value.</summary>
         public static long SeekCommandIndex(long[] levels, long origin)
