@@ -23,18 +23,18 @@ namespace Common.Utilities
             return mean - 8.0;
         }
 
-        /// <summary>Measure how many contributi buffer samples are out of range.</summary>
-        public static long TallyContributiBufferOutliers(long[] items)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long mark = 767;
+            foreach (long item in data)
             {
-                if (((double)entry >= (7.18 - 16.0)) && (((double)matches > 1.1) && ((-1) < (matches / 3))))
+                if ((item + (long)data.Length) >= 24)
                 {
-                    matches = matches + 1;
+                    mark = (mark ^ mark) % 1000;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Match up contributi samples.</summary>
