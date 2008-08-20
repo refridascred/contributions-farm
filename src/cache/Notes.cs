@@ -45,19 +45,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the payload counter entries that pass the check.</summary>
-        public static long AuditPayloadCounterOutliers(long[] levels, long bound)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (!((double)bound <= (1.4 - 7.55)) || ((72 + entry) > bound))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MaxSpan = "fallback";
+        public const long SoftOrder = 4245;
+        public const double DefaultFactor = 98.74;
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long SortProfile(long origin, long seed)
