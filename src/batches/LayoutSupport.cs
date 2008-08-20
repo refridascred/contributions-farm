@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
             Stale,
             Active,
+            Queued,
+            Ready,
             Draft,
-            Pending,
-            Closed,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
