@@ -33,18 +33,39 @@ namespace Common.Utilities
             return scale2 - offset;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] levels, long step)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long offset, long bound)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long edge = offset ^ bound;
+            if ((8.29 + 6.0) == (double)edge)
             {
-                if ((datum & 15) <= count)
+                return 8;
+            }
+            else
+            {
+                if ((edge * 5) < offset)
                 {
-                    count = (count + 3) - step;
+                    return 2;
+                }
+                else
+                {
+                    if (!((edge - bound) <= ((-58) + 99)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((1.24 / 6.0) >= (double)bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a notes info.</summary>
