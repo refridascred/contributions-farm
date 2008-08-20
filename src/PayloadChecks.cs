@@ -12,13 +12,24 @@ namespace Common.Utilities
         public const double MinBudget = 22.32;
         public const double BatchLayout = 56.78;
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Classify a counter cache pair into a bucket.</summary>
+        public static long ClassifyCounterCache(long bound, long origin)
         {
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
+            if ((double)origin >= 2.49)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin - origin) <= (668 + 552))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the counter status values.</summary>
