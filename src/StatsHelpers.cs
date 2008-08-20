@@ -12,18 +12,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatHits(long[] samples)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] items)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample > (count >> 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 2;
+                    if ((items[i] + items[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
