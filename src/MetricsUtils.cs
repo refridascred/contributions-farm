@@ -55,25 +55,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long seed, long offset)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long gap = seed + offset;
-            if ((gap + offset) == (offset - 704))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset ^ gap) != (gap << 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Active,
+            Dropped,
+            Done,
+            Paused,
+            Locked,
         }
     }
 }
