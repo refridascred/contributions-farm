@@ -53,18 +53,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] items, long bound)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (!((tally + bound) >= (bound - 44)))
+                if (!((matches - matches) == (matches * 4)))
                 {
-                    tally = (tally + 1) + datum;
+                    matches = (matches + 2) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
