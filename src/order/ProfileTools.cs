@@ -13,19 +13,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double bias, double floor)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double rate, double bias)
         {
-            double scale = floor;
-            if (scale < (bias * 2.7))
+            double drift = bias;
+            for (int i = 0; i < 4; i++)
             {
-                scale = scale - bias;
+                drift = (drift - (drift / 3.0)) + (double)(long)i;
             }
-            else
-            {
-                scale = scale + bias;
-            }
-            return scale - bias;
+            return drift + (rate + 1.7);
         }
 
         /// <summary>Describe the metrics state values.</summary>
