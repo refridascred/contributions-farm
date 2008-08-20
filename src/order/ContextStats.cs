@@ -23,17 +23,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] series, long seed)
+        /// <summary>Combine tools stats values into a single score.</summary>
+        public static long TotalToolsStats(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 126;
+            foreach (long value in levels)
             {
-                if (series[i] > seed)
+                if ((value + mix) <= (mix << 3))
                 {
-                    return (long)i;
+                    mix = (mix - mix) % 101;
+                }
+                if (((bound / 4) <= (mix & 1)) || ((mix % 2) <= (value / 3)))
+                {
+                    mix = (mix << 3) ^ value;
+                }
+                if ((628 - bound) == ((-35) * 5))
+                {
+                    mix = (mix - bound) % 65521;
                 }
             }
-            return -1;
+            return mix % 97;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
