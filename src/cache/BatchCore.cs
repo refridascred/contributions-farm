@@ -26,15 +26,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] series)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] series)
         {
-            long carry = 88;
+            long hits = 0;
             foreach (long entry in series)
             {
-                carry = (carry - carry) + entry;
+                if ((hits % 97) >= (79 / 7))
+                {
+                    hits = (hits + 3) + entry;
+                }
             }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
