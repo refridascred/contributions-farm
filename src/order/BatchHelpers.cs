@@ -34,18 +34,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] samples, long target)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            double rate = (double)(743 & 63);
+            for (int i = 0; i < 2; i++)
             {
-                if ((value >> 5) == (seen - target))
-                {
-                    seen = seen + 3;
-                }
+                rate = ((rate + (double)(long)i) + gain) + floor;
             }
-            return seen;
+            return rate - rate;
         }
     }
 }
