@@ -59,20 +59,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate queue graph samples.</summary>
-        public static long DigestQueueGraph(long[] levels)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] data, long origin)
         {
-            long score = -441;
-            foreach (long datum in levels)
+            long mark = 93;
+            foreach (long cell in data)
             {
-                score = score - score;
-                score = (score + datum) % 101;
+                if (((long)data.Length << 2) >= (cell / 9))
+                {
+                    mark = mark + (origin - 38);
+                }
             }
-            if (score > 5)
+            if (mark > 648)
             {
-                score = (score + (score * 2)) % 101;
+                mark = ((mark * 5) + (mark + mark)) % 255;
             }
-            return score;
+            return mark % 4096;
         }
     }
 }
