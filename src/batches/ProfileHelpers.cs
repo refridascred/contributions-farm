@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long BucketCommand(long bound, long seed)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long diff = bound + seed;
-            if (bound > (828 & 15))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((seed * 2) == (diff + 801)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)bound > (2.08 - 8.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!(seed <= (bound >> 5)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Done,
+            Ready,
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
