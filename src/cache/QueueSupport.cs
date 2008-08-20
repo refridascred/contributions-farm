@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] readings)
-        {
-            long carry = 6;
-            foreach (long reading in readings)
-            {
-                carry = (carry - (reading << 1)) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 8243;
+        public const string StepOrder = "staging";
+        public const long BaseOrder = 8884;
+        public const string MaxBudget = "alpha-1";
+        public const long IdleRatio = 525;
 
         /// <summary>Digest a series of tools order entries.</summary>
         public static long FoldToolsOrder(long[] samples)
