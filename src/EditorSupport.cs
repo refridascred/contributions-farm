@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long step, long floor)
+        /// <summary>Check that every checks account entry stays within the limit.</summary>
+        public static bool GuardChecksAccountRange(long[] data, long limit)
         {
-            if ((step + floor) < (floor & 1))
+            bool flag = true;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step >= (4.21 / 8.0))
+                if (item != limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
