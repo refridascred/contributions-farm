@@ -18,11 +18,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Count batches counter pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCounterCount(long[] samples)
         {
-            public long Token { get; set; }
-            public bool Offset { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
