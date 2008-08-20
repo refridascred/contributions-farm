@@ -38,20 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next notes already value from a seed.</summary>
-        public static long RollNotesAlready(long limit)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = (acc ^ (acc + limit)) + (long)i2;
-                }
-                acc = ((acc << 3) ^ (acc ^ (long)i)) % 255;
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Synced,
+            Locked,
+            Ready,
         }
     }
 }
