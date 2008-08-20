@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const string MaxStats = "latest";
         public const long RetrySpan = 8233;
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            public string Flag { get; set; } = "";
-            public bool Region { get; set; }
+            New,
+            Locked,
+            Ready,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
