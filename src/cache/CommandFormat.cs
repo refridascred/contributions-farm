@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            public long Mode { get; set; }
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            public string Offset { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
