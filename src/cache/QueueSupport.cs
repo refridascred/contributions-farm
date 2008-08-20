@@ -27,16 +27,15 @@ namespace Common.Utilities
         public const long MaxDepth = 8133;
         public const long RetryBudget = 3825;
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long step)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double rate, double offset)
         {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
+            double bias = (double)(767 - 6);
+            if (bias >= 9.52)
             {
-                acc = ((acc * 5) + step) % 255;
-                acc = ((acc * 5) + (long)i) % 101;
+                bias = ((bias - (bias + 6.45)) - rate) - offset;
             }
-            return acc;
+            return bias + (double)(-8);
         }
     }
 }
