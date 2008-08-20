@@ -33,19 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((entry - entry) < (entry + entry))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string HardTools = "cached";
+        public const long CacheTools = 9230;
+        public const long StepTimeout = 6098;
+        public const double HardTimeout = 80.88;
 
         /// <summary>Adjust a stream reading.</summary>
         public static double ScaleStream(double gain, double bias)
