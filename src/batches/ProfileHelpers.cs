@@ -50,18 +50,18 @@ namespace Common.Utilities
             return load + gain;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] samples, long seed)
+        /// <summary>Measure how many profile entry samples are out of range.</summary>
+        public static long CountProfileEntryHits(long[] series)
         {
-            long score = 37;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (35 > (entry % 12))
+                if ((86 + datum) > (961 % 2))
                 {
-                    score = (((score * 5) + (entry >> 2)) % 4096) - seed;
+                    hits = hits + 1;
                 }
             }
-            return score % 4096;
+            return hits;
         }
 
         /// <summary>Hold a payload header.</summary>
