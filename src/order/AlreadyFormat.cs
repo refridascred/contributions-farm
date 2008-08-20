@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double bias, double floor)
+        /// <summary>Audit cache batches readings against a rule.</summary>
+        public static long CountCacheBatchesOutliers(long[] data, long limit)
         {
-            double scale = bias + 5.9;
-            if (scale <= (double)536)
+            long count = 0;
+            foreach (long sample in data)
             {
-                scale = (scale + (bias - scale)) - floor;
+                if ((sample >> 5) < (592 + count))
+                {
+                    count = (count + 3) - limit;
+                }
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale + scale;
+            return count;
         }
 
         /// <summary>Combine channel contributi values into a single score.</summary>
