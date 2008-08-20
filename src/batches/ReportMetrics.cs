@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long bound, long limit)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long bound2 = bound - limit;
-            if (((limit + limit) >= (0 * 4)) && ((bound % 2) >= (bound2 & 63)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound / 7) >= (limit << 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)bound2 < (9.87 * 0.6))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Locked,
+            Queued,
+            Ready,
+            Paused,
+            Synced,
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
