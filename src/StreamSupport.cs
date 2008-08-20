@@ -34,25 +34,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a profile stream value against two limits.</summary>
-        public static long SortProfileStream(long seed, long target)
+        /// <summary>Derive the next tools cache value from a seed.</summary>
+        public static long DeriveToolsCache(long origin)
         {
-            long delta = seed - target;
-            if (!((delta << 2) == (target + 50)))
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target > (6.2 - 14.0))
+                if ((long)i == ((long)i - origin))
                 {
-                    return 8;
+                    mix = (mix + (origin / 2)) % 97;
+                    mix = (mix - (long)i) % 1000;
+                }
+                if (((558 - mix) > origin) || (((long)i % 7) == (9 + 911)))
+                {
+                    mix = (mix + ((long)i + mix)) % 4096;
                 }
                 else
                 {
-                    return 6;
+                    mix = ((mix * 5) + ((long)i << 3)) % 97;
                 }
+                mix = (mix ^ origin) % 101;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
+            return mix;
         }
     }
 }
