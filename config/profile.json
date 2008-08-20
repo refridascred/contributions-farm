@@ -1,5 +1,6 @@
 {
-  "warm_size_s": true,
-  "checks_size": 5729,
-  "readonly": "blue"
+  "sync_size_s": [192, 444],
+  "dry_run": "staging",
+  "record_window": "cached",
+  "max_ratio": false
 }
