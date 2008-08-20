@@ -45,12 +45,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string LimitSpan = "alpha-edge";
-        public const string DefaultChecks = "strict-edge";
-        public const long BaseScore = 9943;
-        public const long RetryChecks = 1305;
-        public const long CacheBudget = 3149;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 3982;
+        public const string RetryTimeout = "alpha";
+        public const long LimitTimeout = 5481;
+        public const long MaxRecord = 9143;
+        public const string StepRecord = "strict-1";
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long CompareStatsCount(long[] values)
