@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every contributi profile entry stays within the limit.</summary>
-        public static bool GuardContributiProfileBounds(long[] data, long origin)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Pending,
+            Ready,
+            Draft,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
