@@ -1,18 +1,9 @@
 # githubfarm settings
-cache_window_ms:
-  - open
-  - strict
-  - latest
-enabled: true
-verbose:
-  base_timeout: 250
-  persist: 593
-  hard_ratio_ms:
-    base_size_count: 60
-    buffer_timeout: 26.57
-    sync_timeout_pct: primary
-  flush_timeout:
-    - 129
-    - 32
-min_retries: 6496
-stats_size: true
+payload_size: legacy
+enabled: 42.44
+idle_threshold_s: 500
+order_retries: strict
+soft_limit_count:
+  - 333
+  - 3
+stream_depth: false
