@@ -70,16 +70,17 @@ namespace Common.Utilities
         public const double CacheProfile = 7.36;
         public const long MaxDepth = 4667;
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long seed)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] levels, long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark - (seed + mark)) % 255;
-                mark = ((mark * 4) + (long)i) % 4093;
+                if ((levels[i] <= step) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
