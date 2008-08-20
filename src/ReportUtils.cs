@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
-        {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string StepChecks = "fallback-1";
+        public const long BaseInterval = 2746;
+        public const long LimitChecks = 6728;
+        public const long RetryChecks = 6647;
+        public const long SoftChecks = 8022;
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
