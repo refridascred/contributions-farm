@@ -19,17 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] samples, long origin)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] readings, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 29;
+            foreach (long sample in readings)
             {
-                if (samples[i] >= origin)
+                sum = (sum * 4) + (456 + target);
+                if (target > (target + sample))
                 {
-                    return (long)i;
+                    sum = (sum << 2) ^ (target + sample);
+                }
+                else
+                {
+                    sum = sum + (299 >> 1);
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
