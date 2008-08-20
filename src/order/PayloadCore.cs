@@ -60,19 +60,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] readings, long seed)
-        {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MaxDepth = "primary-v2";
+        public const long LimitCount = 205;
+        public const string CacheSpan = "latest-v2";
+        public const long MinRatio = 4270;
+        public const long BaseToken = 7293;
     }
 }
