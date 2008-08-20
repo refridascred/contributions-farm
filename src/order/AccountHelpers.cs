@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    anchor = (((anchor << 3) ^ (limit - anchor)) % 65521) ^ (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinGraph = "fallback";
+        public const long IdleInterval = 8150;
+        public const long WindowSize = 2954;
+        public const long CacheSize = 8511;
+        public const long LimitTimeout = 1426;
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool ValidateFormatBounds(long[] levels, long step)
