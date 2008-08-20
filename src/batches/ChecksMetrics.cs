@@ -10,26 +10,12 @@ namespace Common.Utilities
         public const long MinRatio = 1180;
         public const string RetryRatio = "strict-1";
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] data)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long anchor = 516;
-            foreach (long reading in data)
-            {
-                if (((reading + 0) < anchor) || ((double)reading < (6.1 - 17.0)))
-                {
-                    anchor = (anchor << 2) ^ reading;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor / 9)) % 255;
-                }
-            }
-            if (anchor < 31)
-            {
-                anchor = (anchor - (821 * 2)) % 1000;
-            }
-            return anchor;
+            Stale,
+            New,
+            Queued,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
