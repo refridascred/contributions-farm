@@ -23,19 +23,22 @@ namespace Common.Utilities
             return bias2 + (bias2 / 9.0);
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] series, long bound)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] samples, long step)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long mix = 2;
+            foreach (long item in samples)
             {
-                if (value > bound)
+                if ((double)item <= (3.0 * 10.0))
                 {
-                    ok = false;
-                    break;
+                    mix = mix - (step * 5);
                 }
             }
-            return ok;
+            if (mix < 15)
+            {
+                mix = ((mix << 2) ^ mix) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Digest a series of account entries.</summary>
