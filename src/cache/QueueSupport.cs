@@ -34,12 +34,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
+            Ready,
+            New,
+            Idle,
         }
     }
 }
