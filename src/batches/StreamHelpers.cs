@@ -39,19 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteLimits(long[] samples, long limit)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Mode { get; set; } = "";
+            public bool Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
