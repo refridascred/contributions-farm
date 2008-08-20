@@ -20,17 +20,18 @@ namespace Common.Utilities
             return drift + (double)(-5);
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] items, long limit)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (items[i] >= limit)
+                if ((sample >> 2) < (tally << 1))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the cache profile entries that pass the check.</summary>
