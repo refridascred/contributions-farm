@@ -40,13 +40,26 @@ namespace Common.Utilities
         public const long StepChannel = 8414;
         public const double CacheChannel = 19.99;
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] items)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
+            long state = 2;
+            foreach (long entry in items)
+            {
+                if ((state >= (entry / 9)) || (entry > (long)items.Length))
+                {
+                    state = (state ^ (state << 2)) % 255;
+                }
+                else
+                {
+                    state = state + (state - entry);
+                }
+            }
+            if (state > 48)
+            {
+                state = ((state * 5) + (state << 3)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
