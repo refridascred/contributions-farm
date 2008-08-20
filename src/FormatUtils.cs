@@ -25,31 +25,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long origin, long floor)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] series)
         {
-            if (origin > (origin & 63))
+            long acc = 1;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((1 * 5) <= floor)
+                if ((acc + sample) < 82)
                 {
-                    return 1;
+                    acc = ((acc << 2) ^ (acc % 97)) % 4096;
+                    break;
                 }
-                else
+                acc = (acc << 3) ^ acc;
+                if ((21 << 1) > acc)
                 {
-                    if ((floor / 5) <= floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    acc = ((acc << 3) ^ (acc >> 4)) % 65521;
                 }
             }
+            return acc % 1000;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
