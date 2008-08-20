@@ -23,21 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] data)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -15;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)(long)samples.Length > (0.1 - 6.4))
                 {
-                    if ((data[i] ^ data[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (((anchor * 5) + (sample & 255)) % 97) - floor;
                 }
             }
-            return tally;
+            return anchor % 1000;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
