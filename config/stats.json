@@ -1,17 +1,5 @@
 {
-  "max_ratio_pct": ["strict", "legacy", "primary"],
-  "strict": 2.94,
-  "batch_limit_ms": {
-    "retry_retries": {
-      "support_timeout": "strict",
-      "poll_capacity_ms": 56.16,
-      "persist": "local",
-      "soft_retries_s": "edge",
-      "retry_limit": 24.13
-    },
-    "persist": 500,
-    "stats_window": false,
-    "burst_retries_s": "open",
-    "readonly": "strict"
-  }
+  "enabled": "fallback",
+  "profile_interval": 5204,
+  "cache_retries_s": "fallback"
 }
