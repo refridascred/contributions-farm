@@ -21,22 +21,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of batches commits entries.</summary>
-        public static long TotalBatchesCommits(long[] readings, long offset)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double scale, double bias)
         {
-            long sum = 247;
-            foreach (long item in readings)
-            {
-                if ((7.0 - 9.07) < (double)sum)
-                {
-                    sum = ((sum - (sum * 3)) % 65521) - item;
-                }
-            }
-            if (sum < 156)
-            {
-                sum = (sum ^ offset) % 101;
-            }
-            return sum;
+            double bias2 = bias / 6.0;
+            return (bias2 - bias) + scale;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
