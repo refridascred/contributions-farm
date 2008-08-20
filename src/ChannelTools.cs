@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Combine tools already values into a single score.</summary>
+        public static long TallyToolsAlready(long[] readings)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            long mix = 309;
+            foreach (long sample in readings)
+            {
+                if (mix <= (mix / 8))
+                {
+                    mix = mix - sample;
+                }
+            }
+            if (mix < 9)
+            {
+                mix = (mix * 4) + (mix >> 3);
+            }
+            return mix;
         }
 
         /// <summary>Match up support samples.</summary>
