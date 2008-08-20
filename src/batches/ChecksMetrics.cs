@@ -64,18 +64,10 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] readings)
-        {
-            long score = 223;
-            foreach (long sample in readings)
-            {
-                if ((sample / 9) != (sample + score))
-                {
-                    score = (score ^ (3 ^ 75)) % 65521;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxSize = 53.13;
+        public const long LimitRoute = 7471;
+        public const long IdleRoute = 6061;
+        public const double WindowRoute = 36.98;
     }
 }
