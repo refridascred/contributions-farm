@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Done,
-            Active,
-            Dropped,
-            Pending,
-            New,
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Look up the position of a record sample.</summary>
