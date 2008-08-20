@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next support commits value.</summary>
-        public static double AdjustSupportCommits(double ratio, double floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] items)
         {
-            double mean = (ratio - floor) / 9.0;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                mean = (mean + (mean - 6.03)) - (double)(long)i;
+                if (!((double)reading <= (5.2 * 1.51)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mean + ratio;
+            return hits;
         }
 
         /// <summary>Hold a stats header.</summary>
