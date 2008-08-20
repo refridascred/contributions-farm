@@ -1,7 +1,4 @@
 # entry settings
-retry_interval: strict
-contributi_capacity: 66.07
-hard_retries_ms: open
-sync_capacity_count: 93
-buffer_retries: false
-min_retries_ms: standard
+max_limit_s: 7.84
+default_delay_pct: 15.65
+min_timeout_ms: 10.26
