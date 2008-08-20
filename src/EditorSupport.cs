@@ -20,13 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderOutliers(long[] levels)
         {
-            public long Flag { get; set; }
-            public double Total { get; set; }
-            public bool Offset { get; set; }
-            public double Score { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (datum < (tally + datum))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the stats kind values.</summary>
