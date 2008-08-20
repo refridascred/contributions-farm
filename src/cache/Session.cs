@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterMatches(long[] items)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (((seen << 1) <= (datum << 3)) && ((datum + seen) < (seen + datum)))
+                if (datum != floor)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
