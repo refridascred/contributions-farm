@@ -57,27 +57,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] data)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long seed)
         {
-            long sum = 18;
-            foreach (long datum in data)
+            long state = seed;
+            for (int i = 0; i < 22; i++)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    sum = (sum + (sum ^ (long)i)) % 255;
-                }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    sum = (sum - sum) + (long)i2;
-                }
-                sum = (sum - (datum << 3)) % 65521;
-                if (((sum / 7) > (datum - sum)) || ((sum ^ sum) == (8 << 2)))
-                {
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Define token limits and defaults.</summary>
