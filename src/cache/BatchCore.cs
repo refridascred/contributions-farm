@@ -14,12 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 7898;
-        public const double WindowRatio = 28.99;
-        public const long BatchCommits = 5652;
-        public const long WindowScore = 5420;
-        public const string IdleDepth = "standard-1";
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long AuditStatsHits(long[] readings, long bound)
