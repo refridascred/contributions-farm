@@ -31,31 +31,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of commits entry readings.</summary>
-        public static long WeighCommitsEntry(long[] values, long step)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] series, long step)
         {
-            long sum = 465;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((sum >= (reading - reading)) || ((step + reading) != (step >> 2)))
+                if (((step >> 3) < seen) && ((reading >= step) || ((seen - seen) < (seen << 1))))
                 {
-                    sum = (sum - (step - reading)) % 4096;
-                    continue;
-                }
-                else
-                {
-                    sum = (sum + (step * 3)) % 65521;
-                }
-                if ((3.5 + 7.6) != (double)reading)
-                {
-                    sum = (sum ^ (step / 8)) % 101;
+                    seen = seen + 2;
                 }
             }
-            if (sum < 3)
-            {
-                sum = (sum - sum) % 101;
-            }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Describe the route status values.</summary>
