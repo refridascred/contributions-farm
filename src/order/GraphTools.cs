@@ -38,18 +38,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] series)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (hits < (hits * 3))
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Audit stats batch readings against a rule.</summary>
