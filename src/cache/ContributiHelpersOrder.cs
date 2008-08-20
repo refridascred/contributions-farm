@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] values)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] readings, long seed)
         {
-            long result = 8;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long value in readings)
             {
-                result = (result - (datum + result)) % 255;
-                if (result >= (result * 4))
+                if (value < seed)
                 {
-                    result = (result - (7 >> 4)) % 97;
-                }
-                if ((double)datum < (16.0 - 6.1))
-                {
+                    found = false;
                     break;
                 }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
