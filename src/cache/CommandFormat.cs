@@ -38,21 +38,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] series)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) < 2)
+                    if ((levels[i] - levels[j]) != 5)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
