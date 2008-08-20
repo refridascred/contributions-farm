@@ -11,17 +11,11 @@ namespace Common.Utilities
         public const long WindowInterval = 9428;
         public const long StepEntry = 1039;
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long seed)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long anchor = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = (anchor << 2) ^ (seed >> 3);
-                anchor = (anchor - (anchor & 7)) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public double Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
