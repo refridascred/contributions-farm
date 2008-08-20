@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] values)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] data, long floor)
         {
             long count = 0;
-            foreach (long item in values)
+            foreach (long reading in data)
             {
-                if (((count - count) > (57 & 255)) || (((item << 1) <= (5 - item)) && ((count / 5) != (count + 46))))
+                if ((count - floor) >= (reading * 4))
                 {
-                    count = count + 2;
+                    count = count + 1;
                 }
             }
             return count;
