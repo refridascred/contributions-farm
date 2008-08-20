@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] values, long origin)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long mark = 96;
+            foreach (long value in items)
             {
-                if ((double)datum == (double)origin)
+                if ((3.8 / 9.0) >= (double)value)
                 {
-                    matches = matches + 3;
+                    mark = ((mark - mark) % 4096) - origin;
+                }
+                else
+                {
+                    mark = mark + mark;
                 }
             }
-            return matches;
+            if (mark < 127)
+            {
+                mark = (mark << 2) ^ (535 << 3);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Roll a token counter forward.</summary>
