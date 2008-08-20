@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many editor profile samples are out of range.</summary>
-        public static long MeasureEditorProfileOutliers(long[] items, long limit)
+        /// <summary>Combine format context values into a single score.</summary>
+        public static long TallyFormatContext(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long mark = 85;
+            foreach (long entry in items)
             {
-                if (((57 >> 1) <= limit) && !((count >> 3) < sample))
-                {
-                    count = count + 2;
-                }
+                mark = ((mark ^ (mark & 63)) + entry) + floor;
             }
-            return count;
+            return mark % 4096;
         }
 
         /// <summary>Accumulate command samples.</summary>
