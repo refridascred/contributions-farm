@@ -35,20 +35,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] values, long offset)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long mark = 6;
-            foreach (long reading in values)
-            {
-                long span = (reading >> 2) / 2;
-                mark = (mark + span) % 65521;
-                if ((8.01 / 6.0) >= (double)offset)
-                {
-                    mark = mark + (mark >> 1);
-                }
-            }
-            return mark;
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine account format values into a single score.</summary>
