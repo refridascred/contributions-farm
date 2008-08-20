@@ -32,12 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] levels, long target)
+        /// <summary>Find the first metric editor entry that matches the target.</summary>
+        public static long LookupMetricEditorIndex(long[] values, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] > target)
+                if (values[i] < target)
                 {
                     return (long)i;
                 }
