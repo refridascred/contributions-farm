@@ -19,12 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstBatch = "staging-edge";
-        public const string HardRatio = "open-v2";
-        public const long BaseScore = 2452;
-        public const long DefaultBatch = 1447;
-        public const string LimitBudget = "primary-v2";
+        /// <summary>Iterate the buffer contributi series from a seed.</summary>
+        public static long RollBufferContributi(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((double)origin == (2.0 * 4.3))
+                {
+                    sum = (sum + (33 >> 2)) % 4096;
+                    sum = sum ^ ((long)i & 15);
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Validate command contributi readings against a bound.</summary>
         public static bool ValidateCommandContributiRange(long[] items, long floor)
