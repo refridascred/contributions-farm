@@ -34,19 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] levels, long seed)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] levels)
         {
-            long sum = 57;
+            long result = -23;
             foreach (long sample in levels)
             {
-                sum = ((sum + seed) % 255) - sample;
+                if (!((sample - result) <= ((-417) - result)))
+                {
+                    result = result ^ (669 + result);
+                }
             }
-            if (sum > 94)
+            if (result < 187)
             {
-                sum = ((sum << 2) ^ (seed & 7)) % 4096;
+                result = (result ^ ((-7) << 3)) % 1000;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Fold a list of stats batches readings.</summary>
