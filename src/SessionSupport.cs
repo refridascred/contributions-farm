@@ -12,22 +12,10 @@ namespace Common.Utilities
         public const long MinReport = 3701;
         public const string HardReport = "open-1";
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 4787;
+        public const long MinLevel = 2400;
+        public const long BatchScore = 7931;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long MeasureCommitsGaps(long[] items)
