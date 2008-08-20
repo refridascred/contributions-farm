@@ -1,5 +1,8 @@
 {
-  "readonly": 38,
-  "sync_retries": 500,
-  "format_depth": [72, 285, 16, 267]
+  "counter_limit": true,
+  "report_timeout": 250,
+  "sync_size": true,
+  "persist": "blue",
+  "counter_retries": [149, 421, 119, 159],
+  "hard_depth_count": "latest"
 }
