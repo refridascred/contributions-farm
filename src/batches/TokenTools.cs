@@ -29,18 +29,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] readings)
+        /// <summary>Derive the next notes already value from a seed.</summary>
+        public static long RollNotesAlready(long limit)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((((298 & 127) <= (tally & 63)) && ((tally + tally) < 45)) && (((datum & 3) > tally) || (tally >= (64 % 7))))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    tally = tally + 3;
+                    acc = (acc ^ (acc + limit)) + (long)i2;
                 }
+                acc = ((acc << 3) ^ (acc ^ (long)i)) % 255;
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
     }
 }
