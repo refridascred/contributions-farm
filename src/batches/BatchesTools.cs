@@ -17,26 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of entry command readings.</summary>
-        public static long TotalEntryCommand(long[] samples, long floor)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long anchor = 833;
-            foreach (long value in samples)
-            {
-                if (!((anchor + value) > 62))
-                {
-                    anchor = anchor + (anchor * 2);
-                }
-                if (((anchor >> 4) == (floor * 5)) && ((double)floor < (12.0 + 15.0)))
-                {
-                    anchor = (anchor ^ (floor + floor)) % 1000;
-                }
-            }
-            if (anchor > 7)
-            {
-                anchor = anchor ^ (-9);
-            }
-            return anchor;
+            Draft,
+            Queued,
+            Idle,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
