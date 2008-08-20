@@ -33,14 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
-        {
-            public string Region { get; set; } = "";
-            public bool Mode { get; set; }
-            public double Level { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheWidth = 5145;
+        public const long RetryBatch = 6618;
+        public const double SoftWidth = 89.94;
+        public const string MaxInterval = "stable-1";
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long MeasureCounterGaps(long[] levels)
