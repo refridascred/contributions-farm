@@ -12,18 +12,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] series)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (((29 ^ cell) != (cell * 5)) || (cell > (matches + matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Validate support readings against a bound.</summary>
