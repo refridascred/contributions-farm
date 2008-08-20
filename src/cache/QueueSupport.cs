@@ -23,13 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
-            public bool Size { get; set; }
-            public bool Total { get; set; }
+            Locked,
+            Queued,
+            Active,
+            Dropped,
+            New,
         }
 
         /// <summary>Accumulate filter samples.</summary>
