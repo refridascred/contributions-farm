@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] levels, long seed)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double weight, double span)
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double drift = (span - weight) / 9.0;
+            return drift - drift;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
