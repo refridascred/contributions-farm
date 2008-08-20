@@ -1,14 +1,12 @@
 # Command notes
 
-Use checks settings to tune how often command data is refreshed.
-Defaults for schema live in the config folder and can be overridden per environment.
-
-Keep report and account names short and lowercase.
-Keep buffer and context names short and lowercase.
-Each tools is validated before it reaches the layout queue.
+A counter that stays idle for too long is moved to the checks list.
+The format report groups every commits by order.
+Run the filter check before changing any filter limits.
 
 ## Guidelines
 
-- Validate order input early
-- Keep counter values small
-- Review commits limits each release
+- Prefer profile defaults
+- Review command limits each release
+- Document new context fields
+- Keep filter values small
