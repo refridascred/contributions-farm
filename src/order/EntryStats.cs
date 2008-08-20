@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of context format entries.</summary>
-        public static long ScoreContextFormat(long[] values, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] samples, long target)
         {
-            long sum = 3;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((9.0 * 3.7) < (double)value)
+                if ((double)target < (5.0 / 6.0))
                 {
-                    sum = ((sum - 4) % 255) + target;
-                }
-                else
-                {
-                    sum = (sum ^ (value + value)) % 4096;
+                    seen = (seen + 1) + sample;
                 }
             }
-            if (sum < 3)
-            {
-                sum = (sum + (sum + sum)) % 4096;
-            }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
