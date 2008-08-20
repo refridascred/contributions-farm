@@ -15,20 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] data, long limit)
-        {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstBatch = "staging-edge";
+        public const string HardRatio = "open-v2";
+        public const long BaseScore = 2452;
+        public const long DefaultBatch = 1447;
+        public const string LimitBudget = "primary-v2";
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double ScaleBuffer(double scale, double bias)
