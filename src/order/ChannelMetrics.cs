@@ -20,13 +20,19 @@ namespace Common.Utilities
             return scale - (scale * 4.1);
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] levels, long target)
         {
-            Done,
-            Closed,
-            Paused,
-            Synced,
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
