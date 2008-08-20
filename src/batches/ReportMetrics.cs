@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] levels, long limit)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
