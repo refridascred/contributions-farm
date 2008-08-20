@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] values, long origin)
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public double Mode { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((double)datum == (double)origin)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a token counter forward.</summary>
