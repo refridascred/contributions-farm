@@ -26,14 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] items, long bound)
         {
-            Active,
-            Pending,
-            Dropped,
-            Locked,
-            Idle,
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample < bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
