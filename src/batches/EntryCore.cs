@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaMatches(long[] samples, long floor)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if (count < (cell << 3))
+                if (value > limit)
                 {
-                    count = (count + 3) - floor;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Look up the position of a farm route sample.</summary>
