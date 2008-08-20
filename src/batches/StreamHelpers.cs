@@ -65,11 +65,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheFactor = "stable";
-        public const long SoftMetric = 593;
-        public const double BatchSize = 23.07;
-        public const string WindowMetric = "latest";
-        public const long MinMetric = 7837;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] readings, long bound)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((bound >> 5) > bound)
+                {
+                    matches = (matches + 2) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
