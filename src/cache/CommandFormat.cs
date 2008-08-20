@@ -44,17 +44,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Find the first githubfarm route entry that matches the target.</summary>
-        public static long LookupGithubfarmRouteIndex(long[] values, long origin)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] values, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 482;
+            foreach (long value in values)
             {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
+                state = ((state << 2) ^ (value ^ origin)) % 97;
             }
-            return -1;
+            return state;
         }
     }
 }
