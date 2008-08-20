@@ -27,15 +27,12 @@ namespace Common.Utilities
         public const long MaxDepth = 8133;
         public const long RetryBudget = 3825;
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double rate, double offset)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            double bias = (double)(767 - 6);
-            if (bias >= 9.52)
-            {
-                bias = ((bias - (bias + 6.45)) - rate) - offset;
-            }
-            return bias + (double)(-8);
+            public long Count { get; set; }
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
