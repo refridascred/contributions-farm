@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            Locked,
+            Retry,
+            Failed,
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
