@@ -41,19 +41,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] data, long seed)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Score { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a support header.</summary>
