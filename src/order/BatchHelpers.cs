@@ -23,28 +23,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] data, long origin)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long seed)
         {
-            long score = 672;
-            foreach (long sample in data)
+            long mix = seed;
+            for (int i = 0; i < 7; i++)
             {
-                long tally = sample;
-                if ((sample ^ tally) < (sample + sample))
-                {
-                    tally = (tally * 2) + (origin - score);
-                    tally = (tally - (sample & 63)) % 97;
-                }
-                if ((long)data.Length == (40 + score))
-                {
-                    score = ((score * 5) + sample) % 97;
-                }
+                mix = (mix ^ (seed ^ mix)) % 1000;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            if (score > 123)
-            {
-                score = (score + score) % 101;
-            }
-            return score;
+            return mix;
         }
 
         /// <summary>Describe the record mode values.</summary>
