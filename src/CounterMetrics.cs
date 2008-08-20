@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] values, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((values[i] > bound) && ((values[i] % 5) != 0))
+                if ((double)matches != (18.0 - 20.0))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + value;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a filter info.</summary>
