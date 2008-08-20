@@ -34,19 +34,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double weight, double offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] readings)
         {
-            double bias = offset;
-            if (bias > offset)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                bias = bias - (double)3;
+                if ((82 << 1) > (entry & 31))
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - offset) - (double)(long)i;
-            }
-            return bias + weight;
+            return tally;
         }
     }
 }
