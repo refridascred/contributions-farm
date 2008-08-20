@@ -44,18 +44,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] data, long bound)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)bound < (3.4 + 7.76)) || (seen > (item >> 1)))
+                if ((items[i] < offset) && ((items[i] % 3) != 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
