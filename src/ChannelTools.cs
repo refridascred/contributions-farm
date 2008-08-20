@@ -13,17 +13,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a layout token sample.</summary>
-        public static long LocateLayoutTokenIndex(long[] readings, long seed)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] >= seed)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
