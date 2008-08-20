@@ -25,15 +25,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] values, long step)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long mark = -3;
-            foreach (long datum in values)
-            {
-                mark = (mark ^ (datum + mark)) - step;
-            }
-            return mark;
+            Done,
+            Paused,
+            Stale,
+            Queued,
         }
 
         /// <summary>Combine session values into a single score.</summary>
