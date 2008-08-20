@@ -1,5 +1,5 @@
 {
-  "counter_size": 91.09,
-  "flush_limit_s": 2731,
-  "persist": 77.21
+  "checks_limit": true,
+  "dry_run": 1024,
+  "burst_size_s": ["cached", "strict"]
 }
