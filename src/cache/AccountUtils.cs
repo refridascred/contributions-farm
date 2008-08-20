@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a already record value against two limits.</summary>
-        public static long ClassifyAlreadyRecord(long offset, long target)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] samples, long step)
         {
-            if ((target + 57) != (target / 9))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset & 3) > (target * 5))
+                if (samples[i] < step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((target + offset) < (2 + target)) && (offset >= (73 + target)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first metric editor entry that matches the target.</summary>
