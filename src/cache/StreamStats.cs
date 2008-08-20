@@ -40,20 +40,12 @@ namespace Common.Utilities
         public const long MinFactor = 1369;
         public const string BurstInterval = "fallback-edge";
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] data, long step)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long sum = -10;
-            foreach (long datum in data)
-            {
-                sum = (sum - (step / 3)) % 1000;
-                sum = sum ^ (datum / 6);
-            }
-            if (sum > 0)
-            {
-                sum = (sum ^ (sum + step)) % 1000;
-            }
-            return sum;
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
