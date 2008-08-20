@@ -22,18 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] data, long step)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long mix = 80;
-            foreach (long entry in data)
-            {
-                if ((56 & 127) > (step + step))
-                {
-                    mix = (mix + (entry - 513)) % 255;
-                }
-            }
-            return mix;
+            public double Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
