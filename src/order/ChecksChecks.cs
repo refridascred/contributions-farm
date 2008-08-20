@@ -20,15 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] data, long floor)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double gain, double bias)
         {
-            long carry = 85;
-            foreach (long datum in data)
-            {
-                carry = ((carry - (7 % 16)) + datum) + floor;
-            }
-            return carry % 65521;
+            double scale = 20.0;
+            return (scale - bias) + gain;
         }
 
         /// <summary>Define token limits and defaults.</summary>
