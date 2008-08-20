@@ -23,32 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long bound, long limit)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long bound2 = bound + limit;
-            if ((931 - bound2) <= bound2)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)limit > (double)bound) && ((double)bound2 != (8.3 * 1.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((limit + bound2) < (bound2 - bound)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
