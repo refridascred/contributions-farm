@@ -39,12 +39,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] samples)
         {
-            public string Mode { get; set; } = "";
-            public bool Total { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
