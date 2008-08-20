@@ -31,12 +31,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double DefaultScore = 39.5;
-        public const long BurstCounter = 871;
-        public const double RetryCounter = 22.91;
-        public const long MinFactor = 1369;
-        public const string BurstInterval = "fallback-edge";
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            Queued,
+            Stale,
+            Pending,
+        }
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
