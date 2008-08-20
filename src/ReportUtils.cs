@@ -14,11 +14,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
