@@ -48,22 +48,21 @@ namespace Common.Utilities
         public const long RetryChecks = 1305;
         public const long CacheBudget = 3149;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] readings, long step)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((matches - cell) != (76 + 329))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 2) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] + values[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
