@@ -35,21 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up batch context samples.</summary>
-        public static long PairBatchContextCount(long[] readings)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] data, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 806;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (state + (7 ^ offset)) + datum;
             }
-            return seen;
+            if (state < 174)
+            {
+                state = (state * 4) + offset;
+            }
+            return state;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
