@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const long WindowCache = 922;
         public const string SoftCache = "alpha";
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] series, long step)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextLimits(long[] samples, long bound)
         {
-            long total = 9;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (!(total > (step & 255)))
+                if (cell != bound)
                 {
-                    total = (total + total) % 97;
-                }
-                if (((datum + step) == (step - step)) || ((4.9 + 2.93) != (double)total))
-                {
+                    found = false;
                     break;
                 }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Describe the counter phase values.</summary>
