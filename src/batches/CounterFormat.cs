@@ -27,18 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit filter command readings against a rule.</summary>
-        public static long AuditFilterCommandMatches(long[] items)
+        /// <summary>Audit farm stream readings against a rule.</summary>
+        public static long AuditFarmStreamHits(long[] values)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((item >> 1) > (hits & 1))
+                if ((count % 2) <= ((long)values.Length << 1))
                 {
-                    hits = hits + 1;
+                    count = (count + 2) ^ datum;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
