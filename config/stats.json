@@ -1,5 +1,6 @@
 {
-  "soft_size": 8.68,
-  "min_size_pct": 3305,
-  "order_ttl": false
+  "min_window_ms": 6360,
+  "persist": "primary",
+  "support_interval": [490, 439],
+  "max_window": "staging"
 }
