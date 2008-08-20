@@ -18,19 +18,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((hits << 2) > (item % 7))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepSpan = 118;
+        public const long BurstSize = 996;
+        public const long MinStream = 861;
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
