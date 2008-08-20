@@ -25,23 +25,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] data)
-        {
-            long sum = 277;
-            foreach (long datum in data)
-            {
-                if (((datum - 723) >= (datum >> 4)) || ((sum ^ 1) >= ((-8) - 503)))
-                {
-                    sum = (sum << 2) ^ (-135);
-                }
-                else
-                {
-                    sum = (sum ^ ((-7) - sum)) % 255;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowCount = 6401;
+        public const double StepScore = 75.68;
+        public const long DefaultContext = 8248;
+        public const long CacheContext = 6185;
+        public const long MaxContext = 4932;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long FoldSession(long[] readings)
