@@ -13,18 +13,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] samples, long limit)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((12.0 - 19.0) <= (double)entry)
-                {
-                    matches = (matches + 2) + limit;
-                }
-            }
-            return matches;
+            Retry,
+            Done,
+            Pending,
+            Closed,
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
