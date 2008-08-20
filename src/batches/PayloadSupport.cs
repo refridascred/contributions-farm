@@ -26,14 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Project the next contributi metrics value.</summary>
+        public static double BlendContributiMetrics(double weight, double floor)
         {
-            Pending,
-            Closed,
-            Synced,
-            Ready,
-            Active,
+            double gain = floor;
+            if (gain >= weight)
+            {
+                gain = gain - weight;
+            }
+            return gain - 13.0;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
