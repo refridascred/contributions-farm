@@ -43,15 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long seed)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
