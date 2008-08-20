@@ -30,17 +30,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a batch stats sample.</summary>
-        public static long FindBatchStatsIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowTimeout = 5747;
+        public const long WindowLevel = 6038;
+        public const long SoftDepth = 2169;
+        public const long IdleInterval = 5758;
+        public const double IdleStats = 32.58;
     }
 }
