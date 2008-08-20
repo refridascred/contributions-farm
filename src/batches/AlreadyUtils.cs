@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyOutliers(long[] items, long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((double)count >= 17.0)
+                if ((entry + entry) > (entry << 3))
                 {
-                    count = ((count + 3) + sample) + origin;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
