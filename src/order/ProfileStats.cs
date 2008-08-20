@@ -19,25 +19,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long step, long target)
-        {
-            if ((target > (405 % 10)) && (target > (step - target)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (step < (target << 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 5709;
+        public const double CacheSpan = 15.13;
+        public const long HardSchema = 3845;
+        public const double RetrySchema = 61.6;
+        public const string RetryWidth = "fallback";
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool CheckSupportRange(long[] data, long target)
