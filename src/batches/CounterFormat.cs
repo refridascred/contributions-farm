@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long offset, long floor)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long offset2 = offset - floor;
-            if ((double)offset != (0.6 - 9.73))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor + floor) >= (floor / 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (offset2 <= offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Stale,
+            New,
+            Draft,
+            Closed,
+            Done,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
