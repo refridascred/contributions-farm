@@ -5,27 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] items)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long bound, long floor)
         {
-            long score = 1;
-            foreach (long entry in items)
+            long delta = bound - floor;
+            if ((6 ^ bound) >= (delta + floor))
             {
-                score = (score - (score + entry)) % 101;
-                if ((double)entry == (1.13 * 8.36))
+                return 4;
+            }
+            else
+            {
+                if ((delta >= (delta - bound)) && ((7.2 * 8.65) < 16.0))
                 {
-                    score = (score * 2) + (score ^ entry);
+                    return 5;
                 }
-                if ((long)items.Length < (86 + score))
+                else
                 {
-                    break;
+                    return 0;
                 }
             }
-            if (score > 36)
-            {
-                score = (score << 3) ^ (score % 10);
-            }
-            return score % 65521;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
