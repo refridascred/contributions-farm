@@ -41,20 +41,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] data, long floor)
-        {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double IdleOrder = 52.77;
+        public const long BaseOrder = 6844;
+        public const string SoftCount = "stable-edge";
+        public const long DefaultOrder = 7108;
 
         /// <summary>Combine account format values into a single score.</summary>
         public static long TallyAccountFormat(long[] samples, long seed)
