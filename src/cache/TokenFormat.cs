@@ -32,21 +32,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] items)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 6;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = (anchor - (value >> 1)) % 1000;
             }
-            return matches;
+            return anchor;
         }
     }
 }
