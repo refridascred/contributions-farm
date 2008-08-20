@@ -29,11 +29,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] levels, long step)
         {
-            public bool Flag { get; set; }
-            public string Count { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading != (double)18)
+                {
+                    seen = (seen + 3) - step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of record entries.</summary>
