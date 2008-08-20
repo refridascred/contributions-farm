@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardBudget = 3783;
-        public const string StepCommits = "alpha";
-        public const string BatchCommits = "alpha-edge";
-        public const string WindowCommits = "primary-edge";
-        public const string IdleWidth = "local-edge";
+        /// <summary>Count the batches stream entries that pass the check.</summary>
+        public static long MeasureBatchesStreamHits(long[] data)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((7.0 * 9.0) <= (double)datum)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
         public static double AdjustCluster(double scale, double floor)
