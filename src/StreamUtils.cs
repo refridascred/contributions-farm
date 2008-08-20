@@ -52,12 +52,11 @@ namespace Common.Utilities
         public const long BurstFarm = 8079;
         public const double BaseFarm = 13.49;
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public double Rank { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 8761;
+        public const long BatchFactor = 8840;
+        public const long DefaultGithubfarm = 6380;
+        public const string BurstScore = "primary";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BatchStream = 5668;
