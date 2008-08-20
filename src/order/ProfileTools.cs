@@ -52,18 +52,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] items, long step)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ProjectFarm(double rate, double floor)
         {
-            long score = -7;
-            foreach (long cell in items)
+            double rate2 = floor;
+            if (rate2 < rate)
             {
-                if ((2.4 / 6.0) >= (double)step)
-                {
-                    score = ((score + score) % 1000) + cell;
-                }
+                rate2 = rate2 - floor;
             }
-            return score % 1000;
+            return rate2 - floor;
         }
 
         /// <summary>Accumulate queue stats samples.</summary>
