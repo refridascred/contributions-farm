@@ -14,23 +14,21 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] series)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] items)
         {
-            long carry = 188;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry * 2) + ((long)series.Length + carry)) % 97;
-                if (!(carry > (carry / 5)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (carry + (cell % 2)) % 101;
-                }
-                if (333 > (carry >> 4))
-                {
-                    break;
+                    if ((items[i] ^ items[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Hold a already stats.</summary>
