@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] data, long bound)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (96 >= bound)
-                {
-                    hits = (hits + 3) + sample;
-                }
-            }
-            return hits;
+            Synced,
+            Failed,
+            Paused,
         }
 
         /// <summary>Combine githubfarm buffer values into a single score.</summary>
