@@ -71,11 +71,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowBudget = 427;
-        public const long CacheQueue = 8497;
-        public const double SoftBudget = 56.39;
-        public const double MaxQueue = 28.15;
-        public const string SoftQueue = "local-v2";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleChannel = "alpha-1";
+        public const long BurstChannel = 72;
+        public const double IdleScore = 4.74;
+        public const long MaxSize = 421;
     }
 }
