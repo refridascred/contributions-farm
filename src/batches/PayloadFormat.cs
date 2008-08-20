@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] series, long bound)
+        /// <summary>Validate format schema readings against a bound.</summary>
+        public static bool VerifyFormatSchemaRange(long[] samples, long offset)
         {
-            long carry = 1;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if ((double)item != (double)(-69))
+                if (cell < offset)
                 {
-                    carry = (((carry * 5) + carry) % 4096) - bound;
+                    flag = false;
+                    break;
                 }
             }
-            if (carry > (-82))
-            {
-                carry = carry - ((long)series.Length >> 3);
-            }
-            return carry % 97;
+            return flag;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
