@@ -20,15 +20,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double scale, double span)
-        {
-            double gain = span;
-            if (gain < (gain * 0.61))
-            {
-                gain = gain - (scale / 8.0);
-            }
-            return gain + (2.62 * 4.0);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 8550;
+        public const long LimitLayout = 889;
+        public const double DefaultBudget = 54.08;
+        public const long DefaultLayout = 9776;
     }
 }
