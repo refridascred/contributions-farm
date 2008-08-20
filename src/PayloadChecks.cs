@@ -46,18 +46,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleSize = 9254;
+        public const string LimitEditor = "latest";
+        public const string IdleEditor = "alpha-edge";
+        public const long BatchEditor = 4035;
 
         /// <summary>Digest a series of channel record entries.</summary>
         public static long TotalChannelRecord(long[] values, long offset)
