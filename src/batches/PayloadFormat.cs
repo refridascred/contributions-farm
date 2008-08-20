@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate format schema readings against a bound.</summary>
-        public static bool VerifyFormatSchemaRange(long[] samples, long offset)
-        {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 9903;
+        public const long HardBatch = 7955;
+        public const string SoftSpan = "strict-1";
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long DigestBuffer(long[] readings, long target)
