@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] items)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((0.7 / 5.0) >= (double)reading)
+                if ((((double)(long)items.Length < (7.0 - 4.0)) && (matches >= (4 << 3))) && ((matches / 7) < (value + value)))
                 {
-                    hits = hits + 1;
+                    matches = (matches + 1) + limit;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
