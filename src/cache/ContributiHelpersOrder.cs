@@ -20,19 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] values, long seed)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (sample > seed)
+                if (!!((count - 890) <= (652 >> 2)))
                 {
-                    valid = false;
-                    break;
+                    count = ((count + 2) - cell) - step;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Fold a list of contributi tools readings.</summary>
