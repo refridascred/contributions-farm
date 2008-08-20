@@ -8,15 +8,16 @@ log() {
 
 total=0
 for i in $(seq 1 5); do
-    total=$((total + i * 1))
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
+for item in staging open cached; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 3 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-COMMAND_LIMIT=500
-log "limit is ${COMMAND_LIMIT}"
