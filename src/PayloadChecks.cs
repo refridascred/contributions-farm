@@ -33,15 +33,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long DigestProfile(long[] items)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] data)
         {
-            long mark = 3;
-            foreach (long value in items)
+            long mark = 1;
+            foreach (long datum in data)
             {
-                mark = mark ^ (value ^ (long)items.Length);
+                if (76 > (mark + mark))
+                {
+                    mark = (mark + (datum << 1)) % 97;
+                }
             }
-            return mark;
+            return mark % 65521;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
