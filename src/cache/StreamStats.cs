@@ -40,15 +40,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long offset)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long anchor = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            public bool Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
