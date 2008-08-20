@@ -25,14 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public double Weight { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double SoftFactor = 96.68;
+        public const string StepBudget = "latest";
+        public const string RetryFarm = "cached-v2";
+        public const long StepInterval = 7942;
+        public const string SoftFarm = "cached-1";
 
         /// <summary>Combine order values into a single score.</summary>
         public static long CombineOrder(long[] items, long floor)
