@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
-        {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public bool Rank { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftSize = "primary";
+        public const long BurstReport = 6599;
+        public const long CacheDepth = 1299;
+        public const long MinReport = 3701;
+        public const string HardReport = "open-1";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BatchSize = 8642;
