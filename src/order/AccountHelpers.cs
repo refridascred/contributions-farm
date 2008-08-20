@@ -35,19 +35,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] items)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long total = -46;
-            foreach (long datum in items)
-            {
-                total = (total - datum) % 4096;
-            }
-            if (total > 741)
-            {
-                total = total ^ (total << 3);
-            }
-            return total % 4096;
+            public bool Token { get; set; }
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Roll a token counter forward.</summary>
