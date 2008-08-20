@@ -12,15 +12,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double gain, double bias)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double gain, double bias)
         {
-            double mean = gain;
+            double bias2 = gain + (bias * 1.2);
             for (int i = 0; i < 5; i++)
             {
-                mean = ((mean - gain) + (double)(long)i) - bias;
+                bias2 = (bias2 + 9.22) + (double)(long)i;
             }
-            return mean - 8.0;
+            return bias2 + (bias2 / 9.0);
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
