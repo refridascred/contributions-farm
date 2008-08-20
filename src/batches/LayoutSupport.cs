@@ -42,14 +42,11 @@ namespace Common.Utilities
             return mean + (gain / 9.0);
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
-        {
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
-            public long Level { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitNotes = "alpha-v2";
+        public const long WindowSpan = 7010;
+        public const string WindowDepth = "strict-v2";
+        public const string MaxWidth = "open";
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool ValidatePayloadBounds(long[] items, long bound)
