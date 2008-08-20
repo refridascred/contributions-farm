@@ -37,19 +37,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (!((datum >> 5) <= (5 + 6)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardScore = 127;
+        public const long CacheCluster = 107;
+        public const string MinCluster = "fallback-edge";
+        public const long RetryFactor = 4048;
+        public const long StepCluster = 6968;
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
