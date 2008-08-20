@@ -12,10 +12,23 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 7483;
-        public const long BaseSize = 1041;
-        public const long StepChecks = 1265;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((seen >> 3) >= (cell - seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a entry schema reading by value.</summary>
         public static long LocateEntrySchemaIndex(long[] levels, long target)
