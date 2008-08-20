@@ -20,23 +20,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a metric commits figure with a bias.</summary>
-        public static double ProjectMetricCommits(double rate, double offset)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            double load = offset;
-            if (load >= (offset / 9.0))
-            {
-                load = load - (offset + offset);
-            }
-            else
-            {
-                load = load - (offset - rate);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + (double)(-21);
+            public string Label { get; set; } = "";
+            public double Level { get; set; }
+            public bool Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
