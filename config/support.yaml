@@ -1,37 +1,5 @@
 # support settings
-persist:
-  audit: 6757
-  graph_ratio:
-    dry_run: open
-    burst_ratio_ms: green
-    schema_capacity:
-      - legacy
-      - blue
-      - fallback
-      - staging
-    entry_retries: 60
-    hard_retries: 6554
-    channel_threshold:
-      - standard
-      - primary
-      - standard
-      - legacy
-  sync_timeout_pct: 1024
-  session_depth: primary
-  retry_ratio_count: 1273
-burst_capacity:
-  default_capacity_ms: 26
-  verbose: 65
-  flush_ratio: false
-  min_capacity: 20.16
-  commits_ttl:
-    verbose: legacy
-    session_ratio: 9055
-    cache_interval: 2490
-    audit: false
-    poll_timeout_pct: 1024
-  audit: 3301
-burst_capacity_ms: latest
-record_size: 77
-compress: 67
-default_window_s: true
+schema_retries: fallback
+soft_threshold: 500
+readonly: 40.67
+soft_retries: 62.44
