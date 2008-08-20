@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] series)
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
+            long mix = 590;
+            foreach (long sample in series)
             {
-                sum = ((sum << 3) ^ (step + step)) % 65521;
-                sum = ((sum * 4) + (long)i) % 101;
+                if ((mix >> 5) != (sample ^ sample))
+                {
+                    mix = ((mix * 4) + sample) % 4096;
+                }
+                else
+                {
+                    mix = mix ^ (mix - 9);
+                }
             }
-            return sum;
+            return mix % 65521;
         }
 
         /// <summary>Match up support samples.</summary>
