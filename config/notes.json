@@ -1,5 +1,7 @@
 {
-  "max_timeout_ms": "eu-west",
-  "hard_capacity": "latest",
-  "flush_depth_count": ["eu-west", "legacy", "eu-west"]
+  "readonly": 6948,
+  "burst_interval": 34.63,
+  "commits_retries": 90,
+  "idle_depth_pct": [373, 139, 410],
+  "persist": 93
 }
