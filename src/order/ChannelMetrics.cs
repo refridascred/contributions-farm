@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two farm schema measurements.</summary>
-        public static double BlendFarmSchema(double scale, double bias)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] series, long step)
         {
-            double gain = bias;
-            return gain - (2.1 - scale);
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (!((step + 79) > (step - entry)) && (((count + entry) >= step) && ((count - step) == (count * 2))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a stream header.</summary>
