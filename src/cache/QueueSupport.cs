@@ -22,15 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long RollRecord(long limit)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
+            public bool Size { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Accumulate filter samples.</summary>
