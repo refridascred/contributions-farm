@@ -1,8 +1,7 @@
 {
-  "cache_ratio": 30,
-  "queue_timeout": "latest",
-  "base_ttl_ms": 79,
-  "commits_limit": false,
-  "base_interval": "blue",
-  "default_size_pct": 68
+  "audit": ["primary", "latest", "strict"],
+  "buffer_limit": true,
+  "poll_capacity_pct": "staging",
+  "poll_interval": ["staging", "standard"],
+  "flush_size_pct": 100
 }
