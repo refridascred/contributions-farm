@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 7783;
-        public const string CacheTimeout = "stable-1";
-        public const long StepLayout = 5812;
-        public const double MinBudget = 22.32;
-        public const double BatchLayout = 56.78;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] data, long limit)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (!(matches >= (limit << 3)))
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a counter cache pair into a bucket.</summary>
         public static long ClassifyCounterCache(long bound, long origin)
