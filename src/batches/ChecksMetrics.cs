@@ -34,22 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiOutliers(long[] values, long floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long item in values)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if ((672 >> 1) < (item % 60))
+                if (reading != seed)
                 {
-                    tally = (tally + 1) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Hold a support header.</summary>
