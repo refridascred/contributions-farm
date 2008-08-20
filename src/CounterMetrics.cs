@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double HardProfile = 91.39;
-        public const string RetryProfile = "local-1";
-        public const double CacheRatio = 68.38;
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
+        {
+            Active,
+            Ready,
+            Dropped,
+            Idle,
+        }
 
         /// <summary>Digest a series of stream command entries.</summary>
         public static long ScoreStreamCommand(long[] levels, long origin)
