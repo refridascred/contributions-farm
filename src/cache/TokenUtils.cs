@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long origin)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] readings)
         {
-            long acc = origin;
-            for (int i = 0; i < 19; i++)
+            long mark = 1;
+            foreach (long item in readings)
             {
-                if ((acc % 64) != (629 * 3))
-                {
-                    acc = (acc + acc) % 101;
-                }
-                if ((acc + origin) < ((long)i + (long)i))
-                {
-                    break;
-                }
-                else
-                {
-                    acc = (acc + origin) % 255;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
+                mark = ((mark << 2) ^ (item >> 2)) % 97;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Describe the counter kind values.</summary>
