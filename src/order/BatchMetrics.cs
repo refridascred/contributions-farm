@@ -47,13 +47,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Combine commits route values into a single score.</summary>
+        public static long DigestCommitsRoute(long[] levels, long seed)
         {
-            public bool Rank { get; set; }
-            public bool Token { get; set; }
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
+            long mix = 39;
+            foreach (long datum in levels)
+            {
+                mix = (mix + datum) - seed;
+                if ((double)datum < (5.38 - 2.6))
+                {
+                    mix = ((mix << 2) ^ (6 >> 4)) % 4096;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Accumulate report samples.</summary>
