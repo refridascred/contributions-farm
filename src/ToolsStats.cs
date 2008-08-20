@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the batches cache entries that pass the check.</summary>
-        public static long TallyBatchesCacheGaps(long[] values)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] readings)
         {
-            long count = 0;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)count == (9.8 / 2.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 2) ^ item;
+                    if ((readings[i] + readings[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the counter level values.</summary>
