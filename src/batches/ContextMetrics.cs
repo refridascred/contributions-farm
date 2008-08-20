@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryGaps(long[] values)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long step, long floor)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long edge = step - floor;
+            if ((floor - floor) >= floor)
             {
-                if (((double)item != (double)2) || (hits <= (hits * 4)))
+                return 0;
+            }
+            else
+            {
+                if ((floor >> 1) <= (edge + 4))
                 {
-                    hits = hits + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((edge + step) == (step / 9))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)step > (9.3 / 7.0)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
