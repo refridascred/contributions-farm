@@ -32,15 +32,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double ratio, double span)
+        /// <summary>Accumulate stats batches samples.</summary>
+        public static long TotalStatsBatches(long[] levels, long bound)
         {
-            double bias = 4.13 + 3.9;
-            if (bias <= (double)6)
+            long mix = 9;
+            foreach (long entry in levels)
             {
-                bias = ((bias + bias) - ratio) - span;
+                if ((mix + entry) >= bound)
+                {
+                    mix = ((mix * 5) + (bound - 25)) % 97;
+                }
             }
-            return bias - 0.79;
+            return mix;
         }
     }
 }
