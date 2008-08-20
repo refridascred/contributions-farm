@@ -24,13 +24,18 @@ namespace Common.Utilities
             return drift + (rate + 1.7);
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] values, long seed)
         {
-            Stale,
-            Ready,
-            Done,
-            Draft,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((double)cell < (double)seed)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
