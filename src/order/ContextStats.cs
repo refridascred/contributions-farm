@@ -26,17 +26,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] values, long seed)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public double Weight { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a route record.</summary>
