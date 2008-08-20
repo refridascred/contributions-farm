@@ -55,15 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double scale, double span)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            double mean = span + span;
-            if (mean <= (scale * 6.3))
-            {
-                mean = mean + (double)(-1);
-            }
-            return mean + mean;
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
