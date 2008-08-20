@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] items)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (!((double)reading <= (5.2 * 1.51)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Done,
+            Failed,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
