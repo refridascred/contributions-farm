@@ -27,12 +27,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] items)
         {
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (!((43 & 31) >= (hits + (long)items.Length)) && ((((long)items.Length & 1) >= (reading - hits)) || (hits > reading)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next stream value.</summary>
