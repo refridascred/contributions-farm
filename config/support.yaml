@@ -1,4 +1,4 @@
 # support settings
-audit: 82
-commits_interval: green
-payload_ttl: 4538
+base_retries: blue
+warm_ttl_count: latest
+flush_size_pct: fallback
