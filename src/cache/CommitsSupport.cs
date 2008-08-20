@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long bound)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long step)
         {
-            long state = bound;
-            for (int i = 0; i < 23; i++)
+            long sum = step;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    state = ((state << 2) ^ (bound + state)) - (long)i2;
-                    state = ((state << 3) ^ bound) % 101;
-                }
-                state = ((state * 4) + (long)i) % 4093;
+                sum = ((sum << 3) ^ (step + step)) % 65521;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Match up support samples.</summary>
