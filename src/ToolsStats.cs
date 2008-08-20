@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleScore = 5.05;
-        public const long WindowCache = 922;
-        public const string SoftCache = "alpha";
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > offset) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool ValidateContextLimits(long[] samples, long bound)
