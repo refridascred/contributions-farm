@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelBounds(long[] readings, long bound)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Closed,
+            Draft,
         }
 
         /// <summary>Describe the tools phase values.</summary>
