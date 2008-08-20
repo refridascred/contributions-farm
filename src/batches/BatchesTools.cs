@@ -32,15 +32,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double scale, double span)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            double load = (double)(65 + 4);
-            for (int i = 0; i < 6; i++)
-            {
-                load = ((load + (double)(long)i) - scale) + span;
-            }
-            return load + load;
+            Ready,
+            Draft,
+            Pending,
+            Queued,
         }
     }
 }
