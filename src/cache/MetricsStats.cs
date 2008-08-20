@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] levels)
         {
-            Closed,
-            Paused,
-            Failed,
-            Stale,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)tally >= (double)(long)levels.Length)
+                {
+                    tally = (tally + 3) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
