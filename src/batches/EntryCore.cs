@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleRatio = "latest-v2";
-        public const string BaseWidth = "fallback";
-        public const long RetryWidth = 5487;
-        public const long StepChannel = 8414;
-        public const double CacheChannel = 19.99;
+        /// <summary>Look up the position of a farm route sample.</summary>
+        public static long FindFarmRouteIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= origin) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a queue record counter forward.</summary>
         public static long StepQueueRecord(long floor)
