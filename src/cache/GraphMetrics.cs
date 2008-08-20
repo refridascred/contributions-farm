@@ -19,12 +19,32 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinAccount = 87.66;
-        public const long BatchFactor = 6966;
-        public const double BurstTimeout = 38.17;
-        public const long BaseAccount = 2372;
-        public const double HardAccount = 24.47;
+        /// <summary>Rank githubfarm filter input into a small class.</summary>
+        public static long GradeGithubfarmFilter(long step, long seed)
+        {
+            if ((step ^ seed) == ((-60) - step))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed < (seed - seed)) || ((5.85 - 6.29) != (double)step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((seed << 1) > 901) || ((double)8 >= (double)step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenGaps(long[] data)
