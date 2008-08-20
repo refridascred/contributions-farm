@@ -54,11 +54,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 1346;
-        public const string BurstRatio = "open-v2";
-        public const string BatchLevel = "latest-v2";
-        public const double StepTimeout = 81.51;
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorHits(long[] values, long step)
