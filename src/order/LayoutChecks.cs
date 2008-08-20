@@ -29,24 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long limit)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] samples, long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if (item <= seed)
                 {
-                    sum = ((sum - sum) % 4096) - (long)i2;
+                    flag = false;
+                    break;
                 }
-                for (int i3 = 0; i3 < 3; i3++)
-                {
-                    sum = ((sum * 4) + (sum >> 5)) ^ (long)i3;
-                }
-                sum = sum - sum;
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
