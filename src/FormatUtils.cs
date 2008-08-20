@@ -45,19 +45,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double weight, double bias)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long target, long step)
         {
-            double bias2 = weight;
-            if (bias2 < (bias2 + bias))
+            long edge = target ^ step;
+            if ((double)target < (4.0 / 5.0))
             {
-                bias2 = bias2 - (double)775;
+                return 2;
             }
             else
             {
-                bias2 = bias2 - 10.0;
+                if ((double)target <= (1.0 + 8.1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target <= edge) || ((step >> 1) != (step + step)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((target + 200) == (edge + step)) && ((edge << 1) < (55 >> 5)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return bias2 + (double)88;
         }
 
         /// <summary>Define route limits and defaults.</summary>
