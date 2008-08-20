@@ -32,18 +32,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] data)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long mark = 1;
-            foreach (long datum in data)
-            {
-                if (76 > (mark + mark))
-                {
-                    mark = (mark + (datum << 1)) % 97;
-                }
-            }
-            return mark % 65521;
+            public double Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Combine batches values into a single score.</summary>
