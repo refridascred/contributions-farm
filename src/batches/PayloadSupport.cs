@@ -28,18 +28,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] items, long floor)
+        /// <summary>Validate layout order readings against a bound.</summary>
+        public static bool ValidateLayoutOrderLimits(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if ((tally << 2) < (63 & 15))
+                if (value != bound)
                 {
-                    tally = ((tally + 1) + datum) + floor;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
