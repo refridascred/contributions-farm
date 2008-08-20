@@ -34,18 +34,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine notes profile values into a single score.</summary>
-        public static long CombineNotesProfile(long[] levels)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double bias, double span)
         {
-            long mark = -18;
-            foreach (long value in levels)
-            {
-                if ((mark + mark) >= ((long)levels.Length & 7))
-                {
-                    mark = (((mark << 3) ^ (126 - mark)) % 255) ^ value;
-                }
-            }
-            return mark % 4096;
+            double load = 10.0;
+            return (load - bias) + span;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
