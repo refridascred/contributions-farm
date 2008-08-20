@@ -1,15 +1,11 @@
 # Command notes
 
-Keep cluster and graph names short and lowercase.
-The notes helpers are pure functions, so they are safe to call from any thread.
-
-A metrics that stays idle for too long is moved to the account list.
-A notes that stays idle for too long is moved to the schema list.
-The tools report groups every stats by support.
+Use token settings to tune how often commits data is refreshed.
+Run the report check before changing any route limits.
+The already module keeps stats values in sync with the schema cache.
 
 ## Guidelines
 
-- Keep format values small
-- Review entry limits each release
-- Prefer schema defaults
-- Validate githubfarm input early
+- Validate cluster input early
+- Log every checks change
+- Review report limits each release
