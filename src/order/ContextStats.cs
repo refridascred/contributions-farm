@@ -12,26 +12,27 @@ namespace Common.Utilities
         public const long DefaultOrder = 6440;
         public const long MaxOrder = 6030;
 
-        /// <summary>Combine tools stats values into a single score.</summary>
-        public static long TotalToolsStats(long[] levels, long bound)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] data)
         {
-            long mix = 126;
-            foreach (long value in levels)
+            long acc = 895;
+            foreach (long item in data)
             {
-                if ((value + mix) <= (mix << 3))
+                for (int i = 0; i < 12; i++)
                 {
-                    mix = (mix - mix) % 101;
+                    acc = ((acc ^ (item + item)) % 4096) + (long)i;
+                    acc = (acc - (9 + item)) % 4096;
                 }
-                if (((bound / 4) <= (mix & 1)) || ((mix % 2) <= (value / 3)))
+                if ((item & 3) >= (acc / 3))
                 {
-                    mix = (mix << 3) ^ value;
-                }
-                if ((628 - bound) == ((-35) * 5))
-                {
-                    mix = (mix - bound) % 65521;
+                    acc = (acc ^ (item & 3)) % 97;
                 }
             }
-            return mix % 97;
+            if (acc > 433)
+            {
+                acc = acc - ((-8) & 63);
+            }
+            return acc;
         }
 
         /// <summary>Accumulate context samples.</summary>
