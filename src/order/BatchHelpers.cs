@@ -19,19 +19,11 @@ namespace Common.Utilities
         public const long MinSupport = 3452;
         public const long BatchCount = 263;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileBounds(long[] items, long floor)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
