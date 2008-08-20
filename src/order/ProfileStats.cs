@@ -33,18 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] readings)
+        /// <summary>Iterate the schema queue series from a seed.</summary>
+        public static long SeriesSchemaQueue(long limit)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long mix = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((82 << 1) > (entry & 31))
-                {
-                    tally = tally + 1;
-                }
+                mix = mix + (mix - mix);
+                mix = (mix + (limit % 3)) % 4096;
+                mix = (mix ^ (limit / 4)) % 101;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
     }
 }
