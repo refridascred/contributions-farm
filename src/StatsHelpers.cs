@@ -37,12 +37,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a tools command sample.</summary>
-        public static long FindToolsCommandIndex(long[] samples, long origin)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] <= origin)
+                if (readings[i] <= origin)
                 {
                     return (long)i;
                 }
