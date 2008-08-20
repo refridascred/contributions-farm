@@ -1,7 +1,46 @@
 # githubfarm settings
-warm_timeout_ms: blue
-session_ttl: primary
-compress: false
-default_retries_s: 5261
-commits_capacity: 572
-verbose: false
+idle_timeout_pct: primary
+editor_size:
+  cluster_interval:
+    - fallback
+    - edge
+    - open
+  command_interval: 84.85
+  command_ratio: 37.4
+  enabled:
+    - 414
+    - 213
+    - 396
+    - 211
+hard_limit:
+  checks_limit: true
+  cluster_interval: 250
+  poll_capacity_s: staging
+  readonly: 35.05
+  burst_threshold: true
+  record_capacity: staging
+retry_ttl_s: 250
+default_ratio_pct:
+  batch_ttl_ms: strict
+  audit:
+    - 119
+    - 399
+  retry_interval:
+    - 426
+    - 197
+    - 49
+    - 65
+  cache_threshold_s: 38.0
+  base_ratio_count: true
+  stream_ratio:
+    filter_ratio: 30.29
+    idle_limit_count:
+      - primary
+      - edge
+      - standard
+    burst_retries_ms:
+      - 214
+      - 92
+      - 294
+    flush_capacity_pct: false
+idle_threshold_count: 8355
