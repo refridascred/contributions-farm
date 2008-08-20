@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a layout queue value against two limits.</summary>
-        public static long ClassifyLayoutQueue(long target, long bound)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            if ((target >> 2) > target)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target % 60) > (bound + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((3.14 + 13.0) < (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound - bound) > 1)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+            public string Label { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
