@@ -25,18 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandHits(long[] series, long bound)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((bound * 5) >= count)
-                {
-                    count = (count + 2) + datum;
-                }
-            }
-            return count;
+            Paused,
+            Retry,
+            Synced,
+            Idle,
         }
 
         /// <summary>Audit schema payload readings against a rule.</summary>
