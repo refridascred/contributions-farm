@@ -1,6 +1,16 @@
 {
-  "flush_ttl": "fallback",
-  "sync_size": false,
-  "audit": [334, 124],
-  "flush_limit_count": ["fallback", "open", "legacy"]
+  "max_capacity": 3510,
+  "sync_window_pct": {
+    "base_size": {
+      "poll_delay_count": "open",
+      "batch_interval": ["local", "local", "blue"],
+      "strict": 2926,
+      "cache_ttl_pct": 97.81,
+      "hard_size_count": 71.14
+    },
+    "readonly": true,
+    "min_threshold_pct": 3.39,
+    "metric_retries": 56.43
+  },
+  "base_retries_count": 2830
 }
