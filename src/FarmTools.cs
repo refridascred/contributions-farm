@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double ratio, double floor)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            double mean = 12.0 * 7.1;
-            if (mean < (floor - ratio))
-            {
-                mean = mean - (mean - floor);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - 20.0) + (double)(long)i;
-            }
-            return mean - (mean + 2.41);
+            public bool Ratio { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the payload status values.</summary>
