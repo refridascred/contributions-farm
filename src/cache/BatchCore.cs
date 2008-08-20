@@ -39,26 +39,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] data, long limit)
-        {
-            long acc = 2;
-            foreach (long sample in data)
-            {
-                if ((sample - 87) > (acc - acc))
-                {
-                    acc = ((acc * 4) + (limit >> 3)) % 255;
-                }
-                else
-                {
-                    acc = (acc ^ (acc ^ sample)) % 97;
-                }
-            }
-            if (acc < 266)
-            {
-                acc = acc ^ (5 % 64);
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string IdleCount = "cached-edge";
+        public const string BaseRecord = "cached-1";
+        public const long SoftScore = 5428;
+        public const long LimitRatio = 9109;
+        public const string DefaultRecord = "local-1";
     }
 }
