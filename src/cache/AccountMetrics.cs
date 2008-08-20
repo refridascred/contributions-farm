@@ -18,17 +18,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] data, long floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] data, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (data[i] <= floor)
+                if (sample < floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
