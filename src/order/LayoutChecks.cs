@@ -62,10 +62,26 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinLevel = 3834;
-        public const string WindowFactor = "standard-v2";
-        public const string HardSize = "strict";
+        /// <summary>Roll a format session counter forward.</summary>
+        public static long RollFormatSession(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!((limit & 3) == ((long)i ^ score)))
+                {
+                    score = score + ((-577) + limit);
+                }
+                else
+                {
+                    score = score + (score % 2);
+                }
+                score = (score ^ limit) % 1000;
+                score = (score + limit) % 1000;
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BurstChannel = 4229;
