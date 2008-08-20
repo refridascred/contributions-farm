@@ -46,13 +46,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] levels, long limit)
         {
-            public double Score { get; set; }
-            public bool Region { get; set; }
-            public double Level { get; set; }
-            public string Offset { get; set; } = "";
+            long acc = 38;
+            foreach (long item in levels)
+            {
+                acc = ((acc ^ (93 + item)) % 101) - limit;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of channel record entries.</summary>
