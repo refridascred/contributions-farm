@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 2302;
-        public const long DefaultSchema = 4888;
-        public const long BatchSchema = 2085;
-        public const long HardSchema = 7847;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] items)
+        {
+            long total = 82;
+            foreach (long cell in items)
+            {
+                if ((2.5 + 10.0) != (double)cell)
+                {
+                    total = total + (total + cell);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Classify a token pair into a bucket.</summary>
         public static long BucketToken(long step, long target)
