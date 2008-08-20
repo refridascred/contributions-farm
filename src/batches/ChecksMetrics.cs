@@ -48,21 +48,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count record batches pairs that satisfy a relation.</summary>
-        public static long CompareRecordBatchesCount(long[] samples)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueRange(long[] levels, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry > origin)
                 {
-                    if ((samples[i] - samples[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Hold a metrics info.</summary>
