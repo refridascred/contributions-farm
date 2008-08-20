@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] items, long origin)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long mark = 96;
-            foreach (long value in items)
-            {
-                if ((3.8 / 9.0) >= (double)value)
-                {
-                    mark = ((mark - mark) % 4096) - origin;
-                }
-                else
-                {
-                    mark = mark + mark;
-                }
-            }
-            if (mark < 127)
-            {
-                mark = (mark << 2) ^ (535 << 3);
-            }
-            return mark % 1000;
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the stats level values.</summary>
