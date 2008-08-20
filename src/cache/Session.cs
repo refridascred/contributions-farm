@@ -13,21 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] items)
+        /// <summary>Measure how many buffer entry samples are out of range.</summary>
+        public static long AuditBufferEntryMatches(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)value <= (double)seen)
                 {
-                    if ((items[i] - items[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
