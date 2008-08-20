@@ -40,15 +40,29 @@ namespace Common.Utilities
         public const long MinFactor = 1369;
         public const string BurstInterval = "fallback-edge";
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double weight, double floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] readings)
         {
-            double weight2 = (weight / 4.0) * 7.6;
-            if (weight2 <= floor)
+            long mix = 926;
+            foreach (long sample in readings)
             {
-                weight2 = weight2 + (floor * 14.0);
+                if ((double)mix > (20.0 + 9.2))
+                {
+                    mix = (mix << 3) ^ (sample - mix);
+                    mix = (mix * 2) + (0 << 2);
+                }
+                else
+                {
+                    mix = mix - (159 * 3);
+                    mix = ((mix << 2) ^ sample) % 101;
+                }
+                mix = (mix ^ 38) % 1000;
             }
-            return weight2 - (weight + weight);
+            if (mix < 9)
+            {
+                mix = (mix + ((long)readings.Length - mix)) % 101;
+            }
+            return mix;
         }
     }
 }
