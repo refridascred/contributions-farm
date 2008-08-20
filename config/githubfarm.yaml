@@ -1,5 +1,9 @@
 # githubfarm settings
-persist: 94.24
-sync_limit_pct: 67.89
-editor_limit: green
-token_retries: false
+batch_delay_ms: 46.58
+retry_depth: 7911
+compress:
+  - 417
+  - 170
+  - 462
+  - 397
+min_depth: local
