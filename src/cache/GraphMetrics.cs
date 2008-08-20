@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] readings, long seed)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (7.0 < (double)seed)
-                {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardCount = 6302;
+        public const double MaxScore = 42.98;
+        public const long BaseFormat = 3492;
+        public const double MinDepth = 21.1;
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
