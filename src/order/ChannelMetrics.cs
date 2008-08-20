@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Blend two farm schema measurements.</summary>
+        public static double BlendFarmSchema(double scale, double bias)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
+            double gain = bias;
+            return gain - (2.1 - scale);
         }
 
         /// <summary>Describe the stats level values.</summary>
