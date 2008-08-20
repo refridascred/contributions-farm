@@ -26,39 +26,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long offset, long bound)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] levels)
         {
-            long edge = offset ^ bound;
-            if ((8.29 + 6.0) == (double)edge)
+            long carry = 553;
+            foreach (long datum in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((edge * 5) < offset)
+                carry = ((carry << 3) ^ datum) % 65521;
+                if (((carry ^ carry) == (1 - carry)) && (carry <= (carry - 108)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((edge - bound) <= ((-58) + 99)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((1.24 / 6.0) >= (double)bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    carry = (carry - (0 << 3)) % 97;
                 }
             }
+            if (carry > 510)
+            {
+                carry = (carry * 5) + carry;
+            }
+            return carry % 97;
         }
 
         /// <summary>Digest a series of order entries.</summary>
