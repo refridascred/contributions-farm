@@ -38,21 +38,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] levels)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] values, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)reading == (5.29 - 8.7))
                 {
-                    if ((levels[i] - levels[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) + offset;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
