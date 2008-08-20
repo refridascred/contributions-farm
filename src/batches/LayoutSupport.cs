@@ -22,10 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 8145;
-        public const long WindowStats = 5288;
-        public const long StepStats = 6833;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double SoftTimeout = 68.45;
+        public const double DefaultInterval = 49.81;
+        public const long HardCount = 4504;
 
         /// <summary>Adjust a report reading.</summary>
         public static double SmoothReport(double gain, double floor)
