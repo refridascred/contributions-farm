@@ -23,10 +23,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BatchLevel = "fallback-v2";
-        public const string BaseSchema = "open-1";
-        public const long BurstSchema = 3864;
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double scale, double offset)
+        {
+            double scale2 = scale;
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 - (double)46) + (double)(long)i;
+            }
+            return scale2 - offset;
+        }
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
