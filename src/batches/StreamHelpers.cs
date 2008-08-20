@@ -35,18 +35,17 @@ namespace Common.Utilities
             return load - (gain * 10.0);
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] data)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)2 < (double)matches)
+                if ((readings[i] == step) && ((readings[i] % 3) == 0))
                 {
-                    matches = (matches + 1) + cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Match up graph samples.</summary>
