@@ -1,9 +1,26 @@
 # githubfarm settings
-sync_size_count: 8174
-min_delay: edge
-enabled: true
-schema_retries:
-  - latest
-  - cached
-  - latest
-  - strict
+base_limit_s: 7229
+profile_interval: true
+window_ratio:
+  strict:
+    - green
+    - eu-west
+    - legacy
+  dry_run:
+    flush_window_ms:
+      - green
+      - stable
+      - green
+      - standard
+    command_ttl: 30
+    flush_window_s: 1024
+    already_limit: false
+  command_limit: false
+  flush_delay_pct: 70
+  max_retries_count:
+    min_ttl_count: cached
+    default_depth_ms: 11.28
+    cache_limit_count:
+      - latest
+      - staging
+  audit: 55
