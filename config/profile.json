@@ -1,5 +1,6 @@
 {
-  "poll_capacity_count": [187, 139],
-  "warm_limit_pct": 5112,
-  "hard_depth_s": 97
+  "verbose": 897,
+  "idle_timeout_ms": 1024,
+  "cache_depth_count": "eu-west",
+  "default_limit": 4020
 }
