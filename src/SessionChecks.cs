@@ -12,12 +12,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] series)
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public bool Offset { get; set; }
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (((29 ^ cell) != (cell * 5)) || (cell > (matches + matches)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
