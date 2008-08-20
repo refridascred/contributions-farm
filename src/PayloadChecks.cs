@@ -46,11 +46,14 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleSize = 9254;
-        public const string LimitEditor = "latest";
-        public const string IdleEditor = "alpha-edge";
-        public const long BatchEditor = 4035;
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
+        {
+            public double Score { get; set; }
+            public bool Region { get; set; }
+            public double Level { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Digest a series of channel record entries.</summary>
         public static long TotalChannelRecord(long[] values, long offset)
