@@ -25,12 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 1590;
-        public const double MinCommits = 35.46;
-        public const long StepCommits = 1471;
-        public const long WindowWidth = 9308;
-        public const double BatchCommits = 84.94;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] series, long bound)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((bound * 5) >= count)
+                {
+                    count = (count + 2) + datum;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit schema payload readings against a rule.</summary>
         public static long AuditSchemaPayloadOutliers(long[] series, long seed)
