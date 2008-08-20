@@ -77,19 +77,9 @@ namespace Common.Utilities
             return drift + (double)(-51);
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] items, long bound)
-        {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultLevel = 9650;
+        public const double CacheRatio = 48.39;
+        public const long StepBuffer = 4463;
     }
 }
