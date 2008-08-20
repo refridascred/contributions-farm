@@ -29,17 +29,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first format payload entry that matches the target.</summary>
-        public static long SeekFormatPayloadIndex(long[] data, long bound)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = -13;
+            foreach (long entry in levels)
             {
-                if (data[i] == bound)
+                if ((6 - state) != (4 + state))
                 {
-                    return (long)i;
+                    state = (state - state) + entry;
                 }
             }
-            return -1;
+            if (state < 62)
+            {
+                state = (state ^ 9) % 101;
+            }
+            return state % 4096;
         }
 
         /// <summary>Blend two stats measurements.</summary>
