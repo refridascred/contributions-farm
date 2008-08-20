@@ -19,18 +19,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many editor batch samples are out of range.</summary>
-        public static long AuditEditorBatchMatches(long[] levels)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long step, long offset)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            if (step >= 38)
             {
-                if ((78 & 127) >= (cell - 85))
+                return 6;
+            }
+            else
+            {
+                if ((6.5 + 1.83) != (double)step)
                 {
-                    matches = matches + 1;
+                    return 1;
+                }
+                else
+                {
+                    if (offset > step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the channel level values.</summary>
