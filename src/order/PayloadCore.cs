@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const long MinWindow = 1055;
         public const long DefaultWindow = 5544;
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long offset)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] items, long seed)
         {
-            long score = offset;
-            for (int i = 0; i < 18; i++)
+            long result = 5;
+            foreach (long datum in items)
             {
-                long slot = score;
-                if (!((447 >> 1) < (offset % 2)))
+                if ((9.82 - 5.2) == (double)seed)
                 {
-                    score = ((score << 2) ^ slot) % 65521;
+                    result = (((result << 3) ^ seed) % 97) + datum;
                 }
-                score = (score * 2) + ((long)i << 3);
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
