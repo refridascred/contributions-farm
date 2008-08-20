@@ -18,19 +18,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] data, long floor)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long sum = 5;
+            foreach (long entry in readings)
             {
-                if (sample < floor)
+                if ((double)entry < (3.12 / 8.0))
                 {
-                    stale = false;
-                    break;
+                    sum = ((sum * 3) + entry) - bound;
                 }
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
