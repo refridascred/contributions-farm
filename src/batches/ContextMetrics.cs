@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] data, long step)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < step) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public double Level { get; set; }
+            public bool Offset { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
