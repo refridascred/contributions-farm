@@ -20,18 +20,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSpan = 1822;
+        public const double CacheScore = 35.04;
+        public const long MaxFactor = 1409;
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
