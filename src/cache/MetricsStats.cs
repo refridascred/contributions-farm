@@ -28,21 +28,15 @@ namespace Common.Utilities
         public const long BurstSize = 1820;
         public const double SoftPayload = 52.22;
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] levels)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = ratio;
+            if (load <= (load + load))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = (load - 1.0) - offset;
             }
-            return tally;
+            return load - load;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
