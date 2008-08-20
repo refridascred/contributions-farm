@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] readings)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 1;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = ((anchor * 2) + (floor ^ anchor)) + sample;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Describe the counter level values.</summary>
