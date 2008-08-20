@@ -28,39 +28,17 @@ namespace Common.Utilities
         public const long LimitCount = 198;
         public const string HardWidth = "primary";
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long origin, long offset)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] items, long step)
         {
-            long lane = origin + offset;
-            if ((double)origin >= 0.9)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset / 2) < (56 * 2))
+                if ((items[i] == step) && ((items[i] % 2) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((origin & 255) == (lane - offset)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((9.26 - 7.8) != (double)origin)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
