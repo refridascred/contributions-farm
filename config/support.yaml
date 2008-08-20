@@ -1,6 +1,10 @@
 # support settings
-hard_capacity_ms: 17.72
-order_ttl: stable
-batches_depth: 3.34
-metric_interval: strict
-dry_run: false
+buffer_delay:
+  batch_limit_pct: standard
+  githubfarm_size:
+    - 267
+    - 359
+    - 111
+  cache_limit_ms: 77
+base_ratio_pct: 94
+compress: 69.06
