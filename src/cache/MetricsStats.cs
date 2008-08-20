@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            Paused,
-            Active,
             Closed,
-            Queued,
-            Locked,
+            Paused,
+            Failed,
+            Stale,
         }
 
         /// <summary>Fold a list of channel readings.</summary>
