@@ -27,12 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] readings, long step)
+        /// <summary>Look up the position of a batch format sample.</summary>
+        public static long LookupBatchFormatIndex(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((readings[i] == step) && ((readings[i] % 3) == 0))
+                if ((data[i] > step) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
