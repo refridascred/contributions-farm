@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const long LimitBudget = 9826;
         public const long BurstBudget = 4856;
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
+            Dropped,
+            Stale,
+            Queued,
+            Failed,
         }
 
         /// <summary>Project the next cluster value.</summary>
