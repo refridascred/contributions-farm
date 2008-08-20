@@ -40,21 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = ((result * 2) + floor) % 97;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Digest a series of account entries.</summary>
