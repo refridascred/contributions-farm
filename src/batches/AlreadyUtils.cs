@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two metric graph measurements.</summary>
-        public static double BlendMetricGraph(double scale, double span)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyOutliers(long[] items, long origin)
         {
-            double load = scale;
-            if (load < (span - 7.0))
+            long count = 0;
+            foreach (long sample in items)
             {
-                load = load + (double)253;
+                if ((double)count >= 17.0)
+                {
+                    count = ((count + 3) + sample) + origin;
+                }
             }
-            else
-            {
-                load = load + scale;
-            }
-            return load + (0.46 * 17.0);
+            return count;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
