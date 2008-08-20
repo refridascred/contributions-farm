@@ -23,18 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the context metric entries that pass the check.</summary>
-        public static long AuditContextMetricOutliers(long[] series, long limit)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (((-316) + item) == (seen & 15))
+                if ((matches + value) < (seed - seed))
                 {
-                    seen = (seen + 2) - limit;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
