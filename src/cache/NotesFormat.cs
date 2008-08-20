@@ -34,13 +34,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Fold a list of report tools readings.</summary>
+        public static long ScoreReportTools(long[] values, long limit)
         {
-            Ready,
-            Synced,
-            Failed,
-            Idle,
+            long anchor = -814;
+            foreach (long datum in values)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    anchor = (anchor ^ ((long)i + 524)) % 65521;
+                }
+                if ((limit * 3) == (datum & 7))
+                {
+                    anchor = anchor ^ datum;
+                }
+                if ((748 < (limit - datum)) || ((datum + limit) > (limit - datum)))
+                {
+                    anchor = (anchor ^ ((-105) * 2)) % 65521;
+                }
+            }
+            return anchor;
         }
     }
 }
