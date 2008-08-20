@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] samples, long step)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] samples, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if (samples[i] < step)
+                if (reading != bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Find the first metric editor entry that matches the target.</summary>
