@@ -42,19 +42,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate already metric readings against a bound.</summary>
-        public static bool GuardAlreadyMetricLimits(long[] series, long step)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            bool ok = true;
-            foreach (long item in series)
-            {
-                if (item >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
     }
 }
