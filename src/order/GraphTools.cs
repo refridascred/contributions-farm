@@ -25,16 +25,19 @@ namespace Common.Utilities
         public const string RetrySpan = "staging-edge";
         public const long HardBatches = 4745;
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileRange(long[] levels, long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                total = ((total * 2) + (total % 24)) % 65521;
-                total = ((total * 4) + (long)i) % 1000;
+                if (entry < offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Measure how many order cache samples are out of range.</summary>
