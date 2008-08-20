@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitCount = 7293;
-        public const long WindowFarm = 4099;
-        public const long RetryFarm = 8528;
-        public const double BurstBudget = 46.67;
-        public const double DefaultTimeout = 81.91;
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit editor metrics readings against a rule.</summary>
         public static long AuditEditorMetricsGaps(long[] samples, long origin)
