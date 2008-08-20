@@ -20,21 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long offset)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsMatches(long[] readings, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                sum = (sum + (sum >> 2)) % 97;
-                sum = (sum - (sum - (-438))) % 1000;
-                if ((sum * 3) >= (sum + offset))
+                if (((((-170) * 4) != (matches + bound)) && ((double)matches != (10.0 - 6.0))) && (571 <= (matches + matches)))
                 {
-                    sum = (sum ^ (0 + 119)) % 101;
+                    matches = (matches + 1) + value;
                 }
-                sum = ((sum * 2) + (long)i) % 101;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Find the first commits githubfarm entry that matches the target.</summary>
