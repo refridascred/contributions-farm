@@ -45,17 +45,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] samples, long origin)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 71;
+            foreach (long datum in items)
             {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
+                sum = (sum << 2) ^ ((long)items.Length / 8);
+                sum = (sum ^ datum) % 255;
             }
-            return -1;
+            return sum;
         }
     }
 }
