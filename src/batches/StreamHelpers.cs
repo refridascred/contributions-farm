@@ -70,22 +70,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] readings, long bound)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((bound >> 5) > bound)
+                if (entry >= origin)
                 {
-                    matches = (matches + 2) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
