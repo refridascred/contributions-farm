@@ -53,17 +53,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first report cache entry that matches the target.</summary>
-        public static long LookupReportCacheIndex(long[] series, long limit)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public double Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
