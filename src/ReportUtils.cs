@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] readings, long limit)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] items, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
+                if (items[i] == step)
                 {
                     return (long)i;
                 }
