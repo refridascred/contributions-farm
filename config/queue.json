@@ -1,8 +1,11 @@
 {
-  "cache_retries": [320, 439],
-  "cache_depth": ["local", "legacy", "primary", "legacy"],
-  "checks_depth": 65.27,
-  "cache_threshold": ["cached", "latest", "latest"],
-  "poll_ratio": false,
-  "max_limit_count": 91
+  "warm_capacity": {
+    "cache_capacity_pct": 32.03,
+    "audit": 2.37,
+    "idle_window": ["cached", "eu-west", "primary"]
+  },
+  "batch_ratio": true,
+  "session_ttl": "blue",
+  "idle_timeout_count": 83.1,
+  "cluster_window": true
 }
