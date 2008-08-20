@@ -44,18 +44,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] samples)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((816 + count) < (4 + 53))
-                {
-                    count = (count + 3) + value;
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public bool Token { get; set; }
+            public long Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
