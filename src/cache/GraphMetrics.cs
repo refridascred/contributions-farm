@@ -16,21 +16,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] data)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long limit, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (!((limit + origin) < (limit ^ limit)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((origin / 9) <= 435)
                 {
-                    if ((data[i] + data[j]) < 17)
+                    return 6;
+                }
+                else
+                {
+                    if (origin < limit)
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up route samples.</summary>
