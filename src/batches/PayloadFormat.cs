@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 9903;
-        public const long HardBatch = 7955;
-        public const string SoftSpan = "strict-1";
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long target, long offset)
+        {
+            if ((target % 7) == (offset + offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset / 6) < offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target < (offset - offset)) || ((8.0 - 1.2) < (15.0 / 4.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
