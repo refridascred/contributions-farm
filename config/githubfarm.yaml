@@ -1,18 +1,17 @@
 # githubfarm settings
-githubfarm_size: 61
-max_threshold_count: eu-west
-enabled:
-  idle_window_count: 339
-  cache_window:
-    compress: 5661
-    readonly: 17
-    poll_retries_s: 47.66
-    warm_retries_s: primary
-  strict: stable
-batch_ratio_pct: 30.37
-burst_capacity_ms: 36.58
-idle_timeout:
-  - 128
-  - 497
-  - 433
-  - 324
+farm_window:
+  filter_window: 37.19
+  readonly: strict
+  strict:
+    report_depth: 35
+    poll_delay_ms:
+      - standard
+      - strict
+    audit:
+      - 182
+      - 346
+      - 475
+      - 177
+  min_ratio_count: 3515
+record_retries: 55
+readonly: open
