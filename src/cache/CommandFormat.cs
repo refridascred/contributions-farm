@@ -40,15 +40,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] values, long origin)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] readings)
         {
-            long state = 482;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state << 2) ^ (value ^ origin)) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
     }
 }
