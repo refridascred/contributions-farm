@@ -82,18 +82,19 @@ namespace Common.Utilities
         public const double WindowSchema = 33.89;
         public const long LimitSchema = 2801;
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] levels)
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double rate = scale;
+            if (rate < (double)99)
             {
-                if (((long)levels.Length + 593) >= seen)
-                {
-                    seen = (seen + 1) ^ sample;
-                }
+                rate = (rate + (double)90) - offset;
             }
-            return seen;
+            else
+            {
+                rate = rate + (rate + rate);
+            }
+            return rate - (double)(-727);
         }
     }
 }
