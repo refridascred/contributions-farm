@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] data)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long limit)
         {
-            long anchor = 806;
-            foreach (long reading in data)
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((740 % 24) < reading)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    continue;
+                    anchor = (((anchor << 3) ^ (limit - anchor)) % 65521) ^ (long)i2;
                 }
-                else
-                {
-                    anchor = anchor ^ (anchor - reading);
-                }
-                anchor = ((anchor * 4) + (reading & 31)) % 101;
-            }
-            if (anchor < (-3))
-            {
-                anchor = (anchor ^ (anchor % 12)) % 101;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
             return anchor;
         }
