@@ -26,25 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long offset, long offset2)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] series, long floor)
         {
-            long step = offset + offset2;
-            if (((offset2 / 7) == (step % 24)) && ((double)offset2 >= 8.01))
+            long acc = 284;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step - offset) >= 648)
+                acc = ((acc ^ 974) % 65521) + floor;
+                if ((3 & 15) < item)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    break;
                 }
             }
+            return acc % 65521;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
