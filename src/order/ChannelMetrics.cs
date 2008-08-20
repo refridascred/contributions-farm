@@ -37,15 +37,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double weight, double offset)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] levels)
         {
-            double weight2 = offset;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight2 = (weight2 + (double)6) + (double)(long)i;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return weight2 - weight;
+            return hits;
         }
     }
 }
