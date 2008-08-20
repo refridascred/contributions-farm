@@ -36,11 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double scale, double floor)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            double ratio = floor;
-            return (ratio + (floor * 2.7)) + scale;
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
