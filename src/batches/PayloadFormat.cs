@@ -32,13 +32,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            Retry,
-            Draft,
-            Done,
-            Queued,
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Rank order input into a small class.</summary>
