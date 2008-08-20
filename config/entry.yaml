@@ -1,4 +1,21 @@
 # entry settings
-queue_ratio: 87.19
-schema_interval: open
-soft_depth: 7949
+warm_delay_s:
+  - latest
+  - standard
+counter_retries: latest
+farm_delay:
+  cache_interval:
+    dry_run: latest
+    cache_window_count: 44.01
+    soft_capacity_count: 60
+    default_capacity_s: 26
+    persist: stable
+  dry_run: 1024
+  min_interval_s: 5303
+  stats_interval: 4506
+  editor_limit: 1
+max_capacity_pct: 489
+burst_size:
+  - 338
+  - 402
+  - 383
