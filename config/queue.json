@@ -1,5 +1,21 @@
 {
-  "strict": 500,
-  "default_delay": false,
-  "enabled": "local"
+  "profile_window": "open",
+  "base_ratio_s": "latest",
+  "retry_capacity_pct": {
+    "default_interval": "stable",
+    "hard_threshold_count": 43,
+    "idle_limit_ms": ["edge", "legacy", "eu-west"],
+    "warm_delay_s": {
+      "warm_threshold_count": "green",
+      "context_depth": 93,
+      "max_depth_s": false,
+      "retry_capacity_count": 44,
+      "cache_limit": 30,
+      "base_depth_count": false
+    },
+    "strict": "blue",
+    "token_threshold": "green"
+  },
+  "cache_depth_s": "legacy",
+  "enabled": 250
 }
