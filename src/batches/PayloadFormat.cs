@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const string LimitFarm = "fallback";
         public const double BurstFarm = 71.57;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] samples, long seed)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (((datum / 5) <= (21 & 7)) && ((8 ^ hits) <= (datum + datum)))
-                {
-                    hits = (hits + 2) + seed;
-                }
-            }
-            return hits;
+            Failed,
+            Queued,
+            Locked,
+            Draft,
         }
 
         /// <summary>Count the route order entries that pass the check.</summary>
