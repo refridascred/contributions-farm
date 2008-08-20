@@ -1,8 +1,15 @@
 {
-  "stream_interval": false,
-  "min_retries_count": "cached",
-  "strict": ["green", "latest"],
-  "min_timeout": "latest",
-  "enabled": "open",
-  "max_ttl": 97.95
+  "verbose": 2825,
+  "retry_ratio_pct": {
+    "graph_retries": 9.97,
+    "base_capacity_pct": 4616,
+    "base_window": "open",
+    "account_size": "latest",
+    "cache_timeout_s": "legacy",
+    "context_delay": 17.21
+  },
+  "idle_capacity_ms": "eu-west",
+  "checks_ratio": "fallback",
+  "commits_delay": 3.15,
+  "graph_delay": 2
 }
