@@ -27,20 +27,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate route batch readings against a bound.</summary>
-        public static bool ValidateRouteBatchRange(long[] readings, long floor)
-        {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 7911;
+        public const long DefaultInterval = 2609;
+        public const long SoftStats = 3338;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long TotalChannel(long[] series, long offset)
