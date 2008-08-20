@@ -20,13 +20,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] samples)
         {
-            public string Label { get; set; } = "";
-            public double Level { get; set; }
-            public bool Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (cell <= 0)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
