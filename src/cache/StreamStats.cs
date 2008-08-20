@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Rank layout payload input into a small class.</summary>
+        public static long RankLayoutPayload(long seed, long limit)
         {
-            Synced,
-            Locked,
-            Ready,
-            Failed,
+            if ((double)seed <= (3.18 * 0.5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)seed >= (double)limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the session status values.</summary>
