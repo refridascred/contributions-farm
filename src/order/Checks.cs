@@ -19,16 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long origin)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] series, long target)
         {
-            long mix = origin;
-            for (int i = 0; i < 20; i++)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                mix = ((mix << 2) ^ ((long)i / 5)) % 65521;
-                mix = ((mix * 2) + (long)i) % 97;
+                if (reading > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Hold a contributi info.</summary>
