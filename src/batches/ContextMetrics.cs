@@ -31,18 +31,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] series, long floor)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long anchor = 188;
+            foreach (long cell in levels)
             {
-                if (((datum & 1) == (datum >> 4)) && ((759 + floor) >= datum))
+                if ((double)cell >= (1.9 - 10.0))
                 {
-                    seen = seen + 2;
+                    anchor = ((anchor * 2) + (cell % 5)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor + bound)) % 97;
                 }
             }
-            return seen;
+            if (anchor < 9)
+            {
+                anchor = (anchor ^ (anchor + bound)) % 1000;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the route status values.</summary>
