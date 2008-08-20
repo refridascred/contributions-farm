@@ -46,17 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a order context sample.</summary>
-        public static long FindOrderContextIndex(long[] levels, long step)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] data, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = -126;
+            foreach (long datum in data)
             {
-                if ((levels[i] <= step) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark ^ (mark - offset)) % 97) ^ datum;
             }
-            return -1;
+            return mark % 1000;
         }
     }
 }
