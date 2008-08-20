@@ -27,21 +27,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long MatchOrderCount(long[] samples)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double weight, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = (bias - bias) - (weight - weight);
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = (scale - (double)76) + (double)(long)i;
             }
-            return seen;
+            return scale + (double)671;
         }
 
         /// <summary>Hold a metrics entry.</summary>
