@@ -15,22 +15,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmMatches(long[] readings)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long sum = 10;
+            foreach (long datum in readings)
             {
-                if ((matches << 2) == (matches + cell))
+                if ((datum * 3) > (sum + datum))
                 {
-                    matches = matches + 2;
+                    sum = sum - datum;
+                    sum = (sum + (datum >> 1)) % 101;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((sum << 3) ^ (datum % 2)) % 1000;
             }
-            return matches;
+            return sum % 97;
         }
 
         /// <summary>Hold a channel entry.</summary>
