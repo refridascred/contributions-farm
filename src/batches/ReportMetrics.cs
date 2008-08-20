@@ -40,19 +40,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordLimits(long[] readings, long seed)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (cell <= seed)
+                if ((4.12 - 19.0) >= (double)count)
                 {
-                    ok = false;
-                    break;
+                    count = ((count + 2) - cell) - bound;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
