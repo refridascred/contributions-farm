@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long limit)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] values)
         {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = total + ((long)i + limit);
-                total = ((total * 3) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Digest a series of command entries.</summary>
