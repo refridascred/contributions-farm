@@ -1,8 +1,8 @@
 {
-  "strict": "blue",
-  "base_retries_s": 85.15,
-  "retry_timeout_count": 8729,
-  "min_ratio_ms": "blue",
-  "window_window": "strict",
-  "max_timeout_pct": 30
+  "batch_depth": [162, 80],
+  "cache_ttl_s": 1024,
+  "warm_delay": "open",
+  "channel_limit": true,
+  "counter_size": false,
+  "soft_timeout_pct": 63
 }
