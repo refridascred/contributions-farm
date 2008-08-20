@@ -24,11 +24,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public double Level { get; set; }
-            public double Mode { get; set; }
+            Dropped,
+            Pending,
+            Failed,
+            Ready,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
