@@ -50,9 +50,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 2053;
-        public const string WindowSupport = "strict-1";
-        public const long MinSupport = 3698;
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double weight, double span)
+        {
+            double ratio = (double)(2 + 452);
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ((ratio - (ratio + span)) + (double)(long)i) - weight;
+            }
+            return ratio - (span - span);
+        }
     }
 }
