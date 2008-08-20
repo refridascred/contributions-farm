@@ -34,19 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cache profile entries that pass the check.</summary>
-        public static long CountCacheProfileGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell + tally) <= (-98))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 3411;
+        public const double BaseChannel = 54.65;
+        public const string CacheTimeout = "cached-edge";
+        public const long WindowWidth = 9267;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowOutliers(long[] samples, long offset)
