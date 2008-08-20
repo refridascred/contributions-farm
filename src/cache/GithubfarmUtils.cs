@@ -25,12 +25,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitTimeout = 91.45;
-        public const long BaseMetric = 8910;
-        public const long BurstMetric = 4446;
-        public const long BatchWidth = 6723;
-        public const string MinInterval = "legacy-v2";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepCount = 3420;
+        public const long WindowPayload = 8795;
+        public const long MinLevel = 5151;
+        public const long LimitRatio = 9549;
 
         /// <summary>Locate a token reading by value.</summary>
         public static long FindTokenIndex(long[] levels, long limit)
