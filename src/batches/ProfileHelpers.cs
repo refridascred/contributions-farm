@@ -68,18 +68,14 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many profile entry samples are out of range.</summary>
-        public static long CountProfileEntryHits(long[] series)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((86 + datum) > (961 % 2))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Done,
+            Locked,
+            Paused,
+            Active,
+            Idle,
         }
 
         /// <summary>Hold a payload header.</summary>
