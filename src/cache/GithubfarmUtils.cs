@@ -13,22 +13,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine githubfarm buffer values into a single score.</summary>
-        public static long DigestGithubfarmBuffer(long[] items)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] readings)
         {
-            long mix = 83;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((5 - mix) < (mix + mix))
+                if (9.14 <= (double)value)
                 {
-                    mix = (mix + (37 - mix)) ^ entry;
+                    count = count + 3;
                 }
                 else
                 {
-                    mix = (mix + mix) % 1000;
+                    count = count - 1;
                 }
             }
-            return mix % 97;
+            return count;
         }
 
         /// <summary>Check that every schema profile entry stays within the limit.</summary>
