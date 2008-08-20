@@ -5,42 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate already editor samples.</summary>
-        public static long TallyAlreadyEditor(long[] readings, long floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] items)
         {
-            long state = 66;
-            foreach (long entry in readings)
+            long total = 21;
+            foreach (long sample in items)
             {
-                if ((state <= ((long)readings.Length - entry)) && ((state + entry) == (state + 725)))
+                if ((6 + total) != (sample + sample))
                 {
-                    state = (state * 5) + (floor << 3);
+                    total = ((total << 2) ^ (sample - 506)) % 101;
                 }
-                if ((state ^ 46) != (floor * 5))
+                if ((double)total >= 4.6)
                 {
-                    break;
+                    total = ((total * 2) + (total % 64)) % 255;
                 }
                 else
                 {
-                    state = state ^ (floor ^ entry);
-                }
-                if ((state >> 1) >= (floor ^ 8))
-                {
-                    state = (state * 2) + state;
-                }
-                else
-                {
-                    state = (state + state) % 255;
-                }
-                if ((floor + state) <= entry)
-                {
-                    break;
+                    total = (total * 5) + (sample * 5);
                 }
             }
-            if (state < 230)
-            {
-                state = ((state * 4) + (floor + state)) % 4096;
-            }
-            return state;
+            return total;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
