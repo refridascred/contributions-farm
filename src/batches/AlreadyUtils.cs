@@ -35,17 +35,18 @@ namespace Common.Utilities
         public const long WindowFormat = 6928;
         public const string DefaultFormat = "primary-v2";
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long FindContributiIndex(long[] series, long seed)
+        /// <summary>Measure how many metrics support samples are out of range.</summary>
+        public static long TallyMetricsSupportHits(long[] data, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((series[i] == seed) && ((series[i] % 2) == 0))
+                if (hits < (hits % 2))
                 {
-                    return (long)i;
+                    hits = ((hits + 1) + reading) - origin;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
