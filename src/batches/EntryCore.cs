@@ -49,32 +49,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a stats metric value against two limits.</summary>
-        public static long BucketStatsMetric(long bound, long offset)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterRange(long[] samples, long seed)
         {
-            long span = bound - offset;
-            if (3.32 <= (double)bound)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((offset << 3) > (363 + offset)) && ((offset + bound) < (offset + 43)))
+                if (cell > seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((span < bound) || ((double)bound <= (9.69 / 9.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define route limits and defaults.</summary>
