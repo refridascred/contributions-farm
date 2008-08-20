@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextMatches(long[] levels)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] items)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((-627) - value) == (seen + seen)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((items[i] + items[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
