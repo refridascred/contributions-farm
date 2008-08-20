@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] series, long offset)
-        {
-            long state = -34;
-            foreach (long sample in series)
-            {
-                state = ((state + state) + sample) + offset;
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double HardProfile = 91.39;
+        public const string RetryProfile = "local-1";
+        public const double CacheRatio = 68.38;
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
