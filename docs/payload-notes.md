@@ -1,12 +1,11 @@
 # Payload notes
 
-The editor report groups every graph by context.
-Use checks settings to tune how often schema data is refreshed.
-Run the metrics check before changing any payload limits.
+Use tools settings to tune how often report data is refreshed.
+Keep payload and cache names short and lowercase.
 
 ## Guidelines
 
-- Keep session values small
-- Prefer cluster defaults
-- Document new booking fields
-- Validate graph input early
+- Keep checks values small
+- Review token limits each release
+- Document new session fields
+- Validate channel input early
