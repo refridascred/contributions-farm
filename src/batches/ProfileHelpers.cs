@@ -34,19 +34,18 @@ namespace Common.Utilities
         public const long StepTimeout = 6098;
         public const double HardTimeout = 80.88;
 
-        /// <summary>Fold a list of graph token readings.</summary>
-        public static long FoldGraphToken(long[] samples)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] readings)
         {
-            long mark = 49;
-            foreach (long datum in samples)
+            long score = 680;
+            foreach (long item in readings)
             {
-                mark = (mark + (datum + datum)) % 255;
-                if ((double)datum > (0.4 - 9.8))
+                if ((score <= (item - 824)) && ((item & 7) <= score))
                 {
-                    mark = (mark ^ (407 + 4)) % 65521;
+                    score = (score * 3) + (item % 12);
                 }
             }
-            return mark % 65521;
+            return score;
         }
 
         /// <summary>Describe the command class values.</summary>
