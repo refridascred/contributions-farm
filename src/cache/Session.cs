@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double weight, double bias)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterMatches(long[] items)
         {
-            double bias2 = (weight / 8.0) * 20.0;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                bias2 = ((bias2 - (3.74 * 0.3)) + (double)(long)i) - bias;
+                if (((seen << 1) <= (datum << 3)) && ((datum + seen) < (seen + datum)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return bias2 + (double)1;
+            return seen;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
