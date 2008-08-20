@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] series, long target)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (series[i] < target)
+                if (!((8.8 + 7.34) >= (double)(long)i))
                 {
-                    return (long)i;
+                    total = (total + bound) % 4096;
                 }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    total = (((total * 2) + (bound + total)) % 255) ^ (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
