@@ -56,13 +56,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long seed)
         {
-            public double Owner { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum * 5) + (4 % 64)) % 4096;
+                sum = ((sum << 2) ^ 1) % 101;
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
