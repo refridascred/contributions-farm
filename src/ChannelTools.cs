@@ -27,16 +27,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long origin)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double gain, double offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
+            double rate = offset;
+            if (rate >= (rate - rate))
             {
-                mix = (mix ^ (origin + origin)) % 4096;
-                mix = ((mix * 4) + (long)i) % 101;
+                rate = rate + (2.3 / 6.0);
             }
-            return mix;
+            else
+            {
+                rate = rate - offset;
+            }
+            return rate - gain;
         }
     }
 }
