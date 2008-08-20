@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] items)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((count + cell) == (cell + cell))
+                if ((seen - seen) == (seen - (long)levels.Length))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
