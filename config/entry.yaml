@@ -1,20 +1,5 @@
 # entry settings
-warm_interval_pct: 17.24
-contributi_threshold: 1024
-idle_window:
-  - stable
-  - standard
-  - blue
-  - eu-west
-command_timeout:
-  warm_limit_count:
-    - cached
-    - staging
-  persist: edge
-  idle_delay: 100
-  default_capacity_pct: 100
-  retry_limit: 17.77
-soft_threshold_count:
-  retry_threshold_count: 60
-  persist: false
-  report_retries: cached
+base_size_ms: 30
+warm_capacity: 3830
+profile_delay: 7284
+verbose: primary
