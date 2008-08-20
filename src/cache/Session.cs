@@ -33,15 +33,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] readings)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long BucketCounter(long target, long floor)
         {
-            long mix = 41;
-            foreach (long sample in readings)
+            if (target > (target & 63))
             {
-                mix = ((mix << 3) ^ (2 ^ 663)) ^ sample;
+                return 8;
             }
-            return mix % 65521;
+            else
+            {
+                if ((target + target) > floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((target - target) <= (target >> 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor / 6) > (2 % 100))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
