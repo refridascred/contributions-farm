@@ -53,11 +53,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long bound)
         {
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = ((sum * 4) + (bound - sum)) % 4096;
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
