@@ -47,14 +47,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long offset)
         {
-            Done,
-            Dropped,
-            New,
-            Paused,
-            Retry,
+            long total = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                total = (total ^ (offset >> 2)) % 1000;
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
