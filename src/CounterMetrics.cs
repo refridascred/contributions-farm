@@ -22,11 +22,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double scale, double bias)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] readings, long limit)
         {
-            double bias2 = bias / 6.0;
-            return (bias2 - bias) + scale;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
