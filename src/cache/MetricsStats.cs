@@ -23,18 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] readings)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiBounds(long[] series, long seed)
         {
-            long total = -269;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (!((entry - total) < (entry + total)))
+                if (datum >= seed)
                 {
-                    total = (total << 3) ^ (total - 24);
+                    flag = false;
+                    break;
                 }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Hold a schema entry.</summary>
