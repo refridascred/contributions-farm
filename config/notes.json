@@ -1,21 +1,6 @@
 {
-  "min_ttl_count": {
-    "persist": ["edge", "edge", "green", "standard"],
-    "min_depth": 58.62,
-    "retry_capacity_ms": true,
-    "batch_delay_count": {
-      "profile_capacity": 78.16,
-      "cache_timeout": 500,
-      "min_interval_pct": false,
-      "hard_retries_s": 1024,
-      "dry_run": false,
-      "burst_window_count": 1
-    },
-    "retry_ratio": false
-  },
-  "batch_limit_s": [393, 383],
-  "base_limit_count": 70.08,
-  "metric_ttl": 44.71,
-  "commits_ratio": ["standard", "fallback"],
-  "strict": 84.92
+  "audit": 100,
+  "sync_timeout_s": "green",
+  "sync_threshold": 37.55,
+  "batch_window_ms": 93
 }
