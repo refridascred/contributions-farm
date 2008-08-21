@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] values, long step)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long floor, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long prev = floor + target;
+            if (((double)target != (double)prev) && ((5.0 - 7.1) == (double)prev))
             {
-                if ((values[i] >= step) && ((values[i] % 5) == 0))
+                return 0;
+            }
+            else
+            {
+                if (!(floor <= ((-14) + floor)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a account record.</summary>
