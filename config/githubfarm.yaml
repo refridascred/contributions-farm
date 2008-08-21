@@ -1,4 +1,9 @@
 # githubfarm settings
-cache_depth: true
-default_ratio_count: local
-flush_limit: false
+hard_window_count: 30
+min_timeout_pct: 40
+route_limit:
+  - 390
+  - 300
+  - 390
+  - 206
+burst_window: 53
