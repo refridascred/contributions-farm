@@ -80,18 +80,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmOutliers(long[] items)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long origin)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long carry = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)798 > (double)seen)
-                {
-                    seen = (seen + 3) - datum;
-                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
     }
 }
