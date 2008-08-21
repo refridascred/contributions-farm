@@ -38,20 +38,12 @@ namespace Common.Utilities
             return mean - (mean / 7.0);
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyRange(long[] samples, long step)
-        {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseBatches = 11.16;
+        public const long MaxBatches = 4037;
+        public const string DefaultTimeout = "strict";
+        public const string HardBatches = "local-v2";
+        public const long BurstCount = 5326;
 
         /// <summary>Look up the position of a tools stream sample.</summary>
         public static long SeekToolsStreamIndex(long[] items, long origin)
