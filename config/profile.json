@@ -1,8 +1,8 @@
 {
-  "stream_window": "standard",
-  "default_retries": true,
-  "cache_threshold_pct": 250,
-  "min_retries_s": true,
-  "default_timeout_ms": "primary",
-  "default_interval": ["blue", "legacy"]
+  "poll_delay": "primary",
+  "flush_delay_s": false,
+  "order_window": "edge",
+  "persist": "local",
+  "max_ttl_pct": "latest",
+  "soft_threshold_count": "fallback"
 }
