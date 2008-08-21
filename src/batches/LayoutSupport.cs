@@ -31,10 +31,19 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultProfile = 34.38;
-        public const long WindowProfile = 8948;
-        public const long WindowSpan = 3308;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] levels, long target)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((8.7 + 0.2) <= (double)target)
+                {
+                    seen = (seen + 2) + sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many farm tools samples are out of range.</summary>
         public static long TallyFarmToolsHits(long[] items, long offset)
