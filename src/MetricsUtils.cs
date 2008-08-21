@@ -25,15 +25,13 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double scale, double offset)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            double gain = 1.0;
-            if (gain >= (double)329)
-            {
-                gain = (gain - (double)(-288)) - scale;
-            }
-            return gain + (offset - offset);
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
+            public double Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Digest a series of session format entries.</summary>
