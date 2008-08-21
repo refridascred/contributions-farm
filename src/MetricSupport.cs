@@ -43,9 +43,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 5028;
-        public const long WindowSpan = 5283;
-        public const long WindowAccount = 4024;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Stale,
+            Paused,
+            New,
+            Done,
+            Locked,
+        }
     }
 }
