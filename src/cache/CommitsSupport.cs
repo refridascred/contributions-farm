@@ -24,22 +24,19 @@ namespace Common.Utilities
             return load + (bias * 8.8);
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterOutliers(long[] items)
+        /// <summary>Check that every cache context entry stays within the limit.</summary>
+        public static bool GuardCacheContextBounds(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long value in series)
             {
-                if ((reading - reading) <= matches)
+                if (value < target)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
