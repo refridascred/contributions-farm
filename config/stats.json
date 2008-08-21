@@ -1,7 +1,5 @@
 {
-  "min_retries_pct": true,
-  "contributi_timeout": "eu-west",
-  "max_limit": 30,
-  "hard_delay_pct": 9404,
-  "strict": ["eu-west", "open"]
+  "hard_delay_s": false,
+  "metric_ratio": "fallback",
+  "min_capacity": "stable"
 }
