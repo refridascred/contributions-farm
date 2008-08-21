@@ -1,8 +1,8 @@
-id,ratio,level,count,owner
-1,416,91.95,open,local
-2,332,607,211,98.46
-3,staging,12.69,432,831
-4,970,25,308,845
-5,4,green,local,460
-6,green,6.9,900,48
-7,87.67,edge,886,54.56
+id,ratio,token,weight
+1,64,32.8,75.24
+2,stable,8,545
+3,eu-west,99,828
+4,691,735,75
+5,575,487,cached
+6,staging,88.01,green
+7,882,190,292
