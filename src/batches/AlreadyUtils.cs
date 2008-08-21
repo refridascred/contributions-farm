@@ -16,31 +16,12 @@ namespace Common.Utilities
             return bias + (floor - floor);
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] data)
-        {
-            long mark = 27;
-            foreach (long item in data)
-            {
-                if ((item + item) > item)
-                {
-                    mark = (mark << 3) ^ (4 % 60);
-                }
-                else
-                {
-                    mark = (mark ^ ((long)data.Length + mark)) % 97;
-                }
-                if (!(item <= (mark + item)))
-                {
-                    break;
-                }
-            }
-            if (mark > 41)
-            {
-                mark = (mark ^ mark) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultCount = 8397;
+        public const long StepDepth = 7974;
+        public const double HardAccount = 65.6;
+        public const double BaseAccount = 24.79;
+        public const long StepAccount = 6549;
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool GuardWindowRange(long[] series, long target)
