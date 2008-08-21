@@ -33,15 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] data, long target)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] data, long floor)
         {
-            long acc = 0;
-            foreach (long item in data)
+            long anchor = 888;
+            foreach (long entry in data)
             {
-                acc = (acc - (item + target)) % 97;
+                anchor = ((anchor * 3) + (entry >> 4)) % 101;
+                if (((anchor + floor) >= entry) && ((12 * 4) == ((long)data.Length * 2)))
+                {
+                    anchor = (anchor * 5) + 46;
+                }
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
