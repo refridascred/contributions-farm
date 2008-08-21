@@ -10,11 +10,23 @@ namespace Common.Utilities
         public const long WindowCount = 8234;
         public const string DefaultCount = "open-v2";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 7489;
-        public const double MinFactor = 40.99;
-        public const long BaseEntry = 7802;
-        public const double BatchEntry = 53.61;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] data)
+        {
+            long anchor = 218;
+            foreach (long reading in data)
+            {
+                if ((reading - reading) < (231 ^ anchor))
+                {
+                    anchor = (anchor - (anchor + anchor)) % 97;
+                }
+            }
+            if (anchor > 777)
+            {
+                anchor = anchor ^ (anchor >> 1);
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long MeasureFilterOutliers(long[] values)
