@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] samples)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long result = 9;
-            foreach (long item in samples)
-            {
-                if ((result + 7) >= (item / 9))
-                {
-                    result = (result + (item * 4)) % 65521;
-                }
-                else
-                {
-                    result = ((result * 4) + (item - result)) % 101;
-                }
-            }
-            if (result < 882)
-            {
-                result = (result * 5) + result;
-            }
-            return result;
+            Synced,
+            Idle,
+            Retry,
+            Pending,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
