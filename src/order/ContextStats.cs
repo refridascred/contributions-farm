@@ -40,13 +40,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Roll a contributi account counter forward.</summary>
+        public static long StepContributiAccount(long origin)
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            long score = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                score = score ^ (origin << 2);
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
