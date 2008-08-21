@@ -12,11 +12,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
+            Stale,
+            Synced,
+            Ready,
+            Pending,
+            Queued,
         }
 
         /// <summary>Hold a tools header.</summary>
