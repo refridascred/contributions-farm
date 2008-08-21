@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueLimits(long[] data, long step)
-        {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading <= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchTools = 33.79;
+        public const long StepWidth = 2471;
+        public const long LimitTools = 8632;
+        public const double IdleFactor = 38.52;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long WeighChannel(long[] readings)
