@@ -22,11 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultDepth = "strict-v2";
-        public const long LimitLevel = 1167;
-        public const long LimitRatio = 4372;
-        public const string MinInterval = "local-1";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheInterval = 203;
+        public const double BatchChannel = 33.78;
+        public const long IdleSpan = 3372;
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool CheckFilterBounds(long[] data, long bound)
