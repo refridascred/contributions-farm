@@ -30,21 +30,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] values)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Locked,
+            Idle,
         }
 
         /// <summary>Grade a route layout value against two limits.</summary>
