@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowRange(long[] series, long target)
-        {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleQueue = "legacy-1";
+        public const long IdleCount = 3815;
+        public const long IdleDepth = 4731;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long TallyLayoutOutliers(long[] samples)
