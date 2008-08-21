@@ -1,8 +1,6 @@
 {
-  "retry_window_s": "latest",
-  "audit": false,
-  "default_ratio_pct": 500,
-  "persist": ["local", "edge", "open", "latest"],
-  "enabled": 60,
-  "compress": ["open", "open", "local", "edge"]
+  "dry_run": true,
+  "base_ttl_pct": 82,
+  "base_depth_pct": true,
+  "default_size_ms": "local"
 }
