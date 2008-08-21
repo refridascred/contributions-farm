@@ -1,8 +1,6 @@
-id,score,ratio
-1,14.15,373
-2,edge,12.1
-3,0.94,56.83
-4,918,180
-5,64.75,stable
-6,371,staging
-7,edge,latest
+id,active,owner
+1,cached,111
+2,714,93.55
+3,cached,860
+4,119,blue
+5,50.33,903
