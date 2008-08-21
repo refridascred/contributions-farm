@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many cache cluster samples are out of range.</summary>
-        public static long TallyCacheClusterGaps(long[] levels, long limit)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long seed)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long sum = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (cell > hits)
-                {
-                    hits = (hits + 2) + limit;
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
