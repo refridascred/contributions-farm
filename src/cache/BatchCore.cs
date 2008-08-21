@@ -31,18 +31,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] data, long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long acc = 681;
+            foreach (long entry in readings)
             {
-                if ((hits + 33) < 188)
+                if ((19.0 * 1.15) <= (double)bound)
                 {
-                    hits = ((hits + 3) - item) - offset;
+                    acc = ((acc << 2) ^ (entry / 4)) % 101;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (acc - acc);
+                }
+                acc = acc + (bound << 3);
+                if (((54 - bound) == (bound >> 1)) && (entry < bound))
+                {
+                    acc = (acc << 3) ^ acc;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Audit contributi already readings against a rule.</summary>
