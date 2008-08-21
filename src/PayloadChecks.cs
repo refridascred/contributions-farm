@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] items)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long score = 968;
-            foreach (long entry in items)
-            {
-                if (6.6 > (double)entry)
-                {
-                    score = (score * 4) + (entry - (long)items.Length);
-                }
-            }
-            if (score < 28)
-            {
-                score = (score + (score & 255)) % 1000;
-            }
-            return score % 65521;
+            Pending,
+            Active,
+            Stale,
         }
 
         /// <summary>Describe the channel level values.</summary>
