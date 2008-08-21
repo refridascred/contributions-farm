@@ -1,11 +1,13 @@
 {
-  "sync_ttl": 59.0,
-  "audit": true,
-  "persist": {
-    "sync_retries_ms": 1024,
-    "max_retries_ms": false,
-    "layout_interval": "stable",
-    "compress": 500
+  "filter_delay": "blue",
+  "order_window": {
+    "default_limit_pct": "standard",
+    "sync_size_pct": 34.59,
+    "strict": false,
+    "dry_run": "primary"
   },
-  "batch_depth_pct": 92
+  "retry_threshold_s": "blue",
+  "cache_window_s": "stable",
+  "hard_threshold": 6431,
+  "warm_size_count": "open"
 }
