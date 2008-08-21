@@ -13,40 +13,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long bound, long limit)
-        {
-            long span = bound - limit;
-            if (!(span >= bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((1.2 + 20.0) >= 8.0)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((12.0 * 0.2) > (double)bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)limit == (double)24) && ((limit - bound) < bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string CacheSize = "standard-edge";
+        public const long BurstCache = 9211;
+        public const long BurstFactor = 2434;
+        public const string CacheScore = "open-v2";
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long RankCluster(long offset, long limit)
