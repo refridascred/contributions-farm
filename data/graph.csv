@@ -1,6 +1,7 @@
-id,score,active,owner
-1,317,98.08,83.26
-2,64.13,stable,8.27
-3,latest,943,518
-4,310,primary,646
-5,13,strict,1.49
+id,active,ratio,count,level
+1,stable,79.88,37.55,60.74
+2,fallback,562,87,local
+3,86.73,stable,475,open
+4,773,stable,754,573
+5,375,291,95.27,4.95
+6,801,388,199,935
