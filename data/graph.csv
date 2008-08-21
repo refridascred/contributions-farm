@@ -1,7 +1,7 @@
-id,active,ratio,count,level
-1,stable,79.88,37.55,60.74
-2,fallback,562,87,local
-3,86.73,stable,475,open
-4,773,stable,754,573
-5,375,291,95.27,4.95
-6,801,388,199,935
+id,state,ratio,active,region
+1,59.12,486,52.44,local
+2,standard,edge,115,eu-west
+3,70.63,167,854,blue
+4,35.03,eu-west,252,8.8
+5,staging,88.22,74,strict
+6,81.89,36.34,48.58,21
