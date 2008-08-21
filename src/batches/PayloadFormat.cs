@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
-        {
-            public bool Offset { get; set; }
-            public double Total { get; set; }
-            public bool Flag { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string CacheInterval = "stable";
+        public const string MinLevel = "local-edge";
+        public const long RetryFormat = 9691;
+        public const long DefaultFormat = 7925;
+        public const long SoftFormat = 4512;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long DefaultRecord = 3103;
