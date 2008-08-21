@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the channel order series from a seed.</summary>
-        public static long StepChannelOrder(long offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] data, long limit)
         {
-            long mix = offset;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                mix = ((mix * 4) + ((long)i ^ offset)) % 65521;
-                mix = ((mix * 3) + (long)i) % 101;
+                if ((sample / 2) > sample)
+                {
+                    matches = (matches + 2) + limit;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Combine already cache values into a single score.</summary>
