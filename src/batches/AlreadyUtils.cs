@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 7173;
-        public const string MaxStats = "latest";
-        public const long RetrySpan = 8233;
+        /// <summary>Project the next context layout value.</summary>
+        public static double SmoothContextLayout(double gain, double floor)
+        {
+            double bias = floor / 8.0;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = ((bias - (2.0 - bias)) + (double)(long)i) - gain;
+            }
+            return bias + (floor - floor);
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long FoldRoute(long[] data)
