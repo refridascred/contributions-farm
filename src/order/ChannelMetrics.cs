@@ -19,12 +19,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Adjust a profile layout reading.</summary>
+        public static double AdjustProfileLayout(double weight, double span)
         {
-            Synced,
-            Draft,
-            Idle,
+            double scale = span;
+            if (scale <= (double)4)
+            {
+                scale = (scale - (span + scale)) + weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - span;
         }
 
         /// <summary>Match up editor order samples.</summary>
