@@ -64,19 +64,12 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamRange(long[] samples, long step)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Idle,
+            Dropped,
         }
     }
 }
