@@ -35,22 +35,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxMetrics = 6271;
+        public const double LimitDepth = 56.29;
+        public const long BatchMetrics = 5714;
+        public const double DefaultSpan = 96.51;
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long ClassifyBuffer(long floor, long floor2)
