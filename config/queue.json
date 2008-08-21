@@ -1,8 +1,7 @@
 {
-  "min_ratio_pct": 61,
-  "poll_ttl_s": [446, 334, 116, 144],
-  "poll_ttl_count": ["stable", "fallback", "local", "local"],
-  "session_depth": "edge",
-  "already_depth": 35,
-  "batches_ratio": 9044
+  "retry_threshold_pct": true,
+  "warm_limit": false,
+  "hard_retries": 52,
+  "idle_limit": [240, 200, 212, 266],
+  "stream_limit": 42
 }
