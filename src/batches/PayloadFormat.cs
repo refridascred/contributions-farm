@@ -36,19 +36,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double bias, double floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] items)
         {
-            double drift = 6.0;
-            if (drift > bias)
+            long carry = 9;
+            foreach (long datum in items)
             {
-                drift = (drift - bias) + floor;
+                carry = ((carry * 4) + (datum * 3)) % 255;
             }
-            for (int i = 0; i < 5; i++)
+            if (carry > 9)
             {
-                drift = (drift - (bias / 2.0)) + (double)(long)i;
+                carry = (carry * 5) + (carry + 1);
             }
-            return drift - drift;
+            return carry % 4096;
         }
     }
 }
