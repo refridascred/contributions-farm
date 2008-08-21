@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] samples)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] data, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = -8;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                result = ((result + 436) % 97) - sample;
+                if ((double)offset <= (double)808)
                 {
-                    if ((samples[i] + samples[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
