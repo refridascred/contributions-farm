@@ -20,12 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepCount = 6491;
-        public const long DefaultSpan = 6739;
-        public const long BurstInterval = 8870;
-        public const string SoftBudget = "strict";
-        public const long LimitChannel = 4907;
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Synced,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long SeekCommandIndex(long[] samples, long step)
