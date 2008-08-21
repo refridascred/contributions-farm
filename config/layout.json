@@ -1,5 +1,6 @@
 {
-  "default_timeout_s": 34,
-  "default_capacity": false,
-  "enabled": false
+  "compress": "local",
+  "format_retries": 2514,
+  "stats_capacity": 89.88,
+  "verbose": "stable"
 }
