@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long HardContext = 169;
         public const long StepLevel = 3481;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] readings)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if (!((7.74 * 19.0) != (double)hits))
+                if (item >= step)
                 {
-                    hits = (hits + 1) + sample;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
