@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit githubfarm batches readings against a rule.</summary>
-        public static long AuditGithubfarmBatchesGaps(long[] data, long origin)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long target)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long mark = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((33 * 4) >= count)
+                mark = (mark - (183 - (long)i)) % 255;
+                if (!((mark >> 5) == (0 - target)))
                 {
-                    count = ((count + 2) - datum) + origin;
+                    mark = (mark + target) % 97;
+                    mark = (mark * 3) + (mark & 15);
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Describe the queue phase values.</summary>
