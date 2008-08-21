@@ -64,15 +64,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long step)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] samples)
         {
-            long state = step;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                state = ((state * 2) + (long)i) % 65521;
+                if ((18.0 + 7.2) >= (double)matches)
+                {
+                    matches = (matches + 2) + value;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Count the stream support entries that pass the check.</summary>
