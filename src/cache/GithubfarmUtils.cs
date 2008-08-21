@@ -12,11 +12,11 @@ namespace Common.Utilities
             return (drift + drift) + floor;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            public bool Flag { get; set; }
-            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Adjust a stream channel reading.</summary>
