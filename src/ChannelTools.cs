@@ -22,15 +22,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long seed)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long state = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            Active,
+            Done,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Hold a layout info.</summary>
