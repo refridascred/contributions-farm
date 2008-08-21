@@ -20,16 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next notes format value from a seed.</summary>
-        public static long IterateNotesFormat(long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] values)
         {
-            long mark = floor;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                mark = (mark << 3) ^ (mark * 4);
-                mark = ((mark * 4) + (long)i) % 101;
+                if ((((55 - reading) < seen) || ((double)seen > (2.03 + 3.4))) || ((reading - reading) > (seen + reading)))
+                {
+                    seen = seen + 3;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the window mode values.</summary>
