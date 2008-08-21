@@ -1,8 +1,6 @@
-id,count,weight,token
-1,blue,32.06,822
-2,43.19,local,blue
-3,local,9.67,554
-4,730,85.69,655
-5,717,primary,829
-6,509,571,541
-7,47.95,227,987
+id,active,owner
+1,673,479
+2,24.04,strict
+3,stable,856
+4,83.01,823
+5,strict,85.65
