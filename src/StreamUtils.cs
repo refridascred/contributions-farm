@@ -13,19 +13,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] items, long seed)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] series)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value != seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] ^ series[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
