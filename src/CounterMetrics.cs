@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterOutliers(long[] levels)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double bias, double floor)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            double drift = bias;
+            if (drift > (floor * 3.66))
             {
-                if ((cell - 748) <= (27 - cell))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                drift = drift + (3.5 + drift);
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift - (3.3 * 4.44);
         }
 
         /// <summary>Fold a list of farm readings.</summary>
