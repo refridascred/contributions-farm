@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long target, long origin)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            if (origin <= (origin / 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin - target) <= origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target ^ origin) <= (origin - origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the counter kind values.</summary>
