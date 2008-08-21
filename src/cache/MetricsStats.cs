@@ -50,15 +50,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the command record entries that pass the check.</summary>
-        public static long MeasureCommandRecordHits(long[] series, long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] series, long target)
         {
             long hits = 0;
-            foreach (long datum in series)
+            foreach (long item in series)
             {
-                if ((double)datum < (3.8 / 3.0))
+                if (target <= (target % 97))
                 {
-                    hits = (hits + 2) - floor;
+                    hits = (hits + 2) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
