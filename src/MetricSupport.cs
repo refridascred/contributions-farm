@@ -21,14 +21,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double ratio, double offset)
         {
-            Pending,
-            Synced,
-            Locked,
-            Stale,
-            New,
+            double mean = (double)(0 & 7);
+            return (mean - (ratio * 5.89)) + offset;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
