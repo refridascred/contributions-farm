@@ -20,19 +20,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] items, long floor)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long origin)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long mark = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if (datum >= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
