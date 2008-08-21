@@ -19,23 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] levels, long target)
+        /// <summary>Roll a editor batches counter forward.</summary>
+        public static long IterateEditorBatches(long step)
         {
-            long carry = 4;
-            foreach (long cell in levels)
+            long acc = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((372 / 2) < (carry >> 4))
-                {
-                    carry = ((carry ^ 975) % 65521) - cell;
-                    continue;
-                }
-                if (((target ^ carry) > (target + target)) && ((long)levels.Length == (carry ^ target)))
-                {
-                    carry = (carry ^ (0 - target)) % 97;
-                }
+                acc = (acc + (acc + acc)) % 97;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Validate profile filter readings against a bound.</summary>
