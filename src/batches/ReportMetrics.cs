@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long BatchSize = 9554;
         public const long CacheDepth = 7493;
 
-        /// <summary>Accumulate editor stats samples.</summary>
-        public static long TallyEditorStats(long[] values)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsMatches(long[] levels, long offset)
         {
-            long anchor = 3;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((item >= (item % 10)) || (item <= (anchor + anchor)))
+                if (!(offset < seen))
                 {
-                    anchor = (anchor + (anchor >> 4)) % 255;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return anchor % 4096;
+            return seen;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
