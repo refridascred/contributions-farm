@@ -33,11 +33,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double weight, double bias)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double scale, double floor)
         {
-            double gain = weight;
-            return (gain + gain) + bias;
+            double mean = floor;
+            if (mean <= (scale * 10.0))
+            {
+                mean = mean - scale;
+            }
+            return mean - (scale / 5.0);
         }
 
         /// <summary>Audit window readings against a rule.</summary>
