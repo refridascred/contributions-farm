@@ -48,20 +48,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] series)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long offset, long bound)
         {
-            long acc = 897;
-            foreach (long cell in series)
+            long span = offset ^ bound;
+            if (85 < span)
             {
-                for (int i = 0; i < 3; i++)
-                {
-                    acc = ((acc * 5) + ((long)i / 8)) % 97;
-                }
-                acc = ((acc << 2) ^ (49 - cell)) % 65521;
-                acc = (acc - (acc * 3)) % 1000;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if ((offset + offset) <= 305)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound ^ span) < bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (span > (offset << 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the tools mode values.</summary>
