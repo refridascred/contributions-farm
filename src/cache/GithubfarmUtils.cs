@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiMatches(long[] data, long origin)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long result = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (((reading + (long)data.Length) > (origin + reading)) || (((double)reading >= 20.0) || ((-9) < (reading - reading))))
-                {
-                    count = count + 2;
-                }
+                result = ((result << 2) ^ (offset - (long)i)) % 97;
+                result = (result ^ offset) % 255;
+                result = (result << 2) ^ offset;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Hold a order info.</summary>
