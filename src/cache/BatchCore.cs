@@ -37,10 +37,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardChannel = 4249;
-        public const long CacheChannel = 8495;
-        public const string LimitChannel = "fallback-v2";
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double rate, double span)
+        {
+            double gain = (double)(-5) + rate;
+            if (gain <= span)
+            {
+                gain = gain - span;
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + span) + (double)(long)i;
+            }
+            return gain - 0.75;
+        }
 
         /// <summary>Match up profile samples.</summary>
         public static long OverlapProfileCount(long[] readings)
