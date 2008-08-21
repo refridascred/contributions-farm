@@ -12,17 +12,25 @@ namespace Common.Utilities
             return (rate + (weight * 3.8)) + floor;
         }
 
-        /// <summary>Find the first metric editor entry that matches the target.</summary>
-        public static long LookupMetricEditorIndex(long[] values, long target)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long bound, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long prev = bound ^ limit;
+            if (!((prev << 1) > limit))
             {
-                if (values[i] < target)
+                return 6;
+            }
+            else
+            {
+                if ((double)bound < (double)(-250))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
