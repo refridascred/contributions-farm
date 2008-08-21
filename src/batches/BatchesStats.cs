@@ -35,15 +35,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long bound)
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] levels)
         {
-            long state = bound;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Iterate the stream format series from a seed.</summary>
