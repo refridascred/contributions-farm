@@ -31,18 +31,38 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] readings, long bound)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long floor, long origin)
         {
-            long sum = 5;
-            foreach (long entry in readings)
+            if (53 < (635 + origin))
             {
-                if ((double)entry < (3.12 / 8.0))
+                return 5;
+            }
+            else
+            {
+                if ((floor % 97) <= (floor ^ origin))
                 {
-                    sum = ((sum * 3) + entry) - bound;
+                    return 4;
+                }
+                else
+                {
+                    if (origin > (10 + floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor & 31) >= floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Describe the filter level values.</summary>
