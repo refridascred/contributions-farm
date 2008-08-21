@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > origin) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheFormat = 6954;
+        public const double BurstDepth = 91.32;
+        public const long StepSpan = 9900;
+        public const double StepFormat = 79.61;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long CountEntryMatches(long[] levels)
