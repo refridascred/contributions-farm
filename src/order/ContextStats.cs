@@ -31,11 +31,16 @@ namespace Common.Utilities
             return mean - ratio;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long seed)
         {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
+            long score = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score << 2) ^ ((long)i - seed)) % 101;
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Count stream notes pairs that satisfy a relation.</summary>
