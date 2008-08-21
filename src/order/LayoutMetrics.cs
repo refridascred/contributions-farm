@@ -28,13 +28,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public bool Flag { get; set; }
-            public double Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchTools = 84.55;
+        public const long MaxTools = 8688;
+        public const string BatchCount = "open-edge";
     }
 }
