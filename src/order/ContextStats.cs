@@ -43,16 +43,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a batch layout counter forward.</summary>
-        public static long RollBatchLayout(long target)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] samples, long offset)
         {
-            long carry = target;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry * 5) + carry) % 97;
-                carry = ((carry * 2) + (long)i) % 101;
+                if ((samples[i] < offset) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
