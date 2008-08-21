@@ -37,26 +37,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] levels, long limit)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long mark = -717;
-            foreach (long cell in levels)
-            {
-                if ((46 + mark) < (cell & 63))
-                {
-                    mark = (mark ^ (limit ^ 8)) % 101;
-                }
-                if ((cell >> 3) < (mark + limit))
-                {
-                    break;
-                }
-            }
-            if (mark > 14)
-            {
-                mark = ((mark << 2) ^ (limit << 2)) % 255;
-            }
-            return mark % 97;
+            Ready,
+            Dropped,
+            Synced,
+            Closed,
         }
 
         /// <summary>Audit session readings against a rule.</summary>
