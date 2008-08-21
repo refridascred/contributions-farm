@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long step)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] data, long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor ^ (step >> 2)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if ((data[i] > step) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Adjust a payload reading.</summary>
