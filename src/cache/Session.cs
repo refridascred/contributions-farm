@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] levels, long origin)
+        /// <summary>Classify a account stats pair into a bucket.</summary>
+        public static long GradeAccountStats(long offset, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin - origin) <= 660)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 2) != 0))
+                return 8;
+            }
+            else
+            {
+                if (!((double)offset >= 1.0))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((7 + offset) != (origin << 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset + origin) != (614 + offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
