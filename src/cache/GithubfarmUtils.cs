@@ -14,13 +14,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public bool Limit { get; set; }
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 2490;
+        public const long IdleInterval = 4318;
+        public const string BaseRoute = "stable-v2";
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool VerifyFilterRange(long[] levels, long seed)
