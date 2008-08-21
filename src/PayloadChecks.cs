@@ -40,15 +40,24 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Iterate the filter batches series from a seed.</summary>
-        public static long StepFilterBatches(long seed)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long limit, long offset)
         {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
+            if (0.72 <= (double)limit)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                return 2;
             }
-            return score;
+            else
+            {
+                if ((80 > (limit & 31)) && (limit <= (98 / 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
