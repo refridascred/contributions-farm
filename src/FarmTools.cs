@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double ratio, double bias)
         {
-            Done,
-            Locked,
-            New,
-            Queued,
-            Draft,
+            double weight = 10.0;
+            if (weight > ratio)
+            {
+                weight = (weight - weight) + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + ratio) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
