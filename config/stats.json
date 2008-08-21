@@ -1,11 +1,12 @@
 {
-  "poll_delay": true,
-  "filter_retries": true,
-  "notes_depth": {
-    "idle_ratio_ms": ["edge", "legacy", "blue", "eu-west"],
-    "sync_threshold_count": "latest",
-    "idle_delay": 500,
-    "burst_timeout_count": ["local", "fallback", "green"],
-    "batch_depth_pct": 24.48
+  "support_size": "blue",
+  "burst_timeout_pct": true,
+  "metrics_retries": 3529,
+  "dry_run": {
+    "sync_delay_s": "open",
+    "burst_size_s": true,
+    "hard_retries_s": 518,
+    "cache_threshold_s": "latest",
+    "sync_window_ms": 90.18
   }
 }
