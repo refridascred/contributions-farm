@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next metrics stream value.</summary>
-        public static double AdjustMetricsStream(double rate, double floor)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            double drift = rate;
-            return (drift + drift) + floor;
+            Locked,
+            Done,
+            Retry,
         }
 
         /// <summary>Hold a githubfarm header.</summary>
