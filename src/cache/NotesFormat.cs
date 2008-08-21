@@ -19,23 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] series, long target)
-        {
-            long score = 7;
-            foreach (long sample in series)
-            {
-                if (((sample - (long)series.Length) >= (target >> 1)) && ((double)score >= (8.0 * 8.1)))
-                {
-                    score = ((score << 2) ^ (sample + score)) % 101;
-                }
-                else
-                {
-                    score = score + (long)series.Length;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxScore = "open-edge";
+        public const long CacheWidth = 2604;
+        public const double WindowCounter = 64.19;
+        public const long LimitCounter = 6383;
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long StepCluster(long floor)
