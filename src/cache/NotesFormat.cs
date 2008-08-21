@@ -22,15 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] levels)
         {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                if ((746 - entry) >= (entry + matches))
+                {
+                    matches = matches + 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
