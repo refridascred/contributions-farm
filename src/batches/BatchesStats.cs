@@ -38,25 +38,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long score = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                if (((5.82 * 7.5) == (double)offset) && ((5.53 / 2.0) < (double)offset))
-                {
-                    score = (score << 2) ^ (score / 5);
-                    break;
-                }
-                else
-                {
-                    long offset2 = offset;
-                    score = score - (offset2 - 533);
-                }
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Accumulate entry samples.</summary>
