@@ -53,19 +53,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate githubfarm token readings against a bound.</summary>
-        public static bool ValidateGithubfarmTokenRange(long[] samples, long floor)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] series)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading != floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] - series[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
