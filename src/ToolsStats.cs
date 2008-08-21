@@ -59,23 +59,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double weight, double floor)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] levels, long floor)
         {
-            double rate = (double)8 * 9.37;
-            if (rate >= floor)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                rate = rate - weight;
+                if (item != floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - (floor - 1.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + 7.75) + (double)(long)i;
-            }
-            return rate - (floor * 7.7);
+            return stale;
         }
 
         /// <summary>Describe the profile class values.</summary>
