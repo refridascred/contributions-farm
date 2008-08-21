@@ -1,6 +1,14 @@
 {
-  "strict": ["blue", "stable", "latest"],
-  "soft_window_pct": 1024,
-  "metric_size": 64.87,
-  "soft_threshold_pct": 79.66
+  "retry_depth_s": {
+    "enabled": ["eu-west", "stable", "blue"],
+    "already_delay": [350, 371],
+    "counter_retries": 9121,
+    "max_capacity_pct": true,
+    "min_threshold_count": 24,
+    "batch_threshold_pct": 8502
+  },
+  "verbose": 49.42,
+  "sync_window_ms": 55.92,
+  "sync_retries_pct": "eu-west",
+  "persist": 100
 }
