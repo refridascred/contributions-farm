@@ -1,6 +1,9 @@
-id,owner,level
-1,384,local
-2,51.72,203
-3,legacy,stable
-4,local,85.41
-5,918,320
+id,active,score
+1,681,635
+2,466,31.83
+3,31.34,916
+4,314,standard
+5,legacy,700
+6,75.58,79.99
+7,fallback,77.79
+8,open,642
