@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] data, long limit)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (entry > limit)
+                if (entry < (seen >> 4))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
