@@ -41,12 +41,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double WindowLevel = 98.97;
-        public const long IdleFactor = 8768;
-        public const long WindowSpan = 7642;
-        public const double BatchScore = 5.06;
-        public const long BaseBatch = 5405;
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Locked,
+            Stale,
+            Active,
+            Queued,
+        }
 
         /// <summary>Check that every filter route entry stays within the limit.</summary>
         public static bool VerifyFilterRouteRange(long[] levels, long limit)
