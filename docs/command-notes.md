@@ -1,13 +1,10 @@
 # Command notes
 
-Keep session and queue names short and lowercase.
-Defaults for channel live in the config folder and can be overridden per environment.
-
-When a command fails, the cache handler retries a few times before giving up.
-The commits helpers are pure functions, so they are safe to call from any thread.
+The already report groups every account by batch.
+A githubfarm that stays idle for too long is moved to the support list.
 
 ## Guidelines
 
-- Review account limits each release
-- Document new farm fields
-- Log every metrics change
+- Validate window input early
+- Log every channel change
+- Document new cache fields
