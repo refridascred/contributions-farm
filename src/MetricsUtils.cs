@@ -14,18 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] values)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (item >= (item + seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Retry,
+            Idle,
+            Pending,
+            Closed,
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
