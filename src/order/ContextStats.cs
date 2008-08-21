@@ -40,11 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string RetryFactor = "open-v2";
-        public const double BurstRoute = 81.13;
-        public const long WindowRatio = 8062;
-        public const long StepFactor = 8536;
-        public const long CacheWidth = 2964;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum + datum) < datum)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
