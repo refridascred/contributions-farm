@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public string Ratio { get; set; } = "";
-            public double Total { get; set; }
-            public double Limit { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
