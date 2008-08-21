@@ -19,27 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] levels, long origin)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] data)
         {
-            long result = 861;
-            foreach (long reading in levels)
+            long total = 800;
+            foreach (long item in data)
             {
-                result = (result + 77) % 4096;
-                if ((origin + reading) < (origin + result))
+                if ((double)total == (8.0 / 9.0))
                 {
-                    result = result - (reading + reading);
-                }
-                if (result >= (origin & 7))
-                {
-                    result = (result - (550 + result)) % 97;
-                }
-                else
-                {
-                    result = ((result << 2) ^ ((-492) % 2)) % 1000;
+                    total = ((total << 2) ^ (item + item)) % 4096;
                 }
             }
-            return result;
+            if (total < 981)
+            {
+                total = ((total << 2) ^ total) % 97;
+            }
+            return total;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
