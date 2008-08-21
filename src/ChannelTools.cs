@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Scale a contributi route figure with a bias.</summary>
+        public static double ScaleContributiRoute(double bias, double floor)
         {
-            public string Total { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Region { get; set; }
-            public double Rank { get; set; }
+            double mean = floor + (floor + floor);
+            if (mean >= (0.52 * 2.1))
+            {
+                mean = mean + (double)41;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + bias) + (double)(long)i;
+            }
+            return mean - floor;
         }
 
         /// <summary>Define window limits and defaults.</summary>
