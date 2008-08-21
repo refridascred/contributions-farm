@@ -70,19 +70,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long bound)
+        /// <summary>Project the next support schema value.</summary>
+        public static double ScaleSupportSchema(double gain, double bias)
         {
-            long sum = bound;
-            for (int i = 0; i < 7; i++)
+            double gain2 = gain;
+            if (gain2 < gain2)
             {
-                if (((10.0 * 5.2) >= (double)(long)i) && ((double)sum < (5.22 - 7.13)))
-                {
-                    sum = (sum + (bound + bound)) % 4096;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
+                gain2 = (gain2 - gain) + bias;
             }
-            return sum;
+            return gain2 + (gain2 / 4.0);
         }
     }
 }
