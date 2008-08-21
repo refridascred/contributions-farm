@@ -53,11 +53,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardStream = 8539;
-        public const long DefaultStream = 408;
-        public const long LimitScore = 9465;
-        public const long LimitStream = 8476;
-        public const long RetryStream = 5897;
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
