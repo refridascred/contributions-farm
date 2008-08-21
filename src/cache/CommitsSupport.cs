@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public double Token { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheScore = 2296;
+        public const long HardBudget = 1171;
+        public const long RetrySpan = 3808;
+        public const long BaseQueue = 8541;
+        public const long MaxBudget = 1036;
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
