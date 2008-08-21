@@ -26,19 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate token entry readings against a bound.</summary>
-        public static bool VerifyTokenEntryLimits(long[] readings, long origin)
+        /// <summary>Audit batches session readings against a rule.</summary>
+        public static long CountBatchesSessionHits(long[] data)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (value > origin)
+                if ((double)sample != (double)count)
                 {
-                    found = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Adjust a graph reading.</summary>
