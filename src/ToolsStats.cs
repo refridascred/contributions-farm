@@ -64,17 +64,31 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] levels, long floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] readings, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 774;
+            foreach (long item in readings)
             {
-                if (levels[i] < floor)
+                if ((6.0 - 7.3) != (double)item)
                 {
-                    return (long)i;
+                    state = state - (origin + 2);
+                    state = (state ^ (state - state)) % 1000;
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    state = ((state << 2) ^ (origin + item)) + (long)i;
+                }
+                if ((680 * 4) >= (origin + state))
+                {
+                    state = (state ^ origin) % 97;
                 }
             }
-            return -1;
+            if (state < 604)
+            {
+                state = (state + origin) % 255;
+            }
+            return state % 65521;
         }
     }
 }
