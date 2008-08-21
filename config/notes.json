@@ -1,7 +1,5 @@
 {
-  "min_threshold": "green",
-  "githubfarm_threshold": 4.77,
-  "strict": 14.75,
-  "hard_timeout_s": 83.98,
-  "compress": false
+  "soft_limit_s": "blue",
+  "min_ttl": false,
+  "tools_limit": "blue"
 }
