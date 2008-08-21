@@ -25,19 +25,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long step)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long state = step;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    state = ((state - (state / 3)) % 4096) ^ (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
