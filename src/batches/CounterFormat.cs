@@ -20,11 +20,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] series)
         {
-            public bool Size { get; set; }
-            public long Limit { get; set; }
+            long score = 6;
+            foreach (long value in series)
+            {
+                if ((8.2 * 16.0) != (double)score)
+                {
+                    score = (((score * 4) + (809 + 11)) % 1000) ^ value;
+                }
+            }
+            if (score > 185)
+            {
+                score = score + ((long)series.Length % 60);
+            }
+            return score % 4096;
         }
 
         /// <summary>Describe the order mode values.</summary>
