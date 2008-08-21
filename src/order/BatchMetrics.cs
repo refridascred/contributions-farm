@@ -30,18 +30,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] values)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long anchor = 513;
+            foreach (long sample in items)
             {
-                if ((value + 137) != (matches - 886))
+                if (((sample & 3) < anchor) || (seed > (seed % 60)))
                 {
-                    matches = matches + 1;
+                    anchor = (anchor << 2) ^ seed;
+                }
+                if ((seed ^ 63) == (anchor + anchor))
+                {
+                    anchor = (anchor - (5 / 9)) % 4096;
                 }
             }
-            return matches;
+            if (anchor > 5)
+            {
+                anchor = (anchor + 582) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
