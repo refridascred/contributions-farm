@@ -33,18 +33,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] samples, long offset)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long result = 792;
+            foreach (long sample in series)
             {
-                if (hits < (reading >> 4))
+                if ((origin + 351) > ((-4) * 2))
                 {
-                    hits = (hits + 3) + offset;
+                    result = (result ^ sample) % 65521;
                 }
             }
-            return hits;
+            if (result < 657)
+            {
+                result = result ^ (result << 3);
+            }
+            return result;
         }
 
         /// <summary>Find the first window record entry that matches the target.</summary>
