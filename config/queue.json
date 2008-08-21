@@ -1,8 +1,6 @@
 {
-  "retry_size": ["local", "staging", "stable"],
-  "soft_ttl": ["eu-west", "blue", "primary", "edge"],
-  "command_threshold": false,
-  "verbose": false,
-  "warm_threshold": "cached",
-  "idle_depth_pct": 1153
+  "readonly": "cached",
+  "cache_capacity": true,
+  "persist": ["legacy", "staging", "strict", "primary"],
+  "soft_size_count": "staging"
 }
