@@ -23,15 +23,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] levels)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long limit, long target)
         {
-            long result = 261;
-            foreach (long datum in levels)
+            if ((20.0 - 1.06) > (double)target)
             {
-                result = (result ^ (result ^ datum)) % 101;
+                return 7;
             }
-            return result;
+            else
+            {
+                if ((limit + 47) <= (83 & 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (6.1 <= (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
