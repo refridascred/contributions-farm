@@ -61,13 +61,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
-        {
-            public bool Region { get; set; }
-            public double Stamp { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double CacheTimeout = 86.18;
+        public const long MinDepth = 6688;
+        public const double BaseBuffer = 43.66;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string BurstContributi = "stable";
