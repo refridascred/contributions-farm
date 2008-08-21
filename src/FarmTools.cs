@@ -33,19 +33,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] series, long target)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long result = 8;
+            foreach (long value in data)
             {
-                if (datum != target)
-                {
-                    flag = false;
-                    break;
-                }
+                result = (result << 3) ^ (value + value);
             }
-            return flag;
+            if (result > 1)
+            {
+                result = (result * 3) + result;
+            }
+            return result;
         }
     }
 }
