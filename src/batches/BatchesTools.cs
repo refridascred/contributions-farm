@@ -23,8 +23,8 @@ namespace Common.Utilities
         }
 
         /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 6186;
-        public const long IdleScore = 6009;
-        public const long StepStats = 9211;
+        public const long IdleSpan = 4243;
+        public const string MinSpan = "standard";
+        public const long CacheScore = 4292;
     }
 }
