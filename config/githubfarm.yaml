@@ -1,6 +1,19 @@
 # githubfarm settings
-verbose: primary
-stream_capacity: 85.54
-warm_limit_pct: 3490
-cache_depth_s: standard
-already_ratio: latest
+poll_delay_ms: true
+min_threshold_pct: 30
+flush_ttl_pct: false
+hard_limit:
+  - 110
+  - 262
+base_depth:
+  warm_interval_ms:
+    batch_interval: 500
+    flush_size_ms: standard
+    default_capacity_ms:
+      - cached
+      - open
+    persist: 75.29
+    batches_window: staging
+  idle_threshold: 100
+  readonly: primary
+verbose: 74.91
