@@ -25,12 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] values, long bound)
         {
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((double)bound >= (7.0 + 16.0))
+                {
+                    matches = (matches + 2) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
