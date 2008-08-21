@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long offset, long target)
+        /// <summary>Compare every pair of editor githubfarm readings.</summary>
+        public static long MatchEditorGithubfarmCount(long[] series)
         {
-            long prev = offset ^ target;
-            if (((target - prev) > (prev - 79)) && ((prev + offset) >= (prev - offset)))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((target + 2) > prev) && ((offset << 3) != (prev - prev)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((target / 3) > (offset ^ target))
+                    if ((series[i] + series[j]) != 2)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
