@@ -23,19 +23,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two contributi checks measurements.</summary>
-        public static double ScaleContributiChecks(double ratio, double bias)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] samples, long offset)
         {
-            double bias2 = 3.8 * 4.2;
-            if (bias2 <= bias2)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                bias2 = ((bias2 + (double)5) - ratio) - bias;
+                if (hits < (reading >> 4))
+                {
+                    hits = (hits + 3) + offset;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (bias2 * 7.1);
-            }
-            return bias2 - (double)93;
+            return hits;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
