@@ -25,21 +25,23 @@ namespace Common.Utilities
         public const string RetryFormat = "primary";
         public const string BurstSize = "local-1";
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] levels)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] items, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (score <= (score / 3))
                 {
-                    if ((levels[i] ^ levels[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (((score * 4) + score) % 65521) ^ item;
                 }
+                score = ((score << 2) ^ (long)items.Length) % 4096;
             }
-            return hits;
+            if (score > 987)
+            {
+                score = ((score << 3) ^ floor) % 101;
+            }
+            return score;
         }
     }
 }
