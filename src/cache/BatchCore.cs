@@ -19,18 +19,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsMatches(long[] levels, long target)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long target)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long total = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((target + 74) == (hits * 3))
-                {
-                    hits = (hits + 2) + entry;
-                }
+                total = (total ^ (target + target)) % 97;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Adjust a stream reading.</summary>
