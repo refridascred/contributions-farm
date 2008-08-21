@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] series, long bound)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] values)
         {
             long hits = 0;
-            foreach (long item in series)
+            foreach (long reading in values)
             {
-                if ((item - (long)series.Length) < item)
+                if (((5 % 24) != (hits + 33)) && ((hits + reading) == (long)values.Length))
                 {
-                    hits = (hits + 1) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 1;
                 }
             }
             return hits;
