@@ -28,21 +28,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of payload counter readings.</summary>
-        public static long OverlapPayloadCounterCount(long[] readings)
+        /// <summary>Derive the next cluster entry value from a seed.</summary>
+        public static long DeriveClusterEntry(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                anchor = ((anchor * 5) + ((long)i * 5)) % 4096;
+                if (((-20) ^ anchor) >= ((long)i / 6))
                 {
-                    if ((readings[i] + readings[j]) > 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
+                if (!(((long)i & 7) == (anchor & 127)))
+                {
+                    anchor = (anchor + (anchor / 3)) % 101;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
     }
 }
