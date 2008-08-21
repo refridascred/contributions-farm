@@ -28,11 +28,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowBudget = 6029;
-        public const long BatchStats = 8957;
-        public const double MaxStats = 0.07;
-        public const long CacheBudget = 3439;
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
+        {
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long MeasureCommandHits(long[] readings, long offset)
