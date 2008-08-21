@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] series, long seed)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (!!((seed + 307) != (datum << 2)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
