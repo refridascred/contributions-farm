@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double weight, double floor)
         {
-            Failed,
-            Paused,
-            Ready,
-            New,
-            Queued,
+            double rate = (double)((-205) + 463);
+            return (rate + (weight * 3.8)) + floor;
         }
 
         /// <summary>Find the first metric editor entry that matches the target.</summary>
