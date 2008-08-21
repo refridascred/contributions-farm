@@ -18,18 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] series, long target)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long step, long seed)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long span = step - seed;
+            if ((step % 3) == (span + step))
             {
-                if ((target ^ target) <= item)
+                return 1;
+            }
+            else
+            {
+                if ((1.28 / 2.0) == (double)seed)
                 {
-                    hits = hits + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (((double)span <= (4.16 + 12.0)) && ((double)seed <= 4.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
