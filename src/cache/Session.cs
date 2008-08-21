@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Classify a account stats pair into a bucket.</summary>
-        public static long GradeAccountStats(long offset, long origin)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long offset)
         {
-            if ((origin - origin) <= 660)
+            long state = offset;
+            for (int i = 0; i < 18; i++)
             {
-                return 8;
+                state = (state * 5) + (state & 3);
+                state = ((state * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (!((double)offset >= 1.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((7 + offset) != (origin << 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((offset + origin) != (614 + offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Fold a list of route readings.</summary>
