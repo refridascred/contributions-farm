@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] samples, long bound)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Paused,
+            Ready,
+            New,
+            Queued,
         }
 
         /// <summary>Find the first metric editor entry that matches the target.</summary>
