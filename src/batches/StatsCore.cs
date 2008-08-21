@@ -25,15 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] readings)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] readings, long seed)
         {
-            long acc = 1;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc - (reading << 3)) % 97;
+                if (readings[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Describe the record level values.</summary>
