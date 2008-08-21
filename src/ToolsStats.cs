@@ -84,12 +84,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Fold a list of format already readings.</summary>
+        public static long CombineFormatAlready(long[] values, long bound)
         {
-            Locked,
-            Idle,
-            Dropped,
+            long total = 854;
+            foreach (long sample in values)
+            {
+                if (!((total + sample) < (541 % 16)))
+                {
+                    total = ((total * 4) + bound) % 65521;
+                }
+            }
+            return total;
         }
     }
 }
