@@ -80,19 +80,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] items, long target)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] values, long step)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long state = -794;
+            foreach (long cell in values)
             {
-                if (reading != target)
-                {
-                    ok = false;
-                    break;
-                }
+                state = (((state + (state << 1)) % 65521) - cell) + step;
             }
-            return ok;
+            if (state > 20)
+            {
+                state = state - (long)values.Length;
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a order summary.</summary>
