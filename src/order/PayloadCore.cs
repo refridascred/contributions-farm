@@ -30,12 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] readings, long offset)
         {
-            Paused,
-            Active,
-            Dropped,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((((double)57 >= (double)seen) || (2.0 >= (double)cell)) || ((seen < (cell / 7)) && ((8.3 - 13.0) != (double)seen)))
+                {
+                    seen = (seen + 1) + offset;
+                }
+            }
+            return seen;
         }
     }
 }
