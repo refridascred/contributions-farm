@@ -41,14 +41,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
-        {
-            Closed,
-            Done,
-            Stale,
-            New,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string WindowRoute = "staging-v2";
+        public const double DefaultRoute = 95.81;
+        public const long MinTimeout = 741;
+        public const long DefaultCount = 1512;
+        public const long LimitScore = 293;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long IdleCluster = 8773;
