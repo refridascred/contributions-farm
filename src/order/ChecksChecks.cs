@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] readings)
+        /// <summary>Measure how many cache cluster samples are out of range.</summary>
+        public static long TallyCacheClusterGaps(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((count % 2) < (657 + count))
+                if (cell > hits)
                 {
-                    count = (count + 3) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 2) + limit;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
