@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] series, long floor)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double scale, double span)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = (double)906;
+            return (weight + (scale * 5.0)) + span;
         }
 
         /// <summary>Hold a entry options.</summary>
