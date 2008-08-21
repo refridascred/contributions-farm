@@ -44,19 +44,21 @@ namespace Common.Utilities
         public const double BatchChannel = 33.78;
         public const long IdleSpan = 3372;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] data, long bound)
+        /// <summary>Count command batch pairs that satisfy a relation.</summary>
+        public static long CompareCommandBatchCount(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] ^ items[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
