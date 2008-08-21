@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] series, long origin)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (origin <= (tally ^ origin))
-                {
-                    tally = (tally + 3) + item;
-                }
-            }
-            return tally;
+            New,
+            Queued,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Hold a stats entry.</summary>
