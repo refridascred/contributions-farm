@@ -29,12 +29,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] series)
         {
-            Locked,
-            Retry,
-            Dropped,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
