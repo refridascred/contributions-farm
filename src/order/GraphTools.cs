@@ -81,19 +81,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] values, long offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordMatches(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (entry > offset)
+                if ((reading + target) <= target)
                 {
-                    ready = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
