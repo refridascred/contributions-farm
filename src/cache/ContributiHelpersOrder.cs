@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] values, long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] values)
         {
-            long total = 7;
-            foreach (long sample in values)
+            long sum = 59;
+            foreach (long datum in values)
             {
-                if (((3 + 103) > total) || ((7.2 * 4.24) > (double)step))
-                {
-                    total = ((total + (27 % 5)) % 4096) ^ sample;
-                }
+                sum = ((sum + sum) % 65521) ^ datum;
             }
-            return total % 4096;
+            if (sum < 5)
+            {
+                sum = (sum << 2) ^ (0 >> 4);
+            }
+            return sum;
         }
 
         /// <summary>Hold a batch entry.</summary>
