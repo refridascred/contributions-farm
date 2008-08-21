@@ -1,5 +1,5 @@
 {
-  "retry_ttl": "strict",
-  "enabled": "staging",
-  "burst_delay_ms": 90
+  "default_threshold_count": [415, 371, 231, 110],
+  "context_retries": "staging",
+  "soft_ttl_ms": [223, 153, 365]
 }
