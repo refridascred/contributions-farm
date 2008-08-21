@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] samples, long target)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Active,
+            Failed,
+            Retry,
+            Stale,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
