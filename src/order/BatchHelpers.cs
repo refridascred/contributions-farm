@@ -23,21 +23,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of contributi report readings.</summary>
-        public static long MatchContributiReportCount(long[] levels)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Owner { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
