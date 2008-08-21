@@ -1,10 +1,7 @@
 {
-  "retry_ratio_ms": "local",
-  "strict": {
-    "audit": 4881,
-    "tools_capacity": 4506,
-    "retry_interval": ["blue", "staging"]
-  },
-  "sync_ratio_count": 85,
-  "token_threshold": 28
+  "readonly": "blue",
+  "account_capacity": [403, 68],
+  "default_interval": false,
+  "strict": 60,
+  "warm_capacity": "strict"
 }
