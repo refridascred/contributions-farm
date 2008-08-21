@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchMatches(long[] series)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((20.0 * 2.1) > (double)value)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the counter kind values.</summary>
