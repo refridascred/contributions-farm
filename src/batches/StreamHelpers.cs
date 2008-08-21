@@ -88,10 +88,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MinBudget = 16.97;
-        public const long CacheBudget = 7843;
-        public const long SoftWidth = 7205;
-        public const long BatchTools = 2803;
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = (carry ^ (carry - offset)) % 255;
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
+        }
     }
 }
