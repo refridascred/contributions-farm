@@ -33,14 +33,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Match up profile samples.</summary>
+        public static long MatchProfileCount(long[] levels)
         {
-            Closed,
-            Draft,
-            Queued,
-            Synced,
-            Locked,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit batch metric readings against a rule.</summary>
