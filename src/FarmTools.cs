@@ -33,12 +33,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] readings, long origin)
         {
-            Ready,
-            New,
-            Dropped,
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
