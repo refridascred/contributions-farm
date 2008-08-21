@@ -24,12 +24,22 @@ namespace Common.Utilities
             return load + (bias * 8.8);
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterOutliers(long[] items)
         {
-            public bool Size { get; set; }
-            public double Score { get; set; }
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((reading - reading) <= matches)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the metric status values.</summary>
