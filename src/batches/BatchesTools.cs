@@ -16,10 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxRatio = 3043;
-        public const double CacheWidth = 53.21;
-        public const long StepFarm = 3154;
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
+        {
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long IdleSpan = 4243;
