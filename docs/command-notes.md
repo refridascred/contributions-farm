@@ -1,12 +1,15 @@
 # Command notes
 
-When a route fails, the account handler retries a few times before giving up.
-Run the buffer check before changing any filter limits.
-Defaults for payload live in the config folder and can be overridden per environment.
+The cache report groups every filter by report.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Each token is validated before it reaches the graph queue.
+
+Defaults for report live in the config folder and can be overridden per environment.
+Defaults for profile live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new command fields
-- Validate token input early
-- Keep command values small
-- Prefer batch defaults
+- Review entry limits each release
+- Keep window values small
+- Document new token fields
+- Prefer cluster defaults
