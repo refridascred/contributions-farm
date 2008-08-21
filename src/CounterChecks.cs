@@ -65,18 +65,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksMatches(long[] items, long bound)
+        /// <summary>Grade a layout editor value against two limits.</summary>
+        public static long ClassifyLayoutEditor(long step, long bound)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long delta = step ^ bound;
+            if (delta <= 13)
             {
-                if ((double)matches < (12.0 + 6.36))
+                return 0;
+            }
+            else
+            {
+                if ((bound * 5) <= (bound + bound))
                 {
-                    matches = ((matches + 2) ^ cell) - bound;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)bound == (9.07 / 8.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((8.43 * 5.7) > (double)delta))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
