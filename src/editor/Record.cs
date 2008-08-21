@@ -40,31 +40,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long seed, long offset)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadMatches(long[] series, long step)
         {
-            if ((offset + offset) >= (36 * 4))
+            long count = 0;
+            foreach (long cell in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((97 - offset) < (225 + offset))
+                if (!((cell * 3) < (count + (-603))))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (seed >= (offset * 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = (count + 1) + step;
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
