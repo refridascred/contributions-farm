@@ -44,19 +44,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every support record entry stays within the limit.</summary>
-        public static bool VerifySupportRecordLimits(long[] samples, long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] levels, long offset)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (reading > origin)
+                if ((offset ^ offset) > (offset + hits))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
