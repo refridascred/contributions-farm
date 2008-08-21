@@ -27,18 +27,19 @@ namespace Common.Utilities
         public const long DefaultInterval = 2609;
         public const long SoftStats = 3338;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesGaps(long[] levels)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferBounds(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if ((count >> 5) != (count % 7))
+                if (sample <= origin)
                 {
-                    count = (count + 2) + cell;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Fold a list of route readings.</summary>
