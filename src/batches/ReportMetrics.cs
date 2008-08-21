@@ -11,25 +11,12 @@ namespace Common.Utilities
         public const long HardContext = 169;
         public const long StepLevel = 3481;
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long step, long seed)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long cur = step ^ seed;
-            if ((double)cur >= (7.6 * 8.7))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((1 - cur) != (cur + seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Ready,
+            Failed,
+            Synced,
         }
 
         /// <summary>Roll a payload counter forward.</summary>
