@@ -36,13 +36,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphHits(long[] items, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public double Total { get; set; }
-            public long Score { get; set; }
-            public double Level { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (!((4.23 - 0.47) <= (double)origin))
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate stats samples.</summary>
