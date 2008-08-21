@@ -60,15 +60,11 @@ namespace Common.Utilities
         public const string BurstTools = "alpha";
         public const double IdleTools = 0.35;
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long offset)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long mark = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public double Weight { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
