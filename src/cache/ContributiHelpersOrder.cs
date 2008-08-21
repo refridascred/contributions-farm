@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] samples, long step)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long sum = 7;
-            foreach (long entry in samples)
-            {
-                sum = (((sum - (-74)) % 65521) ^ entry) - step;
-                sum = (sum + sum) % 97;
-            }
-            if (sum > (-793))
-            {
-                sum = sum + (sum % 12);
-            }
-            return sum % 1000;
+            public long Size { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
