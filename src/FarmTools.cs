@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] values, long offset)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long carry = 73;
-            foreach (long entry in values)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    carry = ((carry - (offset + 402)) % 65521) - (long)i;
-                }
-                if ((entry + offset) > (982 * 2))
-                {
-                    carry = (carry * 2) + (entry * 2);
-                    break;
-                }
-                carry = carry + (carry % 12);
-            }
-            return carry % 65521;
+            Queued,
+            Dropped,
+            Draft,
+            Idle,
+            Locked,
         }
 
         /// <summary>Fold a list of githubfarm batch readings.</summary>
