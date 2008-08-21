@@ -1,11 +1,7 @@
 {
-  "max_window": 4.82,
-  "strict": "local",
-  "readonly": {
-    "sync_ttl_count": "eu-west",
-    "min_depth_pct": true,
-    "batch_ttl": 4617,
-    "warm_ttl": "stable",
-    "batch_depth_pct": 100
-  }
+  "poll_ratio": ["staging", "latest", "strict"],
+  "dry_run": 25.85,
+  "batches_capacity": 9.78,
+  "enabled": 59.67,
+  "default_depth": "primary"
 }
