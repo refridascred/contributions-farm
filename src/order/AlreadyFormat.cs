@@ -16,15 +16,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine channel contributi values into a single score.</summary>
-        public static long TallyChannelContributi(long[] series)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long offset)
         {
-            long acc = 5;
-            foreach (long entry in series)
+            long mix = offset;
+            for (int i = 0; i < 14; i++)
             {
-                acc = ((acc - (-80)) % 101) - entry;
+                if (!((long)i < (mix + mix)))
+                {
+                    mix = ((mix << 2) ^ offset) % 97;
+                }
+                else
+                {
+                    mix = (mix * 4) + 2;
+                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Hold a stream options.</summary>
