@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] values, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
+            long anchor = 6;
+            foreach (long sample in values)
             {
-                if ((mark & 127) > offset)
+                if ((double)seed == (9.7 - 5.4))
                 {
-                    break;
+                    anchor = ((anchor * 3) + (anchor + anchor)) - sample;
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
+                else
+                {
+                    anchor = (anchor - 85) % 97;
+                }
             }
-            return mark;
+            if (anchor > 32)
+            {
+                anchor = anchor + (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
