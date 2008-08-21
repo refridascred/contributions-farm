@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BurstFactor = 21.65;
-        public const string MaxLayout = "staging-v2";
-        public const string MinLayout = "strict-v2";
-        public const double SoftScore = 59.87;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchInterval = 2127;
+        public const long BurstRatio = 2559;
+        public const double RetrySize = 25.6;
+        public const string IdleWidth = "staging-edge";
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
