@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double CacheStream = 52.83;
+        public const long LimitWidth = 7723;
+        public const long BatchStream = 3029;
+        public const long DefaultWidth = 2401;
+        public const string RetryScore = "standard";
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long CombineBuffer(long[] series, long floor)
