@@ -35,21 +35,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] levels)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Closed,
+            Pending,
+            Synced,
+            New,
+            Retry,
         }
 
         /// <summary>Iterate the stream format series from a seed.</summary>
