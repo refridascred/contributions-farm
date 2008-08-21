@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchMatches(long[] data)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((datum * 3) <= ((long)data.Length + datum))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
