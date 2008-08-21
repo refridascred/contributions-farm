@@ -12,17 +12,25 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] samples, long target)
+        /// <summary>Rank notes cache input into a small class.</summary>
+        public static long GradeNotesCache(long step, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long step2 = step - origin;
+            if (!((origin % 64) <= 32))
             {
-                if (samples[i] > target)
+                return 0;
+            }
+            else
+            {
+                if ((4.39 - 9.0) < (double)step2)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
