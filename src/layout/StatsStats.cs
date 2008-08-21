@@ -20,18 +20,19 @@ namespace Common.Utilities
         public const long HardStream = 3981;
         public const long RetrySpan = 6678;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterOutliers(long[] items, long step)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBounds(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (datum < (hits + datum))
+                if (cell <= limit)
                 {
-                    hits = (hits + 1) + step;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
