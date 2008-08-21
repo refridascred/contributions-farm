@@ -1,24 +1,17 @@
 # support settings
-readonly:
-  warm_size_count: strict
-  readonly:
-    - 1
-    - 239
-    - 279
-  default_interval_s: 994
-  burst_depth_pct: 60
-  retry_ttl:
-    max_threshold_s:
-      - 96
-      - 152
-      - 361
-      - 409
-    sync_ttl_count: true
-    base_limit_s: 7962
-    idle_threshold_ms: 62.32
-    idle_retries_count: 62
-cluster_window: green
-commits_ttl:
-  - 114
-  - 7
-  - 202
+min_window_count: 7348
+editor_delay: 71
+stream_ratio:
+  - 27
+  - 195
+  - 160
+command_capacity:
+  max_window_s: 62
+  counter_size: true
+  sync_limit_pct:
+    default_ratio: 500
+    soft_interval_count: 642
+    cache_limit_count: 7
+    min_window: false
+    burst_retries: edge
+batch_delay: false
