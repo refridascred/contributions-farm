@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 9552;
-        public const long MinRatio = 6893;
-        public const long SoftSupport = 3452;
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] readings)
+        {
+            long state = 278;
+            foreach (long reading in readings)
+            {
+                if ((reading << 3) != ((long)readings.Length - (long)readings.Length))
+                {
+                    state = state - reading;
+                }
+                state = (state << 3) ^ (state << 2);
+            }
+            return state % 1000;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool VerifyLayoutRange(long[] items, long floor)
