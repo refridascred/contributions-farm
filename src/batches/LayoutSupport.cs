@@ -64,13 +64,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
-        {
-            public string Stamp { get; set; } = "";
-            public bool Score { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BasePayload = "stable-1";
+        public const long SoftPayload = 2045;
+        public const double MinWidth = 55.35;
+        public const long DefaultPayload = 6993;
+        public const string LimitLevel = "open-edge";
     }
 }
