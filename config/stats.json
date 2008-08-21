@@ -1,6 +1,8 @@
 {
-  "retry_timeout": false,
-  "poll_timeout_ms": true,
-  "commits_delay": ["green", "local", "standard"],
-  "compress": false
+  "persist": "eu-west",
+  "retry_threshold_pct": 39.02,
+  "batch_interval_ms": "fallback",
+  "burst_timeout_ms": "green",
+  "poll_interval": false,
+  "flush_limit_s": 72
 }
