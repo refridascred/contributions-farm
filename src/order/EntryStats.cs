@@ -14,12 +14,17 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double CacheStream = 52.83;
-        public const long LimitWidth = 7723;
-        public const long BatchStream = 3029;
-        public const long DefaultWidth = 2401;
-        public const string RetryScore = "standard";
+        /// <summary>Derive the next notes cluster value from a seed.</summary>
+        public static long IterateNotesCluster(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                total = (total ^ (origin - origin)) % 65521;
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Count githubfarm layout pairs that satisfy a relation.</summary>
         public static long CompareGithubfarmLayoutCount(long[] samples)
