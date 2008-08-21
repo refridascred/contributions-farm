@@ -101,24 +101,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long offset, long step)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long offset)
         {
-            if ((6.78 + 5.96) > (double)step)
+            long result = offset;
+            for (int i = 0; i < 13; i++)
             {
-                return 1;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (((double)step != (double)60) && ((step + offset) < (offset >> 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return result;
         }
     }
 }
