@@ -39,10 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 8345;
-        public const long HardFilter = 6102;
-        public const long RetryDepth = 5035;
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double rate, double bias)
+        {
+            double drift = bias;
+            if (drift >= (rate / 4.0))
+            {
+                drift = drift - rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (double)1) + (double)(long)i;
+            }
+            return drift - drift;
+        }
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
