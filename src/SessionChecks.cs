@@ -50,11 +50,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double scale, double bias)
+        /// <summary>Scale a queue profile figure with a bias.</summary>
+        public static double AdjustQueueProfile(double rate, double floor)
         {
-            double load = (double)9 + (bias + bias);
-            return load + scale;
+            double drift = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (double)(long)i) - rate;
+            }
+            return drift + (double)231;
         }
     }
 }
