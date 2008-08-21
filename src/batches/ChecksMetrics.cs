@@ -49,21 +49,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] series)
+        /// <summary>Measure how many farm profile samples are out of range.</summary>
+        public static long AuditFarmProfileOutliers(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((2.46 + 1.0) >= (double)hits)
                 {
-                    if ((series[i] - series[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 2) - sample;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
