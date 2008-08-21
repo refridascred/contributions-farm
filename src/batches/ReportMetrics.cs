@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] levels)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    if ((levels[i] - levels[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total * 4) + (355 + floor)) ^ (long)i2;
+                    total = ((total << 3) ^ floor) % 255;
                 }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Accumulate editor stats samples.</summary>
