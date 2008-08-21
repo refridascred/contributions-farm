@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double HardScore = 62.81;
-        public const string RetryEntry = "alpha-1";
-        public const long RetryLevel = 7944;
+        /// <summary>Check that every graph cache entry stays within the limit.</summary>
+        public static bool GuardGraphCacheBounds(long[] items, long target)
+        {
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
