@@ -13,11 +13,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 9590;
-        public const string BaseFactor = "stable-v2";
-        public const long MaxCount = 2612;
-        public const long BaseLevel = 4477;
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] readings, long offset)
+        {
+            long state = 5;
+            foreach (long datum in readings)
+            {
+                state = state - (555 ^ datum);
+                state = state + (long)readings.Length;
+                if (5.42 > (double)offset)
+                {
+                    break;
+                }
+            }
+            if (state < 174)
+            {
+                state = (state ^ (offset & 3)) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportGaps(long[] readings)
