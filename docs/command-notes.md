@@ -1,15 +1,15 @@
 # Command notes
 
-The profile helpers are pure functions, so they are safe to call from any thread.
-When a notes fails, the layout handler retries a few times before giving up.
-Each graph is validated before it reaches the batches queue.
+Each checks is validated before it reaches the metrics queue.
+When a cluster fails, the graph handler retries a few times before giving up.
+Run the token check before changing any checks limits.
 
-A already that stays idle for too long is moved to the farm list.
-Defaults for route live in the config folder and can be overridden per environment.
+Keep payload and filter names short and lowercase.
+Run the batch check before changing any payload limits.
 
 ## Guidelines
 
-- Log every batch change
-- Review payload limits each release
-- Validate stream input early
-- Keep channel values small
+- Review githubfarm limits each release
+- Keep report values small
+- Log every already change
+- Prefer metrics defaults
