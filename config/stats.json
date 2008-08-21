@@ -1,5 +1,7 @@
 {
-  "audit": 25,
-  "readonly": 1677,
-  "default_ratio_s": 100
+  "route_delay": [254, 373, 356],
+  "batch_ratio_count": false,
+  "layout_ttl": "strict",
+  "default_capacity_pct": 66.36,
+  "max_limit_s": 32
 }
