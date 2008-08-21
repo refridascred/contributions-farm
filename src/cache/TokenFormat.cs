@@ -28,18 +28,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] samples)
+        /// <summary>Compare every pair of payload counter readings.</summary>
+        public static long OverlapPayloadCounterCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((32 << 2) >= (item % 8))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((readings[i] + readings[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
