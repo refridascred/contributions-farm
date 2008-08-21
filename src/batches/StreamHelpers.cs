@@ -5,21 +5,29 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] levels)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((limit + anchor) < (limit - anchor))
                 {
-                    if ((levels[i] + levels[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor + (559 % 97)) % 101;
                 }
+                if (!((anchor + (long)i) != (anchor % 100)))
+                {
+                    anchor = anchor ^ 5;
+                    anchor = (anchor ^ (limit ^ limit)) % 97;
+                }
+                if (((long)i + limit) <= limit)
+                {
+                    anchor = (anchor + 254) % 97;
+                    anchor = (anchor << 3) ^ anchor;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
