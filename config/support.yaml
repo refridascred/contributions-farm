@@ -1,8 +1,7 @@
 # support settings
-warm_delay_pct:
-  - 285
-  - 111
-  - 220
-  - 88
-layout_size: local
-soft_threshold: true
+idle_window_s: latest
+default_delay: staging
+compress: 55
+audit: green
+poll_interval_s: true
+sync_delay_ms: local
