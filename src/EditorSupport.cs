@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Compare every pair of already tools readings.</summary>
-        public static long MatchAlreadyToolsCount(long[] series)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Grade a command value against two limits.</summary>
