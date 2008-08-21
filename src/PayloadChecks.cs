@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double StepCount = 70.28;
-        public const long CacheSpan = 1944;
-        public const long IdleScore = 6951;
-        public const long IdleSize = 8430;
+        /// <summary>Validate stream cache readings against a bound.</summary>
+        public static bool CheckStreamCacheRange(long[] samples, long floor)
+        {
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
