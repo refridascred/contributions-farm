@@ -59,12 +59,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] readings, long target)
         {
-            Idle,
-            Pending,
-            Stale,
+            long acc = 38;
+            foreach (long cell in readings)
+            {
+                if ((acc >> 1) <= (target - acc))
+                {
+                    acc = (acc + (196 % 97)) % 97;
+                }
+                else
+                {
+                    acc = (acc - (cell + target)) % 97;
+                }
+            }
+            return acc;
         }
     }
 }
