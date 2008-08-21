@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long seed, long origin)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] items, long bound)
         {
-            if (((origin + 52) < seed) || ((9.0 - 6.67) < (double)seed))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((origin % 3) >= origin))
+                if (((0.3 + 2.7) == (double)datum) || ((13.0 * 0.7) >= (double)tally))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    tally = (tally + 2) + bound;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
