@@ -47,11 +47,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] items)
         {
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
+            long carry = 0;
+            foreach (long cell in items)
+            {
+                carry = (carry * 4) + (carry + carry);
+                carry = ((carry << 3) ^ (cell + cell)) % 1000;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
