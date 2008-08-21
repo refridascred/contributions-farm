@@ -61,15 +61,15 @@ namespace Common.Utilities
         public const long MinDepth = 6688;
         public const double BaseBuffer = 43.66;
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double weight, double span)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long bound)
         {
-            double drift = weight / 2.0;
-            if (drift >= (weight - span))
+            long carry = bound;
+            for (int i = 0; i < 19; i++)
             {
-                drift = drift - weight;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return drift + (double)82;
+            return carry;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
