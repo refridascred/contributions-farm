@@ -27,12 +27,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BaseSize = "primary-v2";
-        public const string BurstSpan = "local-v2";
-        public const long SoftScore = 5996;
-        public const long IdlePayload = 7272;
-        public const string StepLevel = "stable-v2";
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] readings, long floor)
+        {
+            long mix = 8;
+            foreach (long reading in readings)
+            {
+                if (mix > (floor ^ reading))
+                {
+                    mix = (mix - (reading + floor)) % 101;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool ValidateEntryLimits(long[] readings, long seed)
