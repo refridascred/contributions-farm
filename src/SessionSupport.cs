@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a window record counter forward.</summary>
-        public static long DeriveWindowRecord(long limit)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double gain, double bias)
         {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
+            double rate = 7.12 * 18.0;
+            if (rate < bias)
             {
-                if (!!((long)i <= limit))
-                {
-                    state = (state << 3) ^ ((long)i % 60);
-                }
-                state = ((state * 2) + (long)i) % 1000;
+                rate = (rate + rate) + gain;
             }
-            return state;
+            return rate + (double)179;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
