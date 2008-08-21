@@ -34,18 +34,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] levels)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((entry >> 5) >= (5 + seen))
+                if ((datum >> 3) < (datum - 0))
                 {
-                    seen = seen + 3;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Project the next checks value.</summary>
