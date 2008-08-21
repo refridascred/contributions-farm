@@ -49,12 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Find the first support record entry that matches the target.</summary>
+        public static long FindSupportRecordIndex(long[] readings, long seed)
         {
-            New,
-            Done,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < seed) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
