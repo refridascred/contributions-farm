@@ -18,26 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter stats values into a single score.</summary>
-        public static long TotalCounterStats(long[] samples)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] samples)
         {
-            long mark = 999;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((mark - mark) <= (mark + mark))
+                if (!(((double)entry == (2.8 + 2.5)) && ((double)tally > (9.5 * 2.07))))
                 {
-                    mark = mark ^ (mark + datum);
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (datum ^ (-57))) % 97;
+                    tally = tally + 1;
                 }
             }
-            if (mark < (-81))
-            {
-                mark = (mark + mark) % 97;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Accumulate notes samples.</summary>
