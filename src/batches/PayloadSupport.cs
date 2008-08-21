@@ -19,22 +19,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] levels)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (((double)seen < (double)cell) || !((140 + seen) >= seen))
+                if ((count + 57) < (count + count))
                 {
-                    seen = seen + 3;
+                    count = (count + 3) ^ cell;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
