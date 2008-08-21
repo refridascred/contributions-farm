@@ -22,17 +22,23 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] levels, long seed)
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double bias, double bias2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = bias2 + (1.36 + 0.4);
+            if (weight < bias2)
             {
-                if (levels[i] <= seed)
-                {
-                    return (long)i;
-                }
+                weight = weight - (double)474;
             }
-            return -1;
+            else
+            {
+                weight = weight + (bias2 + 7.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - bias) + (double)(long)i;
+            }
+            return weight + 6.7;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
