@@ -25,13 +25,20 @@ namespace Common.Utilities
         public const double WindowCounter = 64.19;
         public const long LimitCounter = 6383;
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] data, long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
+            long score = -548;
+            foreach (long cell in data)
             {
-                score = ((score * 4) + (long)i) % 65521;
+                if (((double)bound >= 1.6) || ((bound >> 4) <= (bound * 5)))
+                {
+                    score = ((score - (bound & 1)) % 65521) + cell;
+                }
+                else
+                {
+                    score = (score + (404 * 4)) % 97;
+                }
             }
             return score;
         }
