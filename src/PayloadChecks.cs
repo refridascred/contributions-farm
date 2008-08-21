@@ -51,18 +51,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinTimeout = 9160;
+        public const string MinCache = "open-v2";
+        public const long BatchCache = 9751;
+        public const double MaxBudget = 71.95;
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long LocateToolsIndex(long[] levels, long seed)
