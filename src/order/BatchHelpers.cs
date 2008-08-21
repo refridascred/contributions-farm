@@ -19,22 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine token metric values into a single score.</summary>
-        public static long DigestTokenMetric(long[] data, long target)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] levels, long target)
         {
-            long score = 22;
-            foreach (long item in data)
+            long carry = 4;
+            foreach (long cell in levels)
             {
-                if (!((score - item) > (669 << 2)))
+                if ((372 / 2) < (carry >> 4))
                 {
-                    score = score ^ (target * 5);
+                    carry = ((carry ^ 975) % 65521) - cell;
+                    continue;
+                }
+                if (((target ^ carry) > (target + target)) && ((long)levels.Length == (carry ^ target)))
+                {
+                    carry = (carry ^ (0 - target)) % 97;
                 }
             }
-            if (score > (-617))
-            {
-                score = (score + (target + 818)) % 4096;
-            }
-            return score;
+            return carry;
         }
 
         /// <summary>Validate profile filter readings against a bound.</summary>
