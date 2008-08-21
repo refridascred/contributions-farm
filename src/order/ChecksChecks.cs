@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] readings, long origin)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (value >= (matches - origin))
+                if ((count % 2) < (657 + count))
                 {
-                    matches = matches + 2;
+                    count = (count + 3) ^ datum;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
