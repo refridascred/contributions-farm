@@ -39,9 +39,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetrySpan = 5809;
-        public const long RetryCache = 5390;
-        public const string BatchSize = "alpha-edge";
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 21; i++)
+            {
+                result = (result << 3) ^ (256 % 3);
+                result = ((result << 2) ^ (306 - step)) % 1000;
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
     }
 }
