@@ -13,13 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] items, long seed)
         {
-            Locked,
-            New,
-            Failed,
-            Done,
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
