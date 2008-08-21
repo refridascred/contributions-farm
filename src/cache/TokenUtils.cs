@@ -48,11 +48,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
+            public string Size { get; set; } = "";
+            public bool Score { get; set; }
             public long Token { get; set; }
-            public string Rank { get; set; } = "";
+            public bool Level { get; set; }
         }
     }
 }
