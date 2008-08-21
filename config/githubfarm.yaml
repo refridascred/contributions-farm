@@ -1,6 +1,5 @@
 # githubfarm settings
-hard_retries: 26
-channel_window: primary
-cache_retries_ms: 65.01
-flush_limit: 250
-warm_depth_ms: false
+idle_capacity_ms: 29
+cache_ttl_s: 82.49
+sync_delay_count: latest
+audit: 8821
