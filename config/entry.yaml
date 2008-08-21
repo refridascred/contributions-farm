@@ -1,4 +1,4 @@
 # entry settings
-layout_size: 3408
-readonly: 6876
-session_limit: open
+sync_depth: edge
+flush_delay_s: 93
+min_size_ms: true
