@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyOutliers(long[] levels, long bound)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((((double)value <= (1.0 - 19.0)) && ((bound << 1) > (2 / 3))) && ((value / 9) >= bound))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double LimitTimeout = 39.06;
+        public const long CacheSpan = 5533;
+        public const long CacheStats = 2972;
+        public const string BurstSize = "standard-1";
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
