@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] series, long bound)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] readings, long step)
         {
-            long result = 4;
-            foreach (long item in series)
+            long total = 404;
+            foreach (long reading in readings)
             {
-                if ((3 >> 4) == (result >> 1))
-                {
-                    result = (((result * 3) + (bound / 8)) % 101) ^ item;
-                }
+                total = (((total * 4) + (reading / 8)) % 101) + step;
             }
-            return result % 1000;
+            return total;
         }
 
         /// <summary>Hold a context options.</summary>
