@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate metrics window samples.</summary>
-        public static long ScoreMetricsWindow(long[] readings)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] values, long step)
         {
-            long anchor = 2;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor * 5) + (reading & 7);
+                if ((values[i] >= step) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many stats tools samples are out of range.</summary>
