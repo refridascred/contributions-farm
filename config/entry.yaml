@@ -1,11 +1,9 @@
 # entry settings
-poll_depth_ms: 3932
-default_size_pct:
-  - 162
-  - 377
-  - 143
-  - 479
-idle_depth_ms: stable
-checks_ratio: true
-default_window_pct: 4
-soft_depth_count: 1571
+compress: false
+command_size:
+  - green
+  - fallback
+audit: fallback
+batches_capacity:
+  - 53
+  - 182
