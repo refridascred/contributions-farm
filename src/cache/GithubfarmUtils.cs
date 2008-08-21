@@ -37,19 +37,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] readings, long bound)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long mix = 19;
-            foreach (long cell in readings)
-            {
-                mix = (mix << 2) ^ (cell & 63);
-            }
-            if (mix < 69)
-            {
-                mix = (mix + (bound % 2)) % 255;
-            }
-            return mix % 4096;
+            Locked,
+            Closed,
+            Synced,
+            New,
+            Pending,
         }
     }
 }
