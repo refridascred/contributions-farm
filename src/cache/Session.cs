@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] series)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long limit)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long state = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (!(((long)series.Length & 1) >= seen))
-                {
-                    seen = (seen + 1) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Measure how many buffer entry samples are out of range.</summary>
