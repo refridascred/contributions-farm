@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double gain, double bias)
-        {
-            double load = bias;
-            return (load + bias) + gain;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string SoftPayload = "cached-1";
+        public const long BasePayload = 3634;
+        public const long WindowPayload = 4433;
+        public const double StepPayload = 20.6;
+        public const long BaseWidth = 1263;
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
