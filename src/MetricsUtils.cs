@@ -41,16 +41,22 @@ namespace Common.Utilities
             return gain + (offset - offset);
         }
 
-        /// <summary>Roll a buffer filter counter forward.</summary>
-        public static long DeriveBufferFilter(long origin)
+        /// <summary>Digest a series of session format entries.</summary>
+        public static long TotalSessionFormat(long[] values)
         {
-            long carry = origin;
-            for (int i = 0; i < 17; i++)
+            long result = 2;
+            foreach (long cell in values)
             {
-                carry = carry - (long)i;
-                carry = ((carry * 4) + (long)i) % 101;
+                if ((result >> 3) == (676 - result))
+                {
+                    result = (result + ((long)values.Length + cell)) % 255;
+                }
             }
-            return carry;
+            if (result < 95)
+            {
+                result = (result + 341) % 4096;
+            }
+            return result % 65521;
         }
 
         /// <summary>Blend two order session measurements.</summary>
