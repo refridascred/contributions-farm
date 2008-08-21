@@ -35,16 +35,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long origin)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long anchor = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = ((anchor * 2) + (666 % 12)) % 101;
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            Queued,
+            Paused,
+            Done,
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
