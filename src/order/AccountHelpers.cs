@@ -6,9 +6,9 @@ namespace Common.Utilities
     public static class AccountHelpers
     {
         /// <summary>Define layout limits and defaults.</summary>
-        public const string CacheLayout = "strict";
-        public const long StepLevel = 3407;
-        public const double BaseFactor = 19.16;
+        public const double IdleInterval = 33.99;
+        public const string BaseLayout = "open";
+        public const long MaxWidth = 9088;
 
         /// <summary>Digest a series of command channel entries.</summary>
         public static long ScoreCommandChannel(long[] readings)
