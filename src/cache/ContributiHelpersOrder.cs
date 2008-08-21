@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricMatches(long[] series)
         {
-            Pending,
-            Locked,
-            Draft,
-            Failed,
-            Closed,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((cell ^ cell) >= (cell << 3))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
