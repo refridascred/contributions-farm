@@ -1,8 +1,7 @@
-id,weight,rank,score
-1,cached,79,cached
-2,52.56,standard,blue
-3,eu-west,legacy,standard
-4,96,152,879
-5,446,510,491
-6,eu-west,77.15,45.08
-7,50,345,763
+id,label,level,token,ratio
+1,71.33,open,621,local
+2,83.78,76.02,edge,630
+3,legacy,838,62.76,edge
+4,legacy,91.16,edge,19.63
+5,118,94.67,strict,795
+6,252,primary,strict,legacy
