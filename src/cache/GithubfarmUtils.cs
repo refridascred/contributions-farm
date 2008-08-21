@@ -34,13 +34,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long origin, long origin2)
         {
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            long slot = origin - origin2;
+            if ((origin2 ^ origin2) <= origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin ^ slot) >= (163 << 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
