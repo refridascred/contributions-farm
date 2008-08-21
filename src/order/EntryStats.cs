@@ -48,39 +48,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long offset, long bound)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] series, long step)
         {
-            long span = offset ^ bound;
-            if (85 < span)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset + offset) <= 305)
+                if (datum != step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound ^ span) < bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (span > (offset << 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
