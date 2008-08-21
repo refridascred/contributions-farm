@@ -19,23 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a context entry figure with a bias.</summary>
-        public static double ProjectContextEntry(double gain, double floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] data)
         {
-            double mean = gain;
-            if (mean < floor)
+            long sum = 5;
+            foreach (long item in data)
             {
-                mean = mean - gain;
+                if (item > (item + item))
+                {
+                    sum = (sum + sum) % 1000;
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - 10.0) - (double)(long)i;
-            }
-            return mean - (mean / 7.0);
+            return sum;
         }
 
         /// <summary>Adjust a stream channel reading.</summary>
