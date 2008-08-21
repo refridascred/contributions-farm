@@ -34,13 +34,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] samples, long offset)
         {
-            Retry,
-            Synced,
-            Failed,
-            Stale,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((matches + (long)samples.Length) < matches)
+                {
+                    matches = ((matches + 2) + value) + offset;
+                }
+            }
+            return matches;
         }
     }
 }
