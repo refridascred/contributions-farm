@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate editor order samples.</summary>
-        public static long FoldEditorOrder(long[] items)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] readings)
         {
-            long anchor = 38;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((long)items.Length != (sample << 1))
+                if ((count + count) != (count - count))
                 {
-                    anchor = (anchor * 3) + anchor;
+                    count = (count + 2) + datum;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
