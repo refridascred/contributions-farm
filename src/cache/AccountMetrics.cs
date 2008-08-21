@@ -54,9 +54,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 4399;
-        public const long SoftTools = 9380;
-        public const long LimitFactor = 4409;
+        public const double MinSpan = 77.52;
+        public const long HardRatio = 9629;
+        public const long MinBudget = 4887;
+        public const string BurstTools = "alpha";
+        public const double IdleTools = 0.35;
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long IterateContributi(long offset)
