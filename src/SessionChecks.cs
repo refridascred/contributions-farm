@@ -22,14 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] data, long limit)
         {
-            Done,
-            Failed,
-            Dropped,
-            Locked,
-            Draft,
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (((-11) + item) > ((-8) << 1))
+                {
+                    tally = (tally + 2) + limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a support entry sample.</summary>
