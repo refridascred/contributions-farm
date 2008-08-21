@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const long SoftAccount = 4991;
         public const long HardBudget = 870;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 45;
-        public const long HardScore = 668;
-        public const double StepAccount = 76.44;
-        public const long WindowAccount = 6145;
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((tally - entry) == (entry - entry))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BatchGraph = 3173;
