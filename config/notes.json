@@ -1,7 +1,12 @@
 {
-  "verbose": "green",
-  "enabled": true,
-  "default_timeout_s": "primary",
-  "editor_limit": 79.79,
-  "retry_threshold_s": [278, 245, 141, 45]
+  "min_window": "strict",
+  "poll_ttl": 9,
+  "flush_capacity_s": 35.43,
+  "batch_ttl": {
+    "dry_run": "local",
+    "min_window_ms": [45, 342, 232, 264],
+    "burst_size": ["blue", "primary"]
+  },
+  "warm_timeout_count": [318, 83, 447],
+  "verbose": ["strict", "primary", "eu-west", "fallback"]
 }
