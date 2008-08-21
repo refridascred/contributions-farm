@@ -38,18 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] samples)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long mix = 3;
-            foreach (long cell in samples)
-            {
-                if (((cell >> 2) > cell) || ((cell / 7) < (cell ^ mix)))
-                {
-                    mix = (mix - (mix + cell)) % 101;
-                }
-            }
-            return mix % 1000;
+            Draft,
+            Idle,
+            Done,
         }
     }
 }
