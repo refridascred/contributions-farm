@@ -1,7 +1,17 @@
 # support settings
-warm_retries_pct: true
-max_limit_pct: eu-west
-githubfarm_limit: false
-burst_timeout: strict
-audit: 38.23
-dry_run: 9916
+counter_interval: 25
+verbose:
+  default_threshold: 60
+  session_threshold: cached
+  default_retries_s:
+    - blue
+    - staging
+    - stable
+  cache_ratio_s: 96
+  filter_limit: true
+min_size:
+  token_interval: 100
+  min_timeout_s: false
+  verbose: true
+retry_threshold_ms: primary
+editor_size: 1.37
