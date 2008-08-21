@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchTimeout = 192;
-        public const long StepCount = 7027;
-        public const double MinSize = 21.65;
-        public const double BatchCache = 90.09;
-        public const long WindowCache = 2495;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] series)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (((double)item == (9.1 - 5.75)) && ((item % 2) >= (count & 127)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
