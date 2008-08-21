@@ -57,11 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double ratio, double offset)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long limit)
         {
-            double scale = ratio * 3.5;
-            return (scale + ratio) + offset;
+            long result = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
