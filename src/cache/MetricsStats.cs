@@ -35,12 +35,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string StepFactor = "alpha-edge";
-        public const long BaseCount = 1006;
-        public const long HardLevel = 6274;
-        public const long WindowInterval = 6599;
-        public const long BurstScore = 9844;
+        /// <summary>Define format limits and defaults.</summary>
+        public const double RetryRatio = 26.04;
+        public const long MinCount = 9739;
+        public const long StepFormat = 9051;
+        public const long MaxInterval = 2250;
 
         /// <summary>Count the command record entries that pass the check.</summary>
         public static long MeasureCommandRecordHits(long[] series, long floor)
