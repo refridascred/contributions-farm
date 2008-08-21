@@ -19,19 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate graph editor readings against a bound.</summary>
-        public static bool VerifyGraphEditorRange(long[] readings, long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] items, long limit)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (reading <= target)
+                if (66 <= matches)
                 {
-                    ok = false;
-                    break;
+                    matches = ((matches + 2) + sample) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Adjust a schema reading.</summary>
