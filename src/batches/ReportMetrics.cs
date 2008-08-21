@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long step, long origin)
-        {
-            long lane = step ^ origin;
-            if ((0.25 / 3.0) <= (double)lane)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((step + origin) == (step / 5)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((923 >> 5) < (origin * 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (0 <= step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 6730;
+        public const string MinRatio = "staging-1";
+        public const long MinSize = 5063;
+        public const long BaseGithubfarm = 3163;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long CountStatsHits(long[] samples)
