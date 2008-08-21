@@ -45,14 +45,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            Failed,
-            Queued,
-            Dropped,
-            Locked,
-            Synced,
+            public long Limit { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
