@@ -50,39 +50,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long origin, long step)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] items)
         {
-            long bound = origin ^ step;
-            if ((step & 15) <= 5)
+            long seen = 0;
+            foreach (long item in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)bound > 4.3) && (step >= origin))
+                if ((seen % 5) < (seen ^ seen))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((1.2 + 7.2) > (double)step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((0 * 5) > origin)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    seen = (seen + 3) - item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Project the next support schema value.</summary>
