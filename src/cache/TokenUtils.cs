@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long origin, long offset)
-        {
-            long next = origin + offset;
-            if ((9 < offset) || ((origin ^ offset) >= (next + next)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (4.3 > (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((75 & 1) <= offset) && (((-234) - next) < (origin / 8)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 457;
+        public const long RetryBudget = 2434;
+        public const string MinChecks = "standard-v2";
+        public const long BaseBudget = 869;
+        public const string RetryScore = "alpha-v2";
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool VerifyQueueLimits(long[] data, long step)
