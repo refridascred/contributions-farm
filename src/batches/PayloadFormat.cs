@@ -37,22 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] data)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] items)
         {
-            long mix = 29;
-            foreach (long item in data)
+            long state = -550;
+            foreach (long sample in items)
             {
-                if (!((mix + mix) <= mix))
+                if ((6.42 + 8.5) != (double)sample)
                 {
-                    mix = (((mix * 3) + mix) % 1000) ^ item;
+                    state = (state << 3) ^ (state + state);
                 }
             }
-            if (mix > (-36))
-            {
-                mix = (mix - (long)data.Length) % 65521;
-            }
-            return mix;
+            return state;
         }
     }
 }
