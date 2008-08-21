@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double weight, double span)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            double gain = (weight - weight) - span;
-            if (gain < weight)
-            {
-                gain = gain - (span * 8.0);
-            }
-            else
-            {
-                gain = gain - (double)8;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - span) - (double)(long)i;
-            }
-            return gain + (weight * 9.83);
+            public long Rank { get; set; }
+            public double Offset { get; set; }
+            public long Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
