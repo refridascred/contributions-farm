@@ -12,22 +12,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of checks farm readings.</summary>
-        public static long MatchChecksFarmCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 9590;
+        public const string BaseFactor = "stable-v2";
+        public const long MaxCount = 2612;
+        public const long BaseLevel = 4477;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportGaps(long[] readings)
