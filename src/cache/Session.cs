@@ -47,18 +47,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueMatches(long[] readings, long offset)
+        /// <summary>Look up the position of a entry record sample.</summary>
+        public static long LookupEntryRecordIndex(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)matches <= 4.0))
+                if ((values[i] < floor) && ((values[i] % 3) == 0))
                 {
-                    matches = ((matches + 2) ^ value) + offset;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
