@@ -28,15 +28,12 @@ namespace Common.Utilities
         public const long BatchAlready = 2989;
         public const long MaxLevel = 4673;
 
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double weight, double floor)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            double mean = floor / 5.0;
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (weight * 8.13)) + (double)(long)i;
-            }
-            return mean - mean;
+            public long Region { get; set; }
+            public string Weight { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
