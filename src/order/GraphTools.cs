@@ -18,19 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double rate, double bias)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] readings)
         {
-            double drift = bias;
-            if (drift >= (rate / 4.0))
+            long carry = 324;
+            foreach (long datum in readings)
             {
-                drift = drift - rate;
+                if ((double)(-5) > (double)(long)readings.Length)
+                {
+                    break;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (datum * 2)) % 65521;
+                    carry = ((carry * 4) + (datum - 869)) % 65521;
+                }
+                if ((carry / 4) < (carry - carry))
+                {
+                    carry = carry ^ carry;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (double)1) + (double)(long)i;
-            }
-            return drift - drift;
+            return carry;
         }
 
         /// <summary>Describe the session class values.</summary>
