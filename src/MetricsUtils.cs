@@ -14,13 +14,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Project the next support report value.</summary>
+        public static double SmoothSupportReport(double ratio, double span)
         {
-            Retry,
-            Idle,
-            Pending,
-            Closed,
+            double rate = span;
+            if (rate <= (double)46)
+            {
+                rate = rate - (double)0;
+            }
+            return rate + ratio;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
