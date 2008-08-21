@@ -33,18 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] series)
+        /// <summary>Compare every pair of filter account readings.</summary>
+        public static long CompareFilterAccountCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((8.0 - 0.57) != (double)entry) || ((matches <= (entry + 5)) && ((matches - (long)series.Length) != (entry / 7))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((samples[i] ^ samples[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
