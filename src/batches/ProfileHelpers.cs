@@ -23,18 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == seed) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 1795;
+        public const long RetryTimeout = 8072;
+        public const string DefaultMetric = "stable-1";
 
         /// <summary>Fold a list of support readings.</summary>
         public static long FoldSupport(long[] readings)
