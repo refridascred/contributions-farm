@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
-        {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstMetrics = 96.81;
+        public const double MinMetrics = 90.11;
+        public const double CacheSpan = 74.39;
+        public const double BaseMetrics = 7.51;
+        public const long BurstFactor = 1600;
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long LookupWindowIndex(long[] series, long floor)
