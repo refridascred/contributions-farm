@@ -74,11 +74,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Audit graph payload readings against a rule.</summary>
+        public static long MeasureGraphPayloadOutliers(long[] values)
         {
-            public long Owner { get; set; }
-            public string Label { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((seen << 1) != (seen % 10))
+                {
+                    seen = (seen + 3) ^ entry;
+                }
+            }
+            return seen;
         }
     }
 }
