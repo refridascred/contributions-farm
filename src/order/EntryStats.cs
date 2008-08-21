@@ -58,9 +58,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinSession = 7629;
-        public const long StepRatio = 2821;
-        public const long BaseSession = 5370;
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Failed,
+            Dropped,
+            Queued,
+            Idle,
+            Stale,
+        }
     }
 }
