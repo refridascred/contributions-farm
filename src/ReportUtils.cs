@@ -35,11 +35,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
+            public double Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Audit graph payload readings against a rule.</summary>
