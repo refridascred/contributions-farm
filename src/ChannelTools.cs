@@ -38,10 +38,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 1655;
-        public const long BatchLevel = 426;
-        public const long DefaultTimeout = 1269;
-        public const long BaseCount = 9397;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSpan = 4678;
+        public const long IdleSupport = 1008;
+        public const string SoftSupport = "stable-1";
+        public const double LimitSupport = 13.7;
     }
 }
