@@ -1,6 +1,4 @@
 # support settings
-warm_threshold_count: true
-max_limit: true
-metric_capacity: 6
-metrics_retries: green
-readonly: cached
+hard_threshold: 72
+payload_size: 100
+poll_retries_s: cached
