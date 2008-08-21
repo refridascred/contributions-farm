@@ -16,14 +16,11 @@ namespace Common.Utilities
             return load + (load * 0.96);
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            Synced,
-            Done,
-            Active,
-            Closed,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MinCount = "latest-edge";
+        public const string RetryFarm = "fallback-edge";
+        public const long DefaultFarm = 8142;
+        public const string WindowBudget = "fallback-v2";
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
