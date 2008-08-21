@@ -1,12 +1,7 @@
 {
-  "support_size": "blue",
-  "burst_timeout_pct": true,
-  "metrics_retries": 3529,
-  "dry_run": {
-    "sync_delay_s": "open",
-    "burst_size_s": true,
-    "hard_retries_s": 518,
-    "cache_threshold_s": "latest",
-    "sync_window_ms": 90.18
-  }
+  "min_retries_pct": true,
+  "contributi_timeout": "eu-west",
+  "max_limit": 30,
+  "hard_delay_pct": 9404,
+  "strict": ["eu-west", "open"]
 }
