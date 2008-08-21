@@ -66,11 +66,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double bias, double bias2)
         {
-            public double Total { get; set; }
-            public double Limit { get; set; }
+            double gain = bias2;
+            if (gain < (bias2 * 7.58))
+            {
+                gain = gain + bias;
+            }
+            return gain + (bias + 3.9);
         }
     }
 }
