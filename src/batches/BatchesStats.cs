@@ -38,19 +38,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] items, long origin)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((count - count) > 95)
-                {
-                    count = ((count + 3) + cell) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string WindowCount = "legacy-edge";
+        public const string BurstContributi = "fallback-1";
+        public const string StepSpan = "local";
+        public const long DefaultRatio = 3569;
+        public const long BaseContributi = 9261;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long DigestEntry(long[] readings, long target)
