@@ -20,20 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] levels, long target)
-        {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepCount = 6491;
+        public const long DefaultSpan = 6739;
+        public const long BurstInterval = 8870;
+        public const string SoftBudget = "strict";
+        public const long LimitChannel = 4907;
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long SeekCommandIndex(long[] samples, long step)
