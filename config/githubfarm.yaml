@@ -1,5 +1,5 @@
 # githubfarm settings
-enabled: 84
-cache_ratio_ms: 14
-sync_depth_s: 4776
-hard_threshold: 80.39
+hard_ttl_count: local
+min_interval_count: 4182
+soft_limit_ms: false
+retry_limit: blue
