@@ -57,21 +57,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the report metric series from a seed.</summary>
-        public static long DeriveReportMetric(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if (origin <= (long)i)
-                {
-                    state = (state ^ state) % 65521;
-                    state = ((state * 3) + (state + state)) % 1000;
-                }
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchRoute = "latest-1";
+        public const double BurstRoute = 93.87;
+        public const long SoftRoute = 2021;
 
         /// <summary>Match up schema samples.</summary>
         public static long CompareSchemaCount(long[] values)
