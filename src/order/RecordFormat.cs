@@ -50,25 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] samples)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] readings)
         {
-            long score = 0;
-            foreach (long entry in samples)
+            long acc = 52;
+            foreach (long datum in readings)
             {
-                if ((entry & 7) > entry)
+                if (acc < datum)
                 {
-                    score = (score - score) % 65521;
-                    score = score - (score >> 2);
-                    continue;
+                    acc = (acc << 3) ^ datum;
                 }
-                score = ((score << 2) ^ (score + entry)) % 4096;
             }
-            if (score < (-717))
-            {
-                score = (score << 2) ^ (long)samples.Length;
-            }
-            return score;
+            return acc % 97;
         }
     }
 }
