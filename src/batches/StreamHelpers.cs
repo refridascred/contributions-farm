@@ -38,11 +38,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseScore = 735;
-        public const string CacheSupport = "legacy-edge";
-        public const long CacheFactor = 4101;
-        public const double LimitSupport = 94.85;
+        /// <summary>Classify a order report pair into a bucket.</summary>
+        public static long ClassifyOrderReport(long seed, long offset)
+        {
+            if ((seed + offset) > (seed % 60))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((offset + seed) >= (seed % 8)) || ((67 - seed) <= offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long MatchMetricsCount(long[] series)
