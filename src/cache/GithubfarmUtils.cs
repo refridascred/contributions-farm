@@ -38,12 +38,16 @@ namespace Common.Utilities
             return mean - (mean / 7.0);
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseBatches = 11.16;
-        public const long MaxBatches = 4037;
-        public const string DefaultTimeout = "strict";
-        public const string HardBatches = "local-v2";
-        public const long BurstCount = 5326;
+        /// <summary>Adjust a stream channel reading.</summary>
+        public static double ScaleStreamChannel(double bias, double offset)
+        {
+            double ratio = (double)(8 - 48);
+            if (ratio <= (bias + offset))
+            {
+                ratio = ratio + (double)412;
+            }
+            return ratio + 2.85;
+        }
 
         /// <summary>Look up the position of a tools stream sample.</summary>
         public static long SeekToolsStreamIndex(long[] items, long origin)
