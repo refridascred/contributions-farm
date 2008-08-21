@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheScore = 2296;
-        public const long HardBudget = 1171;
-        public const long RetrySpan = 3808;
-        public const long BaseQueue = 8541;
-        public const long MaxBudget = 1036;
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
