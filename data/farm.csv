@@ -1,9 +1,6 @@
-id,label
-1,360
-2,42.6
-3,primary
-4,open
-5,473
-6,394
-7,648
-8,38.68
+id,ratio,score,label
+1,47.35,247,stable
+2,478,2.38,open
+3,local,standard,62.65
+4,153,292,344
+5,42.89,31.71,stable
