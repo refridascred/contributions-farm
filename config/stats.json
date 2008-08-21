@@ -1,12 +1,19 @@
 {
-  "base_interval": ["latest", "open"],
-  "channel_depth": 7957,
-  "default_limit_s": "local",
-  "strict": "legacy",
-  "filter_depth": 45.99,
-  "retry_ratio_ms": {
-    "stream_limit": 30,
-    "min_ratio": 1024,
-    "batch_threshold_pct": false
+  "max_depth": ["primary", "latest"],
+  "poll_depth_s": "fallback",
+  "metric_delay": "green",
+  "base_window_count": 77.4,
+  "audit": true,
+  "metrics_interval": {
+    "flush_capacity_ms": {
+      "max_timeout_s": [73, 259, 497, 204],
+      "batch_threshold_ms": 9449,
+      "githubfarm_limit": "primary",
+      "audit": 30,
+      "min_retries_ms": "fallback"
+    },
+    "hard_window_ms": 50.98,
+    "already_capacity": "cached",
+    "sync_limit": 94
   }
 }
