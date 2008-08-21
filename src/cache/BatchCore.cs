@@ -20,15 +20,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long origin)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 22; i++)
+            long state = seed;
+            for (int i = 0; i < 6; i++)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Match up channel samples.</summary>
