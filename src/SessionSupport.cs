@@ -33,11 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MinMetrics = "alpha-edge";
-        public const string BatchInterval = "legacy-v2";
-        public const long MinTimeout = 2503;
-        public const string BurstLevel = "latest-1";
-        public const long HardLevel = 3689;
+        /// <summary>Match up editor layout samples.</summary>
+        public static long PairEditorLayoutCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
