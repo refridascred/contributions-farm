@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            Done,
-            Ready,
-            Idle,
-            Queued,
-            Stale,
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Accumulate tools metrics samples.</summary>
