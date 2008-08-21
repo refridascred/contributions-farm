@@ -1,7 +1,7 @@
-id,rank,label
-1,80.79,strict
-2,27.05,green
-3,eu-west,31.71
-4,733,66.17
-5,19.96,424
-6,39.1,649
+id,rank,ratio,level
+1,415,768,stable
+2,blue,609,68.97
+3,latest,86,883
+4,open,479,fallback
+5,403,254,875
+6,74.78,46.4,954
