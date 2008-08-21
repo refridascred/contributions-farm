@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryBatch = 22.3;
-        public const double LimitRatio = 27.36;
-        public const long LimitBatch = 4064;
-        public const double IdleRatio = 77.32;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (!((77 >= ((long)series.Length ^ entry)) && ((6.0 - 3.88) < (double)entry)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
