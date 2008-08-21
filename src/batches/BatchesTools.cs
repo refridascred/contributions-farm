@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the editor layout series from a seed.</summary>
-        public static long SeriesEditorLayout(long limit)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
+            long score = floor;
+            for (int i = 0; i < 18; i++)
             {
-                acc = (acc - (long)i) % 4096;
-                acc = ((acc * 4) + (long)i) % 101;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Describe the editor level values.</summary>
