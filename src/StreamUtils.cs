@@ -41,22 +41,12 @@ namespace Common.Utilities
             return drift + (8.07 * 0.2);
         }
 
-        /// <summary>Count the report editor entries that pass the check.</summary>
-        public static long MeasureReportEditorHits(long[] samples, long offset)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)sample > (2.61 / 2.0))
-                {
-                    seen = (seen + 3) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
