@@ -20,18 +20,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] values)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long limit, long origin)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long slot = limit + origin;
+            if (origin >= 40)
             {
-                if ((((55 - reading) < seen) || ((double)seen > (2.03 + 3.4))) || ((reading - reading) > (seen + reading)))
+                return 7;
+            }
+            else
+            {
+                if (slot > (origin - limit))
                 {
-                    seen = seen + 3;
+                    return 1;
+                }
+                else
+                {
+                    if (((4.76 + 8.84) == (double)slot) && (origin > limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (limit <= (limit % 12))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the window mode values.</summary>
