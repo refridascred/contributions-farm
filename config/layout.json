@@ -1,5 +1,5 @@
 {
-  "base_timeout": 1024,
-  "soft_ttl_ms": "open",
-  "account_delay": 250
+  "sync_timeout_ms": "open",
+  "warm_delay": [471, 394, 467, 308],
+  "soft_window_pct": 51.72
 }
