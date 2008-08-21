@@ -34,15 +34,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double scale, double span)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            double weight = scale / 2.0;
-            if (weight < (0.9 / 4.0))
-            {
-                weight = (weight + (2.23 * 5.0)) - span;
-            }
-            return weight + (double)7;
+            Draft,
+            Idle,
+            Failed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Accumulate farm samples.</summary>
