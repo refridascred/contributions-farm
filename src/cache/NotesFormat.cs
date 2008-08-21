@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxScore = "open-edge";
-        public const long CacheWidth = 2604;
-        public const double WindowCounter = 64.19;
-        public const long LimitCounter = 6383;
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
