@@ -41,13 +41,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            New,
-            Dropped,
-            Closed,
-            Ready,
+            public long Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
