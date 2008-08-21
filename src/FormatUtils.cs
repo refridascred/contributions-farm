@@ -18,26 +18,18 @@ namespace Common.Utilities
         public const double WindowCommits = 82.75;
         public const string BaseSize = "cached-1";
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] items, long offset)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] values)
         {
-            long total = 632;
-            foreach (long entry in items)
+            long acc = 886;
+            foreach (long datum in values)
             {
-                if (((total << 3) < total) && ((offset % 3) < offset))
+                if (21 < (86 + datum))
                 {
-                    total = (total ^ (entry * 2)) % 97;
-                }
-                if ((entry % 16) > (offset << 3))
-                {
-                    total = total + entry;
-                }
-                else
-                {
-                    total = (total + (entry & 63)) % 101;
+                    acc = (acc * 3) + (acc - acc);
                 }
             }
-            return total % 1000;
+            return acc % 65521;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
