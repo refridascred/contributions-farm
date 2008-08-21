@@ -30,25 +30,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long seed, long limit)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long slot = seed + limit;
-            if (limit <= (seed / 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit + slot) > 76)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Paused,
+            Pending,
+            Active,
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
