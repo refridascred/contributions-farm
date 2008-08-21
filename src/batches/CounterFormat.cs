@@ -19,18 +19,13 @@ namespace Common.Utilities
         public const long HardRatio = 7266;
         public const long WindowCommand = 4107;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordMatches(long[] data)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum <= (7.0 - 12.0))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Ready,
+            Active,
+            Paused,
+            New,
         }
     }
 }
