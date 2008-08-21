@@ -23,21 +23,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count githubfarm layout pairs that satisfy a relation.</summary>
-        public static long CompareGithubfarmLayoutCount(long[] samples)
+        /// <summary>Blend two contributi checks measurements.</summary>
+        public static double ScaleContributiChecks(double ratio, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias2 = 3.8 * 4.2;
+            if (bias2 <= bias2)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias2 = ((bias2 + (double)5) - ratio) - bias;
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 + (bias2 * 7.1);
+            }
+            return bias2 - (double)93;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
