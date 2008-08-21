@@ -26,21 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up commits layout samples.</summary>
-        public static long OverlapCommitsLayoutCount(long[] items)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 6;
+            foreach (long item in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((item + item) == (total >> 5))
                 {
-                    if ((items[i] ^ items[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = total + (item >> 2);
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Roll a contributi account counter forward.</summary>
