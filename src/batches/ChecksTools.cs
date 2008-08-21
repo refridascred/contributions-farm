@@ -22,21 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] samples)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 6;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                total = ((total - total) % 4096) + target;
+                if (33 > (cell >> 5))
                 {
-                    if ((samples[i] - samples[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return total % 1000;
         }
 
         /// <summary>Hold a stats summary.</summary>
