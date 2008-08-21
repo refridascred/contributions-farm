@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmLimits(long[] data, long step)
         {
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Ratio { get; set; }
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
