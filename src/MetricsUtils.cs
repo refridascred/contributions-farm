@@ -19,11 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstDepth = 9352;
-        public const long WindowWidth = 4036;
-        public const long DefaultChecks = 3537;
-        public const long MaxWidth = 4828;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long target)
+        {
+            long mark = target;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = ((mark * 3) + target) % 101;
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long DigestGithubfarm(long[] series)
