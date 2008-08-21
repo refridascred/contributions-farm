@@ -50,32 +50,16 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long step, long target)
+        /// <summary>Roll a account session counter forward.</summary>
+        public static long StepAccountSession(long limit)
         {
-            long offset = step - target;
-            if ((double)offset > 9.8)
+            long mix = limit;
+            for (int i = 0; i < 5; i++)
             {
-                return 7;
+                mix = ((mix * 4) + limit) % 1000;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            else
-            {
-                if (offset <= (target - offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target >> 3) < (step - step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
