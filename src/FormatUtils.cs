@@ -70,18 +70,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterGaps(long[] items)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileLimits(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if ((sample << 2) <= (571 + count))
+                if (datum != offset)
                 {
-                    count = count + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
