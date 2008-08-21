@@ -28,19 +28,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate format window readings against a bound.</summary>
-        public static bool GuardFormatWindowLimits(long[] data, long offset)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] readings)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long acc = 6;
+            foreach (long cell in readings)
             {
-                if (item <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc + (acc << 3)) % 101) + cell;
             }
-            return flag;
+            return acc % 1000;
         }
     }
 }
