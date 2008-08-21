@@ -20,15 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a batches commits counter forward.</summary>
-        public static long SeriesBatchesCommits(long target)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] items)
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
+            long carry = 42;
+            foreach (long reading in items)
             {
-                total = ((total * 3) + (long)i) % 1000;
+                carry = (((carry * 4) + (525 << 1)) % 1000) ^ reading;
             }
-            return total;
+            if (carry < 24)
+            {
+                carry = (carry + carry) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate checks samples.</summary>
