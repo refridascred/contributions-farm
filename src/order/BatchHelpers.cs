@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphLimits(long[] readings, long origin)
         {
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
-            public double Offset { get; set; }
-            public long Mode { get; set; }
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
