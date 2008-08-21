@@ -20,12 +20,14 @@ namespace Common.Utilities
         public const double StepAccount = 76.44;
         public const long WindowAccount = 6145;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double RetrySession = 71.5;
-        public const string BaseInterval = "local-v2";
-        public const long DefaultSession = 8687;
-        public const long RetryLevel = 2715;
-        public const long BaseDepth = 4724;
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long TallyMetric(long[] items, long target)
