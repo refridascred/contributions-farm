@@ -74,9 +74,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string MaxFactor = "standard-1";
-        public const long BaseScore = 7649;
-        public const long RetryWidth = 5173;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (((42 >> 4) <= value) && ((value % 24) <= value))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
