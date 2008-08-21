@@ -42,22 +42,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] series)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] levels, long step)
         {
-            long score = 347;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (780 <= (entry / 4))
+                if ((value / 3) > (matches >> 2))
                 {
-                    score = (score - (score - entry)) % 4096;
-                }
-                else
-                {
-                    score = (score + entry) % 1000;
+                    matches = (matches + 1) - step;
                 }
             }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
