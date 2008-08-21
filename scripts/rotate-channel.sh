@@ -7,17 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
+for i in $(seq 1 8); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=62
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-local}"
+mode="${1:-primary}"
 case "${mode}" in
-    cached)
+    strict)
         log "fast path"
         ;;
     *)
