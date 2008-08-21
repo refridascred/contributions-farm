@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] levels)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportMatches(long[] data, long target)
         {
             long tally = 0;
-            foreach (long cell in levels)
+            foreach (long value in data)
             {
-                if ((tally % 2) == (tally + tally))
+                if ((target + 733) > value)
                 {
-                    tally = (tally + 1) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 2;
                 }
             }
             return tally;
