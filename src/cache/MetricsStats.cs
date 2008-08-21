@@ -26,12 +26,14 @@ namespace Common.Utilities
         public const long StepAccount = 7826;
         public const long LimitRatio = 1568;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxRatio = 8005;
-        public const double IdleGraph = 18.45;
-        public const string BatchGraph = "alpha";
-        public const long BatchSpan = 1961;
-        public const long HardGraph = 6672;
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public long Size { get; set; }
+            public bool Ratio { get; set; }
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string StepFactor = "alpha-edge";
