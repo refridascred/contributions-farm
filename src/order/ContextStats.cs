@@ -43,18 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] series)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long total = 6;
-            foreach (long item in series)
-            {
-                if ((item + item) == (total >> 5))
-                {
-                    total = total + (item >> 2);
-                }
-            }
-            return total;
+            public long Level { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Audit payload token readings against a rule.</summary>
