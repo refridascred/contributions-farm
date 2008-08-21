@@ -60,11 +60,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double rate, double floor)
         {
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            double ratio = (16.0 + 3.3) - rate;
+            if (ratio < floor)
+            {
+                ratio = ratio + (floor * 3.2);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + (3.2 / 2.0)) + (double)(long)i;
+            }
+            return ratio + floor;
         }
 
         /// <summary>Describe the order state values.</summary>
