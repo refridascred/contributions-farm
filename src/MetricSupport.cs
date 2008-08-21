@@ -48,13 +48,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            public double Owner { get; set; }
-            public long Level { get; set; }
-            public bool Count { get; set; }
-            public string Ratio { get; set; } = "";
+            Failed,
+            Ready,
+            Retry,
+            Done,
         }
     }
 }
