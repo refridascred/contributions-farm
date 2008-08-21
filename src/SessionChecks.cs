@@ -20,21 +20,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] levels)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] values, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 5;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((mix ^ 7) < (seed + value))
                 {
-                    if ((levels[i] + levels[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix ^ (mix * 5)) % 65521;
+                }
+                if (!(seed >= 732))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mix % 4096;
         }
 
         /// <summary>Look up the position of a support entry sample.</summary>
