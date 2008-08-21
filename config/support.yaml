@@ -1,4 +1,25 @@
 # support settings
-base_limit: primary
-dry_run: local
-audit: 250
+batch_limit: standard
+format_size: 30
+min_retries_pct:
+  - 364
+  - 399
+  - 245
+tools_ratio: 50.72
+enabled:
+  max_timeout_ms: 69.34
+  enabled: 97.7
+  idle_depth_count:
+    persist: 51.73
+    poll_capacity_count:
+      - 241
+      - 180
+    verbose: 42
+    warm_interval_s: primary
+    retry_timeout_pct: primary
+  retry_delay_pct:
+    - cached
+    - cached
+    - eu-west
+    - standard
+  burst_capacity_s: 70.4
