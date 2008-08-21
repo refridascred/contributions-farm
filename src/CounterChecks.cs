@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long limit, long offset)
         {
-            Failed,
-            Dropped,
-            Ready,
-            Active,
+            if ((limit ^ limit) < (limit << 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((15.0 - 2.3) >= (double)limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((limit >> 2) == (offset * 3)) && ((double)limit > (11.0 - 6.2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((limit - limit) >= 21))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate payload samples.</summary>
