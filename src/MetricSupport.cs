@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] values, long floor)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksLimits(long[] levels, long offset)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                if (reading != floor)
+                if (sample != offset)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Hold a contributi entry.</summary>
