@@ -1,32 +1,24 @@
 # support settings
-verbose:
-  flush_depth_count:
-    - edge
-    - local
-  idle_capacity:
-    stats_ratio: 500
-    tools_depth: 1739
-    min_delay: 100
-    sync_threshold_ms: 30
-  sync_delay_pct: true
-  readonly:
-    - 438
-    - 34
-    - 343
-    - 238
-persist: cached
 readonly:
-  retry_window_s:
-    - 434
-    - 338
-  base_ratio: true
-  cache_threshold: fallback
-  min_interval_pct: open
-  soft_ratio_s: 1504
-hard_threshold_ms:
-  hard_depth: false
-  order_size: 95.19
-  enabled: 569
-  sync_size_count: 14.29
-  verbose: 37
-base_delay: 92.26
+  warm_size_count: strict
+  readonly:
+    - 1
+    - 239
+    - 279
+  default_interval_s: 994
+  burst_depth_pct: 60
+  retry_ttl:
+    max_threshold_s:
+      - 96
+      - 152
+      - 361
+      - 409
+    sync_ttl_count: true
+    base_limit_s: 7962
+    idle_threshold_ms: 62.32
+    idle_retries_count: 62
+cluster_window: green
+commits_ttl:
+  - 114
+  - 7
+  - 202
