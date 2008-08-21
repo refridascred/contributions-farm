@@ -22,13 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Blend two command measurements.</summary>
+        public static double ProjectCommand(double scale, double offset)
         {
-            public double Count { get; set; }
-            public bool Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Region { get; set; } = "";
+            double scale2 = scale;
+            if (scale2 >= scale2)
+            {
+                scale2 = scale2 + 6.55;
+            }
+            else
+            {
+                scale2 = scale2 + (scale2 - offset);
+            }
+            return scale2 + 13.0;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
