@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long target)
+        /// <summary>Classify a notes checks pair into a bucket.</summary>
+        public static long SortNotesChecks(long origin, long origin2)
         {
-            long mix = target;
-            for (int i = 0; i < 7; i++)
+            long bound = origin ^ origin2;
+            if ((bound * 3) > origin)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if (2.0 <= (double)bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((7.83 + 1.5) != (double)origin2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of farm stream readings.</summary>
