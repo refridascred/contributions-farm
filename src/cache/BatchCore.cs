@@ -52,14 +52,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Dropped,
-            Idle,
-            Paused,
-            Done,
-            New,
+            public bool Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
