@@ -20,16 +20,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long bound)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long total = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                total = (total ^ (bound - 88)) % 4096;
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            Synced,
+            New,
+            Failed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Locate a format reading by value.</summary>
