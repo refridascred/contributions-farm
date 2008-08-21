@@ -22,19 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every buffer checks entry stays within the limit.</summary>
-        public static bool ValidateBufferChecksBounds(long[] levels, long floor)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading != floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] - samples[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Hold a stats summary.</summary>
