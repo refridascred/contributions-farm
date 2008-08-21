@@ -23,21 +23,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Iterate the format batches series from a seed.</summary>
-        public static long DeriveFormatBatches(long seed)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long result = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                result = (result - ((-4) << 2)) % 255;
-                if (!((90 - (long)i) > (long)i))
-                {
-                    result = ((result * 2) + seed) % 101;
-                    result = (result << 3) ^ (result * 3);
-                }
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            Stale,
+            Idle,
+            Locked,
+            Closed,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
