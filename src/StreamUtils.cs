@@ -36,14 +36,19 @@ namespace Common.Utilities
             return drift - (drift - ratio);
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Check that every already cache entry stays within the limit.</summary>
+        public static bool VerifyAlreadyCacheBounds(long[] levels, long offset)
         {
-            Draft,
-            Idle,
-            Failed,
-            Dropped,
-            Synced,
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate farm samples.</summary>
