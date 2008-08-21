@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine session already values into a single score.</summary>
-        public static long FoldSessionAlready(long[] data)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] values, long step)
         {
-            long score = -84;
-            foreach (long reading in data)
+            long total = 7;
+            foreach (long sample in values)
             {
-                if (2.6 >= (double)reading)
+                if (((3 + 103) > total) || ((7.2 * 4.24) > (double)step))
                 {
-                    score = (score * 5) + (42 / 6);
+                    total = ((total + (27 % 5)) % 4096) ^ sample;
                 }
             }
-            if (score > 44)
-            {
-                score = (score - score) % 65521;
-            }
-            return score % 65521;
+            return total % 4096;
         }
 
         /// <summary>Hold a batch entry.</summary>
