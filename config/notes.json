@@ -1,6 +1,8 @@
 {
-  "hard_ratio": 48,
-  "batches_ttl": "stable",
-  "cache_depth": 33.21,
-  "payload_size": false
+  "context_window": ["standard", "primary", "eu-west"],
+  "sync_retries": 100,
+  "soft_timeout_pct": 2,
+  "hard_delay_ms": 75.07,
+  "already_depth": 95.95,
+  "order_capacity": 100
 }
