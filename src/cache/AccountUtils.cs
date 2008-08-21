@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double weight, double floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] data)
         {
-            double rate = (double)((-205) + 463);
-            return (rate + (weight * 3.8)) + floor;
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((datum * 3) <= ((long)data.Length + datum))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
