@@ -29,23 +29,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] items, long floor)
-        {
-            long score = 0;
-            foreach (long item in items)
-            {
-                if (score <= (score / 3))
-                {
-                    score = (((score * 4) + score) % 65521) ^ item;
-                }
-                score = ((score << 2) ^ (long)items.Length) % 4096;
-            }
-            if (score > 987)
-            {
-                score = ((score << 3) ^ floor) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetrySpan = 5809;
+        public const long RetryCache = 5390;
+        public const string BatchSize = "alpha-edge";
     }
 }
