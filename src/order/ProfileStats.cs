@@ -16,22 +16,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the queue already entries that pass the check.</summary>
-        public static long CountQueueAlreadyGaps(long[] series, long offset)
+        /// <summary>Iterate the support account series from a seed.</summary>
+        public static long IterateSupportAccount(long limit)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (((tally + tally) >= offset) && ((item + 737) > 431))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
