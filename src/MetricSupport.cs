@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterHits(long[] values)
         {
-            Retry,
-            Idle,
-            Dropped,
-            New,
-            Locked,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((((297 % 100) >= (item + 5)) && ((tally >> 4) >= tally)) && ((tally <= (item ^ tally)) || (item < (640 + item))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
