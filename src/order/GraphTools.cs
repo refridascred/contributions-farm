@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            Locked,
-            Synced,
-            Done,
-            Dropped,
+            public string Owner { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
