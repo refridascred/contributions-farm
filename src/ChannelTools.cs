@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileMatches(long[] items, long limit)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesMatches(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (66 <= matches)
+                if ((846 ^ entry) != (count & 31))
                 {
-                    matches = ((matches + 2) + sample) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 2) + origin;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Adjust a schema reading.</summary>
