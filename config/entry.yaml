@@ -1,4 +1,8 @@
 # entry settings
-poll_ttl: true
-queue_capacity: latest
-payload_delay: 8251
+poll_ttl: 500
+counter_size:
+  min_size: eu-west
+  burst_capacity_count: 51
+  verbose: fallback
+poll_ttl_count: 95.2
+audit: standard
