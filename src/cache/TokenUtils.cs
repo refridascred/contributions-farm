@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] readings)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] values, long seed)
         {
-            long mark = 1;
-            foreach (long item in readings)
+            long result = 82;
+            foreach (long item in values)
             {
-                mark = ((mark << 2) ^ (item >> 2)) % 97;
+                if ((7.8 / 4.0) > (double)seed)
+                {
+                    result = ((result << 2) ^ (seed - item)) % 1000;
+                }
+                else
+                {
+                    result = ((result * 2) + (result - result)) % 255;
+                }
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Describe the graph class values.</summary>
