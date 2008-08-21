@@ -35,13 +35,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            public bool Region { get; set; }
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
+            Idle,
+            Locked,
+            Synced,
         }
 
         /// <summary>Describe the commits kind values.</summary>
