@@ -5,12 +5,29 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long offset)
         {
-            public bool Level { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                if (584 <= (sum >> 4))
+                {
+                    sum = (sum * 4) + (offset + 4);
+                }
+                if (sum >= 770)
+                {
+                    break;
+                }
+                else
+                {
+                    sum = (sum - (offset - 919)) % 4096;
+                    sum = (sum - offset) % 4096;
+                }
+                sum = (sum * 2) + ((long)i * 5);
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
