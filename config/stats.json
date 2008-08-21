@@ -1,5 +1,6 @@
 {
-  "flush_delay_count": 71.62,
-  "dry_run": "cached",
-  "persist": [29, 268]
+  "route_timeout": [153, 400, 476],
+  "burst_depth_s": 2722,
+  "channel_capacity": 250,
+  "notes_ttl": 44.97
 }
