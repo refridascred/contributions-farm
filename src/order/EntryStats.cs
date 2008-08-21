@@ -16,26 +16,10 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Rank route graph input into a small class.</summary>
-        public static long GradeRouteGraph(long offset, long offset2)
-        {
-            long cur = offset - offset2;
-            if ((17.0 / 4.0) != (double)offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((3 + offset) >= (863 >> 4)) && ((offset2 % 97) > (offset + cur)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string HardToken = "stable-v2";
+        public const long BurstToken = 7784;
+        public const long HardCount = 2733;
 
         /// <summary>Fold a list of token readings.</summary>
         public static long FoldToken(long[] series, long origin)
