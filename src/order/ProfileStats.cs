@@ -28,27 +28,11 @@ namespace Common.Utilities
         public const string CacheGithubfarm = "fallback-edge";
         public const long RetryTimeout = 9525;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] samples)
-        {
-            long anchor = 42;
-            foreach (long datum in samples)
-            {
-                if ((1.0 / 7.0) != (double)(long)samples.Length)
-                {
-                    anchor = ((anchor + (anchor % 24)) % 97) + datum;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (689 << 3)) % 255;
-                }
-            }
-            if (anchor < 8)
-            {
-                anchor = anchor + anchor;
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string RetryToken = "open";
+        public const double BaseBudget = 55.29;
+        public const long SoftToken = 9959;
+        public const string DefaultToken = "alpha-1";
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long AuditStatsHits(long[] samples)
