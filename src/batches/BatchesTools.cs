@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] readings)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long total = 5;
-            foreach (long item in readings)
-            {
-                total = ((total ^ total) % 97) + item;
-            }
-            return total;
+            Ready,
+            Dropped,
+            Active,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
