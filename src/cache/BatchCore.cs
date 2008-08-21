@@ -43,11 +43,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstMetrics = "primary-1";
-        public const long StepLevel = 7883;
-        public const long BaseMetrics = 3543;
-        public const long DefaultMetrics = 4419;
-        public const string WindowFactor = "local-1";
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
+        {
+            Dropped,
+            Idle,
+            Paused,
+            Done,
+            New,
+        }
     }
 }
