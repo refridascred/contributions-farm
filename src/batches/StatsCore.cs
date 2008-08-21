@@ -12,17 +12,13 @@ namespace Common.Utilities
         public const double BaseMetrics = 7.51;
         public const long BurstFactor = 1600;
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] series, long floor)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > floor) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public double Size { get; set; }
+            public string Total { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
