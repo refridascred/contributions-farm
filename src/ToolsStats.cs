@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] items, long limit)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] levels)
         {
             long matches = 0;
-            foreach (long cell in items)
+            foreach (long sample in levels)
             {
-                if ((cell % 10) == (limit % 60))
+                if (matches <= (sample ^ sample))
                 {
                     matches = matches + 1;
                 }
