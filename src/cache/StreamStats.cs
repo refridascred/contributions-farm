@@ -45,15 +45,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double weight, double span)
+        /// <summary>Scale a account payload figure with a bias.</summary>
+        public static double ScaleAccountPayload(double scale, double offset)
         {
-            double bias = weight / 4.0;
-            for (int i = 0; i < 8; i++)
+            double bias = offset;
+            if (bias <= bias)
             {
-                bias = ((bias - bias) + (double)(long)i) - span;
+                bias = (bias - (4.55 + bias)) + scale;
             }
-            return bias + (bias * 7.9);
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (8.0 * 1.1)) - (double)(long)i;
+            }
+            return bias - (offset + offset);
         }
     }
 }
