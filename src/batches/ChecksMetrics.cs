@@ -26,14 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
-        {
-            public bool Weight { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 1060;
+        public const long MinInterval = 6931;
+        public const string MinScore = "standard";
+        public const double SoftAccount = 31.51;
+        public const long MaxLevel = 5093;
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
