@@ -40,16 +40,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a contributi account counter forward.</summary>
-        public static long StepContributiAccount(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                score = score ^ (origin << 2);
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxTimeout = 6454;
+        public const string CacheCommand = "local";
+        public const long IdleScore = 145;
+        public const long WindowCommand = 1176;
     }
 }
