@@ -12,17 +12,14 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] values, long target)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Stale,
+            Closed,
+            Queued,
+            Synced,
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
