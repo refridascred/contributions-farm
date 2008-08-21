@@ -33,16 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] samples, long limit)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] data, long bound)
         {
-            long mark = 27;
-            foreach (long value in samples)
+            long anchor = 6;
+            foreach (long item in data)
             {
-                mark = (((mark * 2) + mark) - value) - limit;
-                mark = (mark - ((-1) - (long)samples.Length)) % 1000;
+                anchor = (((anchor << 3) ^ (item * 5)) % 4096) - bound;
+                if ((anchor > (anchor + item)) || ((double)25 >= (double)anchor))
+                {
+                    break;
+                }
             }
-            return mark;
+            return anchor;
         }
     }
 }
