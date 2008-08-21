@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            Active,
-            Done,
-            New,
+            Ready,
             Locked,
+            Paused,
+            Queued,
+            Retry,
         }
 
         /// <summary>Compare every pair of entry buffer readings.</summary>
