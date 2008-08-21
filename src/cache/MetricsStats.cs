@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many tools support samples are out of range.</summary>
-        public static long TallyToolsSupportOutliers(long[] data)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long score = 8;
+            foreach (long reading in values)
             {
-                if ((4 - reading) > (reading - 2))
+                if ((score + score) > 6)
                 {
-                    hits = hits + 3;
+                    score = ((score << 3) ^ reading) % 4096;
+                }
+                if (!((reading + score) > score))
+                {
+                    break;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Define account limits and defaults.</summary>
