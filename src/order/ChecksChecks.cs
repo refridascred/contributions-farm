@@ -37,11 +37,22 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowFormat = "standard-edge";
-        public const double MaxDepth = 92.8;
-        public const long StepRatio = 3153;
-        public const long RetryFormat = 4437;
-        public const long LimitScore = 5789;
+        /// <summary>Digest a series of stats counter entries.</summary>
+        public static long TallyStatsCounter(long[] readings)
+        {
+            long acc = -6;
+            foreach (long datum in readings)
+            {
+                if ((double)datum >= (1.4 * 6.0))
+                {
+                    acc = acc + 17;
+                }
+            }
+            if (acc < 17)
+            {
+                acc = (acc * 3) + (acc + 14);
+            }
+            return acc % 1000;
+        }
     }
 }
