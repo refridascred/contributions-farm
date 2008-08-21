@@ -36,19 +36,32 @@ namespace Common.Utilities
             return drift - (drift - ratio);
         }
 
-        /// <summary>Check that every already cache entry stays within the limit.</summary>
-        public static bool VerifyAlreadyCacheBounds(long[] levels, long offset)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long target, long floor)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long step = target ^ floor;
+            if ((7 - step) != (floor - floor))
             {
-                if (entry != offset)
+                return 2;
+            }
+            else
+            {
+                if (!(step > (floor - target)))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (step < (step + 66))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Accumulate farm samples.</summary>
