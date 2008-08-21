@@ -10,12 +10,23 @@ namespace Common.Utilities
         public const long WindowScore = 1762;
         public const double DefaultCount = 74.33;
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] values, long origin)
         {
-            Locked,
-            Paused,
-            Retry,
+            long total = -205;
+            foreach (long datum in values)
+            {
+                if ((43 % 8) <= (total / 5))
+                {
+                    total = (total * 5) + (total - total);
+                }
+                else
+                {
+                    total = total ^ datum;
+                }
+                total = ((total << 2) ^ (origin << 3)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
