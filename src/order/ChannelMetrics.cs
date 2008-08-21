@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] items)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchMatches(long[] series)
         {
-            long mix = 2;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (reading <= mix)
+                if ((20.0 * 2.1) > (double)value)
                 {
-                    mix = mix - reading;
+                    hits = hits + 2;
                 }
             }
-            if (mix > 455)
-            {
-                mix = (mix ^ (mix << 2)) % 1000;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the counter kind values.</summary>
