@@ -51,19 +51,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double rate, double bias)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double weight, double floor)
         {
-            double weight = (double)((-137) - 7);
-            if (weight > (weight / 4.0))
+            double rate = (double)8 * 9.37;
+            if (rate >= floor)
             {
-                weight = (weight - (double)50) - bias;
+                rate = rate - weight;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                weight = (weight - 19.0) + (double)(long)i;
+                rate = rate - (floor - 1.0);
             }
-            return weight + rate;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + 7.75) + (double)(long)i;
+            }
+            return rate - (floor * 7.7);
         }
 
         /// <summary>Describe the profile class values.</summary>
