@@ -42,11 +42,19 @@ namespace Common.Utilities
         public const double StepCommits = 92.9;
         public const string BatchSize = "fallback-v2";
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] readings, long step)
         {
-            public long Offset { get; set; }
-            public double Token { get; set; }
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
