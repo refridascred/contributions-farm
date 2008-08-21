@@ -64,9 +64,19 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 5401;
-        public const double SoftWidth = 91.05;
-        public const string BurstLevel = "staging-edge";
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamRange(long[] samples, long step)
+        {
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
