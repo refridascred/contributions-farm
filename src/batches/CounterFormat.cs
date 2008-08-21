@@ -52,19 +52,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordLimits(long[] samples, long limit)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Draft,
+            Dropped,
+            Active,
+            Stale,
         }
     }
 }
