@@ -26,16 +26,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double scale, double floor)
-        {
-            double mean = floor;
-            if (mean <= (scale * 10.0))
-            {
-                mean = mean - scale;
-            }
-            return mean - (scale / 5.0);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftInterval = 8773;
+        public const string DefaultSize = "legacy-v2";
+        public const string WindowLayout = "cached";
+        public const string MaxLayout = "open-1";
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long CountWindowHits(long[] samples, long origin)
