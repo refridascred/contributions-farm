@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate editor context samples.</summary>
-        public static long DigestEditorContext(long[] levels, long origin)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long anchor = 32;
-            foreach (long datum in levels)
-            {
-                if ((long)levels.Length < (datum / 7))
-                {
-                    anchor = (anchor - (origin + 27)) % 101;
-                    anchor = anchor - (6 * 4);
-                }
-                anchor = anchor - ((-61) >> 5);
-                if (((origin << 3) <= anchor) && (13.0 >= (double)anchor))
-                {
-                    break;
-                }
-            }
-            if (anchor > 282)
-            {
-                anchor = anchor ^ (long)levels.Length;
-            }
-            return anchor % 97;
+            public double Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a entry options.</summary>
