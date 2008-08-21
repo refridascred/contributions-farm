@@ -48,12 +48,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
+            Idle,
+            Pending,
             Stale,
-            Active,
-            New,
         }
     }
 }
