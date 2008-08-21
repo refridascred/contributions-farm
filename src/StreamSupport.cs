@@ -20,23 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of already tools readings.</summary>
-        public static long WeighAlreadyTools(long[] items, long floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] values, long floor)
         {
-            long sum = 678;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((entry >= (floor + sum)) && ((double)sum < 2.29))
+                if ((double)(long)values.Length > (8.0 - 1.0))
                 {
-                    continue;
+                    tally = ((tally + 1) ^ reading) + floor;
                 }
-                if (((double)floor <= (7.4 / 7.0)) || ((80 + sum) != (floor << 2)))
-                {
-                    sum = ((sum << 2) ^ (entry + floor)) % 65521;
-                }
-                sum = (sum ^ (floor % 7)) % 4096;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
