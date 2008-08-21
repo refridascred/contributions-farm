@@ -22,19 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] items, long limit)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (hits >= (hits % 60))
-                {
-                    hits = ((hits + 1) ^ datum) - limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BaseGithubfarm = "cached";
+        public const long WindowCount = 1336;
+        public const string CacheGithubfarm = "fallback-edge";
+        public const long RetryTimeout = 9525;
 
         /// <summary>Accumulate record samples.</summary>
         public static long CombineRecord(long[] samples)
