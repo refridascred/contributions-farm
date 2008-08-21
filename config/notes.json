@@ -1,5 +1,10 @@
 {
-  "audit": 470,
-  "sync_threshold": "cached",
-  "sync_threshold_pct": 28
+  "readonly": 30,
+  "metrics_size": {
+    "warm_ttl_count": false,
+    "sync_threshold_ms": true,
+    "retry_interval_pct": 2,
+    "base_timeout_count": "legacy"
+  },
+  "graph_timeout": [199, 256]
 }
