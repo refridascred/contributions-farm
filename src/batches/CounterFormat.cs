@@ -23,26 +23,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Digest a series of stream queue entries.</summary>
-        public static long WeighStreamQueue(long[] values)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordMatches(long[] data)
         {
-            long carry = 540;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((double)cell > (8.0 + 2.75))
+                if ((double)datum <= (7.0 - 12.0))
                 {
-                    carry = (carry - (1 + carry)) % 97;
-                }
-                if ((carry - cell) != (carry % 12))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            if (carry < 65)
-            {
-                carry = (carry + carry) % 97;
-            }
-            return carry % 97;
+            return hits;
         }
     }
 }
