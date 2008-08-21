@@ -12,12 +12,23 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Scale a context entry figure with a bias.</summary>
+        public static double ProjectContextEntry(double gain, double floor)
         {
-            Retry,
-            Stale,
-            Failed,
+            double mean = gain;
+            if (mean < floor)
+            {
+                mean = mean - gain;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - 10.0) - (double)(long)i;
+            }
+            return mean - (mean / 7.0);
         }
 
         /// <summary>Iterate the token cache series from a seed.</summary>
