@@ -31,19 +31,17 @@ namespace Common.Utilities
             return scale - (bias / 4.0);
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double rate, double span)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] levels, long target)
         {
-            double rate2 = rate;
-            if (rate2 < rate2)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate2 = rate2 + (span / 4.0);
+                if ((levels[i] > target) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 + span) - (double)(long)i;
-            }
-            return rate2 - rate2;
+            return -1;
         }
 
         /// <summary>Measure how many farm tools samples are out of range.</summary>
