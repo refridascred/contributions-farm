@@ -24,16 +24,17 @@ namespace Common.Utilities
             return load + (bias * 8.8);
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] levels, long target)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] series, long seed)
         {
-            long score = 3;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = ((((score << 2) ^ score) % 101) - reading) - target;
-                score = score ^ (score & 255);
+                if ((series[i] <= seed) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Describe the tools level values.</summary>
