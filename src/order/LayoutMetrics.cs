@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long origin, long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamMatches(long[] data)
         {
-            if ((double)limit == (9.62 / 5.0))
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit - limit) > (limit % 5))
+                if ((value ^ tally) != (value - value))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit << 3) < (origin ^ origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((double)origin == (1.3 / 6.0)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
