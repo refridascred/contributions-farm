@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long step)
         {
-            public string Stamp { get; set; } = "";
-            public bool Size { get; set; }
-            public string Score { get; set; } = "";
+            long state = step;
+            for (int i = 0; i < 23; i++)
+            {
+                state = ((state << 3) ^ ((long)i + state)) % 1000;
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
