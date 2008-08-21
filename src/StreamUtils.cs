@@ -13,11 +13,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public bool Label { get; set; }
-            public bool Weight { get; set; }
+            Active,
+            Queued,
+            Idle,
+            Stale,
+            Done,
         }
 
         /// <summary>Audit batches session readings against a rule.</summary>
