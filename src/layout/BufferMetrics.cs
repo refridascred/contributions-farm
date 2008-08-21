@@ -25,14 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Pending,
-            Active,
-            Dropped,
-            Locked,
-            Done,
+            public bool Limit { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the report kind values.</summary>
