@@ -20,14 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] values)
         {
-            Idle,
-            Stale,
-            Done,
-            Queued,
-            Draft,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((10 / 9) < (entry << 1))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
