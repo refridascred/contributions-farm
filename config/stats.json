@@ -1,6 +1,17 @@
 {
-  "batch_limit_s": ["standard", "green", "cached"],
-  "flush_limit_pct": 28.97,
-  "warm_retries_ms": "eu-west",
-  "max_interval_s": false
+  "batches_ttl": {
+    "readonly": 250,
+    "warm_retries_ms": {
+      "default_timeout_pct": 80,
+      "max_retries_s": "local",
+      "batch_depth": 87.26
+    },
+    "poll_timeout": false,
+    "min_size_pct": 250,
+    "verbose": "fallback"
+  },
+  "idle_threshold_s": 9432,
+  "default_retries_count": false,
+  "graph_ratio": true,
+  "batch_window_s": "stable"
 }
