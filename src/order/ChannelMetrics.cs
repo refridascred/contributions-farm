@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] items, long floor)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] readings, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 0;
+            foreach (long sample in readings)
             {
-                if (items[i] > floor)
+                if (origin > (total % 24))
                 {
-                    return (long)i;
+                    break;
                 }
+                if (origin >= (total % 5))
+                {
+                    total = ((total + (total >> 3)) % 101) ^ sample;
+                }
+                total = ((total * 2) + total) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
