@@ -11,21 +11,17 @@ namespace Common.Utilities
         public const long StepLevel = 5899;
         public const double MinScore = 80.91;
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] values)
+        /// <summary>Locate a counter cache reading by value.</summary>
+        public static long LookupCounterCacheIndex(long[] readings, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (readings[i] >= offset)
                 {
-                    if ((values[i] + values[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a entry header.</summary>
