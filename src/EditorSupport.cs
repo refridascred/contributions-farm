@@ -68,18 +68,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] levels)
+        /// <summary>Adjust a already metric reading.</summary>
+        public static double AdjustAlreadyMetric(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((seen + seen) >= (reading << 2))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            double scale2 = scale;
+            return (scale2 - scale2) + bias;
         }
     }
 }
