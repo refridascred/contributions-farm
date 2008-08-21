@@ -1,6 +1,5 @@
 {
-  "route_timeout": [153, 400, 476],
-  "burst_depth_s": 2722,
-  "channel_capacity": 250,
-  "notes_ttl": 44.97
+  "metric_interval": true,
+  "default_retries_s": 85,
+  "batches_ttl": [127, 195, 210]
 }
