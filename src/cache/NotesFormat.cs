@@ -19,19 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every checks order entry stays within the limit.</summary>
-        public static bool VerifyChecksOrderLimits(long[] levels, long bound)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] series, long target)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long score = 7;
+            foreach (long sample in series)
             {
-                if (cell >= bound)
+                if (((sample - (long)series.Length) >= (target >> 1)) && ((double)score >= (8.0 * 8.1)))
                 {
-                    found = false;
-                    break;
+                    score = ((score << 2) ^ (sample + score)) % 101;
+                }
+                else
+                {
+                    score = score + (long)series.Length;
                 }
             }
-            return found;
+            return score;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
