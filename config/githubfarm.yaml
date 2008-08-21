@@ -1,15 +1,11 @@
 # githubfarm settings
-editor_timeout:
-  - 47
-  - 62
-  - 193
-strict:
-  counter_timeout: edge
-  batches_interval: 80
-  max_capacity_pct: 46
-  compress: blue
-  base_limit_s: local
-batch_retries_pct: strict
-burst_depth_s: staging
-cluster_ttl: fallback
-dry_run: staging
+retry_window_count: 5064
+verbose: latest
+retry_limit: primary
+sync_timeout_s: standard
+cache_interval: standard
+cluster_retries:
+  - fallback
+  - primary
+  - open
+  - legacy
