@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of editor githubfarm readings.</summary>
-        public static long MatchEditorGithubfarmCount(long[] series)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 17;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (bound >= (item + item))
                 {
-                    if ((series[i] + series[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = total + (item + 80);
                 }
             }
-            return seen;
+            return total % 65521;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
