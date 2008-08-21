@@ -1,6 +1,8 @@
 {
-  "audit": 100,
-  "sync_timeout_s": "green",
-  "sync_threshold": 37.55,
-  "batch_window_ms": 93
+  "default_ttl_ms": "fallback",
+  "soft_capacity_pct": false,
+  "batch_delay": "eu-west",
+  "enabled": "open",
+  "idle_depth_s": "open",
+  "support_retries": 96
 }
