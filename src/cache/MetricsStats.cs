@@ -35,11 +35,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double RetryRatio = 26.04;
-        public const long MinCount = 9739;
-        public const long StepFormat = 9051;
-        public const long MaxInterval = 2250;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] values, long limit)
+        {
+            long carry = 80;
+            foreach (long sample in values)
+            {
+                if (!(sample > (carry - carry)))
+                {
+                    carry = carry ^ (limit ^ limit);
+                }
+                else
+                {
+                    carry = (carry - (carry - carry)) % 1000;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Count the command record entries that pass the check.</summary>
         public static long MeasureCommandRecordHits(long[] series, long floor)
