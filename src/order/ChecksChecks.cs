@@ -15,19 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] values, long bound)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long offset)
         {
-            long state = 611;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state ^ (state ^ bound)) + value;
+                if ((values[i] <= offset) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state < 6)
-            {
-                state = state + (bound - 0);
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
