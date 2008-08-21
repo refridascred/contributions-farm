@@ -50,11 +50,13 @@ namespace Common.Utilities
             return gain - (floor / 4.0);
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double gain, double span)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            double drift = (double)(89 + 984);
-            return ((drift - 7.62) + gain) + span;
+            public long Mode { get; set; }
+            public bool Limit { get; set; }
+            public double Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the command state values.</summary>
