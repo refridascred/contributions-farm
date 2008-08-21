@@ -26,19 +26,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] series)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long limit, long floor)
         {
-            long total = 12;
-            foreach (long value in series)
+            long delta = limit ^ floor;
+            if ((limit - delta) >= (2 - floor))
             {
-                total = (((total * 3) + (total >> 5)) % 97) - value;
-                if (((long)series.Length % 10) == (total & 3))
+                return 3;
+            }
+            else
+            {
+                if ((delta * 2) <= limit)
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((46 + delta) > (limit * 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((delta * 5) < floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Blend two notes buffer measurements.</summary>
