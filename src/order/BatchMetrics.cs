@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double bias, double bias2)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            double mean = bias;
-            if (mean < bias2)
-            {
-                mean = mean - (mean * 1.45);
-            }
-            return mean - (bias2 / 4.0);
+            Retry,
+            Stale,
+            Pending,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
