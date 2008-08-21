@@ -66,12 +66,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public bool Level { get; set; }
-            public double Size { get; set; }
-            public bool Rank { get; set; }
+            New,
+            Dropped,
+            Closed,
+            Ready,
         }
 
         /// <summary>Define route limits and defaults.</summary>
