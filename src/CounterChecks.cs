@@ -67,17 +67,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 3731;
+        public const long MinGithubfarm = 4463;
+        public const long BaseInterval = 629;
+        public const long MaxScore = 4100;
+        public const double MaxSpan = 5.76;
     }
 }
