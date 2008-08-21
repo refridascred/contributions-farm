@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleInterval = 9335;
-        public const long LimitLevel = 4708;
-        public const string BurstNotes = "cached-v2";
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long seed, long origin)
+        {
+            if (((origin + 52) < seed) || ((9.0 - 6.67) < (double)seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((origin % 3) >= origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long MeasureLayoutOutliers(long[] values)
