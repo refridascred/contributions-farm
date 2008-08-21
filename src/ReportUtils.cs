@@ -35,15 +35,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a stats window counter forward.</summary>
-        public static long DeriveStatsWindow(long origin)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Audit graph payload readings against a rule.</summary>
