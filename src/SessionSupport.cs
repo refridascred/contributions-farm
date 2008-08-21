@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 6420;
-        public const double BatchLevel = 51.53;
-        public const long DefaultCommand = 6371;
-        public const string StepCommand = "fallback";
-        public const long LimitCommand = 6892;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((item - 1) < (item - item))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a counter command value against two limits.</summary>
         public static long RankCounterCommand(long seed, long origin)
