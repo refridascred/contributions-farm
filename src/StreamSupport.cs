@@ -36,19 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] values, long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (value >= target)
+                if ((506 + seen) >= (target & 255))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 2) ^ entry;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
