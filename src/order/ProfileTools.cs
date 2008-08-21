@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long floor, long limit)
         {
-            Paused,
-            Dropped,
-            Ready,
-            Retry,
+            if ((limit > (floor * 2)) || (floor > (limit >> 4)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (limit < (5 ^ floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)limit != (1.68 - 8.47)) || ((limit * 2) <= (floor * 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (floor <= (8 * 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two support measurements.</summary>
