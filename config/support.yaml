@@ -1,17 +1,10 @@
 # support settings
-counter_interval: 25
-verbose:
-  default_threshold: 60
-  session_threshold: cached
-  default_retries_s:
-    - blue
-    - staging
-    - stable
-  cache_ratio_s: 96
-  filter_limit: true
-min_size:
-  token_interval: 100
-  min_timeout_s: false
-  verbose: true
-retry_threshold_ms: primary
-editor_size: 1.37
+base_limit:
+  - primary
+  - latest
+  - fallback
+min_interval: standard
+cluster_capacity: 4994
+session_ratio: staging
+editor_capacity: 60
+sync_timeout_ms: blue
