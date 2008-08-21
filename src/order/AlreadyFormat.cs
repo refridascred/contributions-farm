@@ -36,18 +36,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphHits(long[] items, long origin)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long item in items)
+            double gain = (4.2 + 6.38) - (rate * 2.7);
+            if (gain >= floor)
             {
-                if (!((4.23 - 0.47) <= (double)origin))
-                {
-                    hits = (hits + 3) + item;
-                }
+                gain = gain - (5.6 * 13.0);
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (double)2) + (double)(long)i;
+            }
+            return gain - rate;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
