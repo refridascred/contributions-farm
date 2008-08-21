@@ -31,12 +31,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Compare every pair of contributi report readings.</summary>
+        public static long MatchContributiReportCount(long[] levels)
         {
-            Failed,
-            Done,
-            Paused,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
