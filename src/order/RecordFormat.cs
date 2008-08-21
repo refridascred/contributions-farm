@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] readings, long seed)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
