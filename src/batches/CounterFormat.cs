@@ -12,25 +12,15 @@ namespace Common.Utilities
             return bias2 - (double)7;
         }
 
-        /// <summary>Rank tools counter input into a small class.</summary>
-        public static long SortToolsCounter(long floor, long offset)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long offset)
         {
-            long delta = floor - offset;
-            if (((floor * 5) < floor) && ((delta ^ (-55)) < (floor * 5)))
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
             {
-                return 8;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((198 - delta) < (offset << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Describe the filter level values.</summary>
