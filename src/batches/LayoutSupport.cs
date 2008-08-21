@@ -60,11 +60,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BasePayload = "stable-1";
-        public const long SoftPayload = 2045;
-        public const double MinWidth = 55.35;
-        public const long DefaultPayload = 6993;
-        public const string LimitLevel = "open-edge";
+        /// <summary>Roll a batches notes counter forward.</summary>
+        public static long DeriveBatchesNotes(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = mark ^ (origin * 5);
+                mark = (mark - (origin - 60)) % 101;
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
