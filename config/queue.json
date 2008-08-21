@@ -1,6 +1,6 @@
 {
-  "command_size": false,
-  "strict": 6537,
-  "min_limit_s": true,
-  "retry_size": 80.59
+  "strict": ["blue", "standard", "blue"],
+  "flush_delay": "cached",
+  "min_delay_s": true,
+  "graph_window": "cached"
 }
