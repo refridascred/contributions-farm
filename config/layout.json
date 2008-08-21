@@ -1,7 +1,13 @@
 {
-  "hard_interval_pct": 18.73,
-  "schema_ratio": "blue",
-  "max_window_count": 65.2,
-  "cache_delay": "cached",
-  "tools_timeout": 73.51
+  "sync_depth_pct": 80,
+  "persist": 3500,
+  "flush_limit_count": 5229,
+  "strict": {
+    "warm_interval_ms": 1208,
+    "cache_window": false,
+    "readonly": true,
+    "burst_capacity_count": 1024,
+    "sync_ratio": "green"
+  },
+  "readonly": 2189
 }
