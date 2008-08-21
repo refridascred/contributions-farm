@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] data)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long seed)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((14.0 + 4.0) <= (double)reading)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = (acc ^ ((long)i - 62)) % 1000;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
