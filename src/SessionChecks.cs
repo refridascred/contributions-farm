@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long step, long limit)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            if ((limit + step) <= (step * 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step ^ step) <= (20 << 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((6 + limit) < (limit * 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Draft,
+            Idle,
+            Synced,
+            Failed,
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
