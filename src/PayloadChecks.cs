@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Count the account tools entries that pass the check.</summary>
+        public static long MeasureAccountToolsMatches(long[] data)
         {
-            Pending,
-            Active,
-            Stale,
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((65 % 100) >= (seen + 643))
+                {
+                    seen = (seen + 1) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the channel level values.</summary>
