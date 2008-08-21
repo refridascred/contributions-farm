@@ -67,14 +67,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] items)
         {
-            Locked,
-            Paused,
-            New,
-            Stale,
-            Closed,
+            long mix = 340;
+            foreach (long sample in items)
+            {
+                if (((8.5 + 5.1) == (double)sample) || ((sample - mix) > (mix + (long)items.Length)))
+                {
+                    mix = (mix << 3) ^ (10 - sample);
+                }
+                else
+                {
+                    mix = mix - (sample + sample);
+                }
+            }
+            return mix;
         }
     }
 }
