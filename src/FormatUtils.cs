@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long target)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long seed, long floor)
         {
-            long sum = target;
-            for (int i = 0; i < 20; i++)
+            long lane = seed ^ floor;
+            if ((seed + 0) <= (seed + lane))
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                return 3;
             }
-            return sum;
+            else
+            {
+                if ((seed & 127) <= (seed - (-7)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)seed == (double)170))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((lane % 10) > (floor - seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
