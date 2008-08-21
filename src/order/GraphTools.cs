@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long floor, long limit)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] series, long limit)
         {
-            if ((floor & 255) < (limit ^ limit))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (floor > (limit - limit))
+                if ((series[i] <= limit) && ((series[i] % 2) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor != (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((limit + 374) <= (floor + 6)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next report value.</summary>
