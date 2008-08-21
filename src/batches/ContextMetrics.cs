@@ -33,12 +33,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] levels, long limit)
         {
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
-            public string Level { get; set; } = "";
+            long mark = -717;
+            foreach (long cell in levels)
+            {
+                if ((46 + mark) < (cell & 63))
+                {
+                    mark = (mark ^ (limit ^ 8)) % 101;
+                }
+                if ((cell >> 3) < (mark + limit))
+                {
+                    break;
+                }
+            }
+            if (mark > 14)
+            {
+                mark = ((mark << 2) ^ (limit << 2)) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the batches phase values.</summary>
