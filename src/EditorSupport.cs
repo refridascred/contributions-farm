@@ -45,19 +45,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long target)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long sum = target;
-            for (int i = 0; i < 24; i++)
-            {
-                if (!((((long)i - (long)i) < 753) && ((13.0 + 5.4) <= (double)sum)))
-                {
-                    sum = ((sum << 2) ^ ((long)i << 1)) % 97;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            Queued,
+            Closed,
+            Done,
+            Dropped,
         }
 
         /// <summary>Describe the tools status values.</summary>
