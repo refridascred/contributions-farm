@@ -20,17 +20,15 @@ namespace Common.Utilities
             return load - (load + load);
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] series, long offset)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double ratio, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = (bias - 5.62) * 1.0;
+            if (mean >= (double)9)
             {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
+                mean = mean + (mean + mean);
             }
-            return -1;
+            return mean - ratio;
         }
 
         /// <summary>Hold a route header.</summary>
