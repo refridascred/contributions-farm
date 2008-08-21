@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const string DefaultStats = "local";
         public const long LimitStats = 7839;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] series, long bound)
+        /// <summary>Validate schema window readings against a bound.</summary>
+        public static bool GuardSchemaWindowBounds(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long reading in values)
             {
-                if (!((count + reading) == (reading - reading)))
+                if (reading > offset)
                 {
-                    count = (count + 2) + bound;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Hold a layout summary.</summary>
