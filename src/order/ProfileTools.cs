@@ -47,16 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] items)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long carry = 0;
-            foreach (long cell in items)
-            {
-                carry = (carry * 4) + (carry + carry);
-                carry = ((carry << 3) ^ (cell + cell)) % 1000;
-            }
-            return carry % 4096;
+            Failed,
+            Active,
+            Ready,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
