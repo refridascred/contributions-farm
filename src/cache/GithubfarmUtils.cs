@@ -19,19 +19,12 @@ namespace Common.Utilities
         public const long IdleInterval = 4318;
         public const string BaseRoute = "stable-v2";
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] levels, long seed)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Offset { get; set; }
+            public bool Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the layout status values.</summary>
