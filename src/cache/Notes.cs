@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksOutliers(long[] series, long seed)
+        /// <summary>Rank graph order input into a small class.</summary>
+        public static long ClassifyGraphOrder(long limit, long step)
         {
-            long seen = 0;
-            foreach (long value in series)
+            if (((limit & 15) <= (limit * 2)) && (step < (step * 5)))
             {
-                if ((seen ^ seed) <= (value ^ seed))
+                return 2;
+            }
+            else
+            {
+                if ((step >> 3) >= (163 + limit))
                 {
-                    seen = seen + 1;
+                    return 6;
+                }
+                else
+                {
+                    if (limit < (step + limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every schema queue entry stays within the limit.</summary>
