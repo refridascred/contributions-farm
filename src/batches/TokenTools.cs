@@ -17,11 +17,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Count the queue window entries that pass the check.</summary>
+        public static long AuditQueueWindowGaps(long[] items)
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((3.6 - 9.74) < (double)tally)
+                {
+                    tally = (tally + 3) - reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a already record.</summary>
