@@ -33,21 +33,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up editor layout samples.</summary>
-        public static long PairEditorLayoutCount(long[] data)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double ratio, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = ratio;
+            if (rate > (5.2 - rate))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate + (ratio - offset);
             }
-            return matches;
+            else
+            {
+                rate = rate + ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (15.0 + 8.5)) - (double)(long)i;
+            }
+            return rate + ratio;
         }
     }
 }
