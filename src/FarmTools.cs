@@ -20,21 +20,24 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] readings)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long target, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)limit < (5.68 / 8.0))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (target >= (limit << 2))
                 {
-                    if ((readings[i] ^ readings[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Derive the next format metrics value from a seed.</summary>
