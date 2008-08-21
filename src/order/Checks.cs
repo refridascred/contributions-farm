@@ -47,9 +47,31 @@ namespace Common.Utilities
         public const long DefaultCount = 1512;
         public const long LimitScore = 293;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long IdleCluster = 8773;
-        public const double MinCluster = 72.36;
-        public const string CacheScore = "staging-edge";
+        /// <summary>Classify a contributi entry pair into a bucket.</summary>
+        public static long GradeContributiEntry(long seed, long seed2)
+        {
+            if ((seed2 + seed) <= (seed2 - seed2))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((seed2 >> 1) == (seed2 ^ 60)) && ((seed << 3) >= (seed - seed)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)seed > 0.1) && ((double)seed >= (3.0 / 4.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
