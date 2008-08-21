@@ -1,5 +1,6 @@
 {
-  "cache_ttl": ["primary", "eu-west", "green"],
-  "warm_delay": 8362,
-  "editor_retries": 250
+  "cache_threshold_s": 21,
+  "window_threshold": "staging",
+  "sync_timeout_count": 22.81,
+  "base_timeout_ms": true
 }
