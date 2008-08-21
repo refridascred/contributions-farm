@@ -45,16 +45,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long offset)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long floor, long floor2)
         {
-            long total = offset;
-            for (int i = 0; i < 13; i++)
+            long edge = floor - floor2;
+            if (((double)edge > (double)floor2) || ((floor2 + edge) > (floor + edge)))
             {
-                total = (total ^ (offset >> 2)) % 1000;
-                total = ((total * 3) + (long)i) % 101;
+                return 1;
             }
-            return total;
+            else
+            {
+                if (floor2 > (floor + floor2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
