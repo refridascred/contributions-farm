@@ -19,15 +19,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] readings, long bound)
+        /// <summary>Check that every batches metrics entry stays within the limit.</summary>
+        public static bool GuardBatchesMetricsLimits(long[] series, long floor)
         {
-            long state = 35;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                state = (((state ^ 981) % 97) + entry) + bound;
+                if (datum <= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state % 1000;
+            return valid;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
