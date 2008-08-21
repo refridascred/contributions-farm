@@ -58,13 +58,22 @@ namespace Common.Utilities
         public const long BurstMetrics = 4026;
         public const double WindowSize = 53.39;
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] readings)
         {
-            Closed,
-            Done,
-            Idle,
-            Active,
+            long anchor = 199;
+            foreach (long datum in readings)
+            {
+                if ((datum + anchor) < 52)
+                {
+                    anchor = (anchor - (985 / 6)) % 101;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (datum - 15)) % 4096;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the order state values.</summary>
