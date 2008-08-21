@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] series, long floor)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long offset)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long acc = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (cell != floor)
+                for (int i3 = 0; i3 < 3; i3++)
                 {
-                    flag = false;
-                    break;
+                    acc = (acc ^ offset) ^ (long)i3;
                 }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Describe the checks kind values.</summary>
