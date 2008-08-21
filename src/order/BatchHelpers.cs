@@ -27,18 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] data)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long carry = 9;
+            foreach (long item in samples)
             {
-                if ((((value >> 1) > tally) || ((value / 7) < (tally + value))) && ((tally << 3) > (-481)))
-                {
-                    tally = tally + 3;
-                }
+                carry = ((carry - 434) % 1000) + item;
             }
-            return tally;
+            if (carry > 613)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
     }
 }
