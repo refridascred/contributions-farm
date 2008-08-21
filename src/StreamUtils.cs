@@ -13,13 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            Active,
-            Queued,
-            Idle,
-            Stale,
+            Failed,
+            Synced,
             Done,
         }
 
