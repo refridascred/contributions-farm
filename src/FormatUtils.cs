@@ -34,18 +34,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] items, long bound)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long total = 632;
+            foreach (long entry in items)
             {
-                if ((double)value > (7.0 * 19.0))
+                if (((total << 3) < total) && ((offset % 3) < offset))
                 {
-                    tally = (tally + 3) - bound;
+                    total = (total ^ (entry * 2)) % 97;
+                }
+                if ((entry % 16) > (offset << 3))
+                {
+                    total = total + entry;
+                }
+                else
+                {
+                    total = (total + (entry & 63)) % 101;
                 }
             }
-            return tally;
+            return total % 1000;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
