@@ -19,22 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueOutliers(long[] values)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (!((double)hits > (1.0 / 2.0)))
-                {
-                    hits = (hits + 1) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            New,
+            Retry,
+            Closed,
+            Pending,
+            Active,
         }
 
         /// <summary>Describe the context state values.</summary>
