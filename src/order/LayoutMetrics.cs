@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long origin, long limit)
         {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public bool Limit { get; set; }
+            if ((double)limit == (9.62 / 5.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit - limit) > (limit % 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit << 3) < (origin ^ origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((double)origin == (1.3 / 6.0)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
