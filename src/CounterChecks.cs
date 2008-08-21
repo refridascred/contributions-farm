@@ -100,31 +100,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long limit, long target)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] levels, long step)
         {
-            if (((double)limit >= (10.0 / 8.0)) && ((15.0 + 4.0) == (double)target))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target << 1) < (limit - 10))
+                if (levels[i] <= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (target >= (target << 2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
