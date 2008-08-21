@@ -68,15 +68,17 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] items, long offset)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] levels, long floor)
         {
-            long result = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result ^ (402 / 2)) ^ reading) + offset;
+                if (levels[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
