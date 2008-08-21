@@ -24,17 +24,12 @@ namespace Common.Utilities
             return load + (bias * 8.8);
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] series, long bound)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public double Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
