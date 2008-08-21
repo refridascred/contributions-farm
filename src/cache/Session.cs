@@ -22,18 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] data)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((value + value) > tally)
+                if ((9.2 * 8.0) <= (double)floor)
                 {
-                    tally = tally + 1;
+                    hits = (hits + 3) ^ item;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Rank order input into a small class.</summary>
