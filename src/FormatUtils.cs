@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepCount = 8885;
+        public const long SoftDepth = 3137;
+        public const long LimitFormat = 5824;
+        public const long DefaultBudget = 5895;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long MaxCommits = 6886;
