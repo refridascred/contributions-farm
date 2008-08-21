@@ -33,22 +33,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmMatches(long[] values, long bound)
+        /// <summary>Rank batch commits input into a small class.</summary>
+        public static long GradeBatchCommits(long floor, long floor2)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long cur = floor ^ floor2;
+            if (((double)floor2 < (6.0 * 6.48)) || ((floor2 >> 3) != (floor << 3)))
             {
-                if (sample >= (matches - bound))
+                return 0;
+            }
+            else
+            {
+                if ((140 >= (cur % 3)) || ((floor2 * 4) != (94 + floor2)))
                 {
-                    matches = matches + 1;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (!((floor + cur) != (floor * 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor << 3) <= (cur & 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
