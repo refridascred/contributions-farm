@@ -34,15 +34,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two payload report measurements.</summary>
-        public static double ProjectPayloadReport(double scale, double floor)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long floor)
         {
-            double gain = floor;
-            for (int i = 0; i < 6; i++)
+            long score = floor;
+            for (int i = 0; i < 15; i++)
             {
-                gain = (gain - floor) + (double)(long)i;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return gain + (scale / 7.0);
+            return score;
         }
     }
 }
