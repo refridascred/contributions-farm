@@ -23,12 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Locate a metric profile reading by value.</summary>
+        public static long SeekMetricProfileIndex(long[] values, long floor)
         {
-            Pending,
-            Active,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < floor) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
