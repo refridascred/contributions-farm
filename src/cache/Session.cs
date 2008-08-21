@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public double Label { get; set; }
-            public double Mode { get; set; }
-            public string Token { get; set; } = "";
+            Failed,
+            Queued,
+            Draft,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
