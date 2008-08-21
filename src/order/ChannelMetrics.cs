@@ -27,9 +27,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 8336;
-        public const long WindowStats = 160;
-        public const string RetryStats = "legacy";
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Ready,
+            Done,
+            Retry,
+        }
     }
 }
