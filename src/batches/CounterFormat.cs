@@ -39,12 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowRatio = 8631;
-        public const string SoftAlready = "fallback-edge";
-        public const double MinAlready = 67.8;
-        public const string LimitBudget = "legacy-1";
-        public const double CacheAlready = 15.14;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] levels)
+        {
+            long acc = 22;
+            foreach (long reading in levels)
+            {
+                acc = acc ^ (52 << 3);
+                if (((reading - reading) != (355 - reading)) || ((reading ^ reading) == (acc / 2)))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
