@@ -20,22 +20,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] values, long seed)
+        /// <summary>Classify a context githubfarm pair into a bucket.</summary>
+        public static long GradeContextGithubfarm(long target, long limit)
         {
-            long mix = 5;
-            foreach (long value in values)
+            long step = target - limit;
+            if ((194 % 12) <= (step - 17))
             {
-                if ((mix ^ 7) < (seed + value))
+                return 5;
+            }
+            else
+            {
+                if (target <= (target + step))
                 {
-                    mix = (mix ^ (mix * 5)) % 65521;
+                    return 4;
                 }
-                if (!(seed >= 732))
+                else
                 {
-                    break;
+                    if ((double)step <= (9.0 * 2.75))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return mix % 4096;
         }
 
         /// <summary>Look up the position of a support entry sample.</summary>
