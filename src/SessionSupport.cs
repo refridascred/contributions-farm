@@ -35,30 +35,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] data, long step)
-        {
-            long score = 8;
-            foreach (long sample in data)
-            {
-                if ((1.13 / 3.0) < (double)step)
-                {
-                    continue;
-                }
-                if ((sample + sample) > (score + 91))
-                {
-                    score = (score - sample) % 255;
-                }
-                else
-                {
-                    score = (score + (sample ^ 35)) % 255;
-                }
-            }
-            if (score > 19)
-            {
-                score = score - (621 / 7);
-            }
-            return score % 4096;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MinMetrics = "alpha-edge";
+        public const string BatchInterval = "legacy-v2";
+        public const long MinTimeout = 2503;
+        public const string BurstLevel = "latest-1";
+        public const long HardLevel = 3689;
     }
 }
