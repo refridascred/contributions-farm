@@ -20,15 +20,18 @@ namespace Common.Utilities
         public const double StepAccount = 76.44;
         public const long WindowAccount = 6145;
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] readings)
         {
-            long total = floor;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                if ((210 - tally) <= (reading / 8))
+                {
+                    tally = tally + 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
