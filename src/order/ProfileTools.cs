@@ -55,16 +55,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Iterate the editor cache series from a seed.</summary>
-        public static long StepEditorCache(long origin)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long sum = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = ((sum * 2) + (origin & 31)) % 255;
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            Queued,
+            Paused,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Adjust a tools metrics reading.</summary>
