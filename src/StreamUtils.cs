@@ -13,22 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 8185;
+        public const long RetrySize = 2099;
+        public const long StepDepth = 1421;
+        public const double HardTools = 97.0;
 
         /// <summary>Scale a profile figure with a bias.</summary>
         public static double ScaleProfile(double scale, double span)
