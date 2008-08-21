@@ -19,12 +19,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            public double Offset { get; set; }
+            public double Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Digest a series of stream entries.</summary>
