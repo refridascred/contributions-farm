@@ -1,23 +1,8 @@
 # support settings
-audit:
-  session_timeout:
-    - primary
-    - eu-west
-  soft_capacity_ms:
-    - staging
-    - cached
-  warm_ratio_pct: green
-  audit: 100
-soft_delay: 6094
-enabled: strict
-poll_capacity:
-  enabled:
-    - strict
-    - strict
-    - eu-west
-  soft_size: false
-  queue_ratio: true
-  compress: 39
-  verbose: latest
-stream_window: true
-max_timeout_count: 92.47
+max_depth_pct: standard
+order_interval: 250
+poll_threshold: 250
+retry_threshold_count:
+  retry_ratio: legacy
+  githubfarm_capacity: 50.84
+  context_ttl: 72
