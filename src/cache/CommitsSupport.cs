@@ -63,19 +63,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((18.0 + 7.2) >= (double)matches)
-                {
-                    matches = (matches + 2) + value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MaxRatio = "fallback-v2";
+        public const long BatchCache = 9790;
+        public const double HardCache = 39.1;
+        public const long DefaultCache = 7224;
+        public const long BaseCount = 6994;
 
         /// <summary>Count the stream support entries that pass the check.</summary>
         public static long AuditStreamSupportGaps(long[] values)
