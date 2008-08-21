@@ -1,17 +1,8 @@
 # entry settings
-farm_retries: false
-default_ratio_pct: 83
-burst_size_count:
-  min_timeout_ms: 30.8
-  verbose: edge
-  sync_timeout: eu-west
-  already_limit: local
-  counter_timeout:
-    entry_depth: false
-    notes_interval: strict
-    soft_ttl_pct:
-      - 125
-      - 133
-      - 457
-      - 30
-  default_threshold_s: cached
+payload_timeout: false
+entry_interval:
+  - eu-west
+  - fallback
+  - green
+warm_ttl_count: fallback
+retry_ratio_count: false
