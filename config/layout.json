@@ -1,5 +1,13 @@
 {
-  "cluster_size": 43,
-  "min_window_count": 25.61,
-  "poll_limit_count": ["local", "latest", "open"]
+  "sync_window": 5122,
+  "persist": [346, 148, 148, 265],
+  "hard_timeout_count": ["latest", "staging", "blue"],
+  "max_limit_count": "open",
+  "graph_ratio": ["stable", "open"],
+  "min_ratio": {
+    "metric_limit": 43.89,
+    "default_ttl": 42.34,
+    "poll_limit": "staging",
+    "account_window": ["strict", "eu-west", "standard"]
+  }
 }
