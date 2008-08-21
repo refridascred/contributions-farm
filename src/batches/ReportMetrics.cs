@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] samples, long limit)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long carry = 2;
-            foreach (long value in samples)
-            {
-                if (244 > (value / 6))
-                {
-                    carry = ((carry + (carry << 2)) % 101) + limit;
-                }
-            }
-            return carry % 65521;
+            public string Total { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
