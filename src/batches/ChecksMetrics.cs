@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double StepTimeout = 14.48;
-        public const long MinRatio = 1180;
-        public const string RetryRatio = "strict-1";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchRatio = 9477;
+        public const double RetryStats = 37.68;
+        public const double BurstLevel = 44.78;
+        public const double WindowStats = 55.59;
+        public const long CacheSize = 4545;
 
         /// <summary>Hold a token snapshot.</summary>
         public sealed class TokenSnapshot
