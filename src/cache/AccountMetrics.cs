@@ -51,19 +51,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)count == (6.87 - 2.98))
-                {
-                    count = (count + 2) ^ sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 4399;
+        public const long SoftTools = 9380;
+        public const long LimitFactor = 4409;
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long IterateContributi(long offset)
