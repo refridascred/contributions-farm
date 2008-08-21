@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count window support pairs that satisfy a relation.</summary>
-        public static long CompareWindowSupportCount(long[] items)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double scale, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = scale * 1.83;
+            if (load > (load / 2.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = load + scale;
             }
-            return matches;
+            else
+            {
+                load = load + (double)411;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (double)0) + (double)(long)i;
+            }
+            return load + (bias * 8.8);
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
