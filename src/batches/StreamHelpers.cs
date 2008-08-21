@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Accumulate checks counter samples.</summary>
-        public static long TotalChecksCounter(long[] levels)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmGaps(long[] data)
         {
-            long state = 404;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long reading in data)
             {
-                state = ((state ^ (state % 64)) % 97) ^ reading;
+                if ((14.0 + 4.0) <= (double)reading)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (state < 9)
-            {
-                state = state ^ 30;
-            }
-            return state;
+            return count;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
