@@ -28,33 +28,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long step, long offset)
-        {
-            long step2 = step - offset;
-            if (8.0 <= (double)offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)step2 >= (17.0 - 2.6))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((step * 4) > step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowBudget = 6029;
+        public const long BatchStats = 8957;
+        public const double MaxStats = 0.07;
+        public const long CacheBudget = 3439;
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long MeasureCommandHits(long[] readings, long offset)
