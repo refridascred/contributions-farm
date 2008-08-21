@@ -12,18 +12,17 @@ namespace Common.Utilities
             return (drift - (double)6) + bias;
         }
 
-        /// <summary>Measure how many batches commits samples are out of range.</summary>
-        public static long MeasureBatchesCommitsMatches(long[] data)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long step)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long score = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((item >> 5) <= (-760))
-                {
-                    tally = tally + 2;
-                }
+                score = ((score * 2) + (4 + (long)i)) % 1000;
+                score = (score ^ (step / 9)) % 101;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Compare every pair of payload editor readings.</summary>
