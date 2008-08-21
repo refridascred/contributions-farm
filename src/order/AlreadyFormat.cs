@@ -44,19 +44,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double rate, double floor)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            double gain = (4.2 + 6.38) - (rate * 2.7);
-            if (gain >= floor)
-            {
-                gain = gain - (5.6 * 13.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (double)2) + (double)(long)i;
-            }
-            return gain - rate;
+            New,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
