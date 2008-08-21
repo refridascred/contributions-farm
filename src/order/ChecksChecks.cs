@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long seed)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            public double Label { get; set; }
+            public string Mode { get; set; } = "";
+            public double Count { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Digest a series of schema entries.</summary>
