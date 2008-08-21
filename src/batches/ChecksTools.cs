@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every farm layout entry stays within the limit.</summary>
-        public static bool CheckFarmLayoutLimits(long[] levels, long step)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Queued,
+            Synced,
+            Failed,
         }
 
         /// <summary>Fold a list of entry readings.</summary>
