@@ -13,24 +13,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] readings, long offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] levels, long limit)
         {
-            long state = 5;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                state = state - (555 ^ datum);
-                state = state + (long)readings.Length;
-                if (5.42 > (double)offset)
+                if (item <= limit)
                 {
+                    ok = false;
                     break;
                 }
             }
-            if (state < 174)
-            {
-                state = (state ^ (offset & 3)) % 65521;
-            }
-            return state;
+            return ok;
         }
 
         /// <summary>Match up profile samples.</summary>
