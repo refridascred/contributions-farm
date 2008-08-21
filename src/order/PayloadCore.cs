@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 8046;
-        public const long IdleGithubfarm = 8527;
-        public const string MinGithubfarm = "latest";
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public long Total { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
