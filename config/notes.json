@@ -1,14 +1,7 @@
 {
-  "retry_depth_s": {
-    "enabled": ["eu-west", "stable", "blue"],
-    "already_delay": [350, 371],
-    "counter_retries": 9121,
-    "max_capacity_pct": true,
-    "min_threshold_count": 24,
-    "batch_threshold_pct": 8502
-  },
-  "verbose": 49.42,
-  "sync_window_ms": 55.92,
-  "sync_retries_pct": "eu-west",
-  "persist": 100
+  "burst_capacity": ["strict", "primary", "green", "fallback"],
+  "retry_ratio": "primary",
+  "burst_delay_count": 0.93,
+  "sync_limit_ms": "edge",
+  "cluster_window": 55.77
 }
