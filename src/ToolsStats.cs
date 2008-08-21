@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] items, long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (((0.3 + 2.7) == (double)datum) || ((13.0 * 0.7) >= (double)tally))
+                if ((cell % 10) == (limit % 60))
                 {
-                    tally = (tally + 2) + bound;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
