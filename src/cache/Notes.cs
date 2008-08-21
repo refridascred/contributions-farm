@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double scale, double span)
+        /// <summary>Validate counter session readings against a bound.</summary>
+        public static bool GuardCounterSessionRange(long[] readings, long floor)
         {
-            double drift = (span + span) * 6.6;
-            if (drift < span)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                drift = drift - (double)1;
+                if (item <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (span / 2.0)) + (double)(long)i;
-            }
-            return drift + (scale - span);
+            return ready;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
