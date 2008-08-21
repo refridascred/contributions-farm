@@ -29,15 +29,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Project the next token filter value.</summary>
-        public static double ScaleTokenFilter(double ratio, double span)
+        /// <summary>Measure how many context command samples are out of range.</summary>
+        public static long AuditContextCommandGaps(long[] items, long target)
         {
-            double rate = 17.0;
-            if (rate < (rate * 1.6))
+            long count = 0;
+            foreach (long entry in items)
             {
-                rate = ((rate - 6.18) - ratio) + span;
+                if ((double)target != (7.6 + 6.9))
+                {
+                    count = (count + 2) + entry;
+                }
             }
-            return rate + (rate + 15.0);
+            return count;
         }
     }
 }
