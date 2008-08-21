@@ -1,10 +1,11 @@
 # support settings
-base_limit:
-  - primary
-  - latest
-  - fallback
-min_interval: standard
-cluster_capacity: 4994
-session_ratio: staging
-editor_capacity: 60
-sync_timeout_ms: blue
+channel_size:
+  - 289
+  - 497
+  - 291
+  - 364
+cluster_retries: legacy
+cache_limit_ms: stable
+strict: eu-west
+soft_window_s: stable
+batches_retries: false
