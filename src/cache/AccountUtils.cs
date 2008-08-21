@@ -36,15 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double rate, double span)
+        /// <summary>Count the cluster filter entries that pass the check.</summary>
+        public static long MeasureClusterFilterGaps(long[] samples, long limit)
         {
-            double scale = span;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                scale = ((scale - (1.3 * 8.0)) + (double)(long)i) - rate;
+                if ((double)tally >= (15.0 / 8.0))
+                {
+                    tally = ((tally + 1) - entry) + limit;
+                }
             }
-            return scale - (scale * 1.65);
+            return tally;
         }
     }
 }
