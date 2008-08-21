@@ -62,24 +62,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] data)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long acc = 3;
-            foreach (long reading in data)
-            {
-                if ((acc * 5) == (acc ^ acc))
-                {
-                    acc = (acc ^ (95 >> 4)) % 255;
-                    acc = (acc + (reading + reading)) % 97;
-                }
-                acc = ((acc << 2) ^ (1 - acc)) % 1000;
-            }
-            if (acc < 940)
-            {
-                acc = (acc - (acc >> 2)) % 101;
-            }
-            return acc;
+            public bool Size { get; set; }
+            public double Limit { get; set; }
+            public double Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
