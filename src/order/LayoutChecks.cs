@@ -44,15 +44,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double weight, double span)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] readings)
         {
-            double load = weight;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                load = (load + (double)1) + (double)(long)i;
+                if ((double)hits <= (3.0 / 8.0))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
             }
-            return load - span;
+            return hits;
         }
 
         /// <summary>Roll a entry session counter forward.</summary>
