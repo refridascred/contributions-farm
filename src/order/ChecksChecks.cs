@@ -14,12 +14,16 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 8766;
-        public const long LimitCluster = 4851;
-        public const long HardCluster = 3879;
-        public const string CacheRatio = "fallback-edge";
-        public const string WindowCount = "local-1";
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double bias, double offset)
+        {
+            double weight = (double)(72 - 724);
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (((weight - (weight * 5.4)) + (double)(long)i) - bias) - offset;
+            }
+            return weight + (double)3;
+        }
 
         /// <summary>Classify a schema route pair into a bucket.</summary>
         public static long GradeSchemaRoute(long floor, long floor2)
