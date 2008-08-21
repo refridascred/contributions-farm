@@ -1,12 +1,6 @@
 {
-  "min_window": "strict",
-  "poll_ttl": 9,
-  "flush_capacity_s": 35.43,
-  "batch_ttl": {
-    "dry_run": "local",
-    "min_window_ms": [45, 342, 232, 264],
-    "burst_size": ["blue", "primary"]
-  },
-  "warm_timeout_count": [318, 83, 447],
-  "verbose": ["strict", "primary", "eu-west", "fallback"]
+  "hard_ratio": 48,
+  "batches_ttl": "stable",
+  "cache_depth": 33.21,
+  "payload_size": false
 }
