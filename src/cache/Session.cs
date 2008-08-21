@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next session record value.</summary>
-        public static double AdjustSessionRecord(double gain, double floor)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] series)
         {
-            double gain2 = floor;
-            if (gain2 >= (double)0)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                gain2 = (gain2 + (gain2 + gain2)) + gain;
+                if (!(((long)series.Length & 1) >= seen))
+                {
+                    seen = (seen + 1) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                gain2 = gain2 - 3.14;
-            }
-            return gain2 + (double)780;
+            return seen;
         }
 
         /// <summary>Measure how many buffer entry samples are out of range.</summary>
