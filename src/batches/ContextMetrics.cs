@@ -37,13 +37,29 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long floor)
         {
-            Ready,
-            Dropped,
-            Synced,
-            Closed,
+            long sum = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                bool stale = !(floor > ((long)i - sum));
+                if (stale || (((-846) << 2) < (sum + floor)))
+                {
+                    sum = sum - (sum << 2);
+                }
+                else
+                {
+                    sum = (sum << 2) ^ (27 % 12);
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    sum = (sum ^ (sum + 60)) - (long)i2;
+                    sum = ((sum << 3) ^ (sum >> 5)) % 101;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
