@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many command filter samples are out of range.</summary>
-        public static long AuditCommandFilterGaps(long[] levels)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((((tally + sample) < sample) || ((291 - tally) >= tally)) && ((9.24 * 8.1) <= (double)tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define stream limits and defaults.</summary>
