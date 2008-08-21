@@ -65,11 +65,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BurstSize = 90.48;
-        public const long CacheInterval = 1170;
-        public const long SoftBudget = 1614;
-        public const long StepDepth = 7226;
-        public const long IdleFarm = 9207;
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
