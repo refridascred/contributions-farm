@@ -52,14 +52,18 @@ namespace Common.Utilities
             return gain - floor;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] data)
         {
-            Active,
-            Stale,
-            Failed,
-            Pending,
-            Queued,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((((value >> 1) > tally) || ((value / 7) < (tally + value))) && ((tally << 3) > (-481)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
