@@ -21,12 +21,18 @@ namespace Common.Utilities
         public const long MinGraph = 3865;
         public const double CacheCount = 50.51;
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] series, long floor)
         {
-            Paused,
-            Synced,
-            Stale,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((sample * 3) == (sample & 15))
+                {
+                    seen = (seen + 3) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the tools status values.</summary>
