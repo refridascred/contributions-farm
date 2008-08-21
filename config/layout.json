@@ -1,6 +1,7 @@
 {
-  "compress": "local",
-  "format_retries": 2514,
-  "stats_capacity": 89.88,
-  "verbose": "stable"
+  "readonly": true,
+  "batch_limit_count": 72.86,
+  "base_limit": "blue",
+  "default_limit": ["blue", "open", "standard", "latest"],
+  "flush_retries": 4.73
 }
