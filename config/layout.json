@@ -1,8 +1,7 @@
 {
-  "token_threshold": "legacy",
-  "strict": 72.49,
-  "default_threshold": 250,
-  "idle_retries_pct": true,
-  "cache_limit_ms": 1024,
-  "dry_run": 93
+  "default_size_ms": 80.53,
+  "stream_timeout": true,
+  "soft_retries_pct": false,
+  "strict": 77.6,
+  "min_limit_ms": "latest"
 }
