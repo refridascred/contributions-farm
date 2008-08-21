@@ -14,14 +14,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Failed,
-            Done,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchScore = "stable-1";
+        public const long RetryBudget = 1640;
+        public const double BurstSpan = 72.5;
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
