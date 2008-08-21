@@ -55,14 +55,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Look up the position of a tools stream sample.</summary>
+        public static long SeekToolsStreamIndex(long[] items, long origin)
         {
-            Locked,
-            Closed,
-            Synced,
-            New,
-            Pending,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
