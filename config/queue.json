@@ -1,18 +1,14 @@
 {
-  "stream_limit": 82.77,
-  "max_window_ms": [54, 469],
-  "sync_interval_ms": 38.8,
-  "support_depth": {
-    "contributi_capacity": 8149,
-    "audit": 250,
-    "max_capacity": "blue"
-  },
-  "batches_retries": "green",
-  "burst_depth_pct": {
-    "sync_capacity_s": false,
-    "channel_size": ["stable", "open", "green", "fallback"],
-    "hard_size_s": 75.21,
-    "min_ttl_pct": "primary",
-    "strict": ["blue", "staging", "fallback", "green"]
+  "compress": [467, 283, 44],
+  "sync_retries": 3401,
+  "base_interval_s": true,
+  "sync_depth_count": 30,
+  "hard_interval_ms": true,
+  "default_depth": {
+    "max_ratio_s": "stable",
+    "batch_capacity_ms": 6791,
+    "sync_ttl_pct": 36.89,
+    "sync_interval_count": ["latest", "staging", "local", "legacy"],
+    "report_interval": 87
   }
 }
