@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const double WindowStats = 55.59;
         public const long CacheSize = 4545;
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountMatches(long[] data)
         {
-            public bool Offset { get; set; }
-            public long Total { get; set; }
-            public double Mode { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (((matches << 3) == (matches + 77)) && (matches <= (reading / 2)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
