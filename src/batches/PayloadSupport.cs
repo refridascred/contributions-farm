@@ -18,27 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] data)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] levels)
         {
-            long carry = 37;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((double)carry != (9.0 / 2.0))
+                if (((double)seen < (double)cell) || !((140 + seen) >= seen))
                 {
-                    carry = (carry ^ (40 % 64)) % 97;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    carry = (carry - (item + 44)) % 1000;
+                    seen = seen - 1;
                 }
-                carry = carry ^ (item >> 3);
             }
-            if (carry > 23)
-            {
-                carry = (carry + (carry * 2)) % 255;
-            }
-            return carry % 65521;
+            return seen;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
