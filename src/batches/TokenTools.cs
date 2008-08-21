@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit format graph readings against a rule.</summary>
-        public static long CountFormatGraphGaps(long[] series)
+        /// <summary>Iterate the account window series from a seed.</summary>
+        public static long IterateAccountWindow(long step)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long score = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (14.0 <= (double)matches)
-                {
-                    matches = (matches + 2) + cell;
-                }
+                score = (score ^ (score / 9)) % 97;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a token summary.</summary>
