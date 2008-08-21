@@ -1,8 +1,8 @@
-id,region,count,level,score
-1,769,eu-west,601,fallback
-2,39,12.38,86.88,staging
-3,992,31.6,144,edge
-4,860,135,latest,48.75
-5,strict,446,27,green
-6,44.88,6.11,blue,40.02
-7,56.28,20.83,67,68.24
+id,score,ratio
+1,14.15,373
+2,edge,12.1
+3,0.94,56.83
+4,918,180
+5,64.75,stable
+6,371,staging
+7,edge,latest
