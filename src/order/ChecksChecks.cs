@@ -41,38 +41,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long seed, long limit)
-        {
-            if ((double)limit >= 8.2)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit + limit) < seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit * 4) <= limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((double)seed > (4.8 * 8.28)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowFormat = "standard-edge";
+        public const double MaxDepth = 92.8;
+        public const long StepRatio = 3153;
+        public const long RetryFormat = 4437;
+        public const long LimitScore = 5789;
     }
 }
