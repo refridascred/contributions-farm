@@ -1,8 +1,8 @@
-id,rank,active,state,count
-1,116,blue,19.65,14.1
-2,49.7,5.05,95.62,86.94
-3,761,strict,627,edge
-4,4.79,551,6.4,317
-5,fallback,28.61,97.85,legacy
-6,24,584,585,328
-7,50,edge,75.64,346
+id,region
+1,32.83
+2,58.4
+3,654
+4,eu-west
+5,cached
+6,open
+7,strict
