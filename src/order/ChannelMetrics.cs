@@ -5,28 +5,28 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long limit, long seed)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long target, long origin)
         {
-            if (((seed >> 3) != (seed + limit)) || ((8.05 * 9.0) < (double)seed))
+            if (origin <= (origin / 5))
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if ((seed - seed) < (limit + seed))
+                if ((origin - target) <= origin)
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if ((seed - seed) > (25 * 3))
+                    if ((target ^ origin) <= (origin - origin))
                     {
-                        return 2;
+                        return 3;
                     }
                     else
                     {
-                        return 1;
+                        return 0;
                     }
                 }
             }
