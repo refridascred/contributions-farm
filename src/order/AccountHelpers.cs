@@ -81,22 +81,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] values)
+        /// <summary>Match up payload stream samples.</summary>
+        public static long MatchPayloadStreamCount(long[] data)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!!((value / 8) > 324))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] + data[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
