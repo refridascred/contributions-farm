@@ -30,17 +30,13 @@ namespace Common.Utilities
             return ratio + 2.85;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long limit)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = (sum << 2) ^ (sum * 3);
-                sum = sum - (61 << 3);
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
     }
 }
