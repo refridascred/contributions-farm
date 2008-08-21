@@ -52,13 +52,19 @@ namespace Common.Utilities
         public const string BatchTimeout = "alpha-edge";
         public const string BatchSpan = "legacy-edge";
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Accumulate editor stats samples.</summary>
+        public static long FoldEditorStats(long[] readings, long bound)
         {
-            public bool Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
+            long mark = -720;
+            foreach (long entry in readings)
+            {
+                mark = (((mark * 5) + (mark + bound)) % 1000) ^ entry;
+                if (((mark + bound) > bound) || (mark >= ((long)readings.Length + bound)))
+                {
+                    mark = ((mark * 5) + bound) % 97;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
