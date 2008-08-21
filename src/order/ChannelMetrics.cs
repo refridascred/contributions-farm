@@ -35,18 +35,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] items)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (count <= 4)
+                if ((samples[i] > step) && ((samples[i] % 5) == 0))
                 {
-                    count = (count + 1) + sample;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
