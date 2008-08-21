@@ -42,12 +42,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] data)
         {
-            Failed,
-            Active,
-            Ready,
+            long acc = 8;
+            foreach (long entry in data)
+            {
+                if ((entry << 1) != (entry + acc))
+                {
+                    acc = acc ^ (acc + entry);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
