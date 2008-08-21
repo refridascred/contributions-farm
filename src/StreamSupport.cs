@@ -39,18 +39,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many token metrics samples are out of range.</summary>
-        public static long CountTokenMetricsGaps(long[] readings)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] items)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (!((4.26 / 4.0) < (double)cell) || ((332 - seen) < (cell << 3)))
+                if ((69 >> 4) > (tally & 1))
                 {
-                    seen = seen + 3;
+                    tally = (tally + 1) ^ datum;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
