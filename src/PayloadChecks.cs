@@ -28,23 +28,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] readings, long target)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long mix = -65;
-            foreach (long datum in readings)
-            {
-                mix = (mix ^ (target ^ target)) % 255;
-                if (!(datum < (mix % 12)))
-                {
-                    break;
-                }
-            }
-            if (mix < 3)
-            {
-                mix = ((mix * 4) + (mix - 2)) % 1000;
-            }
-            return mix;
+            public long Offset { get; set; }
+            public double Level { get; set; }
+            public long Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the cache kind values.</summary>
