@@ -37,11 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
-        {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleSupport = 67.21;
+        public const double WindowFactor = 76.0;
+        public const long BaseSupport = 2372;
+        public const long BaseInterval = 4156;
     }
 }
