@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 6972;
-        public const string MaxFarm = "staging-1";
-        public const long LimitFarm = 1201;
-        public const long MaxDepth = 9045;
-        public const long MinScore = 6744;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] series, long seed)
+        {
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long TallyStreamHits(long[] levels, long offset)
