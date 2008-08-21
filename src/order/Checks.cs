@@ -29,19 +29,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] items, long target)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long total = -576;
-            foreach (long value in items)
-            {
-                total = (total - ((-43) % 2)) + value;
-            }
-            if (total > 47)
-            {
-                total = ((total << 3) ^ (target + target)) % 1000;
-            }
-            return total;
+            Paused,
+            Synced,
+            Stale,
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
