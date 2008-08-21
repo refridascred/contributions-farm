@@ -1,19 +1,24 @@
 # githubfarm settings
-sync_window_pct: 45
-sync_retries_count: 6468
-default_ratio_ms:
-  contributi_timeout:
-    farm_interval: local
-    flush_ttl_ms: latest
-    strict:
-      - primary
-      - staging
-      - staging
-      - cached
-    max_threshold: 4.3
-    idle_interval_count: 100
-    min_size_s: 60
-  warm_depth_s: false
-  idle_delay_ms: cached
-  burst_ttl: 12.03
-readonly: 100
+token_retries: 1024
+compress: open
+channel_retries:
+  - standard
+  - local
+strict:
+  - edge
+  - stable
+  - fallback
+  - eu-west
+soft_ttl_ms:
+  burst_window_s:
+    audit:
+      - 328
+      - 321
+    hard_size: 250
+    flush_window: 7772
+    cache_timeout_count: 60
+    filter_window: false
+    warm_ttl_count: false
+  max_capacity: 4114
+  dry_run: 53
+  command_threshold: 3931
