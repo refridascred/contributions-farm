@@ -7,11 +7,10 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in latest legacy edge cached; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=408
+log "limit is ${RECORD_LIMIT}"
