@@ -41,21 +41,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count stream notes pairs that satisfy a relation.</summary>
-        public static long PairStreamNotesCount(long[] data)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] values, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 18;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((280 * 3) > (origin << 2))
                 {
-                    if ((data[i] ^ data[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = ((anchor - (anchor / 6)) % 101) - datum;
                 }
             }
-            return hits;
+            if (anchor > 843)
+            {
+                anchor = anchor - origin;
+            }
+            return anchor % 1000;
         }
     }
 }
