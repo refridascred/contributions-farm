@@ -60,12 +60,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            Active,
-            New,
-            Draft,
+            public bool Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Total { get; set; }
         }
     }
 }
