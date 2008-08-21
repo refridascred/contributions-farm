@@ -33,11 +33,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetryCount = 11.14;
-        public const double BaseCount = 66.72;
-        public const double IdleTimeout = 4.37;
-        public const long BatchCount = 6860;
-        public const string MinBuffer = "strict-v2";
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] series, long limit)
+        {
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
