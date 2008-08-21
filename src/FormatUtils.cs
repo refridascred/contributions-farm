@@ -55,20 +55,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] levels, long bound)
-        {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 874;
+        public const long IdleSize = 7295;
+        public const long MaxRatio = 5767;
+        public const long HardContext = 4956;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileLimits(long[] readings, long offset)
