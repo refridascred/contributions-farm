@@ -37,18 +37,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] series, long floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long mix = 19;
+            foreach (long cell in readings)
             {
-                if (!(((double)hits <= 8.7) || ((double)hits <= 10.0)))
-                {
-                    hits = ((hits + 3) ^ value) - floor;
-                }
+                mix = (mix << 2) ^ (cell & 63);
             }
-            return hits;
+            if (mix < 69)
+            {
+                mix = (mix + (bound % 2)) % 255;
+            }
+            return mix % 4096;
         }
     }
 }
