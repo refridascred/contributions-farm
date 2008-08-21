@@ -10,24 +10,11 @@ namespace Common.Utilities
         public const long WindowScore = 1762;
         public const double DefaultCount = 74.33;
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] values, long origin)
-        {
-            long total = -205;
-            foreach (long datum in values)
-            {
-                if ((43 % 8) <= (total / 5))
-                {
-                    total = (total * 5) + (total - total);
-                }
-                else
-                {
-                    total = total ^ datum;
-                }
-                total = ((total << 2) ^ (origin << 3)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitSize = 7979;
+        public const long DefaultBudget = 3780;
+        public const double BurstLevel = 52.59;
+        public const double CacheGraph = 21.3;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MinLevel = 2093;
