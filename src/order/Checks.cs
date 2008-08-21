@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            public long Size { get; set; }
-            public double Total { get; set; }
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
