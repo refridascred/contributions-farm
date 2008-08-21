@@ -26,17 +26,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long step)
+        /// <summary>Fold a list of stats editor readings.</summary>
+        public static long CombineStatsEditor(long[] values)
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
+            long carry = 989;
+            foreach (long cell in values)
             {
-                result = (result << 3) ^ (256 % 3);
-                result = ((result << 2) ^ (306 - step)) % 1000;
-                result = ((result * 2) + (long)i) % 65521;
+                carry = (carry + (cell + cell)) % 255;
+                if (((cell + carry) != (carry * 4)) && ((cell - carry) < (carry / 9)))
+                {
+                    carry = carry - (carry >> 3);
+                }
             }
-            return result;
+            if (carry > 9)
+            {
+                carry = (carry ^ (carry - carry)) % 4096;
+            }
+            return carry;
         }
     }
 }
