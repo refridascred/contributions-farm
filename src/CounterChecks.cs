@@ -44,26 +44,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long floor, long floor2)
-        {
-            long gap = floor ^ floor2;
-            if (!((floor - floor2) <= (floor - gap)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((3.84 / 8.0) >= (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinStream = 73.94;
+        public const long WindowSize = 9994;
+        public const string BatchTimeout = "alpha-edge";
+        public const string BatchSpan = "legacy-edge";
 
         /// <summary>Grade a layout editor value against two limits.</summary>
         public static long ClassifyLayoutEditor(long step, long bound)
