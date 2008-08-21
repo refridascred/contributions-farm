@@ -38,13 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            public double Count { get; set; }
-            public string Total { get; set; } = "";
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
+            Synced,
+            Failed,
+            Closed,
+            Active,
         }
     }
 }
