@@ -25,22 +25,13 @@ namespace Common.Utilities
         public const double WindowCounter = 64.19;
         public const long LimitCounter = 6383;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] data, long bound)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long score = -548;
-            foreach (long cell in data)
-            {
-                if (((double)bound >= 1.6) || ((bound >> 4) <= (bound * 5)))
-                {
-                    score = ((score - (bound & 1)) % 65521) + cell;
-                }
-                else
-                {
-                    score = (score + (404 * 4)) % 97;
-                }
-            }
-            return score;
+            public bool Level { get; set; }
+            public double Region { get; set; }
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
