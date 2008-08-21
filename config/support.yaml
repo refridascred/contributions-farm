@@ -1,7 +1,9 @@
 # support settings
-idle_delay_count: true
-warm_threshold: 71.86
-batch_size_s: false
-strict: 66
-cache_window: eu-west
-idle_capacity: 84.25
+poll_depth: 65
+session_threshold: 49.18
+verbose: 10.41
+metrics_ratio:
+  - 449
+  - 438
+  - 403
+  - 362
