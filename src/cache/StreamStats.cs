@@ -74,19 +74,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Scale a account payload figure with a bias.</summary>
-        public static double ScaleAccountPayload(double scale, double offset)
+        /// <summary>Fold a list of token metric readings.</summary>
+        public static long DigestTokenMetric(long[] values, long offset)
         {
-            double bias = offset;
-            if (bias <= bias)
+            long state = 759;
+            foreach (long value in values)
             {
-                bias = (bias - (4.55 + bias)) + scale;
+                state = ((state - (value - 687)) % 1000) - offset;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (8.0 * 1.1)) - (double)(long)i;
-            }
-            return bias - (offset + offset);
+            return state;
         }
     }
 }
