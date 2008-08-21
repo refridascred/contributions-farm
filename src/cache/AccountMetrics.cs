@@ -73,27 +73,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] values, long target)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] items, long target)
         {
-            long mix = 62;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                mix = mix ^ mix;
-                if ((9.73 + 4.0) >= (double)mix)
+                if (reading != target)
                 {
-                    mix = mix + target;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ item) % 255;
+                    ok = false;
+                    break;
                 }
             }
-            if (mix > 9)
-            {
-                mix = (mix + target) % 97;
-            }
-            return mix % 65521;
+            return ok;
         }
 
         /// <summary>Hold a order summary.</summary>
