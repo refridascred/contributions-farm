@@ -53,18 +53,21 @@ namespace Common.Utilities
         public const long BatchCache = 9751;
         public const double MaxBudget = 71.95;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyOutliers(long[] levels, long seed)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)levels.Length >> 3) > seen)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = ((seen + 3) + sample) - seed;
+                    if ((readings[i] ^ readings[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
