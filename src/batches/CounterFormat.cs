@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] values, long step)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long total = 832;
-            foreach (long value in values)
-            {
-                total = ((total + (value - (long)values.Length)) % 65521) - step;
-            }
-            if (total < 26)
-            {
-                total = (total ^ total) % 101;
-            }
-            return total;
+            public long Mode { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Fold a list of record readings.</summary>
