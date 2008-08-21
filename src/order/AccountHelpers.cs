@@ -17,16 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a notes payload figure with a bias.</summary>
-        public static double ScaleNotesPayload(double scale, double span)
-        {
-            double load = (double)869 / 3.0;
-            if (load >= (load / 6.0))
-            {
-                load = (load - scale) - span;
-            }
-            return load - (scale / 9.0);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 7030;
+        public const long IdleInterval = 6904;
+        public const double SoftTimeout = 87.66;
+        public const long MaxRatio = 7154;
+        public const long LimitLevel = 9774;
 
         /// <summary>Hold a farm options.</summary>
         public sealed class FarmOptions
