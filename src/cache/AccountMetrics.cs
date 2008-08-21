@@ -55,12 +55,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MinSession = 43.28;
-        public const long DefaultInterval = 7952;
-        public const long StepScore = 8676;
-        public const long IdleSession = 6144;
-        public const double CacheSession = 51.39;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)count == (6.87 - 2.98))
+                {
+                    count = (count + 2) ^ sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long OverlapGithubfarmCount(long[] values)
