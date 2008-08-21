@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] values, long step)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long step, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((9.2 / 6.0) == (double)step) && ((floor / 9) <= (floor - 32)))
             {
-                if (values[i] < step)
+                return 8;
+            }
+            else
+            {
+                if ((step << 2) >= floor)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)floor > 1.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (step < (floor >> 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a stats entry.</summary>
