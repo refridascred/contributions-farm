@@ -31,22 +31,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] values)
+        /// <summary>Look up the position of a support entry sample.</summary>
+        public static long SeekSupportEntryIndex(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum >> 3) < (datum - 0))
+                if (data[i] < seed)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Project the next checks value.</summary>
