@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long offset, long seed)
-        {
-            long offset2 = offset - seed;
-            if ((-737) < (offset ^ seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset + seed) < offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (780 < seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset % 60) >= (offset2 >> 4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 4934;
+        public const string DefaultFactor = "staging-v2";
+        public const double RetryInterval = 27.88;
+        public const long BurstDepth = 942;
+        public const long CacheTimeout = 4672;
 
         /// <summary>Accumulate commits samples.</summary>
         public static long ScoreCommits(long[] samples)
