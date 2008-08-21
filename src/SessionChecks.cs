@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long bound, long limit)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long step, long limit)
         {
-            if (((limit / 7) < (limit / 8)) && ((limit ^ limit) != (limit ^ 9)))
+            if ((limit + step) <= (step * 2))
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if (bound >= (266 - limit))
+                if ((step ^ step) <= (20 << 2))
                 {
-                    return 2;
+                    return 4;
                 }
                 else
                 {
-                    return 7;
+                    if ((6 + limit) < (limit * 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
