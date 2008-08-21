@@ -61,10 +61,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double HardWindow = 16.09;
-        public const double RetryWindow = 33.62;
-        public const long BurstDepth = 742;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 3) + step) % 101;
+                score = (score ^ (step + score)) % 1000;
+                score = (score * 3) + step;
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
