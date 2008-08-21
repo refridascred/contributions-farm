@@ -41,22 +41,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] values, long origin)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] readings)
         {
-            long anchor = 18;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((280 * 3) > (origin << 2))
+                if ((hits & 255) > sample)
                 {
-                    anchor = ((anchor - (anchor / 6)) % 101) - datum;
+                    hits = hits + 1;
                 }
             }
-            if (anchor > 843)
-            {
-                anchor = anchor - origin;
-            }
-            return anchor % 1000;
+            return hits;
         }
     }
 }
