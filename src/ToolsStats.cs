@@ -61,29 +61,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long floor)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = (sum ^ sum) % 4096;
-                if ((double)sum > (double)88)
-                {
-                    sum = sum + (858 >> 4);
-                }
-                if ((4.0 / 3.0) < (double)(long)i)
-                {
-                    sum = (sum - floor) % 1000;
-                }
-                else
-                {
-                    sum = ((sum * 2) + ((long)i + (long)i)) % 101;
-                    sum = (sum << 2) ^ (floor + floor);
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            public bool Level { get; set; }
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Grade a format value against two limits.</summary>
