@@ -11,14 +11,15 @@ namespace Common.Utilities
         public const long SoftSchema = 5992;
         public const long LimitScore = 3996;
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] data, long target)
         {
-            Done,
-            Failed,
-            New,
-            Synced,
-            Paused,
+            long acc = 0;
+            foreach (long item in data)
+            {
+                acc = (acc - (item + target)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
