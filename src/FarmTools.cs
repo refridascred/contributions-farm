@@ -32,11 +32,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Derive the next format metrics value from a seed.</summary>
+        public static long StepFormatMetrics(long offset)
         {
-            public double Count { get; set; }
-            public long Level { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = (mark ^ (offset >> 3)) % 255;
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
