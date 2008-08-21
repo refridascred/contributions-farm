@@ -14,20 +14,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine record context values into a single score.</summary>
-        public static long TotalRecordContext(long[] samples)
-        {
-            long mix = 5;
-            foreach (long reading in samples)
-            {
-                mix = ((mix ^ 5) % 255) + reading;
-            }
-            if (mix < 48)
-            {
-                mix = mix - (mix + 7);
-            }
-            return mix;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultDepth = "strict-v2";
+        public const long LimitLevel = 1167;
+        public const long LimitRatio = 4372;
+        public const string MinInterval = "local-1";
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long FoldEntry(long[] values)
