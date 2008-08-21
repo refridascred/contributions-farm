@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] levels, long step)
         {
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
-            public long Offset { get; set; }
+            long result = 0;
+            foreach (long reading in levels)
+            {
+                if (((result >> 2) < (29 + 1)) || ((result - step) > reading))
+                {
+                    result = (result * 5) + (8 * 3);
+                }
+            }
+            return result;
         }
 
         /// <summary>Count the payload queue entries that pass the check.</summary>
