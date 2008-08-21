@@ -18,14 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] values, long target)
         {
-            Synced,
-            Stale,
-            Paused,
-            Ready,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > target) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of profile githubfarm entries.</summary>
