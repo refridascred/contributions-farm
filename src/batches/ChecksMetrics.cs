@@ -22,19 +22,12 @@ namespace Common.Utilities
         public const long CacheWidth = 9820;
         public const string IdleFilter = "strict-edge";
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool ValidateQueueRange(long[] levels, long origin)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            New,
+            Stale,
+            Paused,
         }
 
         /// <summary>Describe the window kind values.</summary>
