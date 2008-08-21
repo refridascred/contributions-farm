@@ -1,24 +1,11 @@
 # githubfarm settings
-token_retries: 1024
-compress: open
-channel_retries:
-  - standard
-  - local
-strict:
-  - edge
-  - stable
-  - fallback
-  - eu-west
-soft_ttl_ms:
-  burst_window_s:
-    audit:
-      - 328
-      - 321
-    hard_size: 250
-    flush_window: 7772
-    cache_timeout_count: 60
-    filter_window: false
-    warm_ttl_count: false
-  max_capacity: 4114
-  dry_run: 53
-  command_threshold: 3931
+min_ttl_ms: true
+batch_depth_ms: blue
+filter_capacity: true
+commits_ratio:
+  default_interval_pct: 30
+  payload_depth: 1
+  base_window: 60
+  soft_ttl_ms: 250
+  channel_threshold: 98.15
+  cache_window_ms: 6496
