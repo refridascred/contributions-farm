@@ -31,23 +31,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double rate, double span)
+        /// <summary>Find the first order format entry that matches the target.</summary>
+        public static long SeekOrderFormatIndex(long[] values, long bound)
         {
-            double gain = (double)(-5) + rate;
-            if (gain <= span)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain - span;
+                if (values[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + span) + (double)(long)i;
-            }
-            return gain - 0.75;
+            return -1;
         }
 
         /// <summary>Match up profile samples.</summary>
