@@ -52,11 +52,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public string Size { get; set; } = "";
-            public string Score { get; set; } = "";
+            Retry,
+            Queued,
+            Synced,
         }
     }
 }
