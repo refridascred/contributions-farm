@@ -1,14 +1,14 @@
 # entry settings
-batch_window_s: 1384
-layout_ttl:
-  - 153
-  - 229
-  - 246
-warm_ttl_count:
-  flush_delay: false
-  warm_ttl_ms:
-    base_limit_pct: 78.23
-    default_capacity: legacy
-    warm_depth: 56.83
-    poll_retries: 17.31
-  persist: 41
+warm_delay: cached
+editor_threshold:
+  order_window: cached
+  sync_limit_ms: open
+  flush_interval_count:
+    - 302
+    - 255
+    - 307
+    - 172
+cache_interval_count:
+  base_delay_ms: 44
+  default_ttl: stable
+  format_depth: true
