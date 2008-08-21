@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheFormat = 6954;
-        public const double BurstDepth = 91.32;
-        public const long StepSpan = 9900;
-        public const double StepFormat = 79.61;
+        /// <summary>Accumulate layout samples.</summary>
+        public static long DigestLayout(long[] samples)
+        {
+            long mix = 50;
+            foreach (long value in samples)
+            {
+                if ((value + mix) > (value + 594))
+                {
+                    mix = mix - (value / 9);
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long CountEntryMatches(long[] levels)
