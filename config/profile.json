@@ -1,12 +1,18 @@
 {
-  "idle_delay_pct": 4894,
-  "burst_size": {
-    "readonly": true,
-    "batch_retries_count": "green",
-    "warm_ttl": "legacy"
+  "tools_timeout": {
+    "sync_timeout": "blue",
+    "burst_capacity_ms": true,
+    "dry_run": 92.35
   },
-  "entry_window": "blue",
-  "metric_size": "latest",
-  "schema_size": ["local", "primary"],
-  "max_timeout_count": 30
+  "cache_ttl": 46.78,
+  "batch_window_count": 250,
+  "report_depth": {
+    "buffer_size": true,
+    "stream_depth": true,
+    "min_capacity_pct": ["green", "cached", "eu-west"],
+    "profile_threshold": "local",
+    "readonly": true
+  },
+  "record_timeout": "standard",
+  "default_ratio_count": "eu-west"
 }
