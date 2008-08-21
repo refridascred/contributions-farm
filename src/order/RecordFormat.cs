@@ -18,33 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long step, long seed)
-        {
-            long span = step - seed;
-            if ((step % 3) == (span + step))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((1.28 / 2.0) == (double)seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)span <= (4.16 + 12.0)) && ((double)seed <= 4.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinSize = 3074;
+        public const double BurstQueue = 38.81;
+        public const long CacheQueue = 416;
+        public const long IdleSpan = 6491;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string MinInterval = "latest-1";
