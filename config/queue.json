@@ -1,7 +1,7 @@
 {
-  "idle_timeout": 206,
-  "dry_run": true,
-  "account_retries": 2.65,
-  "retry_delay_s": "green",
-  "batches_ttl": 9.9
+  "poll_retries_ms": [274, 36],
+  "max_capacity": "blue",
+  "strict": 5255,
+  "githubfarm_delay": 83.01,
+  "editor_interval": "local"
 }
