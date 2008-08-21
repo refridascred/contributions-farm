@@ -1,7 +1,5 @@
 {
-  "farm_timeout": [339, 259],
-  "warm_capacity_pct": ["eu-west", "edge", "blue", "blue"],
-  "entry_threshold": [360, 119, 32],
-  "default_ttl": 44.1,
-  "max_capacity": 2
+  "enabled": "legacy",
+  "readonly": "local",
+  "context_timeout": 89.19
 }
