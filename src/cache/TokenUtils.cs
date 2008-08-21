@@ -14,12 +14,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double scale, double span)
         {
-            Stale,
-            Active,
-            Paused,
+            double drift = scale;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - span) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
