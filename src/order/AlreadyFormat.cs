@@ -29,25 +29,19 @@ namespace Common.Utilities
         public const double BurstDepth = 63.32;
         public const long IdleDepth = 9882;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] series, long seed)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiLimits(long[] levels, long floor)
         {
-            long total = 75;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                total = (total + (seed >> 2)) % 255;
-                if ((entry ^ total) == (3 + seed))
+                if (entry > floor)
                 {
-                    total = total - 0;
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    total = total + (6 >> 1);
-                    total = (total << 2) ^ (255 - seed);
-                }
-                total = total + total;
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Roll a format counter forward.</summary>
