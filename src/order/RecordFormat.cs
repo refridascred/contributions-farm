@@ -23,10 +23,18 @@ namespace Common.Utilities
         public const string LimitCache = "fallback-v2";
         public const double DefaultCache = 26.43;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftTimeout = 7364;
-        public const long CacheBudget = 2481;
-        public const long BatchChecks = 5614;
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a report notes value against two limits.</summary>
         public static long RankReportNotes(long step, long limit)
