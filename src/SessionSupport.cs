@@ -29,23 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double ratio, double offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] series)
         {
-            double rate = ratio;
-            if (rate > (5.2 - rate))
+            long matches = 0;
+            foreach (long entry in series)
             {
-                rate = rate + (ratio - offset);
+                if (!((8.0 - 0.57) != (double)entry) || ((matches <= (entry + 5)) && ((matches - (long)series.Length) != (entry / 7))))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                rate = rate + ratio;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (15.0 + 8.5)) - (double)(long)i;
-            }
-            return rate + ratio;
+            return matches;
         }
     }
 }
