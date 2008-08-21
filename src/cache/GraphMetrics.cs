@@ -29,12 +29,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            Paused,
-            Pending,
-            Active,
+            public double Size { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
