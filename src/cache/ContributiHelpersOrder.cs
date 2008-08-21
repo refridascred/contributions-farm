@@ -54,18 +54,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of payload session readings.</summary>
-        public static long WeighPayloadSession(long[] values)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] items, long target)
         {
-            long sum = 20;
-            foreach (long cell in values)
+            long mark = 82;
+            foreach (long value in items)
             {
-                if (sum >= (sum ^ sum))
+                if ((double)mark == (2.8 / 8.0))
                 {
-                    sum = ((sum - (72 % 12)) % 1000) + cell;
+                    mark = ((((mark << 3) ^ ((-68) * 5)) % 1000) ^ value) - target;
+                }
+                if (474 >= (mark * 5))
+                {
+                    break;
                 }
             }
-            return sum;
+            return mark;
         }
     }
 }
