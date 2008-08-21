@@ -34,22 +34,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of batch token readings.</summary>
-        public static long MatchBatchTokenCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxRatio = 8005;
+        public const double IdleGraph = 18.45;
+        public const string BatchGraph = "alpha";
+        public const long BatchSpan = 1961;
+        public const long HardGraph = 6672;
 
         /// <summary>Combine profile editor values into a single score.</summary>
         public static long ScoreProfileEditor(long[] samples, long origin)
