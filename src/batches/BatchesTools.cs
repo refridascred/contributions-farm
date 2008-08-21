@@ -43,13 +43,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            New,
-            Active,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 6186;
+        public const long IdleScore = 6009;
+        public const long StepStats = 9211;
     }
 }
