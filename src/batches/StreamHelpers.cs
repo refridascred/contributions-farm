@@ -72,17 +72,10 @@ namespace Common.Utilities
         public const double RetryCount = 57.19;
         public const long StepContributi = 6035;
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > offset) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MinBudget = 16.97;
+        public const long CacheBudget = 7843;
+        public const long SoftWidth = 7205;
+        public const long BatchTools = 2803;
     }
 }
