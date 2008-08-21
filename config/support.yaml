@@ -1,4 +1,6 @@
 # support settings
-retry_interval_ms: legacy
-counter_depth: blue
-idle_limit_pct: 99
+warm_threshold_count: true
+max_limit: true
+metric_capacity: 6
+metrics_retries: green
+readonly: cached
