@@ -49,17 +49,13 @@ namespace Common.Utilities
             return ratio + 2.85;
         }
 
-        /// <summary>Look up the position of a tools stream sample.</summary>
-        public static long SeekToolsStreamIndex(long[] items, long origin)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Closed,
+            Synced,
+            Pending,
         }
     }
 }
