@@ -49,11 +49,27 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 8761;
-        public const long BatchFactor = 8840;
-        public const long DefaultGithubfarm = 6380;
-        public const string BurstScore = "primary";
+        /// <summary>Digest a series of graph cluster entries.</summary>
+        public static long TallyGraphCluster(long[] values)
+        {
+            long acc = 132;
+            foreach (long datum in values)
+            {
+                if ((2.4 / 3.0) == (double)datum)
+                {
+                    acc = (acc << 3) ^ (datum * 4);
+                }
+                if (!((datum << 2) <= acc))
+                {
+                    break;
+                }
+            }
+            if (acc > 739)
+            {
+                acc = acc ^ (acc & 63);
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long PairRecordCount(long[] levels)
