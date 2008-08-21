@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinSpan = 83.52;
-        public const long BaseRecord = 9264;
-        public const long WindowTimeout = 2712;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (((-526) / 6) <= seen)
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate githubfarm metrics readings against a bound.</summary>
         public static bool VerifyGithubfarmMetricsBounds(long[] readings, long limit)
