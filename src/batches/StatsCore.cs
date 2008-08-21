@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] data)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long acc = 53;
-            foreach (long item in data)
-            {
-                if ((423 <= (acc - acc)) || (acc > (item * 4)))
-                {
-                    acc = (acc ^ (item / 5)) % 97;
-                }
-            }
-            if (acc < 93)
-            {
-                acc = (acc ^ acc) % 101;
-            }
-            return acc;
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Look up the position of a window sample.</summary>
