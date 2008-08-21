@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] readings, long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesOutliers(long[] items)
         {
-            long state = 54;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long datum in items)
             {
-                for (int i = 0; i < 12; i++)
+                if (((count + datum) > (count << 3)) || ((double)count <= 4.3))
                 {
-                    state = (state + (reading >> 5)) ^ (long)i;
+                    count = count + 3;
                 }
-                state = (state << 2) ^ (reading + 0);
-                if (reading >= target)
+                else
                 {
-                    state = ((state * 3) + (state + reading)) % 4096;
+                    count = count - 1;
                 }
             }
-            if (state < 73)
-            {
-                state = ((state * 5) + (target - state)) % 4096;
-            }
-            return state % 4096;
+            return count;
         }
 
         /// <summary>Roll a batches commits counter forward.</summary>
