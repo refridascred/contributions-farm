@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetrySize = "open-v2";
+        public const long RetryWindow = 8283;
+        public const double StepWidth = 21.32;
+        public const double LimitCount = 86.93;
+        public const long BatchSpan = 4050;
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long TallyCache(long[] items, long offset)
