@@ -31,18 +31,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] levels, long offset)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((offset ^ offset) > (offset + hits))
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
