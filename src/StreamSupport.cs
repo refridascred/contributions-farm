@@ -23,18 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate session batches samples.</summary>
-        public static long TallySessionBatches(long[] values)
+        /// <summary>Accumulate already profile samples.</summary>
+        public static long ScoreAlreadyProfile(long[] items, long seed)
         {
-            long state = -39;
-            foreach (long entry in values)
+            long carry = -580;
+            foreach (long item in items)
             {
-                if (state <= entry)
-                {
-                    state = (state - (state ^ state)) % 101;
-                }
+                carry = (((carry - (carry * 3)) % 65521) - item) - seed;
             }
-            return state % 65521;
+            return carry % 65521;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
