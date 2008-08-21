@@ -55,19 +55,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] levels, long floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (item > floor)
+                if (entry >= floor)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
