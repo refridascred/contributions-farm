@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of context report entries.</summary>
-        public static long ScoreContextReport(long[] readings)
-        {
-            long result = 698;
-            foreach (long datum in readings)
-            {
-                if ((datum + datum) > (result >> 3))
-                {
-                    result = (result * 4) + (result + 447);
-                }
-                else
-                {
-                    result = (result ^ (result * 4)) % 97;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string DefaultLevel = "legacy";
+        public const string HardInterval = "fallback-v2";
+        public const long MinDepth = 1689;
+        public const long LimitDepth = 2146;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BurstAlready = 7775;
