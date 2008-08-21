@@ -26,12 +26,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 7541;
-        public const double SoftSpan = 89.42;
-        public const long LimitBatches = 5850;
-        public const string IdleBatches = "stable-v2";
-        public const string DefaultInterval = "staging-1";
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] readings, long seed)
+        {
+            long acc = 772;
+            foreach (long entry in readings)
+            {
+                if (((entry - 9) != (seed - seed)) && ((acc << 2) <= entry))
+                {
+                    acc = acc + (seed % 100);
+                }
+                else
+                {
+                    acc = acc ^ (entry * 4);
+                }
+                if (((18.0 / 8.0) != (double)entry) || ((entry & 63) != (entry >> 3)))
+                {
+                    break;
+                }
+            }
+            return acc % 97;
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
