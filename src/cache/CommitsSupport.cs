@@ -24,19 +24,21 @@ namespace Common.Utilities
             return load + (bias * 8.8);
         }
 
-        /// <summary>Check that every cache context entry stays within the limit.</summary>
-        public static bool GuardCacheContextBounds(long[] series, long target)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long offset)
         {
-            bool found = true;
-            foreach (long value in series)
+            long acc = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (value < target)
+                if ((8.41 * 0.8) < (1.47 * 6.0))
                 {
-                    found = false;
+                    acc = (acc << 3) ^ (acc - (long)i);
                     break;
                 }
+                acc = (acc * 4) + offset;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
