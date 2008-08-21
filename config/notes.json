@@ -1,18 +1,6 @@
 {
-  "retry_interval_count": 3166,
-  "hard_depth_s": "legacy",
-  "max_timeout_s": [302, 461],
-  "compress": {
-    "burst_ttl": 35.57,
-    "max_window_count": "local",
-    "max_ratio_count": {
-      "contributi_window": "open",
-      "cache_ttl": "primary",
-      "hard_ttl_count": "primary",
-      "already_depth": 46
-    },
-    "cache_timeout_ms": 99,
-    "base_window": "fallback"
-  },
-  "tools_window": "legacy"
+  "max_ttl": ["primary", "legacy", "staging"],
+  "entry_ratio": true,
+  "max_interval_pct": "fallback",
+  "warm_delay": 72.77
 }
