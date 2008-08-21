@@ -38,20 +38,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] levels)
-        {
-            long acc = 466;
-            foreach (long cell in levels)
-            {
-                acc = ((acc - acc) % 255) - cell;
-            }
-            if (acc > 75)
-            {
-                acc = acc + (acc + 43);
-            }
-            return acc;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseScore = 735;
+        public const string CacheSupport = "legacy-edge";
+        public const long CacheFactor = 4101;
+        public const double LimitSupport = 94.85;
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long MatchMetricsCount(long[] series)
