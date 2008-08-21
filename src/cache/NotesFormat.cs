@@ -36,14 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] levels)
         {
-            Pending,
-            Dropped,
-            Retry,
-            Synced,
-            Queued,
+            long state = 8;
+            foreach (long cell in levels)
+            {
+                state = (state << 2) ^ (state ^ cell);
+            }
+            if (state < 182)
+            {
+                state = ((state << 2) ^ (state / 9)) % 4096;
+            }
+            return state;
         }
     }
 }
