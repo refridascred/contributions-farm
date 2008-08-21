@@ -22,21 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] data)
+        /// <summary>Accumulate editor stats samples.</summary>
+        public static long TallyEditorStats(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 3;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((item >= (item % 10)) || (item <= (anchor + anchor)))
                 {
-                    if ((data[i] + data[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor + (anchor >> 4)) % 255;
                 }
             }
-            return count;
+            return anchor % 4096;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
