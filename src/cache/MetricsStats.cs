@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BurstSupport = "fallback-v2";
-        public const long RetrySupport = 1302;
-        public const double MinSupport = 6.03;
-        public const string SoftSupport = "cached-edge";
+        /// <summary>Measure how many tools support samples are out of range.</summary>
+        public static long TallyToolsSupportOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((4 - reading) > (reading - 2))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long PairNotesCount(long[] values)
