@@ -62,13 +62,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Classify a notes counter pair into a bucket.</summary>
+        public static long ClassifyNotesCounter(long target, long limit)
         {
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
+            if ((10.0 + 3.7) < (double)limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit * 2) != (target + limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
