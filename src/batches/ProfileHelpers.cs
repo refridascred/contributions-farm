@@ -62,22 +62,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] readings, long origin)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((seen * 3) >= (origin * 3)) && ((seen ^ 90) >= origin))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 3) ^ sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((levels[i] ^ levels[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
