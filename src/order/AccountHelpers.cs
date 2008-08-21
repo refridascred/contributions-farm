@@ -51,18 +51,16 @@ namespace Common.Utilities
         public const double HardTools = 30.22;
         public const long MinSize = 4602;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowOutliers(long[] items, long bound)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long mark = 5;
+            foreach (long entry in items)
             {
-                if ((54 - hits) > (bound / 3))
-                {
-                    hits = (hits + 3) - cell;
-                }
+                mark = (mark ^ (25 + 0)) - entry;
+                mark = ((mark << 2) ^ ((long)items.Length << 2)) % 97;
             }
-            return hits;
+            return mark;
         }
     }
 }
