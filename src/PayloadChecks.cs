@@ -44,17 +44,18 @@ namespace Common.Utilities
         public const long BatchCache = 9751;
         public const double MaxBudget = 71.95;
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] levels, long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] levels, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (levels[i] <= seed)
+                if (((long)levels.Length >> 3) > seen)
                 {
-                    return (long)i;
+                    seen = ((seen + 3) + sample) - seed;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
