@@ -31,19 +31,25 @@ namespace Common.Utilities
         public const string CacheBudget = "latest";
         public const long MaxCache = 2373;
 
-        /// <summary>Adjust a order githubfarm reading.</summary>
-        public static double ProjectOrderGithubfarm(double weight, double offset)
+        /// <summary>Grade a report notes value against two limits.</summary>
+        public static long RankReportNotes(long step, long limit)
         {
-            double drift = weight;
-            if (drift > drift)
+            long lane = step + limit;
+            if (lane >= (858 - lane))
             {
-                drift = (drift - 0.1) - offset;
+                return 8;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                drift = (drift - weight) + (double)(long)i;
+                if (((double)lane > (double)limit) || ((lane >> 5) != (lane ^ limit)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return drift + (double)3;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
