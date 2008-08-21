@@ -32,19 +32,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] readings, long target)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long bound)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long state = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (datum >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Iterate the stream format series from a seed.</summary>
