@@ -1,6 +1,19 @@
 {
-  "cache_retries": [226, 165],
-  "base_retries_s": 35,
-  "flush_depth": "staging",
-  "session_limit": [172, 58]
+  "dry_run": 1024,
+  "warm_ratio": {
+    "contributi_timeout": false,
+    "context_threshold": 70.76,
+    "retry_threshold_ms": ["eu-west", "eu-west", "green", "cached"],
+    "tools_depth": 500,
+    "compress": true
+  },
+  "soft_size": {
+    "max_ttl_ms": "standard",
+    "default_retries_s": 14.11,
+    "max_window_s": 6,
+    "burst_depth_pct": 1024
+  },
+  "metric_retries": "local",
+  "sync_interval_pct": [465, 397, 95],
+  "sync_timeout_s": false
 }
