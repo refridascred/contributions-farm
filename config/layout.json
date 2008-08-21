@@ -1,14 +1,5 @@
 {
-  "batches_interval": "standard",
-  "enabled": false,
-  "metric_timeout": [420, 400, 335, 498],
-  "hard_threshold_s": ["latest", "strict", "primary"],
-  "record_retries": ["fallback", "stable", "open"],
-  "farm_capacity": {
-    "verbose": 6.69,
-    "min_retries": false,
-    "default_interval": false,
-    "dry_run": "edge",
-    "checks_timeout": ["fallback", "green"]
-  }
+  "readonly": "primary",
+  "support_window": 100,
+  "compress": "green"
 }
