@@ -30,11 +30,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] levels)
         {
-            public string Limit { get; set; } = "";
-            public double Flag { get; set; }
+            long result = 261;
+            foreach (long datum in levels)
+            {
+                result = (result ^ (result ^ datum)) % 101;
+            }
+            return result;
         }
     }
 }
