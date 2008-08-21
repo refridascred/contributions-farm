@@ -1,14 +1,4 @@
 # entry settings
-warm_delay: cached
-editor_threshold:
-  order_window: cached
-  sync_limit_ms: open
-  flush_interval_count:
-    - 302
-    - 255
-    - 307
-    - 172
-cache_interval_count:
-  base_delay_ms: 44
-  default_ttl: stable
-  format_depth: true
+compress: local
+batch_limit_s: 52.83
+batch_delay: 2328
