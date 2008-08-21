@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double bias, double floor)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] samples)
         {
-            double drift = bias;
-            if (drift > (floor * 3.66))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift + (3.5 + drift);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift - (3.3 * 4.44);
+            return count;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
