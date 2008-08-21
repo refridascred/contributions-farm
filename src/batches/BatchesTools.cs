@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long floor)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double gain, double bias)
         {
-            long score = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            double load = bias;
+            return (load + bias) + gain;
         }
 
         /// <summary>Describe the editor level values.</summary>
