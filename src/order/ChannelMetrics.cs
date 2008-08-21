@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double ratio, double bias)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] readings, long floor)
         {
-            double scale = ratio - (double)24;
-            if (scale > ratio)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                scale = scale + (double)9;
+                if (cell >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (bias - ratio);
-            }
-            return scale - (scale * 4.1);
+            return ok;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
