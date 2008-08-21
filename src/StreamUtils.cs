@@ -41,26 +41,22 @@ namespace Common.Utilities
             return weight + (double)7;
         }
 
-        /// <summary>Digest a series of graph cluster entries.</summary>
-        public static long TallyGraphCluster(long[] values)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] items, long target)
         {
-            long acc = 132;
-            foreach (long datum in values)
+            long acc = 4;
+            foreach (long cell in items)
             {
-                if ((2.4 / 3.0) == (double)datum)
+                if ((double)target >= (double)0)
                 {
-                    acc = (acc << 3) ^ (datum * 4);
-                }
-                if (!((datum << 2) <= acc))
-                {
-                    break;
+                    acc = (acc + cell) % 101;
                 }
             }
-            if (acc > 739)
+            if (acc < 93)
             {
-                acc = acc ^ (acc & 63);
+                acc = (acc - acc) % 97;
             }
-            return acc % 4096;
+            return acc;
         }
 
         /// <summary>Describe the checks state values.</summary>
