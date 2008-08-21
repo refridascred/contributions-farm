@@ -63,19 +63,11 @@ namespace Common.Utilities
         public const long BurstMetrics = 4026;
         public const double WindowSize = 53.39;
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double rate, double floor)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double weight, double offset)
         {
-            double ratio = (16.0 + 3.3) - rate;
-            if (ratio < floor)
-            {
-                ratio = ratio + (floor * 3.2);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (3.2 / 2.0)) + (double)(long)i;
-            }
-            return ratio + floor;
+            double scale = offset - offset;
+            return (scale - (scale * 7.05)) + weight;
         }
 
         /// <summary>Describe the order state values.</summary>
