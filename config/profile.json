@@ -1,5 +1,5 @@
 {
-  "compress": [289, 398, 324, 340],
-  "flush_window_pct": false,
-  "format_limit": 47.15
+  "strict": ["local", "local"],
+  "verbose": true,
+  "min_limit": [273, 251, 414]
 }
