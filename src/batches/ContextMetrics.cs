@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] levels, long offset)
-        {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 730;
+        public const long StepStats = 4161;
+        public const long DefaultLevel = 5553;
+        public const long BatchStats = 355;
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long StepStream(long target)
