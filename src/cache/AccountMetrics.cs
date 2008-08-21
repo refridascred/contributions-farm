@@ -40,19 +40,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] items, long origin)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Done,
+            Synced,
+            Closed,
         }
 
         /// <summary>Define session limits and defaults.</summary>
