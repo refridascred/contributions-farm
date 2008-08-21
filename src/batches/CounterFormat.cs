@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double gain, double floor)
+        /// <summary>Grade a payload cache value against two limits.</summary>
+        public static long BucketPayloadCache(long floor, long target)
         {
-            double bias = (gain - floor) * 7.57;
-            if (bias < (double)99)
+            if (((double)floor > 2.02) || ((53 ^ target) >= target))
             {
-                bias = bias - bias;
+                return 6;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                bias = (bias + (10.0 - bias)) + (double)(long)i;
+                if ((target / 6) == (target - floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return bias + bias;
         }
 
         /// <summary>Describe the queue mode values.</summary>
