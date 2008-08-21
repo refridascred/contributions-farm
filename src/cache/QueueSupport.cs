@@ -32,19 +32,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] data, long bound)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] items, long limit)
         {
-            long anchor = 6;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (((anchor << 3) ^ (item * 5)) % 4096) - bound;
-                if ((anchor > (anchor + item)) || ((double)25 >= (double)anchor))
+                if ((items[i] > limit) && ((items[i] % 3) == 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
