@@ -40,15 +40,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] levels)
+        /// <summary>Audit contributi metrics readings against a rule.</summary>
+        public static long CountContributiMetricsMatches(long[] readings, long step)
         {
             long seen = 0;
-            foreach (long reading in levels)
+            foreach (long datum in readings)
             {
-                if ((seen * 3) != (reading - reading))
+                if (((datum % 64) <= (datum + seen)) && !(565 >= (step - step)))
                 {
-                    seen = seen + 3;
+                    seen = seen + 1;
                 }
             }
             return seen;
