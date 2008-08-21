@@ -20,15 +20,24 @@ namespace Common.Utilities
         public const long SoftDepth = 2430;
         public const long MaxDepth = 5298;
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long origin)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long target, long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 18; i++)
+            if (((floor - floor) > (floor % 5)) && ((target / 5) == (84 - target)))
             {
-                state = ((state * 2) + (long)i) % 1000;
+                return 8;
             }
-            return state;
+            else
+            {
+                if (!((floor / 6) > target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Match up channel samples.</summary>
