@@ -1,9 +1,19 @@
 # entry settings
-enabled: eu-west
-poll_interval_ms: legacy
-min_retries: 8046
-hard_limit: 30
-default_ratio:
-  - 128
-  - 251
-  - 356
+batch_ttl_s: 6093
+hard_depth_s: 60
+stream_delay:
+  - open
+  - green
+soft_delay_pct: strict
+farm_timeout:
+  - local
+  - standard
+  - standard
+default_limit:
+  context_ratio: true
+  hard_retries_ms: 28
+  flush_window_count: 82.16
+  cache_ttl_ms:
+    - green
+    - green
+    - green
