@@ -33,37 +33,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a format schema pair into a bucket.</summary>
-        public static long RankFormatSchema(long step, long limit)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long offset, long limit)
         {
-            long gap = step ^ limit;
-            if ((limit >> 4) <= step)
+            long slot = offset - limit;
+            if ((slot < (slot << 2)) && (6 >= offset))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if (((double)limit <= (3.0 - 9.6)) && ((limit ^ limit) >= (gap / 2)))
+                if (!((limit - limit) > offset))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    if ((limit + limit) > (limit - limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (3.0 >= (double)limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 5;
                 }
             }
         }
