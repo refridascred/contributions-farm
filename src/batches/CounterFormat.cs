@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] readings, long limit)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long target, long target2)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            if (!((target2 - 514) != (target2 / 2)))
             {
-                if (!!((186 & 3) != (seen - 7)))
+                return 8;
+            }
+            else
+            {
+                if ((target - 8) >= (target - 388))
                 {
-                    seen = ((seen + 3) + item) - limit;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (!((target >> 4) > (target2 * 5)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (target > (target2 / 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Locate a metric profile reading by value.</summary>
