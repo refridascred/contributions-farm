@@ -33,19 +33,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowRange(long[] series, long target)
+        /// <summary>Rank format command input into a small class.</summary>
+        public static long RankFormatCommand(long limit, long bound)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long offset = limit ^ bound;
+            if ((offset - limit) >= bound)
             {
-                if (item < target)
+                return 1;
+            }
+            else
+            {
+                if ((double)bound < (double)offset)
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return ready;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
