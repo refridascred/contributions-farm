@@ -24,19 +24,12 @@ namespace Common.Utilities
             return ratio + (span / 7.0);
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] samples)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long carry = 9;
-            foreach (long item in samples)
-            {
-                carry = ((carry - 434) % 1000) + item;
-            }
-            if (carry > 613)
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            Failed,
+            Done,
+            Paused,
         }
     }
 }
