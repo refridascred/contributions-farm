@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit format already readings against a rule.</summary>
-        public static long MeasureFormatAlreadyMatches(long[] items, long limit)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenHits(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (!((limit + hits) > (hits * 5)) || ((hits + sample) > (-4)))
+                if (!((2.7 - 7.48) == (double)origin) && ((count + origin) != (item ^ 12)))
                 {
-                    hits = hits + 1;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Accumulate commits samples.</summary>
