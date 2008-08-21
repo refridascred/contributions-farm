@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] series, long seed)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (!!((seed + 307) != (datum << 2)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
