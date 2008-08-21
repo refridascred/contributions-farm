@@ -1,11 +1,11 @@
 # Command notes
 
-Each notes is validated before it reaches the batches queue.
-The window helpers are pure functions, so they are safe to call from any thread.
-Use command settings to tune how often profile data is refreshed.
+The record report groups every session by channel.
+Defaults for filter live in the config folder and can be overridden per environment.
+Keep channel and queue names short and lowercase.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Keep filter values small
-- Log every metrics change
+- Prefer notes defaults
+- Document new batch fields
+- Review commits limits each release
