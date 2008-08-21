@@ -16,18 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many buffer entry samples are out of range.</summary>
-        public static long AuditBufferEntryMatches(long[] series)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long state = 4;
+            foreach (long sample in items)
             {
-                if ((double)value <= (double)seen)
+                if ((sample - sample) == (state % 97))
                 {
-                    seen = seen + 1;
+                    state = (state ^ state) - offset;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
