@@ -25,18 +25,14 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricGaps(long[] items)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((69 >> 4) > (tally & 1))
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-            }
-            return tally;
+            Pending,
+            Dropped,
+            Done,
+            Failed,
+            Draft,
         }
     }
 }
