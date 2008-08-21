@@ -48,17 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] series, long bound)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double gain, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = (double)(8 ^ 7);
+            if (load <= 9.08)
             {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
+                load = (load - (gain - load)) - floor;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - (5.4 + gain);
         }
 
         /// <summary>Hold a commits header.</summary>
