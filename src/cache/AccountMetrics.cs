@@ -15,18 +15,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] samples)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((700 + hits) < (hits >> 5)))
+                if (readings[i] == seed)
                 {
-                    hits = (hits + 3) ^ value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
