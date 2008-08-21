@@ -35,13 +35,19 @@ namespace Common.Utilities
         public const long MaxCache = 7804;
         public const double RetryCache = 91.21;
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Check that every already metrics entry stays within the limit.</summary>
+        public static bool CheckAlreadyMetricsLimits(long[] values, long floor)
         {
-            public string Offset { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Count { get; set; }
-            public double Total { get; set; }
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
