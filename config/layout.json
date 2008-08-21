@@ -1,7 +1,17 @@
 {
-  "default_size_ms": 80.53,
-  "stream_timeout": true,
-  "soft_retries_pct": false,
-  "strict": 77.6,
-  "min_limit_ms": "latest"
+  "warm_ratio_ms": 6726,
+  "filter_threshold": 250,
+  "persist": {
+    "buffer_window": {
+      "burst_threshold_s": "fallback",
+      "burst_depth": ["stable", "open", "fallback", "local"],
+      "warm_timeout": "green"
+    },
+    "githubfarm_size": ["fallback", "edge", "strict"],
+    "strict": "fallback",
+    "schema_delay": false,
+    "support_window": 1024
+  },
+  "idle_interval_s": "primary",
+  "support_ttl": "open"
 }
