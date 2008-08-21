@@ -31,22 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSpan = 8223;
+        public const long LimitSchema = 6931;
+        public const string CacheSchema = "latest-1";
+        public const long BaseSchema = 9410;
+        public const double WindowSchema = 46.6;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long IdleCount = 8668;
