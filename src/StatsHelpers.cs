@@ -30,13 +30,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
+            public double Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
