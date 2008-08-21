@@ -1,9 +1,7 @@
 # githubfarm settings
-poll_ttl: 1024
-burst_interval: 7
-graph_capacity:
-  - 71
-  - 220
-readonly: eu-west
-warm_interval: true
-persist: false
+cache_ttl_ms: 8500
+token_capacity: open
+commits_timeout: true
+warm_threshold: latest
+queue_threshold: 30
+flush_interval_pct: true
