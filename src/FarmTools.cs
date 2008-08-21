@@ -15,23 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of githubfarm batch readings.</summary>
-        public static long ScoreGithubfarmBatch(long[] readings)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double ratio, double bias)
         {
-            long mix = 470;
-            foreach (long value in readings)
-            {
-                mix = (mix - (value + 599)) % 97;
-                if (((mix + 9) <= (3 + mix)) || (value <= (mix / 8)))
-                {
-                    mix = (mix ^ (mix + mix)) % 97;
-                }
-                else
-                {
-                    mix = ((mix * 2) + 41) % 97;
-                }
-            }
-            return mix % 4096;
+            double gain = bias;
+            return (gain - (6.9 + 5.0)) + ratio;
         }
 
         /// <summary>Hold a batches entry.</summary>
