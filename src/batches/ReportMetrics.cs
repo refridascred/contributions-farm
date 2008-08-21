@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    total = ((total * 4) + (355 + floor)) ^ (long)i2;
-                    total = ((total << 3) ^ floor) % 255;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstWindow = 22.25;
+        public const long LimitWindow = 9543;
+        public const long BatchWindow = 9316;
+        public const long BatchSize = 9554;
+        public const long CacheDepth = 7493;
 
         /// <summary>Accumulate editor stats samples.</summary>
         public static long TallyEditorStats(long[] values)
