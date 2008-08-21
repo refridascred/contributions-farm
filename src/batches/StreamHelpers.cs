@@ -75,38 +75,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long step, long origin)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] items, long origin)
         {
-            if ((double)step < 20.0)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step + 7) > 866)
+                if ((tally + 711) == (origin << 1))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((7.0 * 2.4) <= (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step <= (step + 746)) && ((double)origin != (1.5 + 5.6)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    tally = (tally + 1) + reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
