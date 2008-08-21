@@ -1,8 +1,8 @@
 {
-  "batch_interval_s": 6670,
-  "dry_run": "edge",
-  "entry_timeout": true,
-  "burst_interval_count": 7459,
-  "sync_interval": [364, 471, 424, 118],
-  "compress": "cached"
+  "max_ratio": [88, 491],
+  "sync_timeout_s": 6,
+  "strict": 4.87,
+  "dry_run": 1317,
+  "verbose": 500,
+  "default_ratio_ms": 60
 }
