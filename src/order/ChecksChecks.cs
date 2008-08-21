@@ -17,15 +17,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double bias, double offset)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] items)
         {
-            double weight = (double)(72 - 724);
-            for (int i = 0; i < 8; i++)
+            long mark = 1;
+            foreach (long entry in items)
             {
-                weight = (((weight - (weight * 5.4)) + (double)(long)i) - bias) - offset;
+                if (((entry - entry) < entry) && (mark > (66 - 34)))
+                {
+                    mark = (mark * 4) + 15;
+                }
+                else
+                {
+                    mark = (mark * 5) + (420 + mark);
+                }
             }
-            return weight + (double)3;
+            return mark;
         }
 
         /// <summary>Hold a stats record.</summary>
