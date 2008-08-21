@@ -56,9 +56,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 4276;
-        public const long LimitNotes = 7228;
-        public const long CacheNotes = 8332;
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double gain, double bias)
+        {
+            double ratio = (double)(7 >> 2);
+            if (ratio > (ratio - bias))
+            {
+                ratio = ratio - (bias + gain);
+            }
+            else
+            {
+                ratio = ratio - bias;
+            }
+            return ratio + ratio;
+        }
     }
 }
