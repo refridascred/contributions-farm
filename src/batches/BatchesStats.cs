@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 1028;
-        public const long MaxInterval = 8999;
-        public const long WindowLevel = 5096;
+        /// <summary>Audit format already readings against a rule.</summary>
+        public static long MeasureFormatAlreadyMatches(long[] items, long limit)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (!((limit + hits) > (hits * 5)) || ((hits + sample) > (-4)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TallyCommits(long[] items)
