@@ -14,19 +14,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] readings, long target)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] data)
         {
-            long total = 6;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                total = ((total - total) % 4096) + target;
-                if (33 > (cell >> 5))
+                if ((double)(-33) > (double)tally)
                 {
-                    break;
+                    tally = (tally + 2) + entry;
                 }
             }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Hold a stats summary.</summary>
