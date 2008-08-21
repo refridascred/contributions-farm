@@ -40,19 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate counter session readings against a bound.</summary>
-        public static bool GuardCounterSessionRange(long[] readings, long floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long carry = 808;
+            foreach (long value in samples)
             {
-                if (item <= floor)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = (carry + (value >> 3)) % 97;
             }
-            return ready;
+            return carry % 4096;
         }
 
         /// <summary>Check that every buffer payload entry stays within the limit.</summary>
