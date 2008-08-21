@@ -15,11 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryWidth = 522;
-        public const long BatchEntry = 2773;
-        public const long SoftEntry = 2492;
-        public const double CacheRatio = 52.18;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (((value ^ value) > (value / 3)) && ((double)value < (6.37 + 9.0)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TotalBatches(long[] readings, long bound)
