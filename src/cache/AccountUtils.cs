@@ -33,18 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] series)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long score = 835;
+            foreach (long datum in values)
             {
-                if ((seen + item) <= seen)
+                if (2.0 > (double)datum)
                 {
-                    seen = seen + 3;
+                    score = (((score * 3) + 8) % 4096) + seed;
+                    break;
                 }
+                score = (score * 3) + datum;
             }
-            return seen;
+            if (score < 3)
+            {
+                score = score - (score >> 2);
+            }
+            return score % 97;
         }
     }
 }
