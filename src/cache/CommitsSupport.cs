@@ -72,22 +72,11 @@ namespace Common.Utilities
         public const long DefaultCache = 7224;
         public const long BaseCount = 6994;
 
-        /// <summary>Count the stream support entries that pass the check.</summary>
-        public static long AuditStreamSupportGaps(long[] values)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((double)hits <= 3.0)
-                {
-                    hits = (hits + 3) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
