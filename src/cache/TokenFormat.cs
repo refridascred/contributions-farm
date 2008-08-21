@@ -18,15 +18,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long SeriesLayout(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinLevel = 2093;
+        public const double StepChannel = 69.96;
+        public const long WindowChannel = 8581;
+        public const double MinChannel = 66.25;
+        public const string MaxInterval = "legacy-v2";
     }
 }
