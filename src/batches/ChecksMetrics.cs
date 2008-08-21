@@ -41,11 +41,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public long Flag { get; set; }
-            public bool Score { get; set; }
+            New,
+            Draft,
+            Ready,
         }
 
         /// <summary>Match up entry samples.</summary>
