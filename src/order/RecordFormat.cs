@@ -18,11 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinSize = 3074;
-        public const double BurstQueue = 38.81;
-        public const long CacheQueue = 416;
-        public const long IdleSpan = 6491;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultLevel = "cached-edge";
+        public const string LimitCache = "fallback-v2";
+        public const double DefaultCache = 26.43;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long SoftTimeout = 7364;
