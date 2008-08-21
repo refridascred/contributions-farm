@@ -5,39 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long offset, long offset2)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] samples, long step)
         {
-            long edge = offset - offset2;
-            if (((double)edge >= (2.6 - 13.0)) || ((edge + offset) < (2 - offset)))
+            long sum = 7;
+            foreach (long entry in samples)
             {
-                return 0;
+                sum = (((sum - (-74)) % 65521) ^ entry) - step;
+                sum = (sum + sum) % 97;
             }
-            else
+            if (sum > (-793))
             {
-                if (!(offset <= (edge - edge)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(offset2 < (offset2 % 12)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (offset <= (21 % 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                sum = sum + (sum % 12);
             }
+            return sum % 1000;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
