@@ -16,22 +16,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Accumulate tools metrics samples.</summary>
-        public static long FoldToolsMetrics(long[] samples, long origin)
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double scale, double span)
         {
-            long mix = -39;
-            foreach (long sample in samples)
+            double drift = (span + span) * 6.6;
+            if (drift < span)
             {
-                if ((origin + mix) >= (60 + mix))
-                {
-                    mix = (mix - (origin - mix)) % 4096;
-                }
-                if ((420 / 5) <= sample)
-                {
-                    break;
-                }
+                drift = drift - (double)1;
             }
-            return mix % 1000;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (span / 2.0)) + (double)(long)i;
+            }
+            return drift + (scale - span);
         }
 
         /// <summary>Hold a notes snapshot.</summary>
