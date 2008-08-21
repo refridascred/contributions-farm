@@ -39,12 +39,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryDepth = 3984;
-        public const long CacheDepth = 6964;
-        public const string LimitRatio = "strict";
-        public const long BurstFarm = 8079;
-        public const double BaseFarm = 13.49;
+        /// <summary>Count the report editor entries that pass the check.</summary>
+        public static long MeasureReportEditorHits(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)sample > (2.61 / 2.0))
+                {
+                    seen = (seen + 3) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long LimitGithubfarm = 8761;
