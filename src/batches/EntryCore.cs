@@ -75,11 +75,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long bound)
         {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                if (((10.0 * 5.2) >= (double)(long)i) && ((double)sum < (5.22 - 7.13)))
+                {
+                    sum = (sum + (bound + bound)) % 4096;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
