@@ -22,21 +22,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] items)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = (double)(40 * 2);
+            if (drift < (span / 8.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = (drift + (double)(-19)) - scale;
             }
-            return count;
+            return drift + (8.07 * 0.2);
         }
 
         /// <summary>Count the report editor entries that pass the check.</summary>
