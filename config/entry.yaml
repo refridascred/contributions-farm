@@ -1,8 +1,5 @@
 # entry settings
-poll_ttl: 500
-counter_size:
-  min_size: eu-west
-  burst_capacity_count: 51
-  verbose: fallback
-poll_ttl_count: 95.2
-audit: standard
+editor_interval: false
+warm_depth_pct: 500
+batches_limit: true
+layout_capacity: 27.24
