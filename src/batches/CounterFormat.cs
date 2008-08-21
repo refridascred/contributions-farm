@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a payload cache value against two limits.</summary>
-        public static long BucketPayloadCache(long floor, long target)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] readings, long limit)
         {
-            if (((double)floor > 2.02) || ((53 ^ target) >= target))
+            long seen = 0;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target / 6) == (target - floor))
+                if (!!((186 & 3) != (seen - 7)))
                 {
-                    return 2;
+                    seen = ((seen + 3) + item) - limit;
                 }
                 else
                 {
-                    return 0;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the queue mode values.</summary>
