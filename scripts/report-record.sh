@@ -7,17 +7,17 @@ log() {
 }
 
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-mode="${1:-primary}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in eu-west legacy; do
+    log "checking ${item}"
+done
+
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
