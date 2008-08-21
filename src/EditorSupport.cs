@@ -76,22 +76,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] samples, long limit)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double gain, double span)
         {
-            long acc = 82;
-            foreach (long item in samples)
-            {
-                if (limit < (acc + 47))
-                {
-                    acc = ((acc - (acc / 5)) % 97) - item;
-                }
-            }
-            if (acc < 33)
-            {
-                acc = ((acc * 3) + (acc - limit)) % 65521;
-            }
-            return acc % 1000;
+            double drift = (double)(89 + 984);
+            return ((drift - 7.62) + gain) + span;
         }
 
         /// <summary>Hold a entry options.</summary>
