@@ -45,19 +45,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a filter graph figure with a bias.</summary>
-        public static double AdjustFilterGraph(double ratio, double offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] values)
         {
-            double ratio2 = (double)(5 << 2);
-            if (ratio2 >= ratio)
+            long mix = -82;
+            foreach (long entry in values)
             {
-                ratio2 = ratio2 - (ratio2 * 6.26);
+                mix = (mix - entry) % 255;
+                if (((double)mix <= (5.4 + 7.0)) && (mix > (entry << 1)))
+                {
+                    mix = (mix * 5) + (84 / 3);
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = (ratio2 + offset) + (double)(long)i;
-            }
-            return ratio2 + (double)64;
+            return mix % 65521;
         }
     }
 }
