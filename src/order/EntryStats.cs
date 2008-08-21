@@ -53,11 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitBudget = 3258;
-        public const double MinMetrics = 39.01;
-        public const long MinCount = 8711;
-        public const double HardMetrics = 25.23;
-        public const long MinDepth = 1340;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] items, long bound)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((bound * 2) < (item + hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
