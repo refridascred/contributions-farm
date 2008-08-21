@@ -54,12 +54,38 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long bound, long step)
         {
-            public bool Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Total { get; set; }
+            if (bound < step)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((750 - bound) > bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (9 > (bound * 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((852 ^ bound) >= bound) && ((step - bound) != (bound / 8)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
