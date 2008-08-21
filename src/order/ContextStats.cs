@@ -20,19 +20,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] series)
+        /// <summary>Count farm graph pairs that satisfy a relation.</summary>
+        public static long CompareFarmGraphCount(long[] series)
         {
-            long mix = 2;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix * 2) + (entry / 6);
-                if ((double)mix <= (7.4 * 0.4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix + (entry ^ entry)) % 65521;
+                    if ((series[i] - series[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
