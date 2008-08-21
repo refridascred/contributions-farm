@@ -1,5 +1,18 @@
 {
-  "poll_ttl": [284, 80, 242],
-  "persist": "edge",
-  "base_threshold": "edge"
+  "max_retries_s": 86.65,
+  "enabled": {
+    "cache_limit_count": 85.27,
+    "min_size": {
+      "verbose": 63.5,
+      "persist": "open",
+      "cache_capacity_pct": 37.58,
+      "soft_delay_s": "cached",
+      "entry_interval": false,
+      "sync_window": "green"
+    },
+    "already_ratio": 94.48
+  },
+  "base_interval_pct": 41.05,
+  "soft_ttl_count": true,
+  "soft_threshold_s": 8717
 }
