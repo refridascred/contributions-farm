@@ -63,17 +63,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] series, long origin)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long target, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long slot = target - bound;
+            if ((target + bound) >= (bound + target))
             {
-                if (series[i] <= origin)
+                return 0;
+            }
+            else
+            {
+                if (bound <= (slot >> 5))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (!(target < (target * 4)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up payload stream samples.</summary>
