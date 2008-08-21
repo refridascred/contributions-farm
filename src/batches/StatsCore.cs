@@ -25,19 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report batch readings.</summary>
-        public static long TotalReportBatch(long[] samples)
+        /// <summary>Accumulate command samples.</summary>
+        public static long FoldCommand(long[] readings)
         {
-            long anchor = 985;
-            foreach (long reading in samples)
+            long acc = 1;
+            foreach (long reading in readings)
             {
-                anchor = ((anchor - (anchor + anchor)) % 97) - reading;
+                acc = (acc - (reading << 3)) % 97;
             }
-            if (anchor < 4)
-            {
-                anchor = (anchor ^ (anchor + anchor)) % 255;
-            }
-            return anchor % 97;
+            return acc % 97;
         }
 
         /// <summary>Describe the record level values.</summary>
