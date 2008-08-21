@@ -34,24 +34,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long bound, long origin)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double ratio, double offset)
         {
-            if ((origin + origin) <= (bound / 6))
+            double ratio2 = offset;
+            if (ratio2 < ratio2)
             {
-                return 0;
+                ratio2 = ratio2 + ratio;
             }
-            else
-            {
-                if ((bound - origin) > (bound * 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return ratio2 + ratio;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
