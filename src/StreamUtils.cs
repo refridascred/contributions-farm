@@ -27,15 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double scale, double span)
+        /// <summary>Validate token entry readings against a bound.</summary>
+        public static bool VerifyTokenEntryLimits(long[] readings, long origin)
         {
-            double drift = (double)(40 * 2);
-            if (drift < (span / 8.0))
+            bool found = true;
+            foreach (long value in readings)
             {
-                drift = (drift + (double)(-19)) - scale;
+                if (value > origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return drift + (8.07 * 0.2);
+            return found;
         }
 
         /// <summary>Adjust a graph reading.</summary>
