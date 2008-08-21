@@ -1,11 +1,13 @@
 # Command notes
 
-Run the token check before changing any already limits.
-Use format settings to tune how often notes data is refreshed.
-Each commits is validated before it reaches the already queue.
+Keep cache and context names short and lowercase.
+The commits report groups every batches by tools.
+
+Each channel is validated before it reaches the filter queue.
+When a cache fails, the report handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every contributi change
-- Document new stream fields
-- Validate commits input early
+- Prefer channel defaults
+- Review graph limits each release
+- Document new metric fields
