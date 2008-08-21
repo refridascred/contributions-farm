@@ -22,12 +22,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryCount = 5288;
-        public const long MaxReport = 5627;
-        public const string CacheReport = "open";
-        public const double BatchReport = 40.42;
-        public const long StepReport = 2733;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] readings, long target)
+        {
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a layout record.</summary>
         public sealed class LayoutRecord
