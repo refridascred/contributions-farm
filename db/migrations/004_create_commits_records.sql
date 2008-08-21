@@ -2,12 +2,14 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     score REAL NOT NULL DEFAULT 0,
-    created_at TIMESTAMP,
     owner TEXT NOT NULL,
-    state TEXT NOT NULL DEFAULT 'new',
-    count INTEGER NOT NULL DEFAULT 0
+    ratio REAL,
+    level INTEGER,
+    active INTEGER NOT NULL DEFAULT 1
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_state ON commits_records (state);
+CREATE INDEX IF NOT EXISTS idx_commits_records_score ON commits_records (score);
 
-INSERT INTO commits_records (score, owner, state, count) VALUES (88.7, 'edge', 'cached', 75);
+INSERT INTO commits_records (score, owner, ratio, level, active) VALUES (53.8, 'primary', 35.91, 61, 49);
+INSERT INTO commits_records (score, owner, ratio, level, active) VALUES (88.65, 'primary', 62.12, 94, 37);
+INSERT INTO commits_records (score, owner, ratio, level, active) VALUES (52.83, 'standard', 4.46, 16, 92);
