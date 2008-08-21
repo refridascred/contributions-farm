@@ -43,11 +43,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] samples, long target)
         {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
+            long score = 9;
+            foreach (long entry in samples)
+            {
+                if (target < score)
+                {
+                    score = ((score << 3) ^ (target << 2)) + entry;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Roll a account session counter forward.</summary>
