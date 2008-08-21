@@ -26,22 +26,11 @@ namespace Common.Utilities
             return (load - 5.0) + offset;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] levels)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long total = 495;
-            foreach (long entry in levels)
-            {
-                if ((total + total) <= ((-374) + entry))
-                {
-                    total = ((total * 4) + total) % 4096;
-                }
-            }
-            if (total > 64)
-            {
-                total = (total * 5) + (total / 7);
-            }
-            return total % 4096;
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
