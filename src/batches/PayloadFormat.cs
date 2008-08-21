@@ -24,12 +24,18 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Count the profile command entries that pass the check.</summary>
+        public static long AuditProfileCommandOutliers(long[] items, long target)
         {
-            public string Count { get; set; } = "";
-            public bool Mode { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((double)value == (5.0 / 2.0))
+                {
+                    tally = (tally + 3) + target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
