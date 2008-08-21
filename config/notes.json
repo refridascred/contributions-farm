@@ -1,19 +1,12 @@
 {
-  "burst_threshold_ms": "stable",
-  "base_depth_ms": {
-    "payload_ratio": "strict",
-    "readonly": 27.89,
-    "enabled": 55
-  },
-  "min_capacity_count": true,
+  "poll_window": true,
+  "sync_timeout_s": true,
+  "max_window": ["legacy", "fallback"],
+  "batch_delay_s": 500,
+  "verbose": ["local", "cached"],
   "enabled": {
-    "batch_window": {
-      "account_threshold": "strict",
-      "strict": ["staging", "latest"],
-      "idle_depth_ms": 4.37
-    },
-    "default_delay_s": 49,
-    "payload_threshold": false
-  },
-  "audit": false
+    "batch_timeout_s": 7055,
+    "cache_depth_pct": 28.31,
+    "readonly": ["legacy", "latest", "cached"]
+  }
 }
