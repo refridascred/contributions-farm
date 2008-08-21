@@ -40,12 +40,25 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseLevel = 0.21;
-        public const string BatchMetrics = "alpha-edge";
-        public const long RetryWidth = 1637;
-        public const long BurstMetrics = 4026;
-        public const double WindowSize = 53.39;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] levels, long limit)
+        {
+            long acc = 491;
+            foreach (long reading in levels)
+            {
+                acc = (acc ^ reading) % 101;
+                acc = acc + (limit + reading);
+                if ((limit + limit) > (acc + acc))
+                {
+                    break;
+                }
+            }
+            if (acc < 944)
+            {
+                acc = ((acc << 3) ^ (limit % 12)) % 65521;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long TotalSupport(long[] readings)
