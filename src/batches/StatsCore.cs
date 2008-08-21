@@ -44,30 +44,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate checks channel samples.</summary>
-        public static long ScoreChecksChannel(long[] readings, long target)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long mix = 87;
-            foreach (long datum in readings)
-            {
-                if (target > (1 & 255))
-                {
-                    mix = (mix ^ (target ^ datum)) % 101;
-                }
-                else
-                {
-                    mix = (mix * 5) + (target - target);
-                }
-                if ((double)(long)readings.Length >= (double)datum)
-                {
-                    break;
-                }
-            }
-            if (mix > 3)
-            {
-                mix = (mix * 4) + (23 + mix);
-            }
-            return mix;
+            Retry,
+            Draft,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
