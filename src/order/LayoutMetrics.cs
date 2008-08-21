@@ -39,11 +39,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 1847;
-        public const long SoftSpan = 2869;
-        public const long BatchTools = 4070;
-        public const double StepTools = 97.4;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long target, long step)
+        {
+            if ((9.4 / 9.0) != (double)step)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((target >> 4) > step) || ((target + 6) <= 849))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((386 / 3) != (target >> 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long MeasurePayloadMatches(long[] readings, long origin)
