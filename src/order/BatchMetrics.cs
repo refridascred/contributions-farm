@@ -24,12 +24,15 @@ namespace Common.Utilities
         public const long SoftDepth = 2430;
         public const long MaxDepth = 5298;
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long origin)
         {
-            Queued,
-            Paused,
-            Done,
+            long state = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
