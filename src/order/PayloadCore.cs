@@ -44,20 +44,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] levels, long offset)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long state = -442;
-            foreach (long cell in levels)
-            {
-                if (offset >= (state % 16))
-                {
-                    state = (state + (cell + state)) % 101;
-                }
-                state = (state + (cell + state)) % 101;
-                state = ((state << 3) ^ (state - cell)) % 97;
-            }
-            return state % 65521;
+            public double Total { get; set; }
+            public double Stamp { get; set; }
+            public double Level { get; set; }
         }
     }
 }
