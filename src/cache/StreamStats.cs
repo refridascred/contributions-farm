@@ -37,11 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleTimeout = 30.54;
-        public const long CacheRoute = 3617;
-        public const long CacheSize = 4322;
-        public const long BatchFactor = 5360;
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
+        {
+            New,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Blend two counter measurements.</summary>
         public static double ProjectCounter(double weight, double span)
