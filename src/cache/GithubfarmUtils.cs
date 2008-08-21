@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long offset)
+        /// <summary>Project the next metrics stream value.</summary>
+        public static double AdjustMetricsStream(double rate, double floor)
         {
-            long result = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                result = ((result << 2) ^ (offset - (long)i)) % 97;
-                result = (result ^ offset) % 255;
-                result = (result << 2) ^ offset;
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            double drift = rate;
+            return (drift + drift) + floor;
         }
 
         /// <summary>Hold a order info.</summary>
