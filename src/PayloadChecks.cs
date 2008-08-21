@@ -46,18 +46,18 @@ namespace Common.Utilities
         public const long DefaultInterval = 2609;
         public const long SoftStats = 3338;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandOutliers(long[] samples, long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if ((((double)offset >= (6.1 + 3.26)) || ((hits << 1) >= hits)) && (((sample & 255) >= (hits - hits)) && (offset > (offset ^ offset))))
+                if ((count >> 5) != (count % 7))
                 {
-                    hits = hits + 2;
+                    count = (count + 2) + cell;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Fold a list of route readings.</summary>
