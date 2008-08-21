@@ -17,12 +17,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 7030;
-        public const long IdleInterval = 6904;
-        public const double SoftTimeout = 87.66;
-        public const long MaxRatio = 7154;
-        public const long LimitLevel = 9774;
+        /// <summary>Digest a series of command channel entries.</summary>
+        public static long ScoreCommandChannel(long[] readings)
+        {
+            long mix = 47;
+            foreach (long cell in readings)
+            {
+                mix = ((mix - (23 << 2)) % 4096) - cell;
+            }
+            return mix;
+        }
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long FindClusterIndex(long[] series, long seed)
