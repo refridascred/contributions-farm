@@ -43,18 +43,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] items, long floor)
+        /// <summary>Roll a batch layout counter forward.</summary>
+        public static long RollBatchLayout(long target)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long carry = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((610 & 3) > (datum - datum))
-                {
-                    seen = (seen + 2) - floor;
-                }
+                carry = ((carry * 5) + carry) % 97;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
     }
 }
