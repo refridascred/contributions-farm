@@ -37,9 +37,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 4512;
-        public const string BurstSize = "strict-1";
-        public const double MinInterval = 57.29;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Retry,
+            Synced,
+            Failed,
+            Stale,
+        }
     }
 }
