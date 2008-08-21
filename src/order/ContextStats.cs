@@ -42,15 +42,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] levels)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] items, long floor)
         {
             long seen = 0;
-            foreach (long datum in levels)
+            foreach (long datum in items)
             {
-                if ((datum + datum) < datum)
+                if ((610 & 3) > (datum - datum))
                 {
-                    seen = seen + 3;
+                    seen = (seen + 2) - floor;
                 }
             }
             return seen;
