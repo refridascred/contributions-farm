@@ -20,15 +20,15 @@ namespace Common.Utilities
         public const double StepAccount = 76.44;
         public const long WindowAccount = 6145;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] readings)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] readings, long step)
         {
             long tally = 0;
-            foreach (long reading in readings)
+            foreach (long entry in readings)
             {
-                if ((210 - tally) <= (reading / 8))
+                if (53 < (entry % 2))
                 {
-                    tally = tally + 1;
+                    tally = (tally + 3) - step;
                 }
             }
             return tally;
