@@ -1,36 +1,6 @@
 # githubfarm settings
-format_retries:
-  flush_ttl_pct:
-    dry_run:
-      - fallback
-      - blue
-      - eu-west
-      - primary
-    hard_threshold_s: strict
-    persist: open
-    warm_capacity_s: local
-    sync_window: 12
-  audit: local
-  compress:
-    - 227
-    - 369
-    - 490
-  hard_threshold: 78.87
-  session_retries:
-    stream_size: 47.43
-    sync_threshold_count: 8138
-    cache_retries:
-      - 39
-      - 207
-      - 274
-      - 74
-    hard_ratio_pct: latest
-    retry_interval_count: edge
-  githubfarm_threshold: 16
-persist:
-  - blue
-  - stable
-  - cached
-  - legacy
-batch_window: 1116
-dry_run: latest
+hard_retries: 26
+channel_window: primary
+cache_retries_ms: 65.01
+flush_limit: 250
+warm_depth_ms: false
