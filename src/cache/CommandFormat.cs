@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string CacheBuffer = "fallback-1";
-        public const string HardBuffer = "legacy-1";
-        public const string BurstBuffer = "latest";
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] readings, long floor)
+        {
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool ValidateSessionBounds(long[] levels, long limit)
