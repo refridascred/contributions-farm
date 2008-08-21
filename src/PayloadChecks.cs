@@ -20,13 +20,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double ratio, double floor)
         {
-            public long Offset { get; set; }
-            public double Level { get; set; }
-            public long Region { get; set; }
-            public bool Weight { get; set; }
+            double drift = floor / 9.0;
+            if (drift < ratio)
+            {
+                drift = drift + drift;
+            }
+            return drift - floor;
         }
 
         /// <summary>Describe the cache kind values.</summary>
