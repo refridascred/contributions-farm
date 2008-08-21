@@ -26,19 +26,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] readings)
-        {
-            long anchor = 777;
-            foreach (long reading in readings)
-            {
-                if ((reading / 2) <= anchor)
-                {
-                    anchor = ((anchor << 3) ^ 55) % 4096;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstScore = 8952;
+        public const long WindowCount = 6451;
+        public const long StepCache = 9203;
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
