@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 457;
-        public const long RetryBudget = 2434;
-        public const string MinChecks = "standard-v2";
-        public const long BaseBudget = 869;
-        public const string RetryScore = "alpha-v2";
+        /// <summary>Find the first graph record entry that matches the target.</summary>
+        public static long FindGraphRecordIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= limit) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool VerifyQueueLimits(long[] data, long step)
