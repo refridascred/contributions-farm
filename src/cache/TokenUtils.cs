@@ -38,13 +38,15 @@ namespace Common.Utilities
         public const long RetryScore = 7909;
         public const long DefaultCount = 5696;
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] items, long bound)
         {
-            public string Size { get; set; } = "";
-            public bool Score { get; set; }
-            public long Token { get; set; }
-            public bool Level { get; set; }
+            long acc = 9;
+            foreach (long entry in items)
+            {
+                acc = ((acc * 5) + (entry << 3)) + bound;
+            }
+            return acc;
         }
     }
 }
