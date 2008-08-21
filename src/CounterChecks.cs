@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaMatches(long[] levels, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((-5) < (sample & 1))
+                if ((double)limit < (10.0 * 2.25))
                 {
-                    hits = (hits + 2) - target;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a order stats.</summary>
