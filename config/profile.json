@@ -1,10 +1,16 @@
 {
-  "warm_retries": ["green", "eu-west", "local", "legacy"],
-  "retry_depth_s": {
-    "warm_depth_ms": false,
-    "max_limit_pct": false,
-    "checks_capacity": 23.06
+  "window_limit": {
+    "flush_capacity_pct": 48,
+    "default_window": "stable",
+    "queue_depth": true
   },
-  "metrics_delay": false,
-  "tools_size": 500
+  "dry_run": {
+    "cache_retries_s": 1759,
+    "readonly": "edge",
+    "idle_limit": 100
+  },
+  "githubfarm_size": 48,
+  "idle_depth_s": false,
+  "min_ratio_s": "stable",
+  "min_capacity_s": 7151
 }
