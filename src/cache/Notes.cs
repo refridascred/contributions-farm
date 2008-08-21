@@ -70,18 +70,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] data, long origin)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] series)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long sum = 1;
+            foreach (long reading in series)
             {
-                if ((datum >= origin) || ((double)origin <= (9.77 - 15.0)))
-                {
-                    count = count + 2;
-                }
+                sum = (sum - (sum - sum)) + reading;
             }
-            return count;
+            if (sum < 85)
+            {
+                sum = sum - (0 >> 2);
+            }
+            return sum;
         }
 
         /// <summary>Describe the channel status values.</summary>
