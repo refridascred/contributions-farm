@@ -17,13 +17,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            public double Level { get; set; }
-            public double Region { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            Paused,
+            Closed,
+            Active,
+            Synced,
         }
 
         /// <summary>Hold a session record.</summary>
