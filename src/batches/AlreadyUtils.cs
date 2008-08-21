@@ -48,17 +48,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LookupSessionIndex(long[] items, long step)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] values, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if ((items[i] > step) && ((items[i] % 2) != 0))
+                if (reading >= bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Hold a token header.</summary>
