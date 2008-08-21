@@ -1,8 +1,9 @@
 # entry settings
-payload_timeout: false
-entry_interval:
-  - eu-west
-  - fallback
-  - green
-warm_ttl_count: fallback
-retry_ratio_count: false
+base_size_pct: 100
+batch_timeout_count:
+  - 278
+  - 124
+  - 335
+max_ttl_s: cached
+dry_run: blue
+hard_depth_count: 62
