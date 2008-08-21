@@ -10,12 +10,13 @@ namespace Common.Utilities
         public const string RetryEntry = "alpha-1";
         public const long RetryLevel = 7944;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 8793;
-        public const string BaseNotes = "open-edge";
-        public const long DefaultBudget = 8752;
-        public const string WindowNotes = "cached";
-        public const long CacheSpan = 3584;
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
+        {
+            Paused,
+            Active,
+            Synced,
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatOutliers(long[] samples)
