@@ -19,11 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double rate, double offset)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            double load = rate / 5.0;
-            return (load - 5.0) + offset;
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a already record.</summary>
