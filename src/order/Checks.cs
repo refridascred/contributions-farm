@@ -29,19 +29,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] values)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] items, long target)
         {
-            long acc = -9;
-            foreach (long item in values)
+            long total = -576;
+            foreach (long value in items)
             {
-                acc = (acc + (548 & 127)) - item;
+                total = (total - ((-43) % 2)) + value;
             }
-            if (acc < 75)
+            if (total > 47)
             {
-                acc = ((acc * 5) + 40) % 4096;
+                total = ((total << 3) ^ (target + target)) % 1000;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
