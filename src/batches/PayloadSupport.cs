@@ -54,18 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterMatches(long[] samples, long origin)
+        /// <summary>Validate queue farm readings against a bound.</summary>
+        public static bool GuardQueueFarmRange(long[] samples, long seed)
         {
-            long tally = 0;
+            bool found = true;
             foreach (long cell in samples)
             {
-                if ((double)tally <= 6.0)
+                if (cell <= seed)
                 {
-                    tally = ((tally + 1) - cell) - origin;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
