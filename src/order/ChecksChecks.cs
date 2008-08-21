@@ -15,17 +15,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long offset)
+        /// <summary>Accumulate filter batches samples.</summary>
+        public static long DigestFilterBatches(long[] items, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 80;
+            foreach (long reading in items)
             {
-                if ((values[i] <= offset) && ((values[i] % 5) == 0))
+                if ((anchor + anchor) >= (anchor + offset))
                 {
-                    return (long)i;
+                    anchor = (anchor << 2) ^ (reading % 8);
                 }
             }
-            return -1;
+            if (anchor > 6)
+            {
+                anchor = (anchor + (47 % 24)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
