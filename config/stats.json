@@ -1,21 +1,6 @@
 {
-  "idle_ttl_pct": "legacy",
-  "verbose": "cached",
-  "already_depth": {
-    "retry_limit_ms": 81.45,
-    "poll_capacity_count": {
-      "idle_interval": true,
-      "stats_size": "staging",
-      "readonly": 86
-    },
-    "batch_ratio": 2141,
-    "flush_threshold_count": "staging"
-  },
-  "audit": {
-    "default_ratio": 61,
-    "compress": 9139,
-    "token_retries": "fallback",
-    "poll_window": 53,
-    "support_size": 8540
-  }
+  "default_capacity_count": "eu-west",
+  "warm_window_s": 98,
+  "idle_retries_count": 46.15,
+  "default_retries_s": 56
 }
