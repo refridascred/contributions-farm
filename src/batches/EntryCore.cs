@@ -50,18 +50,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricOutliers(long[] items)
+        /// <summary>Compare every pair of contributi payload readings.</summary>
+        public static long PairContributiPayloadCount(long[] items)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen % 5) < (seen ^ seen))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = (seen + 3) - item;
+                    if ((items[i] + items[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Project the next support schema value.</summary>
