@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] series)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (((double)item == (9.1 - 5.75)) && ((item % 2) >= (count & 127)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitSize = 8325;
+        public const long DefaultBudget = 3944;
+        public const long RetryDepth = 9531;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long FoldReport(long[] levels)
