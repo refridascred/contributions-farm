@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < seed) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 3672;
+        public const long StepScore = 1304;
+        public const long DefaultGraph = 8858;
+        public const long LimitGraph = 4887;
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool ValidateSessionBounds(long[] levels, long limit)
