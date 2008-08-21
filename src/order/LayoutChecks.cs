@@ -72,12 +72,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] series, long limit)
         {
-            Draft,
-            New,
-            Active,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > limit) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
