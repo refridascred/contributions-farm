@@ -57,17 +57,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] values, long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 4;
+            foreach (long sample in readings)
             {
-                if ((values[i] >= bound) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                score = (((score << 2) ^ (sample & 127)) % 255) - bound;
             }
-            return -1;
+            return score % 65521;
         }
     }
 }
