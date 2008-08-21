@@ -38,19 +38,13 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] samples, long target)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Idle,
+            Stale,
+            Queued,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
