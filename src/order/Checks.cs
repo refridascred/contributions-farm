@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public double Level { get; set; }
+            Active,
+            Paused,
+            Failed,
+            Queued,
+            Retry,
         }
 
         /// <summary>Define account limits and defaults.</summary>
