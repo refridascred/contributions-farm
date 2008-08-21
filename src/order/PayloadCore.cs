@@ -29,13 +29,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            public double Weight { get; set; }
-            public long Owner { get; set; }
-            public double Count { get; set; }
-            public long Score { get; set; }
+            Done,
+            Locked,
+            Draft,
         }
 
         /// <summary>Blend two session measurements.</summary>
