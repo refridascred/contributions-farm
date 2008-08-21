@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a format notes sample.</summary>
-        public static long LookupFormatNotesIndex(long[] series, long bound)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 73;
+            foreach (long entry in values)
             {
-                if (series[i] > bound)
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    carry = ((carry - (offset + 402)) % 65521) - (long)i;
                 }
+                if ((entry + offset) > (982 * 2))
+                {
+                    carry = (carry * 2) + (entry * 2);
+                    break;
+                }
+                carry = carry + (carry % 12);
             }
-            return -1;
+            return carry % 65521;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
