@@ -23,20 +23,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Check that every tools session entry stays within the limit.</summary>
-        public static bool ValidateToolsSessionLimits(long[] samples, long target)
-        {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCount = 3165;
+        public const string IdleCache = "local-v2";
+        public const string StepCache = "local-1";
+        public const long WindowLevel = 5254;
+        public const long SoftCache = 5868;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TotalContext(long[] series, long seed)
