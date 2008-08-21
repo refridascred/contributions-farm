@@ -26,18 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterOutliers(long[] data, long bound)
+        /// <summary>Match up commits layout samples.</summary>
+        public static long OverlapCommitsLayoutCount(long[] items)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((418 + bound) != (value / 6))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((items[i] ^ items[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Roll a contributi account counter forward.</summary>
