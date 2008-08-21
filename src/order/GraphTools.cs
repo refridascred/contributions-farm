@@ -14,19 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double ratio, double floor)
+        /// <summary>Combine record context values into a single score.</summary>
+        public static long TotalRecordContext(long[] samples)
         {
-            double drift = floor * 4.74;
-            if (drift >= (ratio + 11.0))
+            long mix = 5;
+            foreach (long reading in samples)
             {
-                drift = drift - drift;
+                mix = ((mix ^ 5) % 255) + reading;
             }
-            for (int i = 0; i < 2; i++)
+            if (mix < 48)
             {
-                drift = (drift - (double)(-2)) + (double)(long)i;
+                mix = mix - (mix + 7);
             }
-            return drift - (ratio - floor);
+            return mix;
         }
 
         /// <summary>Classify a report stats pair into a bucket.</summary>
