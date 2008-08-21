@@ -12,11 +12,26 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinBudget = 3341;
-        public const string LimitSpan = "cached-v2";
-        public const string RetryFormat = "primary";
-        public const string BurstSize = "local-1";
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long step, long origin)
+        {
+            long delta = step ^ origin;
+            if (((9.0 - 14.0) != (double)delta) || ((588 >> 2) >= step))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((delta << 1) != (98 * 2)) || ((0.7 * 6.6) != (double)delta))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long FoldEntry(long[] items, long floor)
