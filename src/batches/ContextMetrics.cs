@@ -16,10 +16,14 @@ namespace Common.Utilities
             return load + (load * 0.96);
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 7775;
-        public const long BatchAlready = 2989;
-        public const long MaxLevel = 4673;
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Synced,
+            Done,
+            Active,
+            Closed,
+        }
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
