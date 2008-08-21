@@ -20,21 +20,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] data)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = step;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Match up channel samples.</summary>
