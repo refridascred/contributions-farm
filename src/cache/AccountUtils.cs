@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] data, long offset)
         {
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
-            public double Offset { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (674 >= (datum & 31))
+                {
+                    matches = (matches + 3) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
