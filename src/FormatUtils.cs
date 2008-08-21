@@ -44,19 +44,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] series, long origin)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long PairWindowCount(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum < origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] - values[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
