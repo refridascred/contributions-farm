@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of queue metrics readings.</summary>
-        public static long TotalQueueMetrics(long[] levels)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] readings, long offset)
         {
-            long carry = 344;
-            foreach (long entry in levels)
+            long mix = 59;
+            foreach (long item in readings)
             {
-                if (622 < carry)
+                if ((offset & 63) >= item)
                 {
-                    carry = ((carry * 4) + (131 ^ 275)) % 255;
+                    mix = mix ^ (offset / 6);
                 }
-                carry = carry - (entry << 1);
+                mix = mix - (mix - offset);
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
