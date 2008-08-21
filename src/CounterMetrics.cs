@@ -41,25 +41,11 @@ namespace Common.Utilities
         public const long BatchMetrics = 5714;
         public const double DefaultSpan = 96.51;
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long floor, long floor2)
-        {
-            long edge = floor - floor2;
-            if (((double)edge > (double)floor2) || ((floor2 + edge) > (floor + edge)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (floor2 > (floor + floor2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitLayout = 5526;
+        public const string WindowFactor = "local";
+        public const long SoftLayout = 6706;
+        public const long LimitWidth = 651;
+        public const long CacheLayout = 5707;
     }
 }
