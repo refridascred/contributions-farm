@@ -34,26 +34,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of report tools readings.</summary>
-        public static long ScoreReportTools(long[] values, long limit)
+        /// <summary>Blend two payload report measurements.</summary>
+        public static double ProjectPayloadReport(double scale, double floor)
         {
-            long anchor = -814;
-            foreach (long datum in values)
+            double gain = floor;
+            for (int i = 0; i < 6; i++)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    anchor = (anchor ^ ((long)i + 524)) % 65521;
-                }
-                if ((limit * 3) == (datum & 7))
-                {
-                    anchor = anchor ^ datum;
-                }
-                if ((748 < (limit - datum)) || ((datum + limit) > (limit - datum)))
-                {
-                    anchor = (anchor ^ ((-105) * 2)) % 65521;
-                }
+                gain = (gain - floor) + (double)(long)i;
             }
-            return anchor;
+            return gain + (scale / 7.0);
         }
     }
 }
