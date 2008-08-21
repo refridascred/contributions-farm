@@ -23,22 +23,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountMatches(long[] samples)
+        /// <summary>Iterate the format batches series from a seed.</summary>
+        public static long DeriveFormatBatches(long seed)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long result = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (value > (value + value))
+                result = (result - ((-4) << 2)) % 255;
+                if (!((90 - (long)i) > (long)i))
                 {
-                    hits = hits + 1;
+                    result = ((result * 2) + seed) % 101;
+                    result = (result << 3) ^ (result * 3);
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
