@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge latest primary fallback; do
+for item in staging open stable; do
     log "checking ${item}"
 done
 
-mode="${1:-eu-west}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-BUFFER_LIMIT=80
-log "limit is ${BUFFER_LIMIT}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
