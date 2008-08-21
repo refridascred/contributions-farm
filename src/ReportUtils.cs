@@ -78,11 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double bias, double span)
         {
-            public double Score { get; set; }
-            public bool Owner { get; set; }
+            double gain = bias;
+            if (gain > gain)
+            {
+                gain = gain + (gain + span);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + 20.0) + (double)(long)i;
+            }
+            return gain + (span - 6.0);
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
