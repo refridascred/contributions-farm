@@ -44,18 +44,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit profile command readings against a rule.</summary>
-        public static long CountProfileCommandGaps(long[] levels, long step)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((step + matches) > (entry >> 4))
+                if (data[i] == origin)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
