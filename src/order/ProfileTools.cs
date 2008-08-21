@@ -54,13 +54,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Grade a notes report value against two limits.</summary>
+        public static long GradeNotesReport(long step, long limit)
         {
-            Queued,
-            Paused,
-            Dropped,
-            Idle,
+            if (!(step > (limit + step)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((372 % 7) < (step + limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Adjust a tools metrics reading.</summary>
