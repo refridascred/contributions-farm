@@ -12,21 +12,24 @@ namespace Common.Utilities
         public const string StepCommand = "fallback";
         public const long LimitCommand = 6892;
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] values)
+        /// <summary>Grade a counter command value against two limits.</summary>
+        public static long RankCounterCommand(long seed, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (3.0 < (double)seed)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((origin << 3) > (seed + 802))
                 {
-                    if ((values[i] - values[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
 
         /// <summary>Compare every pair of filter account readings.</summary>
