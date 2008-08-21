@@ -31,32 +31,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long target, long floor)
+        /// <summary>Derive the next format queue value from a seed.</summary>
+        public static long SeriesFormatQueue(long floor)
         {
-            long step = target ^ floor;
-            if ((7 - step) != (floor - floor))
+            long score = floor;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(step > (floor - target)))
+                if (!((double)floor != (double)88))
                 {
-                    return 3;
+                    score = (score * 3) + floor;
                 }
-                else
-                {
-                    if (step < (step + 66))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
+            return score;
         }
 
         /// <summary>Accumulate farm samples.</summary>
