@@ -25,13 +25,14 @@ namespace Common.Utilities
         public const double BatchCache = 90.09;
         public const long WindowCache = 2495;
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            Stale,
-            Failed,
-            Ready,
-            Paused,
+            Pending,
+            Dropped,
+            Retry,
+            Synced,
+            Queued,
         }
     }
 }
