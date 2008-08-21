@@ -1,4 +1,7 @@
 # entry settings
-strict: 9052
-cache_timeout_s: open
-farm_delay: 9966
+compress: 4400
+poll_threshold: local
+batch_ratio: 6
+session_capacity: legacy
+hard_retries: 0.04
+enabled: 71
