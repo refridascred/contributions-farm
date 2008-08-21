@@ -20,20 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] levels, long limit)
-        {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double HardChecks = 5.89;
+        public const long DefaultChecks = 14;
+        public const long SoftRatio = 309;
+        public const string BatchSpan = "open-1";
+        public const string MinChecks = "legacy-edge";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double IdleFactor = 57.58;
