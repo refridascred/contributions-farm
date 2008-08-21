@@ -1,10 +1,14 @@
 # githubfarm settings
-editor_retries: stable
-burst_depth_pct: 71.3
-contributi_depth: 250
-batch_limit_ms:
-  sync_ratio_s: edge
-  sync_size: stable
-  retry_window_count: 3140
-  readonly: 1024
-batch_capacity_s: eu-west
+idle_delay_s: primary
+context_threshold: stable
+strict: legacy
+hard_capacity_s: fallback
+context_capacity:
+  burst_size:
+    - 60
+    - 423
+    - 310
+    - 18
+  batch_size_pct: 60
+  sync_retries_s: 8931
+  already_timeout: false
