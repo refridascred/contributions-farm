@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] items, long bound)
         {
-            Draft,
-            Idle,
-            Synced,
-            Failed,
+            long result = 209;
+            foreach (long value in items)
+            {
+                result = ((result ^ (501 + value)) % 101) + bound;
+                if (((result & 7) != (value + result)) || ((double)value != (double)result))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
