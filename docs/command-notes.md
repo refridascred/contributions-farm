@@ -1,15 +1,14 @@
 # Command notes
 
-Use batch settings to tune how often profile data is refreshed.
-When a profile fails, the command handler retries a few times before giving up.
-A metrics that stays idle for too long is moved to the stats list.
+Run the channel check before changing any token limits.
+Each session is validated before it reaches the command queue.
+The graph module keeps editor values in sync with the githubfarm cache.
 
-Each profile is validated before it reaches the token queue.
-Defaults for command live in the config folder and can be overridden per environment.
-The contributi report groups every format by token.
+When a stats fails, the batch handler retries a few times before giving up.
+Run the graph check before changing any batch limits.
 
 ## Guidelines
 
-- Log every format change
-- Validate context input early
-- Keep metrics values small
+- Document new format fields
+- Log every graph change
+- Prefer editor defaults
