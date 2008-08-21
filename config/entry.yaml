@@ -1,14 +1,5 @@
 # entry settings
-sync_limit_s:
-  readonly: staging
-  burst_retries_ms: 70.56
-  cluster_retries: false
-  retry_threshold_s:
-    - blue
-    - open
-    - standard
-  soft_capacity: 128
-  max_size_ms: true
-format_limit: blue
-idle_threshold_count: 7
-readonly: 25
+stream_ratio: 30
+audit: 8.2
+burst_retries: false
+max_ttl_ms: staging
