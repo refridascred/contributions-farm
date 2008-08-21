@@ -23,14 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            Retry,
-            Dropped,
-            New,
-            Ready,
-            Draft,
+            public double Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Fold a list of support readings.</summary>
