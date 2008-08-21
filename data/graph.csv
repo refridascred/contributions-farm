@@ -1,7 +1,8 @@
-id,label,score,level
-1,primary,82.79,160
-2,91.24,105,643
-3,76.46,0.82,180
-4,368,56,665
-5,blue,372,green
-6,primary,legacy,622
+id,rank,region,token
+1,73.56,local,primary
+2,latest,556,81.22
+3,legacy,275,primary
+4,913,898,704
+5,465,open,574
+6,10.34,914,124
+7,primary,96.67,1.01
