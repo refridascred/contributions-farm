@@ -1,11 +1,16 @@
 # githubfarm settings
-retry_window_count: 5064
-verbose: latest
-retry_limit: primary
-sync_timeout_s: standard
-cache_interval: standard
-cluster_retries:
-  - fallback
-  - primary
-  - open
+idle_capacity:
   - legacy
+  - green
+soft_threshold_pct: legacy
+base_threshold_s:
+  compress: cached
+  sync_capacity_pct: 80.2
+  batch_depth_ms: 37
+route_retries: 30
+soft_threshold_ms: 26.99
+base_depth_pct:
+  - fallback
+  - blue
+  - stable
+  - standard
