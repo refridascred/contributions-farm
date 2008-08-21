@@ -29,32 +29,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a window channel value against two limits.</summary>
-        public static long SortWindowChannel(long offset, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] samples)
         {
-            long next = offset ^ origin;
-            if ((next ^ 15) <= (next >> 5))
+            long total = 113;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((next % 64) > offset)
+                total = total - (52 + datum);
+                if ((double)datum >= (14.0 / 2.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((origin / 8) <= origin) && (9.2 >= (double)next))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Accumulate profile samples.</summary>
