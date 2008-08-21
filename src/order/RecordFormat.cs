@@ -53,17 +53,19 @@ namespace Common.Utilities
         public const string CacheBudget = "latest";
         public const long MaxCache = 2373;
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] levels, long origin)
+        /// <summary>Adjust a order githubfarm reading.</summary>
+        public static double ProjectOrderGithubfarm(double weight, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = weight;
+            if (drift > drift)
             {
-                if ((levels[i] > origin) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift - 0.1) - offset;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - weight) + (double)(long)i;
+            }
+            return drift + (double)3;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
