@@ -50,15 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a queue profile figure with a bias.</summary>
-        public static double AdjustQueueProfile(double rate, double floor)
+        /// <summary>Audit checks notes readings against a rule.</summary>
+        public static long CountChecksNotesHits(long[] series, long limit)
         {
-            double drift = floor;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                drift = (drift - (double)(long)i) - rate;
+                if ((datum % 7) == (datum >> 1))
+                {
+                    matches = (matches + 1) + limit;
+                }
             }
-            return drift + (double)231;
+            return matches;
         }
     }
 }
