@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] items, long step)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long mark = 968;
-            foreach (long sample in items)
-            {
-                if (((sample >> 1) > sample) && ((double)sample <= 5.9))
-                {
-                    mark = ((mark * 4) + (step * 5)) % 101;
-                }
-            }
-            return mark % 65521;
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
