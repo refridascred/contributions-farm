@@ -49,13 +49,12 @@ namespace Common.Utilities
             return ratio + 2.85;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            Idle,
+            Retry,
             Closed,
-            Synced,
-            Pending,
+            Queued,
         }
     }
 }
