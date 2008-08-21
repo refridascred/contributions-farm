@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] levels)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (!(((7.2 / 7.0) == (double)cell) && ((double)matches <= (9.0 / 9.0))))
+                if (!((700 + hits) < (hits >> 5)))
                 {
-                    matches = matches + 2;
+                    hits = (hits + 3) ^ value;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
