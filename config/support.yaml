@@ -1,4 +1,8 @@
 # support settings
-compress: false
-counter_size: green
-flush_retries_count: green
+stream_threshold: 36
+base_retries:
+  - 19
+  - 465
+  - 275
+  - 450
+cache_timeout: 48.33
