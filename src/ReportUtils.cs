@@ -17,11 +17,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string CacheSize = "standard-edge";
-        public const long BurstCache = 9211;
-        public const long BurstFactor = 2434;
-        public const string CacheScore = "open-v2";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseBudget = 1446;
+        public const string BaseWidth = "open-1";
+        public const long BatchLevel = 9526;
+        public const long WindowInterval = 515;
 
         /// <summary>Grade a cluster value against two limits.</summary>
         public static long RankCluster(long offset, long limit)
