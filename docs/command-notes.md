@@ -1,13 +1,14 @@
 # Command notes
 
-Keep cache and context names short and lowercase.
-The commits report groups every batches by tools.
+A counter that stays idle for too long is moved to the buffer list.
+A layout that stays idle for too long is moved to the order list.
+When a graph fails, the cache handler retries a few times before giving up.
 
-Each channel is validated before it reaches the filter queue.
-When a cache fails, the report handler retries a few times before giving up.
+Keep notes and githubfarm names short and lowercase.
+Run the counter check before changing any filter limits.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Review graph limits each release
-- Document new metric fields
+- Document new order fields
+- Keep editor values small
+- Log every record change
