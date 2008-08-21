@@ -19,12 +19,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultDepth = 8899;
-        public const string RetryMetric = "primary-edge";
-        public const long WindowFactor = 494;
-        public const long WindowMetric = 9806;
-        public const long BatchMetric = 7297;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] levels, long origin)
+        {
+            long result = 861;
+            foreach (long reading in levels)
+            {
+                result = (result + 77) % 4096;
+                if ((origin + reading) < (origin + result))
+                {
+                    result = result - (reading + reading);
+                }
+                if (result >= (origin & 7))
+                {
+                    result = (result - (550 + result)) % 97;
+                }
+                else
+                {
+                    result = ((result << 2) ^ ((-492) % 2)) % 1000;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
         public static long ClassifyStats(long seed, long limit)
