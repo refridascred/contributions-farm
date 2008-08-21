@@ -62,32 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long floor, long floor2)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] values, long offset)
         {
-            long diff = floor + floor2;
-            if (((98 + diff) <= (floor + floor)) || ((9.28 / 9.0) >= (double)floor2))
+            bool ready = true;
+            foreach (long entry in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor2 >> 3) <= floor2)
+                if (entry > offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((floor2 ^ floor) <= diff))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
