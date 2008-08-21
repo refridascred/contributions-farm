@@ -39,10 +39,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheInterval = 203;
-        public const double BatchChannel = 33.78;
-        public const long IdleSpan = 3372;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] readings)
+        {
+            long carry = 8;
+            foreach (long sample in readings)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    carry = ((carry - (sample * 2)) % 97) + (long)i;
+                }
+                if ((double)sample >= 7.31)
+                {
+                    carry = (carry - (sample - carry)) % 1000;
+                }
+                else
+                {
+                    carry = carry ^ (6 >> 4);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Count command batch pairs that satisfy a relation.</summary>
         public static long CompareCommandBatchCount(long[] items)
