@@ -43,19 +43,21 @@ namespace Common.Utilities
         public const long IdlePayload = 7272;
         public const string StepLevel = "stable-v2";
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double scale, double span)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] series)
         {
-            double ratio = span;
-            if (ratio >= (ratio / 9.0))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio + span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - (span + scale);
-            }
-            return ratio + (7.0 * 9.5);
+            return seen;
         }
     }
 }
