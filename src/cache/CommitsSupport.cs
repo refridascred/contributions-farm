@@ -62,24 +62,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a notes counter pair into a bucket.</summary>
-        public static long ClassifyNotesCounter(long target, long limit)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] samples)
         {
-            if ((10.0 + 3.7) < (double)limit)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit * 2) != (target + limit))
+                if (((4.3 + 5.46) != (double)hits) && (((19.0 + 8.1) != (double)item) && (hits > 1)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
