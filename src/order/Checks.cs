@@ -20,19 +20,12 @@ namespace Common.Utilities
         public const double StepAccount = 76.44;
         public const long WindowAccount = 6145;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] readings, long step)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (53 < (entry % 2))
-                {
-                    tally = (tally + 3) - step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double RetrySession = 71.5;
+        public const string BaseInterval = "local-v2";
+        public const long DefaultSession = 8687;
+        public const long RetryLevel = 2715;
+        public const long BaseDepth = 4724;
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long TallyMetric(long[] items, long target)
