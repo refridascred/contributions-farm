@@ -20,21 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] readings)
+        /// <summary>Derive the next notes format value from a seed.</summary>
+        public static long IterateNotesFormat(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (mark << 3) ^ (mark * 4);
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Describe the window mode values.</summary>
