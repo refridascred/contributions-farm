@@ -33,22 +33,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenOutliers(long[] items)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((double)tally <= (0.44 / 7.0))
-                {
-                    tally = (tally + 1) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double gain = weight;
+            return (gain + gain) + bias;
         }
 
         /// <summary>Audit batch metric readings against a rule.</summary>
