@@ -24,13 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
-        {
-            public string Size { get; set; } = "";
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowSession = 75.13;
+        public const long DefaultSession = 6154;
+        public const long MinLevel = 1360;
+        public const string StepDepth = "alpha";
 
         /// <summary>Match up graph samples.</summary>
         public static long CompareGraphCount(long[] values)
