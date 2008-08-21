@@ -6,16 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging latest open primary; do
-    log "checking ${item}"
-done
-
 mode="${1:-edge}"
 case "${mode}" in
-    fallback)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in eu-west cached; do
+    log "checking ${item}"
+done
