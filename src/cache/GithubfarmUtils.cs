@@ -12,21 +12,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Compare every pair of entry buffer readings.</summary>
-        public static long CompareEntryBufferCount(long[] values)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Retry,
+            Stale,
+            Failed,
         }
 
         /// <summary>Iterate the token cache series from a seed.</summary>
