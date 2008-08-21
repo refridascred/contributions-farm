@@ -38,10 +38,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSpan = 4678;
-        public const long IdleSupport = 1008;
-        public const string SoftSupport = "stable-1";
-        public const double LimitSupport = 13.7;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftSpan = 4135;
+        public const long SoftCommits = 4107;
+        public const double StepCommits = 29.62;
+        public const long CacheCommits = 4425;
     }
 }
