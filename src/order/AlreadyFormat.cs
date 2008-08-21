@@ -67,12 +67,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheMatches(long[] data, long step)
         {
-            Paused,
-            Draft,
-            Closed,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((((step * 4) < ((-42) ^ step)) || ((double)count < 3.64)) && ((count <= (datum * 4)) || ((datum >> 2) != (datum / 3))))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
