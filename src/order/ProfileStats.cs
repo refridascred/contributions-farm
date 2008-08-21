@@ -31,18 +31,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] items, long seed)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((seed ^ 7) < (reading / 2))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Size { get; set; } = "";
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Match up graph samples.</summary>
