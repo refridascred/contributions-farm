@@ -1,8 +1,8 @@
-id,score
-1,strict
-2,fallback
-3,711
-4,legacy
-5,4.8
-6,889
-7,8.77
+id,ratio,level,count,owner
+1,416,91.95,open,local
+2,332,607,211,98.46
+3,staging,12.69,432,831
+4,970,25,308,845
+5,4,green,local,460
+6,green,6.9,900,48
+7,87.67,edge,886,54.56
