@@ -18,15 +18,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long offset)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long acc = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            public double Count { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
