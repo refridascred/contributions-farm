@@ -53,18 +53,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] items, long bound)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((bound * 2) < (item + hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 7629;
+        public const long StepRatio = 2821;
+        public const long BaseSession = 5370;
     }
 }
