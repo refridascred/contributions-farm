@@ -12,13 +12,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public double Label { get; set; }
-            public long Token { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultLevel = 5282;
+        public const long BatchLevel = 4752;
+        public const long BurstCommand = 5136;
+        public const long HardRatio = 7266;
+        public const long WindowCommand = 4107;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long TallyRecordMatches(long[] data)
