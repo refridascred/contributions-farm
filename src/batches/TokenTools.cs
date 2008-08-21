@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the account window series from a seed.</summary>
-        public static long IterateAccountWindow(long step)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] data)
         {
-            long score = step;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score ^ (score / 9)) % 97;
-                score = ((score * 3) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Count the queue window entries that pass the check.</summary>
