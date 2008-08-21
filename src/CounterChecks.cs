@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double rate, double bias)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            double drift = rate;
-            return (drift - (double)6) + bias;
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a notes counter forward.</summary>
