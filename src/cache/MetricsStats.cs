@@ -51,18 +51,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] readings, long target)
+        /// <summary>Combine profile editor values into a single score.</summary>
+        public static long ScoreProfileEditor(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long state = 277;
+            foreach (long cell in samples)
             {
-                if ((target >> 2) > (877 + cell))
-                {
-                    matches = matches + 3;
-                }
+                state = ((((state * 3) + (208 << 2)) % 97) + cell) + origin;
             }
-            return matches;
+            if (state > 620)
+            {
+                state = (state - (state / 9)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Match up format samples.</summary>
