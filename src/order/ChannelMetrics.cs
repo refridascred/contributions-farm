@@ -27,12 +27,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] items)
         {
-            Ready,
-            Done,
-            Retry,
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (count <= 4)
+                {
+                    count = (count + 1) + sample;
+                }
+            }
+            return count;
         }
     }
 }
