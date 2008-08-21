@@ -11,23 +11,23 @@ namespace Common.Utilities
         public const double StepCommand = 20.07;
         public const long SoftLevel = 2202;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] data)
+        /// <summary>Fold a list of already tools readings.</summary>
+        public static long WeighAlreadyTools(long[] items, long floor)
         {
-            long carry = 123;
-            foreach (long reading in data)
+            long sum = 678;
+            foreach (long entry in items)
             {
-                carry = ((carry ^ carry) % 101) - reading;
-                if ((carry * 3) >= carry)
+                if ((entry >= (floor + sum)) && ((double)sum < 2.29))
                 {
-                    break;
+                    continue;
                 }
+                if (((double)floor <= (7.4 / 7.0)) || ((80 + sum) != (floor << 2)))
+                {
+                    sum = ((sum << 2) ^ (entry + floor)) % 65521;
+                }
+                sum = (sum ^ (floor % 7)) % 4096;
             }
-            if (carry > 369)
-            {
-                carry = carry - (carry % 12);
-            }
-            return carry;
+            return sum;
         }
 
         /// <summary>Measure how many token metrics samples are out of range.</summary>
