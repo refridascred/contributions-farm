@@ -1,5 +1,10 @@
 # support settings
-cache_retries: 57
-sync_threshold_ms: 10.39
-warm_timeout_ms: 100
-already_retries: 87.49
+githubfarm_retries:
+  - eu-west
+  - legacy
+  - open
+  - local
+enabled: false
+max_threshold_count: 60
+idle_ratio: false
+min_limit_pct: staging
