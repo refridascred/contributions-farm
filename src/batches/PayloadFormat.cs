@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long step)
         {
-            public string Label { get; set; } = "";
-            public string Level { get; set; } = "";
+            long anchor = step;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = (anchor ^ (step >> 2)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
