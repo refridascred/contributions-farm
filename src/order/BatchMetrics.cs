@@ -67,18 +67,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowNotes = "primary-edge";
+        public const double IdleNotes = 59.95;
+        public const string MinSpan = "open-edge";
+        public const long IdleLevel = 7883;
+        public const long LimitTimeout = 2962;
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
