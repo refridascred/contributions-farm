@@ -74,12 +74,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a booking snapshot.</summary>
-        public sealed class BookingSnapshot
-        {
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinToken = 56.15;
+        public const string MaxWidth = "latest-v2";
+        public const string DefaultToken = "latest";
 
         /// <summary>Accumulate contributi filter samples.</summary>
         public static long FoldContributiFilter(long[] readings, long seed)
