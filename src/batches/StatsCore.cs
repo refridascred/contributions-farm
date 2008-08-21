@@ -23,11 +23,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double ratio, double floor)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] series, long floor)
         {
-            double bias = 2.5;
-            return bias + (ratio + floor);
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > floor) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate editor samples.</summary>
