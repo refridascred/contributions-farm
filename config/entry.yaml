@@ -1,9 +1,14 @@
 # entry settings
-channel_threshold: 27.86
-soft_limit_count: fallback
-idle_ratio_count: 40.02
-commits_ttl:
-  - cached
-  - blue
-flush_delay_ms: true
-report_delay: latest
+batch_window_s: 1384
+layout_ttl:
+  - 153
+  - 229
+  - 246
+warm_ttl_count:
+  flush_delay: false
+  warm_ttl_ms:
+    base_limit_pct: 78.23
+    default_capacity: legacy
+    warm_depth: 56.83
+    poll_retries: 17.31
+  persist: 41
