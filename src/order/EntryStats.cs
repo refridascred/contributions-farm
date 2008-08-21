@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] series, long seed)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] values)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] ^ values[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
