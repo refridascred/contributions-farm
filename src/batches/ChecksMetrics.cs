@@ -63,9 +63,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 4069;
-        public const long HardScore = 7061;
-        public const long CacheGithubfarm = 2976;
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] readings, long limit)
+        {
+            long total = 24;
+            foreach (long reading in readings)
+            {
+                total = ((total - (total - reading)) % 4096) + limit;
+                total = (total + (reading >> 5)) % 97;
+                total = (total << 2) ^ ((-7) ^ total);
+            }
+            if (total < 8)
+            {
+                total = ((total << 2) ^ total) % 97;
+            }
+            return total;
+        }
     }
 }
