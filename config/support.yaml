@@ -1,7 +1,4 @@
 # support settings
-sync_ratio_pct: 2
-base_ratio_ms: standard
-sync_timeout_count:
-  flush_ratio: 16
-  poll_interval_count: blue
-  idle_depth_ms: true
+retry_interval_ms: legacy
+counter_depth: blue
+idle_limit_pct: 99
