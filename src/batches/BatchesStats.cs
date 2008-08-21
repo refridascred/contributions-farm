@@ -41,12 +41,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Synced,
-            Queued,
-            Closed,
+            Failed,
+            Pending,
+            New,
+            Idle,
         }
 
         /// <summary>Iterate the stream format series from a seed.</summary>
