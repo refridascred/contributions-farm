@@ -37,18 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] items)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] samples)
         {
-            long state = -550;
-            foreach (long sample in items)
+            long mix = 3;
+            foreach (long cell in samples)
             {
-                if ((6.42 + 8.5) != (double)sample)
+                if (((cell >> 2) > cell) || ((cell / 7) < (cell ^ mix)))
                 {
-                    state = (state << 3) ^ (state + state);
+                    mix = (mix - (mix + cell)) % 101;
                 }
             }
-            return state;
+            return mix % 1000;
         }
     }
 }
