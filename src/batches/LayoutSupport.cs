@@ -20,23 +20,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] samples)
+        /// <summary>Adjust a metrics session reading.</summary>
+        public static double AdjustMetricsSession(double weight, double bias)
         {
-            long result = 2;
-            foreach (long cell in samples)
+            double scale = 19.0;
+            for (int i = 0; i < 4; i++)
             {
-                result = ((result * 4) + (cell + result)) % 101;
-                if (!((cell * 5) <= (result * 2)))
-                {
-                    result = (result - ((long)samples.Length - 60)) % 97;
-                }
-                else
-                {
-                    result = (result ^ (cell - result)) % 4096;
-                }
+                scale = ((scale + 9.55) - (double)(long)i) + weight;
             }
-            return result;
+            return scale - (bias / 4.0);
         }
 
         /// <summary>Adjust a counter reading.</summary>
