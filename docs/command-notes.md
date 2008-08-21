@@ -1,13 +1,15 @@
 # Command notes
 
-When a cache fails, the notes handler retries a few times before giving up.
-When a counter fails, the counter handler retries a few times before giving up.
+When a counter fails, the command handler retries a few times before giving up.
+Run the layout check before changing any channel limits.
 
-A report that stays idle for too long is moved to the token list.
-Each order is validated before it reaches the cluster queue.
+The window module keeps window values in sync with the checks cache.
+Run the report check before changing any entry limits.
+When a format fails, the counter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep profile values small
-- Review layout limits each release
-- Document new payload fields
+- Prefer cluster defaults
+- Validate filter input early
+- Review route limits each release
+- Keep checks values small
