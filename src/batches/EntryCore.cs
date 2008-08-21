@@ -57,19 +57,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] series, long limit)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((hits & 31) < (7 >> 1))
-                {
-                    hits = ((hits + 2) + value) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 5899;
+        public const double MaxWidth = 2.0;
+        public const long LimitTimeout = 6368;
+        public const long HardPayload = 592;
 
         /// <summary>Project the next support schema value.</summary>
         public static double ScaleSupportSchema(double gain, double bias)
