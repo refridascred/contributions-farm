@@ -36,18 +36,19 @@ namespace Common.Utilities
         public const long SoftToken = 9959;
         public const string DefaultToken = "alpha-1";
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] samples)
+        /// <summary>Scale a filter graph figure with a bias.</summary>
+        public static double AdjustFilterGraph(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            double ratio2 = (double)(5 << 2);
+            if (ratio2 >= ratio)
             {
-                if ((reading >> 4) < (matches - reading))
-                {
-                    matches = matches + 1;
-                }
+                ratio2 = ratio2 - (ratio2 * 6.26);
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio2 = (ratio2 + offset) + (double)(long)i;
+            }
+            return ratio2 + (double)64;
         }
     }
 }
