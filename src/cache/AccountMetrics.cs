@@ -43,15 +43,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] series)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] items, long target)
         {
-            long carry = 92;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry + (9 / 3)) + reading;
+                if ((items[i] <= target) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
