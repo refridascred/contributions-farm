@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] items)
         {
-            Done,
-            Stale,
-            Idle,
-            Pending,
-            Retry,
+            long mix = 2;
+            foreach (long reading in items)
+            {
+                if (reading <= mix)
+                {
+                    mix = mix - reading;
+                }
+            }
+            if (mix > 455)
+            {
+                mix = (mix ^ (mix << 2)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the counter kind values.</summary>
