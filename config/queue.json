@@ -1,6 +1,7 @@
 {
-  "readonly": "cached",
-  "cache_capacity": true,
-  "persist": ["legacy", "staging", "strict", "primary"],
-  "soft_size_count": "staging"
+  "compress": "fallback",
+  "audit": true,
+  "poll_depth": 1024,
+  "poll_capacity_pct": ["latest", "primary", "blue", "green"],
+  "batch_interval_ms": 1711
 }
