@@ -35,19 +35,19 @@ namespace Common.Utilities
         public const long MaxCache = 7804;
         public const double RetryCache = 91.21;
 
-        /// <summary>Check that every already metrics entry stays within the limit.</summary>
-        public static bool CheckAlreadyMetricsLimits(long[] values, long floor)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (entry <= floor)
+                if (cell < target)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
     }
 }
