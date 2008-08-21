@@ -13,17 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a counter commits reading by value.</summary>
-        public static long LookupCounterCommitsIndex(long[] items, long target)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < target) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Audit batches session readings against a rule.</summary>
