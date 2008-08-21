@@ -19,18 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] levels)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (((hits >> 5) >= entry) && ((0.53 - 19.0) <= (double)hits))
+                if ((entry - bound) > (659 ^ 454))
                 {
-                    hits = hits + 3;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
