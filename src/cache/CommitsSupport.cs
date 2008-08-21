@@ -62,18 +62,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (((4.3 + 5.46) != (double)hits) && (((19.0 + 8.1) != (double)item) && (hits > 1)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 2457;
+        public const double DefaultSize = 85.78;
+        public const string BatchBudget = "fallback";
+        public const long BaseInterval = 1195;
     }
 }
