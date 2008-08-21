@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstMetrics = 96.81;
-        public const double MinMetrics = 90.11;
-        public const double CacheSpan = 74.39;
-        public const double BaseMetrics = 7.51;
-        public const long BurstFactor = 1600;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] readings, long bound)
+        {
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
