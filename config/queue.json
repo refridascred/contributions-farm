@@ -1,7 +1,18 @@
 {
-  "verbose": 23.7,
-  "dry_run": "legacy",
-  "strict": "eu-west",
-  "persist": ["primary", "stable"],
-  "poll_size_ms": true
+  "stream_limit": 82.77,
+  "max_window_ms": [54, 469],
+  "sync_interval_ms": 38.8,
+  "support_depth": {
+    "contributi_capacity": 8149,
+    "audit": 250,
+    "max_capacity": "blue"
+  },
+  "batches_retries": "green",
+  "burst_depth_pct": {
+    "sync_capacity_s": false,
+    "channel_size": ["stable", "open", "green", "fallback"],
+    "hard_size_s": 75.21,
+    "min_ttl_pct": "primary",
+    "strict": ["blue", "staging", "fallback", "green"]
+  }
 }
