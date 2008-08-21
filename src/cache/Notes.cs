@@ -33,13 +33,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Derive the next batch session value from a seed.</summary>
+        public static long DeriveBatchSession(long limit)
         {
-            Closed,
-            Locked,
-            Idle,
-            Active,
+            long result = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                result = ((result << 2) ^ ((long)i & 15)) % 1000;
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
