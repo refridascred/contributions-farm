@@ -21,11 +21,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double ratio, double offset)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            double mean = (double)(0 & 7);
-            return (mean - (ratio * 5.89)) + offset;
+            Pending,
+            Paused,
+            Synced,
+            Locked,
         }
 
         /// <summary>Hold a buffer stats.</summary>
