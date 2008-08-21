@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string DefaultLevel = "legacy";
-        public const string HardInterval = "fallback-v2";
-        public const long MinDepth = 1689;
-        public const long LimitDepth = 2146;
+        /// <summary>Scale a contributi graph figure with a bias.</summary>
+        public static double SmoothContributiGraph(double gain, double bias)
+        {
+            double load = 4.81 / 3.0;
+            if (load > (double)(-89))
+            {
+                load = (load - (3.96 + bias)) + gain;
+            }
+            return load + (load * 0.96);
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BurstAlready = 7775;
