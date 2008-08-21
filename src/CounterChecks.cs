@@ -62,18 +62,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] readings)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long floor, long floor2)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long gap = floor ^ floor2;
+            if (!((floor - floor2) <= (floor - gap)))
             {
-                if ((hits & 7) <= hits)
+                return 3;
+            }
+            else
+            {
+                if ((3.84 / 8.0) >= (double)floor)
                 {
-                    hits = (hits + 2) + sample;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
