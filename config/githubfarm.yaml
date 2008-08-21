@@ -1,16 +1,24 @@
 # githubfarm settings
-dry_run:
-  metrics_size: 54
-  window_window: 38
-  enabled: true
-  contributi_size:
-    - 217
-    - 230
-    - 413
-    - 102
-persist:
-  - latest
-  - strict
-  - stable
-hard_delay_s: cached
-sync_limit: 52.03
+record_capacity: eu-west
+compress: 37.16
+editor_delay:
+  hard_capacity_s: 31
+  soft_interval: open
+  retry_timeout_count: 60
+  cache_threshold_pct:
+    flush_depth_pct: 55
+    hard_capacity_pct:
+      - 388
+      - 390
+      - 195
+      - 285
+    min_timeout: 359
+    batches_ratio:
+      - legacy
+      - stable
+    hard_depth_s:
+      - 71
+      - 47
+    filter_limit:
+      - strict
+      - open
