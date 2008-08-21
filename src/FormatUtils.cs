@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const long LimitFormat = 5824;
         public const long DefaultBudget = 5895;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 6886;
-        public const long SoftRatio = 4876;
-        public const string LimitCommits = "standard";
-        public const double WindowCommits = 82.75;
-        public const string BaseSize = "cached-1";
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            Ready,
+            Synced,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long DigestFilter(long[] values)
