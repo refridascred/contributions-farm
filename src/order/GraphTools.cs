@@ -66,18 +66,19 @@ namespace Common.Utilities
             return load + (5.0 - ratio);
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmGaps(long[] data, long origin)
+        /// <summary>Adjust a window record reading.</summary>
+        public static double BlendWindowRecord(double bias, double span)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            double rate = (bias / 6.0) - bias;
+            if (rate < rate)
             {
-                if ((double)origin < (double)4)
-                {
-                    matches = (matches + 3) - entry;
-                }
+                rate = rate - (double)879;
             }
-            return matches;
+            else
+            {
+                rate = rate + (span + 7.0);
+            }
+            return rate + (double)825;
         }
     }
 }
