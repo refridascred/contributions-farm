@@ -55,19 +55,25 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] readings, long origin)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long step, long origin)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long prev = step + origin;
+            if ((0.33 - 2.68) == (double)prev)
             {
-                if (item >= origin)
+                return 8;
+            }
+            else
+            {
+                if ((double)step < (1.36 - 4.5))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return stale;
         }
     }
 }
