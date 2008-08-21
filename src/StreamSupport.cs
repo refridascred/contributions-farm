@@ -34,39 +34,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long limit, long floor)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double weight, double span)
         {
-            long delta = limit ^ floor;
-            if ((limit - delta) >= (2 - floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((delta * 2) <= limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((46 + delta) > (limit * 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((delta * 5) < floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            double scale = weight;
+            return scale - (span + 3.06);
         }
 
         /// <summary>Measure how many entry cluster samples are out of range.</summary>
