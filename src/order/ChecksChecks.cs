@@ -25,19 +25,11 @@ namespace Common.Utilities
             return weight + (double)3;
         }
 
-        /// <summary>Fold a list of order metrics readings.</summary>
-        public static long FoldOrderMetrics(long[] readings)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long acc = 543;
-            foreach (long reading in readings)
-            {
-                acc = (acc * 5) + acc;
-                if (((4 + acc) >= (43 + reading)) || (acc >= (12 + reading)))
-                {
-                    acc = acc - (reading - 2);
-                }
-            }
-            return acc % 4096;
+            public bool Flag { get; set; }
+            public long Level { get; set; }
         }
     }
 }
