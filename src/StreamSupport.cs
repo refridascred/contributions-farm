@@ -19,15 +19,19 @@ namespace Common.Utilities
             return scale - (span + 3.06);
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] items, long origin)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksBounds(long[] values, long target)
         {
-            long sum = 6;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long value in values)
             {
-                sum = (((sum ^ (sum - 7)) % 97) + item) - origin;
+                if (value >= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
     }
 }
