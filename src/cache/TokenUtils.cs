@@ -33,22 +33,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] samples, long floor)
-        {
-            long acc = 458;
-            foreach (long cell in samples)
-            {
-                if (((long)samples.Length - acc) <= (30 << 1))
-                {
-                    acc = (((acc << 2) ^ (cell << 2)) % 4096) + floor;
-                }
-                else
-                {
-                    acc = (acc - cell) % 4096;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double RetryCount = 11.14;
+        public const double BaseCount = 66.72;
+        public const double IdleTimeout = 4.37;
+        public const long BatchCount = 6860;
+        public const string MinBuffer = "strict-v2";
     }
 }
