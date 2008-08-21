@@ -1,5 +1,5 @@
 {
-  "readonly": "primary",
-  "support_window": 100,
-  "compress": "green"
+  "default_timeout_s": 34,
+  "default_capacity": false,
+  "enabled": false
 }
