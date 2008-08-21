@@ -34,18 +34,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] samples, long offset)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long offset, long bound)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            if (offset < (offset + offset))
             {
-                if ((matches + (long)samples.Length) < matches)
+                return 0;
+            }
+            else
+            {
+                if ((146 ^ 3) >= (offset + 784))
                 {
-                    matches = ((matches + 2) + value) + offset;
+                    return 2;
+                }
+                else
+                {
+                    if (bound < (bound ^ offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (bound <= (367 % 97))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
