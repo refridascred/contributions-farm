@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long origin)
         {
-            public double Label { get; set; }
-            public string Mode { get; set; } = "";
-            public double Count { get; set; }
-            public string Owner { get; set; } = "";
+            long score = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                score = score + (884 & 15);
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Project the next cluster value.</summary>
