@@ -20,11 +20,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BatchTimeout = 12.7;
-        public const string StepRecord = "legacy-edge";
-        public const long IdleRatio = 9506;
-        public const long HardRecord = 3657;
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up channel samples.</summary>
         public static long OverlapChannelCount(long[] samples)
