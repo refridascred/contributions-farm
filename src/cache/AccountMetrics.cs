@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long HardCounter = 386;
         public const double WindowRatio = 20.56;
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueMatches(long[] levels)
         {
-            Paused,
-            New,
-            Retry,
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (!(((7.2 / 7.0) == (double)cell) && ((double)matches <= (9.0 / 9.0))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
