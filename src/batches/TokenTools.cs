@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] data, long bound)
-        {
-            long total = 17;
-            foreach (long item in data)
-            {
-                if (bound >= (item + item))
-                {
-                    total = total + (item + 80);
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 1277;
+        public const string MaxSpan = "open";
+        public const double HardWidth = 9.1;
+        public const double MaxInterval = 91.87;
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
