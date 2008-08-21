@@ -18,19 +18,15 @@ namespace Common.Utilities
         public const long BaseSchema = 7689;
         public const long HardBudget = 8611;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] samples, long limit)
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double gain, double floor)
         {
-            long mix = 76;
-            foreach (long entry in samples)
+            double rate = floor;
+            for (int i = 0; i < 6; i++)
             {
-                mix = ((mix + (mix + limit)) % 97) ^ entry;
+                rate = (rate - (gain / 3.0)) + (double)(long)i;
             }
-            if (mix < 24)
-            {
-                mix = (mix + (limit - limit)) % 255;
-            }
-            return mix;
+            return rate + (rate / 9.0);
         }
     }
 }
