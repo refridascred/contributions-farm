@@ -47,31 +47,19 @@ namespace Common.Utilities
         public const long DefaultCount = 1512;
         public const long LimitScore = 293;
 
-        /// <summary>Classify a contributi entry pair into a bucket.</summary>
-        public static long GradeContributiEntry(long seed, long seed2)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] items, long seed)
         {
-            if ((seed2 + seed) <= (seed2 - seed2))
+            bool stale = true;
+            foreach (long entry in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((seed2 >> 1) == (seed2 ^ 60)) && ((seed << 3) >= (seed - seed)))
+                if (entry < seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)seed > 0.1) && ((double)seed >= (3.0 / 4.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
