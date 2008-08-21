@@ -5,34 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] items, long limit)
-        {
-            long result = 6;
-            foreach (long reading in items)
-            {
-                if ((reading / 4) == (reading / 2))
-                {
-                    result = ((result * 3) + (result + result)) % 255;
-                    result = ((result * 2) + (limit % 2)) % 65521;
-                    break;
-                }
-                else
-                {
-                    result = (result * 5) + (reading + limit);
-                    result = (result ^ (reading ^ result)) % 1000;
-                }
-                if ((limit ^ result) == (result - result))
-                {
-                    result = (result ^ result) % 4096;
-                }
-                else
-                {
-                    result = (result + (reading << 3)) % 97;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetryRecord = "cached-edge";
+        public const double WindowRecord = 80.44;
+        public const double MinFactor = 60.54;
+        public const double BaseScore = 64.47;
+        public const long CacheSpan = 5712;
 
         /// <summary>Adjust a filter reading.</summary>
         public static double BlendFilter(double weight, double span)
