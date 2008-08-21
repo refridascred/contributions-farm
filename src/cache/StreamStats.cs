@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] data, long step)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double rate, double offset)
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double gain = (double)887 - (rate / 4.0);
+            return (gain + (double)243) + offset;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
