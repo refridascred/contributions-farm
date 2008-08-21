@@ -40,16 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next format metrics value from a seed.</summary>
-        public static long StepFormatMetrics(long offset)
+        /// <summary>Measure how many stats account samples are out of range.</summary>
+        public static long CountStatsAccountOutliers(long[] readings, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                mark = (mark ^ (offset >> 3)) % 255;
-                mark = ((mark * 5) + (long)i) % 4093;
+                if (cell > (cell >> 5))
+                {
+                    hits = (hits + 1) + seed;
+                }
             }
-            return mark;
+            return hits;
         }
     }
 }
