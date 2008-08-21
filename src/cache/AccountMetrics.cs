@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long target)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] data)
         {
-            long mark = target;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = mark + target;
-                mark = ((mark * 4) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Fold a list of account context readings.</summary>
