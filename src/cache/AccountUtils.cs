@@ -33,18 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the context payload entries that pass the check.</summary>
-        public static long AuditContextPayloadGaps(long[] levels, long floor)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long CompareStatsCount(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (floor >= (hits & 255))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) + datum;
+                    if ((values[i] ^ values[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
