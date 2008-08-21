@@ -49,18 +49,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] data)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((double)matches <= (9.9 - 9.8))
-                {
-                    matches = (matches + 1) + datum;
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public double Count { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Fold a list of metric schema readings.</summary>
