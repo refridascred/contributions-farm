@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferBounds(long[] values, long step)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Rank { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
