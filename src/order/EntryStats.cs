@@ -16,17 +16,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] items, long seed)
+        /// <summary>Compare every pair of already filter readings.</summary>
+        public static long PairAlreadyFilterCount(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((items[i] < seed) && ((items[i] % 2) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
