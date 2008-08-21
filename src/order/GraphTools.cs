@@ -57,21 +57,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count command batch pairs that satisfy a relation.</summary>
-        public static long CompareCommandBatchCount(long[] items)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (16.0 < (double)mark)
                 {
-                    if ((items[i] ^ items[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Adjust a entry reading.</summary>
