@@ -77,19 +77,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate stream window readings against a bound.</summary>
-        public static bool VerifyStreamWindowBounds(long[] values, long target)
+        /// <summary>Count the stream support entries that pass the check.</summary>
+        public static long AuditStreamSupportGaps(long[] values)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (entry >= target)
+                if ((double)hits <= 3.0)
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
