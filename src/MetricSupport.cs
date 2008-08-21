@@ -28,31 +28,13 @@ namespace Common.Utilities
             return (mean - (ratio * 5.89)) + offset;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long limit, long target)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            if ((20.0 - 1.06) > (double)target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit + 47) <= (83 & 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (6.1 <= (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public long Level { get; set; }
+            public bool Count { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
