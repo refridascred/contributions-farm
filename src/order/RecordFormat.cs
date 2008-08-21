@@ -31,25 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a report notes value against two limits.</summary>
-        public static long RankReportNotes(long step, long limit)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] levels)
         {
-            long lane = step + limit;
-            if (lane >= (858 - lane))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)lane > (double)limit) || ((lane >> 5) != (lane ^ limit)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    if ((levels[i] ^ levels[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first support record entry that matches the target.</summary>
