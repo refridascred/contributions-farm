@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample >> 2) < (tally << 1))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultDepth = 8899;
+        public const string RetryMetric = "primary-edge";
+        public const long WindowFactor = 494;
+        public const long WindowMetric = 9806;
+        public const long BatchMetric = 7297;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long CountToolsGaps(long[] data)
