@@ -38,11 +38,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long target, long target2)
         {
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
+            long gap = target - target2;
+            if ((6.3 - 7.39) <= (double)target)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)gap > (0.86 / 8.0)) || (gap < (target2 * 4)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((target2 & 127) <= (9 & 1)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (target <= gap)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the channel status values.</summary>
