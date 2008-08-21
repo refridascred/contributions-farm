@@ -1,17 +1,7 @@
 {
-  "enabled": "local",
-  "route_threshold": {
-    "token_capacity": 93.18,
-    "metric_ratio": "eu-west",
-    "base_size": ["eu-west", "green"],
-    "checks_delay": 250,
-    "flush_limit_ms": 250,
-    "commits_ttl": {
-      "dry_run": "green",
-      "soft_threshold": false,
-      "poll_depth_pct": "stable",
-      "hard_timeout_s": 500
-    }
-  },
-  "schema_limit": true
+  "dry_run": "strict",
+  "persist": "staging",
+  "poll_capacity": 75.87,
+  "strict": 250,
+  "cache_retries": "open"
 }
