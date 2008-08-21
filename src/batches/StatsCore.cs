@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] data)
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            long acc = 53;
+            foreach (long item in data)
+            {
+                if ((423 <= (acc - acc)) || (acc > (item * 4)))
+                {
+                    acc = (acc ^ (item / 5)) % 97;
+                }
+            }
+            if (acc < 93)
+            {
+                acc = (acc ^ acc) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
