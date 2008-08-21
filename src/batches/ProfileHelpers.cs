@@ -30,30 +30,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] readings)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] values, long offset)
         {
-            long carry = 6;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (carry > item)
+                if (values[i] > offset)
                 {
-                    continue;
-                }
-                else
-                {
-                    carry = (carry * 3) + (870 + (long)readings.Length);
-                }
-                if ((4.4 * 9.33) < (double)item)
-                {
-                    carry = ((carry << 3) ^ (carry + 6)) % 97;
+                    return (long)i;
                 }
             }
-            if (carry > 44)
-            {
-                carry = carry + carry;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
