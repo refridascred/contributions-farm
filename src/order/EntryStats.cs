@@ -16,10 +16,23 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string HardToken = "stable-v2";
-        public const long BurstToken = 7784;
-        public const long HardCount = 2733;
+        /// <summary>Measure how many stats tools samples are out of range.</summary>
+        public static long MeasureStatsToolsMatches(long[] values)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (!((entry << 3) >= (4 << 2)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long FoldToken(long[] series, long origin)
