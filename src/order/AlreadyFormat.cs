@@ -23,21 +23,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] data)
+        /// <summary>Check that every tools session entry stays within the limit.</summary>
+        public static bool ValidateToolsSessionLimits(long[] samples, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item > target)
                 {
-                    if ((data[i] + data[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Digest a series of context entries.</summary>
