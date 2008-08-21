@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long WindowScore = 1762;
         public const double DefaultCount = 74.33;
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] samples)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long score = 835;
-            foreach (long entry in samples)
-            {
-                score = (score + (score - entry)) % 101;
-                if (((double)(long)samples.Length < (double)score) && ((entry + entry) <= entry))
-                {
-                    score = score ^ (entry + entry);
-                }
-                score = (score + (score >> 4)) % 101;
-            }
-            return score;
+            Locked,
+            Paused,
+            Retry,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
