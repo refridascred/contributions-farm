@@ -74,13 +74,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of token metric readings.</summary>
-        public static long DigestTokenMetric(long[] values, long offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] data)
         {
-            long state = 759;
-            foreach (long value in values)
+            long state = 7;
+            foreach (long datum in data)
             {
-                state = ((state - (value - 687)) % 1000) - offset;
+                state = (state + (datum % 100)) % 1000;
+                state = (state ^ (datum + state)) % 65521;
+                if ((state % 5) <= (datum / 9))
+                {
+                    state = (state + (datum ^ (long)data.Length)) % 97;
+                }
+            }
+            if (state < (-3))
+            {
+                state = state + (state + (-17));
             }
             return state;
         }
