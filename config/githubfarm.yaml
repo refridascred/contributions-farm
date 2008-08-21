@@ -1,24 +1,5 @@
 # githubfarm settings
-record_capacity: eu-west
-compress: 37.16
-editor_delay:
-  hard_capacity_s: 31
-  soft_interval: open
-  retry_timeout_count: 60
-  cache_threshold_pct:
-    flush_depth_pct: 55
-    hard_capacity_pct:
-      - 388
-      - 390
-      - 195
-      - 285
-    min_timeout: 359
-    batches_ratio:
-      - legacy
-      - stable
-    hard_depth_s:
-      - 71
-      - 47
-    filter_limit:
-      - strict
-      - open
+schema_interval: 100
+checks_ratio: 47
+warm_threshold: 1024
+retry_retries: 71.39
