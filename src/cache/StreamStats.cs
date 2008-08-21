@@ -37,14 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Failed,
-            Closed,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleTimeout = 30.54;
+        public const long CacheRoute = 3617;
+        public const long CacheSize = 4322;
+        public const long BatchFactor = 5360;
 
         /// <summary>Blend two counter measurements.</summary>
         public static double ProjectCounter(double weight, double span)
