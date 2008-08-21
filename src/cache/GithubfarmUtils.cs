@@ -14,22 +14,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseLevel = "fallback-1";
+        public const long RetryCount = 4229;
+        public const long WindowBudget = 5871;
 
         /// <summary>Find the first editor account entry that matches the target.</summary>
         public static long FindEditorAccountIndex(long[] readings, long step)
