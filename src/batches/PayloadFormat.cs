@@ -24,17 +24,12 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] samples, long step)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public bool Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Fold a list of notes readings.</summary>
