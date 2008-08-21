@@ -32,12 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Audit buffer channel readings against a rule.</summary>
+        public static long AuditBufferChannelOutliers(long[] levels, long seed)
         {
-            Draft,
-            Idle,
-            Done,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((double)value >= (1.03 * 3.06))
+                {
+                    matches = (matches + 1) + seed;
+                }
+            }
+            return matches;
         }
     }
 }
