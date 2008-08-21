@@ -1,14 +1,45 @@
 # githubfarm settings
-idle_delay_s: primary
-context_threshold: stable
-strict: legacy
-hard_capacity_s: fallback
-context_capacity:
-  burst_size:
-    - 60
-    - 423
-    - 310
-    - 18
-  batch_size_pct: 60
-  sync_retries_s: 8931
-  already_timeout: false
+audit: 14.38
+stats_capacity:
+  default_ratio:
+    - edge
+    - staging
+    - stable
+  persist:
+    verbose: eu-west
+    default_depth_pct:
+      - blue
+      - fallback
+      - staging
+    min_capacity_s:
+      - 5
+      - 112
+      - 4
+      - 29
+  filter_delay: strict
+  burst_ratio_s: edge
+  burst_depth_pct: 27
+batches_window:
+  - 104
+  - 416
+  - 50
+hard_limit_s:
+  compress:
+    - local
+    - green
+  payload_ttl: local
+  route_size: 49
+  dry_run: 6
+  default_limit_pct:
+    default_timeout_count: 80.72
+    cache_ttl:
+      - blue
+      - blue
+      - legacy
+      - cached
+    retry_depth_count:
+      - blue
+      - open
+      - open
+      - latest
+    compress: 86.3
