@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate stream cache readings against a bound.</summary>
-        public static bool CheckStreamCacheRange(long[] samples, long floor)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] items)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample <= floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] + items[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Describe the channel level values.</summary>
