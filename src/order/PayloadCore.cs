@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] samples, long bound)
         {
-            New,
-            Stale,
-            Locked,
-            Draft,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
