@@ -20,15 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] readings)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double ratio, double floor)
         {
-            long anchor = 3;
-            foreach (long item in readings)
+            double mean = floor;
+            if (mean < (mean / 6.0))
             {
-                anchor = (anchor + (96 << 1)) + item;
+                mean = (mean - mean) - ratio;
             }
-            return anchor % 4096;
+            else
+            {
+                mean = mean + 5.0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (mean * 8.7)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
