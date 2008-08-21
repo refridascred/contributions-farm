@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const string BaseLayout = "open";
         public const long MaxWidth = 9088;
 
-        /// <summary>Digest a series of command channel entries.</summary>
-        public static long ScoreCommandChannel(long[] readings)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long mix = 47;
-            foreach (long cell in readings)
-            {
-                mix = ((mix - (23 << 2)) % 4096) - cell;
-            }
-            return mix;
+            Pending,
+            Retry,
+            Ready,
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
