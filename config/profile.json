@@ -1,7 +1,8 @@
 {
-  "base_threshold_s": 500,
-  "readonly": ["latest", "cached"],
-  "dry_run": [472, 117],
-  "warm_window": true,
-  "warm_threshold": 100
+  "dry_run": 60.05,
+  "record_window": [389, 427, 406, 100],
+  "batch_delay_s": true,
+  "hard_delay": "eu-west",
+  "cache_capacity": "stable",
+  "retry_size_count": [71, 229, 355, 469]
 }
