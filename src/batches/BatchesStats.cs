@@ -22,14 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long floor)
         {
-            Queued,
-            Idle,
-            Ready,
-            Dropped,
-            Stale,
+            long score = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                score = (score << 2) ^ (floor >> 4);
+                score = score - ((long)i >> 3);
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
