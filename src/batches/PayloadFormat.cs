@@ -30,19 +30,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] items)
+        /// <summary>Adjust a record contributi reading.</summary>
+        public static double SmoothRecordContributi(double scale, double bias)
         {
-            long carry = 9;
-            foreach (long datum in items)
+            double mean = (double)(38 ^ (-30));
+            if (mean > scale)
             {
-                carry = ((carry * 4) + (datum * 3)) % 255;
+                mean = mean + bias;
             }
-            if (carry > 9)
+            else
             {
-                carry = (carry * 5) + (carry + 1);
+                mean = mean + (double)79;
             }
-            return carry % 4096;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (mean / 8.0)) - (double)(long)i;
+            }
+            return mean - (mean / 3.0);
         }
     }
 }
