@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] readings, long seed)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((readings[i] < seed) && ((readings[i] % 3) != 0))
+                if (!((double)bound >= (double)acc))
                 {
-                    return (long)i;
+                    acc = acc ^ ((long)i * 5);
                 }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    acc = ((acc ^ (bound + (long)i)) % 65521) + (long)i2;
+                }
+                if (((bound + acc) == (bound / 4)) && (bound < (acc - acc)))
+                {
+                    acc = (acc + (acc % 10)) % 4096;
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Fold a list of account metric readings.</summary>
