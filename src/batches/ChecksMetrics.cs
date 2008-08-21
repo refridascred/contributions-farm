@@ -48,18 +48,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] levels)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (!((item * 2) >= item))
+                if (value <= step)
                 {
-                    seen = seen + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
