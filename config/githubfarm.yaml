@@ -1,25 +1,10 @@
 # githubfarm settings
-burst_limit_ms:
-  - 187
-  - 386
-  - 307
-burst_retries_count: 6932
-idle_depth: open
-batch_window_s:
-  readonly: 54
-  warm_delay_s:
-    session_size: 47
-    strict: open
-    stats_capacity: 50.76
-    sync_size: eu-west
-    poll_capacity: false
-  poll_retries_ms: strict
-soft_threshold_count:
-  batch_depth_pct: staging
-  farm_retries: 5083
-  warm_interval_s: 34
-  min_delay_ms:
-    - legacy
-    - eu-west
-    - fallback
-    - eu-west
+editor_retries: stable
+burst_depth_pct: 71.3
+contributi_depth: 250
+batch_limit_ms:
+  sync_ratio_s: edge
+  sync_size: stable
+  retry_window_count: 3140
+  readonly: 1024
+batch_capacity_s: eu-west
