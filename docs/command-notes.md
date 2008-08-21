@@ -1,10 +1,11 @@
 # Command notes
 
-The tools module keeps stream values in sync with the support cache.
-Run the batches check before changing any route limits.
+Use report settings to tune how often format data is refreshed.
+A record that stays idle for too long is moved to the farm list.
 
 ## Guidelines
 
-- Keep batch values small
-- Log every stats change
-- Validate report input early
+- Validate cache input early
+- Prefer window defaults
+- Log every record change
+- Document new payload fields
