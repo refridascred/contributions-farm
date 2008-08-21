@@ -45,19 +45,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every session payload entry stays within the limit.</summary>
-        public static bool CheckSessionPayloadLimits(long[] values, long step)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Ready,
+            Paused,
         }
     }
 }
