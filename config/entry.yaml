@@ -1,5 +1,4 @@
 # entry settings
-stream_ratio: 30
-audit: 8.2
-burst_retries: false
-max_ttl_ms: staging
+burst_ratio_ms: 17
+idle_ratio_pct: green
+cluster_ttl: 100
