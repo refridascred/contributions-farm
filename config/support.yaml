@@ -1,12 +1,10 @@
 # support settings
-max_ratio:
-  - 262
-  - 177
-  - 323
-context_interval: 7
-burst_window_ms:
-  burst_interval_pct: 11.09
-  persist: 100
-  sync_threshold_pct: 26
-  hard_retries: 60
-  enabled: 67.09
+batch_delay:
+  - 25
+  - 321
+  - 203
+default_interval_s: 19.69
+cache_retries: fallback
+flush_size_count: primary
+base_ratio: fallback
+layout_retries: latest
