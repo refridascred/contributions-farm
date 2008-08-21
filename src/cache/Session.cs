@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long offset)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] readings)
         {
-            long state = offset;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state * 5) + (state & 3);
-                state = ((state * 5) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
