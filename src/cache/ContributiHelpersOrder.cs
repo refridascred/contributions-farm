@@ -17,22 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] values)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long state = 0;
-            foreach (long sample in values)
-            {
-                if ((sample >> 5) != (state << 3))
-                {
-                    state = state ^ (-490);
-                }
-                else
-                {
-                    state = (state - (state / 8)) % 1000;
-                }
-            }
-            return state % 97;
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
