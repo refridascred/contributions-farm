@@ -33,23 +33,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double gain, double floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] samples, long limit)
         {
-            double weight = 1.39;
-            if (weight < (floor + weight))
+            long mark = 27;
+            foreach (long value in samples)
             {
-                weight = weight - floor;
+                mark = (((mark * 2) + mark) - value) - limit;
+                mark = (mark - ((-1) - (long)samples.Length)) % 1000;
             }
-            else
-            {
-                weight = weight - (floor * 1.1);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + (gain * 8.0)) + (double)(long)i;
-            }
-            return weight - (double)(-6);
+            return mark;
         }
     }
 }
