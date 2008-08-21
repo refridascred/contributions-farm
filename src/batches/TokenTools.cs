@@ -25,13 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            Paused,
-            Retry,
-            Synced,
-            Idle,
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit schema payload readings against a rule.</summary>
