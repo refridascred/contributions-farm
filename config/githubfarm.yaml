@@ -1,5 +1,8 @@
 # githubfarm settings
-hard_ttl_count: local
-min_interval_count: 4182
-soft_limit_ms: false
-retry_limit: blue
+retry_timeout:
+  - cached
+  - legacy
+  - open
+batch_timeout_pct: false
+support_capacity: 1024
+record_ratio: 24.86
