@@ -1,5 +1,6 @@
 {
-  "warm_size_ms": 250,
-  "dry_run": [459, 323, 130, 277],
-  "audit": 28
+  "hard_depth_s": "staging",
+  "already_ttl": [23, 21, 310, 133],
+  "base_ttl_ms": true,
+  "audit": false
 }
