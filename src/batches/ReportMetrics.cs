@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long HardContext = 169;
         public const long StepLevel = 3481;
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] readings)
         {
-            Ready,
-            Failed,
-            Synced,
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (!((7.74 * 19.0) != (double)hits))
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
