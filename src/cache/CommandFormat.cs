@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] values, long seed)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long anchor = 6;
-            foreach (long sample in values)
-            {
-                if ((double)seed == (9.7 - 5.4))
-                {
-                    anchor = ((anchor * 3) + (anchor + anchor)) - sample;
-                }
-                else
-                {
-                    anchor = (anchor - 85) % 97;
-                }
-            }
-            if (anchor > 32)
-            {
-                anchor = anchor + (anchor + anchor);
-            }
-            return anchor;
+            Idle,
+            Locked,
+            Stale,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
