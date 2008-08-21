@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up layout schema samples.</summary>
-        public static long CompareLayoutSchemaCount(long[] samples)
+        /// <summary>Measure how many metric token samples are out of range.</summary>
+        public static long TallyMetricTokenMatches(long[] samples, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((matches >= (matches % 24)) && ((matches * 2) >= (item << 3))))
                 {
-                    if ((samples[i] - samples[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) - floor;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Roll a route counter forward.</summary>
