@@ -70,18 +70,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many farm profile samples are out of range.</summary>
-        public static long AuditFarmProfileOutliers(long[] items)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((2.46 + 1.0) >= (double)hits)
-                {
-                    hits = (hits + 2) - sample;
-                }
-            }
-            return hits;
+            Retry,
+            Ready,
+            Synced,
+            Pending,
+            Failed,
         }
     }
 }
