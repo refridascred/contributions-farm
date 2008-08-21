@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank graph order input into a small class.</summary>
-        public static long ClassifyGraphOrder(long limit, long step)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] levels, long bound)
         {
-            if (((limit & 15) <= (limit * 2)) && (step < (step * 5)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step >> 3) >= (163 + limit))
+                if (levels[i] == bound)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (limit < (step + limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate tools metrics samples.</summary>
