@@ -79,21 +79,19 @@ namespace Common.Utilities
         public const double StepCommits = 92.9;
         public const string BatchSize = "fallback-v2";
 
-        /// <summary>Match up layout stats samples.</summary>
-        public static long PairLayoutStatsCount(long[] samples)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double bias, double bias2)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias3 = bias2;
+            if (bias3 >= (double)927)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias3 = (bias3 + (bias2 + bias3)) + bias;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                bias3 = (bias3 + 6.0) + (double)(long)i;
+            }
+            return bias3 + 9.4;
         }
     }
 }
