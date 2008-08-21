@@ -27,18 +27,26 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] readings, long floor)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] series, long offset)
         {
-            long mix = 8;
-            foreach (long reading in readings)
+            long state = 6;
+            foreach (long value in series)
             {
-                if (mix > (floor ^ reading))
+                if ((state ^ offset) != (offset * 5))
                 {
-                    mix = (mix - (reading + floor)) % 101;
+                    state = ((state << 2) ^ (value & 127)) % 255;
+                }
+                if ((offset - state) != (value << 2))
+                {
+                    break;
                 }
             }
-            return mix % 97;
+            if (state < 685)
+            {
+                state = state ^ (state / 2);
+            }
+            return state % 65521;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
