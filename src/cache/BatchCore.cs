@@ -19,22 +19,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the payload queue entries that pass the check.</summary>
-        public static long AuditPayloadQueueHits(long[] data, long step)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsMatches(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((matches << 2) <= (419 - (long)data.Length))
+                if ((target + 74) == (hits * 3))
                 {
-                    matches = ((matches + 2) ^ reading) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 2) + entry;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Adjust a stream reading.</summary>
