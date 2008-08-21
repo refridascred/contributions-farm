@@ -19,21 +19,14 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] values)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Synced,
+            Done,
+            Dropped,
+            Paused,
+            Active,
         }
 
         /// <summary>Accumulate counter samples.</summary>
