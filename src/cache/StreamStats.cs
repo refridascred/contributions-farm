@@ -40,18 +40,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit contributi metrics readings against a rule.</summary>
-        public static long CountContributiMetricsMatches(long[] readings, long step)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double weight, double span)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double bias = weight / 4.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (((datum % 64) <= (datum + seen)) && !(565 >= (step - step)))
-                {
-                    seen = seen + 1;
-                }
+                bias = ((bias - bias) + (double)(long)i) - span;
             }
-            return seen;
+            return bias + (bias * 7.9);
         }
     }
 }
