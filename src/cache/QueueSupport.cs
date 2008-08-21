@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const double MaxBuffer = 80.18;
         public const string WindowBuffer = "standard-v2";
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowOutliers(long[] readings, long step)
+        /// <summary>Validate record metrics readings against a bound.</summary>
+        public static bool CheckRecordMetricsRange(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if ((4 >> 1) < (reading ^ step))
+                if (sample >= origin)
                 {
-                    matches = matches + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Blend two editor measurements.</summary>
