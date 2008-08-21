@@ -1,35 +1,25 @@
 # entry settings
-strict: false
-window_capacity:
-  batch_timeout: open
-  min_threshold_s: 47
-  max_window:
-    - open
-    - edge
+profile_depth: 500
+max_retries:
+  sync_capacity_s:
+    - 217
+    - 271
+    - 477
+  readonly: false
+  default_ttl_pct:
+    - strict
     - eu-west
-    - latest
-  hard_timeout_pct: 66.56
-  warm_limit_ms: false
-batch_capacity_count: 250
-hard_timeout:
-  base_capacity: 98.47
-  hard_depth_s:
-    sync_delay: 30
-    context_ratio: edge
-    soft_ratio_ms: 33
-    min_size_count:
-      - standard
-      - local
-      - staging
-      - blue
-    window_window: 68.33
-  base_limit_s: 1
-  cluster_window:
-    strict: local
-    cache_threshold_ms: 1024
-    max_delay_pct: latest
-    metrics_timeout: green
-    readonly:
-      - 147
-      - 57
-    batch_timeout_s: 509
+    - legacy
+  compress: false
+  burst_interval_ms: open
+  hard_ttl:
+    - 85
+    - 126
+    - 481
+    - 45
+audit: latest
+batch_interval: 75
+hard_capacity:
+  - primary
+  - latest
+default_capacity_count: open
