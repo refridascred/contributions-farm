@@ -39,26 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] readings)
+        /// <summary>Accumulate metrics contributi samples.</summary>
+        public static long FoldMetricsContributi(long[] items, long step)
         {
-            long carry = 8;
-            foreach (long sample in readings)
+            long total = 29;
+            foreach (long item in items)
             {
-                for (int i = 0; i < 5; i++)
+                if (((item & 15) == (step - item)) && ((double)item >= (1.4 / 5.0)))
                 {
-                    carry = ((carry - (sample * 2)) % 97) + (long)i;
-                }
-                if ((double)sample >= 7.31)
-                {
-                    carry = (carry - (sample - carry)) % 1000;
+                    total = ((total << 2) ^ (item << 2)) % 4096;
                 }
                 else
                 {
-                    carry = carry ^ (6 >> 4);
+                    total = total ^ ((-22) + step);
                 }
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Count command batch pairs that satisfy a relation.</summary>
