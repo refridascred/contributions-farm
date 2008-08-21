@@ -27,19 +27,23 @@ namespace Common.Utilities
         public const long DefaultInterval = 2609;
         public const long SoftStats = 3338;
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferBounds(long[] levels, long origin)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double rate, double bias)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            double weight = (double)137;
+            if (weight >= rate)
             {
-                if (sample <= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = (weight + (11.0 / 8.0)) + bias;
             }
-            return stale;
+            else
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (weight * 1.0)) + (double)(long)i;
+            }
+            return weight - (9.29 / 9.0);
         }
 
         /// <summary>Fold a list of route readings.</summary>
