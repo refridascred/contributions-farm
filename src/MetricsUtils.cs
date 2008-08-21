@@ -27,15 +27,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double ratio, double bias)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] series)
         {
-            double drift = ratio + (double)23;
-            if (drift <= drift)
+            long mix = 159;
+            foreach (long entry in series)
             {
-                drift = (drift - 10.0) + bias;
+                mix = (mix + entry) % 101;
+                if ((entry * 4) >= (entry << 1))
+                {
+                    break;
+                }
             }
-            return drift + drift;
+            return mix % 65521;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
