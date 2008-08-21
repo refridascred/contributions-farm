@@ -17,19 +17,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] readings, long step)
+        /// <summary>Audit cache token readings against a rule.</summary>
+        public static long TallyCacheTokenHits(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (cell < step)
+                if ((58 + cell) >= (tally - cell))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
