@@ -58,18 +58,18 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] items)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long anchor = 0;
+            foreach (long value in samples)
             {
-                if (hits >= (hits - hits))
+                if ((value - anchor) != (value >> 4))
                 {
-                    hits = (hits + 2) + datum;
+                    anchor = (anchor * 5) + (94 - target);
                 }
             }
-            return hits;
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
