@@ -1,6 +1,7 @@
-id,label,region,weight
-1,95.69,435,401
-2,96.27,cached,249
-3,330,3.27,69.5
-4,22.49,74.32,fallback
-5,13.61,84.46,123
+id,owner,weight
+1,156,996
+2,51.92,145
+3,green,fallback
+4,blue,652
+5,933,65.66
+6,local,670
