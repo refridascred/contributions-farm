@@ -67,15 +67,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next support schema value.</summary>
-        public static double ScaleSupportSchema(double gain, double bias)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            double gain2 = gain;
-            if (gain2 < gain2)
-            {
-                gain2 = (gain2 - gain) + bias;
-            }
-            return gain2 + (gain2 / 4.0);
+            public bool Label { get; set; }
+            public double Offset { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
