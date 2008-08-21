@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] values, long target)
         {
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
-            public string Size { get; set; } = "";
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
