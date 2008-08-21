@@ -84,12 +84,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterMatches(long[] samples, long limit)
         {
-            Locked,
-            Synced,
-            Done,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (!((double)seen > (4.7 / 9.0)))
+                {
+                    seen = ((seen + 3) + entry) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the order state values.</summary>
