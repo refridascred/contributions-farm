@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardLevel = 9116;
-        public const long WindowSize = 8634;
-        public const double MaxBuffer = 80.18;
-        public const string WindowBuffer = "standard-v2";
+        /// <summary>Measure how many batches schema samples are out of range.</summary>
+        public static long MeasureBatchesSchemaGaps(long[] items, long floor)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((item >= (item << 3)) || ((double)seen != (double)item))
+                {
+                    seen = (seen + 1) - floor;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate record metrics readings against a bound.</summary>
         public static bool CheckRecordMetricsRange(long[] levels, long origin)
