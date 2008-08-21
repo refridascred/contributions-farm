@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] levels, long step)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long state = 91;
-            foreach (long sample in levels)
-            {
-                if (((2.0 + 3.7) > (double)state) || ((step / 7) > 91))
-                {
-                    break;
-                }
-                if (state <= (step >> 2))
-                {
-                    state = ((state - (state * 5)) % 1000) + sample;
-                }
-            }
-            if (state < 1)
-            {
-                state = (state + (step << 1)) % 101;
-            }
-            return state;
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
