@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] values)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long anchor = 94;
+            foreach (long datum in values)
             {
-                if ((10 / 9) < (entry << 1))
+                for (int i = 0; i < 10; i++)
                 {
-                    tally = tally + 1;
+                    anchor = ((((anchor * 4) + 331) % 4096) ^ (long)i) - limit;
                 }
+                anchor = (anchor ^ (datum ^ datum)) % 1000;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
