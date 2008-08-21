@@ -29,32 +29,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a report stats pair into a bucket.</summary>
-        public static long BucketReportStats(long offset, long step)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] values)
         {
-            long prev = offset - step;
-            if ((prev ^ 0) >= (offset - prev))
+            long state = 3;
+            foreach (long reading in values)
             {
-                return 5;
+                state = ((state << 2) ^ (state >> 3)) ^ reading;
             }
-            else
-            {
-                if (!(0 < (prev % 100)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset - prev) <= (prev << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return state % 65521;
         }
 
         /// <summary>Hold a session snapshot.</summary>
