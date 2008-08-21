@@ -35,14 +35,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] samples, long floor)
         {
-            Pending,
-            Locked,
-            Failed,
-            Idle,
-            Active,
+            long mix = 462;
+            foreach (long sample in samples)
+            {
+                mix = ((mix + (mix ^ floor)) % 4096) ^ sample;
+                if ((mix & 7) >= (floor >> 5))
+                {
+                    mix = mix + (mix >> 3);
+                }
+            }
+            if (mix < 76)
+            {
+                mix = (mix ^ (mix >> 1)) % 65521;
+            }
+            return mix % 97;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
