@@ -47,14 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] readings)
         {
-            Stale,
-            Pending,
-            Paused,
-            Idle,
-            Closed,
+            long anchor = 15;
+            foreach (long datum in readings)
+            {
+                if (((anchor / 8) >= 429) || ((double)anchor > (double)datum))
+                {
+                    anchor = (anchor + (datum + 6)) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
