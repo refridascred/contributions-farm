@@ -22,19 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double ProjectCommand(double scale, double offset)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            double scale2 = scale;
-            if (scale2 >= scale2)
-            {
-                scale2 = scale2 + 6.55;
-            }
-            else
-            {
-                scale2 = scale2 + (scale2 - offset);
-            }
-            return scale2 + 13.0;
+            public double Label { get; set; }
+            public double Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define payload limits and defaults.</summary>
