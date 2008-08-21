@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const long BurstFactor = 4854;
         public const long StepInterval = 1543;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryFactor = 6682;
-        public const long BatchSchema = 9967;
-        public const long BaseSchema = 7689;
-        public const long HardBudget = 8611;
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two account measurements.</summary>
         public static double SmoothAccount(double gain, double floor)
