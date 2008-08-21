@@ -19,22 +19,39 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] data)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long seed, long limit)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long next = seed - limit;
+            if ((limit + next) == (seed - limit))
             {
-                if ((count + 57) < (count + count))
+                return 6;
+            }
+            else
+            {
+                if (!((limit / 3) < (next + 6)))
                 {
-                    count = (count + 3) ^ cell;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((1.6 + 1.9) < (double)next)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((limit % 10) > limit) || (next > 467))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
