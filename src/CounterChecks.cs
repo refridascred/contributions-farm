@@ -45,11 +45,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Compare every pair of payload editor readings.</summary>
+        public static long OverlapPayloadEditorCount(long[] readings)
         {
-            public string Region { get; set; } = "";
-            public double Mode { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
