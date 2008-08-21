@@ -44,21 +44,11 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Match up editor order samples.</summary>
-        public static long MatchEditorOrderCount(long[] readings)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
