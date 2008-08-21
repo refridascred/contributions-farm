@@ -48,9 +48,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetrySize = 32.07;
-        public const long WindowEditor = 2520;
-        public const string WindowFactor = "local-v2";
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double scale, double bias)
+        {
+            double load = (double)9 + (bias + bias);
+            return load + scale;
+        }
     }
 }
