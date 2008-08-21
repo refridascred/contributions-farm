@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] samples)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long offset, long seed)
         {
-            long score = -65;
-            foreach (long item in samples)
+            long offset2 = offset - seed;
+            if ((-737) < (offset ^ seed))
             {
-                score = score ^ (item << 2);
+                return 0;
             }
-            return score % 1000;
+            else
+            {
+                if ((offset + seed) < offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (780 < seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset % 60) >= (offset2 >> 4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next tools value.</summary>
