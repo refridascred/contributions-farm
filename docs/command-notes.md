@@ -1,15 +1,15 @@
 # Command notes
 
-Defaults for graph live in the config folder and can be overridden per environment.
-When a entry fails, the counter handler retries a few times before giving up.
+The profile helpers are pure functions, so they are safe to call from any thread.
+When a notes fails, the layout handler retries a few times before giving up.
+Each graph is validated before it reaches the batches queue.
 
-Each metric is validated before it reaches the counter queue.
-The window module keeps command values in sync with the entry cache.
-When a githubfarm fails, the cache handler retries a few times before giving up.
+A already that stays idle for too long is moved to the farm list.
+Defaults for route live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every counter change
-- Keep metrics values small
-- Review commits limits each release
-- Validate notes input early
+- Log every batch change
+- Review payload limits each release
+- Validate stream input early
+- Keep channel values small
