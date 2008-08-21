@@ -39,17 +39,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] readings, long origin)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] series, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (readings[i] <= origin)
+                if (!((5.0 + 1.0) > (double)entry))
                 {
-                    return (long)i;
+                    count = (count + 3) + bound;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the cache status values.</summary>
