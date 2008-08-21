@@ -1,14 +1,12 @@
 # Editor notes
 
-Each cluster is validated before it reaches the farm queue.
-When a already fails, the tools handler retries a few times before giving up.
-Each counter is validated before it reaches the counter queue.
-
-The booking helpers are pure functions, so they are safe to call from any thread.
-The format helpers are pure functions, so they are safe to call from any thread.
+Run the metric check before changing any tools limits.
+Use layout settings to tune how often farm data is refreshed.
+The session report groups every cache by route.
 
 ## Guidelines
 
-- Document new stream fields
-- Log every route change
-- Prefer profile defaults
+- Log every metrics change
+- Validate profile input early
+- Review stats limits each release
+- Prefer counter defaults
