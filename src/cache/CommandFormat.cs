@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 3672;
-        public const long StepScore = 1304;
-        public const long DefaultGraph = 8858;
-        public const long LimitGraph = 4887;
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public long Score { get; set; }
+            public bool Token { get; set; }
+            public double Count { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool ValidateSessionBounds(long[] levels, long limit)
