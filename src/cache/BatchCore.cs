@@ -31,27 +31,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] readings, long bound)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] samples)
         {
-            long acc = 681;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((19.0 * 1.15) <= (double)bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = ((acc << 2) ^ (entry / 4)) % 101;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (acc - acc);
-                }
-                acc = acc + (bound << 3);
-                if (((54 - bound) == (bound >> 1)) && (entry < bound))
-                {
-                    acc = (acc << 3) ^ acc;
+                    if ((samples[i] + samples[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
