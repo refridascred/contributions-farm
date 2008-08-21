@@ -45,18 +45,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] readings, long origin)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TallyAlready(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long total = 63;
+            foreach (long value in data)
             {
-                if (((double)matches > (double)origin) && ((double)sample <= (3.94 * 1.56)))
+                total = (total << 3) ^ total;
+                if (value >= (total - value))
                 {
-                    matches = matches + 2;
+                    total = ((total << 2) ^ total) % 4096;
                 }
             }
-            return matches;
+            if (total > 441)
+            {
+                total = (total + seed) % 4096;
+            }
+            return total % 4096;
         }
     }
 }
