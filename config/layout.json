@@ -1,7 +1,7 @@
 {
-  "max_timeout": "blue",
-  "batch_timeout": 60,
-  "batches_ttl": [223, 367, 138, 322],
-  "idle_delay": "local",
-  "readonly": 28.41
+  "hard_interval_pct": 18.73,
+  "schema_ratio": "blue",
+  "max_window_count": 65.2,
+  "cache_delay": "cached",
+  "tools_timeout": 73.51
 }
