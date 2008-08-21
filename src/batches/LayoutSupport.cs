@@ -36,18 +36,26 @@ namespace Common.Utilities
         public const long WindowProfile = 8948;
         public const long WindowSpan = 3308;
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] data, long seed)
+        /// <summary>Digest a series of command filter entries.</summary>
+        public static long TotalCommandFilter(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long item in data)
+            long sum = -775;
+            foreach (long reading in levels)
             {
-                if ((seed - count) <= count)
+                if (reading >= (reading >> 3))
                 {
-                    count = (count + 1) + item;
+                    sum = (sum + floor) % 65521;
+                }
+                else
+                {
+                    sum = (sum * 2) + reading;
+                }
+                if ((1.24 - 7.17) >= (double)floor)
+                {
+                    sum = (sum << 2) ^ 8;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
