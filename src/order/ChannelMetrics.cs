@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double ratio, double span)
         {
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
+            double rate = (span * 14.0) - span;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = ((rate + (span / 5.0)) + (double)(long)i) + ratio;
+            }
+            return rate + (rate / 3.0);
         }
 
         /// <summary>Describe the counter kind values.</summary>
