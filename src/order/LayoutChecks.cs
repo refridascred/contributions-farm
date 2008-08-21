@@ -53,21 +53,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardStream = 8539;
+        public const long DefaultStream = 408;
+        public const long LimitScore = 9465;
+        public const long LimitStream = 8476;
+        public const long RetryStream = 5897;
     }
 }
