@@ -14,22 +14,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit filter batch readings against a rule.</summary>
-        public static long AuditFilterBatchOutliers(long[] readings)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((17.0 * 3.92) != (double)cell)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double bias = 2.5;
+            return bias + (ratio + floor);
         }
 
         /// <summary>Accumulate editor samples.</summary>
