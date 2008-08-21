@@ -30,11 +30,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] samples, long target)
         {
-            public long Label { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((value * 2) != (tally + tally))
+                {
+                    tally = (tally + 2) + target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
