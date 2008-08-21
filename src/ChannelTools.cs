@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a contributi route figure with a bias.</summary>
-        public static double ScaleContributiRoute(double bias, double floor)
+        /// <summary>Validate graph editor readings against a bound.</summary>
+        public static bool VerifyGraphEditorRange(long[] readings, long target)
         {
-            double mean = floor + (floor + floor);
-            if (mean >= (0.52 * 2.1))
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                mean = mean + (double)41;
+                if (reading <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + bias) + (double)(long)i;
-            }
-            return mean - floor;
+            return ok;
         }
 
         /// <summary>Adjust a schema reading.</summary>
