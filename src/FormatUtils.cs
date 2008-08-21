@@ -35,12 +35,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxSize = 2607;
-        public const long DefaultRatio = 5485;
-        public const long BatchAccount = 322;
-        public const long StepAccount = 3631;
-        public const long HardAccount = 8658;
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
+        {
+            Pending,
+            Locked,
+            Failed,
+            Idle,
+            Active,
+        }
 
         /// <summary>Scale a graph figure with a bias.</summary>
         public static double ScaleGraph(double rate, double floor)
