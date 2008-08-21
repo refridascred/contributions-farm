@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long floor, long target)
-        {
-            long prev = floor + target;
-            if (((double)target != (double)prev) && ((5.0 - 7.1) == (double)prev))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(floor <= ((-14) + floor)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 6972;
+        public const string MaxFarm = "staging-1";
+        public const long LimitFarm = 1201;
+        public const long MaxDepth = 9045;
+        public const long MinScore = 6744;
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
