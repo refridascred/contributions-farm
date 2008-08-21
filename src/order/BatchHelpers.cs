@@ -13,18 +13,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] levels)
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double weight, double span)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            double ratio = (weight * 8.0) * 19.0;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)hits <= (3.0 - 9.4))
-                {
-                    hits = (hits + 1) ^ datum;
-                }
+                ratio = (ratio + (ratio / 3.0)) + (double)(long)i;
             }
-            return hits;
+            return ratio + (span / 7.0);
         }
 
         /// <summary>Fold a list of account readings.</summary>
