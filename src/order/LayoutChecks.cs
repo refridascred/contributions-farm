@@ -33,13 +33,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] series)
         {
-            public double Count { get; set; }
-            public double Stamp { get; set; }
-            public double Weight { get; set; }
-            public double Label { get; set; }
+            long score = 347;
+            foreach (long entry in series)
+            {
+                if (780 <= (entry / 4))
+                {
+                    score = (score - (score - entry)) % 4096;
+                }
+                else
+                {
+                    score = (score + entry) % 1000;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
