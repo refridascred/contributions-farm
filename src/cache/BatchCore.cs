@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] levels, long step)
-        {
-            long result = 0;
-            foreach (long reading in levels)
-            {
-                if (((result >> 2) < (29 + 1)) || ((result - step) > reading))
-                {
-                    result = (result * 5) + (8 * 3);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 9552;
+        public const long MinRatio = 6893;
+        public const long SoftSupport = 3452;
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long IterateFilter(long target)
