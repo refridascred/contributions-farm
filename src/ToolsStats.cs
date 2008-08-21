@@ -32,21 +32,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] series)
+        /// <summary>Accumulate session stats samples.</summary>
+        public static long WeighSessionStats(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 72;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = (mark ^ (mark % 10)) - cell;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Project the next batches value.</summary>
