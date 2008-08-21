@@ -67,13 +67,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long offset, long step)
         {
-            Draft,
-            Active,
-            Pending,
-            Done,
+            if ((6.78 + 5.96) > (double)step)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)step != (double)60) && ((step + offset) < (offset >> 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
