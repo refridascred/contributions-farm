@@ -1,4 +1,10 @@
 # support settings
-hard_threshold: 72
-payload_size: 100
-poll_retries_s: cached
+batch_threshold:
+  - edge
+  - strict
+  - primary
+poll_size: 84.9
+idle_window:
+  - 25
+  - 41
+  - 222
