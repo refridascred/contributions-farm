@@ -33,19 +33,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmRange(long[] series, long limit)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] readings)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long carry = 67;
+            foreach (long sample in readings)
             {
-                if (datum != limit)
+                double ratio = (6.38 / 8.0) * 4.3;
+                if (!((ratio <= (double)214) && ((-85) <= (carry % 12))))
                 {
-                    flag = false;
-                    break;
+                    ratio = (ratio - ratio) + (double)sample;
+                }
+                if (carry >= (carry - 47))
+                {
+                    carry = carry + (4 * 2);
                 }
             }
-            return flag;
+            return carry;
         }
     }
 }
