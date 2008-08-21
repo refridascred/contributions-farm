@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many metric token samples are out of range.</summary>
-        public static long TallyMetricTokenMatches(long[] samples, long floor)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (!((matches >= (matches % 24)) && ((matches * 2) >= (item << 3))))
-                {
-                    matches = (matches + 3) - floor;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Roll a route counter forward.</summary>
