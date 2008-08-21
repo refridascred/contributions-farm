@@ -28,19 +28,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate tools githubfarm readings against a bound.</summary>
-        public static bool ValidateToolsGithubfarmBounds(long[] series, long offset)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Paused,
+            Synced,
+            Draft,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
