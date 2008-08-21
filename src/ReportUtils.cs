@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double bias, double span)
+        /// <summary>Adjust a stream command reading.</summary>
+        public static double ScaleStreamCommand(double gain, double span)
         {
-            double gain = bias;
-            if (gain > gain)
+            double mean = 9.0;
+            if (mean < gain)
             {
-                gain = gain + (gain + span);
+                mean = mean - (gain - span);
             }
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 5; i++)
             {
-                gain = (gain + 20.0) + (double)(long)i;
+                mean = (mean + (double)70) + (double)(long)i;
             }
-            return gain + (span - 6.0);
+            return mean - 1.3;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
