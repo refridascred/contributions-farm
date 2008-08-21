@@ -40,21 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long CompareProfileCount(long[] values)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphHits(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (147 > datum)
                 {
-                    if ((values[i] - values[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
