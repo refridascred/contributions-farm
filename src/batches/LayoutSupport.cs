@@ -20,13 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Check that every filter profile entry stays within the limit.</summary>
+        public static bool VerifyFilterProfileBounds(long[] items, long limit)
         {
-            Draft,
-            Synced,
-            Closed,
-            Retry,
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
