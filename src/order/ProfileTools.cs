@@ -58,13 +58,18 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] items)
         {
-            Synced,
-            Active,
-            Ready,
-            Idle,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (hits >= (hits - hits))
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
