@@ -1,7 +1,19 @@
 {
-  "route_delay": [254, 373, 356],
-  "batch_ratio_count": false,
-  "layout_ttl": "strict",
-  "default_capacity_pct": 66.36,
-  "max_limit_s": 32
+  "poll_threshold_ms": {
+    "poll_retries_count": 6,
+    "account_limit": 60,
+    "dry_run": 1922,
+    "readonly": {
+      "idle_capacity": 9,
+      "stream_timeout": "stable",
+      "base_delay": 250,
+      "filter_size": false,
+      "burst_depth": 67
+    }
+  },
+  "idle_ttl_pct": "edge",
+  "min_capacity_count": 38.98,
+  "soft_capacity_ms": [497, 18, 185],
+  "cache_delay_count": "latest",
+  "poll_capacity_pct": "local"
 }
