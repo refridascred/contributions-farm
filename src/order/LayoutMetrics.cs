@@ -13,20 +13,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i3 = 0; i3 < 3; i3++)
-                {
-                    acc = (acc ^ offset) ^ (long)i3;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 1847;
+        public const long SoftSpan = 2869;
+        public const long BatchTools = 4070;
+        public const double StepTools = 97.4;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long DigestEditor(long[] readings)
