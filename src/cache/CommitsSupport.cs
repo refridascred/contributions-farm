@@ -49,17 +49,19 @@ namespace Common.Utilities
         public const double BatchScore = 5.06;
         public const long BaseBatch = 5405;
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] series, long offset)
+        /// <summary>Check that every filter route entry stays within the limit.</summary>
+        public static bool VerifyFilterRouteRange(long[] levels, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if (series[i] == offset)
+                if (reading <= limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
