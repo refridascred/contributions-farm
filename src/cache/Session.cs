@@ -36,40 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long offset, long target)
-        {
-            long diff = offset ^ target;
-            if (diff <= (target / 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target / 3) > (target + offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((target / 2) >= (diff % 8)) || ((target + diff) > (target + offset)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset % 5) == (offset >> 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BaseSize = "primary-v2";
+        public const string BurstSpan = "local-v2";
+        public const long SoftScore = 5996;
+        public const long IdlePayload = 7272;
+        public const string StepLevel = "stable-v2";
 
         /// <summary>Blend two metric measurements.</summary>
         public static double SmoothMetric(double scale, double span)
