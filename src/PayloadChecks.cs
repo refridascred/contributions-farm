@@ -40,11 +40,15 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Project the next window schema value.</summary>
-        public static double ProjectWindowSchema(double scale, double bias)
+        /// <summary>Iterate the filter batches series from a seed.</summary>
+        public static long StepFilterBatches(long seed)
         {
-            double load = 4.38 - (double)13;
-            return (load + bias) + scale;
+            long score = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
