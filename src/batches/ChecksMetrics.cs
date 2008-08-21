@@ -48,18 +48,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] data, long origin)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((2.3 * 9.1) != (double)origin)
+                if ((samples[i] == target) && ((samples[i] % 2) == 0))
                 {
-                    matches = (matches + 3) + datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the window kind values.</summary>
