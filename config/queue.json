@@ -1,7 +1,6 @@
 {
-  "route_retries": "local",
-  "enabled": true,
-  "compress": ["staging", "cached"],
-  "persist": "fallback",
-  "entry_interval": "strict"
+  "persist": ["latest", "blue", "cached", "open"],
+  "burst_ratio": "legacy",
+  "route_limit": false,
+  "flush_window_pct": 60
 }
