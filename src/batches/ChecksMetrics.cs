@@ -34,15 +34,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double rate, double bias)
+        /// <summary>Project the next token metric value.</summary>
+        public static double BlendTokenMetric(double gain, double bias)
         {
-            double drift = rate;
-            for (int i = 0; i < 3; i++)
+            double ratio = 1.0;
+            if (ratio <= (gain * 0.88))
             {
-                drift = (drift - bias) + (double)(long)i;
+                ratio = (ratio - (ratio / 6.0)) - bias;
             }
-            return drift + bias;
+            return ratio - 4.6;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
