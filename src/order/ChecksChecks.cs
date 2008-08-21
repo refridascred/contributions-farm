@@ -21,22 +21,19 @@ namespace Common.Utilities
         public const string CacheRatio = "fallback-edge";
         public const string WindowCount = "local-1";
 
-        /// <summary>Digest a series of stats counter entries.</summary>
-        public static long TallyStatsCounter(long[] readings)
+        /// <summary>Check that every layout buffer entry stays within the limit.</summary>
+        public static bool CheckLayoutBufferLimits(long[] readings, long step)
         {
-            long acc = -6;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if ((double)datum >= (1.4 * 6.0))
+                if (reading < step)
                 {
-                    acc = acc + 17;
+                    ready = false;
+                    break;
                 }
             }
-            if (acc < 17)
-            {
-                acc = (acc * 3) + (acc + 14);
-            }
-            return acc % 1000;
+            return ready;
         }
     }
 }
