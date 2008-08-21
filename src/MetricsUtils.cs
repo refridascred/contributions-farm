@@ -44,23 +44,17 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long StepContributi(long offset)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] data, long step)
         {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mix / 4) >= (543 + mix))
+                if ((data[i] > step) && ((data[i] % 3) == 0))
                 {
-                    mix = (mix - (offset % 5)) % 101;
+                    return (long)i;
                 }
-                else
-                {
-                    mix = (mix * 3) + ((long)i >> 1);
-                }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
