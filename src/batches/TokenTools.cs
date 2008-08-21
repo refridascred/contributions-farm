@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
-        {
-            public bool Mode { get; set; }
-            public bool Total { get; set; }
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 4825;
+        public const string LimitQueue = "strict-1";
+        public const double BatchQueue = 81.06;
+        public const long SoftScore = 6486;
+        public const long HardQueue = 5988;
 
         /// <summary>Count the queue window entries that pass the check.</summary>
         public static long AuditQueueWindowGaps(long[] items)
