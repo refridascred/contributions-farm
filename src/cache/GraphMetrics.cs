@@ -33,11 +33,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 3411;
-        public const double BaseChannel = 54.65;
-        public const string CacheTimeout = "cached-edge";
-        public const long WindowWidth = 9267;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((matches / 5) == (matches & 7))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
