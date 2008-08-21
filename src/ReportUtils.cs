@@ -57,15 +57,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor profile readings.</summary>
-        public static long DigestEditorProfile(long[] series, long offset)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long origin, long offset)
         {
-            long carry = -4;
-            foreach (long cell in series)
+            long prev = origin ^ offset;
+            if ((prev + offset) <= offset)
             {
-                carry = ((carry * 2) + offset) - cell;
+                return 0;
             }
-            return carry % 65521;
+            else
+            {
+                if (offset >= origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a session snapshot.</summary>
