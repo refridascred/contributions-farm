@@ -1,11 +1,11 @@
 # Command notes
 
-Run the metrics check before changing any cache limits.
-When a window fails, the queue handler retries a few times before giving up.
-The profile report groups every record by tools.
+Run the record check before changing any metrics limits.
+Each route is validated before it reaches the editor queue.
 
 ## Guidelines
 
-- Log every farm change
-- Prefer order defaults
-- Keep checks values small
+- Log every stream change
+- Review order limits each release
+- Document new cache fields
+- Validate order input early
