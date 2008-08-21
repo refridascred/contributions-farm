@@ -24,13 +24,17 @@ namespace Common.Utilities
         public const long MaxRatio = 7154;
         public const long LimitLevel = 9774;
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] series, long seed)
         {
-            public bool Token { get; set; }
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public double Mode { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a token counter forward.</summary>
