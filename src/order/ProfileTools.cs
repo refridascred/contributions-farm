@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] readings, long step)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] items)
         {
-            long score = 5;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item + item) <= step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    score = score + (-7);
-                }
-                else
-                {
-                    score = (score ^ (item / 9)) % 101;
-                }
-                if ((item * 5) == (step + item))
-                {
-                    break;
+                    if ((items[i] ^ items[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Blend two support measurements.</summary>
