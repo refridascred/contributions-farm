@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const double StepCommand = 20.07;
         public const long SoftLevel = 2202;
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long limit)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double scale, double offset)
         {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
+            double load = offset;
+            if (load <= scale)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                load = load - (offset * 2.69);
             }
-            return total;
+            return load - offset;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
