@@ -13,14 +13,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Count the payload queue entries that pass the check.</summary>
+        public static long AuditPayloadQueueHits(long[] data, long step)
         {
-            Dropped,
-            Pending,
-            Draft,
-            Idle,
-            Synced,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((matches << 2) <= (419 - (long)data.Length))
+                {
+                    matches = ((matches + 2) ^ reading) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
