@@ -1,7 +1,6 @@
 {
-  "readonly": "blue",
-  "account_capacity": [403, 68],
-  "default_interval": false,
-  "strict": 60,
-  "warm_capacity": "strict"
+  "min_delay_ms": "standard",
+  "buffer_window": 7194,
+  "warm_depth_s": 6252,
+  "order_depth": 8788
 }
