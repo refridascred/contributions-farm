@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftSize = 3606;
-        public const string RetryNotes = "standard-v2";
-        public const long MaxNotes = 6834;
-        public const long BurstSize = 7224;
-        public const long MinNotes = 3650;
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= bound) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool VerifySupportBounds(long[] values, long origin)
