@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BurstContributi = "alpha-v2";
-        public const long IdleInterval = 5448;
-        public const string HardCount = "alpha";
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Active,
+            Done,
+            New,
+            Locked,
+        }
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
