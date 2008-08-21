@@ -31,19 +31,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate profile filter readings against a bound.</summary>
-        public static bool GuardProfileFilterRange(long[] items, long limit)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            New,
+            Active,
         }
     }
 }
