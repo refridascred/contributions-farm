@@ -56,25 +56,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long offset, long origin)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long span = offset - origin;
-            if (origin > (span & 15))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin != (9.0 / 4.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the order state values.</summary>
