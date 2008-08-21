@@ -60,18 +60,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] data)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] readings, long seed)
         {
-            long acc = 8;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry << 1) != (entry + acc))
+                if (readings[i] < seed)
                 {
-                    acc = acc ^ (acc + entry);
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
