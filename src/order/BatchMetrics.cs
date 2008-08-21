@@ -17,23 +17,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] data, long step)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (!(((seen * 4) <= (value >> 2)) && ((value + value) >= seen)))
-                {
-                    seen = (seen + 2) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double WindowGraph = 57.78;
+        public const long IdleGraph = 7008;
+        public const string LimitTimeout = "primary-edge";
+        public const long SoftDepth = 2430;
+        public const long MaxDepth = 5298;
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
