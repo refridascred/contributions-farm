@@ -36,18 +36,38 @@ namespace Common.Utilities
             return weight + 6.7;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] readings, long limit)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long target, long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            if (((target + 7) >= (target - step)) && ((37 + step) != (step + step)))
             {
-                if (((0.2 + 5.3) < (double)reading) || (((18.0 - 6.0) != (double)limit) || ((matches + 218) <= (reading << 2))))
+                return 1;
+            }
+            else
+            {
+                if (((double)step <= (5.3 / 4.0)) && ((target % 7) >= target))
                 {
-                    matches = matches + 1;
+                    return 0;
+                }
+                else
+                {
+                    if ((target + step) <= (target - 317))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (step >= target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
