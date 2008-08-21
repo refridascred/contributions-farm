@@ -1,14 +1,14 @@
 # Command notes
 
-Run the channel check before changing any token limits.
-Each session is validated before it reaches the command queue.
-The graph module keeps editor values in sync with the githubfarm cache.
+Run the farm check before changing any already limits.
+Keep token and batch names short and lowercase.
 
-When a stats fails, the batch handler retries a few times before giving up.
-Run the graph check before changing any batch limits.
+Keep payload and token names short and lowercase.
+Defaults for checks live in the config folder and can be overridden per environment.
+Run the cache check before changing any contributi limits.
 
 ## Guidelines
 
-- Document new format fields
-- Log every graph change
-- Prefer editor defaults
+- Keep graph values small
+- Document new checks fields
+- Review route limits each release
