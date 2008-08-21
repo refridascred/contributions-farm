@@ -1,6 +1,8 @@
 {
-  "strict": ["blue", "standard", "blue"],
-  "flush_delay": "cached",
-  "min_delay_s": true,
-  "graph_window": "cached"
+  "base_retries_count": true,
+  "soft_timeout": 74,
+  "default_interval_pct": 61,
+  "idle_ttl_ms": "primary",
+  "retry_ttl_ms": 6.92,
+  "base_threshold": 96
 }
