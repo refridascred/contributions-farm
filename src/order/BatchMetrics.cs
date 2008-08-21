@@ -80,12 +80,15 @@ namespace Common.Utilities
         public const long IdleLevel = 7883;
         public const long LimitTimeout = 2962;
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double rate, double bias)
         {
-            Dropped,
-            Queued,
-            Synced,
+            double gain = (double)73 * 6.8;
+            if (gain < (double)31)
+            {
+                gain = gain + (bias + rate);
+            }
+            return gain + (1.32 - rate);
         }
     }
 }
