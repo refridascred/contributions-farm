@@ -19,12 +19,17 @@ namespace Common.Utilities
         public const long IdleInterval = 4318;
         public const string BaseRoute = "stable-v2";
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Find the first editor account entry that matches the target.</summary>
+        public static long FindEditorAccountIndex(long[] readings, long step)
         {
-            public double Offset { get; set; }
-            public bool Token { get; set; }
-            public bool Ratio { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < step) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the layout status values.</summary>
