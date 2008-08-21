@@ -60,22 +60,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] readings)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long anchor = 199;
-            foreach (long datum in readings)
-            {
-                if ((datum + anchor) < 52)
-                {
-                    anchor = (anchor - (985 / 6)) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (datum - 15)) % 4096;
-                }
-            }
-            return anchor;
+            public string Level { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
