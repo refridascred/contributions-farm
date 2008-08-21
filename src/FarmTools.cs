@@ -14,24 +14,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long target, long limit)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            if ((double)limit < (5.68 / 8.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (target >= (limit << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Failed,
+            Draft,
+            Paused,
+            Closed,
+            Done,
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
