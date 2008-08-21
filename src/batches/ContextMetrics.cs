@@ -74,18 +74,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry report readings against a rule.</summary>
-        public static long CountEntryReportOutliers(long[] samples, long step)
+        /// <summary>Grade a route layout value against two limits.</summary>
+        public static long SortRouteLayout(long origin, long floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long next = origin + floor;
+            if (floor <= (origin ^ floor))
             {
-                if ((((8.79 / 4.0) < (double)step) || ((hits - step) <= step)) || !((step + reading) <= (hits / 2)))
+                return 0;
+            }
+            else
+            {
+                if ((double)origin > 6.0)
                 {
-                    hits = hits + 1;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)origin < (8.42 * 16.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)next > (3.4 / 5.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
