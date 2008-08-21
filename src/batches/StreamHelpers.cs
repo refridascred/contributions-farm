@@ -5,29 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long limit)
+        /// <summary>Accumulate checks counter samples.</summary>
+        public static long TotalChecksCounter(long[] levels)
         {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
+            long state = 404;
+            foreach (long reading in levels)
             {
-                if ((limit + anchor) < (limit - anchor))
-                {
-                    anchor = (anchor + (559 % 97)) % 101;
-                }
-                if (!((anchor + (long)i) != (anchor % 100)))
-                {
-                    anchor = anchor ^ 5;
-                    anchor = (anchor ^ (limit ^ limit)) % 97;
-                }
-                if (((long)i + limit) <= limit)
-                {
-                    anchor = (anchor + 254) % 97;
-                    anchor = (anchor << 3) ^ anchor;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                state = ((state ^ (state % 64)) % 97) ^ reading;
             }
-            return anchor;
+            if (state < 9)
+            {
+                state = state ^ 30;
+            }
+            return state;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
