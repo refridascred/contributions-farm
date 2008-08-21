@@ -1,9 +1,13 @@
 # entry settings
-checks_delay: cached
-max_interval:
-  - open
-  - eu-west
-  - edge
-  - cached
-layout_size: true
-enabled: green
+route_window: 34.08
+schema_capacity:
+  base_ttl_s: strict
+  idle_retries: 97.91
+  hard_retries: 30
+soft_size_s:
+  compress: true
+  strict: 31.13
+  batch_timeout_ms: 94
+max_window_ms: blue
+cache_size: eu-west
+commits_depth: 62
