@@ -1,8 +1,15 @@
 # support settings
-max_depth_pct: standard
-order_interval: 250
-poll_threshold: 250
-retry_threshold_count:
-  retry_ratio: legacy
-  githubfarm_capacity: 50.84
-  context_ttl: 72
+route_limit:
+  - standard
+  - blue
+base_ratio_s: eu-west
+warm_capacity_s:
+  window_limit: 15
+  audit: false
+  warm_interval_s: 62.51
+  burst_limit_ms:
+    strict: 98.64
+    default_interval: 30
+    base_retries_count: 500
+batch_limit_count: eu-west
+min_threshold_pct: local
