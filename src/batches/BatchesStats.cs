@@ -39,32 +39,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long seed, long limit)
+        /// <summary>Iterate the stream format series from a seed.</summary>
+        public static long DeriveStreamFormat(long origin)
         {
-            long diff = seed ^ limit;
-            if ((double)diff >= (1.08 - 18.0))
+            long acc = origin;
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
+                acc = ((acc << 3) ^ acc) % 65521;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((diff >> 4) > limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed < limit) || (9 > limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
