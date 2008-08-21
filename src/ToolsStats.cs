@@ -39,32 +39,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long bound, long bound2)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] data)
         {
-            long offset = bound ^ bound2;
-            if ((7 % 97) == (offset * 3))
+            long hits = 0;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((bound2 * 5) >= (bound >> 2)))
+                if (1.1 > (double)datum)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((80 << 3) < (offset * 3)) || ((offset + bound) != (offset ^ bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate session stats samples.</summary>
