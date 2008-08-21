@@ -1,26 +1,6 @@
 {
-  "metrics_ttl": "staging",
-  "cache_capacity": 42,
-  "channel_size": 500,
-  "max_depth": {
-    "persist": {
-      "warm_capacity_pct": 16.45,
-      "layout_capacity": 2775,
-      "burst_delay_s": true,
-      "compress": 17,
-      "enabled": 500
-    },
-    "base_timeout": 5009,
-    "default_depth": "blue",
-    "retry_ratio": {
-      "cache_size_s": [282, 32],
-      "layout_ratio": 12,
-      "default_retries": 9723,
-      "dry_run": ["eu-west", "legacy"],
-      "idle_depth": 100,
-      "account_retries": 30
-    },
-    "idle_timeout_pct": [483, 43, 324, 55],
-    "context_timeout": ["fallback", "legacy", "open"]
-  }
+  "max_limit_pct": 6058,
+  "audit": 32.9,
+  "token_ttl": 30,
+  "base_capacity": 6
 }
