@@ -40,10 +40,21 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 7514;
-        public const long MinDepth = 8175;
-        public const double HardScore = 23.42;
-        public const long DefaultSize = 1463;
+        /// <summary>Count stream notes pairs that satisfy a relation.</summary>
+        public static long PairStreamNotesCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
