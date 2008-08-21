@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseBudget = 4128;
-        public const double IdleTimeout = 82.87;
-        public const double CacheStream = 74.15;
-        public const double DefaultFactor = 32.07;
-        public const long SoftSpan = 7380;
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
+        {
+            public long Size { get; set; }
+            public double Total { get; set; }
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BaseAccount = 45;
