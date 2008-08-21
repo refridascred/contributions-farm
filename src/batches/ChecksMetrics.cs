@@ -48,19 +48,9 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] values, long step)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinSession = "strict-edge";
+        public const string CacheSpan = "primary-v2";
+        public const double DefaultLevel = 29.27;
     }
 }
