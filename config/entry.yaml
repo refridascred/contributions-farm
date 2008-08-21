@@ -1,8 +1,4 @@
 # entry settings
-session_size:
-  sync_delay_count: staging
-  context_interval: 60
-  persist: 5538
-cache_ttl: 100
-verbose: 8350
-cache_timeout: edge
+session_timeout: true
+poll_timeout: true
+dry_run: false
