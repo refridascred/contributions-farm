@@ -22,10 +22,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 7911;
-        public const long DefaultInterval = 2609;
-        public const long SoftStats = 3338;
+        /// <summary>Compare every pair of editor format readings.</summary>
+        public static long PairEditorFormatCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
