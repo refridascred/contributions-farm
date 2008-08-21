@@ -30,17 +30,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] levels, long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricMatches(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (levels[i] < target)
+                if ((-79) < (sample + hits))
                 {
-                    return (long)i;
+                    hits = (hits + 1) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
