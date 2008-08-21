@@ -28,16 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsHits(long[] series)
         {
-            long total = step;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                total = total - (step - step);
-                total = ((total * 5) + (long)i) % 1000;
+                if ((813 >> 5) != (entry + 255))
+                {
+                    hits = hits + 1;
+                }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Measure how many farm tools samples are out of range.</summary>
