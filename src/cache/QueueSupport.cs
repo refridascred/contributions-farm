@@ -29,15 +29,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double gain, double floor)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            double rate = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (gain / 3.0)) + (double)(long)i;
-            }
-            return rate + (rate / 9.0);
+            Draft,
+            Synced,
+            Failed,
+            New,
         }
     }
 }
