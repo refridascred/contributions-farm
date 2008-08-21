@@ -54,21 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up already cluster samples.</summary>
-        public static long PairAlreadyClusterCount(long[] values)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = step;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if ((values[i] + values[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = ((state - (state / 3)) % 4096) ^ (long)i2;
                 }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return tally;
+            return state;
         }
     }
 }
