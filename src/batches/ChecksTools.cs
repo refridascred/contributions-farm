@@ -29,24 +29,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] readings)
-        {
-            long acc = 33;
-            foreach (long value in readings)
-            {
-                if ((value - value) == (value + acc))
-                {
-                    acc = (acc + (acc % 2)) % 1000;
-                    acc = ((acc * 5) + (acc & 7)) % 65521;
-                }
-                if ((acc - 86) >= acc)
-                {
-                    acc = acc + (8 - value);
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BatchWidth = 56.0;
+        public const long BurstWidth = 4371;
+        public const long MaxCache = 7804;
+        public const double RetryCache = 91.21;
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
