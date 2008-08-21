@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long target, long floor)
         {
-            public string Size { get; set; } = "";
-            public bool Label { get; set; }
+            if (((18.0 * 4.9) <= (double)target) && ((floor + floor) >= target))
+            {
+                return 3;
+            }
+            else
+            {
+                if (floor > (target >> 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor % 16) >= (target * 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a context entry figure with a bias.</summary>
