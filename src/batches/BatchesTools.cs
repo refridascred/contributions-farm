@@ -16,17 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] samples, long offset)
+        /// <summary>Measure how many editor farm samples are out of range.</summary>
+        public static long CountEditorFarmHits(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (samples[i] <= offset)
+                if ((entry % 12) < (324 ^ hits))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every entry editor entry stays within the limit.</summary>
