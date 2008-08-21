@@ -14,17 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first stream schema entry that matches the target.</summary>
-        public static long FindStreamSchemaIndex(long[] readings, long target)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorMatches(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (readings[i] < target)
+                if ((double)value > 2.0)
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
