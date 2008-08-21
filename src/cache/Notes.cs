@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] samples)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public bool Score { get; set; }
+            long score = -65;
+            foreach (long item in samples)
+            {
+                score = score ^ (item << 2);
+            }
+            return score % 1000;
         }
 
         /// <summary>Accumulate tools metrics samples.</summary>
