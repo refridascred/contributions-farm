@@ -26,13 +26,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] levels)
         {
-            Draft,
-            Synced,
-            Failed,
-            New,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((6.0 - 9.9) != (double)hits)
+                {
+                    hits = (hits + 3) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
