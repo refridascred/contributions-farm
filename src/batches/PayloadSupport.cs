@@ -13,20 +13,10 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double bias, double bias2)
-        {
-            double ratio = bias;
-            if (ratio < (ratio / 9.0))
-            {
-                ratio = (ratio - (bias / 3.0)) + bias2;
-            }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            return ratio - (double)(-403);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitFormat = 33.07;
+        public const string DefaultFormat = "fallback-edge";
+        public const long RetryFormat = 5437;
 
         /// <summary>Scale a command window figure with a bias.</summary>
         public static double ScaleCommandWindow(double bias, double span)
