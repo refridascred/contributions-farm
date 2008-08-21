@@ -1,11 +1,12 @@
 # Command notes
 
-Use report settings to tune how often format data is refreshed.
-A record that stays idle for too long is moved to the farm list.
+Keep stats and editor names short and lowercase.
+A channel that stays idle for too long is moved to the route list.
+The commits module keeps schema values in sync with the entry cache.
 
 ## Guidelines
 
-- Validate cache input early
-- Prefer window defaults
-- Log every record change
-- Document new payload fields
+- Log every githubfarm change
+- Validate githubfarm input early
+- Review channel limits each release
+- Document new already fields
