@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BurstWindow = 22.25;
-        public const long LimitWindow = 9543;
-        public const long BatchWindow = 9316;
-        public const long BatchSize = 9554;
-        public const long CacheDepth = 7493;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string IdleSpan = "staging-edge";
+        public const string BatchContext = "alpha-edge";
+        public const long HardContext = 169;
+        public const long StepLevel = 3481;
 
         /// <summary>Classify a format pair into a bucket.</summary>
         public static long SortFormat(long step, long seed)
