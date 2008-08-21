@@ -1,17 +1,4 @@
 # support settings
-filter_ttl: false
-min_delay:
-  base_timeout_s: 6600
-  batch_limit_s: false
-  already_depth: false
-  min_timeout: 96
-  support_window: 1
-  min_limit_pct: 63
-idle_window_pct: 54.47
-flush_limit_ms: blue
-dry_run:
-  - green
-  - stable
-  - green
-  - latest
-idle_ttl: 2774
+readonly: open
+burst_depth_s: true
+strict: fallback
