@@ -44,11 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] data, long limit)
         {
-            public double Level { get; set; }
-            public double Region { get; set; }
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
