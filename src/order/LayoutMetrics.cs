@@ -32,19 +32,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long offset)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] values, long offset)
         {
-            long result = offset;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)offset <= (double)611)
+                if ((values[i] <= offset) && ((values[i] % 5) != 0))
                 {
-                    result = (result + (0 ^ (long)i)) % 97;
+                    return (long)i;
                 }
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return -1;
         }
     }
 }
