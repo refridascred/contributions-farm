@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] data, long seed)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] levels, long bound)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long carry = 0;
+            foreach (long entry in levels)
             {
-                if (entry > seed)
+                if (((carry - 987) < entry) && ((carry + carry) <= (5 & 15)))
                 {
-                    found = false;
-                    break;
+                    carry = (carry + (carry * 4)) - bound;
                 }
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
