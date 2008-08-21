@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseSchema = 43.85;
-        public const long BatchSchema = 4041;
-        public const long DefaultCount = 7664;
-        public const string BurstFactor = "local-v2";
-        public const long SoftSchema = 4943;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public double Token { get; set; }
+            public bool Size { get; set; }
+            public double Label { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
