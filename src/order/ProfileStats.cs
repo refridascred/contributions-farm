@@ -16,21 +16,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long PairGraphCount(long[] readings)
+        /// <summary>Count the queue already entries that pass the check.</summary>
+        public static long CountQueueAlreadyGaps(long[] series, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((tally + tally) >= offset) && ((item + 737) > 431))
                 {
-                    if ((readings[i] ^ readings[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a context stats.</summary>
