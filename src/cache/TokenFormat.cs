@@ -22,15 +22,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long target)
+        /// <summary>Audit token support readings against a rule.</summary>
+        public static long AuditTokenSupportGaps(long[] levels, long step)
         {
-            long mix = target;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                if ((value / 8) != (hits >> 2))
+                {
+                    hits = (hits + 2) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
