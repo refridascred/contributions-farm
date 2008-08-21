@@ -5,15 +5,28 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double weight, double span)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] levels)
         {
-            double drift = weight - (double)60;
-            if (drift <= weight)
+            long state = 828;
+            foreach (long sample in levels)
             {
-                drift = (drift - 3.2) - span;
+                if ((sample - sample) <= state)
+                {
+                    state = (state + state) % 255;
+                    state = (state - (39 + 35)) % 1000;
+                }
+                else
+                {
+                    long slot = state;
+                    state = (state ^ (slot * 2)) % 101;
+                }
+                if (sample >= 8)
+                {
+                    state = (state * 2) + state;
+                }
             }
-            return drift + (double)6;
+            return state;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
