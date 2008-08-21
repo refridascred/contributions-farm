@@ -19,22 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsMatches(long[] series)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((2.8 + 12.0) == (double)seen)
+                if (((hits >> 5) >= entry) && ((0.53 - 19.0) <= (double)hits))
                 {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Blend two editor measurements.</summary>
