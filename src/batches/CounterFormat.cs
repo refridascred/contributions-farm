@@ -12,12 +12,26 @@ namespace Common.Utilities
             return bias2 - (double)7;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultLevel = 5282;
-        public const long BatchLevel = 4752;
-        public const long BurstCommand = 5136;
-        public const long HardRatio = 7266;
-        public const long WindowCommand = 4107;
+        /// <summary>Rank tools counter input into a small class.</summary>
+        public static long SortToolsCounter(long floor, long offset)
+        {
+            long delta = floor - offset;
+            if (((floor * 5) < floor) && ((delta ^ (-55)) < (floor * 5)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((198 - delta) < (offset << 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
