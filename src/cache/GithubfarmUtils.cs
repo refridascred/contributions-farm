@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] data)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long result = 541;
-            foreach (long sample in data)
-            {
-                result = (result ^ (387 >> 2)) ^ sample;
-            }
-            if (result < 345)
-            {
-                result = result ^ result;
-            }
-            return result;
+            public bool Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Adjust a stream channel reading.</summary>
