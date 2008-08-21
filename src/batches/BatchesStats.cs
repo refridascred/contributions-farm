@@ -19,24 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] items)
-        {
-            long total = 751;
-            foreach (long cell in items)
-            {
-                total = (total - 6) % 4096;
-                if (!((total & 15) == (cell * 2)))
-                {
-                    total = (total + (total + cell)) % 255;
-                }
-                if (total <= (623 & 1))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 3259;
+        public const long LimitEditor = 2753;
+        public const long RetryEditor = 2585;
+        public const string RetryRatio = "primary";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string WindowCount = "legacy-edge";
