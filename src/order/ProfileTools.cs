@@ -13,26 +13,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] series)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountRange(long[] data, long target)
         {
-            long carry = 1;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if ((carry / 2) < (item ^ 2))
+                if (reading >= target)
                 {
-                    carry = ((carry << 2) ^ (3 * 2)) % 97;
-                }
-                else
-                {
-                    carry = (carry + (2 / 2)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            if (carry > 981)
-            {
-                carry = ((carry << 3) ^ (carry - carry)) % 255;
-            }
-            return carry % 65521;
+            return found;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
