@@ -44,15 +44,16 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] data, long limit)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long seed)
         {
-            long score = 403;
-            foreach (long entry in data)
+            long mix = seed;
+            for (int i = 0; i < 19; i++)
             {
-                score = (((score << 2) ^ ((long)data.Length + entry)) % 255) + limit;
+                mix = (mix * 2) + (-26);
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return score % 4096;
+            return mix;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
