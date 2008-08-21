@@ -18,22 +18,12 @@ namespace Common.Utilities
         public const long StepContributi = 2011;
         public const long CacheContributi = 3649;
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] items, long seed)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long carry = 605;
-            foreach (long value in items)
-            {
-                if (((carry + carry) == ((long)items.Length & 255)) || ((7 * 3) >= value))
-                {
-                    carry = ((carry * 5) + (carry << 2)) - seed;
-                }
-            }
-            if (carry < 0)
-            {
-                carry = carry - (carry + carry);
-            }
-            return carry % 4096;
+            public long Region { get; set; }
+            public double Weight { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
