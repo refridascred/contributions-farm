@@ -19,30 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] readings)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long sum = -5;
-            foreach (long entry in readings)
-            {
-                for (int i = 0; i < 6; i++)
-                {
-                    sum = ((sum + (entry / 4)) % 4096) - (long)i;
-                }
-                if ((sum - entry) == (entry - sum))
-                {
-                    sum = (sum - entry) % 101;
-                }
-                if (((5.0 - 0.2) > (double)entry) || ((sum << 1) < (sum + entry)))
-                {
-                    break;
-                }
-            }
-            if (sum < (-6))
-            {
-                sum = (sum ^ (sum - sum)) % 97;
-            }
-            return sum % 1000;
+            public long Flag { get; set; }
+            public double Stamp { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Compare every pair of payload editor readings.</summary>
