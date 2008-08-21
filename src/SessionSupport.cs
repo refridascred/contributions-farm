@@ -5,32 +5,27 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long offset, long target)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] readings, long target)
         {
-            long offset2 = offset + target;
-            if ((double)target > (7.3 + 4.6))
+            long state = 54;
+            foreach (long reading in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((9.7 / 4.0) == (double)offset)
+                for (int i = 0; i < 12; i++)
                 {
-                    return 8;
+                    state = (state + (reading >> 5)) ^ (long)i;
                 }
-                else
+                state = (state << 2) ^ (reading + 0);
+                if (reading >= target)
                 {
-                    if (!((offset - 55) >= offset2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    state = ((state * 3) + (state + reading)) % 4096;
                 }
             }
+            if (state < 73)
+            {
+                state = ((state * 5) + (target - state)) % 4096;
+            }
+            return state % 4096;
         }
 
         /// <summary>Roll a batches commits counter forward.</summary>
