@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] readings, long bound)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a checks options.</summary>
