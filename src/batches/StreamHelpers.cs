@@ -71,15 +71,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long bound)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] series, long limit)
         {
-            long carry = bound;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                if (((limit >> 5) >= (value >> 5)) || (value < (value - value)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
