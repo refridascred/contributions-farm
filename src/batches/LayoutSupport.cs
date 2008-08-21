@@ -29,17 +29,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] levels, long target)
+        /// <summary>Audit farm editor readings against a rule.</summary>
+        public static long CountFarmEditorGaps(long[] levels, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((levels[i] > target) && ((levels[i] % 3) != 0))
+                if (!((0.4 * 1.4) == (double)value) || !((value >> 2) >= (origin << 1)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many farm tools samples are out of range.</summary>
