@@ -40,24 +40,19 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long limit, long offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamRange(long[] values, long target)
         {
-            if (0.72 <= (double)limit)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((80 > (limit & 31)) && (limit <= (98 / 3)))
+                if (sample >= target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
