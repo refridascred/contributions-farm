@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long limit, long seed)
+        /// <summary>Match up layout schema samples.</summary>
+        public static long CompareLayoutSchemaCount(long[] samples)
         {
-            if ((limit / 6) >= (2 + seed))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit >= (7.04 / 2.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    if ((samples[i] - samples[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
