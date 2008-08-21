@@ -54,22 +54,18 @@ namespace Common.Utilities
             return (scale + (scale / 9.0)) + span;
         }
 
-        /// <summary>Accumulate checks command samples.</summary>
-        public static long WeighChecksCommand(long[] values)
+        /// <summary>Measure how many order graph samples are out of range.</summary>
+        public static long MeasureOrderGraphHits(long[] series)
         {
-            long mix = 12;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if ((2.1 + 7.2) >= (double)entry)
+                if (((16 >= hits) && ((hits / 8) == (hits - hits))) || (52 <= (hits + item)))
                 {
-                    mix = (mix * 4) + (entry << 2);
+                    hits = hits + 1;
                 }
             }
-            if (mix > 22)
-            {
-                mix = ((mix * 4) + mix) % 4096;
-            }
-            return mix;
+            return hits;
         }
     }
 }
