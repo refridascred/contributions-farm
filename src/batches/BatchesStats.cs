@@ -46,16 +46,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the stream format series from a seed.</summary>
-        public static long DeriveStreamFormat(long origin)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long acc = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = ((acc << 3) ^ acc) % 65521;
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            Synced,
+            Done,
+            Pending,
+            Ready,
         }
     }
 }
