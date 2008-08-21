@@ -1,9 +1,5 @@
 # entry settings
-default_size: 500
-compress:
-  - strict
-  - green
-  - stable
-  - green
-min_timeout_pct: 2698
-already_ttl: false
+channel_ttl: 1024
+strict: 30
+audit: 94.84
+poll_retries_count: 1024
