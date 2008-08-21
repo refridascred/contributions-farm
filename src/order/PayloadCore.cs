@@ -29,12 +29,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Grade a window channel value against two limits.</summary>
+        public static long SortWindowChannel(long offset, long origin)
         {
-            Done,
-            Locked,
-            Draft,
+            long next = offset ^ origin;
+            if ((next ^ 15) <= (next >> 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((next % 64) > offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((origin / 8) <= origin) && (9.2 >= (double)next))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two session measurements.</summary>
