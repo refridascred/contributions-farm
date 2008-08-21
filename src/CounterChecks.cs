@@ -12,18 +12,15 @@ namespace Common.Utilities
             return (drift - (double)6) + bias;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] readings)
+        /// <summary>Measure how many batches commits samples are out of range.</summary>
+        public static long MeasureBatchesCommitsMatches(long[] data)
         {
             long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((item >> 5) <= (-760))
                 {
-                    if ((readings[i] ^ readings[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
             return tally;
