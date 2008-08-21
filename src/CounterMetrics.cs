@@ -32,17 +32,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a batches format reading by value.</summary>
-        public static long SeekBatchesFormatIndex(long[] levels, long bound)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] levels)
         {
+            long count = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] < bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
