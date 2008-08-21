@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            New,
-            Queued,
+            Synced,
+            Active,
             Draft,
-            Dropped,
+            Failed,
         }
 
         /// <summary>Hold a stats entry.</summary>
