@@ -80,18 +80,23 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Fold a list of format already readings.</summary>
-        public static long CombineFormatAlready(long[] values, long bound)
+        /// <summary>Adjust a session stream reading.</summary>
+        public static double BlendSessionStream(double ratio, double floor)
         {
-            long total = 854;
-            foreach (long sample in values)
+            double scale = (double)0 - ratio;
+            if (scale > 8.0)
             {
-                if (!((total + sample) < (541 % 16)))
-                {
-                    total = ((total * 4) + bound) % 65521;
-                }
+                scale = scale + scale;
             }
-            return total;
+            else
+            {
+                scale = scale - (double)(-11);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + floor) + (double)(long)i;
+            }
+            return scale + (double)0;
         }
     }
 }
