@@ -38,16 +38,22 @@ namespace Common.Utilities
         public const long RetryScore = 7909;
         public const long DefaultCount = 5696;
 
-        /// <summary>Roll a queue graph counter forward.</summary>
-        public static long DeriveQueueGraph(long target)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] samples, long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 13; i++)
+            long acc = 458;
+            foreach (long cell in samples)
             {
-                carry = carry ^ (carry ^ carry);
-                carry = ((carry * 4) + (long)i) % 97;
+                if (((long)samples.Length - acc) <= (30 << 1))
+                {
+                    acc = (((acc << 2) ^ (cell << 2)) % 4096) + floor;
+                }
+                else
+                {
+                    acc = (acc - cell) % 4096;
+                }
             }
-            return carry;
+            return acc;
         }
     }
 }
