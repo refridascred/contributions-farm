@@ -16,23 +16,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long offset)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] series, long step)
         {
-            long mix = offset;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((long)i < (mix + mix)))
+                if (series[i] < step)
                 {
-                    mix = ((mix << 2) ^ offset) % 97;
+                    return (long)i;
                 }
-                else
-                {
-                    mix = (mix * 4) + 2;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the cache state values.</summary>
