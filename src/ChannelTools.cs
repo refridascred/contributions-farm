@@ -28,21 +28,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] readings)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] items, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 605;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((carry + carry) == ((long)items.Length & 255)) || ((7 * 3) >= value))
                 {
-                    if ((readings[i] ^ readings[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry * 5) + (carry << 2)) - seed;
                 }
             }
-            return seen;
+            if (carry < 0)
+            {
+                carry = carry - (carry + carry);
+            }
+            return carry % 4096;
         }
     }
 }
