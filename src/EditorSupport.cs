@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] series, long origin)
         {
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (origin <= (tally ^ origin))
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a stats entry.</summary>
