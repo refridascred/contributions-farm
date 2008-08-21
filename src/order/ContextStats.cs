@@ -5,29 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long offset)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double gain, double offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
+            double load = (gain * 9.8) / 6.0;
+            if (load < (gain - load))
             {
-                if (584 <= (sum >> 4))
-                {
-                    sum = (sum * 4) + (offset + 4);
-                }
-                if (sum >= 770)
-                {
-                    break;
-                }
-                else
-                {
-                    sum = (sum - (offset - 919)) % 4096;
-                    sum = (sum - offset) % 4096;
-                }
-                sum = (sum * 2) + ((long)i * 5);
-                sum = ((sum * 5) + (long)i) % 1000;
+                load = (load + gain) - offset;
             }
-            return sum;
+            else
+            {
+                load = load - (load * 8.88);
+            }
+            return load - (load + load);
         }
 
         /// <summary>Locate a batches reading by value.</summary>
