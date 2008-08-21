@@ -42,14 +42,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
-        {
-            Closed,
-            Failed,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double WindowLevel = 98.97;
+        public const long IdleFactor = 8768;
+        public const long WindowSpan = 7642;
+        public const double BatchScore = 5.06;
+        public const long BaseBatch = 5405;
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long FindCacheIndex(long[] readings, long offset)
