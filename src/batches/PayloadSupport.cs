@@ -13,10 +13,28 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitFormat = 33.07;
-        public const string DefaultFormat = "fallback-edge";
-        public const long RetryFormat = 5437;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] data)
+        {
+            long carry = 37;
+            foreach (long item in data)
+            {
+                if ((double)carry != (9.0 / 2.0))
+                {
+                    carry = (carry ^ (40 % 64)) % 97;
+                }
+                else
+                {
+                    carry = (carry - (item + 44)) % 1000;
+                }
+                carry = carry ^ (item >> 3);
+            }
+            if (carry > 23)
+            {
+                carry = (carry + (carry * 2)) % 255;
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long AuditMetricGaps(long[] values)
