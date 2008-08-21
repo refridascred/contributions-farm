@@ -30,19 +30,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Fold a list of contributi tools readings.</summary>
-        public static long FoldContributiTools(long[] series)
-        {
-            long acc = 6;
-            foreach (long value in series)
-            {
-                acc = (acc << 3) ^ (value - acc);
-                if (((double)acc > (17.0 + 6.8)) || (value >= (552 ^ 6)))
-                {
-                    acc = (acc - (acc * 2)) % 1000;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double CacheCount = 45.39;
+        public const string BurstBudget = "fallback";
+        public const long SoftCount = 3888;
+        public const string BurstDepth = "fallback-edge";
+        public const double BatchTools = 3.31;
     }
 }
