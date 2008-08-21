@@ -63,39 +63,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a route layout value against two limits.</summary>
-        public static long SortRouteLayout(long origin, long floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] data, long origin)
         {
-            long next = origin + floor;
-            if (floor <= (origin ^ floor))
+            long matches = 0;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin > 6.0)
+                if (17.0 <= (double)origin)
                 {
-                    return 1;
+                    matches = (matches + 2) ^ item;
                 }
                 else
                 {
-                    if ((double)origin < (8.42 * 16.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)next > (3.4 / 5.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
