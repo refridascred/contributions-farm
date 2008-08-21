@@ -45,14 +45,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Locked,
-            Pending,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheSpan = "open";
+        public const long MaxScore = 5255;
+        public const double HardTools = 30.22;
+        public const long MinSize = 4602;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long AuditWindowOutliers(long[] items, long bound)
