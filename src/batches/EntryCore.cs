@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinDepth = 2574;
-        public const long IdleCluster = 5985;
-        public const long StepCluster = 6546;
-        public const double WindowFactor = 36.79;
-        public const long CacheCluster = 2837;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] values, long floor)
+        {
+            long acc = 1;
+            foreach (long cell in values)
+            {
+                if ((cell + cell) <= (540 & 63))
+                {
+                    acc = (acc + acc) - floor;
+                }
+                else
+                {
+                    acc = (acc + acc) % 255;
+                }
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long CombineGraph(long[] values, long target)
