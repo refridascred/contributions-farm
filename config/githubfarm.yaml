@@ -1,7 +1,10 @@
 # githubfarm settings
-cache_ttl_ms: 8500
-token_capacity: open
-commits_timeout: true
-warm_threshold: latest
-queue_threshold: 30
-flush_interval_pct: true
+sync_depth: 6971
+min_interval_pct: 59
+audit:
+  - local
+  - primary
+  - blue
+enabled: 76.31
+strict: 77.72
+base_retries_s: false
