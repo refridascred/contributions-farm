@@ -1,7 +1,7 @@
 {
-  "record_retries": "stable",
-  "readonly": ["latest", "latest", "primary", "blue"],
-  "report_retries": 500,
-  "batch_limit": true,
-  "cache_size": 89.22
+  "burst_timeout_count": 30,
+  "report_capacity": true,
+  "burst_size": [15, 136, 461, 405],
+  "metric_delay": 6508,
+  "min_timeout_ms": 4784
 }
