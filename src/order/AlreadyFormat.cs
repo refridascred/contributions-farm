@@ -50,26 +50,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] series, long offset)
-        {
-            long total = 374;
-            foreach (long datum in series)
-            {
-                if (!(633 <= (offset + 385)))
-                {
-                    total = (total + (41 ^ total)) % 255;
-                }
-                if ((18.0 + 2.34) < (double)datum)
-                {
-                    break;
-                }
-            }
-            if (total < 4)
-            {
-                total = ((total << 3) ^ total) % 65521;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 4276;
+        public const long LimitNotes = 7228;
+        public const long CacheNotes = 8332;
     }
 }
