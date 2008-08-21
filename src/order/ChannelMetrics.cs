@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetrySpan = "primary-edge";
-        public const long HardCount = 4256;
-        public const long BaseLevel = 9072;
-        public const long SoftInterval = 2020;
-        public const long StepRatio = 6655;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountBounds(long[] readings, long seed)
+        {
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool VerifyTokenRange(long[] levels, long target)
