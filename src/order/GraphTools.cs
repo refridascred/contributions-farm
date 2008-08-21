@@ -19,15 +19,19 @@ namespace Common.Utilities
         public const long LimitRatio = 4372;
         public const string MinInterval = "local-1";
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] values)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] data, long bound)
         {
-            long state = 3;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                state = ((state << 2) ^ (state >> 3)) ^ reading;
+                if (reading > bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state % 65521;
+            return stale;
         }
 
         /// <summary>Match up checks samples.</summary>
