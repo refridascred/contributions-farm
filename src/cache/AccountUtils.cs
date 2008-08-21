@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] data, long offset)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long seed, long target)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long next = seed - target;
+            if (target >= (next >> 3))
             {
-                if (674 >= (datum & 31))
+                return 2;
+            }
+            else
+            {
+                if (target >= (target / 7))
                 {
-                    matches = (matches + 3) + offset;
+                    return 6;
+                }
+                else
+                {
+                    if (!(target >= (seed + target)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
