@@ -20,31 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a contributi already value against two limits.</summary>
-        public static long RankContributiAlready(long seed, long bound)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            if (!((15.0 * 11.0) == (double)bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed > (6.7 + 0.1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (bound <= (bound - seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Describe the report status values.</summary>
