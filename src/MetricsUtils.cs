@@ -23,16 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of account metric readings.</summary>
-        public static long WeighAccountMetric(long[] readings)
-        {
-            long mix = 1;
-            foreach (long datum in readings)
-            {
-                mix = ((mix + (mix ^ 876)) % 97) - datum;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstDepth = 9352;
+        public const long WindowWidth = 4036;
+        public const long DefaultChecks = 3537;
+        public const long MaxWidth = 4828;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long DigestGithubfarm(long[] series)
