@@ -16,12 +16,22 @@ namespace Common.Utilities
             return bias + (floor - floor);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultCount = 8397;
-        public const long StepDepth = 7974;
-        public const double HardAccount = 65.6;
-        public const double BaseAccount = 24.79;
-        public const long StepAccount = 6549;
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool GuardWindowRange(long[] series, long target)
