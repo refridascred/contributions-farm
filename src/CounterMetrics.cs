@@ -32,18 +32,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] series)
+        /// <summary>Locate a batches format reading by value.</summary>
+        public static long SeekBatchesFormatIndex(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((long)series.Length >= (seen >> 2))
+                if (levels[i] < bound)
                 {
-                    seen = (seen + 3) ^ entry;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
