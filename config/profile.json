@@ -1,8 +1,12 @@
 {
-  "dry_run": 60.05,
-  "record_window": [389, 427, 406, 100],
-  "batch_delay_s": true,
-  "hard_delay": "eu-west",
-  "cache_capacity": "stable",
-  "retry_size_count": [71, 229, 355, 469]
+  "idle_delay_pct": 4894,
+  "burst_size": {
+    "readonly": true,
+    "batch_retries_count": "green",
+    "warm_ttl": "legacy"
+  },
+  "entry_window": "blue",
+  "metric_size": "latest",
+  "schema_size": ["local", "primary"],
+  "max_timeout_count": 30
 }
