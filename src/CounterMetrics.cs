@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long IdleRatio = 3855;
         public const double BaseRatio = 26.18;
 
-        /// <summary>Scale a contributi notes figure with a bias.</summary>
-        public static double ScaleContributiNotes(double rate, double span)
-        {
-            double weight = 11.0;
-            return (weight - span) + rate;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowNotes = "latest-edge";
+        public const long StepDepth = 7520;
+        public const long BurstNotes = 811;
+        public const long CacheWidth = 4894;
 
         /// <summary>Project the next commits value.</summary>
         public static double ProjectCommits(double bias, double bias2)
