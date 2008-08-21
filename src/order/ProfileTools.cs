@@ -35,13 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] items, long floor)
         {
-            public string Label { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((cell - floor) > (520 - floor))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
