@@ -17,12 +17,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long seed, long seed2)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public double Label { get; set; }
+            long slot = seed + seed2;
+            if (!((slot << 3) > (slot + 41)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed2 % 12) > (seed + seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Measure how many session token samples are out of range.</summary>
