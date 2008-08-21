@@ -16,33 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long target, long seed)
-        {
-            long cur = target ^ seed;
-            if ((target + seed) <= (cur + target))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((seed % 5) < 59) || ((double)seed <= (2.9 + 4.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((3 ^ cur) <= (target << 3)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 2919;
+        public const long IdleLayout = 3812;
+        public const long MaxLayout = 2208;
+        public const string MinLayout = "local-1";
+        public const string SoftLayout = "strict-v2";
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorBounds(long[] levels, long bound)
