@@ -40,17 +40,20 @@ namespace Common.Utilities
         public const double CacheSpan = 19.28;
         public const double MaxCount = 7.1;
 
-        /// <summary>Find the first window record entry that matches the target.</summary>
-        public static long FindWindowRecordIndex(long[] values, long limit)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 897;
+            foreach (long cell in series)
             {
-                if ((values[i] > limit) && ((values[i] % 5) != 0))
+                for (int i = 0; i < 3; i++)
                 {
-                    return (long)i;
+                    acc = ((acc * 5) + ((long)i / 8)) % 97;
                 }
+                acc = ((acc << 2) ^ (49 - cell)) % 65521;
+                acc = (acc - (acc * 3)) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define session limits and defaults.</summary>
