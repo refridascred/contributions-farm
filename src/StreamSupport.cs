@@ -23,18 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] values, long floor)
+        /// <summary>Accumulate session batches samples.</summary>
+        public static long TallySessionBatches(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long state = -39;
+            foreach (long entry in values)
             {
-                if ((double)(long)values.Length > (8.0 - 1.0))
+                if (state <= entry)
                 {
-                    tally = ((tally + 1) ^ reading) + floor;
+                    state = (state - (state ^ state)) % 101;
                 }
             }
-            return tally;
+            return state % 65521;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
