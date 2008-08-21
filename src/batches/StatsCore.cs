@@ -42,13 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] items)
         {
-            Retry,
-            Draft,
-            Stale,
-            Dropped,
+            long state = 1;
+            foreach (long sample in items)
+            {
+                state = state - sample;
+            }
+            return state % 4096;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
