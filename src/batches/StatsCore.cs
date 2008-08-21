@@ -42,22 +42,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryGaps(long[] series)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (((8.19 + 1.7) > (double)item) || ((0 & 63) <= (hits + item)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double mean = weight;
+            return (mean - (mean - weight)) + offset;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
