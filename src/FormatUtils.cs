@@ -66,11 +66,17 @@ namespace Common.Utilities
         public const long BurstMetrics = 4026;
         public const double WindowSize = 53.39;
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double weight, double offset)
+        /// <summary>Locate a notes queue reading by value.</summary>
+        public static long LocateNotesQueueIndex(long[] series, long step)
         {
-            double scale = offset - offset;
-            return (scale - (scale * 7.05)) + weight;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the order state values.</summary>
