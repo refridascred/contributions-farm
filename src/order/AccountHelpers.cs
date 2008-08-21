@@ -34,15 +34,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long target)
+        /// <summary>Look up the position of a already channel sample.</summary>
+        public static long FindAlreadyChannelIndex(long[] values, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 97;
+                if ((values[i] < bound) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
