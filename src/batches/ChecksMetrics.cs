@@ -48,21 +48,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] readings, long limit)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] levels)
         {
-            long total = 24;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                total = ((total - (total - reading)) % 4096) + limit;
-                total = (total + (reading >> 5)) % 97;
-                total = (total << 2) ^ ((-7) ^ total);
+                if (!((item * 2) >= item))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (total < 8)
-            {
-                total = ((total << 2) ^ total) % 97;
-            }
-            return total;
+            return seen;
         }
     }
 }
