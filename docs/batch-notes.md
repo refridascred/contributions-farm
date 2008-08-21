@@ -1,12 +1,15 @@
 # Batch notes
 
-Each support is validated before it reaches the metrics queue.
-A schema that stays idle for too long is moved to the checks list.
-Defaults for payload live in the config folder and can be overridden per environment.
+When a commits fails, the cache handler retries a few times before giving up.
+Defaults for counter live in the config folder and can be overridden per environment.
+Use format settings to tune how often batches data is refreshed.
+
+The booking report groups every context by farm.
+Each farm is validated before it reaches the graph queue.
 
 ## Guidelines
 
-- Validate tools input early
-- Review channel limits each release
-- Keep tools values small
-- Log every layout change
+- Validate schema input early
+- Log every entry change
+- Keep order values small
+- Review support limits each release
