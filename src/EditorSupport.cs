@@ -23,18 +23,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] data)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] data, long origin)
         {
-            long carry = 963;
-            foreach (long value in data)
+            long sum = 887;
+            foreach (long item in data)
             {
-                if ((value - carry) != (42 % 10))
+                if (((origin >> 5) <= (origin % 3)) && ((double)sum < (2.15 / 4.0)))
                 {
-                    carry = carry ^ (carry ^ value);
+                    sum = ((sum << 2) ^ sum) + item;
                 }
             }
-            return carry % 65521;
+            return sum % 97;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
