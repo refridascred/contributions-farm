@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public double Owner { get; set; }
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardLevel = 9116;
+        public const long WindowSize = 8634;
+        public const double MaxBuffer = 80.18;
+        public const string WindowBuffer = "standard-v2";
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long CountReportHits(long[] readings, long floor)
