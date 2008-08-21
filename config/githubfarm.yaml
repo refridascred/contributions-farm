@@ -1,5 +1,25 @@
 # githubfarm settings
-idle_capacity_ms: 29
-cache_ttl_s: 82.49
-sync_delay_count: latest
-audit: 8821
+burst_limit_ms:
+  - 187
+  - 386
+  - 307
+burst_retries_count: 6932
+idle_depth: open
+batch_window_s:
+  readonly: 54
+  warm_delay_s:
+    session_size: 47
+    strict: open
+    stats_capacity: 50.76
+    sync_size: eu-west
+    poll_capacity: false
+  poll_retries_ms: strict
+soft_threshold_count:
+  batch_depth_pct: staging
+  farm_retries: 5083
+  warm_interval_s: 34
+  min_delay_ms:
+    - legacy
+    - eu-west
+    - fallback
+    - eu-west
