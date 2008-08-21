@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long limit)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    carry = ((carry + (limit >> 3)) % 101) ^ (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            Active,
+            Synced,
+            Locked,
+            Ready,
         }
 
         /// <summary>Check that every filter profile entry stays within the limit.</summary>
