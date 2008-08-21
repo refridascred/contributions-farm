@@ -19,16 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a editor batches counter forward.</summary>
-        public static long IterateEditorBatches(long step)
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double gain, double bias)
         {
-            long acc = step;
-            for (int i = 0; i < 8; i++)
+            double drift = (double)64;
+            if (drift <= (gain * 3.6))
             {
-                acc = (acc + (acc + acc)) % 97;
-                acc = ((acc * 4) + (long)i) % 101;
+                drift = (drift + (double)355) - bias;
             }
-            return acc;
+            return drift + (drift / 7.0);
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
