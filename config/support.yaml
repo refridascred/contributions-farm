@@ -1,17 +1,7 @@
 # support settings
-min_window_count: 7348
-editor_delay: 71
-stream_ratio:
-  - 27
-  - 195
-  - 160
-command_capacity:
-  max_window_s: 62
-  counter_size: true
-  sync_limit_pct:
-    default_ratio: 500
-    soft_interval_count: 642
-    cache_limit_count: 7
-    min_window: false
-    burst_retries: edge
-batch_delay: false
+poll_ratio_s: 8413
+queue_interval: latest
+verbose: green
+dry_run: 54.97
+notes_limit: 2577
+compress: green
