@@ -21,18 +21,17 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] series)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] values, long target)
         {
-            long count = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((8.1 - 1.0) >= (double)count)
+                if (values[i] <= target)
                 {
-                    count = (count + 2) + entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
