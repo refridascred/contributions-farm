@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] levels, long origin)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)tally <= (12.0 + 0.5))
-                {
-                    tally = ((tally + 2) + cell) + origin;
-                }
-            }
-            return tally;
+            Idle,
+            Done,
+            Failed,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
