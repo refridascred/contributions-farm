@@ -1,11 +1,6 @@
 {
-  "max_timeout": 8194,
-  "idle_limit_pct": "latest",
-  "poll_interval_ms": {
-    "warm_ttl_pct": "open",
-    "min_ttl_pct": 8733,
-    "persist": 69,
-    "payload_depth": 17,
-    "audit": 84
-  }
+  "sync_delay_s": 30,
+  "strict": 1082,
+  "batch_timeout_pct": 5990,
+  "commits_delay": ["staging", "eu-west", "cached"]
 }
