@@ -17,18 +17,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiGaps(long[] series)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (((value ^ value) > (value / 3)) && ((double)value < (6.37 + 9.0)))
+                if (cell < step)
                 {
-                    seen = seen + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
