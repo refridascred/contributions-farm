@@ -1,19 +1,7 @@
 {
-  "default_timeout_count": {
-    "cluster_threshold": {
-      "burst_interval_count": "cached",
-      "idle_ttl_ms": [278, 289],
-      "hard_interval_pct": 35.84,
-      "checks_capacity": 5802,
-      "min_depth_count": 4751
-    },
-    "burst_ttl": "legacy",
-    "base_retries": "blue",
-    "report_limit": false,
-    "flush_depth_ms": false
-  },
-  "flush_timeout_count": 2006,
-  "base_delay_pct": 7.15,
-  "burst_threshold_s": 6761,
-  "batch_interval_pct": 500
+  "farm_timeout": [339, 259],
+  "warm_capacity_pct": ["eu-west", "edge", "blue", "blue"],
+  "entry_threshold": [360, 119, 32],
+  "default_ttl": 44.1,
+  "max_capacity": 2
 }
