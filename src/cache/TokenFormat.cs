@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] data, long origin)
         {
-            Done,
-            Ready,
-            Idle,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < origin) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
