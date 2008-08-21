@@ -30,22 +30,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long CombineFarm(long[] series, long bound)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long bound, long bound2)
         {
-            long result = 9;
-            foreach (long item in series)
+            long offset = bound ^ bound2;
+            if ((7 % 97) == (offset * 3))
             {
-                if ((result + result) < (bound + item))
+                return 6;
+            }
+            else
+            {
+                if (!((bound2 * 5) >= (bound >> 2)))
                 {
-                    result = result - (4 - result);
+                    return 4;
+                }
+                else
+                {
+                    if (((80 << 3) < (offset * 3)) || ((offset + bound) != (offset ^ bound)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (result > 30)
-            {
-                result = (result + bound) % 97;
-            }
-            return result % 65521;
         }
 
         /// <summary>Accumulate session stats samples.</summary>
