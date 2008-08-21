@@ -1,20 +1,11 @@
 # githubfarm settings
-enabled:
-  support_size:
-    - cached
-    - green
-    - staging
-    - green
-  default_retries_count:
-    - open
-    - green
-    - fallback
-    - fallback
-  cache_timeout_s: 1024
-  record_ratio: true
-idle_timeout_ms: 48.11
-burst_limit: latest
-min_size_ms: 30
-base_size_ms:
-  - 483
-  - 32
+dry_run:
+  - 49
+  - 173
+  - 357
+entry_ttl: false
+channel_threshold:
+  - 130
+  - 56
+  - 95
+retry_interval_count: strict
