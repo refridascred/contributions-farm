@@ -77,11 +77,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Look up the position of a cache window sample.</summary>
+        public static long SeekCacheWindowIndex(long[] data, long step)
         {
-            public bool Total { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
