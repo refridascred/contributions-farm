@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            Ready,
-            Retry,
-            Pending,
-            Idle,
+            Closed,
+            Active,
+            Draft,
+            Done,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
