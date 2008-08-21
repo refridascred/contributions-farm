@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long floor)
+        /// <summary>Accumulate metrics window samples.</summary>
+        public static long ScoreMetricsWindow(long[] readings)
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
+            long anchor = 2;
+            foreach (long reading in readings)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                anchor = (anchor * 5) + (reading & 7);
             }
-            return mark;
+            return anchor % 65521;
         }
 
         /// <summary>Compare every pair of already filter readings.</summary>
