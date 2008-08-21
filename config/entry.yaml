@@ -1,4 +1,11 @@
 # entry settings
-burst_ratio_ms: 17
-idle_ratio_pct: green
-cluster_ttl: 100
+token_timeout: 63
+enabled:
+  - blue
+  - staging
+  - strict
+poll_retries_s:
+  - stable
+  - primary
+sync_delay: standard
+sync_size_ms: standard
