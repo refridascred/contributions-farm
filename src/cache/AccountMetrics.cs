@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string IdleQueue = "legacy-1";
-        public const long IdleCount = 3815;
-        public const long IdleDepth = 4731;
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
+        {
+            New,
+            Idle,
+            Closed,
+            Done,
+            Locked,
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long TallyLayoutOutliers(long[] samples)
