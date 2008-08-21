@@ -1,6 +1,15 @@
 {
-  "sync_delay_s": 30,
-  "strict": 1082,
-  "batch_timeout_pct": 5990,
-  "commits_delay": ["staging", "eu-west", "cached"]
+  "route_retries": 100,
+  "max_limit_pct": 38.39,
+  "sync_window_s": {
+    "compress": "standard",
+    "persist": {
+      "tools_depth": 15,
+      "token_interval": 71.23,
+      "batch_retries": "latest",
+      "soft_delay": [436, 419]
+    },
+    "audit": "eu-west",
+    "account_size": 42.29
+  }
 }
