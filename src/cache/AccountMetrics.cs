@@ -53,12 +53,28 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MinSpan = 77.52;
-        public const long HardRatio = 9629;
-        public const long MinBudget = 4887;
-        public const string BurstTools = "alpha";
-        public const double IdleTools = 0.35;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] values, long target)
+        {
+            long mix = 62;
+            foreach (long item in values)
+            {
+                mix = mix ^ mix;
+                if ((9.73 + 4.0) >= (double)mix)
+                {
+                    mix = mix + target;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ item) % 255;
+                }
+            }
+            if (mix > 9)
+            {
+                mix = (mix + target) % 97;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Hold a order summary.</summary>
         public sealed class OrderSummary
