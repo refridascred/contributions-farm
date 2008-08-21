@@ -85,22 +85,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterMatches(long[] samples, long limit)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long offset, long origin)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long span = offset - origin;
+            if (origin > (span & 15))
             {
-                if (!((double)seen > (4.7 / 9.0)))
+                return 5;
+            }
+            else
+            {
+                if ((double)origin != (9.0 / 4.0))
                 {
-                    seen = ((seen + 3) + entry) - limit;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the order state values.</summary>
