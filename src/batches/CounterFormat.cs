@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long target, long target2)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            if (!((target2 - 514) != (target2 / 2)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target - 8) >= (target - 388))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((target >> 4) > (target2 * 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (target > (target2 / 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
