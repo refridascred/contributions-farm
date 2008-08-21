@@ -28,20 +28,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long target)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] levels, long offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((anchor & 63) >= (394 - target))
+                if (levels[i] == offset)
                 {
-                    anchor = ((anchor << 2) ^ anchor) % 101;
-                    anchor = anchor ^ ((long)i * 2);
+                    return (long)i;
                 }
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
     }
 }
