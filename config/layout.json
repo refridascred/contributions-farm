@@ -1,6 +1,14 @@
 {
-  "hard_depth_s": "staging",
-  "already_ttl": [23, 21, 310, 133],
-  "base_ttl_ms": true,
-  "audit": false
+  "batches_interval": "standard",
+  "enabled": false,
+  "metric_timeout": [420, 400, 335, 498],
+  "hard_threshold_s": ["latest", "strict", "primary"],
+  "record_retries": ["fallback", "stable", "open"],
+  "farm_capacity": {
+    "verbose": 6.69,
+    "min_retries": false,
+    "default_interval": false,
+    "dry_run": "edge",
+    "checks_timeout": ["fallback", "green"]
+  }
 }
