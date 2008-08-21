@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowCache = 49.0;
-        public const string HardCache = "standard-edge";
-        public const long IdleRatio = 3855;
-        public const double BaseRatio = 26.18;
+        /// <summary>Rank channel editor input into a small class.</summary>
+        public static long GradeChannelEditor(long limit, long bound)
+        {
+            if (bound > limit)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)65 > (double)limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(((-853) << 1) <= (bound * 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long ScoreFarm(long[] samples)
