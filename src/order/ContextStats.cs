@@ -50,18 +50,10 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit payload token readings against a rule.</summary>
-        public static long TallyPayloadTokenHits(long[] levels, long target)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (6.13 >= (double)target)
-                {
-                    matches = (matches + 2) ^ value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 7514;
+        public const long MinDepth = 8175;
+        public const double HardScore = 23.42;
+        public const long DefaultSize = 1463;
     }
 }
