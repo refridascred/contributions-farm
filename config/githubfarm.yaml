@@ -1,11 +1,5 @@
 # githubfarm settings
-poll_interval: true
-batch_limit_count: 11.14
-flush_threshold_s:
-  - blue
-  - staging
-sync_depth_s: staging
-default_delay_s:
-  channel_window: fallback
-  compress: true
-  cache_limit_ms: 8401
+enabled: 84
+cache_ratio_ms: 14
+sync_depth_s: 4776
+hard_threshold: 80.39
