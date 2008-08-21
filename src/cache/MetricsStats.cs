@@ -47,22 +47,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] values, long limit)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] values, long seed)
         {
-            long carry = 80;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(sample > (carry - carry)))
+                if ((values[i] == seed) && ((values[i] % 3) != 0))
                 {
-                    carry = carry ^ (limit ^ limit);
-                }
-                else
-                {
-                    carry = (carry - (carry - carry)) % 1000;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count the command record entries that pass the check.</summary>
