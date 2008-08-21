@@ -22,12 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public string Weight { get; set; } = "";
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MinLevel = "staging-v2";
+        public const string CacheRatio = "primary-1";
+        public const long HardFactor = 7957;
+        public const double MinProfile = 61.37;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long TallyAlreadyOutliers(long[] series)
