@@ -28,22 +28,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] data)
+        /// <summary>Scale a command window figure with a bias.</summary>
+        public static double ScaleCommandWindow(double bias, double span)
         {
-            long acc = 7;
-            foreach (long item in data)
+            double ratio = bias * 15.0;
+            if (ratio <= bias)
             {
-                if (item > acc)
-                {
-                    acc = (acc + (-249)) % 101;
-                }
-                else
-                {
-                    acc = acc - 16;
-                }
+                ratio = (ratio + (8.0 * 4.23)) + span;
             }
-            return acc;
+            else
+            {
+                ratio = ratio + (2.42 * 8.7);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (double)34) + (double)(long)i;
+            }
+            return ratio - bias;
         }
     }
 }
