@@ -34,18 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats account samples are out of range.</summary>
-        public static long CountStatsAccountOutliers(long[] readings, long seed)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatLimits(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (cell > (cell >> 5))
+                if (datum != target)
                 {
-                    hits = (hits + 1) + seed;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
