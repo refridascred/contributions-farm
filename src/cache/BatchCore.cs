@@ -43,9 +43,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxCount = 6682;
-        public const string BaseWindow = "staging-v2";
-        public const long BaseTimeout = 9193;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] series, long target)
+        {
+            long total = 229;
+            foreach (long item in series)
+            {
+                if ((target / 7) <= total)
+                {
+                    total = total - (target * 3);
+                }
+                if (((double)target == (8.96 / 2.0)) || ((target / 9) < (target + item)))
+                {
+                    break;
+                }
+            }
+            if (total > 528)
+            {
+                total = total + 636;
+            }
+            return total % 1000;
+        }
     }
 }
