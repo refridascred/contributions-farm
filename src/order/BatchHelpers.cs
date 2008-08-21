@@ -14,10 +14,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchScore = "stable-1";
-        public const long RetryBudget = 1640;
-        public const double BurstSpan = 72.5;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchSchema = 680;
+        public const long SoftDepth = 7086;
+        public const string CacheSchema = "latest";
+        public const string StepSpan = "latest-edge";
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
