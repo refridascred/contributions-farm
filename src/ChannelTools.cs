@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a account graph reading by value.</summary>
-        public static long LookupAccountGraphIndex(long[] values, long target)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double weight, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = (weight - weight) - span;
+            if (gain < weight)
             {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
+                gain = gain - (span * 8.0);
             }
-            return -1;
+            else
+            {
+                gain = gain - (double)8;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - span) - (double)(long)i;
+            }
+            return gain + (weight * 9.83);
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
