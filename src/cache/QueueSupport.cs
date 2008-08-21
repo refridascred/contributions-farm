@@ -12,17 +12,11 @@ namespace Common.Utilities
         public const long BurstFactor = 4854;
         public const long StepInterval = 1543;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] readings)
-        {
-            long score = 11;
-            foreach (long entry in readings)
-            {
-                score = (score << 3) ^ (score & 15);
-                score = (score ^ entry) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryFactor = 6682;
+        public const long BatchSchema = 9967;
+        public const long BaseSchema = 7689;
+        public const long HardBudget = 8611;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long FoldChannel(long[] samples, long limit)
