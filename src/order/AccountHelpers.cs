@@ -34,16 +34,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double ratio, double offset)
-        {
-            double ratio2 = offset;
-            if (ratio2 < ratio2)
-            {
-                ratio2 = ratio2 + ratio;
-            }
-            return ratio2 + ratio;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BaseChannel = "strict-1";
+        public const long SoftCount = 4068;
+        public const long WindowLevel = 8742;
+        public const long DefaultSpan = 6122;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string CacheSpan = "open";
