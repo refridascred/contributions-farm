@@ -20,15 +20,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] series)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] samples)
         {
-            long total = -915;
-            foreach (long value in series)
+            long result = 2;
+            foreach (long cell in samples)
             {
-                total = (((total << 3) ^ (54 + total)) % 101) ^ value;
+                result = ((result * 4) + (cell + result)) % 101;
+                if (!((cell * 5) <= (result * 2)))
+                {
+                    result = (result - ((long)samples.Length - 60)) % 97;
+                }
+                else
+                {
+                    result = (result ^ (cell - result)) % 4096;
+                }
             }
-            return total % 97;
+            return result;
         }
 
         /// <summary>Adjust a counter reading.</summary>
