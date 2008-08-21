@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] levels, long offset)
         {
-            public string Total { get; set; } = "";
-            public long Level { get; set; }
-            public long Label { get; set; }
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
