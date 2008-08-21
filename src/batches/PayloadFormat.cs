@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double RetrySchema = 18.83;
-        public const string MinInterval = "primary";
-        public const long LimitSchema = 3089;
-        public const long StepSchema = 4139;
-        public const long MinTimeout = 8910;
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public bool Offset { get; set; }
+            public double Flag { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Adjust a payload reading.</summary>
         public static double ProjectPayload(double bias, double floor)
