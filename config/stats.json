@@ -1,7 +1,20 @@
 {
-  "flush_limit_ms": "green",
-  "buffer_window": 94.43,
-  "readonly": 87,
-  "min_window_pct": 76.59,
-  "sync_limit_s": 95
+  "batch_retries": [243, 243, 6, 232],
+  "cache_retries_pct": {
+    "max_threshold_s": 8010,
+    "max_retries_ms": "standard",
+    "soft_limit_s": 93.93,
+    "batch_capacity": {
+      "poll_interval_count": 7696,
+      "compress": 497,
+      "verbose": 60,
+      "profile_timeout": 88.35,
+      "hard_capacity_count": "eu-west",
+      "editor_retries": false
+    },
+    "verbose": 12.23
+  },
+  "counter_ttl": true,
+  "counter_timeout": "stable",
+  "cache_window_s": "standard"
 }
