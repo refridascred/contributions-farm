@@ -20,21 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] values)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] samples, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (samples[i] > target)
                 {
-                    if ((values[i] ^ values[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
