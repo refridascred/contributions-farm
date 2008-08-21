@@ -1,12 +1,5 @@
 {
-  "poll_window": true,
-  "sync_timeout_s": true,
-  "max_window": ["legacy", "fallback"],
-  "batch_delay_s": 500,
-  "verbose": ["local", "cached"],
-  "enabled": {
-    "batch_timeout_s": 7055,
-    "cache_depth_pct": 28.31,
-    "readonly": ["legacy", "latest", "cached"]
-  }
+  "poll_ttl": [284, 80, 242],
+  "persist": "edge",
+  "base_threshold": "edge"
 }
