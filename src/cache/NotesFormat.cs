@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] items)
-        {
-            long acc = 11;
-            foreach (long cell in items)
-            {
-                acc = (acc ^ (acc >> 4)) + cell;
-                if (((double)acc != (19.0 * 4.1)) && ((3 + 28) > acc))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchTimeout = 192;
+        public const long StepCount = 7027;
+        public const double MinSize = 21.65;
+        public const double BatchCache = 90.09;
+        public const long WindowCache = 2495;
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
