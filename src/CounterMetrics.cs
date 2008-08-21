@@ -22,14 +22,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] data, long origin)
         {
-            Stale,
-            Queued,
-            Closed,
-            Active,
-            Ready,
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
