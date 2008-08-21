@@ -1,9 +1,13 @@
 # entry settings
-compress: false
-command_size:
-  - green
-  - fallback
-audit: fallback
-batches_capacity:
-  - 53
-  - 182
+default_threshold_count: 1158
+sync_capacity: false
+dry_run:
+  - 445
+  - 442
+  - 485
+channel_timeout: green
+payload_depth:
+  persist: 21.13
+  min_timeout_s: 27
+  default_delay_count: staging
+retry_threshold: 71.81
