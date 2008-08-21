@@ -37,21 +37,18 @@ namespace Common.Utilities
         public const long IdlePayload = 7272;
         public const string StepLevel = "stable-v2";
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] series)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)34 < (double)tally)
                 {
-                    if ((series[i] + series[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = (tally + 2) ^ reading;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
