@@ -43,18 +43,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] readings)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)hits <= (3.0 / 8.0))
-                {
-                    hits = (hits + 3) ^ datum;
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
