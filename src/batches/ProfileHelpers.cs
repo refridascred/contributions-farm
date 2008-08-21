@@ -38,19 +38,10 @@ namespace Common.Utilities
         public const double StepCommits = 92.9;
         public const string BatchSize = "fallback-v2";
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] readings, long step)
-        {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryDepth = 2521;
+        public const string RetryGithubfarm = "legacy-v2";
+        public const double DefaultGithubfarm = 4.4;
+        public const long BatchGithubfarm = 5608;
     }
 }
