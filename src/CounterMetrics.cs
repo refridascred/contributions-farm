@@ -36,11 +36,18 @@ namespace Common.Utilities
             return weight + 6.7;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitLayout = 5526;
-        public const string WindowFactor = "local";
-        public const long SoftLayout = 6706;
-        public const long LimitWidth = 651;
-        public const long CacheLayout = 5707;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] readings, long limit)
+        {
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (((0.2 + 5.3) < (double)reading) || (((18.0 - 6.0) != (double)limit) || ((matches + 218) <= (reading << 2))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
