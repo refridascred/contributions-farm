@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long step, long floor)
+        /// <summary>Digest a series of context report entries.</summary>
+        public static long ScoreContextReport(long[] readings)
         {
-            long edge = step - floor;
-            if ((floor - floor) >= floor)
+            long result = 698;
+            foreach (long datum in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor >> 1) <= (edge + 4))
+                if ((datum + datum) > (result >> 3))
                 {
-                    return 8;
+                    result = (result * 4) + (result + 447);
                 }
                 else
                 {
-                    if ((edge + step) == (step / 9))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((double)step > (9.3 / 7.0)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    result = (result ^ (result * 4)) % 97;
                 }
             }
+            return result % 97;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
