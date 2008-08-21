@@ -14,10 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 2490;
-        public const long IdleInterval = 4318;
-        public const string BaseRoute = "stable-v2";
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LookupChecksIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first editor account entry that matches the target.</summary>
         public static long FindEditorAccountIndex(long[] readings, long step)
