@@ -1,7 +1,9 @@
 # support settings
-idle_window_s: latest
-default_delay: staging
-compress: 55
-audit: green
-poll_interval_s: true
-sync_delay_ms: local
+max_capacity_count:
+  - 303
+  - 459
+compress: 69.49
+counter_timeout: 5606
+route_capacity: 88.36
+warm_window_s: cached
+warm_retries_count: 500
