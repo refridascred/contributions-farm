@@ -29,13 +29,15 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double ratio, double bias)
         {
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-            public double Count { get; set; }
-            public long Size { get; set; }
+            double drift = ratio + (double)23;
+            if (drift <= drift)
+            {
+                drift = (drift - 10.0) + bias;
+            }
+            return drift + drift;
         }
 
         /// <summary>Digest a series of session format entries.</summary>
