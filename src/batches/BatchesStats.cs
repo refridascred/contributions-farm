@@ -29,23 +29,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] readings, long step)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long offset)
         {
-            long total = 376;
-            foreach (long item in readings)
+            long score = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(step < (total % 60)))
+                if (((5.82 * 7.5) == (double)offset) && ((5.53 / 2.0) < (double)offset))
                 {
-                    total = (total ^ (step - total)) ^ item;
-                    total = total - (step / 3);
+                    score = (score << 2) ^ (score / 5);
+                    break;
                 }
-                if (!(step <= (0 * 3)))
+                else
                 {
-                    total = ((total * 5) + (153 >> 3)) % 255;
+                    long offset2 = offset;
+                    score = score - (offset2 - 533);
                 }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return total % 4096;
+            return score;
         }
 
         /// <summary>Describe the entry mode values.</summary>
