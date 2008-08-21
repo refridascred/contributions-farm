@@ -41,20 +41,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long limit)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long seed, long limit)
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
+            if ((double)limit >= 8.2)
             {
-                if (!(((18.0 - 5.3) <= (double)limit) || (((long)i + limit) >= 137)))
-                {
-                    score = (score ^ (limit & 31)) % 255;
-                }
-                score = ((score << 2) ^ (score * 4)) % 4096;
-                score = ((score * 2) + (long)i) % 65521;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((limit + limit) < seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit * 4) <= limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((double)seed > (4.8 * 8.28)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
