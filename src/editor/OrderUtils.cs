@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Order utils helpers.</summary>
     public static class OrderUtils
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Count the booking entries that pass the check.</summary>
+        public static long CountBookingMatches(long[] data, long floor)
         {
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (sample >= count)
+                {
+                    count = (count + 3) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
