@@ -1,15 +1,7 @@
 {
-  "soft_capacity_pct": 9935,
-  "base_retries": {
-    "base_limit": ["standard", "fallback", "latest", "open"],
-    "default_ratio_count": {
-      "retry_depth_s": 40,
-      "buffer_depth": 93,
-      "strict": 16.41,
-      "flush_ratio_ms": "strict"
-    },
-    "max_timeout_count": 43.58,
-    "cache_timeout": 67
-  },
-  "command_ratio": 9509
+  "checks_depth": "eu-west",
+  "session_depth": 2250,
+  "verbose": 7.65,
+  "channel_size": "standard",
+  "burst_ttl_pct": 42.58
 }
