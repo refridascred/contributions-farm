@@ -1,13 +1,8 @@
 {
-  "max_capacity_pct": "cached",
-  "enabled": false,
-  "persist": false,
-  "base_threshold": "blue",
-  "farm_retries": ["edge", "legacy", "local"],
-  "burst_timeout_pct": {
-    "audit": 9.88,
-    "filter_interval": "latest",
-    "tools_ratio": false,
-    "base_limit": 14.93
-  }
+  "audit": [53, 10, 127, 242],
+  "readonly": "latest",
+  "buffer_threshold": 30,
+  "batch_window_count": "legacy",
+  "checks_depth": 2296,
+  "warm_threshold": 8852
 }
