@@ -33,21 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count counter format pairs that satisfy a relation.</summary>
-        public static long PairCounterFormatCount(long[] samples)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public bool Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a buffer options.</summary>
