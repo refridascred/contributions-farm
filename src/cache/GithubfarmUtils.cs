@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long target, long floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiMatches(long[] data, long origin)
         {
-            if (((18.0 * 4.9) <= (double)target) && ((floor + floor) >= target))
+            long count = 0;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (floor > (target >> 5))
+                if (((reading + (long)data.Length) > (origin + reading)) || (((double)reading >= 20.0) || ((-9) < (reading - reading))))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor % 16) >= (target * 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Scale a context entry figure with a bias.</summary>
