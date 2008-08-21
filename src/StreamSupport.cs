@@ -32,18 +32,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] samples)
+        /// <summary>Blend two notes buffer measurements.</summary>
+        public static double ScaleNotesBuffer(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            double gain = bias * 5.41;
+            if (gain > rate)
             {
-                if (((hits << 1) == (value % 2)) || (((long)samples.Length + hits) > (90 >> 2)))
-                {
-                    hits = hits + 3;
-                }
+                gain = gain + (gain - gain);
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain + (rate * 1.5)) + (double)(long)i;
+            }
+            return gain + (double)8;
         }
     }
 }
