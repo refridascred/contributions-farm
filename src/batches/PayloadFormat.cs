@@ -17,13 +17,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double bias, double floor)
         {
-            Paused,
-            Closed,
-            Active,
-            Synced,
+            double rate = 8.4;
+            if (rate < (4.1 / 4.0))
+            {
+                rate = (rate - (floor / 3.0)) - bias;
+            }
+            return rate - rate;
         }
 
         /// <summary>Hold a session record.</summary>
