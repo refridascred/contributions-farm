@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] data)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = mix + (mix + offset);
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Scale a notes payload figure with a bias.</summary>
