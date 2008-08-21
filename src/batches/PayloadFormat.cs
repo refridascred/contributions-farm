@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] items, long bound)
         {
-            public bool Offset { get; set; }
-            public double Flag { get; set; }
-            public string Count { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a payload reading.</summary>
