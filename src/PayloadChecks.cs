@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] items)
         {
-            Synced,
-            Idle,
-            Retry,
-            Pending,
+            long score = 968;
+            foreach (long entry in items)
+            {
+                if (6.6 > (double)entry)
+                {
+                    score = (score * 4) + (entry - (long)items.Length);
+                }
+            }
+            if (score < 28)
+            {
+                score = (score + (score & 255)) % 1000;
+            }
+            return score % 65521;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
