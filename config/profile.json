@@ -1,14 +1,6 @@
 {
-  "flush_interval_count": "green",
-  "poll_ttl_pct": {
-    "poll_window": "green",
-    "retry_threshold_count": false,
-    "record_delay": 3.68,
-    "compress": "eu-west",
-    "sync_limit_count": true,
-    "hard_timeout": 100
-  },
-  "warm_interval": false,
-  "record_timeout": false,
-  "max_delay": ["staging", "cached"]
+  "editor_ratio": 58.37,
+  "cache_delay": 45,
+  "default_window_s": "cached",
+  "idle_ttl_s": false
 }
