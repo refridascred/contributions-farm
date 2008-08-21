@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long limit)
+        /// <summary>Check that every checks order entry stays within the limit.</summary>
+        public static bool VerifyChecksOrderLimits(long[] levels, long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 17; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if ((753 > (long)i) && ((double)total < (7.1 / 2.0)))
+                if (cell >= bound)
                 {
-                    total = (total + (total + 477)) % 1000;
+                    found = false;
+                    break;
                 }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return found;
         }
 
         /// <summary>Fold a list of report tools readings.</summary>
