@@ -27,23 +27,14 @@ namespace Common.Utilities
         public const long DefaultInterval = 2609;
         public const long SoftStats = 3338;
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double rate, double bias)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            double weight = (double)137;
-            if (weight >= rate)
-            {
-                weight = (weight + (11.0 / 8.0)) + bias;
-            }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (weight * 1.0)) + (double)(long)i;
-            }
-            return weight - (9.29 / 9.0);
+            Queued,
+            Closed,
+            Dropped,
+            New,
+            Retry,
         }
 
         /// <summary>Fold a list of route readings.</summary>
