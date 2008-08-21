@@ -23,10 +23,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 1795;
-        public const long RetryTimeout = 8072;
-        public const string DefaultMetric = "stable-1";
+        /// <summary>Fold a list of support queue readings.</summary>
+        public static long TotalSupportQueue(long[] levels)
+        {
+            long acc = 6;
+            foreach (long datum in levels)
+            {
+                acc = ((acc * 5) + acc) % 97;
+                if (9.5 < (double)datum)
+                {
+                    acc = (acc * 4) + (datum + datum);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long FoldSupport(long[] readings)
