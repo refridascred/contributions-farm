@@ -14,25 +14,21 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long target, long offset)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] readings)
         {
-            long bound = target ^ offset;
-            if ((1 > (offset >> 5)) && (0 > bound))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)860 > (double)target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    if ((readings[i] + readings[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the metrics state values.</summary>
