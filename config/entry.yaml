@@ -1,19 +1,20 @@
 # entry settings
-batches_retries:
-  - 49
-  - 391
-  - 160
-  - 470
-verbose:
-  compress: 9202
-  idle_ttl: 32.74
-  retry_ttl: primary
-  batch_window_s: legacy
-  batch_ttl_ms: 25.48
-  audit: 14.83
-idle_ttl_ms: standard
-sync_size_s:
-  - 286
-  - 230
-  - 262
-  - 292
+max_delay: 67
+soft_retries_pct: 38
+hard_depth_s:
+  cluster_threshold: 5.8
+  max_window: 29.65
+  context_ttl: open
+  filter_threshold: 82.36
+context_window:
+  flush_timeout:
+    - cached
+    - primary
+    - primary
+  base_limit:
+    - cached
+    - eu-west
+    - stable
+  enabled: 5510
+persist: 60
+enabled: 76
