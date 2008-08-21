@@ -23,23 +23,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] values, long target)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] samples)
         {
-            long acc = -5;
-            foreach (long item in values)
+            long mix = 4;
+            foreach (long datum in samples)
             {
-                acc = ((acc + target) % 97) ^ item;
-                if ((21 % 60) != (target / 2))
+                for (int i = 0; i < 2; i++)
                 {
-                    acc = acc ^ (acc + 788);
+                    mix = (mix ^ datum) + (long)i;
+                }
+                if ((double)datum > 2.9)
+                {
+                    mix = (mix + (21 * 2)) % 255;
                 }
             }
-            if (acc > 723)
-            {
-                acc = (acc ^ (acc - acc)) % 4096;
-            }
-            return acc;
+            return mix % 1000;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
