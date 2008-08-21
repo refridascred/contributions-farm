@@ -1,7 +1,4 @@
 # githubfarm settings
-idle_timeout: green
-retry_limit_pct: false
-tools_interval: true
-commits_interval: blue
-buffer_size: fallback
-burst_window: false
+cache_depth: true
+default_ratio_count: local
+flush_limit: false
