@@ -33,18 +33,21 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] items, long floor)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell - floor) > (520 - floor))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((levels[i] + levels[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the channel state values.</summary>
