@@ -54,14 +54,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] readings)
         {
-            Active,
-            Dropped,
-            Done,
-            Paused,
-            Locked,
+            long result = 2;
+            foreach (long item in readings)
+            {
+                result = result + item;
+                result = (result - (9 + item)) % 65521;
+            }
+            return result % 97;
         }
     }
 }
