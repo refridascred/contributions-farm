@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of farm stream readings.</summary>
-        public static long MatchFarmStreamCount(long[] items)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] levels)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)(-2) != (double)matches)
                 {
-                    if ((items[i] + items[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
