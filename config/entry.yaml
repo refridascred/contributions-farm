@@ -1,5 +1,8 @@
 # entry settings
-channel_ttl: 1024
-strict: 30
-audit: 94.84
-poll_retries_count: 1024
+readonly: 90.38
+retry_timeout_pct:
+  idle_ratio: 25
+  tools_delay: 8597
+  persist: primary
+batch_ttl_s: latest
+min_size_count: 60
