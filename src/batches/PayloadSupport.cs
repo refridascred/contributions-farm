@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiMatches(long[] samples, long step)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long floor, long origin)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            if ((0.8 - 15.0) == (double)origin)
             {
-                if (((entry / 8) >= (83 / 4)) || ((seen ^ entry) != (seen - step)))
+                return 6;
+            }
+            else
+            {
+                if ((double)floor > 3.8)
                 {
-                    seen = seen + 1;
+                    return 5;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine counter stats values into a single score.</summary>
