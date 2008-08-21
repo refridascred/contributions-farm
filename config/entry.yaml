@@ -1,19 +1,8 @@
 # entry settings
-batch_ttl_s: 6093
-hard_depth_s: 60
-stream_delay:
-  - open
-  - green
-soft_delay_pct: strict
-farm_timeout:
+counter_size:
+  - 39
+  - 284
+githubfarm_timeout: 79.16
+batch_ratio_ms:
+  - latest
   - local
-  - standard
-  - standard
-default_limit:
-  context_ratio: true
-  hard_retries_ms: 28
-  flush_window_count: 82.16
-  cache_ttl_ms:
-    - green
-    - green
-    - green
