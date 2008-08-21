@@ -43,18 +43,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many session channel samples are out of range.</summary>
-        public static long MeasureSessionChannelHits(long[] series, long target)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((((double)hits > 2.7) && ((long)series.Length > (item & 63))) || ((double)target == (20.0 - 16.0)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstMetrics = "primary-1";
+        public const long StepLevel = 7883;
+        public const long BaseMetrics = 3543;
+        public const long DefaultMetrics = 4419;
+        public const string WindowFactor = "local-1";
     }
 }
