@@ -16,11 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            public double Total { get; set; }
-            public string Ratio { get; set; } = "";
+            Stale,
+            Active,
+            Paused,
         }
 
         /// <summary>Digest a series of order already entries.</summary>
