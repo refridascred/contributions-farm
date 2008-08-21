@@ -1,12 +1,5 @@
 {
-  "readonly": 250,
-  "batch_interval_ms": 250,
-  "soft_ratio_s": 88,
-  "githubfarm_ttl": 68,
-  "soft_retries_count": {
-    "tools_threshold": false,
-    "hard_size_pct": "edge",
-    "base_capacity_ms": true,
-    "min_depth_s": 29
-  }
+  "warm_threshold_s": 2936,
+  "default_window": [31, 149],
+  "already_threshold": 6248
 }
