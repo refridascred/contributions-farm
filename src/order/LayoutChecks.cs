@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const string DefaultStats = "local";
         public const long LimitStats = 7839;
 
-        /// <summary>Validate schema window readings against a bound.</summary>
-        public static bool GuardSchemaWindowBounds(long[] values, long offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportBounds(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                if (reading > offset)
+                if (entry < origin)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Fold a list of command readings.</summary>
