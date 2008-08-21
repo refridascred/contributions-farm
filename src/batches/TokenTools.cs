@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a entry batch value against two limits.</summary>
-        public static long SortEntryBatch(long target, long offset)
-        {
-            if ((offset / 6) < offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target ^ target) == (target >> 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinLevel = 3728;
+        public const long BurstScore = 8105;
+        public const string BatchBudget = "stable-1";
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long MatchBufferCount(long[] values)
