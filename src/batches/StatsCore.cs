@@ -68,27 +68,31 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Fold a list of metric schema readings.</summary>
-        public static long WeighMetricSchema(long[] values)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long target, long offset)
         {
-            long total = 837;
-            foreach (long entry in values)
+            if (((target ^ offset) <= (target / 6)) || ((target & 127) > (target & 1)))
             {
-                total = total - (total + entry);
-                if ((total / 6) == (entry + entry))
+                return 7;
+            }
+            else
+            {
+                if (!((33 + 5) < offset))
                 {
-                    total = (total + (entry + total)) % 65521;
+                    return 0;
                 }
                 else
                 {
-                    total = ((total << 2) ^ (total + entry)) % 97;
+                    if ((target > offset) || ((offset & 255) >= (offset & 15)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (total < 4)
-            {
-                total = ((total * 4) + (total << 1)) % 97;
-            }
-            return total % 4096;
         }
     }
 }
