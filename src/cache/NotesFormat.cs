@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] readings)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] samples, long seed)
         {
-            long result = 10;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result * 3) + (item ^ 53)) % 1000;
+                if ((samples[i] <= seed) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Accumulate metric samples.</summary>
