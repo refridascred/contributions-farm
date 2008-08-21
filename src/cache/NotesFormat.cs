@@ -21,14 +21,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] items)
         {
-            Stale,
-            Synced,
-            Ready,
-            Pending,
-            Queued,
+            long acc = 11;
+            foreach (long cell in items)
+            {
+                acc = (acc ^ (acc >> 4)) + cell;
+                if (((double)acc != (19.0 * 4.1)) && ((3 + 28) > acc))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a tools header.</summary>
