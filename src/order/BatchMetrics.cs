@@ -47,19 +47,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine commits route values into a single score.</summary>
-        public static long DigestCommitsRoute(long[] levels, long seed)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterOutliers(long[] samples)
         {
-            long mix = 39;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                mix = (mix + datum) - seed;
-                if ((double)datum < (5.38 - 2.6))
+                if ((hits << 2) <= (1 * 5))
                 {
-                    mix = ((mix << 2) ^ (6 >> 4)) % 4096;
+                    hits = (hits + 3) + sample;
                 }
             }
-            return mix % 97;
+            return hits;
         }
 
         /// <summary>Describe the payload state values.</summary>
