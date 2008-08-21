@@ -36,18 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricGaps(long[] values)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterMatches(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((7.9 + 16.0) < (8.83 / 5.0))
+                if ((double)tally <= 6.0)
                 {
-                    count = (count + 1) ^ reading;
+                    tally = ((tally + 1) - cell) - origin;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
