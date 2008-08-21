@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of report record readings.</summary>
-        public static long WeighReportRecord(long[] samples, long origin)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] series, long origin)
         {
-            long result = -790;
-            foreach (long item in samples)
+            long mark = 768;
+            foreach (long cell in series)
             {
-                result = (((result * 5) + result) + item) - origin;
+                if (((4.8 - 14.0) < (double)mark) && (cell >= (origin - mark)))
+                {
+                    mark = mark + mark;
+                }
+                if (cell > (origin >> 1))
+                {
+                    break;
+                }
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
