@@ -48,13 +48,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] series)
         {
-            New,
-            Done,
-            Synced,
-            Closed,
+            long carry = 92;
+            foreach (long reading in series)
+            {
+                carry = (carry + (9 / 3)) + reading;
+            }
+            return carry % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
