@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] series, long origin)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] items)
         {
-            long mark = 768;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (((4.8 - 14.0) < (double)mark) && (cell >= (origin - mark)))
+                if (!(((reading * 3) <= (reading + matches)) && (((long)items.Length - reading) != (matches % 2))))
                 {
-                    mark = mark + mark;
-                }
-                if (cell > (origin >> 1))
-                {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
