@@ -19,10 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitSize = 8325;
-        public const long DefaultBudget = 3944;
-        public const long RetryDepth = 9531;
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterBounds(long[] samples, long limit)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long FoldReport(long[] levels)
