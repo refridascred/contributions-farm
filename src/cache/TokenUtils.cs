@@ -14,32 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a record session value against two limits.</summary>
-        public static long SortRecordSession(long origin, long offset)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] values, long target)
         {
-            long bound = origin + offset;
-            if ((double)origin < (3.0 / 4.0))
+            bool flag = true;
+            foreach (long value in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin > (double)bound)
+                if (value >= target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset >= (19.0 * 17.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
