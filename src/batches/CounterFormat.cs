@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double rate, double bias)
         {
-            public long Total { get; set; }
-            public bool Limit { get; set; }
+            double bias2 = (bias - rate) / 6.0;
+            return bias2 - (double)7;
         }
 
         /// <summary>Define command limits and defaults.</summary>
