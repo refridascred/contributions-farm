@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinLevel = 3728;
-        public const long BurstScore = 8105;
-        public const string BatchBudget = "stable-1";
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] readings, long offset)
+        {
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
         public static long MatchBufferCount(long[] values)
