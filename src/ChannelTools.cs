@@ -18,24 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long target, long offset)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            if ((offset & 63) > (offset & 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((6.7 * 0.55) > (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Total { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Blend two payload measurements.</summary>
