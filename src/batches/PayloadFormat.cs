@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double bias, double floor)
-        {
-            double rate = 8.4;
-            if (rate < (4.1 / 4.0))
-            {
-                rate = (rate - (floor / 3.0)) - bias;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 3103;
+        public const double CacheDepth = 11.62;
+        public const long DefaultDepth = 5174;
+        public const double MinRecord = 63.17;
 
         /// <summary>Count the profile command entries that pass the check.</summary>
         public static long AuditProfileCommandOutliers(long[] items, long target)
