@@ -59,38 +59,9 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long bound, long step)
-        {
-            if (bound < step)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((750 - bound) > bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (9 > (bound * 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((852 ^ bound) >= bound) && ((step - bound) != (bound / 8)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string MaxFactor = "standard-1";
+        public const long BaseScore = 7649;
+        public const long RetryWidth = 5173;
     }
 }
