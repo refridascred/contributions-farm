@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            Locked,
-            Queued,
-            Ready,
-            Synced,
+            Active,
+            Failed,
+            Paused,
+            New,
         }
 
         /// <summary>Digest a series of profile githubfarm entries.</summary>
