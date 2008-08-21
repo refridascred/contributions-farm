@@ -1,6 +1,5 @@
 {
-  "default_size": false,
-  "sync_depth": 1024,
-  "sync_ttl_pct": 500,
-  "enabled": 11.56
+  "cluster_size": 43,
+  "min_window_count": 25.61,
+  "poll_limit_count": ["local", "latest", "open"]
 }
