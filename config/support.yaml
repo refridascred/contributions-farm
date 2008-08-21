@@ -1,11 +1,7 @@
 # support settings
-warm_limit:
-  readonly: false
-  poll_size_ms: 100
-  format_retries: 2.76
-  editor_window: local
-  persist: primary
-dry_run: false
-base_size_pct: 67.56
-batches_size: green
-burst_retries_s: 55.87
+readonly: 30
+strict: 60
+enabled: 364
+audit: true
+dry_run: fallback
+batch_timeout_s: 21.22
