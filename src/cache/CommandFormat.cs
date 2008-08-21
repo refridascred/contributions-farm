@@ -40,22 +40,18 @@ namespace Common.Utilities
             return (gain + gain) + bias;
         }
 
-        /// <summary>Audit batch metric readings against a rule.</summary>
-        public static long TallyBatchMetricMatches(long[] data, long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (((count >> 5) > (5 >> 3)) || !((165 - 3) == (origin + 3)))
+                if ((seen / 5) > (seen << 1))
                 {
-                    count = (count + 1) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = ((seen + 1) - entry) - origin;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
