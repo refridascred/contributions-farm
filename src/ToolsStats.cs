@@ -64,31 +64,11 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] readings, long origin)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long state = 774;
-            foreach (long item in readings)
-            {
-                if ((6.0 - 7.3) != (double)item)
-                {
-                    state = state - (origin + 2);
-                    state = (state ^ (state - state)) % 1000;
-                }
-                for (int i = 0; i < 2; i++)
-                {
-                    state = ((state << 2) ^ (origin + item)) + (long)i;
-                }
-                if ((680 * 4) >= (origin + state))
-                {
-                    state = (state ^ origin) % 97;
-                }
-            }
-            if (state < 604)
-            {
-                state = (state + origin) % 255;
-            }
-            return state % 65521;
+            public double Mode { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
