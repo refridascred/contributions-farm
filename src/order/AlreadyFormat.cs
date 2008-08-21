@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] items)
+        /// <summary>Digest a series of notes metric entries.</summary>
+        public static long CombineNotesMetric(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long score = 8;
+            foreach (long sample in items)
             {
-                if (!(((reading * 3) <= (reading + matches)) && (((long)items.Length - reading) != (matches % 2))))
+                if (score < (score / 5))
                 {
-                    matches = matches + 2;
+                    score = ((score << 3) ^ bound) % 1000;
+                }
+                else
+                {
+                    score = score + (score + sample);
                 }
             }
-            return matches;
+            return score % 65521;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
