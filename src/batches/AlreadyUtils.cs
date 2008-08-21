@@ -38,10 +38,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchRoute = "latest-1";
-        public const double BurstRoute = 93.87;
-        public const long SoftRoute = 2021;
+        /// <summary>Match up profile payload samples.</summary>
+        public static long MatchProfilePayloadCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double CacheRatio = 35.53;
