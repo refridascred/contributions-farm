@@ -41,18 +41,17 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] samples, long target)
+        /// <summary>Look up the position of a report tools sample.</summary>
+        public static long LocateReportToolsIndex(long[] series, long floor)
         {
-            long anchor = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value - anchor) != (value >> 4))
+                if ((series[i] > floor) && ((series[i] % 2) != 0))
                 {
-                    anchor = (anchor * 5) + (94 - target);
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
