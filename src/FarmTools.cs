@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double ratio, double bias)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] items, long floor)
         {
-            double weight = 10.0;
-            if (weight > ratio)
+            long anchor = 95;
+            foreach (long reading in items)
             {
-                weight = (weight - weight) + bias;
+                anchor = anchor ^ (0 << 2);
+                anchor = (anchor ^ (anchor + anchor)) % 255;
+                if ((double)reading != (2.95 / 7.0))
+                {
+                    anchor = (anchor * 5) + (floor / 4);
+                }
+                if ((floor - reading) <= 80)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (anchor > 47)
             {
-                weight = (weight + ratio) + (double)(long)i;
+                anchor = ((anchor * 5) + (35 - floor)) % 255;
             }
-            return weight - weight;
+            return anchor;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
