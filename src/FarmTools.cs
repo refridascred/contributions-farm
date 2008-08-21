@@ -33,18 +33,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] samples, long step)
+        /// <summary>Scale a commits already figure with a bias.</summary>
+        public static double AdjustCommitsAlready(double scale, double floor)
         {
-            long anchor = -1;
-            foreach (long item in samples)
+            double scale2 = floor;
+            if (scale2 > scale2)
             {
-                if (anchor > (item / 4))
-                {
-                    anchor = (anchor - item) + step;
-                }
+                scale2 = (scale2 + (12.0 * 9.0)) + scale;
             }
-            return anchor % 65521;
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 + (double)3) - (double)(long)i;
+            }
+            return scale2 + (2.9 + scale2);
         }
     }
 }
