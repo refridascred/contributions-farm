@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamMatches(long[] data)
+        /// <summary>Look up the position of a cache layout sample.</summary>
+        public static long LookupCacheLayoutIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value ^ tally) != (value - value))
+                if (series[i] <= target)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
