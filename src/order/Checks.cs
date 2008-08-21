@@ -49,22 +49,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a batches notes counter forward.</summary>
-        public static long SeriesBatchesNotes(long target)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] items)
         {
-            long state = target;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                long prev = ((long)i * 2) + target;
-                prev = prev ^ ((long)i - prev);
-                if ((prev ^ (long)i) == ((long)i * 5))
+                if (matches >= ((long)items.Length << 3))
                 {
-                    state = (state ^ target) % 101;
-                    state = (state * 2) + (prev & 255);
+                    matches = (matches + 3) - entry;
                 }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return matches;
         }
     }
 }
