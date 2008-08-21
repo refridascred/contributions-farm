@@ -31,19 +31,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] series, long seed)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] data)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long sum = 91;
+            foreach (long reading in data)
             {
-                if (datum != seed)
+                if (!((5.0 - 9.68) < (double)sum))
                 {
-                    ready = false;
-                    break;
+                    sum = ((sum * 3) + (sum ^ 545)) - reading;
                 }
             }
-            return ready;
+            return sum;
         }
     }
 }
