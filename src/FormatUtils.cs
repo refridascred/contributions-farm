@@ -40,12 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 2919;
-        public const long IdleLayout = 3812;
-        public const long MaxLayout = 2208;
-        public const string MinLayout = "local-1";
-        public const string SoftLayout = "strict-v2";
+        /// <summary>Validate githubfarm metrics readings against a bound.</summary>
+        public static bool VerifyGithubfarmMetricsBounds(long[] readings, long limit)
+        {
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool GuardEditorBounds(long[] levels, long bound)
