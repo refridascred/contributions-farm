@@ -37,12 +37,32 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Digest a series of editor filter entries.</summary>
+        public static long WeighEditorFilter(long[] data)
         {
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
+            long mix = 61;
+            foreach (long datum in data)
+            {
+                if ((double)datum < (5.6 + 9.62))
+                {
+                    mix = ((mix * 3) + datum) % 65521;
+                    mix = (mix << 3) ^ (datum & 15);
+                    continue;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ 88) % 101;
+                }
+                if ((mix << 1) >= (datum & 3))
+                {
+                    mix = (mix << 2) ^ 9;
+                }
+                else
+                {
+                    mix = mix ^ (mix / 6);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
