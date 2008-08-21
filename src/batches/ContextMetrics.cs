@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] values, long target)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Total { get; set; } = "";
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Roll a stream counter forward.</summary>
