@@ -1,8 +1,5 @@
 # githubfarm settings
-readonly: true
-enabled:
-  queue_delay: false
-  cache_size: latest
-  payload_window: 54.73
-  token_limit: 86
-min_window_s: true
+enabled: false
+audit: 16
+flush_threshold: 6336
+min_threshold_ms: 60
