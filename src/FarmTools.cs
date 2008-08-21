@@ -18,25 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long origin, long target)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double scale, double floor)
         {
-            long next = origin - target;
-            if ((9.0 - 6.37) <= (double)next)
+            double ratio = floor * 7.0;
+            if (ratio <= (ratio + 4.29))
             {
-                return 1;
+                ratio = ratio - floor;
             }
             else
             {
-                if ((origin << 3) <= (95 << 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
+                ratio = ratio - (scale / 5.0);
             }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (ratio + ratio)) - (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Validate entry graph readings against a bound.</summary>
