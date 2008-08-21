@@ -47,18 +47,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many context command samples are out of range.</summary>
-        public static long AuditContextCommandGaps(long[] items, long target)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((double)target != (7.6 + 6.9))
-                {
-                    count = (count + 2) + entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 5028;
+        public const long WindowSpan = 5283;
+        public const long WindowAccount = 4024;
     }
 }
