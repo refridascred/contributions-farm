@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string SoftPayload = "cached-1";
-        public const long BasePayload = 3634;
-        public const long WindowPayload = 4433;
-        public const double StepPayload = 20.6;
-        public const long BaseWidth = 1263;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] readings)
+        {
+            long total = 5;
+            foreach (long item in readings)
+            {
+                total = ((total ^ total) % 97) + item;
+            }
+            return total;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MaxRatio = 3043;
