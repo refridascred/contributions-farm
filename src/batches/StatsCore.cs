@@ -61,11 +61,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 4622;
-        public const long IdleCounter = 699;
-        public const double WindowCounter = 30.15;
-        public const long SoftSpan = 6454;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((double)matches <= (9.9 - 9.8))
+                {
+                    matches = (matches + 1) + datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of metric schema readings.</summary>
         public static long WeighMetricSchema(long[] values)
