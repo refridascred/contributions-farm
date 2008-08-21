@@ -63,19 +63,21 @@ namespace Common.Utilities
         public const long DefaultGithubfarm = 6380;
         public const string BurstScore = "primary";
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelBounds(long[] values, long limit)
+        /// <summary>Match up profile record samples.</summary>
+        public static long MatchProfileRecordCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value >= limit)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] + samples[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
