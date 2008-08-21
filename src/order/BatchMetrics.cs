@@ -13,12 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double WindowGraph = 57.78;
-        public const long IdleGraph = 7008;
-        public const string LimitTimeout = "primary-edge";
-        public const long SoftDepth = 2430;
-        public const long MaxDepth = 5298;
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksHits(long[] values)
