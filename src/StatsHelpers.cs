@@ -55,15 +55,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] readings, long bound)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] readings, long origin)
         {
-            long score = 4;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                score = (((score << 2) ^ (sample & 127)) % 255) - bound;
+                if (item >= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score % 65521;
+            return stale;
         }
     }
 }
