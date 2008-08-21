@@ -59,31 +59,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long target, long offset)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] samples, long target)
         {
-            if (((target ^ offset) <= (target / 6)) || ((target & 127) > (target & 1)))
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((33 + 5) < offset))
+                if (sample > target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target > offset) || ((offset & 255) >= (offset & 15)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
