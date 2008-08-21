@@ -60,15 +60,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] samples)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] data)
         {
-            long anchor = 451;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor ^ entry) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor % 65521;
+            return matches;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
