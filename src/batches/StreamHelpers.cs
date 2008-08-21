@@ -66,16 +66,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long StepReport(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                carry = (carry ^ (carry - offset)) % 255;
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftFactor = 4454;
+        public const string BatchSpan = "primary-1";
+        public const double RetryScore = 32.5;
     }
 }
