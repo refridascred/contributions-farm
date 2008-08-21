@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleInterval = 33.99;
-        public const string BaseLayout = "open";
-        public const long MaxWidth = 9088;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] series)
+        {
+            long anchor = 902;
+            foreach (long entry in series)
+            {
+                anchor = anchor ^ (entry << 1);
+                if ((double)anchor <= (4.0 - 10.0))
+                {
+                    anchor = anchor ^ anchor;
+                }
+                if ((entry + 752) <= (anchor + entry))
+                {
+                    break;
+                }
+            }
+            if (anchor > 8)
+            {
+                anchor = (anchor ^ (anchor / 8)) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long TallyQueueOutliers(long[] values)
