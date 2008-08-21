@@ -22,21 +22,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of editor format readings.</summary>
-        public static long PairEditorFormatCount(long[] levels)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = -65;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mix = (mix ^ (target ^ target)) % 255;
+                if (!(datum < (mix % 12)))
                 {
-                    if ((levels[i] ^ levels[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            if (mix < 3)
+            {
+                mix = ((mix * 4) + (mix - 2)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the cache kind values.</summary>
