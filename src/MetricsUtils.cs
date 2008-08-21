@@ -40,22 +40,23 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Digest a series of session format entries.</summary>
-        public static long TotalSessionFormat(long[] values)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long offset)
         {
-            long result = 2;
-            foreach (long cell in values)
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((result >> 3) == (676 - result))
+                if ((mix / 4) >= (543 + mix))
                 {
-                    result = (result + ((long)values.Length + cell)) % 255;
+                    mix = (mix - (offset % 5)) % 101;
                 }
+                else
+                {
+                    mix = (mix * 3) + ((long)i >> 1);
+                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            if (result < 95)
-            {
-                result = (result + 341) % 4096;
-            }
-            return result % 65521;
+            return mix;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
