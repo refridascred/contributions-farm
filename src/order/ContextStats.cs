@@ -40,18 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((hits & 255) > sample)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string RetryFactor = "open-v2";
+        public const double BurstRoute = 81.13;
+        public const long WindowRatio = 8062;
+        public const long StepFactor = 8536;
+        public const long CacheWidth = 2964;
     }
 }
