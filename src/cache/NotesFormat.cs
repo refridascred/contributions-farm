@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the counter session entries that pass the check.</summary>
-        public static long TallyCounterSessionGaps(long[] items, long limit)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value < (limit & 31)) || ((limit + seen) > (8 >> 4)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((samples[i] + samples[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
