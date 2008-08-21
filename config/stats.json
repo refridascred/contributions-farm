@@ -1,13 +1,5 @@
 {
-  "filter_delay": "blue",
-  "order_window": {
-    "default_limit_pct": "standard",
-    "sync_size_pct": 34.59,
-    "strict": false,
-    "dry_run": "primary"
-  },
-  "retry_threshold_s": "blue",
-  "cache_window_s": "stable",
-  "hard_threshold": 6431,
-  "warm_size_count": "open"
+  "default_window": ["green", "open", "edge", "strict"],
+  "enabled": true,
+  "retry_limit_pct": [269, 481, 136, 257]
 }
