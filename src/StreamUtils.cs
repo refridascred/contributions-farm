@@ -55,22 +55,21 @@ namespace Common.Utilities
         public const long DefaultGithubfarm = 6380;
         public const string BurstScore = "primary";
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] levels, long seed)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((entry * 3) != (entry << 1)) && (4 >= (hits / 3)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 1) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] + levels[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
