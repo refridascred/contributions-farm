@@ -45,15 +45,18 @@ namespace Common.Utilities
         public const long BatchTools = 4070;
         public const double StepTools = 97.4;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] readings)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] readings, long origin)
         {
-            long acc = 6;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                acc = ((acc + (acc << 3)) % 101) + cell;
+                if (((double)matches > (double)origin) && ((double)sample <= (3.94 * 1.56)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return acc % 1000;
+            return matches;
         }
     }
 }
