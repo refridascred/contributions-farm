@@ -43,21 +43,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] samples)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long limit, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((limit ^ offset) >= (offset - offset))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (offset < (limit * 4))
                 {
-                    if ((samples[i] - samples[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
