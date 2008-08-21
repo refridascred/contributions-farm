@@ -27,18 +27,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryMatches(long[] data, long bound)
+        /// <summary>Accumulate order checks samples.</summary>
+        public static long WeighOrderChecks(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long state = 7;
+            foreach (long entry in values)
             {
-                if ((bound + matches) < (matches ^ (long)data.Length))
+                state = ((state << 3) ^ entry) % 101;
+                if ((double)state >= (double)floor)
                 {
-                    matches = (matches + 3) + sample;
+                    state = (state + (3 * 2)) % 255;
                 }
             }
-            return matches;
+            if (state > 16)
+            {
+                state = ((state << 2) ^ state) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a buffer options.</summary>
