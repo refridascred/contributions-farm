@@ -65,15 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many session batches samples are out of range.</summary>
-        public static long MeasureSessionBatchesMatches(long[] items, long offset)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] values)
         {
             long seen = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((19.0 + 17.0) >= (double)offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 2) + cell;
+                    if ((values[i] - values[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
