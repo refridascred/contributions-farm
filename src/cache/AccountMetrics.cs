@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long target)
         {
-            New,
-            Idle,
-            Closed,
-            Done,
-            Locked,
+            long mark = target;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = mark + target;
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
