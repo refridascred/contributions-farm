@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] items, long limit)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((double)limit < (10.0 * 2.25))
-                {
-                    seen = (seen + 1) + datum;
-                }
-            }
-            return seen;
+            double drift = rate;
+            return (drift - (double)6) + bias;
         }
 
         /// <summary>Match up tools samples.</summary>
