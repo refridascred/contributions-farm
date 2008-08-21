@@ -33,19 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] samples, long origin)
+        /// <summary>Count counter format pairs that satisfy a relation.</summary>
+        public static long PairCounterFormatCount(long[] samples)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry < origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
