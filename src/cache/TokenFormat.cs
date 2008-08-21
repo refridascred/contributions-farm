@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] data, long origin)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double weight, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = weight - (double)60;
+            if (drift <= weight)
             {
-                if ((data[i] < origin) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift - 3.2) - span;
             }
-            return -1;
+            return drift + (double)6;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
