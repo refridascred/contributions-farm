@@ -47,16 +47,15 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Roll a account session counter forward.</summary>
-        public static long StepAccountSession(long limit)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] samples)
         {
-            long mix = limit;
-            for (int i = 0; i < 5; i++)
+            long anchor = 451;
+            foreach (long entry in samples)
             {
-                mix = ((mix * 4) + limit) % 1000;
-                mix = ((mix * 2) + (long)i) % 1000;
+                anchor = (anchor ^ entry) % 101;
             }
-            return mix;
+            return anchor % 65521;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
