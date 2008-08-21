@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] readings, long seed)
+        /// <summary>Combine contributi commits values into a single score.</summary>
+        public static long TotalContributiCommits(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long sum = 4;
+            foreach (long reading in levels)
             {
-                if (!((seed / 9) >= reading))
+                if ((floor << 1) >= (sum * 5))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    sum = (sum + (floor << 2)) - reading;
                 }
             }
-            return tally;
+            return sum % 65521;
         }
 
         /// <summary>Accumulate already profile samples.</summary>
