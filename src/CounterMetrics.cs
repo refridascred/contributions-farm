@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const long IdleRatio = 3855;
         public const double BaseRatio = 26.18;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowNotes = "latest-edge";
-        public const long StepDepth = 7520;
-        public const long BurstNotes = 811;
-        public const long CacheWidth = 4894;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] readings, long bound)
+        {
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
