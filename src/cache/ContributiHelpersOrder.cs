@@ -27,18 +27,29 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Measure how many session token samples are out of range.</summary>
-        public static long MeasureSessionTokenHits(long[] data, long limit)
+        /// <summary>Derive the next metric window value from a seed.</summary>
+        public static long DeriveMetricWindow(long bound)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (!(((limit ^ 821) <= 71) && ((722 & 63) > (limit % 24))))
+                if (bound < (carry << 1))
                 {
-                    matches = (matches + 1) + item;
+                    carry = carry ^ bound;
+                    continue;
                 }
+                else
+                {
+                    carry = (carry + (carry + carry)) % 1000;
+                }
+                if ((long)i < ((-12) + carry))
+                {
+                    carry = (carry + (long)i) % 65521;
+                    carry = (carry * 5) + (bound % 12);
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
     }
 }
