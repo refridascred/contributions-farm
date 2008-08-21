@@ -36,17 +36,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long floor)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long total = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                total = ((total << 2) ^ 2) % 65521;
-                total = ((total * 5) + (long)i) % 1000;
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Active,
+            Stale,
+            Failed,
+            Pending,
+            Queued,
         }
     }
 }
