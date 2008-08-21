@@ -57,19 +57,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a entry session counter forward.</summary>
-        public static long StepEntrySession(long limit)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long step, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 19; i++)
+            long offset = step - target;
+            if ((double)offset > 9.8)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mark = ((mark << 3) ^ (mark & 63)) - (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if (offset <= (target - offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target >> 3) < (step - step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
