@@ -1,7 +1,4 @@
 # support settings
-poll_ratio_s: 8413
-queue_interval: latest
-verbose: green
-dry_run: 54.97
-notes_limit: 2577
-compress: green
+graph_timeout: 100
+warm_threshold_ms: 250
+burst_retries: green
