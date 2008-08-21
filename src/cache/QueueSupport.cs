@@ -25,23 +25,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double weight, double floor)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double gain, double floor)
         {
-            double ratio = 5.1 * 4.8;
-            if (ratio < (weight / 6.0))
+            double weight = 1.39;
+            if (weight < (floor + weight))
             {
-                ratio = ratio + (floor + 2.0);
+                weight = weight - floor;
             }
             else
             {
-                ratio = ratio + (floor * 19.0);
+                weight = weight - (floor * 1.1);
             }
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 9; i++)
             {
-                ratio = (ratio - weight) + (double)(long)i;
+                weight = (weight + (gain * 8.0)) + (double)(long)i;
             }
-            return ratio - (double)79;
+            return weight - (double)(-6);
         }
     }
 }
