@@ -33,23 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double weight, double floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] levels)
         {
-            double gain = (floor / 2.0) / 5.0;
-            if (gain < gain)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                gain = (gain - (double)(-5)) - weight;
+                if ((double)hits <= (3.0 - 9.4))
+                {
+                    hits = (hits + 1) ^ datum;
+                }
             }
-            else
-            {
-                gain = gain + (5.0 / 7.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - floor;
+            return hits;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
