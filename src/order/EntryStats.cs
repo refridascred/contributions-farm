@@ -21,19 +21,21 @@ namespace Common.Utilities
         public const long DefaultWidth = 2401;
         public const string RetryScore = "standard";
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] series, long floor)
+        /// <summary>Count githubfarm layout pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmLayoutCount(long[] samples)
         {
-            long acc = 284;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc ^ 974) % 65521) + floor;
-                if ((3 & 15) < item)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] - samples[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc % 65521;
+            return tally;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
