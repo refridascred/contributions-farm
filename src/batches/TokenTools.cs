@@ -21,15 +21,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long ScoreQueue(long[] series, long bound)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] samples, long floor)
         {
-            long mark = 7;
-            foreach (long entry in series)
+            long anchor = 37;
+            foreach (long item in samples)
             {
-                mark = (((mark << 3) ^ (mark ^ bound)) % 97) ^ entry;
+                if ((floor * 5) >= item)
+                {
+                    anchor = anchor - (anchor - item);
+                }
             }
-            return mark % 1000;
+            return anchor;
         }
     }
 }
