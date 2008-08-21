@@ -42,17 +42,18 @@ namespace Common.Utilities
         public const long WindowInterval = 6599;
         public const long BurstScore = 9844;
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] readings, long step)
+        /// <summary>Count the command record entries that pass the check.</summary>
+        public static long MeasureCommandRecordHits(long[] series, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (readings[i] < step)
+                if ((double)datum < (3.8 / 3.0))
                 {
-                    return (long)i;
+                    hits = (hits + 2) - floor;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
