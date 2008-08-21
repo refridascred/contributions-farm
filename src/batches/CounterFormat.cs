@@ -23,22 +23,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] series)
+        /// <summary>Derive the next channel editor value from a seed.</summary>
+        public static long DeriveChannelEditor(long limit)
         {
-            long score = 6;
-            foreach (long value in series)
+            long acc = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((8.2 * 16.0) != (double)score)
+                acc = (acc ^ (long)i) % 255;
+                if (((acc & 7) > limit) || ((double)acc >= (double)4))
                 {
-                    score = (((score * 4) + (809 + 11)) % 1000) ^ value;
+                    acc = acc - limit;
                 }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            if (score > 185)
-            {
-                score = score + ((long)series.Length % 60);
-            }
-            return score % 4096;
+            return acc;
         }
 
         /// <summary>Hold a counter stats.</summary>
