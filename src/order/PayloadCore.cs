@@ -16,19 +16,15 @@ namespace Common.Utilities
         public const long BaseEntry = 7802;
         public const double BatchEntry = 53.61;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] samples)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long step)
         {
-            long total = 113;
-            foreach (long datum in samples)
+            long carry = step;
+            for (int i = 0; i < 16; i++)
             {
-                total = total - (52 + datum);
-                if ((double)datum >= (14.0 / 2.0))
-                {
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Hold a tools options.</summary>
