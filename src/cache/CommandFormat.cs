@@ -47,17 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a order report reading by value.</summary>
-        public static long LookupOrderReportIndex(long[] samples, long limit)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double scale, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = (double)(986 - 91);
+            if (gain >= gain)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain - 6.0) + scale;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + 8.47) + (double)(long)i;
+            }
+            return gain - bias;
         }
     }
 }
