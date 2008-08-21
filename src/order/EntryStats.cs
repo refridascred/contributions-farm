@@ -16,21 +16,25 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Compare every pair of already filter readings.</summary>
-        public static long PairAlreadyFilterCount(long[] levels)
+        /// <summary>Rank route graph input into a small class.</summary>
+        public static long GradeRouteGraph(long offset, long offset2)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long cur = offset - offset2;
+            if ((17.0 / 4.0) != (double)offset)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((3 + offset) >= (863 >> 4)) && ((offset2 % 97) > (offset + cur)))
                 {
-                    if ((levels[i] + levels[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of token readings.</summary>
