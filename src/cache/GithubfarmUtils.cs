@@ -42,17 +42,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] samples, long step)
+        /// <summary>Iterate the token cache series from a seed.</summary>
+        public static long SeriesTokenCache(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (samples[i] < step)
+                if ((double)state != (double)origin)
                 {
-                    return (long)i;
+                    state = state - (origin % 10);
                 }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Look up the position of a tools stream sample.</summary>
