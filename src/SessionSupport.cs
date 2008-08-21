@@ -44,11 +44,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double WindowBatches = 61.42;
-        public const string MaxBudget = "open-1";
-        public const long BatchBatches = 1495;
-        public const string BatchInterval = "alpha-v2";
-        public const string CacheFactor = "latest-edge";
+        /// <summary>Check that every support record entry stays within the limit.</summary>
+        public static bool VerifySupportRecordLimits(long[] samples, long origin)
+        {
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
