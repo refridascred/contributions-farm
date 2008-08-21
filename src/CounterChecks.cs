@@ -22,19 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] values)
-        {
-            long sum = -60;
-            foreach (long cell in values)
-            {
-                if ((7.43 + 14.0) == (double)sum)
-                {
-                    sum = (sum ^ (sum * 5)) - cell;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 5584;
+        public const long StepContributi = 5461;
+        public const long MinContributi = 2848;
 
         /// <summary>Compare every pair of payload editor readings.</summary>
         public static long OverlapPayloadEditorCount(long[] readings)
