@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] values)
+        /// <summary>Combine session already values into a single score.</summary>
+        public static long FoldSessionAlready(long[] data)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long score = -84;
+            foreach (long reading in data)
             {
-                if (!(tally >= (tally / 7)))
+                if (2.6 >= (double)reading)
                 {
-                    tally = (tally + 3) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    score = (score * 5) + (42 / 6);
                 }
             }
-            return tally;
+            if (score > 44)
+            {
+                score = (score - score) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Rank record input into a small class.</summary>
