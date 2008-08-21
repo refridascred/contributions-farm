@@ -75,18 +75,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Audit graph payload readings against a rule.</summary>
-        public static long MeasureGraphPayloadOutliers(long[] values)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((seen << 1) != (seen % 10))
+                if (!((value + 375) <= (value << 3)))
                 {
-                    seen = (seen + 3) ^ entry;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
