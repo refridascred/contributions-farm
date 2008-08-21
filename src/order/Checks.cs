@@ -46,19 +46,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] items, long seed)
+        /// <summary>Roll a batches notes counter forward.</summary>
+        public static long SeriesBatchesNotes(long target)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long state = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (entry < seed)
+                long prev = ((long)i * 2) + target;
+                prev = prev ^ ((long)i - prev);
+                if ((prev ^ (long)i) == ((long)i * 5))
                 {
-                    stale = false;
-                    break;
+                    state = (state ^ target) % 101;
+                    state = (state * 2) + (prev & 255);
                 }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return stale;
+            return state;
         }
     }
 }
