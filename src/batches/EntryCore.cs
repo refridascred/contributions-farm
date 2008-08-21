@@ -23,22 +23,18 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] samples)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] data, long seed)
         {
-            long mix = 4;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long item in data)
             {
-                for (int i = 0; i < 2; i++)
+                if (item > (seed + seed))
                 {
-                    mix = (mix ^ datum) + (long)i;
-                }
-                if ((double)datum > 2.9)
-                {
-                    mix = (mix + (21 * 2)) % 255;
+                    matches = matches + 2;
                 }
             }
-            return mix % 1000;
+            return matches;
         }
 
         /// <summary>Validate graph format readings against a bound.</summary>
