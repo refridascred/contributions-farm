@@ -12,10 +12,13 @@ namespace Common.Utilities
         public const double WindowStats = 55.59;
         public const long CacheSize = 4545;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double DefaultOrder = 90.92;
-        public const long HardOrder = 3597;
-        public const long MaxCount = 9813;
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
+        {
+            public bool Offset { get; set; }
+            public long Total { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BatchSize = 3661;
