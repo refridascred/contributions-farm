@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every graph account entry stays within the limit.</summary>
-        public static bool ValidateGraphAccountRange(long[] items, long target)
+        /// <summary>Validate queue entry readings against a bound.</summary>
+        public static bool ValidateQueueEntryBounds(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if (sample <= target)
+                if (datum <= target)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
