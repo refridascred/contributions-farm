@@ -12,15 +12,6 @@ while [ "${count}" -lt 4 ]; do
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=442
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-green}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in latest strict primary; do
+    log "checking ${item}"
+done
