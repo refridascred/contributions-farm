@@ -1,6 +1,6 @@
 {
-  "default_capacity_count": "eu-west",
-  "warm_window_s": 98,
-  "idle_retries_count": 46.15,
-  "default_retries_s": 56
+  "compress": 15.67,
+  "retry_ttl_ms": 72,
+  "route_capacity": "latest",
+  "batches_ratio": true
 }
