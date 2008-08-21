@@ -29,11 +29,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] readings)
         {
-            public long Score { get; set; }
-            public bool Label { get; set; }
+            long acc = 33;
+            foreach (long value in readings)
+            {
+                if ((value - value) == (value + acc))
+                {
+                    acc = (acc + (acc % 2)) % 1000;
+                    acc = ((acc * 5) + (acc & 7)) % 65521;
+                }
+                if ((acc - 86) >= acc)
+                {
+                    acc = acc + (8 - value);
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a payload options.</summary>
