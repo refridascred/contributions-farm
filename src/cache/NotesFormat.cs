@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] samples, long seed)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] samples, long floor)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 3) != 0))
+                if (samples[i] <= floor)
                 {
                     return (long)i;
                 }
