@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] data, long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] readings, long seed)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (cell != bound)
+                if (!((seed / 9) >= reading))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
