@@ -19,19 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next cluster window value.</summary>
-        public static double ScaleClusterWindow(double ratio, double floor)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            double gain = (ratio + ratio) / 6.0;
-            if (gain < (ratio + floor))
-            {
-                gain = gain + (ratio + gain);
-            }
-            else
-            {
-                gain = gain - ratio;
-            }
-            return gain + gain;
+            Draft,
+            Retry,
+            Failed,
+            Closed,
+            Stale,
         }
 
         /// <summary>Hold a stats summary.</summary>
