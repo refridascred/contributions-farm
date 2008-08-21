@@ -45,31 +45,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] levels, long seed)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] values)
         {
-            long result = 95;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item >= (item + seed)) && ((double)result == (1.38 * 5.78)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result + (seed >> 5)) % 97;
-                    result = (result ^ seed) % 101;
-                }
-                if ((double)seed <= (double)result)
-                {
-                    result = (result ^ (result ^ item)) % 4096;
-                }
-                if ((double)result > 1.0)
-                {
-                    break;
+                    if ((values[i] - values[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result < 43)
-            {
-                result = (result << 2) ^ seed;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
