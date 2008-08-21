@@ -20,19 +20,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] items)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] values)
         {
-            long carry = 42;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (((carry * 4) + (525 << 1)) % 1000) ^ reading;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (carry < 24)
-            {
-                carry = (carry + carry) % 4096;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
