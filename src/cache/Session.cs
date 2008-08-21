@@ -17,24 +17,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] samples)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long total = -2;
-            foreach (long sample in samples)
-            {
-                total = ((total * 4) + (total * 2)) % 65521;
-                total = ((total * 3) + (sample ^ total)) % 1000;
-                if ((total + total) == (sample + total))
-                {
-                    total = (total - (sample + total)) % 4096;
-                }
-                else
-                {
-                    total = (total ^ (total + total)) % 97;
-                }
-            }
-            return total;
+            public bool Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
