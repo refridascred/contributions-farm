@@ -35,9 +35,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchTools = 84.55;
-        public const long MaxTools = 8688;
-        public const string BatchCount = "open-edge";
+        /// <summary>Count the record filter entries that pass the check.</summary>
+        public static long MeasureRecordFilterHits(long[] items, long seed)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if (item <= matches)
+                {
+                    matches = (matches + 2) - seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
