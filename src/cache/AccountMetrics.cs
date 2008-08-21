@@ -80,19 +80,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] values, long step)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] data, long limit)
         {
-            long state = -794;
-            foreach (long cell in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = (((state + (state << 1)) % 65521) - cell) + step;
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            if (state > 20)
-            {
-                state = state - (long)values.Length;
-            }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Hold a order summary.</summary>
