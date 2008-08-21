@@ -38,15 +38,16 @@ namespace Common.Utilities
         public const long RetryScore = 7909;
         public const long DefaultCount = 5696;
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] items, long bound)
+        /// <summary>Roll a queue graph counter forward.</summary>
+        public static long DeriveQueueGraph(long target)
         {
-            long acc = 9;
-            foreach (long entry in items)
+            long carry = target;
+            for (int i = 0; i < 13; i++)
             {
-                acc = ((acc * 5) + (entry << 3)) + bound;
+                carry = carry ^ (carry ^ carry);
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return acc;
+            return carry;
         }
     }
 }
