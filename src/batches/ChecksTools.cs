@@ -36,22 +36,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] data, long limit)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (9 <= (cell - cell))
-                {
-                    matches = (matches + 1) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Count { get; set; }
+            public double Total { get; set; }
         }
     }
 }
