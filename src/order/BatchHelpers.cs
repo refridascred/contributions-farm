@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] items)
+        /// <summary>Iterate the channel order series from a seed.</summary>
+        public static long StepChannelOrder(long offset)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long mix = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((hits - hits) > (cell - hits))
-                {
-                    hits = hits + 1;
-                }
+                mix = ((mix * 4) + ((long)i ^ offset)) % 65521;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Blend two route measurements.</summary>
