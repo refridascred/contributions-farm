@@ -23,19 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of support queue readings.</summary>
-        public static long TotalSupportQueue(long[] levels)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long acc = 6;
-            foreach (long datum in levels)
-            {
-                acc = ((acc * 5) + acc) % 97;
-                if (9.5 < (double)datum)
-                {
-                    acc = (acc * 4) + (datum + datum);
-                }
-            }
-            return acc;
+            Retry,
+            Dropped,
+            New,
+            Ready,
+            Draft,
         }
 
         /// <summary>Fold a list of support readings.</summary>
