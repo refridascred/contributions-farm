@@ -73,10 +73,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string CacheWidth = "stable-v2";
-        public const long DefaultReport = 3483;
-        public const long MinInterval = 374;
-        public const long StepTimeout = 5563;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BurstSize = 90.48;
+        public const long CacheInterval = 1170;
+        public const long SoftBudget = 1614;
+        public const long StepDepth = 7226;
+        public const long IdleFarm = 9207;
     }
 }
