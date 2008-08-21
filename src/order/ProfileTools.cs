@@ -68,22 +68,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] items, long step)
+        /// <summary>Adjust a tools metrics reading.</summary>
+        public static double ScaleToolsMetrics(double scale, double span)
         {
-            long count = 0;
-            foreach (long datum in items)
+            double drift = (double)(864 + (-76));
+            if (drift <= (double)95)
             {
-                if ((count * 3) != (step ^ 233))
-                {
-                    count = (count + 2) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                drift = (drift + span) + scale;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + drift;
         }
     }
 }
