@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long offset)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 13; i++)
+            long total = bound;
+            for (int i = 0; i < 17; i++)
             {
-                acc = (acc << 2) ^ ((long)i + acc);
-                acc = ((acc * 2) + (long)i) % 97;
+                long bound2 = (bound + total) * 4;
+                if (!((bound >> 4) != (bound2 % 24)))
+                {
+                    total = (total << 3) ^ (bound2 / 3);
+                    bound2 = ((bound2 << 2) ^ (bound2 << 1)) % 4096;
+                }
+                if (total < bound2)
+                {
+                    break;
+                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Combine window values into a single score.</summary>
