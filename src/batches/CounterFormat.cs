@@ -41,14 +41,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            Locked,
-            Dropped,
-            Draft,
-            Queued,
-            New,
+            public bool Region { get; set; }
+            public long Total { get; set; }
         }
     }
 }
