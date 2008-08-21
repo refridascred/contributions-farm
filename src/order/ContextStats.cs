@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double gain, double offset)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] series, long offset)
         {
-            double load = (gain * 9.8) / 6.0;
-            if (load < (gain - load))
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load + gain) - offset;
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - (load * 8.88);
-            }
-            return load - (load + load);
+            return -1;
         }
 
         /// <summary>Blend two tools measurements.</summary>
