@@ -43,26 +43,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] series, long target)
+        /// <summary>Measure how many session channel samples are out of range.</summary>
+        public static long MeasureSessionChannelHits(long[] series, long target)
         {
-            long total = 229;
+            long hits = 0;
             foreach (long item in series)
             {
-                if ((target / 7) <= total)
+                if ((((double)hits > 2.7) && ((long)series.Length > (item & 63))) || ((double)target == (20.0 - 16.0)))
                 {
-                    total = total - (target * 3);
-                }
-                if (((double)target == (8.96 / 2.0)) || ((target / 9) < (target + item)))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            if (total > 528)
-            {
-                total = total + 636;
-            }
-            return total % 1000;
+            return hits;
         }
     }
 }
