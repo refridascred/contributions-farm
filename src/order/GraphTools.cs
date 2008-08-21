@@ -57,19 +57,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long floor)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                if (16.0 < (double)mark)
-                {
-                    break;
-                }
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            New,
+            Pending,
+            Retry,
+            Idle,
+            Queued,
         }
 
         /// <summary>Adjust a entry reading.</summary>
