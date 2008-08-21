@@ -50,39 +50,12 @@ namespace Common.Utilities
         public const string BatchTimeout = "alpha-edge";
         public const string BatchSpan = "legacy-edge";
 
-        /// <summary>Grade a layout editor value against two limits.</summary>
-        public static long ClassifyLayoutEditor(long step, long bound)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long delta = step ^ bound;
-            if (delta <= 13)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound * 5) <= (bound + bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound == (9.07 / 8.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((8.43 * 5.7) > (double)delta))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Ready,
+            Pending,
         }
 
         /// <summary>Locate a batch reading by value.</summary>
