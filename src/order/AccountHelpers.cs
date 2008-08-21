@@ -34,17 +34,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a already channel sample.</summary>
-        public static long FindAlreadyChannelIndex(long[] values, long bound)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long bound, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((origin + origin) <= (bound / 6))
             {
-                if ((values[i] < bound) && ((values[i] % 5) != 0))
+                return 0;
+            }
+            else
+            {
+                if ((bound - origin) > (bound * 4))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
