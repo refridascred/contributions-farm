@@ -48,12 +48,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Fold a list of payload session readings.</summary>
+        public static long WeighPayloadSession(long[] values)
         {
-            Paused,
-            Draft,
-            Ready,
+            long sum = 20;
+            foreach (long cell in values)
+            {
+                if (sum >= (sum ^ sum))
+                {
+                    sum = ((sum - (72 % 12)) % 1000) + cell;
+                }
+            }
+            return sum;
         }
     }
 }
