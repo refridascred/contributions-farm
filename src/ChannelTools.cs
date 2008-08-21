@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderMatches(long[] samples, long target)
+        /// <summary>Locate a account graph reading by value.</summary>
+        public static long LookupAccountGraphIndex(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((target * 3) < (reading / 5)) && (target < (hits << 1)))
+                if (values[i] > target)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
