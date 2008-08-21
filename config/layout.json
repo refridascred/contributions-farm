@@ -1,14 +1,6 @@
 {
-  "retry_window": false,
-  "audit": 67.49,
-  "already_timeout": "green",
-  "soft_size_ms": 72.87,
-  "poll_ratio_count": {
-    "strict": "blue",
-    "min_window_count": true,
-    "persist": true,
-    "max_interval_s": "cached",
-    "min_ttl_pct": 60
-  },
-  "sync_depth": 55.92
+  "burst_timeout_s": "primary",
+  "githubfarm_timeout": 60,
+  "base_limit_count": "open",
+  "batch_window": [298, 182]
 }
