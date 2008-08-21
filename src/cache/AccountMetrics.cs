@@ -17,22 +17,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit cache token readings against a rule.</summary>
-        public static long TallyCacheTokenHits(long[] items)
+        /// <summary>Fold a list of account context readings.</summary>
+        public static long ScoreAccountContext(long[] items, long target)
         {
-            long tally = 0;
+            long state = 73;
             foreach (long cell in items)
             {
-                if ((58 + cell) >= (tally - cell))
+                if ((double)9 != (double)cell)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    state = (((state * 3) + state) % 1000) + target;
                 }
             }
-            return tally;
+            return state % 97;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
