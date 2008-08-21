@@ -32,19 +32,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every entry editor entry stays within the limit.</summary>
-        public static bool CheckEntryEditorBounds(long[] values, long step)
+        /// <summary>Rank queue tools input into a small class.</summary>
+        public static long BucketQueueTools(long bound, long bound2)
         {
-            bool valid = true;
-            foreach (long value in values)
+            if ((bound2 < (bound2 << 1)) || (266 > (bound + bound2)))
             {
-                if (value != step)
+                return 3;
+            }
+            else
+            {
+                if (!((5.4 * 2.0) >= (double)bound))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return valid;
         }
     }
 }
