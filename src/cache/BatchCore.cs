@@ -10,16 +10,19 @@ namespace Common.Utilities
         public const long MinRatio = 6893;
         public const long SoftSupport = 3452;
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long target)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutRange(long[] items, long floor)
         {
-            long total = target;
-            for (int i = 0; i < 11; i++)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                total = (total ^ (target + target)) % 97;
-                total = ((total * 3) + (long)i) % 97;
+                if (datum >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Find the first order format entry that matches the target.</summary>
