@@ -1,7 +1,7 @@
 {
-  "burst_timeout_count": 30,
-  "report_capacity": true,
-  "burst_size": [15, 136, 461, 405],
-  "metric_delay": 6508,
-  "min_timeout_ms": 4784
+  "min_threshold": "green",
+  "githubfarm_threshold": 4.77,
+  "strict": 14.75,
+  "hard_timeout_s": 83.98,
+  "compress": false
 }
