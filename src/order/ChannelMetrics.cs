@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public bool Region { get; set; }
-            public string Rank { get; set; } = "";
+            Done,
+            Stale,
+            Idle,
+            Pending,
+            Retry,
         }
 
         /// <summary>Describe the counter kind values.</summary>
