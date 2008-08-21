@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long floor, long limit)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] readings, long step)
         {
-            if ((limit > (floor * 2)) || (floor > (limit >> 4)))
+            long score = 5;
+            foreach (long item in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (limit < (5 ^ floor))
+                if ((item + item) <= step)
                 {
-                    return 2;
+                    score = score + (-7);
                 }
                 else
                 {
-                    if (((double)limit != (1.68 - 8.47)) || ((limit * 2) <= (floor * 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (floor <= (8 * 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    score = (score ^ (item / 9)) % 101;
+                }
+                if ((item * 5) == (step + item))
+                {
+                    break;
                 }
             }
+            return score;
         }
 
         /// <summary>Blend two support measurements.</summary>
