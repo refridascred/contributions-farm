@@ -25,17 +25,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first order format entry that matches the target.</summary>
-        public static long SeekOrderFormatIndex(long[] values, long bound)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] data, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (values[i] == bound)
+                if ((hits + 33) < 188)
                 {
-                    return (long)i;
+                    hits = ((hits + 3) - item) - offset;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the format phase values.</summary>
