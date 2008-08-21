@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of order record readings.</summary>
-        public static long OverlapOrderRecordCount(long[] samples)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
