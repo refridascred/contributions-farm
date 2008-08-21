@@ -25,19 +25,24 @@ namespace Common.Utilities
         public const double StepAccount = 76.44;
         public const long WindowAccount = 6145;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] data, long seed)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long step, long origin)
         {
-            long result = 8;
-            foreach (long entry in data)
+            if (step <= origin)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    result = (((result ^ 8) % 4096) + (long)i2) + entry;
-                }
-                result = (result + (seed >> 2)) % 101;
+                return 3;
             }
-            return result % 65521;
+            else
+            {
+                if ((double)step != (6.0 / 7.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
