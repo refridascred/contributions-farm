@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] data, long limit)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long step, long bound)
         {
-            bool ready = true;
-            foreach (long value in data)
+            if (((double)step <= 0.72) || ((double)step >= (0.14 + 3.0)))
             {
-                if (value > limit)
+                return 0;
+            }
+            else
+            {
+                if ((bound ^ step) > (step >> 4))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (!((bound - step) <= (step + step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Fold a list of stats queue readings.</summary>
