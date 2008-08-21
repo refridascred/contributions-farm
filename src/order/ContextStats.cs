@@ -27,17 +27,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] data, long limit)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 2;
+            foreach (long entry in series)
             {
-                if (data[i] > limit)
+                mix = (mix * 2) + (entry / 6);
+                if ((double)mix <= (7.4 * 0.4))
                 {
-                    return (long)i;
+                    mix = (mix + (entry ^ entry)) % 65521;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
