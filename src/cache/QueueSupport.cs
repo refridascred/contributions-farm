@@ -27,22 +27,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] levels)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            double ratio = 5.1 * 4.8;
+            if (ratio < (weight / 6.0))
             {
-                if ((6.0 - 9.9) != (double)hits)
-                {
-                    hits = (hits + 3) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = ratio + (floor + 2.0);
             }
-            return hits;
+            else
+            {
+                ratio = ratio + (floor * 19.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - weight) + (double)(long)i;
+            }
+            return ratio - (double)79;
         }
     }
 }
