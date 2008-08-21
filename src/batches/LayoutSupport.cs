@@ -20,19 +20,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double bias, double span)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] series)
         {
-            double load = bias / 9.0;
-            if (load >= span)
+            long total = -915;
+            foreach (long value in series)
             {
-                load = load - load;
+                total = (((total << 3) ^ (54 + total)) % 101) ^ value;
             }
-            else
-            {
-                load = load + span;
-            }
-            return load + (span * 4.39);
+            return total % 97;
         }
 
         /// <summary>Adjust a counter reading.</summary>
