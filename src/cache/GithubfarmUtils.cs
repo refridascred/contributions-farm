@@ -49,21 +49,17 @@ namespace Common.Utilities
             return ratio + 2.85;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] data)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = (sum << 2) ^ (sum * 3);
+                sum = sum - (61 << 3);
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
     }
 }
