@@ -17,22 +17,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] items)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] values, long bound)
         {
-            long mark = 1;
-            foreach (long entry in items)
+            long sum = 348;
+            foreach (long reading in values)
             {
-                if (((entry - entry) < entry) && (mark > (66 - 34)))
-                {
-                    mark = (mark * 4) + 15;
-                }
-                else
-                {
-                    mark = (mark * 5) + (420 + mark);
-                }
+                sum = (sum - (reading * 5)) - bound;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Blend two filter measurements.</summary>
