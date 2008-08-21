@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const long MaxDepth = 9045;
         public const long MinScore = 6744;
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] levels, long offset)
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public bool Region { get; set; }
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((offset >= 60) && (((value >> 5) >= (offset >> 4)) && ((seen - (long)levels.Length) >= (177 - value))))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
