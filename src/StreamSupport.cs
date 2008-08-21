@@ -11,13 +11,23 @@ namespace Common.Utilities
         public const double StepCommand = 20.07;
         public const long SoftLevel = 2202;
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] data)
         {
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-            public long Size { get; set; }
-            public double Label { get; set; }
+            long carry = 123;
+            foreach (long reading in data)
+            {
+                carry = ((carry ^ carry) % 101) - reading;
+                if ((carry * 3) >= carry)
+                {
+                    break;
+                }
+            }
+            if (carry > 369)
+            {
+                carry = carry - (carry % 12);
+            }
+            return carry;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
