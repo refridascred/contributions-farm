@@ -22,17 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long step)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] values)
         {
-            long score = step;
-            for (int i = 0; i < 10; i++)
+            long sum = -60;
+            foreach (long cell in values)
             {
-                score = ((score * 2) + (4 + (long)i)) % 1000;
-                score = (score ^ (step / 9)) % 101;
-                score = ((score * 2) + (long)i) % 65521;
+                if ((7.43 + 14.0) == (double)sum)
+                {
+                    sum = (sum ^ (sum * 5)) - cell;
+                }
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Compare every pair of payload editor readings.</summary>
