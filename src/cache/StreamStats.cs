@@ -66,17 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] series, long offset)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Scale a account payload figure with a bias.</summary>
