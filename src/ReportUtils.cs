@@ -48,23 +48,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long origin, long offset)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long offset, long limit)
         {
-            long prev = origin ^ offset;
-            if ((prev + offset) <= offset)
+            long cur = offset - limit;
+            if (((cur + limit) <= (cur << 2)) && ((double)cur < (4.42 * 1.1)))
             {
-                return 0;
+                return 2;
             }
             else
             {
-                if (offset >= origin)
+                if ((offset >> 2) >= (cur & 3))
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    return 6;
+                    return 4;
                 }
             }
         }
