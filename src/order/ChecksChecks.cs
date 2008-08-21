@@ -19,15 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] values, long bound)
+        /// <summary>Look up the position of a already entry sample.</summary>
+        public static long FindAlreadyEntryIndex(long[] readings, long seed)
         {
-            long sum = 348;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum - (reading * 5)) - bound;
+                if ((readings[i] == seed) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Blend two filter measurements.</summary>
