@@ -13,11 +13,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BaseGithubfarm = "cached";
-        public const long WindowCount = 1336;
-        public const string CacheGithubfarm = "fallback-edge";
-        public const long RetryTimeout = 9525;
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const string RetryToken = "open";
