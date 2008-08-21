@@ -22,12 +22,40 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchSpan = 3753;
-        public const double StepOrder = 82.57;
-        public const long HardOrder = 8748;
-        public const long StepSize = 1362;
-        public const long SoftFactor = 6872;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long bound, long limit)
+        {
+            long span = bound - limit;
+            if (!(span >= bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((1.2 + 20.0) >= 8.0)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((12.0 * 0.2) > (double)bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)limit == (double)24) && ((limit - bound) < bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
