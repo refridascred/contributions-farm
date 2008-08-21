@@ -29,9 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleSpan = 4243;
-        public const string MinSpan = "standard";
-        public const long CacheScore = 4292;
+        /// <summary>Check that every entry editor entry stays within the limit.</summary>
+        public static bool CheckEntryEditorBounds(long[] values, long step)
+        {
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
