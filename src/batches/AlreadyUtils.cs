@@ -12,25 +12,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Rank notes cache input into a small class.</summary>
-        public static long GradeNotesCache(long step, long origin)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long step2 = step - origin;
-            if (!((origin % 64) <= 32))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((4.39 - 9.0) < (double)step2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
