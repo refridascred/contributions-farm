@@ -25,38 +25,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long target, long step)
-        {
-            if (((target + 7) >= (target - step)) && ((37 + step) != (step + step)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)step <= (5.3 / 4.0)) && ((target % 7) >= target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target + step) <= (target - 317))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (step >= target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 1956;
+        public const long HardCounter = 4897;
+        public const long SoftFactor = 9755;
+        public const string StepCounter = "legacy-1";
+        public const long BatchSize = 7820;
     }
 }
