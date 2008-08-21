@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] items, long offset)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double bias, double bias2)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            double ratio = bias;
+            if (ratio < (ratio / 9.0))
             {
-                if (datum >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = (ratio - (bias / 3.0)) + bias2;
             }
-            return ok;
+            else
+            {
+                ratio = ratio + bias;
+            }
+            return ratio - (double)(-403);
         }
 
         /// <summary>Scale a command window figure with a bias.</summary>
