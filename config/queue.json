@@ -1,12 +1,20 @@
 {
-  "compress": {
-    "max_ttl": 37.84,
-    "verbose": false,
-    "graph_limit": "local"
-  },
-  "verbose": ["eu-west", "strict", "legacy", "latest"],
-  "enabled": [191, 241, 136, 47],
-  "soft_retries": false,
-  "command_timeout": "strict",
-  "retry_ratio_ms": "fallback"
+  "githubfarm_capacity": false,
+  "cache_ratio": "green",
+  "queue_threshold": 50.0,
+  "command_delay": false,
+  "cache_capacity_pct": {
+    "poll_retries": "strict",
+    "metrics_limit": 4650,
+    "cache_delay_count": {
+      "cache_ratio": "open",
+      "audit": "strict",
+      "base_threshold": true,
+      "enabled": "open",
+      "cache_ratio_s": [16, 333, 26],
+      "retry_interval_count": true
+    },
+    "editor_timeout": "cached",
+    "batches_depth": "stable"
+  }
 }
