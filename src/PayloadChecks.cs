@@ -14,18 +14,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] samples)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountMatches(long[] samples)
         {
-            long result = 1;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((result < (item ^ item)) || ((item + item) > result))
+                if (value > (value + value))
                 {
-                    result = ((result << 2) ^ (item - result)) % 1000;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
