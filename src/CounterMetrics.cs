@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] readings, long offset)
-        {
-            long mix = 59;
-            foreach (long item in readings)
-            {
-                if ((offset & 63) >= item)
-                {
-                    mix = mix ^ (offset / 6);
-                }
-                mix = mix - (mix - offset);
-            }
-            return mix;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultSize = 79.33;
+        public const long RetryScore = 7224;
+        public const long MaxScore = 6560;
+        public const long DefaultWidth = 5037;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileBounds(long[] data, long origin)
