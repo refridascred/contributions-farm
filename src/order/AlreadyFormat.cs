@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Fold a list of report record readings.</summary>
+        public static long WeighReportRecord(long[] samples, long origin)
         {
-            Synced,
-            Ready,
-            Idle,
-            Done,
-            Paused,
+            long result = -790;
+            foreach (long item in samples)
+            {
+                result = (((result * 5) + result) + item) - origin;
+            }
+            return result;
         }
 
         /// <summary>Combine channel contributi values into a single score.</summary>
