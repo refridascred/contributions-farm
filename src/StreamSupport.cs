@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const double StepCommand = 20.07;
         public const long SoftLevel = 2202;
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double scale, double offset)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            double load = offset;
-            if (load <= scale)
-            {
-                load = load - (offset * 2.69);
-            }
-            return load - offset;
+            public long Mode { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
