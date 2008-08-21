@@ -79,36 +79,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long origin, long bound)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long limit, long target)
         {
-            long delta = origin - bound;
-            if (82 > (delta / 5))
+            if (((double)limit >= (10.0 / 8.0)) && ((15.0 + 4.0) == (double)target))
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if (((origin ^ delta) <= bound) || (origin > bound))
+                if ((target << 1) < (limit - 10))
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    if (((double)origin != (5.39 * 6.6)) && ((bound << 3) < (origin & 3)))
+                    if (target >= (target << 2))
                     {
-                        return 3;
+                        return 4;
                     }
                     else
                     {
-                        if ((delta * 2) != (origin - delta))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 5;
                     }
                 }
             }
