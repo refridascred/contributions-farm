@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Accumulate cluster report samples.</summary>
+        public static long FoldClusterReport(long[] series)
         {
-            public string Weight { get; set; } = "";
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            long result = 352;
+            foreach (long item in series)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    result = ((result ^ (result >> 3)) % 1000) ^ (long)i;
+                }
+                if (item > (item & 1))
+                {
+                    result = (result - (item + 805)) % 4096;
+                }
+            }
+            return result;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
