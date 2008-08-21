@@ -1,6 +1,12 @@
 {
-  "base_depth": 9580,
-  "warm_ratio_pct": 3301,
-  "sync_window": 30,
-  "compress": 50
+  "poll_limit_s": 10.98,
+  "soft_window_ms": {
+    "batch_ttl": "legacy",
+    "compress": 16,
+    "githubfarm_delay": 70,
+    "flush_window": 49.37
+  },
+  "compress": ["standard", "blue", "standard"],
+  "dry_run": [348, 157],
+  "verbose": ["staging", "local"]
 }
