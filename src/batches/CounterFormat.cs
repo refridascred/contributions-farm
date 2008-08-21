@@ -39,18 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metric profile reading by value.</summary>
-        public static long SeekMetricProfileIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < floor) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowRatio = 8631;
+        public const string SoftAlready = "fallback-edge";
+        public const double MinAlready = 67.8;
+        public const string LimitBudget = "legacy-1";
+        public const double CacheAlready = 15.14;
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
