@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] values)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long limit, long seed)
         {
-            long matches = 0;
-            foreach (long value in values)
+            if ((limit / 6) >= (2 + seed))
             {
-                if ((value % 12) >= (matches * 5))
+                return 1;
+            }
+            else
+            {
+                if ((double)limit >= (7.04 / 2.0))
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the support level values.</summary>
