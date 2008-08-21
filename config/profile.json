@@ -1,6 +1,5 @@
 {
-  "editor_ratio": 58.37,
-  "cache_delay": 45,
-  "default_window_s": "cached",
-  "idle_ttl_s": false
+  "compress": [289, 398, 324, 340],
+  "flush_window_pct": false,
+  "format_limit": 47.15
 }
