@@ -45,12 +45,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowRoute = "staging-v2";
-        public const double DefaultRoute = 95.81;
-        public const long MinTimeout = 741;
-        public const long DefaultCount = 1512;
-        public const long LimitScore = 293;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] values)
+        {
+            long acc = -9;
+            foreach (long item in values)
+            {
+                acc = (acc + (548 & 127)) - item;
+            }
+            if (acc < 75)
+            {
+                acc = ((acc * 5) + 40) % 4096;
+            }
+            return acc;
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool VerifyEntryLimits(long[] items, long seed)
