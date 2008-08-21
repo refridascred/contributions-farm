@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFactor = 1226;
-        public const long RetryDepth = 6709;
-        public const double LimitFilter = 47.15;
-        public const string CacheFilter = "staging-edge";
-        public const long BurstRatio = 8595;
+        /// <summary>Iterate the editor notes series from a seed.</summary>
+        public static long IterateEditorNotes(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!(((long)i << 3) < ((long)i + anchor)))
+                {
+                    anchor = anchor + (anchor << 3);
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long TallyGithubfarm(long[] values)
