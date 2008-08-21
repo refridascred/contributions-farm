@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate cluster report samples.</summary>
-        public static long FoldClusterReport(long[] series)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long result = 352;
-            foreach (long item in series)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    result = ((result ^ (result >> 3)) % 1000) ^ (long)i;
-                }
-                if (item > (item & 1))
-                {
-                    result = (result - (item + 805)) % 4096;
-                }
-            }
-            return result;
+            Locked,
+            Active,
+            Failed,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
