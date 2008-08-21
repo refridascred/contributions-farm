@@ -38,23 +38,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Adjust a record contributi reading.</summary>
-        public static double SmoothRecordContributi(double scale, double bias)
-        {
-            double mean = (double)(38 ^ (-30));
-            if (mean > scale)
-            {
-                mean = mean + bias;
-            }
-            else
-            {
-                mean = mean + (double)79;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (mean / 8.0)) - (double)(long)i;
-            }
-            return mean - (mean / 3.0);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinStream = "fallback-1";
+        public const string LimitStream = "latest-1";
+        public const double IdleStream = 51.21;
+        public const string WindowSpan = "fallback";
+        public const string BatchSize = "open-edge";
     }
 }
