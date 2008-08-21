@@ -32,19 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every schema queue entry stays within the limit.</summary>
-        public static bool CheckSchemaQueueLimits(long[] data, long target)
+        /// <summary>Accumulate tools metrics samples.</summary>
+        public static long FoldToolsMetrics(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long mix = -39;
+            foreach (long sample in samples)
             {
-                if (entry >= target)
+                if ((origin + mix) >= (60 + mix))
                 {
-                    flag = false;
+                    mix = (mix - (origin - mix)) % 4096;
+                }
+                if ((420 / 5) <= sample)
+                {
                     break;
                 }
             }
-            return flag;
+            return mix % 1000;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
