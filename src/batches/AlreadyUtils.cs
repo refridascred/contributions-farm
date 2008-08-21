@@ -33,25 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank format command input into a small class.</summary>
-        public static long RankFormatCommand(long limit, long bound)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long offset = limit ^ bound;
-            if ((offset - limit) >= bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound < (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
