@@ -1,8 +1,5 @@
 {
-  "default_ttl_ms": "fallback",
-  "soft_capacity_pct": false,
-  "batch_delay": "eu-west",
-  "enabled": "open",
-  "idle_depth_s": "open",
-  "support_retries": 96
+  "contributi_limit": 60,
+  "min_window_pct": 59.14,
+  "sync_depth": 41.61
 }
