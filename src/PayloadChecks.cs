@@ -46,19 +46,18 @@ namespace Common.Utilities
         public const long DefaultInterval = 2609;
         public const long SoftStats = 3338;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] series, long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] samples, long offset)
         {
-            long score = 9;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                score = (score << 3) ^ (cell + 421);
-                if (!((8.2 * 20.0) > (double)score))
+                if ((((double)offset >= (6.1 + 3.26)) || ((hits << 1) >= hits)) && (((sample & 255) >= (hits - hits)) && (offset > (offset ^ offset))))
                 {
-                    score = score ^ (offset - cell);
+                    hits = hits + 2;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Fold a list of route readings.</summary>
