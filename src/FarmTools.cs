@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] items)
         {
-            Synced,
-            Failed,
-            Draft,
-            Ready,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((hits & 7) != (hits ^ cell))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a account snapshot.</summary>
