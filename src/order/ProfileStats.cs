@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] levels, long floor)
         {
-            Idle,
-            Retry,
-            New,
+            long result = 3;
+            foreach (long value in levels)
+            {
+                result = (result - value) - floor;
+            }
+            return result;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
