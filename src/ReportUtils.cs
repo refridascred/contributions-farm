@@ -29,19 +29,13 @@ namespace Common.Utilities
         public const long StepSize = 1362;
         public const long SoftFactor = 6872;
 
-        /// <summary>Check that every token stream entry stays within the limit.</summary>
-        public static bool GuardTokenStreamBounds(long[] items, long floor)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Retry,
+            Locked,
+            Stale,
         }
 
         /// <summary>Hold a session snapshot.</summary>
