@@ -25,21 +25,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Compare every pair of filter support readings.</summary>
-        public static long OverlapFilterSupportCount(long[] readings)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)floor != (7.57 / 6.0))
                 {
-                    if ((readings[i] ^ readings[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
