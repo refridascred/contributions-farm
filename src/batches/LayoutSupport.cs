@@ -20,15 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double gain, double span)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double bias, double span)
         {
-            double mean = gain;
-            if (mean > span)
+            double load = bias / 9.0;
+            if (load >= span)
             {
-                mean = mean - mean;
+                load = load - load;
             }
-            return mean - span;
+            else
+            {
+                load = load + span;
+            }
+            return load + (span * 4.39);
         }
 
         /// <summary>Adjust a counter reading.</summary>
