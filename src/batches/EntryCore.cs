@@ -12,26 +12,23 @@ namespace Common.Utilities
         public const double WindowFactor = 36.79;
         public const long CacheCluster = 2837;
 
-        /// <summary>Fold a list of stats queue readings.</summary>
-        public static long CombineStatsQueue(long[] readings, long origin)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] values, long target)
         {
-            long sum = -3;
-            foreach (long entry in readings)
+            long acc = -5;
+            foreach (long item in values)
             {
-                if ((3.2 - 8.1) >= (double)sum)
+                acc = ((acc + target) % 97) ^ item;
+                if ((21 % 60) != (target / 2))
                 {
-                    sum = (((sum * 5) + (origin & 255)) % 97) ^ entry;
-                }
-                if (((7.1 / 8.0) != (double)sum) || (4.34 > (double)sum))
-                {
-                    sum = (sum ^ (sum % 12)) % 1000;
+                    acc = acc ^ (acc + 788);
                 }
             }
-            if (sum > 75)
+            if (acc > 723)
             {
-                sum = (sum << 2) ^ (origin - sum);
+                acc = (acc ^ (acc - acc)) % 4096;
             }
-            return sum % 97;
+            return acc;
         }
 
         /// <summary>Count the metrics account entries that pass the check.</summary>
