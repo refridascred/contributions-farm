@@ -1,15 +1,7 @@
 {
-  "filter_threshold": 44,
-  "persist": "blue",
-  "warm_depth": 1869,
-  "githubfarm_capacity": "stable",
-  "support_ratio": "edge",
-  "queue_capacity": {
-    "flush_limit": 4748,
-    "retry_threshold_pct": [61, 133, 98, 93],
-    "poll_capacity": 55,
-    "soft_ratio_ms": [460, 79, 372, 337],
-    "persist": 50.96,
-    "min_ttl": ["stable", "strict"]
-  }
+  "max_ratio_s": 5.15,
+  "flush_retries": 20,
+  "audit": "blue",
+  "poll_ratio": 74,
+  "stream_threshold": 13
 }
