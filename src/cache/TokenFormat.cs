@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const long WindowScore = 1762;
         public const double DefaultCount = 74.33;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitSize = 7979;
-        public const long DefaultBudget = 3780;
-        public const double BurstLevel = 52.59;
-        public const double CacheGraph = 21.3;
+        /// <summary>Compare every pair of order record readings.</summary>
+        public static long OverlapOrderRecordCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MinLevel = 2093;
