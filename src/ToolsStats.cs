@@ -60,10 +60,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstSize = 8818;
-        public const long StepTimeout = 2164;
-        public const string BatchWidth = "cached";
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] series, long limit)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((double)value != (4.26 / 3.0))
+                {
+                    tally = (tally + 3) + limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Adjust a session stream reading.</summary>
         public static double BlendSessionStream(double ratio, double floor)
