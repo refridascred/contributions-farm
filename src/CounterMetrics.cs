@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long IdleRatio = 3855;
         public const double BaseRatio = 26.18;
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] readings, long bound)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long sum = -5;
+            foreach (long value in samples)
             {
-                if (sample <= bound)
+                if (!(648 >= (1 ^ value)))
                 {
-                    ok = false;
-                    break;
+                    sum = (sum + sum) % 65521;
                 }
             }
-            return ok;
+            return sum % 97;
         }
 
         /// <summary>Hold a profile stats.</summary>
