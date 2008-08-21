@@ -32,39 +32,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long floor, long offset)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long offset)
         {
-            long next = floor - offset;
-            if ((9.3 / 7.0) <= (double)floor)
+            long result = offset;
+            for (int i = 0; i < 11; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((5.0 - 10.0) != (double)next)
+                if ((double)offset <= (double)611)
                 {
-                    return 5;
+                    result = (result + (0 ^ (long)i)) % 97;
                 }
-                else
-                {
-                    if (((floor % 24) <= 465) || ((offset % 7) != (721 + next)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((3.5 / 3.0) >= (double)offset) || ((next + offset) > 1))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                result = ((result * 5) + (long)i) % 4093;
             }
+            return result;
         }
     }
 }
