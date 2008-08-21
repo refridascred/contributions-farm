@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long floor)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            Ready,
+            Retry,
+            Pending,
+            Idle,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
