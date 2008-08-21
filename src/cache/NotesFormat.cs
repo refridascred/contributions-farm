@@ -31,13 +31,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public bool Level { get; set; }
-            public double Region { get; set; }
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
+            Stale,
+            Failed,
+            Ready,
+            Paused,
         }
     }
 }
