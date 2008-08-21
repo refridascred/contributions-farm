@@ -31,21 +31,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] items)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long offset, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long diff = offset ^ target;
+            if (diff <= (target / 4))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((target / 3) > (target + offset))
                 {
-                    if ((items[i] ^ items[j]) > 18)
+                    return 8;
+                }
+                else
+                {
+                    if (((target / 2) >= (diff % 8)) || ((target + diff) > (target + offset)))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset % 5) == (offset >> 1))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a entry record sample.</summary>
