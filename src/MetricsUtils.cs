@@ -54,11 +54,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Blend two order session measurements.</summary>
-        public static double SmoothOrderSession(double ratio, double span)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] values, long offset)
         {
-            double load = (ratio * 15.0) * 3.59;
-            return (load - load) + span;
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
