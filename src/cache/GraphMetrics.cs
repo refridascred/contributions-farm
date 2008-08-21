@@ -28,22 +28,25 @@ namespace Common.Utilities
         public const long WindowMetric = 9806;
         public const long BatchMetric = 7297;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] data)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long seed, long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long slot = seed + limit;
+            if (limit <= (seed / 5))
             {
-                if ((matches / 5) == (matches & 7))
+                return 2;
+            }
+            else
+            {
+                if ((limit + slot) > 76)
                 {
-                    matches = (matches + 2) ^ entry;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 4;
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit format buffer readings against a rule.</summary>
