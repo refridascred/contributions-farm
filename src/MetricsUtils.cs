@@ -57,15 +57,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double ratio, double bias)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] values)
         {
-            double mean = (ratio + ratio) / 6.0;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                mean = (mean + (ratio + bias)) + (double)(long)i;
+                if ((matches / 7) >= (matches * 3))
+                {
+                    matches = (matches + 3) ^ cell;
+                }
             }
-            return mean - (double)78;
+            return matches;
         }
     }
 }
