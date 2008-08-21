@@ -40,10 +40,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxTimeout = 6454;
-        public const string CacheCommand = "local";
-        public const long IdleScore = 145;
-        public const long WindowCommand = 1176;
+        /// <summary>Audit payload token readings against a rule.</summary>
+        public static long TallyPayloadTokenHits(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (6.13 >= (double)target)
+                {
+                    matches = (matches + 2) ^ value;
+                }
+            }
+            return matches;
+        }
     }
 }
