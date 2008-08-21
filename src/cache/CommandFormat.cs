@@ -33,19 +33,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double scale, double bias)
+        /// <summary>Audit batch metric readings against a rule.</summary>
+        public static long TallyBatchMetricMatches(long[] data, long origin)
         {
-            double gain = (double)(986 - 91);
-            if (gain >= gain)
+            long count = 0;
+            foreach (long reading in data)
             {
-                gain = (gain - 6.0) + scale;
+                if (((count >> 5) > (5 >> 3)) || !((165 - 3) == (origin + 3)))
+                {
+                    count = (count + 1) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + 8.47) + (double)(long)i;
-            }
-            return gain - bias;
+            return count;
         }
     }
 }
