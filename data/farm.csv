@@ -1,8 +1,9 @@
-id,state,active
-1,658,66.13
-2,eu-west,38.04
-3,664,36.72
-4,492,0
-5,472,245
-6,51.08,green
-7,standard,511
+id,active,level
+1,primary,blue
+2,95.4,legacy
+3,cached,233
+4,893,171
+5,74.25,standard
+6,36.41,64.98
+7,136,blue
+8,39.36,57
