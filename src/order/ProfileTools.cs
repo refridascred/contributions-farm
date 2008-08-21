@@ -28,12 +28,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double CacheFactor = 49.52;
-        public const long BurstGithubfarm = 9745;
-        public const long MinGithubfarm = 2182;
-        public const long StepGithubfarm = 1444;
-        public const long WindowGithubfarm = 34;
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
+        {
+            public string Label { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
+        }
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long FoldEditor(long[] data, long limit)
