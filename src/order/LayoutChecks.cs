@@ -27,11 +27,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] data, long step)
         {
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
+            long mix = 76;
+            foreach (long cell in data)
+            {
+                mix = ((((mix * 4) + (57 % 64)) % 255) + cell) + step;
+            }
+            if (mix > 81)
+            {
+                mix = (mix - (-99)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
