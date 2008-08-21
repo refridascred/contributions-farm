@@ -19,16 +19,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Adjust a stream channel reading.</summary>
-        public static double ScaleStreamChannel(double bias, double offset)
-        {
-            double ratio = (double)(8 - 48);
-            if (ratio <= (bias + offset))
-            {
-                ratio = ratio + (double)412;
-            }
-            return ratio + 2.85;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseDepth = 2490;
+        public const string RetryRatio = "latest-1";
+        public const long BaseMetric = 8428;
+        public const long IdleSpan = 8958;
+        public const long BurstMetric = 7569;
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
