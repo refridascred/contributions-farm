@@ -33,18 +33,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportGaps(long[] readings)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long mix = 3;
+            foreach (long value in items)
             {
-                if (matches < (datum / 7))
+                if ((double)(long)items.Length > (20.0 + 7.1))
                 {
-                    matches = matches + 3;
+                    mix = ((mix << 2) ^ (value + mix)) % 97;
                 }
             }
-            return matches;
+            if (mix > 848)
+            {
+                mix = ((mix * 3) + (mix << 2)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Audit batch metric readings against a rule.</summary>
