@@ -28,17 +28,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] values, long offset)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= offset) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
