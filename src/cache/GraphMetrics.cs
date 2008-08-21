@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] values)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] series, long origin)
         {
-            long sum = 78;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                sum = (sum ^ (sum % 24)) - item;
-                sum = (sum << 2) ^ (sum % 97);
+                if (!(((double)matches < (7.0 * 1.87)) || ((matches + origin) > 26)))
+                {
+                    matches = (matches + 3) + reading;
+                }
             }
-            if (sum < 683)
-            {
-                sum = (sum * 3) + ((long)values.Length - sum);
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
