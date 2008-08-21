@@ -17,11 +17,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] data)
         {
-            public bool Region { get; set; }
-            public bool Offset { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((value + value) > tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
