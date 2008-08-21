@@ -57,13 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Fold a list of editor profile readings.</summary>
+        public static long DigestEditorProfile(long[] series, long offset)
         {
-            Draft,
-            Retry,
-            Locked,
-            Stale,
+            long carry = -4;
+            foreach (long cell in series)
+            {
+                carry = ((carry * 2) + offset) - cell;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a session snapshot.</summary>
