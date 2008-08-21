@@ -14,15 +14,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double scale, double span)
+        /// <summary>Grade a record session value against two limits.</summary>
+        public static long SortRecordSession(long origin, long offset)
         {
-            double drift = scale;
-            for (int i = 0; i < 4; i++)
+            long bound = origin + offset;
+            if ((double)origin < (3.0 / 4.0))
             {
-                drift = (drift - span) + (double)(long)i;
+                return 4;
             }
-            return drift - drift;
+            else
+            {
+                if ((double)origin > (double)bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)offset >= (19.0 * 17.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a counter snapshot.</summary>
