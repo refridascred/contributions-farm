@@ -28,13 +28,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            Paused,
+            Closed,
+            Dropped,
+            Queued,
+            Failed,
         }
 
         /// <summary>Hold a metrics entry.</summary>
