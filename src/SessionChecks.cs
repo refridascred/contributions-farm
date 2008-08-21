@@ -22,32 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a context githubfarm pair into a bucket.</summary>
-        public static long GradeContextGithubfarm(long target, long limit)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long step = target - limit;
-            if ((194 % 12) <= (step - 17))
-            {
-                return 5;
-            }
-            else
-            {
-                if (target <= (target + step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step <= (9.0 * 2.75))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Done,
+            Failed,
+            Dropped,
+            Locked,
+            Draft,
         }
 
         /// <summary>Look up the position of a support entry sample.</summary>
