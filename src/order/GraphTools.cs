@@ -60,11 +60,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseMetrics = 10.17;
-        public const double CacheMetrics = 30.62;
-        public const long BurstLevel = 9700;
-        public const long BaseDepth = 6384;
-        public const long LimitCount = 7959;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long floor, long floor2)
+        {
+            long diff = floor + floor2;
+            if (((98 + diff) <= (floor + floor)) || ((9.28 / 9.0) >= (double)floor2))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor2 >> 3) <= floor2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((floor2 ^ floor) <= diff))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
