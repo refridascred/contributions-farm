@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((double)datum != (double)tally)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BurstFactor = 21.65;
+        public const string MaxLayout = "staging-v2";
+        public const string MinLayout = "strict-v2";
+        public const double SoftScore = 59.87;
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
