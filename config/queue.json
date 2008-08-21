@@ -1,19 +1,7 @@
 {
-  "strict": {
-    "poll_interval_count": ["staging", "standard"],
-    "cache_delay": 500,
-    "audit": {
-      "poll_threshold_ms": "staging",
-      "default_limit": 4.75,
-      "sync_ratio_ms": ["eu-west", "fallback", "legacy"],
-      "cache_ratio": "staging",
-      "warm_depth": 250
-    },
-    "graph_ratio": 53.11
-  },
-  "profile_interval": "green",
-  "persist": true,
-  "window_limit": 9156,
-  "channel_ratio": 9,
-  "sync_window": 755
+  "route_retries": "local",
+  "enabled": true,
+  "compress": ["staging", "cached"],
+  "persist": "fallback",
+  "entry_interval": "strict"
 }
