@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const long BurstFactor = 4854;
         public const long StepInterval = 1543;
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] data)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] readings, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 9;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)limit == (7.66 - 5.2))
                 {
-                    if ((data[i] ^ data[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((sum << 3) ^ (limit * 2)) ^ datum;
                 }
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Describe the profile mode values.</summary>
