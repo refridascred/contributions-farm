@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 6730;
-        public const string MinRatio = "staging-1";
-        public const long MinSize = 5063;
-        public const long BaseGithubfarm = 3163;
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] data, long limit)
+        {
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long CountStatsHits(long[] samples)
