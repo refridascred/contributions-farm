@@ -19,19 +19,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate editor stream readings against a bound.</summary>
-        public static bool VerifyEditorStreamRange(long[] values, long limit)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Stale,
+            Paused,
+            Ready,
+            Closed,
         }
 
         /// <summary>Describe the checks kind values.</summary>
