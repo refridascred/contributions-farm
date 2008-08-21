@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long DigestLayout(long[] samples)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] data, long limit)
         {
-            long mix = 50;
-            foreach (long value in samples)
+            long carry = 513;
+            foreach (long reading in data)
             {
-                if ((value + mix) > (value + 594))
+                if ((limit / 8) >= (limit ^ 303))
                 {
-                    mix = mix - (value / 9);
+                    carry = carry - (reading ^ limit);
+                }
+                else
+                {
+                    carry = (carry ^ reading) % 1000;
                 }
             }
-            return mix % 97;
+            if (carry > 67)
+            {
+                carry = (carry + (carry + limit)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Rank route input into a small class.</summary>
