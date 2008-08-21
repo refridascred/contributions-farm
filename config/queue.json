@@ -1,6 +1,7 @@
 {
-  "sync_interval": "strict",
-  "verbose": 27,
-  "max_limit_pct": false,
-  "order_delay": [177, 108, 164, 150]
+  "persist": "blue",
+  "dry_run": 13.87,
+  "strict": [97, 30, 53],
+  "sync_depth": 59.76,
+  "burst_ratio": 5.3
 }
