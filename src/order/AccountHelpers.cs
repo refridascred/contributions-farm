@@ -10,12 +10,22 @@ namespace Common.Utilities
         public const string BaseLayout = "open";
         public const long MaxWidth = 9088;
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] items, long origin)
         {
-            Pending,
-            Retry,
-            Ready,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (((matches >= (matches ^ matches)) || ((origin & 7) != (matches % 16))) || (((origin + matches) >= ((-198) / 4)) && ((7.65 + 0.3) == (double)matches)))
+                {
+                    matches = (matches + 1) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
