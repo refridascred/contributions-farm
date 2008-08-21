@@ -35,11 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double weight, double offset)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            double mean = weight;
-            return (mean - (mean - weight)) + offset;
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
