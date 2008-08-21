@@ -20,13 +20,18 @@ namespace Common.Utilities
             return bias - (double)494;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] readings)
         {
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((matches % 5) >= (598 * 2))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
