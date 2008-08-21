@@ -1,7 +1,12 @@
 {
-  "retry_threshold_pct": true,
-  "warm_limit": false,
-  "hard_retries": 52,
-  "idle_limit": [240, 200, 212, 266],
-  "stream_limit": 42
+  "default_delay_s": "strict",
+  "max_delay_ms": "primary",
+  "verbose": {
+    "base_retries_s": "eu-west",
+    "poll_depth": true,
+    "warm_retries_pct": true,
+    "soft_capacity_s": [56, 199, 377],
+    "base_timeout": ["fallback", "edge"],
+    "cache_depth_count": 65
+  }
 }
