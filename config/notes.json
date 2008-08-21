@@ -1,6 +1,6 @@
 {
-  "strict": 6299,
-  "readonly": "primary",
-  "default_ratio": "primary",
-  "record_retries": 80.2
+  "warm_threshold_s": 30,
+  "report_retries": true,
+  "retry_interval_ms": [68, 422, 224, 44],
+  "context_capacity": [306, 164, 159, 437]
 }
