@@ -1,14 +1,15 @@
 # githubfarm settings
-flush_capacity_s: 31
-command_timeout: 500
-poll_ratio_pct: green
-format_delay:
-  entry_ttl: 31.24
-  channel_delay:
-    base_ratio: true
-    cluster_window: legacy
-    flush_threshold: strict
-    min_delay_ms: 96.06
-    flush_delay_pct: 250
-  batch_window: 3
-  retry_interval: eu-west
+editor_timeout:
+  - 47
+  - 62
+  - 193
+strict:
+  counter_timeout: edge
+  batches_interval: 80
+  max_capacity_pct: 46
+  compress: blue
+  base_limit_s: local
+batch_retries_pct: strict
+burst_depth_s: staging
+cluster_ttl: fallback
+dry_run: staging
