@@ -13,17 +13,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a report already reading by value.</summary>
-        public static long FindReportAlreadyIndex(long[] series, long floor)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((series[i] >= floor) && ((series[i] % 5) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
