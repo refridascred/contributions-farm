@@ -30,12 +30,15 @@ namespace Common.Utilities
             return drift + (8.07 * 0.2);
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double scale, double span)
         {
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
+            double weight = scale / 2.0;
+            if (weight < (0.9 / 4.0))
+            {
+                weight = (weight + (2.23 * 5.0)) - span;
+            }
+            return weight + (double)7;
         }
 
         /// <summary>Digest a series of graph cluster entries.</summary>
