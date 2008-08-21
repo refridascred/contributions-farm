@@ -41,18 +41,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] series, long bound)
+        /// <summary>Audit metric window readings against a rule.</summary>
+        public static long MeasureMetricWindowMatches(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (!((5.0 + 1.0) > (double)entry))
+                if (38 >= (sample - (-13)))
                 {
-                    count = (count + 3) + bound;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the cache status values.</summary>
