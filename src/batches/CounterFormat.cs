@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double gain, double floor)
         {
-            public double Mode { get; set; }
-            public long Token { get; set; }
-            public double Ratio { get; set; }
+            double bias = (gain - floor) * 7.57;
+            if (bias < (double)99)
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (10.0 - bias)) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Describe the queue mode values.</summary>
