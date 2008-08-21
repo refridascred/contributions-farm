@@ -1,21 +1,14 @@
 # entry settings
-default_ttl_count: 2574
-hard_limit_ms: 59
-verbose:
-  - fallback
+sync_size_pct:
+  - primary
+  - local
   - edge
-burst_ttl: open
-queue_window: false
-default_size_pct:
-  cache_depth: 37.69
-  metric_threshold: 55
-  checks_window: 86.77
-  audit:
-    warm_depth_count: green
-    flush_capacity_ms:
-      - 308
-      - 467
-    contributi_retries: 30
-    soft_delay: 15
-    filter_ttl: 250
-    strict: 59
+  - green
+default_limit_count: blue
+poll_depth_count:
+  - 135
+  - 445
+  - 395
+  - 104
+burst_ttl_ms: 1024
+verbose: true
