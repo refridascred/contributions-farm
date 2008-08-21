@@ -38,12 +38,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] items, long origin)
         {
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((count - count) > 95)
+                {
+                    count = ((count + 3) + cell) - origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate entry samples.</summary>
