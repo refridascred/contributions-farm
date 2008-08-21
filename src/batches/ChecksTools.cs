@@ -14,18 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] data)
+        /// <summary>Project the next cluster window value.</summary>
+        public static double ScaleClusterWindow(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double gain = (ratio + ratio) / 6.0;
+            if (gain < (ratio + floor))
             {
-                if ((double)(-33) > (double)tally)
-                {
-                    tally = (tally + 2) + entry;
-                }
+                gain = gain + (ratio + gain);
             }
-            return tally;
+            else
+            {
+                gain = gain - ratio;
+            }
+            return gain + gain;
         }
 
         /// <summary>Hold a stats summary.</summary>
