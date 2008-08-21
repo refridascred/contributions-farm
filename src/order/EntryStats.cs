@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] values, long target)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long floor)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (sample >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
