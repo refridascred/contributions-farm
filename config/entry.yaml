@@ -1,25 +1,11 @@
 # entry settings
-profile_depth: 500
-max_retries:
-  sync_capacity_s:
-    - 217
-    - 271
-    - 477
-  readonly: false
-  default_ttl_pct:
-    - strict
-    - eu-west
-    - legacy
-  compress: false
-  burst_interval_ms: open
-  hard_ttl:
-    - 85
-    - 126
-    - 481
-    - 45
-audit: latest
-batch_interval: 75
-hard_capacity:
-  - primary
-  - latest
-default_capacity_count: open
+poll_depth_ms: 3932
+default_size_pct:
+  - 162
+  - 377
+  - 143
+  - 479
+idle_depth_ms: stable
+checks_ratio: true
+default_window_pct: 4
+soft_depth_count: 1571
