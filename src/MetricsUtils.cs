@@ -5,28 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long bound)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] levels)
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (!((double)bound >= (double)acc))
+                if ((tally % 2) == (tally + tally))
                 {
-                    acc = acc ^ ((long)i * 5);
+                    tally = (tally + 1) + cell;
                 }
-                for (int i2 = 0; i2 < 4; i2++)
+                else
                 {
-                    acc = ((acc ^ (bound + (long)i)) % 65521) + (long)i2;
+                    tally = tally - 1;
                 }
-                if (((bound + acc) == (bound / 4)) && (bound < (acc - acc)))
-                {
-                    acc = (acc + (acc % 10)) % 4096;
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Fold a list of account metric readings.</summary>
