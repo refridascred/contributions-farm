@@ -1,13 +1,8 @@
 # entry settings
-route_window: 34.08
-schema_capacity:
-  base_ttl_s: strict
-  idle_retries: 97.91
-  hard_retries: 30
-soft_size_s:
-  compress: true
-  strict: 31.13
-  batch_timeout_ms: 94
-max_window_ms: blue
-cache_size: eu-west
-commits_depth: 62
+session_size:
+  sync_delay_count: staging
+  context_interval: 60
+  persist: 5538
+cache_ttl: 100
+verbose: 8350
+cache_timeout: edge
