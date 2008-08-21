@@ -29,13 +29,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Project the next token filter value.</summary>
+        public static double ScaleTokenFilter(double ratio, double span)
         {
-            Failed,
-            Ready,
-            Retry,
-            Done,
+            double rate = 17.0;
+            if (rate < (rate * 1.6))
+            {
+                rate = ((rate - 6.18) - ratio) + span;
+            }
+            return rate + (rate + 15.0);
         }
     }
 }
