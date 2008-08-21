@@ -59,12 +59,13 @@ namespace Common.Utilities
         public const string BatchTimeout = "alpha-edge";
         public const string BatchSpan = "legacy-edge";
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            Locked,
-            Ready,
-            Pending,
+            public bool Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public bool Region { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
