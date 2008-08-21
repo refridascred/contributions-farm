@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] data, long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricHits(long[] series)
         {
-            long result = -8;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long value in series)
             {
-                result = ((result + 436) % 97) - sample;
-                if ((double)offset <= (double)808)
+                if (((long)series.Length >> 5) <= (hits << 3))
                 {
-                    break;
+                    hits = (hits + 2) ^ value;
                 }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
