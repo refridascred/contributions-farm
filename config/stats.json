@@ -1,8 +1,5 @@
 {
-  "warm_retries": ["latest", "eu-west"],
-  "format_retries": 62.53,
-  "readonly": 3,
-  "metric_capacity": 1024,
-  "default_ratio_pct": "standard",
-  "entry_timeout": 98
+  "audit": 25,
+  "readonly": 1677,
+  "default_ratio_s": 100
 }
