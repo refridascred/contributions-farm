@@ -15,18 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryWidth = 522;
+        public const long BatchEntry = 2773;
+        public const long SoftEntry = 2492;
+        public const double CacheRatio = 52.18;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TotalBatches(long[] readings, long bound)
