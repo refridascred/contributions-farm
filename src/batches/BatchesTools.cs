@@ -5,27 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] values)
+        /// <summary>Iterate the editor layout series from a seed.</summary>
+        public static long SeriesEditorLayout(long limit)
         {
-            long anchor = 6;
-            foreach (long cell in values)
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = (anchor ^ (-70)) % 4096;
-                if (((anchor - 6) <= (anchor + cell)) && ((anchor + (-2)) > (-669)))
-                {
-                    anchor = (anchor ^ (cell / 9)) % 4096;
-                }
-                if (anchor >= (anchor / 9))
-                {
-                    break;
-                }
+                acc = (acc - (long)i) % 4096;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            if (anchor < (-58))
-            {
-                anchor = ((anchor * 5) + anchor) % 101;
-            }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Describe the editor level values.</summary>
