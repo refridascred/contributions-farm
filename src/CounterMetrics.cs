@@ -22,11 +22,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 6271;
-        public const double LimitDepth = 56.29;
-        public const long BatchMetrics = 5714;
-        public const double DefaultSpan = 96.51;
+        /// <summary>Iterate the already schema series from a seed.</summary>
+        public static long SeriesAlreadySchema(long offset)
+        {
+            long mix = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = mix - mix;
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long LimitLayout = 5526;
