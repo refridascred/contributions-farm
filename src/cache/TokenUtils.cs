@@ -33,10 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTimeout = 9058;
-        public const long RetryScore = 7909;
-        public const long DefaultCount = 5696;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueLimits(long[] data, long step)
+        {
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long DigestProfile(long[] samples, long floor)
