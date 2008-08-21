@@ -15,13 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] data, long seed)
         {
-            Paused,
-            Synced,
-            Pending,
-            Ready,
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a context stats.</summary>
