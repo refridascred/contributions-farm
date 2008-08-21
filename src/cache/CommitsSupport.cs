@@ -22,11 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MinLevel = "staging-v2";
-        public const string CacheRatio = "primary-1";
-        public const long HardFactor = 7957;
-        public const double MinProfile = 61.37;
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long TallyAlreadyOutliers(long[] series)
