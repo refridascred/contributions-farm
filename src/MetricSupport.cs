@@ -25,11 +25,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Project the next metric commits value.</summary>
-        public static double ScaleMetricCommits(double rate, double span)
+        /// <summary>Compare every pair of filter support readings.</summary>
+        public static long OverlapFilterSupportCount(long[] readings)
         {
-            double ratio = span;
-            return (ratio - 7.8) + rate;
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
