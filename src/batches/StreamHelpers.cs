@@ -37,24 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a order report pair into a bucket.</summary>
-        public static long ClassifyOrderReport(long seed, long offset)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            if ((seed + offset) > (seed % 60))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((offset + seed) >= (seed % 8)) || ((67 - seed) <= offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Weight { get; set; }
+            public bool Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
