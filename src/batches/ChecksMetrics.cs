@@ -34,21 +34,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] items)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double rate, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = rate;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = (drift - bias) + (double)(long)i;
             }
-            return hits;
+            return drift + bias;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
