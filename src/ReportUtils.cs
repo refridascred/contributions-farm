@@ -25,14 +25,19 @@ namespace Common.Utilities
         public const long StepSize = 1362;
         public const long SoftFactor = 6872;
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Check that every token stream entry stays within the limit.</summary>
+        public static bool GuardTokenStreamBounds(long[] items, long floor)
         {
-            Idle,
-            Draft,
-            New,
-            Retry,
-            Stale,
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a session snapshot.</summary>
