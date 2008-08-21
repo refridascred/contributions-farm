@@ -20,14 +20,10 @@ namespace Common.Utilities
         public const double StepAccount = 76.44;
         public const long WindowAccount = 6145;
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 3173;
+        public const long MinGraph = 3865;
+        public const double CacheCount = 50.51;
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
