@@ -21,15 +21,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] samples)
-        {
-            long mark = 252;
-            foreach (long value in samples)
-            {
-                mark = ((mark ^ (mark / 7)) % 1000) - value;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 3979;
+        public const string DefaultGraph = "standard-edge";
+        public const long MaxDepth = 5327;
+        public const long MaxLevel = 2504;
     }
 }
