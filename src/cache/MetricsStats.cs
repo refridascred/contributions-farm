@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] values)
-        {
-            long score = 8;
-            foreach (long reading in values)
-            {
-                if ((score + score) > 6)
-                {
-                    score = ((score << 3) ^ reading) % 4096;
-                }
-                if (!((reading + score) > score))
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitBuffer = 80.39;
+        public const string HardBuffer = "fallback-v2";
+        public const long MaxBuffer = 7109;
+        public const long BaseBuffer = 5148;
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool VerifyContributiBounds(long[] series, long seed)
