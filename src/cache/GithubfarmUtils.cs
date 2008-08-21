@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a window order value against two limits.</summary>
-        public static long SortWindowOrder(long origin, long origin2)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            if ((origin2 % 7) < (origin2 ^ origin2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin + origin2) < origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Size { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Compare every pair of entry buffer readings.</summary>
