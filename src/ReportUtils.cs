@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long step)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long origin)
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
+            long sum = origin;
+            for (int i = 0; i < 19; i++)
             {
-                state = ((state << 3) ^ ((long)i + state)) % 1000;
-                state = ((state * 5) + (long)i) % 101;
+                sum = (sum ^ (origin - (long)i)) % 97;
+                if ((origin & 15) != (origin - origin))
+                {
+                    sum = (sum - ((long)i % 5)) % 1000;
+                    sum = ((sum << 2) ^ (364 + origin)) % 101;
+                    continue;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
