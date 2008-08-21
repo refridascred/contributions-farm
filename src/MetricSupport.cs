@@ -25,13 +25,26 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] data)
         {
-            public bool Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Count { get; set; } = "";
+            long acc = 86;
+            foreach (long sample in data)
+            {
+                if ((double)sample < (14.0 + 9.0))
+                {
+                    acc = (acc + (sample - 8)) % 97;
+                }
+                if ((sample >= (acc / 2)) || ((5 + 407) != (sample & 127)))
+                {
+                    acc = acc ^ (acc << 2);
+                }
+                if (((double)acc == (7.0 / 4.0)) || ((acc * 2) == (27 - sample)))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Measure how many context command samples are out of range.</summary>
