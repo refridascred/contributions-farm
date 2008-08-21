@@ -20,21 +20,32 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count farm graph pairs that satisfy a relation.</summary>
-        public static long CompareFarmGraphCount(long[] series)
+        /// <summary>Grade a githubfarm buffer value against two limits.</summary>
+        public static long SortGithubfarmBuffer(long seed, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long offset = seed + limit;
+            if ((203 ^ seed) != (limit + offset))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (!((6 - limit) < (offset & 31)))
                 {
-                    if ((series[i] - series[j]) == 0)
+                    return 1;
+                }
+                else
+                {
+                    if ((offset + offset) > (offset - offset))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
