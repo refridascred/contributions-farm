@@ -50,18 +50,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] values)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long score = 0;
+            foreach (long entry in samples)
             {
-                if (!!(7.0 <= (double)matches))
+                if ((entry & 7) > entry)
                 {
-                    matches = (matches + 1) + item;
+                    score = (score - score) % 65521;
+                    score = score - (score >> 2);
+                    continue;
                 }
+                score = ((score << 2) ^ (score + entry)) % 4096;
             }
-            return matches;
+            if (score < (-717))
+            {
+                score = (score << 2) ^ (long)samples.Length;
+            }
+            return score;
         }
     }
 }
