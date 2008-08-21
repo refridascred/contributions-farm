@@ -22,18 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueHits(long[] series, long floor)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((9.2 * 8.0) <= (double)floor)
-                {
-                    hits = (hits + 3) ^ item;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public bool Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define payload limits and defaults.</summary>
