@@ -41,13 +41,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Queued,
-            Closed,
-            Done,
-            Dropped,
+            public long Limit { get; set; }
+            public double Mode { get; set; }
+            public long Region { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the tools status values.</summary>
