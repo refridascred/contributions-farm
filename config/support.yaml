@@ -1,4 +1,22 @@
 # support settings
-readonly: open
-burst_depth_s: true
-strict: fallback
+burst_delay_pct:
+  strict:
+    sync_interval_count: stable
+    checks_interval: 60
+    soft_retries: 100
+    persist: local
+  schema_capacity: local
+  base_retries:
+    - 350
+    - 45
+  hard_interval_count:
+    soft_delay: 7230
+    sync_window: false
+    dry_run: 87.5
+    batch_ratio_s: 4600
+    batch_depth:
+      - 448
+      - 462
+    session_limit: latest
+poll_delay_s: 67
+audit: 30
