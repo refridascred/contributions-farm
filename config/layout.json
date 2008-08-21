@@ -1,22 +1,6 @@
 {
-  "compress": {
-    "soft_capacity_pct": {
-      "default_timeout_s": "green",
-      "sync_interval_s": 67.0,
-      "already_depth": "cached",
-      "hard_ratio": [284, 372]
-    },
-    "burst_size_count": 89,
-    "base_limit": true,
-    "min_ratio_pct": {
-      "queue_limit": 1306,
-      "enabled": 20,
-      "persist": [319, 313, 184],
-      "strict": "latest"
-    }
-  },
-  "metrics_threshold": 5172,
-  "soft_capacity_s": 47,
-  "readonly": true,
-  "verbose": "latest"
+  "cache_retries": [226, 165],
+  "base_retries_s": 35,
+  "flush_depth": "staging",
+  "session_limit": [172, 58]
 }
