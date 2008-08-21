@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long seed, long floor)
+        /// <summary>Derive the next githubfarm batches value from a seed.</summary>
+        public static long IterateGithubfarmBatches(long target)
         {
-            long lane = seed ^ floor;
-            if ((seed + 0) <= (seed + lane))
+            long score = target;
+            for (int i = 0; i < 16; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed & 127) <= (seed - (-7)))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return 4;
+                    score = (score - (score * 4)) ^ (long)i2;
                 }
-                else
-                {
-                    if (!((double)seed == (double)170))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((lane % 10) > (floor - seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                score = ((score * 3) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Validate githubfarm metrics readings against a bound.</summary>
