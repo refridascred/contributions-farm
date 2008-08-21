@@ -32,17 +32,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == floor) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 1655;
+        public const long BatchLevel = 426;
+        public const long DefaultTimeout = 1269;
+        public const long BaseCount = 9397;
     }
 }
