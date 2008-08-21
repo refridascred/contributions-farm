@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next channel queue value from a seed.</summary>
-        public static long IterateChannelQueue(long target)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long carry = target;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            Dropped,
+            Done,
+            Paused,
         }
 
         /// <summary>Describe the format status values.</summary>
