@@ -30,23 +30,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double weight, double floor)
+        /// <summary>Measure how many token metrics samples are out of range.</summary>
+        public static long CountTokenMetricsGaps(long[] readings)
         {
-            double bias = weight;
-            if (bias <= (floor - floor))
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                bias = bias + weight;
+                if (!((4.26 / 4.0) < (double)cell) || ((332 - seen) < (cell << 3)))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                bias = bias - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (bias * 7.5)) + (double)(long)i;
-            }
-            return bias + floor;
+            return seen;
         }
     }
 }
