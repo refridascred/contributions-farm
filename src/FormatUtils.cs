@@ -29,19 +29,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate githubfarm metrics readings against a bound.</summary>
-        public static bool VerifyGithubfarmMetricsBounds(long[] readings, long limit)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Paused,
+            Active,
         }
 
         /// <summary>Fold a list of account readings.</summary>
