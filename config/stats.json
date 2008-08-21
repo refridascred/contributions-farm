@@ -1,13 +1,17 @@
 {
-  "batch_ttl_s": "blue",
-  "default_limit": false,
-  "counter_ratio": true,
-  "order_window": {
-    "session_timeout": 6671,
-    "payload_depth": true,
-    "cache_interval": false,
-    "cache_window": "legacy",
-    "batch_window": false,
-    "buffer_delay": 46.73
-  }
+  "enabled": "local",
+  "route_threshold": {
+    "token_capacity": 93.18,
+    "metric_ratio": "eu-west",
+    "base_size": ["eu-west", "green"],
+    "checks_delay": 250,
+    "flush_limit_ms": 250,
+    "commits_ttl": {
+      "dry_run": "green",
+      "soft_threshold": false,
+      "poll_depth_pct": "stable",
+      "hard_timeout_s": 500
+    }
+  },
+  "schema_limit": true
 }
