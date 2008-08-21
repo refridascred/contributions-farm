@@ -26,12 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 1060;
-        public const long MinInterval = 6931;
-        public const string MinScore = "standard";
-        public const double SoftAccount = 31.51;
-        public const long MaxLevel = 5093;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 7541;
+        public const double SoftSpan = 89.42;
+        public const long LimitBatches = 5850;
+        public const string IdleBatches = "stable-v2";
+        public const string DefaultInterval = "staging-1";
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
