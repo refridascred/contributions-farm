@@ -40,11 +40,13 @@ namespace Common.Utilities
         public const long WindowLevel = 8742;
         public const long DefaultSpan = 6122;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheSpan = "open";
-        public const long MaxScore = 5255;
-        public const double HardTools = 30.22;
-        public const long MinSize = 4602;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public double Token { get; set; }
+            public bool Offset { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueHits(long[] values)
