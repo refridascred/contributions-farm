@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultSize = 79.33;
-        public const long RetryScore = 7224;
-        public const long MaxScore = 6560;
-        public const long DefaultWidth = 5037;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowCache = 49.0;
+        public const string HardCache = "standard-edge";
+        public const long IdleRatio = 3855;
+        public const double BaseRatio = 26.18;
 
         /// <summary>Combine queue graph values into a single score.</summary>
         public static long WeighQueueGraph(long[] data, long floor)
