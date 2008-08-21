@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long offset)
         {
-            public string Offset { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((mark & 127) > offset)
+                {
+                    break;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
