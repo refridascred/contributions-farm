@@ -49,15 +49,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] items)
+        /// <summary>Audit profile command readings against a rule.</summary>
+        public static long CountProfileCommandGaps(long[] levels, long step)
         {
             long matches = 0;
-            foreach (long entry in items)
+            foreach (long entry in levels)
             {
-                if (matches >= ((long)items.Length << 3))
+                if ((step + matches) > (entry >> 4))
                 {
-                    matches = (matches + 3) - entry;
+                    matches = matches + 3;
                 }
             }
             return matches;
