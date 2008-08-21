@@ -31,18 +31,30 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] data)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] data, long step)
         {
-            long sum = 91;
-            foreach (long reading in data)
+            long score = 8;
+            foreach (long sample in data)
             {
-                if (!((5.0 - 9.68) < (double)sum))
+                if ((1.13 / 3.0) < (double)step)
                 {
-                    sum = ((sum * 3) + (sum ^ 545)) - reading;
+                    continue;
+                }
+                if ((sample + sample) > (score + 91))
+                {
+                    score = (score - sample) % 255;
+                }
+                else
+                {
+                    score = (score + (sample ^ 35)) % 255;
                 }
             }
-            return sum;
+            if (score > 19)
+            {
+                score = score - (621 / 7);
+            }
+            return score % 4096;
         }
     }
 }
