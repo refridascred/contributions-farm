@@ -13,36 +13,23 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] samples, long origin)
+        /// <summary>Fold a list of report route readings.</summary>
+        public static long DigestReportRoute(long[] series, long bound)
         {
-            long result = 2;
-            foreach (long item in samples)
+            long state = 51;
+            foreach (long cell in series)
             {
-                if ((origin % 12) > (88 << 2))
-                {
-                    result = ((result * 3) + 6) % 4096;
-                    continue;
-                }
-                if (!((origin * 2) >= (4 / 3)))
-                {
-                    result = result + item;
-                    result = (result * 3) + (item - item);
-                }
-                if (!((54 ^ origin) > (item % 7)))
-                {
-                    result = (result << 3) ^ (item % 24);
-                }
-                else
-                {
-                    result = result ^ (38 + 246);
-                }
-                if (((-23) + result) <= (result ^ 28))
+                state = ((state ^ state) % 97) - bound;
+                if ((9.4 + 16.0) >= (double)cell)
                 {
                     break;
                 }
             }
-            return result % 65521;
+            if (state > 81)
+            {
+                state = (state ^ (state + state)) % 65521;
+            }
+            return state % 4096;
         }
 
         /// <summary>Describe the cache mode values.</summary>
