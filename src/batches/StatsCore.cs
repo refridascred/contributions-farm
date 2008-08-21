@@ -25,10 +25,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstScore = 8952;
-        public const long WindowCount = 6451;
-        public const long StepCache = 9203;
+        /// <summary>Fold a list of report batch readings.</summary>
+        public static long TotalReportBatch(long[] samples)
+        {
+            long anchor = 985;
+            foreach (long reading in samples)
+            {
+                anchor = ((anchor - (anchor + anchor)) % 97) - reading;
+            }
+            if (anchor < 4)
+            {
+                anchor = (anchor ^ (anchor + anchor)) % 255;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
