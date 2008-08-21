@@ -31,13 +31,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            public bool Stamp { get; set; }
-            public double Rank { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
+            Queued,
+            Ready,
+            Synced,
+            Draft,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
