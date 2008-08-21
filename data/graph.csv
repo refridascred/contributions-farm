@@ -1,10 +1,7 @@
-id,token,state,weight
-1,edge,233,26.98
-2,571,eu-west,492
-3,legacy,cached,86.07
-4,798,cached,360
-5,fallback,217,44
-6,76.3,583,green
-7,16.78,eu-west,44
-8,92.45,15.04,861
-9,522,primary,45
+id,label,score,level
+1,primary,82.79,160
+2,91.24,105,643
+3,76.46,0.82,180
+4,368,56,665
+5,blue,372,green
+6,primary,legacy,622
