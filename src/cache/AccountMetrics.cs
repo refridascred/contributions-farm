@@ -65,12 +65,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            Pending,
-            Stale,
+            Retry,
+            Dropped,
             New,
+            Queued,
+            Ready,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
