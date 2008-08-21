@@ -19,13 +19,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Validate editor stream readings against a bound.</summary>
+        public static bool VerifyEditorStreamRange(long[] values, long limit)
         {
-            Dropped,
-            Stale,
-            Queued,
-            Failed,
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the checks kind values.</summary>
