@@ -81,19 +81,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] samples, long target)
-        {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitBudget = 3258;
+        public const double MinMetrics = 39.01;
+        public const long MinCount = 8711;
+        public const double HardMetrics = 25.23;
+        public const long MinDepth = 1340;
     }
 }
