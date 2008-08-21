@@ -42,19 +42,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate graph format readings against a bound.</summary>
-        public static bool VerifyGraphFormatLimits(long[] series, long seed)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Mode { get; set; }
+            public long Size { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
