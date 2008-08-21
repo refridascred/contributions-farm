@@ -51,14 +51,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double scale, double floor)
         {
-            Done,
-            Failed,
-            Retry,
-            Closed,
-            Dropped,
+            double gain = (floor - scale) / 5.0;
+            if (gain < scale)
+            {
+                gain = gain - 3.1;
+            }
+            return gain + scale;
         }
 
         /// <summary>Describe the stream kind values.</summary>
