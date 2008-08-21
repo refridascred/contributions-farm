@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] values, long seed)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long result = 82;
-            foreach (long item in values)
-            {
-                if ((7.8 / 4.0) > (double)seed)
-                {
-                    result = ((result << 2) ^ (seed - item)) % 1000;
-                }
-                else
-                {
-                    result = ((result * 2) + (result - result)) % 255;
-                }
-            }
-            return result;
+            Draft,
+            Paused,
+            Failed,
+            Ready,
         }
 
         /// <summary>Describe the graph class values.</summary>
