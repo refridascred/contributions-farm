@@ -30,11 +30,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryToken = "open";
-        public const double BaseBudget = 55.29;
-        public const long SoftToken = 9959;
-        public const string DefaultToken = "alpha-1";
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] samples, long origin)
+        {
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Scale a filter graph figure with a bias.</summary>
         public static double AdjustFilterGraph(double ratio, double offset)
