@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] levels, long limit)
         {
-            public double Weight { get; set; }
-            public double Rank { get; set; }
-            public long Region { get; set; }
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
