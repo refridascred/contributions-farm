@@ -1,6 +1,8 @@
-id,active,owner
-1,673,479
-2,24.04,strict
-3,stable,856
-4,83.01,823
-5,strict,85.65
+id,weight,rank,score
+1,cached,79,cached
+2,52.56,standard,blue
+3,eu-west,legacy,standard
+4,96,152,879
+5,446,510,491
+6,eu-west,77.15,45.08
+7,50,345,763
