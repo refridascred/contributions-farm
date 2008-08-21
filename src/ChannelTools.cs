@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long seed)
         {
-            public long Weight { get; set; }
-            public double Level { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = (sum - (sum + 44)) % 101;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    sum = ((sum << 3) ^ (long)i) - (long)i2;
+                    sum = (sum + (seed % 7)) % 4096;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
