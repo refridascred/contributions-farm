@@ -69,21 +69,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long OverlapGithubfarmCount(long[] values)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
     }
 }
