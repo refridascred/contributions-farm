@@ -1,14 +1,5 @@
 # support settings
-warm_threshold_ms: edge
-enabled: 7376
-retry_capacity:
-  batch_timeout_pct: blue
-  cache_ttl_ms:
-    audit: 20.68
-    order_ttl: 37.12
-    filter_size: strict
-    idle_ttl_count: staging
-    soft_retries_pct: staging
-    payload_size: 100
-  verbose: stable
-  retry_interval_ms: true
+max_interval_count: 100
+commits_timeout: 83.17
+dry_run: blue
+batch_threshold: strict
