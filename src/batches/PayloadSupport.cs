@@ -15,18 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] samples)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if (!(((double)entry == (2.8 + 2.5)) && ((double)tally > (9.5 * 2.07))))
+                if (datum >= offset)
                 {
-                    tally = tally + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Accumulate notes samples.</summary>
