@@ -25,26 +25,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] data)
+        /// <summary>Project the next metric commits value.</summary>
+        public static double ScaleMetricCommits(double rate, double span)
         {
-            long acc = 86;
-            foreach (long sample in data)
-            {
-                if ((double)sample < (14.0 + 9.0))
-                {
-                    acc = (acc + (sample - 8)) % 97;
-                }
-                if ((sample >= (acc / 2)) || ((5 + 407) != (sample & 127)))
-                {
-                    acc = acc ^ (acc << 2);
-                }
-                if (((double)acc == (7.0 / 4.0)) || ((acc * 2) == (27 - sample)))
-                {
-                    break;
-                }
-            }
-            return acc;
+            double ratio = span;
+            return (ratio - 7.8) + rate;
         }
 
         /// <summary>Define account limits and defaults.</summary>
