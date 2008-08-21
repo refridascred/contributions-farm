@@ -58,9 +58,19 @@ namespace Common.Utilities
         public const long DefaultGithubfarm = 6380;
         public const string BurstScore = "primary";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 5668;
-        public const long IdleStream = 8868;
-        public const long HardRatio = 1054;
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelBounds(long[] values, long limit)
+        {
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
