@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Find the first account command entry that matches the target.</summary>
-        public static long SeekAccountCommandIndex(long[] samples, long seed)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long bound, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((limit / 7) < (limit / 8)) && ((limit ^ limit) != (limit ^ 9)))
             {
-                if (samples[i] > seed)
+                return 4;
+            }
+            else
+            {
+                if (bound >= (266 - limit))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the editor status values.</summary>
