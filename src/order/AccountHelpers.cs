@@ -22,19 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] levels, long step)
+        /// <summary>Scale a notes payload figure with a bias.</summary>
+        public static double ScaleNotesPayload(double scale, double span)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            double load = (double)869 / 3.0;
+            if (load >= (load / 6.0))
             {
-                if (value >= step)
-                {
-                    flag = false;
-                    break;
-                }
+                load = (load - scale) - span;
             }
-            return flag;
+            return load - (scale / 9.0);
         }
 
         /// <summary>Hold a farm options.</summary>
