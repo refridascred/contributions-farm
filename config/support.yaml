@@ -1,10 +1,5 @@
 # support settings
-batch_delay:
-  - 25
-  - 321
-  - 203
-default_interval_s: 19.69
-cache_retries: fallback
-flush_size_count: primary
-base_ratio: fallback
-layout_retries: latest
+cache_retries: 57
+sync_threshold_ms: 10.39
+warm_timeout_ms: 100
+already_retries: 87.49
