@@ -19,15 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            Draft,
-            Failed,
-            Locked,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 7489;
+        public const double MinFactor = 40.99;
+        public const long BaseEntry = 7802;
+        public const double BatchEntry = 53.61;
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long TallyTools(long[] samples)
