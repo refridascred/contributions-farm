@@ -1,6 +1,8 @@
 {
-  "persist": ["latest", "blue", "cached", "open"],
-  "burst_ratio": "legacy",
-  "route_limit": false,
-  "flush_window_pct": 60
+  "min_ratio_pct": 61,
+  "poll_ttl_s": [446, 334, 116, 144],
+  "poll_ttl_count": ["stable", "fallback", "local", "local"],
+  "session_depth": "edge",
+  "already_depth": 35,
+  "batches_ratio": 9044
 }
