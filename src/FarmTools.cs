@@ -18,23 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double scale, double floor)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            double ratio = floor * 7.0;
-            if (ratio <= (ratio + 4.29))
-            {
-                ratio = ratio - floor;
-            }
-            else
-            {
-                ratio = ratio - (scale / 5.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (ratio + ratio)) - (double)(long)i;
-            }
-            return ratio + ratio;
+            Synced,
+            Failed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Validate entry graph readings against a bound.</summary>
