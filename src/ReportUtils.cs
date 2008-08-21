@@ -18,40 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long offset, long floor)
-        {
-            long cur = offset ^ floor;
-            if ((offset >> 2) < (floor - 30))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset & 63) >= (offset + cur))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor - 561) <= cur)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)offset < 2.13)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchSpan = 3753;
+        public const double StepOrder = 82.57;
+        public const long HardOrder = 8748;
+        public const long StepSize = 1362;
+        public const long SoftFactor = 6872;
 
         /// <summary>Describe the cache kind values.</summary>
         public enum CacheKind
