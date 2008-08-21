@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string StepFormat = "primary-edge";
+        public const double HardFactor = 44.72;
+        public const double RetryLevel = 81.51;
 
         /// <summary>Iterate the commits checks series from a seed.</summary>
         public static long SeriesCommitsChecks(long floor)
