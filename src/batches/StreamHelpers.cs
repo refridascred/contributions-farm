@@ -38,22 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] levels)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] levels)
         {
-            long state = 80;
-            foreach (long value in levels)
+            long acc = 466;
+            foreach (long cell in levels)
             {
-                if ((double)58 != (double)value)
-                {
-                    state = state ^ (state >> 3);
-                }
+                acc = ((acc - acc) % 255) - cell;
             }
-            if (state < (-76))
+            if (acc > 75)
             {
-                state = (state << 3) ^ 60;
+                acc = acc + (acc + 43);
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Validate githubfarm token readings against a bound.</summary>
