@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] readings, long origin)
         {
-            Failed,
-            Draft,
-            Pending,
-            Retry,
-            Stale,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (value >= (matches - origin))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate filter batches samples.</summary>
