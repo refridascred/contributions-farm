@@ -21,13 +21,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Grade a contributi already value against two limits.</summary>
+        public static long RankContributiAlready(long seed, long bound)
         {
-            Pending,
-            Paused,
-            Synced,
-            Locked,
+            if (!((15.0 * 11.0) == (double)bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)seed > (6.7 + 0.1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (bound <= (bound - seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a buffer stats.</summary>
