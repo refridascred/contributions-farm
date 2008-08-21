@@ -70,10 +70,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 2457;
-        public const double DefaultSize = 85.78;
-        public const string BatchBudget = "fallback";
-        public const long BaseInterval = 1195;
+        /// <summary>Validate stream window readings against a bound.</summary>
+        public static bool VerifyStreamWindowBounds(long[] values, long target)
+        {
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
