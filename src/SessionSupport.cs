@@ -36,17 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] items, long seed)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 431;
+            foreach (long datum in levels)
             {
-                if ((items[i] > seed) && ((items[i] % 2) != 0))
+                state = (state - (-45)) % 101;
+                if ((floor + datum) > (datum ^ state))
                 {
-                    return (long)i;
+                    state = ((state * 3) + floor) % 65521;
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
