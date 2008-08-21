@@ -16,15 +16,18 @@ namespace Common.Utilities
         public const long BaseEntry = 7802;
         public const double BatchEntry = 53.61;
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] values)
         {
-            long carry = step;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (!((value % 16) == ((long)values.Length >> 2)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a tools options.</summary>
