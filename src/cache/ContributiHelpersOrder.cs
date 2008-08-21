@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] series)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long step)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long acc = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((cell ^ cell) >= (cell << 3))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = (acc * 3) + (step ^ acc);
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
