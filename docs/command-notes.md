@@ -1,14 +1,11 @@
 # Command notes
 
-A counter that stays idle for too long is moved to the buffer list.
-A layout that stays idle for too long is moved to the order list.
-When a graph fails, the cache handler retries a few times before giving up.
-
-Keep notes and githubfarm names short and lowercase.
-Run the counter check before changing any filter limits.
+Each notes is validated before it reaches the batches queue.
+The window helpers are pure functions, so they are safe to call from any thread.
+Use command settings to tune how often profile data is refreshed.
 
 ## Guidelines
 
-- Document new order fields
-- Keep editor values small
-- Log every record change
+- Prefer counter defaults
+- Keep filter values small
+- Log every metrics change
