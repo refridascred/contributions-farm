@@ -52,19 +52,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double gain, double bias)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            double ratio = (double)(7 >> 2);
-            if (ratio > (ratio - bias))
-            {
-                ratio = ratio - (bias + gain);
-            }
-            else
-            {
-                ratio = ratio - bias;
-            }
-            return ratio + ratio;
+            Paused,
+            Draft,
+            Closed,
         }
     }
 }
