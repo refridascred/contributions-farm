@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] samples, long floor)
+        /// <summary>Count the counter session entries that pass the check.</summary>
+        public static long TallyCounterSessionGaps(long[] items, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (samples[i] <= floor)
+                if ((value < (limit & 31)) || ((limit + seen) > (8 >> 4)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
