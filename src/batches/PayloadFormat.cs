@@ -35,13 +35,21 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Match up already batch samples.</summary>
+        public static long OverlapAlreadyBatchCount(long[] data)
         {
-            Synced,
-            Dropped,
-            Queued,
-            Ready,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
