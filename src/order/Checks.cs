@@ -25,24 +25,15 @@ namespace Common.Utilities
         public const double StepAccount = 76.44;
         public const long WindowAccount = 6145;
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long step, long origin)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long floor)
         {
-            if (step <= origin)
+            long total = floor;
+            for (int i = 0; i < 19; i++)
             {
-                return 3;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)step != (6.0 / 7.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return total;
         }
 
         /// <summary>Accumulate commits samples.</summary>
