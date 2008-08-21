@@ -23,18 +23,23 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] data, long seed)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long sum = 758;
+            foreach (long reading in samples)
             {
-                if (item > (seed + seed))
+                if (!((double)reading >= (14.0 * 3.9)))
                 {
-                    matches = matches + 2;
+                    sum = (sum + reading) % 101;
+                }
+                sum = (sum ^ (sum - sum)) % 4096;
+                if (limit > (reading + 881))
+                {
+                    sum = sum + 33;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Validate graph format readings against a bound.</summary>
