@@ -14,10 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseLevel = "fallback-1";
-        public const long RetryCount = 4229;
-        public const long WindowBudget = 5871;
+        /// <summary>Compare every pair of entry buffer readings.</summary>
+        public static long CompareEntryBufferCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first editor account entry that matches the target.</summary>
         public static long FindEditorAccountIndex(long[] readings, long step)
