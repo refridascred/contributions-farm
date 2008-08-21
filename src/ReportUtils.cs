@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] data)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Stamp { get; set; } = "";
+            public bool Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Grade a already value against two limits.</summary>
