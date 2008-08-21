@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long step, long bound)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double bias, double floor)
         {
-            if (((double)step <= 0.72) || ((double)step >= (0.14 + 3.0)))
+            double scale = floor;
+            if (scale > bias)
             {
-                return 0;
+                scale = scale + (bias * 19.0);
             }
-            else
-            {
-                if ((bound ^ step) > (step >> 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((bound - step) <= (step + step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return scale + (6.33 + 9.44);
         }
 
         /// <summary>Fold a list of stats queue readings.</summary>
