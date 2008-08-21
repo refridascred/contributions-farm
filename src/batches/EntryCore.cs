@@ -34,26 +34,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Roll a queue record counter forward.</summary>
-        public static long StepQueueRecord(long floor)
+        /// <summary>Count the metrics account entries that pass the check.</summary>
+        public static long CountMetricsAccountGaps(long[] series)
         {
-            long score = floor;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                score = (score ^ (floor ^ score)) % 65521;
-                if ((floor * 2) < score)
+                if ((5 % 100) >= value)
                 {
-                    score = (score * 3) + score;
+                    matches = matches + 1;
                 }
-                else
-                {
-                    long delta = (floor ^ (-53)) << 1;
-                    score = score ^ (delta & 63);
-                }
-                score = ((score << 2) ^ (score - score)) % 1000;
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Digest a series of queue layout entries.</summary>
