@@ -82,9 +82,19 @@ namespace Common.Utilities
         public const double StepCommits = 92.9;
         public const string BatchSize = "fallback-v2";
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 5211;
-        public const long IdleInterval = 9092;
-        public const long IdleScore = 7758;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] levels, long offset)
+        {
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
