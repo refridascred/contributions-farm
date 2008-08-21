@@ -19,20 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] data, long origin)
-        {
-            bool flag = true;
-            foreach (long value in data)
-            {
-                if (value <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 6519;
+        public const double MinInterval = 88.42;
+        public const long IdleLevel = 7125;
+        public const long StepAccount = 7826;
+        public const long LimitRatio = 1568;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long MaxRatio = 8005;
