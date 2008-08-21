@@ -35,22 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyOutliers(long[] series)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading >= (hits - reading)) || !(reading >= ((-17) >> 3)))
+                if (levels[i] < target)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
