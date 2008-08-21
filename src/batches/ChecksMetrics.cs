@@ -69,10 +69,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxSize = 53.13;
-        public const long LimitRoute = 7471;
-        public const long IdleRoute = 6061;
-        public const double WindowRoute = 36.98;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 4069;
+        public const long HardScore = 7061;
+        public const long CacheGithubfarm = 2976;
     }
 }
