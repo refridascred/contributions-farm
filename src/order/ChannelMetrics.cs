@@ -40,17 +40,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] samples, long step)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > step) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Closed,
+            Queued,
+            Failed,
         }
     }
 }
