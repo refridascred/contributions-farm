@@ -27,19 +27,9 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double gain, double offset)
-        {
-            double rate = offset;
-            if (rate >= (rate - rate))
-            {
-                rate = rate + (2.3 / 6.0);
-            }
-            else
-            {
-                rate = rate - offset;
-            }
-            return rate - gain;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitWindow = 52.41;
+        public const long MaxScore = 1020;
+        public const double IdleInterval = 50.86;
     }
 }
