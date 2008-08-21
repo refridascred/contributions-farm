@@ -64,14 +64,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] levels)
         {
-            Closed,
-            Dropped,
-            Active,
-            Locked,
-            Failed,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((seen + seen) >= (reading << 2))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
