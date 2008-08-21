@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] levels)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (value <= 149)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Mode { get; set; }
+            public bool Total { get; set; }
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count the queue window entries that pass the check.</summary>
