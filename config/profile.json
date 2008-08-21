@@ -1,11 +1,11 @@
 {
-  "schema_capacity": true,
-  "persist": 7687,
-  "sync_timeout": 30,
-  "retry_ttl_s": {
-    "compress": "legacy",
-    "persist": 68.99,
-    "dry_run": [242, 335, 141]
-  },
-  "retry_size_ms": true
+  "max_timeout": 8194,
+  "idle_limit_pct": "latest",
+  "poll_interval_ms": {
+    "warm_ttl_pct": "open",
+    "min_ttl_pct": 8733,
+    "persist": 69,
+    "payload_depth": 17,
+    "audit": 84
+  }
 }
