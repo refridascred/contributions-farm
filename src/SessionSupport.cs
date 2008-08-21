@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] values, long offset)
-        {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 6420;
+        public const double BatchLevel = 51.53;
+        public const long DefaultCommand = 6371;
+        public const string StepCommand = "fallback";
+        public const long LimitCommand = 6892;
 
         /// <summary>Compare every pair of counter readings.</summary>
         public static long MatchCounterCount(long[] values)
