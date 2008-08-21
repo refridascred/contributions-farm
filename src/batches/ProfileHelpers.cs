@@ -80,15 +80,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Done,
-            Locked,
-            Paused,
-            Active,
-            Idle,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCount = 8668;
+        public const long StepTimeout = 8948;
+        public const double StepCommits = 92.9;
+        public const string BatchSize = "fallback-v2";
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long CacheTools = 5211;
