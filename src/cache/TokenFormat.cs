@@ -28,24 +28,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next cluster entry value from a seed.</summary>
-        public static long DeriveClusterEntry(long seed)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long SeriesLayout(long step)
         {
-            long anchor = seed;
+            long carry = step;
             for (int i = 0; i < 4; i++)
             {
-                anchor = ((anchor * 5) + ((long)i * 5)) % 4096;
-                if (((-20) ^ anchor) >= ((long)i / 6))
-                {
-                    break;
-                }
-                if (!(((long)i & 7) == (anchor & 127)))
-                {
-                    anchor = (anchor + (anchor / 3)) % 101;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return carry;
         }
     }
 }
