@@ -29,18 +29,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit farm editor readings against a rule.</summary>
-        public static long CountFarmEditorGaps(long[] levels, long origin)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long step)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long total = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((0.4 * 1.4) == (double)value) || !((value >> 2) >= (origin << 1)))
-                {
-                    hits = hits + 1;
-                }
+                total = total - (step - step);
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Measure how many farm tools samples are out of range.</summary>
