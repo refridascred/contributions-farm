@@ -12,31 +12,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long floor, long offset)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            if (!((double)floor <= (3.29 - 0.75)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset % 2) != (offset * 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset < (4.4 / 3.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public long Size { get; set; }
+            public double Weight { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Project the next batches value.</summary>
