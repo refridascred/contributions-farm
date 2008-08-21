@@ -32,19 +32,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double weight, double bias)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] values, long floor)
         {
-            double rate = (double)(4 / 3);
-            if (rate >= (weight - rate))
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = rate + (bias / 6.0);
+                if ((values[i] == floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + rate;
+            return -1;
         }
     }
 }
