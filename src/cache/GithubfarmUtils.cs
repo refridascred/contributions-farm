@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long IdleInterval = 5448;
         public const string HardCount = "alpha";
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] readings)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long acc = 73;
-            foreach (long entry in readings)
-            {
-                acc = (acc - acc) % 65521;
-                if (entry >= (acc % 8))
-                {
-                    acc = (acc ^ (acc + entry)) % 65521;
-                }
-            }
-            return acc % 65521;
+            public bool Limit { get; set; }
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
