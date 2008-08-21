@@ -1,6 +1,7 @@
 # githubfarm settings
-hard_ttl: false
-readonly: 5.98
-strict: 838
-retry_interval_pct: primary
-hard_size_ms: legacy
+idle_timeout: green
+retry_limit_pct: false
+tools_interval: true
+commits_interval: blue
+buffer_size: fallback
+burst_window: false
