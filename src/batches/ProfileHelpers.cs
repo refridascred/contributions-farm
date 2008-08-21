@@ -47,15 +47,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a session filter figure with a bias.</summary>
-        public static double AdjustSessionFilter(double gain, double bias)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] readings, long origin)
         {
-            double mean = (bias / 2.0) / 5.0;
-            if (mean < (mean / 5.0))
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                mean = (mean + bias) + gain;
+                if (((seen * 3) >= (origin * 3)) && ((seen ^ 90) >= origin))
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mean - (bias * 2.1);
+            return seen;
         }
 
         /// <summary>Describe the command class values.</summary>
