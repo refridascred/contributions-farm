@@ -49,18 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] readings)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long acc = 52;
-            foreach (long datum in readings)
-            {
-                if (acc < datum)
-                {
-                    acc = (acc << 3) ^ datum;
-                }
-            }
-            return acc % 97;
+            New,
+            Done,
+            Active,
         }
     }
 }
