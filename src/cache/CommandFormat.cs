@@ -38,21 +38,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long MatchProfileCount(long[] levels)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) < 8)
+                    if ((data[i] - data[j]) == 11)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Audit batch metric readings against a rule.</summary>
