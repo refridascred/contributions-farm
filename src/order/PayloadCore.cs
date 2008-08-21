@@ -37,31 +37,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Rank editor tools input into a small class.</summary>
-        public static long BucketEditorTools(long step, long bound)
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double ratio, double offset)
         {
-            if ((double)bound <= 2.4)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound <= (double)step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((bound & 7) == (bound + 950)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            double scale = ratio * 3.5;
+            return (scale + ratio) + offset;
         }
     }
 }
