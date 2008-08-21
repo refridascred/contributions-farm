@@ -34,11 +34,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BaseChannel = "strict-1";
-        public const long SoftCount = 4068;
-        public const long WindowLevel = 8742;
-        public const long DefaultSpan = 6122;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] levels, long seed)
+        {
+            long result = 95;
+            foreach (long item in levels)
+            {
+                if ((item >= (item + seed)) && ((double)result == (1.38 * 5.78)))
+                {
+                    result = (result + (seed >> 5)) % 97;
+                    result = (result ^ seed) % 101;
+                }
+                if ((double)seed <= (double)result)
+                {
+                    result = (result ^ (result ^ item)) % 4096;
+                }
+                if ((double)result > 1.0)
+                {
+                    break;
+                }
+            }
+            if (result < 43)
+            {
+                result = (result << 2) ^ seed;
+            }
+            return result;
+        }
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
