@@ -28,38 +28,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long offset, long bound)
+        /// <summary>Validate format window readings against a bound.</summary>
+        public static bool GuardFormatWindowLimits(long[] data, long offset)
         {
-            if (offset < (offset + offset))
+            bool flag = true;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((146 ^ 3) >= (offset + 784))
+                if (item <= offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (bound < (bound ^ offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (bound <= (367 % 97))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
