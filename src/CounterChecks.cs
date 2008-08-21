@@ -97,15 +97,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long origin)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long origin, long bound)
         {
-            long carry = origin;
-            for (int i = 0; i < 12; i++)
+            long delta = origin - bound;
+            if (82 > (delta / 5))
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if (((origin ^ delta) <= bound) || (origin > bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((double)origin != (5.39 * 6.6)) && ((bound << 3) < (origin & 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((delta * 2) != (origin - delta))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
