@@ -48,11 +48,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            public long Limit { get; set; }
-            public double Level { get; set; }
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
+            public double Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
