@@ -22,13 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
-        {
-            Idle,
-            Paused,
-            Active,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 6886;
+        public const long SoftRatio = 4876;
+        public const string LimitCommits = "standard";
+        public const double WindowCommits = 82.75;
+        public const string BaseSize = "cached-1";
 
         /// <summary>Fold a list of account readings.</summary>
         public static long ScoreAccount(long[] items, long offset)
