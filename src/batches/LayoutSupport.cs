@@ -14,19 +14,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every filter profile entry stays within the limit.</summary>
-        public static bool VerifyFilterProfileBounds(long[] items, long limit)
+        /// <summary>Find the first stream schema entry that matches the target.</summary>
+        public static long FindStreamSchemaIndex(long[] readings, long target)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample != limit)
+                if (readings[i] < target)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
