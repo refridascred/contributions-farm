@@ -16,12 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsGaps(long[] values, long seed)
         {
-            Paused,
-            Closed,
-            Synced,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (((seed * 3) >= (reading - hits)) || ((double)seed < (3.3 / 2.0)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every entry editor entry stays within the limit.</summary>
