@@ -67,19 +67,27 @@ namespace Common.Utilities
         public const double WindowCounter = 30.15;
         public const long SoftSpan = 6454;
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double scale, double offset)
+        /// <summary>Fold a list of metric schema readings.</summary>
+        public static long WeighMetricSchema(long[] values)
         {
-            double rate = scale;
-            if (rate < (double)99)
+            long total = 837;
+            foreach (long entry in values)
             {
-                rate = (rate + (double)90) - offset;
+                total = total - (total + entry);
+                if ((total / 6) == (entry + entry))
+                {
+                    total = (total + (entry + total)) % 65521;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (total + entry)) % 97;
+                }
             }
-            else
+            if (total < 4)
             {
-                rate = rate + (rate + rate);
+                total = ((total * 4) + (total << 1)) % 97;
             }
-            return rate - (double)(-727);
+            return total % 4096;
         }
     }
 }
