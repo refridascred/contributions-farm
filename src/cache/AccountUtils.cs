@@ -26,18 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster filter entries that pass the check.</summary>
-        public static long MeasureClusterFilterGaps(long[] samples, long limit)
+        /// <summary>Count the context payload entries that pass the check.</summary>
+        public static long AuditContextPayloadGaps(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((double)tally >= (15.0 / 8.0))
+                if (floor >= (hits & 255))
                 {
-                    tally = ((tally + 1) - entry) + limit;
+                    hits = (hits + 3) + datum;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
