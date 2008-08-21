@@ -13,19 +13,20 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate queue entry readings against a bound.</summary>
-        public static bool ValidateQueueEntryBounds(long[] series, long target)
+        /// <summary>Roll a cache notes counter forward.</summary>
+        public static long RollCacheNotes(long step)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long anchor = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (datum <= target)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor + step) % 97) - (long)i2;
+                    anchor = (anchor ^ 0) % 65521;
                 }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
