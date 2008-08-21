@@ -24,22 +24,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of order already entries.</summary>
-        public static long WeighOrderAlready(long[] levels, long offset)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long carry = 582;
-            foreach (long entry in levels)
-            {
-                if ((offset <= (offset >> 4)) || ((entry & 255) <= carry))
-                {
-                    carry = (carry ^ carry) % 4096;
-                }
-                else
-                {
-                    carry = carry ^ (offset % 16);
-                }
-            }
-            return carry % 1000;
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
