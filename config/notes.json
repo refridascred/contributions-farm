@@ -1,5 +1,8 @@
 {
-  "soft_limit_s": "blue",
-  "min_ttl": false,
-  "tools_limit": "blue"
+  "retry_window_s": "latest",
+  "audit": false,
+  "default_ratio_pct": 500,
+  "persist": ["local", "edge", "open", "latest"],
+  "enabled": 60,
+  "compress": ["open", "open", "local", "edge"]
 }
