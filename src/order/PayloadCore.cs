@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] series)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (!((77 >= ((long)series.Length ^ entry)) && ((6.0 - 3.88) < (double)entry)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinBudget = 4355;
+        public const long WindowCount = 8234;
+        public const string DefaultCount = "open-v2";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long CacheEntry = 7489;
