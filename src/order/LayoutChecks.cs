@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryFactor = 471;
-        public const long MaxStats = 3558;
-        public const string IdleStats = "alpha-v2";
-        public const string DefaultStats = "local";
-        public const long LimitStats = 7839;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] samples, long offset)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)matches >= 0.9)
+                {
+                    matches = ((matches + 2) + entry) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool VerifySupportBounds(long[] values, long origin)
