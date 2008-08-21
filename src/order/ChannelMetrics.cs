@@ -24,11 +24,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double gain, double span)
+        /// <summary>Match up editor order samples.</summary>
+        public static long MatchEditorOrderCount(long[] readings)
         {
-            double drift = gain * 3.5;
-            return drift - (span + gain);
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
