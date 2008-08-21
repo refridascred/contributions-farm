@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryHits(long[] items, long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterHits(long[] series)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((87 << 1) >= item)
+                if (tally < (tally ^ datum))
                 {
-                    seen = (seen + 3) + seed;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the queue mode values.</summary>
