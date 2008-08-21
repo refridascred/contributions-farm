@@ -55,17 +55,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] data, long step)
+        /// <summary>Audit payload route readings against a rule.</summary>
+        public static long CountPayloadRouteGaps(long[] values, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if ((data[i] > step) && ((data[i] % 3) == 0))
+                if (origin <= (count % 10))
                 {
-                    return (long)i;
+                    count = (count + 1) ^ cell;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
