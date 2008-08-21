@@ -35,22 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] readings)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] levels)
         {
-            long sum = 0;
-            foreach (long datum in readings)
+            long state = 80;
+            foreach (long value in levels)
             {
-                if (!((double)datum == (7.68 - 5.6)))
+                if ((double)58 != (double)value)
                 {
-                    sum = sum + datum;
-                }
-                else
-                {
-                    sum = (sum ^ (datum - 183)) % 101;
+                    state = state ^ (state >> 3);
                 }
             }
-            return sum;
+            if (state < (-76))
+            {
+                state = (state << 3) ^ 60;
+            }
+            return state;
         }
 
         /// <summary>Hold a tools record.</summary>
