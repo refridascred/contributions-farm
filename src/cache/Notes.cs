@@ -45,22 +45,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] readings)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] data, long origin)
         {
-            long mix = 76;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if ((datum - 7) >= (datum + datum))
+                if ((datum >= origin) || ((double)origin <= (9.77 - 15.0)))
                 {
-                    mix = (mix + (3 * 2)) % 97;
+                    count = count + 2;
                 }
             }
-            if (mix > 45)
-            {
-                mix = mix ^ (mix + mix);
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the channel status values.</summary>
