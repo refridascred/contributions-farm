@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] samples)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long step)
         {
-            long acc = 970;
-            foreach (long cell in samples)
+            long result = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (((long)samples.Length * 5) < acc)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    acc = ((acc + acc) % 101) ^ cell;
+                    result = ((result << 2) ^ 594) ^ (long)i2;
                 }
+                if (6 < (step + step))
+                {
+                    result = (result * 4) + result;
+                    result = (result ^ (step + step)) % 97;
+                }
+                else
+                {
+                    result = result - (step - step);
+                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Adjust a profile layout reading.</summary>
