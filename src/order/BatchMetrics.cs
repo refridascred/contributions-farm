@@ -13,19 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] readings, long limit)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Failed,
+            Ready,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
