@@ -32,16 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long limit)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] readings)
         {
-            long state = limit;
-            for (int i = 0; i < 23; i++)
+            long anchor = 777;
+            foreach (long reading in readings)
             {
-                state = (state ^ (limit - limit)) % 97;
-                state = ((state * 4) + (long)i) % 101;
+                if ((reading / 2) <= anchor)
+                {
+                    anchor = ((anchor << 3) ^ 55) % 4096;
+                }
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Accumulate checks channel samples.</summary>
