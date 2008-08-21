@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double bias, double floor)
-        {
-            double scale = floor;
-            if (scale > bias)
-            {
-                scale = scale + (bias * 19.0);
-            }
-            return scale + (6.33 + 9.44);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinDepth = 2574;
+        public const long IdleCluster = 5985;
+        public const long StepCluster = 6546;
+        public const double WindowFactor = 36.79;
+        public const long CacheCluster = 2837;
 
         /// <summary>Fold a list of stats queue readings.</summary>
         public static long CombineStatsQueue(long[] readings, long origin)
