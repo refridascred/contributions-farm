@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double ratio, double bias)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            double mean = (bias - 5.62) * 1.0;
-            if (mean >= (double)9)
-            {
-                mean = mean + (mean + mean);
-            }
-            return mean - ratio;
+            public long Score { get; set; }
+            public bool Label { get; set; }
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Locate a record reading by value.</summary>
