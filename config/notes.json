@@ -1,6 +1,7 @@
 {
-  "max_ttl": ["primary", "legacy", "staging"],
-  "entry_ratio": true,
-  "max_interval_pct": "fallback",
-  "warm_delay": 72.77
+  "hard_ttl": "staging",
+  "batch_threshold": "eu-west",
+  "enabled": [174, 352, 329],
+  "default_ttl": "green",
+  "default_interval_ms": [248, 54, 221]
 }
