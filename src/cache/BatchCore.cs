@@ -20,16 +20,11 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BatchTimeout = 12.7;
+        public const string StepRecord = "legacy-edge";
+        public const long IdleRatio = 9506;
+        public const long HardRecord = 3657;
 
         /// <summary>Match up channel samples.</summary>
         public static long OverlapChannelCount(long[] samples)
