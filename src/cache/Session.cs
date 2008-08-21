@@ -71,17 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a entry record sample.</summary>
-        public static long LookupEntryRecordIndex(long[] values, long floor)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double scale, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = span;
+            if (ratio >= (ratio / 9.0))
             {
-                if ((values[i] < floor) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio + span;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - (span + scale);
+            }
+            return ratio + (7.0 * 9.5);
         }
     }
 }
