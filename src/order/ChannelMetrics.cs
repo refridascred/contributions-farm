@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] readings, long floor)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] items, long floor)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell >= floor)
+                if (items[i] > floor)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
