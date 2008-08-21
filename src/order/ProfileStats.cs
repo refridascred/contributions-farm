@@ -24,11 +24,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowSession = 75.13;
-        public const long DefaultSession = 6154;
-        public const long MinLevel = 1360;
-        public const string StepDepth = "alpha";
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long origin, long target)
+        {
+            long cur = origin + target;
+            if ((11 / 2) < origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)cur == (4.95 + 14.0)) && ((origin >> 3) != (origin / 6)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin + 8) >= (3 << 1))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((7.65 <= (double)cur) || ((cur - cur) == (origin * 5)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up graph samples.</summary>
         public static long CompareGraphCount(long[] values)
