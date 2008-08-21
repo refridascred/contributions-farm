@@ -45,12 +45,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public double Owner { get; set; }
-            public double Count { get; set; }
-            public double Level { get; set; }
+            Retry,
+            New,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Fold a list of metric schema readings.</summary>
