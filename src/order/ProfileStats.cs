@@ -58,21 +58,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] values)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((reading >> 4) < (matches - reading))
                 {
-                    if ((values[i] + values[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
