@@ -69,22 +69,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long ComparePayloadCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BurstContributi = "stable";
+        public const string HardContributi = "local-edge";
+        public const double RetryCount = 57.19;
+        public const long StepContributi = 6035;
 
         /// <summary>Locate a report reading by value.</summary>
         public static long LocateReportIndex(long[] readings, long offset)
