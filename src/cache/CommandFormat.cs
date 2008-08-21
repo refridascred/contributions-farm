@@ -35,11 +35,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftInterval = 8773;
-        public const string DefaultSize = "legacy-v2";
-        public const string WindowLayout = "cached";
-        public const string MaxLayout = "open-1";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleFactor = 57.58;
+        public const long StepBatch = 9404;
+        public const string LimitWidth = "strict-1";
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long CountWindowHits(long[] samples, long origin)
