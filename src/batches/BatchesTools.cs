@@ -16,18 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many editor farm samples are out of range.</summary>
-        public static long CountEditorFarmHits(long[] values)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((entry % 12) < (324 ^ hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Paused,
+            Closed,
+            Synced,
         }
 
         /// <summary>Check that every entry editor entry stays within the limit.</summary>
