@@ -70,11 +70,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinInterval = 97.17;
-        public const long MinSchema = 903;
-        public const double WindowSchema = 33.89;
-        public const long LimitSchema = 2801;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 4622;
+        public const long IdleCounter = 699;
+        public const double WindowCounter = 30.15;
+        public const long SoftSpan = 6454;
 
         /// <summary>Blend two session measurements.</summary>
         public static double AdjustSession(double scale, double offset)
