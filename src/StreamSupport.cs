@@ -33,18 +33,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] data, long target)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((506 + seen) >= (target & 255))
-                {
-                    seen = (seen + 2) ^ entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheInterval = 1451;
+        public const string SoftSpan = "latest-edge";
+        public const string BurstGithubfarm = "cached";
     }
 }
