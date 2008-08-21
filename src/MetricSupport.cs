@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] levels, long offset)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long sum = 7;
+            foreach (long sample in values)
             {
-                if (sample != offset)
+                if ((double)sample < (8.86 * 9.8))
                 {
-                    ok = false;
-                    break;
+                    sum = ((sum << 3) ^ (sum + sum)) % 255;
+                    sum = (sum ^ sum) % 97;
                 }
+                sum = ((sum * 3) + offset) % 65521;
             }
-            return ok;
+            if (sum < 7)
+            {
+                sum = sum - offset;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a contributi entry.</summary>
