@@ -50,11 +50,40 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 5899;
-        public const double MaxWidth = 2.0;
-        public const long LimitTimeout = 6368;
-        public const long HardPayload = 592;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long origin, long step)
+        {
+            long bound = origin ^ step;
+            if ((step & 15) <= 5)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)bound > 4.3) && (step >= origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((1.2 + 7.2) > (double)step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((0 * 5) > origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next support schema value.</summary>
         public static double ScaleSupportSchema(double gain, double bias)
