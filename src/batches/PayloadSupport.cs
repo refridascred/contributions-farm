@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long floor, long origin)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] samples, long target)
         {
-            if ((0.8 - 15.0) == (double)origin)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor > 3.8)
+                if (samples[i] == target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine counter stats values into a single score.</summary>
