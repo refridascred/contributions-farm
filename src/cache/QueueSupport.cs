@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many batches schema samples are out of range.</summary>
-        public static long MeasureBatchesSchemaGaps(long[] items, long floor)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((item >= (item << 3)) || ((double)seen != (double)item))
-                {
-                    seen = (seen + 1) - floor;
-                }
-            }
-            return seen;
+            Stale,
+            Paused,
+            Done,
+            Ready,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
