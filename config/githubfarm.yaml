@@ -1,11 +1,32 @@
 # githubfarm settings
-min_ttl_ms: true
-batch_depth_ms: blue
-filter_capacity: true
-commits_ratio:
-  default_interval_pct: 30
-  payload_depth: 1
-  base_window: 60
-  soft_ttl_ms: 250
-  channel_threshold: 98.15
-  cache_window_ms: 6496
+compress: eu-west
+retry_ratio_ms:
+  min_size: true
+  filter_capacity: fallback
+  strict: 6
+  commits_delay:
+    filter_ttl: stable
+    persist: false
+    strict: 47.31
+    flush_retries_count: 9703
+    sync_timeout: true
+    cache_capacity_pct: 45
+  already_ttl:
+    - 419
+    - 178
+    - 15
+    - 478
+  flush_ratio_ms:
+    strict:
+      - 91
+      - 363
+      - 305
+      - 209
+    idle_depth: latest
+    idle_capacity: false
+cache_retries_pct:
+  queue_depth:
+    - 112
+    - 100
+  min_delay_pct: green
+  batch_retries_ms: 14.65
