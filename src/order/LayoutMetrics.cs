@@ -40,22 +40,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the record filter entries that pass the check.</summary>
-        public static long MeasureRecordFilterHits(long[] items, long seed)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (item <= matches)
-                {
-                    matches = (matches + 2) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public double Region { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
