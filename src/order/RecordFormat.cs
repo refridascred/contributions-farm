@@ -13,10 +13,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultLevel = "cached-edge";
-        public const string LimitCache = "fallback-v2";
-        public const double DefaultCache = 26.43;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxTimeout = 2187;
+        public const long RetryNotes = 7148;
+        public const long BatchNotes = 5550;
 
         /// <summary>Locate a command reading by value.</summary>
         public static long SeekCommandIndex(long[] items, long floor)
