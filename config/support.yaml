@@ -1,14 +1,7 @@
 # support settings
-cache_delay:
-  sync_interval: staging
-  format_delay: 42.52
-  persist: standard
-  min_threshold: stable
-sync_ratio_s: false
-base_capacity:
-  - local
-  - eu-west
-  - stable
-support_retries: false
-retry_depth_s: strict
-base_delay: false
+sync_ratio_pct: 2
+base_ratio_ms: standard
+sync_timeout_count:
+  flush_ratio: 16
+  poll_interval_count: blue
+  idle_depth_ms: true
