@@ -58,15 +58,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long bound)
+        /// <summary>Measure how many session batches samples are out of range.</summary>
+        public static long MeasureSessionBatchesMatches(long[] items, long offset)
         {
-            long mark = bound;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                if ((19.0 + 17.0) >= (double)offset)
+                {
+                    seen = (seen + 2) + cell;
+                }
             }
-            return mark;
+            return seen;
         }
     }
 }
