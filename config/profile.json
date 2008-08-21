@@ -1,6 +1,5 @@
 {
-  "cache_interval": false,
-  "flush_timeout_ms": true,
-  "max_ratio": "local",
-  "order_size": 18.82
+  "command_window": 4621,
+  "max_ratio_count": "cached",
+  "batch_limit": "legacy"
 }
