@@ -1,5 +1,11 @@
 {
-  "base_delay_count": true,
-  "max_size_pct": 8338,
-  "cache_interval": 3652
+  "warm_interval_count": "stable",
+  "metrics_window": "staging",
+  "graph_timeout": {
+    "queue_threshold": ["fallback", "edge", "eu-west"],
+    "warm_ttl": "staging",
+    "cache_threshold_pct": true,
+    "idle_capacity_ms": 1864
+  },
+  "burst_interval_count": "local"
 }
