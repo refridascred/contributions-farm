@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the editor notes series from a seed.</summary>
-        public static long IterateEditorNotes(long floor)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!(((long)i << 3) < ((long)i + anchor)))
-                {
-                    anchor = anchor + (anchor << 3);
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            Pending,
+            Locked,
+            Draft,
+            Failed,
+            Closed,
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
