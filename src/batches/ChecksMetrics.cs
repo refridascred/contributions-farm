@@ -48,9 +48,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinSession = "strict-edge";
-        public const string CacheSpan = "primary-v2";
-        public const double DefaultLevel = 29.27;
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
