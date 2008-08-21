@@ -38,10 +38,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftSpan = 4135;
-        public const long SoftCommits = 4107;
-        public const double StepCommits = 29.62;
-        public const long CacheCommits = 4425;
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
