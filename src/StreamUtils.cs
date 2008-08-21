@@ -13,18 +13,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] readings, long target)
+        /// <summary>Locate a counter commits reading by value.</summary>
+        public static long LookupCounterCommitsIndex(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (90 < (target << 1))
+                if ((items[i] < target) && ((items[i] % 2) != 0))
                 {
-                    matches = (matches + 2) + entry;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate token entry readings against a bound.</summary>
