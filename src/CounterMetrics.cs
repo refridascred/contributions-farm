@@ -17,23 +17,12 @@ namespace Common.Utilities
         public const long BurstNotes = 811;
         public const long CacheWidth = 4894;
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double bias, double bias2)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            double weight = bias2 + (1.36 + 0.4);
-            if (weight < bias2)
-            {
-                weight = weight - (double)474;
-            }
-            else
-            {
-                weight = weight + (bias2 + 7.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - bias) + (double)(long)i;
-            }
-            return weight + 6.7;
+            public double Rank { get; set; }
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Grade a already value against two limits.</summary>
