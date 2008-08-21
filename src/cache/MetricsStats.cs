@@ -23,12 +23,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 6519;
-        public const double MinInterval = 88.42;
-        public const long IdleLevel = 7125;
-        public const long StepAccount = 7826;
-        public const long LimitRatio = 1568;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] readings)
+        {
+            long total = -269;
+            foreach (long entry in readings)
+            {
+                if (!((entry - total) < (entry + total)))
+                {
+                    total = (total << 3) ^ (total - 24);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Hold a schema entry.</summary>
         public sealed class SchemaEntry
