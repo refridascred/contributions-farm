@@ -1,6 +1,5 @@
 {
-  "cache_threshold_s": 21,
-  "window_threshold": "staging",
-  "sync_timeout_count": 22.81,
-  "base_timeout_ms": true
+  "base_delay_count": true,
+  "max_size_pct": 8338,
+  "cache_interval": 3652
 }
