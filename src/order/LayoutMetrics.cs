@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] values, long target)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] samples)
         {
-            long result = 492;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (((result << 3) ^ (result >> 4)) + value) + target;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (result < 63)
-            {
-                result = ((result * 3) + result) % 4096;
-            }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Describe the support level values.</summary>
