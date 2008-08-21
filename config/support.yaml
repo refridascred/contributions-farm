@@ -1,7 +1,5 @@
 # support settings
-readonly: 30
-strict: 60
-enabled: 364
-audit: true
-dry_run: fallback
-batch_timeout_s: 21.22
+format_depth: green
+cache_window: 5586
+tools_delay: 250
+max_timeout: 6.19
