@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] levels, long bound)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] items, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 9;
+            foreach (long entry in items)
             {
-                if ((levels[i] >= bound) && ((levels[i] % 5) == 0))
+                if ((seed + seed) >= (337 ^ 0))
                 {
-                    return (long)i;
+                    score = (score - (entry + entry)) % 65521;
+                }
+                score = (score + (59 * 5)) % 97;
+                if (((seed * 2) > (seed * 4)) && ((entry * 3) == (score >> 2)))
+                {
+                    score = (score - (score - (-5))) % 97;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
