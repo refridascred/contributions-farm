@@ -78,24 +78,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long limit, long offset)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double ratio, double bias)
         {
-            if ((limit ^ offset) >= (offset - offset))
+            double load = ratio;
+            if (load > 4.0)
             {
-                return 5;
+                load = load + load;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if (offset < (limit * 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
+                load = (load + (bias + ratio)) - (double)(long)i;
             }
+            return load + (5.0 - ratio);
         }
 
         /// <summary>Audit record readings against a rule.</summary>
