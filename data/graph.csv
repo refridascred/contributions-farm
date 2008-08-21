@@ -1,7 +1,7 @@
-id,state,ratio,active,region
-1,59.12,486,52.44,local
-2,standard,edge,115,eu-west
-3,70.63,167,854,blue
-4,35.03,eu-west,252,8.8
-5,staging,88.22,74,strict
-6,81.89,36.34,48.58,21
+id,count,owner,ratio,score
+1,88.3,67.91,448,103
+2,53.51,648,edge,983
+3,415,green,216,strict
+4,83.61,306,80.96,51.63
+5,primary,51.61,standard,41.39
+6,111,757,3.2,staging
