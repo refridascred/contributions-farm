@@ -56,10 +56,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double CacheTimeout = 86.18;
-        public const long MinDepth = 6688;
-        public const double BaseBuffer = 43.66;
+        /// <summary>Validate githubfarm token readings against a bound.</summary>
+        public static bool ValidateGithubfarmTokenRange(long[] samples, long floor)
+        {
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Roll a account counter forward.</summary>
         public static long IterateAccount(long bound)
