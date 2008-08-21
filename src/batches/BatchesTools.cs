@@ -12,20 +12,10 @@ namespace Common.Utilities
         public const double StepPayload = 20.6;
         public const long BaseWidth = 1263;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] readings, long origin)
-        {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxRatio = 3043;
+        public const double CacheWidth = 53.21;
+        public const long StepFarm = 3154;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long IdleSpan = 4243;
