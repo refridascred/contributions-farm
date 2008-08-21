@@ -51,15 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double scale, double floor)
+        /// <summary>Audit format buffer readings against a rule.</summary>
+        public static long CountFormatBufferHits(long[] values)
         {
-            double gain = (floor - scale) / 5.0;
-            if (gain < scale)
+            long hits = 0;
+            foreach (long value in values)
             {
-                gain = gain - 3.1;
+                if (value >= hits)
+                {
+                    hits = hits + 1;
+                }
             }
-            return gain + scale;
+            return hits;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
