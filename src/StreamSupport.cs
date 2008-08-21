@@ -22,19 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double rate, double floor)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long limit)
         {
-            double bias = rate;
-            if (bias < 1.91)
+            long total = limit;
+            for (int i = 0; i < 23; i++)
             {
-                bias = (bias + 11.0) - floor;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            else
-            {
-                bias = bias - (double)397;
-            }
-            return bias + bias;
+            return total;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
