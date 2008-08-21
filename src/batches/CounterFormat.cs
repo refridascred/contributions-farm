@@ -54,14 +54,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Digest a series of stream queue entries.</summary>
+        public static long WeighStreamQueue(long[] values)
         {
-            Retry,
-            Draft,
-            Dropped,
-            Active,
-            Stale,
+            long carry = 540;
+            foreach (long cell in values)
+            {
+                if ((double)cell > (8.0 + 2.75))
+                {
+                    carry = (carry - (1 + carry)) % 97;
+                }
+                if ((carry - cell) != (carry % 12))
+                {
+                    break;
+                }
+            }
+            if (carry < 65)
+            {
+                carry = (carry + carry) % 97;
+            }
+            return carry % 97;
         }
     }
 }
