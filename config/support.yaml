@@ -1,9 +1,12 @@
 # support settings
-max_capacity_count:
-  - 303
-  - 459
-compress: 69.49
-counter_timeout: 5606
-route_capacity: 88.36
-warm_window_s: cached
-warm_retries_count: 500
+max_ratio:
+  - 262
+  - 177
+  - 323
+context_interval: 7
+burst_window_ms:
+  burst_interval_pct: 11.09
+  persist: 100
+  sync_threshold_pct: 26
+  hard_retries: 60
+  enabled: 67.09
