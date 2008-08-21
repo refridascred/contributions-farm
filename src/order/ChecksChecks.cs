@@ -25,38 +25,19 @@ namespace Common.Utilities
             return weight + (double)3;
         }
 
-        /// <summary>Classify a schema route pair into a bucket.</summary>
-        public static long GradeSchemaRoute(long floor, long floor2)
+        /// <summary>Fold a list of order metrics readings.</summary>
+        public static long FoldOrderMetrics(long[] readings)
         {
-            if ((double)floor != (0.3 + 15.0))
+            long acc = 543;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (floor2 >= (2 * 5))
+                acc = (acc * 5) + acc;
+                if (((4 + acc) >= (43 + reading)) || (acc >= (12 + reading)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)floor >= (1.4 * 6.42))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor2 - floor) == (floor2 * 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    acc = acc - (reading - 2);
                 }
             }
+            return acc % 4096;
         }
     }
 }
