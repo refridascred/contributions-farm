@@ -56,23 +56,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] items, long seed)
-        {
-            long sum = -95;
-            foreach (long value in items)
-            {
-                if ((double)sum == (9.0 * 1.3))
-                {
-                    sum = ((sum * 4) + (56 & 3)) - seed;
-                }
-                else
-                {
-                    sum = (sum - value) % 4096;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstSize = 8818;
+        public const long StepTimeout = 2164;
+        public const string BatchWidth = "cached";
 
         /// <summary>Adjust a session stream reading.</summary>
         public static double BlendSessionStream(double ratio, double floor)
