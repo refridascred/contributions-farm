@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterHits(long[] values)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((((297 % 100) >= (item + 5)) && ((tally >> 4) >= tally)) && ((tally <= (item ^ tally)) || (item < (640 + item))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate queue entry readings against a bound.</summary>
