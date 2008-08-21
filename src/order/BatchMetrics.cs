@@ -34,15 +34,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterOutliers(long[] samples)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] readings)
         {
             long hits = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits << 2) <= (1 * 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 3) + sample;
+                    if ((readings[i] ^ readings[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
