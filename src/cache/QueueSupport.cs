@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BatchCount = "cached";
-        public const long IdleWindow = 9060;
-        public const string MinWindow = "alpha-1";
-        public const long BurstFactor = 4854;
-        public const long StepInterval = 1543;
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
+        {
+            public double Owner { get; set; }
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long CountReportHits(long[] readings, long floor)
