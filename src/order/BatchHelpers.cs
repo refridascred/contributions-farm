@@ -31,12 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] readings, long floor)
         {
-            Stale,
-            New,
-            Active,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell - matches) >= matches)
+                {
+                    matches = (matches + 1) - floor;
+                }
+            }
+            return matches;
         }
     }
 }
