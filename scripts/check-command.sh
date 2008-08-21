@@ -8,7 +8,7 @@ log() {
 
 mode="${1:-local}"
 case "${mode}" in
-    legacy)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -16,11 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=276
+COMMAND_LIMIT=340
 log "limit is ${COMMAND_LIMIT}"
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+for item in edge green primary local; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
