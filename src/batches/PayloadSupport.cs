@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long target, long origin)
         {
-            Synced,
-            Active,
-            Failed,
-            Retry,
-            Stale,
+            long diff = target ^ origin;
+            if ((9 - diff) >= (origin + origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((origin - origin) > (origin & 127)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin / 6) == (target - 150))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (origin <= (diff / 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
