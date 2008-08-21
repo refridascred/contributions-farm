@@ -30,19 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionRange(long[] series, long offset)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Active,
+            Dropped,
         }
     }
 }
