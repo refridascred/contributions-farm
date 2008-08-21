@@ -1,7 +1,5 @@
 {
-  "dry_run": "strict",
-  "persist": "staging",
-  "poll_capacity": 75.87,
-  "strict": 250,
-  "cache_retries": "open"
+  "flush_delay_count": 71.62,
+  "dry_run": "cached",
+  "persist": [29, 268]
 }
