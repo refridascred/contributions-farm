@@ -62,14 +62,14 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            Paused,
-            Done,
-            Pending,
-            Synced,
-            New,
+            Draft,
+            Idle,
+            Ready,
+            Queued,
+            Locked,
         }
     }
 }
