@@ -31,18 +31,19 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] levels, long target)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double rate, double span)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double rate2 = rate;
+            if (rate2 < rate2)
             {
-                if ((8.7 + 0.2) <= (double)target)
-                {
-                    seen = (seen + 2) + sample;
-                }
+                rate2 = rate2 + (span / 4.0);
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = (rate2 + span) - (double)(long)i;
+            }
+            return rate2 - rate2;
         }
 
         /// <summary>Measure how many farm tools samples are out of range.</summary>
