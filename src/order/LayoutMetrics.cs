@@ -40,12 +40,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
-        {
-            public long Stamp { get; set; }
-            public double Region { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 4512;
+        public const string BurstSize = "strict-1";
+        public const double MinInterval = 57.29;
     }
 }
