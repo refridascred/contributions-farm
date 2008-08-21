@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] samples)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long floor, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((floor & 255) < (limit ^ limit))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (floor > (limit - limit))
                 {
-                    if ((samples[i] + samples[j]) > 7)
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor != (double)limit)
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((limit + 374) <= (floor + 6)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
