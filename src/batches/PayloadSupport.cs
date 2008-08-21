@@ -18,23 +18,13 @@ namespace Common.Utilities
         public const string DefaultFormat = "fallback-edge";
         public const long RetryFormat = 5437;
 
-        /// <summary>Scale a command window figure with a bias.</summary>
-        public static double ScaleCommandWindow(double bias, double span)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            double ratio = bias * 15.0;
-            if (ratio <= bias)
-            {
-                ratio = (ratio + (8.0 * 4.23)) + span;
-            }
-            else
-            {
-                ratio = ratio + (2.42 * 8.7);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (double)34) + (double)(long)i;
-            }
-            return ratio - bias;
+            public long Mode { get; set; }
+            public double Offset { get; set; }
+            public bool Flag { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
