@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryRecord = "cached-edge";
-        public const double WindowRecord = 80.44;
-        public const double MinFactor = 60.54;
-        public const double BaseScore = 64.47;
-        public const long CacheSpan = 5712;
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Adjust a filter reading.</summary>
         public static double BlendFilter(double weight, double span)
