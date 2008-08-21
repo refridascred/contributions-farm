@@ -29,14 +29,12 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 8686;
+        public const long CachePayload = 2931;
+        public const long LimitPayload = 5976;
+        public const string IdleSize = "legacy-v2";
+        public const double StepPayload = 88.92;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string MinStream = "fallback-1";
