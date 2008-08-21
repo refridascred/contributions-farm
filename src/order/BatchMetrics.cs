@@ -22,18 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] series)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((matches - 83) >= (reading + matches))
+                if ((entry / 2) <= (count / 3))
                 {
-                    matches = matches + 1;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Accumulate token samples.</summary>
