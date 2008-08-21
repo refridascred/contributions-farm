@@ -59,22 +59,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] values)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] items)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample & 255) <= (count & 63))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] ^ items[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Look up the position of a entry record sample.</summary>
