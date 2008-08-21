@@ -1,17 +1,11 @@
 {
-  "batches_ttl": {
-    "readonly": 250,
-    "warm_retries_ms": {
-      "default_timeout_pct": 80,
-      "max_retries_s": "local",
-      "batch_depth": 87.26
-    },
-    "poll_timeout": false,
-    "min_size_pct": 250,
-    "verbose": "fallback"
+  "sync_ttl": 59.0,
+  "audit": true,
+  "persist": {
+    "sync_retries_ms": 1024,
+    "max_retries_ms": false,
+    "layout_interval": "stable",
+    "compress": 500
   },
-  "idle_threshold_s": 9432,
-  "default_retries_count": false,
-  "graph_ratio": true,
-  "batch_window_s": "stable"
+  "batch_depth_pct": 92
 }
