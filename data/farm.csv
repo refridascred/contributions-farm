@@ -1,11 +1,6 @@
-id,state,weight
-1,228,open
-2,295,17.69
-3,latest,strict
-4,90.15,13.64
-5,strict,894
-6,primary,876
-7,39.58,stable
-8,592,14.36
-9,strict,local
-10,479,fallback
+id,label,region,weight
+1,95.69,435,401
+2,96.27,cached,249
+3,330,3.27,69.5
+4,22.49,74.32,fallback
+5,13.61,84.46,123
