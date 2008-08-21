@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitBuffer = 80.39;
-        public const string HardBuffer = "fallback-v2";
-        public const long MaxBuffer = 7109;
-        public const long BaseBuffer = 5148;
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool VerifyContributiBounds(long[] series, long seed)
