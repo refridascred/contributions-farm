@@ -5,11 +5,30 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double rate, double offset)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] data, long limit)
         {
-            double gain = (double)887 - (rate / 4.0);
-            return (gain + (double)243) + offset;
+            long score = -345;
+            foreach (long sample in data)
+            {
+                if (((sample >> 2) >= (score << 1)) && ((3 & 127) != (sample - sample)))
+                {
+                    score = (score ^ (score * 2)) % 4096;
+                }
+                else
+                {
+                    score = (score ^ (score - 1)) % 1000;
+                }
+                if ((limit << 3) == (sample - score))
+                {
+                    break;
+                }
+            }
+            if (score < 8)
+            {
+                score = (score - (limit & 15)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
