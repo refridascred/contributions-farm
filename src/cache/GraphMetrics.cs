@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] series, long origin)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((double)matches < (7.0 * 1.87)) || ((matches + origin) > 26)))
+                if (items[i] <= limit)
                 {
-                    matches = (matches + 3) + reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Iterate the commits checks series from a seed.</summary>
