@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] series)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] levels, long floor)
         {
-            long anchor = 902;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                anchor = anchor ^ (entry << 1);
-                if ((double)anchor <= (4.0 - 10.0))
+                if ((entry << 1) > entry)
                 {
-                    anchor = anchor ^ anchor;
-                }
-                if ((entry + 752) <= (anchor + entry))
-                {
-                    break;
+                    tally = (tally + 2) + floor;
                 }
             }
-            if (anchor > 8)
-            {
-                anchor = (anchor ^ (anchor / 8)) % 97;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
