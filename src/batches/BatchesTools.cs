@@ -12,14 +12,19 @@ namespace Common.Utilities
         public const double StepPayload = 20.6;
         public const long BaseWidth = 1263;
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] readings, long origin)
         {
-            Paused,
-            Synced,
-            Draft,
-            Dropped,
-            Closed,
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
