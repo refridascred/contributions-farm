@@ -1,9 +1,9 @@
 # entry settings
-order_threshold: 7785
-compress: local
-base_interval_s: strict
-strict:
-  - 392
-  - 449
-  - 337
-  - 200
+channel_threshold: 27.86
+soft_limit_count: fallback
+idle_ratio_count: 40.02
+commits_ttl:
+  - cached
+  - blue
+flush_delay_ms: true
+report_delay: latest
