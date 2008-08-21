@@ -12,12 +12,24 @@ namespace Common.Utilities
         public const long BaseQueue = 8541;
         public const long MaxBudget = 1036;
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long origin, long offset)
         {
-            public double Size { get; set; }
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
+            if ((8.0 + 5.69) != (double)origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)offset > 4.1)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
