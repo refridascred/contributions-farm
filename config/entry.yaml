@@ -1,14 +1,19 @@
 # entry settings
-sync_size_pct:
-  - primary
-  - local
-  - edge
-  - green
-default_limit_count: blue
-poll_depth_count:
-  - 135
-  - 445
-  - 395
-  - 104
-burst_ttl_ms: 1024
-verbose: true
+batches_retries:
+  - 49
+  - 391
+  - 160
+  - 470
+verbose:
+  compress: 9202
+  idle_ttl: 32.74
+  retry_ttl: primary
+  batch_window_s: legacy
+  batch_ttl_ms: 25.48
+  audit: 14.83
+idle_ttl_ms: standard
+sync_size_s:
+  - 286
+  - 230
+  - 262
+  - 292
