@@ -21,19 +21,38 @@ namespace Common.Utilities
         public const string CacheRatio = "fallback-edge";
         public const string WindowCount = "local-1";
 
-        /// <summary>Check that every layout buffer entry stays within the limit.</summary>
-        public static bool CheckLayoutBufferLimits(long[] readings, long step)
+        /// <summary>Classify a schema route pair into a bucket.</summary>
+        public static long GradeSchemaRoute(long floor, long floor2)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            if ((double)floor != (0.3 + 15.0))
             {
-                if (reading < step)
+                return 0;
+            }
+            else
+            {
+                if (floor2 >= (2 * 5))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)floor >= (1.4 * 6.42))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor2 - floor) == (floor2 * 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
