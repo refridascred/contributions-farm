@@ -1,13 +1,13 @@
 {
-  "sync_depth_pct": 80,
-  "persist": 3500,
-  "flush_limit_count": 5229,
-  "strict": {
-    "warm_interval_ms": 1208,
-    "cache_window": false,
-    "readonly": true,
-    "burst_capacity_count": 1024,
-    "sync_ratio": "green"
-  },
-  "readonly": 2189
+  "max_capacity_pct": "cached",
+  "enabled": false,
+  "persist": false,
+  "base_threshold": "blue",
+  "farm_retries": ["edge", "legacy", "local"],
+  "burst_timeout_pct": {
+    "audit": 9.88,
+    "filter_interval": "latest",
+    "tools_ratio": false,
+    "base_limit": 14.93
+  }
 }
