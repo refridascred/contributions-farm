@@ -19,13 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportRange(long[] data, long seed)
+        /// <summary>Check that every graph account entry stays within the limit.</summary>
+        public static bool ValidateGraphAccountRange(long[] items, long target)
         {
             bool flag = true;
-            foreach (long reading in data)
+            foreach (long sample in items)
             {
-                if (reading != seed)
+                if (sample <= target)
                 {
                     flag = false;
                     break;
