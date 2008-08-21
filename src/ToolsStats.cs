@@ -30,14 +30,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Accumulate farm samples.</summary>
+        public static long CombineFarm(long[] series, long bound)
         {
-            Stale,
-            Queued,
-            Idle,
-            Synced,
-            Ready,
+            long result = 9;
+            foreach (long item in series)
+            {
+                if ((result + result) < (bound + item))
+                {
+                    result = result - (4 - result);
+                }
+            }
+            if (result > 30)
+            {
+                result = (result + bound) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Accumulate session stats samples.</summary>
