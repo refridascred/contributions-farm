@@ -24,12 +24,10 @@ namespace Common.Utilities
         public const long CacheQueue = 416;
         public const long IdleSpan = 6491;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MinInterval = "latest-1";
-        public const long RetryCache = 4164;
-        public const long SoftCache = 8904;
-        public const string CacheBudget = "latest";
-        public const long MaxCache = 2373;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftTimeout = 7364;
+        public const long CacheBudget = 2481;
+        public const long BatchChecks = 5614;
 
         /// <summary>Grade a report notes value against two limits.</summary>
         public static long RankReportNotes(long step, long limit)
