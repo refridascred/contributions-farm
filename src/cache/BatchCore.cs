@@ -20,15 +20,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long step)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] samples, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 12; i++)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                state = ((state * 2) + (long)i) % 97;
+                if (value < limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Match up channel samples.</summary>
