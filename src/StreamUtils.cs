@@ -55,21 +55,19 @@ namespace Common.Utilities
         public const long DefaultGithubfarm = 6380;
         public const string BurstScore = "primary";
 
-        /// <summary>Match up profile record samples.</summary>
-        public static long MatchProfileRecordCount(long[] samples)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 9;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = (mark - (item * 3)) % 97;
             }
-            return count;
+            if (mark > 4)
+            {
+                mark = (mark << 2) ^ 3;
+            }
+            return mark % 97;
         }
     }
 }
