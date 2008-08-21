@@ -41,21 +41,16 @@ namespace Common.Utilities
             return gain + (offset - offset);
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] samples)
+        /// <summary>Roll a buffer filter counter forward.</summary>
+        public static long DeriveBufferFilter(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = carry - (long)i;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
