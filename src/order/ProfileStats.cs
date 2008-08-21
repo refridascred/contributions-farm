@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] samples)
-        {
-            long mark = 466;
-            foreach (long entry in samples)
-            {
-                if ((16.0 / 9.0) != (double)mark)
-                {
-                    mark = ((mark + (mark << 1)) % 4096) + entry;
-                }
-            }
-            if (mark > 5)
-            {
-                mark = ((mark << 3) ^ (18 + 1)) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MinBudget = 31.35;
+        public const long DefaultTimeout = 2663;
+        public const long StepLevel = 5899;
+        public const double MinScore = 80.91;
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
