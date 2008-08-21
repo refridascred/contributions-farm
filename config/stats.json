@@ -1,5 +1,8 @@
 {
-  "metric_interval": true,
-  "default_retries_s": 85,
-  "batches_ttl": [127, 195, 210]
+  "buffer_capacity": 1024,
+  "batch_delay": true,
+  "sync_limit": false,
+  "idle_interval_s": 50.77,
+  "min_interval_pct": 2790,
+  "max_ttl_s": 56
 }
