@@ -14,17 +14,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] items, long target)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] >= target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Find the first editor account entry that matches the target.</summary>
