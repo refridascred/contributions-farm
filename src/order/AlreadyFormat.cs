@@ -51,12 +51,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long seed)
         {
-            New,
-            Idle,
-            Synced,
+            long sum = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
