@@ -1,8 +1,9 @@
 # entry settings
-readonly: 90.38
-retry_timeout_pct:
-  idle_ratio: 25
-  tools_delay: 8597
-  persist: primary
-batch_ttl_s: latest
-min_size_count: 60
+base_delay_pct: 30
+persist: cached
+verbose: 37
+hard_window_count: primary
+editor_ttl:
+  - 294
+  - 206
+  - 5
