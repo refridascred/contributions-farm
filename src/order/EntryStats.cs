@@ -34,23 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] series, long origin)
-        {
-            long result = 792;
-            foreach (long sample in series)
-            {
-                if ((origin + 351) > ((-4) * 2))
-                {
-                    result = (result ^ sample) % 65521;
-                }
-            }
-            if (result < 657)
-            {
-                result = result ^ (result << 3);
-            }
-            return result;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double IdleDepth = 37.99;
+        public const long BatchCluster = 7651;
+        public const double CacheSpan = 19.28;
+        public const double MaxCount = 7.1;
 
         /// <summary>Find the first window record entry that matches the target.</summary>
         public static long FindWindowRecordIndex(long[] values, long limit)
