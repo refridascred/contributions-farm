@@ -30,9 +30,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheInterval = 1451;
-        public const string SoftSpan = "latest-edge";
-        public const string BurstGithubfarm = "cached";
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double weight, double floor)
+        {
+            double bias = weight;
+            if (bias <= (floor - floor))
+            {
+                bias = bias + weight;
+            }
+            else
+            {
+                bias = bias - floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (bias * 7.5)) + (double)(long)i;
+            }
+            return bias + floor;
+        }
     }
 }
