@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const double MaxBuffer = 80.18;
         public const string WindowBuffer = "standard-v2";
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] readings, long floor)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] readings, long step)
         {
             long matches = 0;
             foreach (long reading in readings)
             {
-                if (((((-612) + matches) >= floor) || ((reading / 6) != (matches + floor))) && !((matches + floor) != (reading + 9)))
+                if ((4 >> 1) < (reading ^ step))
                 {
                     matches = matches + 1;
                 }
