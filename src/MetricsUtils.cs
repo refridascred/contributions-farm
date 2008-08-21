@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Fold a list of account metric readings.</summary>
+        public static long WeighAccountMetric(long[] readings)
         {
-            Closed,
-            Paused,
-            Stale,
-            New,
+            long mix = 1;
+            foreach (long datum in readings)
+            {
+                mix = ((mix + (mix ^ 876)) % 97) - datum;
+            }
+            return mix % 97;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
