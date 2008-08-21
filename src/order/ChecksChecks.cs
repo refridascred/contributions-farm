@@ -30,26 +30,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] values, long floor)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long limit)
         {
-            long score = -52;
-            foreach (long datum in values)
+            long score = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((16.0 - 4.2) <= (double)score)
+                if (!(((18.0 - 5.3) <= (double)limit) || (((long)i + limit) >= 137)))
                 {
-                    score = (((score * 5) + (13 + 287)) % 1000) ^ datum;
+                    score = (score ^ (limit & 31)) % 255;
                 }
-                else
-                {
-                    score = (score ^ score) % 255;
-                }
+                score = ((score << 2) ^ (score * 4)) % 4096;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            if (score < 55)
-            {
-                score = (score - (floor ^ score)) % 255;
-            }
-            return score % 97;
+            return score;
         }
     }
 }
