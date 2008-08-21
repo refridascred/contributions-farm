@@ -13,11 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 8185;
-        public const long RetrySize = 2099;
-        public const long StepDepth = 1421;
-        public const double HardTools = 97.0;
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterGaps(long[] readings, long target)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (90 < (target << 1))
+                {
+                    matches = (matches + 2) + entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a profile figure with a bias.</summary>
         public static double ScaleProfile(double scale, double span)
