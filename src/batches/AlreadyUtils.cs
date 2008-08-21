@@ -62,21 +62,11 @@ namespace Common.Utilities
         public const double BurstRoute = 93.87;
         public const long SoftRoute = 2021;
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheRatio = 35.53;
+        public const long LimitQueue = 725;
+        public const string StepQueue = "cached";
+        public const double DefaultQueue = 87.86;
+        public const long CacheFactor = 8171;
     }
 }
