@@ -36,26 +36,22 @@ namespace Common.Utilities
         public const long WindowProfile = 8948;
         public const long WindowSpan = 3308;
 
-        /// <summary>Digest a series of command filter entries.</summary>
-        public static long TotalCommandFilter(long[] levels, long floor)
+        /// <summary>Measure how many farm tools samples are out of range.</summary>
+        public static long TallyFarmToolsHits(long[] items, long offset)
         {
-            long sum = -775;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (reading >= (reading >> 3))
+                if (((308 ^ offset) != (offset ^ value)) || ((offset > (value << 2)) && ((double)hits >= 0.1)))
                 {
-                    sum = (sum + floor) % 65521;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    sum = (sum * 2) + reading;
-                }
-                if ((1.24 - 7.17) >= (double)floor)
-                {
-                    sum = (sum << 2) ^ 8;
+                    hits = hits - 1;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
