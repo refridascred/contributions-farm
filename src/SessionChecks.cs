@@ -61,18 +61,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks notes readings against a rule.</summary>
-        public static long CountChecksNotesHits(long[] series, long limit)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long result = 82;
+            foreach (long datum in samples)
             {
-                if ((datum % 7) == (datum >> 1))
+                if (((datum + 249) <= (result % 2)) || ((4.0 / 9.0) == (double)result))
                 {
-                    matches = (matches + 1) + limit;
+                    break;
+                }
+                if ((double)datum != (6.8 * 6.0))
+                {
+                    result = (result ^ datum) % 65521;
                 }
             }
-            return matches;
+            return result % 4096;
         }
     }
 }
