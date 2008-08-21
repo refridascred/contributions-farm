@@ -43,14 +43,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Check that every record session entry stays within the limit.</summary>
+        public static bool GuardRecordSessionBounds(long[] values, long step)
         {
-            Stale,
-            Paused,
-            New,
-            Done,
-            Locked,
+            bool valid = true;
+            foreach (long reading in values)
+            {
+                if (reading != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
