@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] readings, long offset)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long offset, long target)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long prev = offset ^ target;
+            if (((target - prev) > (prev - 79)) && ((prev + offset) >= (prev - offset)))
             {
-                if (sample >= offset)
+                return 7;
+            }
+            else
+            {
+                if (((target + 2) > prev) && ((offset << 3) != (prev - prev)))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((target / 3) > (offset ^ target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
