@@ -46,13 +46,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Synced,
-            Done,
-            Pending,
-            Ready,
+            Stale,
+            Active,
+            New,
         }
     }
 }
