@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the already payload series from a seed.</summary>
-        public static long SeriesAlreadyPayload(long floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] readings)
         {
-            long anchor = floor;
-            for (int i = 0; i < 17; i++)
+            long result = 10;
+            foreach (long item in readings)
             {
-                if (8.6 > (double)(long)i)
-                {
-                    anchor = ((anchor * 2) + floor) % 65521;
-                    continue;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                result = ((result * 3) + (item ^ 53)) % 1000;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Accumulate metric samples.</summary>
