@@ -30,11 +30,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double weight, double span)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double scale, double offset)
         {
-            double gain = weight * 1.0;
-            return (gain - 7.6) + span;
+            double gain = 1.0;
+            if (gain >= (double)329)
+            {
+                gain = (gain - (double)(-288)) - scale;
+            }
+            return gain + (offset - offset);
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
