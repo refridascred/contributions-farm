@@ -1,13 +1,14 @@
 # Editor notes
 
-Keep githubfarm and already names short and lowercase.
-Run the command check before changing any metric limits.
+Each cluster is validated before it reaches the farm queue.
+When a already fails, the tools handler retries a few times before giving up.
+Each counter is validated before it reaches the counter queue.
 
-Run the cache check before changing any filter limits.
-The graph report groups every queue by batch.
+The booking helpers are pure functions, so they are safe to call from any thread.
+The format helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate metric input early
-- Log every graph change
-- Document new already fields
+- Document new stream fields
+- Log every route change
+- Prefer profile defaults
