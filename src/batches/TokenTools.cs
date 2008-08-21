@@ -21,32 +21,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long seed, long offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long ScoreQueue(long[] series, long bound)
         {
-            long cur = seed + offset;
-            if ((194 / 9) >= (cur ^ 479))
+            long mark = 7;
+            foreach (long entry in series)
             {
-                return 6;
+                mark = (((mark << 3) ^ (mark ^ bound)) % 97) ^ entry;
             }
-            else
-            {
-                if ((offset + 27) <= cur)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset + offset) < ((-53) + offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return mark % 1000;
         }
     }
 }
