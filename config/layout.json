@@ -1,5 +1,6 @@
 {
-  "compress": "edge",
-  "enabled": "latest",
-  "retry_ratio": 11.45
+  "default_size": false,
+  "sync_depth": 1024,
+  "sync_ttl_pct": 500,
+  "enabled": 11.56
 }
