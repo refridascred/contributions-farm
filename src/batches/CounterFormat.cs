@@ -12,15 +12,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] levels, long bound)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long anchor = 736;
-            foreach (long item in levels)
-            {
-                anchor = (anchor + (item / 5)) + bound;
-            }
-            return anchor % 1000;
+            public double Label { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
