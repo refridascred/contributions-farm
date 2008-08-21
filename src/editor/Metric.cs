@@ -37,10 +37,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 6367;
-        public const long HardPayload = 6276;
-        public const long WindowInterval = 8612;
-        public const double IdleInterval = 14.5;
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
