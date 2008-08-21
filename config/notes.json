@@ -1,6 +1,7 @@
 {
-  "warm_threshold_s": 30,
-  "report_retries": true,
-  "retry_interval_ms": [68, 422, 224, 44],
-  "context_capacity": [306, 164, 159, 437]
+  "verbose": "green",
+  "enabled": true,
+  "default_timeout_s": "primary",
+  "editor_limit": 79.79,
+  "retry_threshold_s": [278, 245, 141, 45]
 }
