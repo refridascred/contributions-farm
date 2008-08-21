@@ -1,15 +1,20 @@
 # support settings
-route_limit:
-  - standard
-  - blue
-base_ratio_s: eu-west
-warm_capacity_s:
-  window_limit: 15
-  audit: false
-  warm_interval_s: 62.51
-  burst_limit_ms:
-    strict: 98.64
-    default_interval: 30
-    base_retries_count: 500
-batch_limit_count: eu-west
-min_threshold_pct: local
+layout_timeout:
+  cache_depth_ms:
+    - 354
+    - 256
+    - 178
+    - 35
+  min_threshold: 67
+  commits_size:
+    soft_depth_count: 6491
+    dry_run:
+      - staging
+      - edge
+      - fallback
+    sync_limit_pct: blue
+    warm_delay_s: false
+    context_size: 32
+    default_capacity_ms: true
+flush_ratio_pct: 10
+buffer_capacity: 94.33
