@@ -29,12 +29,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] values)
         {
-            Active,
-            Idle,
-            Ready,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a metrics entry.</summary>
