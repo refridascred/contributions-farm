@@ -1,8 +1,5 @@
 {
-  "readonly": false,
-  "token_capacity": "staging",
-  "min_threshold": "eu-west",
-  "default_retries_count": "strict",
-  "cache_limit_pct": ["eu-west", "green", "open", "eu-west"],
-  "support_ratio": 64.52
+  "retry_ttl": "strict",
+  "enabled": "staging",
+  "burst_delay_ms": 90
 }
