@@ -1,5 +1,10 @@
 {
-  "metric_ttl": [406, 359, 345],
-  "sync_interval": false,
-  "base_size": 250
+  "warm_retries": ["green", "eu-west", "local", "legacy"],
+  "retry_depth_s": {
+    "warm_depth_ms": false,
+    "max_limit_pct": false,
+    "checks_capacity": 23.06
+  },
+  "metrics_delay": false,
+  "tools_size": 500
 }
