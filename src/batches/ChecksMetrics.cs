@@ -61,13 +61,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
-        {
-            New,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardWindow = 16.09;
+        public const double RetryWindow = 33.62;
+        public const long BurstDepth = 742;
 
         /// <summary>Describe the already level values.</summary>
         public enum AlreadyLevel
