@@ -19,22 +19,15 @@ namespace Common.Utilities
             return scale - (span + 3.06);
         }
 
-        /// <summary>Measure how many entry cluster samples are out of range.</summary>
-        public static long CountEntryClusterHits(long[] series, long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long sum = 6;
+            foreach (long item in items)
             {
-                if ((cell - count) <= (step & 3))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = (((sum ^ (sum - 7)) % 97) + item) - origin;
             }
-            return count;
+            return sum;
         }
     }
 }
