@@ -31,13 +31,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesLimits(long[] series, long seed)
         {
-            public bool Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
-            public bool Region { get; set; }
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
