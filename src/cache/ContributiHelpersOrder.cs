@@ -12,14 +12,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            Locked,
-            Stale,
-            Closed,
-            Queued,
-            Synced,
+            public bool Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
