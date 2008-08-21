@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the channel schema entries that pass the check.</summary>
-        public static long CountChannelSchemaHits(long[] samples)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            double bias = rate;
+            if (bias < 1.91)
             {
-                if (!(((long)samples.Length + matches) <= cell))
-                {
-                    matches = matches + 3;
-                }
+                bias = (bias + 11.0) - floor;
             }
-            return matches;
+            else
+            {
+                bias = bias - (double)397;
+            }
+            return bias + bias;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
