@@ -49,13 +49,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Audit contributi already readings against a rule.</summary>
+        public static long MeasureContributiAlreadyGaps(long[] values)
         {
-            Synced,
-            Failed,
-            Closed,
-            Active,
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((cell << 2) <= (hits * 2))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
