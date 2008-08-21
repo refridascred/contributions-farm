@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesOutliers(long[] items)
+        /// <summary>Roll a window record counter forward.</summary>
+        public static long DeriveWindowRecord(long limit)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long state = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (((count + datum) > (count << 3)) || ((double)count <= 4.3))
+                if (!!((long)i <= limit))
                 {
-                    count = count + 3;
+                    state = (state << 3) ^ ((long)i % 60);
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Roll a batches commits counter forward.</summary>
