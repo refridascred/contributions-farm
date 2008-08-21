@@ -22,12 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] series)
         {
-            Draft,
-            Failed,
-            Ready,
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((matches - 83) >= (reading + matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate token samples.</summary>
