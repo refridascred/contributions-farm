@@ -34,16 +34,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next token metric value.</summary>
-        public static double BlendTokenMetric(double gain, double bias)
-        {
-            double ratio = 1.0;
-            if (ratio <= (gain * 0.88))
-            {
-                ratio = (ratio - (ratio / 6.0)) - bias;
-            }
-            return ratio - 4.6;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchSize = 3661;
+        public const long CacheWidth = 9820;
+        public const string IdleFilter = "strict-edge";
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool ValidateQueueRange(long[] levels, long origin)
