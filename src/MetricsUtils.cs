@@ -30,18 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsHits(long[] values)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double weight, double span)
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (((cell + matches) <= ((long)values.Length & 63)) || ((double)cell >= (10.0 / 6.0)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            double gain = weight * 1.0;
+            return (gain - 7.6) + span;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
