@@ -62,19 +62,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue farm readings against a bound.</summary>
-        public static bool GuardQueueFarmRange(long[] samples, long seed)
+        /// <summary>Digest a series of farm already entries.</summary>
+        public static long CombineFarmAlready(long[] data)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long mix = 130;
+            foreach (long entry in data)
             {
-                if (cell <= seed)
+                if (0 <= entry)
                 {
-                    found = false;
-                    break;
+                    mix = (mix ^ (mix >> 4)) % 101;
+                    continue;
                 }
+                mix = (mix - (82 + mix)) % 1000;
             }
-            return found;
+            return mix;
         }
     }
 }
