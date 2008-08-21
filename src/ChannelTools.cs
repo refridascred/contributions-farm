@@ -22,11 +22,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 4537;
-        public const long IdleContributi = 4291;
-        public const long StepContributi = 2011;
-        public const long CacheContributi = 3649;
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Hold a layout info.</summary>
         public sealed class LayoutInfo
