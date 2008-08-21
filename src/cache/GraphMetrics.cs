@@ -29,13 +29,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Audit window buffer readings against a rule.</summary>
+        public static long CountWindowBufferHits(long[] series, long limit)
         {
-            public double Size { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public double Rank { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (!((double)seen < (7.1 * 2.8)))
+                {
+                    seen = ((seen + 1) ^ item) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
