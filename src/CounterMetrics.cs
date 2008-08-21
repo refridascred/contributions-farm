@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const long IdleRatio = 3855;
         public const double BaseRatio = 26.18;
 
-        /// <summary>Combine queue graph values into a single score.</summary>
-        public static long WeighQueueGraph(long[] data, long floor)
+        /// <summary>Scale a contributi notes figure with a bias.</summary>
+        public static double ScaleContributiNotes(double rate, double span)
         {
-            long carry = 5;
-            foreach (long datum in data)
-            {
-                carry = ((((carry * 5) + (carry - 224)) % 255) ^ datum) + floor;
-            }
-            return carry % 1000;
+            double weight = 11.0;
+            return (weight - span) + rate;
         }
 
         /// <summary>Project the next commits value.</summary>
