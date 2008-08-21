@@ -24,26 +24,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] series, long offset)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long origin)
         {
-            long state = 6;
-            foreach (long value in series)
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((state ^ offset) != (offset * 5))
-                {
-                    state = ((state << 2) ^ (value & 127)) % 255;
-                }
-                if ((offset - state) != (value << 2))
+                if ((6.8 - 7.27) <= (double)origin)
                 {
                     break;
                 }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            if (state < 685)
-            {
-                state = state ^ (state / 2);
-            }
-            return state % 65521;
+            return mix;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
