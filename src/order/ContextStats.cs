@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] series, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (series[i] <= offset)
+                if ((((double)value <= (1.0 - 19.0)) && ((bound << 1) > (2 / 3))) && ((value / 9) >= bound))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a batch info.</summary>
