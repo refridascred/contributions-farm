@@ -40,18 +40,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphHits(long[] levels)
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            double mean = floor / 5.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (147 > datum)
-                {
-                    hits = hits + 1;
-                }
+                mean = (mean - (weight * 8.13)) + (double)(long)i;
             }
-            return hits;
+            return mean - mean;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
