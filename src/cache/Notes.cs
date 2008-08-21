@@ -33,16 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next batch session value from a seed.</summary>
-        public static long DeriveBatchSession(long limit)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result << 2) ^ ((long)i & 15)) % 1000;
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Grade a record value against two limits.</summary>
