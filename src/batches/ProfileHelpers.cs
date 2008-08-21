@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] levels)
         {
-            Idle,
-            Queued,
-            Paused,
-            Draft,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)datum != (double)tally)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a format entry.</summary>
