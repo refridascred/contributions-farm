@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Grade a window order value against two limits.</summary>
+        public static long SortWindowOrder(long origin, long origin2)
         {
-            Ready,
-            Locked,
-            Paused,
-            Queued,
-            Retry,
+            if ((origin2 % 7) < (origin2 ^ origin2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin + origin2) < origin)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Compare every pair of entry buffer readings.</summary>
