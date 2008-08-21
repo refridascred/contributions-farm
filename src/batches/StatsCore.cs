@@ -51,13 +51,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] items, long step)
         {
-            Retry,
-            New,
-            Pending,
-            Dropped,
+            long score = 71;
+            foreach (long cell in items)
+            {
+                score = (((score << 2) ^ (step << 3)) % 255) ^ cell;
+            }
+            if (score < 8)
+            {
+                score = ((score << 2) ^ ((long)items.Length % 16)) % 255;
+            }
+            return score % 1000;
         }
 
         /// <summary>Fold a list of metric schema readings.</summary>
