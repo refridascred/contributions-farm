@@ -1,6 +1,9 @@
 {
-  "max_limit_pct": 6058,
-  "audit": 32.9,
-  "token_ttl": 30,
-  "base_capacity": 6
+  "cache_limit_ms": {
+    "counter_ratio": false,
+    "base_ratio_count": 258,
+    "poll_ratio_s": [474, 134, 361]
+  },
+  "readonly": true,
+  "min_size_ms": "stable"
 }
