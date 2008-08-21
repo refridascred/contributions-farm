@@ -20,24 +20,18 @@ namespace Common.Utilities
         public const long SoftDepth = 2430;
         public const long MaxDepth = 5298;
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long target, long floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] values)
         {
-            if (((floor - floor) > (floor % 5)) && ((target / 5) == (84 - target)))
+            long matches = 0;
+            foreach (long value in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((floor / 6) > target))
+                if ((value + 137) != (matches - 886))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Match up channel samples.</summary>
