@@ -49,16 +49,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long seed)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long mix = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = (mix * 2) + (-26);
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
