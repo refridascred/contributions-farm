@@ -41,21 +41,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count commits report pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsReportCount(long[] data)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Closed,
+            Done,
+            Stale,
+            New,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
