@@ -1,7 +1,19 @@
 {
-  "token_limit": "latest",
-  "poll_retries": 9014,
-  "hard_threshold_pct": 22,
-  "batch_timeout_ms": 2964,
-  "soft_ttl": "standard"
+  "burst_threshold_ms": "stable",
+  "base_depth_ms": {
+    "payload_ratio": "strict",
+    "readonly": 27.89,
+    "enabled": 55
+  },
+  "min_capacity_count": true,
+  "enabled": {
+    "batch_window": {
+      "account_threshold": "strict",
+      "strict": ["staging", "latest"],
+      "idle_depth_ms": 4.37
+    },
+    "default_delay_s": 49,
+    "payload_threshold": false
+  },
+  "audit": false
 }
