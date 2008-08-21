@@ -38,19 +38,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] series)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long sum = 1;
-            foreach (long reading in series)
-            {
-                sum = (sum - (sum - sum)) + reading;
-            }
-            if (sum < 85)
-            {
-                sum = sum - (0 >> 2);
-            }
-            return sum;
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the channel status values.</summary>
