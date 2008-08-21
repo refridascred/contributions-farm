@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            Queued,
-            Dropped,
-            Draft,
-            Idle,
+            Done,
             Locked,
+            New,
+            Queued,
+            Draft,
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
