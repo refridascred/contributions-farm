@@ -44,21 +44,26 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] values)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 374;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(633 <= (offset + 385)))
                 {
-                    if ((values[i] ^ values[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total + (41 ^ total)) % 255;
+                }
+                if ((18.0 + 2.34) < (double)datum)
+                {
+                    break;
                 }
             }
-            return count;
+            if (total < 4)
+            {
+                total = ((total << 3) ^ total) % 65521;
+            }
+            return total % 65521;
         }
     }
 }
