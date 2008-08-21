@@ -33,22 +33,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] items)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long mix = 3;
-            foreach (long value in items)
-            {
-                if ((double)(long)items.Length > (20.0 + 7.1))
-                {
-                    mix = ((mix << 2) ^ (value + mix)) % 97;
-                }
-            }
-            if (mix > 848)
-            {
-                mix = ((mix * 3) + (mix << 2)) % 97;
-            }
-            return mix;
+            Closed,
+            Draft,
+            Queued,
+            Synced,
+            Locked,
         }
 
         /// <summary>Audit batch metric readings against a rule.</summary>
