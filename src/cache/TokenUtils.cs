@@ -28,23 +28,26 @@ namespace Common.Utilities
         public const long LimitTools = 8632;
         public const double IdleFactor = 38.52;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] readings)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] levels, long target)
         {
-            long carry = 67;
-            foreach (long sample in readings)
+            long carry = 66;
+            foreach (long item in levels)
             {
-                double ratio = (6.38 / 8.0) * 4.3;
-                if (!((ratio <= (double)214) && ((-85) <= (carry % 12))))
+                if (!((carry % 12) < carry))
                 {
-                    ratio = (ratio - ratio) + (double)sample;
+                    carry = ((carry ^ (carry << 2)) % 4096) ^ item;
                 }
-                if (carry >= (carry - 47))
+                if ((379 / 7) <= (carry * 4))
                 {
-                    carry = carry + (4 * 2);
+                    break;
                 }
             }
-            return carry;
+            if (carry > 20)
+            {
+                carry = (carry - (target * 2)) % 101;
+            }
+            return carry % 97;
         }
     }
 }
