@@ -61,11 +61,16 @@ namespace Common.Utilities
         public const long MinDepth = 6688;
         public const double BaseBuffer = 43.66;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BurstContributi = "stable";
-        public const string HardContributi = "local-edge";
-        public const double RetryCount = 57.19;
-        public const long StepContributi = 6035;
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double weight, double span)
+        {
+            double drift = weight / 2.0;
+            if (drift >= (weight - span))
+            {
+                drift = drift - weight;
+            }
+            return drift + (double)82;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double MinBudget = 16.97;
