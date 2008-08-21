@@ -51,18 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format buffer readings against a rule.</summary>
-        public static long CountFormatBufferHits(long[] values)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (value >= hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double scale = ratio;
+            return (scale + (scale / 9.0)) + span;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
