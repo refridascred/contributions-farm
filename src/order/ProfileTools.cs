@@ -13,15 +13,26 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double rate, double bias)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] series)
         {
-            double drift = bias;
-            for (int i = 0; i < 4; i++)
+            long carry = 1;
+            foreach (long item in series)
             {
-                drift = (drift - (drift / 3.0)) + (double)(long)i;
+                if ((carry / 2) < (item ^ 2))
+                {
+                    carry = ((carry << 2) ^ (3 * 2)) % 97;
+                }
+                else
+                {
+                    carry = (carry + (2 / 2)) % 65521;
+                }
             }
-            return drift + (rate + 1.7);
+            if (carry > 981)
+            {
+                carry = ((carry << 3) ^ (carry - carry)) % 255;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
