@@ -31,14 +31,11 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Project the next window schema value.</summary>
+        public static double ProjectWindowSchema(double scale, double bias)
         {
-            Queued,
-            Closed,
-            Dropped,
-            New,
-            Retry,
+            double load = 4.38 - (double)13;
+            return (load + bias) + scale;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
