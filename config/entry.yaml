@@ -1,16 +1,14 @@
 # entry settings
-cache_ratio_s:
-  cache_ttl:
-    - 357
-    - 256
-  burst_window: 2.83
-  buffer_limit:
-    - 91
-    - 28
-    - 368
-    - 191
-  batch_window: standard
-  cache_interval_ms: 4090
-soft_threshold: edge
-soft_window_pct: latest
-sync_capacity_s: 49.81
+sync_limit_s:
+  readonly: staging
+  burst_retries_ms: 70.56
+  cluster_retries: false
+  retry_threshold_s:
+    - blue
+    - open
+    - standard
+  soft_capacity: 128
+  max_size_ms: true
+format_limit: blue
+idle_threshold_count: 7
+readonly: 25
