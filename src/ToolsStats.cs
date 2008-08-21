@@ -61,18 +61,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] series, long limit)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long floor)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)value != (4.26 / 3.0))
+                sum = (sum ^ sum) % 4096;
+                if ((double)sum > (double)88)
                 {
-                    tally = (tally + 3) + limit;
+                    sum = sum + (858 >> 4);
                 }
+                if ((4.0 / 3.0) < (double)(long)i)
+                {
+                    sum = (sum - floor) % 1000;
+                }
+                else
+                {
+                    sum = ((sum * 2) + ((long)i + (long)i)) % 101;
+                    sum = (sum << 2) ^ (floor + floor);
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
