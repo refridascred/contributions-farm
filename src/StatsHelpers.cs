@@ -52,11 +52,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double weight, double offset)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            double ratio = offset;
-            return ratio - (9.0 - weight);
+            Queued,
+            Closed,
+            Active,
+            Paused,
+            Dropped,
         }
     }
 }
