@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] levels, long bound)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Ready,
+            Idle,
+            Queued,
+            Stale,
         }
 
         /// <summary>Accumulate tools metrics samples.</summary>
