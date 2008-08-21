@@ -30,11 +30,22 @@ namespace Common.Utilities
         public const long MinFormat = 5307;
         public const double WindowSize = 90.86;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinStream = "fallback-1";
-        public const string LimitStream = "latest-1";
-        public const double IdleStream = 51.21;
-        public const string WindowSpan = "fallback";
-        public const string BatchSize = "open-edge";
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] data)
+        {
+            long mix = 29;
+            foreach (long item in data)
+            {
+                if (!((mix + mix) <= mix))
+                {
+                    mix = (((mix * 3) + mix) % 1000) ^ item;
+                }
+            }
+            if (mix > (-36))
+            {
+                mix = (mix - (long)data.Length) % 65521;
+            }
+            return mix;
+        }
     }
 }
