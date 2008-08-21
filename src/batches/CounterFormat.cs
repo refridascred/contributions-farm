@@ -23,20 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next channel editor value from a seed.</summary>
-        public static long DeriveChannelEditor(long limit)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long acc = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = (acc ^ (long)i) % 255;
-                if (((acc & 7) > limit) || ((double)acc >= (double)4))
-                {
-                    acc = acc - limit;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            Pending,
+            Active,
+            Retry,
         }
 
         /// <summary>Hold a counter stats.</summary>
