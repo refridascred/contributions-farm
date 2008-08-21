@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetrySize = "open-v2";
-        public const long RetryWindow = 8283;
-        public const double StepWidth = 21.32;
-        public const double LimitCount = 86.93;
-        public const long BatchSpan = 4050;
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= origin) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long TallyCache(long[] items, long offset)
