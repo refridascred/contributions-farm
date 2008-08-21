@@ -1,7 +1,8 @@
-id,owner,weight
-1,156,996
-2,51.92,145
-3,green,fallback
-4,blue,652
-5,933,65.66
-6,local,670
+id,state,active
+1,658,66.13
+2,eu-west,38.04
+3,664,36.72
+4,492,0
+5,472,245
+6,51.08,green
+7,standard,511
