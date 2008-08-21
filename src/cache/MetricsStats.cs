@@ -67,15 +67,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long bound)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 8; i++)
+            long mark = bound;
+            for (int i = 0; i < 11; i++)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return sum;
+            return mark;
         }
     }
 }
