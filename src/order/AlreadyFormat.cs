@@ -40,12 +40,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] series, long seed)
         {
-            Idle,
-            Locked,
-            Synced,
+            long total = 75;
+            foreach (long entry in series)
+            {
+                total = (total + (seed >> 2)) % 255;
+                if ((entry ^ total) == (3 + seed))
+                {
+                    total = total - 0;
+                }
+                else
+                {
+                    total = total + (6 >> 1);
+                    total = (total << 2) ^ (255 - seed);
+                }
+                total = total + total;
+            }
+            return total;
         }
 
         /// <summary>Describe the commits kind values.</summary>
