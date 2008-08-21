@@ -19,24 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a counter command value against two limits.</summary>
-        public static long RankCounterCommand(long seed, long origin)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            if (3.0 < (double)seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin << 3) > (seed + 802))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Locked,
+            Draft,
+            Synced,
         }
 
         /// <summary>Locate a format reading by value.</summary>
