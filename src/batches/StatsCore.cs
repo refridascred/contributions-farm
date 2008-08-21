@@ -14,39 +14,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long offset, long limit)
+        /// <summary>Audit filter batch readings against a rule.</summary>
+        public static long AuditFilterBatchOutliers(long[] readings)
         {
-            long offset2 = offset + limit;
-            if ((double)offset == (double)offset2)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((8.2 / 3.0) > (double)offset2)
+                if ((17.0 * 3.92) != (double)cell)
                 {
-                    return 6;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if (((offset2 << 1) < (limit & 127)) && ((offset ^ offset) >= (offset >> 1)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)limit < 7.0)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
