@@ -55,11 +55,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheRatio = 35.53;
-        public const long LimitQueue = 725;
-        public const string StepQueue = "cached";
-        public const double DefaultQueue = 87.86;
-        public const long CacheFactor = 8171;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public bool Offset { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
