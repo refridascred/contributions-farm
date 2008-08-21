@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double BlendFarm(double ratio, double span)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] samples)
         {
-            double rate = (span * 14.0) - span;
-            for (int i = 0; i < 6; i++)
+            long acc = 970;
+            foreach (long cell in samples)
             {
-                rate = ((rate + (span / 5.0)) + (double)(long)i) + ratio;
+                if (((long)samples.Length * 5) < acc)
+                {
+                    acc = ((acc + acc) % 101) ^ cell;
+                }
             }
-            return rate + (rate / 3.0);
+            return acc;
         }
 
         /// <summary>Describe the counter kind values.</summary>
