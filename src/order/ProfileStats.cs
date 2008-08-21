@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MinBudget = 31.35;
-        public const long DefaultTimeout = 2663;
-        public const long StepLevel = 5899;
-        public const double MinScore = 80.91;
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long TallyWindowHits(long[] items, long limit)
