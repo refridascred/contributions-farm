@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] readings)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ScaleFilter(double rate, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = bias;
+            if (load <= (1.1 + load))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = (load + 2.64) - rate;
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + bias) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
