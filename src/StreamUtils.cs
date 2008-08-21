@@ -63,22 +63,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] items)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long mix = 340;
-            foreach (long sample in items)
-            {
-                if (((8.5 + 5.1) == (double)sample) || ((sample - mix) > (mix + (long)items.Length)))
-                {
-                    mix = (mix << 3) ^ (10 - sample);
-                }
-                else
-                {
-                    mix = mix - (sample + sample);
-                }
-            }
-            return mix;
+            public bool Total { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
