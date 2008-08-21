@@ -52,18 +52,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema layout readings against a rule.</summary>
-        public static long TallySchemaLayoutOutliers(long[] values)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((739 + matches) < (value >> 3))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            double ratio = offset;
+            return ratio - (9.0 - weight);
         }
     }
 }
