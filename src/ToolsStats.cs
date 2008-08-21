@@ -74,23 +74,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a session stream reading.</summary>
-        public static double BlendSessionStream(double ratio, double floor)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long offset, long offset2)
         {
-            double scale = (double)0 - ratio;
-            if (scale > 8.0)
+            if ((offset2 ^ offset2) > offset)
             {
-                scale = scale + scale;
+                return 6;
             }
             else
             {
-                scale = scale - (double)(-11);
+                if ((offset2 * 5) != (offset & 127))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + floor) + (double)(long)i;
-            }
-            return scale + (double)0;
         }
     }
 }
