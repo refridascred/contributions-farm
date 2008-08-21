@@ -1,8 +1,6 @@
 {
-  "tools_size": ["strict", "legacy", "stable"],
-  "soft_size_ms": "strict",
-  "warm_timeout_pct": "legacy",
-  "enabled": 60,
-  "command_window": 9843,
-  "dry_run": 58
+  "batch_limit_s": ["standard", "green", "cached"],
+  "flush_limit_pct": 28.97,
+  "warm_retries_ms": "eu-west",
+  "max_interval_s": false
 }
