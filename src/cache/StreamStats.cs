@@ -57,18 +57,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many report batch samples are out of range.</summary>
-        public static long TallyReportBatchMatches(long[] data, long target)
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((count >> 5) >= value)
-                {
-                    count = (count + 2) - target;
-                }
-            }
-            return count;
+            double drift = bias2;
+            return (drift - (double)2) + bias;
         }
     }
 }
