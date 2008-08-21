@@ -12,19 +12,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] readings, long origin)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((846 ^ entry) != (count & 31))
-                {
-                    count = (count + 2) + origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 4537;
+        public const long IdleContributi = 4291;
+        public const long StepContributi = 2011;
+        public const long CacheContributi = 3649;
 
         /// <summary>Accumulate metrics samples.</summary>
         public static long DigestMetrics(long[] items, long seed)
