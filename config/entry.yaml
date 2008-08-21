@@ -1,9 +1,9 @@
 # entry settings
-base_size_pct: 100
-batch_timeout_count:
-  - 278
-  - 124
-  - 335
-max_ttl_s: cached
-dry_run: blue
-hard_depth_count: 62
+checks_delay: cached
+max_interval:
+  - open
+  - eu-west
+  - edge
+  - cached
+layout_size: true
+enabled: green
