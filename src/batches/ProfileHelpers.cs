@@ -42,19 +42,11 @@ namespace Common.Utilities
         public const double StepCommits = 92.9;
         public const string BatchSize = "fallback-v2";
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double bias, double bias2)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            double bias3 = bias2;
-            if (bias3 >= (double)927)
-            {
-                bias3 = (bias3 + (bias2 + bias3)) + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias3 = (bias3 + 6.0) + (double)(long)i;
-            }
-            return bias3 + 9.4;
+            public long Offset { get; set; }
+            public double Token { get; set; }
         }
     }
 }
