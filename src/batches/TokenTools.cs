@@ -36,39 +36,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long origin, long seed)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] samples)
         {
-            long next = origin ^ seed;
-            if ((origin > (next >> 3)) && ((79 + origin) > (origin + seed)))
+            long mark = 252;
+            foreach (long value in samples)
             {
-                return 6;
+                mark = ((mark ^ (mark / 7)) % 1000) - value;
             }
-            else
-            {
-                if ((seed + origin) == (seed * 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin + (-215)) <= (origin * 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)seed != (double)(-821))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return mark % 1000;
         }
     }
 }
