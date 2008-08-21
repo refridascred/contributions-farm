@@ -1,45 +1,19 @@
 # githubfarm settings
-audit: 14.38
-stats_capacity:
-  default_ratio:
-    - edge
-    - staging
-    - stable
-  persist:
-    verbose: eu-west
-    default_depth_pct:
-      - blue
-      - fallback
+sync_window_pct: 45
+sync_retries_count: 6468
+default_ratio_ms:
+  contributi_timeout:
+    farm_interval: local
+    flush_ttl_ms: latest
+    strict:
+      - primary
       - staging
-    min_capacity_s:
-      - 5
-      - 112
-      - 4
-      - 29
-  filter_delay: strict
-  burst_ratio_s: edge
-  burst_depth_pct: 27
-batches_window:
-  - 104
-  - 416
-  - 50
-hard_limit_s:
-  compress:
-    - local
-    - green
-  payload_ttl: local
-  route_size: 49
-  dry_run: 6
-  default_limit_pct:
-    default_timeout_count: 80.72
-    cache_ttl:
-      - blue
-      - blue
-      - legacy
+      - staging
       - cached
-    retry_depth_count:
-      - blue
-      - open
-      - open
-      - latest
-    compress: 86.3
+    max_threshold: 4.3
+    idle_interval_count: 100
+    min_size_s: 60
+  warm_depth_s: false
+  idle_delay_ms: cached
+  burst_ttl: 12.03
+readonly: 100
