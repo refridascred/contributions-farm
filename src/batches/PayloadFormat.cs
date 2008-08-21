@@ -24,11 +24,18 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstSpan = 1026;
-        public const string StepFormat = "open";
-        public const long MinFormat = 5307;
-        public const double WindowSize = 90.86;
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long ScoreMetrics(long[] data)
