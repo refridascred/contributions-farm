@@ -20,12 +20,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseDepth = 2490;
-        public const string RetryRatio = "latest-1";
-        public const long BaseMetric = 8428;
-        public const long IdleSpan = 8958;
-        public const long BurstMetric = 7569;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatGaps(long[] items, long seed)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (value > (seed * 2))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
