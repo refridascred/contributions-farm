@@ -23,19 +23,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Check that every buffer payload entry stays within the limit.</summary>
-        public static bool VerifyBufferPayloadRange(long[] data, long seed)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Closed,
+            Locked,
+            Idle,
+            Active,
         }
 
         /// <summary>Grade a record value against two limits.</summary>
