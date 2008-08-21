@@ -29,16 +29,17 @@ namespace Common.Utilities
             return mean - ratio;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long seed)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] data, long limit)
         {
-            long score = seed;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score << 2) ^ ((long)i - seed)) % 101;
-                score = ((score * 4) + (long)i) % 101;
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
