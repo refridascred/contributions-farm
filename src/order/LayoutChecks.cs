@@ -20,18 +20,18 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] series)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountGaps(long[] series, long bound)
         {
-            long seen = 0;
+            long count = 0;
             foreach (long reading in series)
             {
-                if (1.0 < (double)seen)
+                if (!((count + reading) == (reading - reading)))
                 {
-                    seen = (seen + 1) - reading;
+                    count = (count + 2) + bound;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a layout summary.</summary>
