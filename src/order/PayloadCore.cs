@@ -57,15 +57,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long limit)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] levels, long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
+            long state = -442;
+            foreach (long cell in levels)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                if (offset >= (state % 16))
+                {
+                    state = (state + (cell + state)) % 101;
+                }
+                state = (state + (cell + state)) % 101;
+                state = ((state << 3) ^ (state - cell)) % 97;
             }
-            return result;
+            return state % 65521;
         }
     }
 }
