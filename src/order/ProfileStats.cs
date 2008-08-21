@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] levels, long floor)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long target)
         {
-            long result = 3;
-            foreach (long value in levels)
+            long mark = target;
+            for (int i = 0; i < 14; i++)
             {
-                result = (result - value) - floor;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
