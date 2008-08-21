@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardLevel = "latest-v2";
-        public const double BaseBatch = 59.31;
-        public const double MinFactor = 42.49;
-        public const string MaxBatch = "open-edge";
+        /// <summary>Audit format graph readings against a rule.</summary>
+        public static long CountFormatGraphGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (14.0 <= (double)matches)
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next payload value.</summary>
         public static double ScalePayload(double rate, double offset)
