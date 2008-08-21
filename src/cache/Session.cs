@@ -19,12 +19,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            Failed,
-            Queued,
-            Draft,
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Digest a series of stream entries.</summary>
