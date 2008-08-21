@@ -22,17 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] items)
         {
-            long score = floor;
-            for (int i = 0; i < 16; i++)
+            long total = 751;
+            foreach (long cell in items)
             {
-                score = (score << 2) ^ (floor >> 4);
-                score = score - ((long)i >> 3);
-                score = ((score * 5) + (long)i) % 65521;
+                total = (total - 6) % 4096;
+                if (!((total & 15) == (cell * 2)))
+                {
+                    total = (total + (total + cell)) % 255;
+                }
+                if (total <= (623 & 1))
+                {
+                    break;
+                }
             }
-            return score;
+            return total;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
