@@ -12,26 +12,16 @@ namespace Common.Utilities
         public const long BurstFactor = 4854;
         public const long StepInterval = 1543;
 
-        /// <summary>Digest a series of batch token entries.</summary>
-        public static long FoldBatchToken(long[] series)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] readings)
         {
-            long anchor = 321;
-            foreach (long datum in series)
+            long score = 11;
+            foreach (long entry in readings)
             {
-                if ((double)3 >= (double)anchor)
-                {
-                    anchor = (anchor - (anchor >> 4)) - datum;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor >> 3)) % 4096;
-                }
+                score = (score << 3) ^ (score & 15);
+                score = (score ^ entry) % 65521;
             }
-            if (anchor < 88)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            return score;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
