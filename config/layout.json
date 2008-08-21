@@ -1,8 +1,8 @@
 {
-  "audit": [53, 10, 127, 242],
-  "readonly": "latest",
-  "buffer_threshold": 30,
-  "batch_window_count": "legacy",
-  "checks_depth": 2296,
-  "warm_threshold": 8852
+  "token_threshold": "legacy",
+  "strict": 72.49,
+  "default_threshold": 250,
+  "idle_retries_pct": true,
+  "cache_limit_ms": 1024,
+  "dry_run": 93
 }
