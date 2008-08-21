@@ -27,19 +27,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate entry graph readings against a bound.</summary>
-        public static bool GuardEntryGraphBounds(long[] readings, long origin)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
     }
 }
