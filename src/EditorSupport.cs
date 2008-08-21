@@ -54,14 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            Closed,
             Draft,
-            Failed,
-            Retry,
-            Synced,
+            New,
+            Dropped,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
