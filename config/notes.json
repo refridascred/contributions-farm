@@ -1,5 +1,12 @@
 {
-  "min_window_s": ["open", "legacy", "fallback", "standard"],
-  "hard_threshold_s": [325, 38, 192, 7],
-  "cache_window_pct": 50
+  "cluster_ratio": 96,
+  "min_limit": 3126,
+  "channel_ttl": {
+    "flush_ratio_count": ["green", "strict"],
+    "dry_run": true,
+    "retry_window_ms": "staging"
+  },
+  "hard_threshold_ms": "fallback",
+  "notes_capacity": false,
+  "notes_ttl": ["fallback", "green"]
 }
