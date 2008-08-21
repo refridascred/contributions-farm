@@ -26,19 +26,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every cluster cache entry stays within the limit.</summary>
-        public static bool GuardClusterCacheLimits(long[] series, long seed)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowGaps(long[] samples)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (entry > seed)
+                if (((10.0 / 4.0) >= (double)matches) || (((-13) - item) >= (2 >> 2)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
