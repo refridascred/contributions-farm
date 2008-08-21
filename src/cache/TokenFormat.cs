@@ -21,18 +21,18 @@ namespace Common.Utilities
         public const string WindowNotes = "cached";
         public const long CacheSpan = 3584;
 
-        /// <summary>Combine route buffer values into a single score.</summary>
-        public static long ScoreRouteBuffer(long[] items, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] samples)
         {
-            long mix = 860;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (((7.7 / 5.0) != (double)mix) || ((seed - 694) > (seed >> 5)))
+                if ((32 << 2) >= (item % 8))
                 {
-                    mix = ((mix + (seed & 7)) % 4096) + cell;
+                    matches = matches + 1;
                 }
             }
-            return mix;
+            return matches;
         }
     }
 }
