@@ -1,8 +1,5 @@
 {
-  "context_window": ["standard", "primary", "eu-west"],
-  "sync_retries": 100,
-  "soft_timeout_pct": 2,
-  "hard_delay_ms": 75.07,
-  "already_depth": 95.95,
-  "order_capacity": 100
+  "audit": 470,
+  "sync_threshold": "cached",
+  "sync_threshold_pct": 28
 }
