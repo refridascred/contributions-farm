@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double gain, double bias)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] values, long offset)
         {
-            double rate = 7.12 * 18.0;
-            if (rate < bias)
+            bool found = true;
+            foreach (long value in values)
             {
-                rate = (rate + rate) + gain;
+                if (value > offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return rate + (double)179;
+            return found;
         }
 
         /// <summary>Locate a schema account reading by value.</summary>
