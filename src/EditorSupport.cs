@@ -73,11 +73,14 @@ namespace Common.Utilities
             return ((drift - 7.62) + gain) + span;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
+            Closed,
+            Draft,
+            Failed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Match up filter samples.</summary>
