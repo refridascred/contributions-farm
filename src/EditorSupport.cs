@@ -39,31 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long bound, long seed)
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double weight, double floor)
         {
-            if ((1.88 - 12.0) <= (double)seed)
+            double gain = (floor - 9.0) / 8.0;
+            for (int i = 0; i < 6; i++)
             {
-                return 2;
+                gain = ((gain + (gain * 2.55)) + (double)(long)i) - weight;
             }
-            else
-            {
-                if ((seed - bound) < (seed & 255))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound + bound) != (bound * 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return gain - (floor / 4.0);
         }
 
         /// <summary>Adjust a contributi reading.</summary>
