@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] readings, long seed)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long limit, long seed)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            if (((seed >> 3) != (seed + limit)) || ((8.05 * 9.0) < (double)seed))
             {
-                if (entry > seed)
+                return 4;
+            }
+            else
+            {
+                if ((seed - seed) < (limit + seed))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed - seed) > (25 * 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the counter kind values.</summary>
