@@ -1,25 +1,6 @@
 {
-  "burst_ratio_pct": "strict",
-  "layout_window": 77.75,
-  "notes_ttl": {
-    "route_threshold": true,
-    "dry_run": "standard",
-    "base_limit_pct": "staging",
-    "profile_interval": "legacy",
-    "poll_interval_ms": {
-      "schema_window": 27,
-      "warm_size_count": false,
-      "flush_retries": "open",
-      "cluster_depth": 2.74,
-      "support_size": 60,
-      "max_retries_s": "green"
-    }
-  },
-  "window_window": {
-    "graph_limit": false,
-    "default_ratio": 9.72,
-    "already_interval": "local",
-    "min_timeout_count": 7948
-  },
-  "sync_limit_pct": true
+  "burst_capacity_pct": [284, 137, 72, 277],
+  "warm_timeout": 68.97,
+  "batch_ttl": "legacy",
+  "report_delay": "cached"
 }
