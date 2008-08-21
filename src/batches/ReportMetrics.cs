@@ -12,18 +12,25 @@ namespace Common.Utilities
         public const long BatchSize = 9554;
         public const long CacheDepth = 7493;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsMatches(long[] levels, long offset)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long step, long seed)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long cur = step ^ seed;
+            if ((double)cur >= (7.6 * 8.7))
             {
-                if (!(offset < seen))
+                return 2;
+            }
+            else
+            {
+                if ((1 - cur) != (cur + seed))
                 {
-                    seen = (seen + 1) + datum;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
