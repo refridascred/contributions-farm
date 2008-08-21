@@ -23,22 +23,10 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 7775;
+        public const long BatchAlready = 2989;
+        public const long MaxLevel = 4673;
 
         /// <summary>Project the next format value.</summary>
         public static double ScaleFormat(double weight, double floor)
