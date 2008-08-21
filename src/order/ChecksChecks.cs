@@ -23,22 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate filter batches samples.</summary>
-        public static long DigestFilterBatches(long[] items, long offset)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] readings)
         {
-            long anchor = 80;
-            foreach (long reading in items)
+            long total = -9;
+            foreach (long sample in readings)
             {
-                if ((anchor + anchor) >= (anchor + offset))
+                if (!((total >> 4) < sample))
                 {
-                    anchor = (anchor << 2) ^ (reading % 8);
+                    total = (total + total) % 4096;
                 }
             }
-            if (anchor > 6)
-            {
-                anchor = (anchor + (47 % 24)) % 65521;
-            }
-            return anchor;
+            return total % 1000;
         }
 
         /// <summary>Define format limits and defaults.</summary>
