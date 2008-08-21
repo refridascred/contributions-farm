@@ -1,7 +1,11 @@
 {
-  "poll_retries_ms": [274, 36],
-  "max_capacity": "blue",
-  "strict": 5255,
-  "githubfarm_delay": 83.01,
-  "editor_interval": "local"
+  "max_window": 4.82,
+  "strict": "local",
+  "readonly": {
+    "sync_ttl_count": "eu-west",
+    "min_depth_pct": true,
+    "batch_ttl": 4617,
+    "warm_ttl": "stable",
+    "batch_depth_pct": 100
+  }
 }
