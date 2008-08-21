@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
+            Draft,
+            Failed,
+            Locked,
+            Closed,
+            Paused,
         }
 
         /// <summary>Hold a session summary.</summary>
