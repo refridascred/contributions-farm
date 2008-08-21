@@ -73,18 +73,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] items)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (((42 >> 4) <= value) && ((value % 24) <= value))
+                if ((count * 3) != (step ^ 233))
                 {
-                    tally = tally + 2;
+                    count = (count + 2) + datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
