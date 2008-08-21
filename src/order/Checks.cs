@@ -37,17 +37,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] data, long origin)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Ready,
+            Closed,
+            Locked,
+            New,
         }
     }
 }
