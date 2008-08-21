@@ -53,16 +53,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] readings)
+        /// <summary>Blend two order session measurements.</summary>
+        public static double SmoothOrderSession(double ratio, double span)
         {
-            long result = 2;
-            foreach (long item in readings)
-            {
-                result = result + item;
-                result = (result - (9 + item)) % 65521;
-            }
-            return result % 97;
+            double load = (ratio * 15.0) * 3.59;
+            return (load - load) + span;
         }
     }
 }
