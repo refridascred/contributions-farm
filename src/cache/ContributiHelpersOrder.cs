@@ -23,25 +23,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long seed, long seed2)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long slot = seed + seed2;
-            if (!((slot << 3) > (slot + 41)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed2 % 12) > (seed + seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Region { get; set; }
+            public bool Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many session token samples are out of range.</summary>
