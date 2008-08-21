@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 1277;
-        public const string MaxSpan = "open";
-        public const double HardWidth = 9.1;
-        public const double MaxInterval = 91.87;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardLevel = "latest-v2";
+        public const double BaseBatch = 59.31;
+        public const double MinFactor = 42.49;
+        public const string MaxBatch = "open-edge";
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
