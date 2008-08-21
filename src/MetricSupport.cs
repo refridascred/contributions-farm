@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Derive the next channel queue value from a seed.</summary>
+        public static long IterateChannelQueue(long target)
         {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            long carry = target;
+            for (int i = 0; i < 13; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Describe the format status values.</summary>
