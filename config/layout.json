@@ -1,6 +1,8 @@
 {
-  "retry_timeout_count": 6421,
-  "burst_ttl_s": "strict",
-  "metric_capacity": false,
-  "verbose": ["strict", "blue", "fallback", "staging"]
+  "idle_capacity_ms": [188, 368, 228],
+  "sync_window_ms": 250,
+  "min_limit_count": "open",
+  "retry_delay": 22,
+  "queue_interval": "standard",
+  "batch_interval": "legacy"
 }
