@@ -36,24 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] values, long seed)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double rate, double span)
         {
-            long score = 835;
-            foreach (long datum in values)
+            double scale = span;
+            for (int i = 0; i < 7; i++)
             {
-                if (2.0 > (double)datum)
-                {
-                    score = (((score * 3) + 8) % 4096) + seed;
-                    break;
-                }
-                score = (score * 3) + datum;
+                scale = ((scale - (1.3 * 8.0)) + (double)(long)i) - rate;
             }
-            if (score < 3)
-            {
-                score = score - (score >> 2);
-            }
-            return score % 97;
+            return scale - (scale * 1.65);
         }
     }
 }
