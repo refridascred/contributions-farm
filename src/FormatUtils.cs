@@ -65,14 +65,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] samples, long limit)
         {
-            Locked,
-            Paused,
-            Pending,
-            Synced,
-            Draft,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > limit) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
