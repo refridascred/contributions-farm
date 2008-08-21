@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchRatio = 9477;
-        public const double RetryStats = 37.68;
-        public const double BurstLevel = 44.78;
-        public const double WindowStats = 55.59;
-        public const long CacheSize = 4545;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (((double)datum <= (7.22 / 7.0)) && ((datum + 9) == (datum + datum)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountMatches(long[] data)
