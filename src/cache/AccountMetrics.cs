@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BaseSpan = "legacy-1";
-        public const string BatchCounter = "local";
-        public const long HardFactor = 1635;
-        public const long HardCounter = 386;
-        public const double WindowRatio = 20.56;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] series, long target)
+        {
+            bool found = true;
+            foreach (long datum in series)
+            {
+                if (datum != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long AuditQueueMatches(long[] levels)
