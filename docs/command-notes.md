@@ -1,12 +1,12 @@
 # Command notes
 
-Keep stats and editor names short and lowercase.
-A channel that stays idle for too long is moved to the route list.
-The commits module keeps schema values in sync with the entry cache.
+When a route fails, the account handler retries a few times before giving up.
+Run the buffer check before changing any filter limits.
+Defaults for payload live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Validate githubfarm input early
-- Review channel limits each release
-- Document new already fields
+- Document new command fields
+- Validate token input early
+- Keep command values small
+- Prefer batch defaults
