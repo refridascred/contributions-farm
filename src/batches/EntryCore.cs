@@ -42,18 +42,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the metrics account entries that pass the check.</summary>
-        public static long CountMetricsAccountGaps(long[] series)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((5 % 100) >= value)
+                if ((values[i] > floor) && ((values[i] % 2) != 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
