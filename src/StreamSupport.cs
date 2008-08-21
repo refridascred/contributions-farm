@@ -61,19 +61,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two notes buffer measurements.</summary>
-        public static double ScaleNotesBuffer(double rate, double bias)
+        /// <summary>Measure how many entry cluster samples are out of range.</summary>
+        public static long CountEntryClusterHits(long[] series, long step)
         {
-            double gain = bias * 5.41;
-            if (gain > rate)
+            long count = 0;
+            foreach (long cell in series)
             {
-                gain = gain + (gain - gain);
+                if ((cell - count) <= (step & 3))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain + (rate * 1.5)) + (double)(long)i;
-            }
-            return gain + (double)8;
+            return count;
         }
     }
 }
