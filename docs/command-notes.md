@@ -1,15 +1,15 @@
 # Command notes
 
-Run the filter check before changing any channel limits.
-Keep schema and metrics names short and lowercase.
-Run the githubfarm check before changing any tools limits.
+Keep buffer and graph names short and lowercase.
+Each metrics is validated before it reaches the batches queue.
 
-Use batch settings to tune how often route data is refreshed.
-The token module keeps payload values in sync with the support cache.
-The commits module keeps metric values in sync with the cache cache.
+A order that stays idle for too long is moved to the context list.
+Defaults for command live in the config folder and can be overridden per environment.
+Keep metric and filter names short and lowercase.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Log every order change
-- Document new support fields
+- Document new checks fields
+- Keep stats values small
+- Prefer account defaults
+- Validate schema input early
