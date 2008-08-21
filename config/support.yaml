@@ -1,10 +1,6 @@
 # support settings
-githubfarm_retries:
-  - eu-west
-  - legacy
-  - open
-  - local
-enabled: false
-max_threshold_count: 60
-idle_ratio: false
-min_limit_pct: staging
+poll_capacity_count: 1871
+context_ttl: 16
+audit: cached
+metrics_threshold: 35
+tools_capacity: 62.27
