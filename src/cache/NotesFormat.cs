@@ -33,19 +33,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] levels)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] series, long seed)
         {
-            long state = 8;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                state = (state << 2) ^ (state ^ cell);
+                if (entry >= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (state < 182)
-            {
-                state = ((state << 2) ^ (state / 9)) % 4096;
-            }
-            return state;
+            return flag;
         }
     }
 }
