@@ -23,17 +23,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] series, long target)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 963;
+            foreach (long value in data)
             {
-                if ((series[i] == target) && ((series[i] % 2) != 0))
+                if ((value - carry) != (42 % 10))
                 {
-                    return (long)i;
+                    carry = carry ^ (carry ^ value);
                 }
             }
-            return -1;
+            return carry % 65521;
         }
 
         /// <summary>Count queue route pairs that satisfy a relation.</summary>
