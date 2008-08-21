@@ -59,15 +59,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double weight, double span)
+        /// <summary>Audit schema layout readings against a rule.</summary>
+        public static long TallySchemaLayoutOutliers(long[] values)
         {
-            double ratio = (double)(2 + 452);
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                ratio = ((ratio - (ratio + span)) + (double)(long)i) - weight;
+                if ((739 + matches) < (value >> 3))
+                {
+                    matches = matches + 3;
+                }
             }
-            return ratio - (span - span);
+            return matches;
         }
     }
 }
