@@ -1,7 +1,7 @@
 {
-  "hard_ttl": "staging",
-  "batch_threshold": "eu-west",
-  "enabled": [174, 352, 329],
-  "default_ttl": "green",
-  "default_interval_ms": [248, 54, 221]
+  "token_limit": "latest",
+  "poll_retries": 9014,
+  "hard_threshold_pct": 22,
+  "batch_timeout_ms": 2964,
+  "soft_ttl": "standard"
 }
