@@ -42,10 +42,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string DefaultSession = "cached";
-        public const long StepCount = 1130;
-        public const long MinSession = 5776;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] series, long target)
+        {
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Iterate the report metric series from a seed.</summary>
         public static long DeriveReportMetric(long origin)
