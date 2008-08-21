@@ -47,18 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metric window readings against a rule.</summary>
-        public static long MeasureMetricWindowMatches(long[] samples)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (38 >= (sample - (-13)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Fold a list of record readings.</summary>
