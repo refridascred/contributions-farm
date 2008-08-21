@@ -49,18 +49,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Audit payload route readings against a rule.</summary>
-        public static long CountPayloadRouteGaps(long[] values, long origin)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (origin <= (count % 10))
-                {
-                    count = (count + 1) ^ cell;
-                }
-            }
-            return count;
+            Queued,
+            Pending,
+            Stale,
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
