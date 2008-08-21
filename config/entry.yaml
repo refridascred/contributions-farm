@@ -1,4 +1,4 @@
 # entry settings
-session_timeout: true
-poll_timeout: true
-dry_run: false
+poll_ttl: true
+queue_capacity: latest
+payload_delay: 8251
