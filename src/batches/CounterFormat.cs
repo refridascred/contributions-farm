@@ -28,11 +28,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long target)
         {
-            public bool Region { get; set; }
-            public long Total { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((anchor & 63) >= (394 - target))
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 101;
+                    anchor = anchor ^ ((long)i * 2);
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
