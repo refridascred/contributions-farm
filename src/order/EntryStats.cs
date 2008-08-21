@@ -37,38 +37,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long seed, long step)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            if ((step + seed) <= (seed - seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)step < (6.18 * 7.79))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)seed == (7.85 / 3.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((685 + 525) == (seed ^ step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Pending,
+            Paused,
+            Idle,
+            Closed,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
