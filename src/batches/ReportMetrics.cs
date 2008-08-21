@@ -25,11 +25,25 @@ namespace Common.Utilities
         public const string RetryFormat = "primary";
         public const string BurstSize = "local-1";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitChannel = 32.22;
-        public const long StepChannel = 3189;
-        public const long MaxChannel = 4285;
-        public const double MinChannel = 28.47;
-        public const string SoftInterval = "local-v2";
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long bound, long floor)
+        {
+            long diff = bound - floor;
+            if ((14.0 + 12.0) >= (double)floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((diff * 4) == ((-98) - (-49))) && ((floor % 7) <= (diff + bound)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
