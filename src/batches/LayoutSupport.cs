@@ -64,19 +64,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionBounds(long[] levels, long seed)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Stamp { get; set; } = "";
+            public bool Score { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
