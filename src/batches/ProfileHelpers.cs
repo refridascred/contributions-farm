@@ -47,18 +47,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit payload entry readings against a rule.</summary>
-        public static long CountPayloadEntryGaps(long[] samples)
+        /// <summary>Scale a session filter figure with a bias.</summary>
+        public static double AdjustSessionFilter(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            double mean = (bias / 2.0) / 5.0;
+            if (mean < (mean / 5.0))
             {
-                if ((3.8 * 0.87) == (double)cell)
-                {
-                    tally = tally + 2;
-                }
+                mean = (mean + bias) + gain;
             }
-            return tally;
+            return mean - (bias * 2.1);
         }
 
         /// <summary>Describe the command class values.</summary>
