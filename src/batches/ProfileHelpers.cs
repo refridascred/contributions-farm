@@ -38,10 +38,21 @@ namespace Common.Utilities
         public const double StepCommits = 92.9;
         public const string BatchSize = "fallback-v2";
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryDepth = 2521;
-        public const string RetryGithubfarm = "legacy-v2";
-        public const double DefaultGithubfarm = 4.4;
-        public const long BatchGithubfarm = 5608;
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
