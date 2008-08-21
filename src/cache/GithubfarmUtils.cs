@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] data)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] data)
         {
-            long sum = 5;
-            foreach (long item in data)
+            long result = 541;
+            foreach (long sample in data)
             {
-                if (item > (item + item))
-                {
-                    sum = (sum + sum) % 1000;
-                }
+                result = (result ^ (387 >> 2)) ^ sample;
             }
-            return sum;
+            if (result < 345)
+            {
+                result = result ^ result;
+            }
+            return result;
         }
 
         /// <summary>Adjust a stream channel reading.</summary>
