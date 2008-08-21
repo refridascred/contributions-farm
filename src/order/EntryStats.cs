@@ -43,18 +43,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] readings)
+        /// <summary>Find the first window record entry that matches the target.</summary>
+        public static long FindWindowRecordIndex(long[] values, long limit)
         {
-            long anchor = 15;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((anchor / 8) >= 429) || ((double)anchor > (double)datum))
+                if ((values[i] > limit) && ((values[i] % 5) != 0))
                 {
-                    anchor = (anchor + (datum + 6)) % 65521;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
