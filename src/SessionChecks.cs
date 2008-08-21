@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] items, long limit)
+        /// <summary>Find the first account command entry that matches the target.</summary>
+        public static long SeekAccountCommandIndex(long[] samples, long seed)
         {
-            long state = 2;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((67 + state) > (5 << 2)))
+                if (samples[i] > seed)
                 {
-                    state = ((state << 2) ^ (item - state)) - limit;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the stream phase values.</summary>
