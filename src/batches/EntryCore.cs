@@ -48,15 +48,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of queue layout entries.</summary>
-        public static long ScoreQueueLayout(long[] readings, long seed)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] series, long limit)
         {
-            long result = 7;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long value in series)
             {
-                result = (((result ^ (547 + 481)) % 97) + cell) + seed;
+                if ((hits & 31) < (7 >> 1))
+                {
+                    hits = ((hits + 2) + value) + limit;
+                }
             }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
