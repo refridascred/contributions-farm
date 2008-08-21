@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long limit, long offset)
+        /// <summary>Audit graph filter readings against a rule.</summary>
+        public static long MeasureGraphFilterHits(long[] data, long target)
         {
-            if ((limit ^ limit) < (limit << 3))
+            long count = 0;
+            foreach (long sample in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((15.0 - 2.3) >= (double)limit)
+                if ((((count / 7) > (count - count)) && ((count / 2) == (target - count))) && (target >= (target * 5)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((limit >> 2) == (offset * 3)) && ((double)limit > (11.0 - 6.2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((limit - limit) >= 21))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    count = (count + 1) + sample;
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate payload samples.</summary>
