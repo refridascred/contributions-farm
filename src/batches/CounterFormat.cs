@@ -27,17 +27,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Find the first commits githubfarm entry that matches the target.</summary>
-        public static long SeekCommitsGithubfarmIndex(long[] data, long limit)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Dropped,
+            Draft,
+            Queued,
+            New,
         }
     }
 }
