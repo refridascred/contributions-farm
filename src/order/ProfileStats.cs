@@ -34,12 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] data, long bound)
         {
-            public long Count { get; set; }
-            public bool Level { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((bound + matches) < (matches ^ (long)data.Length))
+                {
+                    matches = (matches + 3) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a buffer options.</summary>
