@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ScaleFilter(double rate, double bias)
-        {
-            double load = bias;
-            if (load <= (1.1 + load))
-            {
-                load = (load + 2.64) - rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + bias) + (double)(long)i;
-            }
-            return load - load;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryFactor = 471;
+        public const long MaxStats = 3558;
+        public const string IdleStats = "alpha-v2";
+        public const string DefaultStats = "local";
+        public const long LimitStats = 7839;
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long MeasureAccountGaps(long[] series, long bound)
