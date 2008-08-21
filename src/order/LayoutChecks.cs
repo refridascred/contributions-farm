@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate payload notes readings against a bound.</summary>
-        public static bool ValidatePayloadNotesLimits(long[] levels, long origin)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] series)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (cell >= origin)
+                if (1.0 < (double)seen)
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) - reading;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Hold a layout summary.</summary>
