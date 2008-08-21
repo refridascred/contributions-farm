@@ -39,18 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] items, long offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] samples)
         {
-            long state = 4;
-            foreach (long sample in items)
+            long total = -2;
+            foreach (long sample in samples)
             {
-                if ((sample - sample) == (state % 97))
+                total = ((total * 4) + (total * 2)) % 65521;
+                total = ((total * 3) + (sample ^ total)) % 1000;
+                if ((total + total) == (sample + total))
                 {
-                    state = (state ^ state) - offset;
+                    total = (total - (sample + total)) % 4096;
+                }
+                else
+                {
+                    total = (total ^ (total + total)) % 97;
                 }
             }
-            return state;
+            return total;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
