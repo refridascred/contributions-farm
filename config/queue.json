@@ -1,7 +1,12 @@
 {
-  "persist": "blue",
-  "dry_run": 13.87,
-  "strict": [97, 30, 53],
-  "sync_depth": 59.76,
-  "burst_ratio": 5.3
+  "compress": {
+    "max_ttl": 37.84,
+    "verbose": false,
+    "graph_limit": "local"
+  },
+  "verbose": ["eu-west", "strict", "legacy", "latest"],
+  "enabled": [191, 241, 136, 47],
+  "soft_retries": false,
+  "command_timeout": "strict",
+  "retry_ratio_ms": "fallback"
 }
