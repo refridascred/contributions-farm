@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] values)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long sum = 59;
-            foreach (long datum in values)
-            {
-                sum = ((sum + sum) % 65521) ^ datum;
-            }
-            if (sum < 5)
-            {
-                sum = (sum << 2) ^ (0 >> 4);
-            }
-            return sum;
+            public double Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a batch entry.</summary>
