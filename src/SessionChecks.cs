@@ -29,15 +29,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double weight, double bias)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            double scale = (bias - bias) - (weight - weight);
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - (double)76) + (double)(long)i;
-            }
-            return scale + (double)671;
+            Active,
+            Idle,
+            Ready,
         }
 
         /// <summary>Hold a metrics entry.</summary>
