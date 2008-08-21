@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine contributi commits values into a single score.</summary>
-        public static long TotalContributiCommits(long[] levels, long floor)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long sum = 4;
-            foreach (long reading in levels)
-            {
-                if ((floor << 1) >= (sum * 5))
-                {
-                    sum = (sum + (floor << 2)) - reading;
-                }
-            }
-            return sum % 65521;
+            Idle,
+            Synced,
+            Retry,
+            Ready,
         }
 
         /// <summary>Accumulate already profile samples.</summary>
