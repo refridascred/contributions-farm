@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every graph cache entry stays within the limit.</summary>
-        public static bool GuardGraphCacheBounds(long[] items, long target)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] series)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item > target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((series[i] - series[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Describe the contributi status values.</summary>
