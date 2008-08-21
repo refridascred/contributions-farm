@@ -66,18 +66,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate tools schema samples.</summary>
-        public static long DigestToolsSchema(long[] values)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long result = 53;
-            foreach (long sample in values)
-            {
-                if ((sample ^ result) <= (sample * 4))
-                {
-                    result = (result << 3) ^ (result - result);
-                }
-            }
-            return result;
+            public double Total { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
