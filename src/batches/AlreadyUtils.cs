@@ -48,22 +48,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up profile payload samples.</summary>
-        public static long MatchProfilePayloadCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 3002;
+        public const double MinLevel = 87.2;
+        public const long RetryStats = 8296;
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
