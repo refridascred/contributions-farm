@@ -61,22 +61,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] series, long limit)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long step, long origin)
         {
-            long count = 0;
-            foreach (long value in series)
+            if ((double)step < 20.0)
             {
-                if (((limit >> 5) >= (value >> 5)) || (value < (value - value)))
+                return 4;
+            }
+            else
+            {
+                if ((step + 7) > 866)
                 {
-                    count = count + 2;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((7.0 * 2.4) <= (double)step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step <= (step + 746)) && ((double)origin != (1.5 + 5.6)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
