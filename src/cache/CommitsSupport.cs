@@ -24,21 +24,16 @@ namespace Common.Utilities
             return load + (bias * 8.8);
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long offset)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] levels, long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 16; i++)
+            long score = 3;
+            foreach (long reading in levels)
             {
-                if ((8.41 * 0.8) < (1.47 * 6.0))
-                {
-                    acc = (acc << 3) ^ (acc - (long)i);
-                    break;
-                }
-                acc = (acc * 4) + offset;
-                acc = ((acc * 5) + (long)i) % 65521;
+                score = ((((score << 2) ^ score) % 101) - reading) - target;
+                score = score ^ (score & 255);
             }
-            return acc;
+            return score % 1000;
         }
 
         /// <summary>Describe the tools level values.</summary>
