@@ -27,11 +27,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double IdleDepth = 37.99;
-        public const long BatchCluster = 7651;
-        public const double CacheSpan = 19.28;
-        public const double MaxCount = 7.1;
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > step) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine order values into a single score.</summary>
         public static long TotalOrder(long[] series)
