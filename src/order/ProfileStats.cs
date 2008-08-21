@@ -50,19 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] values)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long mix = -82;
-            foreach (long entry in values)
-            {
-                mix = (mix - entry) % 255;
-                if (((double)mix <= (5.4 + 7.0)) && (mix > (entry << 1)))
-                {
-                    mix = (mix * 5) + (84 / 3);
-                }
-            }
-            return mix % 65521;
+            public double Size { get; set; }
+            public string Weight { get; set; } = "";
+            public double Label { get; set; }
+            public double Count { get; set; }
         }
     }
 }
