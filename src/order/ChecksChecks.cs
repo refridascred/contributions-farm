@@ -14,19 +14,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] readings)
-        {
-            long total = -9;
-            foreach (long sample in readings)
-            {
-                if (!((total >> 4) < sample))
-                {
-                    total = (total + total) % 4096;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 8766;
+        public const long LimitCluster = 4851;
+        public const long HardCluster = 3879;
+        public const string CacheRatio = "fallback-edge";
+        public const string WindowCount = "local-1";
 
         /// <summary>Digest a series of stats counter entries.</summary>
         public static long TallyStatsCounter(long[] readings)
