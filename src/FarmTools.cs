@@ -33,19 +33,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a commits already figure with a bias.</summary>
-        public static double AdjustCommitsAlready(double scale, double floor)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            double scale2 = floor;
-            if (scale2 > scale2)
-            {
-                scale2 = (scale2 + (12.0 * 9.0)) + scale;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + (double)3) - (double)(long)i;
-            }
-            return scale2 + (2.9 + scale2);
+            Ready,
+            New,
+            Dropped,
         }
     }
 }
