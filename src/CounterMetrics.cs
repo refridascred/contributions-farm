@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank channel editor input into a small class.</summary>
-        public static long GradeChannelEditor(long limit, long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterOutliers(long[] levels)
         {
-            if (bound > limit)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)65 > (double)limit)
+                if ((cell - 748) <= (27 - cell))
                 {
-                    return 4;
+                    count = count + 3;
                 }
                 else
                 {
-                    if (!(((-853) << 1) <= (bound * 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
