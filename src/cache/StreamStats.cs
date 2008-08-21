@@ -44,11 +44,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double bias, double bias2)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] levels)
         {
-            double drift = bias2;
-            return (drift - (double)2) + bias;
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((seen * 3) != (reading - reading))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
