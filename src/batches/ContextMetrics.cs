@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const long DefaultLevel = 5553;
         public const long BatchStats = 355;
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long target)
+        /// <summary>Count the already stats entries that pass the check.</summary>
+        public static long AuditAlreadyStatsHits(long[] values)
         {
-            long total = target;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                double gain = 3.9 - (double)5;
-                gain = gain - (gain - gain);
-                if ((gain / 4.0) <= (double)total)
+                if ((seen % 3) == (seen >> 3))
                 {
-                    total = ((total * 4) + total) % 255;
+                    seen = (seen + 3) ^ datum;
                 }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
