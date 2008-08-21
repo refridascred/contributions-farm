@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a channel format figure with a bias.</summary>
-        public static double SmoothChannelFormat(double bias, double offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] data)
         {
-            double load = bias;
-            if (load > bias)
+            long count = 0;
+            foreach (long value in data)
             {
-                load = (load - (bias * 6.0)) + offset;
+                if (((long)data.Length - value) == (count - count))
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + (bias * 0.82);
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
