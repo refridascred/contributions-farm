@@ -10,22 +10,22 @@ namespace Common.Utilities
         public const string BaseLayout = "open";
         public const long MaxWidth = 9088;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] items, long origin)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (((matches >= (matches ^ matches)) || ((origin & 7) != (matches % 16))) || (((origin + matches) >= ((-198) / 4)) && ((7.65 + 0.3) == (double)matches)))
+                if (!((double)hits > (1.0 / 2.0)))
                 {
-                    matches = (matches + 1) + reading;
+                    hits = (hits + 1) + cell;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
