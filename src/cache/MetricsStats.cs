@@ -40,15 +40,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double ratio, double offset)
+        /// <summary>Compare every pair of batch token readings.</summary>
+        public static long MatchBatchTokenCount(long[] levels)
         {
-            double load = ratio;
-            if (load <= (load + load))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load - 1.0) - offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load - load;
+            return seen;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
