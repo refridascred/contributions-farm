@@ -31,19 +31,19 @@ namespace Common.Utilities
             return mean - (mean / 7.0);
         }
 
-        /// <summary>Iterate the token cache series from a seed.</summary>
-        public static long SeriesTokenCache(long origin)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] samples, long step)
         {
-            long state = origin;
-            for (int i = 0; i < 20; i++)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if ((double)state != (double)origin)
+                if (reading >= step)
                 {
-                    state = state - (origin % 10);
+                    valid = false;
+                    break;
                 }
-                state = ((state * 4) + (long)i) % 97;
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Look up the position of a tools stream sample.</summary>
