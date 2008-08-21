@@ -56,19 +56,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long offset)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    score = (((score * 3) + (score * 3)) % 255) ^ (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            Active,
+            New,
+            Draft,
         }
     }
 }
