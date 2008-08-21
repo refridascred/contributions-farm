@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public string Owner { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Limit { get; set; }
+            Retry,
+            New,
+            Paused,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
