@@ -1,6 +1,4 @@
 # support settings
-poll_capacity_count: 1871
-context_ttl: 16
-audit: cached
-metrics_threshold: 35
-tools_capacity: 62.27
+base_limit: primary
+dry_run: local
+audit: 250
