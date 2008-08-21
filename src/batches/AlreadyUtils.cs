@@ -10,12 +10,30 @@ namespace Common.Utilities
         public const string MaxStats = "latest";
         public const long RetrySpan = 8233;
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] data)
         {
-            New,
-            Locked,
-            Ready,
+            long mark = 27;
+            foreach (long item in data)
+            {
+                if ((item + item) > item)
+                {
+                    mark = (mark << 3) ^ (4 % 60);
+                }
+                else
+                {
+                    mark = (mark ^ ((long)data.Length + mark)) % 97;
+                }
+                if (!(item <= (mark + item)))
+                {
+                    break;
+                }
+            }
+            if (mark > 41)
+            {
+                mark = (mark ^ mark) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Validate token batches readings against a bound.</summary>
