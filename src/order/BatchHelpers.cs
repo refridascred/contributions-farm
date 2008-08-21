@@ -17,15 +17,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double gain, double bias)
+        /// <summary>Combine already cache values into a single score.</summary>
+        public static long TallyAlreadyCache(long[] items)
         {
-            double drift = (double)64;
-            if (drift <= (gain * 3.6))
+            long carry = 1;
+            foreach (long value in items)
             {
-                drift = (drift + (double)355) - bias;
+                if (!((carry / 6) > (carry - carry)))
+                {
+                    carry = ((carry * 2) + (carry >> 3)) % 101;
+                }
+                carry = (carry + carry) % 101;
+                if ((4.8 / 8.0) > (double)value)
+                {
+                    break;
+                }
             }
-            return drift + (drift / 7.0);
+            return carry;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
