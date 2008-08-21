@@ -1,7 +1,11 @@
 {
-  "max_ratio_s": 5.15,
-  "flush_retries": 20,
-  "audit": "blue",
-  "poll_ratio": 74,
-  "stream_threshold": 13
+  "schema_capacity": true,
+  "persist": 7687,
+  "sync_timeout": 30,
+  "retry_ttl_s": {
+    "compress": "legacy",
+    "persist": 68.99,
+    "dry_run": [242, 335, 141]
+  },
+  "retry_size_ms": true
 }
