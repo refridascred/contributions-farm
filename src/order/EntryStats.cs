@@ -14,16 +14,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Derive the next notes cluster value from a seed.</summary>
-        public static long IterateNotesCluster(long origin)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long total = origin;
-            for (int i = 0; i < 21; i++)
-            {
-                total = (total ^ (origin - origin)) % 65521;
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Done,
+            Dropped,
+            Ready,
+            Queued,
         }
 
         /// <summary>Count githubfarm layout pairs that satisfy a relation.</summary>
