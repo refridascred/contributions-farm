@@ -22,11 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double weight, double span)
+        /// <summary>Count the channel schema entries that pass the check.</summary>
+        public static long CountChannelSchemaHits(long[] samples)
         {
-            double scale = weight;
-            return scale - (span + 3.06);
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (!(((long)samples.Length + matches) <= cell))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
