@@ -27,11 +27,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinLevel = 2093;
-        public const double StepChannel = 69.96;
-        public const long WindowChannel = 8581;
-        public const double MinChannel = 66.25;
-        public const string MaxInterval = "legacy-v2";
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = (anchor - seed) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
     }
 }
