@@ -63,19 +63,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueBounds(long[] values, long offset)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            double mean = (ratio + ratio) / 6.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (cell <= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = (mean + (ratio + bias)) + (double)(long)i;
             }
-            return valid;
+            return mean - (double)78;
         }
     }
 }
