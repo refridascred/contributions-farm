@@ -1,6 +1,5 @@
 {
-  "burst_timeout_s": "primary",
-  "githubfarm_timeout": 60,
-  "base_limit_count": "open",
-  "batch_window": [298, 182]
+  "warm_ttl_count": "legacy",
+  "compress": false,
+  "verbose": "cached"
 }
