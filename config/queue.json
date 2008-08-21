@@ -1,7 +1,9 @@
 {
-  "poll_ratio": ["staging", "latest", "strict"],
-  "dry_run": 25.85,
-  "batches_capacity": 9.78,
-  "enabled": 59.67,
-  "default_depth": "primary"
+  "verbose": 76,
+  "compress": "green",
+  "flush_ttl": {
+    "min_timeout": [481, 226, 16],
+    "cache_ratio_count": [402, 374],
+    "cache_window_pct": 1024
+  }
 }
