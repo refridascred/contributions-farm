@@ -19,19 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate record metrics readings against a bound.</summary>
-        public static bool CheckRecordMetricsRange(long[] levels, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsMatches(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (sample >= origin)
+                if ((2.8 + 12.0) == (double)seen)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 1) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Blend two editor measurements.</summary>
