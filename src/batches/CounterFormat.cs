@@ -12,19 +12,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] data, long floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long anchor = 736;
+            foreach (long item in levels)
             {
-                if (value >= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = (anchor + (item / 5)) + bound;
             }
-            return valid;
+            return anchor % 1000;
         }
 
         /// <summary>Digest a series of stream queue entries.</summary>
