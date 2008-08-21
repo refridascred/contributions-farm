@@ -23,18 +23,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit batches session readings against a rule.</summary>
-        public static long CountBatchesSessionHits(long[] data)
+        /// <summary>Adjust a metrics window reading.</summary>
+        public static double SmoothMetricsWindow(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long sample in data)
+            double drift = floor;
+            if (drift <= floor)
             {
-                if ((double)sample != (double)count)
-                {
-                    count = count + 3;
-                }
+                drift = drift + drift;
             }
-            return count;
+            else
+            {
+                drift = drift - (drift * 19.0);
+            }
+            return drift - (drift - ratio);
         }
 
         /// <summary>Describe the token status values.</summary>
