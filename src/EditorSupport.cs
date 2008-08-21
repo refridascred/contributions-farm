@@ -28,15 +28,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double weight, double floor)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            double gain = (floor - 9.0) / 8.0;
-            for (int i = 0; i < 6; i++)
-            {
-                gain = ((gain + (gain * 2.55)) + (double)(long)i) - weight;
-            }
-            return gain - (floor / 4.0);
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a batches info.</summary>
