@@ -64,11 +64,9 @@ namespace Common.Utilities
             return weight + rate;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
-        {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 5401;
+        public const double SoftWidth = 91.05;
+        public const string BurstLevel = "staging-edge";
     }
 }
