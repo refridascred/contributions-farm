@@ -58,12 +58,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] series, long origin)
         {
-            public double Token { get; set; }
-            public bool Offset { get; set; }
-            public bool Score { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
