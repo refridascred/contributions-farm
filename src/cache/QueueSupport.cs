@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long BurstFactor = 4854;
         public const long StepInterval = 1543;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] readings, long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] readings, long floor)
         {
-            long sum = 9;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((double)limit == (7.66 - 5.2))
+                if (((((-612) + matches) >= floor) || ((reading / 6) != (matches + floor))) && !((matches + floor) != (reading + 9)))
                 {
-                    sum = ((sum << 3) ^ (limit * 2)) ^ datum;
+                    matches = matches + 1;
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
