@@ -33,19 +33,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] data)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] samples, long step)
         {
-            long result = 8;
-            foreach (long value in data)
+            long anchor = -1;
+            foreach (long item in samples)
             {
-                result = (result << 3) ^ (value + value);
+                if (anchor > (item / 4))
+                {
+                    anchor = (anchor - item) + step;
+                }
             }
-            if (result > 1)
-            {
-                result = (result * 3) + result;
-            }
-            return result;
+            return anchor % 65521;
         }
     }
 }
