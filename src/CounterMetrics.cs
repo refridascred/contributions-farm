@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long target)
+        /// <summary>Fold a list of queue metrics readings.</summary>
+        public static long TotalQueueMetrics(long[] levels)
         {
-            long mark = target;
-            for (int i = 0; i < 15; i++)
+            long carry = 344;
+            foreach (long entry in levels)
             {
-                mark = (mark - (183 - (long)i)) % 255;
-                if (!((mark >> 5) == (0 - target)))
+                if (622 < carry)
                 {
-                    mark = (mark + target) % 97;
-                    mark = (mark * 3) + (mark & 15);
+                    carry = ((carry * 4) + (131 ^ 275)) % 255;
                 }
-                mark = ((mark * 3) + (long)i) % 65521;
+                carry = carry - (entry << 1);
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
