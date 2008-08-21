@@ -21,19 +21,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a metrics window reading.</summary>
-        public static double SmoothMetricsWindow(double ratio, double floor)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            double drift = floor;
-            if (drift <= floor)
-            {
-                drift = drift + drift;
-            }
-            else
-            {
-                drift = drift - (drift * 19.0);
-            }
-            return drift - (drift - ratio);
+            Closed,
+            New,
+            Pending,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
