@@ -42,15 +42,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] items)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryGaps(long[] series)
         {
-            long state = 1;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long item in series)
             {
-                state = state - sample;
+                if (((8.19 + 1.7) > (double)item) || ((0 & 63) <= (hits + item)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state % 4096;
+            return hits;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
