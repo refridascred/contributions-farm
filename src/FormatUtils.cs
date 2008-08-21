@@ -56,24 +56,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] samples, long floor)
-        {
-            long mix = 462;
-            foreach (long sample in samples)
-            {
-                mix = ((mix + (mix ^ floor)) % 4096) ^ sample;
-                if ((mix & 7) >= (floor >> 5))
-                {
-                    mix = mix + (mix >> 3);
-                }
-            }
-            if (mix < 76)
-            {
-                mix = (mix ^ (mix >> 1)) % 65521;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseLevel = 0.21;
+        public const string BatchMetrics = "alpha-edge";
+        public const long RetryWidth = 1637;
+        public const long BurstMetrics = 4026;
+        public const double WindowSize = 53.39;
 
         /// <summary>Scale a graph figure with a bias.</summary>
         public static double ScaleGraph(double rate, double floor)
