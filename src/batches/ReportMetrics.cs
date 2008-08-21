@@ -54,23 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stats editor readings.</summary>
-        public static long CombineStatsEditor(long[] values)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long carry = 989;
-            foreach (long cell in values)
-            {
-                carry = (carry + (cell + cell)) % 255;
-                if (((cell + carry) != (carry * 4)) && ((cell - carry) < (carry / 9)))
-                {
-                    carry = carry - (carry >> 3);
-                }
-            }
-            if (carry > 9)
-            {
-                carry = (carry ^ (carry - carry)) % 4096;
-            }
-            return carry;
+            public double Limit { get; set; }
+            public bool Total { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
