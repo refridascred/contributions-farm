@@ -33,9 +33,19 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitWindow = 52.41;
-        public const long MaxScore = 1020;
-        public const double IdleInterval = 50.86;
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double weight, double bias)
+        {
+            double rate = (double)(4 / 3);
+            if (rate >= (weight - rate))
+            {
+                rate = rate + (bias / 6.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + rate;
+        }
     }
 }
