@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const long MaxScore = 6560;
         public const long DefaultWidth = 5037;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] data, long origin)
+        /// <summary>Combine queue graph values into a single score.</summary>
+        public static long WeighQueueGraph(long[] data, long floor)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long carry = 5;
+            foreach (long datum in data)
             {
-                if (sample > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = ((((carry * 5) + (carry - 224)) % 255) ^ datum) + floor;
             }
-            return valid;
+            return carry % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
