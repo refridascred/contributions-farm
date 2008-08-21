@@ -1,6 +1,11 @@
-id,score,level
-1,21.73,755
-2,533,67.58
-3,57.56,legacy
-4,42,latest
-5,70.48,57.54
+id,score,token,region
+1,628,edge,707
+2,90.72,18.9,latest
+3,edge,457,848
+4,339,55.92,222
+5,1.74,427,674
+6,89.75,2.99,stable
+7,37,453,18.01
+8,stable,latest,primary
+9,334,695,250
+10,legacy,785,979
