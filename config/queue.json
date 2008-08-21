@@ -1,6 +1,8 @@
 {
-  "min_delay_ms": "standard",
-  "buffer_window": 7194,
-  "warm_depth_s": 6252,
-  "order_depth": 8788
+  "cluster_size": 34.38,
+  "cache_size": 30.01,
+  "cache_interval_ms": 7417,
+  "enabled": true,
+  "commits_threshold": "latest",
+  "burst_threshold": true
 }
