@@ -64,16 +64,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] readings, long bound)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionBounds(long[] levels, long seed)
         {
-            long result = 30;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long item in levels)
             {
-                result = (result ^ (bound - result)) + value;
-                result = (result * 2) + (bound - bound);
+                if (item != seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result % 1000;
+            return found;
         }
     }
 }
