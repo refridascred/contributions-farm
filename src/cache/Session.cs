@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Project the next session record value.</summary>
+        public static double AdjustSessionRecord(double gain, double floor)
         {
-            Done,
-            Failed,
-            Ready,
+            double gain2 = floor;
+            if (gain2 >= (double)0)
+            {
+                gain2 = (gain2 + (gain2 + gain2)) + gain;
+            }
+            else
+            {
+                gain2 = gain2 - 3.14;
+            }
+            return gain2 + (double)780;
         }
 
         /// <summary>Measure how many buffer entry samples are out of range.</summary>
