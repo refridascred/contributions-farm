@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of payload window readings.</summary>
-        public static long TotalPayloadWindow(long[] readings, long bound)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] items, long limit)
         {
-            long sum = 8;
-            foreach (long entry in readings)
+            long state = 2;
+            foreach (long item in items)
             {
-                sum = (((sum * 4) + bound) % 97) - entry;
+                if (!((67 + state) > (5 << 2)))
+                {
+                    state = ((state << 2) ^ (item - state)) - limit;
+                }
             }
-            if (sum > 192)
-            {
-                sum = sum ^ (sum * 5);
-            }
-            return sum % 4096;
+            return state;
         }
 
         /// <summary>Describe the metric mode values.</summary>
