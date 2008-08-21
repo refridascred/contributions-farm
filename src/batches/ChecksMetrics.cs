@@ -48,12 +48,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] data, long origin)
         {
-            New,
-            Stale,
-            Paused,
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((2.3 * 9.1) != (double)origin)
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the window kind values.</summary>
