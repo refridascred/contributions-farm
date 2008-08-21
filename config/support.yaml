@@ -1,20 +1,7 @@
 # support settings
-layout_timeout:
-  cache_depth_ms:
-    - 354
-    - 256
-    - 178
-    - 35
-  min_threshold: 67
-  commits_size:
-    soft_depth_count: 6491
-    dry_run:
-      - staging
-      - edge
-      - fallback
-    sync_limit_pct: blue
-    warm_delay_s: false
-    context_size: 32
-    default_capacity_ms: true
-flush_ratio_pct: 10
-buffer_capacity: 94.33
+idle_delay_count: true
+warm_threshold: 71.86
+batch_size_s: false
+strict: 66
+cache_window: eu-west
+idle_capacity: 84.25
