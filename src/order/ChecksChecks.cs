@@ -35,11 +35,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double weight, double floor)
         {
-            public bool Flag { get; set; }
-            public long Level { get; set; }
+            double scale = weight;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = ((scale + 5.0) + (double)(long)i) + floor;
+            }
+            return scale - (weight / 7.0);
         }
     }
 }
