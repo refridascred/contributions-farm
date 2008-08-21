@@ -67,22 +67,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] data, long origin)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (17.0 <= (double)origin)
-                {
-                    matches = (matches + 2) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 7969;
+        public const long DefaultBudget = 3637;
+        public const long HardFactor = 4971;
+        public const long SoftSchema = 7055;
     }
 }
