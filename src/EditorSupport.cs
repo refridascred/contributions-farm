@@ -28,11 +28,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] series, long target)
         {
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == target) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batches info.</summary>
