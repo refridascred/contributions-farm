@@ -89,18 +89,18 @@ namespace Common.Utilities
             return load + (5.0 - ratio);
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordMatches(long[] readings, long target)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmGaps(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((reading + target) <= target)
+                if ((double)origin < (double)4)
                 {
-                    count = count + 1;
+                    matches = (matches + 3) - entry;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
