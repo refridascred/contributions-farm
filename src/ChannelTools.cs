@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Look up the position of a queue channel sample.</summary>
+        public static long FindQueueChannelIndex(long[] samples, long origin)
         {
-            public long Rank { get; set; }
-            public double Offset { get; set; }
-            public long Weight { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
