@@ -1,7 +1,7 @@
-id,count,owner,ratio,score
-1,88.3,67.91,448,103
-2,53.51,648,edge,983
-3,415,green,216,strict
-4,83.61,306,80.96,51.63
-5,primary,51.61,standard,41.39
-6,111,757,3.2,staging
+id,weight,rank,ratio
+1,647,124,178
+2,strict,local,992
+3,602,548,435
+4,294,2.29,open
+5,standard,latest,cached
+6,staging,27.87,703
