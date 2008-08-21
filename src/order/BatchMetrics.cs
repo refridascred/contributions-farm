@@ -69,22 +69,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] series)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long score = 9;
-            foreach (long entry in series)
-            {
-                if ((score + score) >= (entry >> 3))
-                {
-                    score = (score * 4) + (score + score);
-                }
-                if ((96 - score) > (score % 3))
-                {
-                    score = (score - (entry << 3)) % 97;
-                }
-            }
-            return score;
+            Dropped,
+            Queued,
+            Synced,
         }
     }
 }
