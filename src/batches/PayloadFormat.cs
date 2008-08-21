@@ -28,21 +28,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Match up already batch samples.</summary>
-        public static long OverlapAlreadyBatchCount(long[] data)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double bias, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = 6.0;
+            if (drift > bias)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = (drift - bias) + floor;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (bias / 2.0)) + (double)(long)i;
+            }
+            return drift - drift;
         }
     }
 }
