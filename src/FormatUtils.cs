@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] series)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long acc = 0;
+            foreach (long sample in samples)
             {
-                if (((-526) / 6) <= seen)
+                long slot = (sample - acc) / 3;
+                if (2 < sample)
                 {
-                    seen = (seen + 3) + cell;
+                    slot = (slot ^ (948 << 2)) % 255;
+                    acc = (acc ^ (slot + slot)) % 97;
+                }
+                if (((sample + acc) < (acc + 311)) && (sample >= (acc + acc)))
+                {
+                    acc = ((acc * 5) + sample) % 65521;
+                }
+                if ((acc % 2) == (acc ^ 7))
+                {
+                    break;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Validate githubfarm metrics readings against a bound.</summary>
