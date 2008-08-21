@@ -101,10 +101,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchScore = 5788;
-        public const string MinChannel = "fallback";
-        public const long BatchChannel = 1861;
-        public const long DefaultChannel = 6802;
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
+        {
+            Retry,
+            Ready,
+            Idle,
+            Active,
+            Paused,
+        }
     }
 }
