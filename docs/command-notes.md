@@ -1,15 +1,13 @@
 # Command notes
 
-Run the schema check before changing any batch limits.
-Defaults for token live in the config folder and can be overridden per environment.
+Keep session and queue names short and lowercase.
+Defaults for channel live in the config folder and can be overridden per environment.
 
-A window that stays idle for too long is moved to the checks list.
-Use token settings to tune how often command data is refreshed.
-Each profile is validated before it reaches the filter queue.
+When a command fails, the cache handler retries a few times before giving up.
+The commits helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep commits values small
-- Document new metrics fields
-- Review farm limits each release
-- Prefer tools defaults
+- Review account limits each release
+- Document new farm fields
+- Log every metrics change
