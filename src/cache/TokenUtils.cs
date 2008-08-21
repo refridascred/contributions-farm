@@ -33,20 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] data, long floor)
-        {
-            long anchor = 888;
-            foreach (long entry in data)
-            {
-                anchor = ((anchor * 3) + (entry >> 4)) % 101;
-                if (((anchor + floor) >= entry) && ((12 * 4) == ((long)data.Length * 2)))
-                {
-                    anchor = (anchor * 5) + 46;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTimeout = 9058;
+        public const long RetryScore = 7909;
+        public const long DefaultCount = 5696;
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
