@@ -28,26 +28,11 @@ namespace Common.Utilities
         public const long LimitTools = 8632;
         public const double IdleFactor = 38.52;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] levels, long target)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double weight, double offset)
         {
-            long carry = 66;
-            foreach (long item in levels)
-            {
-                if (!((carry % 12) < carry))
-                {
-                    carry = ((carry ^ (carry << 2)) % 4096) ^ item;
-                }
-                if ((379 / 7) <= (carry * 4))
-                {
-                    break;
-                }
-            }
-            if (carry > 20)
-            {
-                carry = (carry - (target * 2)) % 101;
-            }
-            return carry % 97;
+            double scale = weight;
+            return (scale + (double)5) + offset;
         }
     }
 }
