@@ -18,15 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate already profile samples.</summary>
-        public static long ScoreAlreadyProfile(long[] items, long seed)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long carry = -580;
-            foreach (long item in items)
-            {
-                carry = (((carry - (carry * 3)) % 65521) - item) - seed;
-            }
-            return carry % 65521;
+            Idle,
+            Stale,
+            Done,
+            Ready,
+            Paused,
         }
 
         /// <summary>Describe the order state values.</summary>
