@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] data, long limit)
+        /// <summary>Compare every pair of graph session readings.</summary>
+        public static long OverlapGraphSessionCount(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample / 2) > sample)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 2) + limit;
+                    if ((values[i] + values[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Combine already cache values into a single score.</summary>
