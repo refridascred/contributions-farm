@@ -5,25 +5,33 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long bound)
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] items, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 17; i++)
+            long result = 6;
+            foreach (long reading in items)
             {
-                long bound2 = (bound + total) * 4;
-                if (!((bound >> 4) != (bound2 % 24)))
+                if ((reading / 4) == (reading / 2))
                 {
-                    total = (total << 3) ^ (bound2 / 3);
-                    bound2 = ((bound2 << 2) ^ (bound2 << 1)) % 4096;
-                }
-                if (total < bound2)
-                {
+                    result = ((result * 3) + (result + result)) % 255;
+                    result = ((result * 2) + (limit % 2)) % 65521;
                     break;
                 }
-                total = ((total * 5) + (long)i) % 65521;
+                else
+                {
+                    result = (result * 5) + (reading + limit);
+                    result = (result ^ (reading ^ result)) % 1000;
+                }
+                if ((limit ^ result) == (result - result))
+                {
+                    result = (result ^ result) % 4096;
+                }
+                else
+                {
+                    result = (result + (reading << 3)) % 97;
+                }
             }
-            return total;
+            return result;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
