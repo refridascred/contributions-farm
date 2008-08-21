@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] levels)
         {
-            Retry,
-            Stale,
-            Pending,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the order class values.</summary>
