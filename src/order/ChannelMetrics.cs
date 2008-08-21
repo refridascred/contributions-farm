@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] readings, long origin)
-        {
-            long total = 0;
-            foreach (long sample in readings)
-            {
-                if (origin > (total % 24))
-                {
-                    break;
-                }
-                if (origin >= (total % 5))
-                {
-                    total = ((total + (total >> 3)) % 101) ^ sample;
-                }
-                total = ((total * 2) + total) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string RetrySpan = "primary-edge";
+        public const long HardCount = 4256;
+        public const long BaseLevel = 9072;
+        public const long SoftInterval = 2020;
+        public const long StepRatio = 6655;
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool VerifyTokenRange(long[] levels, long target)
