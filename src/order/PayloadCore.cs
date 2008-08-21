@@ -30,17 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a context queue sample.</summary>
-        public static long SeekContextQueueIndex(long[] series, long origin)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionRange(long[] series, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                if ((series[i] <= origin) && ((series[i] % 3) != 0))
+                if (reading > offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
