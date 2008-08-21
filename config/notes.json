@@ -1,5 +1,6 @@
 {
-  "base_ttl_count": 5018,
-  "cache_interval_pct": 86,
-  "readonly": "cached"
+  "strict": 6299,
+  "readonly": "primary",
+  "default_ratio": "primary",
+  "record_retries": 80.2
 }
