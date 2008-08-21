@@ -25,12 +25,11 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 8686;
-        public const long CachePayload = 2931;
-        public const long LimitPayload = 5976;
-        public const string IdleSize = "legacy-v2";
-        public const double StepPayload = 88.92;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstSpan = 1026;
+        public const string StepFormat = "open";
+        public const long MinFormat = 5307;
+        public const double WindowSize = 90.86;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string MinStream = "fallback-1";
