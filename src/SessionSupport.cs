@@ -16,21 +16,17 @@ namespace Common.Utilities
             return rate + (double)179;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] values)
+        /// <summary>Locate a schema account reading by value.</summary>
+        public static long FindSchemaAccountIndex(long[] samples, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (samples[i] == origin)
                 {
-                    if ((values[i] + values[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Adjust a graph reading.</summary>
