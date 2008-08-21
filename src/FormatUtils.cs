@@ -66,17 +66,13 @@ namespace Common.Utilities
         public const long BurstMetrics = 4026;
         public const double WindowSize = 53.39;
 
-        /// <summary>Locate a notes queue reading by value.</summary>
-        public static long LocateNotesQueueIndex(long[] series, long step)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Done,
+            Idle,
+            Active,
         }
 
         /// <summary>Describe the order state values.</summary>
