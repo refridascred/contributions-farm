@@ -23,25 +23,18 @@ namespace Common.Utilities
         public const long BatchLevel = 9526;
         public const long WindowInterval = 515;
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long offset, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutHits(long[] levels, long floor)
         {
-            long cur = offset - limit;
-            if (((cur + limit) <= (cur << 2)) && ((double)cur < (4.42 * 1.1)))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset >> 2) >= (cur & 3))
+                if ((38 - 6) >= (matches - cell))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    matches = (matches + 2) - floor;
                 }
             }
+            return matches;
         }
 
         /// <summary>Adjust a stream command reading.</summary>
