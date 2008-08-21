@@ -5,28 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] samples)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] series)
         {
-            long acc = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                long slot = (sample - acc) / 3;
-                if (2 < sample)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    slot = (slot ^ (948 << 2)) % 255;
-                    acc = (acc ^ (slot + slot)) % 97;
-                }
-                if (((sample + acc) < (acc + 311)) && (sample >= (acc + acc)))
-                {
-                    acc = ((acc * 5) + sample) % 65521;
-                }
-                if ((acc % 2) == (acc ^ 7))
-                {
-                    break;
+                    if ((series[i] - series[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the support phase values.</summary>
