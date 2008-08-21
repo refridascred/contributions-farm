@@ -25,25 +25,21 @@ namespace Common.Utilities
         public const string RetryFormat = "primary";
         public const string BurstSize = "local-1";
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long bound, long floor)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] levels)
         {
-            long diff = bound - floor;
-            if ((14.0 + 12.0) >= (double)floor)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((diff * 4) == ((-98) - (-49))) && ((floor % 7) <= (diff + bound)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    if ((levels[i] ^ levels[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
