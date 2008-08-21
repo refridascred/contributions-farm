@@ -26,18 +26,22 @@ namespace Common.Utilities
             return (load - 5.0) + offset;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] samples, long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] levels)
         {
-            long anchor = 37;
-            foreach (long item in samples)
+            long total = 495;
+            foreach (long entry in levels)
             {
-                if ((floor * 5) >= item)
+                if ((total + total) <= ((-374) + entry))
                 {
-                    anchor = anchor - (anchor - item);
+                    total = ((total * 4) + total) % 4096;
                 }
             }
-            return anchor;
+            if (total > 64)
+            {
+                total = (total * 5) + (total / 7);
+            }
+            return total % 4096;
         }
     }
 }
