@@ -1,8 +1,23 @@
 # support settings
-stream_threshold: 36
-base_retries:
-  - 19
-  - 465
-  - 275
-  - 450
-cache_timeout: 48.33
+audit:
+  session_timeout:
+    - primary
+    - eu-west
+  soft_capacity_ms:
+    - staging
+    - cached
+  warm_ratio_pct: green
+  audit: 100
+soft_delay: 6094
+enabled: strict
+poll_capacity:
+  enabled:
+    - strict
+    - strict
+    - eu-west
+  soft_size: false
+  queue_ratio: true
+  compress: 39
+  verbose: latest
+stream_window: true
+max_timeout_count: 92.47
