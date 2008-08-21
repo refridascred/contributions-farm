@@ -55,13 +55,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Check that every buffer payload entry stays within the limit.</summary>
+        public static bool VerifyBufferPayloadRange(long[] data, long seed)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public double Count { get; set; }
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
