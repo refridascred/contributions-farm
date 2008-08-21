@@ -1,14 +1,14 @@
 # githubfarm settings
-metric_depth: 44.2
-tools_threshold: fallback
-poll_capacity_count: true
-default_threshold_pct:
-  farm_timeout: legacy
-  token_retries: false
-  context_window:
-    - blue
-    - fallback
-    - standard
-  tools_size: 250
-  enabled: true
-  schema_timeout: false
+flush_capacity_s: 31
+command_timeout: 500
+poll_ratio_pct: green
+format_delay:
+  entry_ttl: 31.24
+  channel_delay:
+    base_ratio: true
+    cluster_window: legacy
+    flush_threshold: strict
+    min_delay_ms: 96.06
+    flush_delay_pct: 250
+  batch_window: 3
+  retry_interval: eu-west
