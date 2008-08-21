@@ -1,5 +1,5 @@
 {
-  "default_window": ["green", "open", "edge", "strict"],
-  "enabled": true,
-  "retry_limit_pct": [269, 481, 136, 257]
+  "default_retries_count": "latest",
+  "sync_size_s": [21, 353, 449, 421],
+  "min_retries": "legacy"
 }
