@@ -37,21 +37,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count queue route pairs that satisfy a relation.</summary>
-        public static long OverlapQueueRouteCount(long[] items)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((((long)i - (long)i) < 753) && ((13.0 + 5.4) <= (double)sum)))
                 {
-                    if ((items[i] ^ items[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum << 2) ^ ((long)i << 1)) % 97;
                 }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Describe the tools status values.</summary>
