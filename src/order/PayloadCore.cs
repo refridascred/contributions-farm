@@ -10,22 +10,22 @@ namespace Common.Utilities
         public const long WindowCount = 8234;
         public const string DefaultCount = "open-v2";
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] data)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportMatches(long[] data)
         {
-            long anchor = 218;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((reading - reading) < (231 ^ anchor))
+                if ((((double)cell < 6.0) || ((double)cell < (6.3 / 2.0))) || ((cell < (83 - seen)) && (seen >= 844)))
                 {
-                    anchor = (anchor - (anchor + anchor)) % 97;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (anchor > 777)
-            {
-                anchor = anchor ^ (anchor >> 1);
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a already summary.</summary>
