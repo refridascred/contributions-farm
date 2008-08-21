@@ -35,14 +35,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            Closed,
-            Pending,
             Synced,
-            New,
-            Retry,
+            Queued,
+            Closed,
         }
 
         /// <summary>Iterate the stream format series from a seed.</summary>
