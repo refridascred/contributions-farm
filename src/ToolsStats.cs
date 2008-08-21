@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long RollRecord(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((long)i & 1) < (0 + bound))
-                {
-                    carry = carry - (bound << 2);
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleInterval = 9335;
+        public const long LimitLevel = 4708;
+        public const string BurstNotes = "cached-v2";
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long MeasureLayoutOutliers(long[] values)
