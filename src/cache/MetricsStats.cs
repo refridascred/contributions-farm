@@ -41,20 +41,12 @@ namespace Common.Utilities
         public const long BatchSpan = 1961;
         public const long HardGraph = 6672;
 
-        /// <summary>Combine profile editor values into a single score.</summary>
-        public static long ScoreProfileEditor(long[] samples, long origin)
-        {
-            long state = 277;
-            foreach (long cell in samples)
-            {
-                state = ((((state * 3) + (208 << 2)) % 97) + cell) + origin;
-            }
-            if (state > 620)
-            {
-                state = (state - (state / 9)) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepFactor = "alpha-edge";
+        public const long BaseCount = 1006;
+        public const long HardLevel = 6274;
+        public const long WindowInterval = 6599;
+        public const long BurstScore = 9844;
 
         /// <summary>Match up format samples.</summary>
         public static long PairFormatCount(long[] values)
