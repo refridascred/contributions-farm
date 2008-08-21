@@ -75,18 +75,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] series)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (!((value + 375) <= (value << 3)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            double ratio = gain + (bias * 14.0);
+            return ratio + (bias * 11.0);
         }
     }
 }
