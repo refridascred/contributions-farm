@@ -1,8 +1,22 @@
 {
-  "base_capacity_count": 7806,
-  "batch_size_ms": 250,
-  "metrics_capacity": 5713,
-  "sync_capacity_count": 1024,
-  "burst_threshold_count": [279, 227, 26, 380],
-  "profile_retries": 93.9
+  "retry_interval_s": "strict",
+  "strict": "open",
+  "compress": "stable",
+  "warm_depth_s": true,
+  "enabled": {
+    "strict": true,
+    "retry_limit": {
+      "dry_run": 30,
+      "cache_depth_ms": "stable",
+      "retry_interval_count": false,
+      "audit": 25.4,
+      "retry_threshold_count": false,
+      "filter_depth": 62
+    },
+    "payload_ratio": ["fallback", "latest", "standard"],
+    "verbose": 115,
+    "sync_threshold_count": "open",
+    "dry_run": 63
+  },
+  "audit": 1330
 }
