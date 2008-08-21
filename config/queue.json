@@ -1,6 +1,6 @@
 {
-  "burst_capacity_pct": [284, 137, 72, 277],
-  "warm_timeout": 68.97,
-  "batch_ttl": "legacy",
-  "report_delay": "cached"
+  "sync_interval": "strict",
+  "verbose": 27,
+  "max_limit_pct": false,
+  "order_delay": [177, 108, 164, 150]
 }
