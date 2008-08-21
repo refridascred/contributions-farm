@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy edge latest eu-west; do
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in latest eu-west primary; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=70
+COMMAND_LIMIT=150
 log "limit is ${COMMAND_LIMIT}"
