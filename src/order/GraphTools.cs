@@ -39,23 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics contributi samples.</summary>
-        public static long FoldMetricsContributi(long[] items, long step)
-        {
-            long total = 29;
-            foreach (long item in items)
-            {
-                if (((item & 15) == (step - item)) && ((double)item >= (1.4 / 5.0)))
-                {
-                    total = ((total << 2) ^ (item << 2)) % 4096;
-                }
-                else
-                {
-                    total = total ^ ((-22) + step);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 8345;
+        public const long HardFilter = 6102;
+        public const long RetryDepth = 5035;
 
         /// <summary>Describe the session class values.</summary>
         public enum SessionClass
