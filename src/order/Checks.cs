@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Active,
-            Paused,
-            Failed,
-            Queued,
-            Retry,
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define account limits and defaults.</summary>
