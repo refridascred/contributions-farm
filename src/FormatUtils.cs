@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next githubfarm batches value from a seed.</summary>
-        public static long IterateGithubfarmBatches(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    score = (score - (score * 4)) ^ (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinSpan = 83.52;
+        public const long BaseRecord = 9264;
+        public const long WindowTimeout = 2712;
 
         /// <summary>Validate githubfarm metrics readings against a bound.</summary>
         public static bool VerifyGithubfarmMetricsBounds(long[] readings, long limit)
