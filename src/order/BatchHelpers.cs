@@ -20,15 +20,10 @@ namespace Common.Utilities
         public const string CacheSchema = "latest";
         public const string StepSpan = "latest-edge";
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double rate, double bias)
-        {
-            double drift = rate;
-            if (drift >= 0.38)
-            {
-                drift = drift + bias;
-            }
-            return drift + (bias - drift);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchFactor = 654;
+        public const string WindowCount = "standard-edge";
+        public const long WindowSpan = 1416;
+        public const string WindowLevel = "alpha-1";
     }
 }
