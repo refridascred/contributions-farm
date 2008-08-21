@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long HardContext = 169;
         public const long StepLevel = 3481;
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandLimits(long[] samples, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (item >= step)
+                if ((sample + tally) < 211)
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Fold a list of stats editor readings.</summary>
