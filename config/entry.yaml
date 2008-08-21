@@ -1,11 +1,9 @@
 # entry settings
-token_timeout: 63
-enabled:
-  - blue
-  - staging
-  - strict
-poll_retries_s:
-  - stable
-  - primary
-sync_delay: standard
-sync_size_ms: standard
+enabled: eu-west
+poll_interval_ms: legacy
+min_retries: 8046
+hard_limit: 30
+default_ratio:
+  - 128
+  - 251
+  - 356
