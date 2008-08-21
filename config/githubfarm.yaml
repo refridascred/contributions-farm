@@ -1,11 +1,6 @@
 # githubfarm settings
-dry_run:
-  - 49
-  - 173
-  - 357
-entry_ttl: false
-channel_threshold:
-  - 130
-  - 56
-  - 95
-retry_interval_count: strict
+verbose: primary
+stream_capacity: 85.54
+warm_limit_pct: 3490
+cache_depth_s: standard
+already_ratio: latest
