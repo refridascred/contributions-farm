@@ -33,21 +33,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] values)
+        /// <summary>Classify a format schema pair into a bucket.</summary>
+        public static long RankFormatSchema(long step, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long gap = step ^ limit;
+            if ((limit >> 4) <= step)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((double)limit <= (3.0 - 9.6)) && ((limit ^ limit) >= (gap / 2)))
                 {
-                    if ((values[i] ^ values[j]) < 5)
+                    return 8;
+                }
+                else
+                {
+                    if ((limit + limit) > (limit - limit))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (3.0 >= (double)limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
