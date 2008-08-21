@@ -44,12 +44,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            public double Count { get; set; }
+            public long Level { get; set; }
         }
     }
 }
