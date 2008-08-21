@@ -1,5 +1,7 @@
 {
-  "command_window": 4621,
-  "max_ratio_count": "cached",
-  "batch_limit": "legacy"
+  "base_threshold_s": 500,
+  "readonly": ["latest", "cached"],
+  "dry_run": [472, 117],
+  "warm_window": true,
+  "warm_threshold": 100
 }
