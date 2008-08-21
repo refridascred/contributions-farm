@@ -1,5 +1,4 @@
 # entry settings
-editor_interval: false
-warm_depth_pct: 500
-batches_limit: true
-layout_capacity: 27.24
+strict: 9052
+cache_timeout_s: open
+farm_delay: 9966
