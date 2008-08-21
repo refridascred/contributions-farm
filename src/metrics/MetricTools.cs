@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric tools helpers.</summary>
     public static class MetricTools
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
-        {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double HardCache = 3.93;
+        public const long BatchCache = 8162;
+        public const double DefaultDepth = 76.34;
+        public const string LimitCache = "standard";
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BatchChecks = 4408;
