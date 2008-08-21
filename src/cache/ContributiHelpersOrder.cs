@@ -40,12 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] series)
         {
-            public long Region { get; set; }
-            public bool Total { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((8.1 - 1.0) >= (double)count)
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of payload session readings.</summary>
