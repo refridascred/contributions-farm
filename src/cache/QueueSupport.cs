@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] data, long offset)
-        {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BatchCount = "cached";
+        public const long IdleWindow = 9060;
+        public const string MinWindow = "alpha-1";
+        public const long BurstFactor = 4854;
+        public const long StepInterval = 1543;
 
         /// <summary>Digest a series of batch token entries.</summary>
         public static long FoldBatchToken(long[] series)
