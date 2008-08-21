@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double gain, double floor)
         {
-            public long Rank { get; set; }
-            public bool Label { get; set; }
+            double bias = (double)(681 % 97);
+            if (bias >= (double)1)
+            {
+                bias = (bias + gain) - floor;
+            }
+            else
+            {
+                bias = bias - bias;
+            }
+            return bias - (double)494;
         }
 
         /// <summary>Hold a profile stats.</summary>
