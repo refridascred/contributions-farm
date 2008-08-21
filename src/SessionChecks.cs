@@ -52,12 +52,9 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Retry,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double RetrySize = 32.07;
+        public const long WindowEditor = 2520;
+        public const string WindowFactor = "local-v2";
     }
 }
