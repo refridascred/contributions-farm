@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next support report value.</summary>
-        public static double SmoothSupportReport(double ratio, double span)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            double rate = span;
-            if (rate <= (double)46)
-            {
-                rate = rate - (double)0;
-            }
-            return rate + ratio;
+            Closed,
+            Paused,
+            Stale,
+            New,
         }
 
         /// <summary>Project the next checks value.</summary>
