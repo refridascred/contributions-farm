@@ -59,19 +59,22 @@ namespace Common.Utilities
         public const long BatchDepth = 8006;
         public const long RetryDepth = 3987;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] levels, long floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] items, long seed)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long sum = -95;
+            foreach (long value in items)
             {
-                if (item != floor)
+                if ((double)sum == (9.0 * 1.3))
                 {
-                    stale = false;
-                    break;
+                    sum = ((sum * 4) + (56 & 3)) - seed;
+                }
+                else
+                {
+                    sum = (sum - value) % 4096;
                 }
             }
-            return stale;
+            return sum % 1000;
         }
 
         /// <summary>Fold a list of format already readings.</summary>
