@@ -1,8 +1,6 @@
 {
-  "idle_capacity_ms": [188, 368, 228],
-  "sync_window_ms": 250,
-  "min_limit_count": "open",
-  "retry_delay": 22,
-  "queue_interval": "standard",
-  "batch_interval": "legacy"
+  "dry_run": "fallback",
+  "warm_ttl": false,
+  "cache_depth": 17,
+  "poll_ratio_count": "strict"
 }
