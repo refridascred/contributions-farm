@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next context layout value.</summary>
-        public static double SmoothContextLayout(double gain, double floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferBounds(long[] values, long step)
         {
-            double bias = floor / 8.0;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                bias = ((bias - (2.0 - bias)) + (double)(long)i) - gain;
+                if (sample != step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return bias + (floor - floor);
+            return found;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
