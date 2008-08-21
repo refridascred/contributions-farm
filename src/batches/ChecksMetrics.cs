@@ -26,10 +26,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchSize = 3661;
-        public const long CacheWidth = 9820;
-        public const string IdleFilter = "strict-edge";
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public bool Weight { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Describe the checks status values.</summary>
         public enum ChecksStatus
