@@ -41,17 +41,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] values, long floor)
+        /// <summary>Validate graph format readings against a bound.</summary>
+        public static bool VerifyGraphFormatLimits(long[] series, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if ((values[i] > floor) && ((values[i] % 2) != 0))
+                if (datum != seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
