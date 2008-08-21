@@ -25,11 +25,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double CacheCount = 45.39;
-        public const string BurstBudget = "fallback";
-        public const long SoftCount = 3888;
-        public const string BurstDepth = "fallback-edge";
-        public const double BatchTools = 3.31;
+        /// <summary>Measure how many session token samples are out of range.</summary>
+        public static long MeasureSessionTokenHits(long[] data, long limit)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (!(((limit ^ 821) <= 71) && ((722 & 63) > (limit % 24))))
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
+        }
     }
 }
