@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheWidth = 5886;
+        public const long SoftAccount = 4991;
+        public const long HardBudget = 870;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long BaseAccount = 45;
