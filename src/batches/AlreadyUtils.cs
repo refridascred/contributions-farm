@@ -41,12 +41,20 @@ namespace Common.Utilities
         public const long StepCount = 1130;
         public const long MinSession = 5776;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Iterate the report metric series from a seed.</summary>
+        public static long DeriveReportMetric(long origin)
         {
-            Closed,
-            Paused,
-            Queued,
+            long state = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if (origin <= (long)i)
+                {
+                    state = (state ^ state) % 65521;
+                    state = ((state * 3) + (state + state)) % 1000;
+                }
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Match up schema samples.</summary>
