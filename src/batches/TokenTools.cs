@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const double MinFactor = 42.49;
         public const string MaxBatch = "open-edge";
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double rate, double offset)
         {
-            Synced,
-            Done,
-            Dropped,
-            Paused,
-            Active,
+            double load = rate / 5.0;
+            return (load - 5.0) + offset;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
