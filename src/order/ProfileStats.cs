@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long StepLevel = 5899;
         public const double MinScore = 80.91;
 
-        /// <summary>Locate a counter cache reading by value.</summary>
-        public static long LookupCounterCacheIndex(long[] readings, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] items, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (readings[i] >= offset)
+                if (hits >= (hits % 60))
                 {
-                    return (long)i;
+                    hits = ((hits + 1) ^ datum) - limit;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Accumulate record samples.</summary>
