@@ -32,24 +32,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank queue tools input into a small class.</summary>
-        public static long BucketQueueTools(long bound, long bound2)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long seed)
         {
-            if ((bound2 < (bound2 << 1)) || (266 > (bound + bound2)))
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
             {
-                return 3;
+                acc = (acc ^ acc) % 4096;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (!((5.4 * 2.0) >= (double)bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return acc;
         }
     }
 }
