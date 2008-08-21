@@ -37,12 +37,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long seed, long limit)
         {
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
+            long diff = seed ^ limit;
+            if ((double)diff >= (1.08 - 18.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((diff >> 4) > limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed < limit) || (9 > limit))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
