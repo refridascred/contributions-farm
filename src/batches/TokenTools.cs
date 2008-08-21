@@ -37,18 +37,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema payload readings against a rule.</summary>
-        public static long AuditSchemaPayloadOutliers(long[] series, long seed)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long origin, long seed)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long next = origin ^ seed;
+            if ((origin > (next >> 3)) && ((79 + origin) > (origin + seed)))
             {
-                if ((15.0 + 11.0) == (double)count)
+                return 6;
+            }
+            else
+            {
+                if ((seed + origin) == (seed * 3))
                 {
-                    count = ((count + 3) - reading) - seed;
+                    return 5;
+                }
+                else
+                {
+                    if ((origin + (-215)) <= (origin * 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)seed != (double)(-821))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
