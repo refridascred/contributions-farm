@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long floor)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = acc ^ (floor << 2);
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define graph limits and defaults.</summary>
