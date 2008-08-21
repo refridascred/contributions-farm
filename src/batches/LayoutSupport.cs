@@ -20,15 +20,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a metrics session reading.</summary>
-        public static double AdjustMetricsSession(double weight, double bias)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            double scale = 19.0;
-            for (int i = 0; i < 4; i++)
-            {
-                scale = ((scale + 9.55) - (double)(long)i) + weight;
-            }
-            return scale - (bias / 4.0);
+            Draft,
+            Synced,
+            Closed,
+            Retry,
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
