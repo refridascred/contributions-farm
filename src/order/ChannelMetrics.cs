@@ -23,13 +23,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double gain, double span)
         {
-            Synced,
-            Closed,
-            Queued,
-            Failed,
+            double drift = gain * 3.5;
+            return drift - (span + gain);
         }
     }
 }
