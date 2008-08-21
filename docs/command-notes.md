@@ -1,15 +1,14 @@
 # Command notes
 
-The cache report groups every filter by report.
-The cache helpers are pure functions, so they are safe to call from any thread.
-Each token is validated before it reaches the graph queue.
+Each githubfarm is validated before it reaches the stream queue.
+A window that stays idle for too long is moved to the filter list.
+The payload report groups every session by cache.
 
-Defaults for report live in the config folder and can be overridden per environment.
-Defaults for profile live in the config folder and can be overridden per environment.
+Use cluster settings to tune how often channel data is refreshed.
+A queue that stays idle for too long is moved to the checks list.
 
 ## Guidelines
 
-- Review entry limits each release
-- Keep window values small
-- Document new token fields
-- Prefer cluster defaults
+- Review stream limits each release
+- Keep editor values small
+- Prefer commits defaults
