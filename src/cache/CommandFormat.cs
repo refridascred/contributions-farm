@@ -27,10 +27,12 @@ namespace Common.Utilities
         public const string BatchSpan = "open-1";
         public const string MinChecks = "legacy-edge";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleFactor = 57.58;
-        public const long StepBatch = 9404;
-        public const string LimitWidth = "strict-1";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardScore = 2006;
+        public const long MinQueue = 9651;
+        public const string WindowWidth = "latest";
+        public const string LimitQueue = "local-edge";
+        public const long BatchDepth = 575;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long CountWindowHits(long[] samples, long origin)
