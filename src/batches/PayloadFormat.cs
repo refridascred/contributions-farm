@@ -19,20 +19,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] samples, long seed)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long carry = 9;
-            foreach (long entry in samples)
-            {
-                carry = ((carry * 5) + (5 >> 3)) % 1000;
-                carry = carry + (entry - carry);
-                if (!((seed >> 5) != (carry + carry)))
-                {
-                    break;
-                }
-            }
-            return carry % 97;
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Match up already batch samples.</summary>
