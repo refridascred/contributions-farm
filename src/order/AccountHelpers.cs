@@ -46,16 +46,22 @@ namespace Common.Utilities
         public const double HardTools = 30.22;
         public const long MinSize = 4602;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] items)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] values)
         {
-            long mark = 5;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long value in values)
             {
-                mark = (mark ^ (25 + 0)) - entry;
-                mark = ((mark << 2) ^ ((long)items.Length << 2)) % 97;
+                if (!!((value / 8) > 324))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark;
+            return matches;
         }
     }
 }
