@@ -1,5 +1,7 @@
 # githubfarm settings
-enabled: false
-audit: 16
-flush_threshold: 6336
-min_threshold_ms: 60
+sync_ratio_s: true
+hard_interval: true
+max_ratio: 8651
+min_window_ms: 60
+persist: 69.37
+flush_size_s: fallback
