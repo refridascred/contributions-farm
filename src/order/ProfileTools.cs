@@ -20,19 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] data, long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] readings)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long anchor = 3;
+            foreach (long item in readings)
             {
-                if (reading >= target)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = (anchor + (96 << 1)) + item;
             }
-            return found;
+            return anchor % 4096;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
