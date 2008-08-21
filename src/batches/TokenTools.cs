@@ -21,10 +21,32 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 3979;
-        public const string DefaultGraph = "standard-edge";
-        public const long MaxDepth = 5327;
-        public const long MaxLevel = 2504;
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long seed, long offset)
+        {
+            long cur = seed + offset;
+            if ((194 / 9) >= (cur ^ 479))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset + 27) <= cur)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset + offset) < ((-53) + offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
     }
 }
