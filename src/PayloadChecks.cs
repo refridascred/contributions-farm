@@ -37,18 +37,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] data)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] series, long origin)
         {
-            long sum = 84;
-            foreach (long value in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)sum >= (9.7 * 2.23))
+                if (series[i] > origin)
                 {
-                    sum = ((sum ^ (sum / 8)) % 65521) + value;
+                    return (long)i;
                 }
             }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
