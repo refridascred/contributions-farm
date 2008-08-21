@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a contributi graph figure with a bias.</summary>
-        public static double SmoothContributiGraph(double gain, double bias)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] values, long target)
         {
-            double load = 4.81 / 3.0;
-            if (load > (double)(-89))
+            bool ok = true;
+            foreach (long sample in values)
             {
-                load = (load - (3.96 + bias)) + gain;
+                if (sample <= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return load + (load * 0.96);
+            return ok;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
