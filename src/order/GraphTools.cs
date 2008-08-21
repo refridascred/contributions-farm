@@ -37,22 +37,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextGaps(long[] levels, long origin)
-        {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (!(cell < origin))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseMetrics = 10.17;
+        public const double CacheMetrics = 30.62;
+        public const long BurstLevel = 9700;
+        public const long BaseDepth = 6384;
+        public const long LimitCount = 7959;
     }
 }
