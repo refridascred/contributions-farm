@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a metrics order value against two limits.</summary>
-        public static long SortMetricsOrder(long bound, long target)
+        /// <summary>Find the first cluster record entry that matches the target.</summary>
+        public static long SeekClusterRecordIndex(long[] series, long origin)
         {
-            long lane = bound + target;
-            if ((target - target) < lane)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (lane < (26 & 255))
+                if ((series[i] >= origin) && ((series[i] % 3) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
