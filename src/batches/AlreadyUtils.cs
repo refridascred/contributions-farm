@@ -36,20 +36,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate token batches readings against a bound.</summary>
-        public static bool VerifyTokenBatchesBounds(long[] items, long limit)
-        {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string DefaultSession = "cached";
+        public const long StepCount = 1130;
+        public const long MinSession = 5776;
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
