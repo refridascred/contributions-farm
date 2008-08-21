@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueGaps(long[] values)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (entry < (entry << 1))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Mode { get; set; }
+            public long Token { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the queue mode values.</summary>
