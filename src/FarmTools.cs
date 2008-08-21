@@ -33,19 +33,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] readings, long origin)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum >= origin)
+                if ((values[i] <= bound) && ((values[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
