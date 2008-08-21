@@ -44,14 +44,22 @@ namespace Common.Utilities
             return (scale + (scale / 9.0)) + span;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Accumulate checks command samples.</summary>
+        public static long WeighChecksCommand(long[] values)
         {
-            Draft,
-            Idle,
-            Ready,
-            Queued,
-            Locked,
+            long mix = 12;
+            foreach (long entry in values)
+            {
+                if ((2.1 + 7.2) >= (double)entry)
+                {
+                    mix = (mix * 4) + (entry << 2);
+                }
+            }
+            if (mix > 22)
+            {
+                mix = ((mix * 4) + mix) % 4096;
+            }
+            return mix;
         }
     }
 }
