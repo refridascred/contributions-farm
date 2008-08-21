@@ -62,18 +62,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] items, long origin)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorBounds(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if ((tally + 711) == (origin << 1))
+                if (item > floor)
                 {
-                    tally = (tally + 1) + reading;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
