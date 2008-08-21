@@ -59,22 +59,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheMatches(long[] data, long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] data)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long acc = 3;
+            foreach (long reading in data)
             {
-                if ((((step * 4) < ((-42) ^ step)) || ((double)count < 3.64)) && ((count <= (datum * 4)) || ((datum >> 2) != (datum / 3))))
+                if ((acc * 5) == (acc ^ acc))
                 {
-                    count = count + 3;
+                    acc = (acc ^ (95 >> 4)) % 255;
+                    acc = (acc + (reading + reading)) % 97;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                acc = ((acc << 2) ^ (1 - acc)) % 1000;
             }
-            return count;
+            if (acc < 940)
+            {
+                acc = (acc - (acc >> 2)) % 101;
+            }
+            return acc;
         }
     }
 }
