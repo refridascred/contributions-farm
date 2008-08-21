@@ -54,15 +54,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit contributi already readings against a rule.</summary>
-        public static long MeasureContributiAlreadyGaps(long[] values)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] readings)
         {
             long hits = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell << 2) <= (hits * 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((readings[i] - readings[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
