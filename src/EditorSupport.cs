@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long step, long floor)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] levels)
         {
-            if (((9.2 / 6.0) == (double)step) && ((floor / 9) <= (floor - 32)))
+            long anchor = 376;
+            foreach (long reading in levels)
             {
-                return 8;
+                anchor = (((anchor << 3) ^ anchor) % 1000) ^ reading;
             }
-            else
+            if (anchor > 4)
             {
-                if ((step << 2) >= floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)floor > 1.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (step < (floor >> 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                anchor = anchor + (anchor + anchor);
             }
+            return anchor;
         }
 
         /// <summary>Hold a stats entry.</summary>
