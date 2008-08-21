@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] series)
+        /// <summary>Check that every farm layout entry stays within the limit.</summary>
+        public static bool CheckFarmLayoutLimits(long[] levels, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value != step)
                 {
-                    if ((series[i] - series[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
