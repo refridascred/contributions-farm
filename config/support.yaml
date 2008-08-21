@@ -1,5 +1,8 @@
 # support settings
-format_depth: green
-cache_window: 5586
-tools_delay: 250
-max_timeout: 6.19
+warm_delay_pct:
+  - 285
+  - 111
+  - 220
+  - 88
+layout_size: local
+soft_threshold: true
