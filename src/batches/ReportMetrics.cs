@@ -19,27 +19,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] samples, long floor)
-        {
-            long mix = 0;
-            foreach (long datum in samples)
-            {
-                if (0.7 >= (double)mix)
-                {
-                    mix = ((mix << 2) ^ (datum / 2)) % 101;
-                }
-                if (!((floor - 47) < (floor >> 5)))
-                {
-                    break;
-                }
-            }
-            if (mix < 4)
-            {
-                mix = (mix << 2) ^ floor;
-            }
-            return mix;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinBudget = 3341;
+        public const string LimitSpan = "cached-v2";
+        public const string RetryFormat = "primary";
+        public const string BurstSize = "local-1";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double LimitChannel = 32.22;
