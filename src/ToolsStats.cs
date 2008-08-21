@@ -53,11 +53,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BatchRecord = "alpha-v2";
-        public const double BaseRecord = 52.67;
-        public const long BatchDepth = 8006;
-        public const long RetryDepth = 3987;
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
+        {
+            public bool Label { get; set; }
+            public bool Weight { get; set; }
+            public long Token { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long TallyContributi(long[] items, long seed)
