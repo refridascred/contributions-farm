@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] series, long floor)
-        {
-            long anchor = 1;
-            foreach (long sample in series)
-            {
-                anchor = ((anchor * 2) + (floor ^ anchor)) + sample;
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 8115;
+        public const long LimitBudget = 2451;
+        public const double SoftStats = 96.12;
+        public const long IdleInterval = 893;
+        public const long BatchRatio = 3896;
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
