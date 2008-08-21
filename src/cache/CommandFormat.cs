@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public long Score { get; set; }
-            public bool Token { get; set; }
-            public double Count { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string CacheBuffer = "fallback-1";
+        public const string HardBuffer = "legacy-1";
+        public const string BurstBuffer = "latest";
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool ValidateSessionBounds(long[] levels, long limit)
