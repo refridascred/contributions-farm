@@ -22,16 +22,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Iterate the already schema series from a seed.</summary>
-        public static long SeriesAlreadySchema(long offset)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] levels, long seed)
         {
-            long mix = offset;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = mix - mix;
-                mix = ((mix * 4) + (long)i) % 97;
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
