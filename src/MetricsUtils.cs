@@ -31,19 +31,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] series)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long mix = 159;
-            foreach (long entry in series)
-            {
-                mix = (mix + entry) % 101;
-                if ((entry * 4) >= (entry << 1))
-                {
-                    break;
-                }
-            }
-            return mix % 65521;
+            public bool Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the context status values.</summary>
