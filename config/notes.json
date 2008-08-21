@@ -1,19 +1,6 @@
 {
-  "min_threshold_pct": 77,
-  "poll_size": false,
-  "idle_depth_s": false,
-  "batch_ttl_pct": 60,
-  "cache_delay_count": 15,
-  "record_ttl": {
-    "poll_window": {
-      "enabled": "primary",
-      "githubfarm_limit": 16.66,
-      "idle_depth_ms": true,
-      "support_depth": 1024,
-      "stats_interval": 85.34,
-      "idle_timeout": false
-    },
-    "audit": true,
-    "default_limit_ms": true
-  }
+  "strict": ["blue", "stable", "latest"],
+  "soft_window_pct": 1024,
+  "metric_size": 64.87,
+  "soft_threshold_pct": 79.66
 }
