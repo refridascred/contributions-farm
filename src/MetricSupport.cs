@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Derive the next profile token value from a seed.</summary>
+        public static long RollProfileToken(long limit)
         {
-            Dropped,
-            Done,
-            Paused,
+            long state = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((state - limit) < (limit + limit))
+                {
+                    state = ((state << 3) ^ (112 + limit)) % 4096;
+                }
+                state = (state - limit) % 1000;
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Describe the format status values.</summary>
