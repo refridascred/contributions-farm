@@ -54,12 +54,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Match up already cluster samples.</summary>
+        public static long PairAlreadyClusterCount(long[] values)
         {
-            public double Limit { get; set; }
-            public bool Total { get; set; }
-            public bool Ratio { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
