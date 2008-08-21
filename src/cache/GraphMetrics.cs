@@ -19,22 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] data)
+        /// <summary>Iterate the commits checks series from a seed.</summary>
+        public static long SeriesCommitsChecks(long floor)
         {
-            long total = 800;
-            foreach (long item in data)
+            long mix = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)total == (8.0 / 9.0))
-                {
-                    total = ((total << 2) ^ (item + item)) % 4096;
-                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            if (total < 981)
-            {
-                total = ((total << 2) ^ total) % 97;
-            }
-            return total;
+            return mix;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
