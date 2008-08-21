@@ -1,19 +1,11 @@
 # githubfarm settings
-poll_delay_ms: true
-min_threshold_pct: 30
-flush_ttl_pct: false
-hard_limit:
-  - 110
-  - 262
-base_depth:
-  warm_interval_ms:
-    batch_interval: 500
-    flush_size_ms: standard
-    default_capacity_ms:
-      - cached
-      - open
-    persist: 75.29
-    batches_window: staging
-  idle_threshold: 100
-  readonly: primary
-verbose: 74.91
+poll_interval: true
+batch_limit_count: 11.14
+flush_threshold_s:
+  - blue
+  - staging
+sync_depth_s: staging
+default_delay_s:
+  channel_window: fallback
+  compress: true
+  cache_limit_ms: 8401
