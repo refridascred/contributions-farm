@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long step)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] values)
         {
-            long acc = step;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                acc = (acc * 3) + (step ^ acc);
-                acc = ((acc * 4) + (long)i) % 97;
+                if (!(tally >= (tally / 7)))
+                {
+                    tally = (tally + 3) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Rank record input into a small class.</summary>
