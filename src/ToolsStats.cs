@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 8115;
-        public const long LimitBudget = 2451;
-        public const double SoftStats = 96.12;
-        public const long IdleInterval = 893;
-        public const long BatchRatio = 3896;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((long)i & 1) < (0 + bound))
+                {
+                    carry = carry - (bound << 2);
+                }
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
