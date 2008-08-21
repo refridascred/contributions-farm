@@ -1,8 +1,7 @@
-id,active,ratio
-1,278,edge
-2,118,primary
-3,staging,open
-4,blue,489
-5,12.43,12.07
-6,993,84.58
-7,638,411
+id,rank,label
+1,80.79,strict
+2,27.05,green
+3,eu-west,31.71
+4,733,66.17
+5,19.96,424
+6,39.1,649
