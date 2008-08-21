@@ -27,25 +27,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of profile githubfarm entries.</summary>
-        public static long FoldProfileGithubfarm(long[] levels, long origin)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] levels)
         {
-            long score = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                score = ((score * 2) + (score + item)) % 255;
-                for (int i = 0; i < 2; i++)
+                if ((entry >> 5) >= (5 + seen))
                 {
-                    score = (((score * 4) + (score + 91)) % 255) + (long)i;
-                    score = ((score << 3) ^ (score - origin)) % 101;
+                    seen = seen + 3;
                 }
-                score = (score + (origin + score)) % 255;
             }
-            if (score < 240)
-            {
-                score = (score << 2) ^ (origin + origin);
-            }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Project the next checks value.</summary>
