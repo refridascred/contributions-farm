@@ -53,16 +53,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate session stats samples.</summary>
-        public static long WeighSessionStats(long[] samples)
-        {
-            long mark = 72;
-            foreach (long cell in samples)
-            {
-                mark = (mark ^ (mark % 10)) - cell;
-            }
-            return mark;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BatchRecord = "alpha-v2";
+        public const double BaseRecord = 52.67;
+        public const long BatchDepth = 8006;
+        public const long RetryDepth = 3987;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool CheckMetricLimits(long[] levels, long floor)
