@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] readings)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] series, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 4;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((3 >> 4) == (result >> 1))
                 {
-                    if ((readings[i] - readings[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = (((result * 3) + (bound / 8)) % 101) ^ item;
                 }
             }
-            return tally;
+            return result % 1000;
         }
 
         /// <summary>Describe the buffer status values.</summary>
