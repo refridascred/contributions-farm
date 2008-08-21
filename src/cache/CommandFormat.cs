@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Idle,
-            Locked,
-            Stale,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 3915;
+        public const long CacheBatches = 2826;
+        public const double WindowSize = 36.22;
+        public const double MinBatches = 59.18;
+        public const long LimitBatches = 7339;
 
         /// <summary>Accumulate order samples.</summary>
         public static long TotalOrder(long[] readings, long offset)
