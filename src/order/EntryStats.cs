@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats tools samples are out of range.</summary>
-        public static long MeasureStatsToolsMatches(long[] values)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long mark = 968;
+            foreach (long sample in items)
             {
-                if (!((entry << 3) >= (4 << 2)))
+                if (((sample >> 1) > sample) && ((double)sample <= 5.9))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mark = ((mark * 4) + (step * 5)) % 101;
                 }
             }
-            return tally;
+            return mark % 65521;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
