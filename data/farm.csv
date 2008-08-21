@@ -1,11 +1,6 @@
-id,score,state,region,weight
-1,549,970,cached,standard
-2,710,88.05,854,636
-3,36,44.48,cached,57.42
-4,25.46,743,fallback,staging
-5,staging,381,fallback,444
-6,green,81.78,74.1,303
-7,126,477,staging,45.77
-8,local,97.27,432,open
-9,40,685,522,38.12
-10,blue,22.06,579,stable
+id,owner,level
+1,384,local
+2,51.72,203
+3,legacy,stable
+4,local,85.41
+5,918,320
