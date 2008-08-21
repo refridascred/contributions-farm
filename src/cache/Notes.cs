@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 4934;
-        public const string DefaultFactor = "staging-v2";
-        public const double RetryInterval = 27.88;
-        public const long BurstDepth = 942;
-        public const long CacheTimeout = 4672;
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
+        {
+            public bool Total { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long ScoreCommits(long[] samples)
