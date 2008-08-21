@@ -1,6 +1,5 @@
 {
-  "idle_ttl_pct": "green",
-  "token_window": ["edge", "open", "legacy"],
-  "poll_threshold_ms": [302, 354, 41, 385],
-  "retry_ratio": ["blue", "edge"]
+  "metric_ttl": [406, 359, 345],
+  "sync_interval": false,
+  "base_size": 250
 }
