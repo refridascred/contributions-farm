@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] data, long origin)
         {
-            public string Region { get; set; } = "";
-            public bool Count { get; set; }
-            public string Limit { get; set; } = "";
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of batch token readings.</summary>
