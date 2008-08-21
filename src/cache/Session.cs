@@ -37,18 +37,19 @@ namespace Common.Utilities
         public const long IdlePayload = 7272;
         public const string StepLevel = "stable-v2";
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] items)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryLimits(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if ((double)34 < (double)tally)
+                if (sample > seed)
                 {
-                    tally = (tally + 2) ^ reading;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
