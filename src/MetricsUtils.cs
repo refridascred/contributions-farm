@@ -32,10 +32,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRatio = 7058;
-        public const string MaxWidth = "latest-v2";
-        public const long LimitRecord = 5343;
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Stale,
+            Dropped,
+            Pending,
+            Active,
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long WindowFarm = 3278;
