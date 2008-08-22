@@ -62,11 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double gain, double span)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            double rate = (double)(-84);
-            return (rate + (rate + gain)) + span;
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
