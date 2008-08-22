@@ -47,19 +47,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double scale, double offset)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long floor)
         {
-            double drift = scale - (scale - offset);
-            if (drift >= scale)
+            long total = floor;
+            for (int i = 0; i < 18; i++)
             {
-                drift = drift + (scale * 17.0);
+                total = ((total << 3) ^ (long)i) % 97;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            else
-            {
-                drift = drift - (drift + drift);
-            }
-            return drift - (offset + offset);
+            return total;
         }
 
         /// <summary>Hold a stream stats.</summary>
