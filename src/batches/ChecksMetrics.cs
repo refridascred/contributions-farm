@@ -27,39 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long step, long step2)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long span = step - step2;
-            if (!((double)span == (double)step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step + step) <= step2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((2.85 < (double)step2) || ((step2 * 5) < (step / 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step << 3) < (step * 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Active,
+            Locked,
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
