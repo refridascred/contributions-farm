@@ -1,15 +1,15 @@
 # Command notes
 
-Run the command check before changing any metric limits.
-Use record settings to tune how often profile data is refreshed.
-The payload module keeps command values in sync with the metrics cache.
+A contributi that stays idle for too long is moved to the metric list.
+Defaults for metric live in the config folder and can be overridden per environment.
 
-The payload report groups every report by payload.
-The record report groups every notes by stats.
-Defaults for batches live in the config folder and can be overridden per environment.
+Run the entry check before changing any record limits.
+Keep notes and profile names short and lowercase.
+Defaults for channel live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Keep schema values small
-- Validate stream input early
+- Keep context values small
+- Prefer profile defaults
+- Document new graph fields
+- Validate profile input early
