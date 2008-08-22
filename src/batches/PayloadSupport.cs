@@ -5,34 +5,34 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank record commits input into a small class.</summary>
-        public static long ClassifyRecordCommits(long offset, long origin)
+        /// <summary>Classify a support editor pair into a bucket.</summary>
+        public static long GradeSupportEditor(long seed, long seed2)
         {
-            if ((double)origin < (3.09 * 16.0))
+            if (((4.0 / 3.0) > 1.55) || (seed > 4))
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if (!((origin ^ offset) < (offset << 1)))
+                if (seed > 17)
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    if (offset >= (origin - offset))
+                    if (!((seed2 + 83) <= (seed2 % 10)))
                     {
-                        return 6;
+                        return 2;
                     }
                     else
                     {
-                        if (((origin & 255) > (origin + offset)) || ((double)origin > 9.0))
+                        if ((seed2 < (241 << 1)) && ((seed2 - seed2) <= seed2))
                         {
-                            return 7;
+                            return 6;
                         }
                         else
                         {
-                            return 8;
+                            return 1;
                         }
                     }
                 }
