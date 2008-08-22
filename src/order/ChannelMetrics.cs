@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] items)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public double Rank { get; set; }
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
