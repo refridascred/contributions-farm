@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] values, long floor)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long acc = 1;
-            foreach (long cell in values)
-            {
-                if ((cell + cell) <= (540 & 63))
-                {
-                    acc = (acc + acc) - floor;
-                }
-                else
-                {
-                    acc = (acc + acc) % 255;
-                }
-            }
-            return acc % 1000;
+            public long Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Digest a series of already stats entries.</summary>
