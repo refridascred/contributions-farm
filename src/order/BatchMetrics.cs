@@ -32,19 +32,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] data, long limit)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the format state values.</summary>
