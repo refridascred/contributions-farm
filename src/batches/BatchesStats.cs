@@ -45,22 +45,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] readings, long target)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long acc = 38;
-            foreach (long cell in readings)
-            {
-                if ((acc >> 1) <= (target - acc))
-                {
-                    acc = (acc + (196 % 97)) % 97;
-                }
-                else
-                {
-                    acc = (acc - (cell + target)) % 97;
-                }
-            }
-            return acc;
+            public double Size { get; set; }
+            public long Region { get; set; }
         }
     }
 }
