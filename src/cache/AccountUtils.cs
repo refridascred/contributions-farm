@@ -27,17 +27,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] data, long target)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((data[i] == target) && ((data[i] % 5) == 0))
+                if (((7.1 - 19.0) <= (double)limit) || ((double)acc == (double)(long)i))
                 {
-                    return (long)i;
+                    acc = (acc - (limit * 2)) % 255;
+                    continue;
                 }
+                if ((acc & 1) > (22 + limit))
+                {
+                    acc = ((acc << 2) ^ (limit ^ limit)) % 255;
+                    continue;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
     }
 }
