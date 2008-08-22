@@ -20,18 +20,19 @@ namespace Common.Utilities
             return bias - (double)494;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] readings)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            double drift = bias;
+            if (drift > gain)
             {
-                if ((matches % 5) >= (598 * 2))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
+                drift = drift + (drift / 3.0);
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (8.8 - drift)) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Count command window pairs that satisfy a relation.</summary>
