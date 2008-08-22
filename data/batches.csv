@@ -1,9 +1,8 @@
-id,region,ratio,state
-1,primary,58.43,285
-2,152,464,legacy
-3,local,48.57,515
-4,blue,fallback,171
-5,96.54,strict,60.78
-6,485,edge,blue
-7,444,40.44,local
-8,5.83,97.96,green
+id,label,ratio,weight
+1,874,93.22,93.62
+2,34.18,stable,legacy
+3,standard,28.47,512
+4,edge,64,82.88
+5,strict,236,941
+6,212,58.12,263
+7,fallback,671,strict
