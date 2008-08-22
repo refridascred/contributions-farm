@@ -42,14 +42,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double scale, double floor)
         {
-            Stale,
-            Idle,
-            Synced,
-            Pending,
-            New,
+            double mean = (double)(21 + 0);
+            if (mean < (floor * 9.7))
+            {
+                mean = mean - mean;
+            }
+            return mean - scale;
         }
     }
 }
