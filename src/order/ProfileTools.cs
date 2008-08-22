@@ -22,23 +22,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double ratio, double floor)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long seed, long target)
         {
-            double mean = floor;
-            if (mean < (mean / 6.0))
+            long step = seed ^ target;
+            if ((0.85 * 11.0) != (double)target)
             {
-                mean = (mean - mean) - ratio;
+                return 7;
             }
             else
             {
-                mean = mean + 5.0;
+                if ((step >= (target + target)) || ((double)target == (11.0 / 3.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step >> 3) >= 2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (mean * 8.7)) + (double)(long)i;
-            }
-            return mean + mean;
         }
 
         /// <summary>Look up the position of a report tools sample.</summary>
