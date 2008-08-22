@@ -1,8 +1,6 @@
-id,rank,label
-1,cached,stable
-2,43.37,192
-3,105,local
-4,66.03,standard
-5,351,54.11
-6,738,52
-7,eu-west,20.88
+id,token,rank,score
+1,46.09,cached,328
+2,745,edge,staging
+3,483,567,664
+4,54.73,open,94.89
+5,78.78,983,869
