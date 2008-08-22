@@ -13,20 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowLimits(long[] levels, long step)
-        {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 7810;
+        public const long RetryProfile = 6876;
+        public const long BaseCount = 2791;
+        public const string HardSpan = "legacy-v2";
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
