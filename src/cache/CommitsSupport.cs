@@ -53,13 +53,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            Queued,
-            Failed,
-            Stale,
-            Synced,
+            public string Offset { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Region { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
