@@ -32,22 +32,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] data, long limit)
+        /// <summary>Count schema session pairs that satisfy a relation.</summary>
+        public static long MatchSchemaSessionCount(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((double)limit >= (3.7 * 3.3)) && ((entry << 2) > 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] - items[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
