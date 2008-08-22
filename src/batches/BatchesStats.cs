@@ -20,19 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] series, long origin)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Failed,
+            Done,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
