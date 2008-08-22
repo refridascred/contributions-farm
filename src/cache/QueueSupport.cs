@@ -25,19 +25,19 @@ namespace Common.Utilities
         public const long IdleScore = 3562;
         public const long BatchEditor = 6002;
 
-        /// <summary>Iterate the checks stream series from a seed.</summary>
-        public static long RollChecksStream(long floor)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] items, long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 6; i++)
+            long result = -4;
+            foreach (long reading in items)
             {
-                if (!((floor + 297) >= (long)i))
+                if (!(((7 + reading) != (reading >> 4)) && ((reading ^ seed) < 664)))
                 {
-                    total = (total << 2) ^ total;
+                    result = (result * 5) + (seed ^ seed);
                 }
-                total = ((total * 4) + (long)i) % 4093;
+                result = (result - (seed / 5)) % 97;
             }
-            return total;
+            return result % 97;
         }
     }
 }
