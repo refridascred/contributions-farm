@@ -63,18 +63,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] values, long bound)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (bound < cell)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public bool Offset { get; set; }
+            public double Size { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
