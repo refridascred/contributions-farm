@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long origin)
+        /// <summary>Combine context cluster values into a single score.</summary>
+        public static long DigestContextCluster(long[] items)
         {
-            long mark = origin;
-            for (int i = 0; i < 5; i++)
+            long result = -693;
+            foreach (long reading in items)
             {
-                long seen = origin;
-                mark = mark - (seen + mark);
-                mark = ((mark * 3) + (long)i) % 1000;
+                if ((reading / 7) != (result % 10))
+                {
+                    result = result - (result + reading);
+                }
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
