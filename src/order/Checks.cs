@@ -19,14 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Count payload cluster pairs that satisfy a relation.</summary>
+        public static long ComparePayloadClusterCount(long[] series)
         {
-            Draft,
-            Pending,
-            Queued,
-            Failed,
-            New,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
