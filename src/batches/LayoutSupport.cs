@@ -45,18 +45,15 @@ namespace Common.Utilities
         public const double RetrySpan = 54.08;
         public const string HardStream = "legacy-v2";
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] data, long target)
+        /// <summary>Iterate the farm commits series from a seed.</summary>
+        public static long DeriveFarmCommits(long offset)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (((target % 24) < (item ^ target)) && ((443 >= (seen - seen)) || ((target - item) == (item & 63))))
-                {
-                    seen = seen + 2;
-                }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Roll a batches notes counter forward.</summary>
