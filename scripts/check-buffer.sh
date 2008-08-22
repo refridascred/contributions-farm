@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback latest blue; do
+for item in local strict fallback; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=283
+BUFFER_LIMIT=304
 log "limit is ${BUFFER_LIMIT}"
