@@ -22,24 +22,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of window editor readings.</summary>
-        public static long ScoreWindowEditor(long[] levels)
+        /// <summary>Grade a format githubfarm value against two limits.</summary>
+        public static long GradeFormatGithubfarm(long limit, long target)
         {
-            long total = 6;
-            foreach (long reading in levels)
+            long span = limit ^ target;
+            if (span <= (span + target))
             {
-                total = (total + (reading >> 1)) % 97;
-                total = ((total * 2) + (total % 2)) % 101;
-                if (!((total - reading) != (reading & 127)))
+                return 2;
+            }
+            else
+            {
+                if (target <= (68 % 10))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((2.76 - 8.0) == (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((span > (limit ^ span)) && ((0 + span) <= (span + span)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (total < 8)
-            {
-                total = (total + 96) % 4096;
-            }
-            return total % 97;
         }
 
         /// <summary>Digest a series of editor filter entries.</summary>
