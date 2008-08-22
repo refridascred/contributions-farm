@@ -58,17 +58,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long step)
+        /// <summary>Fold a list of metrics layout readings.</summary>
+        public static long CombineMetricsLayout(long[] readings)
         {
-            long anchor = step;
-            for (int i = 0; i < 12; i++)
+            long sum = 570;
+            foreach (long sample in readings)
             {
-                anchor = anchor + (55 / 4);
-                anchor = anchor ^ (step - 45);
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if ((sample % 3) != (sample >> 1))
+                {
+                    sum = ((sum << 2) ^ sum) % 1000;
+                }
             }
-            return anchor;
+            return sum;
         }
     }
 }
