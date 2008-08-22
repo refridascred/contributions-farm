@@ -39,13 +39,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
+            public long Region { get; set; }
             public long Token { get; set; }
-            public string Label { get; set; } = "";
-            public double Offset { get; set; }
-            public long Level { get; set; }
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
