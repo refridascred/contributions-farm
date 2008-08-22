@@ -62,11 +62,11 @@ namespace Common.Utilities
         public const string MinCount = "stable-1";
         public const string WindowSpan = "fallback-1";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 3551;
-        public const long DefaultScore = 8272;
-        public const long BaseContributi = 8866;
-        public const long IdleInterval = 2203;
-        public const string RetryContributi = "fallback-v2";
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
+        {
+            public double Owner { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
