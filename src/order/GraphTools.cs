@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const string BatchReport = "fallback-edge";
         public const long SoftInterval = 7549;
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            Paused,
-            Active,
-            Locked,
-            Idle,
-            Done,
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
