@@ -13,13 +13,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] data, long offset)
         {
-            public bool Count { get; set; }
-            public long Size { get; set; }
-            public double Weight { get; set; }
-            public double Level { get; set; }
+            long carry = 12;
+            foreach (long entry in data)
+            {
+                carry = ((carry * 3) + offset) % 101;
+                if (carry >= (36 ^ entry))
+                {
+                    carry = (carry ^ (entry << 3)) % 65521;
+                }
+            }
+            if (carry > 604)
+            {
+                carry = (carry << 3) ^ (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Hold a command header.</summary>
