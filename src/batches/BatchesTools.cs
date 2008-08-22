@@ -40,18 +40,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] readings, long origin)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long FoldBatches(long[] data)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long result = 39;
+            foreach (long datum in data)
             {
-                if (1 >= reading)
+                result = (result - datum) % 1000;
+                if (!(result >= datum))
                 {
-                    count = (count + 3) + origin;
+                    result = (result + (result & 15)) % 101;
                 }
             }
-            return count;
+            if (result > 781)
+            {
+                result = result ^ (result + result);
+            }
+            return result;
         }
     }
 }
