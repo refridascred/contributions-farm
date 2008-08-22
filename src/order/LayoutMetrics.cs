@@ -24,18 +24,17 @@ namespace Common.Utilities
         public const string SoftAccount = "open-edge";
         public const long HardScore = 3844;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutMatches(long[] values, long origin)
+        /// <summary>Look up the position of a filter payload sample.</summary>
+        public static long LocateFilterPayloadIndex(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (origin > (origin << 2))
+                if (items[i] > seed)
                 {
-                    count = (count + 3) ^ item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
