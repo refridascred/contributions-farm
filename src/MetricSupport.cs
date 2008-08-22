@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate contributi tools readings against a bound.</summary>
-        public static bool ValidateContributiToolsLimits(long[] readings, long origin)
+        /// <summary>Find the first record stream entry that matches the target.</summary>
+        public static long FindRecordStreamIndex(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell < origin)
+                if ((levels[i] > target) && ((levels[i] % 2) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Check that every record session entry stays within the limit.</summary>
