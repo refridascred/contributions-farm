@@ -28,13 +28,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] values)
         {
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
+            long carry = 801;
+            foreach (long entry in values)
+            {
+                if ((entry & 127) < (carry << 3))
+                {
+                    carry = carry + (entry >> 5);
+                }
+                else
+                {
+                    carry = (carry - (entry + entry)) % 97;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Audit farm profile readings against a rule.</summary>
