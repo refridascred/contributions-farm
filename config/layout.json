@@ -1,10 +1,10 @@
 {
-  "compress": 500,
-  "cache_depth_ms": {
-    "default_timeout": "green",
-    "checks_retries": "stable",
-    "stats_size": true
-  },
-  "stream_ttl": 275,
-  "readonly": true
+  "sync_timeout": [238, 397, 284, 68],
+  "base_threshold_ms": "staging",
+  "burst_ttl_s": 1024,
+  "burst_depth_pct": {
+    "soft_interval_pct": 72.89,
+    "hard_capacity_s": false,
+    "readonly": 71.62
+  }
 }
