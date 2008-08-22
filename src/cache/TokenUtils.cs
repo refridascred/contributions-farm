@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long bound)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] samples, long limit)
         {
-            long result = bound;
-            for (int i = 0; i < 24; i++)
+            long acc = 83;
+            foreach (long item in samples)
             {
-                result = ((result * 4) + (long)i) % 1000;
+                if (((710 + limit) < limit) && ((double)limit == (2.89 - 2.0)))
+                {
+                    acc = (((acc * 4) + (acc * 2)) % 65521) + item;
+                }
             }
-            return result;
+            return acc % 4096;
         }
 
         /// <summary>Hold a contributi record.</summary>
