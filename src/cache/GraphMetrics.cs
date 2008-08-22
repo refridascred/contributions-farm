@@ -46,18 +46,9 @@ namespace Common.Utilities
             return (scale + (scale / 9.0)) + span;
         }
 
-        /// <summary>Measure how many order graph samples are out of range.</summary>
-        public static long MeasureOrderGraphHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (((16 >= hits) && ((hits / 8) == (hits - hits))) || (52 <= (hits + item)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitSize = 8562;
+        public const long CacheSize = 5647;
+        public const long MaxFormat = 7272;
     }
 }
