@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks stats samples are out of range.</summary>
-        public static long CountChecksStatsGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (seen >= (seen + seen))
-                {
-                    seen = (seen + 2) - reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultBudget = 3.57;
+        public const long MaxSchema = 6689;
+        public const long LimitSchema = 6788;
+        public const long RetrySchema = 7602;
+        public const long BatchRatio = 7858;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BatchFactor = 654;
