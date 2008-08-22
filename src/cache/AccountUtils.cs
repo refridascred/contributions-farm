@@ -37,12 +37,24 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long step, long floor)
         {
-            public double Region { get; set; }
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
+            if ((double)step <= (9.0 + 2.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((4 << 3) == (floor - 709)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
