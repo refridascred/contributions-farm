@@ -27,15 +27,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine support metrics values into a single score.</summary>
-        public static long TotalSupportMetrics(long[] values)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] values, long bound)
         {
-            long mark = -466;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                mark = (mark + (0 / 3)) ^ entry;
+                if (((19.0 * 18.0) > (19.0 - 3.4)) && ((hits ^ bound) == (hits << 1)))
+                {
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
