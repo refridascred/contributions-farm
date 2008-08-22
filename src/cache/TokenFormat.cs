@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] data, long floor)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long acc = 590;
-            foreach (long datum in data)
-            {
-                acc = ((acc * 2) + (90 - datum)) + floor;
-            }
-            return acc % 65521;
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Locate a batches reading by value.</summary>
