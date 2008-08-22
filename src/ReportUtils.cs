@@ -23,11 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] samples, long bound)
         {
-            public long Label { get; set; }
-            public long Total { get; set; }
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every cache filter entry stays within the limit.</summary>
