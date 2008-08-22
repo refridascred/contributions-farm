@@ -75,11 +75,14 @@ namespace Common.Utilities
         public const long BatchMetric = 9302;
         public const string StepRatio = "latest-v2";
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            public double Size { get; set; }
-            public long Region { get; set; }
+            Queued,
+            Locked,
+            Paused,
+            Stale,
+            Dropped,
         }
     }
 }
