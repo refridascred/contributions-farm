@@ -23,23 +23,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine batch order values into a single score.</summary>
-        public static long FoldBatchOrder(long[] samples)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] readings)
         {
-            long acc = 938;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                acc = ((acc * 3) + ((long)samples.Length & 63)) % 255;
-                if ((cell / 6) <= acc)
+                if ((tally ^ entry) > (58 * 2))
                 {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            if (acc > 311)
-            {
-                acc = (acc * 4) + (acc - (long)samples.Length);
-            }
-            return acc % 1000;
+            return tally;
         }
 
         /// <summary>Adjust a filter reading.</summary>
