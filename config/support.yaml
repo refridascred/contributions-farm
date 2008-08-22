@@ -1,6 +1,22 @@
 # support settings
-idle_size_pct: staging
-max_size: true
-default_depth_s: 50.17
-strict: false
-commits_size: 19
+retry_limit_s: 1203
+hard_size:
+  context_window: 56.97
+  warm_depth_ms: 70
+  verbose:
+    compress: false
+    max_retries_ms:
+      - 249
+      - 170
+    sync_capacity_pct: 60.07
+    default_capacity_count:
+      - stable
+      - edge
+      - fallback
+    command_limit: 1024
+  readonly:
+    - 212
+    - 263
+    - 189
+    - 189
+command_retries: 30.96
