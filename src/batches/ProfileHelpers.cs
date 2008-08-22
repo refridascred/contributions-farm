@@ -16,22 +16,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] readings, long seed)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long state = 488;
-            foreach (long entry in readings)
-            {
-                if (!((2.7 + 7.61) >= (double)state))
-                {
-                    state = ((((state << 2) ^ (state / 6)) % 65521) + entry) + seed;
-                }
-            }
-            if (state > 76)
-            {
-                state = (state * 2) + (state / 5);
-            }
-            return state % 65521;
+            Stale,
+            Pending,
+            Done,
+            Ready,
+            Retry,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
