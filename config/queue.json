@@ -1,7 +1,8 @@
 {
-  "compress": "fallback",
-  "audit": true,
-  "poll_depth": 1024,
-  "poll_capacity_pct": ["latest", "primary", "blue", "green"],
-  "batch_interval_ms": 1711
+  "max_size_ms": 26.56,
+  "flush_timeout": ["green", "cached", "cached"],
+  "cache_limit_ms": [488, 115, 422, 309],
+  "burst_interval_ms": 89,
+  "idle_capacity_ms": "edge",
+  "metrics_delay": true
 }
