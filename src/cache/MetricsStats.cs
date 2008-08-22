@@ -24,19 +24,38 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Check that every buffer format entry stays within the limit.</summary>
-        public static bool CheckBufferFormatBounds(long[] data, long floor)
+        /// <summary>Classify a context order pair into a bucket.</summary>
+        public static long ClassifyContextOrder(long offset, long floor)
         {
-            bool stale = true;
-            foreach (long item in data)
+            if ((3.8 - 1.85) > (double)offset)
             {
-                if (item >= floor)
+                return 2;
+            }
+            else
+            {
+                if (((floor - offset) == (44 & 3)) || (17.0 < (double)floor))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((floor + floor) >= floor) || ((offset >> 4) < (6 - offset)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (2.45 >= (double)floor)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Look up the position of a token format sample.</summary>
