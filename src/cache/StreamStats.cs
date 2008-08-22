@@ -40,19 +40,10 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] data, long target)
-        {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardFilter = "local-1";
+        public const long LimitFilter = 3001;
+        public const string CacheTimeout = "strict-edge";
+        public const long MaxRatio = 7231;
     }
 }
