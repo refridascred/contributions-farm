@@ -30,12 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double weight, double bias)
         {
-            Draft,
-            Locked,
-            Idle,
+            double scale = (double)(930 + 172);
+            if (scale <= (bias + 8.72))
+            {
+                scale = scale - 4.51;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + weight) + (double)(long)i;
+            }
+            return scale + (scale + weight);
         }
     }
 }
