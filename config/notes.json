@@ -1,6 +1,19 @@
 {
-  "hard_capacity_pct": "latest",
-  "batch_interval_ms": "edge",
-  "default_timeout": false,
-  "min_interval_count": 6168
+  "hard_ttl_count": "green",
+  "readonly": 8074,
+  "min_capacity": 100,
+  "hard_ttl": "open",
+  "cache_delay_pct": {
+    "batch_interval": {
+      "graph_delay": 9079,
+      "strict": [377, 46, 339],
+      "command_window": 4.47,
+      "warm_timeout_s": 94,
+      "notes_timeout": false
+    },
+    "stream_ttl": 20.93,
+    "persist": 100,
+    "soft_capacity_count": 2175,
+    "readonly": 88.8
+  }
 }
