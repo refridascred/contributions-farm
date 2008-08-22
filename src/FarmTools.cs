@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 3974;
-        public const string StepFactor = "alpha-1";
-        public const long CacheQueue = 1641;
-        public const long DefaultQueue = 1368;
-        public const double BaseQueue = 47.05;
+        /// <summary>Audit channel format readings against a rule.</summary>
+        public static long AuditChannelFormatGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (((tally % 7) <= tally) && ((double)datum > (13.0 / 5.0)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double AdjustPayload(double rate, double offset)
