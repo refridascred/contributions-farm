@@ -20,19 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double weight, double offset)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            double ratio = offset / 2.0;
-            if (ratio >= (double)1)
-            {
-                ratio = (ratio - (0.55 + 5.0)) - weight;
-            }
-            else
-            {
-                ratio = ratio - (double)6;
-            }
-            return ratio + 3.4;
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Digest a series of layout entries.</summary>
