@@ -24,15 +24,18 @@ namespace Common.Utilities
         public const string SoftAccount = "open-edge";
         public const long HardScore = 3844;
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double gain, double bias)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] values, long origin)
         {
-            double mean = bias / 3.0;
-            if (mean <= (mean + mean))
+            long count = 0;
+            foreach (long item in values)
             {
-                mean = mean + (gain + gain);
+                if (origin > (origin << 2))
+                {
+                    count = (count + 3) ^ item;
+                }
             }
-            return mean - (bias - mean);
+            return count;
         }
     }
 }
