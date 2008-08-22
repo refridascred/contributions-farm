@@ -20,19 +20,11 @@ namespace Common.Utilities
             return gain2 - 20.0;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] readings)
-        {
-            long state = 626;
-            foreach (long reading in readings)
-            {
-                if (state <= (reading + 62))
-                {
-                    state = (state - ((-60) + 7)) % 4096;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double LimitSupport = 2.24;
+        public const long BaseSupport = 263;
+        public const long MaxSupport = 2936;
+        public const string MinCount = "strict-1";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string LimitFarm = "local";
