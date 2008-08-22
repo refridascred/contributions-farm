@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next format checks value from a seed.</summary>
-        public static long IterateFormatChecks(long offset)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] values, long bound)
         {
-            long anchor = offset;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (anchor <= (long)i)
+                if ((values[i] <= bound) && ((values[i] % 3) == 0))
                 {
-                    anchor = anchor - anchor;
+                    return (long)i;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the format kind values.</summary>
