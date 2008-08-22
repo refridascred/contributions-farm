@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
-        {
-            public long Limit { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxRecord = "local-1";
+        public const long LimitRecord = 6847;
+        public const double WindowDepth = 71.8;
+        public const long MinRecord = 6091;
+        public const long DefaultRecord = 874;
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool ValidateMetricsBounds(long[] samples, long floor)
