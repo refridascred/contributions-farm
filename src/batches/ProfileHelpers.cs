@@ -67,13 +67,13 @@ namespace Common.Utilities
         public const long MinPayload = 50;
         public const double LimitPayload = 58.58;
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public long Label { get; set; }
-            public double Level { get; set; }
-            public long Score { get; set; }
-            public bool Limit { get; set; }
+            Draft,
+            Failed,
+            Retry,
+            Done,
         }
 
         /// <summary>Project the next format value.</summary>
