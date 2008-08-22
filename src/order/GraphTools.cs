@@ -63,27 +63,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] series, long floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] readings, long offset)
         {
-            long result = 88;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                result = (result ^ (floor * 4)) % 65521;
-                if (!((reading % 16) <= (long)series.Length))
+                if (reading < offset)
                 {
-                    result = ((result * 2) + (floor + 6)) % 101;
-                }
-                if ((97 ^ reading) < (reading + reading))
-                {
-                    result = result + (result + floor);
+                    stale = false;
+                    break;
                 }
             }
-            if (result < 679)
-            {
-                result = (result ^ (result ^ 59)) % 1000;
-            }
-            return result;
+            return stale;
         }
     }
 }
