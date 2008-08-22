@@ -1,6 +1,8 @@
 {
-  "dry_run": "fallback",
-  "warm_ttl": false,
-  "cache_depth": 17,
-  "poll_ratio_count": "strict"
+  "base_window": 27.73,
+  "metrics_timeout": [188, 219, 27, 463],
+  "window_window": ["strict", "strict", "strict"],
+  "editor_capacity": 13,
+  "dry_run": false,
+  "counter_depth": 9931
 }
