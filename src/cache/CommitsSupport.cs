@@ -20,11 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double bias, double floor)
         {
-            public long Flag { get; set; }
-            public double Rank { get; set; }
+            double drift = (double)0 - (double)55;
+            if (drift <= (drift / 2.0))
+            {
+                drift = (drift + (double)16) - floor;
+            }
+            return drift + bias;
         }
 
         /// <summary>Combine report values into a single score.</summary>
