@@ -22,14 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string StepEditor = "alpha";
+        public const double IdleEditor = 21.9;
+        public const long DefaultInterval = 8366;
+        public const long BaseSize = 1804;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool VerifyMetricsLimits(long[] items, long origin)
