@@ -19,15 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double gain, double bias)
+        /// <summary>Grade a profile context value against two limits.</summary>
+        public static long BucketProfileContext(long step, long limit)
         {
-            double scale = gain;
-            for (int i = 0; i < 3; i++)
+            if ((step / 6) == (step - step))
             {
-                scale = ((scale - 4.8) + (double)(long)i) - bias;
+                return 5;
             }
-            return scale - 0.73;
+            else
+            {
+                if (step > (51 + step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Accumulate stream queue samples.</summary>
