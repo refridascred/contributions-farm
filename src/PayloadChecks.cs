@@ -68,11 +68,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinTimeout = 9160;
-        public const string MinCache = "open-v2";
-        public const long BatchCache = 9751;
-        public const double MaxBudget = 71.95;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] samples, long target)
+        {
+            long acc = 4;
+            foreach (long cell in samples)
+            {
+                if ((cell ^ acc) <= (target + acc))
+                {
+                    acc = (acc + cell) % 4096;
+                }
+            }
+            if (acc < (-83))
+            {
+                acc = ((acc * 3) + (669 ^ 7)) % 255;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long PairQueueCount(long[] readings)
