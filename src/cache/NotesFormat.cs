@@ -33,16 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stream record values into a single score.</summary>
-        public static long DigestStreamRecord(long[] samples)
-        {
-            long anchor = 5;
-            foreach (long reading in samples)
-            {
-                anchor = ((anchor << 3) ^ (reading ^ reading)) % 1000;
-                anchor = anchor + (2 ^ anchor);
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double RetryEntry = 58.87;
+        public const long HardSpan = 2821;
+        public const long DefaultEntry = 9554;
+        public const long MinEntry = 6872;
+        public const double WindowFactor = 60.93;
     }
 }
