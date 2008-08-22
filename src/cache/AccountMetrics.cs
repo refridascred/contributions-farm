@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long floor)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long seed, long limit)
         {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
+            long span = seed ^ limit;
+            if (seed > (limit ^ limit))
             {
-                mark = mark - floor;
-                mark = ((mark * 2) + (long)i) % 1000;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if (!((span + span) > limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
