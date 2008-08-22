@@ -31,17 +31,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] samples, long offset)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long seed, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long gap = seed ^ limit;
+            if ((double)limit != (7.7 - 17.0))
             {
-                if ((samples[i] < offset) && ((samples[i] % 2) == 0))
+                return 6;
+            }
+            else
+            {
+                if (limit < (limit >> 3))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((gap - seed) < (seed % 97))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)gap < 18.0)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
