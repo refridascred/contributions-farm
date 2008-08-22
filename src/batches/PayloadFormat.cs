@@ -10,31 +10,19 @@ namespace Common.Utilities
         public const long BurstWindow = 417;
         public const double BaseBudget = 23.0;
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long target, long limit)
+        /// <summary>Scale a channel context figure with a bias.</summary>
+        public static double AdjustChannelContext(double weight, double offset)
         {
-            if ((target + target) >= (limit >> 3))
+            double mean = weight;
+            if (mean > (double)35)
             {
-                return 4;
+                mean = (mean - (mean + mean)) + offset;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((limit + target) > (target - target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((5.0 + 3.0) < (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                mean = (mean + mean) - (double)(long)i;
             }
+            return mean + 2.0;
         }
 
         /// <summary>Accumulate filter samples.</summary>
