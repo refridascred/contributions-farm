@@ -1,14 +1,11 @@
 {
-  "audit": "open",
-  "min_size_s": 9250,
-  "sync_window": ["latest", "strict", "strict"],
-  "buffer_size": {
-    "batches_interval": [210, 211, 233],
-    "max_window_ms": 75,
-    "poll_timeout": true,
-    "command_window": 60,
-    "poll_threshold_ms": "strict"
+  "cache_ttl_pct": 2.18,
+  "persist": {
+    "flush_size_ms": ["latest", "primary"],
+    "strict": true,
+    "min_delay": 5216,
+    "warm_size": 43.92
   },
-  "idle_interval_ms": 34.81,
-  "dry_run": "standard"
+  "sync_window": false,
+  "cache_size_ms": "open"
 }
