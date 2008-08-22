@@ -61,12 +61,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowNotes = "primary-edge";
-        public const double IdleNotes = 59.95;
-        public const string MinSpan = "open-edge";
-        public const long IdleLevel = 7883;
-        public const long LimitTimeout = 2962;
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Retry,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Validate window readings against a bound.</summary>
         public static bool ValidateWindowLimits(long[] data, long offset)
