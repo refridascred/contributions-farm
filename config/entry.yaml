@@ -1,11 +1,4 @@
 # entry settings
-cache_depth_ms:
-  batch_capacity_pct: true
-  checks_depth: 250
-  soft_threshold: local
-  batches_capacity: 66.15
-format_timeout: 66.31
-sync_timeout:
-  - strict
-  - staging
-max_capacity: true
+max_interval_pct: legacy
+farm_timeout: false
+compress: cached
