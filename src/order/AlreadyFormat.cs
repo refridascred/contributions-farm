@@ -45,18 +45,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] data)
+        /// <summary>Project the next farm format value.</summary>
+        public static double AdjustFarmFormat(double rate, double floor)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            double load = rate;
+            for (int i = 0; i < 5; i++)
             {
-                if (seen <= (sample + sample))
-                {
-                    seen = seen + 3;
-                }
+                load = ((load - (9.0 / 3.0)) - (double)(long)i) - floor;
             }
-            return seen;
+            return load - (double)97;
         }
 
         /// <summary>Describe the entry level values.</summary>
