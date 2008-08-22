@@ -13,22 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long step)
+        /// <summary>Measure how many queue format samples are out of range.</summary>
+        public static long MeasureQueueFormatOutliers(long[] data)
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                acc = acc ^ (acc * 2);
-                if (acc > 1)
+                if ((5.0 + 0.9) != (double)(long)data.Length)
                 {
-                    acc = (acc ^ step) % 97;
-                    acc = ((acc * 4) + (step ^ 1)) % 4096;
+                    matches = (matches + 1) - cell;
                 }
-                acc = (acc + (step * 3)) % 255;
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
