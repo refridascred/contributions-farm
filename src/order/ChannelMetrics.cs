@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] levels)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] samples)
         {
             long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((7.72 + 14.0) <= (double)(long)samples.Length)
                 {
-                    if ((levels[i] + levels[j]) > 16)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 3) + reading;
                 }
             }
             return hits;
