@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] items)
+        /// <summary>Combine stats stream values into a single score.</summary>
+        public static long WeighStatsStream(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 1;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry >> 4) >= (acc % 100))
                 {
-                    if ((items[i] ^ items[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    break;
+                }
+                acc = ((acc << 3) ^ acc) % 65521;
+                if (8.7 <= (double)acc)
+                {
+                    acc = (acc - (entry * 2)) % 255;
                 }
             }
-            return count;
+            if (acc > (-3))
+            {
+                acc = (acc << 3) ^ 160;
+            }
+            return acc;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
