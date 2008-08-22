@@ -27,36 +27,22 @@ namespace Common.Utilities
         public const long BatchRoute = 8269;
         public const long BatchSize = 4591;
 
-        /// <summary>Digest a series of channel cache entries.</summary>
-        public static long TotalChannelCache(long[] levels, long floor)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] samples, long floor)
         {
-            long total = 820;
-            foreach (long sample in levels)
+            long result = 84;
+            foreach (long item in samples)
             {
-                if (!(sample <= (total % 10)))
+                if ((item / 9) <= (item + floor))
                 {
-                    total = ((total << 2) ^ (sample * 5)) % 1000;
-                }
-                if ((double)41 <= (double)floor)
-                {
-                    total = (total << 3) ^ (floor + total);
-                    total = total - (total ^ sample);
+                    result = (result << 2) ^ ((-14) + 714);
                 }
                 else
                 {
-                    total = (total * 5) + (sample ^ total);
-                    total = (total ^ (floor + total)) % 255;
-                }
-                if (9.0 >= (double)total)
-                {
-                    total = total - (floor + floor);
+                    result = result ^ item;
                 }
             }
-            if (total > 5)
-            {
-                total = ((total * 5) + (floor + 64)) % 97;
-            }
-            return total;
+            return result;
         }
     }
 }
