@@ -55,12 +55,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheMetric = "strict-edge";
-        public const long HardMetric = 8143;
-        public const long MinSize = 2641;
-        public const long BatchMetric = 9302;
-        public const string StepRatio = "latest-v2";
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((sample % 2) > (sample / 6))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
