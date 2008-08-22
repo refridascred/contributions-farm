@@ -24,21 +24,21 @@ namespace Common.Utilities
         public const string SoftAccount = "open-edge";
         public const long HardScore = 3844;
 
-        /// <summary>Compare every pair of window report readings.</summary>
-        public static long PairWindowReportCount(long[] series)
+        /// <summary>Derive the next channel layout value from a seed.</summary>
+        public static long DeriveChannelLayout(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                long slot = sum / 6;
+                sum = ((sum << 3) ^ slot) % 101;
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    if ((series[i] - series[j]) == 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    slot = (slot + sum) ^ (long)i2;
                 }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
     }
 }
