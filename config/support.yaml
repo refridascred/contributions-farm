@@ -1,11 +1,7 @@
 # support settings
-session_window: latest
-hard_depth:
-  compress: true
-  poll_capacity: true
-  idle_retries_ms: stable
-channel_ratio: 60
-retry_delay_count:
-  - 377
-  - 49
-sync_interval_s: 3203
+readonly:
+  retry_limit_s: true
+  readonly: true
+  batch_depth_count: false
+dry_run: 81.81
+retry_ratio_ms: 30
