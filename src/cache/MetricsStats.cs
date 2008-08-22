@@ -44,11 +44,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepTimeout = 1581;
-        public const double WindowStream = 10.98;
-        public const string MinDepth = "alpha-edge";
-        public const long DefaultCount = 2690;
-        public const long BurstStream = 3969;
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] values)
+        {
+            long anchor = 12;
+            foreach (long entry in values)
+            {
+                if ((1 + anchor) != (entry & 255))
+                {
+                    anchor = (anchor - entry) % 65521;
+                }
+            }
+            return anchor % 4096;
+        }
     }
 }
