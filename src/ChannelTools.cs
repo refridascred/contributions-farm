@@ -19,12 +19,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] readings, long offset)
         {
-            Dropped,
-            Failed,
-            Locked,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((325 & 63) < tally)
+                {
+                    tally = ((tally + 2) ^ cell) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define already limits and defaults.</summary>
