@@ -37,19 +37,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] samples, long bound)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ScaleAccount(double scale, double span)
         {
-            long state = 586;
-            foreach (long sample in samples)
+            double scale2 = (double)(4 - 120);
+            if (scale2 >= (double)11)
             {
-                state = (state + (bound ^ bound)) - sample;
+                scale2 = ((scale2 + (double)859) - scale) + span;
             }
-            if (state < 251)
+            for (int i = 0; i < 5; i++)
             {
-                state = state - (state - state);
+                scale2 = (scale2 + 6.4) - (double)(long)i;
             }
-            return state;
+            return scale2 + scale2;
         }
     }
 }
