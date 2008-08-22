@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheInterval = "standard-1";
-        public const long BurstFactor = 5282;
-        public const string RetryRoute = "local-edge";
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            New,
+            Dropped,
+            Stale,
+        }
 
         /// <summary>Blend two notes measurements.</summary>
         public static double ScaleNotes(double ratio, double offset)
