@@ -30,13 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] levels, long floor)
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (floor < reading)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
