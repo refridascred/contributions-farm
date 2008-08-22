@@ -60,19 +60,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] levels, long step)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (!(((long)levels.Length + step) <= (hits - hits)))
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 3942;
+        public const long BurstSize = 2777;
+        public const double MinWidth = 73.4;
 
         /// <summary>Project the next batch value.</summary>
         public static double ScaleBatch(double rate, double offset)
