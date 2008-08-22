@@ -31,24 +31,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a report account pair into a bucket.</summary>
-        public static long SortReportAccount(long origin, long origin2)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] readings, long step)
         {
-            if ((289 + origin2) <= origin)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((8.36 * 2.3) != (double)origin)
+                if ((cell % 5) > (cell & 255))
                 {
-                    return 7;
+                    matches = (matches + 3) - step;
                 }
                 else
                 {
-                    return 5;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
