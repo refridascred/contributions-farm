@@ -67,23 +67,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two layout batch measurements.</summary>
-        public static double ProjectLayoutBatch(double weight, double span)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            double bias = (double)(956 & 3);
-            if (bias < span)
-            {
-                bias = bias - 4.52;
-            }
-            else
-            {
-                bias = bias - (1.57 - span);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + weight) + (double)(long)i;
-            }
-            return bias - bias;
+            Dropped,
+            Queued,
+            Draft,
         }
     }
 }
