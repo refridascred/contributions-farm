@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] data)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] values)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (value >= (value << 1))
+                if ((sample % 24) == (long)values.Length)
                 {
-                    hits = hits + 3;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the cache status values.</summary>
