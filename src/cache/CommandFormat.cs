@@ -28,21 +28,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] data)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 47;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (13.0 >= (double)anchor)
                 {
-                    if ((data[i] + data[j]) == 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor + (anchor & 3)) % 1000) + sample;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
