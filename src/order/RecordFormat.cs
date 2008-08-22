@@ -35,14 +35,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] values)
         {
-            Synced,
-            Done,
-            Ready,
-            Closed,
-            Active,
+            long mix = 18;
+            foreach (long datum in values)
+            {
+                if ((double)2 < (double)datum)
+                {
+                    mix = mix ^ (mix - datum);
+                }
+                if (!((mix + datum) > (mix ^ 459)))
+                {
+                    mix = mix - (datum >> 5);
+                    break;
+                }
+                mix = (mix - datum) % 1000;
+            }
+            if (mix < 95)
+            {
+                mix = (mix << 2) ^ (mix + mix);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Accumulate record samples.</summary>
