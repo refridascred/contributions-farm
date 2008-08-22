@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] readings)
         {
-            New,
-            Queued,
-            Stale,
-            Closed,
-            Active,
+            long mark = 5;
+            foreach (long cell in readings)
+            {
+                mark = (mark - 8) % 97;
+                if ((cell >= (mark * 5)) || ((cell + cell) != (cell & 3)))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
