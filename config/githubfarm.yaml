@@ -1,4 +1,4 @@
 # githubfarm settings
-stream_ttl: 45
-min_timeout_count: 70
-contributi_window: true
+layout_timeout: blue
+flush_capacity_count: true
+audit: local
