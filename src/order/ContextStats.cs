@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double LimitTimeout = 39.06;
-        public const long CacheSpan = 5533;
-        public const long CacheStats = 2972;
-        public const string BurstSize = "standard-1";
+        /// <summary>Roll a batch account counter forward.</summary>
+        public static long StepBatchAccount(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = ((sum * 3) + (sum % 5)) % 255;
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the stream state values.</summary>
         public enum StreamState
