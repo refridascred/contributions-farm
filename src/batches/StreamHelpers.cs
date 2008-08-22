@@ -33,19 +33,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] levels, long bound)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading > bound)
+                if (series[i] > offset)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Count the channel farm entries that pass the check.</summary>
