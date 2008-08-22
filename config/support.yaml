@@ -1,11 +1,20 @@
 # support settings
-stream_size: true
-batch_limit_count: cached
-max_ttl_count: 5
-max_capacity_count: 3365
-verbose:
-  soft_ttl_count: 86
-  warm_size_ms:
-    - standard
+strict:
+  layout_size: true
+  strict: false
+  entry_limit: false
+  idle_interval_s:
     - eu-west
-  base_retries_pct: true
+    - edge
+    - latest
+    - standard
+  burst_delay: false
+notes_retries: false
+default_ttl_pct: true
+audit:
+  - blue
+  - primary
+  - fallback
+  - stable
+order_window: legacy
+soft_interval_pct: 53.46
