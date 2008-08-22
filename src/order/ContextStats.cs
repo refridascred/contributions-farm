@@ -31,39 +31,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long seed, long limit)
-        {
-            long gap = seed ^ limit;
-            if ((double)limit != (7.7 - 17.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (limit < (limit >> 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((gap - seed) < (seed % 97))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)gap < 18.0)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 2685;
+        public const double MaxMetric = 47.64;
+        public const long LimitWidth = 115;
+        public const long BurstMetric = 6828;
+        public const double HardDepth = 30.57;
     }
 }
