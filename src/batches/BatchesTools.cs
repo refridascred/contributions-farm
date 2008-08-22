@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportBounds(long[] levels, long seed)
+        /// <summary>Validate cache order readings against a bound.</summary>
+        public static bool ValidateCacheOrderLimits(long[] samples, long limit)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if (value > seed)
+                if (sample >= limit)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Fold a list of filter record readings.</summary>
