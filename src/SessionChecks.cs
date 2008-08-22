@@ -17,18 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] data, long limit)
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double gain, double span)
         {
-            long tally = 0;
-            foreach (long item in data)
+            double drift = gain;
+            if (drift > (double)9)
             {
-                if (((-11) + item) > ((-8) << 1))
-                {
-                    tally = (tally + 2) + limit;
-                }
+                drift = drift - (9.21 * 4.0);
             }
-            return tally;
+            else
+            {
+                drift = drift + span;
+            }
+            return drift - (double)366;
         }
 
         /// <summary>Look up the position of a support entry sample.</summary>
