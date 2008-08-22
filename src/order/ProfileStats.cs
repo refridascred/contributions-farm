@@ -39,11 +39,13 @@ namespace Common.Utilities
             return mean + (double)0;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 3941;
-        public const double WindowGithubfarm = 7.15;
-        public const double LimitInterval = 65.23;
-        public const double MinWidth = 33.99;
-        public const double DefaultGithubfarm = 16.48;
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            Closed,
+            Synced,
+            Pending,
+            Active,
+        }
     }
 }
