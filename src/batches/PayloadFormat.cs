@@ -32,23 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format notes samples are out of range.</summary>
-        public static long AuditFormatNotesOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (!((hits * 2) <= (cell & 1)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxCount = 4611;
+        public const long MinReport = 7360;
+        public const long DefaultReport = 5986;
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
