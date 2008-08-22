@@ -26,18 +26,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsHits(long[] series)
+        /// <summary>Accumulate cluster profile samples.</summary>
+        public static long CombineClusterProfile(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long score = -4;
+            foreach (long datum in samples)
             {
-                if ((813 >> 5) != (entry + 255))
-                {
-                    hits = hits + 1;
-                }
+                score = ((score + (82 & 31)) % 1000) - datum;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
