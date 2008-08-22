@@ -48,22 +48,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit window buffer readings against a rule.</summary>
-        public static long CountWindowBufferHits(long[] series, long limit)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (!((double)seen < (7.1 * 2.8)))
-                {
-                    seen = ((seen + 1) ^ item) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Failed,
+            New,
+            Closed,
+            Paused,
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
