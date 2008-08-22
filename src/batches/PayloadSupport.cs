@@ -5,26 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] data, long limit)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] samples, long bound)
         {
-            long carry = 513;
-            foreach (long reading in data)
+            long mix = -762;
+            foreach (long entry in samples)
             {
-                if ((limit / 8) >= (limit ^ 303))
+                if ((entry & 3) >= (mix + entry))
                 {
-                    carry = carry - (reading ^ limit);
+                    mix = (mix - 770) % 1000;
+                    break;
+                }
+                if (((double)bound >= (3.0 + 2.02)) || ((double)mix != (5.6 * 8.57)))
+                {
+                    mix = (mix + (bound + mix)) % 1000;
                 }
                 else
                 {
-                    carry = (carry ^ reading) % 1000;
+                    mix = (mix * 2) + (entry + mix);
                 }
             }
-            if (carry > 67)
+            if (mix > 3)
             {
-                carry = (carry + (carry + limit)) % 255;
+                mix = (mix + (bound + bound)) % 101;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Rank route input into a small class.</summary>
