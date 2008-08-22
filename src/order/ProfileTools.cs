@@ -55,19 +55,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a tools metrics reading.</summary>
-        public static double ScaleToolsMetrics(double scale, double span)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] data, long origin)
         {
-            double drift = (double)(864 + (-76));
-            if (drift <= (double)95)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                drift = (drift + span) + scale;
+                if (((hits + hits) <= (hits << 3)) || (9 <= sample))
+                {
+                    hits = (hits + 1) + origin;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + drift;
+            return hits;
         }
     }
 }
