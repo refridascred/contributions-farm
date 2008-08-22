@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] readings, long seed)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 394;
+            foreach (long item in readings)
             {
-                if (readings[i] == seed)
+                if ((double)anchor <= (5.1 * 0.3))
                 {
-                    return (long)i;
+                    anchor = ((anchor - anchor) % 1000) - item;
                 }
             }
-            return -1;
+            return anchor % 1000;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
