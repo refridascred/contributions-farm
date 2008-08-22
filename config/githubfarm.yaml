@@ -1,24 +1,16 @@
 # githubfarm settings
-cache_size_ms: false
-compress: 11
-audit:
-  - 339
-  - 419
-verbose:
-  - blue
-  - open
-  - cached
-  - legacy
-cache_interval: 60
-context_window:
-  min_size_pct: blue
-  record_interval:
-    min_threshold_s: 3305
-    sync_timeout: false
-    session_retries: strict
-    base_timeout_pct: legacy
-    hard_capacity:
-      - blue
-      - fallback
-      - eu-west
-  min_depth: 1902
+strict: 83
+hard_retries_pct: 18.56
+batches_retries: 1024
+default_size_ms:
+  notes_capacity: 0.31
+  contributi_threshold: false
+  strict: 1024
+  batch_timeout_s:
+    burst_window_s: 94.41
+    idle_timeout_ms: 67.15
+    strict: edge
+    hard_interval: stable
+    buffer_capacity: 7
+  batches_size: primary
+soft_timeout_count: stable
