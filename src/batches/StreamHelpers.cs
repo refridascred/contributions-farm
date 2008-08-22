@@ -39,13 +39,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
+            Ready,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
