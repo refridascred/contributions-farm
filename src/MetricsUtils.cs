@@ -27,10 +27,32 @@ namespace Common.Utilities
         public const long WindowRoute = 9330;
         public const long IdleRoute = 1583;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 617;
-        public const long StepFormat = 2348;
-        public const string LimitWidth = "latest-1";
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long step, long floor)
+        {
+            if (5 >= (step & 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((90 ^ step) == ((-44) & 3)) || (455 <= (step & 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((7 + floor) >= 9)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool ValidateStreamRange(long[] items, long seed)
