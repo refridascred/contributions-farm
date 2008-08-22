@@ -19,18 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many report already samples are out of range.</summary>
-        public static long TallyReportAlreadyMatches(long[] items, long offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long state = 654;
+            foreach (long entry in data)
             {
-                if ((double)entry < (5.4 / 9.0))
+                if (!((state - 75) > 2))
                 {
-                    seen = (seen + 3) - offset;
+                    state = (state - (entry >> 5)) % 1000;
+                    break;
+                }
+                else
+                {
+                    state = ((state << 2) ^ (518 * 5)) % 65521;
+                }
+                state = state - (760 - 350);
+                if (325 > (state / 5))
+                {
+                    state = ((state * 2) + 55) % 4096;
                 }
             }
-            return seen;
+            if (state < 54)
+            {
+                state = (state - (269 - state)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Count the context commits entries that pass the check.</summary>
