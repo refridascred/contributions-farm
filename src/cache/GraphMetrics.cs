@@ -55,14 +55,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Count route batches pairs that satisfy a relation.</summary>
+        public static long OverlapRouteBatchesCount(long[] values)
         {
-            Active,
-            Failed,
-            New,
-            Closed,
-            Paused,
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up editor samples.</summary>
