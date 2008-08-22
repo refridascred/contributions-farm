@@ -20,10 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BatchNotes = 69.25;
-        public const long IdleWidth = 9257;
-        public const long RetryWidth = 2702;
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double scale, double span)
+        {
+            double rate = span - scale;
+            if (rate < (span + rate))
+            {
+                rate = rate - (scale + rate);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (span * 7.32)) + (double)(long)i;
+            }
+            return rate - (rate + 9.0);
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BatchGraph = 3173;
