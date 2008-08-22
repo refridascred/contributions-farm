@@ -21,14 +21,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Scale a batches githubfarm figure with a bias.</summary>
+        public static double SmoothBatchesGithubfarm(double bias, double bias2)
         {
-            Closed,
-            New,
-            Pending,
-            Dropped,
-            Locked,
+            double drift = (double)22 - 7.88;
+            if (drift >= bias)
+            {
+                drift = (drift - bias) + bias2;
+            }
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (double)(-237)) + (double)(long)i;
+            }
+            return drift + (double)98;
         }
 
         /// <summary>Derive the next format queue value from a seed.</summary>
