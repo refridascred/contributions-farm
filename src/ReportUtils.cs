@@ -37,19 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long limit)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] values, long limit)
         {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if ((sum % 3) < ((long)i << 2))
+                if (sample >= limit)
                 {
-                    sum = (sum << 2) ^ (75 + 29);
+                    ok = false;
+                    break;
                 }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Find the first notes command entry that matches the target.</summary>
