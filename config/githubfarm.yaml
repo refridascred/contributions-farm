@@ -1,6 +1,5 @@
 # githubfarm settings
-buffer_window: 52.79
-cache_retries_count: 55.3
-support_limit: false
-verbose: local
-warm_ttl_s: 20.53
+enabled: fallback
+contributi_depth: primary
+soft_capacity: cached
+filter_timeout: standard
