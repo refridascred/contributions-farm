@@ -1,6 +1,6 @@
 {
-  "compress": "edge",
-  "format_size": "staging",
-  "account_limit": 9794,
-  "support_interval": false
+  "idle_timeout": 1683,
+  "burst_depth": false,
+  "batch_window_ms": "local",
+  "readonly": false
 }
