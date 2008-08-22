@@ -34,18 +34,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] data)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] values)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((value - tally) > tally) || ((8 << 2) > tally)) && ((tally + value) > value))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((values[i] - values[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
