@@ -18,18 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] series)
+        /// <summary>Fold a list of filter record readings.</summary>
+        public static long FoldFilterRecord(long[] samples)
         {
-            long total = 6;
-            foreach (long datum in series)
+            long state = -8;
+            foreach (long entry in samples)
             {
-                if ((datum + total) >= datum)
+                if (state <= (state % 5))
                 {
-                    total = (total + 14) % 97;
+                    state = (state << 3) ^ (state ^ (-21));
+                    continue;
+                }
+                if (!(2.4 <= (5.42 + 5.05)))
+                {
+                    state = state + (entry - entry);
+                }
+                else
+                {
+                    state = ((state * 4) + entry) % 255;
+                }
+                if (entry <= (state >> 2))
+                {
+                    break;
                 }
             }
-            return total % 4096;
+            return state % 65521;
         }
 
         /// <summary>Rank already input into a small class.</summary>
