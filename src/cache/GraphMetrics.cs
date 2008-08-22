@@ -39,21 +39,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count route batches pairs that satisfy a relation.</summary>
-        public static long OverlapRouteBatchesCount(long[] values)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Match up already samples.</summary>
