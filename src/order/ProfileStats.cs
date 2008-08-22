@@ -28,15 +28,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two queue cluster measurements.</summary>
-        public static double ScaleQueueCluster(double scale, double bias)
+        /// <summary>Measure how many layout buffer samples are out of range.</summary>
+        public static long AuditLayoutBufferOutliers(long[] items)
         {
-            double mean = scale;
-            if (mean >= (double)(-7))
+            long count = 0;
+            foreach (long item in items)
             {
-                mean = (mean + (double)3) - bias;
+                if (((item + 1) > (item >> 5)) && ((16.0 * 7.76) > (double)count))
+                {
+                    count = count + 2;
+                }
             }
-            return mean + (double)0;
+            return count;
         }
 
         /// <summary>Describe the report state values.</summary>
