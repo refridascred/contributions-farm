@@ -39,17 +39,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long target)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long mark = target;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = (mark - target) % 65521;
-                mark = ((mark * 5) + mark) % 65521;
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public string Rank { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
