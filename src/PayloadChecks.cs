@@ -40,14 +40,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
-        {
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 2547;
+        public const long MinCache = 4493;
+        public const long MinSize = 9878;
+        public const long WindowFactor = 1430;
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool GuardMetricRange(long[] data, long step)
