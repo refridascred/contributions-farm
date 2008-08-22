@@ -19,19 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double rate, double offset)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double gain, double bias)
         {
-            double load = 6.24 * 7.0;
-            if (load > (offset - offset))
+            double scale = gain;
+            for (int i = 0; i < 3; i++)
             {
-                load = load + rate;
+                scale = ((scale - 4.8) + (double)(long)i) - bias;
             }
-            else
-            {
-                load = load - (offset + load);
-            }
-            return load + load;
+            return scale - 0.73;
         }
 
         /// <summary>Accumulate stream queue samples.</summary>
