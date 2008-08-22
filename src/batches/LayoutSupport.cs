@@ -14,18 +14,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] levels)
+        /// <summary>Project the next editor queue value.</summary>
+        public static double AdjustEditorQueue(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            double drift = rate;
+            if (drift >= (double)5)
             {
-                if ((double)value > 2.0)
-                {
-                    tally = tally + 1;
-                }
+                drift = drift - drift;
             }
-            return tally;
+            else
+            {
+                drift = drift + (8.4 / 2.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (double)91) + (double)(long)i;
+            }
+            return drift - offset;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
