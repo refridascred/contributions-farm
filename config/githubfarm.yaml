@@ -1,37 +1,38 @@
 # githubfarm settings
-session_retries: 43.11
-payload_ttl:
-  default_timeout:
-    - 155
-    - 72
-  soft_ttl_count:
-    - local
-    - fallback
-    - primary
-  hard_delay: false
-  buffer_window:
-    already_ttl: 97.34
-    warm_delay_ms: 8579
-    batch_delay:
-      - 16
-      - 248
-      - 437
-      - 286
-    verbose: 0.73
-    readonly:
-      - 203
-      - 138
-    warm_timeout_s:
-      - 301
-      - 407
-      - 13
-  readonly: eu-west
-  verbose:
-    sync_limit: 60
-    strict: 87.9
-    poll_interval_ms: edge
-    layout_depth: 55.02
-    persist: 257
-    base_interval: edge
-sync_threshold_count: 93.75
-cache_interval_count: 60
+default_interval_ms: true
+editor_ttl:
+  - cached
+  - open
+buffer_ttl: 58.25
+retry_threshold_count: 65
+hard_retries_ms:
+  base_window:
+    batch_size:
+      - blue
+      - cached
+      - stable
+    idle_depth_pct: false
+    audit: 16.9
+    poll_depth:
+      - 402
+      - 406
+      - 348
+      - 289
+    verbose:
+      - primary
+      - primary
+    persist: false
+  hard_size_s:
+    sync_retries: 100
+    cache_capacity: 30
+    farm_delay: 60
+  persist: 42.29
+  warm_limit_s:
+    editor_interval: 100
+    notes_size: local
+    max_limit: edge
+    commits_limit: 54.64
+    batch_limit: 6653
+  max_capacity_count: fallback
+  min_size_count: 60
+metric_interval: primary
