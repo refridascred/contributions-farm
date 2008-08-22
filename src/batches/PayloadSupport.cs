@@ -19,14 +19,15 @@ namespace Common.Utilities
         public const long DefaultInterval = 7602;
         public const double DefaultBatch = 69.18;
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] series)
         {
-            Pending,
-            New,
-            Done,
-            Dropped,
-            Ready,
+            long anchor = 46;
+            foreach (long item in series)
+            {
+                anchor = (anchor << 3) ^ item;
+            }
+            return anchor;
         }
     }
 }
