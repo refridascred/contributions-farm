@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long seed, long limit)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryMatches(long[] readings, long floor)
         {
-            long lane = seed + limit;
-            if ((lane ^ lane) <= (limit << 2))
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((limit / 7) != (seed + lane)) && ((seed ^ limit) < lane))
+                if (floor > (matches * 2))
                 {
-                    return 1;
+                    matches = (matches + 3) + datum;
                 }
                 else
                 {
-                    if ((seed + 5) == (lane * 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((seed + lane) <= (limit / 9)) && (9 > (limit % 10)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the githubfarm cache series from a seed.</summary>
