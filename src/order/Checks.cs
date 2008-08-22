@@ -61,11 +61,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long offset, long origin)
         {
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
+            if ((8.8 / 2.0) == (double)origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if (359 >= (987 + origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(offset > origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((4.97 * 7.9) == (double)origin)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
