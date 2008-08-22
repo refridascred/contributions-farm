@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepDepth = 32.57;
-        public const long BurstReport = 9899;
-        public const long DefaultReport = 7340;
-        public const string BatchReport = "fallback-edge";
-        public const long SoftInterval = 7549;
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandLimits(long[] series, long bound)
+        {
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a checks options.</summary>
         public sealed class ChecksOptions
