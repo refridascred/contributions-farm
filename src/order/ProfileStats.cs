@@ -39,13 +39,11 @@ namespace Common.Utilities
             return mean + (double)0;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
-        {
-            Stale,
-            Dropped,
-            Failed,
-            Pending,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 3941;
+        public const double WindowGithubfarm = 7.15;
+        public const double LimitInterval = 65.23;
+        public const double MinWidth = 33.99;
+        public const double DefaultGithubfarm = 16.48;
     }
 }
