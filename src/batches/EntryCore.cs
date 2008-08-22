@@ -42,12 +42,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double gain, double bias)
         {
-            public double Mode { get; set; }
-            public long Size { get; set; }
-            public bool Level { get; set; }
+            double rate = gain;
+            if (rate <= (gain - gain))
+            {
+                rate = rate + (bias / 2.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (rate + rate)) - (double)(long)i;
+            }
+            return rate - (6.1 * 0.12);
         }
 
         /// <summary>Compare every pair of contributi payload readings.</summary>
