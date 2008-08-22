@@ -21,18 +21,19 @@ namespace Common.Utilities
             return bias + (gain * 12.0);
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] readings, long seed)
+        /// <summary>Validate farm githubfarm readings against a bound.</summary>
+        public static bool ValidateFarmGithubfarmLimits(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if ((sample >= 967) || ((sample >> 4) > 33))
+                if (reading <= bound)
                 {
-                    count = (count + 3) - seed;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
