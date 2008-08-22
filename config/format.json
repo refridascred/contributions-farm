@@ -1,12 +1,8 @@
 {
-  "strict": 500,
-  "idle_threshold_ms": {
-    "stats_ratio": true,
-    "retry_limit_pct": ["stable", "staging", "blue"],
-    "default_ratio_pct": "strict"
-  },
-  "verbose": false,
-  "readonly": false,
-  "metrics_limit": "green",
-  "poll_ratio_pct": 87
+  "cache_ratio_pct": [104, 85, 219, 438],
+  "filter_depth": true,
+  "hard_interval_s": "blue",
+  "hard_delay_pct": 99,
+  "strict": 12.44,
+  "persist": 32.68
 }
