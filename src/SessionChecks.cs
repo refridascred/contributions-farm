@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double gain, double span)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            double drift = gain;
-            if (drift > (double)9)
-            {
-                drift = drift - (9.21 * 4.0);
-            }
-            else
-            {
-                drift = drift + span;
-            }
-            return drift - (double)366;
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a format info.</summary>
