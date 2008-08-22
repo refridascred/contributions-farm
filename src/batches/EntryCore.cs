@@ -29,39 +29,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long offset, long bound)
+        /// <summary>Check that every graph account entry stays within the limit.</summary>
+        public static bool CheckGraphAccountRange(long[] data, long floor)
         {
-            long lane = offset + bound;
-            if (((double)bound > (6.0 + 5.9)) || ((lane - 786) <= (lane - offset)))
+            bool ok = true;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(131 < (lane % 16)))
+                if (cell != floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((offset ^ bound) <= (offset - (-91))))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((lane ^ offset) >= offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
