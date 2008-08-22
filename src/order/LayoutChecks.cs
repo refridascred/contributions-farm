@@ -37,13 +37,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            Dropped,
+            Ready,
             Synced,
-            Done,
-            Active,
+            Retry,
+            Closed,
+            Paused,
         }
 
         /// <summary>Validate order readings against a bound.</summary>
