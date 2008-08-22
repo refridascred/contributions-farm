@@ -59,12 +59,38 @@ namespace Common.Utilities
         public const string MinTools = "staging-edge";
         public const double SoftTools = 63.6;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long origin, long step)
         {
-            Queued,
-            New,
-            Draft,
+            if ((step - origin) < (step & 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if (origin >= (origin / 9))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step * 4) == (step & 31))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin + origin) > (step % 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
