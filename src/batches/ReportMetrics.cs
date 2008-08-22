@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] items)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((sample + sample) == (sample - sample))
+                if ((count < (count + value)) && ((value & 31) >= value))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the notes mode values.</summary>
