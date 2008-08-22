@@ -63,9 +63,17 @@ namespace Common.Utilities
             return drift - 10.0;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 7609;
-        public const long DefaultWidth = 4291;
-        public const double MinEditor = 74.53;
+        /// <summary>Find the first buffer report entry that matches the target.</summary>
+        public static long SeekBufferReportIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
