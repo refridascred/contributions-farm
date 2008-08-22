@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long DeriveGithubfarm(long offset)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long target, long offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 13; i++)
+            long delta = target + offset;
+            if ((offset + offset) == ((-91) - target))
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if (5.0 >= (double)delta)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a account summary.</summary>
