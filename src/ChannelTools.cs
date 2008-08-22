@@ -27,19 +27,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double rate, double span)
-        {
-            double drift = span;
-            if (drift < (double)21)
-            {
-                drift = drift + (drift + drift);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (1.5 * 19.0)) + (double)(long)i;
-            }
-            return drift + (rate - rate);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetryDepth = 70.15;
+        public const long BurstLevel = 6736;
+        public const long CacheBudget = 6361;
+        public const string StepWidth = "latest-edge";
     }
 }
