@@ -22,12 +22,18 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] values, long floor)
         {
-            Paused,
-            Locked,
-            Retry,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((value + floor) > (floor ^ value))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
