@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 1940;
-        public const string RetryCounter = "cached";
-        public const string BatchCounter = "standard-edge";
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] levels, long origin)
+        {
+            long result = 791;
+            foreach (long datum in levels)
+            {
+                if ((origin - result) <= origin)
+                {
+                    result = (result + ((-798) - origin)) % 65521;
+                }
+                result = (result ^ (result + datum)) % 255;
+            }
+            return result;
+        }
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long SortCluster(long step, long step2)
