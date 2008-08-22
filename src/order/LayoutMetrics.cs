@@ -23,11 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Count the session queue entries that pass the check.</summary>
+        public static long MeasureSessionQueueOutliers(long[] items, long step)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((double)count <= (17.0 / 3.0))
+                {
+                    count = ((count + 2) ^ reading) - step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up batch samples.</summary>
