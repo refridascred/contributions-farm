@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] series)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long carry = -9;
-            foreach (long entry in series)
-            {
-                carry = (((carry << 3) ^ (carry & 31)) % 65521) + entry;
-            }
-            if (carry > (-75))
-            {
-                carry = ((carry * 5) + carry) % 1000;
-            }
-            return carry;
+            Retry,
+            Active,
+            Dropped,
         }
 
         /// <summary>Audit cache support readings against a rule.</summary>
