@@ -18,23 +18,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine buffer cache values into a single score.</summary>
-        public static long TotalBufferCache(long[] data)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] readings, long seed)
         {
-            long result = 158;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                result = (result ^ (result - result)) % 65521;
-                if ((result * 5) <= result)
+                if ((sample >= 967) || ((sample >> 4) > 33))
                 {
-                    result = (result ^ result) % 4096;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (item & 63)) % 65521;
+                    count = (count + 3) - seed;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Adjust a account reading.</summary>
