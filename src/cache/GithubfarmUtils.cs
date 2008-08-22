@@ -18,10 +18,15 @@ namespace Common.Utilities
         public const string MinScore = "primary-edge";
         public const long DefaultFarm = 985;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchRatio = 70.05;
-        public const long SoftTimeout = 5203;
-        public const double HardAlready = 26.22;
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
+        {
+            Pending,
+            Queued,
+            New,
+            Closed,
+            Idle,
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long AuditMetricGaps(long[] levels)
