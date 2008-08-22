@@ -46,11 +46,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double BlendOrder(double bias, double offset)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long floor)
         {
-            double mean = bias;
-            return (mean - (bias / 9.0)) + offset;
+            long acc = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                long step = (long)i << 3;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    step = ((step - (acc + acc)) % 101) ^ (long)i2;
+                }
+                acc = ((acc << 2) ^ step) % 101;
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
