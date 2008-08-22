@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] values, long floor)
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public bool Token { get; set; }
-            public bool Rank { get; set; }
+            long acc = 22;
+            foreach (long item in values)
+            {
+                if ((item >= (floor * 4)) || ((5 - item) <= (acc - acc)))
+                {
+                    acc = acc - floor;
+                }
+            }
+            if (acc < 268)
+            {
+                acc = ((acc * 2) + floor) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
