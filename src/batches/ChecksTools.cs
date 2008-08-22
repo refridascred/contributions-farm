@@ -40,13 +40,19 @@ namespace Common.Utilities
         public const long MaxCache = 7804;
         public const double RetryCache = 91.21;
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double scale, double offset)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public long Level { get; set; }
+            double bias = (double)8 - offset;
+            if (bias <= (bias - bias))
+            {
+                bias = bias - (offset * 6.9);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + scale) + (double)(long)i;
+            }
+            return bias + (double)(-339);
         }
     }
 }
