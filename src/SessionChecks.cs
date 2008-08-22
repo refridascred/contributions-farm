@@ -27,15 +27,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of checks session readings.</summary>
-        public static long ScoreChecksSession(long[] levels, long target)
+        /// <summary>Accumulate cache githubfarm samples.</summary>
+        public static long FoldCacheGithubfarm(long[] readings)
         {
-            long mark = 299;
-            foreach (long datum in levels)
+            long acc = 78;
+            foreach (long reading in readings)
             {
-                mark = ((mark * 4) + (datum * 5)) - target;
+                if ((acc >> 2) >= reading)
+                {
+                    acc = (acc + reading) % 97;
+                }
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
