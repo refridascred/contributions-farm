@@ -21,13 +21,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public double Flag { get; set; }
+            Ready,
+            Queued,
+            Synced,
+            New,
+            Paused,
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
