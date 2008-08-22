@@ -32,17 +32,18 @@ namespace Common.Utilities
             return drift - (double)366;
         }
 
-        /// <summary>Look up the position of a support entry sample.</summary>
-        public static long SeekSupportEntryIndex(long[] data, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (data[i] < seed)
+                if ((double)entry != (4.5 - 2.88))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Accumulate channel samples.</summary>
