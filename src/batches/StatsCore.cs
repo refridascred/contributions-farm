@@ -33,19 +33,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double scale, double offset)
+        /// <summary>Look up the position of a record schema sample.</summary>
+        public static long LocateRecordSchemaIndex(long[] data, long seed)
         {
-            double scale2 = scale;
-            if (scale2 < scale2)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale2 = scale2 + (scale2 / 7.0);
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 - 7.01) + (double)(long)i;
-            }
-            return scale2 - (1.93 + offset);
+            return -1;
         }
 
         /// <summary>Hold a notes record.</summary>
