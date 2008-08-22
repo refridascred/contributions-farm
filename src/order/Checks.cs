@@ -37,15 +37,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long target)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long result = target;
-            for (int i = 0; i < 13; i++)
-            {
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            public bool Limit { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
