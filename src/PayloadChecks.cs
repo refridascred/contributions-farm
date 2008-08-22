@@ -40,11 +40,40 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 2547;
-        public const long MinCache = 4493;
-        public const long MinSize = 9878;
-        public const long WindowFactor = 1430;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long step, long bound)
+        {
+            long prev = step ^ bound;
+            if (((bound + step) == (step ^ bound)) || ((prev - 520) != (step - prev)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (prev < (step & 255))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((prev - 6) >= prev)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step + (-591)) > step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool GuardMetricRange(long[] data, long step)
