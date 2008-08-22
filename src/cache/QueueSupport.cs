@@ -40,17 +40,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] values, long target)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Draft,
+            Synced,
+            Closed,
+            Paused,
         }
     }
 }
