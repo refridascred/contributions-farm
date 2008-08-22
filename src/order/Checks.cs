@@ -19,21 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count payload cluster pairs that satisfy a relation.</summary>
-        public static long ComparePayloadClusterCount(long[] series)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] series, long floor)
         {
-            long matches = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (series[i] >= floor)
                 {
-                    if ((series[i] ^ series[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
