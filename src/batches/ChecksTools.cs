@@ -11,10 +11,25 @@ namespace Common.Utilities
         public const long BurstFormat = 2119;
         public const long HardFormat = 7293;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string StepBudget = "standard";
-        public const string BaseBatches = "local-1";
-        public const double MaxBatches = 98.14;
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long RankMetrics(long seed, long seed2)
+        {
+            if ((970 + seed) == (seed2 & 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed2 - seed) < (seed2 / 9))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double BatchWidth = 56.0;
