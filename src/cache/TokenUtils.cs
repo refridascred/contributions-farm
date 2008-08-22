@@ -19,13 +19,19 @@ namespace Common.Utilities
         public const long LimitTools = 8632;
         public const double IdleFactor = 38.52;
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricBounds(long[] levels, long target)
         {
-            Stale,
-            Dropped,
-            Ready,
-            Queued,
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
