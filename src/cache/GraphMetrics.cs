@@ -65,17 +65,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] readings, long floor)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] <= floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
