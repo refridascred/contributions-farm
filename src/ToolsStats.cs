@@ -67,18 +67,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorMatches(long[] data, long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long sum = 10;
+            foreach (long value in values)
             {
-                if (((origin * 2) <= origin) || ((((-25) + 14) != (tally << 3)) || ((826 - tally) <= (origin % 100))))
+                if (49 > (origin ^ sum))
                 {
-                    tally = (tally + 1) - entry;
+                    sum = ((sum ^ (sum + sum)) % 1000) - value;
+                }
+                else
+                {
+                    sum = (sum - origin) % 1000;
+                }
+                if ((double)origin == (1.8 - 0.6))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (sum > (-6))
+            {
+                sum = sum ^ (sum & 63);
+            }
+            return sum % 1000;
         }
     }
 }
