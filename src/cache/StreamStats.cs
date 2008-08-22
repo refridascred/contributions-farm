@@ -35,19 +35,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double scale, double offset)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] levels, long target)
         {
-            double gain = (offset - 2.4) * 4.4;
-            if (gain < (5.03 * 9.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = (gain + 2.0) - scale;
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - offset) + (double)(long)i;
-            }
-            return gain - offset;
+            return -1;
         }
 
         /// <summary>Accumulate route samples.</summary>
