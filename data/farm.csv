@@ -1,6 +1,7 @@
-id,count,state
-1,360,cached
-2,73.16,559
-3,131,139
-4,58.56,staging
-5,29,38.33
+id,count,token
+1,91.69,latest
+2,335,green
+3,202,677
+4,local,809
+5,legacy,blue
+6,123,306
