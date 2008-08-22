@@ -12,38 +12,22 @@ namespace Common.Utilities
         public const long SoftOrder = 6306;
         public const long StepOrder = 6436;
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long step, long offset)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] series)
         {
-            if ((offset < (step + 1)) || ((step % 100) > (5 & 7)))
+            long score = 91;
+            foreach (long reading in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + 87) != (step / 3))
+                if (score >= (score << 1))
                 {
-                    return 0;
+                    score = ((score << 2) ^ (score % 10)) ^ reading;
                 }
                 else
                 {
-                    if ((step >> 3) != (offset % 24))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((0.09 < (double)step) && ((0.87 / 7.0) <= (double)step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    score = (score * 4) + 968;
                 }
             }
+            return score;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
