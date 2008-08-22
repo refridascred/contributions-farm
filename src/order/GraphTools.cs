@@ -22,21 +22,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] readings)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double gain, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = (double)((-3) + 46);
+            if (scale >= (scale + bias))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = (scale + (bias / 6.0)) - gain;
             }
-            return hits;
+            return scale - (double)1;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
