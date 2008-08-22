@@ -81,32 +81,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long step, long bound)
-        {
-            long span = step ^ bound;
-            if ((span % 7) >= span)
-            {
-                return 4;
-            }
-            else
-            {
-                if (step <= (step >> 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound >> 3) != (0 + step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitInterval = 5638;
+        public const long SoftTools = 6447;
+        public const long MaxDepth = 6600;
+        public const string BatchScore = "strict";
     }
 }
