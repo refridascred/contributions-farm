@@ -37,18 +37,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a record token reading by value.</summary>
-        public static long SeekRecordTokenIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double HardSpan = 5.12;
+        public const double HardBudget = 69.39;
+        public const long BurstGithubfarm = 9863;
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long SeekBatchIndex(long[] readings, long offset)
