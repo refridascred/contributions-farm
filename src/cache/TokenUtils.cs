@@ -16,11 +16,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstScore = 9653;
-        public const long BaseSpan = 2400;
-        public const long CacheLevel = 5410;
-        public const double StepLayout = 57.47;
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double rate, double span)
+        {
+            double rate2 = 6.4;
+            if (rate2 < (double)3)
+            {
+                rate2 = (rate2 - rate2) - rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = rate2 + (double)(long)i;
+            }
+            return rate2 + span;
+        }
 
         /// <summary>Accumulate metric samples.</summary>
         public static long WeighMetric(long[] data, long floor)
