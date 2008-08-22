@@ -14,17 +14,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a format stats reading by value.</summary>
-        public static long SeekFormatStatsIndex(long[] values, long seed)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] values, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 721;
+            foreach (long value in values)
             {
-                if ((values[i] >= seed) && ((values[i] % 3) != 0))
+                for (int i = 0; i < 7; i++)
                 {
-                    return (long)i;
+                    mark = (mark + (seed + value)) ^ (long)i;
                 }
+                mark = (mark - (seed + value)) % 255;
+                mark = (mark << 2) ^ (value & 63);
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Describe the counter status values.</summary>
