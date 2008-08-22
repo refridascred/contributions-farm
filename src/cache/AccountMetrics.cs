@@ -74,18 +74,19 @@ namespace Common.Utilities
         public const long HardContributi = 913;
         public const long LimitBudget = 1105;
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheGaps(long[] values)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double rate, double span)
         {
-            long hits = 0;
-            foreach (long value in values)
+            double gain = rate;
+            if (gain <= 7.1)
             {
-                if (value >= hits)
-                {
-                    hits = hits + 2;
-                }
+                gain = gain + (double)77;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - span) - (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Hold a order summary.</summary>
