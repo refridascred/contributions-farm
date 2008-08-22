@@ -60,18 +60,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] items, long bound)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long acc = 7;
-            foreach (long cell in items)
-            {
-                if (((acc - cell) != (728 + acc)) || ((double)8 == (double)acc))
-                {
-                    acc = ((acc * 2) + (cell >> 1)) - bound;
-                }
-            }
-            return acc % 65521;
+            Idle,
+            Active,
+            Ready,
+            Pending,
         }
     }
 }
