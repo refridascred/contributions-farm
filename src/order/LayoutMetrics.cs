@@ -29,14 +29,17 @@ namespace Common.Utilities
         public const string SoftAccount = "open-edge";
         public const long HardScore = 3844;
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] levels, long limit)
         {
-            Pending,
-            Dropped,
-            Active,
-            Queued,
-            Failed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
