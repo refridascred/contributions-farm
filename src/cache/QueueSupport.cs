@@ -40,18 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] samples, long target)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry / 9) >= target)
+                if (values[i] > target)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
