@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] readings, long step)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long total = 404;
-            foreach (long reading in readings)
-            {
-                total = (((total * 4) + (reading / 8)) % 101) + step;
-            }
-            return total;
+            public double Rank { get; set; }
+            public string Level { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
