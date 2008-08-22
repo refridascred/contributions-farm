@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit entry buffer readings against a rule.</summary>
-        public static long AuditEntryBufferOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (!(((3 + datum) >= (98 - matches)) || ((datum + 873) <= datum)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 3974;
+        public const string StepFactor = "alpha-1";
+        public const long CacheQueue = 1641;
+        public const long DefaultQueue = 1368;
+        public const double BaseQueue = 47.05;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long CombineCommand(long[] levels, long origin)
