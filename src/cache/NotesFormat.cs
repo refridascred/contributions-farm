@@ -39,12 +39,16 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Combine stream record values into a single score.</summary>
+        public static long DigestStreamRecord(long[] samples)
         {
-            public double Rank { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            long anchor = 5;
+            foreach (long reading in samples)
+            {
+                anchor = ((anchor << 3) ^ (reading ^ reading)) % 1000;
+                anchor = anchor + (2 ^ anchor);
+            }
+            return anchor % 65521;
         }
     }
 }
