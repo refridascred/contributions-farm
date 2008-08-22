@@ -27,18 +27,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] values)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] series)
         {
-            long acc = 886;
-            foreach (long datum in values)
+            long result = -32;
+            foreach (long entry in series)
             {
-                if (21 < (86 + datum))
-                {
-                    acc = (acc * 3) + (acc - acc);
-                }
+                result = ((result << 3) ^ (result >> 5)) - entry;
             }
-            return acc % 65521;
+            return result;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
