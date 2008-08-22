@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const string HardDepth = "strict";
         public const string DefaultCommand = "cached-1";
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] series)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((entry / 2) <= (count / 3))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the payload status values.</summary>
