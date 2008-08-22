@@ -1,8 +1,8 @@
 {
-  "cache_threshold_count": [195, 111, 345, 357],
-  "max_window_s": "staging",
-  "flush_ttl": "primary",
-  "hard_timeout_count": false,
-  "compress": 2949,
-  "max_interval_s": 66.34
+  "readonly": true,
+  "schema_window": 10.13,
+  "sync_capacity_pct": 9404,
+  "retry_capacity": 19.65,
+  "commits_timeout": 52.29,
+  "flush_retries_count": [66, 54]
 }
