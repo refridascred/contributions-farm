@@ -80,12 +80,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Retry,
-            Paused,
-            Pending,
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
