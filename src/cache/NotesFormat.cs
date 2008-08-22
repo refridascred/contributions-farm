@@ -13,18 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit notes buffer readings against a rule.</summary>
-        public static long AuditNotesBufferHits(long[] data)
+        /// <summary>Validate graph stream readings against a bound.</summary>
+        public static bool VerifyGraphStreamRange(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if ((reading - seen) < 45)
+                if (sample <= origin)
                 {
-                    seen = seen + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
