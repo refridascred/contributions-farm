@@ -1,7 +1,13 @@
 {
-  "burst_interval_ms": [143, 68],
-  "idle_window_s": "stable",
-  "soft_retries_pct": "cached",
-  "verbose": 250,
-  "max_capacity_count": 52.27
+  "cache_limit_s": "stable",
+  "default_threshold_ms": {
+    "batch_size": 3,
+    "buffer_timeout": "green",
+    "account_depth": [149, 281, 265, 341],
+    "flush_limit": "stable",
+    "batch_delay_ms": 4.41,
+    "queue_delay": 60
+  },
+  "dry_run": [195, 191, 204],
+  "flush_ratio": 100
 }
