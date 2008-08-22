@@ -71,11 +71,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Iterate the checks record series from a seed.</summary>
+        public static long RollChecksRecord(long step)
         {
-            public long Owner { get; set; }
-            public bool Total { get; set; }
+            long acc = step;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = acc - (329 & 7);
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
