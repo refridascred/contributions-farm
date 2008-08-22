@@ -12,25 +12,14 @@ namespace Common.Utilities
         public const string BatchReport = "fallback-edge";
         public const long SoftInterval = 7549;
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long target, long limit)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long lane = target ^ limit;
-            if (lane > (target >> 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)lane != (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Paused,
+            Active,
+            Locked,
+            Idle,
+            Done,
         }
 
         /// <summary>Scale a order entry figure with a bias.</summary>
