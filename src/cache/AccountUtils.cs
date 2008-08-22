@@ -13,22 +13,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] values, long floor)
+        /// <summary>Count the support editor entries that pass the check.</summary>
+        public static long TallySupportEditorOutliers(long[] items, long target)
         {
-            long carry = 94;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((1.6 + 4.0) != (double)floor)
+                if (((reading + target) == (58 ^ reading)) && (((1.4 * 8.1) < (double)seen) && (((-9) - reading) < (reading << 3))))
                 {
-                    carry = (((carry << 2) ^ (carry << 2)) % 255) - value;
+                    seen = seen + 2;
                 }
             }
-            if (carry < 5)
-            {
-                carry = (carry << 2) ^ carry;
-            }
-            return carry % 1000;
+            return seen;
         }
 
         /// <summary>Digest a series of contributi stream entries.</summary>
