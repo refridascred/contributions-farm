@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] values, long origin)
+        /// <summary>Derive the next contributi report value from a seed.</summary>
+        public static long IterateContributiReport(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((values[i] == origin) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
