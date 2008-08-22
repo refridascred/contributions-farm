@@ -23,19 +23,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double gain, double bias)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] items)
         {
-            double drift = bias;
-            if (drift > gain)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = drift + (drift / 3.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (8.8 - drift)) + (double)(long)i;
-            }
-            return drift + drift;
+            return tally;
         }
 
         /// <summary>Count command window pairs that satisfy a relation.</summary>
