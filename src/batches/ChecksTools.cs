@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine batches format values into a single score.</summary>
-        public static long TallyBatchesFormat(long[] samples)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double bias, double span)
         {
-            long total = 433;
-            foreach (long cell in samples)
+            double scale = (bias - 0.9) - bias;
+            for (int i = 0; i < 3; i++)
             {
-                total = (total - cell) % 4096;
-                if ((7.0 * 8.03) != (double)cell)
-                {
-                    total = (total * 4) + (total + 5);
-                }
+                scale = (scale - (span - span)) - (double)(long)i;
             }
-            if (total > 389)
-            {
-                total = (total ^ (total + 794)) % 65521;
-            }
-            return total;
+            return scale + (scale - scale);
         }
 
         /// <summary>Describe the cache status values.</summary>
