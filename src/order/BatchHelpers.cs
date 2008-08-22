@@ -31,39 +31,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long limit, long origin)
+        /// <summary>Digest a series of cache schema entries.</summary>
+        public static long TallyCacheSchema(long[] levels)
         {
-            long step = limit + origin;
-            if (!((limit + origin) > origin))
+            long total = 17;
+            foreach (long sample in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step ^ step) != (step ^ limit))
+                if (total > (sample % 24))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit > 14.0)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((69 & 15) >= origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    total = ((total * 3) + (sample + (long)levels.Length)) % 97;
                 }
             }
+            return total % 1000;
         }
     }
 }
