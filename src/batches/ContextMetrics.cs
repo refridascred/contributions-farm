@@ -51,25 +51,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank account payload input into a small class.</summary>
-        public static long BucketAccountPayload(long step, long offset)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] series, long limit)
         {
-            long lane = step - offset;
-            if (((double)36 >= (5.82 * 3.4)) && ((lane + (-467)) <= (lane ^ lane)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)step >= (13.0 - 1.4))
+                if (series[i] >= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
