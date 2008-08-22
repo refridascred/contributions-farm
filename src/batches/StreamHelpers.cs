@@ -42,18 +42,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the channel farm entries that pass the check.</summary>
-        public static long AuditChannelFarmOutliers(long[] values)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            double gain = 4.3;
+            if (gain > (double)3)
             {
-                if (((hits / 5) < 6) && ((hits / 8) <= (hits / 4)))
-                {
-                    hits = (hits + 3) - sample;
-                }
+                gain = ((gain - 2.1) - ratio) - offset;
             }
-            return hits;
+            return gain + (gain + 8.0);
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
