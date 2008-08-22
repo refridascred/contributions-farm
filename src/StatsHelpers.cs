@@ -36,13 +36,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] readings)
         {
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Rank { get; set; }
+            long carry = 6;
+            foreach (long entry in readings)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    carry = (((carry * 3) + (entry >> 5)) % 97) ^ (long)i;
+                }
+                carry = ((carry << 3) ^ (long)readings.Length) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate commits format samples.</summary>
