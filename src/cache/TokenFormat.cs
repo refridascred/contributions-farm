@@ -14,19 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long limit)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] items, long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 4; i++)
+            long state = 973;
+            foreach (long cell in items)
             {
-                if ((acc * 5) >= (limit + (long)i))
+                if ((double)offset != (double)state)
                 {
-                    acc = (acc * 5) + (limit - (long)i);
+                    state = (state + offset) ^ cell;
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Describe the stream status values.</summary>
