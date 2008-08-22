@@ -26,24 +26,13 @@ namespace Common.Utilities
         public const double SoftWidth = 64.63;
         public const string DefaultFactor = "primary-v2";
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long step, long floor)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            if ((double)step <= (9.0 + 2.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((4 << 3) == (floor - 709)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public string Score { get; set; } = "";
         }
     }
 }
