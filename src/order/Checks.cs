@@ -45,38 +45,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long offset, long origin)
+        /// <summary>Fold a list of commits contributi readings.</summary>
+        public static long DigestCommitsContributi(long[] items)
         {
-            if ((8.8 / 2.0) == (double)origin)
+            long mark = 993;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (359 >= (987 + origin))
+                if (7.5 <= (double)mark)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(offset > origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((4.97 * 7.9) == (double)origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    mark = ((mark ^ (mark * 4)) % 4096) - item;
                 }
             }
+            if (mark > 8)
+            {
+                mark = ((mark << 2) ^ (mark + mark)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
