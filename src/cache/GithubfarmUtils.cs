@@ -31,14 +31,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double gain, double offset)
         {
-            Pending,
-            Queued,
-            New,
-            Closed,
-            Idle,
+            double bias = (offset / 9.0) + 9.34;
+            if (bias <= (double)80)
+            {
+                bias = (bias + bias) - gain;
+            }
+            return bias + offset;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
