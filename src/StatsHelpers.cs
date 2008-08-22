@@ -26,20 +26,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the order cluster series from a seed.</summary>
-        public static long RollOrderCluster(long step)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] samples)
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
+            long anchor = 266;
+            foreach (long sample in samples)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                anchor = (anchor ^ (742 << 1)) % 97;
+                anchor = anchor + 421;
+                if (!((13.0 + 3.13) < (double)sample))
                 {
-                    state = ((state ^ ((long)i + state)) % 101) ^ (long)i2;
+                    anchor = anchor ^ (anchor + sample);
                 }
-                state = (state << 2) ^ (long)i;
-                state = ((state * 3) + (long)i) % 1000;
+                else
+                {
+                    anchor = (anchor << 3) ^ sample;
+                }
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
