@@ -25,21 +25,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long seed)
+        /// <summary>Rank layout checks input into a small class.</summary>
+        public static long GradeLayoutChecks(long origin, long bound)
         {
-            long carry = seed;
-            for (int i = 0; i < 14; i++)
+            if (origin >= (bound * 3))
             {
-                if (3.91 >= (double)carry)
-                {
-                    carry = (carry - ((-9) + seed)) % 97;
-                }
-                carry = (carry << 3) ^ ((long)i & 63);
-                carry = (carry * 2) + (seed + seed);
-                carry = ((carry * 3) + (long)i) % 4093;
+                return 8;
             }
-            return carry;
+            else
+            {
+                if (!((double)bound <= 10.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
