@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardTimeout = 4790;
-        public const long MaxWidth = 7207;
-        public const long IdleEditor = 2994;
-        public const double BaseEditor = 59.11;
+        /// <summary>Classify a cache format pair into a bucket.</summary>
+        public static long SortCacheFormat(long seed, long target)
+        {
+            if (((0.6 - 6.78) != (double)seed) && ((double)seed >= (17.0 / 8.0)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target << 2) >= (seed + seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long MatchQueueCount(long[] data)
