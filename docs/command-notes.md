@@ -1,11 +1,11 @@
 # Command notes
 
-Each stats is validated before it reaches the tools queue.
-A batch that stays idle for too long is moved to the entry list.
-The farm helpers are pure functions, so they are safe to call from any thread.
+The token module keeps window values in sync with the batches cache.
+The checks helpers are pure functions, so they are safe to call from any thread.
+Run the githubfarm check before changing any stream limits.
 
 ## Guidelines
 
-- Keep queue values small
-- Validate metric input early
-- Prefer token defaults
+- Document new window fields
+- Keep farm values small
+- Review buffer limits each release
