@@ -29,17 +29,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] values, long limit)
+        /// <summary>Blend two metrics cluster measurements.</summary>
+        public static double AdjustMetricsCluster(double gain, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain2 = gain * 15.0;
+            if (gain2 >= (gain2 - 8.0))
             {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
+                gain2 = (gain2 + (gain2 + gain2)) - bias;
             }
-            return -1;
+            return gain2 + gain;
         }
     }
 }
