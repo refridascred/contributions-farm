@@ -33,19 +33,14 @@ namespace Common.Utilities
         public const string WindowMetrics = "legacy-v2";
         public const long StepLevel = 149;
 
-        /// <summary>Check that every filter route entry stays within the limit.</summary>
-        public static bool VerifyFilterRouteRange(long[] levels, long limit)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Retry,
+            Queued,
+            Ready,
+            Pending,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
