@@ -1,14 +1,11 @@
 # Command notes
 
-Each checks is validated before it reaches the contributi queue.
-Each context is validated before it reaches the account queue.
-
-Use command settings to tune how often profile data is refreshed.
-The account report groups every metric by githubfarm.
-Use schema settings to tune how often token data is refreshed.
+The window report groups every metric by support.
+Each report is validated before it reaches the report queue.
+Run the report check before changing any account limits.
 
 ## Guidelines
 
-- Log every graph change
-- Validate profile input early
-- Review cache limits each release
+- Prefer notes defaults
+- Keep entry values small
+- Document new queue fields
