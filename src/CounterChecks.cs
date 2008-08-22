@@ -73,17 +73,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the format checks series from a seed.</summary>
-        public static long RollFormatChecks(long limit)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double rate, double offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = anchor + ((-793) * 4);
-                anchor = ((anchor << 3) ^ (89 << 3)) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            double mean = (offset / 9.0) * 4.0;
+            return (mean + mean) + rate;
         }
 
         /// <summary>Count checks farm pairs that satisfy a relation.</summary>
