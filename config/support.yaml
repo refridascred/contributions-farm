@@ -1,7 +1,7 @@
 # support settings
-report_window:
-  - 401
-  - 340
-  - 378
-dry_run: 500
-poll_retries_s: 67.58
+retry_threshold: false
+checks_timeout: false
+dry_run: strict
+default_retries: 80.49
+retry_interval_ms: 919
+editor_interval: false
