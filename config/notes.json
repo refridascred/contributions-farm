@@ -1,5 +1,6 @@
 {
-  "report_delay": "legacy",
-  "enabled": [352, 478, 386],
-  "verbose": [209, 57]
+  "enabled": "eu-west",
+  "verbose": [412, 446, 333],
+  "burst_size_pct": "legacy",
+  "audit": 5008
 }
