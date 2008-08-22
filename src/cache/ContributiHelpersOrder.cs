@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
-        {
-            public long Size { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultInterval = 7348;
+        public const string RetryFilter = "strict-v2";
+        public const long BatchFilter = 6818;
+        public const long MaxScore = 3597;
+        public const string RetryLevel = "alpha-1";
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
