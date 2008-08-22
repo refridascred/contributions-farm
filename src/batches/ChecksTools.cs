@@ -22,12 +22,13 @@ namespace Common.Utilities
         public const long MaxCache = 7804;
         public const double RetryCache = 91.21;
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
-            public bool Flag { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public long Level { get; set; }
         }
     }
 }
