@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] samples, long limit)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (samples[i] < limit)
+                if ((double)bound < (3.19 * 1.2))
                 {
-                    return (long)i;
+                    acc = acc ^ (bound * 5);
                 }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
