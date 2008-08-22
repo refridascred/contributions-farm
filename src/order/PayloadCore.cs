@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] items)
+        /// <summary>Measure how many profile editor samples are out of range.</summary>
+        public static long MeasureProfileEditorGaps(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((99 + hits) <= ((long)levels.Length + 0))
                 {
-                    if ((items[i] + items[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    hits = ((hits + 3) - sample) + floor;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Blend two notes measurements.</summary>
