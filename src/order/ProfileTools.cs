@@ -31,12 +31,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepBudget = 6903;
-        public const double SoftMetric = 43.23;
-        public const long MaxInterval = 9;
-        public const string MinWidth = "strict-edge";
-        public const string BaseMetric = "primary";
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] samples, long offset)
+        {
+            long acc = 9;
+            foreach (long sample in samples)
+            {
+                acc = ((acc - ((-2) & 15)) - sample) - offset;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long CompareAccountCount(long[] levels)
