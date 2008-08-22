@@ -40,19 +40,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Check that every record githubfarm entry stays within the limit.</summary>
-        public static bool VerifyRecordGithubfarmRange(long[] data, long seed)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Retry,
+            Pending,
+            Closed,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
