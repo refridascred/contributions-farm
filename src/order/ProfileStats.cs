@@ -32,18 +32,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many layout buffer samples are out of range.</summary>
-        public static long AuditLayoutBufferOutliers(long[] items)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (((item + 1) > (item >> 5)) && ((16.0 * 7.76) > (double)count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public double Flag { get; set; }
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the report state values.</summary>
