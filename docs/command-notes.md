@@ -1,12 +1,15 @@
 # Command notes
 
-The layout module keeps account values in sync with the notes cache.
-Keep commits and token names short and lowercase.
-The farm module keeps record values in sync with the layout cache.
+Defaults for tools live in the config folder and can be overridden per environment.
+Each profile is validated before it reaches the already queue.
+
+The token report groups every batch by graph.
+A tools that stays idle for too long is moved to the already list.
+Run the command check before changing any order limits.
 
 ## Guidelines
 
-- Prefer account defaults
-- Validate entry input early
-- Document new editor fields
-- Keep metric values small
+- Prefer editor defaults
+- Document new tools fields
+- Review session limits each release
+- Keep route values small
