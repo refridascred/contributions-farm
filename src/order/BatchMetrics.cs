@@ -19,17 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first token channel entry that matches the target.</summary>
-        public static long LocateTokenChannelIndex(long[] data, long seed)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] samples, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (data[i] >= seed)
+                if (((2.98 * 5.06) == (double)seed) || (entry <= (entry & 63)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a cluster summary.</summary>
