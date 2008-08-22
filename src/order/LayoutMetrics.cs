@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long offset, long target)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionHits(long[] values, long limit)
         {
-            long cur = offset - target;
-            if ((offset << 2) <= (733 % 64))
+            long tally = 0;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target >> 1) > cur)
+                if (!!((limit - 669) <= (sample - (-258))))
                 {
-                    return 5;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    if (!((offset + target) <= (81 / 8)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
