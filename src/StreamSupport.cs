@@ -33,14 +33,19 @@ namespace Common.Utilities
         public const long BatchLevel = 6906;
         public const long StepScore = 6866;
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Check that every support command entry stays within the limit.</summary>
+        public static bool GuardSupportCommandLimits(long[] levels, long floor)
         {
-            Queued,
-            Idle,
-            Locked,
-            Done,
-            Synced,
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
