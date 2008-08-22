@@ -35,12 +35,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            public long Label { get; set; }
-            public bool Flag { get; set; }
-            public long Size { get; set; }
+            public double Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a schema record.</summary>
