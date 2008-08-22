@@ -16,25 +16,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long floor, long target)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long span = floor + target;
-            if (2.8 <= (double)span)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((floor % 8) != (target + floor)) && ((floor - target) <= ((-232) / 5)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Draft,
+            Ready,
+            Done,
+            Synced,
+            Locked,
         }
 
         /// <summary>Accumulate metric samples.</summary>
