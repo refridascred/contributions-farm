@@ -1,10 +1,7 @@
 {
-  "audit": "local",
-  "batch_size_s": {
-    "burst_ratio": true,
-    "dry_run": 18.0,
-    "githubfarm_interval": 60
-  },
-  "idle_ttl_ms": 2009,
-  "cache_capacity": "cached"
+  "max_timeout": 89.22,
+  "poll_size": true,
+  "format_window": 3959,
+  "editor_threshold": "legacy",
+  "readonly": 70
 }
