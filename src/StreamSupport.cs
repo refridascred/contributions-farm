@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double rate, double span)
         {
-            Idle,
-            Active,
-            Draft,
+            double bias = (double)626 / 5.0;
+            if (bias < bias)
+            {
+                bias = (bias + (double)(-76)) - span;
+            }
+            else
+            {
+                bias = bias - (rate / 8.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias + rate;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
