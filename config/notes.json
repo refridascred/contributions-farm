@@ -1,22 +1,6 @@
 {
-  "sync_timeout_s": false,
-  "retry_interval": 8100,
-  "stream_limit": {
-    "schema_threshold": {
-      "cache_window": "open",
-      "stats_timeout": 250,
-      "token_threshold": ["green", "local"]
-    },
-    "profile_delay": 5338,
-    "persist": 4329,
-    "batch_ratio_s": 50.68,
-    "hard_ratio": {
-      "warm_limit": "local",
-      "persist": true,
-      "strict": "strict",
-      "compress": 88.88,
-      "retry_ratio_pct": 15.32,
-      "max_interval_ms": "local"
-    }
-  }
+  "hard_capacity_pct": "latest",
+  "batch_interval_ms": "edge",
+  "default_timeout": false,
+  "min_interval_count": 6168
 }
