@@ -40,24 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long origin, long limit)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheBounds(long[] series, long origin)
         {
-            if (((origin >> 4) > limit) && ((394 + limit) > origin))
+            bool ready = true;
+            foreach (long datum in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit * 2) > origin)
+                if (datum >= origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
