@@ -57,32 +57,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor filter entries.</summary>
-        public static long WeighEditorFilter(long[] data)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] data)
         {
-            long mix = 61;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)datum < (5.6 + 9.62))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = ((mix * 3) + datum) % 65521;
-                    mix = (mix << 3) ^ (datum & 15);
-                    continue;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ 88) % 101;
-                }
-                if ((mix << 1) >= (datum & 3))
-                {
-                    mix = (mix << 2) ^ 9;
-                }
-                else
-                {
-                    mix = mix ^ (mix / 6);
+                    if ((data[i] + data[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Count the editor contributi entries that pass the check.</summary>
