@@ -32,31 +32,19 @@ namespace Common.Utilities
         public const long WindowRoute = 9330;
         public const long IdleRoute = 1583;
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long step, long floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] levels, long limit)
         {
-            if (5 >= (step & 1))
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((90 ^ step) == ((-44) & 3)) || (455 <= (step & 3)))
+                if (datum > limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((7 + floor) >= 9)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Blend two metric measurements.</summary>
