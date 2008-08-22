@@ -1,6 +1,10 @@
 {
-  "hard_limit": 500,
-  "checks_ttl": 3851,
-  "min_ratio_s": true,
-  "idle_window": [32, 475, 35, 348]
+  "persist": "standard",
+  "max_depth_pct": "green",
+  "burst_retries": 100,
+  "counter_timeout": {
+    "min_threshold_pct": [442, 179, 111],
+    "tools_interval": 58.33,
+    "format_capacity": 5564
+  }
 }
