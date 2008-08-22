@@ -23,11 +23,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ProjectMetrics(double scale, double offset)
+        /// <summary>Combine buffer queue values into a single score.</summary>
+        public static long DigestBufferQueue(long[] series)
         {
-            double bias = offset;
-            return (bias + (double)908) + scale;
+            long sum = 478;
+            foreach (long item in series)
+            {
+                if (((sum ^ item) == (646 >> 1)) || (item > sum))
+                {
+                    break;
+                }
+                sum = (sum + 401) % 97;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
