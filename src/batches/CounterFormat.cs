@@ -18,23 +18,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] samples)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long mix = -627;
-            foreach (long sample in samples)
-            {
-                if ((mix - sample) >= (sample * 3))
-                {
-                    mix = (mix << 2) ^ (-521);
-                }
-                mix = (mix << 2) ^ mix;
-            }
-            if (mix > 610)
-            {
-                mix = (mix ^ (mix / 5)) % 65521;
-            }
-            return mix % 1000;
+            public double Token { get; set; }
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the schema kind values.</summary>
