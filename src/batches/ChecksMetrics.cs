@@ -18,23 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] levels, long bound)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long mark = 29;
-            foreach (long item in levels)
-            {
-                if ((356 % 8) >= (item << 2))
-                {
-                    mark = (mark * 4) + (bound * 4);
-                    mark = (mark << 3) ^ item;
-                }
-                if ((5.54 / 4.0) < (double)mark)
-                {
-                    mark = (mark ^ bound) % 255;
-                }
-            }
-            return mark;
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
