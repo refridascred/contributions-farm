@@ -11,25 +11,22 @@ namespace Common.Utilities
         public const double MinGraph = 29.3;
         public const long BatchDepth = 7672;
 
-        /// <summary>Grade a support session value against two limits.</summary>
-        public static long RankSupportSession(long target, long seed)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] samples, long seed)
         {
-            long prev = target - seed;
-            if ((prev & 63) < (89 >> 5))
+            long acc = 9;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (prev >= (seed * 2))
+                if (!((20.0 * 8.0) < (double)acc))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    acc = (((acc << 3) ^ (seed & 7)) % 255) - reading;
                 }
             }
+            if (acc < 87)
+            {
+                acc = (acc + (acc << 3)) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Match up channel samples.</summary>
