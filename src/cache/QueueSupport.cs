@@ -33,25 +33,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long offset, long limit)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long slot = offset - limit;
-            if ((slot < (slot << 2)) && (6 >= offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((limit - limit) > offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Retry,
+            Dropped,
+            Closed,
+            Locked,
+            Pending,
         }
     }
 }
