@@ -27,21 +27,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] series)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long offset, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long cur = offset ^ target;
+            if (((635 + 5) > offset) && ((1.24 + 6.46) <= (double)cur))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((offset - cur) < (cur + (-3)))
                 {
-                    if ((series[i] - series[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a contributi header.</summary>
