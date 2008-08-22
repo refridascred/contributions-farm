@@ -34,12 +34,32 @@ namespace Common.Utilities
         public const string BatchFarm = "staging-1";
         public const double BurstWidth = 94.8;
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long limit, long origin)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
+            long offset = limit ^ origin;
+            if ((double)limit <= (14.0 - 3.23))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)limit < (double)origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((8 & 127) <= (offset + limit)) && (offset <= origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stream level values.</summary>
