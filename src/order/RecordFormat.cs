@@ -31,12 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Locate a tools window reading by value.</summary>
+        public static long LookupToolsWindowIndex(long[] items, long seed)
         {
-            public string Token { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= seed) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of buffer editor readings.</summary>
