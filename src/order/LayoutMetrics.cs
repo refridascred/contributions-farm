@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] samples)
         {
-            Dropped,
-            New,
-            Locked,
-            Active,
-            Paused,
+            long result = 18;
+            foreach (long value in samples)
+            {
+                if ((double)value > 5.48)
+                {
+                    result = result + value;
+                }
+            }
+            if (result > (-4))
+            {
+                result = (result - (result - result)) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Define account limits and defaults.</summary>
