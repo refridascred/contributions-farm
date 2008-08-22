@@ -28,18 +28,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] data)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long bound)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long total = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((sample % 2) > (sample / 6))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    tally = tally + 3;
+                    total = ((total - bound) % 97) ^ (long)i2;
+                    total = ((total * 4) + (total << 1)) % 65521;
                 }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Describe the route kind values.</summary>
