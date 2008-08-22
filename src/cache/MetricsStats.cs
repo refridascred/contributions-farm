@@ -14,38 +14,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Classify a context order pair into a bucket.</summary>
-        public static long ClassifyContextOrder(long offset, long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] samples, long target)
         {
-            if ((3.8 - 1.85) > (double)offset)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (((floor - offset) == (44 & 3)) || (17.0 < (double)floor))
+                if ((double)seen == (8.5 / 4.0))
                 {
-                    return 4;
+                    seen = ((seen + 3) + datum) - target;
                 }
                 else
                 {
-                    if (((floor + floor) >= floor) || ((offset >> 4) < (6 - offset)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (2.45 >= (double)floor)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a route info.</summary>
