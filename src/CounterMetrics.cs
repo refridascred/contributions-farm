@@ -22,31 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long target, long origin)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            if ((19 << 3) < origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin & 1) > (origin + target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((-76) <= (origin + 96))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
