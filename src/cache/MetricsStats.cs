@@ -29,11 +29,18 @@ namespace Common.Utilities
         public const double MinFarm = 55.46;
         public const string MinScore = "open-v2";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 4684;
-        public const long RetryWidth = 9953;
-        public const string IdleAlready = "latest";
-        public const long BatchAlready = 4394;
+        /// <summary>Look up the position of a token format sample.</summary>
+        public static long SeekTokenFormatIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == limit) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
