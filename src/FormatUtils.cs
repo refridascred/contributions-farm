@@ -69,14 +69,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            Done,
-            Paused,
-            Locked,
-            Active,
-            Synced,
+            public bool Offset { get; set; }
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
