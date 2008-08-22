@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double scale, double bias)
         {
-            Active,
-            Dropped,
-            Draft,
-            Ready,
+            double ratio = bias * 3.4;
+            return ratio - scale;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
