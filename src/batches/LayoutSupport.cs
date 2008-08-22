@@ -31,15 +31,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cluster profile samples.</summary>
-        public static long CombineClusterProfile(long[] samples)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long StepEntry(long bound)
         {
-            long score = -4;
-            foreach (long datum in samples)
+            long carry = bound;
+            for (int i = 0; i < 22; i++)
             {
-                score = ((score + (82 & 31)) % 1000) - datum;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Adjust a session reading.</summary>
