@@ -52,21 +52,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = span;
+            if (drift <= (span + bias))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift - (drift - span);
             }
-            return seen;
+            else
+            {
+                drift = drift - (span + bias);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift - 10.0;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
