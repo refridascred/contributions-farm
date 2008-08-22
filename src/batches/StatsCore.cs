@@ -52,18 +52,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] data)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long origin)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (((3.0 + 9.5) < (double)entry) || (((entry / 8) < (seen - seen)) || (((long)data.Length + entry) <= (entry ^ seen))))
-                {
-                    seen = seen + 1;
-                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return seen;
+            return anchor;
         }
     }
 }
