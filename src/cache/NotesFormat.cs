@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a cache farm counter forward.</summary>
-        public static long RollCacheFarm(long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderMatches(long[] items)
         {
-            long total = step;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((6.0 + 7.1) >= (double)item)
                 {
-                    total = ((total * 4) + (9 * 2)) ^ (long)i2;
-                    total = (total - (step % 60)) % 1000;
+                    seen = seen + 1;
                 }
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
