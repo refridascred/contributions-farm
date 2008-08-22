@@ -48,17 +48,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first support record entry that matches the target.</summary>
-        public static long FindSupportRecordIndex(long[] readings, long seed)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double weight, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = bias - weight;
+            if (ratio <= (double)(-2))
             {
-                if ((readings[i] < seed) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio + bias;
             }
-            return -1;
+            return ratio - ratio;
         }
     }
 }
