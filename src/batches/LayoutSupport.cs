@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            Active,
-            Synced,
-            Locked,
-            Ready,
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Compare every pair of account readings.</summary>
