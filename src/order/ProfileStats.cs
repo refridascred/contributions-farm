@@ -50,13 +50,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Locate a record tools reading by value.</summary>
+        public static long SeekRecordToolsIndex(long[] values, long floor)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
