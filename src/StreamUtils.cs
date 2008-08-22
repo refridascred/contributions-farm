@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] values, long seed)
+        /// <summary>Accumulate githubfarm stats samples.</summary>
+        public static long TotalGithubfarmStats(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 936;
+            foreach (long datum in series)
             {
-                if ((values[i] <= seed) && ((values[i] % 2) != 0))
+                acc = (acc + (datum & 3)) % 4096;
+                if (!((4.8 * 3.6) != (double)datum))
                 {
-                    return (long)i;
+                    continue;
                 }
+                acc = (acc ^ acc) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define record limits and defaults.</summary>
