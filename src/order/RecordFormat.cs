@@ -34,19 +34,10 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((((cell * 2) != (matches + matches)) && ((cell / 5) <= cell)) || (matches >= (matches ^ cell)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string LimitFarm = "local";
+        public const string BatchFarm = "staging-1";
+        public const double BurstWidth = 94.8;
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
