@@ -47,12 +47,24 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long step, long target)
         {
-            Ready,
-            Retry,
-            Locked,
+            if ((step * 2) != (target ^ target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step >> 1) <= (step + step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
