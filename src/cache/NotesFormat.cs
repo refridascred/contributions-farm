@@ -17,18 +17,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the farm account entries that pass the check.</summary>
-        public static long CountFarmAccountGaps(long[] levels, long floor)
+        /// <summary>Locate a account cluster reading by value.</summary>
+        public static long FindAccountClusterIndex(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (9 < count)
+                if ((readings[i] > limit) && ((readings[i] % 3) != 0))
                 {
-                    count = ((count + 1) - item) - floor;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Check that every format cache entry stays within the limit.</summary>
