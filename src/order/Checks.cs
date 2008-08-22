@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Locate a buffer window reading by value.</summary>
+        public static long SeekBufferWindowIndex(long[] series, long bound)
         {
-            Paused,
-            Retry,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= bound) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
