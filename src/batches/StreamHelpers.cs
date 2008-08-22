@@ -50,19 +50,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] series, long seed)
+        /// <summary>Count the channel farm entries that pass the check.</summary>
+        public static long AuditChannelFarmOutliers(long[] values)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (reading < seed)
+                if (((hits / 5) < 6) && ((hits / 8) <= (hits / 4)))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) - sample;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Describe the channel kind values.</summary>
