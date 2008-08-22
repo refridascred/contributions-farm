@@ -27,22 +27,22 @@ namespace Common.Utilities
         public const long DefaultLayout = 1308;
         public const long HardLayout = 3552;
 
-        /// <summary>Audit schema context readings against a rule.</summary>
-        public static long CountSchemaContextHits(long[] levels)
+        /// <summary>Audit command metric readings against a rule.</summary>
+        public static long AuditCommandMetricGaps(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((3.73 - 20.0) > (double)item)
+                if (((8.0 - 3.0) <= 6.0) && ((double)reading >= (6.7 * 1.84)))
                 {
-                    hits = hits + 1;
+                    count = (count + 3) + offset;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Count the queue counter entries that pass the check.</summary>
