@@ -22,12 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a already entry sample.</summary>
-        public static long FindAlreadyEntryIndex(long[] readings, long seed)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] series, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] == seed) && ((readings[i] % 5) != 0))
+                if (series[i] > limit)
                 {
                     return (long)i;
                 }
