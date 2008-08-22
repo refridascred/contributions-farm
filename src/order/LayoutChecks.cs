@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] items, long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] readings, long origin)
         {
-            long score = 9;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((seed + seed) >= (337 ^ 0))
+                if ((origin + seen) >= 9)
                 {
-                    score = (score - (entry + entry)) % 65521;
+                    seen = (seen + 1) - value;
                 }
-                score = (score + (59 * 5)) % 97;
-                if (((seed * 2) > (seed * 4)) && ((entry * 3) == (score >> 2)))
+                else
                 {
-                    score = (score - (score - (-5))) % 97;
+                    seen = seen - 1;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
