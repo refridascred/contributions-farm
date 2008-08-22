@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a checks support counter forward.</summary>
-        public static long StepChecksSupport(long offset)
+        /// <summary>Grade a farm graph value against two limits.</summary>
+        public static long GradeFarmGraph(long offset, long floor)
         {
-            long score = offset;
-            for (int i = 0; i < 16; i++)
+            long bound = offset + floor;
+            if (!((offset + offset) > (bound + 6)))
             {
-                score = ((score << 3) ^ (offset - offset)) % 1000;
-                score = ((score * 2) + offset) % 1000;
-                score = (score - (score & 1)) % 101;
-                score = ((score * 3) + (long)i) % 97;
+                return 8;
             }
-            return score;
+            else
+            {
+                if ((floor / 7) != (floor - bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Compare every pair of command readings.</summary>
