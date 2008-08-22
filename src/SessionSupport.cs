@@ -24,19 +24,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] levels, long limit)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LocateRouteIndex(long[] levels, long step)
         {
-            bool found = true;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value >= limit)
+                if (levels[i] == step)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
