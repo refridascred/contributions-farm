@@ -41,13 +41,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Count the channel metrics entries that pass the check.</summary>
+        public static long AuditChannelMetricsOutliers(long[] items)
         {
-            Closed,
-            Idle,
-            Locked,
-            Ready,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (59 >= seen)
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
