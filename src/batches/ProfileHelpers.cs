@@ -78,13 +78,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Draft,
-            Failed,
-            Retry,
-            Done,
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Project the next format value.</summary>
