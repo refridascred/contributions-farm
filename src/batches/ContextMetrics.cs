@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            Ready,
+            Paused,
             Closed,
-            Retry,
+            Queued,
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
