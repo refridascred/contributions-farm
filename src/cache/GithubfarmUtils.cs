@@ -12,11 +12,22 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 4134;
-        public const long BurstFarm = 8766;
-        public const string MinScore = "primary-edge";
-        public const long DefaultFarm = 985;
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
