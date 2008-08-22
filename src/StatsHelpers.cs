@@ -46,18 +46,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] data, long floor)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] values, long bound)
         {
-            long state = 936;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if ((7 + state) == (sample + 42))
+                if (sample > bound)
                 {
-                    state = (((state << 3) ^ (state ^ sample)) % 97) + floor;
+                    ok = false;
+                    break;
                 }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
