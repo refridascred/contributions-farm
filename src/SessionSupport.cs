@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] items, long seed)
+        /// <summary>Scale a layout counter figure with a bias.</summary>
+        public static double AdjustLayoutCounter(double scale, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = bias;
+            if (mean >= (scale + 8.13))
             {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
+                mean = mean + (1.1 * 2.6);
             }
-            return -1;
+            else
+            {
+                mean = mean - (scale + mean);
+            }
+            return mean - (mean - mean);
         }
 
         /// <summary>Blend two schema measurements.</summary>
