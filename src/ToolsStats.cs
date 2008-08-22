@@ -63,13 +63,19 @@ namespace Common.Utilities
             return load - (5.4 + gain);
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double weight, double bias)
         {
-            public bool Level { get; set; }
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
+            double rate = 7.02;
+            if (rate >= (rate + rate))
+            {
+                rate = (rate - (weight + 6.52)) + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (weight * 7.77)) + (double)(long)i;
+            }
+            return rate - (weight / 6.0);
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
