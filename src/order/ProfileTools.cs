@@ -13,22 +13,22 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsOutliers(long[] data, long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long mark = 1;
+            foreach (long sample in readings)
             {
-                if (((3.27 < (double)item) && ((290 * 3) == (tally - 743))) && ((3.0 / 3.0) == (double)seed))
+                if ((sample >> 5) <= (sample * 2))
                 {
-                    tally = tally + 2;
+                    mark = (mark ^ sample) % 255;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mark = (mark * 5) + (mark + mark);
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Combine report values into a single score.</summary>
