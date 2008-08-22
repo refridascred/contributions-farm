@@ -28,32 +28,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long seed, long target)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsOutliers(long[] data, long seed)
         {
-            long step = seed ^ target;
-            if ((0.85 * 11.0) != (double)target)
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step >= (target + target)) || ((double)target == (11.0 / 3.0)))
+                if (((3.27 < (double)item) && ((290 * 3) == (tally - 743))) && ((3.0 / 3.0) == (double)seed))
                 {
-                    return 8;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    if ((step >> 3) >= 2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Classify a farm commits pair into a bucket.</summary>
