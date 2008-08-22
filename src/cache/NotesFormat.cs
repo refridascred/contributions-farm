@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ScaleGithubfarm(double bias, double span)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] items, long bound)
         {
-            double ratio = (bias - bias) - span;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                ratio = (ratio + (bias / 3.0)) + (double)(long)i;
+                if ((double)bound <= (8.0 + 3.33))
+                {
+                    seen = (seen + 1) + reading;
+                }
             }
-            return ratio + bias;
+            return seen;
         }
 
         /// <summary>Find the first metric batch entry that matches the target.</summary>
