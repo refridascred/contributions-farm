@@ -23,18 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] series, long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((bound / 8) < reading)
+                if ((offset - matches) >= (matches - offset))
                 {
-                    count = count + 3;
+                    matches = (matches + 3) + entry;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
