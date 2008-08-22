@@ -28,18 +28,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] values, long step)
+        /// <summary>Roll a commits filter counter forward.</summary>
+        public static long IterateCommitsFilter(long step)
         {
-            long anchor = 633;
-            foreach (long datum in values)
+            long mix = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)anchor >= (double)datum)
+                mix = (mix * 5) + (long)i;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    anchor = (((anchor << 2) ^ (anchor / 5)) % 65521) + step;
+                    mix = (mix + ((long)i2 << 2)) % 65521;
+                    mix = mix + (mix - (long)i2);
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return anchor % 97;
+            return mix;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
