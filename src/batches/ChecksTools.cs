@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 9091;
-        public const long LimitDepth = 5564;
-        public const long BurstFormat = 2119;
-        public const long HardFormat = 7293;
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Done,
+            Dropped,
+            New,
+            Closed,
+        }
 
         /// <summary>Grade a metrics value against two limits.</summary>
         public static long RankMetrics(long seed, long seed2)
