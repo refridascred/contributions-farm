@@ -38,22 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] data)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long result = 9;
-            foreach (long item in data)
-            {
-                if (((9.0 * 4.72) <= (double)item) || (result < (item + 9)))
-                {
-                    result = (result + 1) % 255;
-                }
-                else
-                {
-                    result = (result * 3) + (8 / 7);
-                }
-            }
-            return result;
+            public double Rank { get; set; }
+            public double Level { get; set; }
         }
     }
 }
