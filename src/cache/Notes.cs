@@ -46,12 +46,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Check that every record githubfarm entry stays within the limit.</summary>
+        public static bool VerifyRecordGithubfarmRange(long[] data, long seed)
         {
-            public double Size { get; set; }
-            public double Weight { get; set; }
-            public long Mode { get; set; }
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
