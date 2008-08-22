@@ -31,12 +31,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] readings, long bound)
         {
-            public bool Weight { get; set; }
-            public bool Owner { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the command phase values.</summary>
