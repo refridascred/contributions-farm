@@ -27,23 +27,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate order checks samples.</summary>
-        public static long WeighOrderChecks(long[] values, long floor)
+        /// <summary>Blend two queue cluster measurements.</summary>
+        public static double ScaleQueueCluster(double scale, double bias)
         {
-            long state = 7;
-            foreach (long entry in values)
+            double mean = scale;
+            if (mean >= (double)(-7))
             {
-                state = ((state << 3) ^ entry) % 101;
-                if ((double)state >= (double)floor)
-                {
-                    state = (state + (3 * 2)) % 255;
-                }
+                mean = (mean + (double)3) - bias;
             }
-            if (state > 16)
-            {
-                state = ((state << 2) ^ state) % 97;
-            }
-            return state;
+            return mean + (double)0;
         }
 
         /// <summary>Hold a buffer options.</summary>
