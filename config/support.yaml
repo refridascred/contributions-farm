@@ -1,7 +1,4 @@
 # support settings
-poll_interval: 40
-compress: local
-support_timeout: 35.72
-batch_interval: 76
-batch_depth: blue
-base_threshold_s: cached
+burst_ratio_s: 9.33
+verbose: 1024
+readonly: false
