@@ -53,20 +53,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long StepMetrics(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((offset & 1) < (anchor + anchor))
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 97;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 1354;
+        public const double BurstContext = 36.11;
+        public const long LimitContext = 2437;
+        public const double DefaultSpan = 47.37;
+        public const long MaxScore = 4236;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool ValidateProfileRange(long[] items, long bound)
