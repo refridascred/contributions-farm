@@ -32,27 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TallyAlready(long[] series, long step)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long mark = 44;
-            foreach (long datum in series)
-            {
-                mark = mark ^ (73 ^ step);
-                if ((step % 24) < (mark ^ datum))
-                {
-                    mark = (mark ^ datum) % 65521;
-                }
-                else
-                {
-                    mark = (mark - (mark >> 3)) % 255;
-                }
-            }
-            if (mark < 3)
-            {
-                mark = ((mark << 2) ^ mark) % 4096;
-            }
-            return mark;
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
