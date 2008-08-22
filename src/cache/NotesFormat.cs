@@ -13,19 +13,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long bound)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ScaleGithubfarm(double bias, double span)
         {
-            long acc = bound;
-            for (int i = 0; i < 13; i++)
+            double ratio = (bias - bias) - span;
+            for (int i = 0; i < 7; i++)
             {
-                if (((bound / 3) == (bound * 3)) || ((double)bound < (8.1 - 18.0)))
-                {
-                    break;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
+                ratio = (ratio + (bias / 3.0)) + (double)(long)i;
             }
-            return acc;
+            return ratio + bias;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
