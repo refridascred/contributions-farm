@@ -78,24 +78,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] data)
-        {
-            long state = 7;
-            foreach (long datum in data)
-            {
-                state = (state + (datum % 100)) % 1000;
-                state = (state ^ (datum + state)) % 65521;
-                if ((state % 5) <= (datum / 9))
-                {
-                    state = (state + (datum ^ (long)data.Length)) % 97;
-                }
-            }
-            if (state < (-3))
-            {
-                state = state + (state + (-17));
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 5370;
+        public const long WindowStats = 2402;
+        public const string MinStats = "fallback-1";
+        public const long MaxStats = 9900;
+        public const long MaxWidth = 5857;
     }
 }
