@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] items, long floor)
         {
-            public double Ratio { get; set; }
-            public double Stamp { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((tally >> 3) <= (floor - floor))
+                {
+                    tally = (tally + 1) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two channel measurements.</summary>
