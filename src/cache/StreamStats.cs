@@ -20,13 +20,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double weight, double bias)
         {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public double Total { get; set; }
+            double ratio = (double)79 * 1.0;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (((ratio - (ratio / 8.0)) + (double)(long)i) - weight) + bias;
+            }
+            return ratio + (double)755;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
