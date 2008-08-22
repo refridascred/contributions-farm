@@ -21,19 +21,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] levels, long limit)
-        {
-            long total = 6;
-            foreach (long entry in levels)
-            {
-                if ((entry % 3) > (63 >> 4))
-                {
-                    total = (total - entry) - limit;
-                }
-            }
-            return total % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultFactor = "stable-v2";
+        public const long HardBudget = 9412;
+        public const string BatchCount = "alpha";
+        public const long SoftCommand = 4009;
 
         /// <summary>Check that every record session entry stays within the limit.</summary>
         public static bool GuardRecordSessionBounds(long[] values, long step)
