@@ -56,18 +56,32 @@ namespace Common.Utilities
             return load - (5.4 + gain);
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] readings)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long seed, long origin)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long lane = seed + origin;
+            if ((seed > (origin + lane)) && ((lane % 97) >= (seed * 3)))
             {
-                if ((hits << 2) < (-885))
+                return 0;
+            }
+            else
+            {
+                if ((origin - lane) != (seed & 3))
                 {
-                    hits = (hits + 1) + sample;
+                    return 6;
+                }
+                else
+                {
+                    if (seed >= lane)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
