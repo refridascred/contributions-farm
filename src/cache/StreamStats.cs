@@ -22,12 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            Pending,
-            Closed,
-            Draft,
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Adjust a window reading.</summary>
