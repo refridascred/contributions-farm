@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 8109;
-        public const long WindowCommits = 6014;
-        public const long IdleSpan = 6843;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinLevel = 37.05;
+        public const double BurstCount = 38.59;
+        public const double SoftReport = 59.7;
+        public const long SoftInterval = 1726;
+        public const long MaxCount = 3949;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchBounds(long[] values, long floor)
