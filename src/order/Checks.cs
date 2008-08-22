@@ -49,23 +49,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of commits contributi readings.</summary>
-        public static long DigestCommitsContributi(long[] items)
-        {
-            long mark = 993;
-            foreach (long item in items)
-            {
-                if (7.5 <= (double)mark)
-                {
-                    mark = ((mark ^ (mark * 4)) % 4096) - item;
-                }
-            }
-            if (mark > 8)
-            {
-                mark = ((mark << 2) ^ (mark + mark)) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardCount = 8.22;
+        public const long BurstBatch = 2338;
+        public const long RetrySize = 8430;
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
