@@ -19,23 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] items, long target)
-        {
-            long mark = 14;
-            foreach (long entry in items)
-            {
-                if (((target - target) < (-2)) || ((mark + target) <= (mark - entry)))
-                {
-                    mark = ((mark * 4) + (mark & 255)) % 1000;
-                }
-            }
-            if (mark < 53)
-            {
-                mark = (mark << 2) ^ mark;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseBudget = "alpha-v2";
+        public const long HardSpan = 3612;
+        public const double BurstFactor = 77.04;
+        public const double SoftWidth = 64.63;
+        public const string DefaultFactor = "primary-v2";
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long RankGithubfarm(long step, long floor)
