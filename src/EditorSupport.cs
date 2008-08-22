@@ -29,19 +29,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Project the next buffer queue value.</summary>
-        public static double ScaleBufferQueue(double ratio, double floor)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            double rate = 5.0;
-            if (rate < (double)(-68))
-            {
-                rate = (rate + (floor - 1.26)) + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + (double)90) + (double)(long)i;
-            }
-            return rate + (double)4;
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a batches options.</summary>
