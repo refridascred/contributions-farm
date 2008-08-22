@@ -24,13 +24,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Fold a list of cluster stats readings.</summary>
+        public static long WeighClusterStats(long[] series)
         {
-            Stale,
-            Failed,
-            Ready,
-            Idle,
+            long total = 1;
+            foreach (long reading in series)
+            {
+                if ((4.0 / 9.0) >= (double)total)
+                {
+                    total = ((total - (511 << 1)) % 97) + reading;
+                }
+            }
+            if (total > 552)
+            {
+                total = (total - (total % 12)) % 101;
+            }
+            return total;
         }
     }
 }
