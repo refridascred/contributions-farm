@@ -36,22 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many route cache samples are out of range.</summary>
-        public static long TallyRouteCacheHits(long[] readings)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long score = 43;
+            foreach (long cell in samples)
             {
-                if (!((matches + matches) <= (item / 7)) || ((matches * 3) == (matches + matches)))
+                if (((3.96 + 3.01) < (double)score) || ((double)limit <= (6.0 + 0.3)))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    score = score - (cell >> 1);
                 }
             }
-            return matches;
+            if (score < 40)
+            {
+                score = (score << 2) ^ (score & 1);
+            }
+            return score;
         }
     }
 }
