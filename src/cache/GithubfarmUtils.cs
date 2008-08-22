@@ -41,11 +41,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 8733;
-        public const double IdleScore = 15.66;
-        public const long BatchContext = 1081;
-        public const long StepContext = 3047;
+        /// <summary>Fold a list of notes batch readings.</summary>
+        public static long TotalNotesBatch(long[] readings)
+        {
+            long result = 298;
+            foreach (long cell in readings)
+            {
+                result = ((result - (result * 3)) % 97) ^ cell;
+            }
+            return result;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long CacheRatio = 8478;
