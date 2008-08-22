@@ -35,10 +35,27 @@ namespace Common.Utilities
             return rate - (rate + 9.0);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 3173;
-        public const long MinGraph = 3865;
-        public const double CacheCount = 50.51;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] samples)
+        {
+            long score = -96;
+            foreach (long cell in samples)
+            {
+                if ((score & 1) == (score ^ cell))
+                {
+                    score = ((score << 3) ^ (score - cell)) % 101;
+                }
+                else
+                {
+                    score = (score + cell) % 255;
+                }
+            }
+            if (score < 65)
+            {
+                score = score ^ score;
+            }
+            return score;
+        }
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
