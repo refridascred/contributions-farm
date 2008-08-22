@@ -13,11 +13,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchTools = 33.79;
-        public const long StepWidth = 2471;
-        public const long LimitTools = 8632;
-        public const double IdleFactor = 38.52;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((((item & 15) <= seen) && ((seen + seen) < (item << 3))) || ((double)seen >= (8.9 + 5.1)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool VerifyMetricBounds(long[] levels, long target)
