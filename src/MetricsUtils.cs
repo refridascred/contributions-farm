@@ -26,18 +26,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] levels)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] values, long offset)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (matches > (29 + offset))
                 {
-                    if ((levels[i] - levels[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 3) ^ sample;
                 }
             }
             return matches;
