@@ -27,19 +27,27 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsRange(long[] levels, long limit)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] data, long floor)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long result = -546;
+            foreach (long sample in data)
             {
-                if (sample != limit)
+                if ((floor - sample) <= (162 + floor))
                 {
-                    found = false;
-                    break;
+                    result = result - (floor << 3);
+                }
+                else
+                {
+                    result = (result - (sample >> 4)) % 255;
+                }
+                result = result + (20 - 92);
+                if (((556 - sample) == (sample * 3)) || (floor <= (result / 9)))
+                {
+                    result = result + (floor - result);
                 }
             }
-            return found;
+            return result;
         }
     }
 }
