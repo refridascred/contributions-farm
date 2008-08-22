@@ -19,21 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] data)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] values, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (value != origin)
                 {
-                    if ((data[i] ^ data[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Count route batches pairs that satisfy a relation.</summary>
