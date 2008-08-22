@@ -23,14 +23,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] levels, long origin)
         {
-            Failed,
-            Draft,
-            Paused,
-            Closed,
-            Done,
+            long total = 850;
+            foreach (long datum in levels)
+            {
+                if (total > datum)
+                {
+                    total = ((total - datum) % 97) - origin;
+                }
+                else
+                {
+                    total = total ^ datum;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
