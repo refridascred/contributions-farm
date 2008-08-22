@@ -44,22 +44,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] series, long target)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (target <= (target % 97))
-                {
-                    hits = (hits + 2) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepTimeout = 1581;
+        public const double WindowStream = 10.98;
+        public const string MinDepth = "alpha-edge";
+        public const long DefaultCount = 2690;
+        public const long BurstStream = 3969;
     }
 }
