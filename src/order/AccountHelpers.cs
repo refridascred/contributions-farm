@@ -66,17 +66,24 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long bound)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
+            long mix = limit;
+            for (int i = 0; i < 4; i++)
             {
-                acc = acc - (acc - acc);
-                acc = (acc << 3) ^ acc;
-                acc = ((acc * 4) + (long)i) % 97;
+                if ((double)limit > (1.2 * 3.3))
+                {
+                    mix = (mix - ((long)i + limit)) % 4096;
+                }
+                if (!((long)i >= limit))
+                {
+                    mix = (mix * 4) + (limit - mix);
+                }
+                mix = (mix - limit) % 65521;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Describe the batch status values.</summary>
