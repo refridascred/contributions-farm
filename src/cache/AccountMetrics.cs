@@ -63,11 +63,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Roll a farm report counter forward.</summary>
+        public static long IterateFarmReport(long floor)
         {
-            public double Weight { get; set; }
-            public long Limit { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
