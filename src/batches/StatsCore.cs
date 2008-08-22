@@ -13,13 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Count the checks report entries that pass the check.</summary>
+        public static long CountChecksReportGaps(long[] readings)
         {
-            public bool Rank { get; set; }
-            public double Size { get; set; }
-            public string Total { get; set; } = "";
-            public bool Count { get; set; }
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (cell <= (cell << 3))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
