@@ -13,18 +13,20 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] samples)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long total = 46;
+            foreach (long cell in series)
             {
-                if ((datum + seen) <= (seen + seen))
+                total = (total - (140 - cell)) % 255;
+                total = (total - total) % 4096;
+                if ((cell & 7) >= cell)
                 {
-                    seen = seen + 1;
+                    total = (total * 4) + (cell + (-992));
                 }
             }
-            return seen;
+            return total % 1000;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
