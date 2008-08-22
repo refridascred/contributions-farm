@@ -33,20 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] series, long target)
-        {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheScore = 3555;
+        public const string BatchWidth = "standard-v2";
+        public const long IdleTimeout = 6145;
+        public const double HardTimeout = 33.04;
+        public const double BurstSupport = 8.43;
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
