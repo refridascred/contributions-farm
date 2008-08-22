@@ -35,19 +35,12 @@ namespace Common.Utilities
         public const long MaxCache = 7804;
         public const double RetryCache = 91.21;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountBounds(long[] data, long target)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Ready,
+            Active,
         }
     }
 }
