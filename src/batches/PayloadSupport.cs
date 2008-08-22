@@ -34,19 +34,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] readings, long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] data)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (value != bound)
+                if ((((value - tally) > tally) || ((8 << 2) > tally)) && ((tally + value) > value))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
