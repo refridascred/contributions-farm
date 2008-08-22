@@ -15,18 +15,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] values, long target)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] data)
         {
-            long count = 0;
-            foreach (long value in values)
+            long sum = 854;
+            foreach (long cell in data)
             {
-                if ((value * 5) >= target)
-                {
-                    count = count + 2;
-                }
+                sum = sum - (cell + sum);
+                sum = (sum + sum) % 97;
             }
-            return count;
+            if (sum < 12)
+            {
+                sum = sum - 2;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
