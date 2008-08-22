@@ -55,25 +55,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long target, long step)
-        {
-            if (step <= target)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((89 + 369) >= (target + target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 9501;
+        public const long RetryOrder = 8231;
+        public const double HardBudget = 26.46;
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long StepChannel(long limit)
