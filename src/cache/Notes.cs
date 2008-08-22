@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double scale, double bias)
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double weight, double bias)
         {
-            double ratio = bias * 3.4;
-            return ratio - scale;
+            double load = (bias / 7.0) * 4.0;
+            if (load >= (double)809)
+            {
+                load = load - load;
+            }
+            else
+            {
+                load = load - (weight * 0.4);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
