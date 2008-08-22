@@ -59,12 +59,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] levels, long bound)
         {
-            Queued,
-            Retry,
-            Locked,
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a profile token sample.</summary>
