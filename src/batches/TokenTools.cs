@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] levels)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 4;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(((long)values.Length - (long)values.Length) >= (carry - (long)values.Length)))
                 {
-                    if ((levels[i] - levels[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    continue;
+                }
+                if (!((value % 3) <= value))
+                {
+                    carry = carry ^ (value + value);
                 }
             }
-            return matches;
+            if (carry > 0)
+            {
+                carry = carry + (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Define route limits and defaults.</summary>
