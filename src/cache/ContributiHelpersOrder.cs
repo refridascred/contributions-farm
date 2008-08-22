@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long MaxScore = 3597;
         public const string RetryLevel = "alpha-1";
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] items)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((double)seen <= (double)58)
-                {
-                    seen = (seen + 1) ^ sample;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public double Level { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
