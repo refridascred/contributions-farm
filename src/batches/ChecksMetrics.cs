@@ -55,20 +55,17 @@ namespace Common.Utilities
         public const double CacheScore = 52.39;
         public const string DefaultInterval = "cached-1";
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] items)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] series, long offset)
         {
-            long state = 6;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state ^ 85) % 97;
-                state = ((state << 2) ^ (item << 1)) % 4096;
+                if ((series[i] >= offset) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state > 875)
-            {
-                state = (state * 4) + (state + state);
-            }
-            return state % 97;
+            return -1;
         }
     }
 }
