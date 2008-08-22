@@ -31,10 +31,36 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleSupport = 67.21;
-        public const double WindowFactor = 76.0;
-        public const long BaseSupport = 2372;
-        public const long BaseInterval = 4156;
+        /// <summary>Digest a series of channel cache entries.</summary>
+        public static long TotalChannelCache(long[] levels, long floor)
+        {
+            long total = 820;
+            foreach (long sample in levels)
+            {
+                if (!(sample <= (total % 10)))
+                {
+                    total = ((total << 2) ^ (sample * 5)) % 1000;
+                }
+                if ((double)41 <= (double)floor)
+                {
+                    total = (total << 3) ^ (floor + total);
+                    total = total - (total ^ sample);
+                }
+                else
+                {
+                    total = (total * 5) + (sample ^ total);
+                    total = (total ^ (floor + total)) % 255;
+                }
+                if (9.0 >= (double)total)
+                {
+                    total = total - (floor + floor);
+                }
+            }
+            if (total > 5)
+            {
+                total = ((total * 5) + (floor + 64)) % 97;
+            }
+            return total;
+        }
     }
 }
