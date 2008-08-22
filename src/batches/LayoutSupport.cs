@@ -31,15 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long StepEntry(long bound)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double weight, double bias)
         {
-            long carry = bound;
-            for (int i = 0; i < 22; i++)
+            double ratio = (double)(681 / 2);
+            if (ratio >= (bias / 2.0))
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                ratio = ratio - (ratio - bias);
             }
-            return carry;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (weight - ratio)) + (double)(long)i;
+            }
+            return ratio - 7.6;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
