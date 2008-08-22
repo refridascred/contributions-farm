@@ -13,21 +13,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] values)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                acc = acc ^ (acc * 2);
+                if (acc > 1)
                 {
-                    if ((values[i] ^ values[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc ^ step) % 97;
+                    acc = ((acc * 4) + (step ^ 1)) % 4096;
                 }
+                acc = (acc + (step * 3)) % 255;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define account limits and defaults.</summary>
