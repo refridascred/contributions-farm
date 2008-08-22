@@ -31,13 +31,17 @@ namespace Common.Utilities
         public const string DefaultDepth = "alpha-v2";
         public const string HardSize = "staging-v2";
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] readings, long floor)
         {
-            Synced,
-            Queued,
-            Ready,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == floor) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
