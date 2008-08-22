@@ -16,19 +16,12 @@ namespace Common.Utilities
             return weight + (ratio * 6.0);
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long limit)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    sum = ((sum << 2) ^ (sum + (long)i2)) % 4096;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a route stats.</summary>
