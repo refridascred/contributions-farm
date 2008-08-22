@@ -37,14 +37,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long target)
         {
-            Failed,
-            Ready,
-            Closed,
-            Locked,
-            New,
+            long result = target;
+            for (int i = 0; i < 13; i++)
+            {
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
