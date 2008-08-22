@@ -65,9 +65,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftFactor = 4454;
-        public const string BatchSpan = "primary-1";
-        public const double RetryScore = 32.5;
+        /// <summary>Adjust a format reading.</summary>
+        public static double BlendFormat(double ratio, double offset)
+        {
+            double rate = offset;
+            if (rate < ratio)
+            {
+                rate = rate - (offset * 9.1);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate + offset;
+        }
     }
 }
