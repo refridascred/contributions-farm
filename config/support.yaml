@@ -1,22 +1,11 @@
 # support settings
-retry_limit_s: 1203
-hard_size:
-  context_window: 56.97
-  warm_depth_ms: 70
-  verbose:
-    compress: false
-    max_retries_ms:
-      - 249
-      - 170
-    sync_capacity_pct: 60.07
-    default_capacity_count:
-      - stable
-      - edge
-      - fallback
-    command_limit: 1024
-  readonly:
-    - 212
-    - 263
-    - 189
-    - 189
-command_retries: 30.96
+stream_size: true
+batch_limit_count: cached
+max_ttl_count: 5
+max_capacity_count: 3365
+verbose:
+  soft_ttl_count: 86
+  warm_size_ms:
+    - standard
+    - eu-west
+  base_retries_pct: true
