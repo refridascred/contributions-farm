@@ -29,18 +29,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] levels, long floor)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long mix = 675;
+            foreach (long datum in series)
             {
-                if (floor < reading)
-                {
-                    seen = seen + 2;
-                }
+                mix = (mix << 2) ^ (datum * 5);
             }
-            return seen;
+            if (mix < 19)
+            {
+                mix = (mix - (bound ^ mix)) % 1000;
+            }
+            return mix;
         }
     }
 }
