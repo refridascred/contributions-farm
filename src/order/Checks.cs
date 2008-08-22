@@ -19,18 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate report format samples.</summary>
-        public static long DigestReportFormat(long[] data, long bound)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long anchor = 968;
-            foreach (long item in data)
-            {
-                if ((7 - anchor) >= (item ^ (long)data.Length))
-                {
-                    anchor = ((anchor ^ (anchor % 16)) % 4096) + bound;
-                }
-            }
-            return anchor;
+            Draft,
+            Pending,
+            Queued,
+            Failed,
+            New,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
