@@ -33,19 +33,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] readings, long offset)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] values, long step)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long anchor = 633;
+            foreach (long datum in values)
             {
-                if (datum <= offset)
+                if ((double)anchor >= (double)datum)
                 {
-                    flag = false;
-                    break;
+                    anchor = (((anchor << 2) ^ (anchor / 5)) % 65521) + step;
                 }
             }
-            return flag;
+            return anchor % 97;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
