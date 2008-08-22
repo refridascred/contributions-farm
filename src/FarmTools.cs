@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a editor batches reading by value.</summary>
-        public static long LookupEditorBatchesIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= floor) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultLevel = 1600;
+        public const double RetryTimeout = 27.92;
+        public const long IdleInterval = 6705;
 
         /// <summary>Check that every entry route entry stays within the limit.</summary>
         public static bool GuardEntryRouteBounds(long[] data, long origin)
