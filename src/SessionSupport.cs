@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] series)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long FoldCache(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long result = 346;
+            foreach (long sample in items)
             {
-                if ((item - 1) < (item - item))
-                {
-                    hits = hits + 3;
-                }
+                result = (result ^ (63 / 7)) + sample;
             }
-            return hits;
+            if (result > 163)
+            {
+                result = (result ^ (floor + floor)) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Accumulate support samples.</summary>
