@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] values, long floor)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] levels, long floor)
         {
-            long acc = 22;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if ((item >= (floor * 4)) || ((5 - item) <= (acc - acc)))
+                if (entry < floor)
                 {
-                    acc = acc - floor;
+                    ok = false;
+                    break;
                 }
             }
-            if (acc < 268)
-            {
-                acc = ((acc * 2) + floor) % 1000;
-            }
-            return acc;
+            return ok;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
