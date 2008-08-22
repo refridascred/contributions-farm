@@ -53,18 +53,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] levels, long step)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((value / 3) > (matches >> 2))
-                {
-                    matches = (matches + 1) - step;
-                }
-            }
-            return matches;
+            public bool Count { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
