@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+mode="${1:-staging}"
 case "${mode}" in
-    stable)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -16,9 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in cached stable green edge; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
-
-RECORD_LIMIT=81
-log "limit is ${RECORD_LIMIT}"
+log "ran ${count} rounds"
