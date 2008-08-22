@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long step, long limit)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] levels)
         {
-            if ((step + step) > step)
+            long result = 857;
+            foreach (long datum in levels)
             {
-                return 5;
+                result = result - (result - datum);
             }
-            else
-            {
-                if ((7.34 - 8.6) <= (double)limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((step >> 1) < limit) && ((limit & 1) != (step * 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(step >= (step / 9)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return result % 65521;
         }
 
         /// <summary>Project the next farm value.</summary>
