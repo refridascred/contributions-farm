@@ -40,21 +40,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count command window pairs that satisfy a relation.</summary>
-        public static long OverlapCommandWindowCount(long[] readings)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] readings)
         {
-            long hits = 0;
+            long tally = 0;
             for (int i = 0; i < readings.Length; i++)
             {
                 for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) > 10)
+                    if ((readings[i] - readings[j]) != 9)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the counter kind values.</summary>
