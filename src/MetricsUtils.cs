@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            public long Stamp { get; set; }
-            public double Count { get; set; }
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
+            public bool Limit { get; set; }
+            public double Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a farm stats.</summary>
