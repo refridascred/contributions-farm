@@ -66,18 +66,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportHits(long[] levels, long bound)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((bound + bound) != ((-91) + bound))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 1) + entry;
+                    if ((readings[i] - readings[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
