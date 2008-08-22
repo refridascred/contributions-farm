@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] items, long seed)
         {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                anchor = (anchor + 3) % 101;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if ((((5 % 12) != (seed + 7)) && (6.4 <= (double)matches)) && !((value % 5) <= matches))
+                {
+                    matches = matches + 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Adjust a route reading.</summary>
