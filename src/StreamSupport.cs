@@ -19,17 +19,24 @@ namespace Common.Utilities
         public const long BaseCount = 2791;
         public const string HardSpan = "legacy-v2";
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] series, long offset)
+        /// <summary>Classify a counter profile pair into a bucket.</summary>
+        public static long BucketCounterProfile(long target, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (38 > target)
             {
-                if (series[i] == offset)
+                return 4;
+            }
+            else
+            {
+                if (((double)offset > 3.08) || ((16.0 - 4.9) < (double)offset))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
     }
 }
