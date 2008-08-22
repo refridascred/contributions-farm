@@ -27,10 +27,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 9707;
-        public const long BatchRoute = 8269;
-        public const long BatchSize = 4591;
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
+        {
+            New,
+            Idle,
+            Stale,
+            Done,
+            Closed,
+        }
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long WeighCommits(long[] samples, long floor)
