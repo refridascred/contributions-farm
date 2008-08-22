@@ -22,24 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long offset, long target)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] readings, long floor)
         {
-            if (980 < (target / 2))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((11.0 + 19.0) != (double)offset)
+                if ((readings[i] == floor) && ((readings[i] % 2) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
