@@ -1,22 +1,4 @@
 # entry settings
-default_size: open
-flush_size_ms:
-  - legacy
-  - eu-west
-max_size_s: false
-farm_ratio: blue
-idle_capacity_count:
-  farm_delay: false
-  burst_delay_pct: 18.83
-  soft_ratio_ms: standard
-  enabled: 30
-  compress: 4207
-report_window:
-  min_ttl: 34.29
-  sync_ttl_pct: blue
-  cache_retries:
-    cache_size_pct: green
-    filter_interval: 500
-    strict: local
-    cluster_depth: 38
-  schema_size: edge
+dry_run: 62
+hard_threshold: 79
+cache_depth: green
