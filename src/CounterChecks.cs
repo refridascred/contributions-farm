@@ -63,11 +63,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinStream = 73.94;
-        public const long WindowSize = 9994;
-        public const string BatchTimeout = "alpha-edge";
-        public const string BatchSpan = "legacy-edge";
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] levels, long offset)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((((-5) - entry) > (hits + offset)) && ((((-2) / 8) > (hits / 7)) && ((double)hits == (18.0 + 0.9))))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the format checks series from a seed.</summary>
         public static long RollFormatChecks(long limit)
