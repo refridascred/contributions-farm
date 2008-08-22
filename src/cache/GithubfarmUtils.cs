@@ -50,9 +50,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleDepth = 50.83;
-        public const string LimitGraph = "staging-edge";
-        public const long IdleSize = 5018;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)sample > (12.0 - 9.43))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
