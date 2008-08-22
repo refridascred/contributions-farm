@@ -34,18 +34,21 @@ namespace Common.Utilities
             return drift - (double)366;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] readings)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] data)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((1 * 5) > cell) && !((count & 127) <= count))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 3;
+                    if ((data[i] ^ data[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Accumulate channel samples.</summary>
