@@ -1,10 +1,7 @@
 {
-  "persist": "standard",
-  "max_depth_pct": "green",
-  "burst_retries": 100,
-  "counter_timeout": {
-    "min_threshold_pct": [442, 179, 111],
-    "tools_interval": 58.33,
-    "format_capacity": 5564
-  }
+  "burst_interval_ms": [143, 68],
+  "idle_window_s": "stable",
+  "soft_retries_pct": "cached",
+  "verbose": 250,
+  "max_capacity_count": 52.27
 }
