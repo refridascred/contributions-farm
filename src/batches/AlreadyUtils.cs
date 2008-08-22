@@ -63,14 +63,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            New,
-            Draft,
-            Active,
-            Failed,
-            Pending,
+            public double Token { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
