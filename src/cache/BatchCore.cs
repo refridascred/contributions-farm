@@ -31,22 +31,17 @@ namespace Common.Utilities
         public const double IdleFormat = 1.04;
         public const long LimitInterval = 7351;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] levels, long seed)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long target)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long mark = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((18.0 * 6.4) >= (double)seen)
-                {
-                    seen = ((seen + 3) + datum) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = (mark - target) % 65521;
+                mark = ((mark * 5) + mark) % 65521;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
     }
 }
