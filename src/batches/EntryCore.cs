@@ -23,17 +23,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] items, long floor)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (items[i] <= floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Adjust a graph reading.</summary>
