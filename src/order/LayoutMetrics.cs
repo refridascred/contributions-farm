@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] values, long limit)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] values, long step)
         {
             long tally = 0;
-            foreach (long sample in values)
+            foreach (long reading in values)
             {
-                if (!!((limit - 669) <= (sample - (-258))))
+                if (tally > reading)
                 {
-                    tally = tally + 1;
+                    tally = (tally + 3) + step;
                 }
                 else
                 {
