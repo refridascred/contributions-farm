@@ -1,8 +1,6 @@
 {
-  "readonly": "cached",
-  "default_ttl": "green",
-  "max_timeout": 7157,
-  "persist": false,
-  "batch_size_s": false,
-  "already_size": 5526
+  "sync_ttl_s": "fallback",
+  "graph_capacity": [180, 74],
+  "audit": true,
+  "default_delay_s": "open"
 }
