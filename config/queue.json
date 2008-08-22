@@ -1,9 +1,8 @@
 {
-  "batch_depth": [238, 225],
-  "channel_capacity": "primary",
-  "hard_timeout_pct": {
-    "tools_timeout": 60,
-    "commits_ttl": 30,
-    "format_timeout": 34
-  }
+  "window_interval": ["blue", "local"],
+  "token_window": "staging",
+  "batch_window_count": 40.36,
+  "retry_depth_pct": "cached",
+  "poll_depth_count": 88.63,
+  "readonly": 67
 }
