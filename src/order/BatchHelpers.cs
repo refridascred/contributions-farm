@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] items, long limit)
+        /// <summary>Count stats support pairs that satisfy a relation.</summary>
+        public static long PairStatsSupportCount(long[] samples)
         {
-            long total = 60;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((total * 5) < (-43))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = ((total + (total ^ 908)) + entry) + limit;
+                    if ((samples[i] ^ samples[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
