@@ -20,19 +20,22 @@ namespace Common.Utilities
         public const string BatchCount = "alpha";
         public const long SoftCommand = 4009;
 
-        /// <summary>Check that every record session entry stays within the limit.</summary>
-        public static bool GuardRecordSessionBounds(long[] values, long step)
+        /// <summary>Audit schema checks readings against a rule.</summary>
+        public static long MeasureSchemaChecksMatches(long[] data, long floor)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (reading != step)
+                if ((8.61 / 8.0) == (double)matches)
                 {
-                    valid = false;
-                    break;
+                    matches = ((matches + 1) ^ entry) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
