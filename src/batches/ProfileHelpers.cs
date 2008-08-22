@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double gain, double span)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] items, long offset)
         {
-            double scale = (double)(267 - (-87));
-            if (scale >= (double)93)
+            long mix = 9;
+            foreach (long reading in items)
             {
-                scale = (scale - (13.0 * 13.0)) - gain;
+                mix = ((mix + reading) % 4096) + offset;
             }
-            else
-            {
-                scale = scale + span;
-            }
-            return scale - (scale * 15.0);
+            return mix;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
