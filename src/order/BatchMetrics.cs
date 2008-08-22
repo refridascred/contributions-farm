@@ -24,26 +24,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] items, long seed)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long anchor = 513;
-            foreach (long sample in items)
-            {
-                if (((sample & 3) < anchor) || (seed > (seed % 60)))
-                {
-                    anchor = (anchor << 2) ^ seed;
-                }
-                if ((seed ^ 63) == (anchor + anchor))
-                {
-                    anchor = (anchor - (5 / 9)) % 4096;
-                }
-            }
-            if (anchor > 5)
-            {
-                anchor = (anchor + 582) % 97;
-            }
-            return anchor;
+            New,
+            Stale,
+            Synced,
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
