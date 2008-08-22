@@ -19,16 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a batches payload figure with a bias.</summary>
-        public static double SmoothBatchesPayload(double gain, double offset)
-        {
-            double mean = gain;
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + offset) - (double)(long)i;
-            }
-            return mean + offset;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowScore = 9040;
+        public const long MinInterval = 1633;
+        public const double HardProfile = 66.72;
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool GuardAlreadyRange(long[] items, long step)
