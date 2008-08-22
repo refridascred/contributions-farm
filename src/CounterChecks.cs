@@ -50,19 +50,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics farm entries that pass the check.</summary>
-        public static long AuditMetricsFarmMatches(long[] levels, long offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] levels, long step)
         {
             long hits = 0;
-            foreach (long entry in levels)
+            foreach (long reading in levels)
             {
-                if (!((412 >= offset) || ((double)hits >= (5.91 * 0.26))))
+                if (!(((long)levels.Length + step) <= (hits - hits)))
                 {
-                    hits = (hits + 3) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 1) + reading;
                 }
             }
             return hits;
