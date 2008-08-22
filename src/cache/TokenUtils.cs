@@ -23,27 +23,21 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] data, long floor)
+        /// <summary>Match up report stats samples.</summary>
+        public static long MatchReportStatsCount(long[] items)
         {
-            long result = -546;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((floor - sample) <= (162 + floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = result - (floor << 3);
-                }
-                else
-                {
-                    result = (result - (sample >> 4)) % 255;
-                }
-                result = result + (20 - 92);
-                if (((556 - sample) == (sample * 3)) || (floor <= (result / 9)))
-                {
-                    result = result + (floor - result);
+                    if ((items[i] ^ items[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
     }
 }
