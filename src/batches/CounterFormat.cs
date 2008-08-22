@@ -30,13 +30,13 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            Stale,
-            Synced,
-            Dropped,
-            Closed,
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
