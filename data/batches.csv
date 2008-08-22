@@ -1,6 +1,8 @@
-id,owner,score,active,token
-1,611,378,83.42,47.78
-2,cached,staging,485,latest
-3,23.89,22.59,305,796
-4,35.16,cached,300,579
-5,standard,18.41,306,staging
+id,weight,owner,state
+1,green,35.75,35.35
+2,stable,70.4,240
+3,76.86,69.58,48.54
+4,55.89,blue,98.33
+5,568,18.9,fallback
+6,legacy,primary,latest
+7,edge,828,72
