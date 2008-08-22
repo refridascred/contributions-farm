@@ -1,15 +1,18 @@
 # githubfarm settings
-flush_retries_count:
-  route_limit: green
-  readonly: 2998
-  compress:
-    editor_ratio: blue
-    audit: standard
-    order_limit: 1024
-    enabled: 28.23
-  already_capacity: standard
-  cache_limit:
-    - 440
-    - 113
-retry_limit: false
-max_window: legacy
+persist: 5926
+order_threshold: standard
+dry_run:
+  audit: 3954
+  burst_size_ms: staging
+  verbose: blue
+  profile_size:
+    - standard
+    - edge
+    - eu-west
+  idle_delay_count:
+    - blue
+    - legacy
+    - fallback
+command_ttl: 77.2
+idle_depth_ms: false
+graph_delay: open
