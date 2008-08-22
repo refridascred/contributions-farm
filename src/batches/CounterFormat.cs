@@ -37,9 +37,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string RetryLevel = "legacy-v2";
-        public const double WindowSize = 83.3;
-        public const string LimitRatio = "fallback-1";
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            New,
+            Ready,
+            Stale,
+        }
     }
 }
