@@ -39,13 +39,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] readings, long target)
         {
-            public string Rank { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Ratio { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
