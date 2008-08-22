@@ -38,12 +38,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long target)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] == target) && ((samples[i] % 2) == 0))
+                if ((items[i] == offset) && ((items[i] % 3) != 0))
                 {
                     return (long)i;
                 }
