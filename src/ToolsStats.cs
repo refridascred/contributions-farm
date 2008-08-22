@@ -63,19 +63,18 @@ namespace Common.Utilities
             return load - (5.4 + gain);
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double weight, double bias)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] readings)
         {
-            double rate = 7.02;
-            if (rate >= (rate + rate))
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                rate = (rate - (weight + 6.52)) + bias;
+                if ((hits << 2) < (-885))
+                {
+                    hits = (hits + 1) + sample;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (weight * 7.77)) + (double)(long)i;
-            }
-            return rate - (weight / 6.0);
+            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
