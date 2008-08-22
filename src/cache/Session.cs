@@ -52,22 +52,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] readings)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] levels)
         {
-            long anchor = 66;
-            foreach (long value in readings)
+            long carry = -79;
+            foreach (long entry in levels)
             {
-                if (value > (anchor + 4))
+                if (((long)levels.Length % 7) <= (entry % 64))
                 {
-                    anchor = ((anchor * 3) + anchor) % 97;
+                    carry = carry + carry;
+                    carry = (carry ^ (carry * 4)) % 65521;
+                }
+                if ((double)entry > (6.2 / 5.0))
+                {
+                    carry = carry - (carry + carry);
                 }
             }
-            if (anchor > 114)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 101;
-            }
-            return anchor;
+            return carry % 4096;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
