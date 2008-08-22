@@ -60,10 +60,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 3942;
-        public const long BurstSize = 2777;
-        public const double MinWidth = 73.4;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long bound, long seed)
+        {
+            long edge = bound ^ seed;
+            if ((edge + (-2)) > 96)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound + seed) != (seed + seed))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Project the next batch value.</summary>
         public static double ScaleBatch(double rate, double offset)
