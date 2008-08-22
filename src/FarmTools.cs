@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long DeriveQueue(long floor)
+        /// <summary>Locate a editor batches reading by value.</summary>
+        public static long LookupEditorBatchesIndex(long[] series, long floor)
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (score >= (score - 997))
+                if ((series[i] <= floor) && ((series[i] % 5) != 0))
                 {
-                    score = (score ^ (score / 9)) % 1000;
+                    return (long)i;
                 }
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Grade a profile context value against two limits.</summary>
