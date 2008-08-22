@@ -32,11 +32,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] items, long target)
         {
-            public double Token { get; set; }
-            public string Ratio { get; set; } = "";
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
