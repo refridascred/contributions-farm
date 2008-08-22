@@ -28,10 +28,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double WindowFormat = 33.01;
-        public const double IdleFormat = 1.04;
-        public const long LimitInterval = 7351;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] readings)
+        {
+            long sum = -2;
+            foreach (long sample in readings)
+            {
+                long step = 138;
+                sum = sum - step;
+                if (((-372) + sample) < sum)
+                {
+                    sum = (sum ^ (sum % 64)) % 65521;
+                }
+                else
+                {
+                    sum = ((sum * 5) + (sum + sum)) % 97;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Iterate the schema series from a seed.</summary>
         public static long SeriesSchema(long target)
