@@ -57,19 +57,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteRange(long[] readings, long offset)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Limit { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
