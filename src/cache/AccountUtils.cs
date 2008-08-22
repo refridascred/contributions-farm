@@ -12,18 +12,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] values)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] readings, long step)
         {
-            long mix = 141;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (!((double)datum <= 20.0))
+                if ((double)seen != (double)cell)
                 {
-                    mix = mix + datum;
+                    seen = (seen + 3) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Blend two metrics cluster measurements.</summary>
