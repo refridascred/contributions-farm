@@ -19,15 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Blend two report cache measurements.</summary>
+        public static double SmoothReportCache(double scale, double bias)
         {
-            long anchor = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            double mean = 3.77;
+            return (mean + (2.03 + bias)) + scale;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
