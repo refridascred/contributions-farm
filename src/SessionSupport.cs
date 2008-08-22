@@ -19,21 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] values)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] items, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 3;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                result = ((result << 2) ^ (step + result)) % 1000;
+                result = (result + datum) % 4096;
+                if (!((result - step) < (result & 3)))
                 {
-                    if ((values[i] - values[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            if (result < 979)
+            {
+                result = (result ^ result) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a token snapshot.</summary>
