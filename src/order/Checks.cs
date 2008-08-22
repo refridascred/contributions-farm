@@ -20,20 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileLimits(long[] data, long origin)
-        {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BatchNotes = 69.25;
+        public const long IdleWidth = 9257;
+        public const long RetryWidth = 2702;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BatchGraph = 3173;
