@@ -59,15 +59,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] samples)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long mark = 59;
-            foreach (long item in samples)
-            {
-                mark = mark - (item + mark);
-            }
-            return mark;
+            Failed,
+            Locked,
+            New,
         }
     }
 }
