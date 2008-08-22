@@ -20,22 +20,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] readings, long target)
+        /// <summary>Grade a metric command value against two limits.</summary>
+        public static long RankMetricCommand(long step, long origin)
         {
-            long carry = 3;
-            foreach (long item in readings)
+            if ((origin & 15) > (step + 0))
             {
-                if (6.0 >= (double)item)
+                return 2;
+            }
+            else
+            {
+                if ((step & 31) >= (step ^ step))
                 {
-                    carry = (carry - (item - carry)) + target;
+                    return 6;
                 }
                 else
                 {
-                    carry = carry - item;
+                    if ((8 > (93 + origin)) && ((step & 15) != (origin ^ step)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((862 / 8) < step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return carry % 4096;
         }
 
         /// <summary>Fold a list of support readings.</summary>
