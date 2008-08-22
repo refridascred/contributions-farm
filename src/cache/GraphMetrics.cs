@@ -59,9 +59,13 @@ namespace Common.Utilities
             return (scale + (scale / 9.0)) + span;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitSize = 8562;
-        public const long CacheSize = 5647;
-        public const long MaxFormat = 7272;
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public long Level { get; set; }
+            public bool Region { get; set; }
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
