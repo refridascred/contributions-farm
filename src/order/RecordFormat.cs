@@ -25,18 +25,18 @@ namespace Common.Utilities
         public const long RetryNotes = 7148;
         public const long BatchNotes = 5550;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] samples, long step)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((-9) <= (hits & 3))
+                if ((((cell * 2) != (matches + matches)) && ((cell / 5) <= cell)) || (matches >= (matches ^ cell)))
                 {
-                    hits = ((hits + 3) ^ entry) + step;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count the format editor entries that pass the check.</summary>
