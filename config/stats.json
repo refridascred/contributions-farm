@@ -1,10 +1,15 @@
 {
-  "farm_ttl": {
-    "retry_interval_count": "cached",
-    "poll_ratio_ms": ["green", "strict"],
-    "min_limit_ms": "local",
-    "base_ttl_ms": "standard"
+  "support_capacity": "stable",
+  "strict": 6560,
+  "entry_delay": ["primary", "local", "staging", "edge"],
+  "max_window_s": 1024,
+  "graph_ratio": {
+    "default_depth": 27,
+    "filter_retries": 48.58,
+    "account_ratio": "standard",
+    "editor_size": [437, 87, 168, 156],
+    "window_depth": true,
+    "support_interval": "local"
   },
-  "base_interval": "strict",
-  "idle_depth": "standard"
+  "flush_timeout": true
 }
