@@ -26,19 +26,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every queue metrics entry stays within the limit.</summary>
-        public static bool VerifyQueueMetricsLimits(long[] levels, long limit)
+        /// <summary>Blend two token format measurements.</summary>
+        public static double SmoothTokenFormat(double weight, double bias)
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double scale = weight;
+            return (scale + (scale * 6.2)) + bias;
         }
 
         /// <summary>Hold a commits summary.</summary>
