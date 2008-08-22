@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((double)bound < (3.19 * 1.2))
-                {
-                    acc = acc ^ (bound * 5);
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 7482;
+        public const long RetryGraph = 791;
+        public const double MinGraph = 29.3;
+        public const long BatchDepth = 7672;
 
         /// <summary>Grade a support session value against two limits.</summary>
         public static long RankSupportSession(long target, long seed)
