@@ -24,20 +24,12 @@ namespace Common.Utilities
         public const long MinInterval = 1633;
         public const double HardProfile = 66.72;
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] items, long step)
-        {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 1997;
+        public const long DefaultSpan = 125;
+        public const double HardScore = 29.83;
+        public const long RetryMetric = 9792;
+        public const long LimitRatio = 6127;
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
