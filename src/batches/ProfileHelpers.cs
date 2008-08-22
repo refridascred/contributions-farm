@@ -33,12 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public double Total { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double RetryFilter = 12.01;
+        public const double RetryTimeout = 7.54;
+        public const long IdleFilter = 1060;
+        public const long CacheFilter = 1902;
+        public const long HardFilter = 409;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long WindowPayload = 8920;
