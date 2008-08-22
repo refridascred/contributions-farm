@@ -70,12 +70,25 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long step, long bound)
         {
-            public double Mode { get; set; }
-            public double Size { get; set; }
-            public bool Count { get; set; }
+            long offset = step - bound;
+            if (((offset / 9) > (bound >> 1)) && (step <= 488))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset <= 16.0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
