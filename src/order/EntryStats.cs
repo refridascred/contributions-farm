@@ -28,22 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a commits filter counter forward.</summary>
-        public static long IterateCommitsFilter(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = (mix * 5) + (long)i;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mix = (mix + ((long)i2 << 2)) % 65521;
-                    mix = mix + (mix - (long)i2);
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 807;
+        public const string BaseWidth = "stable-v2";
+        public const double HardChannel = 11.08;
+        public const long MaxChannel = 4303;
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
