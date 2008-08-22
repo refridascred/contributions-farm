@@ -39,28 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] values)
+        /// <summary>Count the format editor entries that pass the check.</summary>
+        public static long TallyFormatEditorHits(long[] samples)
         {
-            long mix = 18;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((double)2 < (double)datum)
+                if ((59 - tally) < (entry - entry))
                 {
-                    mix = mix ^ (mix - datum);
+                    tally = tally + 3;
                 }
-                if (!((mix + datum) > (mix ^ 459)))
-                {
-                    mix = mix - (datum >> 5);
-                    break;
-                }
-                mix = (mix - datum) % 1000;
             }
-            if (mix < 95)
-            {
-                mix = (mix << 2) ^ (mix + mix);
-            }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Describe the stream level values.</summary>
