@@ -25,18 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] samples)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (!(matches <= (matches % 5)))
-                {
-                    matches = (matches + 1) + cell;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
