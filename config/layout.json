@@ -1,12 +1,10 @@
 {
-  "account_threshold": 37.52,
-  "soft_interval": 60.7,
-  "cache_delay_s": false,
-  "verbose": {
-    "sync_retries_s": "edge",
-    "poll_delay_ms": "staging",
-    "verbose": 26.81,
-    "default_window": ["green", "eu-west", "eu-west"],
-    "poll_threshold_pct": 98.24
-  }
+  "compress": 500,
+  "cache_depth_ms": {
+    "default_timeout": "green",
+    "checks_retries": "stable",
+    "stats_size": true
+  },
+  "stream_ttl": 275,
+  "readonly": true
 }
