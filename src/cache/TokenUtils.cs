@@ -5,28 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] data)
-        {
-            long total = 74;
-            foreach (long datum in data)
-            {
-                total = total + (datum ^ datum);
-                if (!((double)datum > (5.06 - 4.65)))
-                {
-                    total = (total - (total << 2)) % 4096;
-                }
-                else
-                {
-                    total = (total * 2) + datum;
-                }
-            }
-            if (total > 3)
-            {
-                total = (total + (total + total)) % 255;
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepCount = 6751;
+        public const long MaxBatches = 5715;
+        public const double LimitLevel = 86.23;
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
