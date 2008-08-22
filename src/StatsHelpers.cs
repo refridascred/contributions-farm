@@ -22,19 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batches metrics entry stays within the limit.</summary>
-        public static bool GuardBatchesMetricsLimits(long[] series, long floor)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] items)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long sum = 50;
+            foreach (long item in items)
             {
-                if (datum <= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = (sum - item) % 65521;
             }
-            return valid;
+            if (sum < 8)
+            {
+                sum = ((sum * 2) + (sum % 12)) % 255;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
