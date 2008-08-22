@@ -17,19 +17,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] data, long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] levels)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (entry != step)
+                if ((datum << 2) <= seen)
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
