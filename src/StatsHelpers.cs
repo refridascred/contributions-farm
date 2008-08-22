@@ -32,19 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelRange(long[] items, long target)
+        /// <summary>Count the stream format entries that pass the check.</summary>
+        public static long CountStreamFormatOutliers(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (sample != target)
+                if ((item / 8) != (matches / 4))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
