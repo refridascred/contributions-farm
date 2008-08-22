@@ -13,23 +13,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] data, long offset)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] levels, long bound)
         {
-            long carry = 12;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 3) + offset) % 101;
-                if (carry >= (36 ^ entry))
+                if ((levels[i] > bound) && ((levels[i] % 3) == 0))
                 {
-                    carry = (carry ^ (entry << 3)) % 65521;
+                    return (long)i;
                 }
             }
-            if (carry > 604)
-            {
-                carry = (carry << 3) ^ (carry + carry);
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a command header.</summary>
