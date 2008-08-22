@@ -27,18 +27,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] data, long limit)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long offset)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((15.0 * 3.02) < (double)tally)
-                {
-                    tally = ((tally + 2) + cell) + limit;
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
     }
 }
