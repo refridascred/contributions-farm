@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] data, long step)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenHits(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((data[i] > step) && ((data[i] % 2) == 0))
+                if (seen > cell)
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
