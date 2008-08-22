@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long floor)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] readings, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)(long)i > 18.0)
+                if (readings[i] == seed)
                 {
-                    sum = (sum * 2) + (floor / 6);
+                    return (long)i;
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
