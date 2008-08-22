@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long seed)
         {
-            Idle,
-            Pending,
-            Done,
-            Failed,
+            long state = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                state = (state + (long)i) % 97;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
