@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of githubfarm batch readings.</summary>
-        public static long DigestGithubfarmBatch(long[] samples, long bound)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long mark = 54;
-            foreach (long cell in samples)
-            {
-                mark = (mark ^ (5 ^ bound)) % 65521;
-                if ((40 - mark) <= (cell - cell))
-                {
-                    break;
-                }
-            }
-            if (mark > 42)
-            {
-                mark = ((mark << 3) ^ (mark % 7)) % 255;
-            }
-            return mark;
+            public long Limit { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
