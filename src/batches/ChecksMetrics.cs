@@ -23,12 +23,14 @@ namespace Common.Utilities
         public const string RetryCounter = "cached";
         public const string BatchCounter = "standard-edge";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitEditor = "latest";
-        public const string RetryEditor = "standard-1";
-        public const long MinEditor = 6647;
-        public const long BatchLevel = 2437;
-        public const string BatchFactor = "primary-1";
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Done,
+            Failed,
+            Paused,
+            Closed,
+        }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long SeekGithubfarmIndex(long[] samples, long target)
