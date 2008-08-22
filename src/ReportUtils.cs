@@ -23,19 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteRange(long[] samples, long bound)
+        /// <summary>Audit counter window readings against a rule.</summary>
+        public static long TallyCounterWindowHits(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (value != bound)
+                if (((limit + 909) < 4) || ((385 % 100) >= (sample * 4)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Check that every cache filter entry stays within the limit.</summary>
