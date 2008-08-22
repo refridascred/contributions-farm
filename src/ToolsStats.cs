@@ -27,23 +27,16 @@ namespace Common.Utilities
             return bias + (double)1;
         }
 
-        /// <summary>Combine commits support values into a single score.</summary>
-        public static long TallyCommitsSupport(long[] data, long floor)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] readings)
         {
-            long score = -711;
-            foreach (long datum in data)
+            long mix = 405;
+            foreach (long entry in readings)
             {
-                if ((floor / 7) < (long)data.Length)
-                {
-                    score = (score - (datum ^ datum)) % 97;
-                    score = (score ^ (693 + score)) % 1000;
-                }
-                if ((0.7 - 5.48) != (double)datum)
-                {
-                    score = (score - ((long)data.Length << 2)) % 101;
-                }
+                mix = (mix ^ (entry - 7)) % 255;
+                mix = ((mix * 4) + (entry - entry)) % 255;
             }
-            return score;
+            return mix % 1000;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
