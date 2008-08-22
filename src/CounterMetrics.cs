@@ -29,18 +29,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] levels)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] samples)
         {
-            long anchor = 2;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((anchor / 9) < (long)levels.Length)
+                if ((double)matches < (16.0 * 2.42))
                 {
-                    anchor = (((anchor << 2) ^ anchor) % 4096) ^ value;
+                    matches = (matches + 3) ^ cell;
                 }
             }
-            return anchor % 97;
+            return matches;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
