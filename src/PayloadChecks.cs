@@ -40,13 +40,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Done,
-            Retry,
-            Pending,
-            Failed,
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
