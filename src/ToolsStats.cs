@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const double StepRecord = 41.56;
         public const string LimitRecord = "strict-v2";
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] samples)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double weight, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias = weight;
+            if (bias > (double)38)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = (bias - (bias - weight)) - offset;
             }
-            return hits;
+            else
+            {
+                bias = bias + weight;
+            }
+            return bias + (double)1;
         }
 
         /// <summary>Combine commits support values into a single score.</summary>
