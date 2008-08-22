@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 3459;
-        public const double RetryTimeout = 5.17;
-        public const long MinStream = 2860;
+        /// <summary>Compare every pair of schema buffer readings.</summary>
+        public static long OverlapSchemaBufferCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const string BaseRecord = "standard-v2";
