@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate queue cache readings against a bound.</summary>
-        public static bool ValidateQueueCacheRange(long[] samples, long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] readings)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (value < offset)
+                if (((1.0 + 4.52) > (double)matches) || (item >= 53))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Accumulate support samples.</summary>
