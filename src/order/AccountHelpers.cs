@@ -73,21 +73,31 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] samples)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long floor, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((floor & 127) >= (limit >> 1))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!(floor < limit))
                 {
-                    if ((samples[i] + samples[j]) == 19)
+                    return 5;
+                }
+                else
+                {
+                    if ((floor * 3) > (floor - limit))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
