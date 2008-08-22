@@ -33,38 +33,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long floor, long origin)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] data)
         {
-            if (53 < (635 + origin))
+            long carry = 69;
+            foreach (long entry in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor % 97) <= (floor ^ origin))
+                if (((entry % 60) < carry) || ((60 % 16) >= entry))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (origin > (10 + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor & 31) >= floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    carry = ((carry * 3) + (entry + entry)) % 1000;
                 }
             }
+            return carry;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
