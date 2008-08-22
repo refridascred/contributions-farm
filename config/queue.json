@@ -1,10 +1,8 @@
 {
-  "base_size": "standard",
-  "burst_threshold_ms": {
-    "flush_retries": true,
-    "min_depth_count": [201, 316, 129, 421],
-    "record_threshold": 100,
-    "warm_window_s": ["strict", "staging"]
-  },
-  "min_threshold_count": 5.32
+  "compress": "blue",
+  "support_size": ["fallback", "edge", "standard", "open"],
+  "max_interval_count": 250,
+  "soft_ttl_ms": 55.35,
+  "batch_threshold_s": [56, 379, 247, 397],
+  "min_capacity_s": 50.8
 }
