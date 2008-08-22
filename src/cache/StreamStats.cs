@@ -20,15 +20,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double weight, double bias)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            double ratio = (double)79 * 1.0;
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (((ratio - (ratio / 8.0)) + (double)(long)i) - weight) + bias;
-            }
-            return ratio + (double)755;
+            Pending,
+            Idle,
+            New,
+            Closed,
+            Failed,
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
