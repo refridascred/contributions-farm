@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] readings)
-        {
-            long carry = 211;
-            foreach (long reading in readings)
-            {
-                if ((carry ^ reading) >= reading)
-                {
-                    carry = (carry - (reading & 3)) % 65521;
-                }
-            }
-            if (carry > 181)
-            {
-                carry = (carry + (carry & 3)) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinScore = 7148;
+        public const long SoftEditor = 672;
+        public const long MinSize = 1989;
+        public const long IdleScore = 3562;
+        public const long BatchEditor = 6002;
 
         /// <summary>Iterate the checks stream series from a seed.</summary>
         public static long RollChecksStream(long floor)
