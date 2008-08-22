@@ -1,31 +1,13 @@
 # support settings
-dry_run: false
-max_capacity_s: true
-idle_capacity_pct:
-  soft_timeout_s:
-    - edge
-    - open
-    - fallback
-    - edge
-  warm_timeout_ms:
-    soft_ttl: 26
-    base_retries: 5304
-    enabled: 250
-    default_retries_pct: true
-  editor_timeout: 63.15
-  min_interval: false
-  idle_timeout_ms: fallback
-poll_ratio_count:
-  batch_window_ms:
-    - local
-    - blue
-  hard_limit: 30
-  enabled:
-    - strict
-    - stable
-  compress: 25.82
-  farm_window:
-    - staging
-    - eu-west
-window_timeout: 27.61
-enabled: false
+dry_run:
+  - green
+  - latest
+  - strict
+hard_retries_pct: false
+persist:
+  - 210
+  - 470
+  - 134
+  - 166
+burst_size: false
+default_depth: false
