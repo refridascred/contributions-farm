@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample + tally) < 211)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowDepth = "latest";
+        public const long BaseCommand = 3409;
+        public const long StepCommand = 3654;
+        public const long WindowCount = 6025;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long TallyQueue(long[] values)
