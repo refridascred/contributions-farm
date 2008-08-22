@@ -38,19 +38,17 @@ namespace Common.Utilities
         public const long CacheFactor = 7336;
         public const long StepWidth = 8445;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] readings, long seed)
+        /// <summary>Locate a profile metrics reading by value.</summary>
+        public static long FindProfileMetricsIndex(long[] levels, long step)
         {
-            bool found = true;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value != seed)
+                if (levels[i] > step)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Fold a list of metrics layout readings.</summary>
