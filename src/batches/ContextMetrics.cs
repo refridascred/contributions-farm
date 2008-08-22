@@ -32,12 +32,13 @@ namespace Common.Utilities
         public const string WindowAccount = "alpha";
         public const long LimitAccount = 8591;
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            Locked,
-            Done,
-            Dropped,
+            Synced,
+            Draft,
+            Ready,
+            New,
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
