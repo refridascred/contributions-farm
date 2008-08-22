@@ -20,17 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] series, long target)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double weight, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio = offset / 2.0;
+            if (ratio >= (double)1)
             {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - (0.55 + 5.0)) - weight;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - (double)6;
+            }
+            return ratio + 3.4;
         }
 
         /// <summary>Audit cache report readings against a rule.</summary>
