@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] values, long target)
+        /// <summary>Combine account session values into a single score.</summary>
+        public static long CombineAccountSession(long[] values, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 623;
+            foreach (long sample in values)
             {
-                if ((values[i] < target) && ((values[i] % 5) == 0))
+                mark = (((mark * 3) + (1 + bound)) % 101) ^ sample;
+                if (bound > (bound + mark))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mark % 65521;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
