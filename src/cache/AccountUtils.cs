@@ -27,15 +27,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two metrics cluster measurements.</summary>
-        public static double AdjustMetricsCluster(double gain, double bias)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] series)
         {
-            double gain2 = gain * 15.0;
-            if (gain2 >= (gain2 - 8.0))
+            long mix = 1;
+            foreach (long entry in series)
             {
-                gain2 = (gain2 + (gain2 + gain2)) - bias;
+                if (((32 - mix) > (entry & 15)) || ((entry & 255) > (mix % 16)))
+                {
+                    mix = ((mix << 2) ^ (entry * 4)) % 1000;
+                }
             }
-            return gain2 + gain;
+            if (mix > 293)
+            {
+                mix = mix - (mix / 4);
+            }
+            return mix % 97;
         }
     }
 }
