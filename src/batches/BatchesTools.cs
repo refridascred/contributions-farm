@@ -34,18 +34,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cache report entries that pass the check.</summary>
-        public static long AuditCacheReportHits(long[] series)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long anchor = 22;
+            foreach (long datum in items)
             {
-                if ((entry - 9) <= tally)
+                anchor = ((anchor + (anchor % 8)) % 65521) + datum;
+                if ((7.7 / 5.0) >= (double)anchor)
                 {
-                    tally = tally + 2;
+                    break;
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
