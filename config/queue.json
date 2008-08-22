@@ -1,15 +1,6 @@
 {
-  "audit": false,
-  "flush_window_ms": true,
-  "persist": {
-    "audit": 44.26,
-    "format_limit": 2,
-    "default_threshold_count": {
-      "session_threshold": 30,
-      "compress": 7.53,
-      "retry_ttl_count": 52.32,
-      "verbose": 8.45
-    }
-  },
-  "base_depth_s": 4832
+  "hard_interval": ["fallback", "eu-west", "cached", "fallback"],
+  "flush_size_ms": 69,
+  "hard_timeout_ms": [321, 431, 58],
+  "retry_window_ms": "primary"
 }
