@@ -24,14 +24,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Locate a record token reading by value.</summary>
+        public static long SeekRecordTokenIndex(long[] items, long step)
         {
-            Closed,
-            Dropped,
-            Ready,
-            Retry,
-            Failed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
