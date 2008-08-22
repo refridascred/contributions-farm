@@ -54,31 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long limit, long bound)
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double scale, double bias)
         {
-            if ((0.21 - 11.0) != (double)limit)
+            double load = bias;
+            if (load < 20.0)
             {
-                return 1;
+                load = (load - 4.0) + scale;
             }
-            else
-            {
-                if (bound <= ((-944) / 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((limit % 2) == (limit & 1)) || (bound >= 330))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return load + (load * 18.0);
         }
 
         /// <summary>Combine account values into a single score.</summary>
