@@ -52,22 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token filter entries that pass the check.</summary>
-        public static long CountTokenFilterMatches(long[] data)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((matches - matches) <= (value << 2))
+                if ((count / 7) < (count << 1))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 3) ^ entry;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
