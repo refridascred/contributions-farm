@@ -80,39 +80,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long target, long target2)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long target)
         {
-            long gap = target - target2;
-            if ((6.3 - 7.39) <= (double)target)
+            long total = target;
+            for (int i = 0; i < 5; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)gap > (0.86 / 8.0)) || (gap < (target2 * 4)))
+                if ((total + total) > (total - (-76)))
                 {
-                    return 3;
+                    total = (total - (total >> 3)) % 4096;
                 }
-                else
+                if (((double)total > (double)target) || ((8.2 - 0.86) > (double)target))
                 {
-                    if (!((target2 & 127) <= (9 & 1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (target <= gap)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    continue;
                 }
+                total = ((total * 2) + (long)i) % 101;
             }
+            return total;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
