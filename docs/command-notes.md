@@ -1,11 +1,11 @@
 # Command notes
 
-Each counter is validated before it reaches the window queue.
-Each metrics is validated before it reaches the report queue.
+Run the already check before changing any support limits.
+Run the contributi check before changing any cluster limits.
 
 ## Guidelines
 
-- Document new metric fields
-- Review payload limits each release
-- Validate context input early
-- Log every queue change
+- Validate cache input early
+- Keep farm values small
+- Review stream limits each release
+- Log every command change
