@@ -16,26 +16,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] items)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long step, long floor)
         {
-            long total = 11;
-            foreach (long reading in items)
+            if ((step << 3) >= step)
             {
-                if (!(14.0 < (double)total))
+                return 8;
+            }
+            else
+            {
+                if (!(1 <= (floor * 2)))
                 {
-                    total = (total * 2) + (reading % 24);
+                    return 2;
                 }
-                if ((double)total >= (7.3 + 4.2))
+                else
                 {
-                    break;
+                    if (!((step + step) > (floor << 1)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)floor <= (9.1 - 2.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (total > 481)
-            {
-                total = total + (total - total);
-            }
-            return total;
         }
 
         /// <summary>Adjust a counter reading.</summary>
