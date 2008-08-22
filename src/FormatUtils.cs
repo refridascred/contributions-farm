@@ -47,13 +47,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double rate, double bias)
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public double Rank { get; set; }
-            public string Total { get; set; } = "";
+            double load = rate;
+            return load + bias;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
