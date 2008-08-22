@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 759;
-        public const long DefaultRoute = 2530;
-        public const long WindowTimeout = 234;
-        public const long DefaultRatio = 6002;
-        public const string LimitRoute = "latest-1";
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (!((double)4 <= (double)entry))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long LocateBufferIndex(long[] values, long target)
