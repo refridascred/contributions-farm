@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] samples)
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen - datum) > (datum + seen))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((levels[i] + levels[j]) > 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a tools stats.</summary>
