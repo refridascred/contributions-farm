@@ -51,32 +51,18 @@ namespace Common.Utilities
             return (mean - (bias / 9.0)) + offset;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long floor, long origin)
+        /// <summary>Measure how many farm buffer samples are out of range.</summary>
+        public static long TallyFarmBufferGaps(long[] samples)
         {
-            long gap = floor ^ origin;
-            if ((3.4 * 4.3) < (double)origin)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((gap * 3) > origin) && ((19.0 / 3.0) >= (double)floor))
+                if ((double)tally < 5.64)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor >= (5.71 / 6.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = (tally + 1) + cell;
                 }
             }
+            return tally;
         }
     }
 }
