@@ -31,18 +31,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of cache schema entries.</summary>
-        public static long TallyCacheSchema(long[] levels)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] items, long origin)
         {
-            long total = 17;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if (total > (sample % 24))
+                if (datum <= origin)
                 {
-                    total = ((total * 3) + (sample + (long)levels.Length)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return total % 1000;
+            return ok;
         }
     }
 }
