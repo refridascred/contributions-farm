@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long bound, long bound2)
-        {
-            if ((bound2 - bound2) > bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(bound2 < (bound + bound)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound2 << 2) < (bound + bound2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((4.3 / 9.0) >= (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 3459;
+        public const double RetryTimeout = 5.17;
+        public const long MinStream = 2860;
 
         /// <summary>Define record limits and defaults.</summary>
         public const string BaseRecord = "standard-v2";
