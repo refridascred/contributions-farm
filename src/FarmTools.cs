@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultLevel = 1600;
-        public const double RetryTimeout = 27.92;
-        public const long IdleInterval = 6705;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmLimits(long[] readings, long offset)
+        {
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long GradeCommand(long offset, long seed)
