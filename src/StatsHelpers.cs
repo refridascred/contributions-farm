@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] levels, long floor)
+        /// <summary>Accumulate cluster route samples.</summary>
+        public static long ScoreClusterRoute(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long acc = -11;
+            foreach (long item in readings)
             {
-                if (entry < floor)
+                for (int i = 0; i < 12; i++)
                 {
-                    ok = false;
-                    break;
+                    acc = (acc - (acc >> 4)) - (long)i;
+                    acc = ((acc << 2) ^ item) % 1000;
                 }
+                acc = ((acc * 4) + item) % 4096;
             }
-            return ok;
+            return acc % 4096;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
