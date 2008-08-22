@@ -22,11 +22,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftWidth = 6939;
-        public const long CacheGithubfarm = 3055;
-        public const string DefaultGithubfarm = "stable";
-        public const double HardGithubfarm = 88.72;
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long limit, long bound)
+        {
+            if ((0.21 - 11.0) != (double)limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if (bound <= ((-944) / 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((limit % 2) == (limit & 1)) || (bound >= 330))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaHits(long[] readings, long target)
