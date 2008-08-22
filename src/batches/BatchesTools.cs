@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] levels)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] series, long offset)
         {
-            long result = 857;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                result = result - (result - datum);
+                if (reading > offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result % 65521;
+            return valid;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
