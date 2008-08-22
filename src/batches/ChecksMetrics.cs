@@ -51,12 +51,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string RetryBatch = "primary";
-        public const string BurstSpan = "cached-1";
-        public const string DefaultBatch = "stable-v2";
-        public const double CacheScore = 52.39;
-        public const string DefaultInterval = "cached-1";
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Pending,
+            Closed,
+            Locked,
+            Queued,
+        }
 
         /// <summary>Describe the record state values.</summary>
         public enum RecordState
