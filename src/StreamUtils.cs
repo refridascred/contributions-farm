@@ -40,19 +40,12 @@ namespace Common.Utilities
             return drift + (double)98;
         }
 
-        /// <summary>Derive the next format queue value from a seed.</summary>
-        public static long SeriesFormatQueue(long floor)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long score = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                if (!((double)floor != (double)88))
-                {
-                    score = (score * 3) + floor;
-                }
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the batches mode values.</summary>
