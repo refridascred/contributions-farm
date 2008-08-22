@@ -36,17 +36,39 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] samples, long limit)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long target, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long diff = target ^ seed;
+            if (target < (diff ^ seed))
             {
-                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((target / 6) >= target)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)seed > (double)target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)target <= (1.0 * 1.24))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
