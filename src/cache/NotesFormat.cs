@@ -17,12 +17,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Count the farm account entries that pass the check.</summary>
+        public static long CountFarmAccountGaps(long[] levels, long floor)
         {
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
-            public double Rank { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (9 < count)
+                {
+                    count = ((count + 1) - item) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every format cache entry stays within the limit.</summary>
