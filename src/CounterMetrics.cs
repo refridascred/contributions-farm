@@ -23,11 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
