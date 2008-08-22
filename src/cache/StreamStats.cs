@@ -46,12 +46,19 @@ namespace Common.Utilities
             return gain - (double)139;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] data, long target)
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public double Level { get; set; }
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
