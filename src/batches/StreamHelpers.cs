@@ -50,18 +50,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] readings, long step)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell - cell) < step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((levels[i] - levels[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the channel kind values.</summary>
