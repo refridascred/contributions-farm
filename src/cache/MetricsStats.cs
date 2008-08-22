@@ -57,19 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsMatches(long[] data, long bound)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((double)bound == (double)count)
-                {
-                    count = (count + 3) + sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 8151;
+        public const double LimitEditor = 20.87;
+        public const string MinSpan = "primary-1";
+        public const double SoftInterval = 47.94;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool ValidateProfileRange(long[] items, long bound)
