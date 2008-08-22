@@ -21,15 +21,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long floor)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] items, long step)
         {
-            long carry = floor;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long item in items)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                if (item < step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
     }
 }
