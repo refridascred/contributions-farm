@@ -45,11 +45,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileOutliers(long[] levels, long offset)
         {
-            public string Flag { get; set; } = "";
-            public double Limit { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((seen / 8) <= offset)
+                {
+                    seen = (seen + 2) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
