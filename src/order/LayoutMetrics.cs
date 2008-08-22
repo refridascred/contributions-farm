@@ -23,19 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stream report readings against a bound.</summary>
-        public static bool VerifyStreamReportBounds(long[] samples, long offset)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Match up batch samples.</summary>
