@@ -58,9 +58,12 @@ namespace Common.Utilities
         public const double CacheScore = 52.39;
         public const string DefaultInterval = "cached-1";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 8382;
-        public const string BaseSession = "open-edge";
-        public const double CacheSession = 48.96;
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Closed,
+            Dropped,
+            Synced,
+        }
     }
 }
