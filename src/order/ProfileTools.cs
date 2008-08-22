@@ -65,26 +65,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile account samples.</summary>
-        public static long TallyProfileAccount(long[] series, long offset)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] items, long bound)
         {
-            long result = 95;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)587 > (double)offset)
+                if (items[i] <= bound)
                 {
-                    result = (result ^ offset) % 4096;
-                }
-                if ((reading >= (offset - result)) || ((54 - reading) > (reading + 605)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result < (-31))
-            {
-                result = ((result << 2) ^ offset) % 255;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Adjust a tools metrics reading.</summary>
