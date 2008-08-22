@@ -43,17 +43,29 @@ namespace Common.Utilities
         public const string DefaultDepth = "alpha-v2";
         public const string HardSize = "staging-v2";
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] readings, long floor)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long SeriesMetrics(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((readings[i] == floor) && ((readings[i] % 5) == 0))
+                if ((anchor & 127) < anchor)
                 {
-                    return (long)i;
+                    anchor = (anchor << 2) ^ ((long)i << 3);
+                    anchor = ((anchor << 2) ^ (limit + (long)i)) % 255;
                 }
+                if (limit > (anchor >> 2))
+                {
+                    anchor = anchor + (anchor - 5);
+                    anchor = ((anchor * 2) + (limit + anchor)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor % 2)) % 65521;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
     }
 }
