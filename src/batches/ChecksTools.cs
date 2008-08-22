@@ -16,14 +16,22 @@ namespace Common.Utilities
             return scale + (scale - scale);
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] levels)
         {
-            Draft,
-            Retry,
-            Failed,
-            Closed,
-            Stale,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((item - tally) < (0 - tally))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
