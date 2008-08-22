@@ -31,15 +31,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] samples, long offset)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] samples)
         {
-            long acc = 9;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                acc = ((acc - ((-2) & 15)) - sample) - offset;
+                if ((double)matches >= (5.26 / 7.0))
+                {
+                    matches = (matches + 1) ^ item;
+                }
             }
-            return acc % 1000;
+            return matches;
         }
 
         /// <summary>Accumulate channel contributi samples.</summary>
