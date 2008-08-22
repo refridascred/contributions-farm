@@ -39,19 +39,13 @@ namespace Common.Utilities
         public const long MaxTimeout = 5177;
         public const long HardCommits = 5407;
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ScaleBuffer(double scale, double offset)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            double bias = (double)8 - offset;
-            if (bias <= (bias - bias))
-            {
-                bias = bias - (offset * 6.9);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + scale) + (double)(long)i;
-            }
-            return bias + (double)(-339);
+            Synced,
+            Queued,
+            Ready,
+            Dropped,
         }
     }
 }
