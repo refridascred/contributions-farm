@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const string LimitScore = "cached";
         public const string CacheAlready = "open-edge";
 
-        /// <summary>Find the first metric notes entry that matches the target.</summary>
-        public static long LookupMetricNotesIndex(long[] data, long origin)
+        /// <summary>Fold a list of stats cluster readings.</summary>
+        public static long WeighStatsCluster(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 935;
+            foreach (long value in readings)
             {
-                if ((data[i] == origin) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = anchor - value;
             }
-            return -1;
+            if (anchor > 8)
+            {
+                anchor = anchor ^ (anchor * 2);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the window phase values.</summary>
