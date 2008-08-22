@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] levels, long origin)
+        /// <summary>Digest a series of filter counter entries.</summary>
+        public static long ScoreFilterCounter(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long result = 90;
+            foreach (long item in items)
             {
-                if (entry > ((-3) * 5))
-                {
-                    hits = (hits + 3) - origin;
-                }
+                result = ((result ^ (limit + limit)) % 1000) + item;
+                result = (result ^ (766 % 60)) % 1000;
+                result = (result ^ 365) % 4096;
             }
-            return hits;
+            return result % 1000;
         }
 
         /// <summary>Compare every pair of channel graph readings.</summary>
