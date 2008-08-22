@@ -1,32 +1,6 @@
 # githubfarm settings
-hard_ttl_count: 3979
-strict:
-  - primary
-  - eu-west
-  - legacy
-dry_run:
-  poll_depth:
-    - 431
-    - 127
-    - 306
-  entry_threshold: true
-  cache_timeout: 51.89
-warm_interval_count: 42.41
-compress:
-  window_retries: standard
-  route_capacity: stable
-  verbose:
-    retry_timeout: true
-    verbose: strict
-    profile_retries: 41.32
-    token_interval: 2
-  dry_run:
-    - edge
-    - legacy
-  cluster_delay: 1024
-min_limit_ms:
-  poll_retries_s: staging
-  session_depth: primary
-  sync_window_ms:
-    - open
-    - staging
+buffer_window: 52.79
+cache_retries_count: 55.3
+support_limit: false
+verbose: local
+warm_ttl_s: 20.53
