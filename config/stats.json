@@ -1,8 +1,10 @@
 {
-  "base_window_pct": "green",
-  "warm_ratio_count": false,
-  "default_threshold_pct": "standard",
-  "compress": 66.39,
-  "soft_limit_ms": 8320,
-  "layout_limit": false
+  "farm_ttl": {
+    "retry_interval_count": "cached",
+    "poll_ratio_ms": ["green", "strict"],
+    "min_limit_ms": "local",
+    "base_ttl_ms": "standard"
+  },
+  "base_interval": "strict",
+  "idle_depth": "standard"
 }
