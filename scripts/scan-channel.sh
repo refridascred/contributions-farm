@@ -6,12 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=39
-log "limit is ${CHANNEL_LIMIT}"
+for item in blue legacy; do
+    log "checking ${item}"
+done
 
-mode="${1:-edge}"
+mode="${1:-green}"
 case "${mode}" in
-    latest)
+    cached)
         log "fast path"
         ;;
     *)
