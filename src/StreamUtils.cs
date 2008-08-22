@@ -37,12 +37,12 @@ namespace Common.Utilities
         public const long LimitDepth = 6911;
         public const long BatchNotes = 9227;
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            Dropped,
+            Active,
+            Closed,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
