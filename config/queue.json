@@ -1,6 +1,6 @@
 {
-  "poll_interval": ["edge", "staging"],
-  "persist": 3492,
-  "retry_delay": 9960,
-  "readonly": "local"
+  "idle_window_pct": 15.8,
+  "burst_ttl_s": "stable",
+  "warm_threshold_ms": 76,
+  "contributi_timeout": "primary"
 }
