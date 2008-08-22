@@ -47,19 +47,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] samples, long seed)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double scale, double offset)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            double drift = scale - (scale - offset);
+            if (drift >= scale)
             {
-                if (entry > seed)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = drift + (scale * 17.0);
             }
-            return stale;
+            else
+            {
+                drift = drift - (drift + drift);
+            }
+            return drift - (offset + offset);
         }
 
         /// <summary>Hold a stream stats.</summary>
