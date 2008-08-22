@@ -29,16 +29,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the token route series from a seed.</summary>
-        public static long SeriesTokenRoute(long limit)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long total = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                total = total + (total - limit);
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            Draft,
+            New,
+            Failed,
         }
     }
 }
