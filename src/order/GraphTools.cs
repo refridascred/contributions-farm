@@ -43,18 +43,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many counter already samples are out of range.</summary>
-        public static long AuditCounterAlreadyGaps(long[] samples)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((seen - cell) != (seen ^ seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Adjust a window record reading.</summary>
