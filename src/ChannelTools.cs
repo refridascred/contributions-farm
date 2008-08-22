@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double gain, double floor)
         {
-            public bool Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
+            double ratio = floor / 6.0;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ((ratio + (ratio + ratio)) - (double)(long)i) + gain;
+            }
+            return ratio - floor;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
