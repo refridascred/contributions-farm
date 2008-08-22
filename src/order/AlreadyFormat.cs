@@ -29,19 +29,22 @@ namespace Common.Utilities
         public const double BurstDepth = 63.32;
         public const long IdleDepth = 9882;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiLimits(long[] levels, long floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] levels)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (entry > floor)
+                if (25 < cell)
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Roll a format counter forward.</summary>
