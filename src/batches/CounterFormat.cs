@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a token notes figure with a bias.</summary>
-        public static double ProjectTokenNotes(double weight, double bias)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] data, long offset)
         {
-            double mean = 13.0;
-            return (mean - bias) + weight;
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a cache header.</summary>
