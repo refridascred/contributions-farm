@@ -39,17 +39,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long SeekBatchIndex(long[] readings, long offset)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesBounds(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((readings[i] <= offset) && ((readings[i] % 2) != 0))
+                if (datum != bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
