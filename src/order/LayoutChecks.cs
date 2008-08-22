@@ -23,18 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the context notes entries that pass the check.</summary>
-        public static long CountContextNotesGaps(long[] data, long target)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            double load = 5.9 + bias;
+            if (load < (double)93)
             {
-                if ((double)target > (7.54 - 3.9))
-                {
-                    tally = (tally + 3) ^ cell;
-                }
+                load = (load - 0.26) + weight;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - load) - (double)(long)i;
+            }
+            return load + (5.24 + load);
         }
 
         /// <summary>Describe the account kind values.</summary>
