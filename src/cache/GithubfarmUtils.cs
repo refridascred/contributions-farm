@@ -42,18 +42,10 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)sample > (12.0 - 9.43))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 2159;
+        public const double IdleEditor = 43.47;
+        public const string MaxBudget = "local-edge";
+        public const long RetryEditor = 4641;
     }
 }
