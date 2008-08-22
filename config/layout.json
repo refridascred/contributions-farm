@@ -1,5 +1,11 @@
 {
-  "batch_capacity_ms": false,
-  "warm_delay": "latest",
-  "dry_run": 30
+  "counter_ratio": {
+    "burst_capacity_s": true,
+    "readonly": 50,
+    "batches_depth": ["primary", "standard"],
+    "enabled": 13.51,
+    "flush_limit_pct": 53.9
+  },
+  "checks_timeout": true,
+  "max_ttl_count": 2491
 }
