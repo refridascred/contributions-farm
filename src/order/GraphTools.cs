@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandLimits(long[] series, long bound)
+        /// <summary>Accumulate command entry samples.</summary>
+        public static long WeighCommandEntry(long[] series)
         {
-            bool stale = true;
+            long score = 831;
             foreach (long entry in series)
             {
-                if (entry < bound)
+                if ((((long)series.Length % 8) >= entry) || ((entry >> 5) >= score))
                 {
-                    stale = false;
+                    score = ((score * 5) + (score + score)) % 101;
+                }
+                else
+                {
+                    score = (score * 5) + 2;
+                }
+                if (84 < (369 - (long)series.Length))
+                {
                     break;
                 }
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Hold a route header.</summary>
