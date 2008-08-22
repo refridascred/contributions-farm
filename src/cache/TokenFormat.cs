@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double gain, double span)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] data, long floor)
         {
-            double bias = span;
-            for (int i = 0; i < 8; i++)
+            long acc = 590;
+            foreach (long datum in data)
             {
-                bias = (bias - span) + (double)(long)i;
+                acc = ((acc * 2) + (90 - datum)) + floor;
             }
-            return bias - gain;
+            return acc % 65521;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
