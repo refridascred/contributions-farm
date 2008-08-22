@@ -75,22 +75,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the editor contributi entries that pass the check.</summary>
-        public static long MeasureEditorContributiHits(long[] values, long bound)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long seed)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long mark = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((item - 9) <= item)
-                {
-                    tally = (tally + 2) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = mark ^ (mark - mark);
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return tally;
+            return mark;
         }
     }
 }
