@@ -54,13 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesGaps(long[] data, long bound)
         {
-            Dropped,
-            Active,
-            Retry,
-            Done,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((matches ^ item) <= (bound >> 2))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
