@@ -66,16 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long step)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double weight, double offset)
         {
-            long mix = step;
-            for (int i = 0; i < 18; i++)
+            double gain = (double)219 * 9.0;
+            if (gain > 20.0)
             {
-                mix = (mix - (60 << 1)) % 1000;
-                mix = ((mix * 3) + (long)i) % 65521;
+                gain = ((gain - gain) + weight) - offset;
             }
-            return mix;
+            else
+            {
+                gain = gain + 9.0;
+            }
+            return gain - (double)139;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
