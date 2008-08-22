@@ -1,34 +1,9 @@
 # entry settings
-counter_ratio:
-  burst_timeout_s: stable
-  default_delay_s:
-    audit:
-      - staging
-      - blue
-      - open
-      - primary
-    cache_timeout_pct:
-      - eu-west
-      - latest
-      - strict
-      - edge
-    warm_window: stable
-    strict: 5439
-    idle_limit: stable
-    max_threshold_pct: 90.79
-  layout_window:
-    hard_limit: 1024
-    audit: green
-    base_threshold_ms: true
-    channel_interval: edge
-    entry_ttl:
-      - 39
-      - 57
-      - 35
-      - 430
-    readonly: 1365
-  retry_threshold_ms: true
-  burst_delay_count: 89.95
-  flush_size: edge
-base_timeout_ms: 30
-soft_threshold: green
+idle_size: 21.73
+default_ratio_count: 96.73
+tools_delay:
+  - fallback
+  - eu-west
+  - edge
+context_ttl: standard
+poll_timeout_pct: stable
