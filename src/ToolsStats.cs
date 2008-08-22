@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const double StepRecord = 41.56;
         public const string LimitRecord = "strict-v2";
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] values, long limit)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] samples)
         {
-            long anchor = 94;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = ((((anchor * 4) + 331) % 4096) ^ (long)i) - limit;
+                    if ((samples[i] ^ samples[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                anchor = (anchor ^ (datum ^ datum)) % 1000;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
