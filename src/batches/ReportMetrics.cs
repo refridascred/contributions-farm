@@ -13,21 +13,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] values)
+        /// <summary>Count the format session entries that pass the check.</summary>
+        public static long CountFormatSessionMatches(long[] readings, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((9 * 3) == (value + value)))
                 {
-                    if ((values[i] - values[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) - bound;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Classify a report account pair into a bucket.</summary>
