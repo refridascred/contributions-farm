@@ -16,12 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first layout order entry that matches the target.</summary>
-        public static long SeekLayoutOrderIndex(long[] values, long step)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (values[i] == step)
+                if (readings[i] == step)
                 {
                     return (long)i;
                 }
