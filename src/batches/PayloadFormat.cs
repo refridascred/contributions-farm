@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const long DefaultFormat = 7925;
         public const long SoftFormat = 4512;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepSpan = 60.42;
-        public const string DefaultSpan = "standard-edge";
-        public const long BaseLevel = 8288;
-        public const long SoftTimeout = 2386;
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
+        {
+            Done,
+            Ready,
+            New,
+            Synced,
+        }
 
         /// <summary>Accumulate filter samples.</summary>
         public static long TallyFilter(long[] series)
