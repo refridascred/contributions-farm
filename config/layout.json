@@ -1,8 +1,6 @@
 {
-  "enabled": ["open", "cached"],
-  "min_ttl_ms": "blue",
-  "poll_capacity": 500,
-  "sync_timeout_ms": [489, 336, 397, 189],
-  "default_ttl_s": 29,
-  "sync_size_pct": 685
+  "batch_timeout_s": 10.2,
+  "default_threshold_s": 564,
+  "min_capacity": 250,
+  "sync_limit_ms": [79, 60]
 }
