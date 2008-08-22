@@ -19,15 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double gain, double span)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] data)
         {
-            double load = gain - (7.08 * 9.0);
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = ((load + (load * 3.69)) + (double)(long)i) + span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return load + load;
+            return tally;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
