@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric helpers.</summary>
     public static class Metric
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] items)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] data, long origin)
         {
-            long sum = 54;
-            foreach (long entry in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 2) + (entry ^ 18)) % 65521;
-                if ((sum >> 2) >= (entry & 1))
+                if (data[i] <= origin)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
