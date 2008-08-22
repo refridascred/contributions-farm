@@ -36,19 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] series, long seed)
+        /// <summary>Measure how many route cache samples are out of range.</summary>
+        public static long TallyRouteCacheHits(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (entry >= seed)
+                if (!((matches + matches) <= (item / 7)) || ((matches * 3) == (matches + matches)))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
     }
 }
