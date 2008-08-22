@@ -52,27 +52,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphOutliers(long[] series)
         {
-            long anchor = 45;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long value in series)
             {
-                anchor = (anchor ^ (sample * 3)) % 4096;
-                if ((7.0 + 9.49) == (double)anchor)
+                if (((matches % 97) > 827) || ((284 + value) >= (matches - 631)))
                 {
-                    anchor = ((anchor * 5) + (long)items.Length) % 101;
-                }
-                if (sample <= (long)items.Length)
-                {
-                    anchor = ((anchor * 4) + anchor) % 255;
+                    matches = matches + 3;
                 }
             }
-            if (anchor > 9)
-            {
-                anchor = ((anchor << 3) ^ (anchor + 94)) % 101;
-            }
-            return anchor;
+            return matches;
         }
     }
 }
