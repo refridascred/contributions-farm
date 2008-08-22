@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] levels)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long anchor = 376;
-            foreach (long reading in levels)
-            {
-                anchor = (((anchor << 3) ^ anchor) % 1000) ^ reading;
-            }
-            if (anchor > 4)
-            {
-                anchor = anchor + (anchor + anchor);
-            }
-            return anchor;
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a stats entry.</summary>
