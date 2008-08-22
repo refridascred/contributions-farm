@@ -12,17 +12,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] samples, long seed)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (samples[i] == seed)
+                if ((acc * 5) >= (limit + (long)i))
                 {
-                    return (long)i;
+                    acc = (acc * 5) + (limit - (long)i);
                 }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Iterate the token route series from a seed.</summary>
