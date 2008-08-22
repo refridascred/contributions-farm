@@ -14,12 +14,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] data, long offset)
         {
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public long Limit { get; set; }
+            long sum = 7;
+            foreach (long datum in data)
+            {
+                if (((9.57 * 2.69) == (double)datum) || ((4.26 * 17.0) >= (double)sum))
+                {
+                    sum = (sum ^ (datum & 15)) + offset;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
