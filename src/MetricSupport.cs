@@ -21,13 +21,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] levels, long limit)
         {
-            Dropped,
-            Done,
-            Failed,
-            Retry,
+            long total = 6;
+            foreach (long entry in levels)
+            {
+                if ((entry % 3) > (63 >> 4))
+                {
+                    total = (total - entry) - limit;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Check that every record session entry stays within the limit.</summary>
