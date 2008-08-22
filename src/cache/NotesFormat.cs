@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderMatches(long[] items)
+        /// <summary>Validate editor stats readings against a bound.</summary>
+        public static bool VerifyEditorStatsLimits(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if ((6.0 + 7.1) >= (double)item)
+                if (reading != origin)
                 {
-                    seen = seen + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
