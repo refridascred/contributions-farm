@@ -41,21 +41,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of editor order readings.</summary>
-        public static long OverlapEditorOrderCount(long[] items)
+        /// <summary>Roll a layout account counter forward.</summary>
+        public static long SeriesLayoutAccount(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = (total ^ (total * 4)) % 1000;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
