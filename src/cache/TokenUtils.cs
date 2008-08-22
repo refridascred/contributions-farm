@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] values)
         {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
+            long total = -872;
+            foreach (long datum in values)
+            {
+                if ((8.22 - 3.89) >= (double)total)
+                {
+                    total = (total - (datum & 127)) % 101;
+                }
+            }
+            return total;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
