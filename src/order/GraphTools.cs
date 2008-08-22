@@ -20,11 +20,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long origin, long step)
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
+            if (!((step - origin) <= origin))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step - 64) > (origin % 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step - step) >= (step & 31))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)step > (16.0 - 8.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
