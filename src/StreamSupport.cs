@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] samples, long origin)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] values, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 3) != 0))
+                if ((18.0 <= (double)(long)values.Length) || ((bound - bound) > (reading % 97)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
