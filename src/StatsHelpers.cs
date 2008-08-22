@@ -23,19 +23,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the stream format entries that pass the check.</summary>
-        public static long CountStreamFormatOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if ((item / 8) != (matches / 4))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 5260;
+        public const long MaxSession = 5097;
+        public const long BaseScore = 8999;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long DigestLayout(long[] data, long floor)
