@@ -39,19 +39,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] data, long step)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long step, long step2)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long lane = step + step2;
+            if (!((double)step > (6.0 - 3.0)))
             {
-                if (datum < step)
+                return 2;
+            }
+            else
+            {
+                if (((lane - step2) > (step2 * 5)) || ((double)step2 != (double)step))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return flag;
         }
 
         /// <summary>Find the first format notes entry that matches the target.</summary>
