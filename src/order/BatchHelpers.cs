@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the token cache entries that pass the check.</summary>
-        public static long MeasureTokenCacheGaps(long[] levels)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if ((sample > (tally << 3)) && ((sample ^ 803) >= (sample + tally)))
+                if (sample >= seed)
                 {
-                    tally = tally + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Hold a farm options.</summary>
