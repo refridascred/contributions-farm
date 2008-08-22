@@ -10,22 +10,21 @@ namespace Common.Utilities
         public const long BatchFilter = 6384;
         public const string BaseFilter = "standard-v2";
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] samples)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] samples)
         {
-            long mix = 5;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)mix > (4.7 + 8.76)) || ((double)reading != (3.0 / 2.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = ((mix * 5) + reading) % 4096;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (mix + reading);
+                    if ((samples[i] + samples[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
