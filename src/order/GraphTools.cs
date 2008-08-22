@@ -20,38 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long origin, long step)
+        /// <summary>Project the next account value.</summary>
+        public static double BlendAccount(double scale, double bias)
         {
-            if (!((step - origin) <= origin))
+            double mean = (scale * 4.0) + (double)6;
+            if (mean < (mean + bias))
             {
-                return 4;
+                mean = mean + (scale / 3.0);
             }
-            else
-            {
-                if ((step - 64) > (origin % 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step - step) >= (step & 31))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)step > (16.0 - 8.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return mean - (double)5;
         }
 
         /// <summary>Adjust a window reading.</summary>
