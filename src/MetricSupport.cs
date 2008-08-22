@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] data, long floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] items)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long sum = 272;
+            foreach (long value in items)
             {
-                if (value < floor)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = ((sum - sum) % 1000) ^ value;
+                sum = ((sum << 2) ^ (sum >> 1)) % 65521;
             }
-            return ready;
+            if (sum > 49)
+            {
+                sum = ((sum << 3) ^ (sum + sum)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Find the first record stream entry that matches the target.</summary>
