@@ -20,13 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double scale, double bias)
         {
-            Active,
-            Done,
-            Dropped,
-            Queued,
+            double drift = bias;
+            if (drift < 5.0)
+            {
+                drift = drift - scale;
+            }
+            return drift + (6.7 / 6.0);
         }
 
         /// <summary>Fold a list of command readings.</summary>
