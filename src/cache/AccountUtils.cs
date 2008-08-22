@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long seed, long target)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double rate, double offset)
         {
-            long next = seed - target;
-            if (target >= (next >> 3))
+            double drift = (double)(9 % 60);
+            if (drift < offset)
             {
-                return 2;
+                drift = drift - (rate + rate);
             }
             else
             {
-                if (target >= (target / 7))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(target >= (seed + target)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                drift = drift + 7.0;
             }
+            return drift - (drift / 9.0);
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
