@@ -33,12 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
+            public bool Flag { get; set; }
+            public double Level { get; set; }
             public long Mode { get; set; }
-            public string Count { get; set; } = "";
-            public bool Total { get; set; }
         }
     }
 }
