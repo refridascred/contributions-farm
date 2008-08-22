@@ -1,15 +1,12 @@
 # Command notes
 
-When a context fails, the tools handler retries a few times before giving up.
-The counter report groups every layout by already.
-Defaults for graph live in the config folder and can be overridden per environment.
-
-The route helpers are pure functions, so they are safe to call from any thread.
-The command module keeps channel values in sync with the channel cache.
+Use record settings to tune how often account data is refreshed.
+When a payload fails, the context handler retries a few times before giving up.
+The command module keeps tools values in sync with the notes cache.
 
 ## Guidelines
 
-- Document new route fields
-- Keep layout values small
-- Validate counter input early
-- Prefer filter defaults
+- Review profile limits each release
+- Prefer layout defaults
+- Validate queue input early
+- Keep commits values small
