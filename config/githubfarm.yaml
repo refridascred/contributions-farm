@@ -1,9 +1,4 @@
 # githubfarm settings
-filter_ttl:
-  schema_delay: stable
-  batch_retries: latest
-  order_ratio: 250
-  min_depth: legacy
-retry_interval: stable
-commits_limit: 74.53
-warm_capacity: 60
+stream_ttl: 45
+min_timeout_count: 70
+contributi_window: true
