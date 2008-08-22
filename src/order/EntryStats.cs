@@ -42,22 +42,36 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long step, long seed)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long step, long limit)
         {
-            if (((step ^ seed) > (step + seed)) && ((seed - seed) != (seed + step)))
+            if ((limit - step) <= (limit + limit))
             {
                 return 2;
             }
             else
             {
-                if ((25 * 2) != (step + step))
+                if (78 >= (step ^ limit))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    return 4;
+                    if ((limit + 61) < (step * 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((-7) % 64) < (limit + limit))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
         }
