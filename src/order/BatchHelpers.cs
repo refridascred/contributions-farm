@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] readings, long seed)
+        /// <summary>Project the next batches context value.</summary>
+        public static double SmoothBatchesContext(double rate, double offset)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            double ratio = rate;
+            if (ratio < (ratio + ratio))
             {
-                if (sample >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = ratio + (rate / 7.0);
             }
-            return flag;
+            return ratio - offset;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
