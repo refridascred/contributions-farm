@@ -26,18 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] levels)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum << 2) <= seen)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Done,
+            Dropped,
+            Retry,
+            Active,
         }
 
         /// <summary>Rank tools input into a small class.</summary>
