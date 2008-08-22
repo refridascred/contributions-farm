@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] samples, long origin)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (!((2.7 - 7.48) == (double)origin) && ((count + origin) != (item ^ 12)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Ready,
+            Paused,
+            Retry,
+            Queued,
         }
 
         /// <summary>Accumulate payload samples.</summary>
