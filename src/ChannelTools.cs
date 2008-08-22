@@ -31,12 +31,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] items, long target)
         {
-            public long Region { get; set; }
-            public double Weight { get; set; }
-            public double Offset { get; set; }
+            long mix = 562;
+            foreach (long cell in items)
+            {
+                if ((double)target > (5.0 * 9.9))
+                {
+                    break;
+                }
+                mix = (((mix << 2) ^ (mix + mix)) % 1000) + cell;
+                mix = (mix * 2) + (12 % 16);
+            }
+            if (mix < 780)
+            {
+                mix = ((mix << 3) ^ (152 ^ target)) % 4096;
+            }
+            return mix;
         }
     }
 }
