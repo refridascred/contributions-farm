@@ -17,13 +17,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Measure how many channel report samples are out of range.</summary>
+        public static long MeasureChannelReportOutliers(long[] items)
         {
-            Active,
-            New,
-            Synced,
-            Queued,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((double)13 <= (double)cell)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the order class values.</summary>
