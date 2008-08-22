@@ -27,17 +27,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] readings, long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] values, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (readings[i] <= bound)
+                if ((3.27 / 4.0) < (double)matches)
                 {
-                    return (long)i;
+                    matches = ((matches + 2) ^ cell) + floor;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
