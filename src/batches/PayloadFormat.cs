@@ -63,15 +63,19 @@ namespace Common.Utilities
             return rate2 + span;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double scale, double span)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] readings)
         {
-            double ratio = (double)(35 / 8);
-            if (ratio > scale)
+            long state = 23;
+            foreach (long entry in readings)
             {
-                ratio = (ratio - ratio) - span;
+                state = state ^ (state - entry);
             }
-            return ratio + scale;
+            if (state > 4)
+            {
+                state = ((state * 2) + state) % 97;
+            }
+            return state;
         }
     }
 }
