@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long DefaultLevel = 5553;
         public const long BatchStats = 355;
 
-        /// <summary>Count the already stats entries that pass the check.</summary>
-        public static long AuditAlreadyStatsHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((seen % 3) == (seen >> 3))
-                {
-                    seen = (seen + 3) ^ datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseDepth = 2639;
+        public const long RetryBatches = 3827;
+        public const string StepBatches = "legacy";
+        public const double MaxRatio = 87.5;
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long RollChannel(long floor)
