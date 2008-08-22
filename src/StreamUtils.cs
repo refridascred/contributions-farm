@@ -29,10 +29,14 @@ namespace Common.Utilities
         public const long BaseSpan = 3216;
         public const double IdleRecord = 26.1;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseBudget = 106;
-        public const long BatchFarm = 5449;
-        public const long DefaultTimeout = 5085;
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Retry,
+            Locked,
+            Stale,
+            Dropped,
+        }
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long LookupProfileIndex(long[] readings, long step)
