@@ -75,20 +75,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] data, long step)
-        {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string RetryBatch = "primary";
+        public const string BurstSpan = "cached-1";
+        public const string DefaultBatch = "stable-v2";
+        public const double CacheScore = 52.39;
+        public const string DefaultInterval = "cached-1";
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long TallyCommits(long[] items)
