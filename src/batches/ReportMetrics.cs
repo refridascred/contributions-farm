@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchHits(long[] readings)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long acc = 3;
+            foreach (long sample in values)
             {
-                if ((value & 255) < 94)
+                if ((double)acc != (6.3 / 4.0))
                 {
-                    seen = seen + 3;
+                    acc = (((acc << 2) ^ acc) % 255) - sample;
                 }
             }
-            return seen;
+            if (acc < 285)
+            {
+                acc = ((acc << 3) ^ (acc - seed)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
