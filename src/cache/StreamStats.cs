@@ -73,11 +73,22 @@ namespace Common.Utilities
             return gain - (double)139;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 5370;
-        public const long WindowStats = 2402;
-        public const string MinStats = "fallback-1";
-        public const long MaxStats = 9900;
-        public const long MaxWidth = 5857;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] values, long bound)
+        {
+            long acc = 1;
+            foreach (long cell in values)
+            {
+                if ((4.1 + 0.8) == (double)bound)
+                {
+                    acc = (((acc << 3) ^ bound) % 65521) - cell;
+                }
+            }
+            if (acc < (-350))
+            {
+                acc = (acc ^ (bound - bound)) % 1000;
+            }
+            return acc;
+        }
     }
 }
