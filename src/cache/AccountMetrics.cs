@@ -89,19 +89,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double rate, double span)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double gain, double span)
         {
-            double gain = rate;
-            if (gain <= 7.1)
+            double scale = gain - 7.11;
+            if (scale >= scale)
             {
-                gain = gain + (double)77;
+                scale = scale - (span - span);
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                gain = (gain - span) - (double)(long)i;
+                scale = scale + (scale * 2.9);
             }
-            return gain + gain;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + span;
         }
 
         /// <summary>Hold a order summary.</summary>
