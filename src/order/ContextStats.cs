@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] data, long target)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] data)
         {
             long tally = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((6.0 * 2.3) < (double)reading)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 3) - target;
+                    if ((data[i] + data[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
