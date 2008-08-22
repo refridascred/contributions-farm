@@ -52,22 +52,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaOutliers(long[] items)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long origin)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long state = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((matches << 3) > (matches - 948))
-                {
-                    matches = (matches + 2) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = state - (state & 3);
+                state = (state ^ (-211)) % 101;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
     }
 }
