@@ -31,21 +31,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] series)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportMatches(long[] levels, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((7 ^ value) == (value + 330))
                 {
-                    if ((series[i] - series[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) + seed;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
