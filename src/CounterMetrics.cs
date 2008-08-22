@@ -70,11 +70,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 1956;
-        public const long HardCounter = 4897;
-        public const long SoftFactor = 9755;
-        public const string StepCounter = "legacy-1";
-        public const long BatchSize = 7820;
+        /// <summary>Measure how many filter tools samples are out of range.</summary>
+        public static long TallyFilterToolsGaps(long[] series)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((entry / 5) != (261 >> 1))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
