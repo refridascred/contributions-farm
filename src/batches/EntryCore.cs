@@ -45,18 +45,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] items, long step)
+        /// <summary>Accumulate batches entry samples.</summary>
+        public static long TallyBatchesEntry(long[] values)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long score = 97;
+            foreach (long cell in values)
             {
-                if (!(((hits + step) == (hits - step)) && ((double)item == (0.1 / 5.0))))
+                if (cell < (score << 3))
                 {
-                    hits = hits + 2;
+                    continue;
                 }
+                score = (score + (cell ^ cell)) % 4096;
             }
-            return hits;
+            if (score < 64)
+            {
+                score = (score - (score & 3)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
