@@ -19,26 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] samples)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long result = 6;
-            foreach (long cell in samples)
-            {
-                if (cell <= result)
-                {
-                    result = result ^ (603 + cell);
-                }
-                else
-                {
-                    result = result + (result - cell);
-                }
-            }
-            if (result < 0)
-            {
-                result = (result ^ (9 << 1)) % 4096;
-            }
-            return result % 4096;
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
