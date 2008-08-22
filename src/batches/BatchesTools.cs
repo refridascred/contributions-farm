@@ -46,27 +46,22 @@ namespace Common.Utilities
             return ((load + (double)66) + weight) + span;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] values)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] readings, long step)
         {
-            long total = 967;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                total = total ^ (value & 255);
-                if (!((14.0 / 7.0) == (double)value))
+                if (5 >= (hits + step))
                 {
-                    total = ((total * 4) + (total + total)) % 1000;
+                    hits = (hits + 3) ^ cell;
                 }
-                if (9.93 < (double)value)
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            if (total < 811)
-            {
-                total = (total * 5) + (6 & 15);
-            }
-            return total % 97;
+            return hits;
         }
     }
 }
