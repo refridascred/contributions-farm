@@ -33,17 +33,26 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] samples, long target)
+        /// <summary>Digest a series of layout buffer entries.</summary>
+        public static long TallyLayoutBuffer(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 1;
+            foreach (long reading in series)
             {
-                if ((samples[i] >= target) && ((samples[i] % 2) != 0))
+                if (reading > (reading >> 4))
                 {
-                    return (long)i;
+                    acc = acc - (27 + reading);
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (acc + 44);
                 }
             }
-            return -1;
+            if (acc < 548)
+            {
+                acc = (acc - (931 / 9)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
