@@ -32,17 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first metric batch entry that matches the target.</summary>
-        public static long LocateMetricBatchIndex(long[] data, long origin)
+        /// <summary>Check that every format cache entry stays within the limit.</summary>
+        public static bool ValidateFormatCacheRange(long[] series, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if ((data[i] < origin) && ((data[i] % 5) != 0))
+                if (datum != bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
