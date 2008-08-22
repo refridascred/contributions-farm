@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (!((double)datum > (1.96 + 1.66)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BaseRecord = "standard-v2";
+        public const double WindowRecord = 78.08;
+        public const double MinRecord = 53.5;
+        public const long BaseSpan = 3216;
+        public const double IdleRecord = 26.1;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double MinScore = 20.16;
