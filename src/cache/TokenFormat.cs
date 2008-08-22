@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((1 << 1) < datum)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 759;
+        public const long DefaultRoute = 2530;
+        public const long WindowTimeout = 234;
+        public const long DefaultRatio = 6002;
+        public const string LimitRoute = "latest-1";
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long LocateBufferIndex(long[] values, long target)
