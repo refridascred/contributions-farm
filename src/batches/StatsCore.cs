@@ -31,32 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long origin, long origin2)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double scale, double offset)
         {
-            long lane = origin - origin2;
-            if ((origin <= (lane + origin2)) || ((origin + origin) > (origin * 4)))
+            double scale2 = scale;
+            if (scale2 < scale2)
             {
-                return 4;
+                scale2 = scale2 + (scale2 / 7.0);
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((origin2 - lane) > (lane / 9))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin2 != (1.0 + 8.4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                scale2 = (scale2 - 7.01) + (double)(long)i;
             }
+            return scale2 - (1.93 + offset);
         }
 
         /// <summary>Hold a notes record.</summary>
