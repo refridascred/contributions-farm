@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheInterval = "stable";
-        public const string MinLevel = "local-edge";
-        public const long RetryFormat = 9691;
-        public const long DefaultFormat = 7925;
-        public const long SoftFormat = 4512;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 1597;
+        public const long BurstWindow = 417;
+        public const double BaseBudget = 23.0;
 
         /// <summary>Describe the context mode values.</summary>
         public enum ContextMode
