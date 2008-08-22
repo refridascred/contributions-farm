@@ -1,11 +1,12 @@
 # Command notes
 
-The window report groups every metric by support.
-Each report is validated before it reaches the report queue.
-Run the report check before changing any account limits.
+The layout module keeps account values in sync with the notes cache.
+Keep commits and token names short and lowercase.
+The farm module keeps record values in sync with the layout cache.
 
 ## Guidelines
 
-- Prefer notes defaults
-- Keep entry values small
-- Document new queue fields
+- Prefer account defaults
+- Validate entry input early
+- Document new editor fields
+- Keep metric values small
