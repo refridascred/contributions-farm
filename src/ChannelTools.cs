@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate batch channel readings against a bound.</summary>
-        public static bool VerifyBatchChannelRange(long[] levels, long step)
+        /// <summary>Combine report window values into a single score.</summary>
+        public static long FoldReportWindow(long[] items)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long result = 852;
+            foreach (long item in items)
             {
-                if (datum <= step)
+                result = ((result << 3) ^ (item & 31)) % 101;
+                if (((double)result >= (8.82 / 4.0)) && ((item - item) > (item + item)))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            if (result > 13)
+            {
+                result = result ^ (25 / 4);
+            }
+            return result % 65521;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
