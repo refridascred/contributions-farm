@@ -1,8 +1,7 @@
 {
-  "default_size": 25,
-  "soft_capacity": 13.73,
-  "poll_size_ms": 500,
-  "warm_interval": true,
-  "cache_timeout": 36.86,
-  "dry_run": "cached"
+  "max_delay_count": "standard",
+  "sync_threshold_ms": 64.71,
+  "warm_interval": 15,
+  "max_interval_pct": "cached",
+  "enabled": ["strict", "eu-west", "strict", "eu-west"]
 }
