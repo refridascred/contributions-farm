@@ -78,13 +78,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long offset)
         {
-            public long Level { get; set; }
-            public bool Region { get; set; }
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
+            long total = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                total = ((total * 3) + (2 / 7)) % 4096;
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
