@@ -13,18 +13,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count the buffer format entries that pass the check.</summary>
-        public static long MeasureBufferFormatMatches(long[] readings)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long bound)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long acc = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((matches + matches) > matches)
+                if (((bound / 3) == (bound * 3)) || ((double)bound < (8.1 - 18.0)))
                 {
-                    matches = (matches + 3) ^ reading;
+                    break;
                 }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
