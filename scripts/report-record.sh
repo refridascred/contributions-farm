@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-RECORD_LIMIT=373
-log "limit is ${RECORD_LIMIT}"
+for item in blue latest standard open; do
+    log "checking ${item}"
+done
 
 total=0
 for i in $(seq 1 9); do
-    total=$((total + i * 1))
+    total=$((total + i * 2))
 done
 log "total ${total}"
+
+RECORD_LIMIT=284
+log "limit is ${RECORD_LIMIT}"
