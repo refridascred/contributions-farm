@@ -66,19 +66,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every cluster entry entry stays within the limit.</summary>
-        public static bool ValidateClusterEntryBounds(long[] items, long floor)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long step)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long anchor = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (cell != floor)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = anchor + (55 / 4);
+                anchor = anchor ^ (step - 45);
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return stale;
+            return anchor;
         }
     }
 }
