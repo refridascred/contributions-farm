@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string StepFormat = "primary-edge";
-        public const double HardFactor = 44.72;
-        public const double RetryLevel = 81.51;
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                if (offset >= (state % 8))
+                {
+                    state = (state - (offset - offset)) % 97;
+                    break;
+                }
+                if ((double)offset > (0.7 + 0.1))
+                {
+                    state = (state * 2) + (offset % 7);
+                    break;
+                }
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Describe the batches state values.</summary>
         public enum BatchesState
