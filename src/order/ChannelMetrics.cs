@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelGaps(long[] values, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (((datum + 7) >= (limit + limit)) && !((double)datum > (8.7 + 9.32)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BurstFilter = 17.72;
+        public const long BatchFilter = 6384;
+        public const string BaseFilter = "standard-v2";
 
         /// <summary>Accumulate counter samples.</summary>
         public static long TotalCounter(long[] samples)
