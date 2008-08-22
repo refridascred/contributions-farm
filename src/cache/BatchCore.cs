@@ -16,23 +16,31 @@ namespace Common.Utilities
             return scale2 - scale2;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] data, long origin)
+        /// <summary>Rank metrics counter input into a small class.</summary>
+        public static long ClassifyMetricsCounter(long floor, long target)
         {
-            long anchor = 4;
-            foreach (long reading in data)
+            if ((floor << 1) >= (floor / 6))
             {
-                if ((8.0 / 2.0) < (double)anchor)
+                return 1;
+            }
+            else
+            {
+                if (!((57 >> 4) > (floor * 2)))
                 {
-                    anchor = (((anchor * 3) + anchor) % 255) ^ reading;
+                    return 5;
                 }
-                anchor = (anchor ^ (anchor % 10)) % 4096;
+                else
+                {
+                    if ((target ^ target) == (target + floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            if (anchor > 78)
-            {
-                anchor = anchor ^ (1 + origin);
-            }
-            return anchor % 97;
         }
 
         /// <summary>Define format limits and defaults.</summary>
