@@ -52,12 +52,14 @@ namespace Common.Utilities
         public const long LimitDepth = 6911;
         public const long BatchNotes = 9227;
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Dropped,
-            Active,
-            Closed,
+            Queued,
+            Ready,
+            Retry,
+            Idle,
+            Pending,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
