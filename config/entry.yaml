@@ -1,4 +1,11 @@
 # entry settings
-dry_run: 62
-hard_threshold: 79
-cache_depth: green
+checks_timeout:
+  - 146
+  - 493
+  - 468
+window_window:
+  - 32
+  - 50
+burst_window: legacy
+warm_window_s: 15
+readonly: legacy
