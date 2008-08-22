@@ -1,12 +1,15 @@
 # Command notes
 
-Use notes settings to tune how often format data is refreshed.
-Keep farm and filter names short and lowercase.
-Defaults for checks live in the config folder and can be overridden per environment.
+Run the command check before changing any metric limits.
+Use record settings to tune how often profile data is refreshed.
+The payload module keeps command values in sync with the metrics cache.
+
+The payload report groups every report by payload.
+The record report groups every notes by stats.
+Defaults for batches live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep order values small
-- Review already limits each release
-- Log every batch change
-- Validate route input early
+- Review metrics limits each release
+- Keep schema values small
+- Validate stream input early
