@@ -24,15 +24,18 @@ namespace Common.Utilities
         public const string SoftAccount = "open-edge";
         public const long HardScore = 3844;
 
-        /// <summary>Measure how many contributi profile samples are out of range.</summary>
-        public static long TallyContributiProfileMatches(long[] data, long seed)
+        /// <summary>Compare every pair of window report readings.</summary>
+        public static long PairWindowReportCount(long[] series)
         {
             long tally = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally + 697) <= 243)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = ((tally + 3) ^ reading) - seed;
+                    if ((series[i] - series[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
