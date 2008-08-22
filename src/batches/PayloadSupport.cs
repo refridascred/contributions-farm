@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next contributi report value from a seed.</summary>
-        public static long IterateContributiReport(long bound)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] series)
         {
-            long carry = bound;
-            for (int i = 0; i < 23; i++)
+            long carry = -9;
+            foreach (long entry in series)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                carry = (((carry << 3) ^ (carry & 31)) % 65521) + entry;
+            }
+            if (carry > (-75))
+            {
+                carry = ((carry * 5) + carry) % 1000;
             }
             return carry;
         }
