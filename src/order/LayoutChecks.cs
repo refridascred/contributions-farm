@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double scale, double span)
-        {
-            double drift = scale;
-            if (drift <= drift)
-            {
-                drift = (drift + (drift / 8.0)) - span;
-            }
-            else
-            {
-                drift = drift + (double)5;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + drift) - (double)(long)i;
-            }
-            return drift - (scale * 2.15);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchWidth = 3475;
+        public const string LimitScore = "cached";
+        public const string CacheAlready = "open-edge";
 
         /// <summary>Find the first metric notes entry that matches the target.</summary>
         public static long LookupMetricNotesIndex(long[] data, long origin)
