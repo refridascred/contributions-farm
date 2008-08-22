@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] levels)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long target, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((target / 4) <= (bound + target))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((target - target) <= (target << 2))
                 {
-                    if ((levels[i] - levels[j]) < 3)
+                    return 2;
+                }
+                else
+                {
+                    if (!((bound + (-790)) > target))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many format notes samples are out of range.</summary>
