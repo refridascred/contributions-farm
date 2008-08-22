@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long step)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long anchor = step;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = (anchor << 3) ^ ((long)i & 7);
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Check that every metric batches entry stays within the limit.</summary>
