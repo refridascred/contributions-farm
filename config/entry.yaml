@@ -1,8 +1,7 @@
 # entry settings
-enabled: 24.88
-poll_timeout_pct: local
-githubfarm_capacity:
-  - fallback
-  - staging
-  - open
-  - blue
+batch_ratio: 55.4
+notes_size: 28.5
+already_limit: 7.88
+flush_interval: strict
+max_depth_count: local
+burst_capacity_count: green
