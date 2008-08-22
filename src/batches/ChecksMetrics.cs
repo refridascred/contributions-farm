@@ -18,11 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Locate a format stats reading by value.</summary>
+        public static long SeekFormatStatsIndex(long[] values, long seed)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= seed) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
