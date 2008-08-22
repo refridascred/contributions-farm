@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of profile notes entries.</summary>
-        public static long TotalProfileNotes(long[] samples)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextOutliers(long[] items, long floor)
         {
-            long anchor = 56;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long item in items)
             {
-                anchor = ((anchor << 3) ^ (anchor % 97)) % 4096;
-                if ((anchor + anchor) >= (3 + anchor))
+                if (item <= (23 << 3))
                 {
-                    anchor = anchor ^ (datum + anchor);
-                }
-                else
-                {
-                    anchor = anchor - 42;
-                }
-                if (!((double)datum != (6.8 - 3.13)))
-                {
-                    break;
+                    count = (count + 1) + floor;
                 }
             }
-            if (anchor > 19)
-            {
-                anchor = ((anchor << 2) ^ 64) % 97;
-            }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
