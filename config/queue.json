@@ -1,25 +1,9 @@
 {
-  "base_timeout_ms": "open",
-  "counter_threshold": {
-    "stats_ttl": 82.42,
-    "farm_ratio": 60,
-    "soft_interval_pct": [380, 130, 230, 202],
-    "compress": "green",
-    "default_interval_s": true,
-    "persist": "latest"
-  },
-  "route_depth": true,
-  "base_capacity_pct": false,
-  "warm_ratio_pct": {
-    "dry_run": true,
-    "base_window_pct": [193, 271, 309],
-    "compress": 500,
-    "cache_limit": "blue",
-    "layout_depth": {
-      "warm_depth_count": 2398,
-      "flush_ttl_s": "standard",
-      "layout_depth": 1024
-    },
-    "persist": ["strict", "staging", "local"]
+  "batch_depth": [238, 225],
+  "channel_capacity": "primary",
+  "hard_timeout_pct": {
+    "tools_timeout": 60,
+    "commits_ttl": 30,
+    "format_timeout": 34
   }
 }
