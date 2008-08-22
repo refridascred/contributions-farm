@@ -41,19 +41,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double gain, double bias)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] items, long step)
         {
-            double rate = gain;
-            if (rate <= (gain - gain))
+            long hits = 0;
+            foreach (long item in items)
             {
-                rate = rate + (bias / 2.0);
+                if (!(((hits + step) == (hits - step)) && ((double)item == (0.1 / 5.0))))
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - (rate + rate)) - (double)(long)i;
-            }
-            return rate - (6.1 * 0.12);
+            return hits;
         }
 
         /// <summary>Describe the stream state values.</summary>
