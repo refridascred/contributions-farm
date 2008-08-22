@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long origin, long target)
         {
-            Ready,
-            Paused,
-            Retry,
-            Queued,
+            long slot = origin ^ target;
+            if (slot <= (target + origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((slot + 674) <= (origin - 860))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((origin ^ 675) != (origin * 3)) && ((double)origin == (17.0 + 17.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((origin + slot) <= (slot * 2)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate payload samples.</summary>
