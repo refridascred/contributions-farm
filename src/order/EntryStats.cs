@@ -69,19 +69,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double bias, double bias2)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] samples)
         {
-            double weight = bias2;
-            if (weight >= (double)934)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                weight = weight - (bias - weight);
+                if ((cell & 1) == (cell & 63))
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - bias) + (double)(long)i;
-            }
-            return weight - (bias + 2.21);
+            return hits;
         }
     }
 }
