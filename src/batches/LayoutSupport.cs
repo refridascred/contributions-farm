@@ -40,14 +40,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            Stale,
-            Failed,
-            Ready,
-            Pending,
             Paused,
+            Failed,
+            Done,
+            Closed,
+            Synced,
         }
     }
 }
