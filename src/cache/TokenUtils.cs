@@ -26,21 +26,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Match up report stats samples.</summary>
-        public static long MatchReportStatsCount(long[] items)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 397;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = (carry + 9) ^ datum;
             }
-            return tally;
+            return carry;
         }
     }
 }
