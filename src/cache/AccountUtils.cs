@@ -19,11 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two token format measurements.</summary>
-        public static double SmoothTokenFormat(double weight, double bias)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] items, long target)
         {
-            double scale = weight;
-            return (scale + (scale * 6.2)) + bias;
+            long mark = 14;
+            foreach (long entry in items)
+            {
+                if (((target - target) < (-2)) || ((mark + target) <= (mark - entry)))
+                {
+                    mark = ((mark * 4) + (mark & 255)) % 1000;
+                }
+            }
+            if (mark < 53)
+            {
+                mark = (mark << 2) ^ mark;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Hold a commits summary.</summary>
