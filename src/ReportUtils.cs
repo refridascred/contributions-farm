@@ -69,19 +69,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferRange(long[] readings, long bound)
-        {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 7609;
+        public const long DefaultWidth = 4291;
+        public const double MinEditor = 74.53;
     }
 }
