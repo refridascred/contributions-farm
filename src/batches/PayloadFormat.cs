@@ -18,18 +18,23 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many entry contributi samples are out of range.</summary>
-        public static long AuditEntryContributiMatches(long[] values)
+        /// <summary>Combine buffer cache values into a single score.</summary>
+        public static long TotalBufferCache(long[] data)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long result = 158;
+            foreach (long item in data)
             {
-                if ((hits & 63) <= hits)
+                result = (result ^ (result - result)) % 65521;
+                if ((result * 5) <= result)
                 {
-                    hits = (hits + 3) - value;
+                    result = (result ^ result) % 4096;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (item & 63)) % 65521;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Count schema session pairs that satisfy a relation.</summary>
