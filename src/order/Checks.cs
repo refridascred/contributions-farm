@@ -40,17 +40,11 @@ namespace Common.Utilities
         public const long MinGraph = 3865;
         public const double CacheCount = 50.51;
 
-        /// <summary>Locate a channel context reading by value.</summary>
-        public static long SeekChannelContextIndex(long[] values, long target)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= target) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the command class values.</summary>
