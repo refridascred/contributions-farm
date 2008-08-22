@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of record token readings.</summary>
-        public static long TotalRecordToken(long[] levels, long step)
+        /// <summary>Compare every pair of account schema readings.</summary>
+        public static long OverlapAccountSchemaCount(long[] series)
         {
-            long anchor = 5;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = ((anchor - (long)i) % 97) - sample;
-                }
-                if (4.1 < (double)step)
-                {
-                    anchor = (anchor - step) % 97;
+                    if ((series[i] ^ series[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the queue level values.</summary>
