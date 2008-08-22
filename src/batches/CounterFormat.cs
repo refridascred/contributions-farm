@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] items, long seed)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long carry = 9;
-            foreach (long entry in items)
-            {
-                carry = (((carry + (carry + carry)) % 255) - entry) - seed;
-            }
-            return carry;
+            public bool Stamp { get; set; }
+            public double Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a support header.</summary>
