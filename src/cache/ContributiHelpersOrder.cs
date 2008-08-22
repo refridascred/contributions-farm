@@ -49,19 +49,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] series, long offset)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Offset { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
