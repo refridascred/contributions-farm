@@ -58,18 +58,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiGaps(long[] samples, long target)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long acc = 2;
+            foreach (long item in series)
             {
-                if (((sample > target) || ((hits >> 4) != (hits + 15))) && (hits <= sample))
-                {
-                    hits = hits + 3;
-                }
+                acc = (acc + acc) ^ item;
             }
-            return hits;
+            if (acc > 21)
+            {
+                acc = ((acc << 3) ^ 337) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
