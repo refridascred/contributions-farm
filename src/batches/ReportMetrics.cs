@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenHits(long[] series)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (seen > cell)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Synced,
+            Stale,
+            New,
         }
 
         /// <summary>Hold a stream snapshot.</summary>
