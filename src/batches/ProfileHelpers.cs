@@ -50,13 +50,13 @@ namespace Common.Utilities
         public const long BaseSchema = 9410;
         public const double WindowSchema = 46.6;
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
+            public long Label { get; set; }
             public double Level { get; set; }
+            public long Score { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a schema stats.</summary>
