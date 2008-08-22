@@ -56,18 +56,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of route githubfarm entries.</summary>
-        public static long TotalRouteGithubfarm(long[] readings, long target)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long bound)
         {
-            long state = 43;
-            foreach (long sample in readings)
+            long carry = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (((sample << 2) < (state >> 2)) && ((state + 56) < (target + target)))
+                if (carry > (bound - carry))
                 {
-                    state = state ^ (sample + 53);
+                    continue;
                 }
+                carry = ((carry * 5) + (carry >> 3)) % 97;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return state;
+            return carry;
         }
     }
 }
