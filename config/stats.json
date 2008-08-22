@@ -1,18 +1,11 @@
 {
-  "default_delay_ms": 18,
-  "soft_limit_count": 62.26,
-  "sync_capacity_pct": ["fallback", "green", "latest"],
-  "default_retries_ms": "edge",
-  "min_size": {
-    "idle_threshold_pct": "strict",
-    "persist": 50.87,
-    "channel_threshold": [329, 268, 304, 162],
-    "burst_ratio": {
-      "burst_interval": "fallback",
-      "persist": "strict",
-      "warm_window": true,
-      "soft_limit_s": ["open", "strict", "latest", "strict"],
-      "verbose": "stable"
-    }
-  }
+  "max_timeout_s": {
+    "flush_capacity_pct": 50,
+    "window_ttl": ["cached", "blue", "cached", "local"],
+    "flush_ttl": "fallback",
+    "burst_timeout_ms": false
+  },
+  "idle_delay_ms": "green",
+  "min_capacity_ms": 64.7,
+  "filter_window": "stable"
 }
