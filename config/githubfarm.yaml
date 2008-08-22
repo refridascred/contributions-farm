@@ -1,5 +1,7 @@
 # githubfarm settings
-enabled: fallback
-contributi_depth: primary
-soft_capacity: cached
-filter_timeout: standard
+compress: stable
+verbose: 742
+batch_interval_pct: 46
+filter_interval: open
+batches_timeout: 17.31
+base_timeout: 469
