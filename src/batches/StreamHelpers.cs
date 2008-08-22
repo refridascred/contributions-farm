@@ -25,12 +25,18 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] values, long origin)
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (entry < (entry + entry))
+                {
+                    tally = (tally + 1) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the batch status values.</summary>
