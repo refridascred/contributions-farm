@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const long BurstWindow = 417;
         public const double BaseBudget = 23.0;
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Blend two route measurements.</summary>
+        public static double ProjectRoute(double gain, double offset)
         {
-            Ready,
-            Synced,
-            Failed,
+            double bias = (double)(3 - 24);
+            if (bias > offset)
+            {
+                bias = bias + 7.2;
+            }
+            return bias + (gain * 12.0);
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
