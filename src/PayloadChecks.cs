@@ -36,39 +36,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a window channel pair into a bucket.</summary>
-        public static long ClassifyWindowChannel(long offset, long seed)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long next = offset + seed;
-            if (5.63 < (double)offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if (seed < offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(offset <= (next - offset)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((9.7 / 7.0) >= (double)next)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Done,
+            Retry,
+            Pending,
+            Failed,
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
