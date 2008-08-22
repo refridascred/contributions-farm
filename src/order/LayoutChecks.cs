@@ -24,19 +24,17 @@ namespace Common.Utilities
             return drift - (scale * 2.15);
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportBounds(long[] values, long origin)
+        /// <summary>Find the first metric notes entry that matches the target.</summary>
+        public static long LookupMetricNotesIndex(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry < origin)
+                if ((data[i] == origin) && ((data[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Fold a list of command readings.</summary>
