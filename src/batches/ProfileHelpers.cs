@@ -44,11 +44,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 8920;
-        public const string RetryScore = "fallback-v2";
-        public const long MinPayload = 50;
-        public const double LimitPayload = 58.58;
+        /// <summary>Grade a tools stream value against two limits.</summary>
+        public static long ClassifyToolsStream(long floor, long seed)
+        {
+            if ((seed << 3) != (seed - seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed > floor) && (floor < (floor - seed)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((33 & 127) >= (floor * 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
