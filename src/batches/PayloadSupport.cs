@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Pending,
-            Active,
-            Failed,
-            Draft,
+            public double Size { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Blend two schema measurements.</summary>
