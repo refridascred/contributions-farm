@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const double HardFactor = 44.72;
         public const double RetryLevel = 81.51;
 
-        /// <summary>Iterate the commits checks series from a seed.</summary>
-        public static long SeriesCommitsChecks(long floor)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long mix = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
+            Draft,
+            Active,
+            Failed,
         }
 
         /// <summary>Audit window buffer readings against a rule.</summary>
