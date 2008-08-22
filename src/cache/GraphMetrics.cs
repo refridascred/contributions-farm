@@ -63,13 +63,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public double Region { get; set; }
-            public bool Offset { get; set; }
-            public double Size { get; set; }
-            public string Level { get; set; } = "";
+            Locked,
+            Draft,
+            Done,
         }
     }
 }
