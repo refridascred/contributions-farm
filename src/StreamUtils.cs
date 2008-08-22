@@ -45,17 +45,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a already filter sample.</summary>
-        public static long SeekAlreadyFilterIndex(long[] levels, long floor)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < floor) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
