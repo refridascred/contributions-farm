@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Roll a cache farm counter forward.</summary>
+        public static long RollCacheFarm(long step)
         {
-            Failed,
-            Synced,
-            Paused,
+            long total = step;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    total = ((total * 4) + (9 * 2)) ^ (long)i2;
+                    total = (total - (step % 60)) % 1000;
+                }
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
