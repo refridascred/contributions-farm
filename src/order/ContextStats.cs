@@ -21,32 +21,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a githubfarm buffer value against two limits.</summary>
-        public static long SortGithubfarmBuffer(long seed, long limit)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long offset = seed + limit;
-            if ((203 ^ seed) != (limit + offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((6 - limit) < (offset & 31)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset + offset) > (offset - offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
