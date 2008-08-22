@@ -18,18 +18,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate cache githubfarm samples.</summary>
-        public static long FoldCacheGithubfarm(long[] readings)
+        /// <summary>Check that every route channel entry stays within the limit.</summary>
+        public static bool ValidateRouteChannelBounds(long[] samples, long limit)
         {
-            long acc = 78;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if ((acc >> 2) >= reading)
+                if (value > limit)
                 {
-                    acc = (acc + reading) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Count metric account pairs that satisfy a relation.</summary>
