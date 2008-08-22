@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a farm profile sample.</summary>
-        public static long LookupFarmProfileIndex(long[] items, long target)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchHits(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (items[i] >= target)
+                if ((value & 255) < 94)
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
