@@ -31,11 +31,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 2685;
-        public const double MaxMetric = 47.64;
-        public const long LimitWidth = 115;
-        public const long BurstMetric = 6828;
-        public const double HardDepth = 30.57;
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
+        {
+            Stale,
+            Ready,
+            Done,
+            Queued,
+            New,
+        }
     }
 }
