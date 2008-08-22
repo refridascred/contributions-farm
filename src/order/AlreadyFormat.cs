@@ -39,19 +39,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesBounds(long[] data, long bound)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                if (datum != bound)
+                if (entry != seed)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
