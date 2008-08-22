@@ -22,14 +22,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
-        {
-            Stale,
-            Dropped,
-            Pending,
-            Active,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string SoftRoute = "stable-v2";
+        public const string WindowTimeout = "staging-1";
+        public const long WindowRoute = 9330;
+        public const long IdleRoute = 1583;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long WindowFarm = 3278;
