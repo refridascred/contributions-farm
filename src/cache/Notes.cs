@@ -14,32 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long target, long target2)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long limit)
         {
-            long delta = target ^ target2;
-            if ((double)target2 < (5.0 - 13.0))
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)target < (double)delta) && ((target2 / 7) < target2))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return 2;
+                    sum = ((sum << 2) ^ (sum + (long)i2)) % 4096;
                 }
-                else
-                {
-                    if ((target2 + target) < (target + target2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
+            return sum;
         }
 
         /// <summary>Hold a route stats.</summary>
