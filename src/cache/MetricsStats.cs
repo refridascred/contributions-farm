@@ -64,19 +64,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] items, long bound)
+        /// <summary>Count the commits filter entries that pass the check.</summary>
+        public static long TallyCommitsFilterHits(long[] values)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (reading > bound)
+                if ((((seen ^ seen) < item) || ((double)item != (4.1 / 8.0))) || (0.52 > (double)seen))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
