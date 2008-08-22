@@ -41,17 +41,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] data, long origin)
+        /// <summary>Rank account payload input into a small class.</summary>
+        public static long BucketAccountPayload(long step, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long lane = step - offset;
+            if (((double)36 >= (5.82 * 3.4)) && ((lane + (-467)) <= (lane ^ lane)))
             {
-                if ((data[i] >= origin) && ((data[i] % 2) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((double)step >= (13.0 - 1.4))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
