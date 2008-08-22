@@ -28,17 +28,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a route cache sample.</summary>
-        public static long SeekRouteCacheIndex(long[] readings, long floor)
+        /// <summary>Iterate the checks stream series from a seed.</summary>
+        public static long RollChecksStream(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (readings[i] > floor)
+                if (!((floor + 297) >= (long)i))
                 {
-                    return (long)i;
+                    total = (total << 2) ^ total;
                 }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
     }
 }
