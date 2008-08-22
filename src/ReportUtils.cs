@@ -23,18 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit counter window readings against a rule.</summary>
-        public static long TallyCounterWindowHits(long[] series, long limit)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (((limit + 909) < 4) || ((385 % 100) >= (sample * 4)))
+                if ((bound / 8) < reading)
                 {
-                    seen = seen + 2;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every cache filter entry stays within the limit.</summary>
