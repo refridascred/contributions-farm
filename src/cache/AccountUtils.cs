@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] series)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((hits - reading) == (hits & 127))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Level { get; set; }
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Accumulate notes samples.</summary>
