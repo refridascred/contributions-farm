@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double rate, double offset)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] data)
         {
-            double drift = (double)(9 % 60);
-            if (drift < offset)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift - (rate + rate);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + 7.0;
-            }
-            return drift - (drift / 9.0);
+            return tally;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
