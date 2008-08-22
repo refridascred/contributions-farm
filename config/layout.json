@@ -1,14 +1,8 @@
 {
-  "max_threshold": ["standard", "edge"],
-  "cache_depth": {
-    "max_size": ["green", "staging", "blue"],
-    "poll_size_ms": "green",
-    "batch_timeout_s": "open"
-  },
-  "hard_timeout_ms": {
-    "persist": [489, 56, 323, 75],
-    "cache_capacity_ms": 250,
-    "min_ratio_pct": "primary",
-    "burst_depth_ms": "strict"
-  }
+  "buffer_capacity": 69,
+  "retry_depth": 70.41,
+  "base_capacity": "primary",
+  "batch_ttl_pct": "strict",
+  "window_threshold": 41.78,
+  "soft_window_s": "blue"
 }
