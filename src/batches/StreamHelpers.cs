@@ -17,18 +17,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] items)
+        /// <summary>Measure how many report commits samples are out of range.</summary>
+        public static long CountReportCommitsMatches(long[] data)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((sample + 1) < (sample * 3))
                 {
-                    if ((items[i] ^ items[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
