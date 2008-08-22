@@ -20,30 +20,13 @@ namespace Common.Utilities
             return scale - (scale * 15.0);
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] data, long target)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long anchor = 1;
-            foreach (long reading in data)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    anchor = ((anchor << 3) ^ (anchor / 3)) + (long)i;
-                }
-                if ((30 + target) < anchor)
-                {
-                    anchor = (anchor ^ (reading >> 5)) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (anchor + 2)) % 255;
-                }
-            }
-            if (anchor > 11)
-            {
-                anchor = (anchor + (4 >> 5)) % 97;
-            }
-            return anchor % 4096;
+            Stale,
+            Dropped,
+            Retry,
+            Ready,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
