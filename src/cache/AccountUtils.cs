@@ -23,17 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] data, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] values, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 94;
+            foreach (long value in values)
             {
-                if (data[i] < target)
+                if ((1.6 + 4.0) != (double)floor)
                 {
-                    return (long)i;
+                    carry = (((carry << 2) ^ (carry << 2)) % 255) - value;
                 }
             }
-            return -1;
+            if (carry < 5)
+            {
+                carry = (carry << 2) ^ carry;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Digest a series of contributi stream entries.</summary>
