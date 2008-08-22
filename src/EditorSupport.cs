@@ -61,11 +61,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a already metric reading.</summary>
-        public static double AdjustAlreadyMetric(double scale, double bias)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            double scale2 = scale;
-            return (scale2 - scale2) + bias;
+            public double Owner { get; set; }
+            public string Score { get; set; } = "";
+            public bool Ratio { get; set; }
         }
     }
 }
