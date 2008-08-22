@@ -41,12 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamLimits(long[] levels, long step)
         {
-            Dropped,
-            Closed,
-            Synced,
+            bool valid = true;
+            foreach (long value in levels)
+            {
+                if (value <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
