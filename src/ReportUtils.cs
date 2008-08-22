@@ -37,19 +37,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] values, long limit)
+        /// <summary>Grade a layout profile value against two limits.</summary>
+        public static long ClassifyLayoutProfile(long origin, long target)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long cur = origin - target;
+            if ((cur + cur) <= cur)
             {
-                if (sample >= limit)
+                return 8;
+            }
+            else
+            {
+                if ((197 - cur) != (314 / 8))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((target >= (cur / 4)) || ((origin - origin) != (origin >> 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Find the first notes command entry that matches the target.</summary>
