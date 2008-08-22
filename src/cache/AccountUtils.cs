@@ -25,39 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank batch commits input into a small class.</summary>
-        public static long GradeBatchCommits(long floor, long floor2)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long seed)
         {
-            long cur = floor ^ floor2;
-            if (((double)floor2 < (6.0 * 6.48)) || ((floor2 >> 3) != (floor << 3)))
+            long carry = seed;
+            for (int i = 0; i < 14; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((140 >= (cur % 3)) || ((floor2 * 4) != (94 + floor2)))
+                if (3.91 >= (double)carry)
                 {
-                    return 2;
+                    carry = (carry - ((-9) + seed)) % 97;
                 }
-                else
-                {
-                    if (!((floor + cur) != (floor * 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor << 3) <= (cur & 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                carry = (carry << 3) ^ ((long)i & 63);
+                carry = (carry * 2) + (seed + seed);
+                carry = ((carry * 3) + (long)i) % 4093;
             }
+            return carry;
         }
     }
 }
