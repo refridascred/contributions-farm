@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] data)
+        /// <summary>Locate a window route reading by value.</summary>
+        public static long FindWindowRouteIndex(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(datum > (datum ^ seen)))
+                if (data[i] == target)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
