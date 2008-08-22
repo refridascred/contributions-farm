@@ -73,13 +73,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaOutliers(long[] items)
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((matches << 3) > (matches - 948))
+                {
+                    matches = (matches + 2) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
