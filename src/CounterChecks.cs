@@ -73,10 +73,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFactor = 5269;
-        public const long MinSpan = 4023;
-        public const long BatchFarm = 874;
-        public const long MinFarm = 6722;
+        /// <summary>Count checks farm pairs that satisfy a relation.</summary>
+        public static long OverlapChecksFarmCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
