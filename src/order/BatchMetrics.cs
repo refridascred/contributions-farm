@@ -65,17 +65,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] data, long target)
+        /// <summary>Measure how many batches graph samples are out of range.</summary>
+        public static long AuditBatchesGraphOutliers(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (data[i] == target)
+                if (((target >> 3) <= (target + reading)) || ((target ^ target) > hits))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
