@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long WindowCommits = 6014;
         public const long IdleSpan = 6843;
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricBounds(long[] items, long bound)
         {
-            Synced,
-            Retry,
-            Paused,
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every route channel entry stays within the limit.</summary>
