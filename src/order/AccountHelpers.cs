@@ -89,21 +89,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up payload stream samples.</summary>
-        public static long MatchPayloadStreamCount(long[] data)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            New,
+            Pending,
         }
     }
 }
