@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] data)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long total = 172;
+            foreach (long value in levels)
             {
-                if (((matches << 3) == (matches + 77)) && (matches <= (reading / 2)))
-                {
-                    matches = matches + 3;
-                }
+                total = ((total - (743 + 0)) % 65521) ^ value;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
