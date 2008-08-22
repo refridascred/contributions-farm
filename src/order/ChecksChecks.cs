@@ -23,15 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double scale, double span)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] series, long limit)
         {
-            double drift = scale;
-            if (drift >= span)
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift + (span - 9.0);
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return drift - drift;
+            return -1;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
