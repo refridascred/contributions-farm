@@ -20,15 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double scale, double bias)
+        /// <summary>Measure how many record filter samples are out of range.</summary>
+        public static long AuditRecordFilterHits(long[] data)
         {
-            double drift = bias;
-            if (drift < 5.0)
+            long tally = 0;
+            foreach (long item in data)
             {
-                drift = drift - scale;
+                if ((item >> 1) >= (item * 3))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return drift + (6.7 / 6.0);
+            return tally;
         }
 
         /// <summary>Fold a list of command readings.</summary>
