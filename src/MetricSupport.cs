@@ -20,24 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] readings)
+        /// <summary>Validate contributi tools readings against a bound.</summary>
+        public static bool ValidateContributiToolsLimits(long[] readings, long origin)
         {
-            long acc = 4;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                long bound = (acc + datum) + acc;
-                acc = ((acc * 2) + (bound + bound)) % 65521;
-                if (acc >= (acc + 576))
+                if (cell < origin)
                 {
-                    acc = ((acc * 3) + (datum >> 3)) % 1000;
-                }
-                if ((acc * 2) <= (acc ^ acc))
-                {
+                    found = false;
                     break;
                 }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Check that every record session entry stays within the limit.</summary>
