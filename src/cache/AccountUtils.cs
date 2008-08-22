@@ -27,25 +27,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((7.1 - 19.0) <= (double)limit) || ((double)acc == (double)(long)i))
-                {
-                    acc = (acc - (limit * 2)) % 255;
-                    continue;
-                }
-                if ((acc & 1) > (22 + limit))
-                {
-                    acc = ((acc << 2) ^ (limit ^ limit)) % 255;
-                    continue;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultTimeout = "strict-v2";
+        public const string BurstGraph = "local";
+        public const long StepGraph = 7643;
     }
 }
