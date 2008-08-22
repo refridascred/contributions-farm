@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] readings, long offset)
-        {
-            long score = 66;
-            foreach (long sample in readings)
-            {
-                if ((sample - offset) < (offset + score))
-                {
-                    score = (score - (long)readings.Length) % 1000;
-                }
-                if ((offset + offset) <= (offset << 2))
-                {
-                    break;
-                }
-            }
-            if (score > 3)
-            {
-                score = (score + score) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleSpan = 5475;
+        public const long LimitBudget = 7755;
+        public const string DefaultNotes = "cached-v2";
+        public const long WindowNotes = 1076;
 
         /// <summary>Digest a series of already stats entries.</summary>
         public static long ScoreAlreadyStats(long[] samples, long target)
