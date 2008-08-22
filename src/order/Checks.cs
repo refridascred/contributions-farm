@@ -18,17 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a buffer window reading by value.</summary>
-        public static long SeekBufferWindowIndex(long[] series, long bound)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((series[i] >= bound) && ((series[i] % 3) != 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
