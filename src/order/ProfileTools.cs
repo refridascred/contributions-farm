@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] readings, long bound)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] values)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry != bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] ^ values[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Hold a format info.</summary>
