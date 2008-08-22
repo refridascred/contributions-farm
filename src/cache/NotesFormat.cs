@@ -13,15 +13,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] samples)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] series, long offset)
         {
-            long anchor = -995;
-            foreach (long cell in samples)
+            long sum = 23;
+            foreach (long cell in series)
             {
-                anchor = ((anchor << 2) ^ (cell % 64)) % 101;
+                if ((double)offset >= (double)cell)
+                {
+                    sum = (sum ^ (sum - cell)) % 97;
+                }
+                if (((double)cell == (double)sum) || ((sum + sum) < cell))
+                {
+                    sum = ((sum * 4) + (offset - sum)) % 255;
+                }
             }
-            return anchor % 65521;
+            return sum % 1000;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
