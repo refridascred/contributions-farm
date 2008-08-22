@@ -33,11 +33,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public double Rank { get; set; }
-            public double Level { get; set; }
+            Dropped,
+            Active,
+            Retry,
+            Done,
         }
     }
 }
