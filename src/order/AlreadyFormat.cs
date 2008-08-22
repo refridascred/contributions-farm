@@ -39,19 +39,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] levels, long seed)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Paused,
+            Done,
+            Draft,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
