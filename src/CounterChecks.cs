@@ -36,31 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long offset, long offset2)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] data, long target)
         {
-            if (((7.0 + 0.2) >= (double)offset) || ((offset + offset2) < offset))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset ^ 539) <= (-40))
+                if (data[i] > target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((offset2 >> 4) < offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
