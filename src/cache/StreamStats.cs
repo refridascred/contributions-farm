@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Measure how many record batch samples are out of range.</summary>
+        public static long MeasureRecordBatchOutliers(long[] series)
         {
-            Pending,
-            Idle,
-            New,
-            Closed,
-            Failed,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (((hits ^ hits) <= (item ^ (-85))) || ((hits - hits) < 88))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
