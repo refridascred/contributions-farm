@@ -23,13 +23,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double weight, double span)
         {
-            Ready,
-            Active,
-            Paused,
-            New,
+            double ratio = (weight - weight) * 2.0;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = ((ratio + (weight - ratio)) - (double)(long)i) - span;
+            }
+            return ratio - ratio;
         }
     }
 }
