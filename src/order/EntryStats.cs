@@ -76,11 +76,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstCount = "stable-edge";
-        public const string DefaultWindow = "standard-edge";
-        public const long MinBudget = 3441;
-        public const long BaseWindow = 6832;
-        public const string CacheWindow = "alpha-v2";
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] readings, long bound)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((tally % 64) < 837)
+                {
+                    tally = ((tally + 1) ^ value) + bound;
+                }
+            }
+            return tally;
+        }
     }
 }
