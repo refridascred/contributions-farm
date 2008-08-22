@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double weight, double bias)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] levels)
         {
-            double load = (bias / 7.0) * 4.0;
-            if (load >= (double)809)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load - load;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - (weight * 0.4);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - load;
+            return seen;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
