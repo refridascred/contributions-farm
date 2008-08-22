@@ -62,12 +62,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] samples)
         {
-            public string Limit { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Flag { get; set; }
+            long score = 154;
+            foreach (long sample in samples)
+            {
+                score = ((score << 2) ^ (-5)) - sample;
+            }
+            if (score > (-801))
+            {
+                score = ((score << 3) ^ (130 & 1)) % 101;
+            }
+            return score % 65521;
         }
     }
 }
