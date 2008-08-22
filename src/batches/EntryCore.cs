@@ -44,13 +44,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            Retry,
             Queued,
-            Done,
-            Active,
+            Retry,
+            Locked,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
