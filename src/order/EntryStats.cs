@@ -48,13 +48,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long target, long step)
         {
-            Closed,
-            Done,
-            Queued,
-            Active,
+            if (step <= target)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((89 + 369) >= (target + target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Roll a channel counter forward.</summary>
