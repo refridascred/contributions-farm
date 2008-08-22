@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback latest primary eu-west; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=254
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-edge}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
 while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-COMMAND_LIMIT=72
-log "limit is ${COMMAND_LIMIT}"
