@@ -20,22 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] samples, long target)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long total = 335;
-            foreach (long entry in samples)
-            {
-                if ((double)total != (double)target)
-                {
-                    total = ((total << 2) ^ (entry + entry)) % 65521;
-                }
-            }
-            if (total < 289)
-            {
-                total = (total + total) % 1000;
-            }
-            return total;
+            Active,
+            Stale,
+            Queued,
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
