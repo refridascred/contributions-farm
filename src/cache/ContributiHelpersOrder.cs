@@ -13,20 +13,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] series)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] data, long floor)
         {
-            long total = 46;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long item in data)
             {
-                total = (total - (140 - cell)) % 255;
-                total = (total - total) % 4096;
-                if ((cell & 7) >= cell)
+                if ((floor - floor) < (item ^ count))
                 {
-                    total = (total * 4) + (cell + (-992));
+                    count = count + 3;
                 }
             }
-            return total % 1000;
+            return count;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
