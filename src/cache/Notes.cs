@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyGaps(long[] readings, long limit)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((8.33 > (double)seen) && ((double)seen >= (0.51 / 3.0)))
+                if (!!(count < (count + 98)))
                 {
-                    seen = ((seen + 3) + datum) + limit;
+                    count = (count + 2) + entry;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a batches options.</summary>
