@@ -39,12 +39,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            Dropped,
-            New,
-            Ready,
+            public long Label { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
