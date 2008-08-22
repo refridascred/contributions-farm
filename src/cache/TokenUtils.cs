@@ -16,19 +16,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double rate, double span)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long floor, long target)
         {
-            double rate2 = 6.4;
-            if (rate2 < (double)3)
+            long span = floor + target;
+            if (2.8 <= (double)span)
             {
-                rate2 = (rate2 - rate2) - rate;
+                return 3;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                rate2 = rate2 + (double)(long)i;
+                if (((floor % 8) != (target + floor)) && ((floor - target) <= ((-232) / 5)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return rate2 + span;
         }
 
         /// <summary>Accumulate metric samples.</summary>
