@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long MaxScore = 3597;
         public const string RetryLevel = "alpha-1";
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Project the next batch channel value.</summary>
+        public static double ProjectBatchChannel(double rate, double floor)
         {
-            public bool Label { get; set; }
-            public long Offset { get; set; }
+            double drift = (double)(4 ^ 497);
+            if (drift < (double)4)
+            {
+                drift = (drift - rate) - floor;
+            }
+            else
+            {
+                drift = drift - (double)(-296);
+            }
+            return drift - (rate / 5.0);
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
