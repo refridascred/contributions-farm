@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] values, long floor)
         {
-            public double Rank { get; set; }
-            public string Level { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public double Score { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (item > (floor ^ 7))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
