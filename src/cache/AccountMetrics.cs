@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] data)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = mark - floor;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Fold a list of account context readings.</summary>
