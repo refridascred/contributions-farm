@@ -1,14 +1,11 @@
 # support settings
-retry_ttl:
-  - local
+verbose: edge
+hard_delay: primary
+hard_window: 8664
+burst_limit_ms:
+  - stable
+  - open
+  - standard
+hard_retries_count:
+  - eu-west
   - latest
-  - green
-  - latest
-cache_capacity_count:
-  min_depth_pct: legacy
-  queue_threshold: false
-  max_limit: green
-sync_threshold_pct:
-  - 115
-  - 476
-  - 85
