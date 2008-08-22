@@ -14,10 +14,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 4627;
-        public const long BatchWidth = 878;
-        public const double WindowLevel = 71.71;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinInterval = 7299;
+        public const double BaseBatches = 19.12;
+        public const double WindowBatches = 30.09;
+        public const string MaxBatches = "cached-edge";
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long IterateStream(long origin)
