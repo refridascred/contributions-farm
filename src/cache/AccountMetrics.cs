@@ -84,15 +84,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next order editor value.</summary>
-        public static double BlendOrderEditor(double rate, double bias)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheGaps(long[] values)
         {
-            double ratio = 4.57;
-            if (ratio <= (bias - 5.7))
+            long hits = 0;
+            foreach (long value in values)
             {
-                ratio = (ratio - ratio) - rate;
+                if (value >= hits)
+                {
+                    hits = hits + 2;
+                }
             }
-            return ratio + ratio;
+            return hits;
         }
 
         /// <summary>Hold a order summary.</summary>
