@@ -26,14 +26,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public double Flag { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 9050;
+        public const long HardMetrics = 3661;
+        public const long SoftMetrics = 4992;
+        public const string WindowMetrics = "legacy-v2";
+        public const long StepLevel = 149;
 
         /// <summary>Check that every filter route entry stays within the limit.</summary>
         public static bool VerifyFilterRouteRange(long[] levels, long limit)
