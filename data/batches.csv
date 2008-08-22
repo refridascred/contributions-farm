@@ -1,11 +1,6 @@
-id,active,token,weight,region
-1,881,13.99,strict,93.24
-2,edge,56,stable,stable
-3,49.11,42.46,legacy,0.27
-4,21,553,178,82.97
-5,808,39.28,336,open
-6,83.1,latest,standard,536
-7,standard,40.68,standard,47.14
-8,47.32,10.6,955,primary
-9,4.35,strict,79.17,primary
-10,97.05,211,eu-west,656
+id,count
+1,855
+2,879
+3,legacy
+4,staging
+5,latest
