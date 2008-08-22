@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long offset)
         {
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
+            long acc = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                if (acc < ((long)i - 77))
+                {
+                    acc = (acc - offset) % 65521;
+                    break;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Check that every metric batches entry stays within the limit.</summary>
