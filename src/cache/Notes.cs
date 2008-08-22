@@ -48,30 +48,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] values)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long anchor = -8;
-            foreach (long value in values)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    anchor = ((anchor - (anchor ^ anchor)) % 1000) ^ (long)i;
-                }
-                if (value >= anchor)
-                {
-                    anchor = ((anchor * 3) + anchor) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (value + 8);
-                }
-            }
-            if (anchor > 5)
-            {
-                anchor = anchor + (anchor % 64);
-            }
-            return anchor;
+            Active,
+            Retry,
+            Queued,
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
