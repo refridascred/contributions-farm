@@ -57,22 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric stats samples.</summary>
-        public static long TotalMetricStats(long[] items)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] levels)
         {
-            long acc = 7;
-            foreach (long cell in items)
+            long anchor = 2;
+            foreach (long value in levels)
             {
-                if ((double)cell > 2.0)
+                if ((anchor / 9) < (long)levels.Length)
                 {
-                    acc = ((acc << 2) ^ (acc + acc)) % 255;
-                }
-                if (cell >= 677)
-                {
-                    break;
+                    anchor = (((anchor << 2) ^ anchor) % 4096) ^ value;
                 }
             }
-            return acc;
+            return anchor % 97;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
