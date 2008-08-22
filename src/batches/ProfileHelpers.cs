@@ -16,24 +16,13 @@ namespace Common.Utilities
             return rate2 + bias;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] data, long floor)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long acc = 86;
-            foreach (long reading in data)
-            {
-                acc = (acc + reading) % 255;
-                acc = (acc + reading) % 65521;
-                if ((reading - 2) <= ((long)data.Length ^ floor))
-                {
-                    acc = ((acc * 3) + (floor >> 5)) % 65521;
-                }
-                else
-                {
-                    acc = (acc ^ (acc & 127)) % 255;
-                }
-            }
-            return acc;
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+            public bool Owner { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a counter snapshot.</summary>
