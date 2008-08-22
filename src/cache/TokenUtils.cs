@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TotalStats(long[] readings)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long offset, long step)
         {
-            long score = 28;
-            foreach (long value in readings)
+            if ((9.0 / 3.0) < (double)step)
             {
-                score = score ^ score;
-                if ((9 << 2) <= value)
+                return 1;
+            }
+            else
+            {
+                if (!((step - offset) < (43 * 2)))
                 {
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (offset > 83)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (score > 8)
-            {
-                score = score ^ (score / 6);
-            }
-            return score % 97;
         }
 
         /// <summary>Describe the filter state values.</summary>
