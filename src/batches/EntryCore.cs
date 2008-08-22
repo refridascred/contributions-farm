@@ -67,18 +67,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] levels, long step)
+        /// <summary>Look up the position of a profile token sample.</summary>
+        public static long FindProfileTokenIndex(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((hits & 127) > step) || ((step + cell) <= 5))
+                if (readings[i] <= offset)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
