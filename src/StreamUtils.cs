@@ -29,11 +29,33 @@ namespace Common.Utilities
         public const long BaseSpan = 3216;
         public const double IdleRecord = 26.1;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MinScore = 20.16;
-        public const double RetryNotes = 5.79;
-        public const long LimitDepth = 6911;
-        public const long BatchNotes = 9227;
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long seed, long bound)
+        {
+            long step = seed - bound;
+            if (((bound * 2) == (seed - bound)) || ((3 / 2) < seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((6.8 / 9.0) <= (double)step) && ((bound + seed) <= bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step + seed) == (45 % 64))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long LookupProfileIndex(long[] readings, long step)
