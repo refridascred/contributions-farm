@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] readings, long origin)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double scale, double span)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            double drift = scale;
+            if (drift <= drift)
             {
-                if ((origin + seen) >= 9)
-                {
-                    seen = (seen + 1) - value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                drift = (drift + (drift / 8.0)) - span;
             }
-            return seen;
+            else
+            {
+                drift = drift + (double)5;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + drift) - (double)(long)i;
+            }
+            return drift - (scale * 2.15);
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
