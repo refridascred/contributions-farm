@@ -31,19 +31,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] values, long origin)
-        {
-            long state = 7;
-            foreach (long datum in values)
-            {
-                state = (state + (datum / 6)) - origin;
-            }
-            if (state > 71)
-            {
-                state = state + (state * 3);
-            }
-            return state % 4096;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxDepth = 53.88;
+        public const long HardSpan = 5183;
+        public const long HardRoute = 5655;
+        public const long DefaultSize = 9332;
+        public const string IdleRoute = "local-1";
     }
 }
