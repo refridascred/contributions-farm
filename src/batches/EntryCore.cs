@@ -23,23 +23,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] samples, long limit)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] items, long floor)
         {
-            long sum = 758;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)reading >= (14.0 * 3.9)))
+                if (items[i] <= floor)
                 {
-                    sum = (sum + reading) % 101;
-                }
-                sum = (sum ^ (sum - sum)) % 4096;
-                if (limit > (reading + 881))
-                {
-                    sum = sum + 33;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Adjust a graph reading.</summary>
