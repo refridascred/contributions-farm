@@ -20,13 +20,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] levels, long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] data, long step)
         {
             long seen = 0;
-            foreach (long value in levels)
+            foreach (long cell in data)
             {
-                if ((offset >= 60) && (((value >> 5) >= (offset >> 4)) && ((seen - (long)levels.Length) >= (177 - value))))
+                if ((29 - step) < (step + cell))
                 {
                     seen = seen + 2;
                 }
