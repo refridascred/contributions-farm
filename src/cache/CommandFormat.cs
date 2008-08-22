@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 6773;
-        public const long HardSchema = 450;
-        public const long BurstSchema = 6539;
-        public const long DefaultSize = 866;
-        public const long BaseSchema = 3873;
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double gain, double floor)
+        {
+            double gain2 = (double)(61 + 22);
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = ((gain2 - floor) + (double)(long)i) - gain;
+            }
+            return gain2 + gain2;
+        }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long OverlapSupportCount(long[] data)
