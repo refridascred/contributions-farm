@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long target, long origin)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] values, long limit)
         {
-            long delta = target - origin;
-            if (target > (-55))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)delta < 4.8)
+                if (values[i] >= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every notes profile entry stays within the limit.</summary>
