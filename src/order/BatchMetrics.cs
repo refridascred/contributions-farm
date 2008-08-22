@@ -47,24 +47,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long target)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long total = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((((long)i >> 3) > (total + target)) || (7.2 < (double)total)))
-                {
-                    total = total - ((long)i & 7);
-                }
-                if (total <= (total / 7))
-                {
-                    total = (total << 3) ^ total;
-                    total = (total - (target << 1)) % 101;
-                }
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            Draft,
+            Pending,
+            Ready,
+            Stale,
         }
 
         /// <summary>Measure how many batches graph samples are out of range.</summary>
