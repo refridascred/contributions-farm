@@ -51,12 +51,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] series, long limit)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] series, long offset)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] >= limit)
+                if (series[i] > offset)
                 {
                     return (long)i;
                 }
