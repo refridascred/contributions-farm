@@ -31,21 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] levels)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Token { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of buffer editor readings.</summary>
