@@ -1,5 +1,24 @@
 # githubfarm settings
-default_delay_s: 320
-enabled: 500
-idle_ttl_count: 100
-max_limit_ms: 60
+min_ttl_ms:
+  enabled: 1835
+  cache_capacity_count:
+    compress: primary
+    base_depth_s:
+      - 212
+      - 101
+      - 245
+    poll_delay_s: true
+    warm_capacity_ms: 250
+    strict: strict
+  max_interval_count: legacy
+  flush_limit:
+    - standard
+    - latest
+    - blue
+    - green
+  entry_threshold: 9514
+  base_ratio: 30
+checks_size: cached
+warm_threshold_pct: fallback
+payload_delay: edge
+retry_limit_count: eu-west
