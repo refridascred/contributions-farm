@@ -37,21 +37,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count schema session pairs that satisfy a relation.</summary>
-        public static long MatchSchemaSessionCount(long[] items)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] samples, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 586;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (state + (bound ^ bound)) - sample;
             }
-            return tally;
+            if (state < 251)
+            {
+                state = state - (state - state);
+            }
+            return state;
         }
     }
 }
