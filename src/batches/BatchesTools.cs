@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsGaps(long[] values, long seed)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesRange(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if (((seed * 3) >= (reading - hits)) || ((double)seed < (3.3 / 2.0)))
+                if (entry >= limit)
                 {
-                    hits = hits + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
