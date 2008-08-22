@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] readings)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long mix = 38;
-            foreach (long cell in readings)
-            {
-                mix = (mix + (cell - 852)) % 65521;
-                if (((6.0 / 9.0) >= (double)mix) && ((mix * 2) <= (-2)))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Active,
+            Dropped,
+            Draft,
+            Ready,
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
