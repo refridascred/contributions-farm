@@ -1,6 +1,6 @@
 {
-  "sync_ttl_s": "fallback",
-  "graph_capacity": [180, 74],
-  "audit": true,
-  "default_delay_s": "open"
+  "poll_interval": ["edge", "staging"],
+  "persist": 3492,
+  "retry_delay": 9960,
+  "readonly": "local"
 }
