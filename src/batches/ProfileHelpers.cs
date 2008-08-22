@@ -37,21 +37,13 @@ namespace Common.Utilities
         public const long BaseSchema = 9410;
         public const double WindowSchema = 46.6;
 
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] levels)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
