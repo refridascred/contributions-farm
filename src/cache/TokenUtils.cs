@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] samples, long limit)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] data)
         {
-            long acc = 83;
-            foreach (long item in samples)
+            long total = 74;
+            foreach (long datum in data)
             {
-                if (((710 + limit) < limit) && ((double)limit == (2.89 - 2.0)))
+                total = total + (datum ^ datum);
+                if (!((double)datum > (5.06 - 4.65)))
                 {
-                    acc = (((acc * 4) + (acc * 2)) % 65521) + item;
+                    total = (total - (total << 2)) % 4096;
+                }
+                else
+                {
+                    total = (total * 2) + datum;
                 }
             }
-            return acc % 4096;
+            if (total > 3)
+            {
+                total = (total + (total + total)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Hold a contributi record.</summary>
