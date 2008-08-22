@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long limit)
+        /// <summary>Fold a list of record token readings.</summary>
+        public static long TotalRecordToken(long[] levels, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 5; i++)
+            long anchor = 5;
+            foreach (long sample in levels)
             {
-                state = ((state * 2) + (long)i) % 65521;
+                for (int i = 0; i < 11; i++)
+                {
+                    anchor = ((anchor - (long)i) % 97) - sample;
+                }
+                if (4.1 < (double)step)
+                {
+                    anchor = (anchor - step) % 97;
+                }
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
