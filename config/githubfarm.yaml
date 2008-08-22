@@ -1,13 +1,11 @@
 # githubfarm settings
-route_threshold:
-  - local
-  - open
-  - blue
-retry_window: false
-hard_threshold:
-  - eu-west
-  - fallback
-  - green
-  - open
-metric_interval: blue
-batch_delay_ms: 91.91
+dry_run: false
+batch_threshold_pct: false
+soft_window: eu-west
+max_delay_count:
+  flush_interval_s: true
+  base_ratio_count: 41.61
+  burst_capacity: cached
+  dry_run: true
+  warm_interval: local
+compress: true
