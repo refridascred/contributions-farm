@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double gain, double floor)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long limit)
         {
-            double bias = (double)(681 % 97);
-            if (bias >= (double)1)
+            long state = limit;
+            for (int i = 0; i < 5; i++)
             {
-                bias = (bias + gain) - floor;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            else
-            {
-                bias = bias - bias;
-            }
-            return bias - (double)494;
+            return state;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
