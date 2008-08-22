@@ -23,20 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the githubfarm cache series from a seed.</summary>
-        public static long StepGithubfarmCache(long seed)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] samples)
         {
-            long acc = seed;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                acc = (acc + acc) % 255;
-                if ((6.4 - 19.0) >= (double)seed)
+                if ((datum + seen) <= (seen + seen))
                 {
-                    acc = ((acc << 2) ^ (acc ^ seed)) % 1000;
+                    seen = seen + 1;
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
