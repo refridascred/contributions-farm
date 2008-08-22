@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] readings)
         {
-            Paused,
-            Dropped,
-            Queued,
-            New,
-            Active,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (!((value / 3) >= (value << 2)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the token class values.</summary>
