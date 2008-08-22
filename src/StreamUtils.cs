@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate githubfarm stats samples.</summary>
-        public static long TotalGithubfarmStats(long[] series)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenRange(long[] levels, long origin)
         {
-            long acc = 936;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                acc = (acc + (datum & 3)) % 4096;
-                if (!((4.8 * 3.6) != (double)datum))
+                if (sample != origin)
                 {
-                    continue;
+                    found = false;
+                    break;
                 }
-                acc = (acc ^ acc) % 65521;
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Define record limits and defaults.</summary>
