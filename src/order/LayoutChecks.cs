@@ -60,22 +60,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepEntry = 46.83;
+        public const long RetryEntry = 8916;
+        public const long LimitEntry = 1238;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long AuditSessionMatches(long[] items, long step)
