@@ -41,38 +41,31 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Grade a format support value against two limits.</summary>
-        public static long RankFormatSupport(long origin, long seed)
+        /// <summary>Accumulate stream queue samples.</summary>
+        public static long ScoreStreamQueue(long[] samples)
         {
-            if (((double)origin == (12.0 + 0.4)) && (origin > seed))
+            long score = 910;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin >> 4) > origin)
+                score = (score ^ (value + score)) % 97;
+                for (int i = 0; i < 2; i++)
                 {
-                    return 1;
+                    score = (((score << 3) ^ value) % 101) ^ (long)i;
                 }
-                else
+                if (!((score + score) > (value * 5)))
                 {
-                    if ((double)origin >= (1.0 + 1.95))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin / 9) <= (0 >> 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    score = (score + 977) % 1000;
+                }
+                if (score > 8)
+                {
+                    break;
                 }
             }
+            if (score < 531)
+            {
+                score = (score ^ (score - score)) % 65521;
+            }
+            return score % 1000;
         }
     }
 }
