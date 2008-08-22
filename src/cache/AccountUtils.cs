@@ -34,13 +34,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public string Score { get; set; } = "";
+            Idle,
+            Failed,
+            Stale,
         }
     }
 }
