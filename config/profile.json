@@ -1,8 +1,14 @@
 {
-  "sync_window": false,
-  "layout_threshold": [326, 236],
-  "audit": "staging",
-  "default_timeout_pct": 55,
-  "warm_delay_s": "blue",
-  "token_timeout": "cached"
+  "hard_threshold": 5.9,
+  "warm_interval_s": {
+    "account_retries": {
+      "sync_interval_count": "local",
+      "counter_capacity": "cached",
+      "min_interval_s": true
+    },
+    "stream_threshold": 92,
+    "strict": 500,
+    "flush_interval_count": 58
+  },
+  "flush_interval_pct": 61.94
 }
