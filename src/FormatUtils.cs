@@ -47,11 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double rate, double bias)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] levels)
         {
-            double load = rate;
-            return load + bias;
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((5.0 + 2.5) < (double)(long)levels.Length)
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
