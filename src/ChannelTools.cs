@@ -25,21 +25,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count filter checks pairs that satisfy a relation.</summary>
-        public static long OverlapFilterChecksCount(long[] series)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double rate, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = span;
+            if (drift < (double)21)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = drift + (drift + drift);
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (1.5 * 19.0)) + (double)(long)i;
+            }
+            return drift + (rate - rate);
         }
     }
 }
