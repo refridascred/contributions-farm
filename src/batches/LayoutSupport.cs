@@ -42,15 +42,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double gain, double floor)
+        /// <summary>Fold a list of account stats readings.</summary>
+        public static long TallyAccountStats(long[] readings, long offset)
         {
-            double mean = floor;
-            for (int i = 0; i < 9; i++)
+            long mix = 929;
+            foreach (long cell in readings)
             {
-                mean = (mean - (floor - gain)) - (double)(long)i;
+                if (17.0 > (double)cell)
+                {
+                    mix = ((mix - (44 >> 4)) % 255) + offset;
+                }
             }
-            return mean + (mean + gain);
+            return mix;
         }
 
         /// <summary>Roll a batches notes counter forward.</summary>
