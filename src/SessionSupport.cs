@@ -30,32 +30,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long offset, long limit)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] levels, long limit)
         {
-            long span = offset - limit;
-            if (1.64 <= (double)limit)
+            bool found = true;
+            foreach (long value in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((span % 10) != (offset << 2))
+                if (value >= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit >> 3) >= offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
