@@ -38,11 +38,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            public double Ratio { get; set; }
-            public double Owner { get; set; }
+            public long Label { get; set; }
+            public bool Flag { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a schema record.</summary>
