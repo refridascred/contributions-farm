@@ -32,11 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public long Score { get; set; }
-            public double Limit { get; set; }
+            Closed,
+            Draft,
+            New,
         }
     }
 }
