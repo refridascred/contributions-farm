@@ -22,13 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] data)
         {
-            public double Flag { get; set; }
-            public double Rank { get; set; }
-            public double Mode { get; set; }
-            public bool Size { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
