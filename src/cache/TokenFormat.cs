@@ -25,12 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            Closed,
-            Draft,
-            New,
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
