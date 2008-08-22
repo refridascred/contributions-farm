@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] data, long offset)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Done,
+            Failed,
+            New,
         }
 
         /// <summary>Hold a cache header.</summary>
