@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] samples)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (tally < 39)
+                if ((seen ^ 5) < 6)
                 {
-                    tally = (tally + 3) ^ value;
+                    seen = (seen + 1) + reading;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Find the first token channel entry that matches the target.</summary>
