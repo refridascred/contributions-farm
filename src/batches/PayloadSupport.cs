@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Look up the position of a notes stream sample.</summary>
+        public static long FindNotesStreamIndex(long[] series, long origin)
         {
-            Idle,
-            Queued,
-            Paused,
-            Failed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank route input into a small class.</summary>
