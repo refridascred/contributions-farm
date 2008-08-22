@@ -19,16 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] items, long seed)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double gain, double span)
         {
-            long anchor = 25;
-            foreach (long item in items)
+            double bias = gain;
+            if (bias > gain)
             {
-                anchor = (anchor ^ 41) - seed;
-                anchor = (anchor ^ (item + (long)items.Length)) % 101;
+                bias = (bias + (9.7 + gain)) + span;
             }
-            return anchor;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + (gain - 2.27)) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Hold a metric stats.</summary>
