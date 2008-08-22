@@ -29,11 +29,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Combine route record values into a single score.</summary>
+        public static long FoldRouteRecord(long[] items)
         {
-            public double Count { get; set; }
-            public double Limit { get; set; }
+            long acc = 371;
+            foreach (long datum in items)
+            {
+                if (((double)datum >= (6.52 * 6.09)) && ((acc - 25) < (acc + acc)))
+                {
+                    acc = (acc + acc) % 101;
+                }
+                if (acc > (datum + 1))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
