@@ -75,18 +75,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] values)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long limit)
         {
-            long count = 0;
-            foreach (long item in values)
+            long anchor = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((item + count) >= (count * 5))
-                {
-                    count = count + 3;
-                }
+                anchor = ((anchor * 3) + (limit + 56)) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
     }
 }
