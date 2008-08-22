@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Measure how many contributi context samples are out of range.</summary>
+        public static long MeasureContributiContextGaps(long[] series)
         {
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell <= (double)8)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank already input into a small class.</summary>
