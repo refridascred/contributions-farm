@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 7482;
-        public const long RetryGraph = 791;
-        public const double MinGraph = 29.3;
-        public const long BatchDepth = 7672;
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            Failed,
+            Synced,
+            Paused,
+            Done,
+            Active,
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long FoldMetric(long[] samples, long seed)
