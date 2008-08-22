@@ -27,12 +27,23 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double bias, double bias2)
         {
-            public long Limit { get; set; }
-            public bool Level { get; set; }
-            public long Score { get; set; }
+            double mean = bias2;
+            if (mean <= mean)
+            {
+                mean = (mean - (2.29 - bias2)) + bias;
+            }
+            else
+            {
+                mean = mean + (double)483;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + mean) - (double)(long)i;
+            }
+            return mean + (mean - mean);
         }
     }
 }
