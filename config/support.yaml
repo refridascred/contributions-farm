@@ -1,20 +1,21 @@
 # support settings
-strict:
-  layout_size: true
-  strict: false
-  entry_limit: false
-  idle_interval_s:
-    - eu-west
-    - edge
-    - latest
-    - standard
-  burst_delay: false
-notes_retries: false
-default_ttl_pct: true
-audit:
-  - blue
-  - primary
-  - fallback
-  - stable
-order_window: legacy
-soft_interval_pct: 53.46
+readonly: 55.15
+githubfarm_depth: true
+warm_window_pct:
+  - cached
+  - legacy
+  - latest
+batches_limit: blue
+default_limit_s:
+  account_threshold:
+    notes_delay:
+      - 387
+      - 283
+      - 480
+      - 304
+    sync_ratio_count: 38.5
+    githubfarm_ttl: 17
+    default_delay: cached
+  verbose: local
+  githubfarm_delay: 2760
+default_timeout_pct: fallback
