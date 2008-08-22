@@ -57,18 +57,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell & 1) == (cell & 63))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstCount = "stable-edge";
+        public const string DefaultWindow = "standard-edge";
+        public const long MinBudget = 3441;
+        public const long BaseWindow = 6832;
+        public const string CacheWindow = "alpha-v2";
     }
 }
