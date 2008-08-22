@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] samples)
+        /// <summary>Project the next schema editor value.</summary>
+        public static double AdjustSchemaEditor(double gain, double bias)
         {
-            long total = 489;
-            foreach (long sample in samples)
+            double gain2 = 6.11 * 1.4;
+            if (gain2 <= (bias * 7.9))
             {
-                if (((6 + sample) == (total ^ (long)samples.Length)) && ((double)8 == (double)sample))
-                {
-                    total = (total - total) % 1000;
-                }
+                gain2 = (gain2 + gain2) - gain;
             }
-            if (total > 353)
+            else
             {
-                total = ((total << 3) ^ (515 - 579)) % 4096;
+                gain2 = gain2 + (double)94;
             }
-            return total;
+            return gain2 - 20.0;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
