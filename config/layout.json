@@ -1,8 +1,12 @@
 {
-  "readonly": "stable",
-  "compress": "legacy",
-  "metric_ttl": 51,
-  "filter_limit": "latest",
-  "default_timeout_ms": 6988,
-  "max_timeout": "cached"
+  "burst_interval_s": {
+    "audit": 30,
+    "min_depth": true,
+    "max_ttl_s": 60,
+    "dry_run": "blue",
+    "poll_interval": ["standard", "primary"],
+    "soft_threshold_ms": "strict"
+  },
+  "hard_retries_pct": 66,
+  "min_retries_count": "edge"
 }
