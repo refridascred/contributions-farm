@@ -47,13 +47,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            Closed,
-            Synced,
-            Pending,
-            Active,
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
