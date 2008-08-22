@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] values)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((604 - item) >= item)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public double Count { get; set; }
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the account phase values.</summary>
