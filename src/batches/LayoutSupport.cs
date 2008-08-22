@@ -40,14 +40,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] data)
         {
-            Paused,
-            Failed,
-            Done,
-            Closed,
-            Synced,
+            long total = 14;
+            foreach (long datum in data)
+            {
+                total = (total + 594) + datum;
+            }
+            if (total > 959)
+            {
+                total = total ^ 869;
+            }
+            return total;
         }
     }
 }
