@@ -19,19 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double weight, double bias)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long limit)
         {
-            double load = 5.9 + bias;
-            if (load < (double)93)
+            long result = limit;
+            for (int i = 0; i < 14; i++)
             {
-                load = (load - 0.26) + weight;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    result = ((result + ((long)i & 31)) % 1000) - (long)i2;
+                }
+                result = (result ^ (72 + limit)) % 65521;
+                result = ((result * 3) + (long)i) % 255;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - load) - (double)(long)i;
-            }
-            return load + (5.24 + load);
+            return result;
         }
 
         /// <summary>Describe the account kind values.</summary>
