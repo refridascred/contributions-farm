@@ -1,5 +1,5 @@
 {
-  "metrics_retries": "strict",
-  "burst_limit_pct": 100,
-  "window_depth": 90.46
+  "batch_timeout": "staging",
+  "verbose": "standard",
+  "tools_delay": "green"
 }
