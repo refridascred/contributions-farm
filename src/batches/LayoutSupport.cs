@@ -14,23 +14,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next editor queue value.</summary>
-        public static double AdjustEditorQueue(double rate, double offset)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] levels)
         {
-            double drift = rate;
-            if (drift >= (double)5)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = drift - drift;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (8.4 / 2.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (double)91) + (double)(long)i;
-            }
-            return drift - offset;
+            return hits;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
