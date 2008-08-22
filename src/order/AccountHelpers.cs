@@ -37,31 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long seed, long step)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long origin)
         {
-            if (!((double)step > (double)step))
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
             {
-                return 7;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (((double)seed > (2.0 + 8.7)) && ((step - seed) != (seed * 5)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((seed + seed) > (step - step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Hold a contributi header.</summary>
