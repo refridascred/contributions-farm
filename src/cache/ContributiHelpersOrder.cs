@@ -31,11 +31,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxDepth = 53.88;
-        public const long HardSpan = 5183;
-        public const long HardRoute = 5655;
-        public const long DefaultSize = 9332;
-        public const string IdleRoute = "local-1";
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Ready,
+            New,
+            Failed,
+            Done,
+        }
     }
 }
