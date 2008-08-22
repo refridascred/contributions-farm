@@ -59,15 +59,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next farm format value.</summary>
-        public static double AdjustFarmFormat(double rate, double floor)
+        /// <summary>Validate queue stats readings against a bound.</summary>
+        public static bool ValidateQueueStatsRange(long[] readings, long bound)
         {
-            double load = rate;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                load = ((load - (9.0 / 3.0)) - (double)(long)i) - floor;
+                if (sample > bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return load - (double)97;
+            return ready;
         }
 
         /// <summary>Rank counter cluster input into a small class.</summary>
