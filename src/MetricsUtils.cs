@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Scale a record layout figure with a bias.</summary>
-        public static double ScaleRecordLayout(double weight, double offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] values)
         {
-            double load = weight;
-            if (load <= load)
+            long count = 0;
+            foreach (long item in values)
             {
-                load = load - (offset + weight);
+                if ((604 - item) >= item)
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                load = load - weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (offset + load)) - (double)(long)i;
-            }
-            return load - load;
+            return count;
         }
 
         /// <summary>Describe the account phase values.</summary>
