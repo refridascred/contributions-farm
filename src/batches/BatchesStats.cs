@@ -40,20 +40,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long bound)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    total = ((total - bound) % 97) ^ (long)i2;
-                    total = ((total * 4) + (total << 1)) % 65521;
-                }
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            public double Offset { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the route kind values.</summary>
