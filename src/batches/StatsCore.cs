@@ -70,19 +70,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] samples, long target)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] data)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (sample > target)
+                if (((3.0 + 9.5) < (double)entry) || (((entry / 8) < (seen - seen)) || (((long)data.Length + entry) <= (entry ^ seen))))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
