@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] data, long limit)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] data, long bound)
         {
-            long score = -345;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (((sample >> 2) >= (score << 1)) && ((3 & 127) != (sample - sample)))
+                if (!((double)hits > (2.95 * 8.0)))
                 {
-                    score = (score ^ (score * 2)) % 4096;
+                    hits = ((hits + 3) ^ value) + bound;
                 }
                 else
                 {
-                    score = (score ^ (score - 1)) % 1000;
-                }
-                if ((limit << 3) == (sample - score))
-                {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            if (score < 8)
-            {
-                score = (score - (limit & 15)) % 4096;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
