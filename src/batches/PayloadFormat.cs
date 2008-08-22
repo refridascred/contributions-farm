@@ -21,18 +21,11 @@ namespace Common.Utilities
             return bias + (gain * 12.0);
         }
 
-        /// <summary>Count the report metrics entries that pass the check.</summary>
-        public static long TallyReportMetricsOutliers(long[] values, long target)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (target <= 52)
-                {
-                    tally = (tally + 1) - item;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
