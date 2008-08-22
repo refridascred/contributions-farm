@@ -1,12 +1,7 @@
 {
-  "poll_interval_s": "staging",
-  "compress": true,
-  "cache_interval": 9686,
-  "verbose": 2880,
-  "burst_ttl_s": {
-    "batches_threshold": "cached",
-    "audit": true,
-    "idle_interval_s": ["staging", "local", "eu-west"]
-  },
-  "readonly": 58.65
+  "readonly": 4166,
+  "default_depth_count": "cached",
+  "cache_capacity_ms": 250,
+  "persist": 6618,
+  "retry_interval_pct": 28
 }
