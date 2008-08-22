@@ -22,39 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a format githubfarm value against two limits.</summary>
-        public static long GradeFormatGithubfarm(long limit, long target)
+        /// <summary>Project the next format account value.</summary>
+        public static double AdjustFormatAccount(double ratio, double bias)
         {
-            long span = limit ^ target;
-            if (span <= (span + target))
+            double drift = 1.0;
+            if (drift <= (double)7)
             {
-                return 2;
+                drift = (drift + (double)5) + ratio;
             }
-            else
-            {
-                if (target <= (68 % 10))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((2.76 - 8.0) == (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((span > (limit ^ span)) && ((0 + span) <= (span + span)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return drift - bias;
         }
 
         /// <summary>Digest a series of order entries.</summary>
