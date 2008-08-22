@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Adjust a support contributi reading.</summary>
+        public static double AdjustSupportContributi(double gain, double span)
         {
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
+            double scale = span - span;
+            if (scale < (double)(-7))
+            {
+                scale = (scale + span) + gain;
+            }
+            else
+            {
+                scale = scale + 5.1;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (1.0 / 4.0)) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
