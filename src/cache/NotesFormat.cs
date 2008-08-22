@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] data)
         {
-            public double Total { get; set; }
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (!(datum > (datum ^ seen)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
