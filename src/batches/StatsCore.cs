@@ -57,9 +57,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double DefaultRatio = 86.13;
-        public const string StepInterval = "fallback-v2";
-        public const string BurstCache = "alpha-v2";
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] items, long bound)
+        {
+            long score = 94;
+            foreach (long item in items)
+            {
+                score = (score - (bound - item)) % 65521;
+                if (((bound << 1) != (item + score)) || ((bound - 717) < 98))
+                {
+                    score = score + (long)items.Length;
+                }
+            }
+            return score;
+        }
     }
 }
