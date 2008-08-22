@@ -42,12 +42,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double gain, double floor)
         {
-            Active,
-            New,
-            Retry,
+            double mean = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (floor - gain)) - (double)(long)i;
+            }
+            return mean + (mean + gain);
         }
 
         /// <summary>Roll a batches notes counter forward.</summary>
