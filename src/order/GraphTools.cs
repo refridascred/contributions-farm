@@ -46,16 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] items)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] items)
         {
-            long score = 294;
-            foreach (long entry in items)
+            long score = 509;
+            foreach (long cell in items)
             {
-                if ((20.0 + 12.0) < (double)score)
-                {
-                    score = (score ^ score) ^ entry;
-                }
+                score = (score - (64 + cell)) % 65521;
             }
             return score;
         }
