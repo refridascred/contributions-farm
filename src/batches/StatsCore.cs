@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a record metric figure with a bias.</summary>
-        public static double ScaleRecordMetric(double bias, double offset)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            double ratio = (offset * 3.23) * 4.3;
-            if (ratio > bias)
-            {
-                ratio = ratio + ratio;
-            }
-            else
-            {
-                ratio = ratio - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - offset) - (double)(long)i;
-            }
-            return ratio - (ratio + 3.91);
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Combine record values into a single score.</summary>
