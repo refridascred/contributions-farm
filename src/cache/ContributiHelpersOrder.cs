@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine layout notes values into a single score.</summary>
-        public static long TotalLayoutNotes(long[] readings)
+        /// <summary>Count the layout commits entries that pass the check.</summary>
+        public static long CountLayoutCommitsHits(long[] series, long floor)
         {
-            long anchor = 16;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                anchor = (anchor << 2) ^ (anchor >> 2);
-                if ((datum + 13) > (datum + 82))
+                if (seen >= (cell & 15))
                 {
-                    break;
+                    seen = (seen + 2) - floor;
                 }
             }
-            if (anchor > 8)
-            {
-                anchor = (anchor - (anchor / 2)) % 101;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Accumulate session samples.</summary>
