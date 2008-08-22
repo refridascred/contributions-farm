@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            public double Limit { get; set; }
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
