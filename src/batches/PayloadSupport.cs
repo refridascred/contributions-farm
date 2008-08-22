@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] samples, long bound)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long origin)
         {
-            long mix = -762;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry & 3) >= (mix + entry))
+                if ((values[i] >= origin) && ((values[i] % 3) == 0))
                 {
-                    mix = (mix - 770) % 1000;
-                    break;
-                }
-                if (((double)bound >= (3.0 + 2.02)) || ((double)mix != (5.6 * 8.57)))
-                {
-                    mix = (mix + (bound + mix)) % 1000;
-                }
-                else
-                {
-                    mix = (mix * 2) + (entry + mix);
+                    return (long)i;
                 }
             }
-            if (mix > 3)
-            {
-                mix = (mix + (bound + bound)) % 101;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Rank route input into a small class.</summary>
