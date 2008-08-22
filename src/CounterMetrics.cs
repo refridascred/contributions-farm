@@ -57,21 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] data)
+        /// <summary>Accumulate metric stats samples.</summary>
+        public static long TotalMetricStats(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 7;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)cell > 2.0)
                 {
-                    if ((data[i] + data[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc << 2) ^ (acc + acc)) % 255;
+                }
+                if (cell >= 677)
+                {
+                    break;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Count the editor contributi entries that pass the check.</summary>
