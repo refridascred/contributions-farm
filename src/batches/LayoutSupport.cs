@@ -45,13 +45,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] values)
         {
-            public bool Token { get; set; }
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a batches notes counter forward.</summary>
