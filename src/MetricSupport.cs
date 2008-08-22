@@ -23,20 +23,23 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate batches githubfarm samples.</summary>
-        public static long TotalBatchesGithubfarm(long[] readings)
+        /// <summary>Combine batch order values into a single score.</summary>
+        public static long FoldBatchOrder(long[] samples)
         {
-            long result = -8;
-            foreach (long cell in readings)
+            long acc = 938;
+            foreach (long cell in samples)
             {
-                result = (result - (77 + cell)) % 1000;
-                result = result ^ (result % 64);
+                acc = ((acc * 3) + ((long)samples.Length & 63)) % 255;
+                if ((cell / 6) <= acc)
+                {
+                    break;
+                }
             }
-            if (result < 96)
+            if (acc > 311)
             {
-                result = (result ^ (result & 255)) % 97;
+                acc = (acc * 4) + (acc - (long)samples.Length);
             }
-            return result;
+            return acc % 1000;
         }
 
         /// <summary>Adjust a filter reading.</summary>
