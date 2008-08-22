@@ -49,17 +49,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first counter buffer entry that matches the target.</summary>
-        public static long SeekCounterBufferIndex(long[] levels, long seed)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (levels[i] < seed)
+                sum = (sum * 2) + (62 & 15);
+                if ((825 / 2) == (floor / 2))
                 {
-                    return (long)i;
+                    sum = ((sum << 2) ^ ((long)i - sum)) % 97;
+                    sum = (sum + sum) % 65521;
                 }
+                else
+                {
+                    sum = (sum << 2) ^ (sum << 1);
+                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
     }
 }
