@@ -5,23 +5,29 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long seed, long limit)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long bound, long floor)
         {
-            long span = seed ^ limit;
-            if (seed > (limit ^ limit))
+            if ((bound ^ floor) < bound)
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if (!((span + span) > limit))
+                if (((7 - floor) >= (bound + bound)) || ((963 % 16) > (floor + 12)))
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    return 2;
+                    if ((floor + bound) <= (floor * 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
