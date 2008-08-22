@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] samples, long origin)
         {
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
-            public double Total { get; set; }
+            long mix = -627;
+            foreach (long value in samples)
+            {
+                if ((value + origin) != (origin >> 2))
+                {
+                    mix = ((mix * 3) + (528 - value)) % 4096;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ origin;
+                }
+                if ((mix + origin) <= (6 << 3))
+                {
+                    mix = (mix ^ (long)samples.Length) % 1000;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Check that every metric batches entry stays within the limit.</summary>
