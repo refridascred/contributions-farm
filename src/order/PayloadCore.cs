@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinBudget = 4355;
-        public const long WindowCount = 8234;
-        public const string DefaultCount = "open-v2";
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseFactor = 4740;
+        public const long CacheAccount = 249;
+        public const long BatchAccount = 8541;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long CountSupportMatches(long[] data)
