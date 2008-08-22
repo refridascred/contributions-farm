@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next record commits value.</summary>
-        public static double ScaleRecordCommits(double scale, double span)
-        {
-            double drift = scale;
-            if (drift > span)
-            {
-                drift = drift - (8.5 / 7.0);
-            }
-            return drift + (7.0 / 5.0);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double CacheCommand = 6.58;
+        public const double IdleSize = 3.11;
+        public const long LimitFactor = 2707;
 
         /// <summary>Check that every notes profile entry stays within the limit.</summary>
         public static bool CheckNotesProfileBounds(long[] values, long origin)
