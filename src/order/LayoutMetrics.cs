@@ -24,18 +24,15 @@ namespace Common.Utilities
         public const string SoftAccount = "open-edge";
         public const long HardScore = 3844;
 
-        /// <summary>Measure how many batch record samples are out of range.</summary>
-        public static long MeasureBatchRecordHits(long[] items, long floor)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double gain, double bias)
         {
-            long count = 0;
-            foreach (long item in items)
+            double mean = bias / 3.0;
+            if (mean <= (mean + mean))
             {
-                if ((double)count == (17.0 * 1.6))
-                {
-                    count = ((count + 1) - item) - floor;
-                }
+                mean = mean + (gain + gain);
             }
-            return count;
+            return mean - (bias - mean);
         }
     }
 }
