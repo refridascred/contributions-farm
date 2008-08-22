@@ -19,14 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Paused,
-            Queued,
-            New,
-            Idle,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 6248;
+        public const long MaxRatio = 3249;
+        public const long MinCache = 5841;
 
         /// <summary>Blend two session measurements.</summary>
         public static double ScaleSession(double rate, double span)
