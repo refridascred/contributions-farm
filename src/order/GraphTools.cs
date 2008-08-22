@@ -20,15 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double BlendAccount(double scale, double bias)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            double mean = (scale * 4.0) + (double)6;
-            if (mean < (mean + bias))
-            {
-                mean = mean + (scale / 3.0);
-            }
-            return mean - (double)5;
+            public bool Level { get; set; }
+            public double Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Adjust a window reading.</summary>
