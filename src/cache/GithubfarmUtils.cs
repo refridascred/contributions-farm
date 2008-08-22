@@ -57,9 +57,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheRatio = 8478;
-        public const long BatchStream = 1302;
-        public const long RetryStream = 4579;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleDepth = 50.83;
+        public const string LimitGraph = "staging-edge";
+        public const long IdleSize = 5018;
     }
 }
