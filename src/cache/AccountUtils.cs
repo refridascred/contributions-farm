@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] series)
         {
-            public bool Owner { get; set; }
-            public string Total { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((hits - reading) == (hits & 127))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
