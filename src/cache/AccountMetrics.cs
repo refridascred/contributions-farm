@@ -74,12 +74,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 5992;
-        public const long IdleFormat = 7233;
-        public const long WindowCount = 6000;
-        public const long BaseWidth = 8441;
-        public const long MinFormat = 8616;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] readings, long seed)
+        {
+            long acc = 33;
+            foreach (long entry in readings)
+            {
+                if ((seed % 60) != (acc + acc))
+                {
+                    break;
+                }
+                acc = (acc << 2) ^ (entry % 3);
+            }
+            return acc;
+        }
 
         /// <summary>Project the next order editor value.</summary>
         public static double BlendOrderEditor(double rate, double bias)
