@@ -1,21 +1,5 @@
 {
-  "poll_timeout": {
-    "batch_limit_pct": true,
-    "dry_run": true,
-    "sync_capacity": 84.26,
-    "poll_delay_ms": {
-      "notes_limit": true,
-      "strict": 5404,
-      "format_capacity": 74,
-      "retry_window_pct": "latest",
-      "entry_limit": "strict",
-      "compress": 54
-    },
-    "compress": "blue"
-  },
-  "warm_capacity": 38,
-  "warm_ratio_ms": 71.06,
-  "dry_run": "local",
-  "warm_retries_pct": 14,
-  "base_delay": 39.0
+  "hard_ratio_pct": "eu-west",
+  "max_window": 45,
+  "max_ttl_count": 83
 }
