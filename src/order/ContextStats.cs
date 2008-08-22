@@ -23,13 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            Paused,
-            Dropped,
-            Failed,
-            Active,
+            Draft,
+            Closed,
             Queued,
         }
 
