@@ -22,17 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LookupAlreadyIndex(long[] readings, long floor)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((readings[i] == floor) && ((readings[i] % 2) != 0))
+                if (!((double)datum == (11.0 * 14.0)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
