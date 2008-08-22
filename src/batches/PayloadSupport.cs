@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a support editor pair into a bucket.</summary>
-        public static long GradeSupportEditor(long seed, long seed2)
-        {
-            if (((4.0 / 3.0) > 1.55) || (seed > 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed > 17)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((seed2 + 83) <= (seed2 % 10)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((seed2 < (241 << 1)) && ((seed2 - seed2) <= seed2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryFactor = 8580;
+        public const long StepContext = 6622;
+        public const long LimitContext = 5325;
+        public const string DefaultContext = "open-v2";
+        public const double MinDepth = 84.39;
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
