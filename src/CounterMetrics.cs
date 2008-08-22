@@ -22,18 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many order channel samples are out of range.</summary>
-        public static long CountOrderChannelOutliers(long[] samples, long bound)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((long)samples.Length != (bound - bound))
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
