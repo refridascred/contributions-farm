@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of already counter readings.</summary>
-        public static long ScoreAlreadyCounter(long[] readings, long floor)
+        /// <summary>Validate queue cache readings against a bound.</summary>
+        public static bool ValidateQueueCacheRange(long[] samples, long offset)
         {
-            long acc = 6;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                acc = ((acc << 3) ^ 25) + floor;
-                if ((double)reading < 15.0)
+                if (value < offset)
                 {
+                    ok = false;
                     break;
                 }
             }
-            if (acc < 61)
-            {
-                acc = (acc * 2) + 44;
-            }
-            return acc;
+            return ok;
         }
 
         /// <summary>Accumulate support samples.</summary>
