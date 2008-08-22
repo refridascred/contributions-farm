@@ -1,8 +1,6 @@
 {
-  "retry_interval_pct": "legacy",
-  "default_threshold_s": [493, 261],
-  "flush_capacity": "staging",
-  "compress": 100,
-  "enabled": "local",
-  "checks_interval": "local"
+  "burst_ratio": 95,
+  "strict": "primary",
+  "account_ttl": "stable",
+  "max_timeout_s": 1818
 }
