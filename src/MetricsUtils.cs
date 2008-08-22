@@ -42,18 +42,12 @@ namespace Common.Utilities
         public const double WindowSpan = 10.88;
         public const long IdleFarm = 5224;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] values)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((matches / 7) >= (matches * 3))
-                {
-                    matches = (matches + 3) ^ cell;
-                }
-            }
-            return matches;
+            Done,
+            Closed,
+            New,
         }
     }
 }
