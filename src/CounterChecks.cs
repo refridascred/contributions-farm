@@ -37,17 +37,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] data, long target)
+        /// <summary>Combine session window values into a single score.</summary>
+        public static long CombineSessionWindow(long[] items, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = -2;
+            foreach (long cell in items)
             {
-                if (data[i] > target)
+                if (((-10) - 6) == (67 - seed))
                 {
-                    return (long)i;
+                    acc = ((acc << 3) ^ (seed + seed)) % 101;
+                    acc = (acc << 2) ^ seed;
+                }
+                else
+                {
+                    acc = ((acc * 2) + cell) % 65521;
+                }
+                if ((seed - 49) != (cell + seed))
+                {
+                    acc = (acc << 3) ^ seed;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
