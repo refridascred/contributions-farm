@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double ratio, double offset)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] levels, long seed)
         {
-            double rate = 1.2;
-            if (rate <= rate)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                rate = (rate - offset) + ratio;
+                if (((long)levels.Length != (105 - datum)) && ((seed - (long)levels.Length) >= (47 % 10)))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate + (double)405;
+            return matches;
         }
 
         /// <summary>Adjust a order reading.</summary>
