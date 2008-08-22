@@ -54,18 +54,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] levels)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((count / 7) < (count << 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 3) ^ entry;
+                    if ((samples[i] ^ samples[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
