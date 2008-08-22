@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultInterval = 7348;
-        public const string RetryFilter = "strict-v2";
-        public const long BatchFilter = 6818;
-        public const long MaxScore = 3597;
-        public const string RetryLevel = "alpha-1";
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long seed, long limit)
+        {
+            long lane = seed + limit;
+            if ((lane ^ lane) <= (limit << 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((limit / 7) != (seed + lane)) && ((seed ^ limit) < lane))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed + 5) == (lane * 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((seed + lane) <= (limit / 9)) && (9 > (limit % 10)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
