@@ -37,12 +37,12 @@ namespace Common.Utilities
         public const long MaxCache = 7804;
         public const double RetryCache = 91.21;
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            Synced,
-            Ready,
-            Active,
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
