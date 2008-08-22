@@ -19,17 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] values, long target)
+        /// <summary>Digest a series of already token entries.</summary>
+        public static long TotalAlreadyToken(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 41;
+            foreach (long datum in items)
             {
-                if ((values[i] > target) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                result = (result - result) % 65521;
+                result = (result - (datum & 3)) % 101;
             }
-            return -1;
+            return result % 4096;
         }
 
         /// <summary>Describe the schema kind values.</summary>
