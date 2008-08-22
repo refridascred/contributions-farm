@@ -10,13 +10,31 @@ namespace Common.Utilities
         public const long BurstWindow = 417;
         public const double BaseBudget = 23.0;
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long target, long limit)
         {
-            Done,
-            Ready,
-            New,
-            Synced,
+            if ((target + target) >= (limit >> 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit + target) > (target - target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((5.0 + 3.0) < (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate filter samples.</summary>
