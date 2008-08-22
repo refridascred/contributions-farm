@@ -1,7 +1,8 @@
 {
-  "max_delay_count": "standard",
-  "sync_threshold_ms": 64.71,
-  "warm_interval": 15,
-  "max_interval_pct": "cached",
-  "enabled": ["strict", "eu-west", "strict", "eu-west"]
+  "base_retries_count": [9, 450, 143, 16],
+  "min_ratio_ms": "latest",
+  "retry_interval_s": 14.1,
+  "default_size_count": "staging",
+  "batch_delay_ms": true,
+  "strict": 500
 }
