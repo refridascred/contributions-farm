@@ -36,17 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] readings, long step)
+        /// <summary>Measure how many channel order samples are out of range.</summary>
+        public static long CountChannelOrderOutliers(long[] data, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((readings[i] > step) && ((readings[i] % 2) != 0))
+                if (datum < (420 + datum))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + seed;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the window kind values.</summary>
