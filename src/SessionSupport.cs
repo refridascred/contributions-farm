@@ -20,21 +20,31 @@ namespace Common.Utilities
             return mean - (mean - mean);
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] values)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long seed, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((seed - offset) <= offset)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((seed - offset) <= 0)
                 {
-                    if ((values[i] ^ values[j]) > 6)
+                    return 7;
+                }
+                else
+                {
+                    if (((153 + 6) < (seed >> 1)) || ((offset % 12) == (seed % 12)))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
