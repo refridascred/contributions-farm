@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] items, long floor)
+        /// <summary>Accumulate route commits samples.</summary>
+        public static long DigestRouteCommits(long[] series, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = -3;
+            foreach (long reading in series)
             {
-                if ((items[i] < floor) && ((items[i] % 3) != 0))
+                acc = (acc ^ ((long)series.Length / 6)) - reading;
+                acc = (acc + (261 + (long)series.Length)) % 4096;
+                if (offset <= (offset ^ offset))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Locate a format stats reading by value.</summary>
