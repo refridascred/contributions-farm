@@ -13,11 +13,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long target, long floor)
         {
-            public string Label { get; set; } = "";
-            public long Token { get; set; }
+            long offset = target - floor;
+            if ((offset & 3) <= offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((target - floor) <= offset) || ((9.0 * 3.6) >= (double)target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((7 + 707) <= floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define context limits and defaults.</summary>
