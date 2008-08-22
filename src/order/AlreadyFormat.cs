@@ -25,20 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] samples, long floor)
-        {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string StepFactor = "latest";
+        public const string BaseQueue = "standard-edge";
+        public const double DefaultFactor = 46.94;
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long AuditClusterMatches(long[] values, long bound)
