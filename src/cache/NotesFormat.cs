@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate editor stats readings against a bound.</summary>
-        public static bool VerifyEditorStatsLimits(long[] readings, long origin)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Total { get; set; }
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
