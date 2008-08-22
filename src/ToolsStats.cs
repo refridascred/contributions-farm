@@ -29,18 +29,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] data)
+        /// <summary>Combine commits support values into a single score.</summary>
+        public static long TallyCommitsSupport(long[] data, long floor)
         {
-            long hits = 0;
+            long score = -711;
             foreach (long datum in data)
             {
-                if (1.1 > (double)datum)
+                if ((floor / 7) < (long)data.Length)
                 {
-                    hits = hits + 3;
+                    score = (score - (datum ^ datum)) % 97;
+                    score = (score ^ (693 + score)) % 1000;
+                }
+                if ((0.7 - 5.48) != (double)datum)
+                {
+                    score = (score - ((long)data.Length << 2)) % 101;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
