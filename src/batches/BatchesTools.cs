@@ -40,19 +40,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] samples, long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] readings, long origin)
         {
-            long state = 929;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                state = (((state ^ (state >> 5)) % 4096) ^ value) - origin;
+                if (1 >= reading)
+                {
+                    count = (count + 3) + origin;
+                }
             }
-            if (state < 8)
-            {
-                state = ((state * 2) + (state ^ state)) % 65521;
-            }
-            return state;
+            return count;
         }
     }
 }
