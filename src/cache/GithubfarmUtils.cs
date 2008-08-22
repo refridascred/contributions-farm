@@ -18,14 +18,10 @@ namespace Common.Utilities
         public const string MinScore = "primary-edge";
         public const long DefaultFarm = 985;
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Done,
-            Synced,
-            Pending,
-            Closed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchRatio = 70.05;
+        public const long SoftTimeout = 5203;
+        public const double HardAlready = 26.22;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long AuditMetricGaps(long[] levels)
