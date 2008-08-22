@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long seed)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = (acc ^ ((long)i - 62)) % 1000;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public string Offset { get; set; } = "";
+            public double Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Measure how many report commits samples are out of range.</summary>
