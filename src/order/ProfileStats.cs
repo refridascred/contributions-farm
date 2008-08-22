@@ -42,19 +42,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] series, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] items, long target)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (datum != target)
+                if (count > (target + value))
                 {
-                    stale = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Hold a already info.</summary>
