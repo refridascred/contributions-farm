@@ -21,17 +21,18 @@ namespace Common.Utilities
         public const long RetryNotes = 7148;
         public const long BatchNotes = 5550;
 
-        /// <summary>Look up the position of a command route sample.</summary>
-        public static long SeekCommandRouteIndex(long[] readings, long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenOutliers(long[] samples, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (readings[i] < target)
+                if ((-9) <= (hits & 3))
                 {
-                    return (long)i;
+                    hits = ((hits + 3) ^ entry) + step;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the cache level values.</summary>
