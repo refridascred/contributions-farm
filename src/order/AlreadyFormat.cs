@@ -59,39 +59,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long bound, long offset)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long edge = bound - offset;
-            if (1.71 <= (double)offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((edge / 7) > offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (bound < (bound * 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)bound <= (9.0 * 8.9))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Pending,
+            Draft,
+            Retry,
         }
     }
 }
