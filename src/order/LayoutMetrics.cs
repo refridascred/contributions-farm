@@ -18,32 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long target, long step)
-        {
-            if ((9.4 / 9.0) != (double)step)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((target >> 4) > step) || ((target + 6) <= 849))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((386 / 3) != (target >> 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 656;
+        public const string BurstAccount = "latest-v2";
+        public const string SoftAccount = "open-edge";
+        public const long HardScore = 3844;
 
         /// <summary>Accumulate already samples.</summary>
         public static long TallyAlready(long[] data, long seed)
