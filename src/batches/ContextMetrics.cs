@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 730;
-        public const long StepStats = 4161;
-        public const long DefaultLevel = 5553;
-        public const long BatchStats = 355;
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
+        {
+            Ready,
+            Closed,
+            Retry,
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long BaseDepth = 2639;
