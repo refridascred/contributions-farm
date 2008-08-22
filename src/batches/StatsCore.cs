@@ -24,13 +24,21 @@ namespace Common.Utilities
             return ratio - (ratio + 3.91);
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Compare every pair of schema cache readings.</summary>
+        public static long OverlapSchemaCacheCount(long[] samples)
         {
-            Synced,
-            Dropped,
-            Idle,
-            Queued,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of queue commits readings.</summary>
