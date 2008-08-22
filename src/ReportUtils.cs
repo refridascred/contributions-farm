@@ -37,19 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a graph entry counter forward.</summary>
-        public static long RollGraphEntry(long target)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long floor)
         {
-            long score = target;
-            for (int i = 0; i < 5; i++)
+            long anchor = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (89 >= (score / 8))
-                {
-                    score = (score << 2) ^ ((long)i >> 1);
-                }
-                score = ((score * 5) + (long)i) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Blend two route measurements.</summary>
