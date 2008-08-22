@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] samples)
+        /// <summary>Count commits account pairs that satisfy a relation.</summary>
+        public static long MatchCommitsAccountCount(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) < 14)
+                    if ((data[i] + data[j]) != 7)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
