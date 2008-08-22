@@ -40,11 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public string Token { get; set; } = "";
-            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
