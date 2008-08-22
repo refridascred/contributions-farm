@@ -24,22 +24,21 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] values)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] data)
         {
-            long carry = 801;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry & 127) < (carry << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = carry + (entry >> 5);
-                }
-                else
-                {
-                    carry = (carry - (entry + entry)) % 97;
+                    if ((data[i] - data[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return count;
         }
 
         /// <summary>Find the first counter buffer entry that matches the target.</summary>
