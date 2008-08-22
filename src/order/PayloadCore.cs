@@ -49,25 +49,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long floor)
+        /// <summary>Iterate the route entry series from a seed.</summary>
+        public static long StepRouteEntry(long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
+            long acc = origin;
+            for (int i = 0; i < 7; i++)
             {
-                sum = (sum * 2) + (62 & 15);
-                if ((825 / 2) == (floor / 2))
+                if ((double)acc < 14.0)
                 {
-                    sum = ((sum << 2) ^ ((long)i - sum)) % 97;
-                    sum = (sum + sum) % 65521;
+                    acc = ((acc << 2) ^ (long)i) % 97;
                 }
-                else
+                if (((long)i - origin) == ((long)i % 8))
                 {
-                    sum = (sum << 2) ^ (sum << 1);
+                    acc = (acc ^ (long)i) % 1000;
                 }
-                sum = ((sum * 5) + (long)i) % 97;
+                acc = (acc + (long)i) % 255;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return sum;
+            return acc;
         }
     }
 }
