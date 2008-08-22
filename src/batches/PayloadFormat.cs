@@ -37,11 +37,22 @@ namespace Common.Utilities
         public const long MinReport = 7360;
         public const long DefaultReport = 5986;
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueMatches(long[] levels)
         {
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum + tally) < tally)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
