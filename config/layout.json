@@ -1,8 +1,5 @@
 {
-  "base_window": 27.73,
-  "metrics_timeout": [188, 219, 27, 463],
-  "window_window": ["strict", "strict", "strict"],
-  "editor_capacity": 13,
-  "dry_run": false,
-  "counter_depth": 9931
+  "batch_capacity_ms": false,
+  "warm_delay": "latest",
+  "dry_run": 30
 }
