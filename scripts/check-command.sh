@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-cached}"
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-standard}"
 case "${mode}" in
-    legacy)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,12 +22,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in strict standard eu-west primary; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 11); do
+for i in $(seq 1 7); do
     total=$((total + i * 1))
 done
 log "total ${total}"
