@@ -15,12 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardScore = 2957;
-        public const long IdleInterval = 4625;
-        public const long StepWidth = 7363;
-        public const long IdleContributi = 8013;
-        public const long StepInterval = 2762;
+        /// <summary>Look up the position of a batch githubfarm sample.</summary>
+        public static long SeekBatchGithubfarmIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= floor) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long FoldSchema(long[] values, long step)
