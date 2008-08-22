@@ -13,12 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] samples)
         {
-            Failed,
-            Synced,
-            Done,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (!((double)datum > (1.96 + 1.66)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a batches githubfarm figure with a bias.</summary>
