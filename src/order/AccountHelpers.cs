@@ -100,9 +100,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 8860;
-        public const long StepQueue = 4362;
-        public const string MaxQueue = "strict";
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (((71 << 3) < (hits / 8)) && ((item - hits) != (5 % 3)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
