@@ -22,19 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] samples, long offset)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double scale, double span)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            double drift = scale;
+            if (drift >= span)
             {
-                if (sample < offset)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = drift + (span - 9.0);
             }
-            return ok;
+            return drift - drift;
         }
 
         /// <summary>Describe the account kind values.</summary>
