@@ -1,13 +1,11 @@
 # Command notes
 
-When a channel fails, the counter handler retries a few times before giving up.
-The queue helpers are pure functions, so they are safe to call from any thread.
-
-Keep token and schema names short and lowercase.
-A farm that stays idle for too long is moved to the command list.
+The queue module keeps order values in sync with the notes cache.
+Each layout is validated before it reaches the already queue.
+Run the queue check before changing any metric limits.
 
 ## Guidelines
 
-- Log every profile change
-- Keep account values small
-- Prefer contributi defaults
+- Log every githubfarm change
+- Keep format values small
+- Prefer entry defaults
