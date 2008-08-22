@@ -58,9 +58,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double RetryMetric = 31.46;
-        public const double CacheMetric = 76.9;
-        public const string SoftMetric = "open-v2";
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Stale,
+            Idle,
+            Synced,
+            Pending,
+            New,
+        }
     }
 }
