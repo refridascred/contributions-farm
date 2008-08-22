@@ -1,14 +1,11 @@
 # Command notes
 
-Run the context check before changing any queue limits.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-
-Run the command check before changing any notes limits.
-Keep schema and order names short and lowercase.
+Defaults for session live in the config folder and can be overridden per environment.
+Each cache is validated before it reaches the filter queue.
 
 ## Guidelines
 
-- Validate route input early
-- Keep stats values small
-- Log every command change
-- Document new report fields
+- Review filter limits each release
+- Prefer buffer defaults
+- Validate profile input early
+- Log every tools change
