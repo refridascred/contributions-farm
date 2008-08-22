@@ -17,18 +17,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of account context readings.</summary>
-        public static long ScoreAccountContext(long[] items, long target)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] data, long step)
         {
-            long state = 73;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((double)9 != (double)cell)
+                if (entry != step)
                 {
-                    state = (((state * 3) + state) % 1000) + target;
+                    flag = false;
+                    break;
                 }
             }
-            return state % 97;
+            return flag;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
