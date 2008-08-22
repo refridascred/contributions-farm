@@ -35,19 +35,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ScaleAccount(double scale, double span)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchOutliers(long[] levels, long bound)
         {
-            double scale2 = (double)(4 - 120);
-            if (scale2 >= (double)11)
+            long count = 0;
+            foreach (long item in levels)
             {
-                scale2 = ((scale2 + (double)859) - scale) + span;
+                if ((bound % 60) > (61 * 3))
+                {
+                    count = (count + 1) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 + 6.4) - (double)(long)i;
-            }
-            return scale2 + scale2;
+            return count;
         }
     }
 }
