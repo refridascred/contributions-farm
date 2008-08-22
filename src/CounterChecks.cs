@@ -94,19 +94,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] items)
-        {
-            long mix = 7;
-            foreach (long cell in items)
-            {
-                mix = ((mix << 3) ^ (cell & 255)) % 255;
-            }
-            if (mix < (-467))
-            {
-                mix = (mix ^ (mix + mix)) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFactor = 5269;
+        public const long MinSpan = 4023;
+        public const long BatchFarm = 874;
+        public const long MinFarm = 6722;
     }
 }
