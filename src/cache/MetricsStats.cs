@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a support contributi reading.</summary>
-        public static double AdjustSupportContributi(double gain, double span)
-        {
-            double scale = span - span;
-            if (scale < (double)(-7))
-            {
-                scale = (scale + span) + gain;
-            }
-            else
-            {
-                scale = scale + 5.1;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (1.0 / 4.0)) + (double)(long)i;
-            }
-            return scale + scale;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSpan = 5482;
+        public const string IdleFactor = "alpha-1";
+        public const string DefaultSchema = "stable-1";
 
         /// <summary>Classify a context order pair into a bucket.</summary>
         public static long ClassifyContextOrder(long offset, long floor)
