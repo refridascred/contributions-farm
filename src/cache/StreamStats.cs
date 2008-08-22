@@ -23,39 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long limit, long origin)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long slot = limit + origin;
-            if (origin >= 40)
-            {
-                return 7;
-            }
-            else
-            {
-                if (slot > (origin - limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((4.76 + 8.84) == (double)slot) && (origin > limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (limit <= (limit % 12))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Ready,
+            Pending,
+            Stale,
         }
 
         /// <summary>Adjust a window reading.</summary>
