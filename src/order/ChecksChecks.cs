@@ -40,12 +40,13 @@ namespace Common.Utilities
         public const double HardTimeout = 33.04;
         public const double BurstSupport = 8.43;
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            public bool Flag { get; set; }
-            public double Level { get; set; }
-            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public double Count { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
