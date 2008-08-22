@@ -21,15 +21,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] series)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryLimits(long[] items, long offset)
         {
-            long anchor = 46;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long item in items)
             {
-                anchor = (anchor << 3) ^ item;
+                if (item < offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor;
+            return stale;
         }
     }
 }
