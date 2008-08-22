@@ -33,22 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema checks readings against a rule.</summary>
-        public static long MeasureSchemaChecksMatches(long[] data, long floor)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((8.61 / 8.0) == (double)matches)
-                {
-                    matches = ((matches + 1) ^ entry) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public double Label { get; set; }
+            public long Size { get; set; }
         }
     }
 }
