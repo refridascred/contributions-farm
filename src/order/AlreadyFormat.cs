@@ -68,11 +68,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long step, long bound)
         {
-            public bool Size { get; set; }
-            public long Total { get; set; }
+            long span = step ^ bound;
+            if ((span % 7) >= span)
+            {
+                return 4;
+            }
+            else
+            {
+                if (step <= (step >> 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound >> 3) != (0 + step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
