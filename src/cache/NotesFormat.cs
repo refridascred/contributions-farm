@@ -13,17 +13,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] levels, long step)
+        /// <summary>Count the buffer format entries that pass the check.</summary>
+        public static long MeasureBufferFormatMatches(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (levels[i] < step)
+                if ((matches + matches) > matches)
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ reading;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
