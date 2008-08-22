@@ -56,17 +56,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a batches notes counter forward.</summary>
-        public static long DeriveBatchesNotes(long origin)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long mark = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = mark ^ (origin * 5);
-                mark = (mark - (origin - 60)) % 101;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            Stale,
+            Failed,
+            Ready,
+            Pending,
+            Paused,
         }
     }
 }
