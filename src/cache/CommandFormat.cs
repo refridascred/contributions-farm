@@ -55,13 +55,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Match up batch metrics samples.</summary>
+        public static long PairBatchMetricsCount(long[] values)
         {
-            Closed,
-            Dropped,
-            Idle,
-            Synced,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
