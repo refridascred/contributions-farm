@@ -42,18 +42,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] levels, long offset)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((seen / 8) <= offset)
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public long Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
