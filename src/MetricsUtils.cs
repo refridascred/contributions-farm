@@ -27,10 +27,10 @@ namespace Common.Utilities
         public const long WindowRoute = 9330;
         public const long IdleRoute = 1583;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 3278;
-        public const double WindowSpan = 10.88;
-        public const long IdleFarm = 5224;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 617;
+        public const long StepFormat = 2348;
+        public const string LimitWidth = "latest-1";
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool ValidateStreamRange(long[] items, long seed)
