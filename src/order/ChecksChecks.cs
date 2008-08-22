@@ -37,14 +37,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] samples)
         {
-            Draft,
-            Paused,
-            Idle,
-            Queued,
-            Synced,
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (!(matches <= (matches % 5)))
+                {
+                    matches = (matches + 1) + cell;
+                }
+            }
+            return matches;
         }
     }
 }
