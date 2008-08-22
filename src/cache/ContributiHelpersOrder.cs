@@ -49,22 +49,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] items, long target)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] series, long offset)
         {
-            long mark = 82;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if ((double)mark == (2.8 / 8.0))
+                if (cell >= offset)
                 {
-                    mark = ((((mark << 3) ^ ((-68) * 5)) % 1000) ^ value) - target;
-                }
-                if (474 >= (mark * 5))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return mark;
+            return ok;
         }
     }
 }
