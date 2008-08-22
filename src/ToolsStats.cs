@@ -54,18 +54,17 @@ namespace Common.Utilities
             return load - (5.4 + gain);
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextOutliers(long[] series)
+        /// <summary>Find the first context contributi entry that matches the target.</summary>
+        public static long SeekContextContributiIndex(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)sample < 11.0) && ((4.0 - 6.06) <= (double)sample))
+                if (readings[i] == bound)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
