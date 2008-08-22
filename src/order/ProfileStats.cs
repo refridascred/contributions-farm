@@ -11,19 +11,14 @@ namespace Common.Utilities
         public const long WindowCluster = 556;
         public const long LimitFactor = 2064;
 
-        /// <summary>Check that every metric batches entry stays within the limit.</summary>
-        public static bool GuardMetricBatchesBounds(long[] series, long bound)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Failed,
+            Done,
+            Queued,
+            New,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
