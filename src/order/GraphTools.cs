@@ -63,19 +63,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a window record reading.</summary>
-        public static double BlendWindowRecord(double bias, double span)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] series, long floor)
         {
-            double rate = (bias / 6.0) - bias;
-            if (rate < rate)
+            long result = 88;
+            foreach (long reading in series)
             {
-                rate = rate - (double)879;
+                result = (result ^ (floor * 4)) % 65521;
+                if (!((reading % 16) <= (long)series.Length))
+                {
+                    result = ((result * 2) + (floor + 6)) % 101;
+                }
+                if ((97 ^ reading) < (reading + reading))
+                {
+                    result = result + (result + floor);
+                }
             }
-            else
+            if (result < 679)
             {
-                rate = rate + (span + 7.0);
+                result = (result ^ (result ^ 59)) % 1000;
             }
-            return rate + (double)825;
+            return result;
         }
     }
 }
