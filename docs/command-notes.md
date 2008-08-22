@@ -1,15 +1,11 @@
 # Command notes
 
-Keep layout and metrics names short and lowercase.
-Keep graph and channel names short and lowercase.
-The metrics helpers are pure functions, so they are safe to call from any thread.
-
-Use checks settings to tune how often notes data is refreshed.
-A account that stays idle for too long is moved to the commits list.
-Keep buffer and batch names short and lowercase.
+Keep githubfarm and support names short and lowercase.
+Each session is validated before it reaches the editor queue.
 
 ## Guidelines
 
-- Log every stats change
-- Validate channel input early
-- Prefer checks defaults
+- Review counter limits each release
+- Document new account fields
+- Prefer filter defaults
+- Log every counter change
