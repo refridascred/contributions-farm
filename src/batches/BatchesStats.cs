@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long floor, long seed)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] data, long limit)
         {
-            if ((double)floor < (double)seed)
+            long total = 265;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor > (floor & 7)) || ((double)seed < 6.7))
+                total = (((total << 3) ^ (total ^ total)) % 65521) - value;
+                if ((limit * 3) < (154 ^ 19))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor + seed) != (3 + floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((seed - seed) >= (-57)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    total = total + 2;
                 }
             }
+            return total;
         }
 
         /// <summary>Combine account values into a single score.</summary>
