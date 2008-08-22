@@ -10,23 +10,10 @@ namespace Common.Utilities
         public const long CacheAccount = 249;
         public const long BatchAccount = 8541;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((((double)cell < 6.0) || ((double)cell < (6.3 / 2.0))) || ((cell < (83 - seen)) && (seen >= 844)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseCounter = 9141;
+        public const long MinRatio = 254;
+        public const double CacheCounter = 81.75;
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long TallyContributi(long[] values)
