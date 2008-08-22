@@ -53,11 +53,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            public bool Count { get; set; }
-            public double Flag { get; set; }
+            Draft,
+            Dropped,
+            Synced,
+            Stale,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
