@@ -71,22 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] samples, long target)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricRange(long[] data, long step)
         {
-            long acc = 4;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if ((cell ^ acc) <= (target + acc))
+                if (entry <= step)
                 {
-                    acc = (acc + cell) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            if (acc < (-83))
-            {
-                acc = ((acc * 3) + (669 ^ 7)) % 255;
-            }
-            return acc % 97;
+            return ready;
         }
 
         /// <summary>Describe the farm class values.</summary>
