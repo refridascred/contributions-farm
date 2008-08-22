@@ -14,19 +14,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] items)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] data)
         {
-            long sum = 50;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                sum = (sum - item) % 65521;
+                if ((tally < (datum & 31)) || ((tally < (83 + 48)) || ((double)tally >= (7.61 * 4.0))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (sum < 8)
-            {
-                sum = ((sum * 2) + (sum % 12)) % 255;
-            }
-            return sum % 1000;
+            return tally;
         }
 
         /// <summary>Hold a queue header.</summary>
