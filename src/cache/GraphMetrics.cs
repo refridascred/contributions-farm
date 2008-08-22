@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] levels, long seed)
+        /// <summary>Grade a format command value against two limits.</summary>
+        public static long RankFormatCommand(long offset, long origin)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            if (origin >= (offset - offset))
             {
-                if ((double)515 > (double)tally)
+                return 8;
+            }
+            else
+            {
+                if ((origin / 2) < origin)
                 {
-                    tally = ((tally + 1) + datum) - seed;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine format values into a single score.</summary>
