@@ -66,12 +66,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long step)
         {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
-            public bool Ratio { get; set; }
+            long mix = step;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = (mix - (60 << 1)) % 1000;
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
