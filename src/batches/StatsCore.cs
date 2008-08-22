@@ -82,19 +82,27 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] items, long bound)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] values, long limit)
         {
-            long score = 94;
-            foreach (long item in items)
+            long anchor = 934;
+            foreach (long sample in values)
             {
-                score = (score - (bound - item)) % 65521;
-                if (((bound << 1) != (item + score)) || ((bound - 717) < 98))
+                if ((sample >> 3) <= (anchor + sample))
                 {
-                    score = score + (long)items.Length;
+                    anchor = anchor - (anchor >> 1);
+                    continue;
+                }
+                if (sample > (205 << 1))
+                {
+                    anchor = anchor - (385 - 85);
+                }
+                else
+                {
+                    anchor = anchor - (sample - limit);
                 }
             }
-            return score;
+            return anchor;
         }
     }
 }
