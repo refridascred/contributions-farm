@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public double Total { get; set; }
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
+            Locked,
+            Retry,
+            New,
+            Paused,
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
