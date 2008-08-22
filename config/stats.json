@@ -1,8 +1,12 @@
 {
-  "readonly": true,
-  "schema_window": 10.13,
-  "sync_capacity_pct": 9404,
-  "retry_capacity": 19.65,
-  "commits_timeout": 52.29,
-  "flush_retries_count": [66, 54]
+  "sync_size_s": "blue",
+  "hard_interval": "strict",
+  "cache_window_ms": {
+    "warm_timeout_s": "legacy",
+    "batch_delay_s": "edge",
+    "retry_timeout_count": "legacy"
+  },
+  "default_depth_count": 87.79,
+  "cache_capacity_count": ["blue", "strict", "strict"],
+  "retry_ratio_s": 0.87
 }
