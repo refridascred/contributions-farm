@@ -49,13 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] readings, long bound)
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
