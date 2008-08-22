@@ -1,5 +1,14 @@
 {
-  "cache_timeout_s": 90.31,
-  "context_window": "staging",
-  "notes_size": [205, 444, 35, 389]
+  "audit": "open",
+  "min_size_s": 9250,
+  "sync_window": ["latest", "strict", "strict"],
+  "buffer_size": {
+    "batches_interval": [210, 211, 233],
+    "max_window_ms": 75,
+    "poll_timeout": true,
+    "command_window": 60,
+    "poll_threshold_ms": "strict"
+  },
+  "idle_interval_ms": 34.81,
+  "dry_run": "standard"
 }
