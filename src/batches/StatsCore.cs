@@ -24,12 +24,14 @@ namespace Common.Utilities
             return gain + weight;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheTimeout = 5602;
-        public const long DefaultQueue = 7926;
-        public const long RetryQueue = 9227;
-        public const long LimitQueue = 8359;
-        public const long MaxQueue = 6507;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Synced,
+            Dropped,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Blend two record measurements.</summary>
         public static double ScaleRecord(double scale, double offset)
