@@ -20,11 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double gain, double offset)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long origin, long step)
         {
-            double bias = (offset + offset) * 2.29;
-            return (bias - bias) + gain;
+            if ((origin + origin) > (5 << 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)step < (3.0 * 8.7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Fold a list of batches readings.</summary>
