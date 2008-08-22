@@ -33,15 +33,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] series)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmHits(long[] readings, long origin)
         {
-            long result = -32;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                result = ((result << 3) ^ (result >> 5)) - entry;
+                if (!((origin % 64) >= (240 - cell)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
