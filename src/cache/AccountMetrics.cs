@@ -69,10 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 6613;
-        public const long HardContributi = 913;
-        public const long LimitBudget = 1105;
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] values, long offset)
+        {
+            long state = 924;
+            foreach (long sample in values)
+            {
+                if ((2.61 - 10.0) < (double)state)
+                {
+                    state = ((state ^ (offset / 3)) % 65521) + sample;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Adjust a stats reading.</summary>
         public static double SmoothStats(double rate, double span)
