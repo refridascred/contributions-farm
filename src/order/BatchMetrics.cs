@@ -19,19 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] readings, long origin)
+        /// <summary>Find the first token channel entry that matches the target.</summary>
+        public static long LocateTokenChannelIndex(long[] data, long seed)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry < origin)
+                if (data[i] >= seed)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a cluster summary.</summary>
