@@ -20,18 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TotalPayload(long[] levels, long offset)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long acc = 20;
-            foreach (long entry in levels)
-            {
-                if ((double)offset >= (8.99 - 2.0))
-                {
-                    acc = (((acc << 3) ^ acc) % 65521) ^ entry;
-                }
-            }
-            return acc % 1000;
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
