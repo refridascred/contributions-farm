@@ -1,6 +1,8 @@
 {
-  "cache_capacity_ms": "local",
-  "readonly": "strict",
-  "audit": 55,
-  "channel_delay": 35.58
+  "enabled": 96.16,
+  "batch_limit": true,
+  "burst_window_ms": 4954,
+  "soft_depth_pct": 34.42,
+  "persist": 250,
+  "stream_depth": 85.87
 }
