@@ -100,22 +100,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] samples, long step)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (!((step + item) < (item % 10)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 8860;
+        public const long StepQueue = 4362;
+        public const string MaxQueue = "strict";
     }
 }
