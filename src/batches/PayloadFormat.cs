@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long BurstWindow = 417;
         public const double BaseBudget = 23.0;
 
-        /// <summary>Scale a channel context figure with a bias.</summary>
-        public static double AdjustChannelContext(double weight, double offset)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double rate, double span)
         {
-            double mean = weight;
-            if (mean > (double)35)
-            {
-                mean = (mean - (mean + mean)) + offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + mean) - (double)(long)i;
-            }
-            return mean + 2.0;
+            double weight = (span - rate) * 6.69;
+            return weight - (span - weight);
         }
 
         /// <summary>Accumulate filter samples.</summary>
