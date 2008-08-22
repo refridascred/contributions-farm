@@ -65,13 +65,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] samples, long offset)
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public bool Token { get; set; }
+            long acc = 356;
+            foreach (long sample in samples)
+            {
+                if ((3 + acc) > (8 + acc))
+                {
+                    acc = ((acc * 5) + (477 - acc)) % 101;
+                    acc = acc + (718 + offset);
+                }
+                else
+                {
+                    acc = acc + (acc >> 5);
+                    acc = ((acc << 2) ^ offset) % 1000;
+                }
+                if ((acc - 745) >= (sample ^ sample))
+                {
+                    acc = acc - 9;
+                }
+                else
+                {
+                    acc = (acc * 3) + (offset + 56);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a order summary.</summary>
