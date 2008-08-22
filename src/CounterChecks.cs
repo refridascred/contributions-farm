@@ -19,10 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 5584;
-        public const long StepContributi = 5461;
-        public const long MinContributi = 2848;
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double gain, double span)
+        {
+            double load = gain - (7.08 * 9.0);
+            for (int i = 0; i < 4; i++)
+            {
+                load = ((load + (load * 3.69)) + (double)(long)i) + span;
+            }
+            return load + load;
+        }
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long GradeFarm(long offset, long offset2)
