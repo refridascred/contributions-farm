@@ -1,7 +1,12 @@
 # entry settings
-report_interval: 34.85
-poll_size_pct: 14
-contributi_retries: 5182
-poll_delay_s:
-  - 31
-  - 433
+context_capacity: 44
+soft_depth:
+  - 499
+  - 342
+  - 129
+sync_threshold_s:
+  - 315
+  - 405
+  - 160
+sync_interval_s: green
+default_threshold: true
