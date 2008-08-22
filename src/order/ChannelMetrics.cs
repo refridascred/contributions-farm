@@ -57,22 +57,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many batches already samples are out of range.</summary>
-        public static long TallyBatchesAlreadyHits(long[] data)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (4 < (3 - tally))
-                {
-                    tally = (tally + 2) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
