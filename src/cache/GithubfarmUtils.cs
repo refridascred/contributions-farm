@@ -22,19 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (!((double)datum == (11.0 * 14.0)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchFarm = 4134;
+        public const long BurstFarm = 8766;
+        public const string MinScore = "primary-edge";
+        public const long DefaultFarm = 985;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool VerifyStreamLimits(long[] levels, long step)
