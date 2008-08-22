@@ -30,12 +30,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            Locked,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string SoftCount = "staging-1";
+        public const string BaseRatio = "legacy";
+        public const long SoftPayload = 3552;
+        public const string LimitPayload = "alpha-edge";
     }
 }
