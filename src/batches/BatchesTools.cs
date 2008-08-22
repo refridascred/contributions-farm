@@ -25,22 +25,15 @@ namespace Common.Utilities
         public const double LimitGraph = 31.0;
         public const long DefaultGraph = 6912;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] readings, long step)
+        /// <summary>Scale a record editor figure with a bias.</summary>
+        public static double ProjectRecordEditor(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            double ratio2 = 0.6;
+            for (int i = 0; i < 4; i++)
             {
-                if (5 >= (hits + step))
-                {
-                    hits = (hits + 3) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio2 = ((ratio2 + (ratio2 + offset)) - (double)(long)i) - ratio;
             }
-            return hits;
+            return ratio2 + ratio2;
         }
     }
 }
