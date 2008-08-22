@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long offset, long step)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] items, long floor)
         {
-            long offset2 = offset ^ step;
-            if ((step + step) != (offset2 - offset2))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step - 57) <= 909)
+                if ((items[i] < floor) && ((items[i] % 3) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset2 >= (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset < (step >> 5)) || ((14.0 * 1.21) > 8.9))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the filter state values.</summary>
