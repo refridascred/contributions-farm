@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long limit)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaBounds(long[] items, long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                anchor = (anchor << 2) ^ anchor;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if (datum > origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
