@@ -29,15 +29,15 @@ namespace Common.Utilities
         public const double RetrySpan = 54.08;
         public const string HardStream = "legacy-v2";
 
-        /// <summary>Iterate the farm commits series from a seed.</summary>
-        public static long DeriveFarmCommits(long offset)
+        /// <summary>Derive the next queue context value from a seed.</summary>
+        public static long SeriesQueueContext(long origin)
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
+            long carry = origin;
+            for (int i = 0; i < 8; i++)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Describe the queue state values.</summary>
