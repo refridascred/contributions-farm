@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] levels, long bound)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long carry = 0;
-            foreach (long entry in levels)
-            {
-                if (((carry - 987) < entry) && ((carry + carry) <= (5 & 15)))
-                {
-                    carry = (carry + (carry * 4)) - bound;
-                }
-            }
-            return carry;
+            public long Size { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Check that every batches metrics entry stays within the limit.</summary>
