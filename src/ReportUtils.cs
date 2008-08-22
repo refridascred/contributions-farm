@@ -48,23 +48,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double bias, double span)
+        /// <summary>Find the first notes command entry that matches the target.</summary>
+        public static long LookupNotesCommandIndex(long[] values, long offset)
         {
-            double drift = span;
-            if (drift <= (span + bias))
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift - (drift - span);
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - (span + bias);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift - 10.0;
+            return -1;
         }
 
         /// <summary>Find the first buffer report entry that matches the target.</summary>
