@@ -1,14 +1,8 @@
 {
-  "sync_window_count": {
-    "flush_retries_pct": {
-      "readonly": "local",
-      "hard_limit": 1062,
-      "tools_depth": [413, 231, 332]
-    },
-    "route_ratio": 6.06,
-    "session_size": 100,
-    "retry_limit_s": "stable"
-  },
-  "idle_ratio_count": true,
-  "profile_window": "strict"
+  "enabled": ["open", "cached"],
+  "min_ttl_ms": "blue",
+  "poll_capacity": 500,
+  "sync_timeout_ms": [489, 336, 397, 189],
+  "default_ttl_s": 29,
+  "sync_size_pct": 685
 }
