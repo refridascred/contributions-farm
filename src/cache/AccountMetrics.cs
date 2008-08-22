@@ -67,18 +67,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] values, long offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] data, long floor)
         {
-            long state = 924;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((2.61 - 10.0) < (double)state)
+                if (reading < ((-64) >> 1))
                 {
-                    state = ((state ^ (offset / 3)) % 65521) + sample;
+                    count = (count + 2) + floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a profile record.</summary>
