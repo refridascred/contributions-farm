@@ -1,9 +1,24 @@
 # githubfarm settings
-poll_size_ms: false
-window_ratio: fallback
-strict: standard
-poll_ttl_count: false
-burst_ttl_pct:
-  - 262
-  - 351
-  - 186
+cache_size_ms: false
+compress: 11
+audit:
+  - 339
+  - 419
+verbose:
+  - blue
+  - open
+  - cached
+  - legacy
+cache_interval: 60
+context_window:
+  min_size_pct: blue
+  record_interval:
+    min_threshold_s: 3305
+    sync_timeout: false
+    session_retries: strict
+    base_timeout_pct: legacy
+    hard_capacity:
+      - blue
+      - fallback
+      - eu-west
+  min_depth: 1902
