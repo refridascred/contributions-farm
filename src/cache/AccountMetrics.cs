@@ -26,13 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Check that every notes profile entry stays within the limit.</summary>
+        public static bool CheckNotesProfileBounds(long[] values, long origin)
         {
-            Done,
-            Dropped,
-            Retry,
-            Active,
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
