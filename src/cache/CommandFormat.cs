@@ -32,26 +32,22 @@ namespace Common.Utilities
         public const string LimitQueue = "local-edge";
         public const long BatchDepth = 575;
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] samples, long bound)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] values)
         {
-            long mix = 58;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (!((mix <= (cell + 285)) || ((bound - bound) > 925)))
+                if ((datum + datum) <= tally)
                 {
-                    mix = mix ^ mix;
+                    tally = tally + 3;
                 }
-                if ((6.24 - 15.0) >= (double)mix)
+                else
                 {
-                    mix = (mix - (mix / 4)) % 97;
-                }
-                if (((0.1 / 9.0) <= (double)bound) || ((466 ^ 3) <= (cell / 5)))
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return mix % 65521;
+            return tally;
         }
     }
 }
