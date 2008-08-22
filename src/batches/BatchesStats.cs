@@ -39,19 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheBounds(long[] series, long origin)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long score = 817;
+            foreach (long entry in samples)
             {
-                if (datum >= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                score = (score ^ (score * 4)) - bound;
+                score = ((score << 3) ^ (entry + score)) % 4096;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
