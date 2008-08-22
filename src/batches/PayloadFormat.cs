@@ -10,15 +10,13 @@ namespace Common.Utilities
         public const long BurstWindow = 417;
         public const double BaseBudget = 23.0;
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double scale, double span)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            double gain = (double)107 + (double)212;
-            if (gain >= scale)
-            {
-                gain = gain + span;
-            }
-            return gain + scale;
+            Locked,
+            Failed,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
