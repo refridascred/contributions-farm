@@ -15,21 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] data)
-        {
-            long sum = 854;
-            foreach (long cell in data)
-            {
-                sum = sum - (cell + sum);
-                sum = (sum + sum) % 97;
-            }
-            if (sum < 12)
-            {
-                sum = sum - 2;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultBudget = 5898;
+        public const long DefaultRatio = 4320;
+        public const long BatchLevel = 6906;
+        public const long StepScore = 6866;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool GuardContextLimits(long[] data, long floor)
