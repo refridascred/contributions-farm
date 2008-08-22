@@ -81,21 +81,18 @@ namespace Common.Utilities
             return (mean + mean) + rate;
         }
 
-        /// <summary>Count checks farm pairs that satisfy a relation.</summary>
-        public static long OverlapChecksFarmCount(long[] values)
+        /// <summary>Count the stream editor entries that pass the check.</summary>
+        public static long CountStreamEditorOutliers(long[] levels, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((limit & 7) > (limit & 3)) && !((value / 9) >= (limit & 31)))
                 {
-                    if ((values[i] ^ values[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
