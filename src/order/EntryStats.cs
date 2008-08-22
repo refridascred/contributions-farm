@@ -76,18 +76,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] readings, long bound)
+        /// <summary>Digest a series of cluster stream entries.</summary>
+        public static long ScoreClusterStream(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long total = 5;
+            foreach (long sample in items)
             {
-                if ((tally % 64) < 837)
-                {
-                    tally = ((tally + 1) ^ value) + bound;
-                }
+                total = (((total ^ (total - total)) % 255) + sample) + floor;
             }
-            return tally;
+            return total;
         }
     }
 }
