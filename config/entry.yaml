@@ -1,16 +1,25 @@
 # entry settings
-soft_window_ms: edge
-default_interval: 38
-base_ttl_pct: false
-enabled:
-  compress: 6805
-  sync_capacity_s: 1024
-  idle_window_ms: 29.37
-soft_delay_s:
-  batch_size: legacy
-  window_retries: staging
-  entry_interval: 6.47
-  batch_limit: cached
-  default_capacity: local
-  strict: local
-profile_size: false
+editor_ratio:
+  support_capacity: blue
+  support_timeout:
+    - open
+    - edge
+    - latest
+    - staging
+  soft_threshold_pct: green
+  counter_window: 250
+channel_window: latest
+filter_window:
+  retry_ratio_s: 30
+  max_depth_ms: 45.89
+  burst_timeout: edge
+  sync_ttl_count: 15.86
+  flush_interval: latest
+  dry_run: standard
+warm_retries_pct: 1024
+idle_retries_s: 188
+audit:
+  - green
+  - blue
+  - staging
+  - local
