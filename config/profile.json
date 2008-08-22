@@ -1,7 +1,16 @@
 {
-  "hard_depth_count": 1295,
-  "retry_interval_ms": 46.08,
-  "compress": 60,
-  "cache_window_ms": [365, 255],
-  "warm_delay_s": false
+  "soft_retries": 15.72,
+  "hard_window_count": 30,
+  "base_threshold_pct": 11,
+  "base_retries_ms": 26,
+  "warm_delay_pct": [226, 491, 111],
+  "soft_window_s": {
+    "sync_interval_pct": "local",
+    "readonly": ["eu-west", "strict"],
+    "base_retries": {
+      "verbose": 65,
+      "persist": "staging",
+      "burst_retries_ms": 8928
+    }
+  }
 }
