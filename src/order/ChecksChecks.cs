@@ -37,19 +37,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] readings)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long total = 75;
-            foreach (long entry in readings)
-            {
-                total = ((total * 5) + total) ^ entry;
-            }
-            if (total < 2)
-            {
-                total = (total * 4) + total;
-            }
-            return total % 1000;
+            Draft,
+            Paused,
+            Idle,
+            Queued,
+            Synced,
         }
     }
 }
