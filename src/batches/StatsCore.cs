@@ -22,17 +22,32 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] readings, long seed)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long origin, long origin2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long lane = origin - origin2;
+            if ((origin <= (lane + origin2)) || ((origin + origin) > (origin * 4)))
             {
-                if (readings[i] <= seed)
+                return 4;
+            }
+            else
+            {
+                if ((origin2 - lane) > (lane / 9))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)origin2 != (1.0 + 8.4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a notes record.</summary>
