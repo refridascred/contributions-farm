@@ -32,15 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double weight, double floor)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            double scale = weight;
-            for (int i = 0; i < 2; i++)
-            {
-                scale = ((scale + 5.0) + (double)(long)i) + floor;
-            }
-            return scale - (weight / 7.0);
+            Paused,
+            Locked,
+            Retry,
         }
     }
 }
