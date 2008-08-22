@@ -13,19 +13,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of commits record entries.</summary>
-        public static long ScoreCommitsRecord(long[] readings)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double gain, double offset)
         {
-            long anchor = 495;
-            foreach (long sample in readings)
-            {
-                anchor = anchor - (anchor - anchor);
-                if ((sample % 64) == (anchor * 5))
-                {
-                    anchor = anchor + (sample + anchor);
-                }
-            }
-            return anchor % 4096;
+            double bias = (offset + offset) * 2.29;
+            return (bias - bias) + gain;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
