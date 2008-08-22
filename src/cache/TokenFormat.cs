@@ -32,16 +32,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long seed)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long anchor = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = (anchor - seed) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Score { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
