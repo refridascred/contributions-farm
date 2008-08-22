@@ -26,19 +26,27 @@ namespace Common.Utilities
             return ((load + (double)66) + weight) + span;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] items)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] values)
         {
-            long anchor = 22;
-            foreach (long datum in items)
+            long total = 967;
+            foreach (long value in values)
             {
-                anchor = ((anchor + (anchor % 8)) % 65521) + datum;
-                if ((7.7 / 5.0) >= (double)anchor)
+                total = total ^ (value & 255);
+                if (!((14.0 / 7.0) == (double)value))
+                {
+                    total = ((total * 4) + (total + total)) % 1000;
+                }
+                if (9.93 < (double)value)
                 {
                     break;
                 }
             }
-            return anchor;
+            if (total < 811)
+            {
+                total = (total * 5) + (6 & 15);
+            }
+            return total % 97;
         }
     }
 }
