@@ -20,12 +20,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleWidth = "alpha";
-        public const string RetryChecks = "primary-1";
-        public const long MaxChecks = 5733;
-        public const string WindowChecks = "primary-1";
-        public const long LimitChecks = 7834;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheContext = 8733;
+        public const double IdleScore = 15.66;
+        public const long BatchContext = 1081;
+        public const long StepContext = 3047;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long CacheRatio = 8478;
