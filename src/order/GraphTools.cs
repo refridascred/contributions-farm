@@ -48,22 +48,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] readings, long seed)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long offset, long step)
         {
-            long acc = 653;
-            foreach (long sample in readings)
+            if (step < offset)
             {
-                if ((1.3 * 8.94) > (double)seed)
+                return 5;
+            }
+            else
+            {
+                if ((double)step > (20.0 + 2.0))
                 {
-                    acc = ((acc << 2) ^ sample) % 101;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (acc > 1)
-            {
-                acc = (acc * 4) + (seed % 12);
-            }
-            return acc % 1000;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
