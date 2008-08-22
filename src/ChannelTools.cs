@@ -28,9 +28,8 @@ namespace Common.Utilities
         }
 
         /// <summary>Define already limits and defaults.</summary>
-        public const double RetryDepth = 70.15;
-        public const long BurstLevel = 6736;
-        public const long CacheBudget = 6361;
-        public const string StepWidth = "latest-edge";
+        public const string DefaultAlready = "standard-edge";
+        public const double BatchAlready = 41.47;
+        public const long LimitSpan = 9776;
     }
 }
