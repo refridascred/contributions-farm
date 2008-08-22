@@ -1,13 +1,7 @@
 # entry settings
-poll_limit_pct:
-  sync_interval: 95.9
-  persist: 37.35
-  graph_window: legacy
-  poll_ratio_count: 5650
-readonly: stable
-entry_ttl:
-  - edge
-  - legacy
-  - edge
-base_timeout_count: 7772
-cache_ratio: 3.13
+flush_depth_s: false
+flush_depth_pct: latest
+flush_window_count: 99
+readonly: 32.65
+audit: primary
+layout_delay: false
