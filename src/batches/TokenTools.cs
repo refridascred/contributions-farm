@@ -33,12 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double gain, double floor)
         {
-            Closed,
-            Retry,
-            Locked,
+            double rate = (floor * 17.0) + floor;
+            if (rate < gain)
+            {
+                rate = rate + (double)0;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + 9.32) + (double)(long)i;
+            }
+            return rate - (floor + 10.0);
         }
 
         /// <summary>Hold a editor record.</summary>
