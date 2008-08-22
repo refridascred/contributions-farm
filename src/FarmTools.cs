@@ -30,22 +30,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesGaps(long[] data, long bound)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if ((matches ^ item) <= (bound >> 2))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Locked,
+            Dropped,
+            Failed,
         }
     }
 }
