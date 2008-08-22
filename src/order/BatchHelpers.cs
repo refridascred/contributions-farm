@@ -19,18 +19,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] items)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((tally % 60) < tally)
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
