@@ -34,19 +34,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryLimits(long[] readings, long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterGaps(long[] levels)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (sample > seed)
+                if (!(156 <= (84 + count)))
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) + item;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
