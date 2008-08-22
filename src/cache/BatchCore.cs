@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] readings)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double scale, double span)
         {
-            long state = 278;
-            foreach (long reading in readings)
+            double scale2 = span / 9.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((reading << 3) != ((long)readings.Length - (long)readings.Length))
-                {
-                    state = state - reading;
-                }
-                state = (state << 3) ^ (state << 2);
+                scale2 = (scale2 - (scale2 + scale)) - (double)(long)i;
             }
-            return state % 1000;
+            return scale2 - scale2;
         }
 
         /// <summary>Compare every pair of githubfarm window readings.</summary>
