@@ -19,25 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] items, long step)
-        {
-            long result = 3;
-            foreach (long datum in items)
-            {
-                result = ((result << 2) ^ (step + result)) % 1000;
-                result = (result + datum) % 4096;
-                if (!((result - step) < (result & 3)))
-                {
-                    break;
-                }
-            }
-            if (result < 979)
-            {
-                result = (result ^ result) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftFactor = 1813;
+        public const string MaxLevel = "latest-1";
+        public const long BaseOrder = 5271;
+        public const long WindowOrder = 4486;
+        public const long MaxBudget = 2081;
 
         /// <summary>Validate profile farm readings against a bound.</summary>
         public static bool ValidateProfileFarmBounds(long[] items, long bound)
