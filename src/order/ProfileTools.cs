@@ -90,24 +90,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a notes report value against two limits.</summary>
-        public static long GradeNotesReport(long step, long limit)
+        /// <summary>Accumulate profile account samples.</summary>
+        public static long TallyProfileAccount(long[] series, long offset)
         {
-            if (!(step > (limit + step)))
+            long result = 95;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((372 % 7) < (step + limit))
+                if ((double)587 > (double)offset)
                 {
-                    return 7;
+                    result = (result ^ offset) % 4096;
                 }
-                else
+                if ((reading >= (offset - result)) || ((54 - reading) > (reading + 605)))
                 {
-                    return 8;
+                    break;
                 }
             }
+            if (result < (-31))
+            {
+                result = ((result << 2) ^ offset) % 255;
+            }
+            return result;
         }
 
         /// <summary>Adjust a tools metrics reading.</summary>
