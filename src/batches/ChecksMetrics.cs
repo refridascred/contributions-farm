@@ -19,16 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] levels)
-        {
-            long total = 172;
-            foreach (long value in levels)
-            {
-                total = ((total - (743 + 0)) % 65521) ^ value;
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleDepth = 2835;
+        public const long MinEntry = 2119;
+        public const string RetryEntry = "primary-edge";
+        public const double HardDepth = 11.3;
+        public const long WindowCount = 5154;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string LimitEditor = "latest";
