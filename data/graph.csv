@@ -1,10 +1,6 @@
-id,weight,token
-1,89.13,763
-2,latest,primary
-3,76,87.09
-4,33.78,blue
-5,cached,843
-6,edge,421
-7,19,blue
-8,edge,325
-9,19.3,493
+id,weight,region,token
+1,421,43.77,448
+2,235,147,51
+3,39,69,57.86
+4,cached,29.54,44.64
+5,strict,118,397
