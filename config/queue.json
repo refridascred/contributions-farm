@@ -1,8 +1,5 @@
 {
-  "flush_limit": true,
-  "default_ratio": "eu-west",
-  "burst_interval_count": [283, 165, 214],
-  "sync_limit_count": 1024,
-  "batch_ttl_pct": 4235,
-  "retry_size": true
+  "tools_delay": [224, 498, 457],
+  "token_depth": 250,
+  "dry_run": 7
 }
