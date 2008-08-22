@@ -19,32 +19,14 @@ namespace Common.Utilities
         public const long DefaultInterval = 7602;
         public const double DefaultBatch = 69.18;
 
-        /// <summary>Grade a stream route value against two limits.</summary>
-        public static long ClassifyStreamRoute(long offset, long step)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long next = offset ^ step;
-            if ((double)offset != (6.9 * 9.9))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((2.0 * 17.0) > (double)next)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)next == (7.8 - 2.52))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Pending,
+            New,
+            Done,
+            Dropped,
+            Ready,
         }
     }
 }
