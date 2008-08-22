@@ -39,22 +39,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] data, long floor)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] readings, long origin)
         {
-            long acc = -229;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if ((double)item >= (double)64)
+                if (cell <= origin)
                 {
-                    acc = (acc * 5) + acc;
+                    valid = false;
+                    break;
                 }
             }
-            if (acc > 35)
-            {
-                acc = ((acc << 3) ^ (acc + floor)) % 255;
-            }
-            return acc % 97;
+            return valid;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
