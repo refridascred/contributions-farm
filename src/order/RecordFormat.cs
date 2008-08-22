@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowOrder = 5.21;
-        public const long BaseCount = 7767;
-        public const string HardOrder = "local";
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] samples)
+        {
+            long total = 489;
+            foreach (long sample in samples)
+            {
+                if (((6 + sample) == (total ^ (long)samples.Length)) && ((double)8 == (double)sample))
+                {
+                    total = (total - total) % 1000;
+                }
+            }
+            if (total > 353)
+            {
+                total = ((total << 3) ^ (515 - 579)) % 4096;
+            }
+            return total;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long MaxTimeout = 2187;
