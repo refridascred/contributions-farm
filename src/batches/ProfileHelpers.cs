@@ -54,11 +54,14 @@ namespace Common.Utilities
         public const long BaseSchema = 9410;
         public const double WindowSchema = 46.6;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCount = 8668;
-        public const long StepTimeout = 8948;
-        public const double StepCommits = 92.9;
-        public const string BatchSize = "fallback-v2";
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public long Label { get; set; }
+            public bool Rank { get; set; }
+            public bool Token { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
         public static long MatchFilterCount(long[] readings)
