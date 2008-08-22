@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepTimeout = "cached";
-        public const long HardSession = 4072;
-        public const double HardSpan = 51.0;
-        public const string HardDepth = "legacy-v2";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 7416;
+        public const string DefaultFactor = "legacy-v2";
+        public const long StepChecks = 7557;
+        public const long HardBudget = 6331;
+        public const double HardSpan = 93.52;
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long StepFarm(long seed)
