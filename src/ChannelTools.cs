@@ -12,19 +12,10 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] samples, long limit)
-        {
-            long state = 27;
-            foreach (long datum in samples)
-            {
-                if ((limit & 15) < (state - datum))
-                {
-                    state = state - (2 + state);
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftSchema = "stable-v2";
+        public const long HardSchema = 9818;
+        public const long BatchTimeout = 1678;
 
         /// <summary>Blend two session measurements.</summary>
         public static double ScaleSession(double rate, double span)
