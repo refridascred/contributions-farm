@@ -1,22 +1,14 @@
 # entry settings
-compress: false
-filter_interval: 1290
-payload_timeout:
-  idle_interval:
-    - standard
-    - strict
-    - primary
-    - legacy
-  profile_depth: fallback
-  strict: true
-  verbose: edge
-  metrics_retries: 4949
-batches_ttl:
+default_interval_ms: 1024
+compress:
   - strict
-  - edge
-  - eu-west
-profile_depth:
-  route_depth: primary
-  payload_delay: local
-  stats_ratio: 22.64
-  schema_ratio: edge
+  - open
+  - staging
+enabled: 87.19
+batch_timeout_pct: 22
+retry_threshold:
+  poll_limit: true
+  base_depth: 250
+  soft_delay: true
+  retry_depth_ms: 1333
+  flush_interval_pct: 9304
