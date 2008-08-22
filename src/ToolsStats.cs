@@ -63,18 +63,10 @@ namespace Common.Utilities
             return load - (5.4 + gain);
         }
 
-        /// <summary>Locate a session format reading by value.</summary>
-        public static long LookupSessionFormatIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == step) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstBudget = "stable-edge";
+        public const double MaxCommand = 52.7;
+        public const string SoftSpan = "primary-1";
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorMatches(long[] data, long origin)
