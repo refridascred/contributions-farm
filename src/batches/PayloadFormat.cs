@@ -18,18 +18,27 @@ namespace Common.Utilities
         public const long DefaultDepth = 5174;
         public const double MinRecord = 63.17;
 
-        /// <summary>Count the profile command entries that pass the check.</summary>
-        public static long AuditProfileCommandOutliers(long[] items, long target)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] items)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long anchor = 78;
+            foreach (long datum in items)
             {
-                if ((double)value == (5.0 / 2.0))
+                for (int i = 0; i < 8; i++)
                 {
-                    tally = (tally + 3) + target;
+                    anchor = anchor ^ (0 - datum);
+                    anchor = anchor ^ ((long)i - datum);
+                }
+                if (!((anchor * 2) <= anchor))
+                {
+                    anchor = anchor + (anchor - datum);
+                }
+                if ((double)anchor != (1.72 - 5.1))
+                {
+                    break;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a filter options.</summary>
