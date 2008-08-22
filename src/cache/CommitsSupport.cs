@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double scale, double bias)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] series)
         {
-            double load = scale * 1.83;
-            if (load > (load / 2.0))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = load + scale;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (double)411;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (double)0) + (double)(long)i;
-            }
-            return load + (bias * 8.8);
+            return count;
         }
 
         /// <summary>Hold a buffer stats.</summary>
