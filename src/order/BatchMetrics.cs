@@ -47,13 +47,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Audit farm filter readings against a rule.</summary>
+        public static long MeasureFarmFilterOutliers(long[] data)
         {
-            Draft,
-            Pending,
-            Ready,
-            Stale,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((double)entry == (20.0 / 8.0))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many batches graph samples are out of range.</summary>
