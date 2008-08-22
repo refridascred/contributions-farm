@@ -63,9 +63,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double SoftDepth = 15.16;
-        public const long MaxRoute = 5851;
-        public const string DefaultSpan = "standard-edge";
+        /// <summary>Digest a series of route githubfarm entries.</summary>
+        public static long TotalRouteGithubfarm(long[] readings, long target)
+        {
+            long state = 43;
+            foreach (long sample in readings)
+            {
+                if (((sample << 2) < (state >> 2)) && ((state + 56) < (target + target)))
+                {
+                    state = state ^ (sample + 53);
+                }
+            }
+            return state;
+        }
     }
 }
