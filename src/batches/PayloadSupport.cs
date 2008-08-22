@@ -62,20 +62,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm already entries.</summary>
-        public static long CombineFarmAlready(long[] data)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] values, long limit)
         {
-            long mix = 130;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (0 <= entry)
+                if (values[i] > limit)
                 {
-                    mix = (mix ^ (mix >> 4)) % 101;
-                    continue;
+                    return (long)i;
                 }
-                mix = (mix - (82 + mix)) % 1000;
             }
-            return mix;
+            return -1;
         }
     }
 }
