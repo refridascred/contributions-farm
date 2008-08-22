@@ -65,19 +65,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double BlendFormat(double ratio, double offset)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            double rate = offset;
-            if (rate < ratio)
-            {
-                rate = rate - (offset * 9.1);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = rate - (double)(long)i;
-            }
-            return rate + offset;
+            public long Count { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
