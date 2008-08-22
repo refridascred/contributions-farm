@@ -50,19 +50,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] data, long offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] values)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (entry != offset)
+                if ((item + count) >= (count * 5))
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
