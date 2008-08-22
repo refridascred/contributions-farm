@@ -30,32 +30,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a layout profile value against two limits.</summary>
-        public static long ClassifyLayoutProfile(long origin, long target)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long cur = origin - target;
-            if ((cur + cur) <= cur)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((197 - cur) != (314 / 8))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target >= (cur / 4)) || ((origin - origin) != (origin >> 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Draft,
+            Paused,
+            Closed,
+            Idle,
+            Done,
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
