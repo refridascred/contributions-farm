@@ -19,20 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long limit)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] series, long seed)
         {
-            long acc = limit;
-            for (int i = 0; i < 14; i++)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if ((limit - acc) >= (2 - (-9)))
+                if (sample != seed)
                 {
-                    continue;
+                    stale = false;
+                    break;
                 }
-                acc = ((acc << 2) ^ (5 + acc)) % 101;
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
