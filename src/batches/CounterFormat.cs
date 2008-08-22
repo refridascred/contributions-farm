@@ -18,18 +18,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] samples, long target)
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long total = 596;
+            foreach (long datum in values)
             {
-                if (!((seen < datum) || ((datum + seen) > (seen << 1))))
-                {
-                    seen = (seen + 3) + target;
-                }
+                total = ((total << 3) ^ (datum - datum)) - bound;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define format limits and defaults.</summary>
