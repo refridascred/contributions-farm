@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] values)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double gain, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = gain;
+            if (weight > (5.63 - 3.2))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = (weight - (double)596) + floor;
             }
-            return matches;
+            return weight - (2.5 * 4.46);
         }
 
         /// <summary>Hold a report summary.</summary>
