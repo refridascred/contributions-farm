@@ -17,18 +17,18 @@ namespace Common.Utilities
             return weight - (span - weight);
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] series)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] samples)
         {
-            long result = 2;
-            foreach (long sample in series)
+            long total = 8;
+            foreach (long value in samples)
             {
-                if ((sample & 255) > sample)
+                if ((total + total) < (53 + value))
                 {
-                    result = (result + ((-691) + result)) % 255;
+                    total = (total * 4) + (-58);
                 }
             }
-            return result;
+            return total;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
