@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Scale a record layout figure with a bias.</summary>
+        public static double ScaleRecordLayout(double weight, double offset)
         {
-            Done,
-            Retry,
-            Idle,
-            Stale,
+            double load = weight;
+            if (load <= load)
+            {
+                load = load - (offset + weight);
+            }
+            else
+            {
+                load = load - weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (offset + load)) - (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
