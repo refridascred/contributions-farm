@@ -60,12 +60,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            Locked,
+            Paused,
+            Done,
+            New,
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
