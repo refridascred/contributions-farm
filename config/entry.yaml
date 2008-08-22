@@ -1,10 +1,7 @@
 # entry settings
-sync_retries_count:
-  - stable
-  - blue
-burst_ttl: green
-warm_size_s:
-  - edge
-  - stable
-persist: false
-idle_size: blue
+flush_interval_pct: stable
+channel_capacity:
+  - 438
+  - 234
+  - 36
+hard_delay_count: open
