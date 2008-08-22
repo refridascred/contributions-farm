@@ -12,11 +12,20 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 1609;
-        public const string SoftInterval = "staging-edge";
-        public const long CacheWidth = 5615;
-        public const long CacheCommand = 6916;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] readings, long seed)
+        {
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Adjust a filter reading.</summary>
         public static double AdjustFilter(double scale, double floor)
