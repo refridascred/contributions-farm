@@ -23,11 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MaxLevel = 50.56;
-        public const long BaseCount = 7473;
-        public const long MaxBatch = 7390;
-        public const double StepBatch = 92.28;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetryLevel = "cached-1";
+        public const double BurstDepth = 13.15;
+        public const long BaseTimeout = 4468;
+        public const long MaxScore = 5326;
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorHits(long[] samples)
