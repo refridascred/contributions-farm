@@ -65,14 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            Retry,
-            Dropped,
-            New,
+            Locked,
+            Stale,
             Queued,
-            Ready,
         }
 
         /// <summary>Locate a batch reading by value.</summary>
