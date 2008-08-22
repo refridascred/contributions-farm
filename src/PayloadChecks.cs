@@ -49,40 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long step, long bound)
-        {
-            long prev = step ^ bound;
-            if (((bound + step) == (step ^ bound)) || ((prev - 520) != (step - prev)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (prev < (step & 255))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((prev - 6) >= prev)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step + (-591)) > step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 1003;
+        public const string SoftTools = "primary-edge";
+        public const string DefaultFactor = "stable-v2";
+        public const string BatchTools = "legacy";
+        public const string RetryTools = "staging";
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool GuardMetricRange(long[] data, long step)
