@@ -22,38 +22,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long step, long origin)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] readings)
         {
-            if ((step + step) == (step - step))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step * 2) >= (step % 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step / 5) < (step - step))
+                    if ((readings[i] ^ readings[j]) == 17)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (origin >= (origin ^ step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
