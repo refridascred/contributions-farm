@@ -65,21 +65,27 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] levels)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = -3;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mix = mix - (-609);
+                if ((sample / 9) == (sample >> 3))
                 {
-                    if ((levels[i] + levels[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    mix = (mix - (mix / 6)) % 97;
+                }
+                else
+                {
+                    mix = mix + (sample + mix);
+                }
+                if ((sample + mix) >= (sample / 2))
+                {
+                    break;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
