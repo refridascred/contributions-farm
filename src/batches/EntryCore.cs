@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double CacheSize = 6.26;
-        public const long BaseWidth = 1196;
-        public const long IdleRoute = 6680;
-        public const long DefaultWidth = 4010;
-        public const long RetryLevel = 7728;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] readings, long offset)
+        {
+            long score = 66;
+            foreach (long sample in readings)
+            {
+                if ((sample - offset) < (offset + score))
+                {
+                    score = (score - (long)readings.Length) % 1000;
+                }
+                if ((offset + offset) <= (offset << 2))
+                {
+                    break;
+                }
+            }
+            if (score > 3)
+            {
+                score = (score + score) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Digest a series of already stats entries.</summary>
         public static long ScoreAlreadyStats(long[] samples, long target)
