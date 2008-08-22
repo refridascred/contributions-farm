@@ -58,19 +58,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] series)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long offset)
         {
-            long acc = 2;
-            foreach (long item in series)
+            long anchor = offset;
+            for (int i = 0; i < 22; i++)
             {
-                acc = (acc + acc) ^ item;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            if (acc > 21)
-            {
-                acc = ((acc << 3) ^ 337) % 4096;
-            }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
