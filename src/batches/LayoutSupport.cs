@@ -28,13 +28,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long seed)
         {
-            Queued,
-            Closed,
-            Ready,
-            Dropped,
+            long carry = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
