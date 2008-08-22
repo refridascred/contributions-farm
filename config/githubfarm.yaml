@@ -1,10 +1,13 @@
 # githubfarm settings
-poll_retries: false
-readonly: 92.48
-persist:
-  - primary
+route_threshold:
+  - local
+  - open
+  - blue
+retry_window: false
+hard_threshold:
   - eu-west
-  - legacy
-  - edge
-cluster_size: legacy
-batch_ratio: true
+  - fallback
+  - green
+  - open
+metric_interval: blue
+batch_delay_ms: 91.91
