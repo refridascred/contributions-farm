@@ -15,22 +15,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the tools stream entries that pass the check.</summary>
-        public static long AuditToolsStreamHits(long[] series, long target)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (((double)value != (double)1) && ((seen - seen) == (target ^ value)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Ready,
+            Stale,
+            Active,
+            Closed,
+            Synced,
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
