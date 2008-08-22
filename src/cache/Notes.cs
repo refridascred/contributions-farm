@@ -46,12 +46,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            Active,
-            Retry,
-            Queued,
+            public double Size { get; set; }
+            public double Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
