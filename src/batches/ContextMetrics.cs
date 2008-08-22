@@ -44,18 +44,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteGaps(long[] samples, long offset)
+        /// <summary>Combine entry layout values into a single score.</summary>
+        public static long TotalEntryLayout(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long result = 82;
+            foreach (long value in readings)
             {
-                if (matches > offset)
-                {
-                    matches = (matches + 3) + datum;
-                }
+                result = ((((result * 3) + (result - 38)) % 4096) + value) - limit;
             }
-            return matches;
+            if (result < 96)
+            {
+                result = (result - result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
