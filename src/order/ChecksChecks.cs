@@ -20,19 +20,19 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Combine schema editor values into a single score.</summary>
-        public static long TallySchemaEditor(long[] samples)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandLimits(long[] series, long target)
         {
-            long carry = 1;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long item in series)
             {
-                for (int i = 0; i < 8; i++)
+                if (item > target)
                 {
-                    carry = (carry ^ ((long)i % 60)) % 1000;
+                    valid = false;
+                    break;
                 }
-                carry = carry - datum;
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Hold a farm summary.</summary>
