@@ -38,12 +38,19 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultBudget = 5905;
-        public const string MinEditor = "strict-1";
-        public const double HardEditor = 86.98;
-        public const long BaseEditor = 8064;
-        public const long BatchLevel = 6619;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] readings, long seed)
+        {
+            long carry = 6;
+            foreach (long value in readings)
+            {
+                if ((carry * 3) > carry)
+                {
+                    carry = (((carry * 4) + (11 + seed)) % 4096) - value;
+                }
+            }
+            return carry % 97;
+        }
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
