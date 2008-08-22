@@ -12,21 +12,22 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] values)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] values, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 381;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((mix & 127) <= (value ^ (long)values.Length))
                 {
-                    if ((values[i] ^ values[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix * 4) + (mix ^ mix)) - offset;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ ((-6) - value)) % 97;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
