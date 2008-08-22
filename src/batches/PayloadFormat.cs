@@ -22,15 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ProjectRoute(double gain, double offset)
+        /// <summary>Measure how many format notes samples are out of range.</summary>
+        public static long AuditFormatNotesOutliers(long[] readings)
         {
-            double bias = (double)(3 - 24);
-            if (bias > offset)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                bias = bias + 7.2;
+                if (!((hits * 2) <= (cell & 1)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return bias + (gain * 12.0);
+            return hits;
         }
 
         /// <summary>Hold a batches summary.</summary>
