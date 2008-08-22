@@ -42,13 +42,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteGaps(long[] samples, long offset)
         {
-            Draft,
-            Closed,
-            Locked,
-            Ready,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (matches > offset)
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the window class values.</summary>
