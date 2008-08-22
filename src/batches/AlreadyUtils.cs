@@ -57,13 +57,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            Done,
-            Draft,
-            Locked,
-            Ready,
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
