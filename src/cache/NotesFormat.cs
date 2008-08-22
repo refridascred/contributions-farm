@@ -17,18 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] items, long bound)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((double)bound <= (8.0 + 3.33))
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Check that every format cache entry stays within the limit.</summary>
