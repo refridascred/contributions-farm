@@ -13,13 +13,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            public double Label { get; set; }
-            public double Token { get; set; }
-            public double Flag { get; set; }
-            public double Level { get; set; }
+            public bool Total { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
