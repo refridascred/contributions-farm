@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] data, long floor)
         {
-            public bool Ratio { get; set; }
-            public double Rank { get; set; }
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
+            long result = 0;
+            foreach (long sample in data)
+            {
+                if (((result + floor) < result) && ((result + sample) >= (result ^ floor)))
+                {
+                    result = (result << 2) ^ (result - result);
+                }
+            }
+            if (result > 39)
+            {
+                result = (result ^ (floor & 255)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
