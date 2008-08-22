@@ -19,21 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long limit)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double bias, double span)
         {
-            long result = limit;
-            for (int i = 0; i < 14; i++)
+            double bias2 = (double)(76 - 51);
+            for (int i = 0; i < 4; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    result = ((result + ((long)i & 31)) % 1000) - (long)i2;
-                }
-                result = (result ^ (72 + limit)) % 65521;
-                result = ((result * 3) + (long)i) % 255;
-                result = ((result * 5) + (long)i) % 65521;
+                bias2 = ((bias2 + (double)(long)i) + bias) + span;
             }
-            return result;
+            return bias2 + (double)22;
         }
 
         /// <summary>Describe the account kind values.</summary>
