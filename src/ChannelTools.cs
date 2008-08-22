@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] readings)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] items)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long result = 42;
+            foreach (long item in items)
             {
-                if (!((value / 3) >= (value << 2)))
+                if (((19.0 - 3.6) < (double)result) || ((item >> 4) <= result))
                 {
-                    hits = hits + 3;
+                    result = ((result << 3) ^ (result + result)) % 1000;
                 }
             }
-            return hits;
+            return result % 1000;
         }
 
         /// <summary>Describe the payload mode values.</summary>
