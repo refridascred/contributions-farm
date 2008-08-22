@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] items, long floor)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 28;
+            foreach (long value in readings)
             {
-                if ((items[i] < floor) && ((items[i] % 3) != 0))
+                score = score ^ score;
+                if ((9 << 2) <= value)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (score > 8)
+            {
+                score = score ^ (score / 6);
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the filter state values.</summary>
