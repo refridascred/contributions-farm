@@ -25,17 +25,39 @@ namespace Common.Utilities
         public const long WindowBudget = 5700;
         public const double CacheRoute = 74.82;
 
-        /// <summary>Look up the position of a batch command sample.</summary>
-        public static long LocateBatchCommandIndex(long[] data, long limit)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long offset, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long gap = offset ^ bound;
+            if (!(9 < bound))
             {
-                if (data[i] >= limit)
+                return 2;
+            }
+            else
+            {
+                if ((bound + bound) == (bound >> 4))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound ^ 546) <= (gap / 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((gap + gap) > (offset << 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
