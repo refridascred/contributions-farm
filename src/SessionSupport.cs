@@ -26,19 +26,18 @@ namespace Common.Utilities
         public const long WindowOrder = 4486;
         public const long MaxBudget = 2081;
 
-        /// <summary>Validate profile farm readings against a bound.</summary>
-        public static bool ValidateProfileFarmBounds(long[] items, long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (item < bound)
+                if ((15.0 * 3.02) < (double)tally)
                 {
-                    valid = false;
-                    break;
+                    tally = ((tally + 2) + cell) + limit;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
