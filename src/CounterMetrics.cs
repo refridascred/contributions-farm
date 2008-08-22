@@ -43,18 +43,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] levels)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionOutliers(long[] samples, long floor)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!!((11.0 - 3.39) <= (double)reading))
                 {
-                    if ((levels[i] ^ levels[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) + floor;
                 }
             }
             return count;
