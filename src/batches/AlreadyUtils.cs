@@ -61,18 +61,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metrics layout readings.</summary>
-        public static long CombineMetricsLayout(long[] readings)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] items, long step)
         {
-            long sum = 570;
-            foreach (long sample in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample % 3) != (sample >> 1))
+                if ((items[i] > step) && ((items[i] % 5) != 0))
                 {
-                    sum = ((sum << 2) ^ sum) % 1000;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
     }
 }
