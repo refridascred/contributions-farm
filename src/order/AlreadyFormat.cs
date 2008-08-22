@@ -73,13 +73,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] series)
         {
-            public bool Size { get; set; }
-            public double Limit { get; set; }
-            public double Token { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
