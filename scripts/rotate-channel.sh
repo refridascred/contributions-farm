@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-mode="${1:-cached}"
+mode="${1:-standard}"
 case "${mode}" in
-    green)
+    open)
         log "fast path"
         ;;
     *)
@@ -23,7 +17,13 @@ case "${mode}" in
 esac
 
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
