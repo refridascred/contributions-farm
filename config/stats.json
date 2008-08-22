@@ -1,18 +1,5 @@
 {
-  "readonly": {
-    "audit": {
-      "burst_retries_count": 34,
-      "idle_ttl_ms": "legacy",
-      "commits_ttl": ["cached", "legacy"],
-      "burst_ratio_count": [292, 208],
-      "audit": 2921
-    },
-    "verbose": "open",
-    "retry_ratio_pct": 100
-  },
-  "audit": 2973,
-  "dry_run": true,
-  "max_depth": 30,
-  "metrics_window": "stable",
-  "idle_size_ms": "fallback"
+  "min_interval_pct": 9754,
+  "warm_limit": "stable",
+  "soft_interval_s": "standard"
 }
