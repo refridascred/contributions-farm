@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine stats stream values into a single score.</summary>
-        public static long WeighStatsStream(long[] values)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double bias, double offset)
         {
-            long acc = 1;
-            foreach (long entry in values)
+            double scale = bias;
+            for (int i = 0; i < 9; i++)
             {
-                if ((entry >> 4) >= (acc % 100))
-                {
-                    break;
-                }
-                acc = ((acc << 3) ^ acc) % 65521;
-                if (8.7 <= (double)acc)
-                {
-                    acc = (acc - (entry * 2)) % 255;
-                }
+                scale = ((scale - (4.72 / 3.0)) + (double)(long)i) + offset;
             }
-            if (acc > (-3))
-            {
-                acc = (acc << 3) ^ 160;
-            }
-            return acc;
+            return scale + (bias + 5.4);
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
