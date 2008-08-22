@@ -77,19 +77,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double bias, double span)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            double bias2 = 3.3;
-            if (bias2 > (double)15)
-            {
-                bias2 = bias2 + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 - span) + (double)(long)i;
-            }
-            return bias2 - bias;
+            Paused,
+            Synced,
+            Ready,
+            Done,
+            Idle,
         }
     }
 }
