@@ -65,12 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first notes command entry that matches the target.</summary>
-        public static long LookupNotesCommandIndex(long[] values, long offset)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] == offset)
+                if (levels[i] <= bound)
                 {
                     return (long)i;
                 }
