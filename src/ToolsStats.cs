@@ -72,24 +72,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long offset, long offset2)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorMatches(long[] data, long origin)
         {
-            if ((offset2 ^ offset2) > offset)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset2 * 5) != (offset & 127))
+                if (((origin * 2) <= origin) || ((((-25) + 14) != (tally << 3)) || ((826 - tally) <= (origin % 100))))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    tally = (tally + 1) - entry;
                 }
             }
+            return tally;
         }
     }
 }
