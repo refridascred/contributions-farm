@@ -56,13 +56,24 @@ namespace Common.Utilities
             return load - (double)97;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Rank counter cluster input into a small class.</summary>
+        public static long ClassifyCounterCluster(long bound, long step)
         {
-            Dropped,
-            Pending,
-            Draft,
-            Retry,
+            if (bound > (-51))
+            {
+                return 1;
+            }
+            else
+            {
+                if (4 >= step)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
