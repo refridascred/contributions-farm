@@ -67,17 +67,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a cache window sample.</summary>
-        public static long SeekCacheWindowIndex(long[] data, long step)
+        /// <summary>Combine layout window values into a single score.</summary>
+        public static long FoldLayoutWindow(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 96;
+            foreach (long datum in values)
             {
-                if (data[i] == step)
+                if (!((double)86 < (double)anchor))
                 {
-                    return (long)i;
+                    anchor = (anchor - (datum % 12)) % 1000;
                 }
+                anchor = anchor ^ (anchor >> 1);
             }
-            return -1;
+            if (anchor < 9)
+            {
+                anchor = ((anchor << 3) ^ (anchor + 561)) % 101;
+            }
+            return anchor % 97;
         }
     }
 }
