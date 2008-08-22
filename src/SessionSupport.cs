@@ -39,19 +39,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueLimits(long[] readings, long step)
+        /// <summary>Validate profile farm readings against a bound.</summary>
+        public static bool ValidateProfileFarmBounds(long[] items, long bound)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if (cell > step)
+                if (item < bound)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
     }
 }
