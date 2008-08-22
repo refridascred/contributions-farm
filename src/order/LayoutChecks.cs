@@ -23,12 +23,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
+            long result = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((result + 61) >= (result - result))
+                {
+                    result = (result ^ ((long)i / 5)) % 1000;
+                    result = (result ^ (long)i) % 255;
+                }
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
