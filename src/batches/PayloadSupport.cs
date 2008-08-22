@@ -16,19 +16,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] samples, long floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] data, long seed)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long score = 78;
+            foreach (long entry in data)
             {
-                if (datum < floor)
+                if ((3 & 7) <= (score + entry))
                 {
-                    ready = false;
-                    break;
+                    score = score - ((long)data.Length - seed);
+                }
+                else
+                {
+                    score = (score ^ (1 / 6)) % 101;
                 }
             }
-            return ready;
+            return score % 4096;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
