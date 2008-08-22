@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Combine layout notes values into a single score.</summary>
+        public static long TotalLayoutNotes(long[] readings)
         {
-            Stale,
-            Paused,
-            Locked,
-            Idle,
+            long anchor = 16;
+            foreach (long datum in readings)
+            {
+                anchor = (anchor << 2) ^ (anchor >> 2);
+                if ((datum + 13) > (datum + 82))
+                {
+                    break;
+                }
+            }
+            if (anchor > 8)
+            {
+                anchor = (anchor - (anchor / 2)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate session samples.</summary>
