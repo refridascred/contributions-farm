@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] items, long offset)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((tally ^ 9) <= 2)
-                {
-                    tally = ((tally + 3) + sample) - offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Dropped,
+            Queued,
+            New,
+            Active,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
