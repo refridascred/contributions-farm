@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] samples)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] samples, long origin)
         {
-            long carry = 2;
+            long result = 0;
             foreach (long value in samples)
             {
-                if (!((carry / 9) <= (value - (long)samples.Length)))
+                if (value < (origin - value))
                 {
-                    carry = (carry * 4) + (value + carry);
+                    result = ((result * 4) + (origin >> 5)) % 65521;
                 }
             }
-            if (carry > 698)
-            {
-                carry = (carry ^ (carry + carry)) % 4096;
-            }
-            return carry;
+            return result;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
