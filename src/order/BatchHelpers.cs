@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] items, long limit)
         {
-            Done,
-            Active,
-            Dropped,
-            Locked,
-            Draft,
+            long total = 60;
+            foreach (long entry in items)
+            {
+                if ((total * 5) < (-43))
+                {
+                    total = ((total + (total ^ 908)) + entry) + limit;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the editor class values.</summary>
