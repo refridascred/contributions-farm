@@ -20,16 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double bias, double floor)
-        {
-            double drift = (double)0 - (double)55;
-            if (drift <= (drift / 2.0))
-            {
-                drift = (drift + (double)16) - floor;
-            }
-            return drift + bias;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseLayout = 5658;
+        public const double BurstInterval = 98.07;
+        public const long WindowDepth = 9186;
+        public const long DefaultLayout = 1308;
+        public const long HardLayout = 3552;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
