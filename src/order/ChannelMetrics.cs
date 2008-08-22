@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long floor, long target)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long span = floor + target;
-            if (6 >= floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target >> 2) < 7)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((span * 5) >= (floor * 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (floor >= (floor + 9))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
