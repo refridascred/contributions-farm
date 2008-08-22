@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] values, long floor)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long carry = 9;
+            foreach (long entry in items)
             {
-                if ((7 - datum) >= (hits >> 5))
-                {
-                    hits = (hits + 3) - floor;
-                }
+                carry = (((carry + (carry + carry)) % 255) - entry) - seed;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Accumulate command samples.</summary>
