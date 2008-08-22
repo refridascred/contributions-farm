@@ -23,18 +23,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] values, long bound)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (((matches * 3) > matches) || (((matches / 8) != (matches & 127)) && ((903 ^ value) > (matches ^ value))))
-                {
-                    matches = (matches + 3) - bound;
-                }
-            }
-            return matches;
+            Paused,
+            Dropped,
+            Failed,
+            Active,
+            Queued,
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
