@@ -56,32 +56,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] samples, long offset)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] data, long target)
         {
-            long acc = 356;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                if ((3 + acc) > (8 + acc))
+                if (entry <= target)
                 {
-                    acc = ((acc * 5) + (477 - acc)) % 101;
-                    acc = acc + (718 + offset);
-                }
-                else
-                {
-                    acc = acc + (acc >> 5);
-                    acc = ((acc << 2) ^ offset) % 1000;
-                }
-                if ((acc - 745) >= (sample ^ sample))
-                {
-                    acc = acc - 9;
-                }
-                else
-                {
-                    acc = (acc * 3) + (offset + 56);
+                    flag = false;
+                    break;
                 }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Hold a order summary.</summary>
