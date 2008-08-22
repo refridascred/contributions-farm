@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterGaps(long[] values, long limit)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((double)datum < (14.0 / 3.0))
+                if (item <= target)
                 {
-                    matches = (matches + 1) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Compare every pair of channel graph readings.</summary>
