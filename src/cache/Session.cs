@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Adjust a support already reading.</summary>
+        public static double BlendSupportAlready(double gain, double floor)
         {
-            public long Region { get; set; }
-            public double Owner { get; set; }
-            public string Stamp { get; set; } = "";
+            double rate = 4.8;
+            if (rate > (gain - floor))
+            {
+                rate = rate + gain;
+            }
+            return rate - (floor / 5.0);
         }
 
         /// <summary>Find the first layout order entry that matches the target.</summary>
