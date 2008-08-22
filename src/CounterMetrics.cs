@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] items)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (!((long)items.Length != (sample >> 5)) && ((long)items.Length <= 385))
+                if ((count - count) > entry)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = (count + 1) + origin;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Digest a series of session entries.</summary>
