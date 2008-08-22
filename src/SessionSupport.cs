@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 447;
-        public const double DefaultRatio = 23.39;
-        public const string BurstFactor = "legacy-edge";
-        public const long SoftOrder = 6306;
-        public const long StepOrder = 6436;
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
+        {
+            New,
+            Queued,
+            Stale,
+            Closed,
+            Active,
+        }
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
