@@ -25,13 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
+            Stale,
+            Failed,
+            Ready,
+            Idle,
         }
     }
 }
