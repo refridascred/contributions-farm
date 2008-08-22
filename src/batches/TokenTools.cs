@@ -13,22 +13,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count the queue window entries that pass the check.</summary>
-        public static long AuditQueueWindowGaps(long[] items)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if ((3.6 - 9.74) < (double)tally)
+                if (entry <= seed)
                 {
-                    tally = (tally + 3) - reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Digest a series of channel cache entries.</summary>
