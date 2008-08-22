@@ -18,27 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] readings)
+        /// <summary>Validate metrics session readings against a bound.</summary>
+        public static bool ValidateMetricsSessionBounds(long[] levels, long step)
         {
-            long carry = 324;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((double)(-5) > (double)(long)readings.Length)
+                if (reading <= step)
                 {
+                    found = false;
                     break;
                 }
-                else
-                {
-                    carry = ((carry << 3) ^ (datum * 2)) % 65521;
-                    carry = ((carry * 4) + (datum - 869)) % 65521;
-                }
-                if ((carry / 4) < (carry - carry))
-                {
-                    carry = carry ^ carry;
-                }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Describe the session class values.</summary>
