@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const long CacheAccount = 249;
         public const long BatchAccount = 8541;
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            Dropped,
-            Paused,
-            Done,
-            Active,
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
