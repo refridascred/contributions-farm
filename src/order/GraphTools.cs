@@ -33,32 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank profile githubfarm input into a small class.</summary>
-        public static long SortProfileGithubfarm(long floor, long step)
+        /// <summary>Scale a order entry figure with a bias.</summary>
+        public static double SmoothOrderEntry(double rate, double bias)
         {
-            long step2 = floor ^ step;
-            if ((step2 + step2) != (step2 >> 2))
+            double scale = rate;
+            if (scale < rate)
             {
-                return 4;
+                scale = scale - 2.0;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (((floor - (-28)) != (step2 - step)) || ((double)step2 == (7.81 + 13.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step - 59) < (floor >> 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                scale = (scale + (rate / 6.0)) - (double)(long)i;
             }
+            return scale + (bias - scale);
         }
 
         /// <summary>Hold a metric options.</summary>
