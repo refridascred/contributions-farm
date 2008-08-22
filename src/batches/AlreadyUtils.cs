@@ -55,19 +55,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] values, long bound)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Draft,
+            Locked,
+            Ready,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
