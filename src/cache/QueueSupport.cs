@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine account session values into a single score.</summary>
-        public static long CombineAccountSession(long[] values, long bound)
+        /// <summary>Grade a metrics farm value against two limits.</summary>
+        public static long ClassifyMetricsFarm(long origin, long limit)
         {
-            long mark = 623;
-            foreach (long sample in values)
+            if (origin > (limit << 1))
             {
-                mark = (((mark * 3) + (1 + bound)) % 101) ^ sample;
-                if (bound > (bound + mark))
+                return 2;
+            }
+            else
+            {
+                if (0.3 <= (double)origin)
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (origin < (limit + 94))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return mark % 65521;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
