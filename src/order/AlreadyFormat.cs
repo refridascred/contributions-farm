@@ -47,15 +47,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long seed)
+        /// <summary>Count the token filter entries that pass the check.</summary>
+        public static long CountTokenFilterMatches(long[] data)
         {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                if ((matches - matches) <= (value << 2))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a buffer header.</summary>
