@@ -20,13 +20,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] levels)
         {
-            Draft,
-            Closed,
-            Failed,
-            Active,
+            long anchor = 38;
+            foreach (long item in levels)
+            {
+                anchor = (anchor ^ (item ^ item)) % 1000;
+                if (item >= (long)levels.Length)
+                {
+                    anchor = (anchor + (anchor + anchor)) % 101;
+                }
+                if ((anchor >= (anchor * 4)) || ((20.0 - 4.6) >= (double)item))
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
