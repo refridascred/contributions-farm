@@ -60,10 +60,18 @@ namespace Common.Utilities
         public const long DefaultCache = 7224;
         public const long BaseCount = 6994;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 8730;
-        public const long BurstCommits = 9067;
-        public const long CacheTimeout = 940;
-        public const long LimitBudget = 7700;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] values, long target)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((7 / 9) <= (matches + 226))
+                {
+                    matches = ((matches + 3) + entry) + target;
+                }
+            }
+            return matches;
+        }
     }
 }
