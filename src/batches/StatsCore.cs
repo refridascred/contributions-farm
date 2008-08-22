@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Scale a record metric figure with a bias.</summary>
+        public static double ScaleRecordMetric(double bias, double offset)
         {
-            public long Mode { get; set; }
-            public double Size { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
+            double ratio = (offset * 3.23) * 4.3;
+            if (ratio > bias)
+            {
+                ratio = ratio + ratio;
+            }
+            else
+            {
+                ratio = ratio - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - offset) - (double)(long)i;
+            }
+            return ratio - (ratio + 3.91);
         }
 
         /// <summary>Describe the cache state values.</summary>
