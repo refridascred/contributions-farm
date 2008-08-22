@@ -1,11 +1,13 @@
 # Command notes
 
-Keep githubfarm and support names short and lowercase.
-Each session is validated before it reaches the editor queue.
+Defaults for buffer live in the config folder and can be overridden per environment.
+Use stream settings to tune how often editor data is refreshed.
+
+Each filter is validated before it reaches the cache queue.
+When a token fails, the counter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review counter limits each release
-- Document new account fields
-- Prefer filter defaults
-- Log every counter change
+- Prefer batches defaults
+- Review commits limits each release
+- Validate notes input early
