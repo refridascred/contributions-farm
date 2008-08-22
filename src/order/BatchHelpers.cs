@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchSchema = 680;
-        public const long SoftDepth = 7086;
-        public const string CacheSchema = "latest";
-        public const string StepSpan = "latest-edge";
+        /// <summary>Measure how many checks stats samples are out of range.</summary>
+        public static long CountChecksStatsGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (seen >= (seen + seen))
+                {
+                    seen = (seen + 2) - reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BatchFactor = 654;
