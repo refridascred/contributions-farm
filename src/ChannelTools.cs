@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 6038;
-        public const long BasePayload = 4667;
-        public const long IdlePayload = 8976;
-        public const string DefaultRatio = "stable-edge";
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public string Limit { get; set; } = "";
+            public double Label { get; set; }
+        }
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long FoldEditor(long[] samples, long limit)
