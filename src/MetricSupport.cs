@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next metrics schema value from a seed.</summary>
-        public static long StepMetricsSchema(long bound)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((long)i < (886 + total))
-                {
-                    total = ((total << 2) ^ (total + total)) % 255;
-                    break;
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            Dropped,
+            Queued,
+            Active,
+            Draft,
         }
 
         /// <summary>Define command limits and defaults.</summary>
