@@ -1,5 +1,8 @@
 {
-  "strict": 35,
-  "filter_window": 11,
-  "poll_timeout_pct": true
+  "entry_capacity": 4024,
+  "burst_ratio": 100,
+  "format_interval": ["edge", "eu-west", "edge", "primary"],
+  "retry_capacity_s": ["green", "edge", "stable", "blue"],
+  "retry_capacity_pct": 60.7,
+  "schema_window": "standard"
 }
