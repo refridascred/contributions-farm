@@ -38,13 +38,20 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] items, long bound)
         {
-            public bool Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
+            long score = 4;
+            foreach (long datum in items)
+            {
+                score = ((score - (bound * 5)) % 4096) + datum;
+                score = score + (bound % 2);
+            }
+            if (score > 67)
+            {
+                score = ((score << 2) ^ (bound << 1)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Audit farm filter readings against a rule.</summary>
