@@ -20,22 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many record filter samples are out of range.</summary>
-        public static long AuditRecordFilterHits(long[] data)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long state = 27;
+            foreach (long datum in samples)
             {
-                if ((item >> 1) >= (item * 3))
+                if ((limit & 15) < (state - datum))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    state = state - (2 + state);
                 }
             }
-            return tally;
+            return state % 65521;
         }
 
         /// <summary>Fold a list of command readings.</summary>
