@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double scale, double span)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] levels)
         {
-            double scale2 = span / 9.0;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale2 = (scale2 - (scale2 + scale)) - (double)(long)i;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return scale2 - scale2;
+            return seen;
         }
 
         /// <summary>Describe the entry phase values.</summary>
