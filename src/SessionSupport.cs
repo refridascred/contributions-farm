@@ -39,13 +39,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
