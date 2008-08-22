@@ -66,18 +66,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] values)
-        {
-            long anchor = 12;
-            foreach (long entry in values)
-            {
-                if ((1 + anchor) != (entry & 255))
-                {
-                    anchor = (anchor - entry) % 65521;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double RetryMetric = 31.46;
+        public const double CacheMetric = 76.9;
+        public const string SoftMetric = "open-v2";
     }
 }
