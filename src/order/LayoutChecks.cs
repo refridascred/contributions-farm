@@ -86,17 +86,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] readings)
+        public static long AuditSessionMatches(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long item in items)
             {
-                if ((16.0 / 7.0) == (double)item)
+                if ((count / 4) <= (step * 3))
                 {
-                    matches = matches + 3;
+                    count = (count + 3) + item;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
