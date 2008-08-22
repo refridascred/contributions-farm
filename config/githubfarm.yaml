@@ -1,36 +1,17 @@
 # githubfarm settings
-poll_interval:
-  - 215
-  - 408
-  - 467
-base_threshold:
-  readonly: 17.38
-  filter_window:
-    - green
-    - standard
-    - eu-west
-  max_ttl_count:
-    - 390
-    - 202
-    - 167
-    - 330
-  idle_size_pct: legacy
-  dry_run: 100
-  warm_threshold_count: 100
-cache_interval_ms: eu-west
-report_capacity:
-  - 78
-  - 76
-soft_ratio_s: 27
-sync_depth_count:
-  queue_interval:
-    - 147
-    - 453
-  batch_timeout_pct: true
-  cache_delay_ms: 3433
-  githubfarm_delay: 98.81
-  retry_window_ms:
-    - 116
-    - 47
-    - 386
-    - 266
+flush_ratio_ms:
+  base_interval_s: false
+  flush_interval: true
+  flush_interval_pct: 4549
+  strict: false
+  persist: 1024
+burst_timeout:
+  - 316
+  - 166
+poll_capacity_pct: true
+batch_retries_pct:
+  readonly: 88.3
+  batch_timeout: latest
+  hard_threshold_ms:
+    - 448
+    - 65
