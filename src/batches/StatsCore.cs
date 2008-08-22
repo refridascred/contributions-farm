@@ -57,15 +57,9 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double DefaultRatio = 86.13;
+        public const string StepInterval = "fallback-v2";
+        public const string BurstCache = "alpha-v2";
     }
 }
