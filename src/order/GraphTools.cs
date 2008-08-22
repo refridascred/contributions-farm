@@ -37,11 +37,11 @@ namespace Common.Utilities
             return scale + (bias - scale);
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Adjust a window record reading.</summary>
