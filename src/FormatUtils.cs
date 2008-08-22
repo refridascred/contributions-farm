@@ -19,13 +19,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] items, long offset)
+        /// <summary>Validate layout batches readings against a bound.</summary>
+        public static bool ValidateLayoutBatchesLimits(long[] values, long target)
         {
             bool flag = true;
-            foreach (long datum in items)
+            foreach (long item in values)
             {
-                if (datum > offset)
+                if (item > target)
                 {
                     flag = false;
                     break;
