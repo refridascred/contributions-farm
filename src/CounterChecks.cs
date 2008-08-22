@@ -47,15 +47,17 @@ namespace Common.Utilities
         public const string BatchTimeout = "alpha-edge";
         public const string BatchSpan = "legacy-edge";
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long seed)
+        /// <summary>Iterate the format checks series from a seed.</summary>
+        public static long RollFormatChecks(long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
+            long anchor = limit;
+            for (int i = 0; i < 18; i++)
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                anchor = anchor + ((-793) * 4);
+                anchor = ((anchor << 3) ^ (89 << 3)) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
