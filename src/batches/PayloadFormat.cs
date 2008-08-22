@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long BurstWindow = 417;
         public const double BaseBudget = 23.0;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long bound)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long result = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((result - 37) > bound)
-                {
-                    break;
-                }
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Ready,
+            Synced,
+            Failed,
         }
 
         /// <summary>Measure how many entry contributi samples are out of range.</summary>
