@@ -1,17 +1,5 @@
 {
-  "buffer_timeout": 60,
-  "sync_delay_ms": 39,
-  "strict": 23,
-  "readonly": {
-    "checks_size": 9257,
-    "session_window": false,
-    "flush_ttl": {
-      "entry_interval": ["standard", "local"],
-      "persist": "local",
-      "base_timeout_ms": false,
-      "session_ratio": "standard",
-      "sync_threshold_pct": 81
-    },
-    "enabled": 500
-  }
+  "cache_timeout_s": 90.31,
+  "context_window": "staging",
+  "notes_size": [205, 444, 35, 389]
 }
