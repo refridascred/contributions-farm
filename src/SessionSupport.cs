@@ -46,22 +46,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] values, long target)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long target, long limit)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long bound = target - limit;
+            if ((double)bound == (6.0 - 9.32))
             {
-                if ((((target % 3) > (target * 4)) && ((datum - datum) >= ((-744) + 6))) && (((hits * 3) > (72 ^ datum)) || ((19.0 * 1.7) < (double)hits)))
+                return 7;
+            }
+            else
+            {
+                if (((double)limit > (18.0 + 5.4)) && ((6.83 - 5.8) > (double)target))
                 {
-                    hits = hits + 1;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 4;
                 }
             }
-            return hits;
         }
     }
 }
