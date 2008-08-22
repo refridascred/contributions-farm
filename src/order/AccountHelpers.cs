@@ -35,23 +35,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long offset, long target)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long seed, long step)
         {
-            long cur = offset ^ target;
-            if (((635 + 5) > offset) && ((1.24 + 6.46) <= (double)cur))
+            if (!((double)step > (double)step))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if ((offset - cur) < (cur + (-3)))
+                if (((double)seed > (2.0 + 8.7)) && ((step - seed) != (seed * 5)))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    return 3;
+                    if (!((seed + seed) > (step - step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
