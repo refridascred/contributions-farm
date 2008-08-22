@@ -65,11 +65,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double rate, double span)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            double bias = (double)863 - (6.0 - 2.2);
-            return (bias - rate) + span;
+            public long Owner { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
