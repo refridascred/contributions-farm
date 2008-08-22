@@ -19,14 +19,17 @@ namespace Common.Utilities
         public const long BaseCount = 2791;
         public const string HardSpan = "legacy-v2";
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] series, long offset)
         {
-            Pending,
-            Dropped,
-            Done,
-            Failed,
-            Draft,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
