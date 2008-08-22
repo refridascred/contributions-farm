@@ -1,6 +1,6 @@
 {
-  "batch_window_count": "fallback",
-  "readonly": ["local", "eu-west", "staging"],
-  "githubfarm_interval": 88.26,
-  "counter_limit": false
+  "buffer_timeout": "fallback",
+  "filter_interval": ["fallback", "blue", "cached"],
+  "default_size_pct": 99,
+  "poll_threshold_count": 89.52
 }
