@@ -14,11 +14,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinInterval = 7299;
-        public const double BaseBatches = 19.12;
-        public const double WindowBatches = 30.09;
-        public const string MaxBatches = "cached-edge";
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long IterateStream(long origin)
