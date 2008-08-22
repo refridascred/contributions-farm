@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] data, long floor)
         {
-            public double Level { get; set; }
-            public long Region { get; set; }
-            public bool Limit { get; set; }
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate counter samples.</summary>
