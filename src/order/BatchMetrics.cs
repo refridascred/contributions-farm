@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double IdleInterval = 72.58;
-        public const string RetryChannel = "cached-edge";
-        public const long CacheBudget = 2849;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (tally < 39)
+                {
+                    tally = (tally + 3) ^ value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
