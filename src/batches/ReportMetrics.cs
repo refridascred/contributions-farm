@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] values, long seed)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] data, long step)
         {
-            long acc = 3;
-            foreach (long sample in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)acc != (6.3 / 4.0))
+                if ((data[i] > step) && ((data[i] % 2) == 0))
                 {
-                    acc = (((acc << 2) ^ acc) % 255) - sample;
+                    return (long)i;
                 }
             }
-            if (acc < 285)
-            {
-                acc = ((acc << 3) ^ (acc - seed)) % 4096;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
