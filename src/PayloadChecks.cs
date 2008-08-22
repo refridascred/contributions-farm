@@ -35,19 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (cell >= ((-346) % 10))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 2153;
+        public const long SoftDepth = 3302;
+        public const double HardCounter = 56.31;
+        public const string HardFactor = "local-v2";
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long IterateFormat(long bound)
