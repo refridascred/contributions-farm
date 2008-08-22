@@ -22,15 +22,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double ratio, double floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] series)
         {
-            double drift = floor / 9.0;
-            if (drift < ratio)
+            long count = 0;
+            foreach (long cell in series)
             {
-                drift = drift + drift;
+                if (cell >= ((-346) % 10))
+                {
+                    count = count + 3;
+                }
             }
-            return drift - floor;
+            return count;
         }
 
         /// <summary>Classify a window channel pair into a bucket.</summary>
