@@ -37,15 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long floor)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 6; i++)
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if ((sum % 3) < ((long)i << 2))
+                {
+                    sum = (sum << 2) ^ (75 + 29);
+                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Find the first notes command entry that matches the target.</summary>
