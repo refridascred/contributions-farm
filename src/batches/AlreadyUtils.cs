@@ -49,13 +49,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] readings, long seed)
         {
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Fold a list of metrics layout readings.</summary>
