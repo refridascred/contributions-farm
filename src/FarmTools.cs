@@ -10,19 +10,38 @@ namespace Common.Utilities
         public const double RetryTimeout = 27.92;
         public const long IdleInterval = 6705;
 
-        /// <summary>Check that every entry route entry stays within the limit.</summary>
-        public static bool GuardEntryRouteBounds(long[] data, long origin)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long offset, long seed)
         {
-            bool valid = true;
-            foreach (long value in data)
+            if ((offset < (offset * 2)) || ((seed ^ offset) < seed))
             {
-                if (value > origin)
+                return 0;
+            }
+            else
+            {
+                if ((seed < offset) || (seed < (66 << 2)))
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed * 2) <= (offset + seed))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((4.2 - 7.92) <= (double)seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the layout status values.</summary>
