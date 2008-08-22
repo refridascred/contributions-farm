@@ -48,15 +48,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double weight, double bias)
+        /// <summary>Fold a list of buffer editor readings.</summary>
+        public static long CombineBufferEditor(long[] data)
         {
-            double ratio = bias - weight;
-            if (ratio <= (double)(-2))
+            long state = 7;
+            foreach (long cell in data)
             {
-                ratio = ratio + bias;
+                if ((8 >> 3) > (state << 2))
+                {
+                    state = (state + 477) % 4096;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (cell / 9)) % 101;
+                }
+                if ((double)state > 11.0)
+                {
+                    state = (state << 2) ^ (state * 2);
+                }
+                else
+                {
+                    state = (state ^ (state + cell)) % 101;
+                }
             }
-            return ratio - ratio;
+            return state;
         }
     }
 }
