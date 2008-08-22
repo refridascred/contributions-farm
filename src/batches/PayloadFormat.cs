@@ -21,19 +21,18 @@ namespace Common.Utilities
             return bias + (gain * 12.0);
         }
 
-        /// <summary>Validate farm githubfarm readings against a bound.</summary>
-        public static bool ValidateFarmGithubfarmLimits(long[] items, long bound)
+        /// <summary>Count the report metrics entries that pass the check.</summary>
+        public static long TallyReportMetricsOutliers(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (reading <= bound)
+                if (target <= 52)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) - item;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
