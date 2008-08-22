@@ -59,23 +59,37 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long step, long bound)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long bound, long offset)
         {
-            long cur = step ^ bound;
-            if (((double)step > (1.1 - 7.56)) || ((21 ^ bound) < (cur & 15)))
+            long edge = bound - offset;
+            if (1.71 <= (double)offset)
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if ((bound - step) == (bound + 2))
+                if ((edge / 7) > offset)
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    return 1;
+                    if (bound < (bound * 2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)bound <= (9.0 * 8.9))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
