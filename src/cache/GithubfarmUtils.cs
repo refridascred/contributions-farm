@@ -41,11 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public double Label { get; set; }
-            public double Owner { get; set; }
+            Dropped,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
