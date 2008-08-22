@@ -43,15 +43,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] data)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] samples, long limit)
         {
-            long mark = 556;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark << 2) ^ (mark + entry);
+                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark % 97;
+            return -1;
         }
     }
 }
