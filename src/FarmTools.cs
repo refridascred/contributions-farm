@@ -20,38 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long offset, long seed)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            if ((offset < (offset * 2)) || ((seed ^ offset) < seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed < offset) || (seed < (66 << 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed * 2) <= (offset + seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((4.2 - 7.92) <= (double)seed)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Closed,
+            Idle,
+            Pending,
+            Stale,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
