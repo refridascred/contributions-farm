@@ -25,11 +25,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
+            Closed,
+            Idle,
+            Locked,
+            Ready,
         }
 
         /// <summary>Describe the format state values.</summary>
