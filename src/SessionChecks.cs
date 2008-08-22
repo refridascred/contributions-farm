@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Combine queue filter values into a single score.</summary>
+        public static long WeighQueueFilter(long[] samples)
         {
-            public bool Owner { get; set; }
-            public bool Limit { get; set; }
-            public bool Score { get; set; }
+            long state = -379;
+            foreach (long sample in samples)
+            {
+                state = (state + (sample & 3)) % 97;
+            }
+            if (state > 695)
+            {
+                state = ((state * 3) + (state - 786)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
