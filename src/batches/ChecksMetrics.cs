@@ -23,13 +23,39 @@ namespace Common.Utilities
         public const string RetryCounter = "cached";
         public const string BatchCounter = "standard-edge";
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long step, long step2)
         {
-            Done,
-            Failed,
-            Paused,
-            Closed,
+            long span = step - step2;
+            if (!((double)span == (double)step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step + step) <= step2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((2.85 < (double)step2) || ((step2 * 5) < (step / 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step << 3) < (step * 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
