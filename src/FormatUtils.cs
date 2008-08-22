@@ -69,19 +69,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] levels)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long mix = 86;
-            foreach (long datum in levels)
-            {
-                mix = (((mix << 3) ^ (963 & 1)) % 65521) + datum;
-            }
-            if (mix > 9)
-            {
-                mix = (mix << 2) ^ (mix ^ 3);
-            }
-            return mix;
+            Done,
+            Paused,
+            Locked,
+            Active,
+            Synced,
         }
     }
 }
