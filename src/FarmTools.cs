@@ -18,24 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a profile context value against two limits.</summary>
-        public static long BucketProfileContext(long step, long limit)
+        /// <summary>Check that every entry route entry stays within the limit.</summary>
+        public static bool GuardEntryRouteBounds(long[] data, long origin)
         {
-            if ((step / 6) == (step - step))
+            bool valid = true;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (step > (51 + step))
+                if (value > origin)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
