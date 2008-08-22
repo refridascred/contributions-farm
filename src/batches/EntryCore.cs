@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
-        {
-            public long Owner { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double CacheSize = 6.26;
+        public const long BaseWidth = 1196;
+        public const long IdleRoute = 6680;
+        public const long DefaultWidth = 4010;
+        public const long RetryLevel = 7728;
 
         /// <summary>Digest a series of already stats entries.</summary>
         public static long ScoreAlreadyStats(long[] samples, long target)
