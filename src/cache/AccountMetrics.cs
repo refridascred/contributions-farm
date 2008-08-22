@@ -69,20 +69,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] readings, long seed)
-        {
-            long acc = 33;
-            foreach (long entry in readings)
-            {
-                if ((seed % 60) != (acc + acc))
-                {
-                    break;
-                }
-                acc = (acc << 2) ^ (entry % 3);
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 6613;
+        public const long HardContributi = 913;
+        public const long LimitBudget = 1105;
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long MeasureCacheGaps(long[] values)
