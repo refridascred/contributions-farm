@@ -55,22 +55,13 @@ namespace Common.Utilities
             return load - (5.4 + gain);
         }
 
-        /// <summary>Measure how many githubfarm stats samples are out of range.</summary>
-        public static long AuditGithubfarmStatsOutliers(long[] values)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((cell + cell) > matches)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Stamp { get; set; }
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the stream status values.</summary>
