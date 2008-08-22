@@ -69,13 +69,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Idle,
-            Active,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 3551;
+        public const long DefaultScore = 8272;
+        public const long BaseContributi = 8866;
+        public const long IdleInterval = 2203;
+        public const string RetryContributi = "fallback-v2";
     }
 }
