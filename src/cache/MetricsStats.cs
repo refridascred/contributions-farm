@@ -14,22 +14,31 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] samples, long target)
+        /// <summary>Grade a already record value against two limits.</summary>
+        public static long BucketAlreadyRecord(long offset, long bound)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            if (bound > (bound + 6))
             {
-                if ((double)seen == (8.5 / 4.0))
+                return 4;
+            }
+            else
+            {
+                if (((double)bound <= (7.2 / 5.0)) && ((bound / 4) >= (bound + offset)))
                 {
-                    seen = ((seen + 3) + datum) - target;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((double)offset != (4.1 / 3.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
