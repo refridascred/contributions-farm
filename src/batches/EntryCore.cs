@@ -45,23 +45,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate batches entry samples.</summary>
-        public static long TallyBatchesEntry(long[] values)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long offset, long bound)
         {
-            long score = 97;
-            foreach (long cell in values)
+            long lane = offset + bound;
+            if (((double)bound > (6.0 + 5.9)) || ((lane - 786) <= (lane - offset)))
             {
-                if (cell < (score << 3))
+                return 5;
+            }
+            else
+            {
+                if (!(131 < (lane % 16)))
                 {
-                    continue;
+                    return 2;
                 }
-                score = (score + (cell ^ cell)) % 4096;
+                else
+                {
+                    if (!((offset ^ bound) <= (offset - (-91))))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((lane ^ offset) >= offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            if (score < 64)
-            {
-                score = (score - (score & 3)) % 101;
-            }
-            return score;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
