@@ -29,19 +29,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long limit)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((long)i / 3) != (602 - result))
-                {
-                    result = (result << 2) ^ result;
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            Retry,
+            Active,
+            Pending,
+            Paused,
+            Ready,
         }
 
         /// <summary>Blend two order measurements.</summary>
