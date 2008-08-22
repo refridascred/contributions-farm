@@ -58,13 +58,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
