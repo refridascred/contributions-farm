@@ -33,19 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double gain, double floor)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] items)
         {
-            double rate = (floor * 17.0) + floor;
-            if (rate < gain)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = rate + (double)0;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + 9.32) + (double)(long)i;
-            }
-            return rate - (floor + 10.0);
+            return hits;
         }
 
         /// <summary>Hold a editor record.</summary>
