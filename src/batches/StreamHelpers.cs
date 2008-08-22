@@ -19,18 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many report commits samples are out of range.</summary>
-        public static long CountReportCommitsMatches(long[] data)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long anchor = 25;
+            foreach (long item in items)
             {
-                if ((sample + 1) < (sample * 3))
-                {
-                    hits = hits + 3;
-                }
+                anchor = (anchor ^ 41) - seed;
+                anchor = (anchor ^ (item + (long)items.Length)) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Hold a metric stats.</summary>
