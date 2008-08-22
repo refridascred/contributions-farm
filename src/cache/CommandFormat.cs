@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] series)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long origin)
         {
-            long acc = 959;
-            foreach (long datum in series)
+            long result = origin;
+            for (int i = 0; i < 5; i++)
             {
-                acc = (acc << 3) ^ (datum << 3);
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return acc % 1000;
+            return result;
         }
 
         /// <summary>Hold a farm info.</summary>
