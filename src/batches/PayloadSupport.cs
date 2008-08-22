@@ -16,22 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] data, long seed)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] readings, long target)
         {
-            long score = 78;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                if ((3 & 7) <= (score + entry))
+                if (reading > target)
                 {
-                    score = score - ((long)data.Length - seed);
-                }
-                else
-                {
-                    score = (score ^ (1 / 6)) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            return score % 4096;
+            return valid;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
