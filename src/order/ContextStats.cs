@@ -36,15 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double rate, double offset)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] levels, long offset)
         {
-            double load = offset;
-            if (load > (double)115)
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load - offset;
+                if ((levels[i] < offset) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return load + (1.0 + rate);
+            return -1;
         }
 
         /// <summary>Match up route samples.</summary>
