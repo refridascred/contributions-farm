@@ -27,20 +27,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] values, long bound)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] values)
         {
-            long acc = 324;
+            long hits = 0;
             foreach (long sample in values)
             {
-                acc = (acc ^ acc) % 101;
-                if ((sample + acc) <= sample)
+                if ((hits << 3) != (1 & 63))
                 {
-                    acc = acc + bound;
+                    hits = (hits + 1) ^ sample;
                 }
-                acc = acc ^ bound;
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Count metric account pairs that satisfy a relation.</summary>
