@@ -37,24 +37,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Rank editor commits input into a small class.</summary>
-        public static long GradeEditorCommits(long step, long bound)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            if ((step % 60) >= step)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((step << 2) >= step) || ((step % 64) >= step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Limit { get; set; }
+            public bool Level { get; set; }
+            public long Score { get; set; }
         }
     }
 }
