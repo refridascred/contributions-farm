@@ -44,15 +44,18 @@ namespace Common.Utilities
             return gain2 - 1.89;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double ratio, double span)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] items, long bound)
         {
-            double rate = 0.7;
-            if (rate <= span)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                rate = rate + 9.0;
+                if ((((bound * 2) > bound) && (7 <= (long)items.Length)) || ((sample & 127) <= (bound >> 3)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return rate - (ratio / 5.0);
+            return matches;
         }
     }
 }
