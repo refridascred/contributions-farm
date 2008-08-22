@@ -31,9 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultAlready = "standard-edge";
-        public const double BatchAlready = 41.47;
-        public const long LimitSpan = 9776;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] items, long step)
+        {
+            long anchor = 179;
+            foreach (long entry in items)
+            {
+                anchor = ((anchor ^ (step << 1)) % 65521) - entry;
+            }
+            if (anchor > 202)
+            {
+                anchor = (anchor ^ (step ^ step)) % 97;
+            }
+            return anchor;
+        }
     }
 }
