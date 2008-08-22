@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long BurstWindow = 417;
         public const double BaseBudget = 23.0;
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long bound)
         {
-            Locked,
-            Failed,
-            Dropped,
-            Closed,
+            long result = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((result - 37) > bound)
+                {
+                    break;
+                }
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
