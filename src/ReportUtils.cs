@@ -69,21 +69,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] values)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferRange(long[] readings, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading < bound)
                 {
-                    if ((values[i] ^ values[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
