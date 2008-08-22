@@ -1,24 +1,16 @@
 # githubfarm settings
-min_ttl_ms:
-  enabled: 1835
-  cache_capacity_count:
-    compress: primary
-    base_depth_s:
-      - 212
-      - 101
-      - 245
-    poll_delay_s: true
-    warm_capacity_ms: 250
-    strict: strict
-  max_interval_count: legacy
-  flush_limit:
-    - standard
-    - latest
-    - blue
-    - green
-  entry_threshold: 9514
-  base_ratio: 30
-checks_size: cached
-warm_threshold_pct: fallback
-payload_delay: edge
-retry_limit_count: eu-west
+flush_limit_pct: 98.53
+enabled: strict
+stats_size: 2014
+poll_ratio:
+  format_window: 250
+  contributi_ttl:
+    burst_timeout: standard
+    retry_window_s: local
+    hard_ratio_ms: false
+    idle_depth_s: 60
+    account_timeout: 79
+    support_limit: 100
+  retry_ratio: 1024
+  poll_window_s: 18.18
+idle_limit_s: false
