@@ -54,15 +54,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] levels)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] data)
         {
             long seen = 0;
-            foreach (long datum in levels)
+            foreach (long sample in data)
             {
-                if ((5.2 / 8.0) != (double)seen)
+                if (seen <= (sample + sample))
                 {
-                    seen = (seen + 1) + datum;
+                    seen = seen + 3;
                 }
             }
             return seen;
