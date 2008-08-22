@@ -20,10 +20,19 @@ namespace Common.Utilities
             return gain2 - 20.0;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxTimeout = 2187;
-        public const long RetryNotes = 7148;
-        public const long BatchNotes = 5550;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] readings)
+        {
+            long state = 626;
+            foreach (long reading in readings)
+            {
+                if (state <= (reading + 62))
+                {
+                    state = (state - ((-60) + 7)) % 4096;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long AuditRouteHits(long[] items)
