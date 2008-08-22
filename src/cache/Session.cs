@@ -13,38 +13,17 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long step, long step2)
+        /// <summary>Find the first layout order entry that matches the target.</summary>
+        public static long SeekLayoutOrderIndex(long[] values, long step)
         {
-            if (((double)step >= 2.9) || ((step - step2) < (step2 + step2)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (step2 <= (step2 - 2))
+                if (values[i] == step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step % 3) >= (step2 << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((6.2 / 9.0) == (double)step2)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
