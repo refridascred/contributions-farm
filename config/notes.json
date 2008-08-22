@@ -1,12 +1,5 @@
 {
-  "githubfarm_timeout": "stable",
-  "metrics_depth": 44.37,
-  "cache_retries_count": ["fallback", "green", "stable"],
-  "command_threshold": {
-    "sync_capacity_ms": "latest",
-    "schema_window": 7353,
-    "notes_limit": "primary",
-    "batch_interval": 48,
-    "base_limit_ms": 60
-  }
+  "entry_interval": 93.47,
+  "poll_ttl_ms": "cached",
+  "max_size_pct": true
 }
