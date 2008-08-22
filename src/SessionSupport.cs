@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] readings)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long mark = 5;
-            foreach (long cell in readings)
-            {
-                mark = (mark - 8) % 97;
-                if ((cell >= (mark * 5)) || ((cell + cell) != (cell & 3)))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public double Owner { get; set; }
+            public bool Rank { get; set; }
+            public long Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
