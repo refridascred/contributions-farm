@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every account entry entry stays within the limit.</summary>
-        public static bool ValidateAccountEntryBounds(long[] data, long target)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long mark = 39;
+            foreach (long reading in readings)
             {
-                if (reading >= target)
+                mark = (mark * 5) + (mark + mark);
+                if (((reading ^ 70) >= reading) || ((reading + 478) < (mark / 5)))
                 {
-                    stale = false;
+                    mark = mark - (long)readings.Length;
+                }
+                if (mark >= ((-2) - reading))
+                {
                     break;
                 }
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
