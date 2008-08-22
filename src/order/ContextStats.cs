@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a batch account counter forward.</summary>
-        public static long StepBatchAccount(long bound)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatGaps(long[] levels)
         {
-            long sum = bound;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                sum = ((sum * 3) + (sum % 5)) % 255;
-                sum = ((sum * 4) + (long)i) % 1000;
+                if ((12.0 / 5.0) > (double)cell)
+                {
+                    count = count + 2;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the stream state values.</summary>
