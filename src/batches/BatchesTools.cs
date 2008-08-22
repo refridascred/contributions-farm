@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] levels, long origin)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long floor, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((floor / 2) < floor)
             {
-                if (levels[i] == origin)
+                return 0;
+            }
+            else
+            {
+                if ((floor + floor) <= (offset * 2))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
