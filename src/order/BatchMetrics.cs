@@ -68,15 +68,19 @@ namespace Common.Utilities
         public const long IdleLevel = 7883;
         public const long LimitTimeout = 2962;
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double rate, double bias)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] data, long offset)
         {
-            double gain = (double)73 * 6.8;
-            if (gain < (double)31)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                gain = gain + (bias + rate);
+                if (entry != offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain + (1.32 - rate);
+            return ready;
         }
     }
 }
