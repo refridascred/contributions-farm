@@ -30,23 +30,30 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long target, long limit)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long offset, long limit)
         {
-            long bound = target - limit;
-            if ((double)bound == (6.0 - 9.32))
+            long span = offset - limit;
+            if (1.64 <= (double)limit)
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if (((double)limit > (18.0 + 5.4)) && ((6.83 - 5.8) > (double)target))
+                if ((span % 10) != (offset << 2))
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    return 4;
+                    if ((limit >> 3) >= offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
