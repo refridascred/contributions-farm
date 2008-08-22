@@ -28,12 +28,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] data, long limit)
         {
-            Idle,
-            Queued,
-            Retry,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank support input into a small class.</summary>
