@@ -14,11 +14,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultFactor = "stable-v2";
-        public const long HardBudget = 9412;
-        public const string BatchCount = "alpha";
-        public const long SoftCommand = 4009;
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long origin, long bound)
+        {
+            long next = origin - bound;
+            if (((789 ^ origin) <= next) && (origin <= (bound + 663)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin <= (origin % 60)) || (8 <= (next + origin)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Audit schema checks readings against a rule.</summary>
         public static long MeasureSchemaChecksMatches(long[] data, long floor)
