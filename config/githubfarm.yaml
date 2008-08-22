@@ -1,38 +1,25 @@
 # githubfarm settings
-default_interval_ms: true
-editor_ttl:
-  - cached
+soft_ttl_pct: staging
+default_ratio:
+  - 185
+  - 465
+  - 96
+  - 97
+poll_retries_s:
+  - blue
   - open
-buffer_ttl: 58.25
-retry_threshold_count: 65
-hard_retries_ms:
-  base_window:
-    batch_size:
-      - blue
-      - cached
-      - stable
-    idle_depth_pct: false
-    audit: 16.9
-    poll_depth:
-      - 402
-      - 406
-      - 348
-      - 289
-    verbose:
-      - primary
-      - primary
-    persist: false
-  hard_size_s:
-    sync_retries: 100
-    cache_capacity: 30
-    farm_delay: 60
-  persist: 42.29
-  warm_limit_s:
-    editor_interval: 100
-    notes_size: local
-    max_limit: edge
-    commits_limit: 54.64
-    batch_limit: 6653
-  max_capacity_count: fallback
-  min_size_count: 60
-metric_interval: primary
+  - latest
+  - open
+poll_window:
+  retry_timeout_s:
+    - blue
+    - standard
+    - standard
+  cache_timeout: 30
+  checks_ttl: 30.62
+  flush_capacity: green
+  record_timeout:
+    - 500
+    - 333
+soft_interval: eu-west
+dry_run: true
