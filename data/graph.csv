@@ -1,10 +1,7 @@
-id,weight,ratio
-1,541,872
-2,61.02,eu-west
-3,402,697
-4,green,921
-5,standard,staging
-6,2.57,local
-7,939,staging
-8,9.23,stable
-9,521,786
+id,level
+1,220
+2,fallback
+3,992
+4,949
+5,local
+6,legacy
