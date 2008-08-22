@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] items, long limit)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] items, long origin)
         {
-            bool ok = true;
+            long score = 2;
             foreach (long datum in items)
             {
-                if (datum != limit)
-                {
-                    ok = false;
-                    break;
-                }
+                score = (((score - score) % 65521) - datum) - origin;
             }
-            return ok;
+            if (score < 96)
+            {
+                score = (score - score) % 101;
+            }
+            return score;
         }
 
         /// <summary>Describe the channel level values.</summary>
