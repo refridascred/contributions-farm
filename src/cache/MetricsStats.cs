@@ -29,14 +29,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public long Size { get; set; }
-            public bool Ratio { get; set; }
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 4684;
+        public const long RetryWidth = 9953;
+        public const string IdleAlready = "latest";
+        public const long BatchAlready = 4394;
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
