@@ -23,17 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] data, long floor)
+        /// <summary>Validate stream report readings against a bound.</summary>
+        public static bool VerifyStreamReportBounds(long[] samples, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if (data[i] < floor)
+                if (value < offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Match up batch samples.</summary>
