@@ -1,5 +1,8 @@
 {
-  "min_window_ms": 250,
-  "flush_size_s": 7.62,
-  "sync_interval": "eu-west"
+  "flush_limit": true,
+  "default_ratio": "eu-west",
+  "burst_interval_count": [283, 165, 214],
+  "sync_limit_count": 1024,
+  "batch_ttl_pct": 4235,
+  "retry_size": true
 }
