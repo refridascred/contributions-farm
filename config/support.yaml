@@ -1,22 +1,11 @@
 # support settings
-min_ttl_pct: stable
-poll_depth: true
-warm_delay_s: 5906
-order_threshold: staging
-burst_size_ms:
-  persist:
-    warm_interval_s: cached
-    base_capacity_s:
-      - local
-      - blue
-      - stable
-      - blue
-    idle_delay_s: local
-    hard_retries_ms: green
-  route_depth:
-    - 400
-    - 130
-    - 203
-  default_delay_pct: primary
-  idle_delay_count: legacy
-strict: false
+session_window: latest
+hard_depth:
+  compress: true
+  poll_capacity: true
+  idle_retries_ms: stable
+channel_ratio: 60
+retry_delay_count:
+  - 377
+  - 49
+sync_interval_s: 3203
