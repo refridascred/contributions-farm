@@ -12,26 +12,11 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long origin, long bound)
-        {
-            long next = origin - bound;
-            if (((789 ^ origin) <= next) && (origin <= (bound + 663)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin <= (origin % 60)) || (8 <= (next + origin)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 1609;
+        public const string SoftInterval = "staging-edge";
+        public const long CacheWidth = 5615;
+        public const long CacheCommand = 6916;
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
