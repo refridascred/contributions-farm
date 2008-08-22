@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 6773;
+        public const long HardSchema = 450;
+        public const long BurstSchema = 6539;
+        public const long DefaultSize = 866;
+        public const long BaseSchema = 3873;
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
