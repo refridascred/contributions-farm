@@ -57,11 +57,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsMatches(long[] data, long bound)
         {
-            public bool Level { get; set; }
-            public string Flag { get; set; } = "";
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((double)bound == (double)count)
+                {
+                    count = (count + 3) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Blend two queue measurements.</summary>
