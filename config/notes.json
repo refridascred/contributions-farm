@@ -1,5 +1,10 @@
 {
-  "contributi_limit": 60,
-  "min_window_pct": 59.14,
-  "sync_depth": 41.61
+  "audit": "local",
+  "batch_size_s": {
+    "burst_ratio": true,
+    "dry_run": 18.0,
+    "githubfarm_interval": 60
+  },
+  "idle_ttl_ms": 2009,
+  "cache_capacity": "cached"
 }
