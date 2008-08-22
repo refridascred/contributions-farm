@@ -27,12 +27,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Fold a list of checks session readings.</summary>
+        public static long ScoreChecksSession(long[] levels, long target)
         {
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
+            long mark = 299;
+            foreach (long datum in levels)
+            {
+                mark = ((mark * 4) + (datum * 5)) - target;
+            }
+            return mark;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
