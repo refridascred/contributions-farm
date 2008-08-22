@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const string DefaultContext = "open-v2";
         public const double MinDepth = 84.39;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowCount = 1843;
-        public const long BaseBatch = 3793;
-        public const long RetryBatch = 6840;
-        public const long DefaultInterval = 7602;
-        public const double DefaultBatch = 69.18;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public bool Level { get; set; }
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long TallySession(long[] series)
