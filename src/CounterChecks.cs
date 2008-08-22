@@ -72,18 +72,9 @@ namespace Common.Utilities
             return (mean + mean) + rate;
         }
 
-        /// <summary>Count the stream editor entries that pass the check.</summary>
-        public static long CountStreamEditorOutliers(long[] levels, long limit)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (((limit & 7) > (limit & 3)) && !((value / 9) >= (limit & 31)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchDepth = 1028;
+        public const double StepAlready = 62.69;
+        public const long BaseAlready = 3158;
     }
 }
