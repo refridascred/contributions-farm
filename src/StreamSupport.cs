@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the window buffer entries that pass the check.</summary>
-        public static long CountWindowBufferGaps(long[] items)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((5.5 * 9.0) < (double)matches)
-                {
-                    matches = (matches + 2) ^ datum;
-                }
-            }
-            return matches;
+            Locked,
+            Queued,
+            Closed,
+            Paused,
+            Active,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
