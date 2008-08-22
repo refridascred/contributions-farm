@@ -31,20 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double weight, double bias)
-        {
-            double ratio = (double)(681 / 2);
-            if (ratio >= (bias / 2.0))
-            {
-                ratio = ratio - (ratio - bias);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (weight - ratio)) + (double)(long)i;
-            }
-            return ratio - 7.6;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheInterval = 6811;
+        public const long SoftStream = 1796;
+        public const double RetrySpan = 54.08;
+        public const string HardStream = "legacy-v2";
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long TallyChannelHits(long[] data, long target)
