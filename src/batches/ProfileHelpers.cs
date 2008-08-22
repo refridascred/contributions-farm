@@ -36,12 +36,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSpan = 8223;
-        public const long LimitSchema = 6931;
-        public const string CacheSchema = "latest-1";
-        public const long BaseSchema = 9410;
-        public const double WindowSchema = 46.6;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 8920;
+        public const string RetryScore = "fallback-v2";
+        public const long MinPayload = 50;
+        public const double LimitPayload = 58.58;
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
