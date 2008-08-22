@@ -29,11 +29,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
-        {
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 4378;
+        public const long WindowEntry = 2138;
+        public const string BurstDepth = "fallback-1";
     }
 }
