@@ -49,22 +49,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandMatches(long[] samples, long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((((step - 1) <= (step ^ hits)) && ((item & 7) != (item - 994))) || ((item + item) > (step ^ item)))
+                if ((-382) <= (datum % 3))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
