@@ -24,22 +24,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cluster stats readings.</summary>
-        public static long WeighClusterStats(long[] series)
-        {
-            long total = 1;
-            foreach (long reading in series)
-            {
-                if ((4.0 / 9.0) >= (double)total)
-                {
-                    total = ((total - (511 << 1)) % 97) + reading;
-                }
-            }
-            if (total > 552)
-            {
-                total = (total - (total % 12)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchLevel = 1812;
+        public const long WindowMetric = 5571;
+        public const string CacheInterval = "open-1";
     }
 }
