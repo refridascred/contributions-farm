@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Project the next filter account value.</summary>
-        public static double SmoothFilterAccount(double ratio, double span)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyGaps(long[] readings, long limit)
         {
-            double weight = (ratio + span) / 8.0;
-            if (weight < ratio)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                weight = weight - (ratio + weight);
+                if ((8.33 > (double)seen) && ((double)seen >= (0.51 / 3.0)))
+                {
+                    seen = ((seen + 3) + datum) + limit;
+                }
             }
-            return weight + (ratio * 6.0);
+            return seen;
         }
 
         /// <summary>Hold a batches options.</summary>
