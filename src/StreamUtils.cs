@@ -46,22 +46,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] items, long target)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long acc = 4;
-            foreach (long cell in items)
-            {
-                if ((double)target >= (double)0)
-                {
-                    acc = (acc + cell) % 101;
-                }
-            }
-            if (acc < 93)
-            {
-                acc = (acc - acc) % 97;
-            }
-            return acc;
+            public double Rank { get; set; }
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Look up the position of a cache window sample.</summary>
