@@ -1,8 +1,12 @@
 {
-  "buffer_capacity": 69,
-  "retry_depth": 70.41,
-  "base_capacity": "primary",
-  "batch_ttl_pct": "strict",
-  "window_threshold": 41.78,
-  "soft_window_s": "blue"
+  "poll_interval_s": "staging",
+  "compress": true,
+  "cache_interval": 9686,
+  "verbose": 2880,
+  "burst_ttl_s": {
+    "batches_threshold": "cached",
+    "audit": true,
+    "idle_interval_s": ["staging", "local", "eu-west"]
+  },
+  "readonly": 58.65
 }
