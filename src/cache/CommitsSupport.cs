@@ -37,32 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank record batches input into a small class.</summary>
-        public static long RankRecordBatches(long offset, long offset2)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long bound = offset ^ offset2;
-            if ((offset2 >> 5) < bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset + offset) >= (offset & 31))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound & 255) > ((-24) * 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Draft,
+            Retry,
+            Closed,
+            Paused,
         }
 
         /// <summary>Check that every filter route entry stays within the limit.</summary>
