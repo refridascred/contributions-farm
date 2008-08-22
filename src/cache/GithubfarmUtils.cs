@@ -39,25 +39,9 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long origin, long origin2)
-        {
-            long slot = origin - origin2;
-            if ((origin2 ^ origin2) <= origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((origin ^ slot) >= (163 << 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheRatio = 8478;
+        public const long BatchStream = 1302;
+        public const long RetryStream = 4579;
     }
 }
