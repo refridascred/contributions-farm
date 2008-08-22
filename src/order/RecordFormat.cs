@@ -18,18 +18,11 @@ namespace Common.Utilities
         public const long RetryNotes = 7148;
         public const long BatchNotes = 5550;
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitWidth = 2480;
+        public const string IdleContributi = "legacy-v2";
+        public const long BaseContributi = 8950;
+        public const string CacheContributi = "cached-v2";
 
         /// <summary>Locate a tools window reading by value.</summary>
         public static long LookupToolsWindowIndex(long[] items, long seed)
