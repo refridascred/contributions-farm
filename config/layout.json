@@ -1,6 +1,22 @@
 {
-  "default_limit": "strict",
-  "warm_interval": 9.45,
-  "burst_retries_count": 500,
-  "cache_window_ms": 5372
+  "cache_capacity": {
+    "cache_ratio": 3.06,
+    "base_ratio": 56.32,
+    "cache_ttl_s": "edge"
+  },
+  "default_window_ms": 386,
+  "audit": true,
+  "warm_depth": {
+    "max_ttl_pct": "legacy",
+    "base_capacity_count": "stable",
+    "max_threshold_s": {
+      "support_delay": 9,
+      "dry_run": "standard",
+      "retry_capacity_ms": 90.77,
+      "soft_timeout": "primary",
+      "token_limit": false
+    },
+    "batch_depth": 253
+  },
+  "strict": ["stable", "open"]
 }
