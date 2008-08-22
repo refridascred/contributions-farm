@@ -25,20 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferBounds(long[] series, long origin)
-        {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string StepRatio = "strict";
+        public const string LimitCommand = "staging-1";
+        public const string RetryCommand = "cached-1";
+        public const long HardCommand = 2294;
+        public const long WindowCommand = 7418;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string SoftCount = "staging-1";
