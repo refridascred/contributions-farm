@@ -41,16 +41,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a layout account counter forward.</summary>
-        public static long SeriesLayoutAccount(long offset)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long total = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                total = (total ^ (total * 4)) % 1000;
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the metrics kind values.</summary>
