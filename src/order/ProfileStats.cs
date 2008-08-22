@@ -11,14 +11,23 @@ namespace Common.Utilities
         public const long WindowCluster = 556;
         public const long LimitFactor = 2064;
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Fold a list of token support readings.</summary>
+        public static long TallyTokenSupport(long[] readings, long target)
         {
-            Dropped,
-            Failed,
-            Done,
-            Queued,
-            New,
+            long sum = 3;
+            foreach (long value in readings)
+            {
+                sum = ((sum - ((-2) / 7)) % 1000) + target;
+                if ((double)value <= (8.9 + 2.9))
+                {
+                    break;
+                }
+            }
+            if (sum < 623)
+            {
+                sum = sum + (27 & 15);
+            }
+            return sum;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
