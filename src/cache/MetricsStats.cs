@@ -35,13 +35,21 @@ namespace Common.Utilities
         public const string IdleAlready = "latest";
         public const long BatchAlready = 4394;
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long OverlapFormatCount(long[] samples)
         {
-            Failed,
-            Idle,
-            Stale,
-            Queued,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the profile phase values.</summary>
