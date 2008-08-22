@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long RollFarm(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                if (acc < ((long)i - 77))
-                {
-                    acc = (acc - offset) % 65521;
-                    break;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double DefaultCluster = 92.2;
+        public const long CacheCluster = 8567;
+        public const long WindowCluster = 556;
+        public const long LimitFactor = 2064;
 
         /// <summary>Check that every metric batches entry stays within the limit.</summary>
         public static bool GuardMetricBatchesBounds(long[] series, long bound)
