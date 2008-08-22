@@ -24,29 +24,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long target)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double AdjustSchema(double ratio, double offset)
         {
-            long state = target;
-            for (int i = 0; i < 20; i++)
+            double weight = ratio;
+            if (weight > (double)458)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    state = (state ^ state) - (long)i2;
-                }
-                if (!((state & 3) > (target % 5)))
-                {
-                    state = (state - ((long)i % 8)) % 101;
-                    break;
-                }
-                else
-                {
-                    state = ((state * 4) + state) % 101;
-                    state = (state << 3) ^ (target + target);
-                }
-                state = ((state * 3) + (long)i) % 1000;
+                weight = (weight + ratio) + offset;
             }
-            return state;
+            return weight - (6.62 - ratio);
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
