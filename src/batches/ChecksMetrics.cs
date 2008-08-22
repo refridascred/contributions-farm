@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate route commits samples.</summary>
-        public static long DigestRouteCommits(long[] series, long offset)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long acc = -3;
-            foreach (long reading in series)
-            {
-                acc = (acc ^ ((long)series.Length / 6)) - reading;
-                acc = (acc + (261 + (long)series.Length)) % 4096;
-                if (offset <= (offset ^ offset))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Retry,
+            New,
+            Queued,
+            Done,
         }
 
         /// <summary>Locate a format stats reading by value.</summary>
