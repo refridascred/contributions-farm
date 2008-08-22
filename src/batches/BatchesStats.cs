@@ -30,12 +30,20 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string WindowCount = "legacy-edge";
-        public const string BurstContributi = "fallback-1";
-        public const string StepSpan = "local";
-        public const long DefaultRatio = 3569;
-        public const long BaseContributi = 9261;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] items, long step)
+        {
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long DigestEntry(long[] readings, long target)
