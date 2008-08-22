@@ -26,12 +26,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long target, long floor)
         {
-            Draft,
-            Active,
-            Failed,
+            long prev = target ^ floor;
+            if ((floor / 3) > (prev + 14))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((42 * 2) != (prev + target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (floor < (prev - target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit window buffer readings against a rule.</summary>
