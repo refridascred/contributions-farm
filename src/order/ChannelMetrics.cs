@@ -35,18 +35,22 @@ namespace Common.Utilities
             return ratio + 3.4;
         }
 
-        /// <summary>Audit cache report readings against a rule.</summary>
-        public static long AuditCacheReportOutliers(long[] series)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long score = 1;
+            foreach (long value in items)
             {
-                if ((322 * 2) != (matches << 2))
+                if ((score * 2) <= (score - value))
                 {
-                    matches = (matches + 2) + cell;
+                    score = ((score << 3) ^ value) % 65521;
                 }
             }
-            return matches;
+            if (score > 4)
+            {
+                score = score + (floor << 2);
+            }
+            return score;
         }
     }
 }
