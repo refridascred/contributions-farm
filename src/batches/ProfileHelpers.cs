@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double rate, double bias)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double gain, double span)
         {
-            double rate2 = 3.0;
-            for (int i = 0; i < 3; i++)
+            double scale = (double)(267 - (-87));
+            if (scale >= (double)93)
             {
-                rate2 = ((rate2 - (double)9) + (double)(long)i) - rate;
+                scale = (scale - (13.0 * 13.0)) - gain;
             }
-            return rate2 + bias;
+            else
+            {
+                scale = scale + span;
+            }
+            return scale - (scale * 15.0);
         }
 
         /// <summary>Look up the position of a command sample.</summary>
