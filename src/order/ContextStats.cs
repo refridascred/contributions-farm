@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((12.0 / 5.0) > (double)cell)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BurstSize = "strict-1";
+        public const string LimitDepth = "standard";
+        public const long WindowRecord = 7309;
 
         /// <summary>Describe the stream state values.</summary>
         public enum StreamState
