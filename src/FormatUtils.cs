@@ -69,12 +69,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] values)
         {
-            public bool Offset { get; set; }
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
+            long mark = 48;
+            foreach (long datum in values)
+            {
+                mark = mark + datum;
+                if (!(datum >= (mark ^ mark)))
+                {
+                    mark = mark + (mark >> 2);
+                }
+                else
+                {
+                    mark = mark ^ 0;
+                }
+            }
+            if (mark > 494)
+            {
+                mark = ((mark << 3) ^ (5 - mark)) % 65521;
+            }
+            return mark % 4096;
         }
     }
 }
