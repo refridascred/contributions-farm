@@ -63,32 +63,17 @@ namespace Common.Utilities
             return load - (5.4 + gain);
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long seed, long origin)
+        /// <summary>Locate a session format reading by value.</summary>
+        public static long LookupSessionFormatIndex(long[] items, long step)
         {
-            long lane = seed + origin;
-            if ((seed > (origin + lane)) && ((lane % 97) >= (seed * 3)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin - lane) != (seed & 3))
+                if ((items[i] == step) && ((items[i] % 3) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (seed >= lane)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
