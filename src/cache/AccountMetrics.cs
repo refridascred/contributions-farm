@@ -89,23 +89,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double gain, double span)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            double scale = gain - 7.11;
-            if (scale >= scale)
-            {
-                scale = scale - (span - span);
-            }
-            else
-            {
-                scale = scale + (scale * 2.9);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + span;
+            public double Offset { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a order summary.</summary>
