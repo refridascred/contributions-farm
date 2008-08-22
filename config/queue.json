@@ -1,11 +1,7 @@
 {
-  "cache_ttl_pct": 2.18,
-  "persist": {
-    "flush_size_ms": ["latest", "primary"],
-    "strict": true,
-    "min_delay": 5216,
-    "warm_size": 43.92
-  },
-  "sync_window": false,
-  "cache_size_ms": "open"
+  "audit": true,
+  "flush_retries": 3737,
+  "hard_threshold": false,
+  "dry_run": false,
+  "sync_interval_count": 60.86
 }
