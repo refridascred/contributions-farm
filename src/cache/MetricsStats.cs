@@ -24,10 +24,20 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double HardScore = 17.52;
-        public const double MinFarm = 55.46;
-        public const string MinScore = "open-v2";
+        /// <summary>Check that every buffer format entry stays within the limit.</summary>
+        public static bool CheckBufferFormatBounds(long[] data, long floor)
+        {
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Look up the position of a token format sample.</summary>
         public static long SeekTokenFormatIndex(long[] values, long limit)
