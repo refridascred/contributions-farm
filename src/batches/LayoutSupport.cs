@@ -12,22 +12,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] values, long offset)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long mix = 381;
-            foreach (long value in values)
-            {
-                if ((mix & 127) <= (value ^ (long)values.Length))
-                {
-                    mix = ((mix * 4) + (mix ^ mix)) - offset;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ ((-6) - value)) % 97;
-                }
-            }
-            return mix;
+            Queued,
+            Closed,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
