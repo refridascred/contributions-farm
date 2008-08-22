@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseBudget = "alpha-v2";
-        public const long HardSpan = 3612;
-        public const double BurstFactor = 77.04;
-        public const double SoftWidth = 64.63;
-        public const string DefaultFactor = "primary-v2";
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == bound) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
