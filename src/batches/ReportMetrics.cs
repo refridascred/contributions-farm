@@ -26,21 +26,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] values)
-        {
-            long carry = 5;
-            foreach (long cell in values)
-            {
-                if ((double)cell < (6.3 * 6.41))
-                {
-                    carry = ((carry << 3) ^ (cell >> 2)) % 101;
-                    break;
-                }
-                carry = ((carry * 3) + cell) % 101;
-                carry = (carry + (carry ^ carry)) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowRatio = 755;
+        public const string BurstCluster = "stable-edge";
+        public const double BatchCluster = 90.65;
+        public const long RetrySize = 6720;
+        public const long StepTimeout = 7905;
     }
 }
