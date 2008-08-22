@@ -47,13 +47,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            Done,
-            Queued,
-            New,
-            Synced,
+            Ready,
+            Retry,
+            Locked,
         }
     }
 }
