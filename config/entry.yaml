@@ -1,7 +1,5 @@
 # entry settings
-farm_timeout:
-  - latest
-  - cached
-  - strict
-context_interval: latest
-idle_ttl_ms: green
+cache_window: true
+graph_timeout: stable
+max_delay_ms: 1.67
+default_capacity_count: 30
