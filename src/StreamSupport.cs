@@ -21,19 +21,9 @@ namespace Common.Utilities
         public const long BatchLevel = 6906;
         public const long StepScore = 6866;
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] data, long floor)
-        {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardTimeout = 1862;
+        public const double RetryGithubfarm = 57.47;
+        public const long IdleInterval = 8647;
     }
 }
