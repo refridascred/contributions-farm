@@ -50,12 +50,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            public double Total { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
