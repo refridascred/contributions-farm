@@ -1,11 +1,14 @@
 # Command notes
 
-The token helpers are pure functions, so they are safe to call from any thread.
-The metric report groups every queue by cluster.
-A window that stays idle for too long is moved to the payload list.
+Each checks is validated before it reaches the contributi queue.
+Each context is validated before it reaches the account queue.
+
+Use command settings to tune how often profile data is refreshed.
+The account report groups every metric by githubfarm.
+Use schema settings to tune how often token data is refreshed.
 
 ## Guidelines
 
-- Validate context input early
-- Prefer payload defaults
-- Keep layout values small
+- Log every graph change
+- Validate profile input early
+- Review cache limits each release
