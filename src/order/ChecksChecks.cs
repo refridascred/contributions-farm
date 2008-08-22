@@ -20,17 +20,19 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] samples, long step)
+        /// <summary>Combine schema editor values into a single score.</summary>
+        public static long TallySchemaEditor(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 1;
+            foreach (long datum in samples)
             {
-                if (samples[i] >= step)
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    carry = (carry ^ ((long)i % 60)) % 1000;
                 }
+                carry = carry - datum;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a farm summary.</summary>
