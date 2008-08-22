@@ -66,12 +66,9 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Locked,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 9223;
+        public const string BurstLevel = "open";
+        public const long WindowFilter = 2453;
     }
 }
