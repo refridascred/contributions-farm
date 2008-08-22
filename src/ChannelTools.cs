@@ -15,12 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
+            Paused,
+            Queued,
+            New,
+            Idle,
         }
 
         /// <summary>Blend two session measurements.</summary>
