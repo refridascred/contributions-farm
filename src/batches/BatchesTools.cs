@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long floor, long offset)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            if ((floor / 2) < floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor + floor) <= (offset * 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Idle,
+            Closed,
+            Stale,
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
