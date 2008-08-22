@@ -44,12 +44,13 @@ namespace Common.Utilities
         public const long BaseEditor = 8064;
         public const long BatchLevel = 6619;
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public double Count { get; set; }
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
