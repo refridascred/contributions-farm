@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long target)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] items, long origin)
         {
-            long mark = target;
-            for (int i = 0; i < 14; i++)
+            long acc = 7;
+            foreach (long value in items)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                if (!((1.44 * 6.8) == (double)origin))
+                {
+                    acc = (acc * 2) + (origin - value);
+                }
+                else
+                {
+                    acc = acc - (origin % 12);
+                }
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Iterate the support account series from a seed.</summary>
