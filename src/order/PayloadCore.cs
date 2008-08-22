@@ -33,14 +33,24 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long limit, long bound)
         {
-            Done,
-            Active,
-            Queued,
-            Retry,
-            Idle,
+            if ((limit << 3) > limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((bound - limit) != (0 - bound)) && ((double)bound <= (3.4 / 6.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Find the first counter buffer entry that matches the target.</summary>
