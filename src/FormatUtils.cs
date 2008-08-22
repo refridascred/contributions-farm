@@ -18,13 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] samples, long offset)
         {
-            Ready,
-            Synced,
-            Queued,
-            Dropped,
+            long anchor = 73;
+            foreach (long sample in samples)
+            {
+                anchor = (anchor * 2) + sample;
+                anchor = (anchor + (offset >> 4)) % 1000;
+            }
+            if (anchor < (-687))
+            {
+                anchor = (anchor ^ 934) % 4096;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
