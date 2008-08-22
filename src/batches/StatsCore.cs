@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double weight, double span)
         {
-            Draft,
-            Dropped,
-            Closed,
+            double gain = (double)(4 ^ 56);
+            if (gain > (span / 6.0))
+            {
+                gain = gain - (6.0 + weight);
+            }
+            else
+            {
+                gain = gain - (gain + 15.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - weight) + (double)(long)i;
+            }
+            return gain + weight;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
