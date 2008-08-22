@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftSize = 220;
-        public const long SoftWindow = 4933;
-        public const double BaseWindow = 93.98;
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            Ready,
+            Draft,
+            Locked,
+        }
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long PairMetricsCount(long[] items)
