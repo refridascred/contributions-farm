@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] levels)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((1.8 >= (double)(long)levels.Length) && (32 <= (tally ^ 37)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 3) ^ reading;
+                    if ((levels[i] - levels[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Look up the position of a already entry sample.</summary>
