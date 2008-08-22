@@ -20,16 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] samples, long bound)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] series, long origin)
         {
-            long score = 817;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long sample in series)
             {
-                score = (score ^ (score * 4)) - bound;
-                score = ((score << 3) ^ (entry + score)) % 4096;
+                if (sample >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
