@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            Synced,
+            Retry,
+            Paused,
         }
 
         /// <summary>Fold a list of checks session readings.</summary>
