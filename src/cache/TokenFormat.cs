@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] series)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (!((double)4 <= (double)entry))
+                if (((66 + seen) < (seen * 5)) && (((entry >> 3) >= seen) || ((seen - 875) >= entry)))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
