@@ -74,12 +74,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long step, long target)
         {
-            public bool Label { get; set; }
-            public double Offset { get; set; }
-            public string Region { get; set; } = "";
+            if ((double)step < (double)target)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step > ((-73) << 3)) || ((target + 93) < target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
