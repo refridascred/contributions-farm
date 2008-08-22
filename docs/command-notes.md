@@ -1,11 +1,11 @@
 # Command notes
 
-The queue module keeps order values in sync with the notes cache.
-Each layout is validated before it reaches the already queue.
-Run the queue check before changing any metric limits.
+The tools report groups every payload by batches.
+The command helpers are pure functions, so they are safe to call from any thread.
+Keep metrics and queue names short and lowercase.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Keep format values small
-- Prefer entry defaults
+- Keep account values small
+- Document new entry fields
+- Prefer schema defaults
