@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long IterateCommits(long origin)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] data)
         {
-            long score = origin;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = score - origin;
-                long step = origin;
-                if (!(((double)score >= 7.06) || ((step + origin) >= 33)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = score ^ (score % 64);
+                    if ((data[i] + data[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
