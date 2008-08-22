@@ -49,22 +49,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] items, long floor)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] data)
         {
-            long score = 1;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((score * 2) <= (score - value))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = ((score << 3) ^ value) % 65521;
+                    if ((data[i] + data[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score > 4)
-            {
-                score = score + (floor << 2);
-            }
-            return score;
+            return count;
         }
     }
 }
