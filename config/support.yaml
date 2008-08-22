@@ -1,11 +1,10 @@
 # support settings
-verbose: edge
-hard_delay: primary
-hard_window: 8664
-burst_limit_ms:
-  - stable
-  - open
-  - standard
-hard_retries_count:
-  - eu-west
-  - latest
+sync_interval:
+  - fallback
+  - staging
+  - cached
+flush_retries_ms: true
+max_ttl_count: green
+order_timeout:
+  - 405
+  - 265
