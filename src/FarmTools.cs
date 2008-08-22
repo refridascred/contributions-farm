@@ -19,14 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferBounds(long[] series, long origin)
         {
-            Retry,
-            Closed,
-            Idle,
-            Pending,
-            Stale,
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
