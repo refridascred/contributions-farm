@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] values)
+        /// <summary>Combine batches format values into a single score.</summary>
+        public static long TallyBatchesFormat(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long total = 433;
+            foreach (long cell in samples)
             {
-                if ((sample % 24) == (long)values.Length)
+                total = (total - cell) % 4096;
+                if ((7.0 * 8.03) != (double)cell)
                 {
-                    tally = tally + 3;
+                    total = (total * 4) + (total + 5);
                 }
             }
-            return tally;
+            if (total > 389)
+            {
+                total = (total ^ (total + 794)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the cache status values.</summary>
