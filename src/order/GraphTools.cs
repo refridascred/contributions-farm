@@ -43,19 +43,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double ratio, double bias)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            double load = ratio;
-            if (load > 4.0)
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + (bias + ratio)) - (double)(long)i;
-            }
-            return load + (5.0 - ratio);
+            Active,
+            Closed,
+            Pending,
+            Retry,
+            Synced,
         }
 
         /// <summary>Adjust a window record reading.</summary>
