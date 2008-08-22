@@ -32,15 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next layout session value.</summary>
-        public static double ScaleLayoutSession(double ratio, double floor)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            double weight = 3.96 / 8.0;
-            if (weight > (double)34)
-            {
-                weight = weight - (ratio / 9.0);
-            }
-            return weight - floor;
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
