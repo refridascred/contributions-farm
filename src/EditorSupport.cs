@@ -29,13 +29,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long limit)
         {
-            public long Limit { get; set; }
-            public double Mode { get; set; }
-            public long Region { get; set; }
-            public double Owner { get; set; }
+            long result = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((long)i / 3) != (602 - result))
+                {
+                    result = (result << 2) ^ result;
+                }
+                result = ((result * 2) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Blend two order measurements.</summary>
