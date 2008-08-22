@@ -1,6 +1,8 @@
 {
-  "context_window": 66,
-  "idle_timeout_pct": [360, 431, 25],
-  "queue_capacity": ["green", "stable", "blue", "fallback"],
-  "order_threshold": 43.63
+  "verbose": 26.1,
+  "poll_capacity_ms": 46,
+  "batch_size": false,
+  "compress": "staging",
+  "max_retries_pct": "primary",
+  "token_retries": [247, 428]
 }
