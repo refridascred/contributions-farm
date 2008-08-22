@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] values, long origin)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] levels)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long carry = 4;
+            foreach (long sample in levels)
             {
-                if (value != origin)
+                if (((carry << 3) < (carry & 3)) && (carry >= (890 + 6)))
                 {
-                    ok = false;
-                    break;
+                    carry = (carry ^ (carry - sample)) % 97;
                 }
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Count route batches pairs that satisfy a relation.</summary>
