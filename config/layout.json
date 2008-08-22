@@ -1,6 +1,7 @@
 {
-  "retry_depth": 69.65,
-  "batch_delay": [209, 134, 480, 187],
-  "window_size": [288, 347],
-  "sync_delay_count": "cached"
+  "warm_delay_s": "open",
+  "notes_ttl": true,
+  "soft_ttl_count": "edge",
+  "idle_timeout_s": 9477,
+  "support_size": 76
 }
