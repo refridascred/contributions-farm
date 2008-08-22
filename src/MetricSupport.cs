@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Accumulate buffer tools samples.</summary>
+        public static long DigestBufferTools(long[] values)
         {
-            public long Level { get; set; }
-            public bool Weight { get; set; }
+            long sum = 64;
+            foreach (long item in values)
+            {
+                if (((item * 4) != (sum & 31)) && ((item + item) != (item * 5)))
+                {
+                    sum = (sum * 2) + (item << 1);
+                }
+            }
+            if (sum < 559)
+            {
+                sum = (sum - sum) % 4096;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Accumulate batches githubfarm samples.</summary>
