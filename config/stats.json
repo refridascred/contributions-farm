@@ -1,5 +1,8 @@
 {
-  "min_interval_pct": 9754,
-  "warm_limit": "stable",
-  "soft_interval_s": "standard"
+  "max_threshold_pct": true,
+  "filter_ttl": 3,
+  "route_size": 500,
+  "audit": ["cached", "cached", "eu-west", "blue"],
+  "readonly": [378, 187],
+  "metric_limit": [62, 266, 266, 138]
 }
