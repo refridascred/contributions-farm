@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] values, long target)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double weight, double span)
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (((target * 3) < (hits / 5)) || ((hits <= target) || ((datum + 8) <= (long)values.Length)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            double load = (double)(597 % 3);
+            return ((load + (double)66) + weight) + span;
         }
 
         /// <summary>Fold a list of context readings.</summary>
