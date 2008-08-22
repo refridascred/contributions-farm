@@ -1,10 +1,6 @@
-id,score,region
-1,cached,949
-2,90,edge
-3,66.66,staging
-4,66,63.47
-5,12.52,staging
-6,eu-west,66.65
-7,fallback,36.64
-8,515,43.43
-9,45.19,cached
+id,owner,score,active,token
+1,611,378,83.42,47.78
+2,cached,staging,485,latest
+3,23.89,22.59,305,796
+4,35.16,cached,300,579
+5,standard,18.41,306,staging
