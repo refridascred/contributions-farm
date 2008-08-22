@@ -18,11 +18,12 @@ namespace Common.Utilities
         public const long RetryNotes = 7148;
         public const long BatchNotes = 5550;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitWidth = 2480;
-        public const string IdleContributi = "legacy-v2";
-        public const long BaseContributi = 8950;
-        public const string CacheContributi = "cached-v2";
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double gain, double span)
+        {
+            double mean = span;
+            return (mean + span) + gain;
+        }
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
