@@ -69,14 +69,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchGaps(long[] values, long bound)
         {
-            Closed,
-            Locked,
-            Active,
-            New,
-            Stale,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((bound ^ 355) < (bound / 5))
+                {
+                    hits = (hits + 2) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
