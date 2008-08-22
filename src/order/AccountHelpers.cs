@@ -45,13 +45,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double rate, double span)
         {
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Rank { get; set; }
+            double load = (span - rate) * 16.0;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (span * 5.98)) + (double)(long)i;
+            }
+            return load - rate;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
