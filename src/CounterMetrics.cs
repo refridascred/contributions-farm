@@ -23,11 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] readings, long target)
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            long sum = 65;
+            foreach (long value in readings)
+            {
+                sum = ((((sum * 5) + sum) % 4096) ^ value) - target;
+            }
+            return sum;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
