@@ -26,19 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricBounds(long[] levels, long target)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] levels, long limit)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (cell <= target)
+                if (sample != limit)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
     }
 }
