@@ -16,21 +16,23 @@ namespace Common.Utilities
             return scale2 - scale2;
         }
 
-        /// <summary>Compare every pair of githubfarm window readings.</summary>
-        public static long CompareGithubfarmWindowCount(long[] items)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] data, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 4;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((8.0 / 2.0) < (double)anchor)
                 {
-                    if ((items[i] + items[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (((anchor * 3) + anchor) % 255) ^ reading;
                 }
+                anchor = (anchor ^ (anchor % 10)) % 4096;
             }
-            return matches;
+            if (anchor > 78)
+            {
+                anchor = anchor ^ (1 + origin);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Define format limits and defaults.</summary>
