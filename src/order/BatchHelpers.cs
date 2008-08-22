@@ -16,13 +16,22 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Count the tools stream entries that pass the check.</summary>
+        public static long AuditToolsStreamHits(long[] series, long target)
         {
-            public double Total { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Count { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (((double)value != (double)1) && ((seen - seen) == (target ^ value)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
