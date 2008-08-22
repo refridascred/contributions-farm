@@ -22,19 +22,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a order entry figure with a bias.</summary>
-        public static double SmoothOrderEntry(double rate, double bias)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long step, long origin)
         {
-            double scale = rate;
-            if (scale < rate)
+            if ((step + step) == (step - step))
             {
-                scale = scale - 2.0;
+                return 2;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                scale = (scale + (rate / 6.0)) - (double)(long)i;
+                if ((step * 2) >= (step % 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step / 5) < (step - step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (origin >= (origin ^ step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return scale + (bias - scale);
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
