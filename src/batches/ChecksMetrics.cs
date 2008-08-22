@@ -33,27 +33,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] readings, long seed)
-        {
-            long acc = 772;
-            foreach (long entry in readings)
-            {
-                if (((entry - 9) != (seed - seed)) && ((acc << 2) <= entry))
-                {
-                    acc = acc + (seed % 100);
-                }
-                else
-                {
-                    acc = acc ^ (entry * 4);
-                }
-                if (((18.0 / 8.0) != (double)entry) || ((entry & 63) != (entry >> 3)))
-                {
-                    break;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitEditor = "latest";
+        public const string RetryEditor = "standard-1";
+        public const long MinEditor = 6647;
+        public const long BatchLevel = 2437;
+        public const string BatchFactor = "primary-1";
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long SeekGithubfarmIndex(long[] samples, long target)
