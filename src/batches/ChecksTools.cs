@@ -26,23 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] levels)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((item - tally) < (0 - tally))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string StepBudget = "standard";
+        public const string BaseBatches = "local-1";
+        public const double MaxBatches = 98.14;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double BatchWidth = 56.0;
