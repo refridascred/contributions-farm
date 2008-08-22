@@ -27,14 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            New,
-            Idle,
-            Stale,
-            Done,
             Closed,
+            Retry,
+            Locked,
         }
 
         /// <summary>Hold a editor record.</summary>
