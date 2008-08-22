@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] items)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long result = 42;
-            foreach (long item in items)
-            {
-                if (((19.0 - 3.6) < (double)result) || ((item >> 4) <= result))
-                {
-                    result = ((result << 3) ^ (result + result)) % 1000;
-                }
-            }
-            return result % 1000;
+            Paused,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
