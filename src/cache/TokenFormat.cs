@@ -22,23 +22,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit token support readings against a rule.</summary>
-        public static long AuditTokenSupportGaps(long[] levels, long step)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((value / 8) != (hits >> 2))
-                {
-                    hits = (hits + 2) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepSize = 48.08;
+        public const long BaseLayout = 5544;
+        public const long RetryCount = 3038;
+        public const long SoftWidth = 6878;
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long StepCommits(long seed)
