@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next batches context value.</summary>
-        public static double SmoothBatchesContext(double rate, double offset)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            double ratio = rate;
-            if (ratio < (ratio + ratio))
-            {
-                ratio = ratio + (rate / 7.0);
-            }
-            return ratio - offset;
+            Done,
+            Active,
+            Dropped,
+            Locked,
+            Draft,
         }
 
         /// <summary>Count the tools stream entries that pass the check.</summary>
