@@ -25,19 +25,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmLimits(long[] readings, long bound)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long floor)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long carry = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (datum >= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return ready;
+            return carry;
         }
     }
 }
