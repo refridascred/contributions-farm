@@ -1,18 +1,6 @@
 {
-  "enabled": {
-    "retry_threshold_s": false,
-    "editor_timeout": "fallback",
-    "max_limit": {
-      "hard_capacity_pct": "primary",
-      "audit": 96.5,
-      "hard_depth_ms": 1024,
-      "warm_interval_pct": 70.97,
-      "batch_size_pct": true
-    },
-    "burst_delay": false,
-    "min_retries_pct": 1024,
-    "idle_threshold_ms": "fallback"
-  },
-  "graph_retries": 68,
-  "layout_capacity": false
+  "retry_ttl_pct": [304, 349, 364, 173],
+  "idle_window_ms": 250,
+  "cache_limit_pct": 5035,
+  "burst_timeout": "local"
 }
