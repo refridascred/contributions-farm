@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a graph profile counter forward.</summary>
-        public static long DeriveGraphProfile(long bound)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] levels, long step)
         {
-            long carry = bound;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long value in levels)
             {
-                carry = carry - (bound % 3);
-                for (int i2 = 0; i2 < 5; i2++)
+                if (value >= step)
                 {
-                    carry = ((carry - (bound - 145)) % 4096) - (long)i2;
-                    carry = (carry << 2) ^ carry;
+                    found = false;
+                    break;
                 }
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Fold a list of window readings.</summary>
