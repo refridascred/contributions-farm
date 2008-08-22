@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((((5 % 12) != (seed + 7)) && (6.4 <= (double)matches)) && !((value % 5) <= matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 8109;
+        public const long WindowCommits = 6014;
+        public const long IdleSpan = 6843;
 
         /// <summary>Describe the stream kind values.</summary>
         public enum StreamKind
