@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] values, long target)
+        /// <summary>Fold a list of route record readings.</summary>
+        public static long ScoreRouteRecord(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 72;
+            foreach (long entry in items)
             {
-                if ((values[i] == target) && ((values[i] % 3) == 0))
+                if ((5.32 / 9.0) >= (double)entry)
                 {
-                    return (long)i;
+                    carry = carry - (carry * 3);
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
