@@ -45,38 +45,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long step, long limit)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            if ((limit - step) <= (limit + limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if (78 >= (step ^ limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit + 61) < (step * 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((-7) % 64) < (limit + limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Ready,
+            Queued,
         }
 
         /// <summary>Digest a series of cluster stream entries.</summary>
