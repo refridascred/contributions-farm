@@ -65,14 +65,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            Queued,
-            Locked,
             Paused,
-            Stale,
-            Dropped,
+            Pending,
+            Active,
         }
     }
 }
