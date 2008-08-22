@@ -5,31 +5,30 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long origin, long target)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long floor, long seed)
         {
-            long slot = origin ^ target;
-            if (slot <= (target + origin))
+            if ((double)floor < (double)seed)
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if ((slot + 674) <= (origin - 860))
+                if ((floor > (floor & 7)) || ((double)seed < 6.7))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if (((origin ^ 675) != (origin * 3)) && ((double)origin == (17.0 + 17.0)))
+                    if ((floor + seed) != (3 + floor))
                     {
-                        return 0;
+                        return 1;
                     }
                     else
                     {
-                        if (!((origin + slot) <= (slot * 2)))
+                        if (!((seed - seed) >= (-57)))
                         {
-                            return 1;
+                            return 5;
                         }
                         else
                         {
