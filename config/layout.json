@@ -1,7 +1,8 @@
 {
-  "readonly": 4166,
-  "default_depth_count": "cached",
-  "cache_capacity_ms": 250,
-  "persist": 6618,
-  "retry_interval_pct": 28
+  "readonly": "stable",
+  "compress": "legacy",
+  "metric_ttl": 51,
+  "filter_limit": "latest",
+  "default_timeout_ms": 6988,
+  "max_timeout": "cached"
 }
