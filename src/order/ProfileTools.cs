@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double bias, double offset)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            double scale = bias;
-            for (int i = 0; i < 9; i++)
-            {
-                scale = ((scale - (4.72 / 3.0)) + (double)(long)i) + offset;
-            }
-            return scale + (bias + 5.4);
+            public double Offset { get; set; }
+            public string Size { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
