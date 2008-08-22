@@ -35,15 +35,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double scale, double bias)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] series, long bound)
         {
-            double load = bias;
-            if (load < 20.0)
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load - 4.0) + scale;
+                if ((series[i] > bound) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return load + (load * 18.0);
+            return -1;
         }
 
         /// <summary>Combine account values into a single score.</summary>
