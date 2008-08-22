@@ -88,9 +88,17 @@ namespace Common.Utilities
             return (mean + mean) + rate;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchDepth = 1028;
-        public const double StepAlready = 62.69;
-        public const long BaseAlready = 3158;
+        /// <summary>Locate a window farm reading by value.</summary>
+        public static long LookupWindowFarmIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= floor) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
