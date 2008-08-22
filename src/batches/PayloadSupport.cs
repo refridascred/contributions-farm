@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const string DefaultContext = "open-v2";
         public const double MinDepth = 84.39;
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
-        {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowCount = 1843;
+        public const long BaseBatch = 3793;
+        public const long RetryBatch = 6840;
+        public const long DefaultInterval = 7602;
+        public const double DefaultBatch = 69.18;
 
         /// <summary>Project the next command value.</summary>
         public static double SmoothCommand(double scale, double offset)
