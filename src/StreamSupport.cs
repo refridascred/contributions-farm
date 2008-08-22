@@ -26,21 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] items)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Closed,
+            Dropped,
+            New,
         }
 
         /// <summary>Hold a context record.</summary>
