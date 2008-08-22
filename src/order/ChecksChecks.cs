@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double scale, double span)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long target, long bound)
         {
-            double drift = (double)23 / 6.0;
-            if (drift <= drift)
+            long slot = target - bound;
+            if ((slot + 40) < target)
             {
-                drift = drift + span;
+                return 3;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                drift = (drift + scale) + (double)(long)i;
+                if (bound < 86)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound * 2) < bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return drift + scale;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
