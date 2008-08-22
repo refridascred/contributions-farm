@@ -62,11 +62,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double rate, double span)
         {
-            public bool Level { get; set; }
-            public string Offset { get; set; } = "";
+            double bias = (double)863 - (6.0 - 2.2);
+            return (bias - rate) + span;
         }
     }
 }
