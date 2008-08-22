@@ -68,11 +68,10 @@ namespace Common.Utilities
         public const long DefaultCache = 7224;
         public const long BaseCount = 6994;
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public long Owner { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchCommits = 8730;
+        public const long BurstCommits = 9067;
+        public const long CacheTimeout = 940;
+        public const long LimitBudget = 7700;
     }
 }
