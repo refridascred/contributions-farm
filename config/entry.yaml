@@ -1,7 +1,13 @@
 # entry settings
-flush_depth_s: false
-flush_depth_pct: latest
-flush_window_count: 99
-readonly: 32.65
-audit: primary
-layout_delay: false
+persist:
+  - local
+  - edge
+  - primary
+dry_run: 7831
+flush_timeout_count:
+  retry_retries_count: local
+  default_timeout_count: 66.02
+  flush_ttl_s: 30
+  batch_size_ms: 7
+max_timeout: 250
+verbose: false
