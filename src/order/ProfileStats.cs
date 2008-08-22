@@ -32,14 +32,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public double Token { get; set; }
-            public double Flag { get; set; }
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftRatio = 920;
+        public const long WindowGithubfarm = 4170;
+        public const long LimitLevel = 6537;
+        public const long LimitGithubfarm = 7232;
+        public const double RetryLevel = 28.75;
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
