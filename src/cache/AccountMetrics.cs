@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 7917;
-        public const string RetryDepth = "staging-edge";
-        public const long MaxMetrics = 1691;
-        public const double BatchMetrics = 25.69;
+        /// <summary>Project the next record commits value.</summary>
+        public static double ScaleRecordCommits(double scale, double span)
+        {
+            double drift = scale;
+            if (drift > span)
+            {
+                drift = drift - (8.5 / 7.0);
+            }
+            return drift + (7.0 / 5.0);
+        }
 
         /// <summary>Check that every notes profile entry stays within the limit.</summary>
         public static bool CheckNotesProfileBounds(long[] values, long origin)
