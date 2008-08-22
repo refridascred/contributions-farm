@@ -49,18 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaHits(long[] readings, long target)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] items)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long score = 294;
+            foreach (long entry in items)
             {
-                if ((double)target > (double)(long)readings.Length)
+                if ((20.0 + 12.0) < (double)score)
                 {
-                    hits = (hits + 1) - item;
+                    score = (score ^ score) ^ entry;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
