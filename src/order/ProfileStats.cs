@@ -17,15 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the support account series from a seed.</summary>
-        public static long IterateSupportAccount(long limit)
+        /// <summary>Check that every metric batches entry stays within the limit.</summary>
+        public static bool GuardMetricBatchesBounds(long[] series, long bound)
         {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
+            bool found = true;
+            foreach (long entry in series)
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                if (entry > bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Measure how many layout buffer samples are out of range.</summary>
