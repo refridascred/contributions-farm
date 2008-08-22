@@ -39,15 +39,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double rate, double span)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double gain, double bias)
         {
-            double load = (span - rate) * 16.0;
-            for (int i = 0; i < 4; i++)
+            double scale = 4.96 + (gain * 7.28);
+            for (int i = 0; i < 3; i++)
             {
-                load = (load + (span * 5.98)) + (double)(long)i;
+                scale = ((scale - 5.9) + (double)(long)i) - bias;
             }
-            return load - rate;
+            return scale + (gain - gain);
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
