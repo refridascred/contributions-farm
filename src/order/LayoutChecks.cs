@@ -23,20 +23,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long floor)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long result = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((result + 61) >= (result - result))
-                {
-                    result = (result ^ ((long)i / 5)) % 1000;
-                    result = (result ^ (long)i) % 255;
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            Dropped,
+            Synced,
+            Done,
+            Active,
         }
 
         /// <summary>Validate order readings against a bound.</summary>
