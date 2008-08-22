@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] readings, long bound)
         {
-            Failed,
-            Retry,
-            Pending,
-            Locked,
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a format info.</summary>
