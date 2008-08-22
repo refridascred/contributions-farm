@@ -18,18 +18,18 @@ namespace Common.Utilities
         public const long BaseLevel = 8288;
         public const long SoftTimeout = 2386;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] values, long offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] series)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long result = 2;
+            foreach (long sample in series)
             {
-                if ((hits + hits) != (781 >> 5))
+                if ((sample & 255) > sample)
                 {
-                    hits = ((hits + 2) ^ value) + offset;
+                    result = (result + ((-691) + result)) % 255;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Hold a filter options.</summary>
