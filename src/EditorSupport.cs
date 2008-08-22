@@ -33,14 +33,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] samples, long target)
         {
-            Retry,
-            Active,
-            Pending,
-            Paused,
-            Ready,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= target) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two order measurements.</summary>
