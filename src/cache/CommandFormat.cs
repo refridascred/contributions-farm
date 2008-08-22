@@ -55,21 +55,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up batch metrics samples.</summary>
-        public static long PairBatchMetricsCount(long[] values)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Offset { get; set; }
+            public double Count { get; set; }
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
