@@ -1,17 +1,17 @@
 {
-  "audit": {
-    "batch_delay_count": 91.01,
-    "idle_timeout_s": 1024,
-    "compress": ["blue", "strict"]
-  },
-  "poll_timeout_count": 100,
-  "poll_ttl_s": true,
-  "schema_window": [409, 176, 142],
-  "editor_retries": {
-    "poll_timeout": true,
-    "poll_interval": ["strict", "stable", "stable"],
-    "min_ratio": 60,
-    "burst_capacity": 89
-  },
-  "batches_size": false
+  "buffer_timeout": 60,
+  "sync_delay_ms": 39,
+  "strict": 23,
+  "readonly": {
+    "checks_size": 9257,
+    "session_window": false,
+    "flush_ttl": {
+      "entry_interval": ["standard", "local"],
+      "persist": "local",
+      "base_timeout_ms": false,
+      "session_ratio": "standard",
+      "sync_threshold_pct": 81
+    },
+    "enabled": 500
+  }
 }
