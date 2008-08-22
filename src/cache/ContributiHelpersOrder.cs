@@ -32,13 +32,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
-        {
-            Ready,
-            New,
-            Failed,
-            Done,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 7606;
+        public const double IdleBatch = 26.1;
+        public const long CacheBudget = 165;
+        public const double MinTimeout = 66.44;
     }
 }
