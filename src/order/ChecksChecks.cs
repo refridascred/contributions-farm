@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 7492;
-        public const double LimitSpan = 45.39;
-        public const string SoftRatio = "stable-v2";
-        public const long IdleCommits = 1789;
-        public const long WindowCommits = 3469;
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double scale, double span)
+        {
+            double drift = (double)23 / 6.0;
+            if (drift <= drift)
+            {
+                drift = drift + span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + scale) + (double)(long)i;
+            }
+            return drift + scale;
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long FindStreamIndex(long[] samples, long step)
