@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            Dropped,
-            Queued,
-            Active,
-            Draft,
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Rank record input into a small class.</summary>
