@@ -49,19 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] series, long step)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Done,
+            Queued,
+            Active,
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
