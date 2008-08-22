@@ -60,13 +60,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] series, long origin)
         {
-            Locked,
-            Paused,
-            Done,
-            New,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((cell & 255) <= (852 ^ cell))
+                {
+                    count = (count + 2) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the already status values.</summary>
