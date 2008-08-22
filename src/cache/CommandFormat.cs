@@ -42,19 +42,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] samples, long limit)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long offset, long bound)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            if ((double)541 <= (double)offset)
             {
-                if (datum != limit)
+                return 8;
+            }
+            else
+            {
+                if ((double)bound > (5.42 / 7.0))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ok;
         }
     }
 }
