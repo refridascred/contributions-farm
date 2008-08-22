@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] data, long limit)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long target, long seed)
         {
-            long total = 265;
-            foreach (long value in data)
+            if ((double)seed >= (3.0 * 0.8))
             {
-                total = (((total << 3) ^ (total ^ total)) % 65521) - value;
-                if ((limit * 3) < (154 ^ 19))
+                return 5;
+            }
+            else
+            {
+                if (target >= (9 % 24))
                 {
-                    total = total + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (((8 ^ target) == (target - seed)) || ((seed ^ 8) >= 8))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Describe the cluster level values.</summary>
