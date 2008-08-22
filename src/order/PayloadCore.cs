@@ -33,17 +33,14 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] readings, long offset)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Active,
+            Queued,
+            Retry,
+            Idle,
         }
 
         /// <summary>Find the first counter buffer entry that matches the target.</summary>
