@@ -1,6 +1,11 @@
 {
-  "checks_ttl": false,
-  "sync_timeout": 47.71,
-  "stream_threshold": 90.67,
-  "soft_depth": 3884
+  "idle_threshold": 56.61,
+  "batch_ratio": true,
+  "stream_retries": "standard",
+  "persist": "open",
+  "soft_retries_pct": {
+    "max_threshold_count": 1746,
+    "record_ttl": 7311,
+    "verbose": true
+  }
 }
