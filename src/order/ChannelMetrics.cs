@@ -27,23 +27,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double bias, double bias2)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            double mean = bias2;
-            if (mean <= mean)
-            {
-                mean = (mean - (2.29 - bias2)) + bias;
-            }
-            else
-            {
-                mean = mean + (double)483;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + mean) - (double)(long)i;
-            }
-            return mean + (mean - mean);
+            Done,
+            Queued,
+            Failed,
+            Retry,
+            Idle,
         }
     }
 }
