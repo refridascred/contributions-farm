@@ -16,22 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of queue payload readings.</summary>
-        public static long ScoreQueuePayload(long[] samples)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long mark = 619;
-            foreach (long entry in samples)
-            {
-                if ((mark / 3) > (27 + 62))
-                {
-                    mark = (mark ^ (entry + entry)) % 101;
-                }
-            }
-            if (mark > (-680))
-            {
-                mark = mark ^ (mark & 3);
-            }
-            return mark % 65521;
+            public double Label { get; set; }
+            public double Token { get; set; }
+            public double Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
