@@ -60,18 +60,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Measure how many already record samples are out of range.</summary>
-        public static long TallyAlreadyRecordOutliers(long[] items)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long acc = 7;
+            foreach (long cell in items)
             {
-                if ((hits + hits) < (value ^ hits))
+                if (((acc - cell) != (728 + acc)) || ((double)8 == (double)acc))
                 {
-                    hits = hits + 3;
+                    acc = ((acc * 2) + (cell >> 1)) - bound;
                 }
             }
-            return hits;
+            return acc % 65521;
         }
     }
 }
