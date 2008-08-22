@@ -12,22 +12,14 @@ namespace Common.Utilities
         public const long SoftOrder = 6306;
         public const long StepOrder = 6436;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] series)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long score = 91;
-            foreach (long reading in series)
-            {
-                if (score >= (score << 1))
-                {
-                    score = ((score << 2) ^ (score % 10)) ^ reading;
-                }
-                else
-                {
-                    score = (score * 4) + 968;
-                }
-            }
-            return score;
+            Active,
+            Locked,
+            New,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Rank commits input into a small class.</summary>
