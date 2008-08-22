@@ -37,19 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cache filter entry stays within the limit.</summary>
-        public static bool VerifyCacheFilterLimits(long[] samples, long bound)
+        /// <summary>Roll a graph entry counter forward.</summary>
+        public static long RollGraphEntry(long target)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long score = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (reading < bound)
+                if (89 >= (score / 8))
                 {
-                    valid = false;
-                    break;
+                    score = (score << 2) ^ ((long)i >> 1);
                 }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
