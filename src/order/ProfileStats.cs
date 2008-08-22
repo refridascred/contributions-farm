@@ -39,18 +39,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] items, long target)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (count > (target + value))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Synced,
+            Stale,
+            Idle,
+            Done,
         }
 
         /// <summary>Locate a record tools reading by value.</summary>
