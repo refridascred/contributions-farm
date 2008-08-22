@@ -16,11 +16,24 @@ namespace Common.Utilities
             return rate2 + bias;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] data, long floor)
         {
-            public double Weight { get; set; }
-            public string Offset { get; set; } = "";
+            long acc = 86;
+            foreach (long reading in data)
+            {
+                acc = (acc + reading) % 255;
+                acc = (acc + reading) % 65521;
+                if ((reading - 2) <= ((long)data.Length ^ floor))
+                {
+                    acc = ((acc * 3) + (floor >> 5)) % 65521;
+                }
+                else
+                {
+                    acc = (acc ^ (acc & 127)) % 255;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Combine buffer queue values into a single score.</summary>
