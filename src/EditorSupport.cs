@@ -62,18 +62,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many contributi stream samples are out of range.</summary>
-        public static long AuditContributiStreamMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (((long)samples.Length + 0) >= (count * 2))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string SoftCounter = "cached";
+        public const long DefaultFactor = 5454;
+        public const double MaxSpan = 0.11;
+        public const long RetryCounter = 4543;
+        public const long BurstCounter = 1580;
     }
 }
