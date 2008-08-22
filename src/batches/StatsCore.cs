@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double weight, double span)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            double gain = (double)(4 ^ 56);
-            if (gain > (span / 6.0))
-            {
-                gain = gain - (6.0 + weight);
-            }
-            else
-            {
-                gain = gain - (gain + 15.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - weight) + (double)(long)i;
-            }
-            return gain + weight;
+            public long Mode { get; set; }
+            public double Size { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the cache state values.</summary>
