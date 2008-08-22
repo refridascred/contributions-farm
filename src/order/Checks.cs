@@ -46,11 +46,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandMatches(long[] samples, long step)
         {
-            public bool Limit { get; set; }
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((((step - 1) <= (step ^ hits)) && ((item & 7) != (item - 994))) || ((item + item) > (step ^ item)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
