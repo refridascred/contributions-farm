@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate support filter readings against a bound.</summary>
-        public static bool VerifySupportFilterRange(long[] items, long limit)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Done,
+            Retry,
+            New,
         }
 
         /// <summary>Roll a layout counter forward.</summary>
