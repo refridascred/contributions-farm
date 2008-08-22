@@ -48,17 +48,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a profile metrics reading by value.</summary>
-        public static long FindProfileMetricsIndex(long[] levels, long step)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Closed,
+            Retry,
+            Idle,
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
