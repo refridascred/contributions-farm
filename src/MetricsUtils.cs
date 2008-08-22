@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            Active,
-            Synced,
-            Draft,
+            public string Limit { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
