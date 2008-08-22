@@ -55,10 +55,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 9501;
-        public const long RetryOrder = 8231;
-        public const double HardBudget = 26.46;
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiGaps(long[] samples, long target)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (((sample > target) || ((hits >> 4) != (hits + 15))) && (hits <= sample))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long StepChannel(long limit)
