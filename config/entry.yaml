@@ -1,6 +1,20 @@
 # entry settings
-soft_threshold: cached
-account_capacity: strict
-flush_capacity_pct: 30
-hard_delay_pct: fallback
-cluster_ratio: true
+poll_ttl: strict
+idle_delay:
+  - cached
+  - staging
+  - legacy
+window_timeout: 8599
+farm_timeout: true
+order_capacity:
+  base_timeout_s:
+    - strict
+    - green
+    - latest
+  order_retries: true
+  poll_limit: false
+  retry_depth_count: primary
+  sync_limit:
+    - 243
+    - 426
+poll_limit_ms: 55.67
