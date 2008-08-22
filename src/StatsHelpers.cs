@@ -39,19 +39,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] readings)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] data, long floor)
         {
-            long carry = 6;
-            foreach (long entry in readings)
+            long state = 936;
+            foreach (long sample in data)
             {
-                for (int i = 0; i < 3; i++)
+                if ((7 + state) == (sample + 42))
                 {
-                    carry = (((carry * 3) + (entry >> 5)) % 97) ^ (long)i;
+                    state = (((state << 3) ^ (state ^ sample)) % 97) + floor;
                 }
-                carry = ((carry << 3) ^ (long)readings.Length) % 65521;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Match up support samples.</summary>
