@@ -56,17 +56,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a metrics token sample.</summary>
-        public static long LocateMetricsTokenIndex(long[] series, long limit)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] values, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 7;
+            foreach (long datum in values)
             {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
+                state = (state + (datum / 6)) - origin;
             }
-            return -1;
+            if (state > 71)
+            {
+                state = state + (state * 3);
+            }
+            return state % 4096;
         }
     }
 }
