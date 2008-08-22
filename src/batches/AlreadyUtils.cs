@@ -63,22 +63,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] values, long bound)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (15.0 >= (double)entry)
-                {
-                    matches = (matches + 1) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            New,
+            Draft,
+            Active,
+            Failed,
+            Pending,
         }
     }
 }
