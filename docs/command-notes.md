@@ -1,10 +1,12 @@
 # Command notes
 
-Run the token check before changing any already limits.
-A order that stays idle for too long is moved to the window list.
+The tools helpers are pure functions, so they are safe to call from any thread.
+A token that stays idle for too long is moved to the editor list.
+Run the record check before changing any layout limits.
 
 ## Guidelines
 
-- Review token limits each release
-- Validate context input early
-- Keep session values small
+- Validate format input early
+- Log every metrics change
+- Review editor limits each release
+- Keep account values small
