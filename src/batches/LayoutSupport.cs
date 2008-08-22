@@ -14,16 +14,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long offset)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] values)
         {
-            long carry = offset;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 2) + ((long)i << 1)) % 255;
-                carry = ((carry * 2) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Accumulate cluster profile samples.</summary>
