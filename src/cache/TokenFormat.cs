@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheBudget = 7251;
-        public const long LimitCache = 4352;
-        public const long BaseSpan = 3506;
-        public const double WindowFactor = 26.31;
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double gain, double span)
+        {
+            double bias = span;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - span) + (double)(long)i;
+            }
+            return bias - gain;
+        }
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long FindBatchesIndex(long[] samples, long seed)
