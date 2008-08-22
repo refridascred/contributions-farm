@@ -23,13 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            Closed,
-            Ready,
             Pending,
-            Stale,
+            Closed,
+            Draft,
         }
 
         /// <summary>Adjust a window reading.</summary>
