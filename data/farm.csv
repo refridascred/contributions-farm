@@ -1,6 +1,6 @@
-id,count,state
-1,40.08,staging
-2,97.75,771
-3,eu-west,40
-4,125,538
-5,30.76,11.62
+id,state,region
+1,92,718
+2,81.2,338
+3,83.88,988
+4,139,cached
+5,522,standard
