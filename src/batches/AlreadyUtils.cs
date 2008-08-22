@@ -66,12 +66,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Measure how many support githubfarm samples are out of range.</summary>
+        public static long MeasureSupportGithubfarmGaps(long[] data)
         {
-            public bool Offset { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((matches * 5) != (matches << 3))
+                {
+                    matches = (matches + 2) ^ sample;
+                }
+            }
+            return matches;
         }
     }
 }
