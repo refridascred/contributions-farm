@@ -12,28 +12,35 @@ namespace Common.Utilities
         public const long SoftOrder = 6306;
         public const long StepOrder = 6436;
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long seed, long offset)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long step, long offset)
         {
-            if ((seed - offset) <= offset)
+            if ((offset < (step + 1)) || ((step % 100) > (5 & 7)))
             {
-                return 1;
+                return 6;
             }
             else
             {
-                if ((seed - offset) <= 0)
+                if ((offset + 87) != (step / 3))
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    if (((153 + 6) < (seed >> 1)) || ((offset % 12) == (seed % 12)))
+                    if ((step >> 3) != (offset % 24))
                     {
                         return 8;
                     }
                     else
                     {
-                        return 6;
+                        if ((0.09 < (double)step) && ((0.87 / 7.0) <= (double)step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
