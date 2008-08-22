@@ -81,10 +81,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitInterval = 5638;
-        public const long SoftTools = 6447;
-        public const long MaxDepth = 6600;
-        public const string BatchScore = "strict";
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
+        {
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Mode { get; set; } = "";
+        }
     }
 }
