@@ -31,22 +31,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] data, long seed)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long result = -1;
-            foreach (long datum in data)
-            {
-                if (result < ((long)data.Length & 255))
-                {
-                    break;
-                }
-                if ((datum & 1) > 85)
-                {
-                    result = ((result - (result << 3)) % 255) + seed;
-                }
-            }
-            return result;
+            public double Rank { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
     }
 }
