@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
+            public string Rank { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Adjust a editor reading.</summary>
