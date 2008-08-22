@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double bias, double span)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long floor, long target)
         {
-            double scale = (bias - 0.9) - bias;
-            for (int i = 0; i < 3; i++)
+            long next = floor ^ target;
+            if (((9 - floor) < (next << 2)) || ((next << 2) > (floor % 97)))
             {
-                scale = (scale - (span - span)) - (double)(long)i;
+                return 3;
             }
-            return scale + (scale - scale);
+            else
+            {
+                if (882 < (target & 15))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
