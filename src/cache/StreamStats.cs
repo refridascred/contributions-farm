@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] data, long bound)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long CompareBufferCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((double)hits > (2.95 * 8.0)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = ((hits + 3) ^ value) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] ^ readings[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the session kind values.</summary>
