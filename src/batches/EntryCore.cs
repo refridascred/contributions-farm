@@ -79,17 +79,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a profile token sample.</summary>
-        public static long FindProfileTokenIndex(long[] readings, long offset)
+        /// <summary>Accumulate buffer support samples.</summary>
+        public static long FoldBufferSupport(long[] data, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = -802;
+            foreach (long sample in data)
             {
-                if (readings[i] <= offset)
+                anchor = ((anchor << 3) ^ ((long)data.Length & 15)) % 1000;
+                if (1.3 < (double)sample)
                 {
-                    return (long)i;
+                    anchor = anchor - (anchor * 4);
+                }
+                if ((double)offset == (7.13 - 2.4))
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
