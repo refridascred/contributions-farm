@@ -1,12 +1,8 @@
 {
-  "sync_size_s": "blue",
-  "hard_interval": "strict",
-  "cache_window_ms": {
-    "warm_timeout_s": "legacy",
-    "batch_delay_s": "edge",
-    "retry_timeout_count": "legacy"
-  },
-  "default_depth_count": 87.79,
-  "cache_capacity_count": ["blue", "strict", "strict"],
-  "retry_ratio_s": 0.87
+  "tools_depth": 43.35,
+  "default_ttl_count": 14.94,
+  "poll_ttl_ms": 7101,
+  "poll_capacity_s": 72.71,
+  "default_threshold_s": "open",
+  "poll_ttl": 2
 }
