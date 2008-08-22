@@ -37,13 +37,21 @@ namespace Common.Utilities
         public const long BaseSchema = 9410;
         public const double WindowSchema = 46.6;
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] levels)
         {
-            public long Label { get; set; }
-            public bool Rank { get; set; }
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
