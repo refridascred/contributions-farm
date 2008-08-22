@@ -1,9 +1,6 @@
-id,count,token,level
-1,standard,51.33,59.95
-2,fallback,69.1,25.27
-3,fallback,542,23.22
-4,432,92.6,91.54
-5,1.71,cached,blue
-6,latest,82.15,6
-7,96.38,stable,642
-8,open,strict,standard
+id,score,owner
+1,59.67,44.46
+2,496,753
+3,latest,373
+4,open,34.51
+5,515,eu-west
