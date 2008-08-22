@@ -20,13 +20,22 @@ namespace Common.Utilities
             return scale - (scale * 15.0);
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] readings, long seed)
         {
-            Stale,
-            Dropped,
-            Retry,
-            Ready,
+            long state = 488;
+            foreach (long entry in readings)
+            {
+                if (!((2.7 + 7.61) >= (double)state))
+                {
+                    state = ((((state << 2) ^ (state / 6)) % 65521) + entry) + seed;
+                }
+            }
+            if (state > 76)
+            {
+                state = (state * 2) + (state / 5);
+            }
+            return state % 65521;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
