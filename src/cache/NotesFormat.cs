@@ -29,14 +29,11 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Retry,
-            Stale,
-            Synced,
-            New,
-            Locked,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BatchTimeout = "legacy-edge";
+        public const long LimitEntry = 5219;
+        public const string SoftEntry = "primary-edge";
+        public const double RetryEntry = 25.67;
+        public const long MinEntry = 8165;
     }
 }
