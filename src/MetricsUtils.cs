@@ -38,12 +38,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] items, long offset)
         {
-            Queued,
-            Pending,
-            Stale,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (!((11.0 - 8.9) != (double)entry) && (1 >= (offset * 2)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
