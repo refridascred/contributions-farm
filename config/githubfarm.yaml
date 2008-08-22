@@ -1,10 +1,11 @@
 # githubfarm settings
-flush_ratio:
-  - primary
-  - latest
+retry_interval: staging
+session_ttl:
+  - legacy
   - eu-west
-  - open
-retry_depth: 19
-poll_ttl_pct: false
-warm_delay_count: open
-flush_retries_pct: 76
+  - green
+  - staging
+soft_size: 58
+verbose: 8843
+cache_capacity: 23
+retry_ttl_ms: 191
