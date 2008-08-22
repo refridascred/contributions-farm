@@ -18,12 +18,19 @@ namespace Common.Utilities
         public const long CacheWidth = 5615;
         public const long CacheCommand = 6916;
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double scale, double floor)
         {
-            public double Offset { get; set; }
-            public double Label { get; set; }
-            public long Size { get; set; }
+            double bias = (scale + scale) / 4.0;
+            if (bias >= scale)
+            {
+                bias = (bias - (double)0) - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (scale * 4.24)) + (double)(long)i;
+            }
+            return bias + scale;
         }
     }
 }
