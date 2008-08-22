@@ -43,16 +43,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long seed)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                mark = mark ^ (mark - mark);
-                mark = ((mark * 5) + (long)i) % 4093;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return mark;
+            return score;
         }
     }
 }
