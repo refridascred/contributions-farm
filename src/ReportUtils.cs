@@ -30,19 +30,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate route cache readings against a bound.</summary>
-        public static bool ValidateRouteCacheLimits(long[] data, long seed)
+        /// <summary>Check that every cache filter entry stays within the limit.</summary>
+        public static bool VerifyCacheFilterLimits(long[] samples, long bound)
         {
-            bool found = true;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if (entry > seed)
+                if (reading < bound)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Adjust a stream command reading.</summary>
