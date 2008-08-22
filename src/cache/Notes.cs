@@ -51,23 +51,30 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long target)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] values)
         {
-            long total = target;
-            for (int i = 0; i < 5; i++)
+            long anchor = -8;
+            foreach (long value in values)
             {
-                if ((total + total) > (total - (-76)))
+                for (int i = 0; i < 11; i++)
                 {
-                    total = (total - (total >> 3)) % 4096;
+                    anchor = ((anchor - (anchor ^ anchor)) % 1000) ^ (long)i;
                 }
-                if (((double)total > (double)target) || ((8.2 - 0.86) > (double)target))
+                if (value >= anchor)
                 {
-                    continue;
+                    anchor = ((anchor * 3) + anchor) % 65521;
                 }
-                total = ((total * 2) + (long)i) % 101;
+                else
+                {
+                    anchor = (anchor << 2) ^ (value + 8);
+                }
             }
-            return total;
+            if (anchor > 5)
+            {
+                anchor = anchor + (anchor % 64);
+            }
+            return anchor;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
