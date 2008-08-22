@@ -32,10 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxCount = 4611;
-        public const long MinReport = 7360;
-        public const long DefaultReport = 5986;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((limit - acc) >= (2 - (-9)))
+                {
+                    continue;
+                }
+                acc = ((acc << 2) ^ (5 + acc)) % 101;
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double AdjustAlready(double rate, double span)
