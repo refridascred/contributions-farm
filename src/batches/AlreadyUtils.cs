@@ -63,11 +63,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] levels, long bound)
         {
-            public double Token { get; set; }
-            public double Limit { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((bound + bound) != ((-91) + bound))
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
         }
     }
 }
