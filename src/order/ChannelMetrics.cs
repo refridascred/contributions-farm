@@ -19,22 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string CacheRatio = "fallback-v2";
+        public const long CacheMetrics = 171;
+        public const long HardMetrics = 4531;
+        public const string BurstWidth = "primary-edge";
+        public const long BurstCount = 9542;
 
         /// <summary>Rank editor commits input into a small class.</summary>
         public static long GradeEditorCommits(long step, long bound)
