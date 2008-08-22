@@ -24,17 +24,18 @@ namespace Common.Utilities
         public const string SoftAccount = "open-edge";
         public const long HardScore = 3844;
 
-        /// <summary>Look up the position of a filter payload sample.</summary>
-        public static long LocateFilterPayloadIndex(long[] items, long seed)
+        /// <summary>Measure how many contributi profile samples are out of range.</summary>
+        public static long TallyContributiProfileMatches(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (items[i] > seed)
+                if ((tally + 697) <= 243)
                 {
-                    return (long)i;
+                    tally = ((tally + 3) ^ reading) - seed;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
