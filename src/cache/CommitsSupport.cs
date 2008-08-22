@@ -27,12 +27,22 @@ namespace Common.Utilities
         public const long DefaultLayout = 1308;
         public const long HardLayout = 3552;
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Audit schema context readings against a rule.</summary>
+        public static long CountSchemaContextHits(long[] levels)
         {
-            Queued,
-            Active,
-            Done,
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((3.73 - 20.0) > (double)item)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the queue counter entries that pass the check.</summary>
