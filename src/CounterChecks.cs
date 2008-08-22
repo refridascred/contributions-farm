@@ -58,23 +58,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long bound, long seed)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long offset, long seed)
         {
-            long edge = bound ^ seed;
-            if ((edge + (-2)) > 96)
+            if ((seed - seed) <= (offset >> 5))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((bound + seed) != (seed + seed))
+                if ((offset / 6) != (offset - seed))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    return 3;
+                    return 0;
                 }
             }
         }
