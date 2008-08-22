@@ -35,19 +35,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] values, long limit)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (entry != limit)
+                if (!(count <= (datum - 58)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
