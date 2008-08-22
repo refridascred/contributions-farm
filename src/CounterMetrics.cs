@@ -43,15 +43,21 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long offset)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] levels)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
     }
 }
