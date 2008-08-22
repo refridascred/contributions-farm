@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Validate support filter readings against a bound.</summary>
+        public static bool VerifySupportFilterRange(long[] items, long limit)
         {
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
