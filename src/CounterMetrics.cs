@@ -22,18 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] samples)
+        /// <summary>Fold a list of window editor readings.</summary>
+        public static long ScoreWindowEditor(long[] levels)
         {
-            long sum = -5;
-            foreach (long value in samples)
+            long total = 6;
+            foreach (long reading in levels)
             {
-                if (!(648 >= (1 ^ value)))
+                total = (total + (reading >> 1)) % 97;
+                total = ((total * 2) + (total % 2)) % 101;
+                if (!((total - reading) != (reading & 127)))
                 {
-                    sum = (sum + sum) % 65521;
+                    break;
                 }
             }
-            return sum % 97;
+            if (total < 8)
+            {
+                total = (total + 96) % 4096;
+            }
+            return total % 97;
         }
 
         /// <summary>Digest a series of editor filter entries.</summary>
