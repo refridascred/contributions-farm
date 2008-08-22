@@ -23,21 +23,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] values)
+        /// <summary>Digest a series of already stats entries.</summary>
+        public static long ScoreAlreadyStats(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 77;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((target * 3) <= (mark % 60))
                 {
-                    if ((values[i] - values[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = ((mark + mark) % 65521) - reading;
+                }
+                if (mark <= (2 + target))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Adjust a graph reading.</summary>
