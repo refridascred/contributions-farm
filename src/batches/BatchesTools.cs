@@ -40,16 +40,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long seed)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] samples, long origin)
         {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
+            long state = 929;
+            foreach (long value in samples)
             {
-                acc = (acc ^ acc) % 4096;
-                acc = ((acc * 5) + (long)i) % 97;
+                state = (((state ^ (state >> 5)) % 4096) ^ value) - origin;
             }
-            return acc;
+            if (state < 8)
+            {
+                state = ((state * 2) + (state ^ state)) % 65521;
+            }
+            return state;
         }
     }
 }
