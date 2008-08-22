@@ -63,10 +63,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepEntry = 46.83;
-        public const long RetryEntry = 8916;
-        public const long LimitEntry = 1238;
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
+        {
+            Closed,
+            Locked,
+            Active,
+            New,
+            Stale,
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long AuditSessionMatches(long[] items, long step)
