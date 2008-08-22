@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate cache order readings against a bound.</summary>
-        public static bool ValidateCacheOrderLimits(long[] samples, long limit)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Flag { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many contributi context samples are out of range.</summary>
