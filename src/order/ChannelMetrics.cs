@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long step)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] data, long seed)
         {
-            long result = step;
-            for (int i = 0; i < 11; i++)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if (entry > seed)
                 {
-                    result = ((result << 2) ^ 594) ^ (long)i2;
+                    flag = false;
+                    break;
                 }
-                if (6 < (step + step))
-                {
-                    result = (result * 4) + result;
-                    result = (result ^ (step + step)) % 97;
-                }
-                else
-                {
-                    result = result - (step - step);
-                }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Locate a record reading by value.</summary>
