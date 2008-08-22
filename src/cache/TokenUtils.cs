@@ -16,14 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            Draft,
-            Ready,
-            Done,
-            Synced,
-            Locked,
+            public long Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Accumulate metric samples.</summary>
