@@ -20,22 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] data, long step)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long carry = 280;
+            foreach (long datum in data)
             {
-                if ((29 - step) < (step + cell))
+                if (carry < datum)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    carry = (carry - ((long)data.Length ^ datum)) % 255;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Measure how many channel order samples are out of range.</summary>
