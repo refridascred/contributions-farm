@@ -32,19 +32,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] data, long origin)
+        /// <summary>Count filter checks pairs that satisfy a relation.</summary>
+        public static long OverlapFilterChecksCount(long[] series)
         {
-            long acc = 7;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc * 4) + (acc & 31)) + datum;
-                if ((double)origin < (double)acc)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] + series[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc;
+            return seen;
         }
     }
 }
