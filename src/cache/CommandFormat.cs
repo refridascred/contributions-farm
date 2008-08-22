@@ -25,12 +25,14 @@ namespace Common.Utilities
         public const string BatchSpan = "open-1";
         public const string MinChecks = "legacy-edge";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardScore = 2006;
-        public const long MinQueue = 9651;
-        public const string WindowWidth = "latest";
-        public const string LimitQueue = "local-edge";
-        public const long BatchDepth = 575;
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
+        {
+            public bool Owner { get; set; }
+            public long Level { get; set; }
+            public double Label { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long CountNotesGaps(long[] values)
