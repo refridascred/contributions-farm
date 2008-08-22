@@ -15,23 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] samples, long seed)
-        {
-            long acc = 9;
-            foreach (long reading in samples)
-            {
-                if (!((20.0 * 8.0) < (double)acc))
-                {
-                    acc = (((acc << 3) ^ (seed & 7)) % 255) - reading;
-                }
-            }
-            if (acc < 87)
-            {
-                acc = (acc + (acc << 3)) % 65521;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardScore = 2957;
+        public const long IdleInterval = 4625;
+        public const long StepWidth = 7363;
+        public const long IdleContributi = 8013;
+        public const long StepInterval = 2762;
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long FoldSchema(long[] values, long step)
