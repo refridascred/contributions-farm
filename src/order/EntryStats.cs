@@ -69,17 +69,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long limit)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] items, long limit)
         {
-            long anchor = limit;
-            for (int i = 0; i < 18; i++)
+            long mix = 94;
+            foreach (long item in items)
             {
-                anchor = anchor - ((long)i + anchor);
-                anchor = ((anchor * 4) + limit) % 97;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                double bias = (double)(limit * 2);
+                if (((double)item < bias) && ((mix & 1) >= (411 * 3)))
+                {
+                    continue;
+                }
+                if (((item % 12) > limit) || ((double)mix == (4.51 * 8.2)))
+                {
+                    mix = (mix + (5 ^ 19)) % 255;
+                }
+                else
+                {
+                    mix = mix + (mix - 821);
+                }
             }
-            return anchor;
+            return mix;
         }
     }
 }
