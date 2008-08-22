@@ -67,18 +67,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] items)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)seen < (14.0 + 20.0))
+                if (items[i] <= step)
                 {
-                    seen = (seen + 3) ^ value;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
