@@ -33,22 +33,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] levels)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long target, long target2)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long delta = target ^ target2;
+            if ((double)target2 < (5.0 - 13.0))
             {
-                if ((double)(-2) != (double)matches)
+                return 1;
+            }
+            else
+            {
+                if (((double)target < (double)delta) && ((target2 / 7) < target2))
                 {
-                    matches = (matches + 2) + sample;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((target2 + target) < (target + target2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
