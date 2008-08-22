@@ -24,23 +24,18 @@ namespace Common.Utilities
         public const string SoftAccount = "open-edge";
         public const long HardScore = 3844;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TallyAlready(long[] data, long seed)
+        /// <summary>Measure how many batch record samples are out of range.</summary>
+        public static long MeasureBatchRecordHits(long[] items, long floor)
         {
-            long total = 63;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long item in items)
             {
-                total = (total << 3) ^ total;
-                if (value >= (total - value))
+                if ((double)count == (17.0 * 1.6))
                 {
-                    total = ((total << 2) ^ total) % 4096;
+                    count = ((count + 1) - item) - floor;
                 }
             }
-            if (total > 441)
-            {
-                total = (total + seed) % 4096;
-            }
-            return total % 4096;
+            return count;
         }
     }
 }
