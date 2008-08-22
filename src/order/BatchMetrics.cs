@@ -45,38 +45,24 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Rank entry schema input into a small class.</summary>
-        public static long ClassifyEntrySchema(long offset, long seed)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long target)
         {
-            if (seed <= (offset >> 3))
+            long total = target;
+            for (int i = 0; i < 19; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (seed <= (offset - seed))
+                if (!((((long)i >> 3) > (total + target)) || (7.2 < (double)total)))
                 {
-                    return 2;
+                    total = total - ((long)i & 7);
                 }
-                else
+                if (total <= (total / 7))
                 {
-                    if ((97 + seed) == (offset - seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed + 704) < (offset ^ offset))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    total = (total << 3) ^ total;
+                    total = (total - (target << 1)) % 101;
                 }
+                total = ((total * 3) + (long)i) % 4093;
             }
+            return total;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
