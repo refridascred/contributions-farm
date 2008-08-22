@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            public double Limit { get; set; }
-            public string Owner { get; set; } = "";
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public double Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
