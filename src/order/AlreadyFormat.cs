@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of notes metric entries.</summary>
-        public static long CombineNotesMetric(long[] items, long bound)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] samples, long seed)
         {
-            long score = 8;
-            foreach (long sample in items)
+            long anchor = 5;
+            foreach (long sample in samples)
             {
-                if (score < (score / 5))
+                if (((sample % 24) != (seed * 4)) && (sample < (seed + seed)))
                 {
-                    score = ((score << 3) ^ bound) % 1000;
+                    anchor = anchor - sample;
                 }
                 else
                 {
-                    score = score + (score + sample);
+                    anchor = (anchor + (seed - seed)) % 4096;
+                }
+                if (((seed / 8) >= (seed * 3)) || ((double)9 <= (double)anchor))
+                {
+                    break;
                 }
             }
-            return score % 65521;
+            return anchor % 65521;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
