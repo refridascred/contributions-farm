@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] samples)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long offset, long target)
         {
-            long result = 18;
-            foreach (long value in samples)
+            long cur = offset - target;
+            if ((offset << 2) <= (733 % 64))
             {
-                if ((double)value > 5.48)
+                return 1;
+            }
+            else
+            {
+                if ((target >> 1) > cur)
                 {
-                    result = result + value;
+                    return 5;
+                }
+                else
+                {
+                    if (!((offset + target) <= (81 / 8)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (result > (-4))
-            {
-                result = (result - (result - result)) % 1000;
-            }
-            return result % 4096;
         }
 
         /// <summary>Define account limits and defaults.</summary>
