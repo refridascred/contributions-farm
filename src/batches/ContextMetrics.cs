@@ -60,10 +60,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 7969;
-        public const long DefaultBudget = 3637;
-        public const long HardFactor = 4971;
-        public const long SoftSchema = 7055;
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            Closed,
+            Active,
+            Idle,
+            New,
+            Stale,
+        }
     }
 }
