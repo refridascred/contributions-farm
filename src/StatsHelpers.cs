@@ -61,18 +61,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextGaps(long[] samples)
+        /// <summary>Digest a series of filter batch entries.</summary>
+        public static long ScoreFilterBatch(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long sum = 435;
+            foreach (long entry in readings)
             {
-                if ((datum + datum) <= (seen ^ seen))
-                {
-                    seen = seen + 2;
-                }
+                sum = sum + (sum ^ entry);
             }
-            return seen;
+            return sum % 4096;
         }
     }
 }
