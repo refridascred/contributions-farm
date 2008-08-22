@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many notes graph samples are out of range.</summary>
-        public static long CountNotesGraphHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)sample > (5.0 - 8.16))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowTimeout = 2127;
+        public const long HardSpan = 4484;
+        public const double BurstTimeout = 38.81;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long DigestStream(long[] readings)
