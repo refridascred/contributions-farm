@@ -19,16 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double ratio, double offset)
-        {
-            double weight = (offset * 8.0) * 7.4;
-            if (weight > (8.5 + ratio))
-            {
-                weight = weight + (ratio * 0.75);
-            }
-            return weight + offset;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 3333;
+        public const double MinFilter = 67.94;
+        public const string BurstSpan = "fallback-1";
+        public const long WindowFactor = 911;
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long ClassifyContributi(long limit, long bound)
