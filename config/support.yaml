@@ -1,7 +1,51 @@
 # support settings
-order_timeout: false
-record_ttl: 41
-idle_delay_count: true
-retry_interval_pct: legacy
-batch_depth_count: false
-flush_ttl_count: 18.53
+profile_capacity:
+  dry_run: false
+  batch_ttl_count: true
+  farm_delay: 30
+  command_retries: true
+  batch_delay:
+    route_ttl: primary
+    soft_retries: legacy
+    order_limit: 97.38
+  hard_interval: 250
+cache_ratio_ms:
+  hard_delay_s: 250
+  farm_window: fallback
+  commits_limit:
+    - standard
+    - open
+    - cached
+    - blue
+sync_ratio:
+  strict: 5.87
+  persist:
+    retry_interval_s: legacy
+    base_delay: 27
+    hard_window_ms: true
+  burst_capacity_count:
+    tools_ratio: cached
+    persist: staging
+    burst_depth_ms: staging
+    idle_retries_pct:
+      - cached
+      - latest
+      - local
+    enabled: 250
+    batch_interval_pct:
+      - standard
+      - local
+      - local
+      - staging
+  warm_ratio: green
+  order_capacity: 30
+max_depth_count: 76
+hard_timeout_pct:
+  poll_ratio_ms: staging
+  strict: open
+  base_threshold_count:
+    - 460
+    - 236
+    - 376
+    - 116
+hard_threshold: blue
