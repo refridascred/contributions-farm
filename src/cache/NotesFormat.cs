@@ -20,22 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] series, long offset)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] levels, long step)
         {
-            long sum = 23;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)offset >= (double)cell)
+                if (levels[i] < step)
                 {
-                    sum = (sum ^ (sum - cell)) % 97;
-                }
-                if (((double)cell == (double)sum) || ((sum + sum) < cell))
-                {
-                    sum = ((sum * 4) + (offset - sum)) % 255;
+                    return (long)i;
                 }
             }
-            return sum % 1000;
+            return -1;
         }
 
         /// <summary>Combine stream record values into a single score.</summary>
