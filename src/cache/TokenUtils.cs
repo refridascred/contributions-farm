@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] data, long bound)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long bound)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long result = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (2 <= (reading ^ 56))
-                {
-                    hits = (hits + 3) + bound;
-                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Describe the filter state values.</summary>
