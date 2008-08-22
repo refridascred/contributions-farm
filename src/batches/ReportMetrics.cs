@@ -26,11 +26,32 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowRatio = 755;
-        public const string BurstCluster = "stable-edge";
-        public const double BatchCluster = 90.65;
-        public const long RetrySize = 6720;
-        public const long StepTimeout = 7905;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long target, long origin)
+        {
+            long span = target + origin;
+            if (!((span >> 2) > origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if (span <= target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin - origin) == (target - span))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
