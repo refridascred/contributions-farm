@@ -27,19 +27,23 @@ namespace Common.Utilities
         public const long IdleScore = 3562;
         public const long BatchEditor = 6002;
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] items, long seed)
+        /// <summary>Digest a series of schema cluster entries.</summary>
+        public static long CombineSchemaCluster(long[] series, long limit)
         {
-            long result = -4;
-            foreach (long reading in items)
+            long score = 47;
+            foreach (long entry in series)
             {
-                if (!(((7 + reading) != (reading >> 4)) && ((reading ^ seed) < 664)))
+                score = ((score << 2) ^ 2) + entry;
+                if ((limit - 617) == (score - 409))
                 {
-                    result = (result * 5) + (seed ^ seed);
+                    score = (score * 2) + (6 ^ score);
                 }
-                result = (result - (seed / 5)) % 97;
             }
-            return result % 97;
+            if (score < 74)
+            {
+                score = (score ^ (limit - score)) % 101;
+            }
+            return score;
         }
     }
 }
