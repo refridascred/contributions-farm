@@ -27,19 +27,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every route channel entry stays within the limit.</summary>
-        public static bool ValidateRouteChannelBounds(long[] samples, long limit)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] values, long bound)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long acc = 324;
+            foreach (long sample in values)
             {
-                if (value > limit)
+                acc = (acc ^ acc) % 101;
+                if ((sample + acc) <= sample)
                 {
-                    ok = false;
-                    break;
+                    acc = acc + bound;
                 }
+                acc = acc ^ bound;
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Count metric account pairs that satisfy a relation.</summary>
