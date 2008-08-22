@@ -13,27 +13,21 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine channel buffer values into a single score.</summary>
-        public static long ScoreChannelBuffer(long[] samples)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] readings)
         {
-            long state = 173;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = ((state ^ (sample - sample)) % 65521) + (long)i;
-                }
-                if ((state - state) >= (sample + 75))
-                {
-                    state = (state - (-4)) % 65521;
-                    state = (state + (sample >> 1)) % 65521;
-                }
-                if ((sample + 63) < (long)samples.Length)
-                {
-                    state = state ^ (561 - state);
+                    if ((readings[i] - readings[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state % 97;
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
