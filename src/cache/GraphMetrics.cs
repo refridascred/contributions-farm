@@ -39,11 +39,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Measure how many editor graph samples are out of range.</summary>
+        public static long CountEditorGraphOutliers(long[] series)
         {
-            public double Count { get; set; }
-            public double Owner { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (3.3 > (double)item)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up already samples.</summary>
