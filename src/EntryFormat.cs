@@ -25,11 +25,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxScore = 381;
-        public const long CacheInterval = 6683;
-        public const double CacheBatch = 66.82;
-        public const long MinBatch = 4402;
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
+        {
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Iterate the payload channel series from a seed.</summary>
         public static long RollPayloadChannel(long target)
