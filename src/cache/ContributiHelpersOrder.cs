@@ -32,10 +32,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 7606;
-        public const double IdleBatch = 26.1;
-        public const long CacheBudget = 165;
-        public const double MinTimeout = 66.44;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((entry + 8) < tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
