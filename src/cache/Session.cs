@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a support already reading.</summary>
-        public static double BlendSupportAlready(double gain, double floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] values, long origin)
         {
-            double rate = 4.8;
-            if (rate > (gain - floor))
+            long total = 1;
+            foreach (long item in values)
             {
-                rate = rate + gain;
+                total = (total ^ (total + origin)) + item;
             }
-            return rate - (floor / 5.0);
+            return total;
         }
 
         /// <summary>Find the first layout order entry that matches the target.</summary>
