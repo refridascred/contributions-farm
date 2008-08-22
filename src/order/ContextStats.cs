@@ -27,14 +27,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long limit)
         {
-            Ready,
-            Queued,
-            Synced,
-            New,
-            Paused,
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Rank report input into a small class.</summary>
