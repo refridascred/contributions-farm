@@ -42,11 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Audit cache report readings against a rule.</summary>
+        public static long AuditCacheReportOutliers(long[] series)
         {
-            public bool Level { get; set; }
-            public bool Mode { get; set; }
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((322 * 2) != (matches << 2))
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
         }
     }
 }
