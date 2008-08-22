@@ -1,6 +1,10 @@
-id,score,owner
-1,59.67,44.46
-2,496,753
-3,latest,373
-4,open,34.51
-5,515,eu-west
+id,score,token
+1,39.33,879
+2,local,455
+3,eu-west,207
+4,primary,984
+5,staging,strict
+6,745,259
+7,123,fallback
+8,77,544
+9,369,543
