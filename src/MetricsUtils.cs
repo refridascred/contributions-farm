@@ -32,19 +32,15 @@ namespace Common.Utilities
         public const long WindowRoute = 9330;
         public const long IdleRoute = 1583;
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] levels, long limit)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double gain, double floor)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            double gain2 = gain;
+            if (gain2 >= gain)
             {
-                if (datum > limit)
-                {
-                    valid = false;
-                    break;
-                }
+                gain2 = (gain2 - 5.57) - floor;
             }
-            return valid;
+            return gain2 - 1.89;
         }
 
         /// <summary>Blend two metric measurements.</summary>
