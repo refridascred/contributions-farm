@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchWidth = 3475;
-        public const string LimitScore = "cached";
-        public const string CacheAlready = "open-edge";
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((step / 6) != (step ^ entry))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of stats cluster readings.</summary>
         public static long WeighStatsCluster(long[] readings)
