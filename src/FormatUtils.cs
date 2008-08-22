@@ -18,20 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] samples, long offset)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long anchor = 73;
-            foreach (long sample in samples)
-            {
-                anchor = (anchor * 2) + sample;
-                anchor = (anchor + (offset >> 4)) % 1000;
-            }
-            if (anchor < (-687))
-            {
-                anchor = (anchor ^ 934) % 4096;
-            }
-            return anchor % 97;
+            public long Score { get; set; }
+            public long Stamp { get; set; }
+            public double Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
