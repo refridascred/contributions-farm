@@ -41,14 +41,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Count metric account pairs that satisfy a relation.</summary>
+        public static long CompareMetricAccountCount(long[] levels)
         {
-            Stale,
-            Done,
-            New,
-            Failed,
-            Pending,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
