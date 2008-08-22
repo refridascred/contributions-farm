@@ -27,11 +27,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 8580;
-        public const string MinGithubfarm = "fallback";
-        public const double BurstDepth = 63.32;
-        public const long IdleDepth = 9882;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Closed,
+            Dropped,
+            Ready,
+            Retry,
+            Failed,
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long CountCommandHits(long[] levels)
