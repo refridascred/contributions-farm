@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 4825;
-        public const string LimitQueue = "strict-1";
-        public const double BatchQueue = 81.06;
-        public const long SoftScore = 6486;
-        public const long HardQueue = 5988;
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public string Count { get; set; } = "";
+            public bool Weight { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Count the queue window entries that pass the check.</summary>
         public static long AuditQueueWindowGaps(long[] items)
