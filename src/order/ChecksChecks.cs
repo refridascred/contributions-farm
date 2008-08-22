@@ -36,18 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] values, long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((value + floor) > (floor ^ value))
+                if ((0 << 2) < (value / 3))
                 {
-                    seen = seen + 1;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
