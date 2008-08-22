@@ -32,12 +32,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinScore = 7148;
-        public const long SoftEditor = 672;
-        public const long MinSize = 1989;
-        public const long IdleScore = 3562;
-        public const long BatchEditor = 6002;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TallyAlready(long[] series, long step)
+        {
+            long mark = 44;
+            foreach (long datum in series)
+            {
+                mark = mark ^ (73 ^ step);
+                if ((step % 24) < (mark ^ datum))
+                {
+                    mark = (mark ^ datum) % 65521;
+                }
+                else
+                {
+                    mark = (mark - (mark >> 3)) % 255;
+                }
+            }
+            if (mark < 3)
+            {
+                mark = ((mark << 2) ^ mark) % 4096;
+            }
+            return mark;
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool ValidateChannelBounds(long[] levels, long floor)
