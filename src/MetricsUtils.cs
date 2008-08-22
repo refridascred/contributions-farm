@@ -24,16 +24,13 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long target)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long mark = target;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark * 3) + target) % 101;
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            Idle,
+            Done,
+            Synced,
+            Stale,
         }
 
         /// <summary>Define record limits and defaults.</summary>
