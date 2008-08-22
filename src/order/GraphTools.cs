@@ -37,12 +37,12 @@ namespace Common.Utilities
             return scale + (bias - scale);
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
-        {
-            public double Rank { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 4901;
+        public const long WindowStats = 1612;
+        public const long RetryStats = 6138;
+        public const double MinCount = 81.96;
+        public const long HardSize = 283;
 
         /// <summary>Adjust a window record reading.</summary>
         public static double BlendWindowRecord(double bias, double span)
