@@ -1,6 +1,6 @@
 {
-  "strict": [398, 90, 243],
-  "dry_run": false,
-  "hard_delay_count": true,
-  "compress": false
+  "batches_interval": 60,
+  "retry_limit_count": false,
+  "batch_retries": 1024,
+  "default_window_pct": 4390
 }
