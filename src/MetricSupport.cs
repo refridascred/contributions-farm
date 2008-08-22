@@ -21,17 +21,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first record stream entry that matches the target.</summary>
-        public static long FindRecordStreamIndex(long[] levels, long target)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > target) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Done,
+            Failed,
+            Retry,
         }
 
         /// <summary>Check that every record session entry stays within the limit.</summary>
