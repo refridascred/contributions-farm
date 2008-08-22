@@ -40,12 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long target)
         {
-            New,
-            Locked,
-            Draft,
+            long sum = target;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    sum = (((sum << 3) ^ (sum >> 1)) % 65521) ^ (long)i2;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Describe the window kind values.</summary>
