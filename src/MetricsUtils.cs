@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] series, long origin)
         {
-            public bool Limit { get; set; }
-            public double Token { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a farm stats.</summary>
