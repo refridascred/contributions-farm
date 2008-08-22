@@ -27,22 +27,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] series)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long mix = 1;
-            foreach (long entry in series)
-            {
-                if (((32 - mix) > (entry & 15)) || ((entry & 255) > (mix % 16)))
-                {
-                    mix = ((mix << 2) ^ (entry * 4)) % 1000;
-                }
-            }
-            if (mix > 293)
-            {
-                mix = mix - (mix / 4);
-            }
-            return mix % 97;
+            public double Region { get; set; }
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
