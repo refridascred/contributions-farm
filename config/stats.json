@@ -1,6 +1,18 @@
 {
-  "buffer_timeout": "fallback",
-  "filter_interval": ["fallback", "blue", "cached"],
-  "default_size_pct": 99,
-  "poll_threshold_count": 89.52
+  "default_delay_ms": 18,
+  "soft_limit_count": 62.26,
+  "sync_capacity_pct": ["fallback", "green", "latest"],
+  "default_retries_ms": "edge",
+  "min_size": {
+    "idle_threshold_pct": "strict",
+    "persist": 50.87,
+    "channel_threshold": [329, 268, 304, 162],
+    "burst_ratio": {
+      "burst_interval": "fallback",
+      "persist": "strict",
+      "warm_window": true,
+      "soft_limit_s": ["open", "strict", "latest", "strict"],
+      "verbose": "stable"
+    }
+  }
 }
