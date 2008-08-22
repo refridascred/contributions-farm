@@ -36,16 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long bound)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] items, long origin)
         {
-            long result = bound;
-            for (int i = 0; i < 18; i++)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                result = (result - bound) % 1000;
-                result = ((result * 4) + (long)i) % 101;
+                if (reading >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Fold a list of entry format readings.</summary>
