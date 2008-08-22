@@ -74,17 +74,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] data, long limit)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long offset, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((8 ^ limit) < offset)
             {
-                if (data[i] < limit)
+                return 1;
+            }
+            else
+            {
+                if (!((offset & 63) <= 5))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (!(9.94 < (double)limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a order summary.</summary>
