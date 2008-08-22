@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a notes stream sample.</summary>
-        public static long FindNotesStreamIndex(long[] series, long origin)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] values, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] >= origin)
+                if ((values[i] == origin) && ((values[i] % 5) != 0))
                 {
                     return (long)i;
                 }
