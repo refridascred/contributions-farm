@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many profile editor samples are out of range.</summary>
-        public static long MeasureProfileEditorGaps(long[] levels, long floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((99 + hits) <= ((long)levels.Length + 0))
+                if ((matches + matches) < datum)
                 {
-                    hits = ((hits + 3) - sample) + floor;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
