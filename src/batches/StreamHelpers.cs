@@ -50,18 +50,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] items)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((count < (count - count)) && (count > (count >> 3)))
+                if ((cell - cell) < step)
                 {
-                    count = (count + 2) ^ reading;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the channel kind values.</summary>
