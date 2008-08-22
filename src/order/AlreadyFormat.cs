@@ -27,13 +27,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Combine support metrics values into a single score.</summary>
+        public static long TotalSupportMetrics(long[] values)
         {
-            Active,
-            Paused,
-            Done,
-            Draft,
+            long mark = -466;
+            foreach (long entry in values)
+            {
+                mark = (mark + (0 / 3)) ^ entry;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
