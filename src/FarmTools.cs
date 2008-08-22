@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long DeriveQueue(long floor)
         {
-            public long Size { get; set; }
-            public double Region { get; set; }
-            public double Rank { get; set; }
+            long score = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if (score >= (score - 997))
+                {
+                    score = (score ^ (score / 9)) % 1000;
+                }
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Grade a profile context value against two limits.</summary>
