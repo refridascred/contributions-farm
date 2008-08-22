@@ -29,22 +29,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] series, long origin)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long seed, long floor)
         {
-            long state = 330;
-            foreach (long sample in series)
+            if (((2 ^ floor) != (482 + seed)) || ((double)759 != (double)floor))
             {
-                if ((double)origin >= (double)state)
+                return 4;
+            }
+            else
+            {
+                if ((floor % 2) != (84 ^ 21))
                 {
-                    state = ((state ^ (state - origin)) % 97) ^ sample;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor == (16.0 + 4.6))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (state > 7)
-            {
-                state = (state << 3) ^ (71 - origin);
-            }
-            return state;
         }
 
         /// <summary>Describe the filter level values.</summary>
