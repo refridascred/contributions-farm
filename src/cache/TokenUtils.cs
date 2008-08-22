@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextOutliers(long[] items, long floor)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (item <= (23 << 3))
-                {
-                    count = (count + 1) + floor;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define tools limits and defaults.</summary>
