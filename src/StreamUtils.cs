@@ -95,23 +95,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout window values into a single score.</summary>
-        public static long FoldLayoutWindow(long[] values)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] data, long target)
         {
-            long anchor = 96;
-            foreach (long datum in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)86 < (double)anchor))
+                if (data[i] >= target)
                 {
-                    anchor = (anchor - (datum % 12)) % 1000;
+                    return (long)i;
                 }
-                anchor = anchor ^ (anchor >> 1);
             }
-            if (anchor < 9)
-            {
-                anchor = ((anchor << 3) ^ (anchor + 561)) % 101;
-            }
-            return anchor % 97;
+            return -1;
         }
     }
 }
