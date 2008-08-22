@@ -25,11 +25,13 @@ namespace Common.Utilities
         public const long LimitTools = 8632;
         public const double IdleFactor = 38.52;
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double weight, double offset)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            double scale = weight;
-            return (scale + (double)5) + offset;
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public long Score { get; set; }
         }
     }
 }
