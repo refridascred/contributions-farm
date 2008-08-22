@@ -31,22 +31,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] readings, long step)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell % 5) > (cell & 255))
-                {
-                    matches = (matches + 3) - step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxTimeout = "legacy";
+        public const long HardCommand = 1507;
+        public const double BatchCommand = 25.86;
+        public const long BatchSpan = 8255;
+        public const double BaseCommand = 16.27;
     }
 }
