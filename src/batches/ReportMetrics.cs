@@ -33,12 +33,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] values)
         {
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
-            public bool Size { get; set; }
+            long carry = 5;
+            foreach (long cell in values)
+            {
+                if ((double)cell < (6.3 * 6.41))
+                {
+                    carry = ((carry << 3) ^ (cell >> 2)) % 101;
+                    break;
+                }
+                carry = ((carry * 3) + cell) % 101;
+                carry = (carry + (carry ^ carry)) % 65521;
+            }
+            return carry;
         }
     }
 }
