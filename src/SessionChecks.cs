@@ -42,22 +42,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] samples)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long result = 82;
-            foreach (long datum in samples)
-            {
-                if (((datum + 249) <= (result % 2)) || ((4.0 / 9.0) == (double)result))
-                {
-                    break;
-                }
-                if ((double)datum != (6.8 * 6.0))
-                {
-                    result = (result ^ datum) % 65521;
-                }
-            }
-            return result % 4096;
+            Stale,
+            Done,
+            New,
+            Failed,
+            Pending,
         }
     }
 }
