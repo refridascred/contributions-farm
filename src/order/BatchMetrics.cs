@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleCommand = 95.58;
-        public const string HardDepth = "strict";
-        public const string DefaultCommand = "cached-1";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double IdleInterval = 72.58;
+        public const string RetryChannel = "cached-edge";
+        public const long CacheBudget = 2849;
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
