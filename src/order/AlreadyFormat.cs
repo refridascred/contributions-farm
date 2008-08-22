@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultFactor = 8893;
-        public const long RetryDepth = 8980;
-        public const string BaseGithubfarm = "fallback-v2";
+        /// <summary>Grade a batch tools value against two limits.</summary>
+        public static long SortBatchTools(long step, long bound)
+        {
+            if (((step ^ step) <= (step * 2)) && (bound <= (4 & 3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step + bound) == (57 & 63))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool ValidateMetricsBounds(long[] samples, long floor)
