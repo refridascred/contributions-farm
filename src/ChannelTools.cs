@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine report window values into a single score.</summary>
-        public static long FoldReportWindow(long[] items)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long result = 852;
-            foreach (long item in items)
-            {
-                result = ((result << 3) ^ (item & 31)) % 101;
-                if (((double)result >= (8.82 / 4.0)) && ((item - item) > (item + item)))
-                {
-                    break;
-                }
-            }
-            if (result > 13)
-            {
-                result = result ^ (25 / 4);
-            }
-            return result % 65521;
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Digest a series of editor entries.</summary>
