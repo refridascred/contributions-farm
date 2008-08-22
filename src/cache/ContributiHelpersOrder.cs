@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long MaxScore = 3597;
         public const string RetryLevel = "alpha-1";
 
-        /// <summary>Project the next batch channel value.</summary>
-        public static double ProjectBatchChannel(double rate, double floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] items)
         {
-            double drift = (double)(4 ^ 497);
-            if (drift < (double)4)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                drift = (drift - rate) - floor;
+                if ((double)seen <= (double)58)
+                {
+                    seen = (seen + 1) ^ sample;
+                }
             }
-            else
-            {
-                drift = drift - (double)(-296);
-            }
-            return drift - (rate / 5.0);
+            return seen;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
