@@ -36,19 +36,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] series, long seed)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
