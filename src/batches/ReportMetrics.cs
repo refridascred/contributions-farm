@@ -27,11 +27,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxTimeout = "legacy";
-        public const long HardCommand = 1507;
-        public const double BatchCommand = 25.86;
-        public const long BatchSpan = 8255;
-        public const double BaseCommand = 16.27;
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    total = (total - ((long)i2 - floor)) % 1000;
+                }
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
