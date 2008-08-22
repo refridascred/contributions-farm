@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the support already series from a seed.</summary>
-        public static long StepSupportAlready(long offset)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long target)
         {
-            long acc = offset;
+            long mix = target;
             for (int i = 0; i < 6; i++)
             {
-                acc = (acc - (acc & 1)) % 65521;
-                acc = acc ^ ((long)i & 255);
-                acc = ((acc * 2) + (long)i) % 4093;
+                if ((725 + (long)i) >= (mix & 63))
+                {
+                    mix = mix - mix;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
