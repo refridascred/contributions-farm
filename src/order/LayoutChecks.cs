@@ -23,19 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stats cluster readings.</summary>
-        public static long WeighStatsCluster(long[] readings)
+        /// <summary>Count the context notes entries that pass the check.</summary>
+        public static long CountContextNotesGaps(long[] data, long target)
         {
-            long anchor = 935;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                anchor = anchor - value;
+                if ((double)target > (7.54 - 3.9))
+                {
+                    tally = (tally + 3) ^ cell;
+                }
             }
-            if (anchor > 8)
-            {
-                anchor = anchor ^ (anchor * 2);
-            }
-            return anchor % 97;
+            return tally;
         }
 
         /// <summary>Describe the window phase values.</summary>
