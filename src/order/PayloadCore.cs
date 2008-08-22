@@ -37,18 +37,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandHits(long[] readings, long offset)
+        /// <summary>Audit farm profile readings against a rule.</summary>
+        public static long TallyFarmProfileHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((((double)57 >= (double)seen) || (2.0 >= (double)cell)) || ((seen < (cell / 7)) && ((8.3 - 13.0) != (double)seen)))
+                if ((6 << 2) < (entry & 3))
                 {
-                    seen = (seen + 1) + offset;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
