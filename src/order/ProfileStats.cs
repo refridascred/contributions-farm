@@ -39,38 +39,13 @@ namespace Common.Utilities
             return mean + (double)0;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long floor, long origin)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            if (floor < (759 ^ origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((36 - floor) == (2 * 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin & 255) <= origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((floor + floor) <= 491) || ((origin - origin) == (818 + origin)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Dropped,
+            Failed,
+            Pending,
         }
     }
 }
