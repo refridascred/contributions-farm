@@ -18,17 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] series, long origin)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((series[i] == origin) && ((series[i] % 3) == 0))
+                if (!((48 + mark) <= mark))
                 {
-                    return (long)i;
+                    mark = (mark << 3) ^ ((-56) - floor);
                 }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mark = ((mark - floor) % 101) - (long)i2;
+                }
+                mark = (mark ^ (mark % 12)) % 255;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
