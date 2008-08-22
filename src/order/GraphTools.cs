@@ -50,11 +50,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public double Limit { get; set; }
-            public bool Stamp { get; set; }
+            Locked,
+            Draft,
+            Retry,
         }
     }
 }
