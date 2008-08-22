@@ -57,32 +57,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long target, long bound)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long bound)
         {
-            long slot = target - bound;
-            if ((target + bound) >= (bound + target))
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
             {
-                return 0;
+                acc = acc - (acc - acc);
+                acc = (acc << 3) ^ acc;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (bound <= (slot >> 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(target < (target * 4)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Describe the batch status values.</summary>
