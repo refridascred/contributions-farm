@@ -1,28 +1,9 @@
 # githubfarm settings
-report_depth:
-  warm_depth:
-    poll_ratio_ms:
-      - latest
-      - legacy
-      - blue
-    base_timeout: edge
-    poll_threshold_pct: standard
-    soft_ratio_pct:
-      - 374
-      - 231
-      - 205
-    support_ratio: 5729
-  cache_retries_ms: fallback
-  poll_limit_count:
-    token_ttl: 30
-    buffer_ttl: 30
-    idle_limit:
-      - stable
-      - open
-    base_size_pct: 8041
-    warm_interval_count: true
-  contributi_delay: standard
-  strict: 89.57
-  filter_window: 86
-sync_depth_s: 100
-githubfarm_depth: open
+compress: 91.33
+readonly: edge
+dry_run:
+  - blue
+  - green
+  - primary
+  - legacy
+batch_limit: stable
