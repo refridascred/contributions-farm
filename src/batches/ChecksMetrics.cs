@@ -55,17 +55,9 @@ namespace Common.Utilities
         public const double CacheScore = 52.39;
         public const string DefaultInterval = "cached-1";
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= offset) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 8382;
+        public const string BaseSession = "open-edge";
+        public const double CacheSession = 48.96;
     }
 }
