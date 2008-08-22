@@ -35,11 +35,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] levels, long bound)
         {
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
