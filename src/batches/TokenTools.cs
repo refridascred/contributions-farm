@@ -22,33 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank command contributi input into a small class.</summary>
-        public static long GradeCommandContributi(long seed, long origin)
-        {
-            long step = seed + origin;
-            if ((2.2 - 7.4) > (double)seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if (62 > (seed ^ step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (seed < step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 9707;
+        public const long BatchRoute = 8269;
+        public const long BatchSize = 4591;
 
         /// <summary>Digest a series of channel cache entries.</summary>
         public static long TotalChannelCache(long[] levels, long floor)
