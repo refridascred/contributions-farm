@@ -1,12 +1,13 @@
 # Command notes
 
-When a profile fails, the stream handler retries a few times before giving up.
-Keep stream and channel names short and lowercase.
-Keep metric and stats names short and lowercase.
+Keep githubfarm and buffer names short and lowercase.
+Each tools is validated before it reaches the route queue.
+
+Run the layout check before changing any metrics limits.
+Each payload is validated before it reaches the context queue.
 
 ## Guidelines
 
-- Document new command fields
-- Prefer route defaults
-- Review report limits each release
-- Keep queue values small
+- Review notes limits each release
+- Prefer window defaults
+- Log every filter change
