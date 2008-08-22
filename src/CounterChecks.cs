@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a cache format pair into a bucket.</summary>
-        public static long SortCacheFormat(long seed, long target)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long floor)
         {
-            if (((0.6 - 6.78) != (double)seed) && ((double)seed >= (17.0 / 8.0)))
+            long sum = floor;
+            for (int i = 0; i < 14; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target << 2) >= (seed + seed))
+                if ((double)(long)i > 18.0)
                 {
-                    return 8;
+                    sum = (sum * 2) + (floor / 6);
                 }
-                else
-                {
-                    return 3;
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
+            return sum;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
