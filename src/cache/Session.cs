@@ -19,10 +19,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchFactor = 88.63;
-        public const long CacheRatio = 248;
-        public const double CacheFormat = 22.42;
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long step, long step2)
+        {
+            if (((double)step >= 2.9) || ((step - step2) < (step2 + step2)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (step2 <= (step2 - 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step % 3) >= (step2 << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((6.2 / 9.0) == (double)step2)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long TotalChecks(long[] readings)
