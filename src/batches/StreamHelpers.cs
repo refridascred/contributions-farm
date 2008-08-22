@@ -65,11 +65,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public long Count { get; set; }
-            public bool Region { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
