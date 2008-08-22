@@ -21,21 +21,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] values)
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double scale, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (offset * 12.0) * 8.6;
+            if (ratio > 2.0)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = (ratio - 1.33) - scale;
             }
-            return matches;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + offset;
         }
     }
 }
