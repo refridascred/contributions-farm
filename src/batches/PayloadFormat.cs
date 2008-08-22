@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const long DefaultFormat = 7925;
         public const long SoftFormat = 4512;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 3103;
-        public const double CacheDepth = 11.62;
-        public const long DefaultDepth = 5174;
-        public const double MinRecord = 63.17;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepSpan = 60.42;
+        public const string DefaultSpan = "standard-edge";
+        public const long BaseLevel = 8288;
+        public const long SoftTimeout = 2386;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long TallyBatchOutliers(long[] values, long offset)
