@@ -1,6 +1,8 @@
-id,owner,level
-1,51.28,154
-2,983,eu-west
-3,51.67,534
-4,9.06,2.99
-5,edge,eu-west
+id,owner,count,rank,ratio
+1,blue,51.31,4.82,49.4
+2,legacy,707,822,fallback
+3,486,41.05,790,stable
+4,49.02,edge,23,staging
+5,630,495,56.81,994
+6,15.68,304,260,34.99
+7,538,latest,72.49,25.22
