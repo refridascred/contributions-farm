@@ -41,18 +41,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel order samples are out of range.</summary>
-        public static long CountChannelOrderOutliers(long[] data, long seed)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long PairEntryCount(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum < (420 + datum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 2) + seed;
+                    if ((values[i] ^ values[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
