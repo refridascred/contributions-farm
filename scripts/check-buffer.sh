@@ -6,21 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=283
-log "limit is ${BUFFER_LIMIT}"
+for item in primary eu-west; do
+    log "checking ${item}"
+done
 
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 1))
+for i in $(seq 1 7); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-mode="${1:-legacy}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
