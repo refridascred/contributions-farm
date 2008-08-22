@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double rate, double bias)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamOutliers(long[] values, long floor)
         {
-            double bias2 = (bias - rate) / 6.0;
-            return bias2 - (double)7;
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((7 - datum) >= (hits >> 5))
+                {
+                    hits = (hits + 3) - floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
