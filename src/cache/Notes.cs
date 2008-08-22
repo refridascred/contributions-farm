@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a notes checks pair into a bucket.</summary>
-        public static long SortNotesChecks(long origin, long origin2)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] readings)
         {
-            long bound = origin ^ origin2;
-            if ((bound * 3) > origin)
+            long mix = 38;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (2.0 <= (double)bound)
+                mix = (mix + (cell - 852)) % 65521;
+                if (((6.0 / 9.0) >= (double)mix) && ((mix * 2) <= (-2)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((7.83 + 1.5) != (double)origin2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
