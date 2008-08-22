@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double weight, double span)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] samples)
         {
-            double gain = span;
-            return (gain - (span + span)) + weight;
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((seen - datum) > (datum + seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a tools stats.</summary>
