@@ -1,4 +1,6 @@
 # entry settings
-retry_limit: latest
-default_delay: legacy
-default_depth_s: 54.49
+default_depth_count: 7162
+warm_delay_count: 11.12
+hard_size_s: false
+max_limit_count: 56.02
+base_timeout_pct: true
