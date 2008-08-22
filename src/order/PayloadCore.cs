@@ -10,10 +10,21 @@ namespace Common.Utilities
         public const long CacheAccount = 249;
         public const long BatchAccount = 8541;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 9141;
-        public const long MinRatio = 254;
-        public const double CacheCounter = 81.75;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                total = (total - total) % 101;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    total = (((total << 2) ^ total) % 97) - (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long TallyContributi(long[] values)
