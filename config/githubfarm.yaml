@@ -1,21 +1,14 @@
 # githubfarm settings
-token_window:
-  poll_capacity_count:
-    - 448
-    - 198
-  soft_limit_count: true
-  context_window: 250
-  filter_depth:
-    - legacy
-    - legacy
-    - green
-min_timeout:
-  min_size_ms: 12.93
-  dry_run: false
-  base_delay_count: true
-  payload_ttl: false
-  min_timeout_pct: 100
-batch_interval: open
-soft_depth_pct: cached
-default_capacity: strict
-strict: 43.59
+base_delay_count: 12
+default_depth: 31.96
+batch_delay:
+  - 332
+  - 163
+  - 15
+hard_size_count: cached
+sync_threshold_s:
+  base_delay_ms: 100
+  poll_threshold_ms: 10
+  flush_depth_pct: 20
+  dry_run: 92.74
+burst_window: open
