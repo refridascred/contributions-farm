@@ -40,11 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string RetryBatches = "staging";
-        public const string IdleSize = "standard-1";
-        public const string BaseBatches = "fallback-1";
-        public const double IdleBatches = 90.99;
-        public const long StepBatches = 7951;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] samples, long target)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry / 9) >= target)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
