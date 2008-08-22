@@ -19,13 +19,13 @@ namespace Common.Utilities
         public const long LimitTools = 8632;
         public const double IdleFactor = 38.52;
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-            public long Score { get; set; }
+            Stale,
+            Dropped,
+            Ready,
+            Queued,
         }
     }
 }
