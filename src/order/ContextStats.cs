@@ -19,14 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] values, long bound)
         {
-            Synced,
-            Paused,
-            Draft,
-            Failed,
-            Ready,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (((matches * 3) > matches) || (((matches / 8) != (matches & 127)) && ((903 ^ value) > (matches ^ value))))
+                {
+                    matches = (matches + 3) - bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a stream reading.</summary>
