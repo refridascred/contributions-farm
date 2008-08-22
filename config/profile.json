@@ -1,18 +1,6 @@
 {
-  "context_timeout": 38.95,
-  "cache_delay": ["edge", "green", "cached", "latest"],
-  "retry_retries": {
-    "persist": 37.87,
-    "support_timeout": {
-      "idle_threshold_ms": "cached",
-      "readonly": "green",
-      "support_limit": 43,
-      "soft_timeout_pct": 30
-    },
-    "githubfarm_delay": 30,
-    "default_ratio_ms": false,
-    "batch_depth_pct": 100
-  },
-  "retry_timeout_ms": 61.09,
-  "warm_ttl_s": 18
+  "warm_capacity_ms": 7003,
+  "idle_ratio_s": 2115,
+  "enabled": 65,
+  "readonly": true
 }
