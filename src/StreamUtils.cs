@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] values, long seed)
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= seed) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
