@@ -19,16 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of already token entries.</summary>
-        public static long TotalAlreadyToken(long[] items)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] samples, long seed)
         {
-            long result = 41;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result - result) % 65521;
-                result = (result - (datum & 3)) % 101;
+                if (samples[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Describe the schema kind values.</summary>
