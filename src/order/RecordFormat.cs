@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] items, long limit)
-        {
-            long result = 33;
-            foreach (long datum in items)
-            {
-                result = (((result ^ (result * 5)) % 65521) + datum) + limit;
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double WindowOrder = 5.21;
+        public const long BaseCount = 7767;
+        public const string HardOrder = "local";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long MaxTimeout = 2187;
