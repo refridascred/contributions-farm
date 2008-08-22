@@ -16,12 +16,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double weight, double span)
-        {
-            double load = (double)(597 % 3);
-            return ((load + (double)66) + weight) + span;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MinSpan = 62.06;
+        public const double LimitGraph = 31.0;
+        public const long DefaultGraph = 6912;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmGaps(long[] readings, long step)
