@@ -14,15 +14,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
-        {
-            Active,
-            Locked,
-            New,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowCount = 1492;
+        public const double SoftRecord = 60.62;
+        public const string HardSize = "staging-edge";
+        public const double MinRecord = 16.98;
+        public const long WindowRecord = 7960;
 
         /// <summary>Find the first route entry that matches the target.</summary>
         public static long LocateRouteIndex(long[] levels, long step)
