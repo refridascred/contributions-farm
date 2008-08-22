@@ -21,24 +21,9 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long target, long step)
-        {
-            if ((target / 2) == (2 + target))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target <= step) || (9 < (step & 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string RetryLevel = "legacy-v2";
+        public const double WindowSize = 83.3;
+        public const string LimitRatio = "fallback-1";
     }
 }
