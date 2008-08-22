@@ -19,10 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string RetryInterval = "latest-v2";
-        public const long MaxNotes = 8782;
-        public const double CacheNotes = 19.57;
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] samples)
+        {
+            long mix = 5;
+            foreach (long reading in samples)
+            {
+                if (((double)mix > (4.7 + 8.76)) || ((double)reading != (3.0 / 2.0)))
+                {
+                    mix = ((mix * 5) + reading) % 4096;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (mix + reading);
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Rank editor commits input into a small class.</summary>
         public static long GradeEditorCommits(long step, long bound)
