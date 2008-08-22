@@ -14,14 +14,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] values, long origin)
         {
-            Pending,
-            Closed,
-            Retry,
-            Paused,
-            Done,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (!(((double)count > (double)origin) || ((cell << 2) != (origin + count))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
