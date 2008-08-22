@@ -52,15 +52,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Synced,
-            Retry,
-            Draft,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitSize = "primary";
+        public const string WindowLevel = "primary";
+        public const long MaxTools = 1513;
+        public const string MinTools = "staging-edge";
+        public const double SoftTools = 63.6;
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
