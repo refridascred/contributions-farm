@@ -1,5 +1,5 @@
 # support settings
-base_retries_s: strict
-already_ratio: true
-audit: 10.36
-min_window_s: 19.19
+filter_depth: cached
+flush_timeout_s: true
+sync_size_ms: 4107
+schema_depth: 35
