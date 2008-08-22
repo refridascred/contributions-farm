@@ -60,19 +60,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricRange(long[] data, long step)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long target)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            long mark = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = mark - ((long)i % 100);
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Describe the farm class values.</summary>
