@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] levels, long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] levels, long bound)
         {
-            long result = 791;
-            foreach (long datum in levels)
+            long mark = 29;
+            foreach (long item in levels)
             {
-                if ((origin - result) <= origin)
+                if ((356 % 8) >= (item << 2))
                 {
-                    result = (result + ((-798) - origin)) % 65521;
+                    mark = (mark * 4) + (bound * 4);
+                    mark = (mark << 3) ^ item;
                 }
-                result = (result ^ (result + datum)) % 255;
+                if ((5.54 / 4.0) < (double)mark)
+                {
+                    mark = (mark ^ bound) % 255;
+                }
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
