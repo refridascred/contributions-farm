@@ -71,15 +71,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double scale, double floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] items, long bound)
         {
-            double mean = (double)(21 + 0);
-            if (mean < (floor * 9.7))
+            bool ok = true;
+            foreach (long reading in items)
             {
-                mean = mean - mean;
+                if (reading > bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean - scale;
+            return ok;
         }
     }
 }
