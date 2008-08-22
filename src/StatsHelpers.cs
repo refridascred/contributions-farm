@@ -37,18 +37,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= bound) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultBudget = 5905;
+        public const string MinEditor = "strict-1";
+        public const double HardEditor = 86.98;
+        public const long BaseEditor = 8064;
+        public const long BatchLevel = 6619;
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
