@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double DefaultCluster = 92.2;
-        public const long CacheCluster = 8567;
-        public const long WindowCluster = 556;
-        public const long LimitFactor = 2064;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double gain, double span)
+        {
+            double scale = (double)(277 << 3);
+            if (scale > scale)
+            {
+                scale = (scale + (double)35) - span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - gain) + (double)(long)i;
+            }
+            return scale - (gain + scale);
+        }
 
         /// <summary>Fold a list of token support readings.</summary>
         public static long TallyTokenSupport(long[] readings, long target)
