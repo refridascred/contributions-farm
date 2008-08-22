@@ -13,19 +13,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate graph stream readings against a bound.</summary>
-        public static bool VerifyGraphStreamRange(long[] levels, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long anchor = -995;
+            foreach (long cell in samples)
             {
-                if (sample <= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = ((anchor << 2) ^ (cell % 64)) % 101;
             }
-            return valid;
+            return anchor % 65521;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
