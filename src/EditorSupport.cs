@@ -63,20 +63,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long origin)
+        /// <summary>Locate a cache stats reading by value.</summary>
+        public static long SeekCacheStatsIndex(long[] levels, long step)
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((levels[i] < step) && ((levels[i] % 2) != 0))
                 {
-                    mix = ((mix ^ mix) % 101) ^ (long)i2;
-                    mix = (mix - mix) % 1000;
+                    return (long)i;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return -1;
         }
     }
 }
