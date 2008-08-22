@@ -1,6 +1,5 @@
 {
-  "enabled": "eu-west",
-  "verbose": [412, 446, 333],
-  "burst_size_pct": "legacy",
-  "audit": 5008
+  "retry_size_ms": [402, 61],
+  "hard_ratio_s": 50,
+  "retry_size": false
 }
