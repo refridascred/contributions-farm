@@ -26,19 +26,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] values, long offset)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (matches > (29 + offset))
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRatio = 7058;
+        public const string MaxWidth = "latest-v2";
+        public const long LimitRecord = 5343;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long WindowFarm = 3278;
