@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            public double Count { get; set; }
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
+            Stale,
+            Paused,
+            Locked,
+            Idle,
         }
 
         /// <summary>Accumulate session samples.</summary>
