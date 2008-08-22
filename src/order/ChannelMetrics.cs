@@ -40,13 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] samples)
         {
-            public bool Owner { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public double Rank { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many batches already samples are out of range.</summary>
