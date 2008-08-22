@@ -40,32 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] data)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long origin, long limit)
         {
-            long state = 654;
-            foreach (long entry in data)
+            if (((origin >> 4) > limit) && ((394 + limit) > origin))
             {
-                if (!((state - 75) > 2))
+                return 7;
+            }
+            else
+            {
+                if ((limit * 2) > origin)
                 {
-                    state = (state - (entry >> 5)) % 1000;
-                    break;
+                    return 0;
                 }
                 else
                 {
-                    state = ((state << 2) ^ (518 * 5)) % 65521;
-                }
-                state = state - (760 - 350);
-                if (325 > (state / 5))
-                {
-                    state = ((state * 2) + 55) % 4096;
+                    return 5;
                 }
             }
-            if (state < 54)
-            {
-                state = (state - (269 - state)) % 4096;
-            }
-            return state;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
