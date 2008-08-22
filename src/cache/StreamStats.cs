@@ -40,17 +40,15 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Locate a githubfarm payload reading by value.</summary>
-        public static long LocateGithubfarmPayloadIndex(long[] data, long offset)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 556;
+            foreach (long entry in data)
             {
-                if ((data[i] >= offset) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark << 2) ^ (mark + entry);
             }
-            return -1;
+            return mark % 97;
         }
     }
 }
