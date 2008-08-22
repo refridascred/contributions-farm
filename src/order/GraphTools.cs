@@ -37,12 +37,19 @@ namespace Common.Utilities
             return scale + (bias - scale);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 4901;
-        public const long WindowStats = 1612;
-        public const long RetryStats = 6138;
-        public const double MinCount = 81.96;
-        public const long HardSize = 283;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaHits(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((double)target > (double)(long)readings.Length)
+                {
+                    hits = (hits + 1) - item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a window record reading.</summary>
         public static double BlendWindowRecord(double bias, double span)
