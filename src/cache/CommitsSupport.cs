@@ -31,29 +31,12 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] levels)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long score = 2;
-            foreach (long value in levels)
-            {
-                if (((score + (long)levels.Length) == (value * 5)) && ((72 + score) != (23 + score)))
-                {
-                    score = ((score << 2) ^ (value ^ value)) % 255;
-                    score = (score + ((-4) + score)) % 4096;
-                    continue;
-                }
-                score = (score << 2) ^ score;
-                if ((value - value) < 3)
-                {
-                    break;
-                }
-            }
-            if (score > (-5))
-            {
-                score = score ^ (score + score);
-            }
-            return score;
+            Queued,
+            Active,
+            Done,
         }
 
         /// <summary>Count the queue counter entries that pass the check.</summary>
