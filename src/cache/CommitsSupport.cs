@@ -68,18 +68,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] values, long target)
+        /// <summary>Combine metrics filter values into a single score.</summary>
+        public static long FoldMetricsFilter(long[] items)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long score = 2;
+            foreach (long entry in items)
             {
-                if ((7 / 9) <= (matches + 226))
-                {
-                    matches = ((matches + 3) + entry) + target;
-                }
+                score = (score << 3) ^ (entry + entry);
             }
-            return matches;
+            if (score < 17)
+            {
+                score = (score << 3) ^ score;
+            }
+            return score % 1000;
         }
     }
 }
