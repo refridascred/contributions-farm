@@ -1,4 +1,22 @@
 # support settings
-burst_ratio_s: 9.33
-verbose: 1024
-readonly: false
+min_ttl_pct: stable
+poll_depth: true
+warm_delay_s: 5906
+order_threshold: staging
+burst_size_ms:
+  persist:
+    warm_interval_s: cached
+    base_capacity_s:
+      - local
+      - blue
+      - stable
+      - blue
+    idle_delay_s: local
+    hard_retries_ms: green
+  route_depth:
+    - 400
+    - 130
+    - 203
+  default_delay_pct: primary
+  idle_delay_count: legacy
+strict: false
