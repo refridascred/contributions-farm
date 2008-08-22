@@ -1,6 +1,5 @@
 {
-  "burst_ratio": 95,
-  "strict": "primary",
-  "account_ttl": "stable",
-  "max_timeout_s": 1818
+  "min_window_ms": 250,
+  "flush_size_s": 7.62,
+  "sync_interval": "eu-west"
 }
