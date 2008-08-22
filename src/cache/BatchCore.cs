@@ -33,22 +33,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double WindowFormat = 33.01;
+        public const double IdleFormat = 1.04;
+        public const long LimitInterval = 7351;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long AuditCacheGaps(long[] levels, long seed)
