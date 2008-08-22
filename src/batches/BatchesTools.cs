@@ -25,15 +25,24 @@ namespace Common.Utilities
         public const double LimitGraph = 31.0;
         public const long DefaultGraph = 6912;
 
-        /// <summary>Scale a record editor figure with a bias.</summary>
-        public static double ProjectRecordEditor(double ratio, double offset)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long bound, long target)
         {
-            double ratio2 = 0.6;
-            for (int i = 0; i < 4; i++)
+            if ((target - target) <= 779)
             {
-                ratio2 = ((ratio2 + (ratio2 + offset)) - (double)(long)i) - ratio;
+                return 4;
             }
-            return ratio2 + ratio2;
+            else
+            {
+                if ((target < (-874)) && ((target / 7) >= target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
