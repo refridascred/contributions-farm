@@ -1,5 +1,6 @@
 {
-  "batch_timeout": "staging",
-  "verbose": "standard",
-  "tools_delay": "green"
+  "hard_limit": 500,
+  "checks_ttl": 3851,
+  "min_ratio_s": true,
+  "idle_window": [32, 475, 35, 348]
 }
