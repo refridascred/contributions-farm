@@ -19,23 +19,32 @@ namespace Common.Utilities
         public const long DefaultInterval = 7602;
         public const double DefaultBatch = 69.18;
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double scale, double offset)
+        /// <summary>Grade a stream route value against two limits.</summary>
+        public static long ClassifyStreamRoute(long offset, long step)
         {
-            double ratio = (offset * 12.0) * 8.6;
-            if (ratio > 2.0)
+            long next = offset ^ step;
+            if ((double)offset != (6.9 * 9.9))
             {
-                ratio = (ratio - 1.33) - scale;
+                return 8;
             }
             else
             {
-                ratio = ratio + ratio;
+                if ((2.0 * 17.0) > (double)next)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)next == (7.8 - 2.52))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio + offset;
         }
     }
 }
