@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseFactor = 4740;
-        public const long CacheAccount = 249;
-        public const long BatchAccount = 8541;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheInterval = "standard-1";
+        public const long BurstFactor = 5282;
+        public const string RetryRoute = "local-edge";
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
