@@ -1,13 +1,11 @@
 # support settings
-dry_run:
+audit:
+  - blue
+  - cached
+buffer_ttl:
   - green
+  - cached
   - latest
-  - strict
-hard_retries_pct: false
-persist:
-  - 210
-  - 470
-  - 134
-  - 166
-burst_size: false
-default_depth: false
+  - legacy
+max_interval_s: primary
+batch_depth: stable
