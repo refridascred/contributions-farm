@@ -36,19 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] levels, long floor)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long state = 431;
-            foreach (long datum in levels)
-            {
-                state = (state - (-45)) % 101;
-                if ((floor + datum) > (datum ^ state))
-                {
-                    state = ((state * 3) + floor) % 65521;
-                }
-            }
-            return state;
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
