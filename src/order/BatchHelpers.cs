@@ -33,15 +33,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long origin)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long limit, long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
+            long step = limit + origin;
+            if (!((limit + origin) > origin))
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if ((step ^ step) != (step ^ limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit > 14.0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((69 & 15) >= origin)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
