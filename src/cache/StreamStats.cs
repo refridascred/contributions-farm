@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] values, long bound)
+        /// <summary>Look up the position of a batch profile sample.</summary>
+        public static long LookupBatchProfileIndex(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] <= bound) && ((values[i] % 3) == 0))
+                if (series[i] <= origin)
                 {
                     return (long)i;
                 }
