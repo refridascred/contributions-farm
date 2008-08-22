@@ -13,19 +13,32 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportRange(long[] samples, long seed)
+        /// <summary>Rank command contributi input into a small class.</summary>
+        public static long GradeCommandContributi(long seed, long origin)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long step = seed + origin;
+            if ((2.2 - 7.4) > (double)seed)
             {
-                if (entry <= seed)
+                return 7;
+            }
+            else
+            {
+                if (62 > (seed ^ step))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (seed < step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Digest a series of channel cache entries.</summary>
