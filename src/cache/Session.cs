@@ -14,19 +14,10 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] data, long offset)
-        {
-            long sum = 7;
-            foreach (long datum in data)
-            {
-                if (((9.57 * 2.69) == (double)datum) || ((4.26 * 17.0) >= (double)sum))
-                {
-                    sum = (sum ^ (datum & 15)) + offset;
-                }
-            }
-            return sum % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchFactor = 88.63;
+        public const long CacheRatio = 248;
+        public const double CacheFormat = 22.42;
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long IterateStream(long origin)
