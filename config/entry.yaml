@@ -1,22 +1,22 @@
 # entry settings
-flush_ttl:
-  - local
-  - blue
-persist: 250
-poll_capacity_pct: 46.53
-counter_ttl:
-  enabled:
-    default_retries: 1024
-    filter_delay: 7050
-    flush_depth_count: 8308
-  sync_retries_count: 9.37
-  compress:
-    cache_capacity_pct: edge
-    githubfarm_retries:
-      - 477
-      - 325
-      - 337
-      - 291
-    flush_delay_ms: 4103
-    hard_limit_count: 30
-batch_timeout_count: 72.9
+compress: false
+filter_interval: 1290
+payload_timeout:
+  idle_interval:
+    - standard
+    - strict
+    - primary
+    - legacy
+  profile_depth: fallback
+  strict: true
+  verbose: edge
+  metrics_retries: 4949
+batches_ttl:
+  - strict
+  - edge
+  - eu-west
+profile_depth:
+  route_depth: primary
+  payload_delay: local
+  stats_ratio: 22.64
+  schema_ratio: edge
