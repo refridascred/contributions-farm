@@ -33,14 +33,39 @@ namespace Common.Utilities
         public const string WindowMetrics = "legacy-v2";
         public const long StepLevel = 149;
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Grade a account entry value against two limits.</summary>
+        public static long ClassifyAccountEntry(long bound, long offset)
         {
-            Stale,
-            Retry,
-            Queued,
-            Ready,
-            Pending,
+            long offset2 = bound + offset;
+            if ((double)offset > (8.5 * 8.6))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset << 1) == (offset >> 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((bound % 16) <= offset2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((2.44 + 0.07) <= (double)bound) || ((bound - 917) < (offset2 >> 5)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
