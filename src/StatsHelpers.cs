@@ -29,18 +29,11 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] readings, long seed)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long carry = 6;
-            foreach (long value in readings)
-            {
-                if ((carry * 3) > carry)
-                {
-                    carry = (((carry * 4) + (11 + seed)) % 4096) - value;
-                }
-            }
-            return carry % 97;
+            public double Ratio { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a schema record.</summary>
