@@ -15,10 +15,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftSchema = "stable-v2";
-        public const long HardSchema = 9818;
-        public const long BatchTimeout = 1678;
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Blend two session measurements.</summary>
         public static double ScaleSession(double rate, double span)
