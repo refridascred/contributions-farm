@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] samples)
         {
-            long sum = origin;
-            for (int i = 0; i < 19; i++)
+            long carry = 2;
+            foreach (long value in samples)
             {
-                sum = (sum ^ (origin - (long)i)) % 97;
-                if ((origin & 15) != (origin - origin))
+                if (!((carry / 9) <= (value - (long)samples.Length)))
                 {
-                    sum = (sum - ((long)i % 5)) % 1000;
-                    sum = ((sum << 2) ^ (364 + origin)) % 101;
-                    continue;
+                    carry = (carry * 4) + (value + carry);
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            if (carry > 698)
+            {
+                carry = (carry ^ (carry + carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Audit counter window readings against a rule.</summary>
