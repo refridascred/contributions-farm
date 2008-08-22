@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double rate, double span)
+        /// <summary>Accumulate command stream samples.</summary>
+        public static long TallyCommandStream(long[] readings)
         {
-            double bias = (double)626 / 5.0;
-            if (bias < bias)
+            long mix = 10;
+            foreach (long item in readings)
             {
-                bias = (bias + (double)(-76)) - span;
+                mix = (mix + mix) % 101;
+                if ((double)item != (double)7)
+                {
+                    mix = mix + (item + mix);
+                }
             }
-            else
+            if (mix > 912)
             {
-                bias = bias - (rate / 8.0);
+                mix = ((mix * 5) + (-203)) % 97;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias + rate;
+            return mix % 65521;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
