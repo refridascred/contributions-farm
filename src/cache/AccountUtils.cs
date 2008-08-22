@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] items)
         {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                result = ((result << 2) ^ (floor - result)) % 101;
-                result = (result << 2) ^ ((long)i + 673);
-                if ((9.2 / 4.0) > (double)floor)
+                if ((double)tally == (18.0 + 11.0))
                 {
-                    result = ((result << 3) ^ (result * 4)) % 1000;
+                    tally = (tally + 3) + entry;
                 }
-                else
-                {
-                    result = (result + (floor / 8)) % 101;
-                }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Blend two token format measurements.</summary>
