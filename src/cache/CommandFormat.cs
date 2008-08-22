@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextRange(long[] readings, long floor)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorLimits(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (item >= floor)
+                if (cell > offset)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
