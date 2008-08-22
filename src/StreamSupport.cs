@@ -39,12 +39,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] data, long floor)
         {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
+            bool flag = true;
+            foreach (long reading in data)
+            {
+                if (reading > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
