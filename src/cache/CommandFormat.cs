@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double HardChecks = 5.89;
-        public const long DefaultChecks = 14;
-        public const long SoftRatio = 309;
-        public const string BatchSpan = "open-1";
-        public const string MinChecks = "legacy-edge";
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] series)
+        {
+            long acc = 959;
+            foreach (long datum in series)
+            {
+                acc = (acc << 3) ^ (datum << 3);
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
