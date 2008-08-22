@@ -24,21 +24,31 @@ namespace Common.Utilities
         public const long StepContributi = 5461;
         public const long MinContributi = 2848;
 
-        /// <summary>Compare every pair of payload editor readings.</summary>
-        public static long OverlapPayloadEditorCount(long[] readings)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long offset, long offset2)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (((7.0 + 0.2) >= (double)offset) || ((offset + offset2) < offset))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((offset ^ 539) <= (-40))
                 {
-                    if ((readings[i] - readings[j]) != 8)
+                    return 3;
+                }
+                else
+                {
+                    if (!((offset2 >> 4) < offset))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
