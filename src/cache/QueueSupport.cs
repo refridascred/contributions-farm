@@ -28,21 +28,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] levels)
+        /// <summary>Look up the position of a route cache sample.</summary>
+        public static long SeekRouteCacheIndex(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (readings[i] > floor)
                 {
-                    if ((levels[i] + levels[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
