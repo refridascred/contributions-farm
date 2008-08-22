@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest blue standard; do
-    log "checking ${item}"
-done
-
-COMMAND_LIMIT=126
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-edge}"
+mode="${1:-staging}"
 case "${mode}" in
-    standard)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in legacy staging standard; do
+    log "checking ${item}"
+done
