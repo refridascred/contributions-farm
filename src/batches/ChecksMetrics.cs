@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] items)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadHits(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (((double)datum <= (7.22 / 7.0)) && ((datum + 9) == (datum + datum)))
+                if ((value >> 2) == (value * 3))
                 {
-                    count = count + 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
