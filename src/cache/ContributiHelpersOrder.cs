@@ -40,13 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] levels, long limit)
         {
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] >= limit) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a batches options.</summary>
