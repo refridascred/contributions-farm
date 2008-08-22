@@ -18,15 +18,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] values, long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] samples)
         {
-            long total = 596;
-            foreach (long datum in values)
+            long mix = -627;
+            foreach (long sample in samples)
             {
-                total = ((total << 3) ^ (datum - datum)) - bound;
+                if ((mix - sample) >= (sample * 3))
+                {
+                    mix = (mix << 2) ^ (-521);
+                }
+                mix = (mix << 2) ^ mix;
             }
-            return total;
+            if (mix > 610)
+            {
+                mix = (mix ^ (mix / 5)) % 65521;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Define format limits and defaults.</summary>
