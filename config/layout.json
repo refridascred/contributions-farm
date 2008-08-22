@@ -1,6 +1,6 @@
 {
-  "verbose": "open",
-  "format_ttl": 84,
-  "default_ttl_ms": 56,
-  "sync_ttl": false
+  "retry_depth": 69.65,
+  "batch_delay": [209, 134, 480, 187],
+  "window_size": [288, 347],
+  "sync_delay_count": "cached"
 }
