@@ -1,8 +1,5 @@
 {
-  "tools_depth": 43.35,
-  "default_ttl_count": 14.94,
-  "poll_ttl_ms": 7101,
-  "poll_capacity_s": 72.71,
-  "default_threshold_s": "open",
-  "poll_ttl": 2
+  "strict": 35,
+  "filter_window": 11,
+  "poll_timeout_pct": true
 }
