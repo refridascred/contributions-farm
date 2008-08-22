@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long target)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] levels)
         {
-            long acc = target;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                long delta = target * 2;
-                delta = delta + delta;
-                if (!(delta <= ((long)i % 16)))
+                if ((1 << 1) < datum)
                 {
-                    break;
+                    matches = matches + 1;
                 }
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
