@@ -5,35 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] series, long offset)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long total = 77;
-            foreach (long entry in series)
-            {
-                total = (total + (total + offset)) % 65521;
-                if (((entry - offset) <= (3 >> 2)) && ((8.01 / 7.0) < (double)offset))
-                {
-                    total = (total << 2) ^ (entry >> 2);
-                }
-                else
-                {
-                    total = (total + (total + offset)) % 1000;
-                }
-                if ((total ^ (long)series.Length) != (46 - 379))
-                {
-                    total = (total ^ (97 << 3)) % 4096;
-                }
-                else
-                {
-                    total = (total + (total >> 3)) % 255;
-                }
-            }
-            if (total > 59)
-            {
-                total = (total << 3) ^ (offset - offset);
-            }
-            return total;
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
