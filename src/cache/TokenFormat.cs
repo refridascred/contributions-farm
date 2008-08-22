@@ -22,11 +22,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepSize = 48.08;
-        public const long BaseLayout = 5544;
-        public const long RetryCount = 3038;
-        public const long SoftWidth = 6878;
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
+        {
+            Ready,
+            Dropped,
+            Stale,
+            Idle,
+            Draft,
+        }
 
         /// <summary>Derive the next commits value from a seed.</summary>
         public static long StepCommits(long seed)
