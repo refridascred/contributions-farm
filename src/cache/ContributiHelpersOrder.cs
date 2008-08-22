@@ -39,18 +39,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelGaps(long[] values)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((entry + 8) < tally)
+                if ((double)datum > 4.73)
                 {
-                    tally = tally + 1;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
