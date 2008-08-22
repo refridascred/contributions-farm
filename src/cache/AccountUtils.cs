@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            public long Total { get; set; }
-            public bool Flag { get; set; }
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every queue metrics entry stays within the limit.</summary>
