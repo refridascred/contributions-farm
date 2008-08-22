@@ -1,10 +1,11 @@
 # Command notes
 
-Use order settings to tune how often graph data is refreshed.
-The graph helpers are pure functions, so they are safe to call from any thread.
+Each stats is validated before it reaches the tools queue.
+A batch that stays idle for too long is moved to the entry list.
+The farm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Document new layout fields
-- Keep filter values small
+- Keep queue values small
+- Validate metric input early
+- Prefer token defaults
