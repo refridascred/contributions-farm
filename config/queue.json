@@ -1,8 +1,13 @@
 {
-  "compress": "blue",
-  "support_size": ["fallback", "edge", "standard", "open"],
-  "max_interval_count": 250,
-  "soft_ttl_ms": 55.35,
-  "batch_threshold_s": [56, 379, 247, 397],
-  "min_capacity_s": 50.8
+  "route_threshold": [166, 140],
+  "warm_ttl": [338, 35, 42],
+  "max_ttl_s": "staging",
+  "default_threshold_ms": 6592,
+  "verbose": {
+    "profile_capacity": 13.05,
+    "burst_threshold": 89.95,
+    "retry_threshold_count": 86,
+    "account_size": "staging"
+  },
+  "flush_ratio_count": 2850
 }
