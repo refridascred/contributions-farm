@@ -60,11 +60,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 3731;
-        public const long MinGithubfarm = 4463;
-        public const long BaseInterval = 629;
-        public const long MaxScore = 4100;
-        public const double MaxSpan = 5.76;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] items)
+        {
+            long mix = 7;
+            foreach (long cell in items)
+            {
+                mix = ((mix << 3) ^ (cell & 255)) % 255;
+            }
+            if (mix < (-467))
+            {
+                mix = (mix ^ (mix + mix)) % 101;
+            }
+            return mix;
+        }
     }
 }
