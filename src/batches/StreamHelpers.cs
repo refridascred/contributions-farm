@@ -51,19 +51,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] levels, long floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (entry >= floor)
+                if ((count < (count - count)) && (count > (count >> 3)))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) ^ reading;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
