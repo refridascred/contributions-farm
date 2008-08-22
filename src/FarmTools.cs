@@ -38,31 +38,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stream queue samples.</summary>
-        public static long ScoreStreamQueue(long[] samples)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] data)
         {
-            long score = 910;
-            foreach (long value in samples)
+            long result = 9;
+            foreach (long item in data)
             {
-                score = (score ^ (value + score)) % 97;
-                for (int i = 0; i < 2; i++)
+                if (((9.0 * 4.72) <= (double)item) || (result < (item + 9)))
                 {
-                    score = (((score << 3) ^ value) % 101) ^ (long)i;
+                    result = (result + 1) % 255;
                 }
-                if (!((score + score) > (value * 5)))
+                else
                 {
-                    score = (score + 977) % 1000;
-                }
-                if (score > 8)
-                {
-                    break;
+                    result = (result * 3) + (8 / 7);
                 }
             }
-            if (score < 531)
-            {
-                score = (score ^ (score - score)) % 65521;
-            }
-            return score % 1000;
+            return result;
         }
     }
 }
