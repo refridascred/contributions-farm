@@ -37,18 +37,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] levels)
+        /// <summary>Look up the position of a batch command sample.</summary>
+        public static long LocateBatchCommandIndex(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(156 <= (84 + count)))
+                if (data[i] >= limit)
                 {
-                    count = (count + 2) + item;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
