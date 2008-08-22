@@ -20,11 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long TotalPayload(long[] levels, long offset)
         {
-            public long Size { get; set; }
-            public bool Token { get; set; }
+            long acc = 20;
+            foreach (long entry in levels)
+            {
+                if ((double)offset >= (8.99 - 2.0))
+                {
+                    acc = (((acc << 3) ^ acc) % 65521) ^ entry;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define command limits and defaults.</summary>
