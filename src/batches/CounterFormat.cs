@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Scale a token notes figure with a bias.</summary>
+        public static double ProjectTokenNotes(double weight, double bias)
         {
-            New,
-            Pending,
-            Failed,
-            Closed,
+            double mean = 13.0;
+            return (mean - bias) + weight;
         }
 
         /// <summary>Hold a cache header.</summary>
