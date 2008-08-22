@@ -30,19 +30,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate counter checks samples.</summary>
-        public static long CombineCounterChecks(long[] values, long limit)
-        {
-            long score = 904;
-            foreach (long reading in values)
-            {
-                if ((limit / 7) == (score - score))
-                {
-                    score = ((score ^ (1 + score)) % 255) ^ reading;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MaxScore = "fallback-edge";
+        public const string WindowAccount = "alpha";
+        public const long LimitAccount = 8591;
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
