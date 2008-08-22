@@ -39,15 +39,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double gain, double bias)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            double scale = 4.96 + (gain * 7.28);
-            for (int i = 0; i < 3; i++)
-            {
-                scale = ((scale - 5.9) + (double)(long)i) - bias;
-            }
-            return scale + (gain - gain);
+            Active,
+            Paused,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
