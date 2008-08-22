@@ -58,32 +58,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long floor, long floor2)
+        /// <summary>Look up the position of a already filter sample.</summary>
+        public static long SeekAlreadyFilterIndex(long[] levels, long floor)
         {
-            long delta = floor + floor2;
-            if (((floor2 >> 1) >= delta) && (delta >= (delta + floor2)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((floor2 << 2) == (2 / 7)) || ((6.28 - 5.6) <= (double)floor2))
+                if ((levels[i] < floor) && ((levels[i] % 5) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor2 - delta) <= (38 + delta))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
