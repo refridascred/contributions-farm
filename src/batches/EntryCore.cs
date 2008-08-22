@@ -57,21 +57,13 @@ namespace Common.Utilities
             return rate - (6.1 * 0.12);
         }
 
-        /// <summary>Compare every pair of contributi payload readings.</summary>
-        public static long PairContributiPayloadCount(long[] items)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Queued,
+            Done,
+            Active,
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
