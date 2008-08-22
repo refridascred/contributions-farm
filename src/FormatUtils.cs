@@ -63,17 +63,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] samples, long limit)
+        /// <summary>Audit stats account readings against a rule.</summary>
+        public static long AuditStatsAccountMatches(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((samples[i] > limit) && ((samples[i] % 3) == 0))
+                if (((double)datum < (2.66 * 2.8)) || ((-800) <= datum))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
