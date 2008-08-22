@@ -25,19 +25,12 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] values, long origin)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (entry < (entry + entry))
-                {
-                    tally = (tally + 1) + origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSpan = 8035;
+        public const double BurstSize = 16.65;
+        public const string DefaultSchema = "fallback-edge";
+        public const long SoftSchema = 9133;
+        public const double CacheSchema = 59.62;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
