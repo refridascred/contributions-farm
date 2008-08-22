@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleSpan = 5475;
-        public const long LimitBudget = 7755;
-        public const string DefaultNotes = "cached-v2";
-        public const long WindowNotes = 1076;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public long Count { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Match up payload samples.</summary>
         public static long OverlapPayloadCount(long[] values)
