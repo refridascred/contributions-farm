@@ -42,9 +42,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BatchSpan = "primary-edge";
-        public const long DefaultSpan = 861;
-        public const string SoftLevel = "stable-v2";
+        /// <summary>Find the first counter buffer entry that matches the target.</summary>
+        public static long SeekCounterBufferIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
