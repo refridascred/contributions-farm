@@ -61,23 +61,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] levels)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long sum = 1;
-            foreach (long item in levels)
-            {
-                sum = sum - (sum - (long)levels.Length);
-                if (sum >= (item - item))
-                {
-                    sum = (sum + (item ^ 25)) % 1000;
-                }
-            }
-            if (sum > 88)
-            {
-                sum = (sum << 2) ^ (sum >> 4);
-            }
-            return sum;
+            public double Count { get; set; }
+            public string Offset { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
