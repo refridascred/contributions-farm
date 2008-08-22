@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Measure how many notes graph samples are out of range.</summary>
+        public static long CountNotesGraphHits(long[] samples)
         {
-            Idle,
-            Done,
-            Failed,
-            Dropped,
-            Paused,
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)sample > (5.0 - 8.16))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
