@@ -1,11 +1,5 @@
 {
-  "buffer_threshold": {
-    "min_interval_pct": "staging",
-    "verbose": "edge",
-    "readonly": "open"
-  },
-  "hard_capacity_pct": 9402,
-  "max_interval_pct": "green",
-  "batch_size": 500,
-  "readonly": 60
+  "stats_capacity": true,
+  "sync_size_count": "standard",
+  "strict": "fallback"
 }
