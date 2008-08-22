@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double IdleQueue = 68.55;
+        public const long WindowWidth = 3423;
+        public const long WindowQueue = 429;
 
         /// <summary>Check that every notes profile entry stays within the limit.</summary>
         public static bool CheckNotesProfileBounds(long[] values, long origin)
