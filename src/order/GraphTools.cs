@@ -33,14 +33,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Rank profile githubfarm input into a small class.</summary>
+        public static long SortProfileGithubfarm(long floor, long step)
         {
-            New,
-            Pending,
-            Retry,
-            Idle,
-            Queued,
+            long step2 = floor ^ step;
+            if ((step2 + step2) != (step2 >> 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((floor - (-28)) != (step2 - step)) || ((double)step2 == (7.81 + 13.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step - 59) < (floor >> 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metric options.</summary>
