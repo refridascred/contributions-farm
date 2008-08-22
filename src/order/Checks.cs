@@ -29,18 +29,12 @@ namespace Common.Utilities
         public const long MinGraph = 3865;
         public const double CacheCount = 50.51;
 
-        /// <summary>Count the stats payload entries that pass the check.</summary>
-        public static long AuditStatsPayloadHits(long[] items, long floor)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (tally > (879 + 5))
-                {
-                    tally = ((tally + 2) ^ reading) - floor;
-                }
-            }
-            return tally;
+            Stale,
+            Locked,
+            Paused,
         }
 
         /// <summary>Describe the tools status values.</summary>
