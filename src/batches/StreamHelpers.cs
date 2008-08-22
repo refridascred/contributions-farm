@@ -61,19 +61,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] samples)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long score = 154;
-            foreach (long sample in samples)
-            {
-                score = ((score << 2) ^ (-5)) - sample;
-            }
-            if (score > (-801))
-            {
-                score = ((score << 3) ^ (130 & 1)) % 101;
-            }
-            return score % 65521;
+            Closed,
+            Ready,
+            Active,
+            Idle,
         }
     }
 }
