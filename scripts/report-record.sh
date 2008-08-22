@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached latest edge legacy; do
+RECORD_LIMIT=281
+log "limit is ${RECORD_LIMIT}"
+
+for item in legacy open eu-west cached; do
     log "checking ${item}"
 done
-
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
