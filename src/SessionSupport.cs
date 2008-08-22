@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a layout counter figure with a bias.</summary>
-        public static double AdjustLayoutCounter(double scale, double bias)
-        {
-            double mean = bias;
-            if (mean >= (scale + 8.13))
-            {
-                mean = mean + (1.1 * 2.6);
-            }
-            else
-            {
-                mean = mean - (scale + mean);
-            }
-            return mean - (mean - mean);
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 447;
+        public const double DefaultRatio = 23.39;
+        public const string BurstFactor = "legacy-edge";
+        public const long SoftOrder = 6306;
+        public const long StepOrder = 6436;
 
         /// <summary>Classify a notes pair into a bucket.</summary>
         public static long SortNotes(long seed, long offset)
