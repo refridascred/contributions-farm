@@ -20,24 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long origin, long step)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] values, long target)
         {
-            if ((origin + origin) > (5 << 3))
+            long hits = 0;
+            foreach (long datum in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step < (3.0 * 8.7))
+                if (((target * 3) < (hits / 5)) || ((hits <= target) || ((datum + 8) <= (long)values.Length)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the cache report entries that pass the check.</summary>
