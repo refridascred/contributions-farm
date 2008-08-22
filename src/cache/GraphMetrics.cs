@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long floor, long limit)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] levels, long seed)
         {
-            long gap = floor ^ limit;
-            if ((gap < (limit + floor)) || (2 <= floor))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((gap + limit) != (floor * 3))
+                if ((double)515 > (double)tally)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (0 <= (gap & 127))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((gap <= (limit * 4)) && ((gap / 8) <= (gap * 5)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = ((tally + 1) + datum) - seed;
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a support counter forward.</summary>
