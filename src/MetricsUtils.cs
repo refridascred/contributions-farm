@@ -59,19 +59,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] items, long seed)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double ratio, double span)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            double rate = 0.7;
+            if (rate <= span)
             {
-                if (sample > seed)
-                {
-                    ready = false;
-                    break;
-                }
+                rate = rate + 9.0;
             }
-            return ready;
+            return rate - (ratio / 5.0);
         }
     }
 }
