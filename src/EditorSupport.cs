@@ -70,12 +70,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Measure how many contributi stream samples are out of range.</summary>
+        public static long AuditContributiStreamMatches(long[] samples)
         {
-            public double Owner { get; set; }
-            public string Score { get; set; } = "";
-            public bool Ratio { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (((long)samples.Length + 0) >= (count * 2))
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
         }
     }
 }
