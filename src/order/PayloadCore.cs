@@ -10,11 +10,15 @@ namespace Common.Utilities
         public const long BurstFactor = 5282;
         public const string RetryRoute = "local-edge";
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double ratio, double offset)
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            double weight = (offset * 8.0) * 7.4;
+            if (weight > (8.5 + ratio))
+            {
+                weight = weight + (ratio * 0.75);
+            }
+            return weight + offset;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
