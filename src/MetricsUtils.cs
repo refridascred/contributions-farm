@@ -26,11 +26,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftRoute = "stable-v2";
-        public const string WindowTimeout = "staging-1";
-        public const long WindowRoute = 9330;
-        public const long IdleRoute = 1583;
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public long Owner { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Blend two entry measurements.</summary>
         public static double BlendEntry(double gain, double floor)
