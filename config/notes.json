@@ -1,7 +1,20 @@
 {
-  "max_timeout": 89.22,
-  "poll_size": true,
-  "format_window": 3959,
-  "editor_threshold": "legacy",
-  "readonly": 70
+  "already_window": 93.96,
+  "stats_depth": 60,
+  "hard_depth_ms": "open",
+  "min_delay_pct": "legacy",
+  "context_interval": {
+    "base_size_ms": 68,
+    "soft_ratio": "edge",
+    "soft_ratio_ms": ["latest", "blue", "cached", "edge"],
+    "format_size": 452,
+    "audit": {
+      "burst_capacity": [210, 97, 442, 161],
+      "flush_size": true,
+      "strict": [134, 128],
+      "enabled": 6304
+    },
+    "warm_depth_s": "staging"
+  },
+  "flush_size_count": "legacy"
 }
