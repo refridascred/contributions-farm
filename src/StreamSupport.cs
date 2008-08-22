@@ -25,13 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
-        {
-            Closed,
-            Dropped,
-            New,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 4016;
+        public const long WindowInterval = 7301;
+        public const long RetrySize = 5841;
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
