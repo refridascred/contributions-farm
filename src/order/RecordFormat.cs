@@ -37,30 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer editor readings.</summary>
-        public static long CombineBufferEditor(long[] data)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteMatches(long[] series, long offset)
         {
-            long state = 7;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((8 >> 3) > (state << 2))
+                if ((7 <= sample) || (((seen ^ seen) >= 12) && ((long)series.Length >= (3 << 3))))
                 {
-                    state = (state + 477) % 4096;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (cell / 9)) % 101;
-                }
-                if ((double)state > 11.0)
-                {
-                    state = (state << 2) ^ (state * 2);
-                }
-                else
-                {
-                    state = (state ^ (state + cell)) % 101;
+                    seen = (seen + 3) + offset;
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
