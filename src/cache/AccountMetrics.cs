@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] items)
+        /// <summary>Locate a cluster profile reading by value.</summary>
+        public static long LookupClusterProfileIndex(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(value <= hits))
+                if (readings[i] == limit)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Check that every notes profile entry stays within the limit.</summary>
