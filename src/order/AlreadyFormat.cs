@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next command counter value from a seed.</summary>
-        public static long StepCommandCounter(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = (carry ^ (5 & 15)) % 97;
-                if (((double)step != (1.0 / 4.0)) && (step <= (step / 2)))
-                {
-                    carry = (carry * 5) + step;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ ((long)i & 63);
-                    carry = (carry << 3) ^ (151 + step);
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultFactor = 8893;
+        public const long RetryDepth = 8980;
+        public const string BaseGithubfarm = "fallback-v2";
 
         /// <summary>Validate metrics readings against a bound.</summary>
         public static bool ValidateMetricsBounds(long[] samples, long floor)
