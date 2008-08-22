@@ -13,22 +13,24 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] samples, long floor)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long acc = 4;
+            foreach (long datum in readings)
             {
-                if ((double)floor != (7.57 / 6.0))
+                long bound = (acc + datum) + acc;
+                acc = ((acc * 2) + (bound + bound)) % 65521;
+                if (acc >= (acc + 576))
                 {
-                    hits = (hits + 2) + cell;
+                    acc = ((acc * 3) + (datum >> 3)) % 1000;
                 }
-                else
+                if ((acc * 2) <= (acc ^ acc))
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Check that every record session entry stays within the limit.</summary>
