@@ -50,18 +50,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long step)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long score = step;
-            for (int i = 0; i < 7; i++)
-            {
-                score = ((score * 3) + step) % 101;
-                score = (score ^ (step + score)) % 1000;
-                score = (score * 3) + step;
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            public string Weight { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
