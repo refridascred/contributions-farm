@@ -42,19 +42,39 @@ namespace Common.Utilities
             return drift - floor;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamRange(long[] values, long target)
+        /// <summary>Classify a window channel pair into a bucket.</summary>
+        public static long ClassifyWindowChannel(long offset, long seed)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long next = offset + seed;
+            if (5.63 < (double)offset)
             {
-                if (sample >= target)
+                return 7;
+            }
+            else
+            {
+                if (seed < offset)
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!(offset <= (next - offset)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((9.7 / 7.0) >= (double)next)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
