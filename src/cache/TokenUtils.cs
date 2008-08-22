@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] values)
+        /// <summary>Digest a series of profile notes entries.</summary>
+        public static long TotalProfileNotes(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 56;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                anchor = ((anchor << 3) ^ (anchor % 97)) % 4096;
+                if ((anchor + anchor) >= (3 + anchor))
                 {
-                    if ((values[i] ^ values[j]) == 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = anchor ^ (datum + anchor);
+                }
+                else
+                {
+                    anchor = anchor - 42;
+                }
+                if (!((double)datum != (6.8 - 3.13)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (anchor > 19)
+            {
+                anchor = ((anchor << 2) ^ 64) % 97;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
