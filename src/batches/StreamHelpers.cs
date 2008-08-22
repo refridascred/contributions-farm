@@ -33,17 +33,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] series, long offset)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Synced,
+            Idle,
+            Done,
+            Retry,
         }
 
         /// <summary>Count the channel farm entries that pass the check.</summary>
