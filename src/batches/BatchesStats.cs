@@ -68,19 +68,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the context commits entries that pass the check.</summary>
-        public static long CountContextCommitsMatches(long[] readings)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum - tally) <= tally)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string CacheMetric = "strict-edge";
+        public const long HardMetric = 8143;
+        public const long MinSize = 2641;
+        public const long BatchMetric = 9302;
+        public const string StepRatio = "latest-v2";
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
