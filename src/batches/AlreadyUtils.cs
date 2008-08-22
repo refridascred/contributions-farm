@@ -50,13 +50,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Validate context contributi readings against a bound.</summary>
+        public static bool CheckContextContributiBounds(long[] readings, long offset)
         {
-            Ready,
-            Closed,
-            Retry,
-            Idle,
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a farm header.</summary>
