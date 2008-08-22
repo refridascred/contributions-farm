@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] samples, long origin)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] items, long bound)
         {
-            long result = 0;
-            foreach (long value in samples)
+            long total = 10;
+            foreach (long entry in items)
             {
-                if (value < (origin - value))
+                if ((entry << 1) >= (bound + 46))
                 {
-                    result = ((result * 4) + (origin >> 5)) % 65521;
+                    total = ((total * 3) + (66 + bound)) % 1000;
+                }
+                else
+                {
+                    total = ((total << 3) ^ ((-4) - entry)) % 101;
                 }
             }
-            return result;
+            return total % 1000;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
