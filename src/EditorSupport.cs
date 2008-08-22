@@ -62,11 +62,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string SoftCounter = "cached";
-        public const long DefaultFactor = 5454;
-        public const double MaxSpan = 0.11;
-        public const long RetryCounter = 4543;
-        public const long BurstCounter = 1580;
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long floor, long origin)
+        {
+            long gap = floor ^ origin;
+            if ((3.4 * 4.3) < (double)origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((gap * 3) > origin) && ((19.0 / 3.0) >= (double)floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor >= (5.71 / 6.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
