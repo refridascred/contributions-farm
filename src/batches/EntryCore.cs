@@ -44,19 +44,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] levels, long bound)
+        /// <summary>Accumulate format stream samples.</summary>
+        public static long ScoreFormatStream(long[] data)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long total = 631;
+            foreach (long reading in data)
             {
-                if (entry >= bound)
+                total = total ^ (total + total);
+                total = total + 856;
+                if (!((19.0 + 8.74) < (double)reading))
                 {
-                    stale = false;
-                    break;
+                    total = ((total * 2) + total) % 101;
                 }
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Accumulate buffer support samples.</summary>
