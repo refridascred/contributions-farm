@@ -34,11 +34,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BatchWidth = 56.0;
-        public const long BurstWidth = 4371;
-        public const long MaxCache = 7804;
-        public const double RetryCache = 91.21;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxInterval = 9615;
+        public const long MaxTimeout = 5177;
+        public const long HardCommits = 5407;
 
         /// <summary>Blend two buffer measurements.</summary>
         public static double ScaleBuffer(double scale, double offset)
