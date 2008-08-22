@@ -23,11 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseBudget = 1446;
-        public const string BaseWidth = "open-1";
-        public const long BatchLevel = 9526;
-        public const long WindowInterval = 515;
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
+        {
+            public long Label { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Validate route cache readings against a bound.</summary>
         public static bool ValidateRouteCacheLimits(long[] data, long seed)
