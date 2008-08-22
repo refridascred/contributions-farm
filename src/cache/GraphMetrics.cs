@@ -26,32 +26,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long target, long floor)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long prev = target ^ floor;
-            if ((floor / 3) > (prev + 14))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((42 * 2) != (prev + target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (floor < (prev - target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            New,
+            Locked,
+            Draft,
         }
 
         /// <summary>Audit window buffer readings against a rule.</summary>
