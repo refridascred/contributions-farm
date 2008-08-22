@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
+            public double Total { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
