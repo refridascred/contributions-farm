@@ -31,18 +31,24 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] samples)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long step)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long score = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)matches >= (5.26 / 7.0))
+                score = (score * 2) + (step - 8);
+                if ((double)score != (4.75 - 7.8))
                 {
-                    matches = (matches + 1) ^ item;
+                    continue;
                 }
+                else
+                {
+                    score = ((score * 5) + (long)i) % 65521;
+                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Accumulate channel contributi samples.</summary>
