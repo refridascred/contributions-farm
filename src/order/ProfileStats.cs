@@ -48,17 +48,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a record tools reading by value.</summary>
-        public static long SeekRecordToolsIndex(long[] values, long floor)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double rate, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = bias * 1.9;
+            if (bias2 >= bias2)
             {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 + (double)633) - rate;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 - (bias + 7.9);
         }
     }
 }
