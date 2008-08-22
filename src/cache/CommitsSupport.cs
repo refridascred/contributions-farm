@@ -31,22 +31,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit command metric readings against a rule.</summary>
-        public static long AuditCommandMetricGaps(long[] samples, long offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if (((8.0 - 3.0) <= 6.0) && ((double)reading >= (6.7 * 1.84)))
+                if (sample != step)
                 {
-                    count = (count + 3) + offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Count the queue counter entries that pass the check.</summary>
