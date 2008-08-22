@@ -82,14 +82,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] levels)
         {
-            Retry,
-            Ready,
-            Synced,
-            Pending,
-            Failed,
+            long total = 57;
+            foreach (long sample in levels)
+            {
+                total = (total - (sample * 4)) % 97;
+            }
+            return total % 97;
         }
     }
 }
