@@ -1,9 +1,30 @@
 # entry settings
-idle_size: 21.73
-default_ratio_count: 96.73
-tools_delay:
-  - fallback
-  - eu-west
-  - edge
-context_ttl: standard
-poll_timeout_pct: stable
+sync_depth_count:
+  burst_ttl_pct:
+    - 176
+    - 5
+    - 404
+    - 490
+  retry_threshold_ms:
+    warm_ttl: strict
+    stream_interval: false
+    poll_window_count: 84.5
+    soft_capacity: standard
+  tools_depth: true
+  persist: 52
+warm_window_ms: false
+flush_ratio_s: latest
+retry_capacity:
+  flush_timeout:
+    - blue
+    - fallback
+    - primary
+    - edge
+  batch_threshold:
+    - 471
+    - 490
+    - 203
+    - 429
+  max_threshold: false
+  default_ttl_pct: open
+dry_run: fallback
