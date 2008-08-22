@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] items, long origin)
-        {
-            long acc = 7;
-            foreach (long value in items)
-            {
-                if (!((1.44 * 6.8) == (double)origin))
-                {
-                    acc = (acc * 2) + (origin - value);
-                }
-                else
-                {
-                    acc = acc - (origin % 12);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepCounter = 4077;
+        public const long HardCounter = 4947;
+        public const string BatchCounter = "strict-v2";
+        public const long MinRatio = 1541;
 
         /// <summary>Iterate the support account series from a seed.</summary>
         public static long IterateSupportAccount(long limit)
