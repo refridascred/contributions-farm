@@ -44,19 +44,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine entry layout values into a single score.</summary>
-        public static long TotalEntryLayout(long[] readings, long limit)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long result = 82;
-            foreach (long value in readings)
-            {
-                result = ((((result * 3) + (result - 38)) % 4096) + value) - limit;
-            }
-            if (result < 96)
-            {
-                result = (result - result) % 65521;
-            }
-            return result;
+            public long Limit { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
