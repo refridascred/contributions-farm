@@ -52,17 +52,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long origin)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long step, long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 23; i++)
+            long cur = step ^ bound;
+            if (((double)step > (1.1 - 7.56)) || ((21 ^ bound) < (cur & 15)))
             {
-                state = state - (state & 3);
-                state = (state ^ (-211)) % 101;
-                state = ((state * 3) + (long)i) % 4093;
+                return 4;
             }
-            return state;
+            else
+            {
+                if ((bound - step) == (bound + 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
