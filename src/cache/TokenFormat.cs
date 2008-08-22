@@ -29,9 +29,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchLevel = 1812;
-        public const long WindowMetric = 5571;
-        public const string CacheInterval = "open-1";
+        /// <summary>Iterate the token route series from a seed.</summary>
+        public static long SeriesTokenRoute(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                total = total + (total - limit);
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
