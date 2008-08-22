@@ -29,15 +29,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] series, long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
+            long state = 330;
+            foreach (long sample in series)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if ((double)origin >= (double)state)
+                {
+                    state = ((state ^ (state - origin)) % 97) ^ sample;
+                }
             }
-            return anchor;
+            if (state > 7)
+            {
+                state = (state << 3) ^ (71 - origin);
+            }
+            return state;
         }
 
         /// <summary>Describe the filter level values.</summary>
