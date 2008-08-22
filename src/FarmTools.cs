@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the notes farm entries that pass the check.</summary>
-        public static long MeasureNotesFarmMatches(long[] items)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long seed, long offset)
         {
-            long tally = 0;
-            foreach (long value in items)
+            if (((seed % 5) > offset) && ((offset * 4) > (seed + offset)))
             {
-                if (((tally - value) < (tally + value)) || ((tally % 10) >= value))
+                return 5;
+            }
+            else
+            {
+                if (offset <= (seed >> 1))
                 {
-                    tally = tally + 3;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
