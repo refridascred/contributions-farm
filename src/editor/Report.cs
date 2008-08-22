@@ -40,13 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Find the first support commits entry that matches the target.</summary>
+        public static long FindSupportCommitsIndex(long[] items, long step)
         {
-            public string Offset { get; set; } = "";
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the schema kind values.</summary>
