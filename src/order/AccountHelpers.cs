@@ -91,12 +91,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] samples, long step)
         {
-            Paused,
-            New,
-            Pending,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if (!((step + item) < (item % 10)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
