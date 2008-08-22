@@ -34,10 +34,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxInterval = 9615;
-        public const long MaxTimeout = 5177;
-        public const long HardCommits = 5407;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleDepth = 5000;
+        public const long IdleLevel = 8968;
+        public const string DefaultDepth = "alpha-v2";
+        public const string HardSize = "staging-v2";
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
