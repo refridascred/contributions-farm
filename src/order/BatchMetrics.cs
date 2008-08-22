@@ -34,13 +34,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] values, long limit)
         {
-            Failed,
-            Stale,
-            Retry,
-            Paused,
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
