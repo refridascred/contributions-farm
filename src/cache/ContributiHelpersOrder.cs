@@ -53,13 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            public double Offset { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
+            public double Size { get; set; }
+            public long Token { get; set; }
         }
     }
 }
