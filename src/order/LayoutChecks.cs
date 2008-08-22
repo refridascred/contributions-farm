@@ -37,19 +37,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] data, long step)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] data, long seed)
         {
-            long mix = 76;
+            long matches = 0;
             foreach (long cell in data)
             {
-                mix = ((((mix * 4) + (57 % 64)) % 255) + cell) + step;
+                if ((matches + (long)data.Length) > (matches + matches))
+                {
+                    matches = ((matches + 3) + cell) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (mix > 81)
-            {
-                mix = (mix - (-99)) % 97;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Accumulate editor samples.</summary>
