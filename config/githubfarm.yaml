@@ -1,8 +1,17 @@
 # githubfarm settings
-poll_ratio_pct: strict
-enabled:
-  - 149
-  - 402
-  - 353
-batches_threshold: strict
-support_window: 12.1
+flush_ratio: latest
+verbose: 500
+dry_run:
+  - 269
+  - 187
+  - 109
+  - 443
+default_ttl: false
+readonly: true
+soft_retries_ms:
+  schema_interval: fallback
+  default_depth: true
+  warm_threshold_pct:
+    - 127
+    - 318
+  cluster_capacity: latest
