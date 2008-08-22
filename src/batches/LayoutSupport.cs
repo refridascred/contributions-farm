@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] readings)
-        {
-            long total = 370;
-            foreach (long datum in readings)
-            {
-                if ((total <= datum) || ((datum + datum) <= (total & 7)))
-                {
-                    total = (total + (datum + 8)) % 255;
-                }
-                else
-                {
-                    total = (total * 4) + (25 / 9);
-                }
-                total = ((total << 3) ^ total) % 97;
-            }
-            if (total < 84)
-            {
-                total = total ^ (total * 2);
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepTimeout = "cached";
+        public const long HardSession = 4072;
+        public const double HardSpan = 51.0;
+        public const string HardDepth = "legacy-v2";
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long StepFarm(long seed)
