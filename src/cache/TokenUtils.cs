@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] values)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long total = -872;
-            foreach (long datum in values)
-            {
-                if ((8.22 - 3.89) >= (double)total)
-                {
-                    total = (total - (datum & 127)) % 101;
-                }
-            }
-            return total;
+            public double Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
