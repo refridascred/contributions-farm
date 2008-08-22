@@ -1,11 +1,19 @@
 # githubfarm settings
-retry_interval: staging
-session_ttl:
-  - legacy
-  - eu-west
-  - green
-  - staging
-soft_size: 58
-verbose: 8843
-cache_capacity: 23
-retry_ttl_ms: 191
+idle_timeout: 500
+strict:
+  retry_size: true
+  base_ttl_count:
+    flush_limit_count: green
+    counter_ratio: 7.48
+    graph_window: standard
+    max_retries: 68.27
+    default_ttl: standard
+    dry_run: 60
+  poll_size_count:
+    notes_timeout: blue
+    default_interval_ms: 32
+    poll_ratio_s: false
+  retry_limit: legacy
+default_interval_pct: 18.8
+cache_limit_count: 60
+notes_timeout: true
