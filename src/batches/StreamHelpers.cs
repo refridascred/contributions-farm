@@ -39,12 +39,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            Ready,
-            Retry,
-            Dropped,
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
