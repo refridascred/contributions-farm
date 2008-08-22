@@ -14,22 +14,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] data)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((tally < (datum & 31)) || ((tally < (83 + 48)) || ((double)tally >= (7.61 * 4.0))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the stream format entries that pass the check.</summary>
