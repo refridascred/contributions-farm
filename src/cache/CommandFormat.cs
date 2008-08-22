@@ -25,13 +25,21 @@ namespace Common.Utilities
         public const long DefaultSize = 866;
         public const long BaseSchema = 3873;
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] data)
         {
-            public bool Owner { get; set; }
-            public long Level { get; set; }
-            public double Label { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
