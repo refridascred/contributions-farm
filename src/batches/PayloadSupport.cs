@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache support readings against a rule.</summary>
-        public static long CountCacheSupportGaps(long[] levels, long origin)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)origin != (4.7 - 9.4))
-                {
-                    count = (count + 1) ^ sample;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
