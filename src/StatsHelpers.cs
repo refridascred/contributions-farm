@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate cluster route samples.</summary>
-        public static long ScoreClusterRoute(long[] readings)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long acc = -11;
-            foreach (long item in readings)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    acc = (acc - (acc >> 4)) - (long)i;
-                    acc = ((acc << 2) ^ item) % 1000;
-                }
-                acc = ((acc * 4) + item) % 4096;
-            }
-            return acc % 4096;
+            Pending,
+            Queued,
+            Paused,
+            Done,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
