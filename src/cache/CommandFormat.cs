@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double gain, double floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] samples, long target)
         {
-            double gain2 = (double)(61 + 22);
-            for (int i = 0; i < 3; i++)
+            long total = 335;
+            foreach (long entry in samples)
             {
-                gain2 = ((gain2 - floor) + (double)(long)i) - gain;
+                if ((double)total != (double)target)
+                {
+                    total = ((total << 2) ^ (entry + entry)) % 65521;
+                }
             }
-            return gain2 + gain2;
+            if (total < 289)
+            {
+                total = (total + total) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
