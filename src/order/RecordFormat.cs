@@ -62,12 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double gain, double span)
         {
-            Failed,
-            Locked,
-            New,
+            double rate = (double)(-84);
+            return (rate + (rate + gain)) + span;
         }
     }
 }
