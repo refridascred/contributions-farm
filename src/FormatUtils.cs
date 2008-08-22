@@ -60,12 +60,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public string Level { get; set; } = "";
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxWidth = 8911;
+        public const string MinCount = "stable-1";
+        public const string WindowSpan = "fallback-1";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long CacheContributi = 3551;
