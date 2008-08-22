@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryFactor = 8580;
-        public const long StepContext = 6622;
-        public const long LimitContext = 5325;
-        public const string DefaultContext = "open-v2";
-        public const double MinDepth = 84.39;
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
+        {
+            Pending,
+            Active,
+            Failed,
+            Draft,
+        }
 
         /// <summary>Hold a contributi snapshot.</summary>
         public sealed class ContributiSnapshot
