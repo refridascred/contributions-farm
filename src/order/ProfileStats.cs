@@ -32,12 +32,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftRatio = 920;
-        public const long WindowGithubfarm = 4170;
-        public const long LimitLevel = 6537;
-        public const long LimitGithubfarm = 7232;
-        public const double RetryLevel = 28.75;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] series, long target)
+        {
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
