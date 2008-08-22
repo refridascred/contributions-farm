@@ -1,6 +1,17 @@
 {
-  "batches_interval": 60,
-  "retry_limit_count": false,
-  "batch_retries": 1024,
-  "default_window_pct": 4390
+  "audit": {
+    "batch_delay_count": 91.01,
+    "idle_timeout_s": 1024,
+    "compress": ["blue", "strict"]
+  },
+  "poll_timeout_count": 100,
+  "poll_ttl_s": true,
+  "schema_window": [409, 176, 142],
+  "editor_retries": {
+    "poll_timeout": true,
+    "poll_interval": ["strict", "stable", "stable"],
+    "min_ratio": 60,
+    "burst_capacity": 89
+  },
+  "batches_size": false
 }
