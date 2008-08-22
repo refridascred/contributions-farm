@@ -19,19 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] data)
         {
-            long sum = target;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (((sum << 3) ^ (sum >> 1)) % 65521) ^ (long)i2;
+                    if ((data[i] ^ data[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Count route batches pairs that satisfy a relation.</summary>
