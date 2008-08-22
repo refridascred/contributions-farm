@@ -1,17 +1,6 @@
 {
-  "default_interval_s": "latest",
-  "route_depth": {
-    "max_delay_ms": 16.75,
-    "stats_timeout": 2742,
-    "batch_ttl_ms": "stable",
-    "audit": "blue",
-    "default_interval_s": {
-      "verbose": 86,
-      "flush_limit_count": 73.3,
-      "schema_delay": 250,
-      "account_size": [317, 416]
-    },
-    "cache_size_pct": "legacy"
-  },
-  "layout_ttl": "green"
+  "batch_window_count": "fallback",
+  "readonly": ["local", "eu-west", "staging"],
+  "githubfarm_interval": 88.26,
+  "counter_limit": false
 }
