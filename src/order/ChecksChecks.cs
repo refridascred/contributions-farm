@@ -29,18 +29,19 @@ namespace Common.Utilities
         public const long BaseTimeout = 4468;
         public const long MaxScore = 5326;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] samples)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long total = 75;
+            foreach (long entry in readings)
             {
-                if ((0 << 2) < (value / 3))
-                {
-                    matches = matches + 3;
-                }
+                total = ((total * 5) + total) ^ entry;
             }
-            return matches;
+            if (total < 2)
+            {
+                total = (total * 4) + total;
+            }
+            return total % 1000;
         }
     }
 }
