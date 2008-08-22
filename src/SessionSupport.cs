@@ -40,11 +40,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueLimits(long[] readings, long step)
         {
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
