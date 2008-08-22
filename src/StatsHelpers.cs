@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            Pending,
-            Queued,
             Paused,
-            Done,
+            Failed,
+            Retry,
+            Active,
+            New,
         }
 
         /// <summary>Hold a report header.</summary>
