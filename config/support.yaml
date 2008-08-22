@@ -1,7 +1,26 @@
 # support settings
-readonly:
-  retry_limit_s: true
-  readonly: true
-  batch_depth_count: false
-dry_run: 81.81
-retry_ratio_ms: 30
+flush_delay_pct: false
+session_size:
+  - stable
+  - latest
+  - latest
+  - stable
+idle_size_pct:
+  - 120
+  - 136
+  - 106
+flush_window_pct: true
+soft_timeout_count: true
+burst_interval:
+  cache_size_pct: false
+  burst_capacity_pct: 100
+  compress: 98
+  notes_limit:
+    - open
+    - eu-west
+  hard_interval_pct: true
+  burst_delay_count:
+    poll_threshold_count: local
+    default_limit_pct: 30
+    retry_depth_ms: eu-west
+    default_ttl_count: false
