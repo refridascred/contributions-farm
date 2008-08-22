@@ -1,18 +1,11 @@
 {
-  "idle_size_s": {
-    "compress": [209, 171, 1, 137],
-    "burst_window_pct": {
-      "max_size_count": 8486,
-      "batch_timeout_s": 44.09,
-      "order_ratio": true,
-      "session_threshold": 75.46,
-      "hard_ttl": "eu-west"
-    },
-    "strict": "fallback"
-  },
-  "batch_depth": "blue",
-  "audit": 44.94,
-  "default_timeout_count": 500,
-  "stream_capacity": 70,
-  "flush_size_ms": 8.8
+  "idle_threshold_s": 39.7,
+  "enabled": 95.98,
+  "base_ttl_count": 60,
+  "commits_retries": {
+    "warm_threshold_pct": false,
+    "base_timeout_count": 60,
+    "retry_timeout_count": "strict",
+    "schema_threshold": "blue"
+  }
 }
