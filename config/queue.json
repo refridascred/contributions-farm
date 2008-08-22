@@ -1,8 +1,12 @@
 {
-  "max_size_ms": 26.56,
-  "flush_timeout": ["green", "cached", "cached"],
-  "cache_limit_ms": [488, 115, 422, 309],
-  "burst_interval_ms": 89,
-  "idle_capacity_ms": "edge",
-  "metrics_delay": true
+  "verbose": {
+    "compress": 100,
+    "enabled": 68,
+    "burst_delay": "green",
+    "window_retries": "primary"
+  },
+  "poll_delay": "fallback",
+  "route_size": 35.45,
+  "soft_size_pct": false,
+  "compress": ["standard", "primary", "blue", "cached"]
 }
