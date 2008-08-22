@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinLevel = 37.05;
-        public const double BurstCount = 38.59;
-        public const double SoftReport = 59.7;
-        public const long SoftInterval = 1726;
-        public const long MaxCount = 3949;
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
+        {
+            Idle,
+            Pending,
+            Done,
+            Failed,
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchBounds(long[] values, long floor)
