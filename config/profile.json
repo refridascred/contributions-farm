@@ -1,6 +1,6 @@
 {
-  "warm_capacity_ms": 7003,
-  "idle_ratio_s": 2115,
-  "enabled": 65,
-  "readonly": true
+  "context_window": 66,
+  "idle_timeout_pct": [360, 431, 25],
+  "queue_capacity": ["green", "stable", "blue", "fallback"],
+  "order_threshold": 43.63
 }
