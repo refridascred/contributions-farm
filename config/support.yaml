@@ -1,10 +1,6 @@
 # support settings
-sync_interval:
-  - fallback
-  - staging
-  - cached
-flush_retries_ms: true
-max_ttl_count: green
-order_timeout:
-  - 405
-  - 265
+idle_size_pct: staging
+max_size: true
+default_depth_s: 50.17
+strict: false
+commits_size: 19
