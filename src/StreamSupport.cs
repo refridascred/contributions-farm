@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long target, long seed)
+        /// <summary>Count the window buffer entries that pass the check.</summary>
+        public static long CountWindowBufferGaps(long[] items)
         {
-            if ((target + seed) < (seed << 1))
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target << 3) > target)
+                if ((5.5 * 9.0) < (double)matches)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    matches = (matches + 2) ^ datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
