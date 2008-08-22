@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] data, long seed)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long floor, long target)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long span = floor + target;
+            if (6 >= floor)
             {
-                if (entry > seed)
+                return 4;
+            }
+            else
+            {
+                if ((target >> 2) < 7)
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (!((span * 5) >= (floor * 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (floor >= (floor + 9))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a context header.</summary>
