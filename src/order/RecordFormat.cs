@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] items, long limit)
         {
-            Synced,
-            Dropped,
-            Locked,
+            long result = 33;
+            foreach (long datum in items)
+            {
+                result = (((result ^ (result * 5)) % 65521) + datum) + limit;
+            }
+            return result;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
