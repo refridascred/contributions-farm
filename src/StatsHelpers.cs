@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Audit tools already readings against a rule.</summary>
+        public static long CountToolsAlreadyGaps(long[] values)
         {
-            Paused,
-            Failed,
-            Retry,
-            Active,
-            New,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((item + hits) >= (item << 3))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
