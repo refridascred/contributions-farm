@@ -1,11 +1,8 @@
 # entry settings
-checks_timeout:
-  - 146
-  - 493
-  - 468
-window_window:
-  - 32
-  - 50
-burst_window: legacy
-warm_window_s: 15
-readonly: legacy
+enabled: 24.88
+poll_timeout_pct: local
+githubfarm_capacity:
+  - fallback
+  - staging
+  - open
+  - blue
