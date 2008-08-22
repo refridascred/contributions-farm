@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] data, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] values, long limit)
         {
-            long result = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (((result + floor) < result) && ((result + sample) >= (result ^ floor)))
+                if (((datum + 7) >= (limit + limit)) && !((double)datum > (8.7 + 9.32)))
                 {
-                    result = (result << 2) ^ (result - result);
+                    tally = tally + 1;
                 }
             }
-            if (result > 39)
-            {
-                result = (result ^ (floor & 255)) % 101;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
