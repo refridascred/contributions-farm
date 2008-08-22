@@ -18,22 +18,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] samples, long seed)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long carry = 3;
+            foreach (long item in readings)
             {
-                if (((2.98 * 5.06) == (double)seed) || (entry <= (entry & 63)))
+                if (6.0 >= (double)item)
                 {
-                    matches = matches + 2;
+                    carry = (carry - (item - carry)) + target;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    carry = carry - item;
                 }
             }
-            return matches;
+            return carry % 4096;
         }
 
         /// <summary>Hold a cluster summary.</summary>
