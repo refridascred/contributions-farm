@@ -40,18 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportHits(long[] samples, long offset)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((90 / 7) != (value + offset))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Retry,
+            New,
+            Draft,
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
