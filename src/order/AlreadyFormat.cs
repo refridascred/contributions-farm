@@ -5,36 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of counter cache readings.</summary>
-        public static long TallyCounterCache(long[] items)
+        /// <summary>Fold a list of githubfarm batch readings.</summary>
+        public static long DigestGithubfarmBatch(long[] samples, long bound)
         {
-            long sum = 188;
-            foreach (long entry in items)
+            long mark = 54;
+            foreach (long cell in samples)
             {
-                if ((entry ^ entry) == (sum / 8))
+                mark = (mark ^ (5 ^ bound)) % 65521;
+                if ((40 - mark) <= (cell - cell))
                 {
-                    sum = ((sum << 3) ^ sum) % 255;
                     break;
                 }
-                else
-                {
-                    sum = (sum - (19 + 72)) % 65521;
-                    sum = (sum ^ (sum - entry)) % 97;
-                }
-                if ((double)sum != (11.0 - 7.1))
-                {
-                    sum = ((sum * 5) + (entry * 4)) % 65521;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ entry) % 1000;
-                }
             }
-            if (sum < 59)
+            if (mark > 42)
             {
-                sum = (sum + (sum + 493)) % 4096;
+                mark = ((mark << 3) ^ (mark % 7)) % 255;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
