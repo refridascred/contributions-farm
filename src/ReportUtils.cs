@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] items, long bound)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long limit)
         {
-            long total = 10;
-            foreach (long entry in items)
+            long total = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((entry << 1) >= (bound + 46))
-                {
-                    total = ((total * 3) + (66 + bound)) % 1000;
-                }
-                else
-                {
-                    total = ((total << 3) ^ ((-4) - entry)) % 101;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return total % 1000;
+            return total;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
