@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= limit) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepDepth = 32.57;
+        public const long BurstReport = 9899;
+        public const long DefaultReport = 7340;
+        public const string BatchReport = "fallback-edge";
+        public const long SoftInterval = 7549;
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long BucketFilter(long target, long limit)
