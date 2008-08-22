@@ -1,6 +1,10 @@
 {
-  "hard_interval": ["fallback", "eu-west", "cached", "fallback"],
-  "flush_size_ms": 69,
-  "hard_timeout_ms": [321, 431, 58],
-  "retry_window_ms": "primary"
+  "base_size": "standard",
+  "burst_threshold_ms": {
+    "flush_retries": true,
+    "min_depth_count": [201, 316, 129, 421],
+    "record_threshold": 100,
+    "warm_window_s": ["strict", "staging"]
+  },
+  "min_threshold_count": 5.32
 }
