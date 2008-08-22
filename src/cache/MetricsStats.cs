@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
-            public bool Size { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Grade a already record value against two limits.</summary>
