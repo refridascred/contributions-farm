@@ -41,24 +41,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] levels, long limit)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] samples, long seed)
         {
-            long acc = 491;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                acc = (acc ^ reading) % 101;
-                acc = acc + (limit + reading);
-                if ((limit + limit) > (acc + acc))
+                if (entry > seed)
                 {
+                    stale = false;
                     break;
                 }
             }
-            if (acc < 944)
-            {
-                acc = ((acc << 3) ^ (limit % 12)) % 65521;
-            }
-            return acc % 1000;
+            return stale;
         }
 
         /// <summary>Hold a stream stats.</summary>
