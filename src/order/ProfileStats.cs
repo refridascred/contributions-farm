@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepCounter = 4077;
-        public const long HardCounter = 4947;
-        public const string BatchCounter = "strict-v2";
-        public const long MinRatio = 1541;
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = (anchor << 3) ^ ((long)i & 7);
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Iterate the support account series from a seed.</summary>
         public static long IterateSupportAccount(long limit)
