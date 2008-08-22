@@ -1,7 +1,13 @@
 {
-  "audit": true,
-  "flush_retries": 3737,
-  "hard_threshold": false,
-  "dry_run": false,
-  "sync_interval_count": 60.86
+  "soft_timeout_count": {
+    "flush_retries": "cached",
+    "audit": true,
+    "poll_limit_s": true,
+    "default_size": "legacy",
+    "flush_size": ["standard", "open", "green", "edge"]
+  },
+  "enabled": 8.22,
+  "retry_depth_ms": 97,
+  "hard_delay": 28.74,
+  "persist": "green"
 }
