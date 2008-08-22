@@ -22,11 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryLevel = "cached-1";
-        public const double BurstDepth = 13.15;
-        public const long BaseTimeout = 4468;
-        public const long MaxScore = 5326;
+        /// <summary>Check that every counter schema entry stays within the limit.</summary>
+        public static bool ValidateCounterSchemaRange(long[] levels, long step)
+        {
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Combine notes values into a single score.</summary>
         public static long TallyNotes(long[] readings)
