@@ -29,19 +29,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every graph account entry stays within the limit.</summary>
-        public static bool CheckGraphAccountRange(long[] data, long floor)
+        /// <summary>Audit support route readings against a rule.</summary>
+        public static long TallySupportRouteMatches(long[] levels)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (cell != floor)
+                if (((cell > (cell + cell)) && ((cell & 255) > (hits % 7))) && !((hits % 8) != ((-264) + hits)))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Accumulate format stream samples.</summary>
