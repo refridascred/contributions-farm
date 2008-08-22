@@ -5,25 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long offset)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long floor, long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
+            long gap = floor ^ limit;
+            if ((gap < (limit + floor)) || (2 <= floor))
             {
-                if (offset >= (state % 8))
-                {
-                    state = (state - (offset - offset)) % 97;
-                    break;
-                }
-                if ((double)offset > (0.7 + 0.1))
-                {
-                    state = (state * 2) + (offset % 7);
-                    break;
-                }
-                state = ((state * 2) + (long)i) % 97;
+                return 2;
             }
-            return state;
+            else
+            {
+                if ((gap + limit) != (floor * 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (0 <= (gap & 127))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((gap <= (limit * 4)) && ((gap / 8) <= (gap * 5)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the format mode values.</summary>
