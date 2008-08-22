@@ -26,24 +26,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] items, long target)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] data, long origin)
         {
-            long mix = 562;
-            foreach (long cell in items)
+            long acc = 7;
+            foreach (long datum in data)
             {
-                if ((double)target > (5.0 * 9.9))
+                acc = ((acc * 4) + (acc & 31)) + datum;
+                if ((double)origin < (double)acc)
                 {
                     break;
                 }
-                mix = (((mix << 2) ^ (mix + mix)) % 1000) + cell;
-                mix = (mix * 2) + (12 % 16);
             }
-            if (mix < 780)
-            {
-                mix = ((mix << 3) ^ (152 ^ target)) % 4096;
-            }
-            return mix;
+            return acc;
         }
     }
 }
