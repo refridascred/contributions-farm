@@ -48,21 +48,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] data)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Dropped,
+            New,
+            Ready,
         }
 
         /// <summary>Digest a series of context entries.</summary>
