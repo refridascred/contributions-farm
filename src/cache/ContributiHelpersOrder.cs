@@ -40,12 +40,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Iterate the githubfarm cache series from a seed.</summary>
+        public static long StepGithubfarmCache(long seed)
         {
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = (acc + acc) % 255;
+                if ((6.4 - 19.0) >= (double)seed)
+                {
+                    acc = ((acc << 2) ^ (acc ^ seed)) % 1000;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a metrics token sample.</summary>
