@@ -53,12 +53,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MaxRatio = "fallback-v2";
-        public const long BatchCache = 9790;
-        public const double HardCache = 39.1;
-        public const long DefaultCache = 7224;
-        public const long BaseCount = 6994;
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Queued,
+            Failed,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long TallyMetricsMatches(long[] values, long target)
