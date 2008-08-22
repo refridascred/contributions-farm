@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultBudget = 3.57;
-        public const long MaxSchema = 6689;
-        public const long LimitSchema = 6788;
-        public const long RetrySchema = 7602;
-        public const long BatchRatio = 7858;
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
+        {
+            public long Size { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BatchFactor = 654;
