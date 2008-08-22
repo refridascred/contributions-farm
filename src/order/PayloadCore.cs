@@ -10,20 +10,13 @@ namespace Common.Utilities
         public const long CacheAccount = 249;
         public const long BatchAccount = 8541;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long seed)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long total = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                total = (total - total) % 101;
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    total = (((total << 2) ^ total) % 97) - (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            Dropped,
+            Paused,
+            Done,
+            Active,
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
