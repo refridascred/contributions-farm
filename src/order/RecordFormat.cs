@@ -24,17 +24,14 @@ namespace Common.Utilities
         public const long BaseContributi = 8950;
         public const string CacheContributi = "cached-v2";
 
-        /// <summary>Locate a tools window reading by value.</summary>
-        public static long LookupToolsWindowIndex(long[] items, long seed)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= seed) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Done,
+            Ready,
+            Closed,
+            Active,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
