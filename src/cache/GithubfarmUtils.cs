@@ -20,18 +20,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatGaps(long[] items, long seed)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (value > (seed * 2))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Draft,
+            Closed,
+            Failed,
+            Active,
         }
 
         /// <summary>Grade a route value against two limits.</summary>
