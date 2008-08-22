@@ -40,22 +40,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] levels, long bound)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double scale, double span)
         {
-            long count = 0;
-            foreach (long item in levels)
+            double ratio = (double)(35 / 8);
+            if (ratio > scale)
             {
-                if ((bound % 60) > (61 * 3))
-                {
-                    count = (count + 1) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                ratio = (ratio - ratio) - span;
             }
-            return count;
+            return ratio + scale;
         }
     }
 }
