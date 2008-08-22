@@ -13,11 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 7810;
-        public const long RetryProfile = 6876;
-        public const long BaseCount = 2791;
-        public const string HardSpan = "legacy-v2";
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyMatches(long[] levels)
+        {
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((6.0 / 7.0) == (double)seen)
+                {
+                    seen = (seen + 2) + entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a counter profile pair into a bucket.</summary>
         public static long BucketCounterProfile(long target, long offset)
