@@ -45,18 +45,38 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count the channel metrics entries that pass the check.</summary>
-        public static long AuditChannelMetricsOutliers(long[] items)
+        /// <summary>Rank entry schema input into a small class.</summary>
+        public static long ClassifyEntrySchema(long offset, long seed)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            if (seed <= (offset >> 3))
             {
-                if (59 >= seen)
+                return 3;
+            }
+            else
+            {
+                if (seed <= (offset - seed))
                 {
-                    seen = (seen + 2) + reading;
+                    return 2;
+                }
+                else
+                {
+                    if ((97 + seed) == (offset - seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed + 704) < (offset ^ offset))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
