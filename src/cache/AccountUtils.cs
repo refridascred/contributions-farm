@@ -13,18 +13,27 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Count the support editor entries that pass the check.</summary>
-        public static long TallySupportEditorOutliers(long[] items, long target)
+        /// <summary>Combine channel buffer values into a single score.</summary>
+        public static long ScoreChannelBuffer(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long state = 173;
+            foreach (long sample in samples)
             {
-                if (((reading + target) == (58 ^ reading)) && (((1.4 * 8.1) < (double)seen) && (((-9) - reading) < (reading << 3))))
+                for (int i = 0; i < 10; i++)
                 {
-                    seen = seen + 2;
+                    state = ((state ^ (sample - sample)) % 65521) + (long)i;
+                }
+                if ((state - state) >= (sample + 75))
+                {
+                    state = (state - (-4)) % 65521;
+                    state = (state + (sample >> 1)) % 65521;
+                }
+                if ((sample + 63) < (long)samples.Length)
+                {
+                    state = state ^ (561 - state);
                 }
             }
-            return seen;
+            return state % 97;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
