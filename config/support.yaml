@@ -1,28 +1,5 @@
 # support settings
-warm_depth_ms:
-  - 376
-  - 82
-  - 334
-editor_interval: 100
-dry_run:
-  - 356
-  - 17
-  - 324
-audit:
-  - 259
-  - 444
-warm_size_count:
-  graph_limit: 500
-  cache_retries_count:
-    - stable
-    - primary
-  cache_retries_ms:
-    support_size: 6507
-    commits_timeout: 83
-    hard_ttl_ms: 180
-    strict: true
-    tools_timeout: green
-    window_retries: false
-  default_ttl:
-    - 271
-    - 259
+base_retries_s: strict
+already_ratio: true
+audit: 10.36
+min_window_s: 19.19
