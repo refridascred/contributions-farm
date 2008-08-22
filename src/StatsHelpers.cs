@@ -51,24 +51,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate commits format samples.</summary>
-        public static long TallyCommitsFormat(long[] levels, long floor)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] readings)
         {
-            long carry = 1;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((carry ^ floor) >= carry)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = carry ^ (datum ^ carry);
-                    carry = (carry - (carry / 3)) % 101;
+                    if ((readings[i] ^ readings[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                carry = (carry + datum) % 4096;
             }
-            if (carry < 722)
-            {
-                carry = ((carry << 2) ^ (carry - carry)) % 97;
-            }
-            return carry % 65521;
+            return hits;
         }
     }
 }
