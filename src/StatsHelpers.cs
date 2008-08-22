@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] levels)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileMatches(long[] samples, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)count <= (0.5 / 3.0))
                 {
-                    if ((levels[i] - levels[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = ((count + 1) + entry) - target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
