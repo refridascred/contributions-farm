@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] items, long offset)
         {
-            public string Limit { get; set; } = "";
-            public double Label { get; set; }
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((tally ^ 9) <= 2)
+                {
+                    tally = ((tally + 3) + sample) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
