@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] samples, long seed)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] items)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (reading >= seed)
+                if (!((long)items.Length != (sample >> 5)) && ((long)items.Length <= 385))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Hold a cluster entry.</summary>
