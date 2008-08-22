@@ -60,12 +60,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            public double Label { get; set; }
             public long Region { get; set; }
-            public double Ratio { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
