@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] values, long bound)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((18.0 <= (double)(long)values.Length) || ((bound - bound) > (reading % 97)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Idle,
+            Active,
+            Draft,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
