@@ -23,22 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the session queue entries that pass the check.</summary>
-        public static long MeasureSessionQueueOutliers(long[] items, long step)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((double)count <= (17.0 / 3.0))
-                {
-                    count = ((count + 2) ^ reading) - step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public double Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
