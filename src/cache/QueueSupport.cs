@@ -55,19 +55,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] levels, long floor)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] items, long step)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry <= floor)
+                if (items[i] > step)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
