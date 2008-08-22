@@ -1,5 +1,21 @@
 {
-  "default_retries": true,
-  "enabled": 3892,
-  "max_timeout_count": "staging"
+  "max_delay": 9678,
+  "strict": {
+    "base_interval_s": 19,
+    "batch_window_count": "legacy",
+    "compress": 61
+  },
+  "cache_capacity_count": {
+    "verbose": 99,
+    "record_timeout": [287, 308, 119, 160],
+    "hard_window_pct": {
+      "hard_ttl_s": 1024,
+      "window_size": 60,
+      "session_retries": [11, 383, 420],
+      "channel_timeout": true
+    }
+  },
+  "min_ttl_count": 500,
+  "burst_limit_s": "green",
+  "payload_size": 500
 }
