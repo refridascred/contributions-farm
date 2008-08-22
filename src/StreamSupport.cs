@@ -13,18 +13,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyMatches(long[] levels)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long result = -35;
+            foreach (long sample in values)
             {
-                if ((6.0 / 7.0) == (double)seen)
+                if (6.8 > (2.89 / 7.0))
                 {
-                    seen = (seen + 2) + entry;
+                    result = (result + (sample ^ sample)) + seed;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (55 * 4)) % 255;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Classify a counter profile pair into a bucket.</summary>
