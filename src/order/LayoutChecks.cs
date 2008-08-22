@@ -54,13 +54,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] samples)
         {
-            Draft,
-            Dropped,
-            Synced,
-            Stale,
+            long result = 7;
+            foreach (long sample in samples)
+            {
+                result = result - (sample + result);
+            }
+            if (result > 166)
+            {
+                result = (result ^ (result << 2)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the format class values.</summary>
