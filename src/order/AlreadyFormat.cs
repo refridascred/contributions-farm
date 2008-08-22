@@ -30,23 +30,10 @@ namespace Common.Utilities
         public const string BaseQueue = "standard-edge";
         public const double DefaultFactor = 46.94;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] values, long bound)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (((19.0 * 18.0) > (19.0 - 3.4)) && ((hits ^ bound) == (hits << 1)))
-                {
-                    hits = (hits + 1) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double StepContributi = 27.46;
+        public const long BurstBudget = 1442;
+        public const long DefaultSpan = 9292;
 
         /// <summary>Validate queue stats readings against a bound.</summary>
         public static bool ValidateQueueStatsRange(long[] readings, long bound)
