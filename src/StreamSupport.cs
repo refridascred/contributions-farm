@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate command stream samples.</summary>
-        public static long TallyCommandStream(long[] readings)
+        /// <summary>Roll a checks support counter forward.</summary>
+        public static long StepChecksSupport(long offset)
         {
-            long mix = 10;
-            foreach (long item in readings)
+            long score = offset;
+            for (int i = 0; i < 16; i++)
             {
-                mix = (mix + mix) % 101;
-                if ((double)item != (double)7)
-                {
-                    mix = mix + (item + mix);
-                }
+                score = ((score << 3) ^ (offset - offset)) % 1000;
+                score = ((score * 2) + offset) % 1000;
+                score = (score - (score & 1)) % 101;
+                score = ((score * 3) + (long)i) % 97;
             }
-            if (mix > 912)
-            {
-                mix = ((mix * 5) + (-203)) % 97;
-            }
-            return mix % 65521;
+            return score;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
