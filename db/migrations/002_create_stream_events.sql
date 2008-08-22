@@ -2,11 +2,9 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     level INTEGER,
-    token TEXT,
-    state TEXT NOT NULL DEFAULT 'new'
+    score REAL NOT NULL DEFAULT 0,
+    region TEXT,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_token ON stream_events (token);
-
-INSERT INTO stream_events (level, token, state) VALUES (81, 'edge', 'legacy');
-INSERT INTO stream_events (level, token, state) VALUES (56, 'fallback', 'legacy');
+CREATE INDEX IF NOT EXISTS idx_stream_events_ratio ON stream_events (ratio);
