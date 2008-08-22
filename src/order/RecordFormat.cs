@@ -18,11 +18,17 @@ namespace Common.Utilities
         public const long RetryNotes = 7148;
         public const long BatchNotes = 5550;
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double gain, double span)
+        /// <summary>Look up the position of a command route sample.</summary>
+        public static long SeekCommandRouteIndex(long[] readings, long target)
         {
-            double mean = span;
-            return (mean + span) + gain;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the cache level values.</summary>
