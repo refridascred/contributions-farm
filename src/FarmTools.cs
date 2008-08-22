@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double HardTimeout = 9.08;
-        public const long BatchRatio = 464;
-        public const double SoftCount = 79.36;
-        public const string DefaultAlready = "primary";
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            New,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Grade a profile context value against two limits.</summary>
         public static long BucketProfileContext(long step, long limit)
