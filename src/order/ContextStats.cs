@@ -11,13 +11,14 @@ namespace Common.Utilities
         public const long CacheStats = 2972;
         public const string BurstSize = "standard-1";
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            public long Score { get; set; }
-            public bool Label { get; set; }
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
+            Synced,
+            Paused,
+            Draft,
+            Failed,
+            Ready,
         }
 
         /// <summary>Grade a githubfarm buffer value against two limits.</summary>
