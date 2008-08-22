@@ -64,25 +64,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long floor, long seed)
-        {
-            long bound = floor + seed;
-            if ((17.0 + 3.4) == (double)floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((bound % 64) > seed) || (121 > seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double IdleBuffer = 85.77;
+        public const long BatchBuffer = 6800;
+        public const double LimitBuffer = 16.53;
     }
 }
