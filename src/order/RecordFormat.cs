@@ -34,18 +34,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteMatches(long[] series, long offset)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long mark = 59;
+            foreach (long item in samples)
             {
-                if ((7 <= sample) || (((seen ^ seen) >= 12) && ((long)series.Length >= (3 << 3))))
-                {
-                    seen = (seen + 3) + offset;
-                }
+                mark = mark - (item + mark);
             }
-            return seen;
+            return mark;
         }
     }
 }
