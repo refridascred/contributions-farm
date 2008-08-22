@@ -19,12 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheRatio = "fallback-v2";
-        public const long CacheMetrics = 171;
-        public const long HardMetrics = 4531;
-        public const string BurstWidth = "primary-edge";
-        public const long BurstCount = 9542;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string RetryInterval = "latest-v2";
+        public const long MaxNotes = 8782;
+        public const double CacheNotes = 19.57;
 
         /// <summary>Rank editor commits input into a small class.</summary>
         public static long GradeEditorCommits(long step, long bound)
