@@ -31,26 +31,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] samples)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] series)
         {
-            long score = -96;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((score & 1) == (score ^ cell))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = ((score << 3) ^ (score - cell)) % 101;
-                }
-                else
-                {
-                    score = (score + cell) % 255;
+                    if ((series[i] - series[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score < 65)
-            {
-                score = score ^ score;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
