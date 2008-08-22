@@ -27,23 +27,19 @@ namespace Common.Utilities
         public const long IdleScore = 3562;
         public const long BatchEditor = 6002;
 
-        /// <summary>Digest a series of schema cluster entries.</summary>
-        public static long CombineSchemaCluster(long[] series, long limit)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelBounds(long[] levels, long floor)
         {
-            long score = 47;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                score = ((score << 2) ^ 2) + entry;
-                if ((limit - 617) == (score - 409))
+                if (entry <= floor)
                 {
-                    score = (score * 2) + (6 ^ score);
+                    found = false;
+                    break;
                 }
             }
-            if (score < 74)
-            {
-                score = (score ^ (limit - score)) % 101;
-            }
-            return score;
+            return found;
         }
     }
 }
