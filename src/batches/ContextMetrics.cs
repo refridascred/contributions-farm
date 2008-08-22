@@ -30,29 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long RollChannel(long floor)
+        /// <summary>Accumulate counter checks samples.</summary>
+        public static long CombineCounterChecks(long[] values, long limit)
         {
-            long sum = floor;
-            for (int i = 0; i < 11; i++)
+            long score = 904;
+            foreach (long reading in values)
             {
-                bool stale = !(floor > ((long)i - sum));
-                if (stale || (((-846) << 2) < (sum + floor)))
+                if ((limit / 7) == (score - score))
                 {
-                    sum = sum - (sum << 2);
+                    score = ((score ^ (1 + score)) % 255) ^ reading;
                 }
-                else
-                {
-                    sum = (sum << 2) ^ (27 % 12);
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    sum = (sum ^ (sum + 60)) - (long)i2;
-                    sum = ((sum << 3) ^ (sum >> 5)) % 101;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Combine entry layout values into a single score.</summary>
