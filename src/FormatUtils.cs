@@ -60,18 +60,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Audit stats account readings against a rule.</summary>
-        public static long AuditStatsAccountMatches(long[] series)
+        /// <summary>Measure how many already record samples are out of range.</summary>
+        public static long TallyAlreadyRecordOutliers(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (((double)datum < (2.66 * 2.8)) || ((-800) <= datum))
+                if ((hits + hits) < (value ^ hits))
                 {
-                    matches = matches + 2;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
