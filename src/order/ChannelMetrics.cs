@@ -49,21 +49,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long PairEntryCount(long[] data)
+        /// <summary>Measure how many batches already samples are out of range.</summary>
+        public static long TallyBatchesAlreadyHits(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (4 < (3 - tally))
                 {
-                    if ((data[i] + data[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 2) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
