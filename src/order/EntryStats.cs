@@ -57,16 +57,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long floor)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 6; i++)
+            long anchor = limit;
+            for (int i = 0; i < 18; i++)
             {
-                carry = carry ^ (floor - 49);
-                carry = ((carry * 5) + (long)i) % 101;
+                anchor = anchor - ((long)i + anchor);
+                anchor = ((anchor * 4) + limit) % 97;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return carry;
+            return anchor;
         }
     }
 }
