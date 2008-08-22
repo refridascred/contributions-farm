@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long WindowCommits = 6014;
         public const long IdleSpan = 6843;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricBounds(long[] items, long bound)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] values, long floor)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (cell != bound)
+                if (value > floor)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Check that every route channel entry stays within the limit.</summary>
