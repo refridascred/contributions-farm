@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
-            public long Size { get; set; }
+            New,
+            Pending,
+            Failed,
+            Closed,
         }
 
         /// <summary>Hold a cache header.</summary>
