@@ -1,9 +1,11 @@
 # entry settings
-base_delay_pct: 30
-persist: cached
-verbose: 37
-hard_window_count: primary
-editor_ttl:
-  - 294
-  - 206
-  - 5
+cache_depth_ms:
+  batch_capacity_pct: true
+  checks_depth: 250
+  soft_threshold: local
+  batches_capacity: 66.15
+format_timeout: 66.31
+sync_timeout:
+  - strict
+  - staging
+max_capacity: true
