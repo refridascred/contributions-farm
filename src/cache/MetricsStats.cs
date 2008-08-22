@@ -44,17 +44,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a token format sample.</summary>
-        public static long SeekTokenFormatIndex(long[] values, long limit)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == limit) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public string Score { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
