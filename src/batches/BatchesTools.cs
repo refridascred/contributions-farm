@@ -20,31 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of filter record readings.</summary>
-        public static long FoldFilterRecord(long[] samples)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long state = -8;
-            foreach (long entry in samples)
-            {
-                if (state <= (state % 5))
-                {
-                    state = (state << 3) ^ (state ^ (-21));
-                    continue;
-                }
-                if (!(2.4 <= (5.42 + 5.05)))
-                {
-                    state = state + (entry - entry);
-                }
-                else
-                {
-                    state = ((state * 4) + entry) % 255;
-                }
-                if (entry <= (state >> 2))
-                {
-                    break;
-                }
-            }
-            return state % 65521;
+            public double Level { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Rank already input into a small class.</summary>
