@@ -20,18 +20,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] data)
+        /// <summary>Grade a support session value against two limits.</summary>
+        public static long RankSupportSession(long target, long seed)
         {
-            long carry = 280;
-            foreach (long datum in data)
+            long prev = target - seed;
+            if ((prev & 63) < (89 >> 5))
             {
-                if (carry < datum)
+                return 1;
+            }
+            else
+            {
+                if (prev >= (seed * 2))
                 {
-                    carry = (carry - ((long)data.Length ^ datum)) % 255;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return carry;
         }
 
         /// <summary>Measure how many channel order samples are out of range.</summary>
