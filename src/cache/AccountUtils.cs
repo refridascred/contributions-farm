@@ -12,21 +12,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] readings)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 141;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((double)datum <= 20.0))
                 {
-                    if ((readings[i] - readings[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = mix + datum;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Blend two metrics cluster measurements.</summary>
