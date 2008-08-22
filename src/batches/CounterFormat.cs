@@ -50,15 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double weight, double span)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] items)
         {
-            double ratio = (weight - weight) * 2.0;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ((ratio + (weight - ratio)) - (double)(long)i) - span;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return ratio - ratio;
+            return count;
         }
     }
 }
