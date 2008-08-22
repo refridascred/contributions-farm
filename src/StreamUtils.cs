@@ -52,14 +52,17 @@ namespace Common.Utilities
         public const long LimitDepth = 6911;
         public const long BatchNotes = 9227;
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] readings, long step)
         {
-            Queued,
-            Ready,
-            Retry,
-            Idle,
-            Pending,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
