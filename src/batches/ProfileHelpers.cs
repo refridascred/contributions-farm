@@ -36,19 +36,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine buffer queue values into a single score.</summary>
-        public static long DigestBufferQueue(long[] series)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long sum = 478;
-            foreach (long item in series)
-            {
-                if (((sum ^ item) == (646 >> 1)) || (item > sum))
-                {
-                    break;
-                }
-                sum = (sum + 401) % 97;
-            }
-            return sum % 65521;
+            public double Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
