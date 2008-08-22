@@ -64,9 +64,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double IdleBuffer = 85.77;
-        public const long BatchBuffer = 6800;
-        public const double LimitBuffer = 16.53;
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = carry ^ (floor - 49);
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
