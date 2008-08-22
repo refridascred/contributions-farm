@@ -40,23 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long FoldBatches(long[] data)
+        /// <summary>Count the cache report entries that pass the check.</summary>
+        public static long AuditCacheReportHits(long[] series)
         {
-            long result = 39;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                result = (result - datum) % 1000;
-                if (!(result >= datum))
+                if ((entry - 9) <= tally)
                 {
-                    result = (result + (result & 15)) % 101;
+                    tally = tally + 2;
                 }
             }
-            if (result > 781)
-            {
-                result = result ^ (result + result);
-            }
-            return result;
+            return tally;
         }
     }
 }
