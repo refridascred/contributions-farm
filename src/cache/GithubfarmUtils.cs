@@ -28,19 +28,13 @@ namespace Common.Utilities
         public const string MinScore = "primary-edge";
         public const long DefaultFarm = 985;
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamLimits(long[] levels, long step)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Synced,
+            Pending,
+            Closed,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
