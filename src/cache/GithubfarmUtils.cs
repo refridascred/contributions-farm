@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long step, long limit)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long offset, long target)
         {
-            if ((limit / 6) > 3)
+            if (980 < (target / 2))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if ((6 % 8) > (limit - 577))
+                if ((11.0 + 19.0) != (double)offset)
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
