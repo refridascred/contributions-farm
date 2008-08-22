@@ -1,5 +1,7 @@
 # support settings
-filter_depth: cached
-flush_timeout_s: true
-sync_size_ms: 4107
-schema_depth: 35
+poll_interval: 40
+compress: local
+support_timeout: 35.72
+batch_interval: 76
+batch_depth: blue
+base_threshold_s: cached
