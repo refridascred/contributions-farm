@@ -13,30 +13,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long target, long floor)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long step, long limit)
         {
-            long offset = target - floor;
-            if ((offset & 3) <= offset)
+            if ((limit / 6) > 3)
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if (((target - floor) <= offset) || ((9.0 * 3.6) >= (double)target))
+                if ((6 % 8) > (limit - 577))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if ((7 + 707) <= floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 6;
                 }
             }
         }
