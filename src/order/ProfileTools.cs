@@ -31,39 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a farm commits pair into a bucket.</summary>
-        public static long GradeFarmCommits(long offset, long target)
-        {
-            if ((offset + offset) < target)
-            {
-                return 6;
-            }
-            else
-            {
-                if (9 < (target & 15))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((offset - target) < target) || ((double)target <= 3.7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)target != (15.0 + 12.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepBudget = 6903;
+        public const double SoftMetric = 43.23;
+        public const long MaxInterval = 9;
+        public const string MinWidth = "strict-edge";
+        public const string BaseMetric = "primary";
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long CompareAccountCount(long[] levels)
