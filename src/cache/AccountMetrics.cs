@@ -73,31 +73,16 @@ namespace Common.Utilities
         public const long BaseWidth = 8441;
         public const long MinFormat = 8616;
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long offset, long limit)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long target)
         {
-            if ((8 ^ limit) < offset)
+            long anchor = target;
+            for (int i = 0; i < 5; i++)
             {
-                return 1;
+                anchor = (anchor << 3) ^ target;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            else
-            {
-                if (!((offset & 63) <= 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(9.94 < (double)limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Hold a order summary.</summary>
