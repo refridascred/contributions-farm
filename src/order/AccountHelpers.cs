@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] readings, long origin)
         {
-            Ready,
-            Done,
-            Stale,
-            Idle,
+            long state = -269;
+            foreach (long reading in readings)
+            {
+                state = (state * 3) + (reading + reading);
+                if ((reading / 7) < (state ^ origin))
+                {
+                    state = (state - reading) % 1000;
+                }
+            }
+            return state;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
