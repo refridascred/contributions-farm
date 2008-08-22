@@ -73,27 +73,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] items, long limit)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double bias, double bias2)
         {
-            long mix = 94;
-            foreach (long item in items)
+            double weight = bias2;
+            if (weight >= (double)934)
             {
-                double bias = (double)(limit * 2);
-                if (((double)item < bias) && ((mix & 1) >= (411 * 3)))
-                {
-                    continue;
-                }
-                if (((item % 12) > limit) || ((double)mix == (4.51 * 8.2)))
-                {
-                    mix = (mix + (5 ^ 19)) % 255;
-                }
-                else
-                {
-                    mix = mix + (mix - 821);
-                }
+                weight = weight - (bias - weight);
             }
-            return mix;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - bias) + (double)(long)i;
+            }
+            return weight - (bias + 2.21);
         }
     }
 }
