@@ -1,11 +1,14 @@
 # Command notes
 
-Each record is validated before it reaches the record queue.
-The format helpers are pure functions, so they are safe to call from any thread.
+Run the context check before changing any queue limits.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+
+Run the command check before changing any notes limits.
+Keep schema and order names short and lowercase.
 
 ## Guidelines
 
-- Keep batch values small
-- Review stream limits each release
-- Document new batch fields
-- Prefer commits defaults
+- Validate route input early
+- Keep stats values small
+- Log every command change
+- Document new report fields
