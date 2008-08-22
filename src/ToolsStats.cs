@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (matches <= (sample ^ sample))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetryRecord = "primary";
+        public const string MinRatio = "open";
+        public const long BurstRecord = 8457;
+        public const double StepRecord = 41.56;
+        public const string LimitRecord = "strict-v2";
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long WeighContributi(long[] values, long limit)
