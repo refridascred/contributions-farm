@@ -22,18 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] values, long limit)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if (((entry << 3) > (limit - count)) || ((double)limit == (1.1 - 13.0)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Failed,
+            Dropped,
+            Active,
+            Pending,
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
