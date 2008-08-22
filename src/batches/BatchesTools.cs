@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate cache window readings against a bound.</summary>
-        public static bool ValidateCacheWindowBounds(long[] readings, long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (datum < seed)
+                if (origin >= (sample % 16))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Project the next farm value.</summary>
