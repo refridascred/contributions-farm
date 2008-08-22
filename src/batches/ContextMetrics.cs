@@ -27,10 +27,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MaxScore = "fallback-edge";
-        public const string WindowAccount = "alpha";
-        public const long LimitAccount = 8591;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] series, long offset)
+        {
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
