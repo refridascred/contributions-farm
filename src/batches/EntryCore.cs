@@ -11,22 +11,21 @@ namespace Common.Utilities
         public const string DefaultNotes = "cached-v2";
         public const long WindowNotes = 1076;
 
-        /// <summary>Digest a series of already stats entries.</summary>
-        public static long ScoreAlreadyStats(long[] samples, long target)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] values)
         {
-            long mark = 77;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((target * 3) <= (mark % 60))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = ((mark + mark) % 65521) - reading;
-                }
-                if (mark <= (2 + target))
-                {
-                    break;
+                    if ((values[i] + values[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Audit support route readings against a rule.</summary>
