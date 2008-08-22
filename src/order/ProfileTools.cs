@@ -31,24 +31,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] series)
         {
-            long score = step;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                score = (score * 2) + (step - 8);
-                if ((double)score != (4.75 - 7.8))
+                if (!((reading + reading) >= (reading & 3)))
                 {
-                    continue;
+                    matches = matches + 3;
                 }
-                else
-                {
-                    score = ((score * 5) + (long)i) % 65521;
-                }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Accumulate channel contributi samples.</summary>
