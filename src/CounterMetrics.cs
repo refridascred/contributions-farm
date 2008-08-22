@@ -22,11 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Measure how many order channel samples are out of range.</summary>
+        public static long CountOrderChannelOutliers(long[] samples, long bound)
         {
-            public string Label { get; set; } = "";
-            public bool Stamp { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if ((long)samples.Length != (bound - bound))
+                {
+                    count = (count + 2) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
