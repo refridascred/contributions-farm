@@ -30,21 +30,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] samples)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Dropped,
+            Idle,
+            Failed,
         }
 
         /// <summary>Look up the position of a window sample.</summary>
