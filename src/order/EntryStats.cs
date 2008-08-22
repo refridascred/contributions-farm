@@ -47,15 +47,24 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long offset)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long step, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 22; i++)
+            if (((step ^ seed) > (step + seed)) && ((seed - seed) != (seed + step)))
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if ((25 * 2) != (step + step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
