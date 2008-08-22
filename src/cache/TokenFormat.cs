@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Dropped,
-            Done,
-            Retry,
-            New,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardFilter = "staging-edge";
+        public const double WindowFilter = 0.35;
+        public const long MaxCount = 2450;
+        public const double RetryFilter = 94.21;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long FoldEditor(long[] items, long offset)
