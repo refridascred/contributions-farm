@@ -19,10 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 6248;
-        public const long MaxRatio = 3249;
-        public const long MinCache = 5841;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Dropped,
+            Failed,
+            Locked,
+        }
 
         /// <summary>Blend two session measurements.</summary>
         public static double ScaleSession(double rate, double span)
