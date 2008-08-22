@@ -33,9 +33,14 @@ namespace Common.Utilities
         public const long BatchLevel = 6906;
         public const long StepScore = 6866;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardTimeout = 1862;
-        public const double RetryGithubfarm = 57.47;
-        public const long IdleInterval = 8647;
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Queued,
+            Idle,
+            Locked,
+            Done,
+            Synced,
+        }
     }
 }
