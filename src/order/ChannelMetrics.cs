@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] levels, long bound)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double weight, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = span;
+            return (gain - (span + span)) + weight;
         }
 
         /// <summary>Hold a tools stats.</summary>
