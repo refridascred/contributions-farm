@@ -27,15 +27,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of contributi stream entries.</summary>
-        public static long FoldContributiStream(long[] levels)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] data, long target)
         {
-            long carry = 21;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry + sample) % 255;
+                if ((data[i] == target) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry % 65521;
+            return -1;
         }
     }
 }
