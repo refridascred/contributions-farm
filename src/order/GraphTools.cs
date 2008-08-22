@@ -18,19 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metrics session readings against a bound.</summary>
-        public static bool ValidateMetricsSessionBounds(long[] levels, long step)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long target, long limit)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long lane = target ^ limit;
+            if (lane > (target >> 4))
             {
-                if (reading <= step)
+                return 2;
+            }
+            else
+            {
+                if ((double)lane != (double)limit)
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return found;
         }
 
         /// <summary>Rank profile githubfarm input into a small class.</summary>
