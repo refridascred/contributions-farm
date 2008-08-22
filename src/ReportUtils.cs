@@ -52,19 +52,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a stream command reading.</summary>
-        public static double ScaleStreamCommand(double gain, double span)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long MatchOrderCount(long[] data)
         {
-            double mean = 9.0;
-            if (mean < gain)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean - (gain - span);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (double)70) + (double)(long)i;
-            }
-            return mean - 1.3;
+            return seen;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
