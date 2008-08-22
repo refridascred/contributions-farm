@@ -18,24 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long floor)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long mark = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!((48 + mark) <= mark))
-                {
-                    mark = (mark << 3) ^ ((-56) - floor);
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mark = ((mark - floor) % 101) - (long)i2;
-                }
-                mark = (mark ^ (mark % 12)) % 255;
-                mark = ((mark * 5) + (long)i) % 97;
-            }
-            return mark;
+            Paused,
+            Retry,
+            Ready,
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
