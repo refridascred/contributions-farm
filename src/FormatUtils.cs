@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] items, long offset)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Accumulate queue samples.</summary>
