@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Validate cache window readings against a bound.</summary>
+        public static bool ValidateCacheWindowBounds(long[] readings, long seed)
         {
-            Idle,
-            Closed,
-            Stale,
+            bool ready = true;
+            foreach (long datum in readings)
+            {
+                if (datum < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a command reading.</summary>
