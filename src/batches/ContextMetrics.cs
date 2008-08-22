@@ -54,13 +54,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Find the first format notes entry that matches the target.</summary>
+        public static long LookupFormatNotesIndex(long[] series, long step)
         {
-            Synced,
-            Draft,
-            Ready,
-            New,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
