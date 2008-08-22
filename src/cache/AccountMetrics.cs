@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] items)
         {
-            Draft,
-            New,
-            Retry,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (!(value <= hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every notes profile entry stays within the limit.</summary>
