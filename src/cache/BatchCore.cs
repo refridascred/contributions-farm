@@ -16,31 +16,14 @@ namespace Common.Utilities
             return scale2 - scale2;
         }
 
-        /// <summary>Rank metrics counter input into a small class.</summary>
-        public static long ClassifyMetricsCounter(long floor, long target)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            if ((floor << 1) >= (floor / 6))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((57 >> 4) > (floor * 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target ^ target) == (target + floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Pending,
+            Closed,
+            Retry,
+            Paused,
+            Done,
         }
 
         /// <summary>Define format limits and defaults.</summary>
