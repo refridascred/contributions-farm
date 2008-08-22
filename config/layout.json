@@ -1,9 +1,6 @@
 {
-  "poll_capacity_s": {
-    "soft_limit_s": [16, 496, 147],
-    "verbose": true,
-    "min_interval_pct": [395, 220, 275]
-  },
-  "dry_run": 65,
-  "default_capacity": 1024
+  "verbose": "open",
+  "format_ttl": 84,
+  "default_ttl_ms": 56,
+  "sync_ttl": false
 }
