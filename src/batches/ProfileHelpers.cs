@@ -46,12 +46,20 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double RetryFilter = 12.01;
-        public const double RetryTimeout = 7.54;
-        public const long IdleFilter = 1060;
-        public const long CacheFilter = 1902;
-        public const long HardFilter = 409;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] items, long limit)
+        {
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long WindowPayload = 8920;
