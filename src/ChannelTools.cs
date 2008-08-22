@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            Paused,
-            Draft,
-            Dropped,
+            public bool Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
