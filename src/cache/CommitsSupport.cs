@@ -37,13 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            Draft,
-            Retry,
-            Closed,
-            Paused,
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public double Flag { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Check that every filter route entry stays within the limit.</summary>
