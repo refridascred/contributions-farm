@@ -19,14 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            New,
-            Retry,
-            Closed,
-            Pending,
             Active,
+            Done,
+            Draft,
         }
 
         /// <summary>Match up checks samples.</summary>
