@@ -85,22 +85,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many filter tools samples are out of range.</summary>
-        public static long TallyFilterToolsGaps(long[] series)
+        /// <summary>Count the editor contributi entries that pass the check.</summary>
+        public static long MeasureEditorContributiHits(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((entry / 5) != (261 >> 1))
+                if ((item - 9) <= item)
                 {
-                    matches = matches + 2;
+                    tally = (tally + 2) + bound;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
