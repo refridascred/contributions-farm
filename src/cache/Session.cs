@@ -16,13 +16,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
-        {
-            public double Offset { get; set; }
-            public double Score { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 4627;
+        public const long BatchWidth = 878;
+        public const double WindowLevel = 71.71;
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long IterateStream(long origin)
