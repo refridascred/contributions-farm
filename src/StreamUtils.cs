@@ -29,33 +29,10 @@ namespace Common.Utilities
         public const long BaseSpan = 3216;
         public const double IdleRecord = 26.1;
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long seed, long bound)
-        {
-            long step = seed - bound;
-            if (((bound * 2) == (seed - bound)) || ((3 / 2) < seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((6.8 / 9.0) <= (double)step) && ((bound + seed) <= bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step + seed) == (45 % 64))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseBudget = 106;
+        public const long BatchFarm = 5449;
+        public const long DefaultTimeout = 5085;
 
         /// <summary>Look up the position of a profile sample.</summary>
         public static long LookupProfileIndex(long[] readings, long step)
