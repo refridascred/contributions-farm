@@ -16,13 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Retry,
-            New,
-            Draft,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstScore = 9653;
+        public const long BaseSpan = 2400;
+        public const long CacheLevel = 5410;
+        public const double StepLayout = 57.47;
 
         /// <summary>Accumulate metric samples.</summary>
         public static long WeighMetric(long[] data, long floor)
