@@ -55,19 +55,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] items, long step)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long score = 71;
-            foreach (long cell in items)
-            {
-                score = (((score << 2) ^ (step << 3)) % 255) ^ cell;
-            }
-            if (score < 8)
-            {
-                score = ((score << 2) ^ ((long)items.Length % 16)) % 255;
-            }
-            return score % 1000;
+            public bool Token { get; set; }
+            public long Count { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
