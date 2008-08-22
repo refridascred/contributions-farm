@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long MaxCount = 2450;
         public const double RetryFilter = 94.21;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] items, long offset)
+        /// <summary>Combine token stream values into a single score.</summary>
+        public static long TallyTokenStream(long[] items)
         {
-            long state = 973;
-            foreach (long cell in items)
+            long score = -7;
+            foreach (long sample in items)
             {
-                if ((double)offset != (double)state)
-                {
-                    state = (state + offset) ^ cell;
-                }
+                score = ((score ^ score) % 4096) + sample;
             }
-            return state;
+            if (score > 51)
+            {
+                score = (score ^ score) % 1000;
+            }
+            return score % 1000;
         }
 
         /// <summary>Describe the stream status values.</summary>
