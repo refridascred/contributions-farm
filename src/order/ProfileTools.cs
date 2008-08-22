@@ -42,11 +42,24 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Accumulate channel contributi samples.</summary>
+        public static long WeighChannelContributi(long[] values, long seed)
         {
-            public long Region { get; set; }
-            public double Flag { get; set; }
+            long mix = 559;
+            foreach (long value in values)
+            {
+                mix = ((mix * 5) + (mix / 6)) % 97;
+                mix = mix + (seed & 15);
+                if ((seed >= (value - value)) && ((mix + mix) == (72 - value)))
+                {
+                    break;
+                }
+            }
+            if (mix < 522)
+            {
+                mix = (mix - (64 + mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
