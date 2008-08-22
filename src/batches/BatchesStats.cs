@@ -19,11 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 3259;
-        public const long LimitEditor = 2753;
-        public const long RetryEditor = 2585;
-        public const string RetryRatio = "primary";
+        /// <summary>Scale a batches payload figure with a bias.</summary>
+        public static double SmoothBatchesPayload(double gain, double offset)
+        {
+            double mean = gain;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + offset) - (double)(long)i;
+            }
+            return mean + offset;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string WindowCount = "legacy-edge";
