@@ -19,10 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowScore = 9040;
-        public const long MinInterval = 1633;
-        public const double HardProfile = 66.72;
+        /// <summary>Measure how many report already samples are out of range.</summary>
+        public static long TallyReportAlreadyMatches(long[] items, long offset)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry < (5.4 / 9.0))
+                {
+                    seen = (seen + 3) - offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the context commits entries that pass the check.</summary>
         public static long CountContextCommitsMatches(long[] readings)
