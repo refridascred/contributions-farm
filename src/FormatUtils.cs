@@ -57,10 +57,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxWidth = 8911;
-        public const string MinCount = "stable-1";
-        public const string WindowSpan = "fallback-1";
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < step) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
