@@ -22,19 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every counter schema entry stays within the limit.</summary>
-        public static bool ValidateCounterSchemaRange(long[] levels, long step)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Flag { get; set; }
+            public double Rank { get; set; }
+            public double Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
