@@ -33,15 +33,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double gain, double floor)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            double gain2 = gain;
-            if (gain2 >= gain)
-            {
-                gain2 = (gain2 - 5.57) - floor;
-            }
-            return gain2 - 1.89;
+            Synced,
+            Stale,
+            Pending,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
