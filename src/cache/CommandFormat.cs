@@ -34,18 +34,26 @@ namespace Common.Utilities
         public const string LimitQueue = "local-edge";
         public const long BatchDepth = 575;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] samples, long origin)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long mix = 58;
+            foreach (long cell in samples)
             {
-                if ((seen / 5) > (seen << 1))
+                if (!((mix <= (cell + 285)) || ((bound - bound) > 925)))
                 {
-                    seen = ((seen + 1) - entry) - origin;
+                    mix = mix ^ mix;
+                }
+                if ((6.24 - 15.0) >= (double)mix)
+                {
+                    mix = (mix - (mix / 4)) % 97;
+                }
+                if (((0.1 / 9.0) <= (double)bound) || ((466 ^ 3) <= (cell / 5)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mix % 65521;
         }
     }
 }
