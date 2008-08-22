@@ -25,10 +25,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchFactor = 654;
-        public const string WindowCount = "standard-edge";
-        public const long WindowSpan = 1416;
-        public const string WindowLevel = "alpha-1";
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
+        }
     }
 }
