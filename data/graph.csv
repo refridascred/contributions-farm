@@ -1,8 +1,8 @@
-id,owner,count,rank,ratio
-1,blue,51.31,4.82,49.4
-2,legacy,707,822,fallback
-3,486,41.05,790,stable
-4,49.02,edge,23,staging
-5,630,495,56.81,994
-6,15.68,304,260,34.99
-7,538,latest,72.49,25.22
+id,ratio,region,count
+1,876,primary,82.38
+2,726,blue,primary
+3,43.42,latest,12.49
+4,eu-west,810,latest
+5,57.93,46.33,37.24
+6,47.07,legacy,latest
+7,481,legacy,564
