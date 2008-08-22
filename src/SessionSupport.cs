@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] readings)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] series)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long sum = 71;
+            foreach (long sample in series)
             {
-                if (((1.0 + 4.52) > (double)matches) || (item >= 53))
+                sum = ((sum - ((long)series.Length * 3)) % 1000) ^ sample;
+                if (sum > (sum & 255))
                 {
-                    matches = matches + 2;
+                    break;
                 }
             }
-            return matches;
+            if (sum < 3)
+            {
+                sum = (sum * 5) + (sum >> 3);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
