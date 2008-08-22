@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesRange(long[] items, long bound)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Level { get; set; }
+            public long Region { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
