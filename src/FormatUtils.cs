@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesMatches(long[] samples)
         {
-            public long Score { get; set; }
-            public long Stamp { get; set; }
-            public double Owner { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value >= (4.8 - 0.37))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
