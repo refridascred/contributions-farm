@@ -47,22 +47,12 @@ namespace Common.Utilities
             return gain - (double)139;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] values, long bound)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long acc = 1;
-            foreach (long cell in values)
-            {
-                if ((4.1 + 0.8) == (double)bound)
-                {
-                    acc = (((acc << 3) ^ bound) % 65521) - cell;
-                }
-            }
-            if (acc < (-350))
-            {
-                acc = (acc ^ (bound - bound)) % 1000;
-            }
-            return acc;
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public double Level { get; set; }
         }
     }
 }
