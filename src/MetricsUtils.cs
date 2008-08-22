@@ -24,13 +24,12 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            Idle,
-            Done,
+            Active,
             Synced,
-            Stale,
+            Draft,
         }
 
         /// <summary>Define record limits and defaults.</summary>
