@@ -34,21 +34,12 @@ namespace Common.Utilities
             return drift - (double)366;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] data)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate channel samples.</summary>
