@@ -23,22 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] data, long seed)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((matches + (long)data.Length) > (matches + matches))
-                {
-                    matches = ((matches + 3) + cell) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Combine entry values into a single score.</summary>
