@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] samples, long floor)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long IterateCommits(long origin)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long score = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell > floor)
+                score = score - origin;
+                long step = origin;
+                if (!(((double)score >= 7.06) || ((step + origin) >= 33)))
                 {
-                    ready = false;
-                    break;
+                    score = score ^ (score % 64);
                 }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
