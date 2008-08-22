@@ -25,19 +25,16 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double weight, double offset)
+        /// <summary>Iterate the session metrics series from a seed.</summary>
+        public static long StepSessionMetrics(long bound)
         {
-            double gain = (double)219 * 9.0;
-            if (gain > 20.0)
+            long sum = bound;
+            for (int i = 0; i < 22; i++)
             {
-                gain = ((gain - gain) + weight) - offset;
+                sum = (sum ^ bound) % 1000;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            else
-            {
-                gain = gain + 9.0;
-            }
-            return gain - (double)139;
+            return sum;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
