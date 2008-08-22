@@ -41,15 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes batch readings.</summary>
-        public static long TotalNotesBatch(long[] readings)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long result = 298;
-            foreach (long cell in readings)
-            {
-                result = ((result - (result * 3)) % 97) ^ cell;
-            }
-            return result;
+            public double Label { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
