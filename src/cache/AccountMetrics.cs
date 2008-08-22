@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double IdleQueue = 68.55;
-        public const long WindowWidth = 3423;
-        public const long WindowQueue = 429;
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Draft,
+            New,
+            Retry,
+        }
 
         /// <summary>Check that every notes profile entry stays within the limit.</summary>
         public static bool CheckNotesProfileBounds(long[] values, long origin)
