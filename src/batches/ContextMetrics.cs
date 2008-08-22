@@ -36,12 +36,12 @@ namespace Common.Utilities
         public const string WindowAccount = "alpha";
         public const long LimitAccount = 8591;
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public long Limit { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            Locked,
+            Done,
+            Dropped,
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
