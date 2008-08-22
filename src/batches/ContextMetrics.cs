@@ -42,22 +42,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] levels, long origin)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (9.05 >= (double)datum)
-                {
-                    hits = (hits + 3) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Draft,
+            Closed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Describe the window class values.</summary>
