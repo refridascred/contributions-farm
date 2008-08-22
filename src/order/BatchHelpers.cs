@@ -22,11 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string StepEditor = "alpha";
-        public const double IdleEditor = 21.9;
-        public const long DefaultInterval = 8366;
-        public const long BaseSize = 1804;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 5252;
+        public const string LimitWindow = "standard-edge";
+        public const long BatchWindow = 8874;
+        public const double MaxWindow = 40.42;
+        public const double StepBudget = 90.2;
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool VerifyMetricsLimits(long[] items, long origin)
