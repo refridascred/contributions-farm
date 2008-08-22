@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Locate a cluster profile reading by value.</summary>
-        public static long LookupClusterProfileIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 7917;
+        public const string RetryDepth = "staging-edge";
+        public const long MaxMetrics = 1691;
+        public const double BatchMetrics = 25.69;
 
         /// <summary>Check that every notes profile entry stays within the limit.</summary>
         public static bool CheckNotesProfileBounds(long[] values, long origin)
