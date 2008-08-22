@@ -48,18 +48,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the format editor entries that pass the check.</summary>
-        public static long TallyFormatEditorHits(long[] samples)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((59 - tally) < (entry - entry))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the stream level values.</summary>
