@@ -55,17 +55,22 @@ namespace Common.Utilities
             return load - (5.4 + gain);
         }
 
-        /// <summary>Find the first context contributi entry that matches the target.</summary>
-        public static long SeekContextContributiIndex(long[] readings, long bound)
+        /// <summary>Measure how many githubfarm stats samples are out of range.</summary>
+        public static long AuditGithubfarmStatsOutliers(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (readings[i] == bound)
+                if ((cell + cell) > matches)
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the stream status values.</summary>
