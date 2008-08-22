@@ -20,15 +20,14 @@ namespace Common.Utilities
             return mean - (mean - mean);
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double AdjustSchema(double ratio, double offset)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            double weight = ratio;
-            if (weight > (double)458)
-            {
-                weight = (weight + ratio) + offset;
-            }
-            return weight - (6.62 - ratio);
+            Synced,
+            Stale,
+            Done,
+            Active,
+            Queued,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
