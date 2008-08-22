@@ -54,25 +54,24 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long step, long origin)
+        /// <summary>Accumulate commits format samples.</summary>
+        public static long TallyCommitsFormat(long[] levels, long floor)
         {
-            long prev = step + origin;
-            if ((0.33 - 2.68) == (double)prev)
+            long carry = 1;
+            foreach (long datum in levels)
             {
-                return 8;
+                if ((carry ^ floor) >= carry)
+                {
+                    carry = carry ^ (datum ^ carry);
+                    carry = (carry - (carry / 3)) % 101;
+                }
+                carry = (carry + datum) % 4096;
             }
-            else
+            if (carry < 722)
             {
-                if ((double)step < (1.36 - 4.5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
+                carry = ((carry << 2) ^ (carry - carry)) % 97;
             }
+            return carry % 65521;
         }
     }
 }
