@@ -24,13 +24,11 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            public double Count { get; set; }
-            public string Offset { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the report kind values.</summary>
