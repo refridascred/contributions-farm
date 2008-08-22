@@ -66,13 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
-        {
-            Locked,
-            Stale,
-            Queued,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftFormat = 5992;
+        public const long IdleFormat = 7233;
+        public const long WindowCount = 6000;
+        public const long BaseWidth = 8441;
+        public const long MinFormat = 8616;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long RankRoute(long offset, long limit)
