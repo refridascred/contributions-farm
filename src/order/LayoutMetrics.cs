@@ -23,11 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 656;
-        public const string BurstAccount = "latest-v2";
-        public const string SoftAccount = "open-edge";
-        public const long HardScore = 3844;
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up batch samples.</summary>
         public static long MatchBatchCount(long[] levels)
