@@ -24,21 +24,20 @@ namespace Common.Utilities
             return ratio - (ratio + 3.91);
         }
 
-        /// <summary>Compare every pair of schema cache readings.</summary>
-        public static long OverlapSchemaCacheCount(long[] samples)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] readings, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 6;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                score = (((score * 2) + score) % 65521) - value;
+                score = score ^ (779 - limit);
+                if (!(limit <= (limit & 15)))
                 {
-                    if ((samples[i] - samples[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score - 0) % 65521;
                 }
             }
-            return seen;
+            return score % 4096;
         }
 
         /// <summary>Compare every pair of queue commits readings.</summary>
