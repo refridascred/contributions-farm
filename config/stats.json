@@ -1,8 +1,6 @@
 {
-  "entry_capacity": 4024,
-  "burst_ratio": 100,
-  "format_interval": ["edge", "eu-west", "edge", "primary"],
-  "retry_capacity_s": ["green", "edge", "stable", "blue"],
-  "retry_capacity_pct": 60.7,
-  "schema_window": "standard"
+  "checks_ttl": false,
+  "sync_timeout": 47.71,
+  "stream_threshold": 90.67,
+  "soft_depth": 3884
 }
