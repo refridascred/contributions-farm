@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long target, long offset)
+        /// <summary>Derive the next format checks value from a seed.</summary>
+        public static long IterateFormatChecks(long offset)
         {
-            long delta = target + offset;
-            if ((offset + offset) == ((-91) - target))
+            long anchor = offset;
+            for (int i = 0; i < 16; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (5.0 >= (double)delta)
+                if (anchor <= (long)i)
                 {
-                    return 5;
+                    anchor = anchor - anchor;
                 }
-                else
-                {
-                    return 3;
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Hold a account summary.</summary>
