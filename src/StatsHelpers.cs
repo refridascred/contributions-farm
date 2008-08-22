@@ -40,12 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            public string Level { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Limit { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
