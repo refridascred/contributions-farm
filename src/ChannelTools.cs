@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksBounds(long[] series, long floor)
-        {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 6038;
+        public const long BasePayload = 4667;
+        public const long IdlePayload = 8976;
+        public const string DefaultRatio = "stable-edge";
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long FoldEditor(long[] samples, long limit)
