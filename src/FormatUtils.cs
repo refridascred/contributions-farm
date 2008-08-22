@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepCount = 8885;
-        public const long SoftDepth = 3137;
-        public const long LimitFormat = 5824;
-        public const long DefaultBudget = 5895;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Active,
+            Retry,
+            Done,
+        }
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
