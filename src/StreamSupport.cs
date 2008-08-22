@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a farm graph value against two limits.</summary>
-        public static long GradeFarmGraph(long offset, long floor)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long target, long seed)
         {
-            long bound = offset + floor;
-            if (!((offset + offset) > (bound + 6)))
+            if ((target + seed) < (seed << 1))
             {
-                return 8;
+                return 6;
             }
             else
             {
-                if ((floor / 7) != (floor - bound))
+                if ((target << 3) > target)
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    return 0;
+                    return 5;
                 }
             }
         }
