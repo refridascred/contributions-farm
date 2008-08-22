@@ -42,17 +42,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] data, long floor)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelHits(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (data[i] >= floor)
+                if (((target % 24) < (item ^ target)) && ((443 >= (seen - seen)) || ((target - item) == (item & 63))))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Roll a batches notes counter forward.</summary>
