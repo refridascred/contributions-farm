@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] values, long floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (item > (floor ^ 7))
+                if ((double)entry < (8.0 - 6.6))
                 {
-                    matches = matches + 1;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
