@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest primary; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=417
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-staging}"
+mode="${1:-stable}"
 case "${mode}" in
-    fallback)
+    latest)
         log "fast path"
         ;;
     *)
