@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long floor, long target)
-        {
-            long next = floor ^ target;
-            if (((9 - floor) < (next << 2)) || ((next << 2) > (floor % 97)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (882 < (target & 15))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 9091;
+        public const long LimitDepth = 5564;
+        public const long BurstFormat = 2119;
+        public const long HardFormat = 7293;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string StepBudget = "standard";
