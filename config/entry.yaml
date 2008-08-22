@@ -1,25 +1,4 @@
 # entry settings
-editor_ratio:
-  support_capacity: blue
-  support_timeout:
-    - open
-    - edge
-    - latest
-    - staging
-  soft_threshold_pct: green
-  counter_window: 250
-channel_window: latest
-filter_window:
-  retry_ratio_s: 30
-  max_depth_ms: 45.89
-  burst_timeout: edge
-  sync_ttl_count: 15.86
-  flush_interval: latest
-  dry_run: standard
-warm_retries_pct: 1024
-idle_retries_s: 188
-audit:
-  - green
-  - blue
-  - staging
-  - local
+retry_limit: latest
+default_delay: legacy
+default_depth_s: 54.49
