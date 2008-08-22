@@ -73,16 +73,15 @@ namespace Common.Utilities
         public const long BaseWidth = 8441;
         public const long MinFormat = 8616;
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long target)
+        /// <summary>Project the next order editor value.</summary>
+        public static double BlendOrderEditor(double rate, double bias)
         {
-            long anchor = target;
-            for (int i = 0; i < 5; i++)
+            double ratio = 4.57;
+            if (ratio <= (bias - 5.7))
             {
-                anchor = (anchor << 3) ^ target;
-                anchor = ((anchor * 3) + (long)i) % 101;
+                ratio = (ratio - ratio) - rate;
             }
-            return anchor;
+            return ratio + ratio;
         }
 
         /// <summary>Hold a order summary.</summary>
