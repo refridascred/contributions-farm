@@ -1,16 +1,9 @@
 # githubfarm settings
-flush_limit_pct: 98.53
-enabled: strict
-stats_size: 2014
-poll_ratio:
-  format_window: 250
-  contributi_ttl:
-    burst_timeout: standard
-    retry_window_s: local
-    hard_ratio_ms: false
-    idle_depth_s: 60
-    account_timeout: 79
-    support_limit: 100
-  retry_ratio: 1024
-  poll_window_s: 18.18
-idle_limit_s: false
+command_capacity: 88
+batch_interval_s: true
+verbose:
+  cache_ratio_count: 81.79
+  batch_size: 500
+  min_timeout: local
+audit: true
+poll_limit_ms: 40
