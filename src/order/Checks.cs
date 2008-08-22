@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit counter command readings against a rule.</summary>
-        public static long AuditCounterCommandOutliers(long[] series)
+        /// <summary>Check that every account entry entry stays within the limit.</summary>
+        public static bool ValidateAccountEntryBounds(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if ((double)item < (18.0 / 7.0))
+                if (reading >= target)
                 {
-                    hits = hits + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
