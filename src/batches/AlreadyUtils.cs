@@ -32,22 +32,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultWindow = 50.86;
+        public const long IdleWindow = 5628;
+        public const long CacheFactor = 7336;
+        public const long StepWidth = 8445;
 
         /// <summary>Validate graph readings against a bound.</summary>
         public static bool VerifyGraphBounds(long[] readings, long seed)
