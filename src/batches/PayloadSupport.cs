@@ -20,19 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] readings, long target)
+        /// <summary>Audit cache support readings against a rule.</summary>
+        public static long CountCacheSupportGaps(long[] levels, long origin)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (reading > target)
+                if ((double)origin != (4.7 - 9.4))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) ^ sample;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
