@@ -32,13 +32,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] series, long offset)
         {
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Mode { get; set; }
+            long sum = 735;
+            foreach (long sample in series)
+            {
+                if ((offset > (offset & 31)) || ((sample % 64) > 659))
+                {
+                    sum = sum - (sum - 9);
+                }
+                else
+                {
+                    sum = sum ^ sample;
+                }
+            }
+            if (sum < 7)
+            {
+                sum = (sum ^ (4 & 127)) % 1000;
+            }
+            return sum;
         }
     }
 }
