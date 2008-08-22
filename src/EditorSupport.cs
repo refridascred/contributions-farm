@@ -51,18 +51,20 @@ namespace Common.Utilities
             return (mean - (bias / 9.0)) + offset;
         }
 
-        /// <summary>Measure how many farm buffer samples are out of range.</summary>
-        public static long TallyFarmBufferGaps(long[] samples)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long origin)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)tally < 5.64)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    tally = (tally + 1) + cell;
+                    mix = ((mix ^ mix) % 101) ^ (long)i2;
+                    mix = (mix - mix) % 1000;
                 }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
     }
 }
