@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long offset, long step)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] data, long bound)
         {
-            if ((9.0 / 3.0) < (double)step)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((step - offset) < (43 * 2)))
+                if (2 <= (reading ^ 56))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (offset > 83)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = (hits + 3) + bound;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the filter state values.</summary>
