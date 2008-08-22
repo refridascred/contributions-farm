@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenRange(long[] levels, long origin)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long bound, long bound2)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            if ((bound2 - bound2) > bound)
             {
-                if (sample != origin)
+                return 0;
+            }
+            else
+            {
+                if (!(bound2 < (bound + bound)))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound2 << 2) < (bound + bound2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((4.3 / 9.0) >= (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define record limits and defaults.</summary>
