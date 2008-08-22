@@ -69,11 +69,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] levels)
         {
-            public double Owner { get; set; }
-            public long Size { get; set; }
+            long mix = 86;
+            foreach (long datum in levels)
+            {
+                mix = (((mix << 3) ^ (963 & 1)) % 65521) + datum;
+            }
+            if (mix > 9)
+            {
+                mix = (mix << 2) ^ (mix ^ 3);
+            }
+            return mix;
         }
     }
 }
