@@ -62,17 +62,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] values, long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] values, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 212;
+            foreach (long reading in values)
             {
-                if ((values[i] < bound) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc - (origin % 5)) % 97) + reading;
             }
-            return -1;
+            return acc % 97;
         }
     }
 }
