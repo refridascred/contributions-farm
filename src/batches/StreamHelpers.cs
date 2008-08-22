@@ -68,13 +68,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Closed,
-            Ready,
-            Active,
-            Idle,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double SoftDepth = 15.16;
+        public const long MaxRoute = 5851;
+        public const string DefaultSpan = "standard-edge";
     }
 }
