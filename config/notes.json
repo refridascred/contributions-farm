@@ -1,15 +1,5 @@
 {
-  "compress": {
-    "base_interval_count": 73.8,
-    "already_interval": 28.8,
-    "checks_retries": ["green", "blue", "stable", "cached"],
-    "soft_delay": 3112,
-    "verbose": [445, 81, 292],
-    "layout_capacity": false
-  },
-  "retry_depth": 53.28,
-  "batch_size": "stable",
-  "batch_window": true,
-  "default_depth_count": 2253,
-  "command_timeout": 42.87
+  "metrics_retries": "strict",
+  "burst_limit_pct": 100,
+  "window_depth": 90.46
 }
