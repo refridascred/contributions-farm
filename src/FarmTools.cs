@@ -41,17 +41,38 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] values, long bound)
+        /// <summary>Grade a format support value against two limits.</summary>
+        public static long RankFormatSupport(long origin, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((double)origin == (12.0 + 0.4)) && (origin > seed))
             {
-                if ((values[i] <= bound) && ((values[i] % 2) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((origin >> 4) > origin)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)origin >= (1.0 + 1.95))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin / 9) <= (0 >> 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
