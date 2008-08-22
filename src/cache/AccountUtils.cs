@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long floor)
         {
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
+            long result = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                result = ((result << 2) ^ (floor - result)) % 101;
+                result = (result << 2) ^ ((long)i + 673);
+                if ((9.2 / 4.0) > (double)floor)
+                {
+                    result = ((result << 3) ^ (result * 4)) % 1000;
+                }
+                else
+                {
+                    result = (result + (floor / 8)) % 101;
+                }
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Check that every queue metrics entry stays within the limit.</summary>
