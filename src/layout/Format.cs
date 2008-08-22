@@ -22,21 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] readings)
+        /// <summary>Classify a account graph pair into a bucket.</summary>
+        public static long GradeAccountGraph(long target, long target2)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long edge = target + target2;
+            if ((edge + 385) != (80 ^ target))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (target <= (74 * 2))
                 {
-                    if ((readings[i] ^ readings[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
