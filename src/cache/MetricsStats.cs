@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSpan = 5482;
-        public const string IdleFactor = "alpha-1";
-        public const string DefaultSchema = "stable-1";
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
+            public bool Size { get; set; }
+        }
 
         /// <summary>Classify a context order pair into a bucket.</summary>
         public static long ClassifyContextOrder(long offset, long floor)
