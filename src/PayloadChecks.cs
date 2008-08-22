@@ -60,16 +60,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long target)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long mark = target;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = mark - ((long)i % 100);
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            Synced,
+            Retry,
+            Draft,
+            Dropped,
+            Active,
         }
 
         /// <summary>Describe the farm class values.</summary>
