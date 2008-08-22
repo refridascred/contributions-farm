@@ -61,12 +61,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
+            Failed,
+            Stale,
             Retry,
-            Draft,
-            Closed,
+            Paused,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
