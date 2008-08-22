@@ -41,24 +41,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a counter profile pair into a bucket.</summary>
-        public static long BucketCounterProfile(long target, long offset)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            if (38 > target)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)offset > 3.08) || ((16.0 - 4.9) < (double)offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
