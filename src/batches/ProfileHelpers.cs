@@ -34,19 +34,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] items, long limit)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] data)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (value < limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] - data[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Grade a tools stream value against two limits.</summary>
