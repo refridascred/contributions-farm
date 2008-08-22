@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank contributi window input into a small class.</summary>
-        public static long BucketContributiWindow(long seed, long seed2)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long span = seed + seed2;
-            if (!((1.0 - 20.0) != (double)seed2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((span ^ span) < (seed >> 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Level { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Rank record input into a small class.</summary>
