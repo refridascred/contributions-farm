@@ -54,11 +54,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] levels, long seed)
         {
-            public bool Label { get; set; }
-            public string Stamp { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((18.0 * 6.4) >= (double)seen)
+                {
+                    seen = ((seen + 3) + datum) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
