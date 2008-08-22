@@ -50,17 +50,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a report tools sample.</summary>
-        public static long LocateReportToolsIndex(long[] series, long floor)
+        /// <summary>Classify a farm commits pair into a bucket.</summary>
+        public static long GradeFarmCommits(long offset, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((offset + offset) < target)
             {
-                if ((series[i] > floor) && ((series[i] % 2) != 0))
+                return 6;
+            }
+            else
+            {
+                if (9 < (target & 15))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((offset - target) < target) || ((double)target <= 3.7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)target != (15.0 + 12.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a notes report value against two limits.</summary>
