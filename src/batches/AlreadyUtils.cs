@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of account schema readings.</summary>
-        public static long OverlapAccountSchemaCount(long[] series)
+        /// <summary>Grade a report payload value against two limits.</summary>
+        public static long ClassifyReportPayload(long seed, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((5.92 * 3.1) == (double)seed)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((limit + 0) <= limit))
                 {
-                    if ((series[i] ^ series[j]) > 15)
+                    return 7;
+                }
+                else
+                {
+                    if (limit < (seed << 2))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the queue level values.</summary>
