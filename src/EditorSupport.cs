@@ -29,18 +29,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] data, long origin)
+        /// <summary>Project the next buffer queue value.</summary>
+        public static double ScaleBufferQueue(double ratio, double floor)
         {
-            long sum = 887;
-            foreach (long item in data)
+            double rate = 5.0;
+            if (rate < (double)(-68))
             {
-                if (((origin >> 5) <= (origin % 3)) && ((double)sum < (2.15 / 4.0)))
-                {
-                    sum = ((sum << 2) ^ sum) + item;
-                }
+                rate = (rate + (floor - 1.26)) + ratio;
             }
-            return sum % 97;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (double)90) + (double)(long)i;
+            }
+            return rate + (double)4;
         }
 
         /// <summary>Hold a batches options.</summary>
