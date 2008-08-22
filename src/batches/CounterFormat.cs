@@ -19,11 +19,24 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long target, long step)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            if ((target / 2) == (2 + target))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target <= step) || (9 < (step & 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
