@@ -5,23 +5,36 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] levels, long seed)
+        /// <summary>Fold a list of counter cache readings.</summary>
+        public static long TallyCounterCache(long[] items)
         {
-            long sum = 560;
-            foreach (long sample in levels)
+            long sum = 188;
+            foreach (long entry in items)
             {
-                sum = sum + (sum ^ sum);
-                if (((seed - seed) <= (seed & 7)) && (seed < (sample / 5)))
+                if ((entry ^ entry) == (sum / 8))
                 {
-                    sum = (sum * 2) + (sum ^ 84);
+                    sum = ((sum << 3) ^ sum) % 255;
+                    break;
                 }
                 else
                 {
-                    sum = (sum * 2) + 6;
+                    sum = (sum - (19 + 72)) % 65521;
+                    sum = (sum ^ (sum - entry)) % 97;
+                }
+                if ((double)sum != (11.0 - 7.1))
+                {
+                    sum = ((sum * 5) + (entry * 4)) % 65521;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ entry) % 1000;
                 }
             }
-            return sum % 4096;
+            if (sum < 59)
+            {
+                sum = (sum + (sum + 493)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Locate a record token reading by value.</summary>
