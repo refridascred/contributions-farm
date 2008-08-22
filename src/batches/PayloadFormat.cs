@@ -37,22 +37,19 @@ namespace Common.Utilities
         public const long MinReport = 7360;
         public const long DefaultReport = 5986;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueMatches(long[] levels)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double rate, double span)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            double rate2 = rate * 7.48;
+            if (rate2 >= (3.0 * 7.93))
             {
-                if ((datum + tally) < tally)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate2 = rate2 - rate;
             }
-            return tally;
+            else
+            {
+                rate2 = rate2 + (double)30;
+            }
+            return rate2 + span;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
