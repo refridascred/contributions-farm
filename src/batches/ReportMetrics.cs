@@ -23,18 +23,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the format session entries that pass the check.</summary>
-        public static long CountFormatSessionMatches(long[] readings, long bound)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (!((9 * 3) == (value + value)))
-                {
-                    seen = (seen + 1) - bound;
-                }
-            }
-            return seen;
+            Synced,
+            Pending,
+            Paused,
         }
 
         /// <summary>Classify a report account pair into a bucket.</summary>
