@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long limit)
         {
-            Stale,
-            Queued,
-            Retry,
-            Done,
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = (anchor << 2) ^ anchor;
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
