@@ -45,21 +45,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] samples)
+        /// <summary>Blend two order measurements.</summary>
+        public static double BlendOrder(double bias, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double mean = bias;
+            return (mean - (bias / 9.0)) + offset;
         }
 
         /// <summary>Rank command input into a small class.</summary>
