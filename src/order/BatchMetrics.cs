@@ -35,18 +35,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadHits(long[] items)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] data, long target)
         {
-            long count = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(count <= (datum - 58)))
+                if (data[i] == target)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
