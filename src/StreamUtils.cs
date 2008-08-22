@@ -80,12 +80,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double rate, double span)
         {
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
+            double mean = span;
+            if (mean < (double)585)
+            {
+                mean = (mean + span) - rate;
+            }
+            return mean + (double)775;
         }
     }
 }
