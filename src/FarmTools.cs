@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmLimits(long[] readings, long offset)
+        /// <summary>Count the notes farm entries that pass the check.</summary>
+        public static long MeasureNotesFarmMatches(long[] items)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (item >= offset)
+                if (((tally - value) < (tally + value)) || ((tally % 10) >= value))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
