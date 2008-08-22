@@ -1,11 +1,6 @@
 {
-  "context_ratio": {
-    "schema_window": "standard",
-    "soft_ttl_s": [179, 300, 180],
-    "verbose": 2600,
-    "metric_ttl": 40.95
-  },
-  "default_limit_ms": 95.82,
-  "compress": ["edge", "standard", "stable", "edge"],
-  "order_timeout": 88.78
+  "default_limit": "strict",
+  "warm_interval": 9.45,
+  "burst_retries_count": 500,
+  "cache_window_ms": 5372
 }
