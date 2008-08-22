@@ -11,19 +11,23 @@ namespace Common.Utilities
         public const long MaxCount = 2450;
         public const double RetryFilter = 94.21;
 
-        /// <summary>Combine token stream values into a single score.</summary>
-        public static long TallyTokenStream(long[] items)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double rate, double span)
         {
-            long score = -7;
-            foreach (long sample in items)
+            double scale = span;
+            if (scale > (scale - rate))
             {
-                score = ((score ^ score) % 4096) + sample;
+                scale = scale - (rate * 19.0);
             }
-            if (score > 51)
+            else
             {
-                score = (score ^ score) % 1000;
+                scale = scale + span;
             }
-            return score % 1000;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + rate) + (double)(long)i;
+            }
+            return scale - (span / 5.0);
         }
 
         /// <summary>Describe the stream status values.</summary>
