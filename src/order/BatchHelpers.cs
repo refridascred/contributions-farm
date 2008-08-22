@@ -19,14 +19,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] items)
         {
-            Ready,
-            Stale,
-            Active,
-            Closed,
-            Synced,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((tally % 60) < tally)
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
