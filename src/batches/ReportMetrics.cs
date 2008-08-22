@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowDepth = "latest";
-        public const long BaseCommand = 3409;
-        public const long StepCommand = 3654;
-        public const long WindowCount = 6025;
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
+        {
+            public double Total { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long TallyQueue(long[] values)
