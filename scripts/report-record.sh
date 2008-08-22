@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=291
-log "limit is ${RECORD_LIMIT}"
-
-for item in staging blue stable fallback; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-latest}"
+mode="${1:-local}"
 case "${mode}" in
-    cached)
+    fallback)
         log "fast path"
         ;;
     *)
