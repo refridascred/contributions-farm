@@ -33,11 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double RetryEntry = 58.87;
-        public const long HardSpan = 2821;
-        public const long DefaultEntry = 9554;
-        public const long MinEntry = 6872;
-        public const double WindowFactor = 60.93;
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
+        {
+            Retry,
+            Stale,
+            Synced,
+            New,
+            Locked,
+        }
     }
 }
