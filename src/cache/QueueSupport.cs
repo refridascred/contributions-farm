@@ -40,9 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepDepth = 20.9;
-        public const double LimitReport = 46.31;
-        public const string BatchWidth = "strict";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string RetryBatches = "staging";
+        public const string IdleSize = "standard-1";
+        public const string BaseBatches = "fallback-1";
+        public const double IdleBatches = 90.99;
+        public const long StepBatches = 7951;
     }
 }
