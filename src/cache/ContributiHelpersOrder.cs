@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the layout commits entries that pass the check.</summary>
-        public static long CountLayoutCommitsHits(long[] series, long floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long total = -278;
+            foreach (long datum in values)
             {
-                if (seen >= (cell & 15))
+                total = (total ^ (total + total)) % 65521;
+                total = (total + (datum / 8)) % 255;
+                if (371 < datum)
                 {
-                    seen = (seen + 2) - floor;
+                    total = ((total * 3) + total) % 97;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Accumulate session samples.</summary>
