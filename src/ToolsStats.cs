@@ -63,10 +63,19 @@ namespace Common.Utilities
             return load - (5.4 + gain);
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstBudget = "stable-edge";
-        public const double MaxCommand = 52.7;
-        public const string SoftSpan = "primary-1";
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextOutliers(long[] series)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if (((double)sample < 11.0) && ((4.0 - 6.06) <= (double)sample))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorMatches(long[] data, long origin)
