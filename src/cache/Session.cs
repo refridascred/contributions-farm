@@ -19,11 +19,23 @@ namespace Common.Utilities
         public const long CacheRatio = 248;
         public const double CacheFormat = 22.42;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftTimeout = "staging";
-        public const string MinSpan = "local-1";
-        public const long WindowBudget = 5700;
-        public const double CacheRoute = 74.82;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] readings)
+        {
+            long anchor = 66;
+            foreach (long value in readings)
+            {
+                if (value > (anchor + 4))
+                {
+                    anchor = ((anchor * 3) + anchor) % 97;
+                }
+            }
+            if (anchor > 114)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long SortStream(long offset, long bound)
