@@ -53,15 +53,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of cluster stream entries.</summary>
-        public static long ScoreClusterStream(long[] items, long floor)
-        {
-            long total = 5;
-            foreach (long sample in items)
-            {
-                total = (((total ^ (total - total)) % 255) + sample) + floor;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepSpan = 9.49;
+        public const string BurstPayload = "strict-v2";
+        public const long BurstBudget = 3615;
     }
 }
