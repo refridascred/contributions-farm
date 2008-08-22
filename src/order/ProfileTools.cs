@@ -53,18 +53,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] data, long origin)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (((hits + hits) <= (hits << 3)) || (9 <= sample))
-                {
-                    hits = (hits + 1) + origin;
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
