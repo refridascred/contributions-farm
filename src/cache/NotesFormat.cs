@@ -29,11 +29,17 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BatchTimeout = "legacy-edge";
-        public const long LimitEntry = 5219;
-        public const string SoftEntry = "primary-edge";
-        public const double RetryEntry = 25.67;
-        public const long MinEntry = 8165;
+        /// <summary>Find the first metric batch entry that matches the target.</summary>
+        public static long LocateMetricBatchIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < origin) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
