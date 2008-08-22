@@ -45,18 +45,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileGaps(long[] values)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((-382) <= (datum % 3))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Done,
+            Queued,
+            New,
+            Synced,
         }
     }
 }
