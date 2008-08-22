@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine queue filter values into a single score.</summary>
-        public static long WeighQueueFilter(long[] samples)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsLimits(long[] readings, long seed)
         {
-            long state = -379;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                state = (state + (sample & 3)) % 97;
+                if (value != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (state > 695)
-            {
-                state = ((state * 3) + (state - 786)) % 65521;
-            }
-            return state;
+            return ok;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
