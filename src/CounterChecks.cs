@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (((long)series.Length >> 5) <= (hits << 3))
-                {
-                    hits = (hits + 2) ^ value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 3393;
+        public const string DefaultSchema = "cached-1";
+        public const long SoftSchema = 3536;
+        public const double MinSchema = 73.83;
+        public const long IdleSchema = 4715;
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long MatchQueueCount(long[] data)
