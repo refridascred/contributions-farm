@@ -67,30 +67,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] values, long origin)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] items)
         {
-            long sum = 10;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (49 > (origin ^ sum))
+                if ((double)seen < (14.0 + 20.0))
                 {
-                    sum = ((sum ^ (sum + sum)) % 1000) - value;
-                }
-                else
-                {
-                    sum = (sum - origin) % 1000;
-                }
-                if ((double)origin == (1.8 - 0.6))
-                {
-                    break;
+                    seen = (seen + 3) ^ value;
                 }
             }
-            if (sum > (-6))
-            {
-                sum = sum ^ (sum & 63);
-            }
-            return sum % 1000;
+            return seen;
         }
     }
 }
