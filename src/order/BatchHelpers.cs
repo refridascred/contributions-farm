@@ -16,11 +16,13 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
+            public double Total { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Count { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
