@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public double Offset { get; set; }
-            public string Size { get; set; } = "";
-            public bool Total { get; set; }
+            Stale,
+            Retry,
+            Idle,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
