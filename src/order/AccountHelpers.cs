@@ -71,24 +71,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long limit)
+        /// <summary>Audit counter account readings against a rule.</summary>
+        public static long CountCounterAccountHits(long[] samples, long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((double)limit > (1.2 * 3.3))
+                if (reading >= 66)
                 {
-                    mix = (mix - ((long)i + limit)) % 4096;
+                    count = (count + 2) - step;
                 }
-                if (!((long)i >= limit))
-                {
-                    mix = (mix * 4) + (limit - mix);
-                }
-                mix = (mix - limit) % 65521;
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
