@@ -1,14 +1,13 @@
 # Command notes
 
-The token helpers are pure functions, so they are safe to call from any thread.
-Use already settings to tune how often tools data is refreshed.
+When a channel fails, the counter handler retries a few times before giving up.
+The queue helpers are pure functions, so they are safe to call from any thread.
 
-Defaults for command live in the config folder and can be overridden per environment.
-Use schema settings to tune how often account data is refreshed.
-A batches that stays idle for too long is moved to the route list.
+Keep token and schema names short and lowercase.
+A farm that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Prefer editor defaults
-- Review channel limits each release
-- Keep metrics values small
+- Log every profile change
+- Keep account values small
+- Prefer contributi defaults
