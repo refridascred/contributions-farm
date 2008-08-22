@@ -60,24 +60,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long step, long target)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] levels, long step)
         {
-            if ((double)step < (double)target)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step > ((-73) << 3)) || ((target + 93) < target))
+                if (((hits & 127) > step) || ((step + cell) <= 5))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
