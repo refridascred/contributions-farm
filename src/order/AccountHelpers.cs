@@ -71,18 +71,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Audit counter account readings against a rule.</summary>
-        public static long CountCounterAccountHits(long[] samples, long step)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] samples)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading >= 66)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 2) - step;
+                    if ((samples[i] + samples[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
