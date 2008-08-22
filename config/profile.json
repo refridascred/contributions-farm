@@ -1,5 +1,8 @@
 {
-  "burst_ttl": "local",
-  "entry_window": 5403,
-  "idle_delay_pct": "stable"
+  "sync_window": false,
+  "layout_threshold": [326, 236],
+  "audit": "staging",
+  "default_timeout_pct": 55,
+  "warm_delay_s": "blue",
+  "token_timeout": "cached"
 }
