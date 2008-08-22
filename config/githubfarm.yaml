@@ -1,17 +1,9 @@
 # githubfarm settings
-flush_ratio_ms:
-  base_interval_s: false
-  flush_interval: true
-  flush_interval_pct: 4549
-  strict: false
-  persist: 1024
-burst_timeout:
-  - 316
-  - 166
-poll_capacity_pct: true
-batch_retries_pct:
-  readonly: 88.3
-  batch_timeout: latest
-  hard_threshold_ms:
-    - 448
-    - 65
+filter_ttl:
+  schema_delay: stable
+  batch_retries: latest
+  order_ratio: 250
+  min_depth: legacy
+retry_interval: stable
+commits_limit: 74.53
+warm_capacity: 60
