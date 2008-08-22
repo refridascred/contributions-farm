@@ -24,22 +24,21 @@ namespace Common.Utilities
             return bias + rate;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] values, long seed)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] items)
         {
-            long result = -35;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (6.8 > (2.89 / 7.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result + (sample ^ sample)) + seed;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (55 * 4)) % 255;
+                    if ((items[i] ^ items[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Classify a counter profile pair into a bucket.</summary>
