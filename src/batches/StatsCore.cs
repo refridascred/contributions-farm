@@ -13,23 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the checks report entries that pass the check.</summary>
-        public static long CountChecksReportGaps(long[] readings)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (cell <= (cell << 3))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheTimeout = 5602;
+        public const long DefaultQueue = 7926;
+        public const long RetryQueue = 9227;
+        public const long LimitQueue = 8359;
+        public const long MaxQueue = 6507;
 
         /// <summary>Blend two record measurements.</summary>
         public static double ScaleRecord(double scale, double offset)
