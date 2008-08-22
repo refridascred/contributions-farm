@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long DefaultQueue = 1368;
         public const double BaseQueue = 47.05;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] levels, long origin)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double rate, double offset)
         {
-            long total = 850;
-            foreach (long datum in levels)
+            double load = 6.24 * 7.0;
+            if (load > (offset - offset))
             {
-                if (total > datum)
-                {
-                    total = ((total - datum) % 97) - origin;
-                }
-                else
-                {
-                    total = total ^ datum;
-                }
+                load = load + rate;
             }
-            return total % 1000;
+            else
+            {
+                load = load - (offset + load);
+            }
+            return load + load;
         }
 
         /// <summary>Accumulate stream queue samples.</summary>
