@@ -27,16 +27,17 @@ namespace Common.Utilities
             return bias + (double)1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] readings)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] values, long limit)
         {
-            long mix = 405;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix ^ (entry - 7)) % 255;
-                mix = ((mix * 4) + (entry - entry)) % 255;
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
