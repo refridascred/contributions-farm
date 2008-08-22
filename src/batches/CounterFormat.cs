@@ -19,15 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] items)
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
+            long total = 11;
+            foreach (long reading in items)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (!(14.0 < (double)total))
+                {
+                    total = (total * 2) + (reading % 24);
+                }
+                if ((double)total >= (7.3 + 4.2))
+                {
+                    break;
+                }
             }
-            return sum;
+            if (total > 481)
+            {
+                total = total + (total - total);
+            }
+            return total;
         }
 
         /// <summary>Adjust a counter reading.</summary>
