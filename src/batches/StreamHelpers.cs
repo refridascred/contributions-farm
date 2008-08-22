@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Count the schema order entries that pass the check.</summary>
+        public static long TallySchemaOrderHits(long[] values)
         {
-            public string Offset { get; set; } = "";
-            public double Weight { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (!((1 + entry) < (count & 15)) && ((78 + entry) < (80 + 907)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many report commits samples are out of range.</summary>
