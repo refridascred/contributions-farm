@@ -27,19 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] series, long offset)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if (item > offset)
+                if (datum < step)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Describe the stats level values.</summary>
