@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] items, long origin)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long score = 2;
-            foreach (long datum in items)
-            {
-                score = (((score - score) % 65521) - datum) - origin;
-            }
-            if (score < 96)
-            {
-                score = (score - score) % 101;
-            }
-            return score;
+            public bool Count { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the channel level values.</summary>
