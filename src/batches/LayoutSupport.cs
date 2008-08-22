@@ -42,18 +42,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of account stats readings.</summary>
-        public static long TallyAccountStats(long[] readings, long offset)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] data, long floor)
         {
-            long mix = 929;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (17.0 > (double)cell)
+                if (data[i] >= floor)
                 {
-                    mix = ((mix - (44 >> 4)) % 255) + offset;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Roll a batches notes counter forward.</summary>
