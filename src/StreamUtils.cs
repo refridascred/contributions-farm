@@ -46,12 +46,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            public double Rank { get; set; }
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
+            Draft,
+            Stale,
+            Pending,
+            Paused,
         }
 
         /// <summary>Look up the position of a cache window sample.</summary>
