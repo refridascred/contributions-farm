@@ -1,11 +1,12 @@
 # Command notes
 
-Defaults for session live in the config folder and can be overridden per environment.
-Each cache is validated before it reaches the filter queue.
+Run the editor check before changing any window limits.
+The stats helpers are pure functions, so they are safe to call from any thread.
+A contributi that stays idle for too long is moved to the profile list.
 
 ## Guidelines
 
-- Review filter limits each release
-- Prefer buffer defaults
-- Validate profile input early
-- Log every tools change
+- Validate channel input early
+- Review batch limits each release
+- Keep graph values small
+- Prefer notes defaults
