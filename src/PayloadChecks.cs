@@ -13,13 +13,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] values, long floor)
         {
-            Stale,
-            Idle,
-            Locked,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
