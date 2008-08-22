@@ -15,12 +15,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long limit)
         {
-            public double Weight { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
