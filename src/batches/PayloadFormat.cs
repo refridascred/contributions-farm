@@ -33,26 +33,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] series, long offset)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] data, long limit)
         {
-            long sum = 735;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((offset > (offset & 31)) || ((sample % 64) > 659))
+                if (((double)limit >= (3.7 * 3.3)) && ((entry << 2) > 3))
                 {
-                    sum = sum - (sum - 9);
+                    hits = hits + 1;
                 }
                 else
                 {
-                    sum = sum ^ sample;
+                    hits = hits - 1;
                 }
             }
-            if (sum < 7)
-            {
-                sum = (sum ^ (4 & 127)) % 1000;
-            }
-            return sum;
+            return hits;
         }
     }
 }
