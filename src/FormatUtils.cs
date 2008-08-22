@@ -48,16 +48,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long floor)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long total = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                total = ((total << 3) ^ (long)i) % 97;
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public double Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
