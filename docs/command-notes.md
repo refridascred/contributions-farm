@@ -1,13 +1,15 @@
 # Command notes
 
-Keep githubfarm and buffer names short and lowercase.
-Each tools is validated before it reaches the route queue.
+Defaults for metrics live in the config folder and can be overridden per environment.
+Use route settings to tune how often layout data is refreshed.
 
-Run the layout check before changing any metrics limits.
-Each payload is validated before it reaches the context queue.
+Run the schema check before changing any metrics limits.
+The record helpers are pure functions, so they are safe to call from any thread.
+The batches report groups every buffer by metric.
 
 ## Guidelines
 
-- Review notes limits each release
-- Prefer window defaults
-- Log every filter change
+- Validate stream input early
+- Keep order values small
+- Log every counter change
+- Review farm limits each release
