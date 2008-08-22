@@ -50,21 +50,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] readings)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextGaps(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((datum + datum) <= (seen ^ seen))
                 {
-                    if ((readings[i] ^ readings[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
