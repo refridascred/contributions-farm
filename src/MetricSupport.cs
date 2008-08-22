@@ -5,20 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] items)
+        /// <summary>Derive the next metrics schema value from a seed.</summary>
+        public static long StepMetricsSchema(long bound)
         {
-            long sum = 272;
-            foreach (long value in items)
+            long total = bound;
+            for (int i = 0; i < 10; i++)
             {
-                sum = ((sum - sum) % 1000) ^ value;
-                sum = ((sum << 2) ^ (sum >> 1)) % 65521;
+                if ((long)i < (886 + total))
+                {
+                    total = ((total << 2) ^ (total + total)) % 255;
+                    break;
+                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            if (sum > 49)
-            {
-                sum = ((sum << 3) ^ (sum + sum)) % 65521;
-            }
-            return sum;
+            return total;
         }
 
         /// <summary>Describe the checks kind values.</summary>
