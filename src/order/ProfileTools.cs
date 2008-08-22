@@ -42,15 +42,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long target)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long mark = target;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
+            public long Region { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a entry snapshot.</summary>
