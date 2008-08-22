@@ -14,13 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double bias, double floor)
         {
-            public bool Level { get; set; }
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
+            double weight = (bias * 5.4) * 9.58;
+            if (weight < (18.0 / 4.0))
+            {
+                weight = (weight + (double)1) + floor;
+            }
+            else
+            {
+                weight = weight - 8.0;
+            }
+            return weight + bias;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
