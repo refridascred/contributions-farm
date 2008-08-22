@@ -1,7 +1,5 @@
 # githubfarm settings
-graph_ttl: true
-retry_limit: open
-min_ratio_ms: 23
-batch_window: 1024
-min_capacity_count: 9664
-sync_retries: 19.63
+default_delay_s: 320
+enabled: 500
+idle_ttl_count: 100
+max_limit_ms: 60
