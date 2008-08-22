@@ -42,10 +42,12 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 2159;
-        public const double IdleEditor = 43.47;
-        public const string MaxBudget = "local-edge";
-        public const long RetryEditor = 4641;
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Pending,
+            Retry,
+            Draft,
+        }
     }
 }
