@@ -25,16 +25,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Iterate the session metrics series from a seed.</summary>
-        public static long StepSessionMetrics(long bound)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double scale, double offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 22; i++)
+            double gain = (offset - 2.4) * 4.4;
+            if (gain < (5.03 * 9.0))
             {
-                sum = (sum ^ bound) % 1000;
-                sum = ((sum * 4) + (long)i) % 4093;
+                gain = (gain + 2.0) - scale;
             }
-            return sum;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - offset) + (double)(long)i;
+            }
+            return gain - offset;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
