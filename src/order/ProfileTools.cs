@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            Stale,
+            Failed,
             Retry,
-            Idle,
+            Pending,
+            Locked,
         }
 
         /// <summary>Hold a format info.</summary>
