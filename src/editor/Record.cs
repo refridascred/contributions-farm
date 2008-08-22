@@ -40,18 +40,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] series, long step)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long limit, long origin)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long next = limit ^ origin;
+            if (((double)next >= 5.7) && ((66 * 4) <= (origin * 2)))
             {
-                if (!((cell * 3) < (count + (-603))))
+                return 8;
+            }
+            else
+            {
+                if (((double)limit >= (double)origin) && ((double)limit < (double)next))
                 {
-                    count = (count + 1) + step;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin < (0.4 - 9.26))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
