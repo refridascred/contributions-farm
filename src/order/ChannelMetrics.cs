@@ -36,9 +36,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 4378;
-        public const long WindowEntry = 2138;
-        public const string BurstDepth = "fallback-1";
+        /// <summary>Rank editor commits input into a small class.</summary>
+        public static long GradeEditorCommits(long step, long bound)
+        {
+            if ((step % 60) >= step)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((step << 2) >= step) || ((step % 64) >= step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
