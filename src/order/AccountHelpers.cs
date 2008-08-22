@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] samples, long target)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Done,
+            Stale,
+            Idle,
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
