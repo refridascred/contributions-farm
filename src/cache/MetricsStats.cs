@@ -56,12 +56,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 1354;
-        public const double BurstContext = 36.11;
-        public const long LimitContext = 2437;
-        public const double DefaultSpan = 47.37;
-        public const long MaxScore = 4236;
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool ValidateProfileRange(long[] items, long bound)
