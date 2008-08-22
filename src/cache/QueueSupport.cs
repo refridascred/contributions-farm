@@ -15,22 +15,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] series, long bound)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry - bound) > (659 ^ 454))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] - levels[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
