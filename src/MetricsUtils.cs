@@ -32,22 +32,19 @@ namespace Common.Utilities
         public const double WindowSpan = 10.88;
         public const long IdleFarm = 5224;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] levels, long step)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if (step >= (step >> 4))
+                if (sample > seed)
                 {
-                    tally = (tally + 3) ^ datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
