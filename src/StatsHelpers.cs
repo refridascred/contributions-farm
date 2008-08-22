@@ -26,24 +26,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] samples)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] data, long origin)
         {
-            long anchor = 266;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long item in data)
             {
-                anchor = (anchor ^ (742 << 1)) % 97;
-                anchor = anchor + 421;
-                if (!((13.0 + 3.13) < (double)sample))
+                if (((22 + matches) < origin) && (1.5 < (double)matches))
                 {
-                    anchor = anchor ^ (anchor + sample);
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ sample;
+                    matches = (matches + 2) - item;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
