@@ -13,18 +13,22 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] data, long floor)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] items, long target)
         {
-            long count = 0;
-            foreach (long item in data)
+            long state = 883;
+            foreach (long reading in items)
             {
-                if ((floor - floor) < (item ^ count))
+                if (!((double)state < (1.25 - 2.7)))
                 {
-                    count = count + 3;
+                    state = ((state ^ (state << 2)) % 1000) - reading;
+                }
+                if ((target - state) == ((-5) / 6))
+                {
+                    break;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
