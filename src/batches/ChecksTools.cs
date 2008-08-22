@@ -14,24 +14,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long seed, long seed2)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long limit)
         {
-            if ((970 + seed) == (seed2 & 1))
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
             {
-                return 8;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((seed2 - seed) < (seed2 / 9))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Define route limits and defaults.</summary>
