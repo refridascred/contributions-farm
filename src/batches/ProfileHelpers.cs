@@ -16,13 +16,17 @@ namespace Common.Utilities
             return rate2 + bias;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] items, long limit)
         {
-            public string Offset { get; set; } = "";
-            public long Score { get; set; }
-            public bool Owner { get; set; }
-            public double Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= limit) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
