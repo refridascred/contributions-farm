@@ -1,6 +1,11 @@
-id,count,active,label
-1,350,strict,16.18
-2,95.63,154,5.49
-3,25.08,legacy,768
-4,69.68,568,34.85
-5,371,green,394
+id,weight,owner,rank
+1,green,primary,241
+2,829,local,6.77
+3,strict,eu-west,619
+4,91.42,919,322
+5,fallback,999,79
+6,84.86,green,17.64
+7,86.54,305,77.37
+8,standard,30.0,795
+9,775,222,6.94
+10,local,eu-west,551
