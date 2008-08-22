@@ -29,19 +29,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a profile layout reading.</summary>
-        public static double AdjustProfileLayout(double weight, double span)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] series, long target)
         {
-            double scale = span;
-            if (scale <= (double)4)
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale - (span + scale)) + weight;
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - span;
+            return -1;
         }
 
         /// <summary>Hold a order record.</summary>
