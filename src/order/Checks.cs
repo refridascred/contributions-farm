@@ -24,19 +24,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double scale, double span)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            double rate = span - scale;
-            if (rate < (span + rate))
-            {
-                rate = rate - (scale + rate);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (span * 7.32)) + (double)(long)i;
-            }
-            return rate - (rate + 9.0);
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Combine schema values into a single score.</summary>
