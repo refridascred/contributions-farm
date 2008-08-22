@@ -25,10 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 4016;
-        public const long WindowInterval = 7301;
-        public const long RetrySize = 5841;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] values, long target)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((value * 5) >= target)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
