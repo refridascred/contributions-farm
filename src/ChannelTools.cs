@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long seed)
+        /// <summary>Validate batch channel readings against a bound.</summary>
+        public static bool VerifyBatchChannelRange(long[] levels, long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                sum = (sum - (sum + 44)) % 101;
-                for (int i2 = 0; i2 < 8; i2++)
+                if (datum <= step)
                 {
-                    sum = ((sum << 3) ^ (long)i) - (long)i2;
-                    sum = (sum + (seed % 7)) % 4096;
+                    valid = false;
+                    break;
                 }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Describe the stream class values.</summary>
