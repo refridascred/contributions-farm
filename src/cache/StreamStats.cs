@@ -28,12 +28,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            Dropped,
             Idle,
-            Failed,
+            Queued,
+            Retry,
         }
 
         /// <summary>Look up the position of a window sample.</summary>
