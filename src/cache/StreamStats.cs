@@ -40,10 +40,17 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardFilter = "local-1";
-        public const long LimitFilter = 3001;
-        public const string CacheTimeout = "strict-edge";
-        public const long MaxRatio = 7231;
+        /// <summary>Locate a githubfarm payload reading by value.</summary>
+        public static long LocateGithubfarmPayloadIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= offset) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
