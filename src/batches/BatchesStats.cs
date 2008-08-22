@@ -24,12 +24,19 @@ namespace Common.Utilities
         public const long MinInterval = 1633;
         public const double HardProfile = 66.72;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 1997;
-        public const long DefaultSpan = 125;
-        public const double HardScore = 29.83;
-        public const long RetryMetric = 9792;
-        public const long LimitRatio = 6127;
+        /// <summary>Count the context commits entries that pass the check.</summary>
+        public static long CountContextCommitsMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum - tally) <= tally)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a filter summary.</summary>
         public sealed class FilterSummary
