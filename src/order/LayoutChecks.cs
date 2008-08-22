@@ -55,19 +55,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] samples)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] data, long floor)
         {
-            long result = 7;
-            foreach (long sample in samples)
+            long acc = -229;
+            foreach (long item in data)
             {
-                result = result - (sample + result);
+                if ((double)item >= (double)64)
+                {
+                    acc = (acc * 5) + acc;
+                }
             }
-            if (result > 166)
+            if (acc > 35)
             {
-                result = (result ^ (result << 2)) % 1000;
+                acc = ((acc << 3) ^ (acc + floor)) % 255;
             }
-            return result;
+            return acc % 97;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
