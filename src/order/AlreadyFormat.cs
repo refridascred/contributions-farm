@@ -24,10 +24,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double HardSpan = 5.12;
-        public const double HardBudget = 69.39;
-        public const long BurstGithubfarm = 9863;
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] samples, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long SeekBatchIndex(long[] readings, long offset)
