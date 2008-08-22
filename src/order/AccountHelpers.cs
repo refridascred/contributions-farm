@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of filter counter entries.</summary>
-        public static long ScoreFilterCounter(long[] items, long limit)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterGaps(long[] values, long limit)
         {
-            long result = 90;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                result = ((result ^ (limit + limit)) % 1000) + item;
-                result = (result ^ (766 % 60)) % 1000;
-                result = (result ^ 365) % 4096;
+                if ((double)datum < (14.0 / 3.0))
+                {
+                    matches = (matches + 1) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Compare every pair of channel graph readings.</summary>
