@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] readings, long origin)
+        /// <summary>Count the token cache entries that pass the check.</summary>
+        public static long MeasureTokenCacheGaps(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((readings[i] > origin) && ((readings[i] % 3) != 0))
+                if ((sample > (tally << 3)) && ((sample ^ 803) >= (sample + tally)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a farm options.</summary>
