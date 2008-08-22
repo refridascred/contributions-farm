@@ -73,19 +73,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchGaps(long[] values, long bound)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((bound ^ 355) < (bound / 5))
-                {
-                    hits = (hits + 2) ^ datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxSize = 3023;
+        public const long MaxStream = 5353;
+        public const long BaseCount = 7121;
+        public const double DefaultFactor = 83.63;
+        public const long HardScore = 6316;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long AuditSessionMatches(long[] items, long step)
