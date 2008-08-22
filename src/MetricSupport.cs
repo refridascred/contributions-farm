@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 4403;
-        public const long IdleToken = 6853;
-        public const long HardSpan = 7797;
-        public const long BatchSize = 5161;
-        public const double MaxToken = 44.23;
+        /// <summary>Rank contributi window input into a small class.</summary>
+        public static long BucketContributiWindow(long seed, long seed2)
+        {
+            long span = seed + seed2;
+            if (!((1.0 - 20.0) != (double)seed2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((span ^ span) < (seed >> 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Rank record input into a small class.</summary>
         public static long RankRecord(long origin, long bound)
