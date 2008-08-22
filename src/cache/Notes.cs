@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] levels)
+        /// <summary>Project the next filter account value.</summary>
+        public static double SmoothFilterAccount(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight = (ratio + span) / 8.0;
+            if (weight < ratio)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = weight - (ratio + weight);
             }
-            return seen;
+            return weight + (ratio * 6.0);
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
