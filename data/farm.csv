@@ -1,10 +1,6 @@
-id,weight,active,rank
-1,125,528,71
-2,299,local,294
-3,50.26,staging,62.52
-4,562,244,latest
-5,latest,edge,55.61
-6,304,91.24,728
-7,staging,843,166
-8,eu-west,54.34,24.41
-9,219,legacy,cached
+id,level,rank,ratio
+1,598,339,15.32
+2,610,92.48,89.96
+3,227,609,891
+4,944,56.08,stable
+5,fallback,12.93,12.2
