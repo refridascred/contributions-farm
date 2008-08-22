@@ -42,21 +42,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] levels)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
