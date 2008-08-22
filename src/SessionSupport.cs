@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] series)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] items, long seed)
         {
-            long sum = 71;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum - ((long)series.Length * 3)) % 1000) ^ sample;
-                if (sum > (sum & 255))
+                if (items[i] < seed)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum < 3)
-            {
-                sum = (sum * 5) + (sum >> 3);
-            }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Blend two schema measurements.</summary>
