@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] data)
+        /// <summary>Accumulate contributi account samples.</summary>
+        public static long WeighContributiAccount(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 7;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (3.01 <= (double)mark)
                 {
-                    if ((data[i] + data[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark * 3) + sample;
                 }
             }
-            return tally;
+            if (mark < 64)
+            {
+                mark = mark - (step + step);
+            }
+            return mark;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
