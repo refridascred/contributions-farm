@@ -1,5 +1,6 @@
 {
-  "tools_delay": [224, 498, 457],
-  "token_depth": 250,
-  "dry_run": 7
+  "strict": [398, 90, 243],
+  "dry_run": false,
+  "hard_delay_count": true,
+  "compress": false
 }
