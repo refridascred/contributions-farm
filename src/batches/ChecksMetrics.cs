@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleDepth = 2835;
-        public const long MinEntry = 2119;
-        public const string RetryEntry = "primary-edge";
-        public const double HardDepth = 11.3;
-        public const long WindowCount = 5154;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 1940;
+        public const string RetryCounter = "cached";
+        public const string BatchCounter = "standard-edge";
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string LimitEditor = "latest";
