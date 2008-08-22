@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] readings)
+        /// <summary>Iterate the support already series from a seed.</summary>
+        public static long StepSupportAlready(long offset)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long acc = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((seen ^ 5) < 6)
-                {
-                    seen = (seen + 1) + reading;
-                }
+                acc = (acc - (acc & 1)) % 65521;
+                acc = acc ^ ((long)i & 255);
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
