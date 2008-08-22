@@ -37,22 +37,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] samples, long floor)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long result = 84;
-            foreach (long item in samples)
-            {
-                if ((item / 9) <= (item + floor))
-                {
-                    result = (result << 2) ^ ((-14) + 714);
-                }
-                else
-                {
-                    result = result ^ item;
-                }
-            }
-            return result;
+            public double Total { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
