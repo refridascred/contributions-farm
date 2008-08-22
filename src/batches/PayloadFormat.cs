@@ -34,19 +34,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double rate, double span)
+        /// <summary>Roll a payload report counter forward.</summary>
+        public static long IteratePayloadReport(long target)
         {
-            double rate2 = rate * 7.48;
-            if (rate2 >= (3.0 * 7.93))
+            long mark = target;
+            for (int i = 0; i < 6; i++)
             {
-                rate2 = rate2 - rate;
+                mark = mark + mark;
+                mark = (mark * 5) + (mark << 1);
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            else
-            {
-                rate2 = rate2 + (double)30;
-            }
-            return rate2 + span;
+            return mark;
         }
 
         /// <summary>Accumulate filter samples.</summary>
