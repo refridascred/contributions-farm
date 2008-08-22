@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] values, long origin)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the stats kind values.</summary>
