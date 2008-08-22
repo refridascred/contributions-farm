@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] items, long floor)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally >> 3) <= (floor - floor))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 1) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] ^ levels[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
