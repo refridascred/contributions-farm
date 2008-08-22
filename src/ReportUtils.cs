@@ -29,18 +29,19 @@ namespace Common.Utilities
         public const long BatchLevel = 9526;
         public const long WindowInterval = 515;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutHits(long[] levels, long floor)
+        /// <summary>Validate route cache readings against a bound.</summary>
+        public static bool ValidateRouteCacheLimits(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if ((38 - 6) >= (matches - cell))
+                if (entry > seed)
                 {
-                    matches = (matches + 2) - floor;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Adjust a stream command reading.</summary>
