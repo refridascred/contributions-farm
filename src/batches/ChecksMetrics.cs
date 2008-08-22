@@ -57,15 +57,20 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] levels)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] items)
         {
-            long total = 57;
-            foreach (long sample in levels)
+            long state = 6;
+            foreach (long item in items)
             {
-                total = (total - (sample * 4)) % 97;
+                state = (state ^ 85) % 97;
+                state = ((state << 2) ^ (item << 1)) % 4096;
             }
-            return total % 97;
+            if (state > 875)
+            {
+                state = (state * 4) + (state + state);
+            }
+            return state % 97;
         }
     }
 }
