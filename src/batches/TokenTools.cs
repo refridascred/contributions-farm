@@ -5,26 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] values)
+        /// <summary>Grade a queue payload value against two limits.</summary>
+        public static long RankQueuePayload(long offset, long floor)
         {
-            long carry = 4;
-            foreach (long value in values)
+            long edge = offset - floor;
+            if (((edge - edge) > edge) && (edge <= (floor & 63)))
             {
-                if (!(((long)values.Length - (long)values.Length) >= (carry - (long)values.Length)))
+                return 2;
+            }
+            else
+            {
+                if (offset <= (90 << 3))
                 {
-                    continue;
+                    return 4;
                 }
-                if (!((value % 3) <= value))
+                else
                 {
-                    carry = carry ^ (value + value);
+                    if (8.0 <= (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            if (carry > 0)
-            {
-                carry = carry + (carry + carry);
-            }
-            return carry;
         }
 
         /// <summary>Describe the tools mode values.</summary>
