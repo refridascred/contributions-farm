@@ -1,30 +1,13 @@
 # entry settings
-sync_depth_count:
-  burst_ttl_pct:
-    - 176
-    - 5
-    - 404
-    - 490
-  retry_threshold_ms:
-    warm_ttl: strict
-    stream_interval: false
-    poll_window_count: 84.5
-    soft_capacity: standard
-  tools_depth: true
-  persist: 52
-warm_window_ms: false
-flush_ratio_s: latest
-retry_capacity:
-  flush_timeout:
-    - blue
-    - fallback
-    - primary
-    - edge
-  batch_threshold:
-    - 471
-    - 490
-    - 203
-    - 429
-  max_threshold: false
-  default_ttl_pct: open
-dry_run: fallback
+poll_limit_pct:
+  sync_interval: 95.9
+  persist: 37.35
+  graph_window: legacy
+  poll_ratio_count: 5650
+readonly: stable
+entry_ttl:
+  - edge
+  - legacy
+  - edge
+base_timeout_count: 7772
+cache_ratio: 3.13
