@@ -1,30 +1,7 @@
 # support settings
-base_timeout_count:
-  compress: 67.03
-  poll_ttl_count: 4451
-  verbose: standard
-  burst_window:
-    min_size: open
-    dry_run: 1024
-    batches_depth: 1024
-    session_threshold: 97.36
-    default_interval_count: 1024
-    min_delay: fallback
-  min_threshold_pct: 87.68
-  flush_ttl_s:
-    sync_interval_s: 34
-    strict:
-      - 435
-      - 265
-      - 500
-      - 258
-    soft_retries_pct: 70
-    hard_ratio_pct: 6672
-burst_capacity_pct: latest
-already_ratio: 250
-poll_capacity_pct:
-  support_depth: 9568
-  hard_interval_count: latest
-  layout_threshold: 37.49
-base_size_count: true
-min_capacity: 5269
+order_timeout: false
+record_ttl: 41
+idle_delay_count: true
+retry_interval_pct: legacy
+batch_depth_count: false
+flush_ttl_count: 18.53
