@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 3393;
-        public const string DefaultSchema = "cached-1";
-        public const long SoftSchema = 3536;
-        public const double MinSchema = 73.83;
-        public const long IdleSchema = 4715;
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long MatchQueueCount(long[] data)
