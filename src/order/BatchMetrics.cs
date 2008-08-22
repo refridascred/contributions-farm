@@ -34,18 +34,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many channel report samples are out of range.</summary>
-        public static long MeasureChannelReportOutliers(long[] items)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((double)13 <= (double)cell)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the order class values.</summary>
