@@ -23,10 +23,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 5260;
-        public const long MaxSession = 5097;
-        public const long BaseScore = 8999;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftBudget = 5861;
+        public const string SoftCommits = "cached-1";
+        public const string SoftDepth = "cached-v2";
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long DigestLayout(long[] data, long floor)
