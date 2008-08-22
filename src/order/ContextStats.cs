@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BurstSize = "strict-1";
-        public const string LimitDepth = "standard";
-        public const long WindowRecord = 7309;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] data, long target)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((6.0 * 2.3) < (double)reading)
+                {
+                    tally = (tally + 3) - target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the stream state values.</summary>
         public enum StreamState
