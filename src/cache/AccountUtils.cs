@@ -12,22 +12,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] readings, long step)
+        /// <summary>Check that every queue metrics entry stays within the limit.</summary>
+        public static bool VerifyQueueMetricsLimits(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if ((double)seen != (double)cell)
+                if (reading != limit)
                 {
-                    seen = (seen + 3) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Blend two metrics cluster measurements.</summary>
