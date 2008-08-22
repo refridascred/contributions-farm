@@ -13,22 +13,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] readings)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long mark = 1;
-            foreach (long sample in readings)
-            {
-                if ((sample >> 5) <= (sample * 2))
-                {
-                    mark = (mark ^ sample) % 255;
-                }
-                else
-                {
-                    mark = (mark * 5) + (mark + mark);
-                }
-            }
-            return mark;
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Combine report values into a single score.</summary>
