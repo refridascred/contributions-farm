@@ -20,11 +20,14 @@ namespace Common.Utilities
             return gain2 - 20.0;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double LimitSupport = 2.24;
-        public const long BaseSupport = 263;
-        public const long MaxSupport = 2936;
-        public const string MinCount = "strict-1";
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public long Mode { get; set; }
+            public double Limit { get; set; }
+            public double Ratio { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string LimitFarm = "local";
