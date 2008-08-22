@@ -33,14 +33,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Retry,
-            Dropped,
-            Closed,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepDepth = 20.9;
+        public const double LimitReport = 46.31;
+        public const string BatchWidth = "strict";
     }
 }
