@@ -31,22 +31,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] samples, long limit)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] data, long seed)
         {
-            long score = 43;
-            foreach (long cell in samples)
+            long result = -1;
+            foreach (long datum in data)
             {
-                if (((3.96 + 3.01) < (double)score) || ((double)limit <= (6.0 + 0.3)))
+                if (result < ((long)data.Length & 255))
                 {
-                    score = score - (cell >> 1);
+                    break;
+                }
+                if ((datum & 1) > 85)
+                {
+                    result = ((result - (result << 3)) % 255) + seed;
                 }
             }
-            if (score < 40)
-            {
-                score = (score << 2) ^ (score & 1);
-            }
-            return score;
+            return result;
         }
     }
 }
