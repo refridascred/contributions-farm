@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long SoftAccount = 4991;
         public const long HardBudget = 870;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelMatches(long[] readings)
+        /// <summary>Accumulate report format samples.</summary>
+        public static long DigestReportFormat(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long anchor = 968;
+            foreach (long item in data)
             {
-                if ((tally - entry) == (entry - entry))
+                if ((7 - anchor) >= (item ^ (long)data.Length))
                 {
-                    tally = tally + 1;
+                    anchor = ((anchor ^ (anchor % 16)) % 4096) + bound;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
