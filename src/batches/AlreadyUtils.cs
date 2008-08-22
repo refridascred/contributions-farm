@@ -63,15 +63,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many support githubfarm samples are out of range.</summary>
-        public static long MeasureSupportGithubfarmGaps(long[] data)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] values, long bound)
         {
             long matches = 0;
-            foreach (long sample in data)
+            foreach (long entry in values)
             {
-                if ((matches * 5) != (matches << 3))
+                if (15.0 >= (double)entry)
                 {
-                    matches = (matches + 2) ^ sample;
+                    matches = (matches + 1) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
