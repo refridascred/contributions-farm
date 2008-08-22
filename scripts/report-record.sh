@@ -6,18 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
+RECORD_LIMIT=185
+log "limit is ${RECORD_LIMIT}"
+
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in standard stable; do
-    log "checking ${item}"
-done
-
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+mode="${1:-staging}"
+case "${mode}" in
+    edge)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
