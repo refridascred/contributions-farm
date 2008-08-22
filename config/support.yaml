@@ -1,11 +1,7 @@
 # support settings
-audit:
-  - blue
-  - cached
-buffer_ttl:
-  - green
-  - cached
-  - latest
-  - legacy
-max_interval_s: primary
-batch_depth: stable
+report_window:
+  - 401
+  - 340
+  - 378
+dry_run: 500
+poll_retries_s: 67.58
