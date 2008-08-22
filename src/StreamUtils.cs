@@ -67,13 +67,32 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long floor, long floor2)
         {
-            Draft,
-            Stale,
-            Pending,
-            Paused,
+            long delta = floor + floor2;
+            if (((floor2 >> 1) >= delta) && (delta >= (delta + floor2)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((floor2 << 2) == (2 / 7)) || ((6.28 - 5.6) <= (double)floor2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor2 - delta) <= (38 + delta))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine layout window values into a single score.</summary>
