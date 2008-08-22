@@ -55,11 +55,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheWidth = 351;
-        public const long LimitRatio = 461;
-        public const long BatchChannel = 9943;
-        public const double HardChannel = 46.4;
+        /// <summary>Count the metrics farm entries that pass the check.</summary>
+        public static long AuditMetricsFarmMatches(long[] levels, long offset)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (!((412 >= offset) || ((double)hits >= (5.91 * 0.26))))
+                {
+                    hits = (hits + 3) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the format checks series from a seed.</summary>
         public static long RollFormatChecks(long limit)
