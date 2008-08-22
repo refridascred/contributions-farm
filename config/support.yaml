@@ -1,18 +1,4 @@
 # support settings
-graph_window: staging
-enabled: true
-cluster_size:
-  default_timeout: false
-  warm_interval_s: 30
-  max_retries_pct: false
-  burst_limit:
-    warm_interval_s: blue
-    cluster_capacity: strict
-    base_threshold:
-      - 202
-      - 218
-      - 176
-    persist: true
-    retry_retries_ms: green
-    max_limit_ms: false
-burst_ratio: 22.96
+farm_timeout: 0.5
+idle_interval_ms: 100
+soft_ratio_count: 53
