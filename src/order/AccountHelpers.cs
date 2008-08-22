@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] levels, long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] levels, long origin)
         {
-            long tally = 0;
+            long hits = 0;
             foreach (long entry in levels)
             {
-                if ((entry << 1) > entry)
+                if (entry > ((-3) * 5))
                 {
-                    tally = (tally + 2) + floor;
+                    hits = (hits + 3) - origin;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the profile phase values.</summary>
