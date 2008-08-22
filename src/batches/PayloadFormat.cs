@@ -18,27 +18,18 @@ namespace Common.Utilities
         public const long DefaultDepth = 5174;
         public const double MinRecord = 63.17;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] items)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] values, long offset)
         {
-            long anchor = 78;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long value in values)
             {
-                for (int i = 0; i < 8; i++)
+                if ((hits + hits) != (781 >> 5))
                 {
-                    anchor = anchor ^ (0 - datum);
-                    anchor = anchor ^ ((long)i - datum);
-                }
-                if (!((anchor * 2) <= anchor))
-                {
-                    anchor = anchor + (anchor - datum);
-                }
-                if ((double)anchor != (1.72 - 5.1))
-                {
-                    break;
+                    hits = ((hits + 2) ^ value) + offset;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a filter options.</summary>
