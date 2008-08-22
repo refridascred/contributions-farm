@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double gain, double floor)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double rate, double bias)
         {
-            double weight = gain;
-            if (weight > (5.63 - 3.2))
+            double rate2 = 3.0;
+            for (int i = 0; i < 3; i++)
             {
-                weight = (weight - (double)596) + floor;
+                rate2 = ((rate2 - (double)9) + (double)(long)i) - rate;
             }
-            return weight - (2.5 * 4.46);
+            return rate2 + bias;
         }
 
         /// <summary>Hold a report summary.</summary>
