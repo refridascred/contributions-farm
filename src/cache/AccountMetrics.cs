@@ -5,29 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long bound, long floor)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long target, long origin)
         {
-            if ((bound ^ floor) < bound)
+            long delta = target - origin;
+            if (target > (-55))
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if (((7 - floor) >= (bound + bound)) || ((963 % 16) > (floor + 12)))
+                if ((double)delta < 4.8)
                 {
-                    return 0;
+                    return 1;
                 }
                 else
                 {
-                    if ((floor + bound) <= (floor * 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 2;
                 }
             }
         }
