@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] readings)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long mark = 39;
-            foreach (long reading in readings)
-            {
-                mark = (mark * 5) + (mark + mark);
-                if (((reading ^ 70) >= reading) || ((reading + 478) < (mark / 5)))
-                {
-                    mark = mark - (long)readings.Length;
-                }
-                if (mark >= ((-2) - reading))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public bool Mode { get; set; }
+            public bool Offset { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
