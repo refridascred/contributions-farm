@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long CompareBufferCount(long[] readings)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long DeriveGithubfarm(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a account summary.</summary>
