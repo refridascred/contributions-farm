@@ -23,21 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long CompareBatchesCount(long[] levels)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 211;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((carry ^ reading) >= reading)
                 {
-                    if ((levels[i] - levels[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry - (reading & 3)) % 65521;
                 }
             }
-            return tally;
+            if (carry > 181)
+            {
+                carry = (carry + (carry & 3)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Describe the cluster level values.</summary>
