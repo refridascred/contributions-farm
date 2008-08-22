@@ -25,18 +25,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] samples)
+        /// <summary>Measure how many entry contributi samples are out of range.</summary>
+        public static long AuditEntryContributiMatches(long[] values)
         {
-            long total = 8;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((total + total) < (53 + value))
+                if ((hits & 63) <= hits)
                 {
-                    total = (total * 4) + (-58);
+                    hits = (hits + 3) - value;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
