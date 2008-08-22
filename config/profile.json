@@ -1,8 +1,5 @@
 {
-  "stats_window": [199, 420],
-  "hard_delay_count": "stable",
-  "format_depth": 6505,
-  "sync_threshold_s": ["stable", "strict", "eu-west", "fallback"],
-  "idle_capacity_ms": ["blue", "latest", "staging", "latest"],
-  "format_size": 30
+  "default_retries": true,
+  "enabled": 3892,
+  "max_timeout_count": "staging"
 }
