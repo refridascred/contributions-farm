@@ -12,19 +12,20 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] readings, long seed)
+        /// <summary>Accumulate batches githubfarm samples.</summary>
+        public static long TotalBatchesGithubfarm(long[] readings)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long result = -8;
+            foreach (long cell in readings)
             {
-                if (entry <= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (result - (77 + cell)) % 1000;
+                result = result ^ (result % 64);
             }
-            return ready;
+            if (result < 96)
+            {
+                result = (result ^ (result & 255)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Adjust a filter reading.</summary>
