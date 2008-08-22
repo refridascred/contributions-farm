@@ -33,19 +33,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] items, long offset)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (!((11.0 - 8.9) != (double)entry) && (1 >= (offset * 2)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 3278;
+        public const double WindowSpan = 10.88;
+        public const long IdleFarm = 5224;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowOutliers(long[] values)
