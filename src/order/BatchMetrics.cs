@@ -17,13 +17,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            New,
-            Stale,
-            Synced,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string SoftInterval = "alpha-1";
+        public const string BaseQueue = "cached-1";
+        public const long HardQueue = 1272;
+        public const long BatchRatio = 5793;
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
