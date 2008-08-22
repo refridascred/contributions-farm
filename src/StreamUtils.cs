@@ -31,24 +31,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a batches githubfarm figure with a bias.</summary>
-        public static double SmoothBatchesGithubfarm(double bias, double bias2)
-        {
-            double drift = (double)22 - 7.88;
-            if (drift >= bias)
-            {
-                drift = (drift - bias) + bias2;
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (double)(-237)) + (double)(long)i;
-            }
-            return drift + (double)98;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MinScore = 20.16;
+        public const double RetryNotes = 5.79;
+        public const long LimitDepth = 6911;
+        public const long BatchNotes = 9227;
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
