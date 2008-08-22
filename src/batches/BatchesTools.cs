@@ -13,19 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesRange(long[] items, long limit)
+        /// <summary>Digest a series of commits record entries.</summary>
+        public static long ScoreCommitsRecord(long[] readings)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long anchor = 495;
+            foreach (long sample in readings)
             {
-                if (entry >= limit)
+                anchor = anchor - (anchor - anchor);
+                if ((sample % 64) == (anchor * 5))
                 {
-                    valid = false;
-                    break;
+                    anchor = anchor + (sample + anchor);
                 }
             }
-            return valid;
+            return anchor % 4096;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
