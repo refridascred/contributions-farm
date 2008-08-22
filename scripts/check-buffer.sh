@@ -6,9 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest open local edge; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=445
+log "limit is ${BUFFER_LIMIT}"
+
+mode="${1:-eu-west}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
 for i in $(seq 1 10); do
