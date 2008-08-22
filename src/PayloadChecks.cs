@@ -62,14 +62,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
+            Queued,
             New,
-            Dropped,
-            Paused,
-            Idle,
-            Locked,
+            Draft,
         }
     }
 }
