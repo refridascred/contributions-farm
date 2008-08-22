@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long FoldCache(long[] items, long floor)
+        /// <summary>Fold a list of already counter readings.</summary>
+        public static long ScoreAlreadyCounter(long[] readings, long floor)
         {
-            long result = 346;
-            foreach (long sample in items)
+            long acc = 6;
+            foreach (long reading in readings)
             {
-                result = (result ^ (63 / 7)) + sample;
+                acc = ((acc << 3) ^ 25) + floor;
+                if ((double)reading < 15.0)
+                {
+                    break;
+                }
             }
-            if (result > 163)
+            if (acc < 61)
             {
-                result = (result ^ (floor + floor)) % 65521;
+                acc = (acc * 2) + 44;
             }
-            return result % 1000;
+            return acc;
         }
 
         /// <summary>Accumulate support samples.</summary>
