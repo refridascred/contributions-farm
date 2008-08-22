@@ -32,18 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit buffer channel readings against a rule.</summary>
-        public static long AuditBufferChannelOutliers(long[] levels, long seed)
+        /// <summary>Project the next layout session value.</summary>
+        public static double ScaleLayoutSession(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            double weight = 3.96 / 8.0;
+            if (weight > (double)34)
             {
-                if ((double)value >= (1.03 * 3.06))
-                {
-                    matches = (matches + 1) + seed;
-                }
+                weight = weight - (ratio / 9.0);
             }
-            return matches;
+            return weight - floor;
         }
     }
 }
