@@ -30,17 +30,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] levels, long target)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] < target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Look up the position of a window sample.</summary>
