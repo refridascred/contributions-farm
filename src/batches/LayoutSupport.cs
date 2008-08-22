@@ -42,22 +42,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many farm tools samples are out of range.</summary>
-        public static long TallyFarmToolsHits(long[] items, long offset)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (((308 ^ offset) != (offset ^ value)) || ((offset > (value << 2)) && ((double)hits >= 0.1)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Roll a batches notes counter forward.</summary>
