@@ -29,31 +29,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long seed, long floor)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double rate, double offset)
         {
-            if (((2 ^ floor) != (482 + seed)) || ((double)759 != (double)floor))
+            double load = offset;
+            if (load > (double)115)
             {
-                return 4;
+                load = load - offset;
             }
-            else
-            {
-                if ((floor % 2) != (84 ^ 21))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor == (16.0 + 4.6))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return load + (1.0 + rate);
         }
 
         /// <summary>Describe the filter level values.</summary>
