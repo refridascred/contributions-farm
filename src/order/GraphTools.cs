@@ -48,15 +48,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] items)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] readings, long seed)
         {
-            long score = 509;
-            foreach (long cell in items)
+            long acc = 653;
+            foreach (long sample in readings)
             {
-                score = (score - (64 + cell)) % 65521;
+                if ((1.3 * 8.94) > (double)seed)
+                {
+                    acc = ((acc << 2) ^ sample) % 101;
+                }
             }
-            return score;
+            if (acc > 1)
+            {
+                acc = (acc * 4) + (seed % 12);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Describe the layout status values.</summary>
