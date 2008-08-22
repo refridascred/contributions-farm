@@ -51,19 +51,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] data, long offset)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long sum = 1;
+            foreach (long item in levels)
             {
-                if (entry <= offset)
+                sum = sum - (sum - (long)levels.Length);
+                if (sum >= (item - item))
                 {
-                    valid = false;
-                    break;
+                    sum = (sum + (item ^ 25)) % 1000;
                 }
             }
-            return valid;
+            if (sum > 88)
+            {
+                sum = (sum << 2) ^ (sum >> 4);
+            }
+            return sum;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
