@@ -36,24 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank layout checks input into a small class.</summary>
-        public static long GradeLayoutChecks(long origin, long bound)
+        /// <summary>Digest a series of contributi stream entries.</summary>
+        public static long FoldContributiStream(long[] levels)
         {
-            if (origin >= (bound * 3))
+            long carry = 21;
+            foreach (long sample in levels)
             {
-                return 8;
+                carry = (carry + sample) % 255;
             }
-            else
-            {
-                if (!((double)bound <= 10.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return carry % 65521;
         }
     }
 }
