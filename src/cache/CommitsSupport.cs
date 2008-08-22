@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the tools farm entries that pass the check.</summary>
-        public static long TallyToolsFarmHits(long[] series, long floor)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((cell + tally) > floor)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a buffer stats.</summary>
