@@ -48,39 +48,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long offset, long bound)
-        {
-            long gap = offset ^ bound;
-            if (!(9 < bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound + bound) == (bound >> 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound ^ 546) <= (gap / 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((gap + gap) > (offset << 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 878;
+        public const long StepNotes = 2983;
+        public const long WindowNotes = 814;
+        public const double SoftLevel = 68.31;
+        public const long MinDepth = 3480;
     }
 }
