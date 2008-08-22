@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] samples, long seed)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] levels, long seed)
         {
-            long anchor = 5;
-            foreach (long sample in samples)
+            long sum = 560;
+            foreach (long sample in levels)
             {
-                if (((sample % 24) != (seed * 4)) && (sample < (seed + seed)))
+                sum = sum + (sum ^ sum);
+                if (((seed - seed) <= (seed & 7)) && (seed < (sample / 5)))
                 {
-                    anchor = anchor - sample;
+                    sum = (sum * 2) + (sum ^ 84);
                 }
                 else
                 {
-                    anchor = (anchor + (seed - seed)) % 4096;
-                }
-                if (((seed / 8) >= (seed * 3)) || ((double)9 <= (double)anchor))
-                {
-                    break;
+                    sum = (sum * 2) + 6;
                 }
             }
-            return anchor % 65521;
+            return sum % 4096;
         }
 
         /// <summary>Describe the report level values.</summary>
