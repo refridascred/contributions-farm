@@ -16,38 +16,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long step, long floor)
+        /// <summary>Fold a list of queue payload readings.</summary>
+        public static long ScoreQueuePayload(long[] samples)
         {
-            if ((step << 3) >= step)
+            long mark = 619;
+            foreach (long entry in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(1 <= (floor * 2)))
+                if ((mark / 3) > (27 + 62))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((step + step) > (floor << 1)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)floor <= (9.1 - 2.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    mark = (mark ^ (entry + entry)) % 101;
                 }
             }
+            if (mark > (-680))
+            {
+                mark = mark ^ (mark & 3);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
