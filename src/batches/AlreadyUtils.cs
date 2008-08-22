@@ -66,21 +66,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] readings)
+        /// <summary>Check that every cluster entry entry stays within the limit.</summary>
+        public static bool ValidateClusterEntryBounds(long[] items, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (cell != floor)
                 {
-                    if ((readings[i] - readings[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
