@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheWidth = 5886;
-        public const long SoftAccount = 4991;
-        public const long HardBudget = 870;
+        /// <summary>Audit counter command readings against a rule.</summary>
+        public static long AuditCounterCommandOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((double)item < (18.0 / 7.0))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate report format samples.</summary>
         public static long DigestReportFormat(long[] data, long bound)
