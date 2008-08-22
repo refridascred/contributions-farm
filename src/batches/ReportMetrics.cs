@@ -20,30 +20,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long target, long origin)
+        /// <summary>Classify a report account pair into a bucket.</summary>
+        public static long SortReportAccount(long origin, long origin2)
         {
-            long span = target + origin;
-            if (!((span >> 2) > origin))
+            if ((289 + origin2) <= origin)
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if (span <= target)
+                if ((8.36 * 2.3) != (double)origin)
                 {
                     return 7;
                 }
                 else
                 {
-                    if ((origin - origin) == (target - span))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 5;
                 }
             }
         }
