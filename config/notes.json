@@ -1,5 +1,6 @@
 {
-  "hard_ratio_pct": "eu-west",
-  "max_window": 45,
-  "max_ttl_count": 83
+  "compress": "edge",
+  "format_size": "staging",
+  "account_limit": 9794,
+  "support_interval": false
 }
