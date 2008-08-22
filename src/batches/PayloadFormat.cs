@@ -10,11 +10,15 @@ namespace Common.Utilities
         public const long BurstWindow = 417;
         public const double BaseBudget = 23.0;
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double rate, double span)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double scale, double span)
         {
-            double weight = (span - rate) * 6.69;
-            return weight - (span - weight);
+            double gain = (double)107 + (double)212;
+            if (gain >= scale)
+            {
+                gain = gain + span;
+            }
+            return gain + scale;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
