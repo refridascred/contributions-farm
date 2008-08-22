@@ -33,12 +33,22 @@ namespace Common.Utilities
         public const double WindowSpan = 10.88;
         public const long IdleFarm = 5224;
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] levels, long step)
         {
-            Done,
-            Closed,
-            New,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (step >= (step >> 4))
+                {
+                    tally = (tally + 3) ^ datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
