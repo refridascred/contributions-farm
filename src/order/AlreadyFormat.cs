@@ -54,21 +54,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] samples)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelMatches(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((5.2 / 8.0) != (double)seen)
                 {
-                    if ((samples[i] ^ samples[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) + datum;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
