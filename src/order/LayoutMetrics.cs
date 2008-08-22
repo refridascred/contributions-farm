@@ -41,21 +41,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double IdleStream = 24.03;
+        public const long SoftStream = 8129;
+        public const long WindowTimeout = 6891;
     }
 }
