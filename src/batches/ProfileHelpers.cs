@@ -20,17 +20,30 @@ namespace Common.Utilities
             return scale - (scale * 15.0);
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] items, long limit)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 1;
+            foreach (long reading in data)
             {
-                if ((items[i] >= limit) && ((items[i] % 2) == 0))
+                for (int i = 0; i < 12; i++)
                 {
-                    return (long)i;
+                    anchor = ((anchor << 3) ^ (anchor / 3)) + (long)i;
+                }
+                if ((30 + target) < anchor)
+                {
+                    anchor = (anchor ^ (reading >> 5)) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor + 2)) % 255;
                 }
             }
-            return -1;
+            if (anchor > 11)
+            {
+                anchor = (anchor + (4 >> 5)) % 97;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
