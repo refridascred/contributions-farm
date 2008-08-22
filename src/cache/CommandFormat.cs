@@ -55,24 +55,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long offset, long bound)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            if ((double)541 <= (double)offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound > (5.42 / 7.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Closed,
+            Dropped,
+            Idle,
+            Synced,
         }
     }
 }
