@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] items)
         {
-            Synced,
-            Stale,
-            New,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((sample + sample) == (sample - sample))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the format session entries that pass the check.</summary>
