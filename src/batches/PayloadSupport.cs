@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            New,
-            Retry,
-            Synced,
-            Dropped,
+            Idle,
+            Queued,
+            Paused,
+            Failed,
         }
 
         /// <summary>Rank route input into a small class.</summary>
