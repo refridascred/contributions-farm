@@ -49,12 +49,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 1003;
-        public const string SoftTools = "primary-edge";
-        public const string DefaultFactor = "stable-v2";
-        public const string BatchTools = "legacy";
-        public const string RetryTools = "staging";
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool GuardMetricRange(long[] data, long step)
