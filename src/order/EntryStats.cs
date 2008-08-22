@@ -29,21 +29,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long PairChannelCount(long[] samples)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] readings, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum <= offset)
                 {
-                    if ((samples[i] - samples[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
