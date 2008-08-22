@@ -1,9 +1,7 @@
-id,count,level,score,owner
-1,16.81,11.54,local,30.98
-2,457,870,869,cached
-3,13.0,10.82,797,756
-4,598,stable,18.85,20.07
-5,782,94.75,local,edge
-6,891,800,staging,local
-7,50.03,193,957,639
-8,55.56,latest,blue,684
+id,owner,count,score
+1,87.02,88.0,450
+2,418,primary,670
+3,85,fallback,656
+4,184,eu-west,30.74
+5,local,778,358
+6,green,835,64
