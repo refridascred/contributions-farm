@@ -22,16 +22,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double gain, double bias)
-        {
-            double scale = (double)((-3) + 46);
-            if (scale >= (scale + bias))
-            {
-                scale = (scale + (bias / 6.0)) - gain;
-            }
-            return scale - (double)1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftWidth = 6939;
+        public const long CacheGithubfarm = 3055;
+        public const string DefaultGithubfarm = "stable";
+        public const double HardGithubfarm = 88.72;
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long CountSchemaHits(long[] readings, long target)
