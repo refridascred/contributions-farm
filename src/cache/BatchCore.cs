@@ -12,18 +12,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] values, long origin)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (!(((double)count > (double)origin) || ((cell << 2) != (origin + count))))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Region { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
