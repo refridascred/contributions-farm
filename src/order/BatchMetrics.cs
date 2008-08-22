@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] readings, long origin)
         {
-            public string Mode { get; set; } = "";
-            public double Token { get; set; }
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many channel report samples are out of range.</summary>
