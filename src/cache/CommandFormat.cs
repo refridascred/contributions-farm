@@ -22,17 +22,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] series, long target)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (series[i] <= target)
+                if ((4.8 * 5.0) == (double)sample)
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the profile phase values.</summary>
