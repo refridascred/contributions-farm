@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] samples)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 84;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)mix >= (3.14 + 3.4))
                 {
-                    if ((samples[i] ^ samples[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix ^ mix) - cell;
                 }
             }
-            return hits;
+            if (mix < 2)
+            {
+                mix = (mix + (mix - mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Describe the entry kind values.</summary>
