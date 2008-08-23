@@ -1,15 +1,15 @@
 # Command notes
 
-Keep order and stats names short and lowercase.
-The batch module keeps record values in sync with the support cache.
+A stats that stays idle for too long is moved to the notes list.
+The token helpers are pure functions, so they are safe to call from any thread.
+Keep farm and counter names short and lowercase.
 
-The cache module keeps contributi values in sync with the layout cache.
-A counter that stays idle for too long is moved to the metric list.
-Run the filter check before changing any record limits.
+Each buffer is validated before it reaches the graph queue.
+Use order settings to tune how often commits data is refreshed.
 
 ## Guidelines
 
-- Validate batches input early
-- Log every report change
-- Review format limits each release
-- Document new filter fields
+- Review account limits each release
+- Keep counter values small
+- Log every command change
+- Validate cluster input early
