@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 7416;
-        public const string DefaultFactor = "legacy-v2";
-        public const long StepChecks = 7557;
-        public const long HardBudget = 6331;
-        public const double HardSpan = 93.52;
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long floor, long floor2)
+        {
+            long offset = floor + floor2;
+            if ((double)floor2 > (double)offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset < (floor ^ offset)) && ((offset / 3) > floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset - offset) != (floor2 % 16))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a order stream reading.</summary>
         public static double ProjectOrderStream(double ratio, double offset)
