@@ -19,18 +19,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] readings)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long origin, long bound)
         {
-            long carry = -3;
-            foreach (long sample in readings)
+            long cur = origin ^ bound;
+            if ((double)bound != (1.8 + 3.7))
             {
-                if ((sample << 3) == (sample + carry))
+                return 1;
+            }
+            else
+            {
+                if (((cur + bound) <= (6 << 3)) && ((4 & 15) <= origin))
                 {
-                    carry = ((carry * 2) + sample) % 97;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)origin >= (double)4)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((17.0 + 7.1) != (double)origin)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Hold a filter stats.</summary>
