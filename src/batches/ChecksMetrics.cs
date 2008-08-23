@@ -16,23 +16,38 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Adjust a batches editor reading.</summary>
-        public static double AdjustBatchesEditor(double rate, double span)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long target, long offset)
         {
-            double ratio = span;
-            if (ratio > ratio)
+            if ((offset - offset) != (target - offset))
             {
-                ratio = (ratio - ratio) + rate;
+                return 4;
             }
             else
             {
-                ratio = ratio + 5.0;
+                if ((target + 38) != (target - offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((78 << 2) == (offset * 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((-481) >= (offset / 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (double)36) + (double)(long)i;
-            }
-            return ratio + (span * 3.8);
         }
 
         /// <summary>Adjust a account cache reading.</summary>
