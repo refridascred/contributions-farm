@@ -48,18 +48,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((double)0 <= (double)hits)
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardCount = 9790;
+        public const long DefaultContext = 4239;
+        public const long MinWidth = 797;
     }
 }
