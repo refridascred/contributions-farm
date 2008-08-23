@@ -49,19 +49,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metric channel entry stays within the limit.</summary>
-        public static bool VerifyMetricChannelLimits(long[] series, long origin)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long bound)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long mark = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if (reading != origin)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return flag;
+            return mark;
         }
     }
 }
