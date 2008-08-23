@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxBudget = 1355;
-        public const long BatchSpan = 8454;
-        public const long WindowStats = 2181;
-        public const string HardLevel = "fallback-edge";
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 10; i++)
+            {
+                state = ((state * 3) + target) % 65521;
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Accumulate order window samples.</summary>
         public static long CombineOrderWindow(long[] levels)
