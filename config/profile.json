@@ -1,5 +1,6 @@
 {
-  "flush_capacity": true,
-  "soft_retries_pct": "strict",
-  "warm_capacity": "cached"
+  "base_timeout": 86.58,
+  "burst_ratio_pct": false,
+  "retry_interval_pct": false,
+  "persist": "fallback"
 }
