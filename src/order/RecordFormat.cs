@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmGaps(long[] series)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long offset, long target)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long slot = offset + target;
+            if ((slot + offset) == (slot * 5))
             {
-                if ((((6 / 3) >= (count - reading)) || ((reading % 8) < (reading - reading))) || (((count / 3) != (count + reading)) && ((reading % 64) < reading)))
+                return 4;
+            }
+            else
+            {
+                if (slot >= (slot % 8))
                 {
-                    count = count + 1;
+                    return 6;
+                }
+                else
+                {
+                    if (target > (84 >> 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate tools samples.</summary>
