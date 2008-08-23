@@ -106,18 +106,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] series, long floor)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((((floor + 4) > (hits * 5)) && (reading < (hits - 6))) && ((9.46 > (double)reading) && ((reading + reading) >= reading)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Project the next support value.</summary>
