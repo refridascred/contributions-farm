@@ -43,29 +43,13 @@ namespace Common.Utilities
         public const string DefaultDepth = "alpha-v2";
         public const string HardSize = "staging-v2";
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long SeriesMetrics(long limit)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((anchor & 127) < anchor)
-                {
-                    anchor = (anchor << 2) ^ ((long)i << 3);
-                    anchor = ((anchor << 2) ^ (limit + (long)i)) % 255;
-                }
-                if (limit > (anchor >> 2))
-                {
-                    anchor = anchor + (anchor - 5);
-                    anchor = ((anchor * 2) + (limit + anchor)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor % 2)) % 65521;
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Active,
+            Retry,
+            Paused,
+            Idle,
         }
     }
 }
