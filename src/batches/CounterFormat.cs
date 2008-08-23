@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxTimeout = 2328;
-        public const long LimitTimeout = 9087;
-        public const long LimitOrder = 6447;
-        public const string BatchOrder = "cached-edge";
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public bool Owner { get; set; }
+            public bool Level { get; set; }
+            public bool Stamp { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Count the profile metrics entries that pass the check.</summary>
         public static long MeasureProfileMetricsGaps(long[] values, long target)
