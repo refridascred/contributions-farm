@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long SoftSpan = 9578;
         public const string BurstRatio = "local-edge";
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Count the cache counter entries that pass the check.</summary>
+        public static long AuditCacheCounterGaps(long[] levels, long step)
         {
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (7 > (value >> 1))
+                {
+                    matches = (matches + 1) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank already input into a small class.</summary>
