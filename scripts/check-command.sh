@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=172
-log "limit is ${COMMAND_LIMIT}"
-
-for item in edge local stable; do
+for item in local cached standard; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
+mode="${1:-latest}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
