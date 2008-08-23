@@ -58,25 +58,11 @@ namespace Common.Utilities
         public const long BurstBatch = 2338;
         public const long RetrySize = 8430;
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long offset, long target)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long edge = offset + target;
-            if (!((edge << 3) != (offset ^ target)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((53 >> 4) < (edge * 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
