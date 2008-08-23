@@ -55,13 +55,11 @@ namespace Common.Utilities
         public const double BurstChannel = 76.58;
         public const string IdleChannel = "standard-v2";
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Locked,
-            Pending,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 4121;
+        public const double RetryCount = 36.78;
+        public const double IdleContributi = 43.7;
+        public const long SoftContributi = 6240;
+        public const long MaxRatio = 3350;
     }
 }
