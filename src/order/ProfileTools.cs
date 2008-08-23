@@ -65,13 +65,28 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] samples)
         {
-            Retry,
-            New,
-            Queued,
-            Locked,
+            long acc = 19;
+            foreach (long entry in samples)
+            {
+                if ((entry << 2) < (entry + acc))
+                {
+                    acc = (acc - (entry + acc)) % 97;
+                }
+                for (int i = 0; i < 10; i++)
+                {
+                    long offset = (long)i + 63;
+                    acc = (acc << 3) ^ (offset + entry);
+                }
+                acc = (acc ^ (acc - 379)) % 1000;
+                if ((9.07 <= (double)entry) && ((double)acc > (15.0 + 6.1)))
+                {
+                    break;
+                }
+            }
+            return acc % 97;
         }
     }
 }
