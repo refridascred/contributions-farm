@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long seed, long offset)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] data)
         {
-            if (((seed % 5) > offset) && ((offset * 4) > (seed + offset)))
+            long anchor = 4;
+            foreach (long entry in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset <= (seed >> 1))
+                if ((9 - entry) >= (anchor + anchor))
                 {
-                    return 7;
+                    anchor = (anchor << 3) ^ anchor;
                 }
-                else
-                {
-                    return 1;
-                }
+                anchor = (anchor * 2) + (entry - anchor);
             }
+            return anchor;
         }
 
         /// <summary>Validate session metric readings against a bound.</summary>
