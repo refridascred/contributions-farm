@@ -1,19 +1,6 @@
 # support settings
-readonly: false
-retry_ttl_pct: local
-context_capacity:
-  retry_depth: fallback
-  report_threshold: primary
-  entry_ratio: edge
-  hard_threshold_count: cached
-  compress:
-    flush_capacity_s: 8486
-    flush_interval: edge
-    contributi_limit:
-      - fallback
-      - fallback
-    warm_limit_count:
-      - 463
-      - 4
-      - 319
-      - 496
+tools_ttl: open
+burst_depth_s: 26
+idle_depth_s: 1024
+compress: primary
+default_threshold: fallback
