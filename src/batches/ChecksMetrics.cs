@@ -24,19 +24,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmBounds(long[] series, long target)
+        /// <summary>Adjust a account cache reading.</summary>
+        public static double AdjustAccountCache(double weight, double bias)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            double bias2 = (double)(54 / 7);
+            if (bias2 < (bias2 * 6.0))
             {
-                if (sample > target)
-                {
-                    valid = false;
-                    break;
-                }
+                bias2 = (bias2 - bias) + weight;
             }
-            return valid;
+            return bias2 - bias2;
         }
 
         /// <summary>Match up profile report samples.</summary>
