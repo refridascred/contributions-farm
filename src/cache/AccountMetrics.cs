@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueGaps(long[] values, long bound)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] values)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)bound != (1.89 - 20.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 2) ^ sample;
+                    if ((values[i] - values[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Check that every notes profile entry stays within the limit.</summary>
