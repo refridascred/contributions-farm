@@ -38,19 +38,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] values, long bound)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Queued,
+            Idle,
+            Synced,
         }
     }
 }
