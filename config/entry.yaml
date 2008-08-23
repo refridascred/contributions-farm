@@ -1,5 +1,19 @@
 # entry settings
-warm_depth_count: 40.9
-record_delay: staging
-flush_limit: 1024
-audit: true
+audit: 76.18
+idle_threshold: eu-west
+stats_ratio:
+  batch_limit_s:
+    poll_depth_count: false
+    poll_limit: 12
+    warm_depth: stable
+    max_capacity: true
+  cache_threshold: edge
+  compress: standard
+  contributi_capacity: edge
+  burst_interval_s:
+    - 282
+    - 270
+    - 454
+base_capacity_pct: 6442
+warm_window: true
+account_limit: true
