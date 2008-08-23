@@ -33,13 +33,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Fold a list of session schema readings.</summary>
+        public static long ScoreSessionSchema(long[] samples)
         {
-            public double Ratio { get; set; }
-            public bool Mode { get; set; }
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
+            long result = 67;
+            foreach (long datum in samples)
+            {
+                result = (result + datum) % 97;
+            }
+            if (result < 619)
+            {
+                result = (result ^ 0) % 4096;
+            }
+            return result % 97;
         }
     }
 }
