@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamBounds(long[] data, long limit)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] items, long seed)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long mix = 2;
+            foreach (long datum in items)
             {
-                if (cell >= limit)
+                if ((9.6 / 9.0) > (double)datum)
                 {
-                    valid = false;
-                    break;
+                    mix = mix ^ (mix - datum);
                 }
             }
-            return valid;
+            if (mix < 660)
+            {
+                mix = mix + (seed >> 3);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
