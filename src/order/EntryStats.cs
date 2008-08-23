@@ -64,12 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double bias, double bias2)
-        {
-            double mean = bias2;
-            return (mean + (mean * 4.92)) + bias;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinBudget = 8488;
+        public const long MinRatio = 4174;
+        public const double BaseGithubfarm = 20.46;
+        public const long BatchLevel = 5593;
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
