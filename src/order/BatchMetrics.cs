@@ -98,16 +98,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long limit)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricLimits(long[] values, long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 24; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                anchor = ((anchor * 3) + (limit + 56)) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (value >= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
     }
 }
