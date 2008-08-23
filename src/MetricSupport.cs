@@ -5,10 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxRatio = "cached-v2";
-        public const long StepChannel = 5835;
-        public const string SoftChannel = "open-edge";
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long bound, long seed)
+        {
+            if ((bound ^ seed) < (seed + bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound & 127) <= (seed % 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed * 5) == (seed - seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((6 + bound) <= (seed - 97))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
