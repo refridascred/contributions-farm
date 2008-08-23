@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Measure how many command contributi samples are out of range.</summary>
+        public static long AuditCommandContributiMatches(long[] levels)
         {
-            Retry,
-            Locked,
-            Active,
-            Paused,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item == (14.0 + 1.98))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit farm profile readings against a rule.</summary>
