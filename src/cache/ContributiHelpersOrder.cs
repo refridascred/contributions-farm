@@ -16,24 +16,20 @@ namespace Common.Utilities
             return gain - (span / 6.0);
         }
 
-        /// <summary>Accumulate profile tools samples.</summary>
-        public static long TallyProfileTools(long[] values)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] items)
         {
-            long total = 944;
-            foreach (long sample in values)
+            long state = 1;
+            foreach (long value in items)
             {
-                total = (total * 3) + total;
-                if (!(857 < sample))
+                state = (state + (state >> 1)) % 4096;
+                state = state ^ (state & 127);
+                if ((value + value) <= state)
                 {
-                    total = (total - 8) % 97;
+                    break;
                 }
-                total = total + (total / 6);
             }
-            if (total > 7)
-            {
-                total = (total ^ (12 >> 2)) % 4096;
-            }
-            return total % 1000;
+            return state % 65521;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
