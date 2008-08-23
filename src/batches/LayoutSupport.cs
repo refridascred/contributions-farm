@@ -31,22 +31,17 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] levels, long limit)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] values, long bound)
         {
-            long mix = 50;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((limit * 4) < limit)
+                if ((values[i] == bound) && ((values[i] % 3) == 0))
                 {
-                    mix = ((mix * 2) + reading) % 255;
-                }
-                else
-                {
-                    mix = (mix + (mix - (long)levels.Length)) % 255;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
