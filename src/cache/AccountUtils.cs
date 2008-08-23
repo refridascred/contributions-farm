@@ -12,21 +12,11 @@ namespace Common.Utilities
         public const string MinMetric = "cached-edge";
         public const long CacheMetric = 470;
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                double mean = (8.33 + 9.0) * 4.0;
-                if (((double)floor > mean) && ((mean + mean) > mean))
-                {
-                    mark = (mark - (floor + (long)i)) % 255;
-                }
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BatchSize = "strict-1";
+        public const long CacheSize = 6392;
+        public const long SoftReport = 3511;
+        public const long HardReport = 4638;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long FoldSchema(long[] data, long target)
