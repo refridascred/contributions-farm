@@ -81,15 +81,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long floor)
+        /// <summary>Combine report queue values into a single score.</summary>
+        public static long ScoreReportQueue(long[] items)
         {
-            long total = floor;
-            for (int i = 0; i < 14; i++)
+            long sum = -30;
+            foreach (long reading in items)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                long gap = sum ^ reading;
+                sum = sum - (gap + 7);
+                sum = ((sum << 3) ^ (35 - sum)) % 101;
             }
-            return total;
+            if (sum < 63)
+            {
+                sum = ((sum * 2) + (sum + sum)) % 4096;
+            }
+            return sum;
         }
     }
 }
