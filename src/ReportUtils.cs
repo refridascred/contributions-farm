@@ -31,31 +31,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long offset, long seed)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] items)
         {
-            if ((4 + (-99)) != (seed - offset))
+            long acc = 594;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed < (3 / 7)) && ((offset & 1) <= (seed + seed)))
+                if ((acc + acc) > 1)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((seed << 2) != (seed >> 5)) && ((seed * 5) == (seed + offset)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    acc = (acc << 2) ^ (datum + 96);
                 }
             }
+            if (acc > 4)
+            {
+                acc = acc ^ (acc + acc);
+            }
+            return acc;
         }
 
         /// <summary>Combine command counter values into a single score.</summary>
