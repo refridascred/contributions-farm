@@ -16,17 +16,39 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] series, long step)
+        /// <summary>Classify a cache buffer pair into a bucket.</summary>
+        public static long ClassifyCacheBuffer(long limit, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long next = limit ^ bound;
+            if ((bound & 63) < (next + 46))
             {
-                if ((series[i] > step) && ((series[i] % 2) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((double)limit != (8.0 - 0.68))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)next > (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!(next <= (next - limit)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
