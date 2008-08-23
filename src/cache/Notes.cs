@@ -43,18 +43,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] data)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((count < entry) || ((29 + entry) <= (count ^ count)))
+                if ((item * 4) != (item + tally))
                 {
-                    count = count + 2;
+                    tally = (tally + 3) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
