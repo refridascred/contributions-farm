@@ -44,26 +44,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long WeighFarm(long[] data)
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double weight, double floor)
         {
-            long acc = 1;
-            foreach (long sample in data)
+            double drift = floor / 7.0;
+            for (int i = 0; i < 6; i++)
             {
-                if ((sample * 3) <= (6 * 2))
-                {
-                    acc = (acc + (acc - sample)) % 65521;
-                }
-                else
-                {
-                    acc = (acc - (sample << 3)) % 4096;
-                }
+                drift = ((drift - drift) + (double)(long)i) + weight;
             }
-            if (acc < 74)
-            {
-                acc = (acc << 2) ^ (acc ^ 5);
-            }
-            return acc;
+            return drift + (drift - floor);
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
