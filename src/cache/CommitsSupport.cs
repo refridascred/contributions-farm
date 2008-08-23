@@ -31,38 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a account buffer pair into a bucket.</summary>
-        public static long BucketAccountBuffer(long offset, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] levels, long limit)
         {
-            if ((2.4 + 5.0) < (double)offset)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((8.97 - 3.7) >= (double)offset)
+                if (((entry + (long)levels.Length) < seen) || ((limit >> 1) < (limit / 5)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (step >= offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((offset % 12) == (step & 63)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the format phase values.</summary>
