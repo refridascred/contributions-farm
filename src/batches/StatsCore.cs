@@ -40,21 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of queue commits readings.</summary>
-        public static long OverlapQueueCommitsCount(long[] readings)
+        /// <summary>Iterate the report channel series from a seed.</summary>
+        public static long DeriveReportChannel(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = (anchor - ((long)i - 77)) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
