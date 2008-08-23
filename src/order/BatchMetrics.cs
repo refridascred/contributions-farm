@@ -20,38 +20,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a metric command value against two limits.</summary>
-        public static long RankMetricCommand(long step, long origin)
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] readings)
         {
-            if ((origin & 15) > (step + 0))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step & 31) >= (step ^ step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((8 > (93 + origin)) && ((step & 15) != (origin ^ step)))
+                    if ((readings[i] + readings[j]) == 0)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((862 / 8) < step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
