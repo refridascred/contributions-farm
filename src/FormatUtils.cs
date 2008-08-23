@@ -74,24 +74,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank order payload input into a small class.</summary>
-        public static long ClassifyOrderPayload(long floor, long bound)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            if (bound < (floor / 4))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)bound < 5.06))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Size { get; set; }
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
