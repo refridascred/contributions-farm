@@ -20,32 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a cluster contributi value against two limits.</summary>
-        public static long ClassifyClusterContributi(long step, long seed)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long limit)
         {
-            long offset = step + seed;
-            if (offset <= (step - 1))
+            long total = limit;
+            for (int i = 0; i < 18; i++)
             {
-                return 6;
+                total = (total << 2) ^ (limit + total);
+                total = ((total * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((offset * 4) > (step ^ 223))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (step > (step << 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
