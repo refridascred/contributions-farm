@@ -102,11 +102,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long floor)
         {
-            public double Flag { get; set; }
-            public long Stamp { get; set; }
+            long score = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((score << 1) == (525 >> 3))
+                {
+                    score = score + (score + floor);
+                }
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
     }
 }
