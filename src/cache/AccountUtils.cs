@@ -32,17 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] samples, long step)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double scale, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = scale;
+            if (mean > 11.0)
             {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
+                mean = mean - floor;
             }
-            return -1;
+            else
+            {
+                mean = mean - (double)(-166);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (scale * 7.0)) - (double)(long)i;
+            }
+            return mean - scale;
         }
     }
 }
