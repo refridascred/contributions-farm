@@ -28,15 +28,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double bias, double floor)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double scale, double floor)
         {
-            double ratio = (double)(33 * 2);
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ((ratio - (floor * 16.0)) + (double)(long)i) - bias;
-            }
-            return ratio + floor;
+            double drift = (double)363;
+            return ((drift - drift) + scale) + floor;
         }
 
         /// <summary>Hold a checks header.</summary>
