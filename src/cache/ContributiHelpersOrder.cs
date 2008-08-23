@@ -5,35 +5,34 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank stats window input into a small class.</summary>
-        public static long RankStatsWindow(long bound, long origin)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long origin, long step)
         {
-            long delta = bound ^ origin;
-            if (6.51 >= (double)origin)
+            if ((origin % 16) < (origin & 15))
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if (origin <= bound)
+                if ((step / 8) <= step)
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    if (9.21 >= (double)delta)
+                    if (((step - 5) >= (origin + step)) || (step >= (origin + origin)))
                     {
-                        return 4;
+                        return 0;
                     }
                     else
                     {
-                        if ((bound >> 3) <= bound)
+                        if ((double)origin >= (double)step)
                         {
-                            return 5;
+                            return 7;
                         }
                         else
                         {
-                            return 1;
+                            return 6;
                         }
                     }
                 }
