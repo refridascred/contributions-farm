@@ -34,24 +34,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long seed, long offset)
-        {
-            if (64 < (offset ^ offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((double)seed != (double)offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 2685;
+        public const double LimitSession = 40.58;
+        public const long IdleFactor = 7140;
     }
 }
