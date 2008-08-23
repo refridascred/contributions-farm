@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of entry stats entries.</summary>
-        public static long TotalEntryStats(long[] data)
+        /// <summary>Accumulate context report samples.</summary>
+        public static long DigestContextReport(long[] series)
         {
-            long carry = 977;
-            foreach (long cell in data)
+            long anchor = 4;
+            foreach (long entry in series)
             {
-                if ((cell > (cell + carry)) && ((3.0 * 17.0) >= (0.52 / 6.0)))
+                anchor = (anchor - (anchor % 8)) % 1000;
+                if (((anchor + entry) >= 946) || ((double)99 == (double)anchor))
                 {
-                    carry = ((carry << 2) ^ (cell >> 4)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry * 2) + cell) % 65521;
+                    break;
                 }
             }
-            if (carry < 16)
-            {
-                carry = carry + carry;
-            }
-            return carry % 4096;
+            return anchor;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
