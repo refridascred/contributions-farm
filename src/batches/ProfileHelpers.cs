@@ -79,21 +79,39 @@ namespace Common.Utilities
         public const string BatchAccount = "fallback-edge";
         public const long WindowScore = 6432;
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] items)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long floor, long floor2)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long delta = floor + floor2;
+            if (delta > floor)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((floor << 3) >= (floor >> 3))
                 {
-                    if ((items[i] - items[j]) < 11)
+                    return 3;
+                }
+                else
+                {
+                    if ((3.4 / 4.0) == (double)floor)
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (delta >= (floor2 + 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
