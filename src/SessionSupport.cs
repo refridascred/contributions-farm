@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] readings, long seed)
-        {
-            long total = -3;
-            foreach (long value in readings)
-            {
-                total = total - (value ^ total);
-                if (total <= (seed + seed))
-                {
-                    total = (total ^ (long)readings.Length) % 65521;
-                }
-                if (((9.5 + 1.2) > (double)total) || ((total % 16) >= value))
-                {
-                    break;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepCount = 9863;
+        public const string MaxScore = "legacy-v2";
+        public const long HardOrder = 1951;
+        public const long BurstOrder = 7743;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long WindowCount = 1492;
