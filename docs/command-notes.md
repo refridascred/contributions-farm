@@ -1,11 +1,11 @@
 # Command notes
 
-Run the token check before changing any layout limits.
-Run the editor check before changing any support limits.
-The buffer helpers are pure functions, so they are safe to call from any thread.
+Use buffer settings to tune how often stats data is refreshed.
+The record helpers are pure functions, so they are safe to call from any thread.
+Each context is validated before it reaches the githubfarm queue.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Validate report input early
-- Keep channel values small
+- Review channel limits each release
+- Validate cluster input early
+- Log every cluster change
