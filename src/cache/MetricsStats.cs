@@ -38,19 +38,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] levels, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] data, long bound)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (value >= step)
+                if ((11 + matches) > (matches >> 1))
                 {
-                    flag = false;
-                    break;
+                    matches = ((matches + 3) ^ reading) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
