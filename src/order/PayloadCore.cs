@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamGaps(long[] values, long step)
         {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
-            public bool Label { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (step <= (step << 2))
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
