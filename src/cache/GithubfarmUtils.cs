@@ -21,15 +21,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double gain, double offset)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] levels, long seed)
         {
-            double bias = (offset / 9.0) + 9.34;
-            if (bias <= (double)80)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = (bias + bias) - gain;
+                if (levels[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return bias + offset;
+            return -1;
         }
 
         /// <summary>Audit cluster graph readings against a rule.</summary>
