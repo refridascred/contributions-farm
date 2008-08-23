@@ -29,18 +29,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] items, long seed)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (88 >= item)
-                {
-                    seen = (seen + 3) - seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftCluster = "latest-1";
+        public const long BaseCluster = 7115;
+        public const long RetryCluster = 8419;
+        public const double BurstCluster = 79.18;
+        public const string DefaultTimeout = "fallback-v2";
     }
 }
