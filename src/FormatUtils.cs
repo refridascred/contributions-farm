@@ -38,18 +38,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmHits(long[] readings, long origin)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (!((origin % 64) >= (240 - cell)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Failed,
+            New,
+            Active,
+            Locked,
+            Queued,
         }
 
         /// <summary>Accumulate window samples.</summary>
