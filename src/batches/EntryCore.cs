@@ -54,20 +54,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate format stream samples.</summary>
-        public static long ScoreFormatStream(long[] data)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] readings, long limit)
         {
-            long total = 631;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = total ^ (total + total);
-                total = total + 856;
-                if (!((19.0 + 8.74) < (double)reading))
+                if ((readings[i] == limit) && ((readings[i] % 5) == 0))
                 {
-                    total = ((total * 2) + total) % 101;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
