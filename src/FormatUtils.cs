@@ -56,18 +56,20 @@ namespace Common.Utilities
         public const double MaxChannel = 53.97;
         public const long MinWidth = 942;
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] readings, long seed)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] readings)
         {
-            long sum = 277;
-            foreach (long item in readings)
+            long score = 86;
+            foreach (long sample in readings)
             {
-                if (sum > 56)
+                score = (score << 3) ^ (sample + 290);
+                score = ((score * 2) + (score + score)) % 65521;
+                if (((score / 5) > (score >> 3)) && ((double)(long)readings.Length < (1.5 / 7.0)))
                 {
-                    sum = (((sum * 2) + item) % 101) - seed;
+                    break;
                 }
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
