@@ -60,24 +60,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank counter cluster input into a small class.</summary>
-        public static long ClassifyCounterCluster(long bound, long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportOutliers(long[] data)
         {
-            if (bound > (-51))
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (4 >= step)
+                if ((seen >> 4) == (6 << 1))
                 {
-                    return 0;
+                    seen = (seen + 3) ^ value;
                 }
                 else
                 {
-                    return 4;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
