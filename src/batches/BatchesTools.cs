@@ -13,19 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] samples, long origin)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Retry,
+            Queued,
+            Failed,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
