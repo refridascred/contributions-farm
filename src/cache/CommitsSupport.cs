@@ -48,18 +48,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the queue counter entries that pass the check.</summary>
-        public static long CountQueueCounterOutliers(long[] data)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((item << 1) < 59) && ((seen * 4) != (item % 5)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((readings[i] + readings[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a contributi summary.</summary>
