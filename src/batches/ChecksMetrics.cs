@@ -57,19 +57,15 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] values)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] items)
         {
             long seen = 0;
-            foreach (long sample in values)
+            foreach (long sample in items)
             {
-                if ((sample << 3) > (3 >> 1))
+                if (!((92 >> 1) < (seen % 64)))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 2) + sample;
                 }
             }
             return seen;
