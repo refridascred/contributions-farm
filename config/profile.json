@@ -1,13 +1,7 @@
 {
-  "warm_limit_ms": ["staging", "open"],
-  "sync_timeout_count": {
-    "checks_size": ["stable", "green", "latest"],
-    "context_retries": 743,
-    "verbose": ["local", "fallback"],
-    "burst_depth_ms": 6433,
-    "context_size": 2221
-  },
-  "strict": 18.66,
-  "poll_retries_pct": false,
-  "stream_delay": "stable"
+  "min_timeout_s": 95.96,
+  "strict": false,
+  "default_ttl_pct": 45.98,
+  "base_ttl": "stable",
+  "max_ratio_ms": "staging"
 }
