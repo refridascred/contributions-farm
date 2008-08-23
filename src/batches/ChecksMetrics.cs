@@ -70,15 +70,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine metrics payload values into a single score.</summary>
-        public static long TotalMetricsPayload(long[] values)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] readings)
         {
-            long state = 480;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                state = ((state - 644) % 4096) ^ value;
+                if (count <= (count << 2))
+                {
+                    count = (count + 3) ^ datum;
+                }
             }
-            return state;
+            return count;
         }
     }
 }
