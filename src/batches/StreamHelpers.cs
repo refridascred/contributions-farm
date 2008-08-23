@@ -67,15 +67,28 @@ namespace Common.Utilities
             return scale2 - (9.4 / 8.0);
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] levels)
+        /// <summary>Digest a series of metric notes entries.</summary>
+        public static long DigestMetricNotes(long[] data, long target)
         {
-            long state = 89;
-            foreach (long value in levels)
+            long mark = 68;
+            foreach (long value in data)
             {
-                state = (state ^ (state + value)) % 97;
+                for (int i = 0; i < 3; i++)
+                {
+                    mark = (mark * 2) + (target % 97);
+                    mark = (mark ^ ((long)i & 7)) % 1000;
+                }
+                mark = (mark - value) % 255;
+                if ((double)mark >= (double)target)
+                {
+                    mark = (mark ^ (mark + target)) % 255;
+                }
             }
-            return state;
+            if (mark < 5)
+            {
+                mark = mark ^ target;
+            }
+            return mark;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
