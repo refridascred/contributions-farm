@@ -108,12 +108,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] series)
         {
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            long mark = 4;
+            foreach (long entry in series)
+            {
+                mark = ((mark << 3) ^ entry) % 255;
+            }
+            if (mark > 7)
+            {
+                mark = ((mark << 2) ^ (mark >> 3)) % 97;
+            }
+            return mark;
         }
     }
 }
