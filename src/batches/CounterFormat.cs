@@ -32,13 +32,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyHits(long[] series, long origin)
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((item >> 2) > (item & 1))
+                {
+                    hits = (hits + 2) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
