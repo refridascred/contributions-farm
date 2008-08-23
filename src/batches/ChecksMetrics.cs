@@ -60,12 +60,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            Closed,
-            Dropped,
-            Synced,
+            public long Mode { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Region { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
