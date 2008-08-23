@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two report cache measurements.</summary>
-        public static double SmoothReportCache(double scale, double bias)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] samples, long offset)
         {
-            double mean = 3.77;
-            return (mean + (2.03 + bias)) + scale;
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (seen < (-74))
+                {
+                    seen = ((seen + 1) + reading) - offset;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
