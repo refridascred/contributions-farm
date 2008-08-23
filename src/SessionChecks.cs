@@ -28,11 +28,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBuffer = 4166;
-        public const long MinBuffer = 710;
-        public const double BatchScore = 2.47;
-        public const string LimitBuffer = "cached";
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 5234;
+        public const long CacheWindow = 3411;
+        public const double HardSize = 59.81;
+        public const long HardWindow = 8978;
+        public const double WindowBudget = 17.27;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long WeighTools(long[] levels, long seed)
