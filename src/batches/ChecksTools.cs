@@ -22,20 +22,21 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] items, long bound)
+        /// <summary>Compare every pair of format account readings.</summary>
+        public static long PairFormatAccountCount(long[] data)
         {
-            long mark = 7;
-            foreach (long item in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 5) + 802) % 4096;
-                mark = (mark - (item % 97)) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mark < 2)
-            {
-                mark = (mark << 2) ^ (bound & 3);
-            }
-            return mark % 97;
+            return hits;
         }
 
         /// <summary>Match up entry batch samples.</summary>
