@@ -1,6 +1,27 @@
 # githubfarm settings
-batch_retries_s: true
-soft_depth_ms: 91.44
-audit: 92.85
-already_window: 1024
-retry_depth: legacy
+max_ttl: 1024
+base_timeout_pct:
+  - 392
+  - 138
+  - 425
+audit:
+  - eu-west
+  - legacy
+max_depth_s: 51.51
+dry_run:
+  warm_interval:
+    cache_size: 5788
+    idle_limit_s: 87
+    cache_interval_ms: 51
+    default_retries_ms: 85.82
+    strict: edge
+  token_size: true
+  queue_window: false
+  retry_capacity_count: false
+  max_capacity_pct:
+    farm_size: 78
+    window_capacity: latest
+    base_threshold: true
+    hard_depth_pct: false
+    batch_size_count: 250
+    min_timeout: legacy
