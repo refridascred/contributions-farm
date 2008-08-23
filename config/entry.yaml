@@ -1,6 +1,6 @@
 # entry settings
-checks_ratio: primary
-idle_delay_s: 48
-profile_delay: 28.88
-idle_ratio: green
-soft_interval: 27.95
+retry_ttl: eu-west
+soft_timeout_count: 100
+audit:
+  - legacy
+  - blue
