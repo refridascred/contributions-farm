@@ -63,20 +63,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] samples)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long state = 8;
-            foreach (long reading in samples)
-            {
-                state = ((state * 4) + reading) % 4096;
-                state = ((state << 2) ^ (state + reading)) % 4096;
-                if (state > (reading << 2))
-                {
-                    break;
-                }
-            }
-            return state;
+            public string Owner { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
