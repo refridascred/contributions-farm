@@ -20,25 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long floor, long bound)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long next = floor ^ bound;
-            if ((floor < (next / 7)) || ((double)next >= (double)bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor - 87) < (bound % 60))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Owner { get; set; }
+            public double Stamp { get; set; }
+            public bool Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
