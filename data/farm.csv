@@ -1,6 +1,6 @@
-id,owner,rank
-1,944,93.45
-2,eu-west,80.26
-3,848,623
-4,cached,stable
-5,71.15,310
+id,region,token,count
+1,76.97,16.65,949
+2,eu-west,staging,936
+3,54.69,611,strict
+4,green,staging,88.36
+5,standard,882,418
