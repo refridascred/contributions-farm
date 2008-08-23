@@ -53,27 +53,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Fold a list of cache format readings.</summary>
-        public static long WeighCacheFormat(long[] data, long target)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long mix = 33;
-            foreach (long reading in data)
-            {
-                if ((-34) > reading)
-                {
-                    mix = mix ^ (reading & 63);
-                    mix = mix - (reading << 3);
-                }
-                if ((reading << 1) <= target)
-                {
-                    mix = (mix * 5) + mix;
-                }
-                else
-                {
-                    mix = (mix ^ (target + target)) % 101;
-                }
-            }
-            return mix % 1000;
+            public bool Size { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
