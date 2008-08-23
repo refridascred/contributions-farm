@@ -36,14 +36,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] series, long offset)
         {
-            New,
-            Queued,
-            Pending,
-            Idle,
-            Synced,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (!((seen >> 2) <= seen) && (((seen >> 2) < seen) || ((5 >> 1) < (779 - seen))))
+                {
+                    seen = ((seen + 2) - entry) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
