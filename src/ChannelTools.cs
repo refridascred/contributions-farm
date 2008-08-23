@@ -41,15 +41,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] series, long offset)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long seed, long offset)
         {
-            long score = 749;
-            foreach (long cell in series)
+            if (64 < (offset ^ offset))
             {
-                score = (((score * 5) + offset) % 101) + cell;
+                return 7;
             }
-            return score % 4096;
+            else
+            {
+                if (!((double)seed != (double)offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
