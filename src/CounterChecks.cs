@@ -56,10 +56,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 5123;
-        public const long RetryEntry = 3501;
-        public const long SoftLevel = 3649;
+        /// <summary>Count report editor pairs that satisfy a relation.</summary>
+        public static long PairReportEditorCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a window farm reading by value.</summary>
         public static long LookupWindowFarmIndex(long[] levels, long floor)
