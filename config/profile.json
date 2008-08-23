@@ -1,8 +1,10 @@
 {
-  "default_ratio": 3725,
-  "enabled": "strict",
-  "readonly": "eu-west",
-  "filter_depth": 98,
-  "strict": "eu-west",
-  "graph_window": 62
+  "min_delay_ms": {
+    "enabled": 3913,
+    "burst_ratio_count": "local",
+    "soft_limit": 66,
+    "batches_capacity": 43.83
+  },
+  "idle_threshold_s": [191, 348, 489, 75],
+  "buffer_ttl": 35.35
 }
