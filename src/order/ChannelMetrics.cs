@@ -19,14 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
-        {
-            public string Rank { get; set; } = "";
-            public bool Region { get; set; }
-            public long Level { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BaseBudget = 73.55;
+        public const string CacheAlready = "open-v2";
+        public const double CacheSpan = 79.8;
+        public const long BatchRatio = 6202;
+        public const double DefaultTimeout = 33.25;
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
