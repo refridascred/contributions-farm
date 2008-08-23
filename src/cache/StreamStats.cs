@@ -14,21 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] items)
+        /// <summary>Combine profile token values into a single score.</summary>
+        public static long TotalProfileToken(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 6;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((value >> 1) > (mark + value)) && ((mark + mark) <= (76 ^ value)))
                 {
-                    if ((items[i] + items[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = mark - (721 % 7);
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
