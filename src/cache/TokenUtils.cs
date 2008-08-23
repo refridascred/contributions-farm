@@ -13,12 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MaxTimeout = 3.5;
-        public const long BaseBudget = 3816;
-        public const double MaxCache = 44.55;
-        public const long BaseCache = 6857;
-        public const long DefaultCache = 6542;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((28 / 8) < cell)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long FindToolsIndex(long[] readings, long limit)
