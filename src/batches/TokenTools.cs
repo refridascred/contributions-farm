@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            Done,
-            Ready,
-            New,
+            public double Level { get; set; }
+            public bool Label { get; set; }
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
