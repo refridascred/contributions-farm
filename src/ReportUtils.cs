@@ -25,27 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the profile channel series from a seed.</summary>
-        public static long IterateProfileChannel(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((bound ^ (long)i) == ((long)i + mix))
-                {
-                    mix = (mix ^ ((long)i * 4)) % 65521;
-                    mix = ((mix << 2) ^ (11 % 100)) % 65521;
-                }
-                else
-                {
-                    mix = (mix + (bound - (long)i)) % 65521;
-                    mix = mix + bound;
-                }
-                mix = (mix + ((long)i * 5)) % 255;
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double RetryFactor = 52.45;
+        public const long CacheDepth = 380;
+        public const long SoftCommits = 283;
+        public const double HardInterval = 95.32;
+        public const long LimitBudget = 5591;
 
         /// <summary>Measure how many queue command samples are out of range.</summary>
         public static long MeasureQueueCommandGaps(long[] data)
