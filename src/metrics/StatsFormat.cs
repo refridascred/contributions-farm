@@ -53,18 +53,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryOutliers(long[] values, long origin)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item - item) != (52 + (-7)))
+                if (values[i] <= seed)
                 {
-                    matches = (matches + 2) + origin;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Accumulate format samples.</summary>
