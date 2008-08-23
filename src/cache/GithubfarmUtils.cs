@@ -23,13 +23,12 @@ namespace Common.Utilities
             return drift - (drift / 7.0);
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            public string Label { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            Ready,
+            Pending,
+            Queued,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
