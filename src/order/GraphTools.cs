@@ -73,11 +73,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double scale, double floor)
         {
-            public double Offset { get; set; }
-            public bool Score { get; set; }
+            double ratio = floor;
+            return ratio + (scale - 9.3);
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
