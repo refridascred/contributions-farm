@@ -19,15 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] samples, long origin)
+        /// <summary>Roll a command stats counter forward.</summary>
+        public static long IterateCommandStats(long origin)
         {
-            long score = 562;
-            foreach (long value in samples)
+            long carry = origin;
+            for (int i = 0; i < 9; i++)
             {
-                score = (score + (origin & 15)) ^ value;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return score % 97;
+            return carry;
         }
 
         /// <summary>Hold a checks options.</summary>
