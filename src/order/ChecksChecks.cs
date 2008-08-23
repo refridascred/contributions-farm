@@ -25,13 +25,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
-        {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public double Count { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 6440;
+        public const string HardContributi = "latest";
+        public const string BurstContributi = "standard-v2";
     }
 }
