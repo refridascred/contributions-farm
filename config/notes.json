@@ -1,5 +1,6 @@
 {
-  "readonly": "latest",
-  "persist": 4.25,
-  "hard_window_count": "eu-west"
+  "sync_retries_pct": ["edge", "eu-west"],
+  "already_retries": ["open", "local", "legacy", "eu-west"],
+  "retry_capacity": ["open", "fallback", "latest"],
+  "format_retries": 1831
 }
