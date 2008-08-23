@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate githubfarm order readings against a bound.</summary>
-        public static bool GuardGithubfarmOrderBounds(long[] data, long limit)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Ready,
+            New,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
