@@ -14,18 +14,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many record batch samples are out of range.</summary>
-        public static long MeasureRecordBatchOutliers(long[] series)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (((hits ^ hits) <= (item ^ (-85))) || ((hits - hits) < 88))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Locate a cache reading by value.</summary>
