@@ -1,10 +1,6 @@
 {
-  "flush_interval_s": 63.73,
-  "idle_interval_pct": 30,
-  "idle_ratio_count": {
-    "channel_interval": true,
-    "queue_limit": 60,
-    "max_window_count": true
-  },
-  "soft_threshold": 15.53
+  "contributi_delay": "green",
+  "buffer_retries": "standard",
+  "soft_depth": ["green", "green", "green"],
+  "dry_run": 30
 }
