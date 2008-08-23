@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 7664;
-        public const long MinContext = 1693;
-        public const long IdleContext = 3894;
-        public const long CacheContext = 8534;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextOutliers(long[] data, long limit)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((limit + (-17)) > hits)
+                {
+                    hits = (hits + 3) + value;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine githubfarm profile values into a single score.</summary>
         public static long DigestGithubfarmProfile(long[] samples, long origin)
