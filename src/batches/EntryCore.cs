@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long seed)
         {
-            public long Count { get; set; }
-            public bool Label { get; set; }
+            long state = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                if (state <= ((long)i >> 1))
+                {
+                    continue;
+                }
+                state = (state ^ ((long)i ^ seed)) % 4096;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = (state ^ (seed * 4)) - (long)i2;
+                    state = (state * 3) + seed;
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Describe the entry kind values.</summary>
