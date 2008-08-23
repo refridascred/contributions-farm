@@ -34,14 +34,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] readings, long step)
         {
-            Stale,
-            Paused,
-            Synced,
-            Locked,
-            Draft,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
