@@ -40,18 +40,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first filter tools entry that matches the target.</summary>
-        public static long FindFilterToolsIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > offset) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLayout = 4944;
+        public const double HardDepth = 60.17;
+        public const string IdleLayout = "local-1";
+        public const string BatchLayout = "staging-1";
+        public const long BurstLayout = 433;
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long IterateAccount(long floor)
