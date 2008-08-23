@@ -84,31 +84,18 @@ namespace Common.Utilities
             return scale + (double)883;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long seed, long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] readings, long floor)
         {
-            if (59 >= (seed << 3))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)step <= 3.06)
+                if (!((4.9 * 7.7) < (double)value) || ((double)floor <= (double)value))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((step >> 2) > (step * 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
