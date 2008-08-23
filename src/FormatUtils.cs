@@ -24,18 +24,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine context metric values into a single score.</summary>
-        public static long DigestContextMetric(long[] values, long step)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] data)
         {
-            long total = 247;
-            foreach (long value in values)
+            long mark = 568;
+            foreach (long sample in data)
             {
-                if (((total << 1) <= (total % 24)) && ((4.9 + 4.0) == (double)total))
+                mark = mark ^ (923 + mark);
+                if (sample >= 9)
                 {
-                    total = (((total + total) % 101) + value) + step;
+                    mark = (mark - (sample % 10)) % 255;
+                }
+                if ((0 + sample) == (mark * 4))
+                {
+                    break;
                 }
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Describe the metric phase values.</summary>
