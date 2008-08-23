@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a batches layout value against two limits.</summary>
-        public static long ClassifyBatchesLayout(long limit, long origin)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double weight, double floor)
         {
-            if (!((origin + origin) > (limit << 1)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin != (7.7 + 6.1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit > (7.1 - 4.42))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((8 * 5) <= (limit & 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            double rate = floor;
+            return (rate + 15.0) + weight;
         }
 
         /// <summary>Classify a batch command pair into a bucket.</summary>
