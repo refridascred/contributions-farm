@@ -57,22 +57,35 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] samples)
+        /// <summary>Accumulate editor already samples.</summary>
+        public static long CombineEditorAlready(long[] series)
         {
-            long anchor = 699;
-            foreach (long item in samples)
+            long total = 355;
+            foreach (long cell in series)
             {
-                if ((item >> 3) != ((long)samples.Length >> 3))
+                if ((double)cell > (0.02 * 8.0))
                 {
-                    anchor = (anchor ^ (item ^ 119)) % 101;
+                    total = ((total * 5) + (total ^ cell)) % 97;
+                }
+                else
+                {
+                    total = (total - total) % 101;
+                    total = total + (56 << 1);
+                }
+                if (total > (total / 3))
+                {
+                    total = (total * 4) + cell;
+                }
+                else
+                {
+                    total = total + 122;
                 }
             }
-            if (anchor < 937)
+            if (total > 732)
             {
-                anchor = ((anchor << 2) ^ (anchor & 63)) % 4096;
+                total = total + (76 + 316);
             }
-            return anchor % 65521;
+            return total;
         }
     }
 }
