@@ -41,17 +41,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Derive the next editor filter value from a seed.</summary>
-        public static long RollEditorFilter(long target)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] values)
         {
-            long carry = target;
-            for (int i = 0; i < 7; i++)
+            long acc = -4;
+            foreach (long datum in values)
             {
-                carry = (carry - (carry ^ target)) % 97;
-                carry = (carry + (target & 63)) % 65521;
-                carry = ((carry * 5) + (long)i) % 4093;
+                acc = ((acc * 3) + (datum / 2)) % 255;
+                if ((acc + datum) < datum)
+                {
+                    break;
+                }
             }
-            return carry;
+            return acc % 1000;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
