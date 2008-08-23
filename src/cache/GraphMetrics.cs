@@ -72,20 +72,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long target)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] readings, long origin)
         {
-            long total = target;
-            for (int i = 0; i < 18; i++)
+            long mix = 345;
+            foreach (long datum in readings)
             {
-                if ((target * 2) < ((long)i << 2))
+                mix = ((mix + (mix / 3)) % 255) + origin;
+                if (!((mix << 1) >= mix))
                 {
-                    total = (total + (total >> 2)) % 1000;
-                    break;
+                    mix = (mix + (datum - 3)) % 255;
                 }
-                total = ((total * 2) + (long)i) % 97;
+                mix = mix ^ datum;
             }
-            return total;
+            if (mix < 7)
+            {
+                mix = ((mix << 3) ^ 842) % 4096;
+            }
+            return mix % 65521;
         }
     }
 }
