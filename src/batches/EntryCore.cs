@@ -36,22 +36,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit support route readings against a rule.</summary>
-        public static long TallySupportRouteMatches(long[] levels)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (((cell > (cell + cell)) && ((cell & 255) > (hits % 7))) && !((hits % 8) != ((-264) + hits)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Paused,
+            Queued,
+            Ready,
         }
 
         /// <summary>Locate a token reading by value.</summary>
