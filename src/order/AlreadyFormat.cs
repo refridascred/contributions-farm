@@ -47,15 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double bias, double floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] readings)
         {
-            double weight = (double)830;
-            if (weight <= bias)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                weight = (weight + (double)32) + floor;
+                if (!(matches > (matches << 2)))
+                {
+                    matches = (matches + 1) ^ reading;
+                }
             }
-            return weight - (0.4 / 2.0);
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
