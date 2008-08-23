@@ -39,13 +39,21 @@ namespace Common.Utilities
         public const long RetryChecks = 9004;
         public const long StepSpan = 5032;
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long PairCommitsCount(long[] readings)
         {
-            Ready,
-            Closed,
-            Failed,
-            Draft,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
