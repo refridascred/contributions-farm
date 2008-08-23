@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] series, long seed)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsHits(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (sample != seed)
+                if (!(((23 - floor) <= matches) && (9 >= (matches + 84))))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
