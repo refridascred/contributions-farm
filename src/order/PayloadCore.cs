@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double scale, double bias)
+        /// <summary>Validate stats context readings against a bound.</summary>
+        public static bool ValidateStatsContextBounds(long[] readings, long floor)
         {
-            double weight = scale / 6.0;
-            if (weight <= (bias / 5.0))
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                weight = weight + bias;
+                if (reading <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - (7.7 - bias);
-            }
-            return weight - (bias + 4.6);
+            return ready;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
