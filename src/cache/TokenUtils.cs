@@ -12,13 +12,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long seed)
         {
-            public long Rank { get; set; }
-            public bool Region { get; set; }
-            public double Label { get; set; }
-            public long Weight { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = (carry << 3) ^ ((long)i * 2);
+                carry = (carry - 460) % 101;
+                carry = carry - (566 / 5);
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
