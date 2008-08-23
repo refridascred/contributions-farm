@@ -22,10 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardTimeout = 2718;
-        public const string HardDepth = "legacy";
-        public const long LimitFormat = 9658;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] levels, long floor)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (((2.18 / 5.0) < (double)matches) && (((matches % 60) == (floor * 3)) && ((long)levels.Length <= ((long)levels.Length + matches))))
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine entry token values into a single score.</summary>
         public static long TallyEntryToken(long[] values)
