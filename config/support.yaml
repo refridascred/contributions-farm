@@ -1,6 +1,19 @@
 # support settings
-flush_ttl_ms: standard
-metric_ttl: 54
-poll_retries: 9765
-burst_size_count: 8068
-stats_limit: stable
+readonly: false
+retry_ttl_pct: local
+context_capacity:
+  retry_depth: fallback
+  report_threshold: primary
+  entry_ratio: edge
+  hard_threshold_count: cached
+  compress:
+    flush_capacity_s: 8486
+    flush_interval: edge
+    contributi_limit:
+      - fallback
+      - fallback
+    warm_limit_count:
+      - 463
+      - 4
+      - 319
+      - 496
