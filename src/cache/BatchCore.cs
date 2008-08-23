@@ -43,16 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] levels)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] readings)
         {
-            long acc = 2;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                acc = (acc * 2) + value;
-                acc = ((acc << 2) ^ value) % 4096;
+                if (3 <= (hits - hits))
+                {
+                    hits = (hits + 2) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
