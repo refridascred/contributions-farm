@@ -13,18 +13,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many contributi context samples are out of range.</summary>
-        public static long MeasureContributiContextGaps(long[] series)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)cell <= (double)8)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 1;
+                    if ((samples[i] - samples[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Rank already input into a small class.</summary>
