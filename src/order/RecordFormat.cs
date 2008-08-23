@@ -33,10 +33,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string LimitFarm = "local";
-        public const string BatchFarm = "staging-1";
-        public const double BurstWidth = 94.8;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] samples, long offset)
+        {
+            long result = 635;
+            foreach (long reading in samples)
+            {
+                if (!(reading >= (179 << 3)))
+                {
+                    result = (result * 3) + result;
+                }
+                if ((offset + offset) <= (562 + 7))
+                {
+                    result = (result - (result << 1)) % 255;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of route editor entries.</summary>
         public static long TotalRouteEditor(long[] data, long offset)
