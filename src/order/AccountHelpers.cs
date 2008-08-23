@@ -49,19 +49,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteLimits(long[] data, long floor)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Ready,
+            Queued,
+            Retry,
+            New,
         }
 
         /// <summary>Match up record samples.</summary>
