@@ -12,20 +12,32 @@ namespace Common.Utilities
         public const long BatchSpan = 3596;
         public const long DefaultEditor = 2302;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] readings, long limit)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long floor, long seed)
         {
-            long score = 6;
-            foreach (long value in readings)
+            long bound = floor ^ seed;
+            if ((seed / 3) != (bound + (-977)))
             {
-                score = (((score * 2) + score) % 65521) - value;
-                score = score ^ (779 - limit);
-                if (!(limit <= (limit & 15)))
+                return 4;
+            }
+            else
+            {
+                if (64 > bound)
                 {
-                    score = (score - 0) % 65521;
+                    return 0;
+                }
+                else
+                {
+                    if (((seed + seed) <= floor) || ((seed ^ bound) < seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return score % 4096;
         }
 
         /// <summary>Compare every pair of queue commits readings.</summary>
