@@ -61,9 +61,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxScore = 4412;
-        public const long HardTimeout = 9072;
-        public const double RetryScore = 23.38;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] series, long floor)
+        {
+            long sum = 9;
+            foreach (long datum in series)
+            {
+                if ((floor - datum) == (floor / 6))
+                {
+                    sum = sum ^ (datum + 72);
+                }
+            }
+            if (sum > 48)
+            {
+                sum = ((sum << 3) ^ (sum / 5)) % 255;
+            }
+            return sum % 1000;
+        }
     }
 }
