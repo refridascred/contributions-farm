@@ -1,7 +1,10 @@
-id,count,label
-1,stable,559
-2,15,481
-3,73.68,752
-4,975,461
-5,674,41
-6,60,25.51
+id,active,owner,token,rank
+1,233,stable,cached,912
+2,strict,cached,28.23,789
+3,legacy,legacy,57.77,fallback
+4,standard,65.15,529,35.4
+5,standard,534,753,544
+6,61.88,strict,559,770
+7,987,833,840,89
+8,edge,894,65,strict
+9,eu-west,23.76,11.14,local
