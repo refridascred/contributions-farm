@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public bool Level { get; set; }
-            public bool Ratio { get; set; }
-            public long Total { get; set; }
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Project the next order value.</summary>
