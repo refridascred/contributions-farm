@@ -43,17 +43,13 @@ namespace Common.Utilities
         public const double LimitBuffer = 87.71;
         public const string LimitDepth = "standard-v2";
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] values, long target)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public bool Rank { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
