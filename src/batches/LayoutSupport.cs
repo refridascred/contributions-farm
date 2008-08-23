@@ -44,10 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinFactor = 5220;
-        public const long SoftRatio = 3483;
-        public const string HardSize = "alpha-edge";
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Synced,
+            Retry,
+            Done,
+        }
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
