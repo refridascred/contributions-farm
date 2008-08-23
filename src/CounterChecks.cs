@@ -64,12 +64,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double rate, double offset)
-        {
-            double mean = (offset / 9.0) * 4.0;
-            return (mean + mean) + rate;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 5123;
+        public const long RetryEntry = 3501;
+        public const long SoftLevel = 3649;
 
         /// <summary>Locate a window farm reading by value.</summary>
         public static long LookupWindowFarmIndex(long[] levels, long floor)
