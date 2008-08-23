@@ -53,10 +53,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardDepth = 6234;
-        public const double BurstChannel = 76.58;
-        public const string IdleChannel = "standard-v2";
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public long Flag { get; set; }
+            public double Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long RetryContributi = 4121;
