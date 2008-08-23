@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up report payload samples.</summary>
-        public static long OverlapReportPayloadCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 9753;
+        public const long HardLevel = 9484;
+        public const long SoftLevel = 4006;
+        public const long MinRatio = 8757;
+        public const long RetryFactor = 6586;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long SoftBudget = 6854;
