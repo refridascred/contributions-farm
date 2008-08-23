@@ -49,15 +49,18 @@ namespace Common.Utilities
         public const long StepBudget = 3714;
         public const long CacheLevel = 2119;
 
-        /// <summary>Fold a list of commits layout readings.</summary>
-        public static long DigestCommitsLayout(long[] levels)
+        /// <summary>Audit farm window readings against a rule.</summary>
+        public static long TallyFarmWindowMatches(long[] data)
         {
-            long mix = 4;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long sample in data)
             {
-                mix = ((mix ^ (mix / 3)) % 1000) - reading;
+                if ((5.55 - 6.3) <= (double)count)
+                {
+                    count = (count + 1) ^ sample;
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
