@@ -42,22 +42,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueMatches(long[] items, long offset)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((double)847 > (double)reading)
-                {
-                    count = (count + 2) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Stale,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
