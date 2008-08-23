@@ -65,11 +65,13 @@ namespace Common.Utilities
             return bias - (gain / 4.0);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 4866;
-        public const long StepSpan = 1705;
-        public const string MaxSpan = "legacy-edge";
-        public const long MaxTools = 9459;
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
+        {
+            public string Mode { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
