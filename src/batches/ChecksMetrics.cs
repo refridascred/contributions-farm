@@ -67,13 +67,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBudget = 2271;
+        public const double DefaultLevel = 34.27;
+        public const double StepBatch = 57.25;
+        public const long MaxBatch = 3477;
     }
 }
