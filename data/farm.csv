@@ -1,7 +1,7 @@
-id,active,region,count
-1,772,875,open
-2,52,504,12.02
-3,930,990,61.11
-4,228,711,140
-5,83.0,standard,13.64
-6,612,eu-west,open
+id,state
+1,blue
+2,eu-west
+3,latest
+4,198
+5,50.3
+6,strict
