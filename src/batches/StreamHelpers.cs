@@ -76,28 +76,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of metric notes entries.</summary>
-        public static long DigestMetricNotes(long[] data, long target)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long mark = 68;
-            foreach (long value in data)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    mark = (mark * 2) + (target % 97);
-                    mark = (mark ^ ((long)i & 7)) % 1000;
-                }
-                mark = (mark - value) % 255;
-                if ((double)mark >= (double)target)
-                {
-                    mark = (mark ^ (mark + target)) % 255;
-                }
-            }
-            if (mark < 5)
-            {
-                mark = mark ^ target;
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Roll a route session counter forward.</summary>
