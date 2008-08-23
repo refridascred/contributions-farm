@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] items)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmGaps(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((((6 / 3) >= (count - reading)) || ((reading % 8) < (reading - reading))) || (((count / 3) != (count + reading)) && ((reading % 64) < reading)))
                 {
-                    if ((items[i] - items[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit tools buffer readings against a rule.</summary>
