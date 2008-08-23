@@ -23,18 +23,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the commits profile entries that pass the check.</summary>
-        public static long AuditCommitsProfileGaps(long[] levels, long bound)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((sample + sample) >= (9 - bound))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Ready,
+            Failed,
+            Paused,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
