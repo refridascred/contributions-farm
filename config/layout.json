@@ -1,22 +1,6 @@
 {
-  "default_window": {
-    "default_limit_ms": "local",
-    "token_size": {
-      "enabled": 2795,
-      "report_delay": 92,
-      "burst_retries_pct": "cached",
-      "idle_threshold": 500
-    },
-    "max_depth": "latest"
-  },
-  "commits_depth": ["staging", "standard"],
-  "batch_threshold_ms": "standard",
-  "flush_capacity": {
-    "hard_delay_ms": 3495,
-    "batch_size": 2.41,
-    "enabled": 500,
-    "base_depth_ms": [355, 281],
-    "dry_run": 19.06
-  },
-  "default_retries": 98.14
+  "readonly": 18,
+  "idle_ttl_pct": false,
+  "notes_timeout": "standard",
+  "default_delay": 9777
 }
