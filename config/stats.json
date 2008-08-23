@@ -1,14 +1,7 @@
 {
-  "verbose": "edge",
-  "base_ratio": {
-    "base_interval_s": 8,
-    "warm_window_s": 13,
-    "idle_limit_count": "local",
-    "sync_retries": "standard",
-    "strict": 53,
-    "poll_retries": "open"
-  },
-  "compress": "blue",
-  "enabled": 88.73,
-  "persist": "strict"
+  "retry_depth_ms": "staging",
+  "compress": "latest",
+  "queue_interval": 3056,
+  "editor_ttl": "edge",
+  "min_ttl_s": 4623
 }
