@@ -40,22 +40,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] data)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long limit, long limit2)
         {
-            long mark = 5;
-            foreach (long sample in data)
+            long delta = limit ^ limit2;
+            if ((double)delta > (6.75 - 6.0))
             {
-                if ((sample + sample) >= (sample >> 5))
+                return 8;
+            }
+            else
+            {
+                if ((limit2 + limit2) < (limit * 4))
                 {
-                    mark = mark ^ (mark * 3);
+                    return 0;
                 }
-                if (((mark / 3) >= (sample >> 2)) || ((double)mark >= (6.2 * 3.0)))
+                else
                 {
-                    break;
+                    if ((limit2 >> 2) > (809 ^ limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return mark % 4096;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
