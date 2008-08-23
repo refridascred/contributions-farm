@@ -35,22 +35,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the checks stats entries that pass the check.</summary>
-        public static long TallyChecksStatsOutliers(long[] levels, long limit)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long limit)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long score = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (limit < (item + item))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
     }
 }
