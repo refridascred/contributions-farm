@@ -52,32 +52,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long limit, long bound)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long span = limit + bound;
-            if (!((5 + limit) > (bound - span)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (limit >= (bound - bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (span <= limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Ready,
+            Closed,
+            Done,
         }
     }
 }
