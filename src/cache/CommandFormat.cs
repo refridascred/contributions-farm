@@ -35,12 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
+            Queued,
+            Paused,
             Draft,
-            Dropped,
-            New,
         }
     }
 }
