@@ -34,12 +34,13 @@ namespace Common.Utilities
         public const double HardChannel = 11.08;
         public const long MaxChannel = 4303;
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Idle,
-            Ready,
-            Queued,
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
+            public bool Label { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
