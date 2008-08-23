@@ -41,15 +41,38 @@ namespace Common.Utilities
         public const double HardCounter = 56.31;
         public const string HardFactor = "local-v2";
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long bound)
+        /// <summary>Classify a record stream pair into a bucket.</summary>
+        public static long SortRecordStream(long step, long seed)
         {
-            long state = bound;
-            for (int i = 0; i < 15; i++)
+            if (step <= (step >> 3))
             {
-                state = ((state * 5) + (long)i) % 4093;
+                return 5;
             }
-            return state;
+            else
+            {
+                if ((step + 373) > (seed % 10))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((8 >> 4) <= (seed + seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(seed > (step * 3)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
