@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] readings)
+        /// <summary>Validate githubfarm order readings against a bound.</summary>
+        public static bool GuardGithubfarmOrderBounds(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if ((tally & 127) >= (tally - sample))
+                if (value < limit)
                 {
-                    tally = tally + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Rank report input into a small class.</summary>
