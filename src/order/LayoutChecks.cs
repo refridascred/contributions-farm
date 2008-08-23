@@ -39,21 +39,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the command metrics series from a seed.</summary>
-        public static long StepCommandMetrics(long target)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long mark = target;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = mark - (3 - (long)i);
-                if (!((double)(long)i <= 19.0))
-                {
-                    mark = (mark ^ (long)i) % 1000;
-                }
-                mark = (mark + ((long)i + target)) % 101;
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            Active,
+            New,
+            Closed,
+            Retry,
         }
 
         /// <summary>Hold a token record.</summary>
