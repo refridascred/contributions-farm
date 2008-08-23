@@ -27,21 +27,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long origin)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mark = mark + ((long)i2 & 7);
-                }
-                mark = (mark ^ (mark - 8)) % 255;
-                mark = (mark * 4) + (origin + origin);
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            Dropped,
+            Stale,
+            Paused,
+            Active,
+            Queued,
         }
     }
 }
