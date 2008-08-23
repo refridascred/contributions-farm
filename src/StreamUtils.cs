@@ -58,19 +58,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterLimits(long[] items, long target)
+        /// <summary>Rank batch token input into a small class.</summary>
+        public static long ClassifyBatchToken(long step, long offset)
         {
-            bool ok = true;
-            foreach (long cell in items)
+            long diff = step + offset;
+            if (!((double)step > (double)diff))
             {
-                if (cell > target)
+                return 5;
+            }
+            else
+            {
+                if (!((double)step == (2.4 / 8.0)))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((diff << 2) == (offset * 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((656 % 24) > diff)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
