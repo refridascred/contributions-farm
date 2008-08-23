@@ -1,4 +1,13 @@
 # githubfarm settings
-idle_threshold_pct: 75.43
-warm_depth: false
-compress: 30.12
+warm_timeout_count:
+  sync_depth_s: 95
+  retry_interval: 52.7
+  filter_threshold: strict
+poll_depth_ms:
+  - 462
+  - 248
+  - 227
+  - 342
+metrics_ttl: local
+hard_capacity_count: 18.18
+soft_retries: 77.04
