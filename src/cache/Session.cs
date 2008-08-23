@@ -23,13 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
-        {
-            public long Owner { get; set; }
-            public double Weight { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepLevel = 4011;
+        public const double LimitBuffer = 41.05;
+        public const double MinSize = 10.25;
+        public const long StepBuffer = 1310;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportMatches(long[] values)
