@@ -44,18 +44,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricHits(long[] series, long origin)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (10.0 < (double)sample)
-                {
-                    matches = (matches + 3) - origin;
-                }
-            }
-            return matches;
+            Synced,
+            New,
+            Draft,
+            Queued,
+            Locked,
         }
     }
 }
