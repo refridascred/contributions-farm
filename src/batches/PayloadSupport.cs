@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Audit profile token readings against a rule.</summary>
+        public static long TallyProfileTokenMatches(long[] samples)
         {
-            public double Size { get; set; }
-            public double Label { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((double)matches == (12.0 / 5.0))
+                {
+                    matches = (matches + 1) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two schema measurements.</summary>
