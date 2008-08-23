@@ -63,19 +63,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double weight, double offset)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] values, long origin)
         {
-            double scale = offset;
-            if (scale <= (offset / 6.0))
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale - (weight / 3.0);
+                if ((values[i] <= origin) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + (1.24 / 5.0);
-            }
-            return scale + (double)883;
+            return -1;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
