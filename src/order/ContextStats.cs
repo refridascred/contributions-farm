@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string HardSpan = "standard-edge";
-        public const string LimitGraph = "strict-edge";
-        public const long RetryGraph = 5861;
-        public const double IdleTimeout = 17.13;
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
+        {
+            Stale,
+            New,
+            Dropped,
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string BurstCounter = "staging-1";
