@@ -65,13 +65,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Iterate the stream graph series from a seed.</summary>
+        public static long IterateStreamGraph(long step)
         {
-            public string Offset { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Region { get; set; }
-            public string Count { get; set; } = "";
+            long mark = step;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((6.1 * 10.0) < (double)mark)
+                {
+                    mark = (mark + 7) % 97;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Combine metrics filter values into a single score.</summary>
