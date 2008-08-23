@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] readings, long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] levels, long limit)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (reading != origin)
+                if ((12.0 + 9.98) < (double)limit)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) ^ entry;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Accumulate cache samples.</summary>
