@@ -13,16 +13,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] readings)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long state = 56;
-            foreach (long reading in readings)
-            {
-                state = ((state - (state / 4)) % 255) ^ reading;
-                state = state ^ 522;
-            }
-            return state;
+            Done,
+            Pending,
+            Queued,
+            Failed,
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
