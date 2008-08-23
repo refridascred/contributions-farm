@@ -15,13 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Adjust a schema support reading.</summary>
+        public static double BlendSchemaSupport(double bias, double offset)
         {
-            New,
-            Failed,
-            Locked,
-            Retry,
+            double drift = (5.2 / 7.0) * 6.8;
+            if (drift >= drift)
+            {
+                drift = ((drift - (drift * 2.0)) - bias) + offset;
+            }
+            return drift + (double)619;
         }
 
         /// <summary>Rank context input into a small class.</summary>
