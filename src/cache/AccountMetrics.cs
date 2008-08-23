@@ -50,11 +50,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long floor, long target)
         {
-            public long Label { get; set; }
-            public bool Offset { get; set; }
+            long bound = floor - target;
+            if ((bound % 12) < (floor - 30))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((bound << 3) > target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor / 3) != (floor >> 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (363 <= (bound - target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
