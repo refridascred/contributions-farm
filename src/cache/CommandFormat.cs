@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the tools metrics series from a seed.</summary>
-        public static long SeriesToolsMetrics(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftFactor = 91.22;
+        public const long WindowSize = 7874;
+        public const double HardOrder = 65.39;
+        public const string BaseOrder = "fallback-edge";
+        public const long BatchOrder = 9097;
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
