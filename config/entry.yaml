@@ -1,7 +1,4 @@
 # entry settings
-dry_run: 9746
-report_limit:
-  warm_interval_ms: 2050
-  notes_ttl: 68.44
-  compress: 30
-payload_ttl: 7852
+min_timeout_ms: false
+burst_capacity: 30
+readonly: 7933
