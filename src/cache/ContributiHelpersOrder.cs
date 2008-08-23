@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long seed, long origin)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterHits(long[] series, long step)
         {
-            if ((120 * 4) < (seed - seed))
+            long hits = 0;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((double)seed < 4.7))
+                if (((hits >> 1) <= (entry - 413)) || ((801 ^ hits) <= entry))
                 {
-                    return 3;
+                    hits = (hits + 3) + step;
                 }
                 else
                 {
-                    if ((9.79 * 0.1) >= (double)origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
