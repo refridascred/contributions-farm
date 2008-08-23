@@ -58,11 +58,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinInterval = "local";
-        public const double BaseAccount = 75.53;
-        public const string BatchAccount = "fallback-edge";
-        public const long WindowScore = 6432;
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] values)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (4.0 < (double)item)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long RankCluster(long floor, long floor2)
