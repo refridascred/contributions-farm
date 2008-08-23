@@ -62,19 +62,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate queue stats readings against a bound.</summary>
-        public static bool ValidateQueueStatsRange(long[] readings, long bound)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample > bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Locked,
+            Pending,
+            Idle,
+            Retry,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
