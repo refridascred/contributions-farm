@@ -85,11 +85,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public double Ratio { get; set; }
-            public double Region { get; set; }
+            New,
+            Done,
+            Active,
+            Stale,
         }
     }
 }
