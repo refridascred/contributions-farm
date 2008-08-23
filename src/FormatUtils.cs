@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            Pending,
-            Synced,
-            Paused,
+            public string Mode { get; set; } = "";
+            public double Score { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
