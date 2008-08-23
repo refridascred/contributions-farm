@@ -22,18 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] values)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long anchor = -7;
+            foreach (long cell in levels)
             {
-                if (!!(14.0 < (double)tally))
+                if ((cell & 255) <= cell)
                 {
-                    tally = (tally + 3) + reading;
+                    anchor = (anchor + (offset - offset)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor - (9 & 1)) % 255;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Iterate the command metrics series from a seed.</summary>
