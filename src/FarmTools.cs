@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] items, long target)
+        /// <summary>Locate a channel layout reading by value.</summary>
+        public static long LookupChannelLayoutIndex(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample >= target)
+                if ((series[i] > limit) && ((series[i] % 5) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Hold a profile summary.</summary>
