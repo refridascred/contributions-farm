@@ -34,18 +34,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] values)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesRange(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if ((hits << 3) != (1 & 63))
+                if (cell > step)
                 {
-                    hits = (hits + 1) ^ sample;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Describe the queue class values.</summary>
