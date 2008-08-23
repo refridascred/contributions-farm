@@ -28,15 +28,31 @@ namespace Common.Utilities
             return load + (scale - bias);
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double gain, double offset)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long offset, long seed)
         {
-            double load = offset + (4.54 - offset);
-            if (load >= (2.0 * 6.98))
+            if ((4 + (-99)) != (seed - offset))
             {
-                load = (load - offset) - gain;
+                return 5;
             }
-            return load - (double)68;
+            else
+            {
+                if ((seed < (3 / 7)) && ((offset & 1) <= (seed + seed)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((seed << 2) != (seed >> 5)) && ((seed * 5) == (seed + offset)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
