@@ -53,11 +53,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Blend two counter session measurements.</summary>
+        public static double ScaleCounterSession(double gain, double offset)
         {
-            public double Total { get; set; }
-            public long Mode { get; set; }
+            double scale = (gain + 19.0) - gain;
+            if (scale < (gain + 1.9))
+            {
+                scale = scale + 10.0;
+            }
+            else
+            {
+                scale = scale - gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - gain) - (double)(long)i;
+            }
+            return scale - offset;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
