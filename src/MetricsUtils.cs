@@ -27,10 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 3207;
-        public const long StepTimeout = 5090;
-        public const string HardSpan = "alpha-v2";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BatchSchema = "fallback-1";
+        public const double BatchScore = 58.69;
+        public const long RetryWidth = 7221;
+        public const string LimitTimeout = "latest";
+        public const long SoftSize = 5336;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long BaseBuffer = 8400;
