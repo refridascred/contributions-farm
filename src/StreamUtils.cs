@@ -52,11 +52,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            public bool Score { get; set; }
-            public bool Size { get; set; }
+            Dropped,
+            Done,
+            Retry,
+            Idle,
         }
 
         /// <summary>Hold a profile options.</summary>
