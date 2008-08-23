@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] levels, long step)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] items, long target)
         {
-            long total = 21;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if (((double)reading < (double)total) || (reading < (reading ^ step)))
+                if (sample >= target)
                 {
-                    total = total + (step << 2);
-                }
-                else
-                {
-                    total = (total * 2) + (reading - step);
+                    stale = false;
+                    break;
                 }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Describe the command status values.</summary>
