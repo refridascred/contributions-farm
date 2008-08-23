@@ -11,19 +11,25 @@ namespace Common.Utilities
         public const long WindowLayout = 2124;
         public const long BaseLayout = 7938;
 
-        /// <summary>Roll a route cluster counter forward.</summary>
-        public static long StepRouteCluster(long seed)
+        /// <summary>Grade a tools entry value against two limits.</summary>
+        public static long RankToolsEntry(long offset, long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
+            long span = offset + bound;
+            if ((double)span >= (double)offset)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    acc = (acc ^ (seed & 1)) - (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
+                return 8;
             }
-            return acc;
+            else
+            {
+                if (span <= 72)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Project the next window filter value.</summary>
