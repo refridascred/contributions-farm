@@ -27,12 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] readings, long offset)
         {
-            public bool Token { get; set; }
-            public double Size { get; set; }
-            public long Flag { get; set; }
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Digest a series of commits githubfarm entries.</summary>
