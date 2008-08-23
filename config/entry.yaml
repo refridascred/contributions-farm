@@ -1,33 +1,6 @@
 # entry settings
-min_size_ms:
-  batch_timeout:
-    channel_threshold: 65.3
-    warm_threshold_ms: strict
-    min_window_count: 81.36
-    tools_retries:
-      - 267
-      - 383
-      - 113
-      - 464
-    default_threshold_ms: 1024
-  warm_ttl: green
-  min_depth_s: legacy
-  max_delay: staging
-  flush_ratio_s: primary
-dry_run: true
-sync_interval_ms: 64
-graph_ratio: 142
-batches_limit:
-  cache_ttl: 3
-  buffer_size:
-    - 255
-    - 103
-    - 228
-  audit: staging
-  default_retries_ms:
-    - 94
-    - 355
-    - 425
-    - 422
-  strict: 49
-warm_interval_count: 43.62
+verbose: 15.22
+warm_limit: false
+base_ttl_ms: green
+command_retries: 2355
+session_delay: strict
