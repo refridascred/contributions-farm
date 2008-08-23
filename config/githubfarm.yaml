@@ -1,4 +1,6 @@
 # githubfarm settings
-base_window_count: 76.73
-readonly: local
-context_limit: 45
+batch_retries_s: true
+soft_depth_ms: 91.44
+audit: 92.85
+already_window: 1024
+retry_depth: legacy
