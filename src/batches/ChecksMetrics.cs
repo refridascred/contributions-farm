@@ -30,12 +30,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBounds(long[] series, long target)
         {
-            Synced,
-            Active,
-            Locked,
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
