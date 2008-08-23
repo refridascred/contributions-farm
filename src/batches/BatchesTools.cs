@@ -30,24 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long bound, long target)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            if ((target - target) <= 779)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target < (-874)) && ((target / 7) >= target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
