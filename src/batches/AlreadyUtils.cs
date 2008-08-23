@@ -5,37 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long SortCommits(long bound, long step)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long limit, long offset)
         {
-            long bound2 = bound + step;
-            if ((double)bound2 != (6.3 - 0.64))
+            if ((offset * 4) == (limit & 3))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if (bound2 < (bound2 << 1))
+                if ((double)offset <= (0.85 - 5.5))
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    if (((step + bound2) > (bound2 / 4)) || (bound < (bound % 7)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step - step) < (62 % 10))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
