@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] data, long offset)
+        /// <summary>Digest a series of route notes entries.</summary>
+        public static long WeighRouteNotes(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long anchor = 1;
+            foreach (long item in items)
             {
-                if (!!((offset + tally) >= (tally + datum)))
+                anchor = (((anchor * 3) + (anchor / 6)) % 1000) - item;
+                if ((anchor / 4) >= anchor)
                 {
-                    tally = tally + 3;
+                    anchor = (anchor + 4) % 97;
+                }
+                if (((long)items.Length / 4) < (39 << 3))
+                {
+                    break;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
