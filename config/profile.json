@@ -1,6 +1,9 @@
 {
-  "soft_ttl_ms": "strict",
-  "retry_window": 3977,
-  "idle_timeout": 78,
-  "token_ratio": "blue"
+  "default_capacity": "standard",
+  "batch_ttl": "open",
+  "burst_retries": {
+    "sync_window_ms": false,
+    "hard_window_pct": ["primary", "primary", "local"],
+    "idle_capacity_s": "standard"
+  }
 }
