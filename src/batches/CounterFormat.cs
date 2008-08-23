@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] items, long offset)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count the profile metrics entries that pass the check.</summary>
