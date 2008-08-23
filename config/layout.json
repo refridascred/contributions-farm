@@ -1,6 +1,7 @@
 {
-  "contributi_delay": "green",
-  "buffer_retries": "standard",
-  "soft_depth": ["green", "green", "green"],
-  "dry_run": 30
+  "batch_ttl_pct": "stable",
+  "sync_ratio_ms": "local",
+  "verbose": 85.41,
+  "default_size_count": 38.71,
+  "cache_size_pct": "strict"
 }
