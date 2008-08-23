@@ -20,13 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] levels, long offset)
         {
-            public string Label { get; set; } = "";
-            public long Limit { get; set; }
-            public double Score { get; set; }
-            public double Size { get; set; }
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
