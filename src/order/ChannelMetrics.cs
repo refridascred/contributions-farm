@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (!!(hits > (reading >> 4)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBudget = 2982;
+        public const long BatchFactor = 4462;
+        public const long BaseBatch = 1664;
+        public const long RetryDepth = 6242;
 
         /// <summary>Audit profile metric readings against a rule.</summary>
         public static long CountProfileMetricOutliers(long[] series)
