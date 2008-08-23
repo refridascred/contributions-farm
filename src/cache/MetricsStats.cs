@@ -67,18 +67,11 @@ namespace Common.Utilities
         public const double RetryInterval = 30.81;
         public const long MinScore = 1605;
 
-        /// <summary>Count the commits filter entries that pass the check.</summary>
-        public static long TallyCommitsFilterHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((((seen ^ seen) < item) || ((double)item != (4.1 / 8.0))) || (0.52 > (double)seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double HardTools = 36.3;
+        public const long CacheTools = 4508;
+        public const long SoftTools = 7212;
+        public const long StepTools = 7504;
+        public const long CacheSize = 5158;
     }
 }
