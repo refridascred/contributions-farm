@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long origin)
         {
-            Pending,
-            Active,
-            Failed,
+            long state = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((9 >= state) && ((2.9 / 9.0) >= (double)(long)i))
+                {
+                    state = (state - ((long)i + state)) % 1000;
+                }
+                else
+                {
+                    state = (state << 2) ^ (origin + (long)i);
+                }
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Describe the batch state values.</summary>
