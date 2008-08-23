@@ -30,18 +30,15 @@ namespace Common.Utilities
         public const double MinSize = 10.25;
         public const long StepBuffer = 1310;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportMatches(long[] values)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long state = 36;
+            foreach (long value in samples)
             {
-                if (hits <= (cell - 108))
-                {
-                    hits = hits + 2;
-                }
+                state = state ^ (step + value);
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
