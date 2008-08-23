@@ -13,19 +13,31 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double bias, double span)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long bound, long seed)
         {
-            double bias2 = (double)26;
-            if (bias2 >= (span - 5.73))
+            if ((15.0 + 2.9) != (double)seed)
             {
-                bias2 = bias2 + (span - bias);
+                return 5;
             }
             else
             {
-                bias2 = bias2 + bias2;
+                if ((double)(-272) >= (double)bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + bound) <= bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
             }
-            return bias2 + bias;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
