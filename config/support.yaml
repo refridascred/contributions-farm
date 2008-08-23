@@ -1,6 +1,6 @@
 # support settings
-soft_depth: 92
-sync_limit:
-  - 395
-  - 156
-verbose: false
+cache_threshold_s: 250
+audit: 97
+cache_window_ms: 94.5
+hard_retries_ms: primary
+retry_ttl_s: 37.93
