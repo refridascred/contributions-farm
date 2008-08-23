@@ -15,18 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] series)
+        /// <summary>Measure how many cache session samples are out of range.</summary>
+        public static long AuditCacheSessionGaps(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (((long)series.Length & 1) > tally)
+                if (sample < 3)
                 {
-                    tally = (tally + 2) + reading;
+                    matches = (matches + 3) + bound;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
