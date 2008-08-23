@@ -22,23 +22,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueGaps(long[] items, long limit)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((limit + cell) != (cell / 6))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchBuffer = "standard-v2";
+        public const long HardBuffer = 9104;
+        public const long SoftBuffer = 9176;
 
         /// <summary>Locate a context reading by value.</summary>
         public static long FindContextIndex(long[] data, long step)
