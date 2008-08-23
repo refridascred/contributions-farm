@@ -20,12 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            Active,
-            Stale,
-            Queued,
+            public string Level { get; set; } = "";
+            public double Limit { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Digest a series of window entries.</summary>
