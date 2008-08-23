@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutGaps(long[] data)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long target)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long carry = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((item % 5) >= (2 >> 4))
+                if ((target - target) > ((long)i ^ 916))
                 {
-                    tally = tally + 1;
+                    carry = ((carry << 3) ^ (carry / 6)) % 101;
                 }
+                else
+                {
+                    carry = carry - (carry - target);
+                }
+                carry = (carry ^ (target * 4)) % 101;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
