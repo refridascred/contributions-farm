@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] levels, long step)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Done,
+            Draft,
         }
 
         /// <summary>Hold a queue options.</summary>
