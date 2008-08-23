@@ -1,12 +1,7 @@
 {
-  "hard_window_ms": 7879,
-  "payload_depth": 28.43,
-  "default_depth_ms": [92, 53, 76],
-  "profile_delay": 4912,
-  "verbose": {
-    "persist": "green",
-    "support_threshold": "open",
-    "profile_threshold": true
-  },
-  "soft_interval_count": ["eu-west", "eu-west", "primary"]
+  "audit": [71, 89, 76, 82],
+  "strict": "eu-west",
+  "batch_retries_ms": "blue",
+  "soft_capacity_s": 78.18,
+  "farm_size": "stable"
 }
