@@ -14,13 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            Failed,
-            Draft,
-            Closed,
-            Active,
+            Queued,
+            New,
+            Locked,
+            Idle,
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
