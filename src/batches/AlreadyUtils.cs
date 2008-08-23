@@ -61,11 +61,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterHits(long[] data)
         {
-            public long Count { get; set; }
-            public double Stamp { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((double)0 <= (double)hits)
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
         }
     }
 }
