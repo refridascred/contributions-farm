@@ -1,14 +1,8 @@
 {
-  "warm_delay": 8818,
-  "default_ttl_pct": {
-    "record_capacity": ["fallback", "legacy"],
-    "enabled": "open",
-    "warm_interval": {
-      "dry_run": ["fallback", "edge"],
-      "payload_depth": "green",
-      "warm_limit_count": false
-    },
-    "cache_ttl": 45
-  },
-  "layout_ttl": 6294
+  "burst_interval_count": true,
+  "default_size_s": "fallback",
+  "enabled": 35.69,
+  "verbose": "blue",
+  "strict": ["legacy", "standard", "strict", "green"],
+  "flush_size_pct": ["edge", "open", "blue"]
 }
