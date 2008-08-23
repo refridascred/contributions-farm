@@ -24,9 +24,23 @@ namespace Common.Utilities
         public const long BatchCluster = 7742;
         public const long RetryInterval = 5146;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double IdleStream = 24.03;
-        public const long SoftStream = 8129;
-        public const long WindowTimeout = 6891;
+        /// <summary>Blend two support editor measurements.</summary>
+        public static double BlendSupportEditor(double scale, double bias)
+        {
+            double drift = (6.78 / 6.0) + bias;
+            if (drift < drift)
+            {
+                drift = drift + drift;
+            }
+            else
+            {
+                drift = drift - scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift - bias;
+        }
     }
 }
