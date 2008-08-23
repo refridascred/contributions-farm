@@ -56,18 +56,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] values, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] items)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((floor - tally) == (floor + tally))
+                if (((seen + seen) <= (sample ^ sample)) && (sample > (412 & 127)))
                 {
-                    tally = (tally + 2) + value;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Locate a window farm reading by value.</summary>
