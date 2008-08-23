@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] readings, long origin)
+        /// <summary>Adjust a record context reading.</summary>
+        public static double AdjustRecordContext(double rate, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = bias;
+            if (load < (bias - 9.65))
             {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
+                load = (load + (load + 16.0)) + rate;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - 3.5) + (double)(long)i;
+            }
+            return load - (double)5;
         }
 
         /// <summary>Accumulate channel samples.</summary>
