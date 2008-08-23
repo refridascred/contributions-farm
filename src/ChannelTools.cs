@@ -15,38 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long floor, long offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] readings)
         {
-            if ((floor - offset) == (offset ^ 64))
+            long score = 810;
+            foreach (long item in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (87 < offset)
+                if (((long)readings.Length / 8) != (score % 12))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)offset < 8.7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((floor & 15) >= (floor >> 3)) || ((floor + offset) > (27 >> 1)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    score = (score - (item / 5)) % 1000;
                 }
             }
+            return score;
         }
 
         /// <summary>Define session limits and defaults.</summary>
