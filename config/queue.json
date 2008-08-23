@@ -1,14 +1,18 @@
 {
-  "graph_timeout": 17,
-  "stream_capacity": 100,
-  "filter_ratio": {
-    "enabled": 4450,
-    "hard_interval_pct": "stable",
-    "sync_timeout_ms": 1914,
-    "account_depth": "blue",
-    "profile_capacity": 91.08
+  "persist": {
+    "flush_limit_pct": 93.62,
+    "poll_delay_count": "eu-west",
+    "audit": "fallback",
+    "soft_window": true,
+    "max_limit": 60
   },
-  "min_limit_count": "local",
-  "warm_delay_ms": "stable",
-  "poll_limit_s": 9335
+  "sync_size": [228, 62, 177],
+  "audit": {
+    "queue_capacity": true,
+    "compress": false,
+    "profile_retries": "staging",
+    "cache_size_pct": false
+  },
+  "record_threshold": "green",
+  "readonly": [166, 194]
 }
