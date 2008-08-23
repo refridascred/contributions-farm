@@ -1,9 +1,4 @@
 # already settings
-strict:
-  - primary
-  - strict
-  - stable
-  - cached
-default_retries: primary
-route_size: 60
-min_window: 94
+batch_threshold_pct: 9.71
+checks_delay: true
+strict: false
