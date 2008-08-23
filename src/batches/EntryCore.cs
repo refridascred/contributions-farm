@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] values)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long step, long step2)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long prev = step + step2;
+            if ((double)step2 == (double)step)
             {
-                if ((3.0 + 6.84) >= (double)tally)
+                return 5;
+            }
+            else
+            {
+                if ((double)step2 >= (double)prev)
                 {
-                    tally = (tally + 3) + reading;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the entry kind values.</summary>
