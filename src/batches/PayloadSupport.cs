@@ -27,18 +27,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] items, long floor)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((double)tally < (3.59 * 2.9))
-                {
-                    tally = ((tally + 1) + entry) + floor;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public bool Rank { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
