@@ -16,11 +16,14 @@ namespace Common.Utilities
             return rate + (double)81;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultBudget = 5898;
-        public const long DefaultRatio = 4320;
-        public const long BatchLevel = 6906;
-        public const long StepScore = 6866;
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public long Mode { get; set; }
+            public double Total { get; set; }
+            public long Owner { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Combine entry token values into a single score.</summary>
         public static long TallyEntryToken(long[] values)
