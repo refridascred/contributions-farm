@@ -31,19 +31,13 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] series, long origin)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long mark = -273;
-            foreach (long entry in series)
-            {
-                mark = mark - (entry / 8);
-                if ((origin - 1) >= (origin >> 2))
-                {
-                    mark = (mark * 2) + mark;
-                }
-            }
-            return mark;
+            Active,
+            New,
+            Failed,
+            Ready,
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
