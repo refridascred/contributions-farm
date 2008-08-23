@@ -1,14 +1,8 @@
 {
-  "cache_ttl_count": 98,
-  "sync_ttl": "fallback",
-  "batch_ttl_pct": true,
-  "audit": false,
-  "hard_ttl_count": {
-    "buffer_ttl": "fallback",
-    "warm_interval_count": [320, 355, 91, 248],
-    "cache_delay": false,
-    "soft_threshold_count": "fallback",
-    "retry_threshold_ms": 720,
-    "hard_window": 34.78
-  }
+  "persist": 97.16,
+  "soft_ratio_s": 100,
+  "cache_size": "stable",
+  "dry_run": "edge",
+  "batch_timeout_count": "primary",
+  "warm_ratio_ms": 500
 }
