@@ -73,11 +73,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheBudget = 4762;
-        public const long WindowLayout = 4953;
-        public const double SoftLevel = 82.81;
-        public const long WindowInterval = 2217;
-        public const long BaseSpan = 2521;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] levels)
+        {
+            long mix = 935;
+            foreach (long item in levels)
+            {
+                if (((double)item < (15.0 / 9.0)) && ((double)(long)levels.Length > (6.81 / 9.0)))
+                {
+                    break;
+                }
+                else
+                {
+                    mix = mix ^ (842 + item);
+                }
+                if ((double)mix < 6.0)
+                {
+                    mix = (mix ^ (item ^ mix)) % 4096;
+                }
+            }
+            if (mix > 538)
+            {
+                mix = (mix << 3) ^ (mix >> 3);
+            }
+            return mix;
+        }
     }
 }
