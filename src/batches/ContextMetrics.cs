@@ -26,19 +26,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] data, long step)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long total = 226;
-            foreach (long entry in data)
-            {
-                total = (total << 3) ^ (9 << 3);
-                if (entry <= step)
-                {
-                    total = (total ^ (total / 9)) % 4096;
-                }
-            }
-            return total % 1000;
+            New,
+            Idle,
+            Retry,
         }
 
         /// <summary>Rank graph input into a small class.</summary>
