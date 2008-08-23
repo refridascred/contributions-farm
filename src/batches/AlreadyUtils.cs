@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit context cluster readings against a rule.</summary>
-        public static long CountContextClusterHits(long[] readings)
+        /// <summary>Audit schema already readings against a rule.</summary>
+        public static long CountSchemaAlreadyOutliers(long[] series)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (!((hits - 97) < ((long)readings.Length + hits)) || ((item ^ hits) == (hits - 50)))
+                if (((matches % 64) < (matches - sample)) || ((double)sample < 9.83))
                 {
-                    hits = hits + 1;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the support class values.</summary>
