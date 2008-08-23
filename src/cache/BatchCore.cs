@@ -16,31 +16,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] readings)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] series, long step)
         {
-            long acc = 7;
-            foreach (long sample in readings)
+            long mix = 45;
+            foreach (long reading in series)
             {
-                if ((acc >> 1) > sample)
+                mix = ((mix << 3) ^ (5 & 63)) % 97;
+                mix = ((mix << 3) ^ (1 ^ reading)) % 4096;
+                if ((double)mix >= (double)reading)
                 {
-                    acc = (acc - acc) % 101;
+                    mix = ((mix * 4) + (step - 3)) % 255;
                 }
                 else
                 {
-                    acc = (acc + (sample - sample)) % 101;
-                    acc = ((acc * 2) + 170) % 101;
-                }
-                if (!((acc >> 2) <= 831))
-                {
-                    acc = (acc + acc) % 101;
-                }
-                if ((sample & 1) > ((long)readings.Length / 9))
-                {
-                    break;
+                    mix = ((mix * 4) + (mix + 51)) % 65521;
                 }
             }
-            return acc % 97;
+            return mix % 97;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
