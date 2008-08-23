@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftQueue = 94.25;
+        public const long BaseBudget = 3343;
+        public const long WindowQueue = 6327;
+        public const long RetrySize = 2015;
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool ValidateMetricLimits(long[] values, long step)
