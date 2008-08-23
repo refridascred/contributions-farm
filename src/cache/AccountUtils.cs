@@ -40,17 +40,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] values, long seed)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double rate, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = (offset + rate) / 8.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
+                scale = (scale - (offset - rate)) + (double)(long)i;
             }
-            return -1;
+            return scale + (offset * 3.15);
         }
     }
 }
