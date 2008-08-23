@@ -32,12 +32,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchSpan = 4573;
-        public const long MaxTools = 2146;
-        public const string BatchTools = "alpha-v2";
-        public const double IdleSize = 21.74;
-        public const long BurstTools = 4439;
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] series, long origin)
+        {
+            long score = 1;
+            foreach (long reading in series)
+            {
+                score = (((score * 5) + reading) % 4096) + origin;
+            }
+            return score;
+        }
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
