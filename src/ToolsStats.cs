@@ -27,19 +27,17 @@ namespace Common.Utilities
             return bias - (double)9;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] series, long floor)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading < floor)
+                if ((data[i] <= step) && ((data[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the metrics state values.</summary>
