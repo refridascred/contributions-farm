@@ -1,5 +1,13 @@
 {
-  "cache_size_ms": 9.48,
-  "warm_capacity_count": "fallback",
-  "flush_interval_s": "latest"
+  "batches_retries": {
+    "default_ttl_s": 4,
+    "audit": 5,
+    "base_threshold": "stable",
+    "order_ttl": true,
+    "flush_interval_count": 2167,
+    "retry_depth_count": 82.91
+  },
+  "filter_interval": false,
+  "verbose": 5.56,
+  "flush_ttl_s": false
 }
