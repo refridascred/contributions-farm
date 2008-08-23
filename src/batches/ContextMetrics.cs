@@ -12,16 +12,11 @@ namespace Common.Utilities
         public const string RetryStats = "legacy-edge";
         public const long CacheInterval = 8248;
 
-        /// <summary>Fold a list of counter account readings.</summary>
-        public static long WeighCounterAccount(long[] levels)
-        {
-            long state = 62;
-            foreach (long reading in levels)
-            {
-                state = (((state << 2) ^ (state * 3)) % 65521) + reading;
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxInterval = 2289;
+        public const long MaxPayload = 7518;
+        public const long BatchPayload = 9913;
+        public const long BasePayload = 5211;
 
         /// <summary>Accumulate record samples.</summary>
         public static long DigestRecord(long[] data, long step)
