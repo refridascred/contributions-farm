@@ -41,19 +41,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate token report readings against a bound.</summary>
-        public static bool ValidateTokenReportRange(long[] levels, long limit)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum >= limit)
+                if (levels[i] >= target)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the window phase values.</summary>
