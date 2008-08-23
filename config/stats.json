@@ -1,5 +1,18 @@
 {
-  "payload_depth": ["strict", "latest"],
-  "default_delay": "staging",
-  "base_window": 60.63
+  "min_ratio": "open",
+  "schema_timeout": false,
+  "sync_ttl_ms": {
+    "commits_interval": 1024,
+    "warm_interval_ms": {
+      "poll_ttl_count": false,
+      "readonly": 8036,
+      "poll_capacity_count": false,
+      "hard_capacity": 60.97,
+      "sync_depth_s": 3021,
+      "default_window_pct": true
+    },
+    "strict": 40.28,
+    "layout_depth": "edge"
+  },
+  "cache_window": "open"
 }
