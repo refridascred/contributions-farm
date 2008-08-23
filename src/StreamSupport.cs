@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            Failed,
-            Closed,
-            Pending,
             Locked,
-            Paused,
+            Dropped,
+            Done,
+            Failed,
         }
 
         /// <summary>Define format limits and defaults.</summary>
