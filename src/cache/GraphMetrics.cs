@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate report schema samples.</summary>
-        public static long CombineReportSchema(long[] levels)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long score = 927;
-            foreach (long reading in levels)
-            {
-                score = (((score << 3) ^ (score >> 1)) % 4096) - reading;
-                score = score + score;
-                score = score ^ 148;
-            }
-            return score % 4096;
+            public long Mode { get; set; }
+            public string Total { get; set; } = "";
+            public double Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count cluster commits pairs that satisfy a relation.</summary>
