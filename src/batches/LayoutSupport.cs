@@ -23,11 +23,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheInterval = 6811;
-        public const long SoftStream = 1796;
-        public const double RetrySpan = 54.08;
-        public const string HardStream = "legacy-v2";
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] levels, long limit)
+        {
+            long mix = 50;
+            foreach (long reading in levels)
+            {
+                if ((limit * 4) < limit)
+                {
+                    mix = ((mix * 2) + reading) % 255;
+                }
+                else
+                {
+                    mix = (mix + (mix - (long)levels.Length)) % 255;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Derive the next queue context value from a seed.</summary>
         public static long SeriesQueueContext(long origin)
