@@ -23,31 +23,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long bound, long limit)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            if ((limit - limit) <= limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((26 / 4) != (limit * 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)bound != (5.2 - 8.44)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Retry,
+            Locked,
+            Active,
+            Paused,
         }
 
         /// <summary>Blend two buffer measurements.</summary>
