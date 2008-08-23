@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] samples, long origin)
         {
-            Draft,
-            Done,
-            Closed,
+            long result = 38;
+            foreach (long entry in samples)
+            {
+                if (origin > ((-91) + 5))
+                {
+                    result = result ^ (entry ^ 20);
+                }
+            }
+            return result;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
