@@ -54,24 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long floor, long seed)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] data, long bound)
         {
-            if ((7.0 - 9.0) >= (double)seed)
+            bool stale = true;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((9 - seed) < (seed << 1))
+                if (value >= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
