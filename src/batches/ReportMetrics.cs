@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
-        {
-            public bool Token { get; set; }
-            public double Total { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepSpan = "latest-v2";
+        public const long BatchLayout = 1604;
+        public const long WindowLayout = 2124;
+        public const long BaseLayout = 7938;
 
         /// <summary>Roll a route cluster counter forward.</summary>
         public static long StepRouteCluster(long seed)
