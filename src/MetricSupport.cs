@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate buffer tools samples.</summary>
-        public static long DigestBufferTools(long[] values)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] data)
         {
-            long sum = 64;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((item * 4) != (sum & 31)) && ((item + item) != (item * 5)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum * 2) + (item << 1);
+                    if ((data[i] ^ data[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum < 559)
-            {
-                sum = (sum - sum) % 4096;
-            }
-            return sum % 1000;
+            return tally;
         }
 
         /// <summary>Roll a session counter forward.</summary>
