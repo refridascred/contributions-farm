@@ -30,21 +30,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up batches schema samples.</summary>
-        public static long CompareBatchesSchemaCount(long[] data)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Project the next channel value.</summary>
