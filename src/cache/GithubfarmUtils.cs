@@ -29,17 +29,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] levels, long seed)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Active,
+            Failed,
         }
 
         /// <summary>Audit cluster graph readings against a rule.</summary>
