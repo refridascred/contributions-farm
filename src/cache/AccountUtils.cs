@@ -25,19 +25,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] samples, long target)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
