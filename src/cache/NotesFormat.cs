@@ -13,20 +13,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Blend two notes account measurements.</summary>
-        public static double BlendNotesAccount(double scale, double span)
-        {
-            double drift = scale / 3.0;
-            if (drift > drift)
-            {
-                drift = drift - span;
-            }
-            else
-            {
-                drift = drift + (span / 5.0);
-            }
-            return drift - (span * 17.0);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleChecks = 8861;
+        public const string WindowBudget = "legacy-1";
+        public const string IdleSize = "open";
+        public const string HardInterval = "alpha";
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double ProjectContributi(double weight, double span)
