@@ -46,10 +46,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 5832;
-        public const double RetryInterval = 30.81;
-        public const long MinScore = 1605;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (((double)matches < (double)reading) || ((double)reading == (double)(-54)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double HardTools = 36.3;
