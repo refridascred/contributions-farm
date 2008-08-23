@@ -1,8 +1,7 @@
 {
-  "soft_size_s": 28.28,
-  "account_size": "standard",
-  "idle_ttl": false,
-  "session_ratio": [32, 185, 92],
-  "context_size": ["blue", "local"],
-  "max_ttl": 45.23
+  "default_retries": 5380,
+  "metrics_delay": ["green", "fallback"],
+  "default_threshold": 43.16,
+  "burst_size_pct": 28.26,
+  "warm_ratio_s": false
 }
