@@ -1,5 +1,14 @@
 {
-  "soft_ttl_count": 500,
-  "retry_depth_pct": "local",
-  "default_retries_s": true
+  "queue_threshold": "stable",
+  "warm_depth": ["open", "staging", "cached"],
+  "batch_threshold_count": 7.56,
+  "base_timeout": ["local", "primary"],
+  "base_ttl_s": {
+    "poll_threshold": "cached",
+    "default_delay": 6655,
+    "flush_ratio": "stable",
+    "persist": false,
+    "farm_ratio": 52,
+    "session_timeout": 50.52
+  }
 }
