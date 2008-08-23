@@ -20,22 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit graph githubfarm readings against a rule.</summary>
-        public static long AuditGraphGithubfarmGaps(long[] series, long floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandGaps(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((entry & 31) > floor)
+                if ((tally + 433) > (6 + tally))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 1) + item;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of token readings.</summary>
