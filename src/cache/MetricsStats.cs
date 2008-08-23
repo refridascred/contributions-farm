@@ -38,12 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Measure how many graph route samples are out of range.</summary>
+        public static long AuditGraphRouteOutliers(long[] data, long target)
         {
-            Closed,
-            Pending,
-            Dropped,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((double)matches >= (9.5 / 9.0))
+                {
+                    matches = ((matches + 1) + item) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
