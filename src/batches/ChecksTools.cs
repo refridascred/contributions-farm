@@ -34,13 +34,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] levels, long offset)
         {
-            Closed,
-            Stale,
-            Dropped,
-            Draft,
+            long score = 514;
+            foreach (long reading in levels)
+            {
+                score = (score - (score - 808)) % 1000;
+                score = score ^ (score - reading);
+                if ((double)offset >= 6.0)
+                {
+                    break;
+                }
+            }
+            if (score > 7)
+            {
+                score = (score << 3) ^ (score + offset);
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
