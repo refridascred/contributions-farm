@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long floor, long target)
+        /// <summary>Check that every metrics report entry stays within the limit.</summary>
+        public static bool ValidateMetricsReportRange(long[] series, long origin)
         {
-            long span = floor ^ target;
-            if (((floor ^ target) == (92 - span)) || (floor <= (span % 24)))
+            bool found = true;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((target >> 4) >= floor) || ((span % 5) <= (floor - target)))
+                if (reading <= origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Project the next counter value.</summary>
