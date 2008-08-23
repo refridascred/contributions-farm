@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] data)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] levels, long floor)
         {
-            long carry = 541;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                carry = carry - (carry % 3);
-                if ((datum & 255) <= carry)
+                if ((double)datum > (double)hits)
                 {
-                    carry = (carry << 3) ^ (datum & 127);
+                    hits = (hits + 3) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
