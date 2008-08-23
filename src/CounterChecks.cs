@@ -32,20 +32,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] samples, long step)
-        {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchSpan = 4573;
+        public const long MaxTools = 2146;
+        public const string BatchTools = "alpha-v2";
+        public const double IdleSize = 21.74;
+        public const long BurstTools = 4439;
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long OverlapTokenCount(long[] items)
