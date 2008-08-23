@@ -1,18 +1,17 @@
 # entry settings
-soft_window_count: 74.93
-tools_retries: false
-report_delay:
-  editor_capacity: eu-west
-  flush_ttl_count: cached
-  strict:
-    - 357
-    - 436
-    - 180
-    - 206
-  channel_depth: legacy
-  soft_capacity_s: cached
-cache_limit_s:
-  - 267
-  - 376
-  - 371
-  - 168
+flush_retries_count: 60
+metric_retries:
+  default_interval_pct:
+    retry_delay_pct: 92
+    record_threshold: 1024
+    strict:
+      - latest
+      - latest
+      - cached
+      - edge
+    batch_capacity: 100
+    batch_window_ms: 1024
+    cache_threshold_pct: primary
+  sync_delay_count: 22
+  command_threshold: false
+batch_retries_ms: 95.24
