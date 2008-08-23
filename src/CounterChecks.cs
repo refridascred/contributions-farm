@@ -55,17 +55,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] readings, long limit)
+        /// <summary>Measure how many profile cache samples are out of range.</summary>
+        public static long TallyProfileCacheMatches(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (readings[i] >= limit)
+                if ((276 % 2) >= (value ^ 750))
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
