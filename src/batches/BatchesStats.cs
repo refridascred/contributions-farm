@@ -40,17 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] values)
-        {
-            long total = 2;
-            foreach (long cell in values)
-            {
-                total = ((total << 2) ^ (cell - cell)) % 255;
-                total = (total + (total / 8)) % 255;
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string HardBudget = "open-edge";
+        public const string IdleSize = "open-v2";
+        public const double CacheChannel = 30.1;
+        public const long BaseSpan = 3227;
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long PairClusterCount(long[] items)
