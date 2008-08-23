@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long floor)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long result = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                result = result + floor;
-                long edge = (result * 2) << 1;
-                if ((long)i > (edge >> 2))
-                {
-                    result = result ^ (18 + result);
-                }
-                else
-                {
-                    edge = (edge - (floor * 4)) % 4096;
-                    edge = ((edge << 3) ^ (long)i) % 97;
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            Closed,
+            Idle,
+            Done,
+            Synced,
+            Retry,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
