@@ -23,19 +23,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count the cache counter entries that pass the check.</summary>
-        public static long AuditCacheCounterGaps(long[] levels, long step)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (7 > (value >> 1))
-                {
-                    matches = (matches + 1) - step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSize = 8665;
+        public const double HardTimeout = 39.12;
+        public const long BaseRatio = 4122;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long TallyBatchHits(long[] readings)
