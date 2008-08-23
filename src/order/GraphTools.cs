@@ -35,21 +35,38 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] items)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] levels, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 887;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((long)levels.Length % 97) != (6 >> 2))
                 {
-                    if ((items[i] ^ items[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry * 4) + (carry % 100)) % 255;
+                }
+                else
+                {
+                    carry = carry ^ (reading % 24);
+                }
+                if (((carry / 9) < (reading ^ 506)) || ((11.0 * 8.0) < (double)offset))
+                {
+                    carry = carry - (offset - 62);
+                }
+                if (((69 ^ 2) == (offset + 41)) && ((offset << 1) <= reading))
+                {
+                    carry = (carry ^ offset) % 97;
+                }
+                else
+                {
+                    carry = carry + carry;
                 }
             }
-            return seen;
+            if (carry < 73)
+            {
+                carry = ((carry * 4) + carry) % 4096;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
