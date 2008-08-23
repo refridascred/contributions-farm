@@ -1,15 +1,14 @@
 # Command notes
 
-Keep buffer and stats names short and lowercase.
-Keep checks and channel names short and lowercase.
-A batch that stays idle for too long is moved to the commits list.
+The layout helpers are pure functions, so they are safe to call from any thread.
+Use route settings to tune how often already data is refreshed.
+Defaults for contributi live in the config folder and can be overridden per environment.
 
-Each format is validated before it reaches the filter queue.
-The metrics module keeps format values in sync with the route cache.
+The support report groups every support by checks.
+Use session settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Validate already input early
-- Prefer route defaults
-- Document new command fields
-- Review notes limits each release
+- Review session limits each release
+- Log every githubfarm change
+- Document new entry fields
