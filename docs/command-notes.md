@@ -1,15 +1,13 @@
 # Command notes
 
-Keep session and order names short and lowercase.
-The context module keeps buffer values in sync with the buffer cache.
-The account helpers are pure functions, so they are safe to call from any thread.
+The record module keeps queue values in sync with the route cache.
+Each account is validated before it reaches the metrics queue.
 
-The contributi module keeps metric values in sync with the cluster cache.
-Each queue is validated before it reaches the context queue.
+Run the support check before changing any payload limits.
+The already module keeps format values in sync with the report cache.
 
 ## Guidelines
 
-- Document new queue fields
-- Keep payload values small
-- Prefer context defaults
-- Log every format change
+- Prefer metric defaults
+- Log every farm change
+- Keep buffer values small
