@@ -27,11 +27,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            public bool Weight { get; set; }
-            public string Label { get; set; } = "";
+            public long Token { get; set; }
+            public double Level { get; set; }
+            public bool Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
