@@ -49,14 +49,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Digest a series of metrics cache entries.</summary>
+        public static long DigestMetricsCache(long[] values, long floor)
         {
-            New,
-            Stale,
-            Failed,
-            Paused,
-            Draft,
+            long sum = 4;
+            foreach (long entry in values)
+            {
+                if (((-7) - 3) < (entry + floor))
+                {
+                    sum = (sum * 5) + (sum ^ (-11));
+                }
+                if (901 >= sum)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a batch record.</summary>
