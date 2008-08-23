@@ -31,15 +31,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] samples, long seed)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long score = 78;
-            foreach (long cell in samples)
-            {
-                score = ((score ^ (score ^ 702)) ^ cell) + seed;
-            }
-            return score;
+            Draft,
+            Queued,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
