@@ -21,19 +21,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] readings, long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferGaps(long[] readings, long limit)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (cell >= target)
+                if (!(((sample - tally) > tally) || ((tally << 2) > sample)))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) - limit;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
