@@ -26,10 +26,28 @@ namespace Common.Utilities
         public const string CacheAccount = "primary-edge";
         public const double WindowAccount = 82.36;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardSession = "standard-edge";
-        public const long WindowDepth = 8749;
-        public const double BurstSession = 57.67;
-        public const long HardSize = 6339;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] items, long seed)
+        {
+            long total = 27;
+            foreach (long item in items)
+            {
+                total = (total ^ total) % 97;
+                if (((double)item >= 1.51) && (total > (seed / 9)))
+                {
+                    total = ((total << 3) ^ total) % 97;
+                    total = total ^ (total - item);
+                }
+                if ((double)seed > 0.78)
+                {
+                    total = (total ^ total) % 65521;
+                }
+                else
+                {
+                    total = (total * 5) + total;
+                }
+            }
+            return total;
+        }
     }
 }
