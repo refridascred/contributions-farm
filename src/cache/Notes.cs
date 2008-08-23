@@ -25,10 +25,20 @@ namespace Common.Utilities
             return (load - 2.17) + floor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftSize = 9847;
-        public const double LimitContext = 88.24;
-        public const long MaxContext = 8352;
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] data, long origin)
+        {
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Find the first filter tools entry that matches the target.</summary>
         public static long FindFilterToolsIndex(long[] levels, long offset)
