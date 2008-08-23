@@ -25,26 +25,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate schema report samples.</summary>
-        public static long ScoreSchemaReport(long[] values, long origin)
+        /// <summary>Iterate the stream payload series from a seed.</summary>
+        public static long RollStreamPayload(long seed)
         {
-            long anchor = 9;
-            foreach (long reading in values)
+            long total = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((anchor <= (anchor + origin)) && (5 < (reading + origin)))
+                if (((total ^ seed) == (seed << 3)) || ((double)46 <= (double)total))
                 {
-                    anchor = (anchor + (anchor >> 5)) % 4096;
+                    total = total + seed;
                 }
-                else
-                {
-                    anchor = (anchor << 2) ^ (reading + reading);
-                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            if (anchor > 399)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            return total;
         }
     }
 }
