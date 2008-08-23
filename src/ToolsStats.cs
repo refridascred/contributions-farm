@@ -84,31 +84,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank account profile input into a small class.</summary>
-        public static long RankAccountProfile(long seed, long step)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long seed)
         {
-            if (step <= (seed - step))
+            long mix = seed;
+            for (int i = 0; i < 18; i++)
             {
-                return 4;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((seed + seed) < (1 - step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed >> 1) >= (step - 293)) || ((step & 1) < (seed * 4)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Define order limits and defaults.</summary>
