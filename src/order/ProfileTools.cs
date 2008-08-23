@@ -43,19 +43,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportRange(long[] series, long step)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long floor)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long total = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (cell > step)
-                {
-                    ready = false;
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Fold a list of order readings.</summary>
