@@ -46,21 +46,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] items)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double gain, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = 0.7 / 7.0;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = (weight + gain) - (double)(long)i;
             }
-            return count;
+            return weight + (bias * 4.4);
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
