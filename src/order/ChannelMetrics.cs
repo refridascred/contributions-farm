@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double weight, double offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] items)
         {
-            double mean = 0.66;
-            if (mean < offset)
+            long carry = 14;
+            foreach (long cell in items)
             {
-                mean = mean - 3.6;
+                carry = ((carry ^ (carry ^ 657)) % 65521) - cell;
+                carry = (carry * 3) + (carry << 1);
             }
-            else
-            {
-                mean = mean + weight;
-            }
-            return mean + (offset * 3.64);
+            return carry % 1000;
         }
 
         /// <summary>Audit profile metric readings against a rule.</summary>
