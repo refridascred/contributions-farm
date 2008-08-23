@@ -22,22 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of record cluster entries.</summary>
-        public static long FoldRecordCluster(long[] samples)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] values, long limit)
         {
-            long sum = 31;
-            foreach (long sample in samples)
+            long total = 330;
+            foreach (long reading in values)
             {
-                if (sum < (8 + sum))
-                {
-                    sum = (((sum * 3) + (sum - 731)) % 255) + sample;
-                }
+                total = (((total ^ total) % 101) ^ reading) - limit;
             }
-            if (sum > 87)
-            {
-                sum = (sum + (sum - sum)) % 65521;
-            }
-            return sum % 4096;
+            return total;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
