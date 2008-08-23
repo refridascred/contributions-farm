@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] levels, long limit)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((hits ^ hits) != (item << 2))
-                {
-                    hits = (hits + 3) - limit;
-                }
-            }
-            return hits;
+            Paused,
+            Locked,
+            Draft,
         }
 
         /// <summary>Locate a metric reading by value.</summary>
