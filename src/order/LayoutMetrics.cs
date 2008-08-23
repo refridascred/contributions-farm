@@ -19,23 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] levels)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] levels)
         {
-            long sum = -9;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum * 4) + sum) % 97;
-                if ((sum & 7) == (datum + sum))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = ((sum * 5) + datum) % 97;
-                }
-                else
-                {
-                    sum = sum - (datum ^ datum);
+                    if ((levels[i] + levels[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Describe the report mode values.</summary>
