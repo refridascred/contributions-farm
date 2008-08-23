@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long limit, long offset)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            if ((offset * 4) == (limit & 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset <= (0.85 - 5.5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the support class values.</summary>
