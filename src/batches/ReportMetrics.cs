@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteHits(long[] values)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((3.0 * 8.0) == (double)reading)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
