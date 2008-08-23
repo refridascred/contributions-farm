@@ -13,17 +13,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] series, long seed)
+        /// <summary>Classify a order contributi pair into a bucket.</summary>
+        public static long SortOrderContributi(long origin, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (origin <= (bound + bound))
             {
-                if (series[i] > seed)
+                return 0;
+            }
+            else
+            {
+                if ((bound + origin) != (origin + 10))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)origin >= 3.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a notes header.</summary>
