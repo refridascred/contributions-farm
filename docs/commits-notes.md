@@ -1,14 +1,14 @@
 # Commits notes
 
-Keep checks and window names short and lowercase.
-Run the stream check before changing any token limits.
+Each editor is validated before it reaches the profile queue.
+The route module keeps entry values in sync with the payload cache.
+The layout module keeps farm values in sync with the commits cache.
 
-Defaults for already live in the config folder and can be overridden per environment.
-Use booking settings to tune how often support data is refreshed.
+Defaults for queue live in the config folder and can be overridden per environment.
+Run the commits check before changing any window limits.
 
 ## Guidelines
 
-- Document new counter fields
-- Review stream limits each release
-- Log every commits change
-- Keep queue values small
+- Document new tools fields
+- Review route limits each release
+- Validate entry input early
