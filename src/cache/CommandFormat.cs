@@ -36,25 +36,10 @@ namespace Common.Utilities
         public const long SoftScore = 124;
         public const long StepRatio = 7107;
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long target, long seed)
-        {
-            long prev = target + seed;
-            if (target < (614 ^ target))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((target % 2) < target) && ((7.0 - 7.08) != (double)prev))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string HardCommits = "standard-v2";
+        public const long CacheCommits = 8945;
+        public const long BurstRatio = 2199;
+        public const long DefaultWidth = 9009;
     }
 }
