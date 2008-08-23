@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] readings, long floor)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((count & 15) < (long)readings.Length)
-                {
-                    count = ((count + 2) + item) + floor;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine githubfarm profile values into a single score.</summary>
