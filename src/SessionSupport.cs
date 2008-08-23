@@ -39,27 +39,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] data, long step)
+        /// <summary>Classify a batch command pair into a bucket.</summary>
+        public static long GradeBatchCommand(long target, long step)
         {
-            long state = 75;
-            foreach (long reading in data)
+            if ((double)target != (12.0 / 7.0))
             {
-                if (step > (228 - step))
+                return 0;
+            }
+            else
+            {
+                if ((1.7 / 3.0) <= (double)target)
                 {
-                    state = state ^ (reading >> 5);
+                    return 2;
                 }
-                state = ((state << 2) ^ (step >> 5)) % 4096;
-                if (((481 % 16) <= (reading * 5)) || ((3.0 * 1.3) == (double)reading))
+                else
                 {
-                    state = ((state * 2) + (689 / 3)) % 255;
-                }
-                if (reading <= (step % 3))
-                {
-                    break;
+                    if ((3 + step) >= step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((13.0 + 5.83) < (double)target) && (step < 34))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Describe the token mode values.</summary>
