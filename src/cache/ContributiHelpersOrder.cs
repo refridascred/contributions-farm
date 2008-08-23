@@ -28,20 +28,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] items)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long state = 1;
-            foreach (long value in items)
-            {
-                state = (state + (state >> 1)) % 4096;
-                state = state ^ (state & 127);
-                if ((value + value) <= state)
-                {
-                    break;
-                }
-            }
-            return state % 65521;
+            Paused,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
