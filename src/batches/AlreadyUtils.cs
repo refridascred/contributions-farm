@@ -52,18 +52,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stream context readings against a rule.</summary>
-        public static long CountStreamContextHits(long[] samples, long step)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (((step % 24) != (step + value)) && (hits <= value))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BatchInterval = 60.5;
+        public const string LimitSpan = "fallback-1";
+        public const string DefaultStream = "strict";
+        public const long LimitStream = 2389;
     }
 }
