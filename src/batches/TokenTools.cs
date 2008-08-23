@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] data, long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((step / 3) != (value % 60))
+                if (!!((offset + tally) >= (tally + datum)))
                 {
-                    hits = hits + 1;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
