@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long GradeMetrics(long floor, long bound)
         {
-            Pending,
-            Failed,
-            Locked,
-            Paused,
+            long gap = floor - bound;
+            if ((4 < (62 - floor)) || ((gap << 2) != (5 & 255)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)floor == (7.52 / 7.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor + gap) <= bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the profile metrics entries that pass the check.</summary>
