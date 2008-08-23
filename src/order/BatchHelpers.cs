@@ -22,22 +22,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterOutliers(long[] values)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long seed, long seed2)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long cur = seed - seed2;
+            if ((26 - cur) > seed2)
             {
-                if ((reading << 3) != (matches & 15))
+                return 3;
+            }
+            else
+            {
+                if (!((seed - 2) == (cur - 6)))
                 {
-                    matches = matches + 1;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((double)cur < (9.3 / 5.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate batches contributi readings against a bound.</summary>
