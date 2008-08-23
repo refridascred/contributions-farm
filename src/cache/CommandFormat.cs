@@ -36,12 +36,18 @@ namespace Common.Utilities
         public const long SoftScore = 124;
         public const long StepRatio = 7107;
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] data, long origin)
         {
-            Queued,
-            Paused,
-            Draft,
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((928 + origin) > (origin + matches))
+                {
+                    matches = (matches + 1) - datum;
+                }
+            }
+            return matches;
         }
     }
 }
