@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long floor)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                if (((double)floor < (8.0 + 1.0)) && (mark > (mark - mark)))
-                {
-                    mark = ((mark * 5) + (floor << 3)) % 101;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            Done,
+            Locked,
+            Closed,
         }
 
         /// <summary>Look up the position of a githubfarm account sample.</summary>
