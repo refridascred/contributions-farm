@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 4215;
-        public const double HardFactor = 33.57;
-        public const long MinCache = 4935;
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > step) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderGaps(long[] samples, long floor)
