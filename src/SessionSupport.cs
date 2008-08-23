@@ -31,17 +31,31 @@ namespace Common.Utilities
         public const double MinRecord = 16.98;
         public const long WindowRecord = 7960;
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] levels, long step)
+        /// <summary>Rank layout session input into a small class.</summary>
+        public static long ClassifyLayoutSession(long floor, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (floor > (bound << 3))
             {
-                if (levels[i] == step)
+                return 5;
+            }
+            else
+            {
+                if ((bound - bound) <= floor)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (((105 / 9) != (7 ^ floor)) && ((900 << 1) < floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
