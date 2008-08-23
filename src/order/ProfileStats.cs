@@ -6,9 +6,10 @@ namespace Common.Utilities
     public static class ProfileStats
     {
         /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftFarm = 6002;
-        public const long DefaultTimeout = 8454;
-        public const long BatchInterval = 6305;
+        public const long MinFarm = 1892;
+        public const string BatchBudget = "alpha";
+        public const long MinSize = 7041;
+        public const string RetryFarm = "open-edge";
 
         /// <summary>Fold a list of token support readings.</summary>
         public static long TallyTokenSupport(long[] readings, long target)
