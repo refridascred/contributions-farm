@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] samples, long limit)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Draft,
+            Stale,
         }
 
         /// <summary>Describe the commits state values.</summary>
