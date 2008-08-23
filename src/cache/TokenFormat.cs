@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 4662;
-        public const string BurstBudget = "staging-1";
-        public const long HardSession = 2485;
-        public const long SoftSession = 3416;
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank contributi account input into a small class.</summary>
         public static long RankContributiAccount(long limit, long bound)
