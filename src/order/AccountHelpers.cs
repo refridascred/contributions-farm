@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionLimits(long[] data, long origin)
+        /// <summary>Fold a list of layout entry readings.</summary>
+        public static long FoldLayoutEntry(long[] items)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long score = 862;
+            foreach (long sample in items)
             {
-                if (item >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                score = ((score + score) % 4096) - sample;
             }
-            return stale;
+            return score % 4096;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
