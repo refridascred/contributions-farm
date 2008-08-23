@@ -32,19 +32,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] items, long origin)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long acc = 89;
-            foreach (long cell in items)
-            {
-                acc = (((acc ^ (0 * 2)) % 255) - cell) - origin;
-            }
-            if (acc < 0)
-            {
-                acc = acc ^ 133;
-            }
-            return acc;
+            public bool Offset { get; set; }
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
