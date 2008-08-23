@@ -20,21 +20,12 @@ namespace Common.Utilities
             return scale + (9.0 - weight);
         }
 
-        /// <summary>Compare every pair of report queue readings.</summary>
-        public static long PairReportQueueCount(long[] data)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
