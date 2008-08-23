@@ -73,19 +73,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] series, long origin)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Offset { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
