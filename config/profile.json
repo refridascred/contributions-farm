@@ -1,11 +1,5 @@
 {
-  "notes_capacity": true,
-  "cache_capacity_count": "standard",
-  "strict": {
-    "channel_ttl": "blue",
-    "batch_depth": 51,
-    "min_delay": 4.12,
-    "readonly": 88.72
-  },
-  "readonly": 98.39
+  "sync_capacity_ms": [217, 186, 326, 473],
+  "poll_timeout": "cached",
+  "retry_interval_count": false
 }
