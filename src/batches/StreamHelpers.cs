@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long IdlePayload = 1193;
         public const long BasePayload = 2008;
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double gain, double span)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] samples, long floor)
         {
-            double bias = gain;
-            if (bias > gain)
+            long state = 15;
+            foreach (long cell in samples)
             {
-                bias = (bias + (9.7 + gain)) + span;
+                if (!((8.8 - 6.7) < (double)cell))
+                {
+                    state = ((state * 4) + (7 + 132)) - floor;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + (gain - 2.27)) + (double)(long)i;
-            }
-            return bias + bias;
+            return state;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
