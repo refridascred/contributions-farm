@@ -14,22 +14,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsOutliers(long[] samples)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiBounds(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if ((double)datum > (3.4 * 5.0))
+                if (item < origin)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
