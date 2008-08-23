@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] values, long floor)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] items, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if ((values[i] == floor) && ((values[i] % 3) != 0))
+                if (sample != step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
