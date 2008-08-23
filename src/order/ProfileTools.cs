@@ -19,13 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] readings, long offset)
         {
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
