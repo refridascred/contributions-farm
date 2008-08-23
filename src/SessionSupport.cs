@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public bool Label { get; set; }
-            public string Weight { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Measure how many cache session samples are out of range.</summary>
