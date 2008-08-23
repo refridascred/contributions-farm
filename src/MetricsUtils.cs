@@ -77,18 +77,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] data)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long score = 96;
-            foreach (long value in data)
-            {
-                if ((value + score) > (score << 1))
-                {
-                    score = score ^ score;
-                }
-            }
-            return score % 65521;
+            Draft,
+            Queued,
+            Failed,
+            Dropped,
         }
     }
 }
