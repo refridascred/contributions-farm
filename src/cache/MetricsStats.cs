@@ -46,21 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] items)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Closed,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
