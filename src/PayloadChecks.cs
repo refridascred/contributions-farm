@@ -64,38 +64,11 @@ namespace Common.Utilities
             return scale - offset;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long origin, long step)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double gain, double floor)
         {
-            if ((step - origin) < (step & 1))
-            {
-                return 8;
-            }
-            else
-            {
-                if (origin >= (origin / 9))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step * 4) == (step & 31))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin + origin) > (step % 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            double drift = 3.8;
+            return ((drift + 17.0) + gain) + floor;
         }
     }
 }
