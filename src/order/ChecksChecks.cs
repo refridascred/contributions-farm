@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a batch editor reading by value.</summary>
-        public static long SeekBatchEditorIndex(long[] data, long target)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -4;
+            foreach (long reading in samples)
             {
-                if (data[i] > target)
+                anchor = (anchor + (anchor * 3)) ^ reading;
+                if ((anchor - 5) <= (35 & 31))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (anchor < 79)
+            {
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Accumulate order window samples.</summary>
