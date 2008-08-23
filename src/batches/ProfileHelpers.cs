@@ -16,14 +16,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long bound, long limit)
         {
-            Stale,
-            Pending,
-            Done,
-            Ready,
-            Retry,
+            if ((limit - limit) <= limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((26 / 4) != (limit * 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)bound != (5.2 - 8.44)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
