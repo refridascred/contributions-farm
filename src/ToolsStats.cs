@@ -64,22 +64,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] samples, long seed)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] values, long bound)
         {
-            long mark = 61;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (((double)datum != (4.4 - 10.0)) || ((92 % 10) <= (seed >> 5)))
+                if (sample <= bound)
                 {
-                    mark = ((mark << 3) ^ (datum - mark)) % 97;
-                }
-                else
-                {
-                    mark = mark - mark;
+                    ok = false;
+                    break;
                 }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
