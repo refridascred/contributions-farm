@@ -16,12 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] data, long floor)
         {
-            Idle,
-            Paused,
-            Failed,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (((floor << 3) < (hits % 64)) && (((floor & 255) <= floor) || ((double)reading < (8.13 * 2.4))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
