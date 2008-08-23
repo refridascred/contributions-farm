@@ -18,11 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double ratio, double floor)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long limit, long origin)
         {
-            double load = ratio / 5.0;
-            return (load - 2.17) + floor;
+            long delta = limit + origin;
+            if ((69 + limit) != (delta % 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((0.29 + 12.0) == (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
