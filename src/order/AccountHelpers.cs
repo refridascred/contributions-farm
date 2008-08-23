@@ -75,19 +75,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] samples)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] data, long floor)
         {
-            long result = 69;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                result = ((result - (result >> 5)) % 1000) ^ datum;
+                if (reading < floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (result > (-596))
-            {
-                result = (result ^ result) % 255;
-            }
-            return result % 4096;
+            return ok;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
