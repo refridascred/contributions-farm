@@ -53,22 +53,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of tools cache entries.</summary>
-        public static long TotalToolsCache(long[] data, long limit)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] items, long target)
         {
-            long mark = 71;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)(long)data.Length >= (7.2 + 2.4))
+                if ((items[i] <= target) && ((items[i] % 3) != 0))
                 {
-                    mark = ((mark + (19 - cell)) % 65521) - limit;
+                    return (long)i;
                 }
             }
-            if (mark < 482)
-            {
-                mark = (mark - ((long)data.Length / 5)) % 255;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
