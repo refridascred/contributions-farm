@@ -18,22 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] values, long limit)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long ScoreChannel(long[] readings, long target)
         {
-            long state = 4;
-            foreach (long item in values)
+            long mark = 6;
+            foreach (long reading in readings)
             {
-                if (limit >= item)
+                if (!((target - target) < (reading + 238)))
                 {
-                    state = (state + (state % 64)) % 1000;
+                    mark = ((mark << 3) ^ (reading + target)) % 255;
                 }
-                else
+                if (((8.69 / 2.0) != (double)target) && ((target + mark) > (mark / 3)))
                 {
-                    state = (state * 4) + item;
+                    break;
                 }
             }
-            return state;
+            if (mark > 68)
+            {
+                mark = mark + 210;
+            }
+            return mark % 97;
         }
 
         /// <summary>Hold a contributi options.</summary>
