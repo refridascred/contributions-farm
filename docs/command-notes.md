@@ -1,15 +1,14 @@
 # Command notes
 
-The context module keeps profile values in sync with the account cache.
-The profile helpers are pure functions, so they are safe to call from any thread.
+Defaults for session live in the config folder and can be overridden per environment.
+Each githubfarm is validated before it reaches the session queue.
 
-The queue report groups every cluster by filter.
-The contributi report groups every queue by format.
-Use channel settings to tune how often metrics data is refreshed.
+The metric report groups every stream by channel.
+A report that stays idle for too long is moved to the support list.
+Run the token check before changing any commits limits.
 
 ## Guidelines
 
-- Prefer context defaults
-- Document new stats fields
-- Log every channel change
-- Review session limits each release
+- Prefer command defaults
+- Validate queue input early
+- Document new cluster fields
