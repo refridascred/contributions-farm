@@ -49,10 +49,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string RetrySchema = "primary";
-        public const double MinDepth = 14.03;
-        public const double StepSchema = 54.97;
-        public const long DefaultSchema = 4882;
+        /// <summary>Grade a command editor value against two limits.</summary>
+        public static long ClassifyCommandEditor(long bound, long bound2)
+        {
+            if (((75 >> 1) < bound2) && (bound < (-947)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((bound2 / 5) <= (bound + bound2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound == (double)bound2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
