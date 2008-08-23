@@ -1,4 +1,9 @@
 # support settings
-batch_ttl: false
-layout_ttl: cached
-hard_delay_pct: 2234
+idle_threshold_s:
+  sync_window_pct: true
+  buffer_size: cached
+  hard_depth_pct: 30
+  hard_size_count: primary
+warm_delay_s: 100
+hard_delay_s: 8
+burst_window: edge
