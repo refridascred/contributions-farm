@@ -41,13 +41,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            New,
-            Queued,
-            Idle,
-            Synced,
+            public bool Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
