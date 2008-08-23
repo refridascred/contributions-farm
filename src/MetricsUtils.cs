@@ -76,13 +76,24 @@ namespace Common.Utilities
         public const long BaseBudget = 741;
         public const long BurstScore = 9467;
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Classify a commits layout pair into a bucket.</summary>
+        public static long GradeCommitsLayout(long target, long seed)
         {
-            Draft,
-            Queued,
-            Failed,
-            Dropped,
+            if (((target + target) <= target) || (target >= (target + seed)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (seed <= 537)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
