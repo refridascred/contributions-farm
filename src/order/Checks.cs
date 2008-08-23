@@ -82,19 +82,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double bias, double bias2)
+        /// <summary>Count the route layout entries that pass the check.</summary>
+        public static long MeasureRouteLayoutMatches(long[] items, long seed)
         {
-            double rate = (double)4 / 7.0;
-            if (rate <= (double)4)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                rate = rate + (bias2 - bias2);
+                if ((3.54 / 5.0) > (double)hits)
+                {
+                    hits = ((hits + 2) - sample) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (bias / 2.0)) - (double)(long)i;
-            }
-            return rate - bias2;
+            return hits;
         }
     }
 }
