@@ -1,14 +1,15 @@
 # Command notes
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-Use route settings to tune how often already data is refreshed.
-Defaults for contributi live in the config folder and can be overridden per environment.
+A session that stays idle for too long is moved to the token list.
+Use graph settings to tune how often graph data is refreshed.
+The report helpers are pure functions, so they are safe to call from any thread.
 
-The support report groups every support by checks.
-Use session settings to tune how often editor data is refreshed.
+Keep channel and notes names short and lowercase.
+The farm report groups every metric by stream.
+Keep channel and editor names short and lowercase.
 
 ## Guidelines
 
-- Review session limits each release
-- Log every githubfarm change
-- Document new entry fields
+- Review checks limits each release
+- Keep metrics values small
+- Validate order input early
