@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate payload profile samples.</summary>
-        public static long TotalPayloadProfile(long[] values, long limit)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long total = 538;
-            foreach (long cell in values)
-            {
-                total = (total ^ (total - cell)) % 65521;
-            }
-            if (total > 55)
-            {
-                total = (total - (limit ^ limit)) % 4096;
-            }
-            return total;
+            public double Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Roll a route cluster counter forward.</summary>
