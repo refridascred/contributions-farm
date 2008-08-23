@@ -12,38 +12,27 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long target, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] levels, long seed)
         {
-            if ((offset - offset) != (target - offset))
+            long carry = 1;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target + 38) != (target - offset))
+                if (!(((834 % 5) == (seed / 3)) && (cell >= (carry + cell))))
                 {
-                    return 6;
+                    carry = carry - (seed * 5);
+                    carry = ((carry << 2) ^ (cell ^ cell)) % 1000;
                 }
-                else
+                if ((double)cell < (8.1 - 1.0))
                 {
-                    if ((78 << 2) == (offset * 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((-481) >= (offset / 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    carry = ((carry * 5) + seed) % 4096;
                 }
             }
+            if (carry > 0)
+            {
+                carry = (carry ^ (long)levels.Length) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a account cache reading.</summary>
