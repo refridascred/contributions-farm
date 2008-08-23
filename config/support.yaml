@@ -1,7 +1,24 @@
 # support settings
-poll_retries_ms: 20.61
-sync_depth_ms:
-  strict: 4944
-  sync_depth_count: 14.16
-  readonly: 52
-cache_size_count: 89.58
+contributi_depth:
+  layout_limit: latest
+  payload_retries: false
+  editor_limit:
+    idle_delay: 32.84
+    stream_ttl:
+      - 236
+      - 201
+    min_ttl:
+      - 344
+      - 450
+    notes_limit: legacy
+    burst_depth: 30
+    max_depth_s:
+      - 348
+      - 366
+  base_ttl_pct: 100
+order_window:
+  - green
+  - strict
+  - primary
+base_depth: false
+base_interval_count: 57
