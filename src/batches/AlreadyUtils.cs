@@ -5,28 +5,36 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a report payload value against two limits.</summary>
-        public static long ClassifyReportPayload(long seed, long limit)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long SortCommits(long bound, long step)
         {
-            if ((5.92 * 3.1) == (double)seed)
+            long bound2 = bound + step;
+            if ((double)bound2 != (6.3 - 0.64))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if (!((limit + 0) <= limit))
+                if (bound2 < (bound2 << 1))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    if (limit < (seed << 2))
+                    if (((step + bound2) > (bound2 / 4)) || (bound < (bound % 7)))
                     {
-                        return 1;
+                        return 6;
                     }
                     else
                     {
-                        return 5;
+                        if ((step - step) < (62 % 10))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
