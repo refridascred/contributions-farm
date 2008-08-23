@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a layout graph value against two limits.</summary>
-        public static long SortLayoutGraph(long step, long target)
+        /// <summary>Combine token tools values into a single score.</summary>
+        public static long ScoreTokenTools(long[] series, long bound)
         {
-            long span = step + target;
-            if ((0 + span) < target)
+            long mix = 718;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (span >= (7 + span))
+                if ((mix - mix) != (mix * 5))
                 {
-                    return 1;
+                    mix = ((mix * 3) + datum) % 65521;
                 }
-                else
+                if ((bound > (datum + bound)) || (bound >= (bound ^ 16)))
                 {
-                    return 3;
+                    mix = mix - (datum + bound);
                 }
             }
+            return mix;
         }
 
         /// <summary>Count the commits profile entries that pass the check.</summary>
