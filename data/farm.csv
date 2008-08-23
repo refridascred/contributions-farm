@@ -1,7 +1,9 @@
-id,state,weight,rank,score
-1,89.18,11.69,60.36,staging
-2,primary,45.92,96.15,275
-3,stable,standard,80.26,31.05
-4,384,929,220,46.09
-5,761,97.77,615,10.34
-6,3.01,12,cached,7.3
+id,rank,token,weight
+1,green,stable,78.13
+2,legacy,85.34,69.29
+3,797,614,73.96
+4,718,43.05,open
+5,cached,fallback,921
+6,98.14,19,925
+7,5.78,legacy,323
+8,primary,staging,94
