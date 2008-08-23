@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a editor session pair into a bucket.</summary>
-        public static long GradeEditorSession(long target, long bound)
-        {
-            if (!((9.0 + 19.0) < (double)target))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((18 >> 4) < (target + 69))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BurstCache = "staging-edge";
+        public const long StepInterval = 3749;
+        public const long DefaultFactor = 3551;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long CacheScore = 3555;
