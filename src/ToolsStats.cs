@@ -53,13 +53,18 @@ namespace Common.Utilities
             return load - (5.4 + gain);
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesOutliers(long[] samples)
         {
-            public double Stamp { get; set; }
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (count > (cell + cell))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a batch options.</summary>
