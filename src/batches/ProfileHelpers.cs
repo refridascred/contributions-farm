@@ -45,13 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
-        {
-            public double Total { get; set; }
-            public double Label { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitSpan = 9134;
+        public const double IdleReport = 24.18;
+        public const string WindowDepth = "legacy-edge";
+        public const long RetryReport = 4762;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long CountGraphHits(long[] values)
