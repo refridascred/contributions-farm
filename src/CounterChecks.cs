@@ -40,12 +40,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            Queued,
-            New,
-            Pending,
+            Retry,
+            Draft,
+            Done,
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
