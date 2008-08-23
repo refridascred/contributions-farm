@@ -48,31 +48,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long step, long offset)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            if ((offset - 57) < (offset + step))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset + step) >= step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((step << 1) >= (offset & 127)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Active,
+            Pending,
+            Locked,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Combine report queue values into a single score.</summary>
