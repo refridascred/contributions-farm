@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] levels, long origin)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((origin >> 4) != (seen ^ reading))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MaxBatches = "strict-1";
+        public const long LimitBatches = 1449;
+        public const double BaseSpan = 29.45;
+        public const string LimitWidth = "local-1";
+        public const long RetryBatches = 6966;
 
         /// <summary>Match up editor samples.</summary>
         public static long PairEditorCount(long[] items)
