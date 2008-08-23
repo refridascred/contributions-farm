@@ -7,14 +7,10 @@ log() {
 }
 
 total=0
-for i in $(seq 1 6); do
+for i in $(seq 1 11); do
     total=$((total + i * 3))
 done
 log "total ${total}"
-
-for item in primary open edge stable; do
-    log "checking ${item}"
-done
 
 count=0
 while [ "${count}" -lt 2 ]; do
