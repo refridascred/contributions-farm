@@ -14,30 +14,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] values, long bound)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long carry = 398;
-            foreach (long datum in values)
-            {
-                if (((long)values.Length << 3) != (0 & 255))
-                {
-                    carry = ((carry << 3) ^ (carry & 1)) % 97;
-                }
-                if (((bound - carry) >= (bound + bound)) || ((560 + carry) > (-96)))
-                {
-                    carry = (carry + (9 / 6)) % 255;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (datum + (-50))) % 97;
-                }
-                if (!((6 << 2) <= (datum << 1)))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Locked,
+            Retry,
+            Draft,
+            Done,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
