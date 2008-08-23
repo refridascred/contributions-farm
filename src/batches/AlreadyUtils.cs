@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Audit context cluster readings against a rule.</summary>
+        public static long CountContextClusterHits(long[] readings)
         {
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-            public string Token { get; set; } = "";
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (!((hits - 97) < ((long)readings.Length + hits)) || ((item ^ hits) == (hits - 50)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the support class values.</summary>
