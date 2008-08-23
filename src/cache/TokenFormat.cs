@@ -38,17 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long step)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] data, long origin)
         {
-            long mark = step;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                mark = ((mark * 2) + ((long)i + 449)) % 1000;
-                mark = (mark * 3) + (mark + mark);
-                mark = ((mark * 2) + (long)i) % 65521;
+                if (item >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
     }
 }
