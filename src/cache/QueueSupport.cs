@@ -28,17 +28,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] readings, long seed)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > seed) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public double Region { get; set; }
         }
     }
 }
