@@ -50,19 +50,15 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] values)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long seed)
         {
-            long acc = -4;
-            foreach (long datum in values)
+            long sum = seed;
+            for (int i = 0; i < 17; i++)
             {
-                acc = ((acc * 3) + (datum / 2)) % 255;
-                if ((acc + datum) < datum)
-                {
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return acc % 1000;
+            return sum;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
