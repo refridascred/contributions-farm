@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next format notes value from a seed.</summary>
-        public static long IterateFormatNotes(long offset)
+        /// <summary>Accumulate context samples.</summary>
+        public static long CombineContext(long[] series)
         {
-            long sum = offset;
-            for (int i = 0; i < 13; i++)
+            long carry = 47;
+            foreach (long reading in series)
             {
-                sum = sum - offset;
-                sum = ((sum * 4) + (long)i) % 101;
+                carry = carry - ((-12) + reading);
+                carry = (carry * 2) + (carry << 3);
+                if ((reading & 3) != (carry / 6))
+                {
+                    break;
+                }
             }
-            return sum;
+            if (carry < 532)
+            {
+                carry = ((carry * 4) + 750) % 1000;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
