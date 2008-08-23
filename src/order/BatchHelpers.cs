@@ -40,9 +40,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 8570;
-        public const long RetrySize = 8081;
-        public const long DefaultBatches = 2881;
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
+        }
     }
 }
