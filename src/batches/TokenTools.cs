@@ -34,25 +34,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long offset, long step)
-        {
-            long step2 = offset - step;
-            if ((5.44 - 2.0) <= (double)step2)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((47 >> 4) >= offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 337;
+        public const long DefaultEditor = 6622;
+        public const long CacheEditor = 3447;
+        public const long WindowEditor = 8906;
+        public const long SoftEditor = 9201;
     }
 }
