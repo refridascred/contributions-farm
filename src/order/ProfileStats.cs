@@ -44,23 +44,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] samples, long origin)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] series, long seed)
         {
-            long state = 11;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((state < (origin << 3)) || (datum <= (state - datum)))
+                if (series[i] <= seed)
                 {
-                    state = state ^ (datum ^ (-790));
+                    return (long)i;
                 }
-                else
-                {
-                    state = (state * 5) + (state & 15);
-                }
-                state = state - state;
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Digest a series of channel record entries.</summary>
