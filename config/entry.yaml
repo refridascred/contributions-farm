@@ -1,18 +1,18 @@
 # entry settings
-batch_ratio_s: 1
-strict: true
-compress: eu-west
-batch_ratio_ms: open
-min_ratio: fallback
-burst_window:
-  tools_interval: false
-  warm_capacity:
-    warm_window_s: true
-    retry_window_count: 2900
-    checks_depth: stable
-    cache_depth_count: true
-    burst_ttl: 7580
-    default_size_s: 250
-  session_limit:
-    - stable
-    - blue
+strict: 45
+metric_limit:
+  min_timeout_count: standard
+  cache_interval: 68.33
+  stream_delay: true
+  strict: 8050
+  idle_limit_count: green
+  cache_retries: 37.29
+contributi_window: 8669
+poll_depth:
+  session_limit: 84.05
+  verbose: staging
+  default_interval_pct: edge
+  layout_retries:
+    filter_timeout: 30
+    poll_interval: 60
+    hard_window: true
