@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextOutliers(long[] data, long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((limit + (-17)) > hits)
+                if ((count & 15) < (long)readings.Length)
                 {
-                    hits = (hits + 3) + value;
+                    count = ((count + 2) + item) + floor;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Combine githubfarm profile values into a single score.</summary>
