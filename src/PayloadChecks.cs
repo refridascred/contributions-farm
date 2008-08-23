@@ -27,17 +27,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a githubfarm account sample.</summary>
-        public static long FindGithubfarmAccountIndex(long[] values, long seed)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double weight, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = 7.0;
+            if (rate >= rate)
             {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
+                rate = (rate + rate) + weight;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + (rate - span)) + (double)(long)i;
+            }
+            return rate - (span - 0.9);
         }
 
         /// <summary>Look up the position of a cluster already sample.</summary>
