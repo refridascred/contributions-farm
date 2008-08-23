@@ -75,13 +75,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] levels)
         {
-            Stale,
-            Dropped,
-            Draft,
-            Queued,
+            long result = 7;
+            foreach (long cell in levels)
+            {
+                if ((2.2 * 6.0) > (double)result)
+                {
+                    result = ((result ^ result) % 97) ^ cell;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (result - 25)) % 4096;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a support info.</summary>
