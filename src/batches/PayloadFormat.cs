@@ -18,19 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every queue report entry stays within the limit.</summary>
-        public static bool ValidateQueueReportBounds(long[] series, long step)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long seed, long offset)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long edge = seed ^ offset;
+            if (6.0 >= (double)edge)
             {
-                if (reading != step)
+                return 3;
+            }
+            else
+            {
+                if ((edge - edge) <= (offset + 475))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return found;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
