@@ -41,36 +41,22 @@ namespace Common.Utilities
         public const double HardCounter = 56.31;
         public const string HardFactor = "local-v2";
 
-        /// <summary>Classify a record stream pair into a bucket.</summary>
-        public static long SortRecordStream(long step, long seed)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long offset, long step)
         {
-            if (step <= (step >> 3))
+            if (((offset + step) <= (offset * 3)) && (step > (step / 9)))
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if ((step + 373) > (seed % 10))
+                if (94 > offset)
                 {
-                    return 3;
+                    return 8;
                 }
                 else
                 {
-                    if ((8 >> 4) <= (seed + seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!(seed > (step * 3)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
