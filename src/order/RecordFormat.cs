@@ -24,14 +24,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-            public double Ratio { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BaseSize = "legacy-edge";
+        public const long MinChannel = 3515;
+        public const double StepChannel = 25.9;
+        public const double BatchChannel = 67.82;
 
         /// <summary>Combine account values into a single score.</summary>
         public static long DigestAccount(long[] samples, long offset)
