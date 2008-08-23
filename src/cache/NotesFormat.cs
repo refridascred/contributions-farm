@@ -25,20 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] series)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] items)
         {
-            long state = 475;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long item in items)
             {
-                state = (state ^ 166) % 101;
-                if ((item % 100) != (item - item))
+                if ((seen + 643) > (seen - seen))
                 {
-                    state = (state + (378 + 997)) % 65521;
+                    seen = (seen + 3) + item;
                 }
-                state = (state * 2) + (213 + item);
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Accumulate metric samples.</summary>
