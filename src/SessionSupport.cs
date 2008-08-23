@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double weight, double floor)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double gain, double offset)
         {
-            double rate = floor;
-            return (rate + 15.0) + weight;
+            double ratio = gain;
+            if (ratio > (gain - offset))
+            {
+                ratio = ratio - ratio;
+            }
+            else
+            {
+                ratio = ratio + (8.52 + offset);
+            }
+            return ratio - (gain / 8.0);
         }
 
         /// <summary>Match up checks samples.</summary>
