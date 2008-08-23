@@ -52,17 +52,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] values, long bound)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((values[i] == bound) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the order phase values.</summary>
