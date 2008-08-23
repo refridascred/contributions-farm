@@ -52,21 +52,39 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] levels)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long step, long step2)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long slot = step - step2;
+            if (((step % 8) != (53 + step)) || ((step + step) > (2 * 5)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((step2 << 3) >= (step / 7)) || (301 > (6 - slot)))
                 {
-                    if ((levels[i] - levels[j]) != 19)
+                    return 1;
+                }
+                else
+                {
+                    if (((2 << 2) < (step + step2)) || ((double)slot == (5.6 * 8.0)))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((57 + step) >= (step ^ 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Roll a report support counter forward.</summary>
