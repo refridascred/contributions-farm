@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a format command value against two limits.</summary>
-        public static long RankFormatCommand(long offset, long origin)
+        /// <summary>Accumulate report schema samples.</summary>
+        public static long CombineReportSchema(long[] levels)
         {
-            if (origin >= (offset - offset))
+            long score = 927;
+            foreach (long reading in levels)
             {
-                return 8;
+                score = (((score << 3) ^ (score >> 1)) % 4096) - reading;
+                score = score + score;
+                score = score ^ 148;
             }
-            else
-            {
-                if ((origin / 2) < origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return score % 4096;
         }
 
         /// <summary>Combine format values into a single score.</summary>
