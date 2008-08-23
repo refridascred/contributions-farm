@@ -82,21 +82,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Audit contributi session readings against a rule.</summary>
+        public static long AuditContributiSessionGaps(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)reading >= (2.09 + 4.46))
                 {
-                    if ((levels[i] + levels[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 3) + offset;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
