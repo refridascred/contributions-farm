@@ -20,12 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
+            Failed,
             Dropped,
-            Draft,
-            Retry,
+            Locked,
+            Stale,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
