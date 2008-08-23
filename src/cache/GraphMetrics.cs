@@ -49,12 +49,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public long Limit { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 3357;
+        public const double StepWidth = 91.8;
+        public const long DefaultDepth = 4173;
+        public const string HardInterval = "strict-v2";
+        public const long MaxRoute = 751;
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
