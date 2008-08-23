@@ -46,38 +46,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long origin, long seed)
-        {
-            if (!((double)origin != (5.89 * 3.2)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((74 + origin) < (5 * 5)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin / 6) < (origin % 97))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (origin >= (origin >> 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitSchema = "local-1";
+        public const string BatchSpan = "staging-1";
+        public const long SoftCount = 7195;
     }
 }
