@@ -65,11 +65,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] samples)
         {
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((matches / 5) >= entry)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
