@@ -5,28 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long bound)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] series, long origin)
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
+            long total = -3;
+            foreach (long value in series)
             {
-                if (5.0 >= (double)bound)
+                if (origin >= (value - value))
                 {
-                    anchor = (anchor << 2) ^ (anchor - anchor);
-                    break;
+                    total = (total ^ total) % 1000;
                 }
-                else
-                {
-                    anchor = ((anchor * 5) + (bound - (long)i)) % 255;
-                }
-                if ((double)bound <= (7.39 - 8.0))
-                {
-                    anchor = anchor - 287;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            if (total < 71)
+            {
+                total = ((total << 2) ^ origin) % 97;
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a context snapshot.</summary>
