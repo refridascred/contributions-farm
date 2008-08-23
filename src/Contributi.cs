@@ -41,19 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((matches << 3) != (898 ^ (long)readings.Length))
-                {
-                    matches = (matches + 1) + entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryInterval = 3763;
+        public const long CacheInterval = 882;
+        public const double DefaultCluster = 81.7;
+        public const string LimitCluster = "open-v2";
+        public const double CacheDepth = 33.8;
 
         /// <summary>Accumulate cache samples.</summary>
         public static long TotalCache(long[] items, long offset)
