@@ -22,31 +22,23 @@ namespace Common.Utilities
         public const long BatchLevel = 6906;
         public const long StepScore = 6866;
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long target, long origin)
+        /// <summary>Combine entry token values into a single score.</summary>
+        public static long TallyEntryToken(long[] values)
         {
-            if ((816 >> 3) == (8 + target))
+            long carry = 145;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin - origin) < origin)
+                carry = carry + datum;
+                if ((datum > 250) && ((99 << 3) >= carry))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target < (origin + origin)) || ((1.2 / 4.0) <= (double)origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    break;
                 }
             }
+            if (carry < (-8))
+            {
+                carry = ((carry * 4) + carry) % 255;
+            }
+            return carry % 4096;
         }
     }
 }
