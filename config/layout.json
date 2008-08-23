@@ -1,6 +1,8 @@
 {
-  "cache_ttl": 14,
-  "flush_delay_pct": 73,
-  "layout_ttl": 89.1,
-  "soft_size": 100
+  "graph_depth": ["eu-west", "blue", "fallback", "cached"],
+  "strict": 76,
+  "stream_capacity": 7526,
+  "record_ttl": 56,
+  "token_size": 1024,
+  "cache_capacity_count": 56.53
 }
