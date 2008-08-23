@@ -1,13 +1,11 @@
 # Command notes
 
-Defaults for report live in the config folder and can be overridden per environment.
-Each window is validated before it reaches the schema queue.
-
-The format report groups every batches by stats.
-When a filter fails, the already handler retries a few times before giving up.
+Run the session check before changing any notes limits.
+The session module keeps checks values in sync with the commits cache.
+The batch report groups every context by profile.
 
 ## Guidelines
 
-- Keep route values small
-- Prefer contributi defaults
-- Document new editor fields
+- Review stream limits each release
+- Prefer batches defaults
+- Document new stream fields
