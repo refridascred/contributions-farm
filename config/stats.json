@@ -1,6 +1,7 @@
 {
-  "audit": 781,
-  "channel_window": "fallback",
-  "max_capacity": true,
-  "flush_timeout_ms": "primary"
+  "checks_threshold": "blue",
+  "verbose": 63.62,
+  "hard_capacity_s": 45,
+  "stream_interval": "edge",
+  "batch_ratio": false
 }
