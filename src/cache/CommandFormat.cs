@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] levels, long offset)
+        /// <summary>Iterate the tools metrics series from a seed.</summary>
+        public static long SeriesToolsMetrics(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the tools mode values.</summary>
