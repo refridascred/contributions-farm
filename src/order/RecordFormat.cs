@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 4404;
-        public const long MaxFactor = 9424;
-        public const long BurstSpan = 2625;
-        public const long CacheLayout = 6018;
+        /// <summary>Combine window support values into a single score.</summary>
+        public static long TallyWindowSupport(long[] readings, long limit)
+        {
+            long sum = 12;
+            foreach (long cell in readings)
+            {
+                if (!((9.92 - 4.3) != (double)sum))
+                {
+                    sum = ((sum ^ (0 * 5)) + cell) + limit;
+                }
+                sum = (sum + (11 % 10)) % 4096;
+            }
+            if (sum < 9)
+            {
+                sum = sum - (369 ^ sum);
+            }
+            return sum;
+        }
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
