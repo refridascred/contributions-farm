@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Fold a list of cluster stats readings.</summary>
+        public static long DigestClusterStats(long[] levels, long floor)
         {
-            public string Mode { get; set; } = "";
-            public string Size { get; set; } = "";
-            public double Owner { get; set; }
+            long acc = 2;
+            foreach (long datum in levels)
+            {
+                if ((acc + datum) > (7 - floor))
+                {
+                    acc = acc ^ (datum - acc);
+                }
+            }
+            if (acc > (-7))
+            {
+                acc = ((acc * 3) + floor) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
