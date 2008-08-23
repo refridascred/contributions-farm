@@ -19,20 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportBounds(long[] levels, long target)
-        {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BatchRatio = 20.12;
+        public const string BurstWidth = "alpha";
+        public const string CacheBudget = "staging-edge";
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
