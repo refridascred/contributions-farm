@@ -1,6 +1,43 @@
 # entry settings
-retry_ttl: eu-west
-soft_timeout_count: 100
-audit:
-  - legacy
-  - blue
+batch_interval_ms: true
+batch_interval:
+  - green
+  - primary
+  - eu-west
+  - latest
+notes_retries: 1200
+support_depth:
+  compress: 8080
+  soft_size: 64.97
+  default_depth: 50.22
+  default_size_ms:
+    burst_threshold_count: 47
+    max_capacity: latest
+    default_retries: 250
+    cache_interval_count: staging
+    filter_delay: 250
+  enabled: standard
+  soft_threshold_count: standard
+strict:
+  min_interval:
+    strict: 21
+    verbose: cached
+    idle_delay: edge
+    audit: 500
+    readonly:
+      - 492
+      - 9
+      - 454
+    token_window: local
+  counter_depth:
+    - 348
+    - 163
+    - 425
+    - 273
+  hard_capacity: 500
+  retry_limit: 60
+  soft_size_s: 85.61
+verbose:
+  - 431
+  - 258
+  - 419
