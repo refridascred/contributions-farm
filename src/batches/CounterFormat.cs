@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MaxBatches = "strict-1";
-        public const long LimitBatches = 1449;
-        public const double BaseSpan = 29.45;
-        public const string LimitWidth = "local-1";
-        public const long RetryBatches = 6966;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftSize = 25.97;
+        public const long LimitDepth = 7139;
+        public const long SoftChecks = 4402;
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
