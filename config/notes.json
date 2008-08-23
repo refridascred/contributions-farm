@@ -1,6 +1,19 @@
 {
-  "idle_timeout": "blue",
-  "audit": 1024,
-  "default_threshold": false,
-  "token_window": 500
+  "filter_delay": "eu-west",
+  "retry_window": {
+    "githubfarm_threshold": [195, 352, 94, 418],
+    "idle_threshold": ["standard", "latest", "open"],
+    "batch_capacity_ms": 60
+  },
+  "soft_capacity": 30,
+  "retry_depth_ms": 92.63,
+  "idle_delay": 86.34,
+  "batch_timeout_ms": {
+    "batch_size_ms": "standard",
+    "compress": "local",
+    "cache_delay": "strict",
+    "warm_delay_pct": 60.99,
+    "audit": 59,
+    "farm_retries": 69
+  }
 }
