@@ -56,23 +56,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate buffer support samples.</summary>
-        public static long FoldBufferSupport(long[] data, long offset)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long anchor = -802;
-            foreach (long sample in data)
-            {
-                anchor = ((anchor << 3) ^ ((long)data.Length & 15)) % 1000;
-                if (1.3 < (double)sample)
-                {
-                    anchor = anchor - (anchor * 4);
-                }
-                if ((double)offset == (7.13 - 2.4))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public long Token { get; set; }
+            public long Label { get; set; }
         }
     }
 }
