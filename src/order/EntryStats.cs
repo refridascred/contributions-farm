@@ -35,16 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long origin)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] levels, long step)
         {
-            long mix = origin;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix * 5) + origin) % 255;
-                mix = ((mix * 3) + (long)i) % 65521;
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a order info.</summary>
