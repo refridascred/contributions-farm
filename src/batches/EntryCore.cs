@@ -5,28 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine schema token values into a single score.</summary>
-        public static long TallySchemaToken(long[] values, long target)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] samples)
         {
-            long total = -39;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total - (total + target)) % 65521;
-                total = ((total * 5) + (total + total)) % 4096;
-                if (((171 & 31) <= (total + target)) && ((target / 6) > (target * 5)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (total * 2) + (target ^ 19);
-                }
-                else
-                {
-                    total = ((total * 3) + value) % 101;
+                    if ((samples[i] ^ samples[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total < 4)
-            {
-                total = (total << 3) ^ (total - total);
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the entry kind values.</summary>
