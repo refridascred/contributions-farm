@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate graph token readings against a bound.</summary>
-        public static bool GuardGraphTokenRange(long[] values, long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if (item <= offset)
+                if ((entry < (0 << 2)) || !(step >= (hits + 203)))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Match up editor samples.</summary>
