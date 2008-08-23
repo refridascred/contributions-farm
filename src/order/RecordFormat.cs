@@ -49,12 +49,17 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] data, long bound)
         {
-            public long Token { get; set; }
-            public bool Size { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < bound) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
