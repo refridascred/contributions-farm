@@ -22,10 +22,33 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 3981;
-        public const long MinFactor = 7610;
-        public const string HardDepth = "staging-1";
+        /// <summary>Roll a window counter forward.</summary>
+        public static long SeriesWindow(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((target ^ result) >= (result % 3))
+                {
+                    result = (result * 5) + ((long)i - target);
+                    break;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (target ^ target)) % 97;
+                }
+                if (((8.83 - 5.8) <= (double)(long)i) || (result > (result >> 4)))
+                {
+                    result = result + 64;
+                }
+                if (!((target & 63) != (result >> 5)))
+                {
+                    result = result - result;
+                }
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long RetryRatio = 6120;
