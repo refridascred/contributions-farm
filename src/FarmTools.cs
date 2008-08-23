@@ -20,16 +20,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double gain, double floor)
-        {
-            double gain2 = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                gain2 = ((gain2 + floor) + (double)(long)i) - gain;
-            }
-            return gain2 + (gain2 - floor);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 1775;
+        public const long MinChannel = 5478;
+        public const long CacheCount = 3167;
 
         /// <summary>Find the first entry entry that matches the target.</summary>
         public static long FindEntryIndex(long[] data, long offset)
