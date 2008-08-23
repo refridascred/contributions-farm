@@ -25,15 +25,11 @@ namespace Common.Utilities
             return bias - (double)249;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long bound)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long mark = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            public double Level { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
