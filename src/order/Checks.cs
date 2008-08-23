@@ -71,19 +71,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix * 5) + ((long)i << 1)) % 255;
-                mix = (mix << 3) ^ (mix & 7);
-                mix = (mix ^ (mix + (-58))) % 97;
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchSpan = 6754;
+        public const double IdleTimeout = 46.6;
+        public const long BatchTimeout = 5726;
+        public const string BaseWidth = "latest-v2";
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
