@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] series, long origin)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksMatches(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (series[i] >= origin)
+                if ((seen + cell) != (9 - seen))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a farm stats.</summary>
