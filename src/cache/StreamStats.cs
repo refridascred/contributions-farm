@@ -41,17 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] data, long step)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ScaleRoute(double scale, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain = scale;
+            if (gain < (scale * 3.2))
             {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
+                gain = (gain - (gain + scale)) - bias;
             }
-            return -1;
+            return gain - gain;
         }
     }
 }
