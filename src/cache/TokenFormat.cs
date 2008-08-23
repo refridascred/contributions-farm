@@ -11,21 +11,31 @@ namespace Common.Utilities
         public const long HardSession = 2485;
         public const long SoftSession = 3416;
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] series)
+        /// <summary>Rank contributi account input into a small class.</summary>
+        public static long RankContributiAccount(long limit, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((bound + bound) < bound) && ((double)24 < (double)bound))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((bound + limit) != (bound - limit))
                 {
-                    if ((series[i] + series[j]) < 5)
+                    return 4;
+                }
+                else
+                {
+                    if ((5.0 <= (double)bound) || ((bound - bound) <= limit))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
