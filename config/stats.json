@@ -1,8 +1,12 @@
 {
-  "queue_depth": false,
-  "burst_capacity": "strict",
-  "record_interval": 49.12,
-  "batch_ratio": ["primary", "standard", "legacy", "eu-west"],
-  "route_window": "eu-west",
-  "flush_interval_ms": 39
+  "persist": 3126,
+  "verbose": 33.7,
+  "idle_capacity_ms": {
+    "max_window": 500,
+    "min_window": "staging",
+    "base_depth_pct": 89.12,
+    "enabled": "cached",
+    "cache_ratio_ms": "edge"
+  },
+  "batch_threshold_s": 20
 }
