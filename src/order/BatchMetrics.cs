@@ -50,19 +50,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate format counter readings against a bound.</summary>
-        public static bool GuardFormatCounterRange(long[] data, long offset)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Offset { get; set; }
+            public long Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
