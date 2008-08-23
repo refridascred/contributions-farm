@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Check that every payload format entry stays within the limit.</summary>
+        public static bool VerifyPayloadFormatBounds(long[] samples, long target)
         {
-            public bool Region { get; set; }
-            public double Label { get; set; }
-            public long Offset { get; set; }
-            public double Owner { get; set; }
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the support class values.</summary>
