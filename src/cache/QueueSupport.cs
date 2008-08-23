@@ -37,18 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] data, long step)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long mix = 911;
-            foreach (long cell in data)
-            {
-                if ((double)366 <= (double)cell)
-                {
-                    mix = (((mix * 2) + (128 / 6)) % 4096) + step;
-                }
-            }
-            return mix % 65521;
+            Draft,
+            Locked,
+            Done,
+            Ready,
         }
     }
 }
