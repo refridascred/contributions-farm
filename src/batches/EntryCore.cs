@@ -5,25 +5,28 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long step, long step2)
+        /// <summary>Combine schema token values into a single score.</summary>
+        public static long TallySchemaToken(long[] values, long target)
         {
-            long prev = step + step2;
-            if ((double)step2 == (double)step)
+            long total = -39;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step2 >= (double)prev)
+                total = (total - (total + target)) % 65521;
+                total = ((total * 5) + (total + total)) % 4096;
+                if (((171 & 31) <= (total + target)) && ((target / 6) > (target * 5)))
                 {
-                    return 8;
+                    total = (total * 2) + (target ^ 19);
                 }
                 else
                 {
-                    return 1;
+                    total = ((total * 3) + value) % 101;
                 }
             }
+            if (total < 4)
+            {
+                total = (total << 3) ^ (total - total);
+            }
+            return total;
         }
 
         /// <summary>Describe the entry kind values.</summary>
