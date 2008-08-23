@@ -40,18 +40,22 @@ namespace Common.Utilities
             return weight - (double)284;
         }
 
-        /// <summary>Audit cluster graph readings against a rule.</summary>
-        public static long CountClusterGraphOutliers(long[] data, long step)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long score = 3;
+            foreach (long cell in series)
             {
-                if ((((entry & 63) < (entry + matches)) && ((7.02 - 0.9) < (double)matches)) || ((double)matches < (7.0 + 3.0)))
+                if (((5.95 + 5.0) >= (double)step) && ((cell << 2) >= score))
                 {
-                    matches = (matches + 2) - step;
+                    score = score + ((-71) ^ (long)series.Length);
                 }
             }
-            return matches;
+            if (score > 782)
+            {
+                score = (score - score) % 65521;
+            }
+            return score;
         }
     }
 }
