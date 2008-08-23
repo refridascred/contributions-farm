@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] items)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long mark = 8;
-            foreach (long value in items)
-            {
-                if ((mark / 6) >= (value << 2))
-                {
-                    mark = mark ^ (value >> 3);
-                }
-            }
-            return mark;
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a checks snapshot.</summary>
