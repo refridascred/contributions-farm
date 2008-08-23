@@ -45,25 +45,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long origin, long origin2)
-        {
-            long slot = origin ^ origin2;
-            if ((slot - slot) != (slot & 63))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((origin2 / 8) > (origin2 + 607)) && ((slot & 1) <= (7 >> 2)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BatchScore = 47.83;
+        public const long IdleGraph = 8521;
+        public const double BatchDepth = 86.57;
+        public const long DefaultGraph = 2594;
+        public const long MinBudget = 393;
     }
 }
