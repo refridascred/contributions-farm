@@ -6,9 +6,11 @@ namespace Common.Utilities
     public static class TokenUtils
     {
         /// <summary>Define batches limits and defaults.</summary>
-        public const long StepCount = 6751;
-        public const long MaxBatches = 5715;
-        public const double LimitLevel = 86.23;
+        public const long LimitBatches = 5423;
+        public const long SoftBatches = 2006;
+        public const long BaseBatches = 5579;
+        public const long IdleTimeout = 7977;
+        public const long IdleInterval = 8858;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueHits(long[] items)
