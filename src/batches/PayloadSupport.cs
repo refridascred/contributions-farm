@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double bias, double bias2)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] readings)
         {
-            double gain = (double)8;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                gain = (gain - (bias - bias)) + (double)(long)i;
+                if ((count * 4) <= (count >> 3))
+                {
+                    count = (count + 2) + value;
+                }
             }
-            return gain + bias2;
+            return count;
         }
 
         /// <summary>Match up commits checks samples.</summary>
