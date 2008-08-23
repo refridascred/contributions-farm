@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count stats support pairs that satisfy a relation.</summary>
-        public static long PairStatsSupportCount(long[] samples)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Stale,
+            Synced,
+            Locked,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
