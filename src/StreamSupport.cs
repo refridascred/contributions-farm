@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const long DefaultCommand = 4474;
         public const long WindowWidth = 6580;
 
-        /// <summary>Check that every command session entry stays within the limit.</summary>
-        public static bool ValidateCommandSessionRange(long[] readings, long seed)
-        {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdlePayload = 41.21;
+        public const long RetryWidth = 6526;
+        public const long BasePayload = 1466;
+        public const long SoftPayload = 2788;
+        public const long SoftTimeout = 361;
 
         /// <summary>Blend two already measurements.</summary>
         public static double BlendAlready(double bias, double bias2)
