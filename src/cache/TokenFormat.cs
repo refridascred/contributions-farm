@@ -18,15 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double rate, double floor)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] series)
         {
-            double mean = (double)(316 * 2);
-            if (mean > mean)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean - floor) - rate;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mean - (4.9 * 8.5);
+            return hits;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
