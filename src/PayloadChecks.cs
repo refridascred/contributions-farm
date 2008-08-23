@@ -38,24 +38,18 @@ namespace Common.Utilities
         public const double HardCounter = 56.31;
         public const string HardFactor = "local-v2";
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long offset, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] levels, long offset)
         {
-            if (((offset + step) <= (offset * 3)) && (step > (step / 9)))
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (94 > offset)
+                if ((double)reading <= 7.7)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    tally = (tally + 3) - offset;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a token record.</summary>
