@@ -48,18 +48,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesOutliers(long[] samples)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double ratio, double span)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            double drift = (double)(20 + 72);
+            if (drift > (double)23)
             {
-                if (count > (cell + cell))
-                {
-                    count = count + 2;
-                }
+                drift = (drift + (ratio / 3.0)) - span;
             }
-            return count;
+            else
+            {
+                drift = drift + (ratio * 20.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (drift * 20.0)) + (double)(long)i;
+            }
+            return drift - ratio;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
