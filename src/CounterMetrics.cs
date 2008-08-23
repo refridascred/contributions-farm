@@ -16,18 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowGaps(long[] values)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if (!(((14.0 / 8.0) > (double)entry) && ((double)seen < 18.0)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Idle,
+            Paused,
+            Failed,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
