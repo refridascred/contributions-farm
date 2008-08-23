@@ -26,12 +26,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            Draft,
-            Done,
-            Stale,
+            Synced,
+            Active,
+            Failed,
         }
 
         /// <summary>Hold a notes info.</summary>
