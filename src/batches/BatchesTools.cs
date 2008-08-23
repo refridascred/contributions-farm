@@ -28,22 +28,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many buffer queue samples are out of range.</summary>
-        public static long AuditBufferQueueGaps(long[] series, long seed)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((cell * 3) != (matches & 31))
-                {
-                    matches = (matches + 3) - seed;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
