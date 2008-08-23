@@ -23,19 +23,12 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((4.8 * 5.0) == (double)sample)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MinDepth = "open";
+        public const long LimitCounter = 2788;
+        public const string WindowCounter = "legacy";
+        public const long SoftScore = 124;
+        public const long StepRatio = 7107;
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
