@@ -92,31 +92,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long limit, long floor)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] items, long seed)
         {
-            if ((double)limit == (double)floor)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((6 + limit) > (limit << 1))
+                if (items[i] < seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((limit >> 3) > (limit ^ (-821))))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
