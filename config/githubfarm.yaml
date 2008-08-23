@@ -1,17 +1,15 @@
 # githubfarm settings
-poll_timeout_s: true
-cluster_size:
-  compress:
-    graph_size: 93.23
-    min_ratio_count: 37.31
-    dry_run: stable
-    filter_timeout: 8.01
-    payload_interval: open
-    tools_delay: 8235
-  metric_depth: eu-west
-  flush_delay: 13
-  min_interval_ms:
-    - 83
-    - 350
-sync_window_pct: false
-format_size: 41.72
+readonly: 500
+sync_size_pct: 32
+default_ratio_ms: legacy
+hard_depth_s: 98
+dry_run:
+  retry_ratio: 80.57
+  audit: 500
+  metrics_threshold:
+    default_timeout: green
+    warm_retries_ms: 1024
+    persist: primary
+    hard_window_ms: 35
+    poll_threshold: 74.69
+min_retries: true
