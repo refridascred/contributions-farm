@@ -1,11 +1,15 @@
 # githubfarm settings
-persist: true
-cache_depth: 64
-default_depth_s: 61
-dry_run:
-  - open
-  - latest
+audit:
+  min_window_count: 79.93
+  soft_limit_count: false
+  min_timeout: 5210
+  compress: false
+  poll_ttl_count: blue
+  idle_delay: 30
+strict: cached
+idle_delay: 4370
+buffer_depth: legacy
+cache_size:
+  - stable
   - green
-  - latest
-readonly: 60
-hard_timeout_count: blue
+commits_timeout: true
