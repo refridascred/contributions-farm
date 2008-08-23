@@ -53,19 +53,34 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double rate, double bias)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] items, long bound)
         {
-            double bias2 = bias * 1.9;
-            if (bias2 >= bias2)
+            long anchor = 24;
+            foreach (long cell in items)
             {
-                bias2 = (bias2 + (double)633) - rate;
+                if (!(cell >= anchor))
+                {
+                    anchor = (anchor * 2) + (bound + bound);
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ cell) % 97;
+                }
+                if ((long)items.Length >= (cell - bound))
+                {
+                    anchor = anchor ^ (cell ^ bound);
+                }
+                else
+                {
+                    anchor = anchor + (anchor >> 4);
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (anchor < 322)
             {
-                bias2 = bias2 - (double)(long)i;
+                anchor = (anchor ^ (7 * 5)) % 1000;
             }
-            return bias2 - (bias + 7.9);
+            return anchor;
         }
     }
 }
