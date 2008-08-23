@@ -26,18 +26,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] data)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long sum = -98;
-            foreach (long sample in data)
-            {
-                if ((double)sum < (14.0 * 3.48))
-                {
-                    sum = (((sum << 3) ^ (sum + sum)) % 101) ^ sample;
-                }
-            }
-            return sum;
+            Draft,
+            Retry,
+            Active,
+            Synced,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
