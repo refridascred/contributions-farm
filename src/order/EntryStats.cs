@@ -104,9 +104,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepSpan = 9.49;
-        public const string BurstPayload = "strict-v2";
-        public const long BurstBudget = 3615;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BaseScore = "primary-v2";
+        public const long SoftLevel = 7791;
+        public const long MaxRecord = 1566;
     }
 }
