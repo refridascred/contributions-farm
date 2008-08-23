@@ -1,15 +1,5 @@
 {
-  "sync_depth_count": "strict",
-  "readonly": [66, 466],
-  "persist": ["eu-west", "open"],
-  "channel_window": {
-    "compress": false,
-    "default_size_ms": false,
-    "flush_threshold": 55,
-    "hard_interval_ms": 39,
-    "hard_delay": "primary",
-    "max_threshold": 60
-  },
-  "soft_timeout": "open",
-  "burst_window": 2341
+  "burst_size_s": 64.02,
+  "channel_depth": ["fallback", "fallback"],
+  "githubfarm_window": [252, 343, 310, 302]
 }
