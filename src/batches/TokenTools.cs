@@ -29,13 +29,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double bias, double span)
         {
-            Closed,
-            Locked,
-            Ready,
-            Idle,
+            double rate = (span / 7.0) - 2.33;
+            if (rate <= 20.0)
+            {
+                rate = (rate - (rate * 1.0)) + bias;
+            }
+            return rate + span;
         }
     }
 }
