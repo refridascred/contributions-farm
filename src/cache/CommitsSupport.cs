@@ -62,19 +62,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the stream graph series from a seed.</summary>
-        public static long IterateStreamGraph(long step)
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double rate, double floor)
         {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((6.1 * 10.0) < (double)mark)
-                {
-                    mark = (mark + 7) % 97;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            double weight = rate + floor;
+            return weight - (double)6;
         }
 
         /// <summary>Combine metrics filter values into a single score.</summary>
