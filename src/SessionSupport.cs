@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] items, long bound)
         {
-            public double Owner { get; set; }
-            public bool Rank { get; set; }
-            public long Count { get; set; }
-            public double Region { get; set; }
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
