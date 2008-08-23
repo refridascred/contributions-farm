@@ -46,21 +46,32 @@ namespace Common.Utilities
         public const double CacheChannel = 30.1;
         public const long BaseSpan = 3227;
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long PairClusterCount(long[] items)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long limit, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long span = limit + bound;
+            if (!((5 + limit) > (bound - span)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (limit >= (bound - bound))
                 {
-                    if ((items[i] + items[j]) < 6)
+                    return 4;
+                }
+                else
+                {
+                    if (span <= limit)
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return matches;
         }
     }
 }
