@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Fold a list of cluster route readings.</summary>
+        public static long DigestClusterRoute(long[] samples, long target)
         {
-            New,
-            Closed,
-            Dropped,
-            Synced,
-            Queued,
+            long sum = 7;
+            foreach (long cell in samples)
+            {
+                sum = (((sum + (sum >> 2)) % 65521) + cell) - target;
+            }
+            if (sum < 0)
+            {
+                sum = sum ^ (29 & 63);
+            }
+            return sum;
         }
 
         /// <summary>Look up the position of a record commits sample.</summary>
