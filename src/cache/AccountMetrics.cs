@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] items, long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueGaps(long[] values, long bound)
         {
-            long total = 1;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((step - step) < (step ^ total))
+                if ((double)bound != (1.89 - 20.0))
                 {
-                    total = (total ^ ((-6) + cell)) % 255;
-                }
-                else
-                {
-                    total = (total * 4) + cell;
+                    count = (count + 2) ^ sample;
                 }
             }
-            if (total > 8)
-            {
-                total = ((total * 5) + (15 >> 1)) % 255;
-            }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Check that every notes profile entry stays within the limit.</summary>
