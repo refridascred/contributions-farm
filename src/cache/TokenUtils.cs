@@ -37,14 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long FoldTools(long[] readings)
         {
-            Idle,
-            Stale,
-            Closed,
-            Draft,
-            Dropped,
+            long score = -504;
+            foreach (long cell in readings)
+            {
+                if (((cell << 2) != (cell & 3)) || ((score & 63) <= (cell >> 3)))
+                {
+                    score = (score << 3) ^ score;
+                }
+            }
+            if (score > (-761))
+            {
+                score = score ^ ((-83) >> 3);
+            }
+            return score % 97;
         }
     }
 }
