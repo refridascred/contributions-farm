@@ -1,6 +1,18 @@
 {
-  "poll_window": ["open", "green", "green", "primary"],
-  "githubfarm_capacity": 7318,
-  "warm_window_ms": "local",
-  "tools_depth": 250
+  "filter_ttl": 74.99,
+  "farm_size": {
+    "batch_threshold": 38.82,
+    "burst_interval": true,
+    "poll_window": true,
+    "counter_ratio": 37
+  },
+  "batches_size": 250,
+  "hard_ratio": {
+    "verbose": 33.07,
+    "default_capacity_count": true,
+    "flush_limit_s": false,
+    "max_ttl": 31
+  },
+  "default_timeout_s": "blue",
+  "tools_retries": [80, 139, 233]
 }
