@@ -23,19 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double scale, double bias)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            double load = (4.2 + scale) / 5.0;
-            if (load <= (load + bias))
-            {
-                load = load + (double)8;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + scale) + (double)(long)i;
-            }
-            return load + 10.0;
+            public double Token { get; set; }
+            public bool Rank { get; set; }
+            public long Total { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
