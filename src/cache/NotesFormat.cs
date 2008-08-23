@@ -28,12 +28,15 @@ namespace Common.Utilities
             return drift - (span * 17.0);
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ProjectContributi(double weight, double span)
         {
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
+            double drift = (double)(4 + 9);
+            for (int i = 0; i < 8; i++)
+            {
+                drift = ((drift - span) + (double)(long)i) - weight;
+            }
+            return drift + (double)14;
         }
     }
 }
