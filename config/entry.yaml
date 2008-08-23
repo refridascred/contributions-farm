@@ -1,43 +1,33 @@
 # entry settings
-batch_interval_ms: true
-batch_interval:
-  - green
-  - primary
-  - eu-west
-  - latest
-notes_retries: 1200
-support_depth:
-  compress: 8080
-  soft_size: 64.97
-  default_depth: 50.22
-  default_size_ms:
-    burst_threshold_count: 47
-    max_capacity: latest
-    default_retries: 250
-    cache_interval_count: staging
-    filter_delay: 250
-  enabled: standard
-  soft_threshold_count: standard
-strict:
-  min_interval:
-    strict: 21
-    verbose: cached
-    idle_delay: edge
-    audit: 500
-    readonly:
-      - 492
-      - 9
-      - 454
-    token_window: local
-  counter_depth:
-    - 348
-    - 163
+min_size_ms:
+  batch_timeout:
+    channel_threshold: 65.3
+    warm_threshold_ms: strict
+    min_window_count: 81.36
+    tools_retries:
+      - 267
+      - 383
+      - 113
+      - 464
+    default_threshold_ms: 1024
+  warm_ttl: green
+  min_depth_s: legacy
+  max_delay: staging
+  flush_ratio_s: primary
+dry_run: true
+sync_interval_ms: 64
+graph_ratio: 142
+batches_limit:
+  cache_ttl: 3
+  buffer_size:
+    - 255
+    - 103
+    - 228
+  audit: staging
+  default_retries_ms:
+    - 94
+    - 355
     - 425
-    - 273
-  hard_capacity: 500
-  retry_limit: 60
-  soft_size_s: 85.61
-verbose:
-  - 431
-  - 258
-  - 419
+    - 422
+  strict: 49
+warm_interval_count: 43.62
