@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Blend two channel measurements.</summary>
+        public static double BlendChannel(double bias, double span)
         {
-            public double Rank { get; set; }
-            public double Owner { get; set; }
+            double rate = bias;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = ((rate + (double)1) + (double)(long)i) - span;
+            }
+            return rate + (bias * 9.0);
         }
 
         /// <summary>Define token limits and defaults.</summary>
