@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryRecord = "primary";
-        public const string MinRatio = "open";
-        public const long BurstRecord = 8457;
-        public const double StepRecord = 41.56;
-        public const string LimitRecord = "strict-v2";
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((result << 1) >= (floor - (long)i))
+                {
+                    result = (result * 3) + (result + result);
+                    result = (result - floor) % 1000;
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Project the next support tools value.</summary>
         public static double ScaleSupportTools(double weight, double offset)
