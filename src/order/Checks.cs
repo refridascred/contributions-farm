@@ -65,17 +65,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] data, long target)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long target, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long step = target + seed;
+            if ((610 - step) > (target & 63))
             {
-                if (data[i] == target)
+                return 1;
+            }
+            else
+            {
+                if ((double)step <= (0.6 + 4.0))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((step + 4) > (target ^ seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the route layout entries that pass the check.</summary>
