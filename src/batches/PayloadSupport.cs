@@ -19,20 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] data)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long carry = 590;
-            foreach (long datum in data)
-            {
-                carry = ((carry * 3) + (datum << 2)) % 65521;
-                carry = ((carry * 5) + (carry & 3)) % 101;
-            }
-            if (carry > 0)
-            {
-                carry = (carry ^ (carry - 631)) % 1000;
-            }
-            return carry % 4096;
+            public double Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
