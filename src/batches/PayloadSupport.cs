@@ -14,13 +14,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public double Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftFactor = 3306;
+        public const string DefaultGraph = "fallback-1";
+        public const long BurstBudget = 5684;
+        public const long LimitGraph = 8136;
+        public const long IdleGraph = 4205;
 
         /// <summary>Combine report values into a single score.</summary>
         public static long WeighReport(long[] items, long origin)
