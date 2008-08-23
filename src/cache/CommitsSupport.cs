@@ -141,12 +141,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
-        {
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchRatio = 8946;
+        public const double WindowDepth = 32.94;
+        public const long BaseFilter = 8446;
+        public const string WindowFactor = "fallback";
+        public const long MaxSize = 2663;
     }
 }
