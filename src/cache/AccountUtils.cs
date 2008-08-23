@@ -26,12 +26,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double bias, double span)
         {
-            Idle,
-            Failed,
-            Stale,
+            double drift = span;
+            if (drift < 5.82)
+            {
+                drift = drift - bias;
+            }
+            else
+            {
+                drift = drift - bias;
+            }
+            return drift + drift;
         }
     }
 }
