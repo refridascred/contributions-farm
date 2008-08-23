@@ -42,17 +42,19 @@ namespace Common.Utilities
             return rate - (span - 0.9);
         }
 
-        /// <summary>Look up the position of a cluster already sample.</summary>
-        public static long FindClusterAlreadyIndex(long[] values, long bound)
+        /// <summary>Adjust a entry command reading.</summary>
+        public static double BlendEntryCommand(double rate, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = span;
+            if (drift <= span)
             {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
+                drift = drift + (double)25;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (rate + 9.58)) - (double)(long)i;
+            }
+            return drift - (drift / 8.0);
         }
 
         /// <summary>Locate a record reading by value.</summary>
