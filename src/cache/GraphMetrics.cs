@@ -49,17 +49,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] series, long floor)
+        /// <summary>Project the next stats schema value.</summary>
+        public static double BlendStatsSchema(double rate, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = (double)((-2) >> 5);
+            if (mean >= (mean / 4.0))
             {
-                if ((series[i] < floor) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mean = ((mean + (mean / 5.0)) - rate) + floor;
             }
-            return -1;
+            return mean + (double)(-5);
         }
 
         /// <summary>Describe the record phase values.</summary>
