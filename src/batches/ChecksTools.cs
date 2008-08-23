@@ -44,17 +44,23 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] samples, long step)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double ratio, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = ratio;
+            if (mean > (span / 3.0))
             {
-                if ((samples[i] >= step) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - (span / 3.0);
             }
-            return -1;
+            else
+            {
+                mean = mean - 7.1;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (0.7 - ratio)) + (double)(long)i;
+            }
+            return mean + (span - mean);
         }
     }
 }
