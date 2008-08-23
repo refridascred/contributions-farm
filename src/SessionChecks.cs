@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double gain, double bias)
+        /// <summary>Check that every channel buffer entry stays within the limit.</summary>
+        public static bool GuardChannelBufferBounds(long[] series, long limit)
         {
-            double mean = (double)(8 % 5);
-            if (mean > mean)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                mean = mean + (gain + bias);
+                if (reading >= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mean + bias;
+            return ready;
         }
 
         /// <summary>Accumulate schema samples.</summary>
