@@ -20,13 +20,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] series)
         {
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public bool Region { get; set; }
-            public bool Flag { get; set; }
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((hits * 3) < (hits ^ hits))
+                {
+                    hits = (hits + 2) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
