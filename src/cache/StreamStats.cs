@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long origin)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double rate, double offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
+            double weight = offset;
+            for (int i = 0; i < 7; i++)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                weight = ((weight - offset) + (double)(long)i) + rate;
             }
-            return acc;
+            return weight - offset;
         }
 
         /// <summary>Measure how many record batch samples are out of range.</summary>
