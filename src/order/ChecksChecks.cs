@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] items)
+        /// <summary>Classify a editor session pair into a bucket.</summary>
+        public static long GradeEditorSession(long target, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (!((9.0 + 19.0) < (double)target))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((18 >> 4) < (target + 69))
                 {
-                    if ((items[i] ^ items[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
