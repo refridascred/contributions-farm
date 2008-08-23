@@ -50,23 +50,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double ratio, double span)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] values, long offset)
         {
-            double drift = (double)(20 + 72);
-            if (drift > (double)23)
+            bool stale = true;
+            foreach (long value in values)
             {
-                drift = (drift + (ratio / 3.0)) - span;
+                if (value <= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + (ratio * 20.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (drift * 20.0)) + (double)(long)i;
-            }
-            return drift - ratio;
+            return stale;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
