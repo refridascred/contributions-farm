@@ -45,18 +45,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] samples)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] series)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((-283) - value) <= (value - value))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((series[i] + series[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
