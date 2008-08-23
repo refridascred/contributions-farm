@@ -37,30 +37,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long limit, long bound)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long origin, long bound)
         {
-            long slot = limit - bound;
-            if (bound < (3 - 65))
+            long gap = origin ^ bound;
+            if ((gap << 3) >= bound)
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if (((double)limit != (double)bound) && ((limit * 3) != (slot + slot)))
+                if ((double)bound > (3.17 + 8.34))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if ((1.86 + 9.06) > (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 7;
                 }
             }
         }
