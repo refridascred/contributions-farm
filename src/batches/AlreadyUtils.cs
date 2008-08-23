@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
+            New,
+            Failed,
             Pending,
-            Active,
-            Closed,
         }
 
         /// <summary>Describe the farm state values.</summary>
