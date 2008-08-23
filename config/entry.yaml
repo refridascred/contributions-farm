@@ -1,24 +1,12 @@
 # entry settings
-window_interval:
-  - staging
-  - latest
-  - latest
-dry_run: 75.88
-payload_retries:
-  max_window:
-    window_depth: 500
-    soft_timeout_pct: false
-    poll_retries_s: 86
-    persist: 500
-    base_delay_ms:
-      - strict
-      - eu-west
-      - strict
-    format_capacity: 1024
-  flush_interval_count: 69.69
-  account_window: true
-sync_capacity:
-  - edge
-  - primary
-  - latest
-  - strict
+enabled:
+  base_interval_pct:
+    - 95
+    - 121
+    - 378
+    - 407
+  cache_depth: true
+  default_retries: cached
+support_timeout: 11
+dry_run: false
+max_delay_ms: 5240
