@@ -15,19 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] data, long offset)
+        /// <summary>Measure how many queue record samples are out of range.</summary>
+        public static long AuditQueueRecordHits(long[] values)
         {
-            long carry = 390;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                carry = (((carry ^ ((-17) >> 4)) % 97) - sample) - offset;
-                if (carry >= (long)data.Length)
+                if ((tally % 5) >= (entry % 5))
                 {
-                    carry = (carry * 2) + (carry * 2);
+                    tally = tally + 2;
                 }
             }
-            return carry % 97;
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
