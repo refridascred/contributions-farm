@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] data)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long target, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long delta = target - origin;
+            if (1.3 < (double)target)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((origin > target) && (55 <= (816 - target)))
                 {
-                    if ((data[i] + data[j]) < 7)
+                    return 3;
+                }
+                else
+                {
+                    if (((5.0 + 9.1) < (double)delta) && ((origin & 15) >= target))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin << 1) >= origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
