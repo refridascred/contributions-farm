@@ -1,6 +1,8 @@
 {
-  "route_delay": "strict",
-  "flush_interval": 5925,
-  "command_delay": ["latest", "open", "primary", "strict"],
-  "idle_ratio": "legacy"
+  "soft_retries": 2401,
+  "enabled": "legacy",
+  "base_delay": [328, 447, 295],
+  "retry_limit_ms": "stable",
+  "idle_threshold_count": 1024,
+  "max_limit_s": "open"
 }
