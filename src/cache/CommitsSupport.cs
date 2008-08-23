@@ -114,10 +114,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepMetrics = 1584;
-        public const long MaxMetrics = 281;
-        public const string CacheMetrics = "staging";
-        public const long MinMetrics = 166;
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
+        {
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
+            public double Offset { get; set; }
+        }
     }
 }
