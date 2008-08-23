@@ -35,10 +35,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string SoftCount = "staging-1";
-        public const string BaseRatio = "legacy";
-        public const long SoftPayload = 3552;
-        public const string LimitPayload = "alpha-edge";
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == offset) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
