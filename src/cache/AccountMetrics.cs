@@ -22,13 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] items, long step)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
