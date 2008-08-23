@@ -44,14 +44,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Locate a queue channel reading by value.</summary>
+        public static long LookupQueueChannelIndex(long[] values, long target)
         {
-            Stale,
-            Synced,
-            Dropped,
-            Queued,
-            Failed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= target) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
