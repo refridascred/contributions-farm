@@ -30,19 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format cache entry stays within the limit.</summary>
-        public static bool ValidateFormatCacheRange(long[] series, long bound)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (datum != bound)
+                if (!(tally > (tally + datum)))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
