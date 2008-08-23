@@ -20,19 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the command contributi entries that pass the check.</summary>
-        public static long MeasureCommandContributiOutliers(long[] values, long offset)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (!((offset - datum) > hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double LimitFormat = 96.71;
+        public const long WindowBudget = 926;
+        public const long DefaultFormat = 8986;
+        public const long CacheFormat = 8671;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long CacheSession = 2685;
