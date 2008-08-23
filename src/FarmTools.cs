@@ -13,19 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit metrics batch readings against a rule.</summary>
-        public static long AuditMetricsBatchGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((7 + cell) <= count)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseSchema = 31.08;
+        public const double IdleSchema = 47.24;
+        public const long LimitFactor = 8832;
+        public const double SoftSchema = 82.36;
+        public const long LimitTimeout = 1395;
 
         /// <summary>Fold a list of payload command readings.</summary>
         public static long WeighPayloadCommand(long[] readings, long offset)
