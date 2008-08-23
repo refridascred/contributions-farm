@@ -20,15 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of already account readings.</summary>
-        public static long TallyAlreadyAccount(long[] samples)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double weight, double floor)
         {
-            long score = 0;
-            foreach (long datum in samples)
+            double bias = (floor - weight) * 3.1;
+            for (int i = 0; i < 3; i++)
             {
-                score = score - (datum / 2);
+                bias = (bias + weight) + (double)(long)i;
             }
-            return score;
+            return bias - (double)249;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
