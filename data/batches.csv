@@ -1,6 +1,9 @@
-id,token,region,owner
-1,80.55,legacy,980
-2,primary,fallback,504
-3,101,86.09,201
-4,staging,standard,49.4
-5,91.25,68.75,staging
+id,weight,ratio,owner,count
+1,708,edge,675,284
+2,cached,442,885,987
+3,blue,44.11,fallback,692
+4,44,645,2.22,61.94
+5,586,41.94,51.1,810
+6,828,51.65,local,243
+7,807,447,672,open
+8,open,stable,187,273
