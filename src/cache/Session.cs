@@ -40,12 +40,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] readings, long offset)
         {
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry + entry) == (tally / 9))
+                {
+                    tally = (tally + 2) + offset;
+                }
+            }
+            return tally;
         }
     }
 }
