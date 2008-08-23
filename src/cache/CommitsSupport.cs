@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long target, long offset)
+        /// <summary>Measure how many cache graph samples are out of range.</summary>
+        public static long AuditCacheGraphGaps(long[] values, long limit)
         {
-            long delta = target ^ offset;
-            if ((offset < (delta << 1)) || ((offset + offset) < (offset & 7)))
+            long matches = 0;
+            foreach (long cell in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((6.9 + 1.85) > (double)target)
+                if (cell < limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (target <= (target + offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((1.5 - 9.1) > (double)delta)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the format schema entries that pass the check.</summary>
