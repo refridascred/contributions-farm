@@ -61,15 +61,19 @@ namespace Common.Utilities
         public const string RetryContext = "open-v2";
         public const string LimitTimeout = "cached-1";
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long floor)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterLimits(long[] series, long limit)
         {
-            long mark = floor;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                if (datum < limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Match up metrics samples.</summary>
