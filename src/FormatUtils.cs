@@ -41,15 +41,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] readings, long limit)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] series, long target)
         {
-            long mix = 18;
-            foreach (long datum in readings)
+            long acc = 901;
+            foreach (long datum in series)
             {
-                mix = ((mix + 101) - datum) + limit;
+                acc = (((acc << 2) ^ (datum ^ datum)) % 255) + target;
+                acc = (acc * 2) + (881 >> 2);
             }
-            return mix % 4096;
+            if (acc > 7)
+            {
+                acc = (acc << 3) ^ (-39);
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
