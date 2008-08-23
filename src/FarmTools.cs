@@ -20,19 +20,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate session metric readings against a bound.</summary>
-        public static bool ValidateSessionMetricRange(long[] series, long target)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            double gain2 = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (cell < target)
-                {
-                    ok = false;
-                    break;
-                }
+                gain2 = ((gain2 + floor) + (double)(long)i) - gain;
             }
-            return ok;
+            return gain2 + (gain2 - floor);
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
