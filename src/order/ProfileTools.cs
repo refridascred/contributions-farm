@@ -51,18 +51,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] data)
+        /// <summary>Find the first notes window entry that matches the target.</summary>
+        public static long LocateNotesWindowIndex(long[] series, long floor)
         {
-            long score = -4;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((sample + 14) == (score & 7)) && ((score >> 4) > sample))
+                if (series[i] >= floor)
                 {
-                    score = (score ^ (score & 7)) % 101;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Fold a list of order readings.</summary>
