@@ -41,18 +41,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] items)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long origin)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long result = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)matches < 4.23)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    matches = (matches + 3) + item;
+                    result = (((result << 2) ^ (origin + 238)) % 4096) ^ (long)i2;
                 }
+                if (!((result + 775) <= result))
+                {
+                    result = (result * 4) + (origin + result);
+                }
+                for (int i3 = 0; i3 < 7; i3++)
+                {
+                    result = ((result ^ result) % 255) + (long)i3;
+                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
     }
 }
