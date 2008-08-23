@@ -42,12 +42,39 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long origin, long floor)
         {
-            Pending,
-            Retry,
-            Draft,
+            long diff = origin ^ floor;
+            if ((4.0 - 7.43) != (double)diff)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((7 + origin) == (diff + origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (7.1 >= (double)diff)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((4.0 - 17.0) > (9.7 / 2.0)) || ((origin & 3) >= ((-91) ^ origin)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
