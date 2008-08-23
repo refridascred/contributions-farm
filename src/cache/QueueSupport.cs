@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a metrics farm value against two limits.</summary>
-        public static long ClassifyMetricsFarm(long origin, long limit)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferLimits(long[] values, long target)
         {
-            if (origin > (limit << 1))
+            bool valid = true;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (0.3 <= (double)origin)
+                if (entry < target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (origin < (limit + 94))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
