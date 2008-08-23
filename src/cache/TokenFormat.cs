@@ -28,13 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] readings, long origin)
         {
-            public bool Level { get; set; }
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (((reading + 0) == ((long)readings.Length & 63)) && (((hits % 16) < (reading + hits)) || ((reading * 2) == (4 & 63))))
+                {
+                    hits = (hits + 3) + origin;
+                }
+            }
+            return hits;
         }
     }
 }
