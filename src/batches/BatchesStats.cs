@@ -40,24 +40,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] values)
         {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
+            long total = 2;
+            foreach (long cell in values)
             {
-                if (offset > (state + (long)i))
-                {
-                    break;
-                }
-                else
-                {
-                    state = ((state * 4) + ((long)i % 7)) % 97;
-                }
-                state = ((state << 3) ^ offset) % 1000;
-                state = ((state * 3) + (long)i) % 97;
+                total = ((total << 2) ^ (cell - cell)) % 255;
+                total = (total + (total / 8)) % 255;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
