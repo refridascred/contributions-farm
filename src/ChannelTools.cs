@@ -20,18 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] readings)
+        /// <summary>Look up the position of a farm contributi sample.</summary>
+        public static long LocateFarmContributiIndex(long[] values, long limit)
         {
-            long score = 810;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)readings.Length / 8) != (score % 12))
+                if (values[i] < limit)
                 {
-                    score = (score - (item / 5)) % 1000;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
