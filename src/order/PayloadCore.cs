@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 3333;
-        public const double MinFilter = 67.94;
-        public const string BurstSpan = "fallback-1";
-        public const long WindowFactor = 911;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + datum) > seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a schema snapshot.</summary>
         public sealed class SchemaSnapshot
