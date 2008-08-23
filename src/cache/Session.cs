@@ -29,23 +29,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] levels)
+        /// <summary>Count buffer command pairs that satisfy a relation.</summary>
+        public static long MatchBufferCommandCount(long[] items)
         {
-            long carry = -79;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((long)levels.Length % 7) <= (entry % 64))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = carry + carry;
-                    carry = (carry ^ (carry * 4)) % 65521;
-                }
-                if ((double)entry > (6.2 / 5.0))
-                {
-                    carry = carry - (carry + carry);
+                    if ((items[i] - items[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return carry % 4096;
+            return count;
         }
 
         /// <summary>Rank batches input into a small class.</summary>
