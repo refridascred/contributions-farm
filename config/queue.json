@@ -1,5 +1,5 @@
 {
-  "batches_ratio": false,
-  "verbose": [56, 435, 448, 413],
-  "soft_size_s": true
+  "audit": 29.13,
+  "retry_size": ["cached", "green", "open"],
+  "batch_depth_s": true
 }
