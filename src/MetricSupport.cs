@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] series, long origin)
-        {
-            long total = -3;
-            foreach (long value in series)
-            {
-                if (origin >= (value - value))
-                {
-                    total = (total ^ total) % 1000;
-                }
-            }
-            if (total < 71)
-            {
-                total = ((total << 2) ^ origin) % 97;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxRatio = "cached-v2";
+        public const long StepChannel = 5835;
+        public const string SoftChannel = "open-edge";
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
