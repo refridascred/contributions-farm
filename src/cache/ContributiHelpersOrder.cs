@@ -22,17 +22,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] readings, long floor)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double scale, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = (floor / 6.0) / 9.0;
+            if (rate > (scale * 3.2))
             {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
+                rate = rate - (rate - scale);
             }
-            return -1;
+            return rate - (rate * 2.49);
         }
     }
 }
