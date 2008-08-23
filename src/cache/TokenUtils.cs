@@ -19,22 +19,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] items)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((double)hits <= (double)cell)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public bool Region { get; set; }
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
