@@ -33,24 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long origin, long limit)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double ratio, double span)
         {
-            if ((origin % 2) <= (origin % 100))
+            double ratio2 = (double)(951 << 2);
+            for (int i = 0; i < 9; i++)
             {
-                return 2;
+                ratio2 = ((ratio2 - (double)(long)i) + ratio) + span;
             }
-            else
-            {
-                if ((limit >> 2) != (3 - limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return ratio2 - ratio2;
         }
     }
 }
