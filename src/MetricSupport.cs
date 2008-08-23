@@ -43,10 +43,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxSize = 1043;
-        public const long RetryScore = 181;
-        public const string BurstInterval = "stable-v2";
-        public const long RetryMetric = 4388;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxScore = 18.61;
+        public const long WindowContext = 3759;
+        public const string DefaultRatio = "cached-1";
+        public const long MaxContext = 3147;
+        public const string DefaultFactor = "local-edge";
     }
 }
