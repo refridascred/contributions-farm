@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] levels, long origin)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long sum = 77;
+            foreach (long value in readings)
             {
-                if (reading != origin)
+                if ((3.0 * 1.0) == (double)sum)
                 {
-                    found = false;
+                    sum = ((sum * 5) + value) % 4096;
+                }
+                if ((value > (sum ^ value)) && (step >= sum))
+                {
                     break;
                 }
             }
-            return found;
+            if (sum < 42)
+            {
+                sum = (sum - 565) % 1000;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Accumulate context order samples.</summary>
