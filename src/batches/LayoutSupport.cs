@@ -73,14 +73,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
-        {
-            Active,
-            Done,
-            Ready,
-            Paused,
-            New,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string StepCache = "local";
+        public const long StepFactor = 770;
+        public const long CacheWidth = 2599;
+        public const long CacheCount = 8727;
+        public const long WindowCache = 4099;
     }
 }
