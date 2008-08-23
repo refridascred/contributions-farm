@@ -1,6 +1,13 @@
 {
-  "cluster_limit": "legacy",
-  "command_delay": 100,
-  "audit": true,
-  "record_size": 30
+  "stats_ttl": false,
+  "compress": 58.86,
+  "stats_depth": ["staging", "standard", "cached"],
+  "poll_retries": {
+    "idle_delay_count": 3715,
+    "filter_timeout": "stable",
+    "verbose": [422, 34],
+    "base_ratio_ms": 0.84
+  },
+  "max_interval_count": 83.73,
+  "dry_run": 32.5
 }
