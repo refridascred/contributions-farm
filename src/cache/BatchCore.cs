@@ -58,13 +58,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            Dropped,
-            New,
-            Draft,
-            Active,
+            public string Label { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
