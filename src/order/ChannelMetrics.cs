@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBudget = 2982;
-        public const long BatchFactor = 4462;
-        public const long BaseBatch = 1664;
-        public const long RetryDepth = 6242;
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double weight, double offset)
+        {
+            double mean = 0.66;
+            if (mean < offset)
+            {
+                mean = mean - 3.6;
+            }
+            else
+            {
+                mean = mean + weight;
+            }
+            return mean + (offset * 3.64);
+        }
 
         /// <summary>Audit profile metric readings against a rule.</summary>
         public static long CountProfileMetricOutliers(long[] series)
