@@ -1,12 +1,9 @@
 # support settings
-checks_size: 250
-compress: 60
-cluster_interval:
-  session_timeout: 5471
-  warm_ratio:
-    cache_depth_count: green
-    retry_ratio_s: green
-    soft_ratio: cached
-  counter_interval: green
-default_ttl_count: 72.45
-burst_ttl_pct: false
+channel_ratio: 92.15
+persist: 12.82
+min_threshold:
+  - 220
+  - 320
+retry_window_s: 15.09
+batch_threshold_count: false
+idle_retries: 85.66
