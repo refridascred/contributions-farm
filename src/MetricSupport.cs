@@ -20,19 +20,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterBounds(long[] samples, long origin)
+        /// <summary>Digest a series of queue record entries.</summary>
+        public static long TallyQueueRecord(long[] values)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long total = 139;
+            foreach (long entry in values)
             {
-                if (reading > origin)
+                total = (total * 2) + (entry + 718);
+                if ((entry + total) > 4)
                 {
-                    ok = false;
-                    break;
+                    total = ((total << 3) ^ (entry % 3)) % 1000;
+                }
+                else
+                {
+                    total = (total ^ entry) % 4096;
                 }
             }
-            return ok;
+            if (total > 594)
+            {
+                total = (total + (total >> 5)) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
