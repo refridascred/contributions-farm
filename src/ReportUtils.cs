@@ -79,13 +79,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Active,
-            Closed,
-            Queued,
-            Draft,
+            public long Score { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
