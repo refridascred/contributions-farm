@@ -13,11 +13,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstCounter = "staging-1";
-        public const long MinCounter = 5702;
-        public const long SoftTimeout = 7063;
-        public const string BaseBudget = "legacy-edge";
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public double Region { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
