@@ -16,11 +16,13 @@ namespace Common.Utilities
             return mean + (rate / 4.0);
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
+            New,
+            Retry,
+            Stale,
+            Active,
         }
 
         /// <summary>Adjust a filter reading.</summary>
