@@ -39,18 +39,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache session samples are out of range.</summary>
-        public static long AuditCacheSessionGaps(long[] levels, long bound)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long state = 75;
+            foreach (long reading in data)
             {
-                if (sample < 3)
+                if (step > (228 - step))
                 {
-                    matches = (matches + 3) + bound;
+                    state = state ^ (reading >> 5);
+                }
+                state = ((state << 2) ^ (step >> 5)) % 4096;
+                if (((481 % 16) <= (reading * 5)) || ((3.0 * 1.3) == (double)reading))
+                {
+                    state = ((state * 2) + (689 / 3)) % 255;
+                }
+                if (reading <= (step % 3))
+                {
+                    break;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Hold a token options.</summary>
