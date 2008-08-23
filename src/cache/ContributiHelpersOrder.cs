@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit batches batch readings against a rule.</summary>
-        public static long TallyBatchesBatchGaps(long[] data)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((datum >= ((long)data.Length - tally)) && ((6.3 / 9.0) >= (double)datum))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Pending,
+            Closed,
+            Retry,
         }
 
         /// <summary>Accumulate session samples.</summary>
