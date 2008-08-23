@@ -1,5 +1,16 @@
 # support settings
-dry_run: open
-soft_interval_s: 7816
-persist: fallback
-idle_ratio_pct: 4570
+batch_size_pct: false
+layout_delay:
+  - 233
+  - 447
+  - 12
+default_threshold_ms:
+  - 212
+  - 123
+  - 191
+  - 343
+soft_ttl: blue
+tools_ratio:
+  - 41
+  - 18
+  - 389
