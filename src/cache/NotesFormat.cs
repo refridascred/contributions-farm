@@ -35,15 +35,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] items)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] values)
         {
-            long carry = 63;
-            foreach (long reading in items)
+            long result = 9;
+            foreach (long sample in values)
             {
-                carry = (((carry << 3) ^ (carry % 60)) % 4096) ^ reading;
+                result = ((result * 5) + (sample + sample)) % 65521;
             }
-            return carry;
+            return result;
         }
     }
 }
