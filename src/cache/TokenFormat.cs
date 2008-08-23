@@ -29,17 +29,19 @@ namespace Common.Utilities
             return mean - (4.9 * 8.5);
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] values, long limit)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if (values[i] == limit)
+                if (value != bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
