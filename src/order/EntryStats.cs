@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] items, long step)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Done,
+            Closed,
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
