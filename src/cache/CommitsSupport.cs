@@ -48,18 +48,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] samples)
+        /// <summary>Validate metrics entry readings against a bound.</summary>
+        public static bool VerifyMetricsEntryRange(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if (count > (3 & 31))
+                if (value > floor)
                 {
-                    count = (count + 2) ^ sample;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Project the next graph value.</summary>
