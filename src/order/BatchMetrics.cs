@@ -111,10 +111,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxLevel = 3306;
-        public const long HardMetric = 5569;
-        public const long RetryMetric = 9483;
-        public const long BurstMetric = 2402;
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
