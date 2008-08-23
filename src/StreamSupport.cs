@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 9474;
-        public const double BurstSize = 71.67;
-        public const string LimitGraph = "alpha-edge";
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public double Rank { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
