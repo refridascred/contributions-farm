@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a batch tools value against two limits.</summary>
-        public static long SortBatchTools(long step, long bound)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            if (((step ^ step) <= (step * 2)) && (bound <= (4 & 3)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step + bound) == (57 & 63))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Locked,
+            Draft,
+            Active,
         }
 
         /// <summary>Adjust a filter reading.</summary>
