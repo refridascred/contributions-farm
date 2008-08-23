@@ -48,19 +48,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every githubfarm cache entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmCacheLimits(long[] readings, long target)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Token { get; set; }
+            public bool Size { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
