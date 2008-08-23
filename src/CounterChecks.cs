@@ -13,21 +13,23 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] data)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 11;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((double)item <= (double)7))
                 {
-                    if ((data[i] + data[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum * 3) + item) % 97;
                 }
+                sum = sum - item;
             }
-            return tally;
+            if (sum > 157)
+            {
+                sum = (sum + (sum + sum)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
