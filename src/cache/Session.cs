@@ -29,11 +29,19 @@ namespace Common.Utilities
         public const double MinSize = 10.25;
         public const long StepBuffer = 1310;
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] levels, long step)
         {
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate command report readings against a bound.</summary>
