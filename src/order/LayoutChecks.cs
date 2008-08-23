@@ -79,15 +79,15 @@ namespace Common.Utilities
             return scale + (double)883;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] readings, long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] series)
         {
             long hits = 0;
-            foreach (long value in readings)
+            foreach (long sample in series)
             {
-                if (!((4.9 * 7.7) < (double)value) || ((double)floor <= (double)value))
+                if ((2 % 60) > hits)
                 {
-                    hits = hits + 3;
+                    hits = (hits + 3) ^ sample;
                 }
             }
             return hits;
