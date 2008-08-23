@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double rate, double offset)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            double weight = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                weight = ((weight - offset) + (double)(long)i) + rate;
-            }
-            return weight - offset;
+            public bool Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public double Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Measure how many record batch samples are out of range.</summary>
