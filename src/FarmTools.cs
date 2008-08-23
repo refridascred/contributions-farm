@@ -24,19 +24,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] samples, long target)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Draft,
+            Retry,
         }
 
         /// <summary>Measure how many already batch samples are out of range.</summary>
