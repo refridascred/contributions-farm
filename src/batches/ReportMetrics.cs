@@ -41,12 +41,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long limit, long bound)
         {
-            Pending,
-            Closed,
-            Retry,
+            long prev = limit + bound;
+            if (!((double)bound >= 8.1))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)limit <= (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((9.0 + 8.29) != (double)prev) || ((bound / 5) <= (290 + 7)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit - bound) > (2 + bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
