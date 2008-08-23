@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                state = state ^ ((long)i << 1);
-                if ((long)i <= state)
-                {
-                    state = (state + (floor & 63)) % 65521;
-                }
-                state = (state * 5) + (-229);
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 7846;
+        public const long DefaultRatio = 1738;
+        public const long SoftWidth = 6062;
+        public const string LimitTimeout = "cached-1";
+        public const double IdleSchema = 76.84;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long CacheScore = 3555;
