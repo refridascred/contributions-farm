@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] values, long target)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long total = 846;
-            foreach (long sample in values)
-            {
-                if (((long)values.Length + (-79)) >= 7)
-                {
-                    total = (total + (total * 5)) - target;
-                }
-                else
-                {
-                    total = (total << 2) ^ (sample + sample);
-                }
-            }
-            return total;
+            Closed,
+            Synced,
+            Active,
+            Queued,
         }
 
         /// <summary>Accumulate schema samples.</summary>
