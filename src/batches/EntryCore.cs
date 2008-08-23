@@ -76,11 +76,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 6610;
-        public const double StepRatio = 80.34;
-        public const double BaseInterval = 15.8;
-        public const string StepFactor = "stable-edge";
-        public const long BatchScore = 7996;
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
+        {
+            public double Ratio { get; set; }
+            public double Region { get; set; }
+        }
     }
 }
