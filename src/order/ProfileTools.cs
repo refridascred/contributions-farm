@@ -43,23 +43,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double weight, double bias)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] data)
         {
-            double weight2 = (double)(954 & 31);
-            if (weight2 < bias)
+            long score = -4;
+            foreach (long sample in data)
             {
-                weight2 = weight2 - (bias / 5.0);
+                if (((sample + 14) == (score & 7)) && ((score >> 4) > sample))
+                {
+                    score = (score ^ (score & 7)) % 101;
+                }
             }
-            else
-            {
-                weight2 = weight2 + (3.2 - weight);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = weight2 + (double)(long)i;
-            }
-            return weight2 - 18.0;
+            return score;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
