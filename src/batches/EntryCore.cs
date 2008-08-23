@@ -23,31 +23,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long bound, long seed)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] values)
         {
-            if ((15.0 + 2.9) != (double)seed)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)(-272) >= (double)bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound + bound) <= bound)
+                    if ((values[i] ^ values[j]) < 3)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
