@@ -27,17 +27,14 @@ namespace Common.Utilities
             return bias + (double)1;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] values, long limit)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Queued,
+            Retry,
+            New,
+            Ready,
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
