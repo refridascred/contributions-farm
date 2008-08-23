@@ -43,18 +43,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)matches <= (6.2 + 10.0))
-                {
-                    matches = (matches + 1) ^ reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepBudget = 7808;
+        public const double BurstTools = 26.7;
+        public const double StepTools = 0.22;
+        public const long WindowSpan = 357;
     }
 }
