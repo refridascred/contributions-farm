@@ -29,12 +29,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long bound)
         {
-            Pending,
-            Locked,
-            Queued,
+            long sum = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    sum = ((sum - (long)i) % 65521) ^ (long)i2;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
