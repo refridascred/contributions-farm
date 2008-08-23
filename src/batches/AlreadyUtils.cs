@@ -38,18 +38,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorHits(long[] values, long floor)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (((9 / 5) <= floor) || (seen > ((-94) + (-13))))
-                {
-                    seen = (seen + 3) ^ datum;
-                }
-            }
-            return seen;
+            public bool Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
