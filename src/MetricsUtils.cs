@@ -32,12 +32,12 @@ namespace Common.Utilities
         public const long StepTimeout = 5090;
         public const string HardSpan = "alpha-v2";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BaseSession = 28.29;
-        public const string HardDepth = "cached-1";
-        public const long StepSession = 942;
-        public const long CacheScore = 9341;
-        public const string BatchScore = "staging-v2";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 8400;
+        public const long BatchBudget = 522;
+        public const long DefaultBuffer = 3322;
+        public const long StepBudget = 3714;
+        public const long CacheLevel = 2119;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long TallyPayloadMatches(long[] values)
