@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a metric channel pair into a bucket.</summary>
-        public static long GradeMetricChannel(long origin, long offset)
+        /// <summary>Look up the position of a metrics farm sample.</summary>
+        public static long SeekMetricsFarmIndex(long[] readings, long step)
         {
-            if ((offset % 3) <= offset)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin < (672 - offset)) || ((15.0 - 14.0) != (double)offset))
+                if ((readings[i] <= step) && ((readings[i] % 2) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin >> 3) == (origin % 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
