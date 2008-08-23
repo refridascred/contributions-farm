@@ -58,10 +58,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardSize = 9254;
-        public const string MaxEditor = "strict";
-        public const long LimitDepth = 6931;
-        public const string SoftEditor = "alpha-edge";
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 9812;
+        public const double IdleSupport = 87.71;
+        public const long BatchSupport = 4599;
     }
 }
