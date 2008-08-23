@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] data)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] levels, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((hits ^ hits) != (item << 2))
                 {
-                    if ((data[i] - data[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 3) - limit;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
