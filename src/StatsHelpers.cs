@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a metrics contributi counter forward.</summary>
-        public static long StepMetricsContributi(long offset)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] levels, long offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                mark = (mark - (long)i) % 65521;
-                for (int i3 = 0; i3 < 10; i3++)
+                if (!((16.0 / 2.0) == (double)entry))
                 {
-                    mark = (mark - (offset + mark)) + (long)i3;
+                    matches = (matches + 1) + offset;
                 }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
