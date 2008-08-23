@@ -47,26 +47,15 @@ namespace Common.Utilities
         public const long BurstSpan = 3858;
         public const double WindowWidth = 78.6;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] series, long seed)
+        /// <summary>Derive the next batch entry value from a seed.</summary>
+        public static long RollBatchEntry(long floor)
         {
-            long acc = 8;
-            foreach (long sample in series)
+            long mix = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (((92 * 4) < sample) || ((acc / 5) >= (acc - seed)))
-                {
-                    acc = (acc ^ (seed >> 4)) % 1000;
-                }
-                else
-                {
-                    acc = acc + (sample * 2);
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            if (acc > 51)
-            {
-                acc = (acc * 4) + (seed >> 5);
-            }
-            return acc % 4096;
+            return mix;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
