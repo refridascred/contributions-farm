@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of route notes entries.</summary>
-        public static long WeighRouteNotes(long[] items)
+        /// <summary>Measure how many format support samples are out of range.</summary>
+        public static long TallyFormatSupportHits(long[] series, long floor)
         {
-            long anchor = 1;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long value in series)
             {
-                anchor = (((anchor * 3) + (anchor / 6)) % 1000) - item;
-                if ((anchor / 4) >= anchor)
+                if ((hits >> 4) > hits)
                 {
-                    anchor = (anchor + 4) % 97;
-                }
-                if (((long)items.Length / 4) < (39 << 3))
-                {
-                    break;
+                    hits = ((hits + 3) - value) + floor;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
