@@ -28,13 +28,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
-        {
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string WindowLevel = "alpha";
+        public const long DefaultTimeout = 3507;
+        public const long CacheContext = 1607;
     }
 }
