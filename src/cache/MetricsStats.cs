@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of editor githubfarm entries.</summary>
-        public static long CombineEditorGithubfarm(long[] series, long bound)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] values, long step)
         {
-            long total = 57;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                long offset = total >> 2;
-                total = ((total - (9 ^ offset)) % 1000) ^ value;
-                total = (total ^ (bound - bound)) % 255;
+                if ((values[i] > step) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
