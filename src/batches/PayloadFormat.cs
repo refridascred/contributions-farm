@@ -26,13 +26,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Synced,
-            Active,
-            Failed,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinBuffer = 45.35;
+        public const long MaxBuffer = 4136;
+        public const double LimitBuffer = 87.71;
+        public const string LimitDepth = "standard-v2";
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
