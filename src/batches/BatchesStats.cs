@@ -56,25 +56,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long origin, long limit)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] data)
         {
-            long delta = origin - limit;
-            if (76 <= (limit % 64))
+            long score = 6;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin + delta) < (limit + delta))
+                if ((score >> 2) < reading)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    score = (score * 5) + ((long)data.Length - 449);
                 }
             }
+            return score % 65521;
         }
     }
 }
