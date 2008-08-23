@@ -25,13 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Blend two metric filter measurements.</summary>
+        public static double BlendMetricFilter(double weight, double span)
         {
-            Active,
-            Done,
-            Paused,
-            Locked,
+            double mean = (double)(807 + 8);
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + weight) - (double)(long)i;
+            }
+            return mean + (span * 8.96);
         }
     }
 }
