@@ -31,19 +31,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] readings, long offset)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long CompareCounterCount(long[] data)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum <= offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] - data[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
