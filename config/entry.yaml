@@ -1,19 +1,5 @@
 # entry settings
-layout_retries: 9021
-batch_limit:
-  dry_run:
-    verbose: 500
-    batches_limit: 441
-    min_limit: green
-  max_size_pct:
-    hard_threshold: 1333
-    poll_limit_count: stable
-    base_capacity_count: 72.49
-  max_capacity: 5.07
-strict: 4072
-stats_ratio: 60
-poll_delay_pct:
-  base_retries_s: cached
-  cache_timeout_count: 30
-  burst_interval: 27.76
-  profile_limit: stable
+default_depth_ms: 100
+min_ratio: false
+dry_run: 55.43
+max_size: 2230
