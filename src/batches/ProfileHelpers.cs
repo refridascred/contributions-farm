@@ -90,17 +90,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = acc ^ (73 >> 5);
-                acc = acc ^ (acc * 2);
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleCache = "staging-edge";
+        public const double IdleLevel = 3.24;
+        public const long SoftCache = 8052;
     }
 }
