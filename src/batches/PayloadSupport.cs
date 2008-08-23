@@ -40,19 +40,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double gain, double floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] items, long floor)
         {
-            double mean = floor;
-            if (mean < mean)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                mean = mean - (floor + gain);
+                if ((double)tally < (3.59 * 2.9))
+                {
+                    tally = ((tally + 1) + entry) + floor;
+                }
             }
-            else
-            {
-                mean = mean + floor;
-            }
-            return mean + gain;
+            return tally;
         }
     }
 }
