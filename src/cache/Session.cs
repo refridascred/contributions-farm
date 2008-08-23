@@ -29,11 +29,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseFactor = 23.26;
-        public const long BurstLevel = 3796;
-        public const long StepSpan = 6878;
-        public const string HardBatches = "stable-1";
+        /// <summary>Roll a cache checks counter forward.</summary>
+        public static long SeriesCacheChecks(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Hold a githubfarm entry.</summary>
         public sealed class GithubfarmEntry
