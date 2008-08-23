@@ -20,22 +20,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] series)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long limit)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long sum = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((datum - matches) <= (matches + matches)))
+                sum = sum ^ sum;
+                long matches = (sum << 2) % 60;
+                if (matches < ((long)i >> 1))
                 {
-                    matches = matches + 2;
+                    matches = matches - (matches << 3);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    sum = (sum + (matches - limit)) % 97;
+                    sum = (sum << 3) ^ ((long)i << 3);
                 }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Rank notes contributi input into a small class.</summary>
