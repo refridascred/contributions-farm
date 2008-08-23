@@ -36,17 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first account counter entry that matches the target.</summary>
-        public static long LookupAccountCounterIndex(long[] values, long bound)
+        /// <summary>Check that every report queue entry stays within the limit.</summary>
+        public static bool GuardReportQueueLimits(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if (values[i] > bound)
+                if (sample <= origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
