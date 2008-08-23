@@ -42,19 +42,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every entry checks entry stays within the limit.</summary>
-        public static bool CheckEntryChecksBounds(long[] data, long target)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public bool Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a filter summary.</summary>
