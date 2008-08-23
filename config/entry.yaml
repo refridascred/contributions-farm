@@ -1,4 +1,24 @@
 # entry settings
-min_timeout_ms: false
-burst_capacity: 30
-readonly: 7933
+window_interval:
+  - staging
+  - latest
+  - latest
+dry_run: 75.88
+payload_retries:
+  max_window:
+    window_depth: 500
+    soft_timeout_pct: false
+    poll_retries_s: 86
+    persist: 500
+    base_delay_ms:
+      - strict
+      - eu-west
+      - strict
+    format_capacity: 1024
+  flush_interval_count: 69.69
+  account_window: true
+sync_capacity:
+  - edge
+  - primary
+  - latest
+  - strict
