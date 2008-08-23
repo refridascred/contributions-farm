@@ -67,15 +67,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter batch entries.</summary>
-        public static long ScoreFilterBatch(long[] readings)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long origin, long step)
         {
-            long sum = 435;
-            foreach (long entry in readings)
+            if ((step - origin) != (5 & 255))
             {
-                sum = sum + (sum ^ entry);
+                return 7;
             }
-            return sum % 4096;
+            else
+            {
+                if ((double)origin > (14.0 - 3.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
