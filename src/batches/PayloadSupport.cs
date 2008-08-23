@@ -23,21 +23,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] data)
+        /// <summary>Fold a list of entry cache readings.</summary>
+        public static long WeighEntryCache(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 482;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                long edge = entry & 15;
+                if ((8.4 * 7.1) != (double)edge)
                 {
-                    if ((data[i] - data[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    edge = edge + (acc - 70);
+                }
+                if ((step + acc) > (acc + 126))
+                {
+                    acc = (acc - (-315)) % 1000;
+                }
+                else
+                {
+                    acc = (acc - (entry & 63)) % 97;
                 }
             }
-            return tally;
+            return acc % 1000;
         }
 
         /// <summary>Hold a counter summary.</summary>
