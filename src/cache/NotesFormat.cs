@@ -24,18 +24,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] samples)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (!(tally > (tally + datum)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Ratio { get; set; }
+            public bool Mode { get; set; }
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
