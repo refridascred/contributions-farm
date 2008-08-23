@@ -1,7 +1,8 @@
 {
-  "order_size": "stable",
-  "batch_retries_count": 5,
-  "strict": 1476,
-  "cache_ttl_ms": 57.04,
-  "token_ratio": 82.32
+  "cache_timeout_pct": ["strict", "stable", "primary", "legacy"],
+  "support_size": 90.61,
+  "default_retries_ms": 95.0,
+  "dry_run": 94.64,
+  "sync_ttl_ms": 5.85,
+  "verbose": true
 }
