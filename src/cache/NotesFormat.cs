@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next counter cluster value from a seed.</summary>
-        public static long IterateCounterCluster(long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] samples)
         {
-            long mix = step;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                mix = mix - (mix >> 1);
-                mix = ((mix * 4) + (long)i) % 1000;
+                if ((((long)samples.Length % 3) > (5 & 255)) || !((entry / 4) == (entry + entry)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
