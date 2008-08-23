@@ -39,18 +39,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many format batch samples are out of range.</summary>
-        public static long MeasureFormatBatchHits(long[] items, long offset)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long seed, long offset)
         {
-            long matches = 0;
-            foreach (long item in items)
+            if (!(offset <= (offset & 255)))
             {
-                if (((-405) <= (matches - 9)) || (((offset - 81) > matches) && ((item % 10) > (matches - matches))))
+                return 1;
+            }
+            else
+            {
+                if (seed < (offset - offset))
                 {
-                    matches = matches + 3;
+                    return 6;
+                }
+                else
+                {
+                    if (!((offset / 4) < offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
