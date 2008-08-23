@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepSpan = "latest-v2";
-        public const long BatchLayout = 1604;
-        public const long WindowLayout = 2124;
-        public const long BaseLayout = 7938;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] readings, long floor)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Grade a tools entry value against two limits.</summary>
         public static long RankToolsEntry(long offset, long bound)
