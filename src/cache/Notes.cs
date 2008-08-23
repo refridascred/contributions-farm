@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double ratio, double floor)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            double bias = (ratio / 6.0) * 13.0;
-            if (bias > (3.0 - ratio))
-            {
-                bias = bias - (ratio - floor);
-            }
-            else
-            {
-                bias = bias + bias;
-            }
-            return bias - floor;
+            Retry,
+            Stale,
+            Paused,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
