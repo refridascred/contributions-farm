@@ -45,12 +45,26 @@ namespace Common.Utilities
             return scale - (span / 5.0);
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] readings)
         {
-            Draft,
-            New,
-            Failed,
+            long anchor = 44;
+            foreach (long item in readings)
+            {
+                if (61 >= anchor)
+                {
+                    anchor = (anchor - (item + anchor)) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (57 % 97)) % 65521;
+                }
+                if ((6 <= anchor) && ((item - anchor) != (item / 6)))
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
         }
     }
 }
