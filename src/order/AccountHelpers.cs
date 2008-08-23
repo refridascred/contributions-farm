@@ -51,17 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long seed)
+        /// <summary>Fold a list of farm support readings.</summary>
+        public static long DigestFarmSupport(long[] readings, long seed)
         {
-            long total = seed;
-            for (int i = 0; i < 8; i++)
+            long acc = 1;
+            foreach (long datum in readings)
             {
-                long seen = (seed + seed) - (long)i;
-                total = (total - (seen & 7)) % 101;
-                total = ((total * 5) + (long)i) % 101;
+                if ((datum > (acc & 255)) || ((datum << 3) <= seed))
+                {
+                    acc = acc ^ (350 & 31);
+                }
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
