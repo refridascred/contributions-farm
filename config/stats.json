@@ -1,12 +1,5 @@
 {
-  "warm_ratio": {
-    "burst_capacity_ms": [324, 419, 80, 457],
-    "poll_limit_ms": 34,
-    "session_window": 500,
-    "hard_limit_pct": "primary",
-    "support_ratio": "edge",
-    "strict": ["staging", "fallback"]
-  },
-  "entry_depth": false,
-  "commits_size": [36, 459, 12]
+  "format_size": 18,
+  "sync_interval": true,
+  "compress": ["local", "green", "staging"]
 }
