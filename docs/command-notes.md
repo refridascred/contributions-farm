@@ -1,16 +1,15 @@
 # Command notes
 
-Run the queue check before changing any schema limits.
-Each metric is validated before it reaches the account queue.
-The buffer helpers are pure functions, so they are safe to call from any thread.
+The account module keeps checks values in sync with the token cache.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
-Run the filter check before changing any stats limits.
-Each farm is validated before it reaches the already queue.
-The entry module keeps editor values in sync with the buffer cache.
+Each channel is validated before it reaches the commits queue.
+Keep filter and context names short and lowercase.
+Keep account and session names short and lowercase.
 
 ## Guidelines
 
-- Keep cache values small
-- Log every batch change
-- Validate layout input early
-- Review context limits each release
+- Validate editor input early
+- Document new context fields
+- Keep editor values small
+- Log every already change
