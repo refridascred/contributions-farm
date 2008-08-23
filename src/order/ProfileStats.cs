@@ -57,19 +57,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next already farm value.</summary>
-        public static double ScaleAlreadyFarm(double scale, double span)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            double bias = span;
-            if (bias >= (double)54)
-            {
-                bias = bias - (0.7 * 14.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias - (scale - bias);
+            Locked,
+            New,
+            Done,
+            Idle,
+            Pending,
         }
     }
 }
