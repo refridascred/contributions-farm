@@ -81,12 +81,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            Pending,
+            Active,
+            Closed,
             Queued,
-            Done,
+            Draft,
         }
     }
 }
