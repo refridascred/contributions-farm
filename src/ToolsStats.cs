@@ -64,18 +64,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] readings, long floor)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (!((seen - floor) == (40 * 4)) || (seen <= (seen ^ 79)))
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
+            Draft,
+            Active,
+            Retry,
+            Synced,
+            Paused,
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
