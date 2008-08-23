@@ -19,19 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long step)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long offset)
         {
-            long anchor = step;
-            for (int i = 0; i < 10; i++)
+            long state = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((step * 2) >= (step + step))
-                {
-                    break;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Rank report input into a small class.</summary>
