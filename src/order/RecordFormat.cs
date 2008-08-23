@@ -49,10 +49,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseSize = "open-1";
-        public const long MaxTimeout = 6534;
-        public const double DefaultRatio = 83.94;
-        public const string BurstBuffer = "staging-1";
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Locked,
+            New,
+            Idle,
+            Active,
+            Draft,
+        }
     }
 }
