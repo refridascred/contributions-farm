@@ -53,23 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] levels, long bound)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (!(reading <= (reading & 7)))
-                {
-                    count = (count + 1) - bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string RetrySize = "primary-edge";
+        public const long IdleMetrics = 8724;
+        public const string LimitMetrics = "standard-1";
+        public const long WindowMetrics = 7094;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string HardTimeout = "strict-v2";
