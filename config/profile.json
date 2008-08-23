@@ -1,6 +1,5 @@
 {
-  "sync_threshold": "strict",
-  "soft_threshold_pct": "eu-west",
-  "strict": 42.14,
-  "retry_delay_count": 60
+  "channel_depth": 52.94,
+  "retry_window_count": false,
+  "retry_capacity": 9814
 }
