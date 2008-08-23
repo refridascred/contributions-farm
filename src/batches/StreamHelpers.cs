@@ -35,21 +35,19 @@ namespace Common.Utilities
         public const long SoftSchema = 9133;
         public const double CacheSchema = 59.62;
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] samples)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double scale, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale2 = scale;
+            if (scale2 > offset)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale2 = scale2 + (0.2 / 7.0);
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                scale2 = scale2 - (double)(long)i;
+            }
+            return scale2 - (9.4 / 8.0);
         }
 
         /// <summary>Accumulate record samples.</summary>
