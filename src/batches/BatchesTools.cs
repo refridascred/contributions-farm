@@ -13,18 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit filter format readings against a rule.</summary>
-        public static long CountFilterFormatGaps(long[] data)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (((count & 3) > (datum << 3)) && ((count + datum) != (count % 97)))
+                if (cell <= origin)
                 {
-                    count = count + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
