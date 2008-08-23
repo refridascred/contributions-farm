@@ -53,27 +53,31 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] data)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long bound, long floor)
         {
-            long mix = -3;
-            foreach (long sample in data)
+            if (0 <= floor)
             {
-                mix = mix - (-609);
-                if ((sample / 9) == (sample >> 3))
+                return 6;
+            }
+            else
+            {
+                if ((bound - floor) <= bound)
                 {
-                    mix = (mix - (mix / 6)) % 97;
+                    return 5;
                 }
                 else
                 {
-                    mix = mix + (sample + mix);
-                }
-                if ((sample + mix) >= (sample / 2))
-                {
-                    break;
+                    if ((bound + bound) <= (bound - bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return mix;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
