@@ -27,31 +27,27 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long step, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] levels)
         {
-            if ((origin + origin) <= origin)
+            long total = -3;
+            foreach (long reading in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (step <= origin)
+                total = ((total << 2) ^ (reading - total)) % 255;
+                if ((1.3 - 5.6) != (double)total)
                 {
-                    return 0;
+                    total = (total + reading) % 1000;
                 }
                 else
                 {
-                    if ((double)origin != (double)step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    total = (total + reading) % 65521;
+                }
+                if (((double)9 > (double)total) || (total < reading))
+                {
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Validate format counter readings against a bound.</summary>
