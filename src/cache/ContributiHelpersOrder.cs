@@ -16,31 +16,24 @@ namespace Common.Utilities
             return gain - (span / 6.0);
         }
 
-        /// <summary>Classify a order contributi pair into a bucket.</summary>
-        public static long SortOrderContributi(long origin, long bound)
+        /// <summary>Accumulate profile tools samples.</summary>
+        public static long TallyProfileTools(long[] values)
         {
-            if (origin <= (bound + bound))
+            long total = 944;
+            foreach (long sample in values)
             {
-                return 0;
+                total = (total * 3) + total;
+                if (!(857 < sample))
+                {
+                    total = (total - 8) % 97;
+                }
+                total = total + (total / 6);
             }
-            else
+            if (total > 7)
             {
-                if ((bound + origin) != (origin + 10))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((double)origin >= 3.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                total = (total ^ (12 >> 2)) % 4096;
             }
+            return total % 1000;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
