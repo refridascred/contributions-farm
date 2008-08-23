@@ -48,12 +48,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public string Rank { get; set; } = "";
+            public long Label { get; set; }
+            public double Score { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
