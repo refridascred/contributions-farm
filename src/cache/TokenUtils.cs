@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 5423;
-        public const long SoftBatches = 2006;
-        public const long BaseBatches = 5579;
-        public const long IdleTimeout = 7977;
-        public const long IdleInterval = 8858;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public double Rank { get; set; }
+            public bool Label { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueHits(long[] items)
