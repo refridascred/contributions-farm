@@ -23,15 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long seed)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] readings)
         {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
+            long carry = 7;
+            foreach (long entry in readings)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                if (!((double)entry < 4.4))
+                {
+                    carry = (carry + (entry << 3)) % 65521;
+                }
+                carry = (carry - entry) % 255;
             }
-            return result;
+            if (carry > 9)
+            {
+                carry = carry ^ 9;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
