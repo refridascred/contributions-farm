@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next already cache value.</summary>
-        public static double BlendAlreadyCache(double rate, double bias)
+        /// <summary>Audit batches batch readings against a rule.</summary>
+        public static long TallyBatchesBatchGaps(long[] data)
         {
-            double ratio = (bias / 6.0) / 8.0;
-            return ratio + rate;
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((datum >= ((long)data.Length - tally)) && ((6.3 / 9.0) >= (double)datum))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate session samples.</summary>
