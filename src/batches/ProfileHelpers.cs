@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long DigestFarm(long[] values, long target)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchGaps(long[] levels, long offset)
         {
-            long state = 94;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (1 < value)
+                if (((seen & 31) < (offset >> 2)) && (offset < (seen + offset)))
                 {
-                    state = (state * 3) + (target + value);
-                }
-                else
-                {
-                    state = state ^ (value * 3);
+                    seen = (seen + 2) + entry;
                 }
             }
-            return state % 97;
+            return seen;
         }
 
         /// <summary>Describe the metric kind values.</summary>
