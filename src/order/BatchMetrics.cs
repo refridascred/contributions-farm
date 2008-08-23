@@ -119,19 +119,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] series)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long mark = 4;
-            foreach (long entry in series)
-            {
-                mark = ((mark << 3) ^ entry) % 255;
-            }
-            if (mark > 7)
-            {
-                mark = ((mark << 2) ^ (mark >> 3)) % 97;
-            }
-            return mark;
+            public double Flag { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
