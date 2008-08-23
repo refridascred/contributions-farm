@@ -91,24 +91,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long floor, long offset)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            if (5.9 <= (double)offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((floor ^ floor) > (offset + 14)) || ((32 + 42) < (floor ^ 558)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
     }
 }
