@@ -38,12 +38,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSpan = 8035;
-        public const double BurstSize = 16.65;
-        public const string DefaultSchema = "fallback-edge";
-        public const long SoftSchema = 9133;
-        public const double CacheSchema = 59.62;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] items, long limit)
+        {
+            long state = 20;
+            foreach (long datum in items)
+            {
+                state = (state - (datum / 4)) % 1000;
+                if ((limit % 100) <= (limit + state))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Project the next support value.</summary>
         public static double AdjustSupport(double scale, double offset)
