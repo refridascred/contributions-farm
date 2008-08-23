@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long limit)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] readings)
         {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                if (seen <= cell)
+                {
+                    seen = seen + 2;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Describe the buffer level values.</summary>
