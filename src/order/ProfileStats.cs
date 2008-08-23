@@ -65,11 +65,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            public long Total { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
