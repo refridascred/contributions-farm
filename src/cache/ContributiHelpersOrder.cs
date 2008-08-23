@@ -41,18 +41,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] samples)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum > 4.73)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
