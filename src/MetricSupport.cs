@@ -16,20 +16,11 @@ namespace Common.Utilities
             return mean + (rate / 4.0);
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long seed)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long mark = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)seed != (9.36 * 1.1))
-                {
-                    mark = (mark * 5) + (mark + 86);
-                    mark = (mark << 2) ^ mark;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Adjust a filter reading.</summary>
