@@ -41,39 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long limit, long bound)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] values, long floor)
         {
-            long prev = limit + bound;
-            if (!((double)bound >= 8.1))
+            bool ok = true;
+            foreach (long sample in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit <= (double)bound)
+                if (sample >= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((9.0 + 8.29) != (double)prev) || ((bound / 5) <= (290 + 7)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit - bound) > (2 + bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
