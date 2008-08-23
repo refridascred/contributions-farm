@@ -35,15 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many editor graph samples are out of range.</summary>
-        public static long CountEditorGraphOutliers(long[] series)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] items)
         {
             long hits = 0;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (3.3 > (double)item)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((items[i] ^ items[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
