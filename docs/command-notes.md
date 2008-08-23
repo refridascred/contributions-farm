@@ -1,14 +1,13 @@
 # Command notes
 
-Defaults for session live in the config folder and can be overridden per environment.
-Each githubfarm is validated before it reaches the session queue.
+Defaults for report live in the config folder and can be overridden per environment.
+Each window is validated before it reaches the schema queue.
 
-The metric report groups every stream by channel.
-A report that stays idle for too long is moved to the support list.
-Run the token check before changing any commits limits.
+The format report groups every batches by stats.
+When a filter fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer command defaults
-- Validate queue input early
-- Document new cluster fields
+- Keep route values small
+- Prefer contributi defaults
+- Document new editor fields
