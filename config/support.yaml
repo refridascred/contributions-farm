@@ -1,7 +1,9 @@
 # support settings
-max_threshold: local
-min_timeout_ms: 2704
-support_depth: 97.31
-queue_size: 250
-flush_window_pct: green
-order_ratio: 78.41
+batch_retries_ms: 500
+persist: green
+idle_threshold:
+  - blue
+  - cached
+  - fallback
+readonly: green
+hard_depth: green
