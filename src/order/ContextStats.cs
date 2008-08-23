@@ -37,24 +37,21 @@ namespace Common.Utilities
         public const double StepEntry = 27.26;
         public const string WindowSpan = "alpha-1";
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long bound, long seed)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] values)
         {
-            if ((7 / 2) == (seed + seed))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)8 <= (6.0 - 7.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    if ((values[i] - values[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
