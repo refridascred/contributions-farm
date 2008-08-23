@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a record account reading.</summary>
-        public static double SmoothRecordAccount(double weight, double offset)
-        {
-            double scale = weight;
-            if (scale <= weight)
-            {
-                scale = scale - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (weight + scale)) + (double)(long)i;
-            }
-            return scale + (9.0 - weight);
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepGithubfarm = 84.49;
+        public const long SoftGithubfarm = 6205;
+        public const long SoftTimeout = 3061;
+        public const long IdleFactor = 7193;
+        public const string DefaultSize = "fallback-edge";
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long TallyOrderGaps(long[] samples)
