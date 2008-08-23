@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many order cluster samples are out of range.</summary>
-        public static long CountOrderClusterOutliers(long[] readings)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if (cell > (0 & 63))
+                if (value <= limit)
                 {
-                    hits = hits + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Define report limits and defaults.</summary>
