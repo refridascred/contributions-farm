@@ -16,10 +16,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BurstChecks = "local-1";
-        public const long BurstFactor = 1429;
-        public const double IdleFactor = 86.9;
+        /// <summary>Count the command filter entries that pass the check.</summary>
+        public static long AuditCommandFilterHits(long[] samples)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((seen + sample) <= sample)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long TallyEditorHits(long[] values, long limit)
