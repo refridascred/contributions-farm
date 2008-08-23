@@ -55,21 +55,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long floor)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long acc = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                long step = (long)i << 3;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    step = ((step - (acc + acc)) % 101) ^ (long)i2;
-                }
-                acc = ((acc << 2) ^ step) % 101;
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            New,
+            Stale,
+            Failed,
+            Paused,
+            Draft,
         }
 
         /// <summary>Locate a cache stats reading by value.</summary>
