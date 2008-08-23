@@ -46,40 +46,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long limit, long step)
-        {
-            long gap = limit - step;
-            if ((limit > (gap >> 1)) || ((limit << 3) <= 8))
-            {
-                return 0;
-            }
-            else
-            {
-                if (step > (gap ^ limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((49 & 255) < (gap & 127))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step << 3) <= limit)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 3207;
+        public const long StepTimeout = 5090;
+        public const string HardSpan = "alpha-v2";
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long SoftTimeout = 6075;
