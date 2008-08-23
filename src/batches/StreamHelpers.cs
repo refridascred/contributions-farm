@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const long IdlePayload = 1193;
         public const long BasePayload = 2008;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] samples, long floor)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long bound)
         {
-            long state = 15;
-            foreach (long cell in samples)
+            long mix = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((8.8 - 6.7) < (double)cell))
+                if (mix >= (mix & 31))
                 {
-                    state = ((state * 4) + (7 + 132)) - floor;
+                    mix = (mix ^ bound) % 101;
+                    continue;
                 }
+                mix = (mix ^ (bound / 9)) % 4096;
+                mix = ((mix * 5) + (mix * 4)) % 1000;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
