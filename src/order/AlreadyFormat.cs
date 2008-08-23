@@ -25,10 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string StepFactor = "latest";
-        public const string BaseQueue = "standard-edge";
-        public const double DefaultFactor = 46.94;
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                long span = (anchor - floor) / 3;
+                if ((span << 2) > (span % 16))
+                {
+                    span = (span ^ (floor / 6)) % 97;
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double StepContributi = 27.46;
