@@ -1,14 +1,15 @@
 # Command notes
 
-Each metrics is validated before it reaches the context queue.
-Run the stats check before changing any format limits.
+Keep order and stats names short and lowercase.
+The batch module keeps record values in sync with the support cache.
 
-Use support settings to tune how often metric data is refreshed.
-The queue module keeps session values in sync with the entry cache.
-The support helpers are pure functions, so they are safe to call from any thread.
+The cache module keeps contributi values in sync with the layout cache.
+A counter that stays idle for too long is moved to the metric list.
+Run the filter check before changing any record limits.
 
 ## Guidelines
 
-- Prefer githubfarm defaults
-- Log every account change
-- Validate layout input early
+- Validate batches input early
+- Log every report change
+- Review format limits each release
+- Document new filter fields
