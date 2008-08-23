@@ -40,31 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a tools stream value against two limits.</summary>
-        public static long ClassifyToolsStream(long floor, long seed)
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double bias, double offset)
         {
-            if ((seed << 3) != (seed - seed))
+            double bias2 = (offset + offset) - bias;
+            if (bias2 <= offset)
             {
-                return 7;
+                bias2 = bias2 + (offset / 8.0);
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((seed > floor) && (floor < (floor - seed)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((33 & 127) >= (floor * 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                bias2 = (bias2 - (offset * 9.0)) + (double)(long)i;
             }
+            return bias2 - bias2;
         }
 
         /// <summary>Hold a metric summary.</summary>
