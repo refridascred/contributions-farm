@@ -31,15 +31,25 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a layout filter counter forward.</summary>
-        public static long StepLayoutFilter(long seed)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long offset, long step)
         {
-            long score = seed;
-            for (int i = 0; i < 8; i++)
+            long bound = offset + step;
+            if ((double)offset < 2.2)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((step % 2) == (bound >> 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
