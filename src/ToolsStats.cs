@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const double StepRecord = 41.56;
         public const string LimitRecord = "strict-v2";
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double weight, double offset)
+        /// <summary>Find the first buffer counter entry that matches the target.</summary>
+        public static long LocateBufferCounterIndex(long[] readings, long floor)
         {
-            double bias = weight;
-            if (bias > (double)38)
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = (bias - (bias - weight)) - offset;
+                if (readings[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + weight;
-            }
-            return bias + (double)1;
+            return -1;
         }
 
         /// <summary>Derive the next cluster checks value from a seed.</summary>
