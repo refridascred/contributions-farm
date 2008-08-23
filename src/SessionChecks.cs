@@ -63,18 +63,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] items)
+        /// <summary>Compare every pair of profile session readings.</summary>
+        public static long MatchProfileSessionCount(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((5.56 / 7.0) >= (18.0 + 2.4)) || ((((long)items.Length + cell) <= count) && ((4.1 - 3.6) <= (double)count)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 2;
+                    if ((readings[i] + readings[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
