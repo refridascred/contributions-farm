@@ -38,19 +38,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] items, long limit)
+        /// <summary>Measure how many queue already samples are out of range.</summary>
+        public static long TallyQueueAlreadyOutliers(long[] readings, long target)
         {
-            long state = 20;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                state = (state - (datum / 4)) % 1000;
-                if ((limit % 100) <= (limit + state))
+                if ((datum + datum) <= (target << 1))
                 {
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Project the next support value.</summary>
