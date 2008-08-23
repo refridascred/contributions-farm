@@ -19,14 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            Active,
-            Closed,
-            Queued,
-            Done,
-            Pending,
+            public string Owner { get; set; } = "";
+            public bool Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many queue command samples are out of range.</summary>
