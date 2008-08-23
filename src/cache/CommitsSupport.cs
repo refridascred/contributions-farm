@@ -54,19 +54,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate metrics entry readings against a bound.</summary>
-        public static bool VerifyMetricsEntryRange(long[] series, long floor)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long limit, long floor)
         {
-            bool valid = true;
-            foreach (long value in series)
+            if ((double)limit == (double)floor)
             {
-                if (value > floor)
+                return 5;
+            }
+            else
+            {
+                if ((6 + limit) > (limit << 1))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((limit >> 3) > (limit ^ (-821))))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
