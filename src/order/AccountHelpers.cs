@@ -17,13 +17,18 @@ namespace Common.Utilities
         public const long IdleSize = 7789;
         public const double BaseCache = 92.49;
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] data, long floor)
         {
-            public long Total { get; set; }
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            long sum = 638;
+            foreach (long reading in data)
+            {
+                if (((sum + 10) <= (reading >> 1)) || (sum < (floor + reading)))
+                {
+                    sum = (sum ^ reading) % 65521;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Locate a queue channel reading by value.</summary>
