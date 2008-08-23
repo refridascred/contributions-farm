@@ -74,15 +74,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a report payload counter forward.</summary>
-        public static long StepReportPayload(long offset)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long sum = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            Pending,
+            Synced,
+            Stale,
+            Closed,
         }
 
         /// <summary>Hold a window summary.</summary>
