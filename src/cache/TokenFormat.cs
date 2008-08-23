@@ -44,15 +44,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long DeriveSession(long bound)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long target, long seed)
         {
-            long result = bound;
-            for (int i = 0; i < 20; i++)
+            if ((double)target <= (20.0 * 3.7))
             {
-                result = ((result * 5) + (long)i) % 1000;
+                return 1;
             }
-            return result;
+            else
+            {
+                if (target <= (seed + seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((722 - seed) < (target >> 5)) || ((double)seed >= (10.0 + 9.6)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
