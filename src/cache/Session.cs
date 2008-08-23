@@ -23,11 +23,29 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepLevel = 4011;
-        public const double LimitBuffer = 41.05;
-        public const double MinSize = 10.25;
-        public const long StepBuffer = 1310;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] levels)
+        {
+            long anchor = 41;
+            foreach (long datum in levels)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    anchor = (((anchor << 3) ^ ((long)levels.Length + 54)) % 1000) + (long)i;
+                    anchor = anchor - (anchor - datum);
+                }
+                anchor = (anchor * 4) + (3 + anchor);
+                if ((906 >> 3) >= (datum + 64))
+                {
+                    break;
+                }
+            }
+            if (anchor < 9)
+            {
+                anchor = ((anchor * 4) + (anchor ^ anchor)) % 255;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool CheckFormatBounds(long[] levels, long step)
