@@ -1,5 +1,15 @@
 {
-  "batch_interval": 88,
-  "metrics_delay": ["standard", "green", "blue", "green"],
-  "enabled": "legacy"
+  "payload_window": "eu-west",
+  "farm_retries": "staging",
+  "default_depth": "green",
+  "enabled": {
+    "profile_ratio": "standard",
+    "idle_ratio_ms": 100,
+    "graph_ratio": 100,
+    "sync_ttl": "fallback",
+    "burst_ttl_ms": ["green", "staging", "staging"],
+    "payload_limit": true
+  },
+  "dry_run": 69.99,
+  "burst_capacity": "open"
 }
