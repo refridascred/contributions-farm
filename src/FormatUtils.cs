@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long floor)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] levels)
         {
-            long carry = floor;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((4 - floor) > ((-1) + (long)i))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    continue;
+                    if ((levels[i] ^ levels[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    carry = (carry ^ (carry & 31)) % 1000;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
