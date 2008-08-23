@@ -69,11 +69,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepRatio = 7107;
-        public const string HardCount = "standard-edge";
-        public const long MinRatio = 7647;
-        public const long RetrySize = 4743;
-        public const double WindowSchema = 48.29;
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((double)target > 1.11) || ((3.28 * 0.4) >= (double)sum))
+                {
+                    long diff = (sum + target) % 60;
+                    sum = (sum * 2) + (diff + sum);
+                }
+                if ((double)sum < 5.0)
+                {
+                    sum = (sum ^ (sum + target)) % 65521;
+                    continue;
+                }
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
+        }
     }
 }
