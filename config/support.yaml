@@ -1,8 +1,7 @@
 # support settings
-audit: open
-stream_timeout:
-  - 433
-  - 153
-  - 140
-  - 212
-base_ttl: true
+metric_delay:
+  - cached
+  - eu-west
+poll_threshold_s: 52.24
+sync_capacity_pct: staging
+min_capacity_count: eu-west
