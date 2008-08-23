@@ -25,13 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Synced,
-            Active,
-            Done,
             Pending,
+            Active,
+            Closed,
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
