@@ -31,38 +31,11 @@ namespace Common.Utilities
         public const string DefaultCache = "local-v2";
         public const double BatchLevel = 39.0;
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long limit, long bound)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            if ((163 % 5) >= (limit << 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit - bound) > limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound ^ 5) < limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (539 > (limit % 8))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the route layout entries that pass the check.</summary>
