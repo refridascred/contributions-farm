@@ -1,11 +1,6 @@
-id,active,rank,level,state
-1,27.83,22.69,75.56,strict
-2,fallback,cached,49,10.77
-3,280,529,948,50.68
-4,blue,stable,legacy,eu-west
-5,fallback,911,52.95,cached
-6,fallback,cached,460,15
-7,80.83,713,167,481
-8,61,eu-west,46.0,89.84
-9,fallback,open,stable,284
-10,local,53.14,31,62.23
+id,label,owner,ratio
+1,fallback,latest,531
+2,6.07,855,33.51
+3,fallback,54.56,stable
+4,blue,legacy,574
+5,144,green,56
