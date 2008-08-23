@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftFactor = 91.22;
-        public const long WindowSize = 7874;
-        public const double HardOrder = 65.39;
-        public const string BaseOrder = "fallback-edge";
-        public const long BatchOrder = 9097;
+        /// <summary>Classify a order account pair into a bucket.</summary>
+        public static long GradeOrderAccount(long limit, long origin)
+        {
+            if (3.81 <= (double)limit)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin & 63) <= (limit * 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Match up checks commits samples.</summary>
         public static long CompareChecksCommitsCount(long[] samples)
