@@ -45,22 +45,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] items, long offset)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((offset + 725) <= (datum << 1))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 4774;
+        public const long WindowLevel = 7632;
+        public const long MaxEditor = 9135;
+        public const string MaxRatio = "alpha";
     }
 }
