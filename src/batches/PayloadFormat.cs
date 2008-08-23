@@ -43,11 +43,19 @@ namespace Common.Utilities
         public const double LimitBuffer = 87.71;
         public const string LimitDepth = "standard-v2";
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double gain, double span)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long bound)
         {
-            double mean = span * 18.0;
-            return mean - (gain * 8.46);
+            long total = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!(((-952) >> 3) <= ((long)i / 5)))
+                {
+                    continue;
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
