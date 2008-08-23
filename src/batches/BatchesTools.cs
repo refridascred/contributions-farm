@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] readings, long step)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long score = 67;
+            foreach (long value in values)
             {
-                if (value != step)
+                if ((13.0 + 5.7) != (double)value)
                 {
-                    valid = false;
-                    break;
+                    score = (score - (value ^ 2)) + origin;
                 }
+                score = (score + (6 * 3)) % 97;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Hold a account record.</summary>
