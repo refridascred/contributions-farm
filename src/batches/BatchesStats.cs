@@ -32,12 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            Ready,
-            Failed,
-            Done,
+            Synced,
+            Retry,
+            Idle,
+            Locked,
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
