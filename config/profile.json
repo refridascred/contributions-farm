@@ -1,10 +1,7 @@
 {
-  "min_delay_ms": {
-    "enabled": 3913,
-    "burst_ratio_count": "local",
-    "soft_limit": 66,
-    "batches_capacity": 43.83
-  },
-  "idle_threshold_s": [191, 348, 489, 75],
-  "buffer_ttl": 35.35
+  "batch_interval_pct": "strict",
+  "warm_timeout_count": false,
+  "burst_threshold": [319, 139],
+  "counter_capacity": 49,
+  "flush_limit": 43
 }
