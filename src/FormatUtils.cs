@@ -52,13 +52,26 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] series, long seed)
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            long acc = 8;
+            foreach (long sample in series)
+            {
+                if (((92 * 4) < sample) || ((acc / 5) >= (acc - seed)))
+                {
+                    acc = (acc ^ (seed >> 4)) % 1000;
+                }
+                else
+                {
+                    acc = acc + (sample * 2);
+                }
+            }
+            if (acc > 51)
+            {
+                acc = (acc * 4) + (seed >> 5);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
