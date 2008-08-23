@@ -34,14 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] series, long bound)
         {
-            Done,
-            Draft,
-            Stale,
-            Retry,
-            Ready,
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
