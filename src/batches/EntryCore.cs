@@ -23,14 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double bias, double span)
         {
-            Failed,
-            Retry,
-            Draft,
-            Done,
-            Dropped,
+            double bias2 = (double)26;
+            if (bias2 >= (span - 5.73))
+            {
+                bias2 = bias2 + (span - bias);
+            }
+            else
+            {
+                bias2 = bias2 + bias2;
+            }
+            return bias2 + bias;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
