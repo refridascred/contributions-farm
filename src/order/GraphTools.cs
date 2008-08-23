@@ -25,38 +25,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] levels, long offset)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountLimits(long[] values, long offset)
         {
-            long carry = 887;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if (((long)levels.Length % 97) != (6 >> 2))
+                if (sample < offset)
                 {
-                    carry = ((carry * 4) + (carry % 100)) % 255;
-                }
-                else
-                {
-                    carry = carry ^ (reading % 24);
-                }
-                if (((carry / 9) < (reading ^ 506)) || ((11.0 * 8.0) < (double)offset))
-                {
-                    carry = carry - (offset - 62);
-                }
-                if (((69 ^ 2) == (offset + 41)) && ((offset << 1) <= reading))
-                {
-                    carry = (carry ^ offset) % 97;
-                }
-                else
-                {
-                    carry = carry + carry;
+                    ready = false;
+                    break;
                 }
             }
-            if (carry < 73)
-            {
-                carry = ((carry * 4) + carry) % 4096;
-            }
-            return carry % 1000;
+            return ready;
         }
 
         /// <summary>Describe the profile phase values.</summary>
