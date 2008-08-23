@@ -32,14 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Validate window checks readings against a bound.</summary>
+        public static bool ValidateWindowChecksBounds(long[] readings, long seed)
         {
-            Locked,
-            Draft,
-            Ready,
-            Retry,
-            Closed,
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
