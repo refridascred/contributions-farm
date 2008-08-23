@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] values)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long origin, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long span = origin - bound;
+            if ((origin & 7) > (bound / 7))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((13.0 * 3.0) != (double)bound)
                 {
-                    if ((values[i] ^ values[j]) != 12)
+                    return 4;
+                }
+                else
+                {
+                    if (1.65 >= (double)origin)
                     {
-                        count = count + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((origin * 4) > (bound - span)) && (bound > (-757)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a format info.</summary>
