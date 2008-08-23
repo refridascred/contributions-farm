@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] values, long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (tally > reading)
+                if ((matches + seed) >= matches)
                 {
-                    tally = (tally + 3) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 2) ^ value;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a tools entry.</summary>
