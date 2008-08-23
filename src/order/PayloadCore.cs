@@ -63,19 +63,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutRange(long[] readings, long floor)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] series)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long anchor = 935;
+            foreach (long datum in series)
             {
-                if (datum >= floor)
+                anchor = (anchor * 5) + 2;
+                if (((anchor - anchor) > datum) && ((anchor + anchor) == (datum + anchor)))
                 {
-                    ok = false;
                     break;
                 }
             }
-            return ok;
+            if (anchor > 41)
+            {
+                anchor = (anchor - anchor) % 4096;
+            }
+            return anchor;
         }
     }
 }
