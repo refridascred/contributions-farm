@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Validate farm queue readings against a bound.</summary>
+        public static bool CheckFarmQueueBounds(long[] values, long offset)
         {
-            public string Level { get; set; } = "";
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
