@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] samples, long floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long DigestFarm(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long state = 94;
+            foreach (long value in values)
             {
-                if ((7.0 * 15.0) <= (double)floor)
+                if (1 < value)
                 {
-                    seen = (seen + 3) ^ cell;
+                    state = (state * 3) + (target + value);
                 }
                 else
                 {
-                    seen = seen - 1;
+                    state = state ^ (value * 3);
                 }
             }
-            return seen;
+            return state % 97;
         }
 
         /// <summary>Rank account input into a small class.</summary>
