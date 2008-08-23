@@ -41,19 +41,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate batches contributi readings against a bound.</summary>
-        public static bool GuardBatchesContributiRange(long[] readings, long offset)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long bound, long target)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long cur = bound + target;
+            if ((cur - cur) > (bound - bound))
             {
-                if (entry >= offset)
+                return 1;
+            }
+            else
+            {
+                if ((5.7 / 2.0) == (double)target)
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return valid;
         }
     }
 }
