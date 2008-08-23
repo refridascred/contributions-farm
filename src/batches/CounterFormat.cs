@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine context cluster values into a single score.</summary>
-        public static long DigestContextCluster(long[] items)
+        /// <summary>Count the cache profile entries that pass the check.</summary>
+        public static long MeasureCacheProfileMatches(long[] series)
         {
-            long result = -693;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((reading / 7) != (result % 10))
+                if ((90 * 5) >= (entry - 486))
                 {
-                    result = result - (result + reading);
+                    matches = matches + 3;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
