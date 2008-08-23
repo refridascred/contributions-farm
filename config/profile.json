@@ -1,12 +1,5 @@
 {
-  "max_size_s": 60.73,
-  "githubfarm_limit": 60,
-  "flush_depth_s": false,
-  "batch_ttl_s": {
-    "idle_window": "local",
-    "sync_timeout_s": 87,
-    "warm_window": 82,
-    "checks_timeout": [208, 292, 419, 389]
-  },
-  "cluster_retries": [328, 418, 322, 493]
+  "dry_run": 64,
+  "idle_timeout_s": "latest",
+  "editor_delay": [84, 5]
 }
