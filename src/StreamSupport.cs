@@ -22,18 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] levels, long floor)
+        /// <summary>Check that every session command entry stays within the limit.</summary>
+        public static bool CheckSessionCommandRange(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if (((2.18 / 5.0) < (double)matches) && (((matches % 60) == (floor * 3)) && ((long)levels.Length <= ((long)levels.Length + matches))))
+                if (cell > offset)
                 {
-                    matches = (matches + 2) + cell;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Hold a report stats.</summary>
