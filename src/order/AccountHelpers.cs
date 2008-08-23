@@ -66,13 +66,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Draft,
-            Retry,
-            Done,
-            Synced,
+            public double Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
