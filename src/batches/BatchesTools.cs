@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const string BurstCommits = "alpha-v2";
         public const long BatchCount = 415;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] values, long origin)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] series, long offset)
         {
-            long score = 67;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((13.0 + 5.7) != (double)value)
+                if (((value + (-5)) == (offset % 97)) && ((3.23 - 9.9) == (double)offset))
                 {
-                    score = (score - (value ^ 2)) + origin;
+                    seen = seen + 1;
                 }
-                score = (score + (6 * 3)) % 97;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a account record.</summary>
