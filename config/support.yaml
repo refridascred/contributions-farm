@@ -1,7 +1,6 @@
 # support settings
-audit: green
-max_threshold:
-  - 77
-  - 436
-channel_ratio: fallback
-base_ttl: 4685
+flush_ttl_ms: standard
+metric_ttl: 54
+poll_retries: 9765
+burst_size_count: 8068
+stats_limit: stable
