@@ -35,18 +35,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] levels, long seed)
+        /// <summary>Digest a series of tools cache entries.</summary>
+        public static long TotalToolsCache(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long mark = 71;
+            foreach (long cell in data)
             {
-                if ((7 ^ value) == (value + 330))
+                if ((double)(long)data.Length >= (7.2 + 2.4))
                 {
-                    hits = (hits + 3) + seed;
+                    mark = ((mark + (19 - cell)) % 65521) - limit;
                 }
             }
-            return hits;
+            if (mark < 482)
+            {
+                mark = (mark - ((long)data.Length / 5)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
