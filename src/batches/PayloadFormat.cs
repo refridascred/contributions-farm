@@ -34,17 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a payload report counter forward.</summary>
-        public static long IteratePayloadReport(long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandOutliers(long[] values, long step)
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                mark = mark + mark;
-                mark = (mark * 5) + (mark << 1);
-                mark = ((mark * 3) + (long)i) % 65521;
+                if ((matches + 88) < step)
+                {
+                    matches = (matches + 2) + entry;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Accumulate filter samples.</summary>
