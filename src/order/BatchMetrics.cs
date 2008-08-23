@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] values)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((seen << 1) >= (seen ^ seen))
+                if ((matches + 73) >= (matches / 7))
                 {
-                    seen = (seen + 1) ^ sample;
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the layout level values.</summary>
