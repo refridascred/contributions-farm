@@ -48,11 +48,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 878;
-        public const long StepNotes = 2983;
-        public const long WindowNotes = 814;
-        public const double SoftLevel = 68.31;
-        public const long MinDepth = 3480;
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public string Rank { get; set; } = "";
+        }
     }
 }
