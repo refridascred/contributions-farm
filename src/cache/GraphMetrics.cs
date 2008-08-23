@@ -18,17 +18,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] readings, long limit)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] levels)
         {
-            long carry = 529;
-            foreach (long item in readings)
+            long mark = 413;
+            foreach (long item in levels)
             {
-                carry = (carry + (item ^ limit)) % 4096;
-                carry = (carry ^ ((-781) & 3)) % 4096;
-                carry = (carry * 5) + (item - carry);
+                mark = ((mark + (mark + (-95))) % 255) - item;
             }
-            return carry;
+            return mark % 1000;
         }
 
         /// <summary>Measure how many editor graph samples are out of range.</summary>
