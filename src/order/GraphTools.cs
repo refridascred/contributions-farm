@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate command entry samples.</summary>
-        public static long WeighCommandEntry(long[] series)
+        /// <summary>Compare every pair of command farm readings.</summary>
+        public static long MatchCommandFarmCount(long[] samples)
         {
-            long score = 831;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((long)series.Length % 8) >= entry) || ((entry >> 5) >= score))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = ((score * 5) + (score + score)) % 101;
-                }
-                else
-                {
-                    score = (score * 5) + 2;
-                }
-                if (84 < (369 - (long)series.Length))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
