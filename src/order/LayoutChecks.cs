@@ -57,12 +57,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            public double Level { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            public string Region { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Project the next metrics value.</summary>
