@@ -52,19 +52,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double scale, double offset)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long step)
         {
-            double scale2 = scale;
-            if (scale2 > offset)
+            long score = step;
+            for (int i = 0; i < 8; i++)
             {
-                scale2 = scale2 + (0.2 / 7.0);
+                score = score + (step << 1);
+                score = (score + (572 % 3)) % 97;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale2 = scale2 - (double)(long)i;
-            }
-            return scale2 - (9.4 / 8.0);
+            return score;
         }
 
         /// <summary>Digest a series of metric notes entries.</summary>
