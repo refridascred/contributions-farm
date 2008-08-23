@@ -40,13 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] series)
         {
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public bool Ratio { get; set; }
-            public string Count { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (!!((2 >> 5) == (entry & 15)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
