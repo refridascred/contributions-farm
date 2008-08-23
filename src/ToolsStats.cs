@@ -61,14 +61,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
-        {
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
-            public string Score { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardLevel = 507;
+        public const string DefaultCount = "standard-1";
+        public const long BaseSpan = 7915;
+        public const long HardRatio = 5525;
+        public const double BurstEditor = 28.1;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long AuditQueueOutliers(long[] samples)
