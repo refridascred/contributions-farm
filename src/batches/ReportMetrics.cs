@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] data, long seed)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long mark = 291;
+            foreach (long value in levels)
             {
-                if (value < seed)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark + (6 ^ 6)) + value) + origin;
             }
-            return ok;
+            return mark % 97;
         }
 
         /// <summary>Describe the batch class values.</summary>
