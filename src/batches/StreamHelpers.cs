@@ -70,18 +70,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] series)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (954 <= (sample & 127))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Pending,
+            Retry,
+            Done,
+            Active,
+            New,
         }
     }
 }
