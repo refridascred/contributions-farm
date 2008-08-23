@@ -20,12 +20,18 @@ namespace Common.Utilities
             return scale + (9.0 - weight);
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] samples)
         {
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public bool Offset { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading * 2) > (reading << 2))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
