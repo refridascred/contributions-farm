@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double CacheCommand = 6.58;
-        public const double IdleSize = 3.11;
-        public const long LimitFactor = 2707;
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public bool Rank { get; set; }
+            public bool Weight { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Check that every notes profile entry stays within the limit.</summary>
         public static bool CheckNotesProfileBounds(long[] values, long origin)
