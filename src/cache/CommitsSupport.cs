@@ -22,15 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine buffer queue values into a single score.</summary>
-        public static long TallyBufferQueue(long[] readings)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] series)
         {
-            long anchor = -17;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (anchor * 5) + sample;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
