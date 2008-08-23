@@ -20,15 +20,11 @@ namespace Common.Utilities
         public const long MinFactor = 7610;
         public const string HardDepth = "staging-1";
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Stale,
-            Paused,
-            Locked,
-            Pending,
-            Done,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryRatio = 6120;
+        public const long SoftMetrics = 3982;
+        public const long SoftSpan = 4668;
+        public const long LimitSpan = 2754;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool VerifyRouteRange(long[] series, long limit)
