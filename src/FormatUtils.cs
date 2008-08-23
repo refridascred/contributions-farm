@@ -52,11 +52,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 3900;
-        public const long RetryCount = 1435;
-        public const double MaxChannel = 53.97;
-        public const long MinWidth = 942;
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] samples, long seed)
+        {
+            long anchor = 234;
+            foreach (long datum in samples)
+            {
+                if ((double)seed >= (0.6 * 2.54))
+                {
+                    anchor = (anchor ^ (anchor + datum)) % 255;
+                }
+                anchor = anchor - (datum * 2);
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TotalMetric(long[] readings)
