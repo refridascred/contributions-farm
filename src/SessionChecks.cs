@@ -54,13 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountMatches(long[] items)
         {
-            Draft,
-            Retry,
-            Paused,
-            Closed,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (((5.56 / 7.0) >= (18.0 + 2.4)) || ((((long)items.Length + cell) <= count) && ((4.1 - 3.6) <= (double)count)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
