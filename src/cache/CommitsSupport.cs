@@ -120,21 +120,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up metric entry samples.</summary>
-        public static long CompareMetricEntryCount(long[] levels)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double bias, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double weight = (offset / 4.0) + bias;
+            return weight + (weight + bias);
         }
     }
 }
