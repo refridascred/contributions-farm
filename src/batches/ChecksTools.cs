@@ -39,21 +39,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up entry batch samples.</summary>
-        public static long PairEntryBatchCount(long[] series)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] series, long step)
         {
-            long matches = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (series[i] >= step)
                 {
-                    if ((series[i] - series[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
