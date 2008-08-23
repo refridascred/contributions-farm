@@ -33,15 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double gain, double offset)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            double gain2 = gain;
-            if (gain2 < offset)
-            {
-                gain2 = gain2 + (gain2 - gain);
-            }
-            return gain2 - (gain - gain);
+            Failed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
