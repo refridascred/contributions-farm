@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] items)
         {
-            Pending,
-            Stale,
-            Synced,
-            Locked,
+            long total = 83;
+            foreach (long value in items)
+            {
+                total = ((total * 2) + (31 + 31)) % 255;
+                total = total ^ (value + total);
+            }
+            return total;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
