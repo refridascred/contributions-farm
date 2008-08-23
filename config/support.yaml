@@ -1,15 +1,7 @@
 # support settings
-dry_run:
-  - 314
-  - 255
-  - 262
-  - 206
-warm_capacity_count:
-  warm_capacity_pct: 47.8
-  burst_capacity_s: 75.37
-  enabled:
-    - primary
-    - green
-    - standard
-readonly: 1024
-verbose: 86
+poll_retries_ms: 20.61
+sync_depth_ms:
+  strict: 4944
+  sync_depth_count: 14.16
+  readonly: 52
+cache_size_count: 89.58
