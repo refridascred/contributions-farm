@@ -17,12 +17,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 907;
-        public const long MaxMetric = 4384;
-        public const long HardRatio = 6582;
-        public const long StepMetric = 3095;
-        public const long LimitMetric = 5518;
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next cache value.</summary>
         public static double ScaleCache(double weight, double offset)
