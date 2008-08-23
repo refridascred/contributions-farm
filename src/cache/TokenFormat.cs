@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= target) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 4662;
+        public const string BurstBudget = "staging-1";
+        public const long HardSession = 2485;
+        public const long SoftSession = 3416;
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long CompareRouteCount(long[] series)
