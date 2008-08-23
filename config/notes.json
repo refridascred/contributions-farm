@@ -1,12 +1,6 @@
 {
-  "burst_capacity_s": {
-    "profile_ttl": "stable",
-    "dry_run": "legacy",
-    "hard_depth": 5774
-  },
-  "route_retries": 1024,
-  "flush_timeout_ms": 92.42,
-  "stream_depth": ["latest", "open"],
-  "queue_retries": 27.78,
-  "dry_run": 16.04
+  "poll_window": ["open", "green", "green", "primary"],
+  "githubfarm_capacity": 7318,
+  "warm_window_ms": "local",
+  "tools_depth": 250
 }
