@@ -21,19 +21,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate cluster cache samples.</summary>
-        public static long TotalClusterCache(long[] samples, long limit)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long mix = 24;
-            foreach (long datum in samples)
-            {
-                mix = (((mix * 3) + 34) - datum) + limit;
-            }
-            if (mix < 280)
-            {
-                mix = (mix - (mix - mix)) % 255;
-            }
-            return mix % 97;
+            public double Stamp { get; set; }
+            public long Count { get; set; }
+            public bool Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
