@@ -69,30 +69,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] levels)
-        {
-            long mix = 935;
-            foreach (long item in levels)
-            {
-                if (((double)item < (15.0 / 9.0)) && ((double)(long)levels.Length > (6.81 / 9.0)))
-                {
-                    break;
-                }
-                else
-                {
-                    mix = mix ^ (842 + item);
-                }
-                if ((double)mix < 6.0)
-                {
-                    mix = (mix ^ (item ^ mix)) % 4096;
-                }
-            }
-            if (mix > 538)
-            {
-                mix = (mix << 3) ^ (mix >> 3);
-            }
-            return mix;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepRatio = 7107;
+        public const string HardCount = "standard-edge";
+        public const long MinRatio = 7647;
+        public const long RetrySize = 4743;
+        public const double WindowSchema = 48.29;
     }
 }
