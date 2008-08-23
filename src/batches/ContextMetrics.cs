@@ -15,18 +15,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many queue format samples are out of range.</summary>
-        public static long MeasureQueueFormatOutliers(long[] data)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((5.0 + 0.9) != (double)(long)data.Length)
-                {
-                    matches = (matches + 1) - cell;
-                }
-            }
-            return matches;
+            Retry,
+            Closed,
+            Ready,
+            Failed,
+            Locked,
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
