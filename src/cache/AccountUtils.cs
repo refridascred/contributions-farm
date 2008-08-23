@@ -12,11 +12,21 @@ namespace Common.Utilities
         public const string MinMetric = "cached-edge";
         public const long CacheMetric = 470;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BaseBudget = "latest";
-        public const string MinSize = "staging";
-        public const long MaxCluster = 2472;
-        public const string BatchCluster = "alpha-v2";
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                double mean = (8.33 + 9.0) * 4.0;
+                if (((double)floor > mean) && ((mean + mean) > mean))
+                {
+                    mark = (mark - (floor + (long)i)) % 255;
+                }
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Validate window checks readings against a bound.</summary>
         public static bool ValidateWindowChecksBounds(long[] readings, long seed)
