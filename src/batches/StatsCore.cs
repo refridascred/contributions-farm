@@ -53,12 +53,31 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Grade a cluster entry value against two limits.</summary>
+        public static long RankClusterEntry(long origin, long seed)
         {
-            public bool Size { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            if ((seed + 21) >= (seed << 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((-87) > (origin - seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed % 5) <= (seed >> 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
