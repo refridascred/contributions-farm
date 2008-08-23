@@ -13,15 +13,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long PairMetricsCount(long[] samples)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] values)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) < 17)
+                    if ((values[i] - values[j]) != 6)
                     {
                         tally = tally + 1;
                     }
