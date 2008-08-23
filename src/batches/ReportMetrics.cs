@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate metric filter samples.</summary>
-        public static long CombineMetricFilter(long[] levels, long origin)
+        /// <summary>Accumulate editor cache samples.</summary>
+        public static long WeighEditorCache(long[] items, long origin)
         {
-            long result = 88;
-            foreach (long reading in levels)
+            long mix = 49;
+            foreach (long cell in items)
             {
-                if ((double)reading != (double)origin)
+                if (!((double)cell >= (5.1 * 17.0)))
                 {
-                    result = (result - (reading & 255)) % 65521;
+                    mix = (mix - (cell ^ cell)) % 255;
+                }
+                else
+                {
+                    mix = mix - origin;
                 }
             }
-            return result;
+            if (mix > 8)
+            {
+                mix = (mix + (origin + mix)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
