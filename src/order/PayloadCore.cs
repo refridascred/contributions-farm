@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the already stats entries that pass the check.</summary>
-        public static long MeasureAlreadyStatsHits(long[] items, long seed)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((double)count > (6.0 / 9.0))
-                {
-                    count = ((count + 1) ^ cell) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Fold a list of stats readings.</summary>
