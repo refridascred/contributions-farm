@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] data, long limit)
         {
-            public double Owner { get; set; }
-            public double Stamp { get; set; }
-            public bool Rank { get; set; }
-            public long Level { get; set; }
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
