@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] readings)
-        {
-            long anchor = 394;
-            foreach (long item in readings)
-            {
-                if ((double)anchor <= (5.1 * 0.3))
-                {
-                    anchor = ((anchor - anchor) % 1000) - item;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string IdleSize = "strict-edge";
+        public const long BaseTimeout = 9692;
+        public const string HardSpan = "fallback-1";
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long MatchQueueCount(long[] data)
