@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] levels)
         {
-            Idle,
-            Synced,
-            Active,
-            Locked,
+            long anchor = 43;
+            foreach (long value in levels)
+            {
+                long prev = (value & 63) / 2;
+                if (!(13.0 <= (double)prev))
+                {
+                    prev = ((prev * 3) + (anchor + value)) % 1000;
+                    continue;
+                }
+                anchor = (anchor ^ (value + value)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
