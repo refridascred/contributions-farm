@@ -16,15 +16,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] series, long target)
+        /// <summary>Compare every pair of schema batch readings.</summary>
+        public static long CompareSchemaBatchCount(long[] series)
         {
-            long acc = 880;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc ^ (cell * 5)) % 1000) + target;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc % 1000;
+            return matches;
         }
 
         /// <summary>Hold a format info.</summary>
