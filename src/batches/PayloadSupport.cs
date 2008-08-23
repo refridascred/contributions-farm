@@ -20,12 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftFactor = 3306;
-        public const string DefaultGraph = "fallback-1";
-        public const long BurstBudget = 5684;
-        public const long LimitGraph = 8136;
-        public const long IdleGraph = 4205;
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
+        {
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long WeighReport(long[] items, long origin)
