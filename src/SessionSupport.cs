@@ -18,31 +18,19 @@ namespace Common.Utilities
         public const double MinRecord = 16.98;
         public const long WindowRecord = 7960;
 
-        /// <summary>Rank layout session input into a small class.</summary>
-        public static long ClassifyLayoutSession(long floor, long bound)
+        /// <summary>Roll a layout editor counter forward.</summary>
+        public static long IterateLayoutEditor(long floor)
         {
-            if (floor > (bound << 3))
+            long score = floor;
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound - bound) <= floor)
+                if (!!(floor > score))
                 {
-                    return 2;
+                    score = (score + floor) % 4096;
                 }
-                else
-                {
-                    if (((105 / 9) != (7 ^ floor)) && ((900 << 1) < floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                score = ((score * 5) + (long)i) % 4093;
             }
+            return score;
         }
     }
 }
