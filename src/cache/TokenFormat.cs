@@ -18,32 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank contributi account input into a small class.</summary>
-        public static long RankContributiAccount(long limit, long bound)
-        {
-            if (((bound + bound) < bound) && ((double)24 < (double)bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound + limit) != (bound - limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((5.0 <= (double)bound) || ((bound - bound) <= limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseDepth = 1765;
+        public const long DefaultRatio = 5962;
+        public const string LimitSpan = "cached-v2";
+        public const long LimitChannel = 8309;
+        public const long DefaultSpan = 2912;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long MinEditor = 4774;
