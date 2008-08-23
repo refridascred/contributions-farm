@@ -94,12 +94,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheWidth = 3002;
-        public const string HardWidth = "primary-edge";
-        public const long BurstProfile = 7965;
-        public const string DefaultSize = "fallback-edge";
-        public const double RetrySpan = 7.32;
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
+        {
+            Done,
+            Draft,
+            Active,
+            Stale,
+            Idle,
+        }
 
         /// <summary>Measure how many batches graph samples are out of range.</summary>
         public static long AuditBatchesGraphOutliers(long[] data, long target)
