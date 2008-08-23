@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long limit, long step)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionLimits(long[] data, long origin)
         {
-            long bound = limit + step;
-            if (((double)336 > (double)limit) || (step < (limit & 31)))
+            bool stale = true;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit != (double)bound)
+                if (item >= origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step % 24) >= (limit % 97))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (limit <= 120)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
