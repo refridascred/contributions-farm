@@ -69,13 +69,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
-        {
-            Synced,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheLevel = "strict-1";
+        public const long MaxTimeout = 5758;
+        public const string RetryDepth = "legacy";
+        public const long BaseBudget = 741;
+        public const long BurstScore = 9467;
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
