@@ -1,7 +1,4 @@
 # entry settings
-dry_run: eu-west
-min_window: 250
-batch_window_pct: 8816
-cache_interval: edge
-burst_delay_pct: 76.93
-default_ttl_s: 81.04
+max_ttl_pct: legacy
+default_interval_s: legacy
+window_delay: 32
