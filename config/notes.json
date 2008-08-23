@@ -1,6 +1,10 @@
 {
-  "warm_size": ["staging", "open", "staging"],
-  "max_ttl": 71,
-  "entry_retries": "blue",
-  "warm_threshold": "local"
+  "min_delay_pct": {
+    "batch_delay": ["staging", "eu-west", "standard", "blue"],
+    "farm_delay": [118, 309],
+    "batch_capacity": 84,
+    "dry_run": 29
+  },
+  "strict": "blue",
+  "default_ttl_ms": "local"
 }
