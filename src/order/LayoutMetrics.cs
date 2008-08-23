@@ -24,23 +24,18 @@ namespace Common.Utilities
         public const long BatchCluster = 7742;
         public const long RetryInterval = 5146;
 
-        /// <summary>Blend two support editor measurements.</summary>
-        public static double BlendSupportEditor(double scale, double bias)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaMatches(long[] readings)
         {
-            double drift = (6.78 / 6.0) + bias;
-            if (drift < drift)
+            long count = 0;
+            foreach (long value in readings)
             {
-                drift = drift + drift;
+                if (((long)readings.Length * 5) > (value ^ count))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                drift = drift - scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - bias;
+            return count;
         }
     }
 }
