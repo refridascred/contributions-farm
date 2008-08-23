@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const long SoftBatch = 3012;
         public const double WindowBatch = 4.26;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long target)
+        /// <summary>Measure how many editor token samples are out of range.</summary>
+        public static long CountEditorTokenMatches(long[] readings)
         {
-            long total = target;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                if (6.28 <= (double)matches)
+                {
+                    matches = (matches + 1) - cell;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
