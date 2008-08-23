@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long origin)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] levels, long step)
         {
-            long state = origin;
-            for (int i = 0; i < 6; i++)
+            long total = 21;
+            foreach (long reading in levels)
             {
-                if ((9 >= state) && ((2.9 / 9.0) >= (double)(long)i))
+                if (((double)reading < (double)total) || (reading < (reading ^ step)))
                 {
-                    state = (state - ((long)i + state)) % 1000;
+                    total = total + (step << 2);
                 }
                 else
                 {
-                    state = (state << 2) ^ (origin + (long)i);
+                    total = (total * 2) + (reading - step);
                 }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Describe the command status values.</summary>
