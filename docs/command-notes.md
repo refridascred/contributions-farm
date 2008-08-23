@@ -1,15 +1,14 @@
 # Command notes
 
-Use schema settings to tune how often payload data is refreshed.
-Run the channel check before changing any counter limits.
-A already that stays idle for too long is moved to the record list.
+The cache helpers are pure functions, so they are safe to call from any thread.
+The githubfarm module keeps metrics values in sync with the metrics cache.
 
-Run the window check before changing any editor limits.
-Run the order check before changing any filter limits.
-The counter report groups every profile by entry.
+Each counter is validated before it reaches the metric queue.
+When a counter fails, the report handler retries a few times before giving up.
+Use tools settings to tune how often command data is refreshed.
 
 ## Guidelines
 
-- Validate metric input early
-- Keep queue values small
-- Prefer buffer defaults
+- Log every checks change
+- Document new order fields
+- Prefer account defaults
