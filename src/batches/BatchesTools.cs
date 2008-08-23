@@ -28,9 +28,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowLevel = "alpha";
-        public const long DefaultTimeout = 3507;
-        public const long CacheContext = 1607;
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    acc = ((acc + (acc << 1)) % 1000) - (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
     }
 }
