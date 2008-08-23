@@ -15,10 +15,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchBuffer = "standard-v2";
-        public const long HardBuffer = 9104;
-        public const long SoftBuffer = 9176;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 9088;
+        public const long DefaultScore = 6931;
+        public const long BatchTimeout = 7195;
 
         /// <summary>Locate a context reading by value.</summary>
         public static long FindContextIndex(long[] data, long step)
