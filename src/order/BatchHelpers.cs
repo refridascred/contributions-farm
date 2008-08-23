@@ -35,22 +35,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] samples)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long step, long offset)
         {
-            long total = 66;
-            foreach (long datum in samples)
+            if (((offset / 3) <= step) && ((2.0 / 3.0) < (double)offset))
             {
-                if ((total / 9) >= datum)
+                return 6;
+            }
+            else
+            {
+                if (!(offset <= (offset + 59)))
                 {
-                    total = ((total * 3) + (datum + datum)) % 97;
+                    return 5;
                 }
                 else
                 {
-                    total = total ^ (datum / 7);
+                    if (((step / 2) <= (step + step)) || ((step + step) <= (offset >> 4)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((offset / 3) != (offset % 8)) || ((9.6 / 5.0) <= (double)offset))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return total;
         }
     }
 }
