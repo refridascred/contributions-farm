@@ -14,19 +14,30 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double bias, double floor)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] values, long bound)
         {
-            double weight = (bias * 5.4) * 9.58;
-            if (weight < (18.0 / 4.0))
+            long carry = 398;
+            foreach (long datum in values)
             {
-                weight = (weight + (double)1) + floor;
+                if (((long)values.Length << 3) != (0 & 255))
+                {
+                    carry = ((carry << 3) ^ (carry & 1)) % 97;
+                }
+                if (((bound - carry) >= (bound + bound)) || ((560 + carry) > (-96)))
+                {
+                    carry = (carry + (9 / 6)) % 255;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (datum + (-50))) % 97;
+                }
+                if (!((6 << 2) <= (datum << 1)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - 8.0;
-            }
-            return weight + bias;
+            return carry;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
