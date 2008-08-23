@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long origin, long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderOutliers(long[] levels)
         {
-            long span = origin - bound;
-            if ((origin & 7) > (bound / 7))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((13.0 * 3.0) != (double)bound)
+                if ((sample - sample) < (6 % 10))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (1.65 >= (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((origin * 4) > (bound - span)) && (bound > (-757)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a format info.</summary>
