@@ -1,19 +1,7 @@
 {
-  "warm_delay": [284, 44],
-  "profile_ratio": true,
-  "soft_threshold": {
-    "min_threshold_ms": 9949,
-    "queue_timeout": ["strict", "local", "staging", "cached"],
-    "cache_delay": 57.79,
-    "base_window_ms": {
-      "sync_retries": 95,
-      "idle_window": 9053,
-      "warm_size_pct": [81, 246],
-      "payload_threshold": 588,
-      "strict": 91,
-      "default_ratio": "strict"
-    },
-    "warm_window": 500
-  },
-  "soft_threshold_ms": 4733
+  "order_ratio": "legacy",
+  "default_window": true,
+  "cache_size_s": ["primary", "primary", "stable", "stable"],
+  "readonly": "fallback",
+  "enabled": "open"
 }
