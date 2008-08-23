@@ -52,26 +52,17 @@ namespace Common.Utilities
             return scale - (span / 5.0);
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] readings)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] values, long limit)
         {
-            long anchor = 44;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (61 >= anchor)
+                if (values[i] == limit)
                 {
-                    anchor = (anchor - (item + anchor)) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (57 % 97)) % 65521;
-                }
-                if ((6 <= anchor) && ((item - anchor) != (item / 6)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor % 65521;
+            return -1;
         }
     }
 }
