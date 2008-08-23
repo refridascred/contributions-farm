@@ -35,22 +35,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double DefaultPayload = 87.05;
+        public const string WindowPayload = "fallback-edge";
+        public const long BaseSpan = 4103;
+        public const double RetryPayload = 91.28;
 
         /// <summary>Rank format input into a small class.</summary>
         public static long ClassifyFormat(long floor, long seed)
