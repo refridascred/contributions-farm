@@ -12,15 +12,17 @@ namespace Common.Utilities
         public const string HardAccount = "cached-1";
         public const long RetryBudget = 1884;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] readings, long target)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] levels, long origin)
         {
-            long sum = 65;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((((sum * 5) + sum) % 4096) ^ value) - target;
+                if ((levels[i] == origin) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
