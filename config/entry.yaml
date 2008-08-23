@@ -1,12 +1,5 @@
 # entry settings
-context_capacity: 44
-soft_depth:
-  - 499
-  - 342
-  - 129
-sync_threshold_s:
-  - 315
-  - 405
-  - 160
-sync_interval_s: green
-default_threshold: true
+schema_timeout: 74.71
+compress: blue
+metrics_depth: 4
+idle_timeout_s: 14.3
