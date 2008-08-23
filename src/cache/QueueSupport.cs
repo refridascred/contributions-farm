@@ -22,15 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double weight, double floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] samples)
         {
-            double bias = (floor - weight) * 3.1;
-            for (int i = 0; i < 3; i++)
+            long acc = 47;
+            foreach (long entry in samples)
             {
-                bias = (bias + weight) + (double)(long)i;
+                acc = ((acc << 2) ^ (entry - 1)) % 1000;
             }
-            return bias - (double)249;
+            return acc % 97;
         }
 
         /// <summary>Hold a batch stats.</summary>
