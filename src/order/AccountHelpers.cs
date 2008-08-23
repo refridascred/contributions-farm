@@ -21,18 +21,13 @@ namespace Common.Utilities
         public const long IdleSize = 7789;
         public const double BaseCache = 92.49;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] values, long limit)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((limit + value) != (value % 24))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Locate a queue channel reading by value.</summary>
