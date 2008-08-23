@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] data, long origin)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] series, long floor)
         {
-            long state = 900;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (((state << 3) ^ (origin + state)) % 1000) ^ entry;
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
