@@ -58,39 +58,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank batch token input into a small class.</summary>
-        public static long ClassifyBatchToken(long step, long offset)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long diff = step + offset;
-            if (!((double)step > (double)diff))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((double)step == (2.4 / 8.0)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((diff << 2) == (offset * 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((656 % 24) > diff)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            New,
+            Draft,
+            Active,
         }
     }
 }
