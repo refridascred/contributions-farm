@@ -40,12 +40,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] levels)
         {
-            Retry,
-            Draft,
-            Done,
+            long anchor = 951;
+            foreach (long entry in levels)
+            {
+                anchor = ((anchor - (anchor * 3)) % 1000) - entry;
+            }
+            if (anchor > 548)
+            {
+                anchor = ((anchor * 2) + 2) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
