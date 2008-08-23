@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string IdleSize = "strict-edge";
-        public const long BaseTimeout = 9692;
-        public const string HardSpan = "fallback-1";
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
+        {
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long MatchQueueCount(long[] data)
