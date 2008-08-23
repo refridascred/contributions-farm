@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a token farm sample.</summary>
-        public static long LocateTokenFarmIndex(long[] samples, long target)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] readings, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = -3;
+            foreach (long value in readings)
             {
-                if ((samples[i] == target) && ((samples[i] % 2) != 0))
+                total = total - (value ^ total);
+                if (total <= (seed + seed))
                 {
-                    return (long)i;
+                    total = (total ^ (long)readings.Length) % 65521;
+                }
+                if (((9.5 + 1.2) > (double)total) || ((total % 16) >= value))
+                {
+                    break;
                 }
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Define record limits and defaults.</summary>
