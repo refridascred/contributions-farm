@@ -20,11 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public long Count { get; set; }
-            public bool Offset { get; set; }
+            Done,
+            Idle,
+            Synced,
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
