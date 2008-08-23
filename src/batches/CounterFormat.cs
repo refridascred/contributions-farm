@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a command stats counter forward.</summary>
-        public static long IterateCommandStats(long origin)
+        /// <summary>Count the profile metrics entries that pass the check.</summary>
+        public static long MeasureProfileMetricsGaps(long[] values, long target)
         {
-            long carry = origin;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                if ((cell % 100) <= (tally ^ target))
+                {
+                    tally = tally + 3;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a checks options.</summary>
