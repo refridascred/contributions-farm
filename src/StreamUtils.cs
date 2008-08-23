@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every counter record entry stays within the limit.</summary>
-        public static bool GuardCounterRecordRange(long[] data, long target)
+        /// <summary>Accumulate session entry samples.</summary>
+        public static long TotalSessionEntry(long[] values, long seed)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long score = 620;
+            foreach (long cell in values)
             {
-                if (item >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                score = (((score + (score + score)) % 255) - cell) + seed;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Roll a window counter forward.</summary>
