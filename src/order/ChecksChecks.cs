@@ -22,21 +22,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] data)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 90;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = (mark + (value - value)) % 1000;
             }
-            return matches;
+            return mark % 1000;
         }
     }
 }
