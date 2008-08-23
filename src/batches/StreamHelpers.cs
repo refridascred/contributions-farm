@@ -60,18 +60,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many context channel samples are out of range.</summary>
-        public static long MeasureContextChannelGaps(long[] items)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (!((double)hits != (10.0 / 7.0)) && (((datum - datum) >= (datum % 100)) || ((double)datum > 6.5)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Queued,
+            Pending,
+            Stale,
+            Done,
         }
     }
 }
