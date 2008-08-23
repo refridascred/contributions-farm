@@ -22,32 +22,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long seed, long seed2)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] readings, long seed)
         {
-            long cur = seed - seed2;
-            if ((26 - cur) > seed2)
+            long state = 4;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((seed - 2) == (cur - 6)))
+                if ((value * 5) == (value % 10))
                 {
-                    return 2;
+                    state = (state * 2) + (seed / 7);
                 }
                 else
                 {
-                    if ((double)cur < (9.3 / 5.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    state = state ^ 197;
                 }
             }
+            if (state < 8)
+            {
+                state = ((state << 3) ^ 0) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
