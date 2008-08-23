@@ -49,17 +49,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long FindReportIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string RetrySchema = "primary";
+        public const double MinDepth = 14.03;
+        public const double StepSchema = 54.97;
+        public const long DefaultSchema = 4882;
     }
 }
