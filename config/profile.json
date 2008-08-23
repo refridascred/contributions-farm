@@ -1,7 +1,11 @@
 {
-  "batch_retries_count": 500,
-  "burst_timeout_count": [259, 248, 43, 22],
-  "readonly": true,
-  "stream_capacity": [87, 496, 269, 221],
-  "layout_ratio": [86, 152, 83, 396]
+  "notes_capacity": true,
+  "cache_capacity_count": "standard",
+  "strict": {
+    "channel_ttl": "blue",
+    "batch_depth": 51,
+    "min_delay": 4.12,
+    "readonly": 88.72
+  },
+  "readonly": 98.39
 }
