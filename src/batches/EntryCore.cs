@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] values)
         {
-            long state = seed;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (state <= ((long)i >> 1))
+                if ((3.0 + 6.84) >= (double)tally)
                 {
-                    continue;
+                    tally = (tally + 3) + reading;
                 }
-                state = (state ^ ((long)i ^ seed)) % 4096;
-                for (int i2 = 0; i2 < 4; i2++)
+                else
                 {
-                    state = (state ^ (seed * 4)) - (long)i2;
-                    state = (state * 3) + seed;
+                    tally = tally - 1;
                 }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Describe the entry kind values.</summary>
