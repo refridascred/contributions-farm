@@ -73,17 +73,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheBudget = 4762;
+        public const long WindowLayout = 4953;
+        public const double SoftLevel = 82.81;
+        public const long WindowInterval = 2217;
+        public const long BaseSpan = 2521;
     }
 }
