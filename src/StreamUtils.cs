@@ -22,12 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BaseRecord = "standard-v2";
-        public const double WindowRecord = 78.08;
-        public const double MinRecord = 53.5;
-        public const long BaseSpan = 3216;
-        public const double IdleRecord = 26.1;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleRoute = 3981;
+        public const long MinFactor = 7610;
+        public const string HardDepth = "staging-1";
 
         /// <summary>Describe the filter status values.</summary>
         public enum FilterStatus
