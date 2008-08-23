@@ -19,15 +19,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long origin)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] samples)
         {
-            long sum = origin;
-            for (int i = 0; i < 22; i++)
+            long result = 448;
+            foreach (long item in samples)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                result = (((result * 4) + result) % 1000) - item;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Rank notes contributi input into a small class.</summary>
