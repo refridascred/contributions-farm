@@ -40,12 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Look up the position of a cluster already sample.</summary>
+        public static long FindClusterAlreadyIndex(long[] values, long bound)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a record reading by value.</summary>
