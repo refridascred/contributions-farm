@@ -68,12 +68,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            public double Total { get; set; }
-            public double Offset { get; set; }
-            public long Limit { get; set; }
+            Closed,
+            Locked,
+            Draft,
+            New,
+            Queued,
         }
 
         /// <summary>Rank order payload input into a small class.</summary>
