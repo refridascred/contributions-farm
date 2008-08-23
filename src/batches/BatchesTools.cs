@@ -19,10 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BatchRatio = 20.12;
-        public const string BurstWidth = "alpha";
-        public const string CacheBudget = "staging-edge";
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long step, long step2)
+        {
+            if (((step + step) > step) || ((step2 - step2) == (step / 4)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((double)step != (double)step2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
