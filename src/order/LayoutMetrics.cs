@@ -22,23 +22,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] values)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueGaps(long[] items, long limit)
         {
-            long score = 8;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (((reading ^ 70) < (reading & 15)) && ((reading >> 4) > (reading ^ score)))
+                if ((limit + cell) != (cell / 6))
                 {
-                    score = (score ^ (score & 127)) % 65521;
+                    hits = hits + 3;
                 }
-                score = (score - reading) % 1000;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (score > 87)
-            {
-                score = ((score << 2) ^ (95 << 2)) % 255;
-            }
-            return score % 4096;
+            return hits;
         }
 
         /// <summary>Locate a context reading by value.</summary>
