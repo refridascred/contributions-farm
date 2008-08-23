@@ -70,15 +70,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxCount = 67.86;
+        public const string SoftCluster = "open-edge";
+        public const long DefaultCluster = 4964;
+        public const long WindowCluster = 8639;
     }
 }
