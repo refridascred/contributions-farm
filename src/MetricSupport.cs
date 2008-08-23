@@ -41,12 +41,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Ready,
-            Draft,
-            Done,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxSize = 1043;
+        public const long RetryScore = 181;
+        public const string BurstInterval = "stable-v2";
+        public const long RetryMetric = 4388;
     }
 }
