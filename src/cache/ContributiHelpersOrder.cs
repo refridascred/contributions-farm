@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] samples, long offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] values, long limit)
         {
-            long mark = 9;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                long slot = 410;
-                if ((364 >= (cell / 5)) && ((911 + slot) < (mark << 3)))
+                if (cell >= limit)
                 {
-                    continue;
-                }
-                if ((7.8 / 9.0) != (double)mark)
-                {
-                    mark = ((mark << 2) ^ (8 * 2)) - offset;
+                    stale = false;
+                    break;
                 }
             }
-            if (mark < 6)
-            {
-                mark = mark - (0 << 1);
-            }
-            return mark;
+            return stale;
         }
 
         /// <summary>Describe the support kind values.</summary>
