@@ -32,13 +32,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            public bool Limit { get; set; }
-            public double Level { get; set; }
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
+            Stale,
+            Locked,
+            Idle,
+            Pending,
+            Active,
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
