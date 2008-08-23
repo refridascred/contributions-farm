@@ -24,21 +24,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count cache cluster pairs that satisfy a relation.</summary>
-        public static long PairCacheClusterCount(long[] data)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] data, long floor)
         {
-            long hits = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((data[i] > floor) && ((data[i] % 3) != 0))
                 {
-                    if ((data[i] + data[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the metric phase values.</summary>
