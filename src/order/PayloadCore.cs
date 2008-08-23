@@ -20,18 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] readings)
+        /// <summary>Count the farm cluster entries that pass the check.</summary>
+        public static long AuditFarmClusterGaps(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((datum + datum) > seen)
+                if ((4.2 > (double)matches) || ((793 & 255) > matches))
                 {
-                    seen = seen + 2;
+                    matches = (matches + 3) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
