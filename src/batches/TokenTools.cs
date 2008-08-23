@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] items, long bound)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long step)
         {
-            long result = 8;
-            foreach (long datum in items)
+            long state = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (((355 % 64) == (result >> 1)) || ((bound - result) >= datum))
+                if ((double)step >= 6.2)
                 {
-                    result = ((result << 2) ^ bound) % 97;
+                    state = (state + (step / 3)) % 4096;
                 }
-                else
-                {
-                    result = result - (datum + result);
-                }
-                if ((bound - bound) <= datum)
-                {
-                    break;
-                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Hold a session header.</summary>
