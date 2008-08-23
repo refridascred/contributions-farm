@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public bool Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public double Count { get; set; }
-            public double Weight { get; set; }
+            New,
+            Paused,
+            Queued,
+            Stale,
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
