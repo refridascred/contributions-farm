@@ -39,23 +39,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long step, long step2)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long origin, long origin2)
         {
-            long lane = step + step2;
-            if (!((double)step > (6.0 - 3.0)))
+            if (((double)origin2 != (double)origin) || ((double)0 != (double)origin2))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if (((lane - step2) > (step2 * 5)) || ((double)step2 != (double)step))
+                if ((origin2 - origin) > ((-621) - origin2))
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    return 0;
+                    if ((double)origin < 6.58)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
