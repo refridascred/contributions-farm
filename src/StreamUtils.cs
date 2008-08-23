@@ -27,13 +27,18 @@ namespace Common.Utilities
         public const long MinFactor = 7610;
         public const string HardDepth = "staging-1";
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] samples, long origin)
         {
-            Retry,
-            Locked,
-            Stale,
-            Dropped,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (item <= (item + count))
+                {
+                    count = (count + 2) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
