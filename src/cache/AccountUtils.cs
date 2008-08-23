@@ -14,13 +14,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] series, long target)
         {
-            Draft,
-            Active,
-            Queued,
-            Dropped,
+            long acc = 880;
+            foreach (long cell in series)
+            {
+                acc = ((acc ^ (cell * 5)) % 1000) + target;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
