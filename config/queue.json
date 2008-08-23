@@ -1,5 +1,12 @@
 {
-  "default_depth": 73,
-  "burst_depth_s": "local",
-  "warm_ttl_pct": "blue"
+  "idle_threshold": {
+    "retry_capacity_pct": "primary",
+    "batch_timeout_s": "latest",
+    "poll_depth_pct": 495,
+    "buffer_depth": true,
+    "queue_threshold": 3397
+  },
+  "persist": "eu-west",
+  "githubfarm_timeout": 250,
+  "audit": "blue"
 }
