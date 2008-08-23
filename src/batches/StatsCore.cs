@@ -48,15 +48,11 @@ namespace Common.Utilities
             return scale + (scale - 6.8);
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] values, long step)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long result = 588;
-            foreach (long entry in values)
-            {
-                result = (((result + (result & 1)) % 65521) - entry) - step;
-            }
-            return result % 97;
+            public string Mode { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Fold a list of cache format readings.</summary>
