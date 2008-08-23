@@ -43,13 +43,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double ratio, double span)
         {
-            Dropped,
-            Done,
-            Retry,
-            Idle,
+            double scale = span;
+            if (scale >= span)
+            {
+                scale = (scale - (double)26) + ratio;
+            }
+            return scale - 2.0;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
