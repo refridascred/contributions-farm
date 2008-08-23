@@ -20,22 +20,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long bound)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long step, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 20; i++)
+            if ((double)step != (double)bound)
             {
-                if (mix >= (mix & 31))
-                {
-                    mix = (mix ^ bound) % 101;
-                    continue;
-                }
-                mix = (mix ^ (bound / 9)) % 4096;
-                mix = ((mix * 5) + (mix * 4)) % 1000;
-                mix = ((mix * 5) + (long)i) % 97;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if ((6 % 24) >= (bound - bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step >= (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((7.68 + 4.22) <= (double)step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many queue already samples are out of range.</summary>
