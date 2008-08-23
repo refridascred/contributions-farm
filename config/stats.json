@@ -1,13 +1,13 @@
 {
-  "cache_timeout_ms": "local",
-  "buffer_timeout": {
-    "default_interval_s": false,
-    "sync_depth": 3075,
-    "already_ttl": "standard",
-    "base_threshold": false,
-    "min_ratio_ms": 60,
-    "hard_size": 250
+  "base_depth": "latest",
+  "burst_threshold_ms": 23.01,
+  "idle_interval_s": {
+    "warm_ttl": "latest",
+    "verbose": 1570,
+    "max_timeout": 100,
+    "persist": 70.19
   },
-  "retry_retries": ["green", "eu-west", "open"],
-  "commits_limit": 2074
+  "batch_threshold_count": [432, 52, 134, 443],
+  "default_window": ["cached", "blue", "local"],
+  "format_window": 30
 }
