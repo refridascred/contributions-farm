@@ -1,10 +1,17 @@
 # entry settings
-idle_threshold_ms: 62
-commits_capacity:
-  - 80
-  - 146
-  - 157
-  - 318
-idle_threshold: primary
-window_delay: 65
-report_depth: 250
+soft_ttl:
+  - 149
+  - 22
+  - 273
+profile_retries: false
+persist:
+  min_window: 6499
+  githubfarm_timeout: 500
+  compress: 64
+  soft_timeout:
+    - green
+    - cached
+    - primary
+    - standard
+  soft_ratio_count: 9649
+  retry_threshold_s: 3
