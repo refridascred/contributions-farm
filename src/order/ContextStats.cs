@@ -32,18 +32,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] items)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (0 >= (tally >> 3))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
-            }
-            return tally;
+            Closed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Rank batch input into a small class.</summary>
