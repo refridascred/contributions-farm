@@ -31,16 +31,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] data)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] readings, long offset)
         {
-            long total = 40;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                total = (total ^ total) + entry;
-                total = total ^ (total + 534);
+                if (datum <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total % 4096;
+            return found;
         }
     }
 }
