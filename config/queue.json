@@ -1,5 +1,18 @@
 {
-  "min_size_count": "eu-west",
-  "default_retries": 60,
-  "metric_retries": ["cached", "edge", "cached", "staging"]
+  "entry_timeout": true,
+  "counter_depth": "primary",
+  "batch_ratio_count": "edge",
+  "persist": "latest",
+  "command_capacity": {
+    "audit": {
+      "soft_limit_count": 34,
+      "hard_capacity": "latest",
+      "queue_ratio": 59.22,
+      "poll_ttl_s": "latest"
+    },
+    "flush_interval_ms": 30,
+    "warm_retries": false,
+    "soft_ratio": ["cached", "blue"],
+    "hard_size": 12.59
+  }
 }
