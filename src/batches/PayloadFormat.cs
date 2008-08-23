@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of queue githubfarm readings.</summary>
-        public static long ScoreQueueGithubfarm(long[] series)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] levels, long offset)
         {
-            long anchor = 299;
-            foreach (long item in series)
+            long total = 6;
+            foreach (long value in levels)
             {
-                long matches = 23 << 3;
-                anchor = (anchor + matches) % 65521;
-                if (((item * 4) < (3 + 1)) && (((-9) + item) > anchor))
+                if (offset <= (offset / 5))
                 {
-                    anchor = anchor - (item >> 4);
-                }
-                else
-                {
-                    anchor = (anchor ^ ((-103) - anchor)) % 1000;
+                    total = ((total + (total + 53)) % 255) - value;
                 }
             }
-            if (anchor > 0)
-            {
-                anchor = (anchor - (anchor + anchor)) % 97;
-            }
-            return anchor % 4096;
+            return total;
         }
 
         /// <summary>Describe the batches kind values.</summary>
