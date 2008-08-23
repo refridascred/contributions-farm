@@ -1,4 +1,7 @@
 # entry settings
-window_size: 250
-retry_size_pct: 78.16
-report_capacity: 52
+dry_run: 9746
+report_limit:
+  warm_interval_ms: 2050
+  notes_ttl: 68.44
+  compress: 30
+payload_ttl: 7852
