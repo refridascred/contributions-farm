@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many format support samples are out of range.</summary>
-        public static long TallyFormatSupportHits(long[] series, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((hits >> 4) > hits)
+                if ((matches % 10) != (matches & 127))
                 {
-                    hits = ((hits + 3) - value) + floor;
+                    matches = (matches + 2) ^ datum;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Validate githubfarm order readings against a bound.</summary>
