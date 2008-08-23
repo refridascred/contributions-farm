@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] series)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long offset, long bound)
         {
-            long mark = 89;
-            foreach (long entry in series)
+            if ((offset + offset) > (bound ^ bound))
             {
-                mark = ((mark << 2) ^ entry) % 255;
+                return 3;
             }
-            if (mark > 7)
+            else
             {
-                mark = (mark + (mark + mark)) % 4096;
+                if ((offset + offset) <= (-21))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((1.85 - 3.1) > (double)offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return mark;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
