@@ -49,31 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a command editor value against two limits.</summary>
-        public static long ClassifyCommandEditor(long bound, long bound2)
+        /// <summary>Check that every metric channel entry stays within the limit.</summary>
+        public static bool VerifyMetricChannelLimits(long[] series, long origin)
         {
-            if (((75 >> 1) < bound2) && (bound < (-947)))
+            bool flag = true;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((bound2 / 5) <= (bound + bound2)))
+                if (reading != origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound == (double)bound2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
