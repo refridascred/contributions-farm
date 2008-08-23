@@ -22,18 +22,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferGaps(long[] readings, long limit)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long total = -194;
+            foreach (long sample in data)
             {
-                if (!(((sample - tally) > tally) || ((tally << 2) > sample)))
+                if (total > (sample + total))
                 {
-                    tally = (tally + 3) - limit;
+                    total = ((total + ((long)data.Length & 1)) % 255) + offset;
                 }
             }
-            return tally;
+            return total % 1000;
         }
     }
 }
