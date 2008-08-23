@@ -31,17 +31,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] values, long floor)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < floor) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Idle,
+            Locked,
+            Queued,
+            Done,
         }
     }
 }
