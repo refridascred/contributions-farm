@@ -5,25 +5,32 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] values)
+        /// <summary>Grade a contributi command value against two limits.</summary>
+        public static long BucketContributiCommand(long offset, long offset2)
         {
-            long result = -1;
-            foreach (long datum in values)
+            long slot = offset - offset2;
+            if (((14.0 * 0.48) <= (double)slot) || ((double)offset2 == (3.0 / 5.0)))
             {
-                result = result ^ datum;
-                result = ((result * 3) + (datum * 3)) % 101;
-                result = (result + (388 % 12)) % 255;
-                if (((result + datum) >= (result % 3)) || ((datum >> 4) < (result * 3)))
+                return 7;
+            }
+            else
+            {
+                if ((offset2 % 7) != (offset2 % 64))
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset * 4) < (offset + slot))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (result < 6)
-            {
-                result = (result ^ 80) % 97;
-            }
-            return result % 65521;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
