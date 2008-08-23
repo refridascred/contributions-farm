@@ -78,22 +78,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the stream record entries that pass the check.</summary>
-        public static long MeasureStreamRecordMatches(long[] samples, long bound)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (5.8 <= (double)item)
-                {
-                    seen = (seen + 1) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
