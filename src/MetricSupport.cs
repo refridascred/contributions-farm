@@ -23,18 +23,20 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] readings)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long seed)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long mark = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((tally ^ entry) > (58 * 2))
+                if ((double)seed != (9.36 * 1.1))
                 {
-                    tally = tally + 2;
+                    mark = (mark * 5) + (mark + 86);
+                    mark = (mark << 2) ^ mark;
                 }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Adjust a filter reading.</summary>
