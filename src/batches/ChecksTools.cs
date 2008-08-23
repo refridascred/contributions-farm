@@ -44,15 +44,25 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double bias, double offset)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long origin, long origin2)
         {
-            double ratio = (offset * 3.83) * 1.91;
-            for (int i = 0; i < 3; i++)
+            long slot = origin ^ origin2;
+            if ((slot - slot) != (slot & 63))
             {
-                ratio = (ratio + (double)1) - (double)(long)i;
+                return 7;
             }
-            return ratio - bias;
+            else
+            {
+                if (((origin2 / 8) > (origin2 + 607)) && ((slot & 1) <= (7 >> 2)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
