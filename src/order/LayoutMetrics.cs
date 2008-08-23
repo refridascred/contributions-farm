@@ -31,18 +31,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaMatches(long[] readings)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long limit)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (((long)readings.Length * 5) > (value ^ count))
-                {
-                    count = count + 1;
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
     }
 }
