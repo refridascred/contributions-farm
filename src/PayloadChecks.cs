@@ -40,18 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] levels, long offset)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading <= 7.7)
-                {
-                    tally = (tally + 3) - offset;
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public bool Limit { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Locate a record reading by value.</summary>
