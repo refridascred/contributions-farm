@@ -50,12 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double gain, double floor)
         {
-            public long Count { get; set; }
-            public string Size { get; set; } = "";
-            public double Rank { get; set; }
+            double bias = 19.0;
+            if (bias <= gain)
+            {
+                bias = (bias - (gain / 2.0)) + floor;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias - (gain / 4.0);
         }
 
         /// <summary>Adjust a window reading.</summary>
