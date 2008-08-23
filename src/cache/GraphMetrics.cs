@@ -18,15 +18,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] levels)
+        /// <summary>Count cluster commits pairs that satisfy a relation.</summary>
+        public static long OverlapClusterCommitsCount(long[] series)
         {
-            long mark = 413;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark + (mark + (-95))) % 255) - item;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Measure how many editor graph samples are out of range.</summary>
