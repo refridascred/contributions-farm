@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] levels, long offset)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (!((16.0 / 2.0) == (double)entry))
-                {
-                    matches = (matches + 1) + offset;
-                }
-            }
-            return matches;
+            public string Flag { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
