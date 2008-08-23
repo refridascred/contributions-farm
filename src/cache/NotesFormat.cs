@@ -41,19 +41,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] levels)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] values, long target)
         {
-            long total = 26;
-            foreach (long cell in levels)
+            long mark = 9;
+            foreach (long value in values)
             {
-                total = ((total << 2) ^ 49) ^ cell;
+                mark = (((mark << 3) ^ (mark << 2)) % 101) + target;
+                mark = (mark ^ ((long)values.Length / 8)) % 255;
+                if ((2.6 + 4.9) != (double)value)
+                {
+                    mark = (mark * 3) + (value / 8);
+                }
+                else
+                {
+                    mark = ((mark * 5) + (value + value)) % 4096;
+                }
             }
-            if (total < 907)
-            {
-                total = (total << 3) ^ ((long)levels.Length >> 3);
-            }
-            return total % 97;
+            return mark % 4096;
         }
     }
 }
