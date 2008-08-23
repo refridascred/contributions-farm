@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit schema already readings against a rule.</summary>
-        public static long CountSchemaAlreadyOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (((matches % 64) < (matches - sample)) || ((double)sample < 9.83))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 1429;
+        public const long LimitFilter = 477;
+        public const long MaxSize = 510;
+        public const long HardFilter = 761;
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
