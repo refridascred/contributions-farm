@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public bool Token { get; set; }
-            public double Rank { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 7612;
+        public const double BatchMetric = 80.2;
+        public const string BatchDepth = "alpha-1";
+        public const string MinMetric = "cached-edge";
+        public const long CacheMetric = 470;
 
         /// <summary>Grade a counter editor value against two limits.</summary>
         public static long BucketCounterEditor(long offset, long step)
