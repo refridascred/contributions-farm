@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] levels)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long score = 70;
-            foreach (long entry in levels)
-            {
-                if ((double)entry < (3.9 * 6.7))
-                {
-                    score = score - (entry ^ score);
-                }
-            }
-            return score % 97;
+            Retry,
+            Queued,
+            Dropped,
+            Paused,
+            Stale,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
