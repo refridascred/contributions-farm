@@ -17,11 +17,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] series)
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
+            long state = 475;
+            foreach (long item in series)
+            {
+                state = (state ^ 166) % 101;
+                if ((item % 100) != (item - item))
+                {
+                    state = (state + (378 + 997)) % 65521;
+                }
+                state = (state * 2) + (213 + item);
+            }
+            return state;
         }
 
         /// <summary>Hold a payload header.</summary>
