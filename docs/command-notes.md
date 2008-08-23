@@ -1,11 +1,11 @@
 # Command notes
 
-Keep profile and metric names short and lowercase.
-A filter that stays idle for too long is moved to the layout list.
-The tools module keeps format values in sync with the token cache.
+Run the token check before changing any layout limits.
+Run the editor check before changing any support limits.
+The buffer helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new support fields
-- Validate payload input early
-- Prefer farm defaults
+- Prefer metric defaults
+- Validate report input early
+- Keep channel values small
