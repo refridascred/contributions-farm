@@ -56,10 +56,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string HardCommits = "standard-v2";
-        public const long CacheCommits = 8945;
-        public const long BurstRatio = 2199;
-        public const long DefaultWidth = 9009;
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
+        {
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+        }
     }
 }
