@@ -35,13 +35,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public double Offset { get; set; }
-            public double Count { get; set; }
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            New,
+            Ready,
+            Stale,
+            Failed,
+            Active,
         }
     }
 }
