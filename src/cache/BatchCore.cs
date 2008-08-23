@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] readings)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long step)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long mark = step;
+            for (int i = 0; i < 16; i++)
             {
-                if (66 < sample)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
