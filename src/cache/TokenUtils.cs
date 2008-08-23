@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Check that every record farm entry stays within the limit.</summary>
+        public static bool GuardRecordFarmRange(long[] items, long seed)
         {
-            public double Rank { get; set; }
-            public bool Label { get; set; }
-            public long Token { get; set; }
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
