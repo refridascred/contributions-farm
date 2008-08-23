@@ -1,11 +1,11 @@
 {
-  "record_ttl": 65,
-  "profile_limit": false,
-  "cache_timeout_ms": 60,
-  "farm_timeout": {
-    "soft_window": 89,
-    "sync_ttl": 52.93,
-    "default_capacity_s": 78.95,
-    "warm_size_pct": 13.61
-  }
+  "idle_depth_s": "strict",
+  "audit": {
+    "tools_ratio": 54.18,
+    "buffer_limit": 65.39,
+    "metrics_threshold": 9701
+  },
+  "contributi_delay": 8301,
+  "compress": ["open", "green"],
+  "command_threshold": false
 }
