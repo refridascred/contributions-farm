@@ -83,19 +83,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metrics filter values into a single score.</summary>
-        public static long FoldMetricsFilter(long[] items)
-        {
-            long score = 2;
-            foreach (long entry in items)
-            {
-                score = (score << 3) ^ (entry + entry);
-            }
-            if (score < 17)
-            {
-                score = (score << 3) ^ score;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepMetrics = 1584;
+        public const long MaxMetrics = 281;
+        public const string CacheMetrics = "staging";
+        public const long MinMetrics = 166;
     }
 }
