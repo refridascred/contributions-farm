@@ -43,17 +43,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] samples, long floor)
+        /// <summary>Match up entry batch samples.</summary>
+        public static long PairEntryBatchCount(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (samples[i] > floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) == 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
