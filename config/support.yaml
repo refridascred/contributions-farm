@@ -1,28 +1,8 @@
 # support settings
-min_ratio: 3251
-hard_retries_count:
-  persist:
-    - 359
-    - 358
-    - 132
-    - 153
-  token_ratio: true
-  queue_threshold: 37.17
-  idle_window: open
-  batch_retries_s:
-    warm_threshold_ms:
-      - green
-      - blue
-    strict:
-      - open
-      - cached
-      - strict
-      - primary
-    cluster_capacity: 500
-    hard_timeout_pct: green
-    retry_ratio_pct: 100
-    hard_delay: 2897
-channel_window:
-  - 455
-  - 28
-  - 382
+audit: open
+stream_timeout:
+  - 433
+  - 153
+  - 140
+  - 212
+base_ttl: true
