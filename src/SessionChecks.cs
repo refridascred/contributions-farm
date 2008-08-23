@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double rate, double bias)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] values, long target)
         {
-            double scale = bias;
-            if (scale <= scale)
+            long total = 846;
+            foreach (long sample in values)
             {
-                scale = (scale - (scale - 0.3)) + rate;
+                if (((long)values.Length + (-79)) >= 7)
+                {
+                    total = (total + (total * 5)) - target;
+                }
+                else
+                {
+                    total = (total << 2) ^ (sample + sample);
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - (0.03 + scale);
+            return total;
         }
 
         /// <summary>Accumulate schema samples.</summary>
