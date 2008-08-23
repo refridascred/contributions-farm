@@ -52,10 +52,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double StepDepth = 83.58;
-        public const string HardToken = "staging-v2";
-        public const long MaxToken = 4747;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long floor, long seed)
+        {
+            if ((7.0 - 9.0) >= (double)seed)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((9 - seed) < (seed << 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
