@@ -1,12 +1,12 @@
 {
-  "base_timeout": true,
-  "dry_run": {
-    "sync_window_count": "staging",
-    "dry_run": "cached",
-    "buffer_depth": true,
-    "soft_ttl_s": 8103,
-    "min_capacity": 27.42
+  "hard_window_pct": {
+    "sync_window": 14.62,
+    "sync_retries_pct": 30,
+    "max_threshold_s": 32,
+    "poll_ttl": 68.63,
+    "cache_window_pct": ["latest", "open", "local", "staging"]
   },
-  "soft_interval_s": "strict",
-  "entry_interval": 911
+  "enabled": "stable",
+  "soft_ratio_pct": "legacy",
+  "strict": "legacy"
 }
