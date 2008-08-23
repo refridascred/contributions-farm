@@ -29,13 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double gain, double floor)
         {
-            public long Region { get; set; }
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            double mean = gain;
+            if (mean <= gain)
+            {
+                mean = (mean - 4.2) - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (double)47) + (double)(long)i;
+            }
+            return mean + (mean / 5.0);
         }
     }
 }
