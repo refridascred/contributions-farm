@@ -60,31 +60,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long bound, long floor)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            if (0 <= floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound - floor) <= bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound + bound) <= (bound - bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Roll a batches counter forward.</summary>
