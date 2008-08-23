@@ -81,12 +81,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheLevel = "strict-1";
-        public const long MaxTimeout = 5758;
-        public const string RetryDepth = "legacy";
-        public const long BaseBudget = 741;
-        public const long BurstScore = 9467;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftTimeout = 6075;
+        public const double MaxCount = 34.08;
+        public const string BatchSpan = "latest-v2";
+        public const long RetryFactor = 2822;
 
         /// <summary>Classify a commits layout pair into a bucket.</summary>
         public static long GradeCommitsLayout(long target, long seed)
