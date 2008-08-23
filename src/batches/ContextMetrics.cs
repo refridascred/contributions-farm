@@ -50,31 +50,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long target, long target2)
+        /// <summary>Count the githubfarm account entries that pass the check.</summary>
+        public static long AuditGithubfarmAccountGaps(long[] samples)
         {
-            if ((497 <= (target2 - target2)) && (target <= 704))
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target - target) > (target2 & 31))
+                if ((matches + datum) <= 64)
                 {
-                    return 0;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if (target2 > (target / 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
