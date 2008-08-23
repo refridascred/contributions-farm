@@ -16,13 +16,12 @@ namespace Common.Utilities
             return mean + (rate / 4.0);
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            New,
-            Retry,
-            Stale,
-            Active,
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Adjust a filter reading.</summary>
