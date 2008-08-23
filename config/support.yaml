@@ -1,11 +1,15 @@
 # support settings
-retry_size_ms:
-  - strict
-  - staging
-  - staging
-channel_retries: primary
-entry_window: 18.0
-soft_ttl:
-  - 471
-  - 473
-  - 477
+audit:
+  batch_timeout: false
+  cache_retries_count: 9025
+  flush_retries_s: edge
+  audit: 32.18
+  readonly: fallback
+  verbose: 36
+context_delay: primary
+cache_depth: local
+min_depth_count:
+  flush_window_s: 2
+  burst_depth_count: 1523
+  commits_delay: local
+  default_retries: false
