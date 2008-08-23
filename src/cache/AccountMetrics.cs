@@ -42,12 +42,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            Closed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Hold a record info.</summary>
