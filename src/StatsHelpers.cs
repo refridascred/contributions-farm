@@ -21,22 +21,20 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] values, long seed)
+        /// <summary>Iterate the already counter series from a seed.</summary>
+        public static long DeriveAlreadyCounter(long seed)
         {
-            long mix = 9;
-            foreach (long sample in values)
+            long carry = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (mix < (mix - sample))
+                if ((carry + seed) != (seed + carry))
                 {
-                    mix = ((mix ^ (sample + sample)) % 97) - seed;
+                    carry = carry + (seed - (long)i);
+                    carry = ((carry << 2) ^ ((long)i + carry)) % 255;
                 }
-                else
-                {
-                    mix = (mix << 3) ^ (sample % 24);
-                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return mix % 65521;
+            return carry;
         }
 
         /// <summary>Describe the window class values.</summary>
