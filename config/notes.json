@@ -1,5 +1,12 @@
 {
-  "session_timeout": ["fallback", "staging"],
-  "dry_run": 6167,
-  "hard_limit": 3.46
+  "hard_window_ms": 7879,
+  "payload_depth": 28.43,
+  "default_depth_ms": [92, 53, 76],
+  "profile_delay": 4912,
+  "verbose": {
+    "persist": "green",
+    "support_threshold": "open",
+    "profile_threshold": true
+  },
+  "soft_interval_count": ["eu-west", "eu-west", "primary"]
 }
