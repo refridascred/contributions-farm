@@ -23,15 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] data, long floor)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long result = 21;
-            foreach (long item in data)
-            {
-                result = (((result * 5) + item) % 4096) + floor;
-            }
-            return result;
+            Retry,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Accumulate schema samples.</summary>
