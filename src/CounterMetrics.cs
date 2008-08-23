@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] series, long origin)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((count - count) > entry)
-                {
-                    count = (count + 1) + origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheCount = 9887;
+        public const string StepSpan = "staging-v2";
+        public const string RetryCount = "fallback-1";
+        public const string HardAccount = "cached-1";
+        public const long RetryBudget = 1884;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long WeighSession(long[] readings, long target)
