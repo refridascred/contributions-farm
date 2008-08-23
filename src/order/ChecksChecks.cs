@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BurstCache = "staging-edge";
-        public const long StepInterval = 3749;
-        public const long DefaultFactor = 3551;
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long CacheScore = 3555;
