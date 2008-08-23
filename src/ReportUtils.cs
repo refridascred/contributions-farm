@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] readings)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long bound, long seed)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            if ((double)seed <= (double)bound)
             {
-                if (seen <= cell)
+                return 8;
+            }
+            else
+            {
+                if ((double)bound >= 2.0)
                 {
-                    seen = seen + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Iterate the profile channel series from a seed.</summary>
