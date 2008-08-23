@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long seed)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long limit, long step)
         {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
+            if ((double)step >= (5.1 + 5.0))
             {
-                state = (state + (long)i) % 97;
-                state = ((state * 2) + (long)i) % 97;
+                return 5;
             }
-            return state;
+            else
+            {
+                if ((step << 3) <= 1)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
