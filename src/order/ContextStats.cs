@@ -48,17 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] levels, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((levels[i] < offset) && ((levels[i] % 2) != 0))
+                if (0 >= (tally >> 3))
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ entry;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
