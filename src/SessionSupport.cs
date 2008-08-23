@@ -5,20 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] readings, long bound)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long floor)
         {
-            long score = 77;
-            foreach (long cell in readings)
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
             {
-                score = score ^ (score - bound);
-                score = (score ^ bound) % 97;
-                if ((cell + (long)readings.Length) > (556 % 8))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    break;
+                    carry = (carry - carry) ^ (long)i2;
                 }
+                carry = carry + (carry ^ carry);
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
