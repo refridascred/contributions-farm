@@ -1,8 +1,6 @@
 {
-  "persist": 97.16,
-  "soft_ratio_s": 100,
-  "cache_size": "stable",
-  "dry_run": "edge",
-  "batch_timeout_count": "primary",
-  "warm_ratio_ms": 500
+  "default_interval_s": "edge",
+  "idle_depth": 93,
+  "counter_ttl": true,
+  "enabled": "stable"
 }
