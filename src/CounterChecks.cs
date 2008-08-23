@@ -30,21 +30,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] values)
+        /// <summary>Count the notes token entries that pass the check.</summary>
+        public static long CountNotesTokenGaps(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((hits / 9) != (474 % 2))
                 {
-                    if ((values[i] ^ values[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 1) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the entry state values.</summary>
