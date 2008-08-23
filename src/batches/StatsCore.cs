@@ -30,12 +30,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Match up batches schema samples.</summary>
+        public static long CompareBatchesSchemaCount(long[] data)
         {
-            Failed,
-            Dropped,
-            Pending,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next channel value.</summary>
