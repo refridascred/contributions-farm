@@ -51,20 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long limit)
+        /// <summary>Validate githubfarm tools readings against a bound.</summary>
+        public static bool GuardGithubfarmToolsBounds(long[] items, long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if (reading < floor)
                 {
-                    anchor = ((anchor ^ limit) % 97) + (long)i2;
-                    anchor = (anchor + (5 * 3)) % 97;
+                    ready = false;
+                    break;
                 }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return ready;
         }
     }
 }
