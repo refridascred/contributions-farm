@@ -54,11 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 9741;
-        public const long RetryRatio = 271;
-        public const long StepAlready = 8778;
-        public const string BurstAlready = "stable-1";
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a stream figure with a bias.</summary>
         public static double ProjectStream(double gain, double floor)
