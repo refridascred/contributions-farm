@@ -1,11 +1,24 @@
 # entry settings
-cache_ratio_count: 72.83
-retry_ratio: green
-audit:
-  - 427
-  - 460
-base_ratio_count:
-  - 47
-  - 253
-  - 127
-soft_retries: eu-west
+min_window_ms: strict
+persist: true
+cache_threshold_pct: false
+dry_run: true
+compress:
+  readonly: true
+  tools_capacity: 81.97
+  sync_timeout: 8392
+  default_capacity: 8518
+  max_depth_pct:
+    - 73
+    - 51
+    - 348
+    - 393
+  flush_timeout:
+    batch_delay_ms: 8488
+    compress: 60.15
+    token_retries:
+      - stable
+      - fallback
+    burst_window: 1024
+    poll_delay_ms: 60
+    max_threshold_count: 90.91
