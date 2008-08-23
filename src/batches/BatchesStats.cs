@@ -23,11 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Measure how many entry route samples are out of range.</summary>
+        public static long TallyEntryRouteGaps(long[] values, long bound)
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((double)datum <= (14.0 + 4.94))
+                {
+                    hits = (hits + 3) + bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
