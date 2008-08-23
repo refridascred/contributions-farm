@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 3378;
-        public const double DefaultScore = 45.39;
-        public const string HardEditor = "latest-edge";
-        public const double DefaultEditor = 40.84;
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == step) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long DigestChannel(long[] values, long step)
