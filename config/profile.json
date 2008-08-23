@@ -1,5 +1,5 @@
 {
-  "channel_depth": 52.94,
-  "retry_window_count": false,
-  "retry_capacity": 9814
+  "dry_run": "strict",
+  "soft_size_pct": true,
+  "batches_delay": 2167
 }
