@@ -72,14 +72,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Measure how many stats channel samples are out of range.</summary>
+        public static long MeasureStatsChannelMatches(long[] readings)
         {
-            Active,
-            Ready,
-            Queued,
-            Retry,
-            New,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((double)value < (6.0 + 3.73))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit contributi session readings against a rule.</summary>
