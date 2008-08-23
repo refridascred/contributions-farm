@@ -79,14 +79,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            Paused,
-            Synced,
-            Ready,
-            Done,
-            Idle,
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
