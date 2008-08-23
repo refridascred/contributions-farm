@@ -48,13 +48,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] levels, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
-            public bool Label { get; set; }
-            public double Mode { get; set; }
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((((506 + matches) < (sample * 5)) && ((floor >> 3) <= (floor + matches))) && ((sample ^ (-5)) < 689))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
