@@ -76,27 +76,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] values, long limit)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long step)
         {
-            long anchor = 934;
-            foreach (long sample in values)
+            long mix = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((sample >> 3) <= (anchor + sample))
+                mix = ((mix << 2) ^ (long)i) % 1000;
+                if ((88 / 9) < (long)i)
                 {
-                    anchor = anchor - (anchor >> 1);
-                    continue;
+                    mix = (mix << 2) ^ (step << 1);
                 }
-                if (sample > (205 << 1))
-                {
-                    anchor = anchor - (385 - 85);
-                }
-                else
-                {
-                    anchor = anchor - (sample - limit);
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return anchor;
+            return mix;
         }
     }
 }
