@@ -61,21 +61,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] data)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Dropped,
+            New,
+            Draft,
+            Active,
         }
     }
 }
