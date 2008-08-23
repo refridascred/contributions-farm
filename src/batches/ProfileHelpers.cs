@@ -72,13 +72,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long limit)
         {
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = acc ^ (73 >> 5);
+                acc = acc ^ (acc * 2);
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
