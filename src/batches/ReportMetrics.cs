@@ -20,21 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] levels)
+        /// <summary>Roll a route cluster counter forward.</summary>
+        public static long StepRouteCluster(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    if ((levels[i] ^ levels[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = (acc ^ (seed & 1)) - (long)i2;
                 }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
