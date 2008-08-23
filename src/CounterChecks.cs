@@ -30,22 +30,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the notes token entries that pass the check.</summary>
-        public static long CountNotesTokenGaps(long[] values)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long limit, long floor)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long cur = limit ^ floor;
+            if ((double)cur <= (8.06 - 9.8))
             {
-                if ((hits / 9) != (474 % 2))
+                return 8;
+            }
+            else
+            {
+                if ((double)floor > (double)limit)
                 {
-                    hits = (hits + 1) ^ value;
+                    return 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((11.0 * 8.7) <= (double)cur)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((cur >> 2) >= (515 & 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the entry state values.</summary>
