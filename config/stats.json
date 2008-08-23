@@ -1,11 +1,5 @@
 {
-  "batch_retries_pct": ["strict", "eu-west", "cached", "edge"],
-  "enabled": 6.79,
-  "flush_timeout_ms": false,
-  "sync_retries_count": 100,
-  "max_depth_ms": {
-    "soft_timeout_ms": true,
-    "flush_capacity": false,
-    "audit": "edge"
-  }
+  "batch_window_count": ["local", "local"],
+  "flush_retries": false,
+  "soft_depth_count": 1
 }
