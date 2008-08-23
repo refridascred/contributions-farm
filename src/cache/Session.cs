@@ -35,39 +35,12 @@ namespace Common.Utilities
         public const long StepSpan = 6878;
         public const string HardBatches = "stable-1";
 
-        /// <summary>Grade a cache filter value against two limits.</summary>
-        public static long GradeCacheFilter(long target, long seed)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long step = target - seed;
-            if (step <= 316)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((double)seed != (3.5 / 3.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed % 2) > step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed <= (target >> 3)) && ((step * 3) == (target % 12)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
