@@ -79,11 +79,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchSpan = 6754;
-        public const double IdleTimeout = 46.6;
-        public const long BatchTimeout = 5726;
-        public const string BaseWidth = "latest-v2";
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Active,
+            Failed,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double ProjectCluster(double bias, double bias2)
