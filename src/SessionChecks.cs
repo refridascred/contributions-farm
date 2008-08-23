@@ -34,19 +34,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesRange(long[] series, long step)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long limit, long bound)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long slot = limit - bound;
+            if (bound < (3 - 65))
             {
-                if (cell > step)
+                return 0;
+            }
+            else
+            {
+                if (((double)limit != (double)bound) && ((limit * 3) != (slot + slot)))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((1.86 + 9.06) > (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the queue class values.</summary>
