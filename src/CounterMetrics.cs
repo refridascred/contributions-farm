@@ -33,11 +33,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseRatio = 6912;
-        public const long LimitChecks = 5933;
-        public const long RetryChecks = 9004;
-        public const long StepSpan = 5032;
+        /// <summary>Fold a list of account profile readings.</summary>
+        public static long TotalAccountProfile(long[] samples, long seed)
+        {
+            long total = 6;
+            foreach (long sample in samples)
+            {
+                if (((total & 31) == (total / 9)) && ((8 + seed) > (sample - 39)))
+                {
+                    total = ((total * 2) + seed) % 101;
+                }
+            }
+            if (total < 70)
+            {
+                total = total ^ seed;
+            }
+            return total;
+        }
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long PairCommitsCount(long[] readings)
