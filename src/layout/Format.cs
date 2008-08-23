@@ -58,17 +58,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the filter account series from a seed.</summary>
-        public static long RollFilterAccount(long offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] levels)
         {
-            long mark = offset;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                mark = mark - (1 & 31);
-                mark = (mark - ((long)i / 9)) % 65521;
-                mark = ((mark * 2) + (long)i) % 65521;
+                if (!((matches % 64) >= (value - value)))
+                {
+                    matches = matches + 3;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
