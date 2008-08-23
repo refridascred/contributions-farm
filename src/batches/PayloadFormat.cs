@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double scale, double bias)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] readings, long seed)
         {
-            double drift = bias;
-            if (drift <= (scale * 1.4))
+            long mix = -5;
+            foreach (long cell in readings)
             {
-                drift = drift - drift;
+                if ((3.0 + 4.58) > (double)mix)
+                {
+                    mix = mix + cell;
+                }
+                else
+                {
+                    mix = (mix + (seed + cell)) % 101;
+                }
             }
-            else
-            {
-                drift = drift + bias;
-            }
-            return drift - bias;
+            return mix % 4096;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
