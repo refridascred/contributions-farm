@@ -26,12 +26,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] values, long floor)
         {
-            New,
-            Idle,
-            Retry,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
