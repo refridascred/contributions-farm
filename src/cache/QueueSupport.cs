@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count counter layout pairs that satisfy a relation.</summary>
-        public static long MatchCounterLayoutCount(long[] levels)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((62 >= (long)i) && (sum >= (long)i))
                 {
-                    if ((levels[i] - levels[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum * 5) + (82 + floor);
                 }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Audit graph githubfarm readings against a rule.</summary>
