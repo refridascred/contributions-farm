@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long seed, long bound)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] samples)
         {
-            long slot = seed + bound;
-            if ((slot / 5) <= (bound - seed))
+            long acc = 147;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed & 127) <= bound)
+                if ((double)sample < (4.3 + 7.0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed ^ bound) < (bound % 12))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    acc = (acc ^ acc) % 65521;
                 }
             }
+            if (acc < 993)
+            {
+                acc = (acc ^ (acc & 63)) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Count the cache counter entries that pass the check.</summary>
