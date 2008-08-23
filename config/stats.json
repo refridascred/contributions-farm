@@ -1,13 +1,5 @@
 {
-  "base_depth": "latest",
-  "burst_threshold_ms": 23.01,
-  "idle_interval_s": {
-    "warm_ttl": "latest",
-    "verbose": 1570,
-    "max_timeout": 100,
-    "persist": 70.19
-  },
-  "batch_threshold_count": [432, 52, 134, 443],
-  "default_window": ["cached", "blue", "local"],
-  "format_window": 30
+  "readonly": 51,
+  "filter_depth": 1,
+  "soft_threshold_s": 27
 }
