@@ -22,15 +22,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] levels)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] values, long floor)
         {
-            long mark = 90;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark + (value - value)) % 1000;
+                if ((values[i] < floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark % 1000;
+            return -1;
         }
     }
 }
