@@ -1,17 +1,9 @@
 {
-  "batch_interval": "open",
-  "audit": ["cached", "cached", "cached", "green"],
-  "contributi_delay": ["blue", "staging"],
-  "flush_window_s": {
-    "account_limit": 4166,
-    "soft_limit_ms": 5,
-    "cache_threshold": {
-      "hard_timeout": 37.78,
-      "max_limit": 8037,
-      "commits_interval": [127, 472, 15],
-      "retry_limit_ms": "stable",
-      "sync_limit_s": [154, 197, 318]
-    },
-    "metric_ratio": true
-  }
+  "sync_limit_count": false,
+  "compress": {
+    "strict": "strict",
+    "default_threshold_count": true,
+    "context_capacity": 3784
+  },
+  "max_size_ms": [223, 52, 72]
 }
