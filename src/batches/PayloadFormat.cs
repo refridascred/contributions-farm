@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] samples, long seed)
+        /// <summary>Fold a list of queue githubfarm readings.</summary>
+        public static long ScoreQueueGithubfarm(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 299;
+            foreach (long item in series)
             {
-                if ((samples[i] > seed) && ((samples[i] % 2) == 0))
+                long matches = 23 << 3;
+                anchor = (anchor + matches) % 65521;
+                if (((item * 4) < (3 + 1)) && (((-9) + item) > anchor))
                 {
-                    return (long)i;
+                    anchor = anchor - (item >> 4);
+                }
+                else
+                {
+                    anchor = (anchor ^ ((-103) - anchor)) % 1000;
                 }
             }
-            return -1;
+            if (anchor > 0)
+            {
+                anchor = (anchor - (anchor + anchor)) % 97;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the batches kind values.</summary>
