@@ -41,11 +41,17 @@ namespace Common.Utilities
             return ((drift - drift) + scale) + floor;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] series, long step)
         {
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
