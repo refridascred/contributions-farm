@@ -20,12 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Measure how many graph queue samples are out of range.</summary>
+        public static long MeasureGraphQueueGaps(long[] series, long target)
         {
-            New,
-            Failed,
-            Pending,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (sample >= (seen << 1))
+                {
+                    seen = (seen + 3) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next tools value.</summary>
