@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] series)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long mix = 263;
-            foreach (long reading in series)
-            {
-                if ((mix % 100) > (reading - reading))
-                {
-                    mix = (mix + (9 / 9)) % 4096;
-                }
-            }
-            return mix % 65521;
+            Queued,
+            Dropped,
+            Done,
+            Paused,
+            Idle,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
