@@ -38,11 +38,22 @@ namespace Common.Utilities
             return load + 10.0;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueMatches(long[] items, long offset)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((double)847 > (double)reading)
+                {
+                    count = (count + 2) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
