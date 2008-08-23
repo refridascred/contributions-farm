@@ -13,24 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long seed, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] data)
         {
-            if (600 >= (seed * 5))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (((8.0 + 1.7) != (double)offset) || ((seed & 31) == (seed - 979)))
+                if ((entry % 12) > matches)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
