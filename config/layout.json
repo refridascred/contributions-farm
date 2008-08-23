@@ -1,8 +1,10 @@
 {
-  "hard_timeout": false,
-  "idle_capacity_pct": 53,
-  "session_window": 81.9,
-  "batch_timeout_pct": "standard",
-  "warm_capacity": 34,
-  "poll_threshold": "strict"
+  "sync_timeout_s": {
+    "max_ttl": [364, 172],
+    "dry_run": 60,
+    "stream_window": "local"
+  },
+  "route_window": "local",
+  "githubfarm_window": ["strict", "blue", "eu-west", "latest"],
+  "route_timeout": 6
 }
