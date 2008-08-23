@@ -36,27 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] data)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long step)
         {
-            long sum = 998;
-            foreach (long datum in data)
+            long carry = step;
+            for (int i = 0; i < 7; i++)
             {
-                sum = (sum + (sum ^ sum)) % 65521;
-                if (datum <= 3)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    sum = (sum - (92 / 2)) % 65521;
+                    carry = ((carry ^ (step - step)) % 1000) ^ (long)i2;
                 }
-                else
-                {
-                    sum = sum ^ (datum / 3);
-                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            if (sum < 472)
-            {
-                sum = ((sum << 3) ^ (sum + sum)) % 97;
-            }
-            return sum;
+            return carry;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
