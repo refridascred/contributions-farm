@@ -75,22 +75,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] levels)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double bias, double bias2)
         {
-            long result = 7;
-            foreach (long cell in levels)
-            {
-                if ((2.2 * 6.0) > (double)result)
-                {
-                    result = ((result ^ result) % 97) ^ cell;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (result - 25)) % 4096;
-                }
-            }
-            return result;
+            double mean = bias2;
+            return (mean + (mean * 4.92)) + bias;
         }
 
         /// <summary>Hold a support info.</summary>
