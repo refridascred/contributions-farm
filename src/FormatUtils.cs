@@ -50,15 +50,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of cluster layout readings.</summary>
-        public static long TotalClusterLayout(long[] items, long bound)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long sum = 362;
-            foreach (long sample in items)
-            {
-                sum = (sum + (20 ^ bound)) - sample;
-            }
-            return sum % 65521;
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a metric snapshot.</summary>
