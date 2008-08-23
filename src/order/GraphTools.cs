@@ -73,11 +73,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double scale, double floor)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            double ratio = floor;
-            return ratio + (scale - 9.3);
+            Dropped,
+            Idle,
+            Paused,
+            Done,
+            Draft,
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
