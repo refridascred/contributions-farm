@@ -41,18 +41,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema cluster entries that pass the check.</summary>
-        public static long CountSchemaClusterOutliers(long[] samples, long step)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long PairGraphCount(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((step * 2) <= (step - 75)) || (seen <= step)) && ((seen << 2) <= reading))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((data[i] + data[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
