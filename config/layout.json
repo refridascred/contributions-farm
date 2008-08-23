@@ -1,8 +1,10 @@
 {
-  "graph_depth": ["eu-west", "blue", "fallback", "cached"],
-  "strict": 76,
-  "stream_capacity": 7526,
-  "record_ttl": 56,
-  "token_size": 1024,
-  "cache_capacity_count": 56.53
+  "payload_ttl": 48,
+  "min_depth_s": {
+    "notes_retries": 30,
+    "context_delay": 23.29,
+    "sync_capacity": "primary",
+    "support_capacity": "strict"
+  },
+  "batch_retries_pct": true
 }
