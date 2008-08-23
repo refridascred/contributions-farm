@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsOutliers(long[] levels)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if (((1.2 >= (double)value) || ((double)seen > (9.6 * 4.0))) || ((value >> 1) >= (value - 0)))
+                if (reading > limit)
                 {
-                    seen = seen + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Describe the commits state values.</summary>
