@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const string LimitWidth = "local-1";
         public const long RetryBatches = 6966;
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] items)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(target > (58 - mix)))
                 {
-                    if ((items[i] ^ items[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix << 2) ^ mix) % 101;
                 }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
