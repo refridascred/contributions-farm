@@ -66,19 +66,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] readings)
-        {
-            long total = 5;
-            foreach (long cell in readings)
-            {
-                total = (total * 2) + (cell ^ cell);
-            }
-            if (total > 8)
-            {
-                total = ((total * 3) + (total - total)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepSize = "staging-v2";
+        public const double WindowRatio = 10.97;
+        public const long RetryCount = 1399;
+        public const long StepBatch = 9454;
     }
 }
