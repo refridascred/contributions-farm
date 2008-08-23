@@ -38,26 +38,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] series)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorHits(long[] values, long floor)
         {
-            long mark = 72;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (mark > datum)
+                if (((9 / 5) <= floor) || (seen > ((-94) + (-13))))
                 {
-                    mark = ((mark << 3) ^ (datum & 31)) % 255;
-                }
-                if (datum > (mark % 100))
-                {
-                    break;
+                    seen = (seen + 3) ^ datum;
                 }
             }
-            if (mark > 6)
-            {
-                mark = mark + mark;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Audit stream context readings against a rule.</summary>
