@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] data, long step)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 17;
+            foreach (long entry in series)
             {
-                if ((data[i] > step) && ((data[i] % 3) != 0))
+                if (entry >= ((-4) * 4))
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ (entry ^ entry)) % 65521;
+                }
+                if (!((4 % 64) == (score - 89)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (score > (-2))
+            {
+                score = (score + (score >> 5)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
