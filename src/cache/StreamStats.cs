@@ -14,10 +14,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseSize = 1673;
-        public const string MaxDepth = "standard-1";
-        public const long IdleRoute = 878;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] data, long target)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (((hits ^ target) < target) && ((double)target == (double)hits))
+                {
+                    hits = (hits + 2) + item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long FoldRoute(long[] values, long limit)
