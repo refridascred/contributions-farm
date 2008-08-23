@@ -1,5 +1,10 @@
 {
-  "retry_depth_ms": 50,
-  "commits_ratio": 30,
-  "default_capacity": 250
+  "batch_limit": 69.19,
+  "burst_depth": ["strict", "primary", "primary"],
+  "burst_interval": {
+    "audit": false,
+    "cache_size_pct": 93.52,
+    "queue_ratio": 72.38,
+    "batch_size_count": "blue"
+  }
 }
