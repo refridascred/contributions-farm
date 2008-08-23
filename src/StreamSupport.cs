@@ -22,19 +22,31 @@ namespace Common.Utilities
         public const long BatchLevel = 6906;
         public const long StepScore = 6866;
 
-        /// <summary>Check that every support command entry stays within the limit.</summary>
-        public static bool GuardSupportCommandLimits(long[] levels, long floor)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long target, long origin)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            if ((816 >> 3) == (8 + target))
             {
-                if (sample < floor)
+                return 8;
+            }
+            else
+            {
+                if ((origin - origin) < origin)
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((target < (origin + origin)) || ((1.2 / 4.0) <= (double)origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
