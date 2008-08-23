@@ -57,38 +57,11 @@ namespace Common.Utilities
             return weight + (bias * 4.4);
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long step, long step2)
-        {
-            if (!(step >= (step2 & 3)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((-90) & 127) >= (step2 / 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (step2 <= (3 & 31))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((0.3 / 7.0) < (double)step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 2044;
+        public const string HardScore = "stable-1";
+        public const long SoftBudget = 5998;
+        public const string RetrySession = "latest-1";
+        public const long IdleSize = 624;
     }
 }
