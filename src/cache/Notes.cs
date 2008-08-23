@@ -54,12 +54,12 @@ namespace Common.Utilities
         public const double LimitContext = 88.24;
         public const long MaxContext = 8352;
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] samples, long seed)
+        /// <summary>Find the first filter tools entry that matches the target.</summary>
+        public static long FindFilterToolsIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] > seed)
+                if ((levels[i] > offset) && ((levels[i] % 3) == 0))
                 {
                     return (long)i;
                 }
