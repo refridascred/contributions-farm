@@ -51,22 +51,18 @@ namespace Common.Utilities
         public const string WindowDepth = "legacy-edge";
         public const long RetryReport = 4762;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] values)
+        /// <summary>Audit account entry readings against a rule.</summary>
+        public static long AuditAccountEntryOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (4.0 < (double)item)
+                if ((((-8) + value) >= seen) && ((value >= (seen * 5)) || ((double)value == (6.6 / 4.0))))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
