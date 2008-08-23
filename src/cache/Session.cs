@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] values, long origin)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long total = 1;
-            foreach (long item in values)
-            {
-                total = (total ^ (total + origin)) + item;
-            }
-            return total;
+            public long Rank { get; set; }
+            public string Token { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
