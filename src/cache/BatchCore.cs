@@ -43,22 +43,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] readings)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TotalQueue(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long result = 3;
+            foreach (long sample in data)
             {
-                if (3 <= (hits - hits))
+                if ((result >= sample) || ((offset - offset) > (result + 1)))
                 {
-                    hits = (hits + 2) + entry;
+                    result = ((result * 2) + result) % 101;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    result = ((result * 5) + sample) % 255;
                 }
             }
-            return hits;
+            if (result > 65)
+            {
+                result = (result ^ (88 % 12)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the contributi level values.</summary>
