@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] values, long limit)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Synced,
+            Paused,
         }
 
         /// <summary>Define report limits and defaults.</summary>
