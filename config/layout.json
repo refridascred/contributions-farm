@@ -1,12 +1,8 @@
 {
-  "order_size": "open",
-  "strict": {
-    "batch_limit_ms": 60,
-    "notes_size": "open",
-    "poll_threshold_s": 1024,
-    "batch_delay": 45
-  },
-  "burst_ratio_ms": true,
-  "compress": 8370,
-  "warm_limit": ["cached", "latest"]
+  "retry_capacity_pct": false,
+  "sync_retries_ms": 4225,
+  "sync_delay_pct": false,
+  "retry_interval_ms": 2.55,
+  "default_timeout_s": 7430,
+  "enabled": [118, 278]
 }
