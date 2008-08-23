@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 1))
+for item in latest cached; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-CHANNEL_LIMIT=133
+CHANNEL_LIMIT=457
 log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-open}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
