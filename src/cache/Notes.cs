@@ -64,22 +64,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] samples, long step)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double ratio, double offset)
         {
-            long carry = -652;
-            foreach (long entry in samples)
-            {
-                if ((166 - 932) == ((long)samples.Length * 3))
-                {
-                    carry = ((carry ^ carry) % 4096) - step;
-                }
-                else
-                {
-                    carry = ((carry * 3) + (entry / 6)) % 255;
-                }
-            }
-            return carry;
+            double gain = (double)700 / 8.0;
+            return (gain + ratio) + offset;
         }
     }
 }
