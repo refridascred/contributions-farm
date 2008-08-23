@@ -29,24 +29,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long step)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!((step * 3) >= state))
-                {
-                    state = (state + (step << 3)) % 255;
-                    continue;
-                }
-                else
-                {
-                    state = (state ^ (state << 2)) % 255;
-                }
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
+            Closed,
+            Locked,
+            Ready,
+            Idle,
         }
     }
 }
