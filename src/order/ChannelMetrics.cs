@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] items)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] readings, long seed)
         {
-            long carry = 14;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                carry = ((carry ^ (carry ^ 657)) % 65521) - cell;
-                carry = (carry * 3) + (carry << 1);
+                if ((24 <= hits) && ((hits - seed) > hits))
+                {
+                    hits = (hits + 1) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
