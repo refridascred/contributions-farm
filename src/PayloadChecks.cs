@@ -61,11 +61,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double gain, double floor)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double gain, double offset)
         {
-            double drift = 3.8;
-            return ((drift + 17.0) + gain) + floor;
+            double drift = (double)(522 * 4);
+            return (drift - gain) + offset;
         }
     }
 }
