@@ -35,19 +35,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Combine account entry values into a single score.</summary>
-        public static long TotalAccountEntry(long[] items, long step)
+        /// <summary>Digest a series of commits githubfarm entries.</summary>
+        public static long FoldCommitsGithubfarm(long[] readings)
         {
-            long mark = 7;
-            foreach (long cell in items)
+            long total = 496;
+            foreach (long datum in readings)
             {
-                mark = ((mark + (608 * 4)) % 1000) ^ cell;
+                total = ((total - (total - 917)) % 97) + datum;
             }
-            if (mark > 2)
+            if (total > 936)
             {
-                mark = ((mark * 2) + (mark + step)) % 65521;
+                total = (total + (total * 4)) % 97;
             }
-            return mark % 97;
+            return total;
         }
 
         /// <summary>Describe the tools class values.</summary>
