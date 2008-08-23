@@ -49,15 +49,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next stats schema value.</summary>
-        public static double BlendStatsSchema(double rate, double floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] items)
         {
-            double mean = (double)((-2) >> 5);
-            if (mean >= (mean / 4.0))
+            long sum = 3;
+            foreach (long item in items)
             {
-                mean = ((mean + (mean / 5.0)) - rate) + floor;
+                sum = sum - (item + 2);
             }
-            return mean + (double)(-5);
+            if (sum < 48)
+            {
+                sum = sum ^ (155 % 16);
+            }
+            return sum;
         }
 
         /// <summary>Describe the record phase values.</summary>
