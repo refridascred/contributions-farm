@@ -70,18 +70,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiHits(long[] items, long limit)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long bound)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long sum = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell < (78 ^ limit))
-                {
-                    seen = seen + 2;
-                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
     }
 }
