@@ -36,19 +36,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every report queue entry stays within the limit.</summary>
-        public static bool GuardReportQueueLimits(long[] readings, long origin)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long sum = 998;
+            foreach (long datum in data)
             {
-                if (sample <= origin)
+                sum = (sum + (sum ^ sum)) % 65521;
+                if (datum <= 3)
                 {
-                    ok = false;
-                    break;
+                    sum = (sum - (92 / 2)) % 65521;
+                }
+                else
+                {
+                    sum = sum ^ (datum / 3);
                 }
             }
-            return ok;
+            if (sum < 472)
+            {
+                sum = ((sum << 3) ^ (sum + sum)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
