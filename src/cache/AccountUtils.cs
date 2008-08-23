@@ -25,15 +25,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double rate, double offset)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] samples, long target)
         {
-            double scale = (offset + rate) / 8.0;
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                scale = (scale - (offset - rate)) + (double)(long)i;
+                if (reading >= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return scale + (offset * 3.15);
+            return flag;
         }
     }
 }
