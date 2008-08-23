@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            Pending,
+            Failed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Count the profile metrics entries that pass the check.</summary>
