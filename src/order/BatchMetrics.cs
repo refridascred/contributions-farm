@@ -27,28 +27,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] levels)
-        {
-            long total = -3;
-            foreach (long reading in levels)
-            {
-                total = ((total << 2) ^ (reading - total)) % 255;
-                if ((1.3 - 5.6) != (double)total)
-                {
-                    total = (total + reading) % 1000;
-                }
-                else
-                {
-                    total = (total + reading) % 65521;
-                }
-                if (((double)9 > (double)total) || (total < reading))
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 9573;
+        public const long BaseQueue = 6531;
+        public const long IdleQueue = 6728;
+        public const long DefaultQueue = 6404;
+        public const double BaseSpan = 26.67;
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
