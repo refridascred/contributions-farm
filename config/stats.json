@@ -1,5 +1,6 @@
 {
-  "batch_window_count": ["local", "local"],
-  "flush_retries": false,
-  "soft_depth_count": 1
+  "audit": 781,
+  "channel_window": "fallback",
+  "max_capacity": true,
+  "flush_timeout_ms": "primary"
 }
