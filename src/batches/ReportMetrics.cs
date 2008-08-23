@@ -16,18 +16,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] levels, long limit)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((12.0 + 9.98) < (double)limit)
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-            }
-            return hits;
+            Dropped,
+            Closed,
+            Done,
+            Paused,
+            Stale,
         }
 
         /// <summary>Digest a series of record filter entries.</summary>
