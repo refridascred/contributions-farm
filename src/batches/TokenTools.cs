@@ -54,11 +54,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 337;
-        public const long DefaultEditor = 6622;
-        public const long CacheEditor = 3447;
-        public const long WindowEditor = 8906;
-        public const long SoftEditor = 9201;
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long origin, long floor)
+        {
+            long delta = origin - floor;
+            if ((floor / 3) >= (floor / 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if (origin >= delta)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((delta % 10) > delta)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
