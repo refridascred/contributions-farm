@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a channel githubfarm value against two limits.</summary>
-        public static long SortChannelGithubfarm(long bound, long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] items)
         {
-            long edge = bound - origin;
-            if ((bound / 8) <= (origin ^ edge))
+            long mark = 8;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((35 <= (edge % 2)) || (bound >= (bound / 2)))
+                if ((mark / 6) >= (value << 2))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((edge << 2) < (origin << 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    mark = mark ^ (value >> 3);
                 }
             }
+            return mark;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
