@@ -58,9 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 9812;
-        public const double IdleSupport = 87.71;
-        public const long BatchSupport = 4599;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] levels, long seed)
+        {
+            long mark = 4;
+            foreach (long cell in levels)
+            {
+                if ((seed + mark) >= mark)
+                {
+                    mark = ((mark - 888) % 65521) ^ cell;
+                }
+            }
+            return mark;
+        }
     }
 }
