@@ -1,15 +1,8 @@
 # githubfarm settings
-stream_threshold:
-  - 386
-  - 423
-  - 270
-verbose: cached
-min_interval: 85.07
-cache_size_ms: 26
-strict:
-  channel_depth: 8870
-  buffer_threshold: 9789
-  cache_interval_count: true
-  warm_delay_count: true
-  hard_ttl_ms: fallback
-  batch_capacity: blue
+record_ttl: 3827
+default_limit_s: false
+window_threshold: 74.95
+default_limit:
+  cache_depth_ms: 25.97
+  window_retries: eu-west
+  warm_ratio: false
