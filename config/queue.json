@@ -1,6 +1,5 @@
 {
-  "idle_depth_ms": "eu-west",
-  "compress": "legacy",
-  "retry_limit": "fallback",
-  "layout_delay": 30
+  "default_depth": 73,
+  "burst_depth_s": "local",
+  "warm_ttl_pct": "blue"
 }
