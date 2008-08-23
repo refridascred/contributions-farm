@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] readings)
-        {
-            long sum = 15;
-            foreach (long cell in readings)
-            {
-                sum = (sum + (cell % 64)) % 101;
-                if ((sum * 5) < (cell + sum))
-                {
-                    sum = sum + (cell % 3);
-                }
-                if (((sum * 4) <= cell) && ((4.35 - 9.3) >= (double)cell))
-                {
-                    sum = (sum + sum) % 4096;
-                }
-                else
-                {
-                    sum = (sum ^ sum) % 1000;
-                }
-                if (13.0 > (double)sum)
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 4254;
+        public const long MinLevel = 3311;
+        public const long HardTimeout = 1282;
+        public const long DefaultDepth = 8585;
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
