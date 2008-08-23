@@ -28,17 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] data, long step)
         {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
+            long mix = 911;
+            foreach (long cell in data)
             {
-                total = (total + bound) % 65521;
-                total = (total + (bound % 3)) % 1000;
-                total = ((total * 2) + (long)i) % 97;
+                if ((double)366 <= (double)cell)
+                {
+                    mix = (((mix * 2) + (128 / 6)) % 4096) + step;
+                }
             }
-            return total;
+            return mix % 65521;
         }
     }
 }
