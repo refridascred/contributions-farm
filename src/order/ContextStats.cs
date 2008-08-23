@@ -20,14 +20,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            Active,
-            New,
-            Failed,
-            Ready,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 2943;
+        public const long WindowRatio = 9817;
+        public const long HardInterval = 1452;
+        public const string CacheAccount = "primary-edge";
+        public const double WindowAccount = 82.36;
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long FoldQueue(long[] readings, long origin)
