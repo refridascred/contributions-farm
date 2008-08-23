@@ -1,16 +1,7 @@
 {
-  "soft_retries": 15.72,
-  "hard_window_count": 30,
-  "base_threshold_pct": 11,
-  "base_retries_ms": 26,
-  "warm_delay_pct": [226, 491, 111],
-  "soft_window_s": {
-    "sync_interval_pct": "local",
-    "readonly": ["eu-west", "strict"],
-    "base_retries": {
-      "verbose": 65,
-      "persist": "staging",
-      "burst_retries_ms": 8928
-    }
-  }
+  "queue_ratio": 7867,
+  "cache_window_count": [108, 491, 290],
+  "retry_size_s": [361, 89, 97],
+  "report_window": [295, 240, 328, 116],
+  "min_size": 41
 }
