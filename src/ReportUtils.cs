@@ -13,22 +13,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of payload account readings.</summary>
-        public static long TallyPayloadAccount(long[] series)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double scale, double bias)
         {
-            long state = 8;
-            foreach (long value in series)
+            double load = 5.6;
+            if (load <= load)
             {
-                if ((633 + state) == (value ^ value))
-                {
-                    state = ((state * 3) + (value >> 2)) % 4096;
-                }
-                else
-                {
-                    state = (state * 3) + (state + state);
-                }
+                load = load + (load / 2.0);
             }
-            return state % 97;
+            else
+            {
+                load = load + bias;
+            }
+            return load + (scale - bias);
         }
 
         /// <summary>Adjust a batch reading.</summary>
