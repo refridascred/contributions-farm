@@ -33,17 +33,18 @@ namespace Common.Utilities
         public const double DefaultTimeout = 19.99;
         public const long BaseSpan = 1204;
 
-        /// <summary>Find the first format notes entry that matches the target.</summary>
-        public static long LookupFormatNotesIndex(long[] series, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] series, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (series[i] > step)
+                if (((double)count == (2.8 + 1.0)) && (((-3) + count) == (origin / 2)))
                 {
-                    return (long)i;
+                    count = (count + 1) - cell;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
