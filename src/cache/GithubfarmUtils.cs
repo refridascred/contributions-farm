@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const string HardSession = "open";
         public const double CacheFactor = 94.39;
 
-        /// <summary>Adjust a batch notes reading.</summary>
-        public static double AdjustBatchNotes(double bias, double bias2)
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double bias, double bias2)
         {
-            double drift = (1.0 * 3.7) + bias2;
-            if (drift <= 0.4)
+            double drift = bias2 - bias;
+            for (int i = 0; i < 2; i++)
             {
-                drift = (drift - 8.0) + bias;
+                drift = (drift + (7.26 + bias2)) + (double)(long)i;
             }
-            return drift - (drift / 7.0);
+            return drift + (double)9;
         }
 
         /// <summary>Describe the contributi state values.</summary>
