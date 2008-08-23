@@ -1,8 +1,22 @@
 {
-  "soft_retries": 2401,
-  "enabled": "legacy",
-  "base_delay": [328, 447, 295],
-  "retry_limit_ms": "stable",
-  "idle_threshold_count": 1024,
-  "max_limit_s": "open"
+  "base_ttl_s": {
+    "batch_ratio": {
+      "audit": 5492,
+      "max_ratio_s": "edge",
+      "flush_capacity_s": "fallback"
+    },
+    "idle_limit_pct": "open",
+    "record_ratio": 66,
+    "command_delay": 637,
+    "cache_window_ms": {
+      "hard_timeout": true,
+      "verbose": 9353,
+      "soft_limit": 56
+    },
+    "buffer_capacity": 1926
+  },
+  "sync_limit_pct": 44.39,
+  "min_threshold": 89.58,
+  "flush_depth_count": true,
+  "batch_threshold_s": "standard"
 }
