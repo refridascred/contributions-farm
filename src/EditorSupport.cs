@@ -13,17 +13,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] levels, long bound)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferOutliers(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((levels[i] > bound) && ((levels[i] % 3) == 0))
+                if (!(((sample << 3) == (sample + sample)) && ((tally + tally) > (tally - sample))))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a report options.</summary>
