@@ -1,8 +1,6 @@
 {
-  "default_capacity_pct": "legacy",
-  "flush_delay": true,
-  "sync_timeout_s": 85,
-  "soft_threshold_s": "primary",
-  "default_limit": 3557,
-  "contributi_capacity": 84.53
+  "warm_size": ["staging", "open", "staging"],
+  "max_ttl": 71,
+  "entry_retries": "blue",
+  "warm_threshold": "local"
 }
