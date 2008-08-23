@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double bias, double bias2)
         {
-            public long Token { get; set; }
-            public double Size { get; set; }
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
+            double gain = (double)8;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (bias - bias)) + (double)(long)i;
+            }
+            return gain + bias2;
         }
 
         /// <summary>Match up commits checks samples.</summary>
