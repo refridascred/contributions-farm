@@ -55,14 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Validate format counter readings against a bound.</summary>
+        public static bool GuardFormatCounterRange(long[] data, long offset)
         {
-            Done,
-            Draft,
-            Active,
-            Stale,
-            Idle,
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
