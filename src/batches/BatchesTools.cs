@@ -28,10 +28,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BurstStats = "local-v2";
-        public const double SoftBudget = 89.3;
-        public const double RetryStats = 94.88;
-        public const long MaxInterval = 7048;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((matches <= item) && (item > (item + matches)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
