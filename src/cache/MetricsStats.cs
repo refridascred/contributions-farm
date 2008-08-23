@@ -48,9 +48,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepGithubfarm = 81.09;
-        public const double RetryDepth = 45.72;
-        public const long HardCount = 1979;
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
+        {
+            public long Score { get; set; }
+            public double Offset { get; set; }
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
+        }
     }
 }
