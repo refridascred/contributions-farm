@@ -13,19 +13,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] values, long step)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] samples, long limit)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long sum = 92;
+            foreach (long item in samples)
             {
-                if (cell <= step)
+                if ((16.0 / 2.0) == (double)sum)
                 {
-                    ready = false;
-                    break;
+                    sum = (sum + (item % 8)) + limit;
                 }
             }
-            return ready;
+            return sum % 97;
         }
 
         /// <summary>Hold a format info.</summary>
