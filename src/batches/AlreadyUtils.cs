@@ -28,14 +28,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double bias, double floor)
         {
-            Closed,
-            Stale,
-            Synced,
-            Failed,
-            Idle,
+            double ratio = (double)(33 * 2);
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ((ratio - (floor * 16.0)) + (double)(long)i) - bias;
+            }
+            return ratio + floor;
         }
 
         /// <summary>Hold a checks header.</summary>
