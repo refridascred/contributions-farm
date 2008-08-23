@@ -92,17 +92,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LookupMetricsIndex(long[] items, long seed)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long offset, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long gap = offset - target;
+            if ((target - 974) < offset)
             {
-                if (items[i] < seed)
+                return 7;
+            }
+            else
+            {
+                if ((target >> 2) > (target >> 1))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)target <= (5.31 / 5.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target % 100) >= (14 + gap))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
