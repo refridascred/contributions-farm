@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long offset, long bound)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            if ((offset + offset) > (bound ^ bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset + offset) <= (-21))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((1.85 - 3.1) > (double)offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Stale,
+            Draft,
+            Queued,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
