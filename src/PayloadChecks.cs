@@ -61,11 +61,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double gain, double offset)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] items, long bound)
         {
-            double drift = (double)(522 * 4);
-            return (drift - gain) + offset;
+            long mark = -77;
+            foreach (long sample in items)
+            {
+                mark = ((mark << 3) ^ (bound << 1)) % 65521;
+                if ((mark + sample) >= mark)
+                {
+                    mark = mark + (bound >> 2);
+                }
+            }
+            if (mark < 973)
+            {
+                mark = mark + (bound % 97);
+            }
+            return mark % 65521;
         }
     }
 }
