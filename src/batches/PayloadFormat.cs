@@ -33,18 +33,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] levels, long floor)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((count + 487) >= count)
-                {
-                    count = ((count + 3) + sample) + floor;
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
