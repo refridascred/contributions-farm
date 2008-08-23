@@ -32,14 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Synced,
-            Retry,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowTimeout = 412;
+        public const long StepDepth = 4766;
+        public const long WindowScore = 9714;
+        public const long SoftTimeout = 925;
+        public const long MinRatio = 8139;
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long ClassifyContributi(long seed, long limit)
