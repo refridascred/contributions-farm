@@ -50,18 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] values, long bound)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((((10.0 / 8.0) >= (double)item) && ((341 + item) > (9 * 5))) && ((0.93 - 9.5) < (double)bound))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Count { get; set; }
+            public string Size { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Adjust a window reading.</summary>
