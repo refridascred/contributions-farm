@@ -23,13 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] data)
         {
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a counter summary.</summary>
