@@ -13,12 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BaseSchema = 31.08;
-        public const double IdleSchema = 47.24;
-        public const long LimitFactor = 8832;
-        public const double SoftSchema = 82.36;
-        public const long LimitTimeout = 1395;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Stale,
+            Dropped,
+            Idle,
+        }
 
         /// <summary>Fold a list of payload command readings.</summary>
         public static long WeighPayloadCommand(long[] readings, long offset)
