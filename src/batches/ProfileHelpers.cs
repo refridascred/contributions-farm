@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] items, long offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] samples, long floor)
         {
-            long mix = 9;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                mix = ((mix + reading) % 4096) + offset;
+                if ((7.0 * 15.0) <= (double)floor)
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Rank account input into a small class.</summary>
