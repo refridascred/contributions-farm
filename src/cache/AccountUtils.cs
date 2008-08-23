@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] samples, long target)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long limit, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long offset = limit - seed;
+            if ((offset - offset) != (offset + 206))
             {
-                if ((samples[i] <= target) && ((samples[i] % 3) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((904 / 6) == (limit + 534))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (!((seed + limit) < (offset + offset)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((-835) ^ seed) != (limit / 8))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a report header.</summary>
