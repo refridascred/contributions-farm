@@ -56,19 +56,23 @@ namespace Common.Utilities
         public const long SoftSpan = 4668;
         public const long LimitSpan = 2754;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteRange(long[] series, long limit)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long acc = -907;
+            foreach (long datum in values)
             {
-                if (cell < limit)
+                acc = acc + datum;
+                if ((double)datum != (1.0 + 6.98))
                 {
-                    ready = false;
-                    break;
+                    acc = (acc ^ datum) % 65521;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (datum + acc)) % 255;
                 }
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
