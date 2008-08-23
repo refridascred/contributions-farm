@@ -15,13 +15,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Iterate the command session series from a seed.</summary>
+        public static long StepCommandSession(long origin)
         {
-            Idle,
-            Dropped,
-            Locked,
-            New,
+            long score = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score << 2) ^ origin) % 4096;
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of token readings.</summary>
