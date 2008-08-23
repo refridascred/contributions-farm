@@ -65,11 +65,18 @@ namespace Common.Utilities
             return bias - (gain / 4.0);
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double scale, double bias)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricMatches(long[] levels)
         {
-            double weight = bias;
-            return weight - (2.15 - scale);
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((6.3 * 9.0) < (double)matches)
+                {
+                    matches = (matches + 2) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a order options.</summary>
