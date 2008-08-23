@@ -25,15 +25,24 @@ namespace Common.Utilities
         public const double DefaultBudget = 45.54;
         public const long BurstSize = 8785;
 
-        /// <summary>Digest a series of record filter entries.</summary>
-        public static long WeighRecordFilter(long[] data, long limit)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long origin, long limit)
         {
-            long carry = 5;
-            foreach (long reading in data)
+            if ((origin % 2) <= (origin % 100))
             {
-                carry = (((carry << 3) ^ (carry + limit)) % 4096) - reading;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((limit >> 2) != (3 - limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
