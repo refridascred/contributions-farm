@@ -73,13 +73,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
-        {
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinInterval = "local";
+        public const double BaseAccount = 75.53;
+        public const string BatchAccount = "fallback-edge";
+        public const long WindowScore = 6432;
 
         /// <summary>Match up notes samples.</summary>
         public static long CompareNotesCount(long[] items)
