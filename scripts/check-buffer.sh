@@ -6,18 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable standard green; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 5); do
+for i in $(seq 1 3); do
     total=$((total + i * 4))
 done
 log "total ${total}"
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+BUFFER_LIMIT=126
+log "limit is ${BUFFER_LIMIT}"
