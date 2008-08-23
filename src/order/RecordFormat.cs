@@ -25,32 +25,19 @@ namespace Common.Utilities
         public const string BatchFarm = "staging-1";
         public const double BurstWidth = 94.8;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long limit, long origin)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] items, long floor)
         {
-            long offset = limit ^ origin;
-            if ((double)limit <= (14.0 - 3.23))
+            long sum = 36;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)limit < (double)origin))
+                sum = ((sum << 2) ^ datum) % 101;
+                if (floor < sum)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((8 & 127) <= (offset + limit)) && (offset <= origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    sum = sum - (datum ^ sum);
                 }
             }
+            return sum;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
