@@ -19,19 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double scale, double bias)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] items, long offset)
         {
-            double load = 5.6;
-            if (load <= load)
+            long seen = 0;
+            foreach (long value in items)
             {
-                load = load + (load / 2.0);
+                if (((6 << 1) == (offset + offset)) || (value <= (value & 127)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                load = load + bias;
-            }
-            return load + (scale - bias);
+            return seen;
         }
 
         /// <summary>Rank account input into a small class.</summary>
