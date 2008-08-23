@@ -41,14 +41,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
-        {
-            Queued,
-            Dropped,
-            Failed,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxCount = "standard-edge";
+        public const double DefaultCluster = 14.02;
+        public const long CacheDepth = 9735;
+        public const long LimitTimeout = 8100;
+        public const double SoftCluster = 70.38;
     }
 }
