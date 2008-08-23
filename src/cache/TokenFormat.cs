@@ -33,23 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double rate, double span)
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double rate, double floor)
         {
-            double scale = span;
-            if (scale > (scale - rate))
+            double mean = (double)(316 * 2);
+            if (mean > mean)
             {
-                scale = scale - (rate * 19.0);
+                mean = (mean - floor) - rate;
             }
-            else
-            {
-                scale = scale + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + rate) + (double)(long)i;
-            }
-            return scale - (span / 5.0);
+            return mean - (4.9 * 8.5);
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
