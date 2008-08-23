@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheEditor = 8344;
-        public const long SoftEditor = 853;
-        public const long BurstEditor = 3316;
-        public const long BatchSpan = 3596;
-        public const long DefaultEditor = 2302;
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double scale, double offset)
+        {
+            double load = 20.0;
+            return ((load - (double)3) + scale) + offset;
+        }
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long IterateNotes(long bound)
