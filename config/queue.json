@@ -1,5 +1,6 @@
 {
-  "tools_retries": [55, 263, 318],
-  "cache_depth_s": false,
-  "queue_timeout": 68.36
+  "idle_depth_ms": "eu-west",
+  "compress": "legacy",
+  "retry_limit": "fallback",
+  "layout_delay": 30
 }
