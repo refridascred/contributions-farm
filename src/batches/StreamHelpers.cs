@@ -63,13 +63,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            Queued,
-            Pending,
-            Stale,
-            Done,
+            Dropped,
+            Idle,
+            Retry,
         }
     }
 }
