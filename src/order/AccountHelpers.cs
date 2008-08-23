@@ -46,13 +46,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long StepQueue(long seed)
         {
-            Active,
-            Paused,
-            Pending,
-            Dropped,
+            long result = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                result = result ^ ((long)i << 3);
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of support entries.</summary>
