@@ -40,19 +40,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double gain, double floor)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            double load = (double)(8 ^ 7);
-            if (load <= 9.08)
-            {
-                load = (load - (gain - load)) - floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - (5.4 + gain);
+            Draft,
+            Pending,
+            Queued,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
