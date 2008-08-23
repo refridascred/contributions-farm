@@ -42,19 +42,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] readings, long floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long score = 749;
+            foreach (long cell in series)
             {
-                if (item >= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                score = (((score * 5) + offset) % 101) + cell;
             }
-            return ok;
+            return score % 4096;
         }
     }
 }
