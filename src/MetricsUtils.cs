@@ -49,21 +49,15 @@ namespace Common.Utilities
         public const long StepBudget = 3714;
         public const long CacheLevel = 2119;
 
-        /// <summary>Match up githubfarm editor samples.</summary>
-        public static long PairGithubfarmEditorCount(long[] readings)
+        /// <summary>Fold a list of commits layout readings.</summary>
+        public static long DigestCommitsLayout(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 4;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix ^ (mix / 3)) % 1000) - reading;
             }
-            return hits;
+            return mix;
         }
     }
 }
