@@ -21,12 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowCount = 1492;
-        public const double SoftRecord = 60.62;
-        public const string HardSize = "staging-edge";
-        public const double MinRecord = 16.98;
-        public const long WindowRecord = 7960;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (((long)series.Length & 1) > tally)
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a layout editor counter forward.</summary>
         public static long IterateLayoutEditor(long floor)
