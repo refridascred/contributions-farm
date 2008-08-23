@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long offset)
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public double Label { get; set; }
+            long state = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
