@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 4254;
-        public const long MinLevel = 3311;
-        public const long HardTimeout = 1282;
-        public const long DefaultDepth = 8585;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowFactor = 7353;
+        public const long CacheScore = 7105;
+        public const long MinOrder = 489;
+        public const string LimitOrder = "latest-edge";
+        public const long DefaultSize = 6359;
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
