@@ -67,20 +67,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] items, long bound)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long step, long origin)
         {
-            long score = 4;
-            foreach (long datum in items)
+            if ((origin + origin) <= origin)
             {
-                score = ((score - (bound * 5)) % 4096) + datum;
-                score = score + (bound % 2);
+                return 6;
             }
-            if (score > 67)
+            else
             {
-                score = ((score << 2) ^ (bound << 1)) % 65521;
+                if (step <= origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin != (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
