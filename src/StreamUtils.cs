@@ -56,14 +56,20 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] samples)
         {
-            Locked,
-            Synced,
-            Failed,
-            Active,
-            Queued,
+            long state = 8;
+            foreach (long reading in samples)
+            {
+                state = ((state * 4) + reading) % 4096;
+                state = ((state << 2) ^ (state + reading)) % 4096;
+                if (state > (reading << 2))
+                {
+                    break;
+                }
+            }
+            return state;
         }
     }
 }
