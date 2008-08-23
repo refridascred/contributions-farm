@@ -34,19 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] items, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] items, long bound)
         {
-            long anchor = 179;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long item in items)
             {
-                anchor = ((anchor ^ (step << 1)) % 65521) - entry;
+                if ((bound >> 4) < 23)
+                {
+                    count = (count + 2) - item;
+                }
             }
-            if (anchor > 202)
-            {
-                anchor = (anchor ^ (step ^ step)) % 97;
-            }
-            return anchor;
+            return count;
         }
     }
 }
