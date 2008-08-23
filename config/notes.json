@@ -1,5 +1,5 @@
 {
-  "soft_timeout_ms": 500,
-  "burst_limit_ms": 58.08,
-  "soft_limit_s": 30
+  "soft_ttl_count": 500,
+  "retry_depth_pct": "local",
+  "default_retries_s": true
 }
