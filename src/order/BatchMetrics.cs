@@ -24,12 +24,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 9573;
-        public const long BaseQueue = 6531;
-        public const long IdleQueue = 6728;
-        public const long DefaultQueue = 6404;
-        public const double BaseSpan = 26.67;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long target, long limit)
+        {
+            if ((target - target) <= (413 + target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((833 - target) > (target * 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (limit <= (limit >> 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
