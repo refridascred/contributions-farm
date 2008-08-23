@@ -55,11 +55,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowTimeout = 46.11;
-        public const double BurstStats = 49.17;
-        public const long SoftStats = 6665;
-        public const long WindowSize = 2372;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] samples)
+        {
+            long result = 69;
+            foreach (long datum in samples)
+            {
+                result = ((result - (result >> 5)) % 1000) ^ datum;
+            }
+            if (result > (-596))
+            {
+                result = (result ^ result) % 255;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long CountContributiHits(long[] items, long limit)
