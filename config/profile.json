@@ -1,7 +1,15 @@
 {
-  "compress": "stable",
-  "entry_window": 100,
-  "cache_capacity_ms": ["latest", "stable", "open", "edge"],
-  "idle_limit_s": "stable",
-  "flush_window_ms": ["primary", "staging", "fallback", "staging"]
+  "max_timeout_ms": true,
+  "default_timeout_count": 7097,
+  "strict": {
+    "hard_timeout_pct": 60,
+    "soft_threshold": "standard",
+    "enabled": {
+      "farm_interval": false,
+      "soft_capacity_s": "edge",
+      "queue_ratio": false
+    }
+  },
+  "context_ttl": 30,
+  "flush_window_count": false
 }
