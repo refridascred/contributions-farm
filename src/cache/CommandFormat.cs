@@ -48,18 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] values)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (((value + value) > (hits * 4)) || ((hits * 5) >= (hits + value)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Draft,
+            Dropped,
+            New,
         }
     }
 }
