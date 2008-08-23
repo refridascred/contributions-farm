@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy stable; do
-    log "checking ${item}"
-done
+mode="${1:-staging}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 4))
+for i in $(seq 1 6); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-COMMAND_LIMIT=310
-log "limit is ${COMMAND_LIMIT}"
+for item in edge strict legacy; do
+    log "checking ${item}"
+done
