@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] levels, long bound)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long limit, long step)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long bound = limit + step;
+            if (((double)336 > (double)limit) || (step < (limit & 31)))
             {
-                if (reading < (matches + 14))
+                return 4;
+            }
+            else
+            {
+                if ((double)limit != (double)bound)
                 {
-                    matches = (matches + 1) + bound;
+                    return 5;
+                }
+                else
+                {
+                    if ((step % 24) >= (limit % 97))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (limit <= 120)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
