@@ -35,25 +35,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long bound, long floor)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] values, long seed)
         {
-            long prev = bound ^ floor;
-            if ((floor >> 2) > (floor + floor))
+            long mix = 9;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((2.85 / 4.0) == (double)prev)
+                if (mix < (mix - sample))
                 {
-                    return 0;
+                    mix = ((mix ^ (sample + sample)) % 97) - seed;
                 }
                 else
                 {
-                    return 8;
+                    mix = (mix << 3) ^ (sample % 24);
                 }
             }
+            return mix % 65521;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
