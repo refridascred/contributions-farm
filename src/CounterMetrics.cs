@@ -25,15 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
-        {
-            Ready,
-            Draft,
-            Failed,
-            Active,
-            Stale,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryScore = 8933;
+        public const long SoftDepth = 6771;
+        public const long BatchCache = 2708;
+        public const long IdleCache = 344;
+        public const long CacheWidth = 2783;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionOutliers(long[] samples, long floor)
