@@ -21,17 +21,26 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] data, long limit)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] values, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 3;
+            foreach (long datum in values)
             {
-                if (data[i] < limit)
+                if (5.0 <= (double)state)
                 {
-                    return (long)i;
+                    state = (state + (datum >> 2)) - limit;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (datum + state)) % 65521;
                 }
             }
-            return -1;
+            if (state < 2)
+            {
+                state = state - state;
+            }
+            return state;
         }
 
         /// <summary>Rank support input into a small class.</summary>
