@@ -55,19 +55,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] data, long bound)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] values)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] ^ values[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
