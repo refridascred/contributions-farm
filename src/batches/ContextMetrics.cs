@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowInterval = 2390;
-        public const string BaseTimeout = "legacy-edge";
-        public const long DefaultBudget = 1513;
-        public const long BaseCounter = 7175;
-        public const string DefaultCounter = "open-1";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleCount = 3387;
+        public const long BatchSpan = 5721;
+        public const long SoftStats = 7634;
+        public const string RetryStats = "legacy-edge";
+        public const long CacheInterval = 8248;
 
         /// <summary>Fold a list of counter account readings.</summary>
         public static long WeighCounterAccount(long[] levels)
