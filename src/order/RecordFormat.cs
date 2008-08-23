@@ -22,13 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Audit tools buffer readings against a rule.</summary>
+        public static long MeasureToolsBufferGaps(long[] data)
         {
-            Ready,
-            Pending,
-            Synced,
-            Failed,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((1.75 * 4.9) < (double)datum)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
