@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const string BurstCommits = "alpha-v2";
         public const long BatchCount = 415;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] series, long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (((value + (-5)) == (offset % 97)) && ((3.23 - 9.9) == (double)offset))
+                if ((step / 4) > 9)
                 {
-                    seen = seen + 1;
+                    matches = (matches + 1) ^ item;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a account record.</summary>
