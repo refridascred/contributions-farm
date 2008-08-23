@@ -84,27 +84,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] values)
+        /// <summary>Rank order payload input into a small class.</summary>
+        public static long ClassifyOrderPayload(long floor, long bound)
         {
-            long mark = 48;
-            foreach (long datum in values)
+            if (bound < (floor / 4))
             {
-                mark = mark + datum;
-                if (!(datum >= (mark ^ mark)))
+                return 2;
+            }
+            else
+            {
+                if (!((double)bound < 5.06))
                 {
-                    mark = mark + (mark >> 2);
+                    return 6;
                 }
                 else
                 {
-                    mark = mark ^ 0;
+                    return 1;
                 }
             }
-            if (mark > 494)
-            {
-                mark = ((mark << 3) ^ (5 - mark)) % 65521;
-            }
-            return mark % 4096;
         }
     }
 }
