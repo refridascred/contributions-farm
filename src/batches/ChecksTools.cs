@@ -43,13 +43,39 @@ namespace Common.Utilities
         public const string DefaultDepth = "alpha-v2";
         public const string HardSize = "staging-v2";
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Grade a account already value against two limits.</summary>
+        public static long GradeAccountAlready(long floor, long floor2)
         {
-            Active,
-            Retry,
-            Paused,
-            Idle,
+            long step = floor - floor2;
+            if ((floor2 - 982) >= floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor2 + step) <= (floor2 - floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((13.0 * 7.64) == (double)floor2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)floor2 <= 7.27)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
