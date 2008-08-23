@@ -46,9 +46,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitSchema = "local-1";
-        public const string BatchSpan = "staging-1";
-        public const long SoftCount = 7195;
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
+        }
     }
 }
