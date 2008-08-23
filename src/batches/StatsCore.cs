@@ -12,22 +12,20 @@ namespace Common.Utilities
             return ((load - (double)3) + scale) + offset;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long IterateNotes(long bound)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 17; i++)
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
             {
-                long span = (long)i;
-                acc = ((acc << 3) ^ span) % 1000;
-                if (bound > ((long)i - span))
+                if ((floor >> 1) >= 78)
                 {
-                    acc = acc + (span - span);
-                    span = ((span * 5) + bound) % 4096;
+                    carry = (carry - floor) % 1000;
+                    continue;
                 }
-                acc = ((acc * 3) + (long)i) % 101;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Hold a order stats.</summary>
