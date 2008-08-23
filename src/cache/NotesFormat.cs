@@ -39,24 +39,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] values, long target)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] items)
         {
-            long mark = 9;
-            foreach (long value in values)
+            long carry = 63;
+            foreach (long reading in items)
             {
-                mark = (((mark << 3) ^ (mark << 2)) % 101) + target;
-                mark = (mark ^ ((long)values.Length / 8)) % 255;
-                if ((2.6 + 4.9) != (double)value)
-                {
-                    mark = (mark * 3) + (value / 8);
-                }
-                else
-                {
-                    mark = ((mark * 5) + (value + value)) % 4096;
-                }
+                carry = (((carry << 3) ^ (carry % 60)) % 4096) ^ reading;
             }
-            return mark % 4096;
+            return carry;
         }
     }
 }
