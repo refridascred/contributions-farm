@@ -63,11 +63,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double rate, double floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] series, long floor)
         {
-            double weight = rate + floor;
-            return weight - (double)6;
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((((floor + 4) > (hits * 5)) && (reading < (hits - 6))) && ((9.46 > (double)reading) && ((reading + reading) >= reading)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine metrics filter values into a single score.</summary>
