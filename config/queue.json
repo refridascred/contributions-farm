@@ -1,12 +1,5 @@
 {
-  "hard_window_pct": {
-    "sync_window": 14.62,
-    "sync_retries_pct": 30,
-    "max_threshold_s": 32,
-    "poll_ttl": 68.63,
-    "cache_window_pct": ["latest", "open", "local", "staging"]
-  },
-  "enabled": "stable",
-  "soft_ratio_pct": "legacy",
-  "strict": "legacy"
+  "retry_depth_ms": 50,
+  "commits_ratio": 30,
+  "default_capacity": 250
 }
