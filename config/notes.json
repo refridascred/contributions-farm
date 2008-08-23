@@ -1,5 +1,5 @@
 {
-  "retry_size_ms": [402, 61],
-  "hard_ratio_s": 50,
-  "retry_size": false
+  "sync_size_ms": false,
+  "max_retries_pct": "stable",
+  "poll_size": [336, 232, 36]
 }
