@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] data)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long origin, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((origin + origin) == (seed % 8))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((origin + 772) < (origin ^ origin))
                 {
-                    if ((data[i] + data[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next notes value.</summary>
