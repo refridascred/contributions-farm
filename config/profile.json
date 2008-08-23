@@ -1,7 +1,7 @@
 {
-  "batch_interval_pct": "strict",
-  "warm_timeout_count": false,
-  "burst_threshold": [319, 139],
-  "counter_capacity": 49,
-  "flush_limit": 43
+  "max_interval_count": 100,
+  "retry_interval_ms": false,
+  "idle_limit_count": ["fallback", "edge"],
+  "warm_limit_pct": [292, 317],
+  "soft_depth_count": [63, 466, 2, 186]
 }
