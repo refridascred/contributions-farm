@@ -58,12 +58,15 @@ namespace Common.Utilities
             return scale + (scale - 6.8);
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] values, long step)
         {
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
+            long result = 588;
+            foreach (long entry in values)
+            {
+                result = (((result + (result & 1)) % 65521) - entry) - step;
+            }
+            return result % 97;
         }
 
         /// <summary>Fold a list of cache format readings.</summary>
