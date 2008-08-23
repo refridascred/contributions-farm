@@ -16,19 +16,10 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count the command filter entries that pass the check.</summary>
-        public static long AuditCommandFilterHits(long[] samples)
-        {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((seen + sample) <= sample)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftBudget = 6854;
+        public const long IdleSize = 7789;
+        public const double BaseCache = 92.49;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long TallyEditorHits(long[] values, long limit)
