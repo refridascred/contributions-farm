@@ -28,19 +28,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long origin)
+        /// <summary>Measure how many buffer queue samples are out of range.</summary>
+        public static long AuditBufferQueueGaps(long[] series, long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((cell * 3) != (matches & 31))
                 {
-                    acc = ((acc + (acc << 1)) % 1000) - (long)i2;
+                    matches = (matches + 3) - seed;
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
