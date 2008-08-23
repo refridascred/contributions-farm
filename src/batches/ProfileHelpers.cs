@@ -45,11 +45,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitSpan = 9134;
-        public const double IdleReport = 24.18;
-        public const string WindowDepth = "legacy-edge";
-        public const long RetryReport = 4762;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] data)
+        {
+            long score = 3;
+            foreach (long entry in data)
+            {
+                score = (score + ((-843) % 7)) ^ entry;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Audit account entry readings against a rule.</summary>
         public static long AuditAccountEntryOutliers(long[] data)
