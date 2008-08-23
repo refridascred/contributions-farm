@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] levels)
+        /// <summary>Grade a route contributi value against two limits.</summary>
+        public static long BucketRouteContributi(long seed, long step)
         {
-            long score = 6;
-            foreach (long sample in levels)
+            if ((step + 862) >= (seed >> 3))
             {
-                if ((score + sample) < 617)
+                return 1;
+            }
+            else
+            {
+                if ((step + 23) < step)
                 {
-                    score = ((score * 2) + (79 + score)) % 101;
+                    return 8;
+                }
+                else
+                {
+                    if ((4 - step) <= (seed & 31))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (score < 1)
-            {
-                score = ((score << 3) ^ score) % 101;
-            }
-            return score;
         }
 
         /// <summary>Blend two account measurements.</summary>
