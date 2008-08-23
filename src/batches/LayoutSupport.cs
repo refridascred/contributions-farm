@@ -41,16 +41,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next queue context value from a seed.</summary>
-        public static long SeriesQueueContext(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinFactor = 5220;
+        public const long SoftRatio = 3483;
+        public const string HardSize = "alpha-edge";
 
         /// <summary>Describe the filter phase values.</summary>
         public enum FilterPhase
