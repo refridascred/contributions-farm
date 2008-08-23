@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 9474;
+        public const double BurstSize = 71.67;
+        public const string LimitGraph = "alpha-edge";
 
         /// <summary>Check that every session command entry stays within the limit.</summary>
         public static bool CheckSessionCommandRange(long[] values, long offset)
