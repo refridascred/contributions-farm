@@ -1,4 +1,16 @@
 # githubfarm settings
-filter_limit: cached
-entry_interval: 20
-default_delay_s: eu-west
+default_interval_pct: 77.88
+order_limit:
+  - stable
+  - latest
+  - blue
+  - cached
+batch_ttl_count: legacy
+flush_delay_count: 52
+readonly:
+  - 298
+  - 323
+  - 299
+flush_limit:
+  - local
+  - staging
