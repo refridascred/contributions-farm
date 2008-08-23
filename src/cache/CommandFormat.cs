@@ -46,11 +46,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
+            Failed,
+            Paused,
+            Draft,
         }
     }
 }
