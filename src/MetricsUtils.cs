@@ -70,18 +70,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] items, long bound)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long floor)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((((bound * 2) > bound) && (7 <= (long)items.Length)) || ((sample & 127) <= (bound >> 3)))
-                {
-                    matches = matches + 2;
-                }
+                sum = (sum * 5) + sum;
+                sum = sum - (floor % 60);
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
     }
 }
