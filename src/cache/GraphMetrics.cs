@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Derive the next stream notes value from a seed.</summary>
+        public static long IterateStreamNotes(long limit)
         {
-            public long Mode { get; set; }
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
-            public long Offset { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((3.0 * 4.3) > (double)carry)
+                {
+                    long bound = ((long)i >> 4) + (4 / 8);
+                    carry = carry ^ (bound % 8);
+                }
+                else
+                {
+                    carry = carry - limit;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Count cluster commits pairs that satisfy a relation.</summary>
