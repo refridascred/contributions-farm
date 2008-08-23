@@ -1,14 +1,4 @@
 # support settings
-order_threshold: 97.84
-command_limit:
-  profile_limit:
-    - 265
-    - 378
-  base_retries_s: 7091
-  audit: 3303
-  strict:
-    - green
-    - staging
-    - open
-  compress: 69
-readonly: 44.57
+batch_ttl: false
+layout_ttl: cached
+hard_delay_pct: 2234
