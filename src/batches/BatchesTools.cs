@@ -39,15 +39,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double rate, double span)
-        {
-            double bias = (double)871 * 2.0;
-            if (bias > bias)
-            {
-                bias = (bias + 14.0) - rate;
-            }
-            return bias + (bias + span);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BurstStats = "local-v2";
+        public const double SoftBudget = 89.3;
+        public const double RetryStats = 94.88;
+        public const long MaxInterval = 7048;
     }
 }
