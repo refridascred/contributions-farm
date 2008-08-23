@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const string LimitWidth = "local-1";
         public const long RetryBatches = 6966;
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long target)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long mix = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!(target > (58 - mix)))
-                {
-                    mix = ((mix << 2) ^ mix) % 101;
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            public bool Limit { get; set; }
+            public double Level { get; set; }
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Validate order readings against a bound.</summary>
