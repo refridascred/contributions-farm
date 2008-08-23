@@ -41,31 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long target, long seed)
+        /// <summary>Count the schema cluster entries that pass the check.</summary>
+        public static long CountSchemaClusterOutliers(long[] samples, long step)
         {
-            if ((double)target <= (20.0 * 3.7))
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (target <= (seed + seed))
+                if ((((step * 2) <= (step - 75)) || (seen <= step)) && ((seen << 2) <= reading))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((722 - seed) < (target >> 5)) || ((double)seed >= (10.0 + 9.6)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
