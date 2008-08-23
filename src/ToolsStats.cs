@@ -46,21 +46,22 @@ namespace Common.Utilities
         public const long DefaultScore = 6218;
         public const long MaxScore = 3258;
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] items)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 859;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((8.32 * 19.0) <= (double)state)
                 {
-                    if ((items[i] + items[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    state = state - (cell + (-29));
+                }
+                else
+                {
+                    state = (state * 3) + (cell % 100);
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
