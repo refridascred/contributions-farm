@@ -40,14 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Validate batches contributi readings against a bound.</summary>
+        public static bool GuardBatchesContributiRange(long[] readings, long offset)
         {
-            Active,
-            Failed,
-            Locked,
-            Closed,
-            Synced,
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
