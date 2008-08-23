@@ -16,14 +16,10 @@ namespace Common.Utilities
             return rate + (double)81;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public long Mode { get; set; }
-            public double Total { get; set; }
-            public long Owner { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardTimeout = 2718;
+        public const string HardDepth = "legacy";
+        public const long LimitFormat = 9658;
 
         /// <summary>Combine entry token values into a single score.</summary>
         public static long TallyEntryToken(long[] values)
