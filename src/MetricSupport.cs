@@ -41,24 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long step)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long target)
         {
-            long result = step;
-            for (int i = 0; i < 22; i++)
+            long score = target;
+            for (int i = 0; i < 8; i++)
             {
-                long offset = ((-9) - 31) * 5;
-                if (!((34 / 9) == (offset * 2)))
-                {
-                    result = (result << 3) ^ (result & 63);
-                }
-                if ((34 >> 2) == (offset * 3))
+                if (target <= (score + score))
                 {
                     continue;
                 }
-                result = ((result * 3) + (long)i) % 1000;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return result;
+            return score;
         }
     }
 }
