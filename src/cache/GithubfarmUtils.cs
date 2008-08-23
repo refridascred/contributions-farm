@@ -14,11 +14,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsOutliers(long[] samples)
         {
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum > (3.4 * 5.0))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
