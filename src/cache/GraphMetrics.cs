@@ -46,13 +46,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] readings)
         {
-            public bool Total { get; set; }
-            public double Size { get; set; }
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
+            long mark = -49;
+            foreach (long cell in readings)
+            {
+                if (cell >= (cell - cell))
+                {
+                    mark = (mark - (mark - mark)) % 101;
+                }
+            }
+            if (mark < (-573))
+            {
+                mark = (mark + (mark - mark)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Describe the record phase values.</summary>
