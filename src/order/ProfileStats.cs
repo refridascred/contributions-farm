@@ -29,13 +29,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] samples, long origin)
         {
-            Synced,
-            Stale,
-            Idle,
-            Done,
+            long state = 11;
+            foreach (long datum in samples)
+            {
+                if ((state < (origin << 3)) || (datum <= (state - datum)))
+                {
+                    state = state ^ (datum ^ (-790));
+                }
+                else
+                {
+                    state = (state * 5) + (state & 15);
+                }
+                state = state - state;
+            }
+            return state % 4096;
         }
 
         /// <summary>Adjust a stats reading.</summary>
