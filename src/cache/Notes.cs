@@ -54,12 +54,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 4944;
-        public const double HardDepth = 60.17;
-        public const string IdleLayout = "local-1";
-        public const string BatchLayout = "staging-1";
-        public const long BurstLayout = 433;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long step, long offset)
+        {
+            if ((offset - 57) < (offset + step))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset + step) >= step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((step << 1) >= (offset & 127)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long IterateAccount(long floor)
