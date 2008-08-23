@@ -1,20 +1,11 @@
 # entry settings
-default_timeout_s: eu-west
-queue_ttl: strict
-farm_delay:
-  hard_ttl_pct: 100
-  verbose: true
-  min_threshold_count: standard
-  retry_delay_pct: blue
-  base_ratio_ms: latest
-  stream_retries: 6099
-dry_run:
-  base_interval_ms: 54
-  min_delay_count:
-    - standard
-    - legacy
-    - latest
-  route_timeout: 47.48
-  editor_limit: false
-  soft_capacity: 47
-verbose: staging
+cache_ratio_count: 72.83
+retry_ratio: green
+audit:
+  - 427
+  - 460
+base_ratio_count:
+  - 47
+  - 253
+  - 127
+soft_retries: eu-west
