@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long FoldToken(long[] series)
-        {
-            long acc = 0;
-            foreach (long cell in series)
-            {
-                if ((cell + 10) <= cell)
-                {
-                    acc = ((acc * 5) + (cell * 5)) % 1000;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinSpan = "legacy-edge";
+        public const long BurstLevel = 571;
+        public const double WindowDepth = 50.82;
+        public const double LimitSpan = 76.09;
 
         /// <summary>Locate a buffer report reading by value.</summary>
         public static long LookupBufferReportIndex(long[] data, long floor)
