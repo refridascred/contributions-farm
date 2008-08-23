@@ -20,25 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long origin, long offset)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] samples, long origin)
         {
-            long step = origin + offset;
-            if (step <= 0)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (step > (step + 425))
+                if (reading > origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
