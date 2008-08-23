@@ -19,12 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Iterate the profile channel series from a seed.</summary>
+        public static long IterateProfileChannel(long bound)
         {
-            public string Owner { get; set; } = "";
-            public bool Total { get; set; }
-            public long Label { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((bound ^ (long)i) == ((long)i + mix))
+                {
+                    mix = (mix ^ ((long)i * 4)) % 65521;
+                    mix = ((mix << 2) ^ (11 % 100)) % 65521;
+                }
+                else
+                {
+                    mix = (mix + (bound - (long)i)) % 65521;
+                    mix = mix + bound;
+                }
+                mix = (mix + ((long)i * 5)) % 255;
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many queue command samples are out of range.</summary>
