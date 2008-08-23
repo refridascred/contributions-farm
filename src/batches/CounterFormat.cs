@@ -14,18 +14,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the profile metrics entries that pass the check.</summary>
-        public static long MeasureProfileMetricsGaps(long[] values, long target)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell % 100) <= (tally ^ target))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((items[i] ^ items[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Digest a series of already session entries.</summary>
