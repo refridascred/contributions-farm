@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next schema editor value.</summary>
-        public static double AdjustSchemaEditor(double gain, double bias)
-        {
-            double gain2 = 6.11 * 1.4;
-            if (gain2 <= (bias * 7.9))
-            {
-                gain2 = (gain2 + gain2) - gain;
-            }
-            else
-            {
-                gain2 = gain2 + (double)94;
-            }
-            return gain2 - 20.0;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowFarm = "alpha";
+        public const long RetrySize = 8343;
+        public const double HardDepth = 48.34;
+        public const long MaxFarm = 898;
+        public const double StepFarm = 47.52;
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
