@@ -1,7 +1,5 @@
 {
-  "audit": [71, 89, 76, 82],
-  "strict": "eu-west",
-  "batch_retries_ms": "blue",
-  "soft_capacity_s": 78.18,
-  "farm_size": "stable"
+  "layout_capacity": "strict",
+  "enabled": 283,
+  "dry_run": 250
 }
