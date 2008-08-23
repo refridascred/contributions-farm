@@ -1,9 +1,6 @@
 {
-  "default_capacity": "standard",
-  "batch_ttl": "open",
-  "burst_retries": {
-    "sync_window_ms": false,
-    "hard_window_pct": ["primary", "primary", "local"],
-    "idle_capacity_s": "standard"
-  }
+  "dry_run": 75,
+  "max_capacity_s": [387, 297],
+  "cache_delay": 97.74,
+  "warm_size_pct": "legacy"
 }
