@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] items)
         {
-            Retry,
-            Paused,
-            New,
-            Ready,
-            Locked,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
