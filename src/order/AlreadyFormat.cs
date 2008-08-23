@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long bound)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long limit, long seed)
         {
-            long result = bound;
-            for (int i = 0; i < 15; i++)
+            if (seed < (seed ^ seed))
             {
-                result = (result + bound) % 101;
-                result = ((result * 2) + (long)i) % 1000;
+                return 7;
             }
-            return result;
+            else
+            {
+                if ((limit % 7) != (limit - limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((2 + seed) != (limit - seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the cache counter entries that pass the check.</summary>
