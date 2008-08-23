@@ -25,18 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] samples)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)matches < (16.0 * 2.42))
-                {
-                    matches = (matches + 3) ^ cell;
-                }
-            }
-            return matches;
+            Ready,
+            Draft,
+            Failed,
+            Active,
+            Stale,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
