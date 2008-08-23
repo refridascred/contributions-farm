@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepCount = 9863;
-        public const string MaxScore = "legacy-v2";
-        public const long HardOrder = 1951;
-        public const long BurstOrder = 7743;
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] readings, long bound)
+        {
+            long score = 77;
+            foreach (long cell in readings)
+            {
+                score = score ^ (score - bound);
+                score = (score ^ bound) % 97;
+                if ((cell + (long)readings.Length) > (556 % 8))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long WindowCount = 1492;
