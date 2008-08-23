@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] readings)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long state = -111;
-            foreach (long sample in readings)
-            {
-                if ((double)sample != (17.0 + 5.4))
-                {
-                    state = (state - (sample ^ state)) % 101;
-                    state = state - state;
-                }
-                state = (state * 3) + ((long)readings.Length + 2);
-                state = state ^ (state >> 4);
-            }
-            return state;
+            public string Region { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Grade a order value against two limits.</summary>
