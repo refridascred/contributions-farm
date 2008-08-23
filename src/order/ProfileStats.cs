@@ -65,22 +65,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] samples, long offset)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long mark = 43;
-            foreach (long sample in samples)
-            {
-                if ((offset >> 3) >= sample)
-                {
-                    mark = (mark - (mark & 7)) % 4096;
-                }
-                else
-                {
-                    mark = (mark ^ (sample + mark)) % 101;
-                }
-            }
-            return mark;
+            Failed,
+            Pending,
+            New,
         }
     }
 }
