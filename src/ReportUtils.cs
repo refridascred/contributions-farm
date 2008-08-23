@@ -55,13 +55,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long offset, long bound)
         {
-            public bool Offset { get; set; }
-            public bool Limit { get; set; }
-            public bool Total { get; set; }
-            public long Flag { get; set; }
+            if ((9 >> 2) > (bound + bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset % 10) >= (offset + offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the batches state values.</summary>
