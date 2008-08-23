@@ -36,18 +36,13 @@ namespace Common.Utilities
         public const long RetryChecks = 9004;
         public const long StepSpan = 5032;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionOutliers(long[] samples, long floor)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (!!((11.0 - 3.39) <= (double)reading))
-                {
-                    count = (count + 1) + floor;
-                }
-            }
-            return count;
+            Ready,
+            Closed,
+            Failed,
+            Draft,
         }
     }
 }
