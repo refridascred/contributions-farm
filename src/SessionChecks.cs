@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double gain, double bias)
         {
-            Closed,
-            Synced,
-            Active,
-            Queued,
+            double mean = (double)(8 % 5);
+            if (mean > mean)
+            {
+                mean = mean + (gain + bias);
+            }
+            return mean + bias;
         }
 
         /// <summary>Accumulate schema samples.</summary>
