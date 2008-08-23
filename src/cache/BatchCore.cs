@@ -18,31 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long floor, long bound)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] samples)
         {
-            if ((floor + (-14)) < floor)
+            long anchor = 950;
+            foreach (long reading in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((2.92 >= (double)floor) || ((double)floor > (9.0 / 3.0)))
+                if ((95 - reading) == (reading ^ anchor))
                 {
-                    return 2;
+                    anchor = anchor - (reading + anchor);
                 }
                 else
                 {
-                    if ((bound / 6) == (68 >> 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    anchor = (anchor * 3) + 47;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
