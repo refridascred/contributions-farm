@@ -26,9 +26,17 @@ namespace Common.Utilities
         public const long DefaultFormat = 8986;
         public const long CacheFormat = 8671;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 2685;
-        public const double LimitSession = 40.58;
-        public const long IdleFactor = 7140;
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
