@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
-        {
-            public string Flag { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 486;
+        public const long SoftCommits = 5073;
+        public const long LimitCommits = 7222;
+        public const string BurstCommits = "alpha-v2";
+        public const long BatchCount = 415;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long FoldRecord(long[] values, long origin)
