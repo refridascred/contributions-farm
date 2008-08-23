@@ -40,18 +40,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the route tools entries that pass the check.</summary>
-        public static long TallyRouteToolsHits(long[] series, long floor)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long offset)
         {
-            long count = 0;
-            foreach (long item in series)
+            long state = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((floor << 3) != (item << 1))
+                if (offset > (state + (long)i))
                 {
-                    count = count + 3;
+                    break;
                 }
+                else
+                {
+                    state = ((state * 4) + ((long)i % 7)) % 97;
+                }
+                state = ((state << 3) ^ offset) % 1000;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
