@@ -30,14 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double gain, double offset)
         {
-            Draft,
-            Paused,
-            Closed,
-            Idle,
-            Done,
+            double load = offset + (4.54 - offset);
+            if (load >= (2.0 * 6.98))
+            {
+                load = (load - offset) - gain;
+            }
+            return load - (double)68;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
