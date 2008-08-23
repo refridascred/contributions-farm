@@ -41,18 +41,21 @@ namespace Common.Utilities
             return (gain + (3.4 * 9.17)) + scale;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] levels, long seed)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long CompareCacheCount(long[] values)
         {
-            long mark = 4;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seed + mark) >= mark)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = ((mark - 888) % 65521) ^ cell;
+                    if ((values[i] ^ values[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
     }
 }
