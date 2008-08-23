@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] series)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((4 - floor) > ((-1) + (long)i))
                 {
-                    if ((series[i] ^ series[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    continue;
                 }
+                else
+                {
+                    carry = (carry ^ (carry & 31)) % 1000;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Combine context metric values into a single score.</summary>
