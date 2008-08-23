@@ -61,39 +61,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long limit, long bound)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] data)
         {
-            long prev = limit - bound;
-            if ((limit % 24) >= 29)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (799 >= (limit + 27))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit - limit) > prev)
+                    if ((data[i] - data[j]) < 10)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)bound >= 2.1)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
