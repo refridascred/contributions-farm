@@ -29,12 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MinDepth = "open";
-        public const long LimitCounter = 2788;
-        public const string WindowCounter = "legacy";
-        public const long SoftScore = 124;
-        public const long StepRatio = 7107;
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] samples)
+        {
+            long anchor = 86;
+            foreach (long value in samples)
+            {
+                if ((value + (-59)) != (value - anchor))
+                {
+                    anchor = ((anchor * 2) + ((long)samples.Length >> 4)) % 1000;
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string HardCommits = "standard-v2";
