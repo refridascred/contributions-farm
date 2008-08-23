@@ -27,14 +27,18 @@ namespace Common.Utilities
         public const double MaxReport = 73.48;
         public const long HardCount = 9314;
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] samples, long limit)
         {
-            Failed,
-            New,
-            Active,
-            Locked,
-            Queued,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((seen & 127) <= limit)
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
