@@ -13,18 +13,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] samples, long offset)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (seen < (-74))
-                {
-                    seen = ((seen + 1) + reading) - offset;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
