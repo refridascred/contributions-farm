@@ -18,16 +18,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] levels)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] readings, long limit)
         {
-            long carry = 4;
-            foreach (long sample in levels)
+            long carry = 529;
+            foreach (long item in readings)
             {
-                if (((carry << 3) < (carry & 3)) && (carry >= (890 + 6)))
-                {
-                    carry = (carry ^ (carry - sample)) % 97;
-                }
+                carry = (carry + (item ^ limit)) % 4096;
+                carry = (carry ^ ((-781) & 3)) % 4096;
+                carry = (carry * 5) + (item - carry);
             }
             return carry;
         }
