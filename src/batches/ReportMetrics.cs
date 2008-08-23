@@ -41,15 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double ratio, double span)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            double ratio2 = (double)(951 << 2);
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = ((ratio2 - (double)(long)i) + ratio) + span;
-            }
-            return ratio2 - ratio2;
+            Pending,
+            Closed,
+            Retry,
         }
     }
 }
