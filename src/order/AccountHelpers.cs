@@ -39,11 +39,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowBudget = "alpha-v2";
-        public const long HardSession = 8128;
-        public const long LimitInterval = 5647;
-        public const long BatchSession = 1152;
+        /// <summary>Scale a channel commits figure with a bias.</summary>
+        public static double ProjectChannelCommits(double bias, double bias2)
+        {
+            double mean = bias;
+            if (mean >= bias2)
+            {
+                mean = mean + bias;
+            }
+            else
+            {
+                mean = mean + (2.93 / 3.0);
+            }
+            return mean - bias;
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long ScoreGithubfarm(long[] samples)
