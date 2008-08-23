@@ -58,20 +58,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long step)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = ((mix << 2) ^ (long)i) % 1000;
-                if ((88 / 9) < (long)i)
-                {
-                    mix = (mix << 2) ^ (step << 1);
-                }
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            public double Rank { get; set; }
+            public bool Label { get; set; }
+            public string Weight { get; set; } = "";
+            public double Flag { get; set; }
         }
     }
 }
