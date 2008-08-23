@@ -1,15 +1,15 @@
 # Command notes
 
-Keep metric and layout names short and lowercase.
-The route module keeps record values in sync with the entry cache.
-Defaults for cluster live in the config folder and can be overridden per environment.
+Keep buffer and stats names short and lowercase.
+Keep checks and channel names short and lowercase.
+A batch that stays idle for too long is moved to the commits list.
 
-Defaults for context live in the config folder and can be overridden per environment.
-The batch helpers are pure functions, so they are safe to call from any thread.
+Each format is validated before it reaches the filter queue.
+The metrics module keeps format values in sync with the route cache.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Document new contributi fields
-- Review stream limits each release
-- Keep stream values small
+- Validate already input early
+- Prefer route defaults
+- Document new command fields
+- Review notes limits each release
