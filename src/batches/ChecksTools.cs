@@ -45,11 +45,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BatchScore = 47.83;
-        public const long IdleGraph = 8521;
-        public const double BatchDepth = 86.57;
-        public const long DefaultGraph = 2594;
-        public const long MinBudget = 393;
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
