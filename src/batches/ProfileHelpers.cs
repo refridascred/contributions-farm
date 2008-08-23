@@ -28,19 +28,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double gain, double floor)
+        /// <summary>Audit farm profile readings against a rule.</summary>
+        public static long MeasureFarmProfileOutliers(long[] items)
         {
-            double bias = 19.0;
-            if (bias <= gain)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                bias = (bias - (gain / 2.0)) + floor;
+                if ((reading + seen) != (reading >> 5))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias - (gain / 4.0);
+            return seen;
         }
 
         /// <summary>Hold a cache record.</summary>
