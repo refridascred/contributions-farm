@@ -22,19 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every notes profile entry stays within the limit.</summary>
-        public static bool CheckNotesProfileBounds(long[] values, long origin)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a editor snapshot.</summary>
