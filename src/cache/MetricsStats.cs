@@ -37,18 +37,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutHits(long[] values)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (((double)matches < (double)reading) || ((double)reading == (double)(-54)))
+                if (((tally + item) > tally) || (((limit - limit) < (18 - limit)) && (tally >= (tally << 2))))
                 {
-                    matches = matches + 1;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Validate githubfarm tools readings against a bound.</summary>
