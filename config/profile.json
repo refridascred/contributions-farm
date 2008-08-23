@@ -1,15 +1,7 @@
 {
-  "persist": ["cached", "edge", "strict", "legacy"],
-  "session_size": "green",
-  "batch_capacity": {
-    "flush_limit": 61.74,
-    "compress": true,
-    "command_ratio": "edge",
-    "cache_interval": 89.41,
-    "stats_delay": 66,
-    "soft_capacity": 6
-  },
-  "default_depth_pct": "blue",
-  "sync_ttl_pct": 2176,
-  "soft_delay_s": 500
+  "compress": "stable",
+  "entry_window": 100,
+  "cache_capacity_ms": ["latest", "stable", "open", "edge"],
+  "idle_limit_s": "stable",
+  "flush_window_ms": ["primary", "staging", "fallback", "staging"]
 }
