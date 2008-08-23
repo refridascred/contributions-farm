@@ -1,5 +1,7 @@
 {
-  "burst_size_s": 64.02,
-  "channel_depth": ["fallback", "fallback"],
-  "githubfarm_window": [252, 343, 310, 302]
+  "compress": "fallback",
+  "context_limit": "edge",
+  "route_limit": 500,
+  "burst_ttl": [442, 497, 342],
+  "enabled": 6724
 }
