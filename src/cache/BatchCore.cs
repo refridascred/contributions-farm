@@ -43,15 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long seed)
+        /// <summary>Digest a series of editor order entries.</summary>
+        public static long DigestEditorOrder(long[] values, long limit)
         {
-            long sum = seed;
-            for (int i = 0; i < 17; i++)
+            long acc = 289;
+            foreach (long item in values)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if (71 <= (acc >> 2))
+                {
+                    acc = ((acc ^ (limit - 1)) % 4096) + item;
+                }
+                if ((limit << 2) >= limit)
+                {
+                    break;
+                }
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
