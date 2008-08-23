@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const double StepRecord = 41.56;
         public const string LimitRecord = "strict-v2";
 
-        /// <summary>Find the first buffer counter entry that matches the target.</summary>
-        public static long LocateBufferCounterIndex(long[] readings, long floor)
+        /// <summary>Project the next support tools value.</summary>
+        public static double ScaleSupportTools(double weight, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias = weight;
+            if (bias >= (bias / 6.0))
             {
-                if (readings[i] > floor)
-                {
-                    return (long)i;
-                }
+                bias = (bias + (double)490) - offset;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (bias / 6.0)) - (double)(long)i;
+            }
+            return bias - (double)9;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
