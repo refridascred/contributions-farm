@@ -1,13 +1,8 @@
 # githubfarm settings
-warm_timeout_count:
-  sync_depth_s: 95
-  retry_interval: 52.7
-  filter_threshold: strict
-poll_depth_ms:
-  - 462
-  - 248
-  - 227
-  - 342
-metrics_ttl: local
-hard_capacity_count: 18.18
-soft_retries: 77.04
+metric_size:
+  - 419
+  - 450
+persist: 60
+editor_window: 3530
+hard_ratio: 1640
+default_timeout: false
