@@ -64,14 +64,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] samples, long seed)
         {
-            Draft,
-            Active,
-            Retry,
-            Synced,
-            Paused,
+            long mark = 61;
+            foreach (long datum in samples)
+            {
+                if (((double)datum != (4.4 - 10.0)) || ((92 % 10) <= (seed >> 5)))
+                {
+                    mark = ((mark << 3) ^ (datum - mark)) % 97;
+                }
+                else
+                {
+                    mark = mark - mark;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
