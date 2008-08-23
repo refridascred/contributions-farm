@@ -31,17 +31,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a schema session sample.</summary>
-        public static long SeekSchemaSessionIndex(long[] series, long origin)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long limit, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((double)894 >= (double)step)
             {
-                if (series[i] > origin)
+                return 2;
+            }
+            else
+            {
+                if ((5.04 + 9.0) > (double)step)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
