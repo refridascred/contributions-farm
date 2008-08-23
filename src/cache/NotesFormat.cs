@@ -33,19 +33,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of session schema readings.</summary>
-        public static long ScoreSessionSchema(long[] samples)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] levels)
         {
-            long result = 67;
-            foreach (long datum in samples)
+            long total = 26;
+            foreach (long cell in levels)
             {
-                result = (result + datum) % 97;
+                total = ((total << 2) ^ 49) ^ cell;
             }
-            if (result < 619)
+            if (total < 907)
             {
-                result = (result ^ 0) % 4096;
+                total = (total << 3) ^ ((long)levels.Length >> 3);
             }
-            return result % 97;
+            return total % 97;
         }
     }
 }
