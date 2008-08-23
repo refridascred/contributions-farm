@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] values, long bound)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((bound / 2) <= (tally % 10))
+                if (((1.2 >= (double)value) || ((double)seen > (9.6 * 4.0))) || ((value >> 1) >= (value - 0)))
                 {
-                    tally = (tally + 3) - datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the format level values.</summary>
