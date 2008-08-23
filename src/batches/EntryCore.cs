@@ -63,13 +63,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            New,
-            Done,
-            Active,
-            Stale,
+            public bool Offset { get; set; }
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
