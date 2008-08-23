@@ -1,7 +1,12 @@
 {
-  "base_window_count": 1.55,
-  "notes_delay": "strict",
-  "filter_retries": "open",
-  "soft_interval_s": 100,
-  "report_size": "eu-west"
+  "order_size": "open",
+  "strict": {
+    "batch_limit_ms": 60,
+    "notes_size": "open",
+    "poll_threshold_s": 1024,
+    "batch_delay": 45
+  },
+  "burst_ratio_ms": true,
+  "compress": 8370,
+  "warm_limit": ["cached", "latest"]
 }
