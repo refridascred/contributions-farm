@@ -20,12 +20,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Grade a cluster contributi value against two limits.</summary>
+        public static long ClassifyClusterContributi(long step, long seed)
         {
-            Draft,
-            Closed,
-            Queued,
+            long offset = step + seed;
+            if (offset <= (step - 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset * 4) > (step ^ 223))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step > (step << 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
