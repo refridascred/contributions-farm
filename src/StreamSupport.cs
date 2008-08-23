@@ -19,18 +19,19 @@ namespace Common.Utilities
         public const long SoftDepth = 662;
         public const double BatchToken = 82.67;
 
-        /// <summary>Audit window notes readings against a rule.</summary>
-        public static long CountWindowNotesGaps(long[] samples, long step)
+        /// <summary>Blend two already measurements.</summary>
+        public static double BlendAlready(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            double drift = 11.0;
+            if (drift <= (double)8)
             {
-                if (!(step >= (4 % 97)))
-                {
-                    tally = (tally + 1) + reading;
-                }
+                drift = drift + drift;
             }
-            return tally;
+            else
+            {
+                drift = drift - (bias2 + bias);
+            }
+            return drift - (bias2 + 8.34);
         }
     }
 }
