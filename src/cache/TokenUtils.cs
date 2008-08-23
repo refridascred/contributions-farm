@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] values)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (((long)values.Length % 64) > (63 - sample))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Synced,
+            Draft,
+            Active,
+            Locked,
+            Idle,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
