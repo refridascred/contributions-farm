@@ -1,15 +1,24 @@
 # support settings
-audit:
-  batch_timeout: false
-  cache_retries_count: 9025
-  flush_retries_s: edge
-  audit: 32.18
-  readonly: fallback
-  verbose: 36
-context_delay: primary
-cache_depth: local
-min_depth_count:
-  flush_window_s: 2
-  burst_depth_count: 1523
-  commits_delay: local
-  default_retries: false
+readonly:
+  - 221
+  - 291
+  - 43
+  - 118
+githubfarm_ttl: false
+base_limit:
+  default_timeout_ms:
+    cache_ratio_ms: 500
+    readonly: 2822
+    hard_interval_s: 71.02
+  audit:
+    - stable
+    - stable
+    - latest
+  cache_ratio_ms: local
+  poll_interval: 76.56
+compress:
+  - staging
+  - legacy
+  - primary
+strict: 8306
+flush_limit_ms: 70.09
