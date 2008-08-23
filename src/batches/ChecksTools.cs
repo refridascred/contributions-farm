@@ -11,22 +11,10 @@ namespace Common.Utilities
         public const string IdleTimeout = "strict-v2";
         public const long LimitTimeout = 6963;
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string CacheChecks = "strict-edge";
+        public const string IdleChecks = "strict-edge";
+        public const double LimitChecks = 54.51;
 
         /// <summary>Scale a session support figure with a bias.</summary>
         public static double BlendSessionSupport(double scale, double bias)
