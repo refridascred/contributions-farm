@@ -1,5 +1,8 @@
 {
-  "cluster_capacity": 92.2,
-  "soft_retries_s": "edge",
-  "burst_ratio": 250
+  "queue_depth": false,
+  "burst_capacity": "strict",
+  "record_interval": 49.12,
+  "batch_ratio": ["primary", "standard", "legacy", "eu-west"],
+  "route_window": "eu-west",
+  "flush_interval_ms": 39
 }
