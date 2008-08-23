@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelLimits(long[] items, long limit)
         {
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
-            public long Size { get; set; }
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
