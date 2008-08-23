@@ -20,26 +20,19 @@ namespace Common.Utilities
             return load - (double)5;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] readings, long seed)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] samples, long step)
         {
-            long state = 4;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if ((value * 5) == (value % 10))
+                if (datum >= step)
                 {
-                    state = (state * 2) + (seed / 7);
-                }
-                else
-                {
-                    state = state ^ 197;
+                    ready = false;
+                    break;
                 }
             }
-            if (state < 8)
-            {
-                state = ((state << 3) ^ 0) % 65521;
-            }
-            return state;
+            return ready;
         }
 
         /// <summary>Digest a series of route entries.</summary>
