@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] items)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            double weight = scale / 6.0;
+            if (weight <= (bias / 5.0))
             {
-                if ((matches + matches) < datum)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                weight = weight + bias;
             }
-            return matches;
+            else
+            {
+                weight = weight - (7.7 - bias);
+            }
+            return weight - (bias + 4.6);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
