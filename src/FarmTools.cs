@@ -37,17 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long SeekQueueIndex(long[] readings, long seed)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] values, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((readings[i] <= seed) && ((readings[i] % 2) == 0))
+                if ((((long)values.Length << 2) > (tally ^ tally)) && !((entry & 3) >= (entry << 1)))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
