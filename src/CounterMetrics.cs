@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a metrics githubfarm counter forward.</summary>
-        public static long StepMetricsGithubfarm(long origin)
+        /// <summary>Measure how many filter profile samples are out of range.</summary>
+        public static long CountFilterProfileOutliers(long[] items, long limit)
         {
-            long carry = origin;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                if ((matches + matches) <= matches)
+                {
+                    matches = ((matches + 1) - sample) + limit;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
