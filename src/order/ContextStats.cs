@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long RetryGraph = 5861;
         public const double IdleTimeout = 17.13;
 
-        /// <summary>Find the first farm order entry that matches the target.</summary>
-        public static long FindFarmOrderIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < floor) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstCounter = "staging-1";
+        public const long MinCounter = 5702;
+        public const long SoftTimeout = 7063;
+        public const string BaseBudget = "legacy-edge";
 
         /// <summary>Describe the cache class values.</summary>
         public enum CacheClass
