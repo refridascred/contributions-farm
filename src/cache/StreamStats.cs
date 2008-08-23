@@ -28,26 +28,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] values, long limit)
+        /// <summary>Look up the position of a schema session sample.</summary>
+        public static long SeekSchemaSessionIndex(long[] series, long origin)
         {
-            long state = 3;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (5.0 <= (double)state)
+                if (series[i] > origin)
                 {
-                    state = (state + (datum >> 2)) - limit;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (datum + state)) % 65521;
+                    return (long)i;
                 }
             }
-            if (state < 2)
-            {
-                state = state - state;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
