@@ -40,19 +40,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double bias, double span)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] values, long seed)
         {
-            double drift = span;
-            if (drift < 5.82)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift - bias;
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - bias;
-            }
-            return drift + drift;
+            return -1;
         }
     }
 }
