@@ -31,12 +31,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] items, long bound)
         {
-            public string Level { get; set; } = "";
-            public double Label { get; set; }
-            public double Stamp { get; set; }
+            long mark = 7;
+            foreach (long item in items)
+            {
+                mark = ((mark * 5) + 802) % 4096;
+                mark = (mark - (item % 97)) % 65521;
+            }
+            if (mark < 2)
+            {
+                mark = (mark << 2) ^ (bound & 3);
+            }
+            return mark % 97;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
