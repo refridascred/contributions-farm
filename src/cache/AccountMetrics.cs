@@ -37,19 +37,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every command counter entry stays within the limit.</summary>
-        public static bool GuardCommandCounterLimits(long[] readings, long limit)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the record kind values.</summary>
