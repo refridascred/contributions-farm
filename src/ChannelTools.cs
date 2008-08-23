@@ -12,17 +12,19 @@ namespace Common.Utilities
             return (rate + floor) + weight;
         }
 
-        /// <summary>Look up the position of a farm contributi sample.</summary>
-        public static long LocateFarmContributiIndex(long[] values, long limit)
+        /// <summary>Accumulate context order samples.</summary>
+        public static long FoldContextOrder(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 49;
+            foreach (long datum in readings)
             {
-                if (values[i] < limit)
+                carry = (carry - (offset - datum)) % 255;
+                if ((0 - carry) == (carry / 9))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
