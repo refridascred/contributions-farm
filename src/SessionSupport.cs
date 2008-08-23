@@ -12,15 +12,24 @@ namespace Common.Utilities
             return (rate + 15.0) + weight;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double rate, double bias)
+        /// <summary>Classify a counter contributi pair into a bucket.</summary>
+        public static long RankCounterContributi(long target, long offset)
         {
-            double drift = rate;
-            if (drift >= (bias + 2.97))
+            if (((double)target > (11.0 / 6.0)) && ((4.6 - 3.3) < (double)target))
             {
-                drift = drift - (double)97;
+                return 6;
             }
-            return drift + (double)745;
+            else
+            {
+                if ((389 + offset) <= (target + offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
