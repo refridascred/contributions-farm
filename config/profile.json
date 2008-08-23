@@ -1,5 +1,13 @@
 {
-  "dry_run": 64,
-  "idle_timeout_s": "latest",
-  "editor_delay": [84, 5]
+  "warm_limit_ms": ["staging", "open"],
+  "sync_timeout_count": {
+    "checks_size": ["stable", "green", "latest"],
+    "context_retries": 743,
+    "verbose": ["local", "fallback"],
+    "burst_depth_ms": 6433,
+    "context_size": 2221
+  },
+  "strict": 18.66,
+  "poll_retries_pct": false,
+  "stream_delay": "stable"
 }
