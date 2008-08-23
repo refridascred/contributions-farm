@@ -12,20 +12,18 @@ namespace Common.Utilities
             return ((load - (double)3) + scale) + offset;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] data)
         {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((floor >> 1) >= 78)
+                if ((double)reading >= (3.6 / 6.0))
                 {
-                    carry = (carry - floor) % 1000;
-                    continue;
+                    tally = tally + 3;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a order stats.</summary>
