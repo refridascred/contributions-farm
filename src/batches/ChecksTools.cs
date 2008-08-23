@@ -56,10 +56,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleChannel = "open";
-        public const string StepChannel = "primary-1";
-        public const long DefaultLevel = 6597;
-        public const long MinChannel = 9683;
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= step) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
