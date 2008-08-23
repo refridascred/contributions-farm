@@ -36,18 +36,25 @@ namespace Common.Utilities
         public const long SoftScore = 124;
         public const long StepRatio = 7107;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] data, long origin)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long target, long seed)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long prev = target + seed;
+            if (target < (614 ^ target))
             {
-                if ((928 + origin) > (origin + matches))
+                return 4;
+            }
+            else
+            {
+                if (((target % 2) < target) && ((7.0 - 7.08) != (double)prev))
                 {
-                    matches = (matches + 1) - datum;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
     }
 }
