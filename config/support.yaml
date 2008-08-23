@@ -1,5 +1,10 @@
 # support settings
-window_retries: true
-flush_retries: staging
-batch_window: 63
-compress: true
+githubfarm_retries: local
+enabled: 8910
+verbose:
+  - fallback
+  - legacy
+default_depth_count: fallback
+audit:
+  - legacy
+  - cached
