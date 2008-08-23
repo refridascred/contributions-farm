@@ -31,36 +31,28 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long limit, long floor)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long target, long offset)
         {
-            long cur = limit ^ floor;
-            if ((double)cur <= (8.06 - 9.8))
+            if ((target << 1) <= (offset % 8))
             {
-                return 8;
+                return 7;
             }
             else
             {
-                if ((double)floor > (double)limit)
+                if ((target + offset) <= (offset % 12))
                 {
-                    return 2;
+                    return 8;
                 }
                 else
                 {
-                    if ((11.0 * 8.7) <= (double)cur)
+                    if ((double)offset == (8.0 - 3.46))
                     {
                         return 1;
                     }
                     else
                     {
-                        if ((cur >> 2) >= (515 & 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        return 0;
                     }
                 }
             }
