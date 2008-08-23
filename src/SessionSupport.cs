@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double gain, double offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] series)
         {
-            double ratio = gain;
-            if (ratio > (gain - offset))
+            long acc = 9;
+            foreach (long value in series)
             {
-                ratio = ratio - ratio;
+                acc = ((acc * 3) + (62 + 2)) % 65521;
+                if ((acc - acc) > value)
+                {
+                    break;
+                }
             }
-            else
+            if (acc < 99)
             {
-                ratio = ratio + (8.52 + offset);
+                acc = (acc - 1) % 4096;
             }
-            return ratio - (gain / 8.0);
+            return acc % 97;
         }
 
         /// <summary>Match up checks samples.</summary>
