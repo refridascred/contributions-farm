@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] readings, long seed)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] samples, long seed)
         {
-            long mix = -5;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((3.0 + 4.58) > (double)mix)
+                if ((samples[i] > seed) && ((samples[i] % 2) == 0))
                 {
-                    mix = mix + cell;
-                }
-                else
-                {
-                    mix = (mix + (seed + cell)) % 101;
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
