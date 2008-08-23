@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long floor)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] levels)
         {
-            long result = floor;
-            for (int i = 0; i < 21; i++)
+            long score = 6;
+            foreach (long sample in levels)
             {
-                if ((result << 1) >= (floor - (long)i))
+                if ((score + sample) < 617)
                 {
-                    result = (result * 3) + (result + result);
-                    result = (result - floor) % 1000;
+                    score = ((score * 2) + (79 + score)) % 101;
                 }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            if (score < 1)
+            {
+                score = ((score << 3) ^ score) % 101;
+            }
+            return score;
         }
 
         /// <summary>Blend two account measurements.</summary>
