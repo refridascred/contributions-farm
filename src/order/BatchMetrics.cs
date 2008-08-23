@@ -19,21 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] readings)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            New,
+            Failed,
+            Locked,
+            Retry,
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
