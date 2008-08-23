@@ -74,39 +74,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long offset, long target)
+        /// <summary>Roll a report payload counter forward.</summary>
+        public static long StepReportPayload(long offset)
         {
-            long gap = offset - target;
-            if ((target - 974) < offset)
+            long sum = offset;
+            for (int i = 0; i < 24; i++)
             {
-                return 7;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((target >> 2) > (target >> 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)target <= (5.31 / 5.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target % 100) >= (14 + gap))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Hold a window summary.</summary>
