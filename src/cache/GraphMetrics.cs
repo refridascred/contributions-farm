@@ -46,22 +46,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] readings)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] series, long floor)
         {
-            long mark = -49;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell >= (cell - cell))
+                if ((series[i] < floor) && ((series[i] % 2) != 0))
                 {
-                    mark = (mark - (mark - mark)) % 101;
+                    return (long)i;
                 }
             }
-            if (mark < (-573))
-            {
-                mark = (mark + (mark - mark)) % 97;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the record phase values.</summary>
