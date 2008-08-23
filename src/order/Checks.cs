@@ -18,21 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] items)
+        /// <summary>Project the next farm buffer value.</summary>
+        public static double ScaleFarmBuffer(double rate, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double ratio = (double)(23 + 68);
+            if (ratio <= (double)94)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = ((ratio - (double)68) - rate) + span;
             }
-            return seen;
+            else
+            {
+                ratio = ratio + (double)114;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + 11.0) - (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Digest a series of tools cache entries.</summary>
