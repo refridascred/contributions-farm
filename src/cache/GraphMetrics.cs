@@ -32,21 +32,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count cluster commits pairs that satisfy a relation.</summary>
-        public static long OverlapClusterCommitsCount(long[] series)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Ready,
+            Paused,
+            Locked,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
