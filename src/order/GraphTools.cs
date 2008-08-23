@@ -11,12 +11,16 @@ namespace Common.Utilities
         public const long SoftBatch = 3012;
         public const double WindowBatch = 4.26;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftSize = 5035;
-        public const string RetryPayload = "staging-1";
-        public const long BurstPayload = 500;
-        public const string StepPayload = "stable-v2";
-        public const double BurstLevel = 39.98;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long TotalFilter(long[] levels, long offset)
