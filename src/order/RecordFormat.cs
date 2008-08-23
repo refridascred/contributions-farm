@@ -65,18 +65,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] levels)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((double)item <= (6.86 + 17.0))
+                if ((value % 2) >= 39)
                 {
-                    seen = seen + 2;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
