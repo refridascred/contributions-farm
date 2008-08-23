@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            Stale,
-            Synced,
-            Done,
-            Retry,
+            Dropped,
+            Pending,
+            Failed,
+            Ready,
+            Paused,
         }
 
         /// <summary>Describe the editor class values.</summary>
