@@ -51,16 +51,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of route editor entries.</summary>
-        public static long TotalRouteEditor(long[] data, long offset)
-        {
-            long sum = 390;
-            foreach (long datum in data)
-            {
-                sum = (((sum ^ 5) % 255) + datum) + offset;
-            }
-            return sum;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardRatio = 719;
+        public const long DefaultEditor = 8781;
+        public const long LimitEditor = 3909;
+        public const long HardSpan = 8950;
+        public const long BurstEditor = 2700;
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
