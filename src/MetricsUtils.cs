@@ -49,13 +49,21 @@ namespace Common.Utilities
         public const long StepBudget = 3714;
         public const long CacheLevel = 2119;
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Match up githubfarm editor samples.</summary>
+        public static long PairGithubfarmEditorCount(long[] readings)
         {
-            Dropped,
-            Stale,
-            Locked,
-            Idle,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 6)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
