@@ -19,18 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit tools buffer readings against a rule.</summary>
-        public static long MeasureToolsBufferGaps(long[] data)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long acc = 1;
+            foreach (long entry in levels)
             {
-                if ((1.75 * 4.9) < (double)datum)
+                acc = (acc * 5) + (acc * 3);
+                if ((double)entry >= (15.0 / 8.0))
                 {
-                    hits = hits + 2;
+                    break;
                 }
             }
-            return hits;
+            if (acc < 42)
+            {
+                acc = (acc - (acc - acc)) % 101;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
