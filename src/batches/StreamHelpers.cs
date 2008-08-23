@@ -60,21 +60,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Measure how many context channel samples are out of range.</summary>
+        public static long MeasureContextChannelGaps(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((double)hits != (10.0 / 7.0)) && (((datum - datum) >= (datum % 100)) || ((double)datum > 6.5)))
                 {
-                    if ((readings[i] - readings[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
