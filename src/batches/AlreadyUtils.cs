@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 1429;
-        public const long LimitFilter = 477;
-        public const long MaxSize = 510;
-        public const long HardFilter = 761;
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
+        {
+            public bool Region { get; set; }
+            public double Label { get; set; }
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
