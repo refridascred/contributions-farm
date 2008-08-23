@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] data)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long bound)
         {
-            long sum = 425;
-            foreach (long datum in data)
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)datum < (12.0 - 18.0))
+                if ((mix - mix) == ((long)i + bound))
                 {
-                    sum = sum - ((-59) + sum);
+                    mix = (mix ^ ((long)i + mix)) % 97;
                 }
-                if (datum >= (73 - datum))
-                {
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Grade a metric command value against two limits.</summary>
