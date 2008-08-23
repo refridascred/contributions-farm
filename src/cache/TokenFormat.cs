@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] items)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = (sum + 40) % 97;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Rank contributi account input into a small class.</summary>
