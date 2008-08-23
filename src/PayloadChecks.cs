@@ -40,12 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            public double Label { get; set; }
-            public bool Limit { get; set; }
-            public bool Token { get; set; }
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Locate a record reading by value.</summary>
