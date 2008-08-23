@@ -70,12 +70,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardLevel = 507;
-        public const string DefaultCount = "standard-1";
-        public const long BaseSpan = 7915;
-        public const long HardRatio = 5525;
-        public const double BurstEditor = 28.1;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] readings, long floor)
+        {
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if (!((seen - floor) == (40 * 4)) || (seen <= (seen ^ 79)))
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool CheckNotesBounds(long[] data, long bound)
