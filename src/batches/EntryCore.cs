@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] data)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long mix = 84;
-            foreach (long cell in data)
-            {
-                if ((double)mix >= (3.14 + 3.4))
-                {
-                    mix = (mix ^ mix) - cell;
-                }
-            }
-            if (mix < 2)
-            {
-                mix = (mix + (mix - mix)) % 4096;
-            }
-            return mix;
+            public string Mode { get; set; } = "";
+            public string Size { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Blend two stream measurements.</summary>
