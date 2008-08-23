@@ -45,23 +45,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two counter session measurements.</summary>
-        public static double ScaleCounterSession(double gain, double offset)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long step)
         {
-            double scale = (gain + 19.0) - gain;
-            if (scale < (gain + 1.9))
+            long carry = step;
+            for (int i = 0; i < 9; i++)
             {
-                scale = scale + 10.0;
+                carry = (carry ^ step) % 101;
+                carry = (carry << 2) ^ (carry * 3);
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            else
-            {
-                scale = scale - gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - gain) - (double)(long)i;
-            }
-            return scale - offset;
+            return carry;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
