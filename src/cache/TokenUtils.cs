@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Synced,
-            Draft,
-            Active,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 1836;
+        public const string SoftContributi = "local";
+        public const string StepFactor = "strict-1";
+        public const long WindowContributi = 1288;
+        public const long StepContributi = 9371;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueHits(long[] items)
