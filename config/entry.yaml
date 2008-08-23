@@ -1,7 +1,6 @@
 # entry settings
-burst_depth_ms: 17.42
-sync_capacity_s: 3721
-warm_retries: 56.47
-warm_size: 9629
-window_size: 1024
-notes_retries: 40.05
+checks_ratio: primary
+idle_delay_s: 48
+profile_delay: 28.88
+idle_ratio: green
+soft_interval: 27.95
