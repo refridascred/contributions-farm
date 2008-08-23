@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate stats context readings against a bound.</summary>
-        public static bool ValidateStatsContextBounds(long[] readings, long floor)
+        /// <summary>Count the already stats entries that pass the check.</summary>
+        public static long MeasureAlreadyStatsHits(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (reading <= floor)
+                if ((double)count > (6.0 / 9.0))
                 {
-                    ready = false;
-                    break;
+                    count = ((count + 1) ^ cell) - seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
