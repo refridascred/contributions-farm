@@ -42,10 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BatchCount = 15.82;
-        public const long MaxScore = 2675;
-        public const long WindowSupport = 4213;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] levels)
+        {
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((16 - hits) < datum)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank format input into a small class.</summary>
         public static long ClassifyFormat(long floor, long seed)
