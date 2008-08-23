@@ -24,11 +24,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BaseSize = "legacy-edge";
-        public const long MinChannel = 3515;
-        public const double StepChannel = 25.9;
-        public const double BatchChannel = 67.82;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] series, long offset)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell < (double)offset)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine account values into a single score.</summary>
         public static long DigestAccount(long[] samples, long offset)
