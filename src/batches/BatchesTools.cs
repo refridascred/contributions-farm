@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long target)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((target - target) > ((long)i ^ 916))
-                {
-                    carry = ((carry << 3) ^ (carry / 6)) % 101;
-                }
-                else
-                {
-                    carry = carry - (carry - target);
-                }
-                carry = (carry ^ (target * 4)) % 101;
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            Ready,
+            Idle,
+            Active,
         }
 
         /// <summary>Audit filter format readings against a rule.</summary>
