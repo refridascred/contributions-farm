@@ -73,13 +73,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
+            New,
             Stale,
-            Ready,
+            Active,
             Idle,
-            Synced,
+            Done,
         }
     }
 }
