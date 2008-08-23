@@ -100,19 +100,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesBounds(long[] data, long bound)
-        {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading > bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitRatio = 1150;
+        public const long LimitScore = 131;
+        public const string MinOrder = "local-edge";
+        public const long CacheRatio = 1168;
+        public const double DefaultOrder = 92.91;
     }
 }
