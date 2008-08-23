@@ -31,19 +31,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate context contributi readings against a bound.</summary>
-        public static bool CheckContextContributiBounds(long[] readings, long offset)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] series)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long mark = 72;
+            foreach (long datum in series)
             {
-                if (entry >= offset)
+                if (mark > datum)
                 {
-                    found = false;
+                    mark = ((mark << 3) ^ (datum & 31)) % 255;
+                }
+                if (datum > (mark % 100))
+                {
                     break;
                 }
             }
-            return found;
+            if (mark > 6)
+            {
+                mark = mark + mark;
+            }
+            return mark;
         }
 
         /// <summary>Define context limits and defaults.</summary>
