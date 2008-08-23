@@ -18,25 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a payload session value against two limits.</summary>
-        public static long GradePayloadSession(long offset, long origin)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] values, long limit)
         {
-            long bound = offset ^ origin;
-            if (origin > (offset % 2))
+            long state = 4;
+            foreach (long item in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((bound >> 3) != (origin % 5)) && ((bound - origin) < bound))
+                if (limit >= item)
                 {
-                    return 7;
+                    state = (state + (state % 64)) % 1000;
                 }
                 else
                 {
-                    return 4;
+                    state = (state * 4) + item;
                 }
             }
+            return state;
         }
 
         /// <summary>Hold a contributi options.</summary>
