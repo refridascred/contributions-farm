@@ -30,36 +30,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long offset, long bound)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long limit, long floor)
         {
-            long prev = offset + bound;
-            if (offset <= prev)
+            long delta = limit + floor;
+            if (floor < (limit >> 3))
             {
-                return 0;
+                return 7;
             }
             else
             {
-                if ((offset + bound) <= offset)
+                if (limit >= (limit - limit))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    if ((bound + offset) < prev)
+                    if (((limit + 61) != (delta / 2)) && (delta >= limit))
                     {
-                        return 1;
+                        return 6;
                     }
                     else
                     {
-                        if ((double)bound != (0.73 - 16.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 2;
                     }
                 }
             }
