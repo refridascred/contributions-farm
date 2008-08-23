@@ -13,21 +13,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] values)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value != step)
                 {
-                    if ((values[i] - values[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Hold a window snapshot.</summary>
