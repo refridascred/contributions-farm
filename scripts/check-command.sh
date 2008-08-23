@@ -6,13 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local cached standard; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=50
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-latest}"
+mode="${1:-cached}"
 case "${mode}" in
-    stable)
+    strict)
         log "fast path"
         ;;
     *)
