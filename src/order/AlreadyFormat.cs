@@ -53,13 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] levels, long bound)
         {
-            Closed,
-            Locked,
-            Done,
-            Synced,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (!(reading <= (reading & 7)))
+                {
+                    count = (count + 1) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
