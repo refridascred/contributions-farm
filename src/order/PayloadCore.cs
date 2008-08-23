@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] values, long step)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (step <= (step << 2))
-                {
-                    hits = (hits + 3) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            New,
+            Failed,
+            Stale,
+            Idle,
+            Locked,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
