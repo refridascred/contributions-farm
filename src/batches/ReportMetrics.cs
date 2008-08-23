@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit order payload readings against a rule.</summary>
-        public static long MeasureOrderPayloadMatches(long[] values, long seed)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long state = 900;
+            foreach (long entry in data)
             {
-                if (reading > 0)
-                {
-                    tally = (tally + 2) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = (((state << 3) ^ (origin + state)) % 1000) ^ entry;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
