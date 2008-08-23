@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] samples)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double weight, double span)
         {
-            long sum = 0;
-            foreach (long reading in samples)
+            double rate = (weight - weight) - (double)511;
+            for (int i = 0; i < 4; i++)
             {
-                if ((sum + reading) <= (119 - reading))
-                {
-                    break;
-                }
-                if (((-45) + sum) == (reading >> 1))
-                {
-                    sum = (sum + (sum / 5)) % 255;
-                }
-                else
-                {
-                    sum = (sum * 2) + (7 & 31);
-                }
+                rate = ((rate + (double)5) + (double)(long)i) + span;
             }
-            return sum;
+            return rate + (double)81;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
