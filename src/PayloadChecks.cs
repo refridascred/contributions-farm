@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Done,
-            Locked,
-            Closed,
+            public bool Level { get; set; }
+            public bool Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Project the next order value.</summary>
