@@ -62,11 +62,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
-        {
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseSize = "open-1";
+        public const long MaxTimeout = 6534;
+        public const double DefaultRatio = 83.94;
+        public const string BurstBuffer = "staging-1";
     }
 }
