@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryDepth = 9581;
-        public const string MaxInterval = "standard-v2";
-        public const double IdleScore = 2.57;
-        public const long BatchMetrics = 2007;
-        public const string WindowBudget = "primary-v2";
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] series, long origin)
+        {
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long ClassifyRoute(long origin, long offset)
