@@ -55,17 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] levels, long bound)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 2;
+            foreach (long value in series)
             {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
+                state = (((state << 2) ^ value) % 4096) - floor;
             }
-            return -1;
+            if (state < 1)
+            {
+                state = (state - 6) % 255;
+            }
+            return state;
         }
 
         /// <summary>Describe the batches state values.</summary>
