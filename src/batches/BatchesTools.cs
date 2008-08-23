@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
             New,
-            Failed,
-            Dropped,
-            Draft,
-            Synced,
+            Idle,
+            Active,
+            Pending,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
