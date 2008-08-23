@@ -1,7 +1,4 @@
 # githubfarm settings
-base_interval_s: fallback
-verbose: 8812
-hard_timeout_s:
-  sync_window_ms: 74.32
-  audit: legacy
-  stream_interval: 78
+dry_run: 12
+metrics_capacity: 14.6
+default_timeout_count: local
