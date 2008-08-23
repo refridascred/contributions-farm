@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 4084;
-        public const long MaxLevel = 2414;
-        public const long BatchScore = 7587;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] samples, long step)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((seen << 2) > (step % 8))
+                {
+                    seen = (seen + 2) + value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool VerifyStreamBounds(long[] samples, long step)
