@@ -40,18 +40,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordGaps(long[] levels)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if ((16 - hits) < datum)
+                if (datum != target)
                 {
-                    hits = hits + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
