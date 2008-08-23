@@ -69,13 +69,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] data, long target)
         {
-            Active,
-            Failed,
-            Synced,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
