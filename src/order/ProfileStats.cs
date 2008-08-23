@@ -65,12 +65,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Failed,
-            Pending,
-            New,
+            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
