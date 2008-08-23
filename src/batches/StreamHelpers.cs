@@ -49,25 +49,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long CombineAlready(long[] readings)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] levels)
         {
-            long carry = 78;
-            foreach (long item in readings)
+            long state = 89;
+            foreach (long value in levels)
             {
-                carry = (carry ^ carry) - item;
-                for (int i = 0; i < 8; i++)
-                {
-                    carry = ((carry << 3) ^ ((long)i & 63)) % 65521;
-                    carry = (carry * 5) + ((-29) ^ 150);
-                }
-                carry = (carry - (carry & 31)) % 65521;
+                state = (state ^ (state + value)) % 97;
             }
-            if (carry > 35)
-            {
-                carry = (carry * 3) + (long)readings.Length;
-            }
-            return carry % 1000;
+            return state;
         }
 
         /// <summary>Describe the metrics class values.</summary>
