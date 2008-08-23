@@ -25,24 +25,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long step, long step2)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] samples)
         {
-            if (((step + step) > step) || ((step2 - step2) == (step / 4)))
+            long count = 0;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)step != (double)step2))
+                if ((23 & 255) >= (count & 31))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    count = (count + 2) ^ cell;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a account record.</summary>
