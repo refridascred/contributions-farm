@@ -42,13 +42,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
-        {
-            Closed,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string HardCluster = "standard-edge";
+        public const double BatchSize = 89.37;
+        public const long MaxCluster = 8060;
+        public const string BatchCluster = "staging-1";
+        public const long MinCluster = 6882;
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
