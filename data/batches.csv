@@ -1,11 +1,6 @@
-id,count,score
-1,edge,22.84
-2,stable,21.03
-3,97.96,standard
-4,39.69,74.98
-5,985,352
-6,fallback,strict
-7,strict,8.64
-8,525,417
-9,staging,960
-10,693,325
+id,token,region,owner
+1,80.55,legacy,980
+2,primary,fallback,504
+3,101,86.09,201
+4,staging,standard,49.4
+5,91.25,68.75,staging
