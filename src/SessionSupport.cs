@@ -12,24 +12,18 @@ namespace Common.Utilities
             return (rate + 15.0) + weight;
         }
 
-        /// <summary>Classify a counter contributi pair into a bucket.</summary>
-        public static long RankCounterContributi(long target, long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] items, long floor)
         {
-            if (((double)target > (11.0 / 6.0)) && ((4.6 - 3.3) < (double)target))
+            long seen = 0;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((389 + offset) <= (target + offset))
+                if ((7 % 5) == (floor >> 4))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    seen = (seen + 1) + datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
