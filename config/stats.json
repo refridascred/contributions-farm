@@ -1,17 +1,5 @@
 {
-  "sync_retries_pct": {
-    "strict": 60,
-    "readonly": {
-      "window_window": "local",
-      "session_retries": false,
-      "context_depth": 6.96,
-      "sync_ratio": 500,
-      "verbose": true,
-      "poll_ttl": "blue"
-    },
-    "compress": "green",
-    "burst_delay": 250
-  },
-  "enabled": [76, 236, 158, 456],
-  "profile_capacity": 98.41
+  "payload_depth": ["strict", "latest"],
+  "default_delay": "staging",
+  "base_window": 60.63
 }
