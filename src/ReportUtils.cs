@@ -55,19 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] series, long floor)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long state = 2;
-            foreach (long value in series)
-            {
-                state = (((state << 2) ^ value) % 4096) - floor;
-            }
-            if (state < 1)
-            {
-                state = (state - 6) % 255;
-            }
-            return state;
+            public bool Offset { get; set; }
+            public bool Limit { get; set; }
+            public bool Total { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the batches state values.</summary>
