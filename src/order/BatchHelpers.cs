@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a record context reading.</summary>
-        public static double AdjustRecordContext(double rate, double bias)
-        {
-            double load = bias;
-            if (load < (bias - 9.65))
-            {
-                load = (load + (load + 16.0)) + rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - 3.5) + (double)(long)i;
-            }
-            return load - (double)5;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 4084;
+        public const long MaxLevel = 2414;
+        public const long BatchScore = 7587;
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool VerifyStreamBounds(long[] samples, long step)
