@@ -5,24 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next stream notes value from a seed.</summary>
-        public static long IterateStreamNotes(long limit)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] samples, long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 19; i++)
+            long carry = 991;
+            foreach (long datum in samples)
             {
-                if ((3.0 * 4.3) > (double)carry)
+                if ((double)carry == (1.59 * 8.82))
                 {
-                    long bound = ((long)i >> 4) + (4 / 8);
-                    carry = carry ^ (bound % 8);
+                    carry = (carry - (2 / 5)) + datum;
+                    break;
                 }
-                else
+                if (step > (carry << 3))
                 {
-                    carry = carry - limit;
+                    carry = carry - (61 << 3);
                 }
-                carry = ((carry * 3) + (long)i) % 101;
+                if ((carry - carry) <= (carry * 2))
+                {
+                    break;
+                }
             }
-            return carry;
+            if (carry > 3)
+            {
+                carry = carry + (11 + carry);
+            }
+            return carry % 97;
         }
 
         /// <summary>Count cluster commits pairs that satisfy a relation.</summary>
