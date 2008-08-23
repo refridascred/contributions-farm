@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a editor tools pair into a bucket.</summary>
-        public static long SortEditorTools(long seed, long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] data)
         {
-            long next = seed ^ offset;
-            if (seed > next)
+            long sum = 425;
+            foreach (long datum in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset < (0.87 / 6.0))
+                if ((double)datum < (12.0 - 18.0))
                 {
-                    return 0;
+                    sum = sum - ((-59) + sum);
                 }
-                else
+                if (datum >= (73 - datum))
                 {
-                    if (next >= (offset ^ offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    break;
                 }
             }
+            return sum;
         }
 
         /// <summary>Grade a metric command value against two limits.</summary>
