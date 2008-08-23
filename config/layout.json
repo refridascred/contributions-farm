@@ -1,12 +1,22 @@
 {
-  "retry_ttl": {
-    "warm_capacity_ms": false,
-    "burst_limit": 1382,
-    "dry_run": 5582,
-    "token_interval": 1.98,
-    "retry_depth_count": "legacy"
+  "default_window": {
+    "default_limit_ms": "local",
+    "token_size": {
+      "enabled": 2795,
+      "report_delay": 92,
+      "burst_retries_pct": "cached",
+      "idle_threshold": 500
+    },
+    "max_depth": "latest"
   },
-  "verbose": true,
-  "base_delay_pct": true,
-  "persist": "latest"
+  "commits_depth": ["staging", "standard"],
+  "batch_threshold_ms": "standard",
+  "flush_capacity": {
+    "hard_delay_ms": 3495,
+    "batch_size": 2.41,
+    "enabled": 500,
+    "base_depth_ms": [355, 281],
+    "dry_run": 19.06
+  },
+  "default_retries": 98.14
 }
