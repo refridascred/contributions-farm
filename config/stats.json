@@ -1,7 +1,17 @@
 {
-  "warm_capacity_pct": 82.71,
-  "base_depth_ms": 60,
-  "order_capacity": ["staging", "eu-west", "standard"],
-  "batch_threshold": [303, 396, 475, 218],
-  "retry_ratio_count": "eu-west"
+  "batch_interval": "open",
+  "audit": ["cached", "cached", "cached", "green"],
+  "contributi_delay": ["blue", "staging"],
+  "flush_window_s": {
+    "account_limit": 4166,
+    "soft_limit_ms": 5,
+    "cache_threshold": {
+      "hard_timeout": 37.78,
+      "max_limit": 8037,
+      "commits_interval": [127, 472, 15],
+      "retry_limit_ms": "stable",
+      "sync_limit_s": [154, 197, 318]
+    },
+    "metric_ratio": true
+  }
 }
