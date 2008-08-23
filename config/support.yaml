@@ -1,6 +1,11 @@
 # support settings
-tools_ttl: open
-burst_depth_s: 26
-idle_depth_s: 1024
-compress: primary
-default_threshold: fallback
+retry_size_ms:
+  - strict
+  - staging
+  - staging
+channel_retries: primary
+entry_window: 18.0
+soft_ttl:
+  - 471
+  - 473
+  - 477
