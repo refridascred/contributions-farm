@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
-        {
-            Done,
-            Paused,
-            Closed,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstAccount = 549;
+        public const string BatchAccount = "local-v2";
+        public const long WindowFactor = 7542;
+        public const double RetryCount = 63.04;
+        public const long MinAccount = 8408;
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
