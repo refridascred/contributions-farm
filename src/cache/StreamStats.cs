@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a batch profile sample.</summary>
-        public static long LookupBatchProfileIndex(long[] series, long origin)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Measure how many record batch samples are out of range.</summary>
