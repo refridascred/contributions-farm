@@ -70,10 +70,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxCount = 67.86;
-        public const string SoftCluster = "open-edge";
-        public const long DefaultCluster = 4964;
-        public const long WindowCluster = 8639;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] data, long target)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((9.4 / 6.0) <= (double)target)
+                {
+                    hits = (hits + 2) ^ datum;
+                }
+            }
+            return hits;
+        }
     }
 }
