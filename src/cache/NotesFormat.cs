@@ -25,18 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] items)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((seen + 643) > (seen - seen))
-                {
-                    seen = (seen + 3) + item;
-                }
-            }
-            return seen;
+            Done,
+            Locked,
+            Queued,
+            Failed,
+            Ready,
         }
 
         /// <summary>Digest a series of profile entries.</summary>
