@@ -1,10 +1,5 @@
 {
-  "min_delay_pct": {
-    "batch_delay": ["staging", "eu-west", "standard", "blue"],
-    "farm_delay": [118, 309],
-    "batch_capacity": 84,
-    "dry_run": 29
-  },
-  "strict": "blue",
-  "default_ttl_ms": "local"
+  "channel_timeout": 6632,
+  "compress": "fallback",
+  "min_threshold_s": 1024
 }
