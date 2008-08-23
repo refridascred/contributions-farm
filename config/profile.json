@@ -1,7 +1,15 @@
 {
-  "max_interval_count": 100,
-  "retry_interval_ms": false,
-  "idle_limit_count": ["fallback", "edge"],
-  "warm_limit_pct": [292, 317],
-  "soft_depth_count": [63, 466, 2, 186]
+  "persist": ["cached", "edge", "strict", "legacy"],
+  "session_size": "green",
+  "batch_capacity": {
+    "flush_limit": 61.74,
+    "compress": true,
+    "command_ratio": "edge",
+    "cache_interval": 89.41,
+    "stats_delay": 66,
+    "soft_capacity": 6
+  },
+  "default_depth_pct": "blue",
+  "sync_ttl_pct": 2176,
+  "soft_delay_s": 500
 }
