@@ -56,39 +56,21 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Grade a account already value against two limits.</summary>
-        public static long GradeAccountAlready(long floor, long floor2)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] data)
         {
-            long step = floor - floor2;
-            if ((floor2 - 982) >= floor)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor2 + step) <= (floor2 - floor))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((13.0 * 7.64) == (double)floor2)
+                    if ((data[i] + data[j]) == 11)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)floor2 <= 7.27)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
