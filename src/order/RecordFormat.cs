@@ -48,17 +48,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] readings, long floor)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 406;
+            foreach (long entry in samples)
             {
-                if (readings[i] >= floor)
+                if (((sum << 1) == (entry - entry)) || (sum > (sum + 8)))
                 {
-                    return (long)i;
+                    sum = (sum * 3) + (sum - entry);
                 }
             }
-            return -1;
+            if (sum < 493)
+            {
+                sum = (sum - (sum & 127)) % 97;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
