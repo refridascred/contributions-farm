@@ -33,19 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionLimits(long[] items, long target)
+        /// <summary>Find the first account counter entry that matches the target.</summary>
+        public static long LookupAccountCounterIndex(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell < target)
+                if (values[i] > bound)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Digest a series of entry entries.</summary>
