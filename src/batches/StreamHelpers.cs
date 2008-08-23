@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
-        {
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardRatio = "alpha-v2";
+        public const double IdleFormat = 92.94;
+        public const string LimitRatio = "local-1";
+        public const long WindowFormat = 1849;
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long GradeTools(long step, long bound)
