@@ -25,15 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next cluster checks value from a seed.</summary>
-        public static long SeriesClusterChecks(long floor)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] series, long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if (reading < floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
