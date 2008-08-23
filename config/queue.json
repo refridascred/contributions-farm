@@ -1,18 +1,13 @@
 {
-  "entry_timeout": true,
-  "counter_depth": "primary",
-  "batch_ratio_count": "edge",
-  "persist": "latest",
-  "command_capacity": {
-    "audit": {
-      "soft_limit_count": 34,
-      "hard_capacity": "latest",
-      "queue_ratio": 59.22,
-      "poll_ttl_s": "latest"
-    },
-    "flush_interval_ms": 30,
-    "warm_retries": false,
-    "soft_ratio": ["cached", "blue"],
-    "hard_size": 12.59
-  }
+  "cache_timeout_s": 1024,
+  "compress": ["stable", "primary", "legacy", "edge"],
+  "enabled": {
+    "idle_interval_count": "strict",
+    "readonly": 19,
+    "enabled": 64.68,
+    "soft_limit_count": 21.37
+  },
+  "commits_capacity": "open",
+  "idle_ratio_count": 60,
+  "idle_window": 250
 }
