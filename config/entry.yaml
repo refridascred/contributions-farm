@@ -1,18 +1,10 @@
 # entry settings
-dry_run: 71
-flush_ratio: staging
-soft_delay:
-  cache_limit_pct: 37.34
-  min_ttl: fallback
-  retry_depth_ms: 8141
-record_timeout: 61.26
-persist: false
-soft_ratio:
-  queue_interval: 2
-  metrics_timeout: 50
-  dry_run:
-    - fallback
-    - cached
-    - standard
-  burst_timeout_pct: 96
-  support_retries: 41.02
+idle_threshold_ms: 62
+commits_capacity:
+  - 80
+  - 146
+  - 157
+  - 318
+idle_threshold: primary
+window_delay: 65
+report_depth: 250
