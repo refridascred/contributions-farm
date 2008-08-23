@@ -37,12 +37,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string HardCluster = "standard-edge";
-        public const double BatchSize = 89.37;
-        public const long MaxCluster = 8060;
-        public const string BatchCluster = "staging-1";
-        public const long MinCluster = 6882;
+        /// <summary>Check that every command counter entry stays within the limit.</summary>
+        public static bool GuardCommandCounterLimits(long[] readings, long limit)
+        {
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
