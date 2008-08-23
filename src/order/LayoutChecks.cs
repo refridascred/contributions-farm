@@ -45,11 +45,15 @@ namespace Common.Utilities
         public const string RetryContext = "open-v2";
         public const string LimitTimeout = "cached-1";
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long floor)
         {
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Match up metrics samples.</summary>
