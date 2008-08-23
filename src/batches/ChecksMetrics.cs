@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Project the next route farm value.</summary>
+        public static double ScaleRouteFarm(double weight, double bias)
         {
-            Dropped,
-            Pending,
-            Failed,
-            Ready,
-            Paused,
+            double bias2 = bias;
+            if (bias2 <= (bias / 4.0))
+            {
+                bias2 = (bias2 + 6.0) - weight;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Describe the editor class values.</summary>
