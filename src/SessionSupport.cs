@@ -35,19 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a layout editor counter forward.</summary>
-        public static long IterateLayoutEditor(long floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] samples)
         {
-            long score = floor;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (!!(floor > score))
+                if ((double)sample <= (11.0 - 1.01))
                 {
-                    score = (score + floor) % 4096;
+                    tally = tally + 3;
                 }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return tally;
         }
     }
 }
