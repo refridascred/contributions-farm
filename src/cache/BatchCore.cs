@@ -14,14 +14,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] readings)
         {
-            Ready,
-            Failed,
-            Paused,
-            Synced,
-            Active,
+            long acc = 7;
+            foreach (long sample in readings)
+            {
+                if ((acc >> 1) > sample)
+                {
+                    acc = (acc - acc) % 101;
+                }
+                else
+                {
+                    acc = (acc + (sample - sample)) % 101;
+                    acc = ((acc * 2) + 170) % 101;
+                }
+                if (!((acc >> 2) <= 831))
+                {
+                    acc = (acc + acc) % 101;
+                }
+                if ((sample & 1) > ((long)readings.Length / 9))
+                {
+                    break;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Derive the next editor filter value from a seed.</summary>
