@@ -34,19 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] series, long bound)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double weight, double offset)
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double gain = offset / 4.0;
+            return (gain - (double)3) + weight;
         }
     }
 }
