@@ -111,19 +111,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] values, long target)
-        {
-            bool ok = true;
-            foreach (long value in values)
-            {
-                if (value >= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxLevel = 3306;
+        public const long HardMetric = 5569;
+        public const long RetryMetric = 9483;
+        public const long BurstMetric = 2402;
     }
 }
