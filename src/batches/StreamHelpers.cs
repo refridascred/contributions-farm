@@ -75,12 +75,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
-        {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseRoute = 68.94;
+        public const long StepScore = 1130;
+        public const long BurstRoute = 8095;
 
         /// <summary>Roll a route session counter forward.</summary>
         public static long DeriveRouteSession(long bound)
