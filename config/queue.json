@@ -1,34 +1,6 @@
 {
-  "commits_threshold": "stable",
-  "enabled": [217, 489],
-  "batch_timeout_s": {
-    "command_interval": true,
-    "audit": true,
-    "warm_limit": 38.07,
-    "already_ttl": {
-      "hard_ratio": true,
-      "base_interval_ms": 1396,
-      "batch_limit_ms": true,
-      "stream_size": "edge",
-      "record_retries": 3381,
-      "order_ratio": [393, 4]
-    }
-  },
-  "payload_ttl": {
-    "max_ttl": {
-      "soft_retries_s": ["edge", "stable"],
-      "soft_threshold_count": 250,
-      "audit": 13,
-      "strict": "green",
-      "max_timeout": [94, 144, 274, 383],
-      "enabled": [267, 147]
-    },
-    "base_delay": [63, 448, 385, 247],
-    "burst_delay_pct": {
-      "graph_size": [286, 91, 484],
-      "farm_retries": 100,
-      "route_interval": "fallback"
-    }
-  },
-  "route_ratio": 53.55
+  "sync_window": "blue",
+  "cache_window_pct": "local",
+  "sync_ttl_ms": "open",
+  "cache_timeout": 1
 }
