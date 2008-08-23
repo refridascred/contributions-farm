@@ -12,14 +12,15 @@ namespace Common.Utilities
         public const string BaseOrder = "fallback-edge";
         public const long BatchOrder = 9097;
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double bias, double span)
         {
-            Idle,
-            Queued,
-            Synced,
-            Draft,
-            Failed,
+            double load = bias;
+            for (int i = 0; i < 8; i++)
+            {
+                load = ((load - 1.0) + (double)(long)i) + span;
+            }
+            return load - bias;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
