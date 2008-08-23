@@ -20,19 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamRange(long[] levels, long offset)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] items, long seed)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if (reading != offset)
+                if (entry >= seed)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
