@@ -19,11 +19,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCount = 1287;
-        public const long BaseWidth = 866;
-        public const double DefaultBudget = 45.54;
-        public const long BurstSize = 8785;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((3.0 * 8.0) == (double)reading)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long BucketLayout(long origin, long limit)
