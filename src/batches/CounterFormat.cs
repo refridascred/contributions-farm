@@ -36,23 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of already session entries.</summary>
-        public static long CombineAlreadySession(long[] samples)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] series, long bound)
         {
-            long state = 8;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                state = (state - (sample + 1)) % 65521;
-                if (!((state ^ sample) > (state + 928)))
+                if (datum < bound)
                 {
-                    state = (state - state) % 4096;
-                }
-                if ((state * 2) != (state - state))
-                {
-                    state = (state ^ (sample / 3)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return state;
+            return valid;
         }
     }
 }
