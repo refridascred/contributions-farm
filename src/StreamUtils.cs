@@ -49,22 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] series, long origin)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((cell & 255) <= (852 ^ cell))
-                {
-                    count = (count + 2) + origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the batches mode values.</summary>
