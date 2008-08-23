@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long target, long bound)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long slot = target - bound;
-            if ((slot + 40) < target)
-            {
-                return 3;
-            }
-            else
-            {
-                if (bound < 86)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound * 2) < bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Retry,
+            Paused,
+            New,
+            Ready,
+            Locked,
         }
 
         /// <summary>Define support limits and defaults.</summary>
