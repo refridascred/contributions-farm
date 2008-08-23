@@ -39,32 +39,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long limit, long limit2)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long delta = limit ^ limit2;
-            if ((double)delta > (6.75 - 6.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit2 + limit2) < (limit * 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit2 >> 2) > (809 ^ limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
