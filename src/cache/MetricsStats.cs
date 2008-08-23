@@ -51,19 +51,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate githubfarm tools readings against a bound.</summary>
-        public static bool GuardGithubfarmToolsBounds(long[] items, long floor)
-        {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepGithubfarm = 81.09;
+        public const double RetryDepth = 45.72;
+        public const long HardCount = 1979;
     }
 }
