@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheCount = 9887;
-        public const string StepSpan = "staging-v2";
-        public const string RetryCount = "fallback-1";
-        public const string HardAccount = "cached-1";
-        public const long RetryBudget = 1884;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowInterval = 62;
+        public const double HardCounter = 13.55;
+        public const long MaxCounter = 3092;
+        public const double DefaultCount = 16.96;
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long SeekProfileIndex(long[] levels, long origin)
