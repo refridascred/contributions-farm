@@ -57,19 +57,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryRange(long[] values, long offset)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
+            public string Score { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
