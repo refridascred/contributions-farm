@@ -1,7 +1,10 @@
-id,token,region
-1,31,staging
-2,standard,332
-3,84.18,797
-4,edge,398
-5,436,760
-6,953,732
+id,active
+1,696
+2,open
+3,63.85
+4,3.55
+5,cached
+6,97.75
+7,463
+8,323
+9,eu-west
