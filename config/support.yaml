@@ -1,24 +1,10 @@
 # support settings
+idle_limit_s:
+  - 388
+  - 3
+  - 310
 readonly:
-  - 221
-  - 291
-  - 43
-  - 118
-githubfarm_ttl: false
-base_limit:
-  default_timeout_ms:
-    cache_ratio_ms: 500
-    readonly: 2822
-    hard_interval_s: 71.02
-  audit:
-    - stable
-    - stable
-    - latest
-  cache_ratio_ms: local
-  poll_interval: 76.56
-compress:
-  - staging
-  - legacy
-  - primary
-strict: 8306
-flush_limit_ms: 70.09
+  - 284
+  - 247
+burst_window_pct: blue
+soft_threshold_ms: fallback
