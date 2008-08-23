@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] readings, long origin)
-        {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchInterval = 3725;
+        public const long BurstCount = 1359;
+        public const long DefaultCommand = 4474;
+        public const long WindowWidth = 6580;
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
