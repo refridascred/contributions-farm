@@ -15,22 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] readings, long offset)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long carry = 390;
+            foreach (long sample in data)
             {
-                if ((325 & 63) < tally)
+                carry = (((carry ^ ((-17) >> 4)) % 97) - sample) - offset;
+                if (carry >= (long)data.Length)
                 {
-                    tally = ((tally + 2) ^ cell) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    carry = (carry * 2) + (carry * 2);
                 }
             }
-            return tally;
+            return carry % 97;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
