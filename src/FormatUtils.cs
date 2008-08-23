@@ -64,23 +64,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double gain, double offset)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] readings, long seed)
         {
-            double load = offset;
-            if (load > gain)
+            long sum = 277;
+            foreach (long item in readings)
             {
-                load = load + (double)152;
+                if (sum > 56)
+                {
+                    sum = (((sum * 2) + item) % 101) - seed;
+                }
             }
-            else
-            {
-                load = load + gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + gain) + (double)(long)i;
-            }
-            return load - (offset + 10.0);
+            return sum;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
