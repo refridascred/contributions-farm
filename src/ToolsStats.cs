@@ -62,12 +62,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public bool Label { get; set; }
+            public string Size { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
