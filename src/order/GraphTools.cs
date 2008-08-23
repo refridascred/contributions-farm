@@ -69,24 +69,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long offset, long step)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] series, long origin)
         {
-            if (step < offset)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)step > (20.0 + 2.0))
+                if (entry >= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
