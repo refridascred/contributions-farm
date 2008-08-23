@@ -50,19 +50,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] levels)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((5.0 + 2.5) < (double)(long)levels.Length)
-                {
-                    count = (count + 2) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 3900;
+        public const long RetryCount = 1435;
+        public const double MaxChannel = 53.97;
+        public const long MinWidth = 942;
 
         /// <summary>Accumulate channel samples.</summary>
         public static long DigestChannel(long[] readings, long seed)
