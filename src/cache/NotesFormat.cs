@@ -17,17 +17,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a account cluster reading by value.</summary>
-        public static long FindAccountClusterIndex(long[] readings, long limit)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > limit) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
