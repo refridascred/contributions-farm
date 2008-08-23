@@ -22,13 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] items)
         {
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
+            long result = 87;
+            foreach (long item in items)
+            {
+                result = result ^ (result * 3);
+                if ((double)item == (2.0 + 7.41))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
