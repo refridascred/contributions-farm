@@ -22,19 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] items)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] data, long seed)
         {
-            long result = 87;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = result ^ (result * 3);
-                if ((double)item == (2.0 + 7.41))
+                if (data[i] == seed)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
