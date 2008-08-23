@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] items)
         {
-            public long Rank { get; set; }
-            public string Token { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Mode { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (!((item - item) <= (22 + item)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a window stats.</summary>
