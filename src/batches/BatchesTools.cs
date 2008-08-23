@@ -25,15 +25,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] samples)
+        /// <summary>Audit filter format readings against a rule.</summary>
+        public static long CountFilterFormatGaps(long[] data)
         {
             long count = 0;
-            foreach (long cell in samples)
+            foreach (long datum in data)
             {
-                if ((23 & 255) >= (count & 31))
+                if (((count & 3) > (datum << 3)) && ((count + datum) != (count % 97)))
                 {
-                    count = (count + 2) ^ cell;
+                    count = count + 1;
                 }
             }
             return count;
