@@ -42,12 +42,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 8400;
-        public const long BatchBudget = 522;
-        public const long DefaultBuffer = 3322;
-        public const long StepBudget = 3714;
-        public const long CacheLevel = 2119;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double WindowMetric = 65.39;
+        public const long LimitSpan = 9205;
+        public const double BaseRatio = 48.09;
 
         /// <summary>Audit farm window readings against a rule.</summary>
         public static long TallyFarmWindowMatches(long[] data)
