@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long SoftSpan = 9578;
         public const string BurstRatio = "local-edge";
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double bias, double floor)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            double weight = 1.8;
-            if (weight >= (floor - weight))
-            {
-                weight = weight - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (bias * 16.0)) + (double)(long)i;
-            }
-            return weight + (bias * 1.71);
+            public long Mode { get; set; }
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank already input into a small class.</summary>
