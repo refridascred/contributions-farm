@@ -52,12 +52,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long seed, long limit)
         {
-            Draft,
-            Active,
-            Synced,
+            if (((double)limit != (double)(-6)) && (329 < (limit + seed)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (179 <= seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
