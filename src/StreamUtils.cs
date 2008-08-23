@@ -87,12 +87,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] items, long seed)
         {
-            New,
-            Draft,
-            Active,
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
