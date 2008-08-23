@@ -49,19 +49,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] items)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long sum = 3;
-            foreach (long item in items)
-            {
-                sum = sum - (item + 2);
-            }
-            if (sum < 48)
-            {
-                sum = sum ^ (155 % 16);
-            }
-            return sum;
+            public long Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the record phase values.</summary>
