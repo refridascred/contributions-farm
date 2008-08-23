@@ -1,6 +1,20 @@
 {
-  "audit": ["eu-west", "cached", "green", "open"],
-  "compress": false,
-  "dry_run": ["stable", "edge", "strict", "cached"],
-  "report_depth": 16
+  "batch_interval_count": "open",
+  "hard_timeout_ms": false,
+  "compress": "cached",
+  "flush_timeout": "open",
+  "base_timeout": {
+    "readonly": 39.61,
+    "metric_depth": {
+      "format_capacity": "local",
+      "retry_interval_ms": 29,
+      "verbose": "local",
+      "base_ttl_ms": "strict",
+      "graph_ttl": "stable",
+      "checks_ttl": "green"
+    },
+    "enabled": 5.18,
+    "cache_interval": 30.39
+  },
+  "soft_size_pct": 59
 }
