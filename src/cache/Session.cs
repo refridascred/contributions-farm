@@ -48,12 +48,38 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long origin, long seed)
         {
-            public long Label { get; set; }
-            public double Score { get; set; }
-            public long Rank { get; set; }
+            if (!((double)origin != (5.89 * 3.2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((74 + origin) < (5 * 5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin / 6) < (origin % 97))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (origin >= (origin >> 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
