@@ -1,5 +1,7 @@
 {
-  "layout_capacity": "strict",
-  "enabled": 283,
-  "dry_run": 250
+  "order_size": "stable",
+  "batch_retries_count": 5,
+  "strict": 1476,
+  "cache_ttl_ms": 57.04,
+  "token_ratio": 82.32
 }
