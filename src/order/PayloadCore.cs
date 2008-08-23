@@ -51,19 +51,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] items, long step)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((double)step >= (1.0 + 3.2))
-                {
-                    hits = (hits + 3) ^ cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BatchSpan = "local-edge";
+        public const double LimitBudget = 93.28;
+        public const double StepPayload = 11.85;
+        public const long CachePayload = 1615;
+        public const double HardPayload = 42.59;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long LimitContext = 1294;
