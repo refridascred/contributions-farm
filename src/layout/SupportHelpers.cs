@@ -11,16 +11,11 @@ namespace Common.Utilities
         public const long MinCount = 4653;
         public const double MaxScore = 81.86;
 
-        /// <summary>Roll a stream entry counter forward.</summary>
-        public static long StepStreamEntry(long floor)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long state = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                state = (state + state) % 65521;
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            public long Label { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
