@@ -1,8 +1,5 @@
 {
-  "cache_timeout_pct": ["strict", "stable", "primary", "legacy"],
-  "support_size": 90.61,
-  "default_retries_ms": 95.0,
-  "dry_run": 94.64,
-  "sync_ttl_ms": 5.85,
-  "verbose": true
+  "soft_depth_ms": "green",
+  "notes_ratio": "primary",
+  "window_depth": "green"
 }
