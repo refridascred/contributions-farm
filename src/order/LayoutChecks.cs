@@ -19,20 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long limit)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] values)
         {
-            long anchor = limit;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((double)limit >= (3.8 / 5.0))
+                if (!!(14.0 < (double)tally))
                 {
-                    anchor = (anchor + anchor) % 101;
-                    anchor = ((anchor << 3) ^ (limit & 15)) % 1000;
+                    tally = (tally + 3) + reading;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Iterate the command metrics series from a seed.</summary>
