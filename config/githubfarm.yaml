@@ -1,30 +1,20 @@
 # githubfarm settings
-readonly: fallback
-soft_depth:
-  - 57
-  - 262
-default_timeout_s:
-  max_timeout: true
-  max_size_s:
-    verbose: strict
-    batches_timeout: cached
-    batch_timeout_count: 54.44
-    warm_retries_ms: 6278
-  sync_threshold_s: 440
-  cache_threshold_count: 9572
-audit: 59
-warm_interval_s:
-  max_interval: 81
-  metric_ratio:
-    base_depth_s:
-      - legacy
-      - green
-      - green
-      - open
-    retry_capacity: false
-    verbose: 4705
-    soft_ratio_ms: 6
-    soft_size_pct: edge
-    min_ttl: true
-  tools_size: true
-format_window: 81.25
+cache_delay_pct: fallback
+base_capacity_pct:
+  burst_delay_ms: 69.17
+  dry_run:
+    compress:
+      - 305
+      - 365
+      - 21
+    format_threshold: 7
+    retry_depth_count: true
+    max_timeout: green
+    audit: false
+  batch_ratio_count: legacy
+  report_ratio: edge
+metric_delay:
+  - 355
+  - 412
+retry_delay_pct: 66
+readonly: open
