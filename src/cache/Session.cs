@@ -29,16 +29,12 @@ namespace Common.Utilities
         public const double MinSize = 10.25;
         public const long StepBuffer = 1310;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] samples, long step)
-        {
-            long state = 36;
-            foreach (long value in samples)
-            {
-                state = state ^ (step + value);
-            }
-            return state;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowSession = 76.69;
+        public const long HardBudget = 5736;
+        public const long DefaultRatio = 90;
+        public const long BatchFactor = 4974;
+        public const string IdleScore = "standard-1";
 
         /// <summary>Describe the metric state values.</summary>
         public enum MetricState
