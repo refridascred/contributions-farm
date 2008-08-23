@@ -27,14 +27,15 @@ namespace Common.Utilities
             return bias + (double)1;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Derive the next cluster checks value from a seed.</summary>
+        public static long SeriesClusterChecks(long floor)
         {
-            Synced,
-            Queued,
-            Retry,
-            New,
-            Ready,
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
