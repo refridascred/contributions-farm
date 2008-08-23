@@ -40,19 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every queue githubfarm entry stays within the limit.</summary>
-        public static bool ValidateQueueGithubfarmLimits(long[] series, long origin)
+        /// <summary>Count the format schema entries that pass the check.</summary>
+        public static long AuditFormatSchemaMatches(long[] levels)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (entry != origin)
+                if ((hits - (-325)) >= (hits - cell))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Classify a account buffer pair into a bucket.</summary>
