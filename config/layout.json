@@ -1,8 +1,19 @@
 {
-  "retry_capacity_pct": false,
-  "sync_retries_ms": 4225,
-  "sync_delay_pct": false,
-  "retry_interval_ms": 2.55,
-  "default_timeout_s": 7430,
-  "enabled": [118, 278]
+  "idle_ttl": {
+    "profile_ratio": "local",
+    "flush_ttl_s": "blue",
+    "default_threshold_s": 1024,
+    "hard_timeout_s": "blue",
+    "min_capacity_ms": "green"
+  },
+  "max_window_count": "stable",
+  "cache_ttl": 500,
+  "poll_delay": {
+    "hard_ratio_pct": 52.29,
+    "retry_capacity_count": 32.78,
+    "sync_ttl_s": ["edge", "green"],
+    "burst_size": false
+  },
+  "buffer_timeout": "edge",
+  "metrics_ratio": 41.35
 }
