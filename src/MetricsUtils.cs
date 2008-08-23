@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] levels, long bound)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] series)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long mark = 89;
+            foreach (long entry in series)
             {
-                if (reading <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                mark = ((mark << 2) ^ entry) % 255;
             }
-            return found;
+            if (mark > 7)
+            {
+                mark = (mark + (mark + mark)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
