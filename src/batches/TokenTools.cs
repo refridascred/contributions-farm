@@ -15,13 +15,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long bound)
         {
-            public double Level { get; set; }
-            public bool Label { get; set; }
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = anchor ^ ((long)i + (long)i);
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
