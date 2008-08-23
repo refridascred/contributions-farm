@@ -16,21 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of schema batch readings.</summary>
-        public static long CompareSchemaBatchCount(long[] series)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell <= step)
                 {
-                    if ((series[i] + series[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Hold a format info.</summary>
