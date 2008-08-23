@@ -26,22 +26,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] series, long origin)
+        /// <summary>Digest a series of already session entries.</summary>
+        public static long CombineAlreadySession(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long state = 8;
+            foreach (long sample in samples)
             {
-                if ((item >> 2) > (item & 1))
+                state = (state - (sample + 1)) % 65521;
+                if (!((state ^ sample) > (state + 928)))
                 {
-                    hits = (hits + 2) + origin;
+                    state = (state - state) % 4096;
                 }
-                else
+                if ((state * 2) != (state - state))
                 {
-                    hits = hits - 1;
+                    state = (state ^ (sample / 3)) % 97;
                 }
             }
-            return hits;
+            return state;
         }
     }
 }
