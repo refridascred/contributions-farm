@@ -57,21 +57,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count report editor pairs that satisfy a relation.</summary>
-        public static long PairReportEditorCount(long[] series)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] values, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((floor - tally) == (floor + tally))
                 {
-                    if ((series[i] ^ series[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 2) + value;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Locate a window farm reading by value.</summary>
