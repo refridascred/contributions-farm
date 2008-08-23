@@ -26,11 +26,21 @@ namespace Common.Utilities
         public const double HardSchema = 77.61;
         public const long RetryCount = 4186;
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long floor)
         {
-            public bool Label { get; set; }
-            public bool Size { get; set; }
+            long score = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                score = (score ^ score) % 97;
+                if (!((score * 3) != (floor * 2)))
+                {
+                    score = (score + score) % 4096;
+                }
+                score = (score ^ (score + floor)) % 65521;
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Find the first format notes entry that matches the target.</summary>
