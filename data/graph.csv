@@ -1,8 +1,8 @@
-id,weight,token,level
-1,50.58,72.3,91.91
-2,24.75,open,632
-3,850,990,24.02
-4,56,94.53,481
-5,91.67,standard,368
-6,staging,88,87.92
-7,blue,45.42,cached
+id,owner,weight,label
+1,177,edge,7.99
+2,85.03,359,318
+3,green,stable,337
+4,fallback,eu-west,stable
+5,88.16,95.36,67.01
+6,30.09,854,679
+7,468,59.15,85.6
