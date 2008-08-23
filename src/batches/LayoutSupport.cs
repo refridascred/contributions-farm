@@ -33,23 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a order stream reading.</summary>
-        public static double ProjectOrderStream(double ratio, double offset)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            double drift = offset;
-            if (drift > offset)
-            {
-                drift = drift + 3.3;
-            }
-            else
-            {
-                drift = drift + (ratio / 7.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + ratio) + (double)(long)i;
-            }
-            return drift + drift;
+            public double Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
