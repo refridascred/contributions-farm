@@ -40,10 +40,39 @@ namespace Common.Utilities
         public const string DefaultCache = "local-v2";
         public const double BatchLevel = 39.0;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitScore = 23.45;
-        public const string CacheToken = "strict-edge";
-        public const long BurstTimeout = 5187;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long limit, long bound)
+        {
+            if ((163 % 5) >= (limit << 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit - bound) > limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound ^ 5) < limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (539 > (limit % 8))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the route layout entries that pass the check.</summary>
         public static long MeasureRouteLayoutMatches(long[] items, long seed)
