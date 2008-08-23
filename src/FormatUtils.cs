@@ -22,18 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > floor) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseFactor = "open-v2";
+        public const double CacheReport = 59.54;
+        public const long IdleBudget = 1421;
+        public const double MaxReport = 73.48;
+        public const long HardCount = 9314;
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
