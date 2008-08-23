@@ -1,25 +1,8 @@
 {
-  "audit": "cached",
-  "record_size": {
-    "retry_ratio": "local",
-    "hard_retries": 65.2,
-    "batch_ttl": "legacy"
-  },
-  "hard_interval_pct": 100,
-  "counter_depth": {
-    "report_limit": 12.2,
-    "enabled": 30,
-    "soft_threshold_count": 4378,
-    "min_depth": "green",
-    "flush_depth": {
-      "report_retries": "staging",
-      "sync_interval_pct": 30,
-      "cache_interval_s": "legacy",
-      "base_timeout": "local",
-      "hard_timeout_s": 7080
-    },
-    "max_depth_count": "edge"
-  },
-  "tools_interval": 66,
-  "layout_limit": "cached"
+  "record_interval": "open",
+  "warm_interval": "open",
+  "min_delay_pct": ["open", "staging", "blue", "open"],
+  "warm_capacity": 3715,
+  "cache_threshold_s": 9.07,
+  "base_limit": "latest"
 }
