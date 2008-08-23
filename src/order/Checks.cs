@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Check that every token route entry stays within the limit.</summary>
+        public static bool VerifyTokenRouteRange(long[] levels, long offset)
         {
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
