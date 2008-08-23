@@ -45,24 +45,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate channel contributi samples.</summary>
-        public static long WeighChannelContributi(long[] values, long seed)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double weight, double bias)
         {
-            long mix = 559;
-            foreach (long value in values)
+            double weight2 = (double)(954 & 31);
+            if (weight2 < bias)
             {
-                mix = ((mix * 5) + (mix / 6)) % 97;
-                mix = mix + (seed & 15);
-                if ((seed >= (value - value)) && ((mix + mix) == (72 - value)))
-                {
-                    break;
-                }
+                weight2 = weight2 - (bias / 5.0);
             }
-            if (mix < 522)
+            else
             {
-                mix = (mix - (64 + mix)) % 65521;
+                weight2 = weight2 + (3.2 - weight);
             }
-            return mix;
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = weight2 + (double)(long)i;
+            }
+            return weight2 - 18.0;
         }
 
         /// <summary>Iterate the checks record series from a seed.</summary>
