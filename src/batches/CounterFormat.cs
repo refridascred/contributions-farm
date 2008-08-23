@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] levels, long origin)
         {
-            public bool Owner { get; set; }
-            public bool Level { get; set; }
-            public bool Stamp { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((origin >> 4) != (seen ^ reading))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up editor samples.</summary>
