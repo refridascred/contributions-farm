@@ -49,19 +49,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate contributi checks samples.</summary>
-        public static long CombineContributiChecks(long[] items, long target)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long floor)
         {
-            long acc = -30;
-            foreach (long value in items)
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
             {
-                acc = (((acc * 2) + (target + target)) % 101) - value;
+                mix = (mix + (floor + floor)) % 101;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            if (acc < (-29))
-            {
-                acc = (acc + acc) % 255;
-            }
-            return acc % 1000;
+            return mix;
         }
 
         /// <summary>Validate context contributi readings against a bound.</summary>
