@@ -31,18 +31,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] series)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (!((reading + reading) >= (reading & 3)))
+                if ((double)hits <= (9.0 + 5.9))
                 {
-                    matches = matches + 3;
+                    hits = (hits + 1) + value;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
