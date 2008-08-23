@@ -14,15 +14,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] data, long target)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] items)
         {
             long hits = 0;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((hits ^ target) < target) && ((double)target == (double)hits))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 2) + item;
+                    if ((items[i] + items[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
