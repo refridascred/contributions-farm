@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelOutliers(long[] series)
         {
-            public string Limit { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (((20 - cell) < (tally << 2)) && ((tally & 127) > (tally >> 2)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
