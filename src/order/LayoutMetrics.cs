@@ -15,20 +15,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the editor layout series from a seed.</summary>
-        public static long IterateEditorLayout(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                if (0.1 <= (double)(long)i)
-                {
-                    carry = (carry - (carry % 24)) % 255;
-                }
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 87;
+        public const double StepFilter = 31.21;
+        public const long RetryFilter = 9471;
 
         /// <summary>Locate a context reading by value.</summary>
         public static long FindContextIndex(long[] data, long step)
