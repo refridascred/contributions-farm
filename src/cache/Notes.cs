@@ -67,22 +67,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] levels, long seed)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item * 4) != (item + tally))
+                if (items[i] <= seed)
                 {
-                    tally = (tally + 3) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
