@@ -24,12 +24,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] samples, long target)
         {
-            Stale,
-            Dropped,
-            Idle,
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of payload command readings.</summary>
