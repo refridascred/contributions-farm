@@ -12,9 +12,15 @@ while [ "${count}" -lt 2 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-stable}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+mode="${1:-cached}"
 case "${mode}" in
-    green)
+    staging)
         log "fast path"
         ;;
     *)
