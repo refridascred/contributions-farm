@@ -1,14 +1,7 @@
 # githubfarm settings
-poll_ratio: stable
-dry_run: primary
-strict: cached
-warm_timeout:
-  - strict
-  - open
-  - stable
-cache_interval_pct:
-  idle_threshold: false
-  soft_threshold_s: 23.73
-  batch_size_ms: cached
-  sync_window_ms: false
-readonly: 61
+base_interval_s: fallback
+verbose: 8812
+hard_timeout_s:
+  sync_window_ms: 74.32
+  audit: legacy
+  stream_interval: 78
