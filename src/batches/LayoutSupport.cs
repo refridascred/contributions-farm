@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long floor, long floor2)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] data, long seed)
         {
-            long offset = floor + floor2;
-            if ((double)floor2 > (double)offset)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset < (floor ^ offset)) && ((offset / 3) > floor))
+                if (reading <= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset - offset) != (floor2 % 16))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Combine format values into a single score.</summary>
