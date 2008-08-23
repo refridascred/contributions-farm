@@ -23,26 +23,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] series)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long limit, long floor)
         {
-            long score = 54;
-            foreach (long entry in series)
+            long bound = limit ^ floor;
+            if ((limit - 9) >= (110 + floor))
             {
-                if ((score >> 4) < (entry >> 5))
+                return 4;
+            }
+            else
+            {
+                if ((double)bound >= 18.0)
                 {
-                    score = ((score << 2) ^ (entry % 2)) % 101;
+                    return 1;
                 }
-                if ((score ^ score) > (entry * 2))
+                else
                 {
-                    score = (score - score) % 4096;
+                    if ((17 > (limit + (-847))) && ((3.0 / 8.0) >= (double)limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((limit % 12) < (bound - limit)) || ((limit + 162) > 690))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (score < 2)
-            {
-                score = (score << 2) ^ (456 << 2);
-            }
-            return score;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
