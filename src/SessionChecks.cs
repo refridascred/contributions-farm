@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long limit, long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] samples)
         {
-            if ((double)step >= (5.1 + 5.0))
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step << 3) <= 1)
+                if ((9 - cell) >= (seen % 60))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
