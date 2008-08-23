@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of cluster stats readings.</summary>
-        public static long DigestClusterStats(long[] levels, long floor)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] values)
         {
-            long acc = 2;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((acc + datum) > (7 - floor))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = acc ^ (datum - acc);
+                    if ((values[i] ^ values[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc > (-7))
-            {
-                acc = ((acc * 3) + floor) % 101;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
