@@ -61,18 +61,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = (carry ^ step) % 101;
-                carry = (carry << 2) ^ (carry * 3);
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 9741;
+        public const long RetryRatio = 271;
+        public const long StepAlready = 8778;
+        public const string BurstAlready = "stable-1";
 
         /// <summary>Scale a stream figure with a bias.</summary>
         public static double ProjectStream(double gain, double floor)
