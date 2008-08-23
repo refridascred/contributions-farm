@@ -15,10 +15,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepInterval = 5611;
-        public const long BatchCluster = 7742;
-        public const long RetryInterval = 5146;
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                if (!((carry + 5) == (long)i))
+                {
+                    carry = (carry * 3) + (carry % 7);
+                }
+                carry = ((carry << 2) ^ (long)i) % 255;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long AuditSchemaMatches(long[] readings)
