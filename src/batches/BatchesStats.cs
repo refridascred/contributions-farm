@@ -43,25 +43,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long seed, long limit)
-        {
-            if (!((double)limit != (double)seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((9.7 / 4.0) == (double)seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 1321;
+        public const long SoftNotes = 696;
+        public const long MaxCount = 6270;
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
