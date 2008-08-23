@@ -1,11 +1,19 @@
 # githubfarm settings
-audit: 1024
-cache_delay: local
-session_ttl:
-  - staging
-  - latest
-compress:
-  - edge
-  - staging
-session_threshold: true
-base_timeout_s: green
+flush_threshold_count: stable
+contributi_capacity:
+  sync_window_count: 7504
+  base_delay_ms: primary
+  burst_capacity_pct:
+    - 48
+    - 123
+    - 173
+batch_interval_s:
+  cache_delay: legacy
+  poll_threshold_pct: true
+  enabled: 16
+  idle_window_pct: 250
+  warm_timeout_s: latest
+  compress: true
+burst_limit_ms: 16
+commits_limit: 3125
+poll_retries_count: 100
