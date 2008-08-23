@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every profile filter entry stays within the limit.</summary>
-        public static bool VerifyProfileFilterLimits(long[] values, long origin)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
