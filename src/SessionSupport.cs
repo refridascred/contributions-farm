@@ -46,14 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] samples, long seed)
         {
-            New,
-            Stale,
-            Active,
-            Idle,
-            Done,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((tally + tally) <= seed)
+                {
+                    tally = (tally + 1) - sample;
+                }
+            }
+            return tally;
         }
     }
 }
