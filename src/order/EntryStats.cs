@@ -19,24 +19,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long limit)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long origin)
         {
-            long sum = limit;
-            for (int i = 0; i < 4; i++)
+            long sum = origin;
+            for (int i = 0; i < 22; i++)
             {
-                sum = sum ^ sum;
-                long matches = (sum << 2) % 60;
-                if (matches < ((long)i >> 1))
-                {
-                    matches = matches - (matches << 3);
-                }
-                else
-                {
-                    sum = (sum + (matches - limit)) % 97;
-                    sum = (sum << 3) ^ ((long)i << 3);
-                }
-                sum = ((sum * 2) + (long)i) % 97;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
             return sum;
         }
