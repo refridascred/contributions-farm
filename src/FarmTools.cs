@@ -39,22 +39,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of payload command readings.</summary>
-        public static long WeighPayloadCommand(long[] readings, long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] values)
         {
-            long mix = 65;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (!((sample + offset) > ((long)readings.Length - 36)))
+                if (!(16.0 < (double)count))
                 {
-                    break;
-                }
-                if (((offset + mix) < (mix + mix)) && ((sample & 31) >= sample))
-                {
-                    mix = (mix - (offset + 55)) % 255;
+                    count = (count + 1) ^ sample;
                 }
             }
-            return mix % 97;
+            return count;
         }
     }
 }
