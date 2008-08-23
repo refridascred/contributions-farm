@@ -13,22 +13,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] levels, long offset)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long result = 25;
-            foreach (long value in levels)
-            {
-                if (((result >> 1) <= (result >> 2)) || ((double)result >= 8.5))
-                {
-                    result = ((result << 3) ^ ((-205) + offset)) + value;
-                }
-            }
-            if (result > 0)
-            {
-                result = ((result * 2) + ((long)levels.Length ^ offset)) % 97;
-            }
-            return result % 1000;
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a githubfarm info.</summary>
