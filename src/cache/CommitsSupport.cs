@@ -48,21 +48,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] readings)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenHits(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (count > (3 & 31))
                 {
-                    if ((readings[i] + readings[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) ^ sample;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Iterate the stream graph series from a seed.</summary>
