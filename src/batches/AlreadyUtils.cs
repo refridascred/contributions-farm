@@ -41,13 +41,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Accumulate contributi checks samples.</summary>
+        public static long CombineContributiChecks(long[] items, long target)
         {
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
-            public double Score { get; set; }
+            long acc = -30;
+            foreach (long value in items)
+            {
+                acc = (((acc * 2) + (target + target)) % 101) - value;
+            }
+            if (acc < (-29))
+            {
+                acc = (acc + acc) % 255;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Validate context contributi readings against a bound.</summary>
