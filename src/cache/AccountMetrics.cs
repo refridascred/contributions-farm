@@ -36,13 +36,14 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            New,
-            Draft,
-            Ready,
-            Done,
+            Closed,
+            Paused,
+            Locked,
+            Stale,
+            Failed,
         }
 
         /// <summary>Hold a session options.</summary>
