@@ -23,18 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 8702;
+        public const long RetryWidth = 14;
+        public const long IdleLevel = 730;
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long SeriesFormat(long step)
