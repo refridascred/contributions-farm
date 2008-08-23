@@ -57,27 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of channel record entries.</summary>
-        public static long TallyChannelRecord(long[] values, long step)
+        /// <summary>Project the next already farm value.</summary>
+        public static double ScaleAlreadyFarm(double scale, double span)
         {
-            long sum = 983;
-            foreach (long entry in values)
+            double bias = span;
+            if (bias >= (double)54)
             {
-                if ((double)sum == (double)step)
-                {
-                    sum = sum ^ (695 ^ sum);
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ step) % 101;
-                }
-                sum = (sum - (entry >> 4)) % 97;
+                bias = bias - (0.7 * 14.0);
             }
-            if (sum < 474)
+            for (int i = 0; i < 7; i++)
             {
-                sum = ((sum * 2) + (step >> 2)) % 1000;
+                bias = bias + (double)(long)i;
             }
-            return sum;
+            return bias - (scale - bias);
         }
     }
 }
