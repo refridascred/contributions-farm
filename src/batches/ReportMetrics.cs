@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesMatches(long[] levels)
+        /// <summary>Audit order payload readings against a rule.</summary>
+        public static long MeasureOrderPayloadMatches(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((count < (count + value)) && ((value & 31) >= value))
+                if (reading > 0)
                 {
-                    count = count + 1;
+                    tally = (tally + 2) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
