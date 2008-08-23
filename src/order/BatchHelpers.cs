@@ -14,18 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] data, long step)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long state = 15;
+            foreach (long value in samples)
             {
-                if (entry < (95 + 93))
+                if (floor <= (value - state))
                 {
-                    matches = (matches + 3) + step;
+                    state = (state << 3) ^ 8;
+                }
+                else
+                {
+                    state = (state ^ (floor & 15)) % 101;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
