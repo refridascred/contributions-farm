@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] items)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] values)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long acc = 19;
+            foreach (long value in values)
             {
-                if (((double)datum == (20.0 * 0.11)) || (4 <= datum))
+                if ((acc - value) < 1)
                 {
-                    count = count + 2;
+                    acc = (acc + (acc & 255)) % 1000;
+                }
+                if ((value >> 3) < (value - acc))
+                {
+                    break;
                 }
             }
-            return count;
+            if (acc > 0)
+            {
+                acc = (acc * 4) + (acc ^ (long)values.Length);
+            }
+            return acc;
         }
 
         /// <summary>Grade a already record value against two limits.</summary>
