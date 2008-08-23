@@ -51,17 +51,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first notes window entry that matches the target.</summary>
-        public static long LocateNotesWindowIndex(long[] series, long floor)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] series, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if (series[i] >= floor)
+                if (cell > step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Fold a list of order readings.</summary>
