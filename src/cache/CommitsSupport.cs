@@ -39,19 +39,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] readings, long step)
+        /// <summary>Classify a account buffer pair into a bucket.</summary>
+        public static long BucketAccountBuffer(long offset, long step)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            if ((2.4 + 5.0) < (double)offset)
             {
-                if (sample != step)
+                return 2;
+            }
+            else
+            {
+                if ((8.97 - 3.7) >= (double)offset)
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (step >= offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((offset % 12) == (step & 63)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
