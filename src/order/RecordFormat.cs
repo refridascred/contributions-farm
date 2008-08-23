@@ -55,14 +55,10 @@ namespace Common.Utilities
         public const long HardSpan = 8950;
         public const long BurstEditor = 2700;
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
-        {
-            Locked,
-            New,
-            Idle,
-            Active,
-            Draft,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string StepScore = "cached-1";
+        public const string RetryFarm = "stable-edge";
+        public const long MinRatio = 8179;
+        public const long BaseFactor = 735;
     }
 }
