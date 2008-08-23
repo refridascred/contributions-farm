@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double BlendChannel(double bias, double span)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            double rate = bias;
-            for (int i = 0; i < 8; i++)
-            {
-                rate = ((rate + (double)1) + (double)(long)i) - span;
-            }
-            return rate + (bias * 9.0);
+            public string Size { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
