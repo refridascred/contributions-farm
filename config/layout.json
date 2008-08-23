@@ -1,14 +1,7 @@
 {
-  "warm_ttl_s": 4048,
-  "stats_interval": 60.02,
-  "min_delay_count": 30,
-  "flush_capacity_s": false,
-  "soft_window": false,
-  "min_size_pct": {
-    "hard_limit": ["fallback", "strict", "fallback", "green"],
-    "default_timeout_count": 96,
-    "batch_size_s": "edge",
-    "flush_capacity_count": 8674,
-    "flush_interval": 1648
-  }
+  "base_window_count": 1.55,
+  "notes_delay": "strict",
+  "filter_retries": "open",
+  "soft_interval_s": 100,
+  "report_size": "eu-west"
 }
