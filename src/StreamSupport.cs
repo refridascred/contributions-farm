@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double weight, double span)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            double rate = (weight - weight) - (double)511;
-            for (int i = 0; i < 4; i++)
-            {
-                rate = ((rate + (double)5) + (double)(long)i) + span;
-            }
-            return rate + (double)81;
+            Failed,
+            Closed,
+            Pending,
+            Locked,
+            Paused,
         }
 
         /// <summary>Define format limits and defaults.</summary>
