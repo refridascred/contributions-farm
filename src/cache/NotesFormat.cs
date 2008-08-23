@@ -35,15 +35,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] values)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long result = 9;
-            foreach (long sample in values)
-            {
-                result = ((result * 5) + (sample + sample)) % 65521;
-            }
-            return result;
+            public long Token { get; set; }
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
