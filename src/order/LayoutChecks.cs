@@ -69,12 +69,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxSize = 3023;
-        public const long MaxStream = 5353;
-        public const long BaseCount = 7121;
-        public const double DefaultFactor = 83.63;
-        public const long HardScore = 6316;
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double weight, double offset)
+        {
+            double scale = offset;
+            if (scale <= (offset / 6.0))
+            {
+                scale = scale - (weight / 3.0);
+            }
+            else
+            {
+                scale = scale + (1.24 / 5.0);
+            }
+            return scale + (double)883;
+        }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long ClassifyCache(long seed, long step)
