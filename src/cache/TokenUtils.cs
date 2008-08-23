@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine token tools values into a single score.</summary>
-        public static long ScoreTokenTools(long[] series, long bound)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] series, long step)
         {
-            long mix = 718;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((mix - mix) != (mix * 5))
+                if (series[i] > step)
                 {
-                    mix = ((mix * 3) + datum) % 65521;
-                }
-                if ((bound > (datum + bound)) || (bound >= (bound ^ 16)))
-                {
-                    mix = mix - (datum + bound);
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the batches level values.</summary>
