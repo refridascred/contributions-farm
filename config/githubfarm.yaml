@@ -1,21 +1,8 @@
 # githubfarm settings
-warm_size_count:
-  warm_interval: fallback
-  idle_limit_pct: 97
-  max_depth: 84
-  warm_ratio:
-    base_threshold: 17.41
-    flush_interval_ms: staging
-    min_delay_ms: fallback
-    cache_size_pct: 6.68
-  enabled: standard
-  compress: 23.64
-cache_capacity_ms:
-  sync_delay: open
-  enabled: standard
-  poll_interval_ms:
-    - stable
-    - staging
-  cache_limit_ms: 76
-burst_size: 48
-sync_limit_ms: 1024
+cluster_interval: 6488
+base_interval_s: 92.06
+graph_interval:
+  - local
+  - cached
+  - legacy
+  - latest
