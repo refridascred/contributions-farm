@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a contributi command value against two limits.</summary>
-        public static long BucketContributiCommand(long offset, long offset2)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] readings, long target)
         {
-            long slot = offset - offset2;
-            if (((14.0 * 0.48) <= (double)slot) || ((double)offset2 == (3.0 / 5.0)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset2 % 7) != (offset2 % 64))
+                if ((readings[i] >= target) && ((readings[i] % 5) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset * 4) < (offset + slot))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a token reading.</summary>
