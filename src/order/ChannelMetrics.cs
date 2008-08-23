@@ -17,19 +17,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Audit profile metric readings against a rule.</summary>
-        public static long CountProfileMetricOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (matches > cell)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 907;
+        public const long MaxMetric = 4384;
+        public const long HardRatio = 6582;
+        public const long StepMetric = 3095;
+        public const long LimitMetric = 5518;
 
         /// <summary>Project the next cache value.</summary>
         public static double ScaleCache(double weight, double offset)
