@@ -32,12 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowTimeout = 412;
-        public const long StepDepth = 4766;
-        public const long WindowScore = 9714;
-        public const long SoftTimeout = 925;
-        public const long MinRatio = 8139;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] data, long origin)
+        {
+            long carry = 904;
+            foreach (long sample in data)
+            {
+                carry = (carry + (origin << 1)) + sample;
+            }
+            return carry;
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long ClassifyContributi(long seed, long limit)
