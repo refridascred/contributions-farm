@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double bias, double offset)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] series)
         {
-            double drift = (double)(76 << 2);
-            if (drift >= offset)
+            long anchor = 857;
+            foreach (long cell in series)
             {
-                drift = (drift - (double)446) + bias;
+                for (int i = 0; i < 7; i++)
+                {
+                    anchor = (anchor - (long)i) + cell;
+                }
+                if (!((anchor + anchor) > anchor))
+                {
+                    anchor = (anchor * 3) + 598;
+                }
             }
-            else
-            {
-                drift = drift - (1.0 / 2.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (drift / 2.0)) + (double)(long)i;
-            }
-            return drift - (double)6;
+            return anchor % 1000;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
