@@ -1,5 +1,6 @@
 {
-  "strict": "fallback",
-  "base_size_s": 82.9,
-  "idle_window_pct": 6047
+  "stats_timeout": "edge",
+  "strict": 57.66,
+  "verbose": 75,
+  "flush_threshold_pct": "cached"
 }
