@@ -15,18 +15,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many queue record samples are out of range.</summary>
-        public static long AuditQueueRecordHits(long[] values)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long floor, long offset)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            if ((floor - offset) == (offset ^ 64))
             {
-                if ((tally % 5) >= (entry % 5))
+                return 5;
+            }
+            else
+            {
+                if (87 < offset)
                 {
-                    tally = tally + 2;
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)offset < 8.7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((floor & 15) >= (floor >> 3)) || ((floor + offset) > (27 >> 1)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
