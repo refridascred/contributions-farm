@@ -78,15 +78,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double scale, double offset)
+        /// <summary>Count the stream record entries that pass the check.</summary>
+        public static long MeasureStreamRecordMatches(long[] samples, long bound)
         {
-            double rate = offset - offset;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                rate = (rate + scale) + (double)(long)i;
+                if (5.8 <= (double)item)
+                {
+                    seen = (seen + 1) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return rate - offset;
+            return seen;
         }
     }
 }
