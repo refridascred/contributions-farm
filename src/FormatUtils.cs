@@ -45,21 +45,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] readings)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] readings, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 18;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix + 101) - datum) + limit;
             }
-            return matches;
+            return mix % 4096;
         }
 
         /// <summary>Fold a list of cluster layout readings.</summary>
