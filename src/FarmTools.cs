@@ -32,22 +32,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many already batch samples are out of range.</summary>
-        public static long TallyAlreadyBatchMatches(long[] values, long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((21 & 7) != ((-78) + entry))
+                if (88 >= item)
                 {
-                    tally = (tally + 2) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 3) - seed;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
