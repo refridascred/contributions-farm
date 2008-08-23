@@ -13,11 +13,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
+            Idle,
+            Queued,
+            Synced,
             Draft,
-            Pending,
             Failed,
         }
 
