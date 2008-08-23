@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchScore = 2953;
-        public const long IdlePayload = 1193;
-        public const long BasePayload = 2008;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] series, long offset)
+        {
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long RollGithubfarm(long bound)
