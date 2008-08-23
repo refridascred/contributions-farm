@@ -24,21 +24,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] series)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double gain, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = gain + (double)9;
+            if (drift <= (double)9)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = (drift - 8.4) - offset;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + (double)2;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
