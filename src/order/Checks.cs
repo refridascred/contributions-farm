@@ -40,33 +40,10 @@ namespace Common.Utilities
         public const string DefaultCache = "local-v2";
         public const double BatchLevel = 39.0;
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long target, long seed)
-        {
-            long step = target + seed;
-            if ((610 - step) > (target & 63))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)step <= (0.6 + 4.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step + 4) > (target ^ seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitScore = 23.45;
+        public const string CacheToken = "strict-edge";
+        public const long BurstTimeout = 5187;
 
         /// <summary>Count the route layout entries that pass the check.</summary>
         public static long MeasureRouteLayoutMatches(long[] items, long seed)
