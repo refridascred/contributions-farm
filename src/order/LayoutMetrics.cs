@@ -35,15 +35,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long limit)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] values, long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (datum != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
     }
 }
