@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of route record readings.</summary>
-        public static long ScoreRouteRecord(long[] items)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] series)
         {
-            long carry = 72;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((5.32 / 9.0) >= (double)entry)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = carry - (carry * 3);
+                    if ((series[i] ^ series[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Combine context metric values into a single score.</summary>
