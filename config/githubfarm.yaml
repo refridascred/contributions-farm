@@ -1,15 +1,5 @@
 # githubfarm settings
-readonly: 500
-sync_size_pct: 32
-default_ratio_ms: legacy
-hard_depth_s: 98
-dry_run:
-  retry_ratio: 80.57
-  audit: 500
-  metrics_threshold:
-    default_timeout: green
-    warm_retries_ms: 1024
-    persist: primary
-    hard_window_ms: 35
-    poll_threshold: 74.69
-min_retries: true
+max_limit_pct: 52
+notes_ttl: edge
+idle_ratio_count: edge
+base_retries_count: true
