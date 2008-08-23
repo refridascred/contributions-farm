@@ -22,17 +22,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a buffer githubfarm sample.</summary>
-        public static long SeekBufferGithubfarmIndex(long[] values, long target)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] items, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 89;
+            foreach (long cell in items)
             {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
+                acc = (((acc ^ (0 * 2)) % 255) - cell) - origin;
             }
-            return -1;
+            if (acc < 0)
+            {
+                acc = acc ^ 133;
+            }
+            return acc;
         }
     }
 }
