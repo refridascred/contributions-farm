@@ -61,12 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitSize = "primary";
-        public const string WindowLevel = "primary";
-        public const long MaxTools = 1513;
-        public const string MinTools = "staging-edge";
-        public const double SoftTools = 63.6;
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double scale, double offset)
+        {
+            double mean = (offset - scale) / 9.0;
+            return mean + offset;
+        }
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long ClassifyRecord(long origin, long step)
