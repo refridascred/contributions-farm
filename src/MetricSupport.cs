@@ -5,15 +5,28 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double rate, double floor)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long bound)
         {
-            double mean = rate + rate;
-            if (mean >= 2.03)
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
             {
-                mean = (mean + (double)367) + floor;
+                if (5.0 >= (double)bound)
+                {
+                    anchor = (anchor << 2) ^ (anchor - anchor);
+                    break;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (bound - (long)i)) % 255;
+                }
+                if ((double)bound <= (7.39 - 8.0))
+                {
+                    anchor = anchor - 287;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return mean + (rate / 4.0);
+            return anchor;
         }
 
         /// <summary>Hold a payload summary.</summary>
