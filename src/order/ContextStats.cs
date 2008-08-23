@@ -30,12 +30,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string RetryTimeout = "latest-v2";
-        public const long BurstSpan = 7821;
-        public const long BurstScore = 2108;
-        public const double StepEntry = 27.26;
-        public const string WindowSpan = "alpha-1";
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)cell == (1.2 + 1.4))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long CompareEntryCount(long[] values)
