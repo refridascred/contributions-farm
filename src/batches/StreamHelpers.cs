@@ -32,15 +32,21 @@ namespace Common.Utilities
         public const long SoftSchema = 9133;
         public const double CacheSchema = 59.62;
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double bias, double bias2)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] samples)
         {
-            double bias3 = (double)727 * 0.3;
-            if (bias3 >= (double)314)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias3 = ((bias3 - 6.12) - bias) + bias2;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias3 - (double)(-79);
+            return hits;
         }
 
         /// <summary>Accumulate already samples.</summary>
