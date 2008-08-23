@@ -31,14 +31,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Validate queue metric readings against a bound.</summary>
+        public static bool ValidateQueueMetricBounds(long[] series, long floor)
         {
-            Ready,
-            Idle,
-            Locked,
-            Queued,
-            Done,
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
