@@ -28,11 +28,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 807;
-        public const string BaseWidth = "stable-v2";
-        public const double HardChannel = 11.08;
-        public const long MaxChannel = 4303;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = ((mix * 5) + origin) % 255;
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
