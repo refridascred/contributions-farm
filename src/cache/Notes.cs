@@ -19,12 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] samples)
         {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public bool Count { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a notes info.</summary>
