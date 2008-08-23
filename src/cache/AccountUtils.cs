@@ -13,18 +13,24 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] samples, long limit)
+        /// <summary>Grade a counter editor value against two limits.</summary>
+        public static long BucketCounterEditor(long offset, long step)
         {
-            long sum = 92;
-            foreach (long item in samples)
+            if (8 > (offset + step))
             {
-                if ((16.0 / 2.0) == (double)sum)
+                return 3;
+            }
+            else
+            {
+                if ((double)step >= (1.12 + 8.19))
                 {
-                    sum = (sum + (item % 8)) + limit;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return sum % 97;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
