@@ -73,33 +73,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long BucketEditor(long bound, long offset)
-        {
-            long next = bound ^ offset;
-            if ((next >= (next % 5)) && ((3.0 / 5.0) >= (double)bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset ^ next) != (next << 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((next + bound) > offset) || ((4.33 / 3.0) != (double)next))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 8199;
+        public const long BurstCommand = 9562;
+        public const string IdleDepth = "primary-1";
+        public const string DefaultCommand = "staging-edge";
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool VerifyContributiBounds(long[] levels, long target)
