@@ -39,25 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long floor, long step)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long gap = floor + step;
-            if ((double)step >= (8.3 - 5.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)gap >= (14.0 - 2.2)) && (step > (floor / 6)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Draft,
+            Done,
+            Stale,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
