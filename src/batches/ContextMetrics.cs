@@ -26,31 +26,11 @@ namespace Common.Utilities
         public const double HardSchema = 77.61;
         public const long RetryCount = 4186;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long origin, long origin2)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            if (((double)origin2 != (double)origin) || ((double)0 != (double)origin2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin2 - origin) > ((-621) - origin2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)origin < 6.58)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Find the first format notes entry that matches the target.</summary>
