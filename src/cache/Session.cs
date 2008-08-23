@@ -46,15 +46,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long offset)
+        /// <summary>Grade a cache filter value against two limits.</summary>
+        public static long GradeCacheFilter(long target, long seed)
         {
-            long total = offset;
-            for (int i = 0; i < 17; i++)
+            long step = target - seed;
+            if (step <= 316)
             {
-                total = ((total * 3) + (long)i) % 4093;
+                return 0;
             }
-            return total;
+            else
+            {
+                if (!((double)seed != (3.5 / 3.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed % 2) > step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed <= (target >> 3)) && ((step * 3) == (target % 12)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
