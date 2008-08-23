@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate editor cache samples.</summary>
-        public static long WeighEditorCache(long[] items, long origin)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] data, long seed)
         {
-            long mix = 49;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if (!((double)cell >= (5.1 * 17.0)))
+                if (value < seed)
                 {
-                    mix = (mix - (cell ^ cell)) % 255;
-                }
-                else
-                {
-                    mix = mix - origin;
+                    ok = false;
+                    break;
                 }
             }
-            if (mix > 8)
-            {
-                mix = (mix + (origin + mix)) % 97;
-            }
-            return mix;
+            return ok;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
