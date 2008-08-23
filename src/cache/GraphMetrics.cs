@@ -35,11 +35,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double DefaultPayload = 87.05;
-        public const string WindowPayload = "fallback-edge";
-        public const long BaseSpan = 4103;
-        public const double RetryPayload = 91.28;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BatchCount = 15.82;
+        public const long MaxScore = 2675;
+        public const long WindowSupport = 4213;
 
         /// <summary>Rank format input into a small class.</summary>
         public static long ClassifyFormat(long floor, long seed)
