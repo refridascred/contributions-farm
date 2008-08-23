@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine buffer cache values into a single score.</summary>
-        public static long FoldBufferCache(long[] data)
+        /// <summary>Rank stats window input into a small class.</summary>
+        public static long RankStatsWindow(long bound, long origin)
         {
-            long total = 38;
-            foreach (long sample in data)
+            long delta = bound ^ origin;
+            if (6.51 >= (double)origin)
             {
-                for (int i = 0; i < 6; i++)
+                return 0;
+            }
+            else
+            {
+                if (origin <= bound)
                 {
-                    total = (((total << 3) ^ (sample + total)) % 65521) + (long)i;
+                    return 2;
                 }
-                total = (total + ((long)data.Length - sample)) % 101;
+                else
+                {
+                    if (9.21 >= (double)delta)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound >> 3) <= bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            if (total > 899)
-            {
-                total = (total - (total + total)) % 255;
-            }
-            return total;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
