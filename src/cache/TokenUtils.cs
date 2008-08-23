@@ -30,15 +30,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] series, long target)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long sum = 831;
-            foreach (long value in series)
-            {
-                sum = (sum - (target ^ sum)) + value;
-            }
-            return sum;
+            Idle,
+            Stale,
+            Closed,
+            Draft,
+            Dropped,
         }
     }
 }
