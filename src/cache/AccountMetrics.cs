@@ -57,19 +57,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] data, long target)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long limit)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long carry = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry <= target)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
