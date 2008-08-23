@@ -1,10 +1,14 @@
 # support settings
-githubfarm_retries: local
-enabled: 8910
-verbose:
-  - fallback
-  - legacy
-default_depth_count: fallback
-audit:
-  - legacy
-  - cached
+order_threshold: 97.84
+command_limit:
+  profile_limit:
+    - 265
+    - 378
+  base_retries_s: 7091
+  audit: 3303
+  strict:
+    - green
+    - staging
+    - open
+  compress: 69
+readonly: 44.57
