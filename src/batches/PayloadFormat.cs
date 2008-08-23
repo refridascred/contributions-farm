@@ -50,19 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsRange(long[] values, long offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelOutliers(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (sample <= offset)
+                if ((count + 487) >= count)
                 {
-                    ok = false;
-                    break;
+                    count = ((count + 3) + sample) + floor;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
