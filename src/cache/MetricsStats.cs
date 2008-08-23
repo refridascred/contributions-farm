@@ -38,18 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph route samples are out of range.</summary>
-        public static long AuditGraphRouteOutliers(long[] data, long target)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatLimits(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if ((double)matches >= (9.5 / 9.0))
+                if (value >= step)
                 {
-                    matches = ((matches + 1) + item) - target;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
