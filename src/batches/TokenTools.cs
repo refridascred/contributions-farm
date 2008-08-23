@@ -34,19 +34,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] series, long bound)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long offset, long step)
         {
-            long mix = 675;
-            foreach (long datum in series)
+            long step2 = offset - step;
+            if ((5.44 - 2.0) <= (double)step2)
             {
-                mix = (mix << 2) ^ (datum * 5);
+                return 2;
             }
-            if (mix < 19)
+            else
             {
-                mix = (mix - (bound ^ mix)) % 1000;
+                if ((47 >> 4) >= offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return mix;
         }
     }
 }
