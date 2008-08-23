@@ -1,20 +1,22 @@
 # githubfarm settings
-cache_delay_pct: fallback
-base_capacity_pct:
-  burst_delay_ms: 69.17
-  dry_run:
-    compress:
-      - 305
-      - 365
-      - 21
-    format_threshold: 7
-    retry_depth_count: true
-    max_timeout: green
-    audit: false
-  batch_ratio_count: legacy
-  report_ratio: edge
-metric_delay:
-  - 355
-  - 412
-retry_delay_pct: 66
-readonly: open
+default_ttl_pct:
+  compress:
+    strict: 15.08
+    stream_retries: green
+    stream_limit: 51
+    batch_depth_ms: open
+    verbose: open
+  support_window: legacy
+  queue_ratio: primary
+  hard_depth:
+    retry_delay: 33
+    idle_interval: 97
+    editor_ttl: true
+    account_retries: primary
+  soft_ttl: 1024
+burst_depth_ms: false
+dry_run:
+  - fallback
+  - green
+  - stable
+  - strict
