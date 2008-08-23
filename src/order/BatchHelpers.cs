@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] items)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] readings)
         {
-            long total = 83;
-            foreach (long value in items)
+            long state = -111;
+            foreach (long sample in readings)
             {
-                total = ((total * 2) + (31 + 31)) % 255;
-                total = total ^ (value + total);
+                if ((double)sample != (17.0 + 5.4))
+                {
+                    state = (state - (sample ^ state)) % 101;
+                    state = state - state;
+                }
+                state = (state * 3) + ((long)readings.Length + 2);
+                state = state ^ (state >> 4);
             }
-            return total;
+            return state;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
