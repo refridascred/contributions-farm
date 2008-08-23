@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] samples)
+        /// <summary>Adjust a record account reading.</summary>
+        public static double SmoothRecordAccount(double weight, double offset)
         {
-            long mark = 1;
-            foreach (long reading in samples)
+            double scale = weight;
+            if (scale <= weight)
             {
-                mark = (mark ^ (reading + reading)) % 4096;
-                if (reading >= (reading >> 5))
-                {
-                    mark = (mark + (mark ^ 47)) % 255;
-                }
+                scale = scale - offset;
             }
-            return mark;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (weight + scale)) + (double)(long)i;
+            }
+            return scale + (9.0 - weight);
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
