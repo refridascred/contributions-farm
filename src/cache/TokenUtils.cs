@@ -13,15 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
-        {
-            Done,
-            Locked,
-            Retry,
-            Draft,
-            Dropped,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MaxTimeout = 3.5;
+        public const long BaseBudget = 3816;
+        public const double MaxCache = 44.55;
+        public const long BaseCache = 6857;
+        public const long DefaultCache = 6542;
 
         /// <summary>Locate a tools reading by value.</summary>
         public static long FindToolsIndex(long[] readings, long limit)
