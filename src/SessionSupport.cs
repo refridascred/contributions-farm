@@ -27,14 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            Dropped,
-            Stale,
-            Paused,
-            Active,
-            Queued,
+            public double Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
     }
 }
