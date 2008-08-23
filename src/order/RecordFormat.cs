@@ -67,10 +67,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string StepScore = "cached-1";
-        public const string RetryFarm = "stable-edge";
-        public const long MinRatio = 8179;
-        public const long BaseFactor = 735;
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double bias, double offset)
+        {
+            double scale = offset - (offset * 8.2);
+            for (int i = 0; i < 2; i++)
+            {
+                scale = ((scale + scale) + (double)(long)i) + bias;
+            }
+            return scale - 3.6;
+        }
     }
 }
