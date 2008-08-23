@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] values, long limit)
+        /// <summary>Combine context checks values into a single score.</summary>
+        public static long WeighContextChecks(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 1;
+            foreach (long sample in series)
             {
-                if (values[i] > limit)
+                if ((sample ^ (-67)) < (995 + origin))
                 {
-                    return (long)i;
+                    mark = mark ^ (sample + 6);
                 }
             }
-            return -1;
+            if (mark < 8)
+            {
+                mark = ((mark << 3) ^ (mark / 5)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
