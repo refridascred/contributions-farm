@@ -30,33 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long limit, long floor)
-        {
-            long delta = limit + floor;
-            if (floor < (limit >> 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if (limit >= (limit - limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((limit + 61) != (delta / 2)) && (delta >= limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseRatio = 6912;
+        public const long LimitChecks = 5933;
+        public const long RetryChecks = 9004;
+        public const long StepSpan = 5032;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionOutliers(long[] samples, long floor)
