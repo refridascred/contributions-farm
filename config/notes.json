@@ -1,11 +1,5 @@
 {
-  "idle_depth_s": "strict",
-  "audit": {
-    "tools_ratio": 54.18,
-    "buffer_limit": 65.39,
-    "metrics_threshold": 9701
-  },
-  "contributi_delay": 8301,
-  "compress": ["open", "green"],
-  "command_threshold": false
+  "session_timeout": ["fallback", "staging"],
+  "dry_run": 6167,
+  "hard_limit": 3.46
 }
