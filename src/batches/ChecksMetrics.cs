@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            Retry,
-            New,
-            Queued,
+            Stale,
+            Synced,
             Done,
+            Retry,
         }
 
         /// <summary>Describe the stream level values.</summary>
