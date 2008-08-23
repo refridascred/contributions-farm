@@ -1,5 +1,5 @@
 # entry settings
-default_depth_ms: 100
-min_ratio: false
-dry_run: 55.43
-max_size: 2230
+warm_depth_count: 40.9
+record_delay: staging
+flush_limit: 1024
+audit: true
