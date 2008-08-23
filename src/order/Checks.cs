@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long offset)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long total = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((long)i << 1) == (832 + offset))
-                {
-                    total = (total * 3) + 654;
-                    total = (total - (total & 3)) % 255;
-                }
-                total = total - offset;
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
