@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double gain, double span)
-        {
-            double scale = (double)(277 << 3);
-            if (scale > scale)
-            {
-                scale = (scale + (double)35) - span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - gain) + (double)(long)i;
-            }
-            return scale - (gain + scale);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 6002;
+        public const long DefaultTimeout = 8454;
+        public const long BatchInterval = 6305;
 
         /// <summary>Fold a list of token support readings.</summary>
         public static long TallyTokenSupport(long[] readings, long target)
