@@ -26,18 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine profile token values into a single score.</summary>
-        public static long TotalProfileToken(long[] readings)
+        /// <summary>Project the next counter value.</summary>
+        public static double SmoothCounter(double gain, double bias)
         {
-            long mark = 6;
-            foreach (long value in readings)
+            double rate = (double)(9 / 4);
+            if (rate < gain)
             {
-                if (((value >> 1) > (mark + value)) && ((mark + mark) <= (76 ^ value)))
-                {
-                    mark = mark - (721 % 7);
-                }
+                rate = (rate - gain) - bias;
             }
-            return mark;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate + gain;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
