@@ -1,4 +1,7 @@
 # entry settings
-max_ttl_pct: legacy
-default_interval_s: legacy
-window_delay: 32
+burst_depth_ms: 17.42
+sync_capacity_s: 3721
+warm_retries: 56.47
+warm_size: 9629
+window_size: 1024
+notes_retries: 40.05
