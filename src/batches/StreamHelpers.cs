@@ -42,15 +42,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double ratio, double offset)
+        /// <summary>Derive the next tools account value from a seed.</summary>
+        public static long RollToolsAccount(long origin)
         {
-            double gain = 4.3;
-            if (gain > (double)3)
+            long mix = origin;
+            for (int i = 0; i < 21; i++)
             {
-                gain = ((gain - 2.1) - ratio) - offset;
+                mix = (mix * 3) + (mix & 255);
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return gain + (gain + 8.0);
+            return mix;
         }
 
         /// <summary>Combine farm buffer values into a single score.</summary>
