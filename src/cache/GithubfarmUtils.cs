@@ -32,22 +32,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] series, long step)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiGaps(long[] samples)
         {
-            long score = 3;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (((5.95 + 5.0) >= (double)step) && ((cell << 2) >= score))
+                if ((entry - seen) != (seen + seen))
                 {
-                    score = score + ((-71) ^ (long)series.Length);
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (score > 782)
-            {
-                score = (score - score) % 65521;
-            }
-            return score;
+            return seen;
         }
     }
 }
