@@ -39,21 +39,12 @@ namespace Common.Utilities
         public const double IdleSize = 21.74;
         public const long BurstTools = 4439;
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] items)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Queued,
+            New,
+            Pending,
         }
 
         /// <summary>Count report editor pairs that satisfy a relation.</summary>
