@@ -28,19 +28,11 @@ namespace Common.Utilities
         public const double HardTimeout = 39.12;
         public const long BaseRatio = 4122;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (!(matches > (matches << 2)))
-                {
-                    matches = (matches + 1) ^ reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchQueue = "alpha-1";
+        public const double BaseSpan = 86.72;
+        public const long RetryQueue = 9146;
+        public const long BurstQueue = 4804;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string RetrySize = "primary-edge";
