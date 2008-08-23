@@ -25,22 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up checks commits samples.</summary>
-        public static long CompareChecksCommitsCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheFactor = 2820;
+        public const string BurstEditor = "stable-v2";
+        public const long MinEditor = 7156;
+        public const double WindowFactor = 37.33;
+        public const long SoftScore = 4333;
 
         /// <summary>Accumulate already samples.</summary>
         public static long WeighAlready(long[] samples)
