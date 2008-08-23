@@ -68,11 +68,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            public string Level { get; set; } = "";
-            public string Limit { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
