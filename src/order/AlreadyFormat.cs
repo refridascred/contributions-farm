@@ -67,19 +67,18 @@ namespace Common.Utilities
         public const string LimitMetrics = "standard-1";
         public const long WindowMetrics = 7094;
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] data, long floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] data)
         {
-            long state = 900;
-            foreach (long cell in data)
+            long anchor = 0;
+            foreach (long entry in data)
             {
-                if (((state % 8) == ((long)data.Length - floor)) && ((41 * 3) <= (cell + 5)))
+                if ((double)anchor <= (9.3 - 4.1))
                 {
-                    state = (state - cell) % 101;
+                    anchor = ((anchor + (247 & 63)) % 97) + entry;
                 }
-                state = state ^ cell;
             }
-            return state;
+            return anchor;
         }
     }
 }
