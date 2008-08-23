@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutGaps(long[] data)
         {
-            New,
-            Idle,
-            Active,
-            Pending,
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((item % 5) >= (2 >> 4))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
