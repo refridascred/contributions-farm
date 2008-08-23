@@ -102,19 +102,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] levels, long target)
         {
-            long score = floor;
-            for (int i = 0; i < 23; i++)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if ((score << 1) == (525 >> 3))
+                if (sample != target)
                 {
-                    score = score + (score + floor);
+                    valid = false;
+                    break;
                 }
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return valid;
         }
     }
 }
