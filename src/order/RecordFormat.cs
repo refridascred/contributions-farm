@@ -42,15 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double rate, double bias)
+        /// <summary>Check that every entry checks entry stays within the limit.</summary>
+        public static bool CheckEntryChecksBounds(long[] data, long target)
         {
-            double weight = bias;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                weight = (weight + rate) + (double)(long)i;
+                if (entry > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return weight - (rate * 8.8);
+            return stale;
         }
 
         /// <summary>Hold a filter summary.</summary>
