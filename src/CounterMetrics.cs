@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a report cache sample.</summary>
-        public static long LocateReportCacheIndex(long[] readings, long offset)
+        /// <summary>Roll a metrics githubfarm counter forward.</summary>
+        public static long StepMetricsGithubfarm(long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
