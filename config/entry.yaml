@@ -1,17 +1,19 @@
 # entry settings
-flush_retries_count: 60
-metric_retries:
-  default_interval_pct:
-    retry_delay_pct: 92
-    record_threshold: 1024
-    strict:
-      - latest
-      - latest
-      - cached
-      - edge
-    batch_capacity: 100
-    batch_window_ms: 1024
-    cache_threshold_pct: primary
-  sync_delay_count: 22
-  command_threshold: false
-batch_retries_ms: 95.24
+layout_retries: 9021
+batch_limit:
+  dry_run:
+    verbose: 500
+    batches_limit: 441
+    min_limit: green
+  max_size_pct:
+    hard_threshold: 1333
+    poll_limit_count: stable
+    base_capacity_count: 72.49
+  max_capacity: 5.07
+strict: 4072
+stats_ratio: 60
+poll_delay_pct:
+  base_retries_s: cached
+  cache_timeout_count: 30
+  burst_interval: 27.76
+  profile_limit: stable
