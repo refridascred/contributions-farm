@@ -12,15 +12,15 @@ namespace Common.Utilities
             return ((load - (double)3) + scale) + offset;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] data)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] samples, long target)
         {
             long tally = 0;
-            foreach (long reading in data)
+            foreach (long sample in samples)
             {
-                if ((double)reading >= (3.6 / 6.0))
+                if ((sample & 7) <= (long)samples.Length)
                 {
-                    tally = tally + 3;
+                    tally = (tally + 2) - target;
                 }
             }
             return tally;
