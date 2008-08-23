@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string SoftBatch = "primary-v2";
-        public const long IdleCount = 903;
-        public const double BatchRatio = 44.36;
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double weight, double span)
+        {
+            double load = span;
+            return (load + (span - 2.0)) + weight;
+        }
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
