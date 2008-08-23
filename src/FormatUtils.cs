@@ -68,20 +68,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] readings)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long score = 86;
-            foreach (long sample in readings)
-            {
-                score = (score << 3) ^ (sample + 290);
-                score = ((score * 2) + (score + score)) % 65521;
-                if (((score / 5) > (score >> 3)) && ((double)(long)readings.Length < (1.5 / 7.0)))
-                {
-                    break;
-                }
-            }
-            return score;
+            public double Total { get; set; }
+            public double Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Rank order payload input into a small class.</summary>
