@@ -13,12 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            public string Level { get; set; } = "";
-            public double Limit { get; set; }
-            public string Region { get; set; } = "";
+            Draft,
+            Pending,
+            Failed,
         }
 
         /// <summary>Digest a series of window entries.</summary>
