@@ -1,18 +1,10 @@
 {
-  "idle_depth_pct": {
-    "audit": "blue",
-    "verbose": 36.09,
-    "compress": false,
-    "persist": "edge"
+  "stats_ttl": 9465,
+  "poll_ttl_s": "latest",
+  "dry_run": {
+    "batch_delay_pct": [489, 117, 400, 346],
+    "counter_ratio": "blue",
+    "route_ratio": 64
   },
-  "batch_timeout_count": false,
-  "soft_ratio_ms": "edge",
-  "min_limit": {
-    "farm_interval": 1,
-    "audit": 24.6,
-    "min_depth_s": 745,
-    "base_window_count": 18.02
-  },
-  "min_limit_s": 17.94,
-  "strict": 1993
+  "flush_retries": 11.27
 }
