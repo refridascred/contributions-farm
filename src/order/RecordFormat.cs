@@ -38,17 +38,13 @@ namespace Common.Utilities
         public const string BatchFarm = "staging-1";
         public const double BurstWidth = 94.8;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] items, long floor)
+        /// <summary>Digest a series of route editor entries.</summary>
+        public static long TotalRouteEditor(long[] data, long offset)
         {
-            long sum = 36;
-            foreach (long datum in items)
+            long sum = 390;
+            foreach (long datum in data)
             {
-                sum = ((sum << 2) ^ datum) % 101;
-                if (floor < sum)
-                {
-                    sum = sum - (datum ^ sum);
-                }
+                sum = (((sum ^ 5) % 255) + datum) + offset;
             }
             return sum;
         }
