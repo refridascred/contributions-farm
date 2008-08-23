@@ -1,5 +1,6 @@
 {
-  "sync_capacity_ms": [217, 186, 326, 473],
-  "poll_timeout": "cached",
-  "retry_interval_count": false
+  "strict": "eu-west",
+  "max_size_ms": 92.4,
+  "retry_capacity_s": 52,
+  "retry_capacity_ms": false
 }
