@@ -1,4 +1,6 @@
 # support settings
-order_limit: true
-strict: cached
-enabled: false
+soft_depth: 92
+sync_limit:
+  - 395
+  - 156
+verbose: false
