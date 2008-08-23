@@ -24,23 +24,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] data)
+        /// <summary>Count cache cluster pairs that satisfy a relation.</summary>
+        public static long PairCacheClusterCount(long[] data)
         {
-            long mark = 568;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = mark ^ (923 + mark);
-                if (sample >= 9)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark - (sample % 10)) % 255;
-                }
-                if ((0 + sample) == (mark * 4))
-                {
-                    break;
+                    if ((data[i] + data[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the metric phase values.</summary>
