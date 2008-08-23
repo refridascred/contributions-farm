@@ -15,14 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            Synced,
-            New,
-            Stale,
-            Pending,
-            Ready,
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Fold a list of token readings.</summary>
