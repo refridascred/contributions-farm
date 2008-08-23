@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] levels, long step)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (sample < (5 % 10))
-                {
-                    matches = (matches + 2) + step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxDepth = "cached-v2";
+        public const string LimitDepth = "cached-edge";
+        public const long HardFactor = 7771;
+        public const long IdleRecord = 3748;
+        public const string BatchSize = "fallback-1";
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool GuardSupportLimits(long[] series, long step)
