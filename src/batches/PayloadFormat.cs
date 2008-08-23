@@ -43,14 +43,11 @@ namespace Common.Utilities
         public const double LimitBuffer = 87.71;
         public const string LimitDepth = "standard-v2";
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double gain, double span)
         {
-            Ready,
-            Failed,
-            Idle,
-            Done,
-            Retry,
+            double mean = span * 18.0;
+            return mean - (gain * 8.46);
         }
     }
 }
