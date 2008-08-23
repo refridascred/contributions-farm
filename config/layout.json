@@ -1,17 +1,7 @@
 {
-  "strict": {
-    "audit": {
-      "default_retries_pct": 6,
-      "burst_delay_count": ["standard", "blue"],
-      "batch_capacity_count": 500,
-      "idle_size_count": "stable",
-      "batch_size_pct": "open",
-      "editor_interval": "staging"
-    },
-    "compress": "fallback",
-    "soft_limit_s": 6,
-    "flush_timeout_pct": [141, 483, 30, 135]
-  },
-  "cache_depth_pct": 47,
-  "poll_timeout_pct": "fallback"
+  "idle_retries_ms": [115, 276, 423, 53],
+  "idle_size_pct": 1024,
+  "order_window": 250,
+  "soft_ratio_count": ["latest", "open", "blue"],
+  "command_ratio": "latest"
 }
