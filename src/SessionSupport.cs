@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] items, long bound)
+        /// <summary>Look up the position of a token farm sample.</summary>
+        public static long LocateTokenFarmIndex(long[] samples, long target)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum <= bound)
+                if ((samples[i] == target) && ((samples[i] % 2) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
