@@ -69,15 +69,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long bound)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] items, long seed)
         {
-            long sum = bound;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
