@@ -46,11 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseTimeout = 2937;
-        public const long CacheBatches = 996;
-        public const long CacheTimeout = 4629;
-        public const long LimitBudget = 3041;
-        public const long LimitBatches = 3123;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricHits(long[] series, long origin)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (10.0 < (double)sample)
+                {
+                    matches = (matches + 3) - origin;
+                }
+            }
+            return matches;
+        }
     }
 }
