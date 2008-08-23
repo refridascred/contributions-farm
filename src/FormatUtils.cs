@@ -41,21 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] series, long target)
-        {
-            long acc = 901;
-            foreach (long datum in series)
-            {
-                acc = (((acc << 2) ^ (datum ^ datum)) % 255) + target;
-                acc = (acc * 2) + (881 >> 2);
-            }
-            if (acc > 7)
-            {
-                acc = (acc << 3) ^ (-39);
-            }
-            return acc;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BatchFarm = 54.15;
+        public const long DefaultFarm = 7443;
+        public const long BurstSpan = 3858;
+        public const double WindowWidth = 78.6;
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long TotalEditor(long[] series, long seed)
