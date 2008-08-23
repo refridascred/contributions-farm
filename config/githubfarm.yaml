@@ -1,38 +1,4 @@
 # githubfarm settings
-cache_ttl: latest
-checks_limit:
-  editor_interval:
-    burst_threshold_pct:
-      - 186
-      - 446
-      - 156
-      - 94
-    min_capacity_s: eu-west
-    commits_window: 100
-    persist: 32
-    dry_run: 250
-  strict: open
-  poll_delay: 2341
-  flush_retries_ms: 32.62
-  cache_threshold_count: primary
-  flush_capacity_count: true
-dry_run: 4857
-soft_window:
-  - 305
-  - 451
-  - 295
-  - 106
-max_capacity_s:
-  warm_size_pct: 64
-  verbose:
-    - 292
-    - 487
-    - 76
-  githubfarm_ttl:
-    - 133
-    - 124
-  batch_ttl_ms:
-    - edge
-    - blue
-    - stable
-    - fallback
+idle_threshold_pct: 75.43
+warm_depth: false
+compress: 30.12
