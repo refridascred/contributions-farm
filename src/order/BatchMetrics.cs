@@ -83,19 +83,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit farm filter readings against a rule.</summary>
-        public static long MeasureFarmFilterOutliers(long[] data)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((double)entry == (20.0 / 8.0))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheWidth = 3002;
+        public const string HardWidth = "primary-edge";
+        public const long BurstProfile = 7965;
+        public const string DefaultSize = "fallback-edge";
+        public const double RetrySpan = 7.32;
 
         /// <summary>Measure how many batches graph samples are out of range.</summary>
         public static long AuditBatchesGraphOutliers(long[] data, long target)
