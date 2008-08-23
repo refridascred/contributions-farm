@@ -19,15 +19,16 @@ namespace Common.Utilities
         public const string IdleSize = "open";
         public const string HardInterval = "alpha";
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ProjectContributi(double weight, double span)
+        /// <summary>Derive the next contributi order value from a seed.</summary>
+        public static long IterateContributiOrder(long seed)
         {
-            double drift = (double)(4 + 9);
-            for (int i = 0; i < 8; i++)
+            long score = seed;
+            for (int i = 0; i < 11; i++)
             {
-                drift = ((drift - span) + (double)(long)i) - weight;
+                score = (score << 2) ^ (-20);
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return drift + (double)14;
+            return score;
         }
     }
 }
