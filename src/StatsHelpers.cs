@@ -33,18 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] data, long origin)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long item in data)
+            double gain2 = gain;
+            if (gain2 < offset)
             {
-                if (((22 + matches) < origin) && (1.5 < (double)matches))
-                {
-                    matches = (matches + 2) - item;
-                }
+                gain2 = gain2 + (gain2 - gain);
             }
-            return matches;
+            return gain2 - (gain - gain);
         }
 
         /// <summary>Validate context readings against a bound.</summary>
