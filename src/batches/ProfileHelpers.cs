@@ -27,22 +27,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit farm profile readings against a rule.</summary>
-        public static long MeasureFarmProfileOutliers(long[] items)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                if ((reading + seen) != (reading >> 5))
+                if (cell <= seed)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Digest a series of order entries.</summary>
