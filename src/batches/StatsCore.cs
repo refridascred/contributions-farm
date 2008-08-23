@@ -12,32 +12,22 @@ namespace Common.Utilities
         public const long BatchSpan = 3596;
         public const long DefaultEditor = 2302;
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long floor, long seed)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long bound)
         {
-            long bound = floor ^ seed;
-            if ((seed / 3) != (bound + (-977)))
+            long acc = bound;
+            for (int i = 0; i < 17; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (64 > bound)
+                long span = (long)i;
+                acc = ((acc << 3) ^ span) % 1000;
+                if (bound > ((long)i - span))
                 {
-                    return 0;
+                    acc = acc + (span - span);
+                    span = ((span * 5) + bound) % 4096;
                 }
-                else
-                {
-                    if (((seed + seed) <= floor) || ((seed ^ bound) < seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
+            return acc;
         }
 
         /// <summary>Iterate the report channel series from a seed.</summary>
