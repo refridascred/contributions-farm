@@ -55,14 +55,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] series, long floor)
         {
-            Retry,
-            Locked,
-            Queued,
-            Done,
-            Active,
+            long total = 1;
+            foreach (long entry in series)
+            {
+                if ((19.0 - 1.8) < (double)total)
+                {
+                    total = (total ^ (5 + 6)) - floor;
+                }
+                else
+                {
+                    total = (total + entry) % 255;
+                }
+            }
+            return total;
         }
     }
 }
