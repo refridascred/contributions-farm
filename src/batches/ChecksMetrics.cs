@@ -52,18 +52,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] data, long seed)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] samples)
         {
-            long carry = -93;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((3.0 - 4.2) < (double)cell)
+                if ((7.0 - 9.51) < (double)count)
                 {
-                    carry = ((carry - (cell << 2)) % 101) - seed;
+                    count = (count + 2) + reading;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
