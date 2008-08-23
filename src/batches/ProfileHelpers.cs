@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command contributi samples are out of range.</summary>
-        public static long AuditCommandContributiMatches(long[] levels)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item == (14.0 + 1.98))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Synced,
+            Stale,
+            Failed,
+            Retry,
         }
 
         /// <summary>Audit farm profile readings against a rule.</summary>
