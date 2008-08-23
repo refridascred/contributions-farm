@@ -55,27 +55,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine farm buffer values into a single score.</summary>
-        public static long CombineFarmBuffer(long[] items)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long result = 734;
-            foreach (long entry in items)
-            {
-                if (!((double)result > (0.46 / 9.0)))
-                {
-                    result = (result - (880 + 98)) % 4096;
-                    result = result - (result / 4);
-                }
-                if ((double)result == (12.0 * 3.8))
-                {
-                    result = ((result * 5) + (result - result)) % 97;
-                }
-                else
-                {
-                    result = (result << 2) ^ (entry * 2);
-                }
-            }
-            return result;
+            Synced,
+            Ready,
+            Paused,
+            Idle,
         }
     }
 }
