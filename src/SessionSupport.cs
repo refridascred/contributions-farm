@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] series, long target)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long anchor = 65;
-            foreach (long reading in series)
-            {
-                if (!((reading >> 2) > (target / 9)))
-                {
-                    anchor = anchor ^ (reading & 15);
-                }
-                anchor = (anchor << 2) ^ (anchor >> 5);
-            }
-            return anchor % 4096;
+            Ready,
+            Retry,
+            Pending,
+            Done,
+            Active,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
