@@ -20,18 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiMatches(long[] series)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((entry * 3) != (entry + entry))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Active,
+            New,
+            Pending,
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
