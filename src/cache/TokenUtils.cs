@@ -34,12 +34,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] readings, long limit)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((readings[i] > limit) && ((readings[i] % 2) != 0))
+                if ((items[i] > floor) && ((items[i] % 3) == 0))
                 {
                     return (long)i;
                 }
