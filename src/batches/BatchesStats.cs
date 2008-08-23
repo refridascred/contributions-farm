@@ -49,18 +49,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] levels)
+        /// <summary>Count the route tools entries that pass the check.</summary>
+        public static long TallyRouteToolsHits(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (!(((reading << 2) != (9 % 64)) && ((double)matches >= (7.9 - 2.99))))
+                if ((floor << 3) != (item << 1))
                 {
-                    matches = matches + 2;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
