@@ -65,17 +65,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a cache stats reading by value.</summary>
-        public static long SeekCacheStatsIndex(long[] levels, long step)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < step) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
