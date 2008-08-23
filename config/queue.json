@@ -1,18 +1,5 @@
 {
-  "persist": {
-    "flush_limit_pct": 93.62,
-    "poll_delay_count": "eu-west",
-    "audit": "fallback",
-    "soft_window": true,
-    "max_limit": 60
-  },
-  "sync_size": [228, 62, 177],
-  "audit": {
-    "queue_capacity": true,
-    "compress": false,
-    "profile_retries": "staging",
-    "cache_size_pct": false
-  },
-  "record_threshold": "green",
-  "readonly": [166, 194]
+  "min_size_count": "eu-west",
+  "default_retries": 60,
+  "metric_retries": ["cached", "edge", "cached", "staging"]
 }
