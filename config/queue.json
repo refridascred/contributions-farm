@@ -1,7 +1,5 @@
 {
-  "min_size_count": 58.61,
-  "format_ratio": 1430,
-  "base_window_pct": 9051,
-  "hard_timeout_pct": false,
-  "poll_threshold": true
+  "batches_ratio": false,
+  "verbose": [56, 435, 448, 413],
+  "soft_size_s": true
 }
