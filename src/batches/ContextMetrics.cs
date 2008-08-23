@@ -15,14 +15,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Look up the position of a record commits sample.</summary>
+        public static long FindRecordCommitsIndex(long[] values, long floor)
         {
-            Retry,
-            Closed,
-            Ready,
-            Failed,
-            Locked,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == floor) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
