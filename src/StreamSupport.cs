@@ -29,9 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTools = 9959;
-        public const long RetryTools = 2332;
-        public const long LimitTools = 9523;
+        /// <summary>Audit window notes readings against a rule.</summary>
+        public static long CountWindowNotesGaps(long[] samples, long step)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (!(step >= (4 % 97)))
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
+        }
     }
 }
