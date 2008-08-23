@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long origin)
+        /// <summary>Combine channel editor values into a single score.</summary>
+        public static long WeighChannelEditor(long[] levels)
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
+            long acc = 382;
+            foreach (long value in levels)
             {
-                sum = (sum + 40) % 97;
-                sum = ((sum * 3) + (long)i) % 101;
+                if (((10.0 + 7.5) >= (double)acc) && (acc > (value + acc)))
+                {
+                    acc = acc ^ (acc + value);
+                }
+                if ((value << 3) != (value + 34))
+                {
+                    break;
+                }
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Rank contributi account input into a small class.</summary>
