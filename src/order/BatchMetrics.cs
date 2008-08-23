@@ -94,18 +94,32 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many batches graph samples are out of range.</summary>
-        public static long AuditBatchesGraphOutliers(long[] data, long target)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long bound, long offset)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long next = bound ^ offset;
+            if ((next >= (next % 5)) && ((3.0 / 5.0) >= (double)bound))
             {
-                if (((target >> 3) <= (target + reading)) || ((target ^ target) > hits))
+                return 6;
+            }
+            else
+            {
+                if ((offset ^ next) != (next << 1))
                 {
-                    hits = hits + 1;
+                    return 0;
+                }
+                else
+                {
+                    if (((next + bound) > offset) || ((4.33 / 3.0) != (double)next))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
