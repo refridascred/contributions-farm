@@ -1,10 +1,13 @@
 # support settings
-idle_limit_s:
-  - 388
-  - 3
-  - 310
-readonly:
-  - 284
-  - 247
-burst_window_pct: blue
-soft_threshold_ms: fallback
+default_threshold_ms: strict
+sync_retries_s: false
+record_timeout: stable
+enabled:
+  soft_ratio_ms: 43
+  token_depth:
+    - 369
+    - 68
+    - 2
+    - 49
+  default_threshold_ms: 25
+warm_depth: stable
