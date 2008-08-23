@@ -54,9 +54,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardCount = 9790;
-        public const long DefaultContext = 4239;
-        public const long MinWidth = 797;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 8331;
+        public const string SoftDepth = "staging-1";
+        public const long BaseWidth = 5220;
     }
 }
