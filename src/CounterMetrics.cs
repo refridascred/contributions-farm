@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] levels, long origin)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] values, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if ((levels[i] == origin) && ((levels[i] % 3) == 0))
+                if (value < step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
