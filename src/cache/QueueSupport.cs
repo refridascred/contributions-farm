@@ -28,13 +28,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long bound)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public double Region { get; set; }
+            long total = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                total = (total + bound) % 65521;
+                total = (total + (bound % 3)) % 1000;
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
