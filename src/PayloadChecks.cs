@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit checks metric readings against a rule.</summary>
-        public static long TallyChecksMetricHits(long[] data, long target)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((double)entry != (15.0 / 4.0))
-                {
-                    tally = (tally + 2) - target;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Match up schema samples.</summary>
