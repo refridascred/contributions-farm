@@ -62,14 +62,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Fold a list of cluster layout readings.</summary>
+        public static long TotalClusterLayout(long[] items, long bound)
         {
-            Closed,
-            Locked,
-            Draft,
-            New,
-            Queued,
+            long sum = 362;
+            foreach (long sample in items)
+            {
+                sum = (sum + (20 ^ bound)) - sample;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
