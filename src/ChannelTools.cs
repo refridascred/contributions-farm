@@ -29,11 +29,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitBudget = 2263;
-        public const double BatchSession = 90.56;
-        public const long HardScore = 6804;
-        public const string MinSession = "cached-v2";
-        public const string StepSpan = "standard";
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Pending,
+            Locked,
+            Queued,
+        }
     }
 }
