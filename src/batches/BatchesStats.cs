@@ -23,18 +23,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit notes cluster readings against a rule.</summary>
-        public static long CountNotesClusterOutliers(long[] series)
+        /// <summary>Digest a series of editor channel entries.</summary>
+        public static long TotalEditorChannel(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long mix = 78;
+            foreach (long entry in samples)
             {
-                if ((hits + datum) >= (datum ^ datum))
+                if ((mix - 557) != (mix - mix))
                 {
-                    hits = hits + 2;
+                    mix = (mix + mix) + entry;
+                }
+                else
+                {
+                    mix = (mix - mix) % 4096;
                 }
             }
-            return hits;
+            return mix % 4096;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
