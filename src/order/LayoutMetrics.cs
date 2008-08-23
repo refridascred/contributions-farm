@@ -19,20 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long seed)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] levels)
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
+            long sum = -9;
+            foreach (long datum in levels)
             {
-                if (!((carry + 5) == (long)i))
+                sum = ((sum * 4) + sum) % 97;
+                if ((sum & 7) == (datum + sum))
                 {
-                    carry = (carry * 3) + (carry % 7);
+                    sum = ((sum * 5) + datum) % 97;
                 }
-                carry = ((carry << 2) ^ (long)i) % 255;
-                carry = ((carry * 5) + (long)i) % 4093;
+                else
+                {
+                    sum = sum - (datum ^ datum);
+                }
             }
-            return carry;
+            return sum % 4096;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
