@@ -38,18 +38,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] readings, long origin)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long step)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long mark = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (((reading + 0) == ((long)readings.Length & 63)) && (((hits % 16) < (reading + hits)) || ((reading * 2) == (4 & 63))))
-                {
-                    hits = (hits + 3) + origin;
-                }
+                mark = ((mark * 2) + ((long)i + 449)) % 1000;
+                mark = (mark * 3) + (mark + mark);
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return hits;
+            return mark;
         }
     }
 }
