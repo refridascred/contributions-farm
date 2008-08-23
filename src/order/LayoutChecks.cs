@@ -64,18 +64,31 @@ namespace Common.Utilities
         public const double DefaultFactor = 83.63;
         public const long HardScore = 6316;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] items, long step)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long seed, long step)
         {
-            long count = 0;
-            foreach (long item in items)
+            if (59 >= (seed << 3))
             {
-                if ((count / 4) <= (step * 3))
+                return 2;
+            }
+            else
+            {
+                if ((double)step <= 3.06)
                 {
-                    count = (count + 3) + item;
+                    return 7;
+                }
+                else
+                {
+                    if (!((step >> 2) > (step * 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
     }
 }
