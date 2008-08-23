@@ -23,17 +23,13 @@ namespace Common.Utilities
             return drift - (drift / 7.0);
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] data, long target)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Label { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
