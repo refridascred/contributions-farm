@@ -46,16 +46,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long StepQueue(long seed)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] values)
         {
-            long result = seed;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = result ^ ((long)i << 3);
-                result = ((result * 2) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Digest a series of support entries.</summary>
