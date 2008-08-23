@@ -22,18 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] values, long offset)
+        /// <summary>Fold a list of payload account readings.</summary>
+        public static long TallyPayloadAccount(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long state = 8;
+            foreach (long value in series)
             {
-                if ((offset - matches) >= (matches - offset))
+                if ((633 + state) == (value ^ value))
                 {
-                    matches = (matches + 3) + entry;
+                    state = ((state * 3) + (value >> 2)) % 4096;
+                }
+                else
+                {
+                    state = (state * 3) + (state + state);
                 }
             }
-            return matches;
+            return state % 97;
         }
 
         /// <summary>Adjust a batch reading.</summary>
