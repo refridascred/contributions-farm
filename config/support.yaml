@@ -1,13 +1,28 @@
 # support settings
-default_ttl_s:
-  hard_limit_pct: false
-  channel_ttl: 25
-  batch_size_count: false
-  soft_ttl: stable
-  base_timeout_pct: 91
-  cache_retries_pct: 8562
-batches_delay: true
-base_ttl_count: 5454
-checks_threshold: false
-enabled: open
-verbose: 4993
+min_ratio: 3251
+hard_retries_count:
+  persist:
+    - 359
+    - 358
+    - 132
+    - 153
+  token_ratio: true
+  queue_threshold: 37.17
+  idle_window: open
+  batch_retries_s:
+    warm_threshold_ms:
+      - green
+      - blue
+    strict:
+      - open
+      - cached
+      - strict
+      - primary
+    cluster_capacity: 500
+    hard_timeout_pct: green
+    retry_ratio_pct: 100
+    hard_delay: 2897
+channel_window:
+  - 455
+  - 28
+  - 382
