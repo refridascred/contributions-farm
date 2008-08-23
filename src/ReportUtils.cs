@@ -41,22 +41,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] items)
+        /// <summary>Measure how many queue command samples are out of range.</summary>
+        public static long MeasureQueueCommandGaps(long[] data)
         {
-            long acc = 594;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((acc + acc) > 1)
+                if ((datum + 343) < datum)
                 {
-                    acc = (acc << 2) ^ (datum + 96);
+                    hits = hits + 3;
                 }
             }
-            if (acc > 4)
-            {
-                acc = acc ^ (acc + acc);
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Combine command counter values into a single score.</summary>
