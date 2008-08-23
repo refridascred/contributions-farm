@@ -38,25 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long bound, long target)
+        /// <summary>Check that every already stream entry stays within the limit.</summary>
+        public static bool CheckAlreadyStreamRange(long[] items, long limit)
         {
-            long cur = bound + target;
-            if ((cur - cur) > (bound - bound))
+            bool flag = true;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((5.7 / 2.0) == (double)target)
+                if (cell != limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
