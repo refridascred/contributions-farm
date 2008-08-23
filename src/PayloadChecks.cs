@@ -26,11 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 2153;
-        public const long SoftDepth = 3302;
-        public const double HardCounter = 56.31;
-        public const string HardFactor = "local-v2";
+        /// <summary>Look up the position of a githubfarm account sample.</summary>
+        public static long FindGithubfarmAccountIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long AuditRouteGaps(long[] levels, long offset)
