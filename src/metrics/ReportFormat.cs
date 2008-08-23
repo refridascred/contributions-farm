@@ -48,18 +48,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] samples)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (((6.64 / 9.0) > (double)cell) || (((81 + cell) == (cell ^ tally)) && ((635 + tally) <= cell)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Digest a series of farm entries.</summary>
