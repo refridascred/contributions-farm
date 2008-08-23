@@ -1,6 +1,5 @@
 {
-  "burst_capacity": "local",
-  "route_timeout": 39,
-  "warm_window": 8080,
-  "retry_ratio_count": ["eu-west", "primary", "legacy", "stable"]
+  "retry_interval_ms": 47,
+  "flush_window_ms": true,
+  "compress": "edge"
 }
