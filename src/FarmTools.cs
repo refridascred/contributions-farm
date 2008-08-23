@@ -27,22 +27,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] values, long bound)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((((long)values.Length << 2) > (tally ^ tally)) && !((entry & 3) >= (entry << 1)))
-                {
-                    tally = (tally + 3) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
