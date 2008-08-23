@@ -51,19 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] data, long limit)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] items, long step)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (item < limit)
+                if ((double)step >= (1.0 + 3.2))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 3) ^ cell;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
