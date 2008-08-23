@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordMatches(long[] series)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((matches % 10) != (matches & 127))
-                {
-                    matches = (matches + 2) ^ datum;
-                }
-            }
-            return matches;
+            Locked,
+            Done,
+            Synced,
+            Closed,
+            New,
         }
 
         /// <summary>Hold a counter summary.</summary>
