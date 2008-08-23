@@ -52,32 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long SortAccount(long origin, long floor)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long span = origin + floor;
-            if (((0.2 * 2.8) == (double)span) && ((origin >> 4) < 70))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((origin * 4) < (5 - 8)) && ((floor + span) != (span + 60)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin + origin) >= origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Pending,
+            Queued,
+            Done,
         }
     }
 }
