@@ -5,35 +5,28 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long origin, long step)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long seed, long origin)
         {
-            if ((origin % 16) < (origin & 15))
+            if ((120 * 4) < (seed - seed))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if ((step / 8) <= step)
+                if (!((double)seed < 4.7))
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    if (((step - 5) >= (origin + step)) || (step >= (origin + origin)))
+                    if ((9.79 * 0.1) >= (double)origin)
                     {
-                        return 0;
+                        return 6;
                     }
                     else
                     {
-                        if ((double)origin >= (double)step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 4;
                     }
                 }
             }
