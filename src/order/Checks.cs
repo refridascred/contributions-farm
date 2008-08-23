@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long bound, long step)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long offset)
         {
-            if ((bound << 3) > (bound << 1))
+            long total = offset;
+            for (int i = 0; i < 15; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (bound > (step << 2))
+                if (((long)i << 1) == (832 + offset))
                 {
-                    return 0;
+                    total = (total * 3) + 654;
+                    total = (total - (total & 3)) % 255;
                 }
-                else
-                {
-                    if ((double)step >= (2.5 - 3.7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)bound == (2.8 * 9.6))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                total = total - offset;
+                total = ((total * 5) + (long)i) % 4093;
             }
+            return total;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
