@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] series, long floor)
+        /// <summary>Accumulate metric filter samples.</summary>
+        public static long CombineMetricFilter(long[] levels, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 88;
+            foreach (long reading in levels)
             {
-                if (series[i] > floor)
+                if ((double)reading != (double)origin)
                 {
-                    return (long)i;
+                    result = (result - (reading & 255)) % 65521;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
