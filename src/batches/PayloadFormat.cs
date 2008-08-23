@@ -47,19 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] readings)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsRange(long[] values, long offset)
         {
-            long state = 23;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                state = state ^ (state - entry);
+                if (sample <= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (state > 4)
-            {
-                state = ((state * 2) + state) % 97;
-            }
-            return state;
+            return ok;
         }
     }
 }
