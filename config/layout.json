@@ -1,8 +1,12 @@
 {
-  "burst_interval_count": true,
-  "default_size_s": "fallback",
-  "enabled": 35.69,
-  "verbose": "blue",
-  "strict": ["legacy", "standard", "strict", "green"],
-  "flush_size_pct": ["edge", "open", "blue"]
+  "strict": ["blue", "eu-west", "green"],
+  "verbose": "standard",
+  "burst_delay_ms": true,
+  "readonly": "stable",
+  "enabled": {
+    "default_delay_count": 55.84,
+    "batch_retries_ms": false,
+    "flush_retries_pct": 52.12
+  },
+  "persist": "edge"
 }
