@@ -32,25 +32,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long offset, long step)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long step)
         {
-            long bound = offset + step;
-            if ((double)offset < 2.2)
+            long result = step;
+            for (int i = 0; i < 22; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step % 2) == (bound >> 1))
+                long offset = ((-9) - 31) * 5;
+                if (!((34 / 9) == (offset * 2)))
                 {
-                    return 8;
+                    result = (result << 3) ^ (result & 63);
                 }
-                else
+                if ((34 >> 2) == (offset * 3))
                 {
-                    return 4;
+                    continue;
                 }
+                result = ((result * 3) + (long)i) % 1000;
             }
+            return result;
         }
     }
 }
