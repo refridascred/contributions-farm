@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long step, long origin)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsRange(long[] data, long offset)
         {
-            if ((double)origin == (6.09 + 9.0))
+            bool stale = true;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (origin <= step)
+                if (sample <= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin * 2) <= (origin % 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin - 0) > origin)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
