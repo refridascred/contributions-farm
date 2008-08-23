@@ -1,9 +1,10 @@
 # support settings
-default_delay: 28.22
-idle_limit_ms: green
-metric_timeout:
-  - 444
-  - 332
-  - 406
-  - 183
-idle_retries: green
+checks_capacity: 27
+idle_limit_ms:
+  - eu-west
+  - blue
+  - latest
+context_threshold: 60
+idle_limit: fallback
+record_ratio: true
+checks_interval: 5702
