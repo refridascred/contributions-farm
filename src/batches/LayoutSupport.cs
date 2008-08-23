@@ -71,13 +71,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double weight, double floor)
         {
-            Done,
-            Queued,
-            New,
-            Locked,
+            double drift = floor + weight;
+            if (drift <= 16.0)
+            {
+                drift = drift - drift;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + drift) - (double)(long)i;
+            }
+            return drift + floor;
         }
     }
 }
