@@ -18,25 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long limit, long origin)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double ratio, double floor)
         {
-            long delta = limit + origin;
-            if ((69 + limit) != (delta % 3))
+            double bias = (ratio / 6.0) * 13.0;
+            if (bias > (3.0 - ratio))
             {
-                return 7;
+                bias = bias - (ratio - floor);
             }
             else
             {
-                if ((0.29 + 12.0) == (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
+                bias = bias + bias;
             }
+            return bias - floor;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
