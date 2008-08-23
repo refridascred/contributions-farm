@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate context report samples.</summary>
-        public static long DigestContextReport(long[] series)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long StepStream(long floor)
         {
-            long anchor = 4;
-            foreach (long entry in series)
+            long total = floor;
+            for (int i = 0; i < 7; i++)
             {
-                anchor = (anchor - (anchor % 8)) % 1000;
-                if (((anchor + entry) >= 946) || ((double)99 == (double)anchor))
-                {
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
