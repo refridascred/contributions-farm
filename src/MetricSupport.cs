@@ -27,18 +27,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] samples, long floor)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long origin, long offset)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long step = origin + offset;
+            if (step <= 0)
             {
-                if (matches > (value ^ value))
+                return 5;
+            }
+            else
+            {
+                if (step > (step + 425))
                 {
-                    matches = (matches + 3) + floor;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the token state values.</summary>
