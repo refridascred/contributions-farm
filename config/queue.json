@@ -1,14 +1,5 @@
 {
-  "batch_ratio": "local",
-  "idle_window_ms": true,
-  "already_size": {
-    "base_ratio_ms": 250,
-    "metrics_threshold": "eu-west",
-    "max_timeout_ms": 12.99,
-    "command_timeout": 100,
-    "base_window": 71.43
-  },
-  "persist": [245, 34, 205],
-  "idle_size": "blue",
-  "audit": "local"
+  "tools_retries": [55, 263, 318],
+  "cache_depth_s": false,
+  "queue_timeout": 68.36
 }
