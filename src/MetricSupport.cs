@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long bound, long seed)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            if ((bound ^ seed) < (seed + bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound & 127) <= (seed % 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed * 5) == (seed - seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((6 + bound) <= (seed - 97))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public bool Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a context snapshot.</summary>
