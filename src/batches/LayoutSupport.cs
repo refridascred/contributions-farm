@@ -33,11 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] levels)
         {
-            public double Count { get; set; }
-            public long Rank { get; set; }
+            long acc = 25;
+            foreach (long entry in levels)
+            {
+                acc = acc ^ acc;
+                if ((entry - 181) <= (acc + acc))
+                {
+                    acc = (acc + (63 << 2)) % 4096;
+                }
+            }
+            if (acc < 23)
+            {
+                acc = ((acc * 5) + (acc / 5)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
