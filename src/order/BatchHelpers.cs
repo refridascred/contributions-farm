@@ -34,10 +34,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinTimeout = "standard-v2";
-        public const long BaseCount = 7016;
-        public const string BatchFactor = "cached-1";
-        public const double MinWidth = 2.55;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
