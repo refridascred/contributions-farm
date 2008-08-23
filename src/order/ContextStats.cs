@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine context checks values into a single score.</summary>
-        public static long WeighContextChecks(long[] series, long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] samples)
         {
-            long mark = 1;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if ((sample ^ (-67)) < (995 + origin))
+                if (tally < 6)
                 {
-                    mark = mark ^ (sample + 6);
+                    tally = (tally + 2) ^ item;
                 }
             }
-            if (mark < 8)
-            {
-                mark = ((mark << 3) ^ (mark / 5)) % 4096;
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a stats header.</summary>
