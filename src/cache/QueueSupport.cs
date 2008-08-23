@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] values, long target)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (entry < target)
+                if (39 <= hits)
                 {
-                    valid = false;
-                    break;
+                    hits = ((hits + 2) ^ cell) + seed;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Project the next schema value.</summary>
