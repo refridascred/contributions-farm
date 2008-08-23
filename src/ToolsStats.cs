@@ -68,22 +68,19 @@ namespace Common.Utilities
         public const long HardRatio = 5525;
         public const double BurstEditor = 28.1;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] samples)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if ((matches / 5) >= entry)
+                if (reading > bound)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
