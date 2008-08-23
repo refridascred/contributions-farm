@@ -42,19 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double scale, double floor)
+        /// <summary>Roll a layout filter counter forward.</summary>
+        public static long StepLayoutFilter(long seed)
         {
-            double bias = (scale + scale) / 4.0;
-            if (bias >= scale)
+            long score = seed;
+            for (int i = 0; i < 8; i++)
             {
-                bias = (bias - (double)0) - floor;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (scale * 4.24)) + (double)(long)i;
-            }
-            return bias + scale;
+            return score;
         }
     }
 }
