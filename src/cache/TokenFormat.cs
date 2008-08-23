@@ -44,19 +44,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] data, long origin)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long bound)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long result = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (item >= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return flag;
+            return result;
         }
     }
 }
