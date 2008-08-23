@@ -42,19 +42,17 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] series, long seed)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] readings, long bound)
         {
-            long total = 1;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total ^ total) % 255) - item;
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            if (total > 6)
-            {
-                total = (total + (seed + total)) % 101;
-            }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
