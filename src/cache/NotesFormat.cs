@@ -22,16 +22,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next contributi order value from a seed.</summary>
-        public static long IterateContributiOrder(long seed)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long score = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                score = (score << 2) ^ (-20);
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Done,
+            Stale,
+            Idle,
+            Locked,
         }
     }
 }
