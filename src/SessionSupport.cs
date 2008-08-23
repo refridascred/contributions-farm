@@ -35,18 +35,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] samples)
+        /// <summary>Count the checks stats entries that pass the check.</summary>
+        public static long TallyChecksStatsOutliers(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((double)sample <= (11.0 - 1.01))
+                if (limit < (item + item))
                 {
-                    tally = tally + 3;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
