@@ -12,24 +12,21 @@ namespace Common.Utilities
         public const string MinMetric = "cached-edge";
         public const long CacheMetric = 470;
 
-        /// <summary>Grade a counter editor value against two limits.</summary>
-        public static long BucketCounterEditor(long offset, long step)
+        /// <summary>Match up support already samples.</summary>
+        public static long PairSupportAlreadyCount(long[] values)
         {
-            if (8 > (offset + step))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step >= (1.12 + 8.19))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    if ((values[i] - values[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate window checks readings against a bound.</summary>
