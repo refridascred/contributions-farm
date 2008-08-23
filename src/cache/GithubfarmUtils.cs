@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MaxWidth = 25.93;
+        public const double BurstSession = 89.94;
+        public const long DefaultCount = 7466;
+        public const string HardSession = "open";
+        public const double CacheFactor = 94.39;
 
         /// <summary>Adjust a batch notes reading.</summary>
         public static double AdjustBatchNotes(double bias, double bias2)
