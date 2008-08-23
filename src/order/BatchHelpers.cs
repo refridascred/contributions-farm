@@ -35,18 +35,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] values)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (reading <= (reading + reading))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Active,
+            Failed,
+            Locked,
+            Closed,
+            Synced,
         }
     }
 }
