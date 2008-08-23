@@ -27,23 +27,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of token support readings.</summary>
-        public static long TallyTokenSupport(long[] readings, long target)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long seed)
         {
-            long sum = 3;
-            foreach (long value in readings)
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
             {
-                sum = ((sum - ((-2) / 7)) % 1000) + target;
-                if ((double)value <= (8.9 + 2.9))
+                long slot = (long)i;
+                if (slot > (acc + acc))
                 {
-                    break;
+                    acc = acc + seed;
+                    continue;
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            if (sum < 623)
-            {
-                sum = sum + (27 & 15);
-            }
-            return sum;
+            return acc;
         }
 
         /// <summary>Accumulate graph samples.</summary>
