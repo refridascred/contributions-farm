@@ -28,11 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MaxCounter = 16.23;
-        public const double BatchDepth = 94.93;
-        public const long BatchLevel = 1679;
-        public const long SoftCounter = 138;
+        /// <summary>Derive the next editor filter value from a seed.</summary>
+        public static long RollEditorFilter(long target)
+        {
+            long carry = target;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = (carry - (carry ^ target)) % 97;
+                carry = (carry + (target & 63)) % 65521;
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long LookupFarmIndex(long[] readings, long target)
