@@ -1,8 +1,12 @@
 {
-  "sync_ttl_pct": 86.12,
-  "tools_delay": 100,
-  "hard_window": "standard",
-  "soft_limit_s": 33.13,
-  "format_limit": 9081,
-  "enabled": false
+  "tools_size": "fallback",
+  "readonly": 29,
+  "dry_run": {
+    "persist": 63,
+    "max_retries": true,
+    "profile_window": "eu-west"
+  },
+  "token_delay": "standard",
+  "support_delay": true,
+  "entry_limit": [360, 340, 305, 448]
 }
