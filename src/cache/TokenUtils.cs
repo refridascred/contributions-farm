@@ -25,15 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double rate, double bias)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            double weight = rate;
-            for (int i = 0; i < 6; i++)
-            {
-                weight = ((weight + 19.0) + (double)(long)i) + bias;
-            }
-            return weight - (double)434;
+            New,
+            Ready,
+            Idle,
+            Done,
         }
 
         /// <summary>Locate a tools reading by value.</summary>
