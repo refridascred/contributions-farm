@@ -64,24 +64,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long offset, long bound)
+        /// <summary>Combine command counter values into a single score.</summary>
+        public static long WeighCommandCounter(long[] levels)
         {
-            if ((9 >> 2) > (bound + bound))
+            long acc = 61;
+            foreach (long reading in levels)
             {
-                return 6;
+                acc = ((acc << 2) ^ 204) ^ reading;
             }
-            else
+            if (acc < 55)
             {
-                if ((offset % 10) >= (offset + offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
+                acc = acc ^ (acc & 31);
             }
+            return acc;
         }
 
         /// <summary>Describe the stats mode values.</summary>
