@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] levels, long floor)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((seen + 700) < (floor ^ 3))
-                {
-                    seen = (seen + 1) + value;
-                }
-            }
-            return seen;
+            Ready,
+            Draft,
+            Idle,
         }
 
         /// <summary>Fold a list of token support readings.</summary>
