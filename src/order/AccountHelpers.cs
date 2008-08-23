@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const long MinRatio = 8757;
         public const long RetryFactor = 6586;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftBudget = 6854;
-        public const long IdleSize = 7789;
-        public const double BaseCache = 92.49;
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double weight, double floor)
+        {
+            double load = floor - floor;
+            if (load <= weight)
+            {
+                load = load - load;
+            }
+            else
+            {
+                load = load - (8.2 - weight);
+            }
+            return load + 3.0;
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long ScoreFormat(long[] data, long floor)
