@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaBounds(long[] items, long origin)
-        {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double IdleBudget = 62.39;
+        public const long BaseSize = 7975;
+        public const string IdleTimeout = "strict-v2";
+        public const long LimitTimeout = 6963;
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long OverlapCommitsCount(long[] levels)
