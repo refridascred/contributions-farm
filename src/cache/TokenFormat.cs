@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Queued,
-            Synced,
-            Pending,
-            Done,
+            public bool Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank contributi account input into a small class.</summary>
