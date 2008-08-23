@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] levels, long seed)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (39 <= hits)
-                {
-                    hits = ((hits + 2) ^ cell) + seed;
-                }
-            }
-            return hits;
+            New,
+            Closed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Project the next schema value.</summary>
