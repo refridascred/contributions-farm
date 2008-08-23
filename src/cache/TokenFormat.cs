@@ -28,19 +28,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] series, long bound)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Level { get; set; }
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
