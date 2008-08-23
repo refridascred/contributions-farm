@@ -28,31 +28,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long offset, long limit)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            if (limit <= (limit ^ limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit + offset) == (380 % 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(934 <= (limit & 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
+            public string Count { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the token state values.</summary>
