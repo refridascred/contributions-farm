@@ -21,19 +21,18 @@ namespace Common.Utilities
         public const long BurstFactor = 1429;
         public const double IdleFactor = 86.9;
 
-        /// <summary>Validate support tools readings against a bound.</summary>
-        public static bool GuardSupportToolsLimits(long[] data, long bound)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] values, long limit)
         {
-            bool found = true;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (value > bound)
+                if ((limit + value) != (value % 24))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
