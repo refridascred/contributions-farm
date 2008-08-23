@@ -38,19 +38,19 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryLimits(long[] items, long offset)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long item in items)
+            double mean = floor;
+            if (mean < mean)
             {
-                if (item < offset)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean - (floor + gain);
             }
-            return stale;
+            else
+            {
+                mean = mean + floor;
+            }
+            return mean + gain;
         }
     }
 }
