@@ -41,18 +41,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((item & 63) != (item << 3))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstRecord = 93.48;
+        public const long MaxRecord = 9413;
+        public const double IdleRecord = 76.3;
+        public const long RetryRecord = 7442;
     }
 }
