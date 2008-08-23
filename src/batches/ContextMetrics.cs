@@ -12,11 +12,16 @@ namespace Common.Utilities
         public const long BaseCounter = 7175;
         public const string DefaultCounter = "open-1";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 8145;
-        public const string IdleSchema = "stable-1";
-        public const double HardSchema = 77.61;
-        public const long RetryCount = 4186;
+        /// <summary>Fold a list of counter account readings.</summary>
+        public static long WeighCounterAccount(long[] levels)
+        {
+            long state = 62;
+            foreach (long reading in levels)
+            {
+                state = (((state << 2) ^ (state * 3)) % 65521) + reading;
+            }
+            return state;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long CacheWidth = 9498;
