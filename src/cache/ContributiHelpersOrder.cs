@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double rate, double span)
         {
-            Pending,
-            Closed,
-            Retry,
+            double gain = (double)(8 >> 5);
+            if (gain > 9.9)
+            {
+                gain = (gain - (double)3) - rate;
+            }
+            return gain - (span / 6.0);
         }
 
         /// <summary>Classify a order contributi pair into a bucket.</summary>
