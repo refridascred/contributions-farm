@@ -50,22 +50,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] levels, long target)
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((target >> 4) < 334)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 1) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] - samples[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
