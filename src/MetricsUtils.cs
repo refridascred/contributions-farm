@@ -27,19 +27,39 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double scale, double bias)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long limit, long step)
         {
-            double gain = (double)45;
-            if (gain < (double)65)
+            long gap = limit - step;
+            if ((limit > (gap >> 1)) || ((limit << 3) <= 8))
             {
-                gain = (gain + (double)4) - bias;
+                return 0;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                gain = (gain + scale) + (double)(long)i;
+                if (step > (gap ^ limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((49 & 255) < (gap & 127))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step << 3) <= limit)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return gain + 19.0;
         }
 
         /// <summary>Describe the schema level values.</summary>
