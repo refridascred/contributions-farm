@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] readings, long seed)
+        /// <summary>Project the next already cache value.</summary>
+        public static double BlendAlreadyCache(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if (!((double)hits == (6.2 - 8.05)))
-                {
-                    hits = ((hits + 3) - datum) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double ratio = (bias / 6.0) / 8.0;
+            return ratio + rate;
         }
 
         /// <summary>Accumulate session samples.</summary>
