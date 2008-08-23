@@ -1,7 +1,14 @@
 {
-  "checks_threshold": "blue",
-  "verbose": 63.62,
-  "hard_capacity_s": 45,
-  "stream_interval": "edge",
-  "batch_ratio": false
+  "cache_ttl_count": 98,
+  "sync_ttl": "fallback",
+  "batch_ttl_pct": true,
+  "audit": false,
+  "hard_ttl_count": {
+    "buffer_ttl": "fallback",
+    "warm_interval_count": [320, 355, 91, 248],
+    "cache_delay": false,
+    "soft_threshold_count": "fallback",
+    "retry_threshold_ms": 720,
+    "hard_window": 34.78
+  }
 }
