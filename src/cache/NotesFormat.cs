@@ -25,11 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] items, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < origin) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
