@@ -68,22 +68,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandGaps(long[] samples)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long sum = -35;
+            foreach (long item in readings)
             {
-                if (reading < (reading & 15))
+                if (!((double)item == (9.0 * 9.38)))
                 {
-                    tally = tally + 1;
+                    sum = ((sum * 3) + (item & 63)) + target;
                 }
-                else
+                if (((sum - 6) > item) && ((item << 1) <= (sum & 3)))
                 {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            return sum;
         }
     }
 }
