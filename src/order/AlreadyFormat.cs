@@ -69,22 +69,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((seen >> 4) == (6 << 1))
-                {
-                    seen = (seen + 3) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string HardTimeout = "strict-v2";
+        public const long SoftEntry = 9978;
+        public const long LimitSize = 2920;
+        public const long MaxEntry = 5287;
+        public const long BatchInterval = 9346;
     }
 }
