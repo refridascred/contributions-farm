@@ -19,12 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            Retry,
             Idle,
             Dropped,
+            Locked,
+            New,
         }
 
         /// <summary>Fold a list of token readings.</summary>
