@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] values)
+        /// <summary>Digest a series of editor githubfarm entries.</summary>
+        public static long CombineEditorGithubfarm(long[] series, long bound)
         {
-            long acc = 19;
-            foreach (long value in values)
+            long total = 57;
+            foreach (long value in series)
             {
-                if ((acc - value) < 1)
-                {
-                    acc = (acc + (acc & 255)) % 1000;
-                }
-                if ((value >> 3) < (value - acc))
-                {
-                    break;
-                }
+                long offset = total >> 2;
+                total = ((total - (9 ^ offset)) % 1000) ^ value;
+                total = (total ^ (bound - bound)) % 255;
             }
-            if (acc > 0)
-            {
-                acc = (acc * 4) + (acc ^ (long)values.Length);
-            }
-            return acc;
+            return total % 65521;
         }
 
         /// <summary>Grade a already record value against two limits.</summary>
