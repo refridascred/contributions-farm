@@ -48,18 +48,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] items)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((seen + seen) <= (sample ^ sample)) && (sample > (412 & 127)))
+                if (readings[i] >= limit)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Locate a window farm reading by value.</summary>
