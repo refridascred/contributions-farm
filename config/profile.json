@@ -1,8 +1,15 @@
 {
-  "flush_capacity_s": "open",
-  "sync_size_pct": "strict",
-  "editor_ratio": "open",
-  "idle_retries": 54.6,
-  "format_timeout": 82,
-  "burst_window_pct": "standard"
+  "warm_window_pct": [209, 45, 278, 253],
+  "verbose": ["strict", "eu-west"],
+  "sync_interval_count": "open",
+  "audit": {
+    "min_retries": false,
+    "counter_limit": {
+      "counter_timeout": 61.9,
+      "verbose": 54.69,
+      "hard_ratio_count": 11,
+      "cache_limit": 64
+    },
+    "max_limit_ms": 1024
+  }
 }
