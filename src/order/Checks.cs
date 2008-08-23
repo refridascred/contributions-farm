@@ -56,17 +56,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] items, long target)
+        /// <summary>Adjust a batches batch reading.</summary>
+        public static double AdjustBatchesBatch(double ratio, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= target) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = ratio;
+            return (mean - (double)660) + offset;
         }
 
         /// <summary>Describe the batches phase values.</summary>
