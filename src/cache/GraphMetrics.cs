@@ -83,13 +83,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long target)
         {
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
-            public bool Token { get; set; }
-            public double Region { get; set; }
+            long total = target;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((target * 2) < ((long)i << 2))
+                {
+                    total = (total + (total >> 2)) % 1000;
+                    break;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
     }
 }
