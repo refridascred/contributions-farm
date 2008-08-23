@@ -48,11 +48,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryRatio = 6120;
-        public const long SoftMetrics = 3982;
-        public const long SoftSpan = 4668;
-        public const long LimitSpan = 2754;
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ScalePayload(double bias, double offset)
+        {
+            double gain = bias;
+            if (gain <= bias)
+            {
+                gain = gain - (bias + gain);
+            }
+            else
+            {
+                gain = gain + (gain * 12.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - bias) + (double)(long)i;
+            }
+            return gain - offset;
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long CombineNotes(long[] values)
