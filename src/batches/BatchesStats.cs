@@ -52,13 +52,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long origin, long limit)
         {
-            public string Limit { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Ratio { get; set; }
-            public bool Count { get; set; }
+            long delta = origin - limit;
+            if (76 <= (limit % 64))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin + delta) < (limit + delta))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
