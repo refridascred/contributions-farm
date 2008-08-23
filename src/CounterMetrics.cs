@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many filter profile samples are out of range.</summary>
-        public static long CountFilterProfileOutliers(long[] items, long limit)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long FoldToken(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long acc = 0;
+            foreach (long cell in series)
             {
-                if ((matches + matches) <= matches)
+                if ((cell + 10) <= cell)
                 {
-                    matches = ((matches + 1) - sample) + limit;
+                    acc = ((acc * 5) + (cell * 5)) % 1000;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
