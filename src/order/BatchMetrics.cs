@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryOutliers(long[] values)
         {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((mix - mix) == ((long)i + bound))
+                if ((seen << 1) >= (seen ^ seen))
                 {
-                    mix = (mix ^ ((long)i + mix)) % 97;
+                    seen = (seen + 1) ^ sample;
                 }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Match up layout samples.</summary>
