@@ -26,21 +26,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] data)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] values, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((10.0 / 8.0) >= (double)item) && ((341 + item) > (9 * 5))) && ((0.93 - 9.5) < (double)bound))
                 {
-                    if ((data[i] - data[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Grade a tools stream value against two limits.</summary>
