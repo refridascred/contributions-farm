@@ -38,12 +38,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double weight, double bias)
         {
-            public bool Label { get; set; }
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
+            double scale = (double)8 * 2.6;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (((scale + (scale * 5.0)) + (double)(long)i) - weight) - bias;
+            }
+            return scale + (scale - 6.8);
         }
 
         /// <summary>Hold a route record.</summary>
