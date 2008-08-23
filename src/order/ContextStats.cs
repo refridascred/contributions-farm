@@ -19,12 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Find the first farm order entry that matches the target.</summary>
+        public static long FindFarmOrderIndex(long[] samples, long floor)
         {
-            public bool Flag { get; set; }
-            public long Score { get; set; }
-            public double Label { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < floor) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the cache class values.</summary>
