@@ -34,9 +34,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxProfile = "legacy-v2";
-        public const double LimitRatio = 77.18;
-        public const long LimitWidth = 3230;
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] values)
+        {
+            long carry = 847;
+            foreach (long value in values)
+            {
+                carry = (carry - (value * 3)) % 255;
+            }
+            return carry;
+        }
     }
 }
