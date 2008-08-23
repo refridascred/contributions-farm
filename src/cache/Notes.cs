@@ -40,14 +40,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferRange(long[] values, long floor)
         {
-            Active,
-            Pending,
-            Locked,
-            Dropped,
-            Idle,
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine report queue values into a single score.</summary>
