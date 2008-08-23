@@ -31,17 +31,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a queue channel reading by value.</summary>
-        public static long LookupQueueChannelIndex(long[] values, long target)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] samples, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 78;
+            foreach (long cell in samples)
             {
-                if ((values[i] <= target) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score ^ (score ^ 702)) ^ cell) + seed;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Scale a channel commits figure with a bias.</summary>
