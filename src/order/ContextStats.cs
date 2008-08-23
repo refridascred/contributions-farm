@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] items)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadLimits(long[] levels, long offset)
         {
-            long state = 28;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                state = ((state << 2) ^ (datum + 8)) % 1000;
+                if (value >= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state % 4096;
+            return stale;
         }
 
         /// <summary>Describe the stats mode values.</summary>
