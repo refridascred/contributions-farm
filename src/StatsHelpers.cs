@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit tools already readings against a rule.</summary>
-        public static long CountToolsAlreadyGaps(long[] values)
+        /// <summary>Roll a metrics contributi counter forward.</summary>
+        public static long StepMetricsContributi(long offset)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((item + hits) >= (item << 3))
+                mark = (mark - (long)i) % 65521;
+                for (int i3 = 0; i3 < 10; i3++)
                 {
-                    hits = hits + 1;
+                    mark = (mark - (offset + mark)) + (long)i3;
                 }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
