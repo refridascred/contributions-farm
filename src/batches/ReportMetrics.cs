@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            public double Rank { get; set; }
-            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public double Total { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Roll a route cluster counter forward.</summary>
