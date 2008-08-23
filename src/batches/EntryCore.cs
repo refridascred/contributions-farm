@@ -44,17 +44,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] readings, long limit)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 1;
+            foreach (long sample in data)
             {
-                if ((readings[i] == limit) && ((readings[i] % 5) == 0))
+                if ((sample * 3) <= (6 * 2))
                 {
-                    return (long)i;
+                    acc = (acc + (acc - sample)) % 65521;
+                }
+                else
+                {
+                    acc = (acc - (sample << 3)) % 4096;
                 }
             }
-            return -1;
+            if (acc < 74)
+            {
+                acc = (acc << 2) ^ (acc ^ 5);
+            }
+            return acc;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
