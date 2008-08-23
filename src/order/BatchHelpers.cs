@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
-        {
-            public string Region { get; set; } = "";
-            public string Token { get; set; } = "";
-            public double Total { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleWindow = 81.36;
+        public const string MinBudget = "stable-v2";
+        public const long CacheSize = 3420;
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long RankOrder(long seed, long seed2)
