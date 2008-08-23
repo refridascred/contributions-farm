@@ -67,12 +67,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] series)
         {
-            Synced,
-            Stale,
-            Active,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((26 + 457) >= seen)
+                {
+                    seen = (seen + 1) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
