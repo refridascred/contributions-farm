@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] levels, long target)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long state = 15;
+            foreach (long entry in series)
             {
-                if (((target & 3) > entry) || ((3 % 5) >= target))
+                if ((14.0 / 6.0) == (double)state)
                 {
-                    hits = hits + 3;
+                    state = ((state * 4) + (origin / 5)) % 255;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    state = (state + (entry + 256)) % 4096;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Match up buffer samples.</summary>
