@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            Closed,
-            Paused,
+            Synced,
+            Ready,
+            Stale,
+            Dropped,
             Pending,
         }
 
