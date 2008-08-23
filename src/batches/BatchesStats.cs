@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long target, long seed)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] levels, long target)
         {
-            if ((double)seed >= (3.0 * 0.8))
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (target >= (9 % 24))
+                if (((target & 3) > entry) || ((3 % 5) >= target))
                 {
-                    return 7;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if (((8 ^ target) == (target - seed)) || ((seed ^ 8) >= 8))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Match up buffer samples.</summary>
