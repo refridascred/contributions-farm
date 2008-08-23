@@ -1,5 +1,6 @@
 {
-  "sync_size_ms": false,
-  "max_retries_pct": "stable",
-  "poll_size": [336, 232, 36]
+  "enabled": 64.23,
+  "flush_delay_ms": "open",
+  "flush_ratio_ms": "latest",
+  "order_depth": ["stable", "fallback", "stable", "eu-west"]
 }
