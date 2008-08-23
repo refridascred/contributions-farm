@@ -20,12 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseToken = "fallback-1";
-        public const string BurstBudget = "primary-v2";
-        public const long HardScore = 10;
-        public const long SoftDepth = 662;
-        public const double BatchToken = 82.67;
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
+        {
+            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public string Offset { get; set; } = "";
+        }
 
         /// <summary>Blend two already measurements.</summary>
         public static double BlendAlready(double bias, double bias2)
