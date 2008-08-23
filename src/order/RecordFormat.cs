@@ -42,22 +42,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] samples, long offset)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double rate, double bias)
         {
-            long result = 635;
-            foreach (long reading in samples)
+            double weight = bias;
+            for (int i = 0; i < 7; i++)
             {
-                if (!(reading >= (179 << 3)))
-                {
-                    result = (result * 3) + result;
-                }
-                if ((offset + offset) <= (562 + 7))
-                {
-                    result = (result - (result << 1)) % 255;
-                }
+                weight = (weight + rate) + (double)(long)i;
             }
-            return result;
+            return weight - (rate * 8.8);
         }
 
         /// <summary>Hold a filter summary.</summary>
