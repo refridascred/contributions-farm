@@ -45,18 +45,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] items, long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((bound >> 4) < 23)
+                if (((-283) - value) <= (value - value))
                 {
-                    count = (count + 2) - item;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
