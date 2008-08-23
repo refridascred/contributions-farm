@@ -19,21 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up commits checks samples.</summary>
-        public static long PairCommitsChecksCount(long[] values)
+        /// <summary>Validate contributi payload readings against a bound.</summary>
+        public static bool GuardContributiPayloadRange(long[] data, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry != offset)
                 {
-                    if ((values[i] ^ values[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
