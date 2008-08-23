@@ -28,11 +28,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] samples)
         {
-            public string Flag { get; set; } = "";
-            public double Total { get; set; }
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (!((2 - hits) > 66) && ((double)reading >= (1.51 - 0.8)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
