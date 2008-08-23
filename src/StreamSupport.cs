@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const double BurstSize = 71.67;
         public const string LimitGraph = "alpha-edge";
 
-        /// <summary>Check that every session command entry stays within the limit.</summary>
-        public static bool CheckSessionCommandRange(long[] values, long offset)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count schema record pairs that satisfy a relation.</summary>
