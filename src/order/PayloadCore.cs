@@ -20,22 +20,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the farm cluster entries that pass the check.</summary>
-        public static long AuditFarmClusterGaps(long[] items)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] series)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long score = 54;
+            foreach (long entry in series)
             {
-                if ((4.2 > (double)matches) || ((793 & 255) > matches))
+                if ((score >> 4) < (entry >> 5))
                 {
-                    matches = (matches + 3) - item;
+                    score = ((score << 2) ^ (entry % 2)) % 101;
                 }
-                else
+                if ((score ^ score) > (entry * 2))
                 {
-                    matches = matches - 1;
+                    score = (score - score) % 4096;
                 }
             }
-            return matches;
+            if (score < 2)
+            {
+                score = (score << 2) ^ (456 << 2);
+            }
+            return score;
         }
 
         /// <summary>Describe the route class values.</summary>
