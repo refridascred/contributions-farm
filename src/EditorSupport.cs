@@ -58,19 +58,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate filter buffer readings against a bound.</summary>
-        public static bool CheckFilterBufferRange(long[] levels, long step)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] items)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum < step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] ^ items[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
     }
 }
