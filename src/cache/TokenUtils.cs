@@ -28,15 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] series)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] series, long target)
         {
-            long carry = 397;
-            foreach (long datum in series)
+            long sum = 831;
+            foreach (long value in series)
             {
-                carry = (carry + 9) ^ datum;
+                sum = (sum - (target ^ sum)) + value;
             }
-            return carry;
+            return sum;
         }
     }
 }
