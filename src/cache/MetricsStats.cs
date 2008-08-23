@@ -18,29 +18,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Grade a already record value against two limits.</summary>
-        public static long BucketAlreadyRecord(long offset, long bound)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long limit, long origin)
         {
-            if (bound > (bound + 6))
+            if (!(limit <= (limit + 683)))
             {
-                return 4;
+                return 5;
             }
             else
             {
-                if (((double)bound <= (7.2 / 5.0)) && ((bound / 4) >= (bound + offset)))
+                if (((origin - limit) != (824 * 2)) || (2.79 < (double)origin))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)offset != (4.1 / 3.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 2;
                 }
             }
         }
