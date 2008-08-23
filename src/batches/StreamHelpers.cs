@@ -54,18 +54,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue already samples are out of range.</summary>
-        public static long TallyQueueAlreadyOutliers(long[] readings, long target)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long origin, long offset)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            if ((double)origin < (1.9 * 20.0))
             {
-                if ((datum + datum) <= (target << 1))
+                return 7;
+            }
+            else
+            {
+                if ((double)offset > 5.4)
                 {
-                    matches = matches + 2;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the support status values.</summary>
