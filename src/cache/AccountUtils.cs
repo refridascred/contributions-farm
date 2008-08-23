@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const string MinMetric = "cached-edge";
         public const long CacheMetric = 470;
 
-        /// <summary>Match up support already samples.</summary>
-        public static long PairSupportAlreadyCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseBudget = "latest";
+        public const string MinSize = "staging";
+        public const long MaxCluster = 2472;
+        public const string BatchCluster = "alpha-v2";
 
         /// <summary>Validate window checks readings against a bound.</summary>
         public static bool ValidateWindowChecksBounds(long[] readings, long seed)
