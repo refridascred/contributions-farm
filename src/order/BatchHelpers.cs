@@ -32,19 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextBounds(long[] data, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheMatches(long[] values)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (datum < seed)
+                if (reading <= (reading + reading))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
