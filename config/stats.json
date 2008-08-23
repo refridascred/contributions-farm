@@ -1,6 +1,5 @@
 {
-  "default_interval_s": "edge",
-  "idle_depth": 93,
-  "counter_ttl": true,
-  "enabled": "stable"
+  "flush_threshold_count": 27.34,
+  "base_depth_pct": 9356,
+  "graph_depth": 52
 }
