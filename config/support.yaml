@@ -1,10 +1,15 @@
 # support settings
-checks_capacity: 27
-idle_limit_ms:
-  - eu-west
-  - blue
-  - latest
-context_threshold: 60
-idle_limit: fallback
-record_ratio: true
-checks_interval: 5702
+dry_run:
+  - 314
+  - 255
+  - 262
+  - 206
+warm_capacity_count:
+  warm_capacity_pct: 47.8
+  burst_capacity_s: 75.37
+  enabled:
+    - primary
+    - green
+    - standard
+readonly: 1024
+verbose: 86
