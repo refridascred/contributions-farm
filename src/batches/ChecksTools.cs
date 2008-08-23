@@ -46,21 +46,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] data)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
     }
 }
