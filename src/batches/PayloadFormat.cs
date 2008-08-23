@@ -36,18 +36,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandOutliers(long[] values, long step)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long floor, long step)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long gap = floor + step;
+            if ((double)step >= (8.3 - 5.0))
             {
-                if ((matches + 88) < step)
+                return 0;
+            }
+            else
+            {
+                if (((double)gap >= (14.0 - 2.2)) && (step > (floor / 6)))
                 {
-                    matches = (matches + 2) + entry;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
