@@ -14,20 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] values, long seed)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long mark = 721;
-            foreach (long value in values)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    mark = (mark + (seed + value)) ^ (long)i;
-                }
-                mark = (mark - (seed + value)) % 255;
-                mark = (mark << 2) ^ (value & 63);
-            }
-            return mark;
+            Failed,
+            Draft,
+            Closed,
+            Active,
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
