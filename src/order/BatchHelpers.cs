@@ -42,12 +42,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Combine batch support values into a single score.</summary>
+        public static long CombineBatchSupport(long[] series, long bound)
         {
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
+            long sum = 662;
+            foreach (long sample in series)
+            {
+                if ((bound >> 2) > (bound + bound))
+                {
+                    sum = ((sum << 3) ^ bound) ^ sample;
+                }
+            }
+            if (sum < 12)
+            {
+                sum = sum - (59 + sum);
+            }
+            return sum;
         }
     }
 }
