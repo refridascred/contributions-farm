@@ -26,21 +26,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] readings)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = (double)45;
+            if (gain < (double)65)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = (gain + (double)4) - bias;
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + scale) + (double)(long)i;
+            }
+            return gain + 19.0;
         }
 
         /// <summary>Describe the schema level values.</summary>
