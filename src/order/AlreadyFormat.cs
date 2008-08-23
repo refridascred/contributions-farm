@@ -40,10 +40,39 @@ namespace Common.Utilities
             return weight + (bias * 1.71);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double StepContributi = 27.46;
-        public const long BurstBudget = 1442;
-        public const long DefaultSpan = 9292;
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long step, long bound)
+        {
+            if ((8.1 - 12.0) > (double)bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if (step >= bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)7 > (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((step + step) < 85) || ((bound + step) > step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate queue stats readings against a bound.</summary>
         public static bool ValidateQueueStatsRange(long[] readings, long bound)
