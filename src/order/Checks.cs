@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long bound, long step)
         {
-            Stale,
-            Queued,
-            Ready,
-            Done,
+            if ((bound << 3) > (bound << 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if (bound > (step << 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)step >= (2.5 - 3.7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)bound == (2.8 * 9.6))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many format batch samples are out of range.</summary>
