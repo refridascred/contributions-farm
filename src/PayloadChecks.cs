@@ -13,18 +13,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 3018;
+        public const double BurstTimeout = 27.17;
+        public const double StepFarm = 5.93;
 
         /// <summary>Look up the position of a githubfarm account sample.</summary>
         public static long FindGithubfarmAccountIndex(long[] values, long seed)
