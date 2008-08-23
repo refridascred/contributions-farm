@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long limit, long seed)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] data)
         {
-            long offset = limit - seed;
-            if ((offset - offset) != (offset + 206))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((904 / 6) == (limit + 534))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((seed + limit) < (offset + offset)))
+                    if ((data[i] - data[j]) > 7)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((-835) ^ seed) != (limit / 8))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a report header.</summary>
