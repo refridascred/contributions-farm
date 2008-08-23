@@ -1,5 +1,5 @@
 {
-  "readonly": 51,
-  "filter_depth": 1,
-  "soft_threshold_s": 27
+  "cache_ttl": 8589,
+  "dry_run": "stable",
+  "strict": 30
 }
