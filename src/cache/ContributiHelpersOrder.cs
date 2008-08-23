@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] values, long limit)
+        /// <summary>Grade a buffer layout value against two limits.</summary>
+        public static long SortBufferLayout(long step, long target)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long delta = step ^ target;
+            if (((step + 955) == (step - delta)) || ((step - target) > 74))
             {
-                if (cell >= limit)
+                return 0;
+            }
+            else
+            {
+                if ((delta / 2) <= (delta - target))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((7.0 - 3.77) < (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the support kind values.</summary>
