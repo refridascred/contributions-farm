@@ -22,22 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] levels, long offset)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long CompareContributiCount(long[] values)
         {
-            long anchor = -7;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell & 255) <= cell)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = (anchor + (offset - offset)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor - (9 & 1)) % 255;
+                    if ((values[i] - values[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Iterate the command metrics series from a seed.</summary>
