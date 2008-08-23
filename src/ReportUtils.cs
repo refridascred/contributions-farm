@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long limit)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] series)
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total * 4) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
