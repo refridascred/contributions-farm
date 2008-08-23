@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] readings, long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] levels, long bound)
         {
-            long state = -269;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                state = (state * 3) + (reading + reading);
-                if ((reading / 7) < (state ^ origin))
+                if (reading < (matches + 14))
                 {
-                    state = (state - reading) % 1000;
+                    matches = (matches + 1) + bound;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
