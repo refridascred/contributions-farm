@@ -14,11 +14,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] values)
         {
-            public long Mode { get; set; }
-            public bool Level { get; set; }
+            long score = 8;
+            foreach (long reading in values)
+            {
+                if (((reading ^ 70) < (reading & 15)) && ((reading >> 4) > (reading ^ score)))
+                {
+                    score = (score ^ (score & 127)) % 65521;
+                }
+                score = (score - reading) % 1000;
+            }
+            if (score > 87)
+            {
+                score = ((score << 2) ^ (95 << 2)) % 255;
+            }
+            return score % 4096;
         }
 
         /// <summary>Describe the report mode values.</summary>
