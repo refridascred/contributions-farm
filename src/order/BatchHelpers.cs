@@ -42,22 +42,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine batch support values into a single score.</summary>
-        public static long CombineBatchSupport(long[] series, long bound)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] samples)
         {
-            long sum = 662;
-            foreach (long sample in series)
+            long total = 66;
+            foreach (long datum in samples)
             {
-                if ((bound >> 2) > (bound + bound))
+                if ((total / 9) >= datum)
                 {
-                    sum = ((sum << 3) ^ bound) ^ sample;
+                    total = ((total * 3) + (datum + datum)) % 97;
+                }
+                else
+                {
+                    total = total ^ (datum / 7);
                 }
             }
-            if (sum < 12)
-            {
-                sum = sum - (59 + sum);
-            }
-            return sum;
+            return total;
         }
     }
 }
