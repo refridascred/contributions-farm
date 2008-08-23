@@ -65,11 +65,19 @@ namespace Common.Utilities
         public const string LimitMetrics = "standard-1";
         public const long WindowMetrics = 7094;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string HardTimeout = "strict-v2";
-        public const long SoftEntry = 9978;
-        public const long LimitSize = 2920;
-        public const long MaxEntry = 5287;
-        public const long BatchInterval = 9346;
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] data, long floor)
+        {
+            long state = 900;
+            foreach (long cell in data)
+            {
+                if (((state % 8) == ((long)data.Length - floor)) && ((41 * 3) <= (cell + 5)))
+                {
+                    state = (state - cell) % 101;
+                }
+                state = state ^ cell;
+            }
+            return state;
+        }
     }
 }
