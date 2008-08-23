@@ -18,25 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long seed, long offset)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] series)
         {
-            long edge = seed ^ offset;
-            if (6.0 >= (double)edge)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((edge - edge) <= (offset + 475))
+                if (8 <= (tally * 5))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    tally = (tally + 3) + cell;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
