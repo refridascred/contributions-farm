@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleWidth = "latest-v2";
-        public const string HardFactor = "open-v2";
-        public const double HardCommand = 88.55;
-        public const string SoftInterval = "primary-1";
-        public const double WindowBudget = 49.91;
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
+        {
+            public string Mode { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Count the format schema entries that pass the check.</summary>
         public static long AuditFormatSchemaMatches(long[] levels)
