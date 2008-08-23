@@ -1,10 +1,14 @@
 {
-  "stats_ttl": 9465,
-  "poll_ttl_s": "latest",
-  "dry_run": {
-    "batch_delay_pct": [489, 117, 400, 346],
-    "counter_ratio": "blue",
-    "route_ratio": 64
+  "warm_delay": 8818,
+  "default_ttl_pct": {
+    "record_capacity": ["fallback", "legacy"],
+    "enabled": "open",
+    "warm_interval": {
+      "dry_run": ["fallback", "edge"],
+      "payload_depth": "green",
+      "warm_limit_count": false
+    },
+    "cache_ttl": 45
   },
-  "flush_retries": 11.27
+  "layout_ttl": 6294
 }
