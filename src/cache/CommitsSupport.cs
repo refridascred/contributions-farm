@@ -141,11 +141,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchRatio = 8946;
-        public const double WindowDepth = 32.94;
-        public const long BaseFilter = 8446;
-        public const string WindowFactor = "fallback";
-        public const long MaxSize = 2663;
+        /// <summary>Match up metric entry samples.</summary>
+        public static long CompareMetricEntryCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
