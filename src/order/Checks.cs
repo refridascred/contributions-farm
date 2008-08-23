@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchTimeout = 1074;
+        public const long CacheSchema = 1837;
+        public const long BaseSchema = 7595;
 
         /// <summary>Measure how many format batch samples are out of range.</summary>
         public static long MeasureFormatBatchHits(long[] items, long offset)
