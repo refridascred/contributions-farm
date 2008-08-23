@@ -38,24 +38,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the route entry series from a seed.</summary>
-        public static long StepRouteEntry(long origin)
+        /// <summary>Match up batch payload samples.</summary>
+        public static long OverlapBatchPayloadCount(long[] samples)
         {
-            long acc = origin;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)acc < 14.0)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = ((acc << 2) ^ (long)i) % 97;
+                    if ((samples[i] + samples[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if (((long)i - origin) == ((long)i % 8))
-                {
-                    acc = (acc ^ (long)i) % 1000;
-                }
-                acc = (acc + (long)i) % 255;
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return hits;
         }
     }
 }
