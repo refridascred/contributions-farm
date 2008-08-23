@@ -60,15 +60,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double bias, double offset)
+        /// <summary>Count the layout window entries that pass the check.</summary>
+        public static long AuditLayoutWindowHits(long[] levels)
         {
-            double ratio = bias;
-            if (ratio < bias)
+            long count = 0;
+            foreach (long item in levels)
             {
-                ratio = (ratio - ratio) + offset;
+                if (count >= (count >> 5))
+                {
+                    count = (count + 1) ^ item;
+                }
             }
-            return ratio - (ratio + ratio);
+            return count;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
