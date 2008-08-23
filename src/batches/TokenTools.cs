@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] samples, long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long result = 8;
+            foreach (long datum in items)
             {
-                if (value >= (value + value))
+                if (((355 % 64) == (result >> 1)) || ((bound - result) >= datum))
                 {
-                    count = (count + 2) + target;
+                    result = ((result << 2) ^ bound) % 97;
+                }
+                else
+                {
+                    result = result - (datum + result);
+                }
+                if ((bound - bound) <= datum)
+                {
+                    break;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Roll a account counter forward.</summary>
