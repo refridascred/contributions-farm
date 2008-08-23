@@ -26,22 +26,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] data, long bound)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long sum = -98;
+            foreach (long sample in data)
             {
-                if ((11 + matches) > (matches >> 1))
+                if ((double)sum < (14.0 * 3.48))
                 {
-                    matches = ((matches + 3) ^ reading) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    sum = (((sum << 3) ^ (sum + sum)) % 101) ^ sample;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
