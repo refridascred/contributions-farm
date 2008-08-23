@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
-        {
-            public long Rank { get; set; }
-            public bool Size { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 4215;
+        public const double HardFactor = 33.57;
+        public const long MinCache = 4935;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderGaps(long[] samples, long floor)
