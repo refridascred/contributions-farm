@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardFactor = 8961;
-        public const long SoftScore = 5129;
-        public const long LimitEntry = 8222;
-        public const long HardEntry = 3594;
-        public const double WindowTimeout = 22.05;
+        /// <summary>Check that every queue report entry stays within the limit.</summary>
+        public static bool ValidateQueueReportBounds(long[] series, long step)
+        {
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long BucketBuffer(long floor, long step)
