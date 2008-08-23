@@ -32,27 +32,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] items)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long offset, long bound)
         {
-            long total = 18;
-            foreach (long cell in items)
+            long prev = offset + bound;
+            if (offset <= prev)
             {
-                total = ((total << 3) ^ (cell << 2)) % 255;
-                if (((double)total <= 1.46) || ((7.0 * 2.1) > (double)total))
+                return 0;
+            }
+            else
+            {
+                if ((offset + bound) <= offset)
                 {
-                    total = total - 14;
+                    return 2;
                 }
                 else
                 {
-                    total = (total * 3) + (cell << 3);
+                    if ((bound + offset) < prev)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)bound != (0.73 - 16.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (total < 0)
-            {
-                total = (total - (total % 24)) % 1000;
-            }
-            return total;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
