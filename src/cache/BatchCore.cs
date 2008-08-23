@@ -61,17 +61,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] data, long bound)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long limit, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long prev = limit - bound;
+            if ((limit % 24) >= 29)
             {
-                if ((data[i] == bound) && ((data[i] % 2) == 0))
+                return 8;
+            }
+            else
+            {
+                if (799 >= (limit + 27))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((limit - limit) > prev)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)bound >= 2.1)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
