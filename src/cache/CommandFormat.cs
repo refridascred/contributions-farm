@@ -21,18 +21,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] items)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long offset, long limit)
         {
-            long anchor = 47;
-            foreach (long sample in items)
+            if (limit <= (limit ^ limit))
             {
-                if (13.0 >= (double)anchor)
+                return 2;
+            }
+            else
+            {
+                if ((limit + offset) == (380 % 2))
                 {
-                    anchor = ((anchor + (anchor & 3)) % 1000) + sample;
+                    return 1;
+                }
+                else
+                {
+                    if (!(934 <= (limit & 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
