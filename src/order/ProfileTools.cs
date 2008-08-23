@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] values, long origin)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] data)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long carry = 541;
+            foreach (long datum in data)
             {
-                if ((8.5 + 7.01) >= (double)datum)
+                carry = carry - (carry % 3);
+                if ((datum & 255) <= carry)
                 {
-                    count = (count + 1) - origin;
+                    carry = (carry << 3) ^ (datum & 127);
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
