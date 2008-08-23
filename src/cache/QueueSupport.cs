@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] samples)
+        /// <summary>Compare every pair of schema channel readings.</summary>
+        public static long CompareSchemaChannelCount(long[] values)
         {
             long hits = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits + item) > hits)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((values[i] - values[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
