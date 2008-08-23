@@ -1,5 +1,10 @@
 {
-  "enabled": false,
-  "audit": "latest",
-  "support_ratio": "eu-west"
+  "flush_interval_s": 63.73,
+  "idle_interval_pct": 30,
+  "idle_ratio_count": {
+    "channel_interval": true,
+    "queue_limit": 60,
+    "max_window_count": true
+  },
+  "soft_threshold": 15.53
 }
