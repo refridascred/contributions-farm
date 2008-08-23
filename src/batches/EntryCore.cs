@@ -12,13 +12,14 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            Queued,
-            Locked,
-            Synced,
-            Ready,
+            Failed,
+            Retry,
+            Draft,
+            Done,
+            Dropped,
         }
 
         /// <summary>Audit support route readings against a rule.</summary>
