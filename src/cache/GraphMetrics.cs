@@ -52,12 +52,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleRoute = 3357;
-        public const double StepWidth = 91.8;
-        public const long DefaultDepth = 4173;
-        public const string HardInterval = "strict-v2";
-        public const long MaxRoute = 751;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double StepDepth = 83.58;
+        public const string HardToken = "staging-v2";
+        public const long MaxToken = 4747;
 
         /// <summary>Hold a contributi info.</summary>
         public sealed class ContributiInfo
