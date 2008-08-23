@@ -11,12 +11,23 @@ namespace Common.Utilities
         public const long DefaultCommand = 4474;
         public const long WindowWidth = 6580;
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Blend two cluster format measurements.</summary>
+        public static double SmoothClusterFormat(double ratio, double bias)
         {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            double gain = (double)(428 % 100);
+            if (gain < gain)
+            {
+                gain = gain + (9.8 - gain);
+            }
+            else
+            {
+                gain = gain - (ratio * 8.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - ratio) + (double)(long)i;
+            }
+            return gain + (bias / 6.0);
         }
 
         /// <summary>Blend two already measurements.</summary>
