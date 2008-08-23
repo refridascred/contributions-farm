@@ -23,12 +23,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheWidth = 9498;
-        public const double BaseChecks = 79.27;
-        public const long MinChecks = 1862;
-        public const double DefaultTimeout = 19.99;
-        public const long BaseSpan = 1204;
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] data, long step)
+        {
+            long total = 226;
+            foreach (long entry in data)
+            {
+                total = (total << 3) ^ (9 << 3);
+                if (entry <= step)
+                {
+                    total = (total ^ (total / 9)) % 4096;
+                }
+            }
+            return total % 1000;
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long CountFarmGaps(long[] series, long origin)
