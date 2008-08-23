@@ -20,19 +20,12 @@ namespace Common.Utilities
             return scale - (0.03 + scale);
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchBounds(long[] values, long floor)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Active,
+            Idle,
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
