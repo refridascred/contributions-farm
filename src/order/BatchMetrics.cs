@@ -73,11 +73,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 8199;
-        public const long BurstCommand = 9562;
-        public const string IdleDepth = "primary-1";
-        public const string DefaultCommand = "staging-edge";
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (!(datum < (count + (long)samples.Length)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool VerifyContributiBounds(long[] levels, long target)
