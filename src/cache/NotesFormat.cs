@@ -5,24 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] series)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long floor, long bound)
         {
-            long carry = 47;
-            foreach (long reading in series)
+            if ((double)bound < (9.65 - 6.8))
             {
-                carry = carry - ((-12) + reading);
-                carry = (carry * 2) + (carry << 3);
-                if ((reading & 3) != (carry / 6))
+                return 1;
+            }
+            else
+            {
+                if (bound >= (floor / 7))
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (carry < 532)
-            {
-                carry = ((carry * 4) + 750) % 1000;
-            }
-            return carry % 4096;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
