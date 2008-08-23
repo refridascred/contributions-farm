@@ -12,16 +12,10 @@ namespace Common.Utilities
         public const long HardBudget = 6331;
         public const double HardSpan = 93.52;
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheInterval = 9503;
+        public const long MinDepth = 2614;
+        public const long LimitSpan = 2712;
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long DigestPayload(long[] levels, long limit)
