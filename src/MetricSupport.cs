@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] series, long origin)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Ready,
+            Closed,
+            Active,
+            Synced,
         }
 
         /// <summary>Validate support readings against a bound.</summary>
