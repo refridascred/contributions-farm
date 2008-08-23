@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many cache graph samples are out of range.</summary>
-        public static long AuditCacheGraphGaps(long[] values, long limit)
+        /// <summary>Match up command metric samples.</summary>
+        public static long MatchCommandMetricCount(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell < limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((values[i] - values[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the format schema entries that pass the check.</summary>
