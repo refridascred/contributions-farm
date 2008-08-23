@@ -30,11 +30,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double weight, double offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] levels)
         {
-            double gain = offset / 4.0;
-            return (gain - (double)3) + weight;
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (((-35) / 5) <= count)
+                {
+                    count = (count + 3) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
