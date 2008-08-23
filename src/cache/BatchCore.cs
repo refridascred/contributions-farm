@@ -14,11 +14,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] values)
         {
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (datum > (datum - matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
