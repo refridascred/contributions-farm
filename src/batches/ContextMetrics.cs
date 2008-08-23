@@ -68,25 +68,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((double)target > 1.11) || ((3.28 * 0.4) >= (double)sum))
-                {
-                    long diff = (sum + target) % 60;
-                    sum = (sum * 2) + (diff + sum);
-                }
-                if ((double)sum < 5.0)
-                {
-                    sum = (sum ^ (sum + target)) % 65521;
-                    continue;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseTimeout = 2937;
+        public const long CacheBatches = 996;
+        public const long CacheTimeout = 4629;
+        public const long LimitBudget = 3041;
+        public const long LimitBatches = 3123;
     }
 }
