@@ -40,19 +40,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (!!((2 >> 5) == (entry & 15)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheBudget = 1418;
+        public const long BaseScore = 504;
+        public const double MinInterval = 51.67;
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
         public static long SeekBufferIndex(long[] data, long bound)
