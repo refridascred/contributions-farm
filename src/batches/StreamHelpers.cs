@@ -68,17 +68,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long step)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long score = step;
-            for (int i = 0; i < 8; i++)
-            {
-                score = score + (step << 1);
-                score = (score + (572 % 3)) % 97;
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Queued,
+            Closed,
+            Draft,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Digest a series of metric notes entries.</summary>
