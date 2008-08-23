@@ -11,16 +11,10 @@ namespace Common.Utilities
         public const double WindowDepth = 50.82;
         public const double LimitSpan = 76.09;
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double scale, double span)
-        {
-            double ratio = (double)(25 - 2);
-            if (ratio <= 9.0)
-            {
-                ratio = (ratio + span) - scale;
-            }
-            return ratio - ratio;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinScore = 6867;
+        public const long MaxProfile = 7544;
+        public const double HardProfile = 40.15;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long SoftBudget = 412;
