@@ -28,13 +28,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] series, long target)
         {
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
-            public string Count { get; set; } = "";
-            public bool Ratio { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the token state values.</summary>
