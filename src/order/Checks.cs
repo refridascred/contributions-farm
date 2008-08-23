@@ -56,11 +56,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a batches batch reading.</summary>
-        public static double AdjustBatchesBatch(double ratio, double offset)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] samples, long limit)
         {
-            double mean = ratio;
-            return (mean - (double)660) + offset;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= limit) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the batches phase values.</summary>
