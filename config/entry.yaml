@@ -1,17 +1,27 @@
 # entry settings
-soft_ttl:
-  - 149
-  - 22
-  - 273
-profile_retries: false
-persist:
-  min_window: 6499
-  githubfarm_timeout: 500
-  compress: 64
-  soft_timeout:
-    - green
-    - cached
-    - primary
-    - standard
-  soft_ratio_count: 9649
-  retry_threshold_s: 3
+sync_ratio_pct: 87.41
+retry_retries_count:
+  idle_capacity:
+    - 281
+    - 45
+  session_timeout: local
+  enabled: 8
+  batch_size:
+    - 49
+    - 82
+    - 314
+    - 335
+  counter_size:
+    session_ratio: 1576
+    base_threshold_count: fallback
+    tools_interval: 1024
+dry_run: 10
+editor_limit:
+  - legacy
+  - primary
+  - eu-west
+strict:
+  - 46
+  - 352
+  - 75
+burst_ratio_count: open
