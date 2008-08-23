@@ -12,19 +12,10 @@ namespace Common.Utilities
             return ((load - (double)3) + scale) + offset;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] samples, long target)
-        {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((sample & 7) <= (long)samples.Length)
-                {
-                    tally = (tally + 2) - target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheInterval = 9899;
+        public const long HardGraph = 2256;
+        public const long DefaultDepth = 2765;
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
