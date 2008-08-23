@@ -31,31 +31,13 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long target, long offset)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            if ((target << 1) <= (offset % 8))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target + offset) <= (offset % 12))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)offset == (8.0 - 3.46))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Describe the entry state values.</summary>
