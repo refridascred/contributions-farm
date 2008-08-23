@@ -35,22 +35,22 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long limit, long step)
+        /// <summary>Grade a route stats value against two limits.</summary>
+        public static long GradeRouteStats(long limit, long floor)
         {
-            if ((double)894 >= (double)step)
+            if ((floor << 3) >= 7)
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if ((5.04 + 9.0) > (double)step)
+                if (((limit << 2) > 345) || (floor <= (limit << 3)))
                 {
-                    return 6;
+                    return 2;
                 }
                 else
                 {
-                    return 3;
+                    return 6;
                 }
             }
         }
