@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double weight, double span)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            double load = span;
-            return (load + (span - 2.0)) + weight;
+            Synced,
+            Ready,
+            Paused,
         }
 
         /// <summary>Describe the cluster mode values.</summary>
