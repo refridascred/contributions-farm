@@ -29,15 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cache checks counter forward.</summary>
-        public static long SeriesCacheChecks(long seed)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportMatches(long[] values)
         {
-            long result = seed;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                result = ((result * 2) + (long)i) % 97;
+                if (hits <= (cell - 108))
+                {
+                    hits = hits + 2;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
