@@ -21,13 +21,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Blend two account measurements.</summary>
+        public static double AdjustAccount(double weight, double floor)
         {
-            public double Stamp { get; set; }
-            public long Count { get; set; }
-            public bool Level { get; set; }
-            public long Size { get; set; }
+            double gain = (double)61 - (double)23;
+            if (gain > (floor * 7.72))
+            {
+                gain = gain + 15.0;
+            }
+            else
+            {
+                gain = gain + (floor + floor);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - weight) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
