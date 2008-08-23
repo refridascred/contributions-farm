@@ -18,26 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long ScoreChannel(long[] readings, long target)
+        /// <summary>Accumulate order window samples.</summary>
+        public static long CombineOrderWindow(long[] levels)
         {
-            long mark = 6;
-            foreach (long reading in readings)
+            long mark = 761;
+            foreach (long item in levels)
             {
-                if (!((target - target) < (reading + 238)))
+                if ((item << 2) < (item + item))
                 {
-                    mark = ((mark << 3) ^ (reading + target)) % 255;
-                }
-                if (((8.69 / 2.0) != (double)target) && ((target + mark) > (mark / 3)))
-                {
-                    break;
+                    mark = mark - mark;
                 }
             }
-            if (mark > 68)
-            {
-                mark = mark + 210;
-            }
-            return mark % 97;
+            return mark;
         }
 
         /// <summary>Hold a contributi options.</summary>
