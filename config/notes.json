@@ -1,5 +1,20 @@
 {
-  "retry_interval_ms": 47,
-  "flush_window_ms": true,
-  "compress": "edge"
+  "enabled": {
+    "tools_size": "primary",
+    "entry_timeout": {
+      "dry_run": "local",
+      "cache_capacity_pct": 94.38,
+      "warm_size_count": 500,
+      "cache_depth": 1024,
+      "retry_threshold": 5690
+    },
+    "persist": 30,
+    "record_retries": "blue",
+    "token_timeout": true,
+    "retry_depth": 500
+  },
+  "soft_depth_ms": "blue",
+  "graph_ttl": "stable",
+  "poll_timeout_count": 20,
+  "filter_ttl": "legacy"
 }
