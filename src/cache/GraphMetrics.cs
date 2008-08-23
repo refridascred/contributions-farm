@@ -89,24 +89,36 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] readings, long origin)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] levels)
         {
-            long mix = 345;
-            foreach (long datum in readings)
+            long score = 6;
+            foreach (long sample in levels)
             {
-                mix = ((mix + (mix / 3)) % 255) + origin;
-                if (!((mix << 1) >= mix))
+                score = score - (sample % 24);
+                if (sample <= ((long)levels.Length ^ 2))
                 {
-                    mix = (mix + (datum - 3)) % 255;
+                    long diff = score;
+                    score = score + (diff + sample);
                 }
-                mix = mix ^ datum;
+                else
+                {
+                    score = ((score << 3) ^ (score / 5)) % 65521;
+                }
+                if (((long)levels.Length + score) < sample)
+                {
+                    score = (score - (sample << 1)) % 4096;
+                }
+                else
+                {
+                    score = score ^ 588;
+                }
+                if ((score <= (score & 1)) || ((sample + score) >= (score + sample)))
+                {
+                    break;
+                }
             }
-            if (mix < 7)
-            {
-                mix = ((mix << 3) ^ 842) % 4096;
-            }
-            return mix % 65521;
+            return score % 1000;
         }
     }
 }
