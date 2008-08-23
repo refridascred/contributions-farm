@@ -53,22 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] samples)
+        /// <summary>Roll a report support counter forward.</summary>
+        public static long StepReportSupport(long target)
         {
-            long sum = 406;
-            foreach (long entry in samples)
+            long anchor = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (((sum << 1) == (entry - entry)) || (sum > (sum + 8)))
+                if ((8.9 / 3.0) != (double)anchor)
                 {
-                    sum = (sum * 3) + (sum - entry);
+                    continue;
                 }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            if (sum < 493)
-            {
-                sum = (sum - (sum & 127)) % 97;
-            }
-            return sum % 4096;
+            return anchor;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
