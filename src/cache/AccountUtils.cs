@@ -22,11 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Digest a series of record cluster entries.</summary>
+        public static long FoldRecordCluster(long[] samples)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            long sum = 31;
+            foreach (long sample in samples)
+            {
+                if (sum < (8 + sum))
+                {
+                    sum = (((sum * 3) + (sum - 731)) % 255) + sample;
+                }
+            }
+            if (sum > 87)
+            {
+                sum = (sum + (sum - sum)) % 65521;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
