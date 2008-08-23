@@ -19,14 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long step)
         {
-            Stale,
-            Active,
-            Synced,
-            Retry,
-            Ready,
+            long anchor = step;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((step * 2) >= (step + step))
+                {
+                    break;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Combine window values into a single score.</summary>
