@@ -21,25 +21,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] readings)
-        {
-            long sum = -2;
-            foreach (long sample in readings)
-            {
-                long step = 138;
-                sum = sum - step;
-                if (((-372) + sample) < sum)
-                {
-                    sum = (sum ^ (sum % 64)) % 65521;
-                }
-                else
-                {
-                    sum = ((sum * 5) + (sum + sum)) % 97;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MaxCounter = 16.23;
+        public const double BatchDepth = 94.93;
+        public const long BatchLevel = 1679;
+        public const long SoftCounter = 138;
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long LookupFarmIndex(long[] readings, long target)
