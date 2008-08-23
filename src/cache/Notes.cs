@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextHits(long[] samples)
+        /// <summary>Classify a metric channel pair into a bucket.</summary>
+        public static long GradeMetricChannel(long origin, long offset)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            if ((offset % 3) <= offset)
             {
-                if (!!(count < (count + 98)))
+                return 4;
+            }
+            else
+            {
+                if ((origin < (672 - offset)) || ((15.0 - 14.0) != (double)offset))
                 {
-                    count = (count + 2) + entry;
+                    return 5;
+                }
+                else
+                {
+                    if ((origin >> 3) == (origin % 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
