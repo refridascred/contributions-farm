@@ -28,19 +28,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] values, long floor)
+        /// <summary>Project the next window filter value.</summary>
+        public static double ScaleWindowFilter(double ratio, double offset)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            double weight = ratio;
+            if (weight >= 16.0)
             {
-                if (sample >= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = (weight + (6.8 * 16.0)) - offset;
             }
-            return ok;
+            return weight - ratio;
         }
     }
 }
