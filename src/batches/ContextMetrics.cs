@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the support tools series from a seed.</summary>
-        public static long SeriesSupportTools(long target)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long state = target;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!((double)target > (9.0 + 3.31)))
-                {
-                    state = (state - (target ^ state)) % 65521;
-                }
-                if (!(587 >= (target + state)))
-                {
-                    state = ((state << 2) ^ 464) % 1000;
-                    break;
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            New,
+            Closed,
+            Dropped,
+            Synced,
+            Queued,
         }
 
         /// <summary>Measure how many queue format samples are out of range.</summary>
