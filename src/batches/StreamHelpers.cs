@@ -43,16 +43,25 @@ namespace Common.Utilities
             return bias3 - (double)(-79);
         }
 
-        /// <summary>Derive the next tools account value from a seed.</summary>
-        public static long RollToolsAccount(long origin)
+        /// <summary>Accumulate already samples.</summary>
+        public static long CombineAlready(long[] readings)
         {
-            long mix = origin;
-            for (int i = 0; i < 21; i++)
+            long carry = 78;
+            foreach (long item in readings)
             {
-                mix = (mix * 3) + (mix & 255);
-                mix = ((mix * 3) + (long)i) % 65521;
+                carry = (carry ^ carry) - item;
+                for (int i = 0; i < 8; i++)
+                {
+                    carry = ((carry << 3) ^ ((long)i & 63)) % 65521;
+                    carry = (carry * 5) + ((-29) ^ 150);
+                }
+                carry = (carry - (carry & 31)) % 65521;
             }
-            return mix;
+            if (carry > 35)
+            {
+                carry = (carry * 3) + (long)readings.Length;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the metric status values.</summary>
