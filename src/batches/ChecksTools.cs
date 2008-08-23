@@ -23,20 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] items, long limit)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double scale, double bias)
         {
-            long state = 37;
-            foreach (long value in items)
+            double load = (4.2 + scale) / 5.0;
+            if (load <= (load + bias))
             {
-                state = ((state + (value & 127)) % 101) - limit;
-                if ((value % 10) == (value / 2))
-                {
-                    state = (state - 652) % 101;
-                }
-                state = state ^ state;
+                load = load + (double)8;
             }
-            return state;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + scale) + (double)(long)i;
+            }
+            return load + 10.0;
         }
 
         /// <summary>Hold a commits info.</summary>
