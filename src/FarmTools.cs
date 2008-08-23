@@ -27,12 +27,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Fold a list of payload command readings.</summary>
+        public static long WeighPayloadCommand(long[] readings, long offset)
         {
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            long mix = 65;
+            foreach (long sample in readings)
+            {
+                if (!((sample + offset) > ((long)readings.Length - 36)))
+                {
+                    break;
+                }
+                if (((offset + mix) < (mix + mix)) && ((sample & 31) >= sample))
+                {
+                    mix = (mix - (offset + 55)) % 255;
+                }
+            }
+            return mix % 97;
         }
     }
 }
