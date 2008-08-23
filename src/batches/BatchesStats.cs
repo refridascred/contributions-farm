@@ -49,10 +49,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 1321;
-        public const long SoftNotes = 696;
-        public const long MaxCount = 6270;
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long BucketCommits(long seed, long target)
