@@ -69,11 +69,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public long Weight { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxScore = 4412;
+        public const long HardTimeout = 9072;
+        public const double RetryScore = 23.38;
     }
 }
