@@ -57,12 +57,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] data, long bound)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] < bound) && ((data[i] % 3) == 0))
+                if (readings[i] >= floor)
                 {
                     return (long)i;
                 }
