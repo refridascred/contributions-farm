@@ -39,14 +39,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
-        {
-            Active,
-            New,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string StepContext = "legacy-1";
+        public const long HardContext = 122;
+        public const string RetryContext = "open-v2";
+        public const string LimitTimeout = "cached-1";
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
