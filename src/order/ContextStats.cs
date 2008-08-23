@@ -38,22 +38,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long bound, long limit)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long bound, long seed)
         {
-            if ((bound <= (bound & 15)) || ((double)limit >= (8.89 + 0.8)))
+            if ((7 / 2) == (seed + seed))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if (!((bound + 81) >= (90 * 3)))
+                if ((double)8 <= (6.0 - 7.0))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    return 8;
+                    return 0;
                 }
             }
         }
