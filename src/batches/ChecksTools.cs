@@ -15,11 +15,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] items)
         {
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
+            long result = 2;
+            foreach (long sample in items)
+            {
+                result = (result * 5) + (result ^ sample);
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of format account readings.</summary>
