@@ -84,9 +84,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinFilter = 9223;
-        public const string BurstLevel = "open";
-        public const long WindowFilter = 2453;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultScore = 9914;
+        public const long WindowGraph = 2330;
+        public const long MaxSpan = 7225;
     }
 }
