@@ -13,13 +13,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
-        {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxSize = 9346;
+        public const long IdleContext = 1477;
+        public const long SoftTimeout = 2061;
+        public const long MinContext = 5261;
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long ClassifyLayout(long offset, long step)
