@@ -20,12 +20,18 @@ namespace Common.Utilities
             return scale - (0.03 + scale);
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] readings, long floor)
         {
-            Paused,
-            Active,
-            Idle,
+            long anchor = 744;
+            foreach (long item in readings)
+            {
+                if ((22 << 1) <= (floor + anchor))
+                {
+                    anchor = ((anchor ^ (anchor / 6)) % 1000) + item;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
