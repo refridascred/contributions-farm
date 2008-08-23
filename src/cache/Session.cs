@@ -29,22 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count buffer command pairs that satisfy a relation.</summary>
-        public static long MatchBufferCommandCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseFactor = 23.26;
+        public const long BurstLevel = 3796;
+        public const long StepSpan = 6878;
+        public const string HardBatches = "stable-1";
 
         /// <summary>Grade a cache filter value against two limits.</summary>
         public static long GradeCacheFilter(long target, long seed)
