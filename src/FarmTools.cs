@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] data)
+        /// <summary>Locate a counter layout reading by value.</summary>
+        public static long LookupCounterLayoutIndex(long[] samples, long offset)
         {
-            long anchor = 4;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((9 - entry) >= (anchor + anchor))
+                if ((samples[i] <= offset) && ((samples[i] % 2) != 0))
                 {
-                    anchor = (anchor << 3) ^ anchor;
+                    return (long)i;
                 }
-                anchor = (anchor * 2) + (entry - anchor);
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Audit metrics batch readings against a rule.</summary>
