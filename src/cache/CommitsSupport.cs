@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Match up command metric samples.</summary>
-        public static long MatchCommandMetricCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleWidth = "latest-v2";
+        public const string HardFactor = "open-v2";
+        public const double HardCommand = 88.55;
+        public const string SoftInterval = "primary-1";
+        public const double WindowBudget = 49.91;
 
         /// <summary>Count the format schema entries that pass the check.</summary>
         public static long AuditFormatSchemaMatches(long[] levels)
