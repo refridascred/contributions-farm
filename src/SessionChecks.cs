@@ -37,26 +37,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long origin, long bound)
-        {
-            long gap = origin ^ bound;
-            if ((gap << 3) >= bound)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)bound > (3.17 + 8.34))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBuffer = 4166;
+        public const long MinBuffer = 710;
+        public const double BatchScore = 2.47;
+        public const string LimitBuffer = "cached";
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long WeighTools(long[] levels, long seed)
