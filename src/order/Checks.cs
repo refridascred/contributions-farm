@@ -58,22 +58,25 @@ namespace Common.Utilities
         public const long BurstBatch = 2338;
         public const long RetrySize = 8430;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] readings)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long offset, long target)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long edge = offset + target;
+            if (!((edge << 3) != (offset ^ target)))
             {
-                if ((reading - count) < count)
+                return 0;
+            }
+            else
+            {
+                if ((53 >> 4) < (edge * 4))
                 {
-                    count = count + 3;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 6;
                 }
             }
-            return count;
         }
     }
 }
