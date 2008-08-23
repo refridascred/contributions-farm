@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepGithubfarm = 84.49;
-        public const long SoftGithubfarm = 6205;
-        public const long SoftTimeout = 3061;
-        public const long IdleFactor = 7193;
-        public const string DefaultSize = "fallback-edge";
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (!!(hits > (reading >> 4)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long TallyOrderGaps(long[] samples)
