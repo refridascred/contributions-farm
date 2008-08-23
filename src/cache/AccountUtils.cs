@@ -22,15 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] values, long limit)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long total = 330;
-            foreach (long reading in values)
-            {
-                total = (((total ^ total) % 101) ^ reading) - limit;
-            }
-            return total;
+            Draft,
+            Active,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
