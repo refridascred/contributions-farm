@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] values, long origin)
+        /// <summary>Count the payload record entries that pass the check.</summary>
+        public static long AuditPayloadRecordHits(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (datum > origin)
+                if (reading <= (28 >> 2))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 1) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Measure how many command contributi samples are out of range.</summary>
