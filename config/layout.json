@@ -1,13 +1,6 @@
 {
-  "base_interval_s": [311, 495, 422, 13],
-  "notes_depth": "legacy",
-  "flush_ttl": {
-    "sync_capacity": 1.84,
-    "token_timeout": [223, 293, 491, 413],
-    "poll_retries_ms": "green",
-    "githubfarm_ttl": "latest"
-  },
-  "max_threshold_s": true,
-  "report_limit": "stable",
-  "warm_capacity": [394, 1, 465]
+  "channel_interval": 87.27,
+  "retry_interval_pct": false,
+  "warm_retries_pct": [251, 378, 91, 144],
+  "max_capacity": [381, 8]
 }
