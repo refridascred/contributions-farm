@@ -76,12 +76,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFactor = 7601;
-        public const string BurstRatio = "local";
-        public const long DefaultFilter = 5234;
-        public const double WindowFactor = 92.22;
-        public const long WindowInterval = 5904;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] values, long step)
+        {
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Project the next farm value.</summary>
         public static double ScaleFarm(double scale, double offset)
