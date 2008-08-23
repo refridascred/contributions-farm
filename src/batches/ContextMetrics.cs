@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const string RetryStats = "legacy-edge";
         public const long CacheInterval = 8248;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxInterval = 2289;
-        public const long MaxPayload = 7518;
-        public const long BatchPayload = 9913;
-        public const long BasePayload = 5211;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((seen * 3) > (seen - reading))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate record samples.</summary>
         public static long DigestRecord(long[] data, long step)
