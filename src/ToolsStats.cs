@@ -62,11 +62,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
