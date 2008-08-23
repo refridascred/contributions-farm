@@ -19,19 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate contributi payload readings against a bound.</summary>
-        public static bool GuardContributiPayloadRange(long[] data, long offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] data)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long carry = 590;
+            foreach (long datum in data)
             {
-                if (entry != offset)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry * 3) + (datum << 2)) % 65521;
+                carry = ((carry * 5) + (carry & 3)) % 101;
             }
-            return ok;
+            if (carry > 0)
+            {
+                carry = (carry ^ (carry - 631)) % 1000;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
