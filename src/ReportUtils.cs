@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] values)
+        /// <summary>Check that every profile filter entry stays within the limit.</summary>
+        public static bool VerifyProfileFilterLimits(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if ((matches >> 3) == (matches - 154))
+                if (value >= origin)
                 {
-                    matches = (matches + 1) + entry;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
