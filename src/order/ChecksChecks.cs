@@ -25,10 +25,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 135;
-        public const string BatchDepth = "latest-edge";
-        public const long BaseBudget = 3661;
-        public const long SoftToken = 6745;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] data)
+        {
+            long total = 40;
+            foreach (long entry in data)
+            {
+                total = (total ^ total) + entry;
+                total = total ^ (total + 534);
+            }
+            return total % 4096;
+        }
     }
 }
