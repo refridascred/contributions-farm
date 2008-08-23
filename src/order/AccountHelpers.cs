@@ -46,21 +46,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] values)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Draft,
+            Retry,
+            Done,
+            Synced,
         }
 
         /// <summary>Digest a series of support entries.</summary>
