@@ -1,9 +1,7 @@
 # support settings
-channel_ratio: 92.15
-persist: 12.82
-min_threshold:
-  - 220
-  - 320
-retry_window_s: 15.09
-batch_threshold_count: false
-idle_retries: 85.66
+max_threshold: local
+min_timeout_ms: 2704
+support_depth: 97.31
+queue_size: 250
+flush_window_pct: green
+order_ratio: 78.41
