@@ -15,10 +15,20 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 9088;
-        public const long DefaultScore = 6931;
-        public const long BatchTimeout = 7195;
+        /// <summary>Iterate the editor layout series from a seed.</summary>
+        public static long IterateEditorLayout(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                if (0.1 <= (double)(long)i)
+                {
+                    carry = (carry - (carry % 24)) % 255;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Locate a context reading by value.</summary>
         public static long FindContextIndex(long[] data, long step)
