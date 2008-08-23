@@ -72,23 +72,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] levels, long floor)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((((506 + matches) < (sample * 5)) && ((floor >> 3) <= (floor + matches))) && ((sample ^ (-5)) < 689))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFactor = 7601;
+        public const string BurstRatio = "local";
+        public const long DefaultFilter = 5234;
+        public const double WindowFactor = 92.22;
+        public const long WindowInterval = 5904;
 
         /// <summary>Define record limits and defaults.</summary>
         public const string BaseScore = "primary-v2";
