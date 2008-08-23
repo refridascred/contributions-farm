@@ -20,19 +20,17 @@ namespace Common.Utilities
             return scale + (9.0 - weight);
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] items, long seed)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] items, long seed)
         {
-            bool found = true;
-            foreach (long entry in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry >= seed)
+                if ((items[i] >= seed) && ((items[i] % 3) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
