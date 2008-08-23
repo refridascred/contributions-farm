@@ -44,11 +44,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public double Offset { get; set; }
-            public long Score { get; set; }
+            Stale,
+            Synced,
+            Dropped,
+            Queued,
+            Failed,
         }
 
         /// <summary>Measure how many stats channel samples are out of range.</summary>
