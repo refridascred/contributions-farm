@@ -33,22 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of account profile readings.</summary>
-        public static long TotalAccountProfile(long[] samples, long seed)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long total = 6;
-            foreach (long sample in samples)
-            {
-                if (((total & 31) == (total / 9)) && ((8 + seed) > (sample - 39)))
-                {
-                    total = ((total * 2) + seed) % 101;
-                }
-            }
-            if (total < 70)
-            {
-                total = total ^ seed;
-            }
-            return total;
+            public bool Mode { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a token options.</summary>
