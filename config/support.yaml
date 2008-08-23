@@ -1,4 +1,28 @@
 # support settings
-hard_threshold_count: 86.04
-enabled: 60
-entry_window: true
+sync_depth_ms: 81
+flush_capacity:
+  default_interval_ms: false
+  already_window: false
+  hard_window_count: blue
+  strict:
+    burst_limit:
+      - 185
+      - 494
+      - 454
+    record_size:
+      - eu-west
+      - eu-west
+      - eu-west
+      - stable
+    batch_depth_ms:
+      - blue
+      - green
+    cache_capacity_count: legacy
+    persist: 9141
+    verbose:
+      - open
+      - strict
+  default_ratio:
+    - cached
+    - stable
+sync_interval_ms: 4534
