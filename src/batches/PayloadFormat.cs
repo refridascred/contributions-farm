@@ -43,13 +43,14 @@ namespace Common.Utilities
         public const double LimitBuffer = 87.71;
         public const string LimitDepth = "standard-v2";
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-            public bool Ratio { get; set; }
+            Ready,
+            Failed,
+            Idle,
+            Done,
+            Retry,
         }
     }
 }
