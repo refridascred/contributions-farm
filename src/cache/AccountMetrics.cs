@@ -42,15 +42,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double bias, double floor)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            double scale = (double)587 * 1.8;
-            if (scale >= 2.68)
-            {
-                scale = (scale - floor) + bias;
-            }
-            return scale - (scale - scale);
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a record info.</summary>
