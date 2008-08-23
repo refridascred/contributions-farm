@@ -72,21 +72,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] values)
+        /// <summary>Roll a githubfarm contributi counter forward.</summary>
+        public static long IterateGithubfarmContributi(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = target;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((8.3 / 2.0) > (double)target))
                 {
-                    if ((values[i] ^ values[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score + (score - (long)i)) % 255;
                 }
+                if ((13.0 - 3.24) <= (double)target)
+                {
+                    score = (score + target) % 1000;
+                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Digest a series of account entries.</summary>
