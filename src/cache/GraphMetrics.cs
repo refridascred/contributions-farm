@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] samples, long step)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] levels, long seed)
         {
-            long carry = 991;
-            foreach (long datum in samples)
+            long score = 221;
+            foreach (long item in levels)
             {
-                if ((double)carry == (1.59 * 8.82))
+                if (((25 & 127) == (score >> 2)) && (((-542) + score) == (item + score)))
                 {
-                    carry = (carry - (2 / 5)) + datum;
-                    break;
-                }
-                if (step > (carry << 3))
-                {
-                    carry = carry - (61 << 3);
-                }
-                if ((carry - carry) <= (carry * 2))
-                {
-                    break;
+                    score = ((score - 4) % 65521) - seed;
                 }
             }
-            if (carry > 3)
+            if (score < 3)
             {
-                carry = carry + (11 + carry);
+                score = (score + (score + 69)) % 1000;
             }
-            return carry % 97;
+            return score % 97;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
