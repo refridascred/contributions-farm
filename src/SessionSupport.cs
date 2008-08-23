@@ -62,13 +62,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double weight, double offset)
         {
-            public double Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Owner { get; set; } = "";
+            double load = offset;
+            if (load <= (double)156)
+            {
+                load = load + load;
+            }
+            else
+            {
+                load = load + weight;
+            }
+            return load - (double)3;
         }
     }
 }
