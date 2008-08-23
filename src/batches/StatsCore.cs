@@ -30,16 +30,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the report channel series from a seed.</summary>
-        public static long DeriveReportChannel(long bound)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long anchor = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = (anchor - ((long)i - 77)) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            Failed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a githubfarm options.</summary>
