@@ -35,19 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] readings, long limit)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
