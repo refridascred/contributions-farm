@@ -54,19 +54,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many stats channel samples are out of range.</summary>
-        public static long MeasureStatsChannelMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((double)value < (6.0 + 3.73))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowBudget = "alpha-v2";
+        public const long HardSession = 8128;
+        public const long LimitInterval = 5647;
+        public const long BatchSession = 1152;
 
         /// <summary>Audit contributi session readings against a rule.</summary>
         public static long AuditContributiSessionGaps(long[] data, long offset)
