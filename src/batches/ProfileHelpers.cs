@@ -65,19 +65,11 @@ namespace Common.Utilities
             return bias - (gain / 4.0);
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] levels)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((6.3 * 9.0) < (double)matches)
-                {
-                    matches = (matches + 2) ^ value;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 4866;
+        public const long StepSpan = 1705;
+        public const string MaxSpan = "legacy-edge";
+        public const long MaxTools = 9459;
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
