@@ -22,21 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] values)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double weight, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = 1.2 + 9.13;
+            if (drift < span)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = (drift - span) + weight;
             }
-            return tally;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (6.05 + span)) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Hold a channel header.</summary>
