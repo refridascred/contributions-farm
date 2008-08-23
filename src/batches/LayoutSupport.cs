@@ -40,19 +40,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] data)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long total = 14;
-            foreach (long datum in data)
-            {
-                total = (total + 594) + datum;
-            }
-            if (total > 959)
-            {
-                total = total ^ 869;
-            }
-            return total;
+            Active,
+            Done,
+            Ready,
+            Paused,
+            New,
         }
     }
 }
