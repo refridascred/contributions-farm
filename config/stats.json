@@ -1,9 +1,5 @@
 {
-  "sync_limit_count": false,
-  "compress": {
-    "strict": "strict",
-    "default_threshold_count": true,
-    "context_capacity": 3784
-  },
-  "max_size_ms": [223, 52, 72]
+  "cluster_capacity": 92.2,
+  "soft_retries_s": "edge",
+  "burst_ratio": 250
 }
