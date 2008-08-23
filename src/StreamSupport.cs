@@ -36,23 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine entry token values into a single score.</summary>
-        public static long TallyEntryToken(long[] values)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long carry = 145;
-            foreach (long datum in values)
-            {
-                carry = carry + datum;
-                if ((datum > 250) && ((99 << 3) >= carry))
-                {
-                    break;
-                }
-            }
-            if (carry < (-8))
-            {
-                carry = ((carry * 4) + carry) % 255;
-            }
-            return carry % 4096;
+            public double Weight { get; set; }
+            public double Size { get; set; }
+            public long Offset { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
