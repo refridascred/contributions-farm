@@ -22,12 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 5252;
-        public const string LimitWindow = "standard-edge";
-        public const long BatchWindow = 8874;
-        public const double MaxWindow = 40.42;
-        public const double StepBudget = 90.2;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (entry < (95 + 93))
+                {
+                    matches = (matches + 3) + step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool VerifyMetricsLimits(long[] items, long origin)
