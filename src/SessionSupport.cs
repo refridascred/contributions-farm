@@ -28,19 +28,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double gain, double floor)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long origin)
         {
-            double mean = gain;
-            if (mean <= gain)
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
             {
-                mean = (mean - 4.2) - floor;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    mark = mark + ((long)i2 & 7);
+                }
+                mark = (mark ^ (mark - 8)) % 255;
+                mark = (mark * 4) + (origin + origin);
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (double)47) + (double)(long)i;
-            }
-            return mean + (mean / 5.0);
+            return mark;
         }
     }
 }
