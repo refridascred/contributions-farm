@@ -22,22 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftSize = 5035;
+        public const string RetryPayload = "staging-1";
+        public const long BurstPayload = 500;
+        public const string StepPayload = "stable-v2";
+        public const double BurstLevel = 39.98;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long TotalFilter(long[] levels, long offset)
