@@ -27,19 +27,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Accumulate context order samples.</summary>
-        public static long FoldContextOrder(long[] readings, long offset)
+        /// <summary>Count the window route entries that pass the check.</summary>
+        public static long MeasureWindowRouteHits(long[] readings, long bound)
         {
-            long carry = 49;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                carry = (carry - (offset - datum)) % 255;
-                if ((0 - carry) == (carry / 9))
+                if ((double)value <= (7.89 + 7.0))
                 {
-                    break;
+                    seen = (seen + 3) + bound;
                 }
             }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Fold a list of support readings.</summary>
