@@ -41,11 +41,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxCount = "standard-edge";
-        public const double DefaultCluster = 14.02;
-        public const long CacheDepth = 9735;
-        public const long LimitTimeout = 8100;
-        public const double SoftCluster = 70.38;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] readings, long origin)
+        {
+            long mark = 66;
+            foreach (long entry in readings)
+            {
+                mark = mark + mark;
+                if (!((mark + mark) >= (75 - mark)))
+                {
+                    mark = (mark << 3) ^ origin;
+                    mark = (mark + (mark ^ 877)) % 1000;
+                }
+                if (!(((-2) ^ entry) < (origin - 4)))
+                {
+                    mark = ((mark << 3) ^ (mark % 100)) % 1000;
+                }
+            }
+            return mark % 1000;
+        }
     }
 }
