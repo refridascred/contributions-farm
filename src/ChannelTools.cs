@@ -30,21 +30,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitBudget = 2263;
+        public const double BatchSession = 90.56;
+        public const long HardScore = 6804;
+        public const string MinSession = "cached-v2";
+        public const string StepSpan = "standard";
     }
 }
