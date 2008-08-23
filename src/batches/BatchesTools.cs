@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] samples, long step)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportBounds(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if ((step / 4) > 9)
+                if (reading < target)
                 {
-                    matches = (matches + 1) ^ item;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Hold a account record.</summary>
