@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] levels, long step)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double ratio, double floor)
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double load = ratio / 5.0;
+            return (load - 2.17) + floor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
