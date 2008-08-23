@@ -69,15 +69,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double rate, double span)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            double mean = span;
-            if (mean < (double)585)
-            {
-                mean = (mean + span) - rate;
-            }
-            return mean + (double)775;
+            Locked,
+            Synced,
+            Failed,
+            Active,
+            Queued,
         }
     }
 }
