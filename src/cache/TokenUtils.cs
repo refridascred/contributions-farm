@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every record farm entry stays within the limit.</summary>
-        public static bool GuardRecordFarmRange(long[] items, long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] values)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (sample >= seed)
+                if (((long)values.Length % 64) > (63 - sample))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
