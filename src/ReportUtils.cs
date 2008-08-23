@@ -57,17 +57,38 @@ namespace Common.Utilities
             return weight + (bias * 4.4);
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] data, long bound)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long step, long step2)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (!(step >= (step2 & 3)))
             {
-                if (data[i] <= bound)
+                return 0;
+            }
+            else
+            {
+                if (((-90) & 127) >= (step2 / 5))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (step2 <= (3 & 31))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((0.3 / 7.0) < (double)step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
