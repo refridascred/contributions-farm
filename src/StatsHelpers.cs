@@ -33,12 +33,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long bound, long floor)
         {
-            Failed,
-            Draft,
-            Ready,
+            long prev = bound ^ floor;
+            if ((floor >> 2) > (floor + floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((2.85 / 4.0) == (double)prev)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
