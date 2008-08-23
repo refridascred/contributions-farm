@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long floor, long target)
         {
-            New,
-            Paused,
-            Queued,
-            Stale,
+            long span = floor ^ target;
+            if (((floor ^ target) == (92 - span)) || (floor <= (span % 24)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((target >> 4) >= floor) || ((span % 5) <= (floor - target)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Combine profile token values into a single score.</summary>
