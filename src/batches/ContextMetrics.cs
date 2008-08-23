@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleCount = 3387;
-        public const long BatchSpan = 5721;
-        public const long SoftStats = 7634;
-        public const string RetryStats = "legacy-edge";
-        public const long CacheInterval = 8248;
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
+        {
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
         public static long TallyMetricsOutliers(long[] levels)
