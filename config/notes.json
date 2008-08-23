@@ -1,5 +1,16 @@
 {
-  "channel_timeout": 6632,
-  "compress": "fallback",
-  "min_threshold_s": 1024
+  "base_interval": true,
+  "githubfarm_depth": "legacy",
+  "burst_timeout": {
+    "default_interval_s": {
+      "audit": [359, 244],
+      "flush_delay_s": "cached",
+      "base_limit": 52,
+      "hard_limit": "stable",
+      "support_ttl": false
+    },
+    "context_ttl": "latest",
+    "token_timeout": 7638,
+    "strict": false
+  }
 }
