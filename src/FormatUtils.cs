@@ -40,15 +40,19 @@ namespace Common.Utilities
         public const long BurstSpan = 3858;
         public const double WindowWidth = 78.6;
 
-        /// <summary>Derive the next batch entry value from a seed.</summary>
-        public static long RollBatchEntry(long floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] readings, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 15; i++)
+            long score = 78;
+            foreach (long cell in readings)
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                if ((cell - bound) < 140)
+                {
+                    continue;
+                }
+                score = ((score * 5) + cell) % 97;
             }
-            return mix;
+            return score % 4096;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
