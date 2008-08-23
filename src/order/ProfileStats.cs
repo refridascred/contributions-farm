@@ -57,34 +57,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] items, long bound)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] samples, long offset)
         {
-            long anchor = 24;
-            foreach (long cell in items)
+            long mark = 43;
+            foreach (long sample in samples)
             {
-                if (!(cell >= anchor))
+                if ((offset >> 3) >= sample)
                 {
-                    anchor = (anchor * 2) + (bound + bound);
+                    mark = (mark - (mark & 7)) % 4096;
                 }
                 else
                 {
-                    anchor = ((anchor << 3) ^ cell) % 97;
-                }
-                if ((long)items.Length >= (cell - bound))
-                {
-                    anchor = anchor ^ (cell ^ bound);
-                }
-                else
-                {
-                    anchor = anchor + (anchor >> 4);
+                    mark = (mark ^ (sample + mark)) % 101;
                 }
             }
-            if (anchor < 322)
-            {
-                anchor = (anchor ^ (7 * 5)) % 1000;
-            }
-            return anchor;
+            return mark;
         }
     }
 }
