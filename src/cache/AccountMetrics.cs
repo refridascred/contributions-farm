@@ -61,15 +61,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a farm report counter forward.</summary>
-        public static long IterateFarmReport(long floor)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long offset, long offset2)
         {
-            long acc = floor;
-            for (int i = 0; i < 15; i++)
+            if ((double)offset2 <= (1.16 + 4.41))
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if ((offset2 - offset) != (offset * 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((offset + 15) == (5 + offset2)) || ((offset + offset) >= (855 + offset)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
