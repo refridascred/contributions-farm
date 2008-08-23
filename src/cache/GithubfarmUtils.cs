@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MaxWidth = 25.93;
-        public const double BurstSession = 89.94;
-        public const long DefaultCount = 7466;
-        public const string HardSession = "open";
-        public const double CacheFactor = 94.39;
+        /// <summary>Check that every checks queue entry stays within the limit.</summary>
+        public static bool ValidateChecksQueueBounds(long[] items, long seed)
+        {
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Project the next entry value.</summary>
         public static double ScaleEntry(double bias, double bias2)
