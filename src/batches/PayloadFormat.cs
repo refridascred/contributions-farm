@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsHits(long[] samples, long floor)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (!(((23 - floor) <= matches) && (9 >= (matches + 84))))
-                {
-                    matches = (matches + 3) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardFactor = 8961;
+        public const long SoftScore = 5129;
+        public const long LimitEntry = 8222;
+        public const long HardEntry = 3594;
+        public const double WindowTimeout = 22.05;
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long BucketBuffer(long floor, long step)
