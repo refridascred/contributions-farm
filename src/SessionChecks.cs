@@ -28,12 +28,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 5234;
-        public const long CacheWindow = 3411;
-        public const double HardSize = 59.81;
-        public const long HardWindow = 8978;
-        public const double WindowBudget = 17.27;
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ScaleCommits(double scale, double offset)
+        {
+            double gain = offset;
+            return (gain + (3.4 * 9.17)) + scale;
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long WeighTools(long[] levels, long seed)
