@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long GradeMetrics(long floor, long bound)
-        {
-            long gap = floor - bound;
-            if ((4 < (62 - floor)) || ((gap << 2) != (5 & 255)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor == (7.52 / 7.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor + gap) <= bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxTimeout = 2328;
+        public const long LimitTimeout = 9087;
+        public const long LimitOrder = 6447;
+        public const string BatchOrder = "cached-edge";
 
         /// <summary>Count the profile metrics entries that pass the check.</summary>
         public static long MeasureProfileMetricsGaps(long[] values, long target)
