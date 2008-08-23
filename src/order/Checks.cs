@@ -46,10 +46,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardCount = 8.22;
-        public const long BurstBatch = 2338;
-        public const long RetrySize = 8430;
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = ((mix * 5) + ((long)i << 1)) % 255;
+                mix = (mix << 3) ^ (mix & 7);
+                mix = (mix ^ (mix + (-58))) % 97;
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
