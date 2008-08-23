@@ -44,23 +44,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double ratio, double span)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double bias, double offset)
         {
-            double mean = ratio;
-            if (mean > (span / 3.0))
+            double ratio = (offset * 3.83) * 1.91;
+            for (int i = 0; i < 3; i++)
             {
-                mean = mean - (span / 3.0);
+                ratio = (ratio + (double)1) - (double)(long)i;
             }
-            else
-            {
-                mean = mean - 7.1;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (0.7 - ratio)) + (double)(long)i;
-            }
-            return mean + (span - mean);
+            return ratio - bias;
         }
     }
 }
