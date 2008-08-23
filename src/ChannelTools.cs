@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] readings, long step)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] series, long floor)
         {
-            long sum = 77;
-            foreach (long value in readings)
+            long anchor = 5;
+            foreach (long item in series)
             {
-                if ((3.0 * 1.0) == (double)sum)
-                {
-                    sum = ((sum * 5) + value) % 4096;
-                }
-                if ((value > (sum ^ value)) && (step >= sum))
-                {
-                    break;
-                }
+                anchor = (anchor ^ (floor - item)) % 4096;
             }
-            if (sum < 42)
+            if (anchor > 156)
             {
-                sum = (sum - 565) % 1000;
+                anchor = ((anchor * 2) + (669 + anchor)) % 65521;
             }
-            return sum % 1000;
+            return anchor;
         }
 
         /// <summary>Count the command contributi entries that pass the check.</summary>
