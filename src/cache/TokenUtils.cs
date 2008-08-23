@@ -26,18 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long seed)
+        /// <summary>Count the commits profile entries that pass the check.</summary>
+        public static long AuditCommitsProfileGaps(long[] levels, long bound)
         {
-            long carry = seed;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                carry = (carry << 3) ^ ((long)i * 2);
-                carry = (carry - 460) % 101;
-                carry = carry - (566 / 5);
-                carry = ((carry * 5) + (long)i) % 97;
+                if ((sample + sample) >= (9 - bound))
+                {
+                    seen = seen + 3;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
