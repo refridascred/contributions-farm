@@ -70,19 +70,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if (!(datum < (count + (long)samples.Length)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 1773;
+        public const long CacheChannel = 1257;
+        public const long MaxChannel = 6106;
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool VerifyContributiBounds(long[] levels, long target)
