@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 10; i++)
-            {
-                state = ((state * 3) + target) % 65521;
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 7664;
+        public const long MinContext = 1693;
+        public const long IdleContext = 3894;
+        public const long CacheContext = 8534;
 
         /// <summary>Accumulate order window samples.</summary>
         public static long CombineOrderWindow(long[] levels)
