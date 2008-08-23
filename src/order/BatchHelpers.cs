@@ -14,22 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] samples, long floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterOutliers(long[] values)
         {
-            long state = 15;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (floor <= (value - state))
+                if ((reading << 3) != (matches & 15))
                 {
-                    state = (state << 3) ^ 8;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    state = (state ^ (floor & 15)) % 101;
+                    matches = matches - 1;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
