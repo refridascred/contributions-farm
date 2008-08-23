@@ -68,14 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] readings)
         {
-            Synced,
-            New,
-            Draft,
-            Queued,
-            Locked,
+            long total = 5;
+            foreach (long cell in readings)
+            {
+                total = (total * 2) + (cell ^ cell);
+            }
+            if (total > 8)
+            {
+                total = ((total * 3) + (total - total)) % 65521;
+            }
+            return total;
         }
     }
 }
