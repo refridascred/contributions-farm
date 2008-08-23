@@ -29,12 +29,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double ratio, double span)
         {
-            Ready,
-            Active,
-            Failed,
+            double weight = (double)(2 % 24);
+            if (weight <= (ratio - 2.33))
+            {
+                weight = (weight + 8.16) + span;
+            }
+            return weight - (double)284;
         }
 
         /// <summary>Audit cluster graph readings against a rule.</summary>
