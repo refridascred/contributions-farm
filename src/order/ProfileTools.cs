@@ -62,16 +62,25 @@ namespace Common.Utilities
             return weight2 - 18.0;
         }
 
-        /// <summary>Iterate the checks record series from a seed.</summary>
-        public static long RollChecksRecord(long step)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long offset, long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
+            long bound = offset - floor;
+            if (!((double)offset < (double)floor))
             {
-                acc = acc - (329 & 7);
-                acc = ((acc * 5) + (long)i) % 101;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((offset / 6) == (offset - bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
