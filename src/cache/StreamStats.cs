@@ -50,38 +50,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long step, long step2)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] levels, long target)
         {
-            if ((step + step2) <= (step * 4))
+            long seen = 0;
+            foreach (long item in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((865 & 31) == (step ^ step))
+                if ((target >> 4) < 334)
                 {
-                    return 5;
+                    seen = (seen + 1) + item;
                 }
                 else
                 {
-                    if ((674 >> 4) > step2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step >> 4) > step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
