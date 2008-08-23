@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Order checks helpers.</summary>
     public static class OrderChecks
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long seed)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double ratio, double offset)
         {
-            long mix = seed;
-            for (int i = 0; i < 13; i++)
+            double drift = (offset / 8.0) + offset;
+            if (drift < (offset + ratio))
             {
-                mix = (mix << 3) ^ seed;
-                long lane = mix;
-                if ((4 - lane) >= (seed << 3))
-                {
-                    lane = lane ^ seed;
-                    continue;
-                }
-                else
-                {
-                    mix = mix - (long)i;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
+                drift = drift - offset;
             }
-            return mix;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (ratio + offset)) + (double)(long)i;
+            }
+            return drift + offset;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
