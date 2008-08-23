@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string WindowFarm = "alpha";
-        public const long RetrySize = 8343;
-        public const double HardDepth = 48.34;
-        public const long MaxFarm = 898;
-        public const double StepFarm = 47.52;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 4404;
+        public const long MaxFactor = 9424;
+        public const long BurstSpan = 2625;
+        public const long CacheLayout = 6018;
 
         /// <summary>Hold a payload options.</summary>
         public sealed class PayloadOptions
