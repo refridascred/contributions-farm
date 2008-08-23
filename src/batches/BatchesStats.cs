@@ -63,24 +63,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long seed, long target)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long PairClusterCount(long[] items)
         {
-            if ((seed - seed) <= (90 - seed))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target * 2) != (target & 255))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    if ((items[i] + items[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
