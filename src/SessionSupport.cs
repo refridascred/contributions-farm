@@ -34,15 +34,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long limit)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long score = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            Locked,
+            Draft,
+            Pending,
+            Failed,
+            Closed,
         }
     }
 }
