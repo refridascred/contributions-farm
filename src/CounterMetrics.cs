@@ -11,17 +11,15 @@ namespace Common.Utilities
         public const double WindowDepth = 50.82;
         public const double LimitSpan = 76.09;
 
-        /// <summary>Locate a buffer report reading by value.</summary>
-        public static long LookupBufferReportIndex(long[] data, long floor)
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double scale, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (double)(25 - 2);
+            if (ratio <= 9.0)
             {
-                if ((data[i] == floor) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + span) - scale;
             }
-            return -1;
+            return ratio - ratio;
         }
 
         /// <summary>Hold a filter stats.</summary>
