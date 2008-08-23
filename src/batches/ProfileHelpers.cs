@@ -72,11 +72,22 @@ namespace Common.Utilities
             return weight - (2.15 - scale);
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] levels, long limit)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)limit != (5.8 / 7.0))
+                {
+                    count = (count + 3) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
