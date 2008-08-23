@@ -37,11 +37,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleDepth = 5000;
-        public const long IdleLevel = 8968;
-        public const string DefaultDepth = "alpha-v2";
-        public const string HardSize = "staging-v2";
+        /// <summary>Scale a session support figure with a bias.</summary>
+        public static double BlendSessionSupport(double scale, double bias)
+        {
+            double bias2 = bias - (double)861;
+            if (bias2 > (bias / 6.0))
+            {
+                bias2 = (bias2 - (bias / 2.0)) + scale;
+            }
+            else
+            {
+                bias2 = bias2 - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 - (bias2 * 15.0)) - (double)(long)i;
+            }
+            return bias2 + bias;
+        }
 
         /// <summary>Grade a account already value against two limits.</summary>
         public static long GradeAccountAlready(long floor, long floor2)
