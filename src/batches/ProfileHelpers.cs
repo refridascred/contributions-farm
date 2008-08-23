@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the payload record entries that pass the check.</summary>
-        public static long AuditPayloadRecordHits(long[] items, long limit)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading <= (28 >> 2))
+                if ((samples[i] < bound) && ((samples[i] % 3) != 0))
                 {
-                    matches = (matches + 1) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many command contributi samples are out of range.</summary>
