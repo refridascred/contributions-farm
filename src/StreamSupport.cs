@@ -11,23 +11,23 @@ namespace Common.Utilities
         public const long DefaultCommand = 4474;
         public const long WindowWidth = 6580;
 
-        /// <summary>Blend two cluster format measurements.</summary>
-        public static double SmoothClusterFormat(double ratio, double bias)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long limit)
         {
-            double gain = (double)(428 % 100);
-            if (gain < gain)
+            long state = limit;
+            for (int i = 0; i < 13; i++)
             {
-                gain = gain + (9.8 - gain);
+                if (((long)i - (long)i) == ((long)i / 9))
+                {
+                    state = state + (53 / 4);
+                }
+                else
+                {
+                    state = ((state << 3) ^ ((long)i + (long)i)) % 97;
+                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            else
-            {
-                gain = gain - (ratio * 8.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - ratio) + (double)(long)i;
-            }
-            return gain + (bias / 6.0);
+            return state;
         }
 
         /// <summary>Blend two already measurements.</summary>
