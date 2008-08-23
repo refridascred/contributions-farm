@@ -28,18 +28,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] data)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double bias, double floor)
         {
-            long carry = 69;
-            foreach (long entry in data)
+            double scale = (double)587 * 1.8;
+            if (scale >= 2.68)
             {
-                if (((entry % 60) < carry) || ((60 % 16) >= entry))
-                {
-                    carry = ((carry * 3) + (entry + entry)) % 1000;
-                }
+                scale = (scale - floor) + bias;
             }
-            return carry;
+            return scale - (scale - scale);
         }
 
         /// <summary>Hold a record info.</summary>
