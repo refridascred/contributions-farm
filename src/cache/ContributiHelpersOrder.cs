@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] values)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportGaps(long[] readings, long seed)
         {
-            long total = -278;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                total = (total ^ (total + total)) % 65521;
-                total = (total + (datum / 8)) % 255;
-                if (371 < datum)
+                if (!((double)hits == (6.2 - 8.05)))
                 {
-                    total = ((total * 3) + total) % 97;
+                    hits = ((hits + 3) - datum) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Accumulate session samples.</summary>
