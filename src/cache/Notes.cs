@@ -53,19 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double bias, double span)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long floor)
         {
-            double weight = span;
-            if (weight >= span)
+            long total = floor;
+            for (int i = 0; i < 14; i++)
             {
-                weight = weight + (span - 7.81);
+                total = ((total * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (bias * 4.8)) + (double)(long)i;
-            }
-            return weight + (double)(-312);
+            return total;
         }
     }
 }
