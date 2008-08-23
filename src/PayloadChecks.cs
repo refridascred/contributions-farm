@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Audit checks metric readings against a rule.</summary>
+        public static long TallyChecksMetricHits(long[] data, long target)
         {
-            Paused,
-            Locked,
-            Draft,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((double)entry != (15.0 / 4.0))
+                {
+                    tally = (tally + 2) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
