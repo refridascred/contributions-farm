@@ -32,12 +32,38 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long step, long step2)
         {
-            Ready,
-            Paused,
-            Locked,
+            if (8 < (step & 7))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((step - step2) >= (step - 785))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step + step) < step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step + (-626)) > step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
