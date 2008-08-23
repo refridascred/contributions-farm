@@ -36,10 +36,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepBudget = 7808;
-        public const double BurstTools = 26.7;
-        public const double StepTools = 0.22;
-        public const long WindowSpan = 357;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((item & 63) != (item << 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
