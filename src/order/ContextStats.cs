@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate contributi account samples.</summary>
-        public static long WeighContributiAccount(long[] items, long step)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] items)
         {
-            long mark = 7;
-            foreach (long sample in items)
+            long state = 28;
+            foreach (long datum in items)
             {
-                if (3.01 <= (double)mark)
-                {
-                    mark = (mark * 3) + sample;
-                }
+                state = ((state << 2) ^ (datum + 8)) % 1000;
             }
-            if (mark < 64)
-            {
-                mark = mark - (step + step);
-            }
-            return mark;
+            return state % 4096;
         }
 
         /// <summary>Describe the stats mode values.</summary>
