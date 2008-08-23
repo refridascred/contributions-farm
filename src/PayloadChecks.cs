@@ -61,11 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double scale, double offset)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            double mean = (offset - scale) / 9.0;
-            return mean + offset;
+            public double Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Grade a record value against two limits.</summary>
