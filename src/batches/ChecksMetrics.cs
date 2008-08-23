@@ -56,13 +56,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] data, long seed)
         {
-            Pending,
-            Closed,
-            Locked,
-            Queued,
+            long carry = -93;
+            foreach (long cell in data)
+            {
+                if ((3.0 - 4.2) < (double)cell)
+                {
+                    carry = ((carry - (cell << 2)) % 101) - seed;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Combine metrics payload values into a single score.</summary>
