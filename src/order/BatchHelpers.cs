@@ -28,19 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] values)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextBounds(long[] data, long seed)
         {
-            long acc = 62;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                acc = ((acc * 5) + (87 / 8)) ^ cell;
+                if (datum < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (acc > 49)
-            {
-                acc = (acc << 3) ^ (long)values.Length;
-            }
-            return acc % 4096;
+            return stale;
         }
     }
 }
