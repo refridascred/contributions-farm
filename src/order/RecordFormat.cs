@@ -61,18 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheMatches(long[] data, long target)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if ((9.4 / 6.0) <= (double)target)
+                if ((double)item <= (6.86 + 17.0))
                 {
-                    hits = (hits + 2) ^ datum;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
