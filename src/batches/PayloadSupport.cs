@@ -22,13 +22,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Look up the position of a buffer githubfarm sample.</summary>
+        public static long SeekBufferGithubfarmIndex(long[] values, long target)
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public bool Rank { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
