@@ -35,21 +35,22 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Match up profile report samples.</summary>
-        public static long MatchProfileReportCount(long[] levels)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((sample << 3) > (3 >> 1))
                 {
-                    if ((levels[i] + levels[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
