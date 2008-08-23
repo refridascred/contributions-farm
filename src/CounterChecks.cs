@@ -13,21 +13,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count batches layout pairs that satisfy a relation.</summary>
-        public static long CompareBatchesLayoutCount(long[] data)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 25;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((result >> 1) <= (result >> 2)) || ((double)result >= 8.5))
                 {
-                    if ((data[i] + data[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result << 3) ^ ((-205) + offset)) + value;
                 }
             }
-            return hits;
+            if (result > 0)
+            {
+                result = ((result * 2) + ((long)levels.Length ^ offset)) % 97;
+            }
+            return result % 1000;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
