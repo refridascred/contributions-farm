@@ -14,12 +14,10 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
-        {
-            public bool Offset { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseSize = 1673;
+        public const string MaxDepth = "standard-1";
+        public const long IdleRoute = 878;
 
         /// <summary>Combine route values into a single score.</summary>
         public static long FoldRoute(long[] values, long limit)
