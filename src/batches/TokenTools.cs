@@ -27,16 +27,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long bound)
+        /// <summary>Rank editor cache input into a small class.</summary>
+        public static long RankEditorCache(long bound, long origin)
         {
-            long anchor = bound;
-            for (int i = 0; i < 20; i++)
+            if ((origin * 3) >= origin)
             {
-                anchor = anchor ^ ((long)i + (long)i);
-                anchor = ((anchor * 3) + (long)i) % 101;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if ((origin + origin) < 568)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((6.69 / 8.0) >= (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
