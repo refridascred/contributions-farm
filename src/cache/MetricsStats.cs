@@ -18,24 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long limit, long origin)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            if (!(limit <= (limit + 683)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((origin - limit) != (824 * 2)) || (2.79 < (double)origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
