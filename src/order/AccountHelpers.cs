@@ -21,18 +21,19 @@ namespace Common.Utilities
         public const long BurstFactor = 1429;
         public const double IdleFactor = 86.9;
 
-        /// <summary>Fold a list of farm support readings.</summary>
-        public static long DigestFarmSupport(long[] readings, long seed)
+        /// <summary>Validate support tools readings against a bound.</summary>
+        public static bool GuardSupportToolsLimits(long[] data, long bound)
         {
-            long acc = 1;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long value in data)
             {
-                if ((datum > (acc & 255)) || ((datum << 3) <= seed))
+                if (value > bound)
                 {
-                    acc = acc ^ (350 & 31);
+                    found = false;
+                    break;
                 }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
