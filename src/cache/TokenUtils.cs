@@ -31,11 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MaxInterval = 2.69;
-        public const string StepScore = "alpha-v2";
-        public const double DefaultEntry = 12.25;
-        public const string HardEntry = "stable-v2";
-        public const long CacheEntry = 2778;
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > limit) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
