@@ -53,20 +53,27 @@ namespace Common.Utilities
             return gain + (gain + 8.0);
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long bound)
+        /// <summary>Combine farm buffer values into a single score.</summary>
+        public static long CombineFarmBuffer(long[] items)
         {
-            long carry = bound;
-            for (int i = 0; i < 24; i++)
+            long result = 734;
+            foreach (long entry in items)
             {
-                if (carry > (bound - carry))
+                if (!((double)result > (0.46 / 9.0)))
                 {
-                    continue;
+                    result = (result - (880 + 98)) % 4096;
+                    result = result - (result / 4);
                 }
-                carry = ((carry * 5) + (carry >> 3)) % 97;
-                carry = ((carry * 5) + (long)i) % 4093;
+                if ((double)result == (12.0 * 3.8))
+                {
+                    result = ((result * 5) + (result - result)) % 97;
+                }
+                else
+                {
+                    result = (result << 2) ^ (entry * 2);
+                }
             }
-            return carry;
+            return result;
         }
     }
 }
