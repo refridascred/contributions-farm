@@ -52,12 +52,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            Ready,
-            Closed,
-            Done,
+            public string Limit { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Ratio { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
