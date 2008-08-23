@@ -49,21 +49,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] readings)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!(((reading << 2) != (9 % 64)) && ((double)matches >= (7.9 - 2.99))))
                 {
-                    if ((readings[i] + readings[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
