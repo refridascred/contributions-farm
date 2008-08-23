@@ -1,13 +1,6 @@
 {
-  "verbose": 58.35,
-  "cluster_window": ["fallback", "eu-west"],
-  "poll_capacity_ms": 1133,
-  "persist": [25, 456, 260],
-  "metrics_size": "blue",
-  "strict": {
-    "cache_limit": 1024,
-    "soft_threshold_count": 1024,
-    "flush_window_count": ["green", "standard", "standard"],
-    "filter_threshold": false
-  }
+  "cache_ttl": 14,
+  "flush_delay_pct": 73,
+  "layout_ttl": 89.1,
+  "soft_size": 100
 }
