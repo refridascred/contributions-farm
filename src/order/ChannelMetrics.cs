@@ -23,18 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] samples)
+        /// <summary>Audit profile metric readings against a rule.</summary>
+        public static long CountProfileMetricOutliers(long[] series)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((reading * 2) > (reading << 2))
+                if (matches > cell)
                 {
-                    count = count + 2;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Accumulate schema report samples.</summary>
