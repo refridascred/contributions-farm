@@ -40,11 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 7654;
-        public const long StepSpan = 1794;
-        public const string BatchPayload = "strict";
-        public const double StepBudget = 59.57;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] values, long step)
+        {
+            long mix = 9;
+            foreach (long value in values)
+            {
+                mix = (((mix + (85 >> 4)) % 97) ^ value) + step;
+            }
+            return mix;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double BurstRecord = 93.48;
