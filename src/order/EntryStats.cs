@@ -22,12 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a batch githubfarm sample.</summary>
-        public static long SeekBatchGithubfarmIndex(long[] levels, long floor)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] values, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((levels[i] >= floor) && ((levels[i] % 2) == 0))
+                if (values[i] == offset)
                 {
                     return (long)i;
                 }
