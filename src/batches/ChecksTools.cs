@@ -45,12 +45,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleChannel = "open";
+        public const string StepChannel = "primary-1";
+        public const long DefaultLevel = 6597;
+        public const long MinChannel = 9683;
     }
 }
