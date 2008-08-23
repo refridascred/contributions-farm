@@ -79,9 +79,21 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleCache = "staging-edge";
-        public const double IdleLevel = 3.24;
-        public const long SoftCache = 8052;
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
