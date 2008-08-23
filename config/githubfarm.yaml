@@ -1,16 +1,10 @@
 # githubfarm settings
-batches_depth: true
-verbose: true
-flush_capacity_s: 5.5
-idle_depth_s:
-  default_retries: 15
-  min_interval_pct: 6
-  route_capacity: 52
-  token_limit: 4747
-  checks_threshold:
-    - 403
-    - 484
-    - 132
-  strict: 32.9
-min_timeout_s: standard
-compress: 98
+default_capacity_count: latest
+strict: false
+flush_size_s: 3733
+soft_delay_ms:
+  commits_delay: false
+  strict: primary
+  enabled: 250
+  cache_limit_count: legacy
+  base_retries_ms: 100
