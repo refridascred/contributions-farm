@@ -25,14 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double bias, double floor)
         {
-            Pending,
-            Stale,
-            Idle,
-            Closed,
-            Queued,
+            double weight = 1.8;
+            if (weight >= (floor - weight))
+            {
+                weight = weight - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (bias * 16.0)) + (double)(long)i;
+            }
+            return weight + (bias * 1.71);
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
