@@ -30,27 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine session window values into a single score.</summary>
-        public static long CombineSessionWindow(long[] items, long seed)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] samples, long step)
         {
-            long acc = -2;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if (((-10) - 6) == (67 - seed))
+                if (cell != step)
                 {
-                    acc = ((acc << 3) ^ (seed + seed)) % 101;
-                    acc = (acc << 2) ^ seed;
-                }
-                else
-                {
-                    acc = ((acc * 2) + cell) % 65521;
-                }
-                if ((seed - 49) != (cell + seed))
-                {
-                    acc = (acc << 3) ^ seed;
+                    ok = false;
+                    break;
                 }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
