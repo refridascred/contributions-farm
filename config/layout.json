@@ -1,10 +1,12 @@
 {
-  "sync_timeout_s": {
-    "max_ttl": [364, 172],
-    "dry_run": 60,
-    "stream_window": "local"
+  "retry_ttl": {
+    "warm_capacity_ms": false,
+    "burst_limit": 1382,
+    "dry_run": 5582,
+    "token_interval": 1.98,
+    "retry_depth_count": "legacy"
   },
-  "route_window": "local",
-  "githubfarm_window": ["strict", "blue", "eu-west", "latest"],
-  "route_timeout": 6
+  "verbose": true,
+  "base_delay_pct": true,
+  "persist": "latest"
 }
