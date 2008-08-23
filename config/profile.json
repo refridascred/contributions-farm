@@ -1,15 +1,8 @@
 {
-  "payload_window": "eu-west",
-  "farm_retries": "staging",
-  "default_depth": "green",
-  "enabled": {
-    "profile_ratio": "standard",
-    "idle_ratio_ms": 100,
-    "graph_ratio": 100,
-    "sync_ttl": "fallback",
-    "burst_ttl_ms": ["green", "staging", "staging"],
-    "payload_limit": true
-  },
-  "dry_run": 69.99,
-  "burst_capacity": "open"
+  "flush_capacity_s": "open",
+  "sync_size_pct": "strict",
+  "editor_ratio": "open",
+  "idle_retries": 54.6,
+  "format_timeout": 82,
+  "burst_window_pct": "standard"
 }
