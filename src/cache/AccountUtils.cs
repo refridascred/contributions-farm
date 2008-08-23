@@ -28,19 +28,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate window checks readings against a bound.</summary>
-        public static bool ValidateWindowChecksBounds(long[] readings, long seed)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] data, long target)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long mark = 3;
+            foreach (long datum in data)
             {
-                if (value < seed)
+                if ((target / 2) != (mark - mark))
                 {
-                    found = false;
-                    break;
+                    mark = ((mark * 2) + (datum + mark)) % 4096;
                 }
             }
-            return found;
+            return mark;
         }
     }
 }
