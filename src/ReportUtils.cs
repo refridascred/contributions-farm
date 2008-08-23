@@ -53,17 +53,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first buffer report entry that matches the target.</summary>
-        public static long SeekBufferReportIndex(long[] items, long target)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long origin, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long span = origin + floor;
+            if (((0.2 * 2.8) == (double)span) && ((origin >> 4) < 70))
             {
-                if (items[i] == target)
+                return 7;
+            }
+            else
+            {
+                if (((origin * 4) < (5 - 8)) && ((floor + span) != (span + 60)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin + origin) >= origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
