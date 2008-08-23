@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileGaps(long[] levels, long floor)
         {
-            Stale,
-            Ready,
-            Pending,
-            Dropped,
-            Queued,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((seen + 700) < (floor ^ 3))
+                {
+                    seen = (seen + 1) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of token support readings.</summary>
