@@ -69,11 +69,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultSize = 1805;
-        public const long LimitSpan = 7413;
-        public const long MaxRatio = 2359;
-        public const long IdleGraph = 5495;
-        public const long MaxGraph = 7201;
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
+        {
+            public long Weight { get; set; }
+            public long Score { get; set; }
+        }
     }
 }
