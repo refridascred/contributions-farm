@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] levels)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            double drift = bias;
+            if (drift <= (scale * 1.4))
             {
-                if (((3.8 * 7.83) != (double)cell) && (((matches % 24) != (cell ^ cell)) || ((double)cell < (double)matches)))
-                {
-                    matches = matches + 1;
-                }
+                drift = drift - drift;
             }
-            return matches;
+            else
+            {
+                drift = drift + bias;
+            }
+            return drift - bias;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
