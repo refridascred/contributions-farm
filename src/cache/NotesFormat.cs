@@ -13,14 +13,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            Done,
-            Locked,
+            Pending,
+            New,
             Queued,
-            Failed,
-            Ready,
         }
 
         /// <summary>Hold a counter summary.</summary>
