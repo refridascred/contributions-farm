@@ -23,15 +23,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many entry route samples are out of range.</summary>
-        public static long TallyEntryRouteGaps(long[] values, long bound)
+        /// <summary>Audit notes cluster readings against a rule.</summary>
+        public static long CountNotesClusterOutliers(long[] series)
         {
             long hits = 0;
-            foreach (long datum in values)
+            foreach (long datum in series)
             {
-                if ((double)datum <= (14.0 + 4.94))
+                if ((hits + datum) >= (datum ^ datum))
                 {
-                    hits = (hits + 3) + bound;
+                    hits = hits + 2;
                 }
             }
             return hits;
