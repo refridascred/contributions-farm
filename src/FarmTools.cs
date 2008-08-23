@@ -39,18 +39,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] values)
+        /// <summary>Measure how many already batch samples are out of range.</summary>
+        public static long TallyAlreadyBatchMatches(long[] values, long target)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (!(16.0 < (double)count))
+                if ((21 & 7) != ((-78) + entry))
                 {
-                    count = (count + 1) ^ sample;
+                    tally = (tally + 2) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
