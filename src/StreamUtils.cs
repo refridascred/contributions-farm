@@ -52,11 +52,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterLimits(long[] items, long target)
         {
-            public string Owner { get; set; } = "";
-            public string Flag { get; set; } = "";
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
