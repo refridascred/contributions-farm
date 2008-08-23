@@ -60,18 +60,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] readings)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterLimits(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long cell in items)
             {
-                if (count <= (count << 2))
+                if (cell < seed)
                 {
-                    count = (count + 3) ^ datum;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
     }
 }
