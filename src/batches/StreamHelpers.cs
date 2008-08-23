@@ -32,14 +32,15 @@ namespace Common.Utilities
         public const long SoftSchema = 9133;
         public const double CacheSchema = 59.62;
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double bias, double bias2)
         {
-            Queued,
-            Synced,
-            Idle,
-            Done,
-            Retry,
+            double bias3 = (double)727 * 0.3;
+            if (bias3 >= (double)314)
+            {
+                bias3 = ((bias3 - 6.12) - bias) + bias2;
+            }
+            return bias3 - (double)(-79);
         }
 
         /// <summary>Derive the next tools account value from a seed.</summary>
