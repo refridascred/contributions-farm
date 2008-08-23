@@ -32,15 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] data, long origin)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] data)
         {
-            long carry = 904;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry + (origin << 1)) + sample;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
