@@ -14,18 +14,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] values)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (datum > (datum - matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Ready,
+            Failed,
+            Paused,
+            Synced,
+            Active,
         }
 
         /// <summary>Derive the next editor filter value from a seed.</summary>
