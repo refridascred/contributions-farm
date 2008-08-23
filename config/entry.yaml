@@ -1,4 +1,6 @@
 # entry settings
-persist: stable
-entry_threshold: green
-githubfarm_retries: 35
+audit: 80
+burst_capacity_pct: 43
+max_depth_ms: 76.63
+poll_ratio: legacy
+default_timeout_s: 250
