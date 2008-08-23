@@ -40,11 +40,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string HardBudget = "open-edge";
-        public const string IdleSize = "open-v2";
-        public const double CacheChannel = 30.1;
-        public const long BaseSpan = 3227;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] data, long target)
+        {
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long ClassifyEntry(long limit, long bound)
