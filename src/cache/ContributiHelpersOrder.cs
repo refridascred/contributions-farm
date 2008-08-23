@@ -24,25 +24,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long seed, long step)
-        {
-            if ((double)step <= 6.0)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((seed % 8) > (step << 3)) || ((seed >> 4) <= (step + step)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 7654;
+        public const long StepSpan = 1794;
+        public const string BatchPayload = "strict";
+        public const double StepBudget = 59.57;
 
         /// <summary>Define record limits and defaults.</summary>
         public const double BurstRecord = 93.48;
