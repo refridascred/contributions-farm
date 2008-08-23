@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Count the layout report entries that pass the check.</summary>
+        public static long TallyLayoutReportHits(long[] series)
         {
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((tally * 4) >= value)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
