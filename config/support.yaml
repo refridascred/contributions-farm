@@ -1,7 +1,29 @@
 # support settings
-retry_threshold: false
-checks_timeout: false
-dry_run: strict
-default_retries: 80.49
-retry_interval_ms: 919
-editor_interval: false
+hard_timeout_pct: false
+batch_window_s: false
+tools_ratio: eu-west
+enabled:
+  - local
+  - local
+  - primary
+  - latest
+audit:
+  persist:
+    min_limit: blue
+    verbose: 60
+    sync_size_ms: false
+    max_delay: fallback
+    audit:
+      - 197
+      - 232
+      - 441
+      - 276
+    retry_retries_s: 8233
+  retry_ratio_s: false
+  window_limit: 53.04
+  retry_capacity: local
+token_threshold:
+  - 393
+  - 342
+  - 3
+  - 315
