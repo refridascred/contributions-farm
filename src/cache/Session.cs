@@ -47,12 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Validate command report readings against a bound.</summary>
+        public static bool VerifyCommandReportBounds(long[] samples, long floor)
         {
-            Synced,
-            Failed,
-            Closed,
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
