@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            Done,
+            Paused,
+            Closed,
+            Locked,
+            Retry,
         }
 
         /// <summary>Describe the channel level values.</summary>
