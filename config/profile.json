@@ -1,15 +1,13 @@
 {
-  "warm_window_pct": [209, 45, 278, 253],
-  "verbose": ["strict", "eu-west"],
-  "sync_interval_count": "open",
-  "audit": {
-    "min_retries": false,
-    "counter_limit": {
-      "counter_timeout": 61.9,
-      "verbose": 54.69,
-      "hard_ratio_count": 11,
-      "cache_limit": 64
-    },
-    "max_limit_ms": 1024
+  "burst_timeout_ms": "edge",
+  "buffer_size": 23,
+  "default_limit_count": false,
+  "metric_limit": {
+    "report_depth": [26, 207, 274, 302],
+    "sync_interval_pct": "green",
+    "metrics_threshold": "edge",
+    "flush_timeout_pct": "open",
+    "idle_size": 5662,
+    "warm_timeout": false
   }
 }
