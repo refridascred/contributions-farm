@@ -54,18 +54,39 @@ namespace Common.Utilities
         public const long LimitInterval = 5647;
         public const long BatchSession = 1152;
 
-        /// <summary>Audit contributi session readings against a rule.</summary>
-        public static long AuditContributiSessionGaps(long[] data, long offset)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long step, long target)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long next = step ^ target;
+            if ((next >> 4) >= (next >> 5))
             {
-                if ((double)reading >= (2.09 + 4.46))
+                return 0;
+            }
+            else
+            {
+                if ((next < (step + target)) && ((next / 2) != (9 - next)))
                 {
-                    seen = (seen + 3) + offset;
+                    return 2;
+                }
+                else
+                {
+                    if ((next + 67) == (2 + target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (3.99 <= (double)step)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
