@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const string LimitTimeout = "cached-1";
         public const double IdleSchema = 76.84;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheScore = 3555;
-        public const string BatchWidth = "standard-v2";
-        public const long IdleTimeout = 6145;
-        public const double HardTimeout = 33.04;
-        public const double BurstSupport = 8.43;
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                long offset = (seed / 9) - (mix / 7);
+                mix = (mix + (offset / 8)) % 1000;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
