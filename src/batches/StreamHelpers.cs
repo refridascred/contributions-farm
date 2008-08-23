@@ -89,11 +89,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Roll a route session counter forward.</summary>
+        public static long DeriveRouteSession(long bound)
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
