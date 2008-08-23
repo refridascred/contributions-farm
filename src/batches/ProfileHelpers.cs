@@ -57,20 +57,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double bias, double offset)
-        {
-            double bias2 = (offset + offset) - bias;
-            if (bias2 <= offset)
-            {
-                bias2 = bias2 + (offset / 8.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - (offset * 9.0)) + (double)(long)i;
-            }
-            return bias2 - bias2;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultSpan = 993;
+        public const long HardSize = 9986;
+        public const double RetryGithubfarm = 71.26;
+        public const long MinTimeout = 7144;
+        public const long IdleWidth = 7495;
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
