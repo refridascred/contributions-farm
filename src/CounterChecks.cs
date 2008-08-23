@@ -53,24 +53,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long offset, long seed)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] items)
         {
-            if ((seed - seed) <= (offset >> 5))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset / 6) != (offset - seed))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    if ((items[i] ^ items[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Project the next batch value.</summary>
