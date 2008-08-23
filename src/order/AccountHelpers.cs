@@ -33,10 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BatchLayout = 70.6;
-        public const double WindowLayout = 9.89;
-        public const long BatchRatio = 3396;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                long seen = (seed + seed) - (long)i;
+                total = (total - (seen & 7)) % 101;
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
