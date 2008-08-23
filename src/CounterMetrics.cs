@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowInterval = 62;
-        public const double HardCounter = 13.55;
-        public const long MaxCounter = 3092;
-        public const double DefaultCount = 16.96;
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public bool Stamp { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long SeekProfileIndex(long[] levels, long origin)
