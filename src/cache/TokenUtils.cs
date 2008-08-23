@@ -13,18 +13,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] values)
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            double weight = rate;
+            for (int i = 0; i < 6; i++)
             {
-                if ((28 / 8) < cell)
-                {
-                    tally = tally + 1;
-                }
+                weight = ((weight + 19.0) + (double)(long)i) + bias;
             }
-            return tally;
+            return weight - (double)434;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
