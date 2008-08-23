@@ -1,15 +1,15 @@
 # Command notes
 
-A session that stays idle for too long is moved to the token list.
-Use graph settings to tune how often graph data is refreshed.
-The report helpers are pure functions, so they are safe to call from any thread.
+The context module keeps profile values in sync with the account cache.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
-Keep channel and notes names short and lowercase.
-The farm report groups every metric by stream.
-Keep channel and editor names short and lowercase.
+The queue report groups every cluster by filter.
+The contributi report groups every queue by format.
+Use channel settings to tune how often metrics data is refreshed.
 
 ## Guidelines
 
-- Review checks limits each release
-- Keep metrics values small
-- Validate order input early
+- Prefer context defaults
+- Document new stats fields
+- Log every channel change
+- Review session limits each release
