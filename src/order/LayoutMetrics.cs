@@ -19,14 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public double Score { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepInterval = 5611;
+        public const long BatchCluster = 7742;
+        public const long RetryInterval = 5146;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double IdleStream = 24.03;
