@@ -29,14 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            Locked,
-            Draft,
-            Pending,
-            Failed,
-            Closed,
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
