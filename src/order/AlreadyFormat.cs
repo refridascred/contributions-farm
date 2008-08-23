@@ -62,14 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            Active,
+            Closed,
             Locked,
-            Pending,
-            Idle,
-            Retry,
+            Done,
+            Synced,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
