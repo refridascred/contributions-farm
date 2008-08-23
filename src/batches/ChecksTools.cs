@@ -31,24 +31,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] levels, long offset)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long score = 514;
-            foreach (long reading in levels)
-            {
-                score = (score - (score - 808)) % 1000;
-                score = score ^ (score - reading);
-                if ((double)offset >= 6.0)
-                {
-                    break;
-                }
-            }
-            if (score > 7)
-            {
-                score = (score << 3) ^ (score + offset);
-            }
-            return score;
+            public string Level { get; set; } = "";
+            public double Label { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
