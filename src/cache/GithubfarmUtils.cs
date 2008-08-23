@@ -23,15 +23,17 @@ namespace Common.Utilities
             return drift - (drift / 7.0);
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double ratio, double span)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] data, long target)
         {
-            double weight = (double)(2 % 24);
-            if (weight <= (ratio - 2.33))
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = (weight + 8.16) + span;
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return weight - (double)284;
+            return -1;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
