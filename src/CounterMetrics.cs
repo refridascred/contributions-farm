@@ -24,12 +24,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryScore = 8933;
-        public const long SoftDepth = 6771;
-        public const long BatchCache = 2708;
-        public const long IdleCache = 344;
-        public const long CacheWidth = 2783;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] items)
+        {
+            long total = 18;
+            foreach (long cell in items)
+            {
+                total = ((total << 3) ^ (cell << 2)) % 255;
+                if (((double)total <= 1.46) || ((7.0 * 2.1) > (double)total))
+                {
+                    total = total - 14;
+                }
+                else
+                {
+                    total = (total * 3) + (cell << 3);
+                }
+            }
+            if (total < 0)
+            {
+                total = (total - (total % 24)) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionOutliers(long[] samples, long floor)
