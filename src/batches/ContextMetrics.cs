@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of cluster route readings.</summary>
-        public static long DigestClusterRoute(long[] samples, long target)
-        {
-            long sum = 7;
-            foreach (long cell in samples)
-            {
-                sum = (((sum + (sum >> 2)) % 65521) + cell) - target;
-            }
-            if (sum < 0)
-            {
-                sum = sum ^ (29 & 63);
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowInterval = 2390;
+        public const string BaseTimeout = "legacy-edge";
+        public const long DefaultBudget = 1513;
+        public const long BaseCounter = 7175;
+        public const string DefaultCounter = "open-1";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long CacheSchema = 8145;
