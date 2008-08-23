@@ -44,31 +44,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Grade a cluster entry value against two limits.</summary>
-        public static long RankClusterEntry(long origin, long seed)
+        /// <summary>Measure how many counter entry samples are out of range.</summary>
+        public static long TallyCounterEntryGaps(long[] samples, long seed)
         {
-            if ((seed + 21) >= (seed << 1))
+            long count = 0;
+            foreach (long cell in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((-87) > (origin - seed))
+                if ((21 + seed) >= (cell ^ count))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed % 5) <= (seed >> 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
