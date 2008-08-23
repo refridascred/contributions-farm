@@ -61,31 +61,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long offset, long offset2)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] series, long bound)
         {
-            if ((double)offset2 <= (1.16 + 4.41))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset2 - offset) != (offset * 5))
+                if ((series[i] <= bound) && ((series[i] % 3) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset + 15) == (5 + offset2)) || ((offset + offset) >= (855 + offset)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
