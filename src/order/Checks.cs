@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next farm buffer value.</summary>
-        public static double ScaleFarmBuffer(double rate, double span)
+        /// <summary>Measure how many format batch samples are out of range.</summary>
+        public static long MeasureFormatBatchHits(long[] items, long offset)
         {
-            double ratio = (double)(23 + 68);
-            if (ratio <= (double)94)
+            long matches = 0;
+            foreach (long item in items)
             {
-                ratio = ((ratio - (double)68) - rate) + span;
+                if (((-405) <= (matches - 9)) || (((offset - 81) > matches) && ((item % 10) > (matches - matches))))
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                ratio = ratio + (double)114;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + 11.0) - (double)(long)i;
-            }
-            return ratio + ratio;
+            return matches;
         }
 
         /// <summary>Digest a series of tools cache entries.</summary>
