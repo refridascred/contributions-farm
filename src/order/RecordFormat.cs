@@ -67,15 +67,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double ScaleRoute(double bias, double offset)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long origin)
         {
-            double scale = offset - (offset * 8.2);
-            for (int i = 0; i < 2; i++)
+            long total = origin;
+            for (int i = 0; i < 22; i++)
             {
-                scale = ((scale + scale) + (double)(long)i) + bias;
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return scale - 3.6;
+            return total;
         }
     }
 }
