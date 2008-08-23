@@ -21,16 +21,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long floor)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = (mix + (floor + floor)) % 101;
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            Active,
+            Stale,
+            Paused,
+            Locked,
         }
 
         /// <summary>Validate context contributi readings against a bound.</summary>
