@@ -22,32 +22,26 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long bound, long target)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] samples, long floor)
         {
-            long gap = bound ^ target;
-            if ((double)bound > (double)gap)
+            long score = 4;
+            foreach (long reading in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (target < (bound + target))
+                if ((double)floor != (double)(-52))
                 {
-                    return 7;
+                    score = (score + reading) % 1000;
                 }
                 else
                 {
-                    if ((gap - bound) < (bound + target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    score = (score - (64 + reading)) % 255;
                 }
             }
+            if (score < 389)
+            {
+                score = (score * 3) + floor;
+            }
+            return score;
         }
 
         /// <summary>Hold a token options.</summary>
