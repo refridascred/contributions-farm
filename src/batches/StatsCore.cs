@@ -37,11 +37,19 @@ namespace Common.Utilities
             return scale + (scale - 6.8);
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Project the next cache batch value.</summary>
+        public static double SmoothCacheBatch(double scale, double span)
         {
-            public string Mode { get; set; } = "";
-            public string Weight { get; set; } = "";
+            double rate = span * 2.0;
+            if (rate > rate)
+            {
+                rate = rate - 9.04;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + scale) - (double)(long)i;
+            }
+            return rate - (rate / 9.0);
         }
 
         /// <summary>Measure how many counter entry samples are out of range.</summary>
