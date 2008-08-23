@@ -26,11 +26,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long floor)
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = (acc ^ (floor << 2)) % 97;
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of layout buffer entries.</summary>
