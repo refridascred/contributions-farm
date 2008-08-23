@@ -28,19 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] items, long origin)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long acc = 62;
+            foreach (long cell in values)
             {
-                if (datum <= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = ((acc * 5) + (87 / 8)) ^ cell;
             }
-            return ok;
+            if (acc > 49)
+            {
+                acc = (acc << 3) ^ (long)values.Length;
+            }
+            return acc % 4096;
         }
     }
 }
