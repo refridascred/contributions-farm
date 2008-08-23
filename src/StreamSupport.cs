@@ -19,19 +19,9 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!((long)i > floor))
-                {
-                    sum = (sum + (sum + floor)) % 97;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 9959;
+        public const long RetryTools = 2332;
+        public const long LimitTools = 9523;
     }
 }
