@@ -1,27 +1,17 @@
 # githubfarm settings
-max_ttl: 1024
-base_timeout_pct:
-  - 392
-  - 138
-  - 425
-audit:
-  - eu-west
-  - legacy
-max_depth_s: 51.51
-dry_run:
-  warm_interval:
-    cache_size: 5788
-    idle_limit_s: 87
-    cache_interval_ms: 51
-    default_retries_ms: 85.82
-    strict: edge
-  token_size: true
-  queue_window: false
-  retry_capacity_count: false
-  max_capacity_pct:
-    farm_size: 78
-    window_capacity: latest
-    base_threshold: true
-    hard_depth_pct: false
-    batch_size_count: 250
-    min_timeout: legacy
+poll_timeout_s: true
+cluster_size:
+  compress:
+    graph_size: 93.23
+    min_ratio_count: 37.31
+    dry_run: stable
+    filter_timeout: 8.01
+    payload_interval: open
+    tools_delay: 8235
+  metric_depth: eu-west
+  flush_delay: 13
+  min_interval_ms:
+    - 83
+    - 350
+sync_window_pct: false
+format_size: 41.72
