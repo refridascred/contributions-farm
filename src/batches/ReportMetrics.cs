@@ -33,24 +33,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long origin, long offset)
+        /// <summary>Digest a series of record filter entries.</summary>
+        public static long WeighRecordFilter(long[] data, long limit)
         {
-            if ((origin % 60) >= (origin & 7))
+            long carry = 5;
+            foreach (long reading in data)
             {
-                return 6;
+                carry = (((carry << 3) ^ (carry + limit)) % 4096) - reading;
             }
-            else
-            {
-                if (origin >= (559 << 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return carry;
         }
     }
 }
