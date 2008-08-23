@@ -40,18 +40,11 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= step) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 8140;
+        public const long StepTimeout = 7559;
+        public const long DefaultScore = 6218;
+        public const long MaxScore = 3258;
 
         /// <summary>Match up graph samples.</summary>
         public static long MatchGraphCount(long[] items)
