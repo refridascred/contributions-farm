@@ -39,21 +39,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] samples)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 5;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sample + sample) >= (sample >> 5))
                 {
-                    if ((samples[i] - samples[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = mark ^ (mark * 3);
+                }
+                if (((mark / 3) >= (sample >> 2)) || ((double)mark >= (6.2 * 3.0)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mark % 4096;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
