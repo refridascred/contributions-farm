@@ -1,16 +1,14 @@
 # githubfarm settings
-retry_window_count:
-  cluster_timeout: eu-west
-  format_threshold: 500
-  command_window: 67.26
-  tools_window: 4622
-  compress: edge
-  readonly: 50.12
-retry_capacity:
-  hard_limit: 39.29
-  flush_ratio_s: blue
-  dry_run: true
-  batches_limit: green
-enabled:
-  - 119
-  - 364
+poll_ratio: stable
+dry_run: primary
+strict: cached
+warm_timeout:
+  - strict
+  - open
+  - stable
+cache_interval_pct:
+  idle_threshold: false
+  soft_threshold_s: 23.73
+  batch_size_ms: cached
+  sync_window_ms: false
+readonly: 61
