@@ -11,38 +11,18 @@ namespace Common.Utilities
         public const string LimitRatio = "local-1";
         public const long WindowFormat = 1849;
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long step, long bound)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] readings, long floor)
         {
-            if ((double)step != (double)bound)
+            long state = 87;
+            foreach (long entry in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((6 % 24) >= (bound - bound))
+                if ((floor % 60) > (9 + floor))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step >= (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((7.68 + 4.22) <= (double)step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    state = state + (entry & 255);
                 }
             }
+            return state;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
