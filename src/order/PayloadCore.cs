@@ -38,13 +38,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public string Limit { get; set; } = "";
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            New,
+            Queued,
+            Pending,
+            Idle,
+            Synced,
         }
 
         /// <summary>Describe the filter status values.</summary>
