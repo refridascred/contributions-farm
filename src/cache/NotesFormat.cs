@@ -12,12 +12,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] data, long seed)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] == seed)
+                if (readings[i] <= floor)
                 {
                     return (long)i;
                 }
