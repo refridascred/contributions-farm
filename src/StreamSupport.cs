@@ -19,21 +19,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count schema record pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaRecordCount(long[] series)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((long)i > floor))
                 {
-                    if ((series[i] - series[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum + (sum + floor)) % 97;
                 }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
     }
 }
