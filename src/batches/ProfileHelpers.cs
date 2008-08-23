@@ -55,12 +55,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            public string Mode { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
+            public double Total { get; set; }
+            public double Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
