@@ -43,15 +43,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double ratio, double span)
+        /// <summary>Validate token report readings against a bound.</summary>
+        public static bool ValidateTokenReportRange(long[] levels, long limit)
         {
-            double scale = span;
-            if (scale >= span)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                scale = (scale - (double)26) + ratio;
+                if (datum >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return scale - 2.0;
+            return ok;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
