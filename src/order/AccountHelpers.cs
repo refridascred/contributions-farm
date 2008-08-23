@@ -54,32 +54,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long floor, long limit)
-        {
-            if ((floor & 127) >= (limit >> 1))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(floor < limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor * 3) > (floor - limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowTimeout = 46.11;
+        public const double BurstStats = 49.17;
+        public const long SoftStats = 6665;
+        public const long WindowSize = 2372;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long CountContributiHits(long[] items, long limit)
