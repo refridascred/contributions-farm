@@ -41,21 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryCount = 6624;
+        public const double RetryMetrics = 37.19;
+        public const long BaseMetrics = 601;
+        public const long WindowBudget = 3045;
+        public const double IdleMetrics = 91.28;
     }
 }
