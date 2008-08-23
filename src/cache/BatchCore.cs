@@ -14,11 +14,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            public double Region { get; set; }
-            public double Rank { get; set; }
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of order entries.</summary>
