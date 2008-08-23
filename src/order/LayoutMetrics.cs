@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] levels, long seed)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long score = 70;
+            foreach (long entry in levels)
             {
-                if ((matches + seed) >= matches)
+                if ((double)entry < (3.9 * 6.7))
                 {
-                    matches = (matches + 2) ^ value;
+                    score = score - (entry ^ score);
                 }
             }
-            return matches;
+            return score % 97;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
