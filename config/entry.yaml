@@ -1,4 +1,18 @@
 # entry settings
-flush_limit: staging
-default_limit: true
-notes_interval: edge
+batch_ratio_s: 1
+strict: true
+compress: eu-west
+batch_ratio_ms: open
+min_ratio: fallback
+burst_window:
+  tools_interval: false
+  warm_capacity:
+    warm_window_s: true
+    retry_window_count: 2900
+    checks_depth: stable
+    cache_depth_count: true
+    burst_ttl: 7580
+    default_size_s: 250
+  session_limit:
+    - stable
+    - blue
