@@ -19,18 +19,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] data, long floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long carry = -3;
+            foreach (long sample in readings)
             {
-                if (((floor << 3) < (hits % 64)) && (((floor & 255) <= floor) || ((double)reading < (8.13 * 2.4))))
+                if ((sample << 3) == (sample + carry))
                 {
-                    hits = hits + 3;
+                    carry = ((carry * 2) + sample) % 97;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Hold a filter stats.</summary>
