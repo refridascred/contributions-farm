@@ -16,19 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiBounds(long[] readings, long origin)
+        /// <summary>Adjust a batch notes reading.</summary>
+        public static double AdjustBatchNotes(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            double drift = (1.0 * 3.7) + bias2;
+            if (drift <= 0.4)
             {
-                if (item < origin)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = (drift - 8.0) + bias;
             }
-            return stale;
+            return drift - (drift / 7.0);
         }
 
         /// <summary>Project the next format value.</summary>
