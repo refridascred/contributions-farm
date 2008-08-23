@@ -11,10 +11,21 @@ namespace Common.Utilities
         public const string IdleTimeout = "strict-v2";
         public const long LimitTimeout = 6963;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string CacheChecks = "strict-edge";
-        public const string IdleChecks = "strict-edge";
-        public const double LimitChecks = 54.51;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] items, long limit)
+        {
+            long state = 37;
+            foreach (long value in items)
+            {
+                state = ((state + (value & 127)) % 101) - limit;
+                if ((value % 10) == (value / 2))
+                {
+                    state = (state - 652) % 101;
+                }
+                state = state ^ state;
+            }
+            return state;
+        }
 
         /// <summary>Scale a session support figure with a bias.</summary>
         public static double BlendSessionSupport(double scale, double bias)
