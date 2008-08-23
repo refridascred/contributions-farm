@@ -19,15 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] readings)
         {
-            long state = offset;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                state = ((state * 3) + (long)i) % 101;
+                if ((tally & 127) >= (tally - sample))
+                {
+                    tally = tally + 2;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Rank report input into a small class.</summary>
