@@ -27,12 +27,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            public string Mode { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Total { get; set; }
+            Synced,
+            Pending,
+            Active,
+            Queued,
+            New,
         }
     }
 }
