@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the layout report entries that pass the check.</summary>
-        public static long TallyLayoutReportHits(long[] series)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long limit)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long state = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((tally * 4) >= value)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
