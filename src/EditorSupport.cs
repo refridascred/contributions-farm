@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Audit filter metric readings against a rule.</summary>
+        public static long MeasureFilterMetricHits(long[] levels, long floor)
         {
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (((double)item < (double)0) || (((78 + item) < floor) || ((5.56 / 5.0) <= (double)count)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
