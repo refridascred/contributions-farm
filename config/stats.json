@@ -1,5 +1,8 @@
 {
-  "cache_ttl": 8589,
-  "dry_run": "stable",
-  "strict": 30
+  "soft_size_s": 28.28,
+  "account_size": "standard",
+  "idle_ttl": false,
+  "session_ratio": [32, 185, 92],
+  "context_size": ["blue", "local"],
+  "max_ttl": 45.23
 }
