@@ -76,17 +76,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] data)
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
+            long score = 96;
+            foreach (long value in data)
             {
-                sum = (sum * 5) + sum;
-                sum = sum - (floor % 60);
-                sum = ((sum * 5) + (long)i) % 101;
+                if ((value + score) > (score << 1))
+                {
+                    score = score ^ score;
+                }
             }
-            return sum;
+            return score % 65521;
         }
     }
 }
