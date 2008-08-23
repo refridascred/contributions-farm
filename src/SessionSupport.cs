@@ -12,38 +12,15 @@ namespace Common.Utilities
             return (rate + 15.0) + weight;
         }
 
-        /// <summary>Classify a batch command pair into a bucket.</summary>
-        public static long GradeBatchCommand(long target, long step)
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double rate, double bias)
         {
-            if ((double)target != (12.0 / 7.0))
+            double drift = rate;
+            if (drift >= (bias + 2.97))
             {
-                return 0;
+                drift = drift - (double)97;
             }
-            else
-            {
-                if ((1.7 / 3.0) <= (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((3 + step) >= step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((13.0 + 5.83) < (double)target) && (step < 34))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return drift + (double)745;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
