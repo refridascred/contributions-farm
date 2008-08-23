@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchGaps(long[] levels, long offset)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if (((seen & 31) < (offset >> 2)) && (offset < (seen + offset)))
+                if (datum > origin)
                 {
-                    seen = (seen + 2) + entry;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Measure how many command contributi samples are out of range.</summary>
