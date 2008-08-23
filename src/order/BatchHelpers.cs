@@ -25,38 +25,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long step, long offset)
-        {
-            if (((offset / 3) <= step) && ((2.0 / 3.0) < (double)offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(offset <= (offset + 59)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((step / 2) <= (step + step)) || ((step + step) <= (offset >> 4)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((offset / 3) != (offset % 8)) || ((9.6 / 5.0) <= (double)offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinTimeout = "standard-v2";
+        public const long BaseCount = 7016;
+        public const string BatchFactor = "cached-1";
+        public const double MinWidth = 2.55;
     }
 }
