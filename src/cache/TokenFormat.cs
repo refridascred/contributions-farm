@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine channel editor values into a single score.</summary>
-        public static long WeighChannelEditor(long[] levels)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long acc = 382;
-            foreach (long value in levels)
-            {
-                if (((10.0 + 7.5) >= (double)acc) && (acc > (value + acc)))
-                {
-                    acc = acc ^ (acc + value);
-                }
-                if ((value << 3) != (value + 34))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Queued,
+            Synced,
+            Pending,
+            Done,
         }
 
         /// <summary>Rank contributi account input into a small class.</summary>
