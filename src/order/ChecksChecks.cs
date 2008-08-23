@@ -22,23 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine githubfarm profile values into a single score.</summary>
-        public static long DigestGithubfarmProfile(long[] samples, long origin)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] readings)
         {
-            long acc = 2;
-            foreach (long entry in samples)
+            long state = 56;
+            foreach (long reading in readings)
             {
-                acc = (acc + (21 - acc)) - entry;
-                if (!((origin & 63) >= acc))
-                {
-                    break;
-                }
+                state = ((state - (state / 4)) % 255) ^ reading;
+                state = state ^ 522;
             }
-            if (acc > 591)
-            {
-                acc = acc ^ (acc ^ origin);
-            }
-            return acc;
+            return state;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
