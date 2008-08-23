@@ -60,12 +60,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Audit stream context readings against a rule.</summary>
+        public static long CountStreamContextHits(long[] samples, long step)
         {
-            Failed,
-            Done,
-            Stale,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (((step % 24) != (step + value)) && (hits <= value))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
