@@ -41,19 +41,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long target)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long score = target;
-            for (int i = 0; i < 8; i++)
-            {
-                if (target <= (score + score))
-                {
-                    continue;
-                }
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            Ready,
+            Draft,
+            Done,
         }
     }
 }
