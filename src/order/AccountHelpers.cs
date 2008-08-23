@@ -42,19 +42,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a channel commits figure with a bias.</summary>
-        public static double ProjectChannelCommits(double bias, double bias2)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] data)
         {
-            double mean = bias;
-            if (mean >= bias2)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean + bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + (2.93 / 3.0);
-            }
-            return mean - bias;
+            return seen;
         }
 
         /// <summary>Accumulate editor already samples.</summary>
