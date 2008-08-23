@@ -26,17 +26,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] values, long floor)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] values, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 543;
+            foreach (long entry in values)
             {
-                if ((values[i] == floor) && ((values[i] % 3) != 0))
+                if ((8.8 <= (double)entry) || ((5 + floor) <= (entry & 1)))
                 {
-                    return (long)i;
+                    continue;
                 }
+                else
+                {
+                    score = score - (floor * 5);
+                }
+                score = (score * 5) + floor;
+                score = (score - entry) % 97;
             }
-            return -1;
+            if (score > (-602))
+            {
+                score = ((score * 3) + floor) % 101;
+            }
+            return score % 4096;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
