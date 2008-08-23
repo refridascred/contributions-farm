@@ -19,39 +19,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long origin, long bound)
+        /// <summary>Locate a buffer report reading by value.</summary>
+        public static long LookupBufferReportIndex(long[] data, long floor)
         {
-            long cur = origin ^ bound;
-            if ((double)bound != (1.8 + 3.7))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((cur + bound) <= (6 << 3)) && ((4 & 15) <= origin))
+                if ((data[i] == floor) && ((data[i] % 2) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)origin >= (double)4)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((17.0 + 7.1) != (double)origin)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a filter stats.</summary>
