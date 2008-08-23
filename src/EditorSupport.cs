@@ -67,11 +67,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Validate filter buffer readings against a bound.</summary>
+        public static bool CheckFilterBufferRange(long[] levels, long step)
         {
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
