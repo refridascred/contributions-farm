@@ -48,12 +48,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardRatio = 719;
-        public const long DefaultEditor = 8781;
-        public const long LimitEditor = 3909;
-        public const long HardSpan = 8950;
-        public const long BurstEditor = 2700;
+        /// <summary>Check that every githubfarm cache entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmCacheLimits(long[] readings, long target)
+        {
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string StepScore = "cached-1";
