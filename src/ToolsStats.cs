@@ -21,19 +21,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next support tools value.</summary>
-        public static double ScaleSupportTools(double weight, double offset)
+        /// <summary>Accumulate cluster cache samples.</summary>
+        public static long TotalClusterCache(long[] samples, long limit)
         {
-            double bias = weight;
-            if (bias >= (bias / 6.0))
+            long mix = 24;
+            foreach (long datum in samples)
             {
-                bias = (bias + (double)490) - offset;
+                mix = (((mix * 3) + 34) - datum) + limit;
             }
-            for (int i = 0; i < 3; i++)
+            if (mix < 280)
             {
-                bias = (bias + (bias / 6.0)) - (double)(long)i;
+                mix = (mix - (mix - mix)) % 255;
             }
-            return bias - (double)9;
+            return mix % 97;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
