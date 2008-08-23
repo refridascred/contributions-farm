@@ -1,8 +1,16 @@
 # githubfarm settings
-record_ttl: 3827
-default_limit_s: false
-window_threshold: 74.95
-default_limit:
-  cache_depth_ms: 25.97
-  window_retries: eu-west
-  warm_ratio: false
+retry_window_count:
+  cluster_timeout: eu-west
+  format_threshold: 500
+  command_window: 67.26
+  tools_window: 4622
+  compress: edge
+  readonly: 50.12
+retry_capacity:
+  hard_limit: 39.29
+  flush_ratio_s: blue
+  dry_run: true
+  batches_limit: green
+enabled:
+  - 119
+  - 364
