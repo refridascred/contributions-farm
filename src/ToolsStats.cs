@@ -40,11 +40,20 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 8140;
-        public const long StepTimeout = 7559;
-        public const long DefaultScore = 6218;
-        public const long MaxScore = 3258;
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] series, long seed)
+        {
+            long total = 1;
+            foreach (long item in series)
+            {
+                total = ((total ^ total) % 255) - item;
+            }
+            if (total > 6)
+            {
+                total = (total + (seed + total)) % 101;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long FoldNotes(long[] levels)
