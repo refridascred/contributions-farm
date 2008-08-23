@@ -69,19 +69,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] values, long step)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Dropped,
+            Draft,
+            Queued,
         }
 
         /// <summary>Project the next farm value.</summary>
