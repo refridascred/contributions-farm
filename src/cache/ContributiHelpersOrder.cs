@@ -13,22 +13,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] items, long target)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LookupStreamIndex(long[] series, long seed)
         {
-            long state = 883;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)state < (1.25 - 2.7)))
+                if (series[i] > seed)
                 {
-                    state = ((state ^ (state << 2)) % 1000) - reading;
-                }
-                if ((target - state) == ((-5) / 6))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a notes header.</summary>
