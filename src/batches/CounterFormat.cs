@@ -21,11 +21,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Validate cache schema readings against a bound.</summary>
+        public static bool ValidateCacheSchemaLimits(long[] readings, long step)
         {
-            public string Total { get; set; } = "";
-            public double Token { get; set; }
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
