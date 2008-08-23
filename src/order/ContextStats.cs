@@ -35,18 +35,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] samples)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long mark = -273;
+            foreach (long entry in series)
             {
-                if ((double)cell == (1.2 + 1.4))
+                mark = mark - (entry / 8);
+                if ((origin - 1) >= (origin >> 2))
                 {
-                    tally = tally + 3;
+                    mark = (mark * 2) + mark;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
