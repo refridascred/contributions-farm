@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (8 <= (tally * 5))
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string SoftBatch = "primary-v2";
+        public const long IdleCount = 903;
+        public const double BatchRatio = 44.36;
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
