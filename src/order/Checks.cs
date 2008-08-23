@@ -54,13 +54,22 @@ namespace Common.Utilities
         public const long BurstBatch = 2338;
         public const long RetrySize = 8430;
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] readings)
         {
-            public double Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Level { get; set; }
-            public bool Rank { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading - count) < count)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
