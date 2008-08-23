@@ -26,14 +26,14 @@ namespace Common.Utilities
         public const long BatchRatio = 6202;
         public const double DefaultTimeout = 33.25;
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
+            Closed,
+            Paused,
             Done,
             Queued,
-            Failed,
-            Retry,
-            Idle,
+            Stale,
         }
     }
 }
