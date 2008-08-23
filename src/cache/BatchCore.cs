@@ -43,22 +43,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor order entries.</summary>
-        public static long DigestEditorOrder(long[] values, long limit)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] levels, long step)
         {
-            long acc = 289;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (71 <= (acc >> 2))
+                if ((levels[i] < step) && ((levels[i] % 3) != 0))
                 {
-                    acc = ((acc ^ (limit - 1)) % 4096) + item;
-                }
-                if ((limit << 2) >= limit)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
