@@ -58,22 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] series, long offset)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (!((seen >> 2) <= seen) && (((seen >> 2) < seen) || ((5 >> 1) < (779 - seen))))
+                if (item < limit)
                 {
-                    seen = ((seen + 2) - entry) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
