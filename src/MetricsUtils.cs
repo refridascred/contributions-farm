@@ -41,18 +41,9 @@ namespace Common.Utilities
         public const long StepBudget = 3714;
         public const long CacheLevel = 2119;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((count ^ count) < (sample >> 2))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double WindowWidth = 80.67;
+        public const double HardWindow = 9.63;
+        public const long CacheWindow = 3173;
     }
 }
