@@ -72,22 +72,12 @@ namespace Common.Utilities
             return weight - (2.15 - scale);
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] levels, long limit)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)limit != (5.8 / 7.0))
-                {
-                    count = (count + 3) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
