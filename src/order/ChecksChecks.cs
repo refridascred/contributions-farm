@@ -25,9 +25,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 6440;
-        public const string HardContributi = "latest";
-        public const string BurstContributi = "standard-v2";
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 135;
+        public const string BatchDepth = "latest-edge";
+        public const long BaseBudget = 3661;
+        public const long SoftToken = 6745;
     }
 }
