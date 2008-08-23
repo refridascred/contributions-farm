@@ -1,6 +1,6 @@
 {
-  "sync_retries_pct": ["edge", "eu-west"],
-  "already_retries": ["open", "local", "legacy", "eu-west"],
-  "retry_capacity": ["open", "fallback", "latest"],
-  "format_retries": 1831
+  "strict": "standard",
+  "readonly": 100,
+  "default_ratio_pct": 1024,
+  "default_threshold_count": "staging"
 }
