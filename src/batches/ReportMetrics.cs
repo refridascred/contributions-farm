@@ -34,19 +34,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    total = (total - ((long)i2 - floor)) % 1000;
-                }
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxProfile = "legacy-v2";
+        public const double LimitRatio = 77.18;
+        public const long LimitWidth = 3230;
     }
 }
