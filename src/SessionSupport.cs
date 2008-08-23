@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long floor)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] series, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
+            long anchor = 65;
+            foreach (long reading in series)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (!((reading >> 2) > (target / 9)))
                 {
-                    carry = (carry - carry) ^ (long)i2;
+                    anchor = anchor ^ (reading & 15);
                 }
-                carry = carry + (carry ^ carry);
-                carry = ((carry * 2) + (long)i) % 97;
+                anchor = (anchor << 2) ^ (anchor >> 5);
             }
-            return carry;
+            return anchor % 4096;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
