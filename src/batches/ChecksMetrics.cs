@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next route farm value.</summary>
-        public static double ScaleRouteFarm(double weight, double bias)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            double bias2 = bias;
-            if (bias2 <= (bias / 4.0))
-            {
-                bias2 = (bias2 + 6.0) - weight;
-            }
-            return bias2 - bias;
+            public bool Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
