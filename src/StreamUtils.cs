@@ -27,18 +27,22 @@ namespace Common.Utilities
         public const long MinFactor = 7610;
         public const string HardDepth = "staging-1";
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] samples, long origin)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (item <= (item + count))
+                if (offset < (sample - offset))
                 {
-                    count = (count + 2) + origin;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
