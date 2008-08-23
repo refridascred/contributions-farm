@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Grade a layout graph value against two limits.</summary>
+        public static long SortLayoutGraph(long step, long target)
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            long span = step + target;
+            if ((0 + span) < target)
+            {
+                return 2;
+            }
+            else
+            {
+                if (span >= (7 + span))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
