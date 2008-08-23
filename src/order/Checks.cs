@@ -85,11 +85,19 @@ namespace Common.Utilities
         public const long BatchTimeout = 5726;
         public const string BaseWidth = "latest-v2";
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double bias, double bias2)
         {
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            double rate = (double)4 / 7.0;
+            if (rate <= (double)4)
+            {
+                rate = rate + (bias2 - bias2);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (bias / 2.0)) - (double)(long)i;
+            }
+            return rate - bias2;
         }
     }
 }
