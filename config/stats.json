@@ -1,11 +1,6 @@
 {
-  "sync_capacity_s": ["cached", "latest", "strict"],
-  "editor_window": {
-    "audit": [153, 137, 172],
-    "base_delay_pct": 20.62,
-    "flush_retries_count": "latest",
-    "burst_limit_pct": 100,
-    "base_window_ms": [469, 200, 214]
-  },
-  "session_ratio": 6484
+  "graph_interval": 250,
+  "batches_size": "legacy",
+  "soft_size": 3709,
+  "max_capacity": "blue"
 }
