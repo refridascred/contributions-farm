@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] values)
         {
-            public string Label { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((matches >> 3) == (matches - 154))
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
