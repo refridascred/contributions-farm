@@ -63,13 +63,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
-        {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 5832;
+        public const double RetryInterval = 30.81;
+        public const long MinScore = 1605;
 
         /// <summary>Count the commits filter entries that pass the check.</summary>
         public static long TallyCommitsFilterHits(long[] values)
