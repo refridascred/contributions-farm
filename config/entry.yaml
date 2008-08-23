@@ -1,27 +1,18 @@
 # entry settings
-sync_ratio_pct: 87.41
-retry_retries_count:
-  idle_capacity:
-    - 281
-    - 45
-  session_timeout: local
-  enabled: 8
-  batch_size:
-    - 49
-    - 82
-    - 314
-    - 335
-  counter_size:
-    session_ratio: 1576
-    base_threshold_count: fallback
-    tools_interval: 1024
-dry_run: 10
-editor_limit:
-  - legacy
-  - primary
-  - eu-west
-strict:
-  - 46
-  - 352
-  - 75
-burst_ratio_count: open
+soft_window_count: 74.93
+tools_retries: false
+report_delay:
+  editor_capacity: eu-west
+  flush_ttl_count: cached
+  strict:
+    - 357
+    - 436
+    - 180
+    - 206
+  channel_depth: legacy
+  soft_capacity_s: cached
+cache_limit_s:
+  - 267
+  - 376
+  - 371
+  - 168
