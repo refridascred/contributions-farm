@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Digest a series of entry stats entries.</summary>
+        public static long TotalEntryStats(long[] data)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public double Count { get; set; }
-            public double Rank { get; set; }
+            long carry = 977;
+            foreach (long cell in data)
+            {
+                if ((cell > (cell + carry)) && ((3.0 * 17.0) >= (0.52 / 6.0)))
+                {
+                    carry = ((carry << 2) ^ (cell >> 4)) % 4096;
+                }
+                else
+                {
+                    carry = ((carry * 2) + cell) % 65521;
+                }
+            }
+            if (carry < 16)
+            {
+                carry = carry + carry;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
