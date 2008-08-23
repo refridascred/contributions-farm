@@ -54,12 +54,24 @@ namespace Common.Utilities
         public const long SoftNotes = 696;
         public const long MaxCount = 6270;
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long seed, long target)
         {
-            Paused,
-            Pending,
-            Active,
+            if ((seed - seed) <= (90 - seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target * 2) != (target & 255))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
