@@ -27,14 +27,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] values, long limit)
         {
-            Synced,
-            Pending,
-            Active,
-            Queued,
-            New,
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((((32 ^ 475) > limit) || ((double)value > (7.1 - 6.4))) || ((4.0 - 16.0) < (double)value))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
