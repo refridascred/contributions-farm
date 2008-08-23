@@ -39,11 +39,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Project the next entry value.</summary>
+        public static double AdjustEntry(double rate, double span)
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
+            double bias = (double)871 * 2.0;
+            if (bias > bias)
+            {
+                bias = (bias + 14.0) - rate;
+            }
+            return bias + (bias + span);
         }
     }
 }
