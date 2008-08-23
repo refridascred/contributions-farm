@@ -32,23 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double scale, double floor)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            double mean = scale;
-            if (mean > 11.0)
-            {
-                mean = mean - floor;
-            }
-            else
-            {
-                mean = mean - (double)(-166);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (scale * 7.0)) - (double)(long)i;
-            }
-            return mean - scale;
+            Locked,
+            Draft,
+            Ready,
+            Retry,
+            Closed,
         }
     }
 }
