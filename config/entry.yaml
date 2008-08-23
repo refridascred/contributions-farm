@@ -1,12 +1,18 @@
 # entry settings
-enabled:
-  base_interval_pct:
-    - 95
-    - 121
-    - 378
-    - 407
-  cache_depth: true
-  default_retries: cached
-support_timeout: 11
-dry_run: false
-max_delay_ms: 5240
+dry_run: 71
+flush_ratio: staging
+soft_delay:
+  cache_limit_pct: 37.34
+  min_ttl: fallback
+  retry_depth_ms: 8141
+record_timeout: 61.26
+persist: false
+soft_ratio:
+  queue_interval: 2
+  metrics_timeout: 50
+  dry_run:
+    - fallback
+    - cached
+    - standard
+  burst_timeout_pct: 96
+  support_retries: 41.02
