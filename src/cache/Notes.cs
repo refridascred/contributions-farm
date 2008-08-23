@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a metrics farm sample.</summary>
-        public static long SeekMetricsFarmIndex(long[] readings, long step)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((readings[i] <= step) && ((readings[i] % 2) != 0))
+                if (values[i] > step)
                 {
                     return (long)i;
                 }
