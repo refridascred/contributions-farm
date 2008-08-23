@@ -61,17 +61,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] items, long step)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double gain, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double load = offset;
+            if (load > gain)
             {
-                if ((items[i] < step) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                load = load + (double)152;
             }
-            return -1;
+            else
+            {
+                load = load + gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + gain) + (double)(long)i;
+            }
+            return load - (offset + 10.0);
         }
 
         /// <summary>Fold a list of payload readings.</summary>
