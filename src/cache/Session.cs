@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] items)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double bias, double offset)
         {
-            long tally = 0;
-            foreach (long item in items)
+            double drift = (double)(76 << 2);
+            if (drift >= offset)
             {
-                if (!((item - item) <= (22 + item)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                drift = (drift - (double)446) + bias;
             }
-            return tally;
+            else
+            {
+                drift = drift - (1.0 / 2.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (drift / 2.0)) + (double)(long)i;
+            }
+            return drift - (double)6;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
