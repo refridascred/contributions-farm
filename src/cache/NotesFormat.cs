@@ -13,11 +13,14 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleChecks = 8861;
-        public const string WindowBudget = "legacy-1";
-        public const string IdleSize = "open";
-        public const string HardInterval = "alpha";
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Derive the next contributi order value from a seed.</summary>
         public static long IterateContributiOrder(long seed)
