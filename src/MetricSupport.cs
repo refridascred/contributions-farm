@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] levels, long step)
         {
-            Queued,
-            Ready,
-            Closed,
-            Active,
-            Synced,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (sample < (5 % 10))
+                {
+                    matches = (matches + 2) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
