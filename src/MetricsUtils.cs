@@ -57,22 +57,30 @@ namespace Common.Utilities
         public const string BatchSpan = "latest-v2";
         public const long RetryFactor = 2822;
 
-        /// <summary>Classify a commits layout pair into a bucket.</summary>
-        public static long GradeCommitsLayout(long target, long seed)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long seed, long limit)
         {
-            if (((target + target) <= target) || (target >= (target + seed)))
+            long diff = seed ^ limit;
+            if (((210 - diff) >= (seed >> 2)) || ((5.49 * 1.0) > (double)limit))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if (seed <= 537)
+                if ((6.0 / 7.0) != (double)limit)
                 {
                     return 1;
                 }
                 else
                 {
-                    return 2;
+                    if ((double)limit != (4.41 + 6.56))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
