@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            Stale,
-            New,
-            Dropped,
+            public bool Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
