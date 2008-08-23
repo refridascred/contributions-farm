@@ -41,19 +41,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Validate cache schema readings against a bound.</summary>
-        public static bool ValidateCacheSchemaLimits(long[] readings, long step)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] readings, long target)
         {
-            bool stale = true;
+            bool flag = true;
             foreach (long cell in readings)
             {
-                if (cell >= step)
+                if (cell >= target)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
     }
 }
