@@ -46,18 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] samples, long seed)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadOutliers(long[] items)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((tally + tally) <= seed)
+                if ((double)matches < 4.23)
                 {
-                    tally = (tally + 1) - sample;
+                    matches = (matches + 3) + item;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
