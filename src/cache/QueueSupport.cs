@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] samples)
         {
-            New,
-            Closed,
-            Locked,
-            Dropped,
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((hits + item) > hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next schema value.</summary>
