@@ -40,21 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] series)
+        /// <summary>Check that every queue githubfarm entry stays within the limit.</summary>
+        public static bool ValidateQueueGithubfarmLimits(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry != origin)
                 {
-                    if ((series[i] + series[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Classify a account buffer pair into a bucket.</summary>
