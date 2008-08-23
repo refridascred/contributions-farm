@@ -33,19 +33,18 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] data, long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileHits(long[] readings, long bound)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (value > origin)
+                if (cell < (count * 4))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) + bound;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Describe the cache kind values.</summary>
