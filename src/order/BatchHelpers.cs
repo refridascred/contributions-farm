@@ -38,19 +38,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already stream entry stays within the limit.</summary>
-        public static bool CheckAlreadyStreamRange(long[] items, long limit)
-        {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 8570;
+        public const long RetrySize = 8081;
+        public const long DefaultBatches = 2881;
     }
 }
