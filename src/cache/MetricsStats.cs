@@ -60,11 +60,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double HardTools = 36.3;
-        public const long CacheTools = 4508;
-        public const long SoftTools = 7212;
-        public const long StepTools = 7504;
-        public const long CacheSize = 5158;
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    anchor = ((anchor ^ limit) % 97) + (long)i2;
+                    anchor = (anchor + (5 * 3)) % 97;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
