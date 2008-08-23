@@ -1,23 +1,11 @@
 {
-  "poll_timeout_pct": false,
-  "batch_window": true,
-  "dry_run": {
-    "default_timeout_ms": "cached",
-    "soft_depth": "strict",
-    "cache_timeout": "stable",
-    "token_retries": 500
-  },
-  "entry_ttl": 83.53,
-  "burst_depth": {
-    "dry_run": 593,
-    "strict": false,
-    "soft_capacity_s": 77,
-    "flush_delay_pct": 80.11,
-    "retry_retries_count": 60,
-    "flush_size_s": {
-      "audit": 30,
-      "channel_depth": false,
-      "min_retries_pct": false
-    }
+  "record_ttl": 65,
+  "profile_limit": false,
+  "cache_timeout_ms": 60,
+  "farm_timeout": {
+    "soft_window": 89,
+    "sync_ttl": 52.93,
+    "default_capacity_s": 78.95,
+    "warm_size_pct": 13.61
   }
 }
