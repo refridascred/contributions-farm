@@ -12,10 +12,15 @@ namespace Common.Utilities
             return ((load - (double)3) + scale) + offset;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheInterval = 9899;
-        public const long HardGraph = 2256;
-        public const long DefaultDepth = 2765;
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
+        {
+            Dropped,
+            Stale,
+            Draft,
+            Done,
+            Queued,
+        }
 
         /// <summary>Hold a order stats.</summary>
         public sealed class OrderStats
