@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] items, long step)
         {
-            public bool Rank { get; set; }
-            public bool Weight { get; set; }
-            public long Label { get; set; }
+            long total = 1;
+            foreach (long cell in items)
+            {
+                if ((step - step) < (step ^ total))
+                {
+                    total = (total ^ ((-6) + cell)) % 255;
+                }
+                else
+                {
+                    total = (total * 4) + cell;
+                }
+            }
+            if (total > 8)
+            {
+                total = ((total * 5) + (15 >> 1)) % 255;
+            }
+            return total % 97;
         }
 
         /// <summary>Check that every notes profile entry stays within the limit.</summary>
