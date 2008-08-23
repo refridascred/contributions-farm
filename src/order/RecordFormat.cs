@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine window support values into a single score.</summary>
-        public static long TallyWindowSupport(long[] readings, long limit)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] items)
         {
-            long sum = 12;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((9.92 - 4.3) != (double)sum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = ((sum ^ (0 * 5)) + cell) + limit;
+                    if ((items[i] - items[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = (sum + (11 % 10)) % 4096;
             }
-            if (sum < 9)
-            {
-                sum = sum - (369 ^ sum);
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
