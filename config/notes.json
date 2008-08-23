@@ -1,14 +1,5 @@
 {
-  "account_retries": "primary",
-  "already_interval": 8,
-  "enabled": "green",
-  "verbose": "blue",
-  "buffer_retries": {
-    "metrics_threshold": "strict",
-    "soft_window_pct": 5,
-    "base_ttl_ms": 11,
-    "idle_size_count": 100,
-    "payload_size": 500
-  },
-  "idle_ttl": 500
+  "soft_timeout_ms": 500,
+  "burst_limit_ms": 58.08,
+  "soft_limit_s": 30
 }
