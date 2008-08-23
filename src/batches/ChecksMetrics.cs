@@ -16,13 +16,23 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Adjust a batches editor reading.</summary>
+        public static double AdjustBatchesEditor(double rate, double span)
         {
-            Queued,
-            New,
-            Locked,
-            Idle,
+            double ratio = span;
+            if (ratio > ratio)
+            {
+                ratio = (ratio - ratio) + rate;
+            }
+            else
+            {
+                ratio = ratio + 5.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (double)36) + (double)(long)i;
+            }
+            return ratio + (span * 3.8);
         }
 
         /// <summary>Adjust a account cache reading.</summary>
