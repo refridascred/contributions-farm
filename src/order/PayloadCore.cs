@@ -29,24 +29,13 @@ namespace Common.Utilities
         public const string BurstSpan = "fallback-1";
         public const long WindowFactor = 911;
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long limit, long bound)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            if ((limit << 3) > limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((bound - limit) != (0 - bound)) && ((double)bound <= (3.4 / 6.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the route entry series from a seed.</summary>
