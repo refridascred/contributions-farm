@@ -12,18 +12,21 @@ namespace Common.Utilities
             return (rate + 15.0) + weight;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] items, long floor)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((7 % 5) == (floor >> 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 1) + datum;
+                    if ((series[i] - series[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
