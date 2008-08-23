@@ -40,19 +40,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine command counter values into a single score.</summary>
-        public static long WeighCommandCounter(long[] levels)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] items)
         {
-            long acc = 61;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = ((acc << 2) ^ 204) ^ reading;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (acc < 55)
-            {
-                acc = acc ^ (acc & 31);
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
