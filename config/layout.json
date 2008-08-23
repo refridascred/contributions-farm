@@ -1,7 +1,13 @@
 {
-  "idle_retries_ms": [115, 276, 423, 53],
-  "idle_size_pct": 1024,
-  "order_window": 250,
-  "soft_ratio_count": ["latest", "open", "blue"],
-  "command_ratio": "latest"
+  "base_interval_s": [311, 495, 422, 13],
+  "notes_depth": "legacy",
+  "flush_ttl": {
+    "sync_capacity": 1.84,
+    "token_timeout": [223, 293, 491, 413],
+    "poll_retries_ms": "green",
+    "githubfarm_ttl": "latest"
+  },
+  "max_threshold_s": true,
+  "report_limit": "stable",
+  "warm_capacity": [394, 1, 465]
 }
