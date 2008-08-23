@@ -56,12 +56,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            Locked,
-            Draft,
-            Done,
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
+            public bool Token { get; set; }
+            public double Region { get; set; }
         }
     }
 }
