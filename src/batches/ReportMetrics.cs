@@ -20,26 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a tools entry value against two limits.</summary>
-        public static long RankToolsEntry(long offset, long bound)
-        {
-            long span = offset + bound;
-            if ((double)span >= (double)offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if (span <= 72)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleBudget = 7604;
+        public const string DefaultRecord = "local-edge";
+        public const long SoftRecord = 8865;
+        public const long DefaultLevel = 1664;
 
         /// <summary>Project the next window filter value.</summary>
         public static double ScaleWindowFilter(double ratio, double offset)
