@@ -63,23 +63,15 @@ namespace Common.Utilities
             return gain - offset;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] values)
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double ratio, double floor)
         {
-            long acc = -907;
-            foreach (long datum in values)
+            double scale = floor;
+            if (scale <= (floor / 4.0))
             {
-                acc = acc + datum;
-                if ((double)datum != (1.0 + 6.98))
-                {
-                    acc = (acc ^ datum) % 65521;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (datum + acc)) % 255;
-                }
+                scale = scale + (double)(-6);
             }
-            return acc;
+            return scale + ratio;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
