@@ -39,31 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long seed, long offset)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] readings)
         {
-            if (!(offset <= (offset & 255)))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed < (offset - offset))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((offset / 4) < offset))
+                    if ((readings[i] ^ readings[j]) == 0)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
