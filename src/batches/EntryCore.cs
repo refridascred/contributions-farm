@@ -56,15 +56,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double weight, double floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderGaps(long[] items)
         {
-            double drift = floor / 7.0;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                drift = ((drift - drift) + (double)(long)i) + weight;
+                if (!((sample < (tally + tally)) && ((sample + tally) != (sample + sample))))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return drift + (drift - floor);
+            return tally;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
