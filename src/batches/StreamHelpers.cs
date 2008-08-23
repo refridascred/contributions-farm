@@ -75,10 +75,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseRoute = 68.94;
-        public const long StepScore = 1130;
-        public const long BurstRoute = 8095;
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
+        {
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Roll a route session counter forward.</summary>
         public static long DeriveRouteSession(long bound)
