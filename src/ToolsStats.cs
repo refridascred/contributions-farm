@@ -64,12 +64,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            Dropped,
-            Queued,
-            Draft,
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
     }
 }
