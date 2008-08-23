@@ -35,17 +35,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] levels, long step)
+        /// <summary>Rank notes contributi input into a small class.</summary>
+        public static long ClassifyNotesContributi(long origin, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin / 5) != (origin * 2))
             {
-                if (levels[i] > step)
+                return 5;
+            }
+            else
+            {
+                if (((double)offset > (double)50) && ((double)offset <= (12.0 + 3.77)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((7.5 - 8.63) >= (double)origin) || ((offset / 8) == (offset / 6)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((-86) <= origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
