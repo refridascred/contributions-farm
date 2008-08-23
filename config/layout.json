@@ -1,12 +1,5 @@
 {
-  "strict": {
-    "poll_retries_count": false,
-    "dry_run": "edge",
-    "max_window": "staging",
-    "poll_timeout_ms": 13.48,
-    "flush_window_pct": 55.52,
-    "default_capacity": 80.18
-  },
-  "cache_size_s": [99, 488],
-  "audit": 58
+  "batch_capacity_pct": 60,
+  "burst_retries_ms": "local",
+  "hard_depth": 60
 }
