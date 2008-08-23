@@ -35,14 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Closed,
-            Idle,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string MinCache = "primary-v2";
+        public const double MaxLevel = 76.86;
+        public const long CacheBudget = 9195;
+        public const string DefaultCache = "local-v2";
+        public const double BatchLevel = 39.0;
 
         /// <summary>Classify a schema pair into a bucket.</summary>
         public static long ClassifySchema(long target, long seed)
