@@ -16,15 +16,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Dropped,
-            Closed,
-            Done,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCount = 1287;
+        public const long BaseWidth = 866;
+        public const double DefaultBudget = 45.54;
+        public const long BurstSize = 8785;
 
         /// <summary>Digest a series of record filter entries.</summary>
         public static long WeighRecordFilter(long[] data, long limit)
