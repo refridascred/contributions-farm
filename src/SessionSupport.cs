@@ -62,19 +62,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double weight, double offset)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            double load = offset;
-            if (load <= (double)156)
-            {
-                load = load + load;
-            }
-            else
-            {
-                load = load + weight;
-            }
-            return load - (double)3;
+            Stale,
+            Ready,
+            Idle,
+            Synced,
         }
     }
 }
