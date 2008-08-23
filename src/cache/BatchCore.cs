@@ -16,24 +16,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] series, long step)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long floor, long bound)
         {
-            long mix = 45;
-            foreach (long reading in series)
+            if ((floor + (-14)) < floor)
             {
-                mix = ((mix << 3) ^ (5 & 63)) % 97;
-                mix = ((mix << 3) ^ (1 ^ reading)) % 4096;
-                if ((double)mix >= (double)reading)
+                return 3;
+            }
+            else
+            {
+                if ((2.92 >= (double)floor) || ((double)floor > (9.0 / 3.0)))
                 {
-                    mix = ((mix * 4) + (step - 3)) % 255;
+                    return 2;
                 }
                 else
                 {
-                    mix = ((mix * 4) + (mix + 51)) % 65521;
+                    if ((bound / 6) == (68 >> 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return mix % 97;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
