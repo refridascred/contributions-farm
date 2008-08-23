@@ -19,12 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BaseBudget = 73.55;
-        public const string CacheAlready = "open-v2";
-        public const double CacheSpan = 79.8;
-        public const long BatchRatio = 6202;
-        public const double DefaultTimeout = 33.25;
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
+        {
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
+            public double Score { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
