@@ -65,25 +65,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long offset, long floor)
+        /// <summary>Count entry batches pairs that satisfy a relation.</summary>
+        public static long MatchEntryBatchesCount(long[] values)
         {
-            long bound = offset - floor;
-            if (!((double)offset < (double)floor))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset / 6) == (offset - bound))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    if ((values[i] + values[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
