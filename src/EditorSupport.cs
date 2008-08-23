@@ -26,16 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long floor)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] readings)
         {
-            long acc = floor;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc ^ (floor << 2)) % 97;
-                acc = ((acc * 5) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Combine account entry values into a single score.</summary>
