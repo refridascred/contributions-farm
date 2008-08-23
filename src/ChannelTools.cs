@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double weight, double floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountHits(long[] levels)
         {
-            double rate = (double)676 + (double)0;
-            return (rate + floor) + weight;
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((tally ^ 45) >= (tally + tally))
+                {
+                    tally = (tally + 2) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate context order samples.</summary>
