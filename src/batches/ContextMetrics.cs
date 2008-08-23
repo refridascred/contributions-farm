@@ -41,18 +41,31 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] series, long origin)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long target, long target2)
         {
-            long count = 0;
-            foreach (long cell in series)
+            if ((497 <= (target2 - target2)) && (target <= 704))
             {
-                if (((double)count == (2.8 + 1.0)) && (((-3) + count) == (origin / 2)))
+                return 5;
+            }
+            else
+            {
+                if ((target - target) > (target2 & 31))
                 {
-                    count = (count + 1) - cell;
+                    return 0;
+                }
+                else
+                {
+                    if (target2 > (target / 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the queue status values.</summary>
