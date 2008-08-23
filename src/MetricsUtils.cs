@@ -13,18 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] data)
+        /// <summary>Project the next tools account value.</summary>
+        public static double ScaleToolsAccount(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            double drift = floor;
+            if (drift < floor)
             {
-                if ((entry % 12) > matches)
-                {
-                    matches = matches + 1;
-                }
+                drift = drift - (rate / 2.0);
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + 6.81) - (double)(long)i;
+            }
+            return drift + (rate + rate);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
