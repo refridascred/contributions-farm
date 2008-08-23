@@ -1,5 +1,6 @@
 {
-  "retry_interval_s": 88,
-  "sync_delay_ms": "staging",
-  "cache_size": 12
+  "cluster_limit": "legacy",
+  "command_delay": 100,
+  "audit": true,
+  "record_size": 30
 }
