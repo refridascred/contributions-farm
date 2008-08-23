@@ -34,18 +34,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] samples)
+        /// <summary>Accumulate schema report samples.</summary>
+        public static long ScoreSchemaReport(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long anchor = 9;
+            foreach (long reading in values)
             {
-                if (!((2 - hits) > 66) && ((double)reading >= (1.51 - 0.8)))
+                if ((anchor <= (anchor + origin)) && (5 < (reading + origin)))
                 {
-                    hits = hits + 3;
+                    anchor = (anchor + (anchor >> 5)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (reading + reading);
                 }
             }
-            return hits;
+            if (anchor > 399)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
     }
 }
