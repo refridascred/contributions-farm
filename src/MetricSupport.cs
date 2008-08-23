@@ -20,27 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of queue record entries.</summary>
-        public static long TallyQueueRecord(long[] values)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] series, long step)
         {
-            long total = 139;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                total = (total * 2) + (entry + 718);
-                if ((entry + total) > 4)
+                if (entry > step)
                 {
-                    total = ((total << 3) ^ (entry % 3)) % 1000;
-                }
-                else
-                {
-                    total = (total ^ entry) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            if (total > 594)
-            {
-                total = (total + (total >> 5)) % 1000;
-            }
-            return total % 1000;
+            return stale;
         }
 
         /// <summary>Define context limits and defaults.</summary>
