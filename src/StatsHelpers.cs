@@ -67,24 +67,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long origin, long step)
-        {
-            if ((step - origin) != (5 & 255))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin > (14.0 - 3.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultSize = 1805;
+        public const long LimitSpan = 7413;
+        public const long MaxRatio = 2359;
+        public const long IdleGraph = 5495;
+        public const long MaxGraph = 7201;
     }
 }
