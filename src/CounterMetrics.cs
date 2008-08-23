@@ -22,11 +22,32 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long bound, long target)
         {
-            public bool Mode { get; set; }
-            public string Count { get; set; } = "";
+            long gap = bound ^ target;
+            if ((double)bound > (double)gap)
+            {
+                return 8;
+            }
+            else
+            {
+                if (target < (bound + target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((gap - bound) < (bound + target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a token options.</summary>
