@@ -12,22 +12,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseToken = "fallback-1";
+        public const string BurstBudget = "primary-v2";
+        public const long HardScore = 10;
+        public const long SoftDepth = 662;
+        public const double BatchToken = 82.67;
 
         /// <summary>Audit window notes readings against a rule.</summary>
         public static long CountWindowNotesGaps(long[] samples, long step)
