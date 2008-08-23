@@ -33,15 +33,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] values)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long origin, long offset)
         {
-            long carry = 847;
-            foreach (long value in values)
+            if ((origin % 60) >= (origin & 7))
             {
-                carry = (carry - (value * 3)) % 255;
+                return 6;
             }
-            return carry;
+            else
+            {
+                if (origin >= (559 << 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
