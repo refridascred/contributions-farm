@@ -13,18 +13,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelOutliers(long[] series)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long seed, long offset)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            if (600 >= (seed * 5))
             {
-                if (((20 - cell) < (tally << 2)) && ((tally & 127) > (tally >> 2)))
+                return 1;
+            }
+            else
+            {
+                if (((8.0 + 1.7) != (double)offset) || ((seed & 31) == (seed - 979)))
                 {
-                    tally = tally + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
