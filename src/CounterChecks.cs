@@ -13,23 +13,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] data)
+        /// <summary>Count batches layout pairs that satisfy a relation.</summary>
+        public static long CompareBatchesLayoutCount(long[] data)
         {
-            long sum = 11;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)item <= (double)7))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = ((sum * 3) + item) % 97;
+                    if ((data[i] + data[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = sum - item;
             }
-            if (sum > 157)
-            {
-                sum = (sum + (sum + sum)) % 97;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
