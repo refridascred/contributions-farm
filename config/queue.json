@@ -1,13 +1,12 @@
 {
-  "cache_timeout_s": 1024,
-  "compress": ["stable", "primary", "legacy", "edge"],
-  "enabled": {
-    "idle_interval_count": "strict",
-    "readonly": 19,
-    "enabled": 64.68,
-    "soft_limit_count": 21.37
+  "base_timeout": true,
+  "dry_run": {
+    "sync_window_count": "staging",
+    "dry_run": "cached",
+    "buffer_depth": true,
+    "soft_ttl_s": 8103,
+    "min_capacity": 27.42
   },
-  "commits_capacity": "open",
-  "idle_ratio_count": 60,
-  "idle_window": 250
+  "soft_interval_s": "strict",
+  "entry_interval": 911
 }
