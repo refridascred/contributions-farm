@@ -79,22 +79,15 @@ namespace Common.Utilities
         public const double WindowFactor = 92.22;
         public const long WindowInterval = 5904;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsMatches(long[] items, long offset)
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            double rate = offset - offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (offset <= (0 << 2))
-                {
-                    hits = (hits + 3) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                rate = (rate + scale) + (double)(long)i;
             }
-            return hits;
+            return rate - offset;
         }
     }
 }
