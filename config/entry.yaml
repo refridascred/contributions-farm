@@ -1,18 +1,4 @@
 # entry settings
-strict: 45
-metric_limit:
-  min_timeout_count: standard
-  cache_interval: 68.33
-  stream_delay: true
-  strict: 8050
-  idle_limit_count: green
-  cache_retries: 37.29
-contributi_window: 8669
-poll_depth:
-  session_limit: 84.05
-  verbose: staging
-  default_interval_pct: edge
-  layout_retries:
-    filter_timeout: 30
-    poll_interval: 60
-    hard_window: true
+persist: stable
+entry_threshold: green
+githubfarm_retries: 35
