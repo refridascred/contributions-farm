@@ -46,13 +46,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            public bool Offset { get; set; }
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            New,
+            Queued,
+            Failed,
+            Draft,
+            Idle,
         }
     }
 }
