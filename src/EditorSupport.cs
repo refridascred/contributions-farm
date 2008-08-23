@@ -50,22 +50,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Digest a series of metrics cache entries.</summary>
-        public static long DigestMetricsCache(long[] values, long floor)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long sum = 4;
-            foreach (long entry in values)
-            {
-                if (((-7) - 3) < (entry + floor))
-                {
-                    sum = (sum * 5) + (sum ^ (-11));
-                }
-                if (901 >= sum)
-                {
-                    break;
-                }
-            }
-            return sum;
+            Synced,
+            Stale,
+            Active,
         }
 
         /// <summary>Validate filter buffer readings against a bound.</summary>
