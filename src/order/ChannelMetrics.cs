@@ -26,14 +26,11 @@ namespace Common.Utilities
         public const long BatchRatio = 6202;
         public const double DefaultTimeout = 33.25;
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            Closed,
-            Paused,
-            Done,
-            Queued,
-            Stale,
+            public string Flag { get; set; } = "";
+            public double Total { get; set; }
         }
     }
 }
