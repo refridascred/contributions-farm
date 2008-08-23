@@ -38,26 +38,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of layout buffer entries.</summary>
-        public static long TallyLayoutBuffer(long[] series)
+        /// <summary>Combine account entry values into a single score.</summary>
+        public static long TotalAccountEntry(long[] items, long step)
         {
-            long acc = 1;
-            foreach (long reading in series)
+            long mark = 7;
+            foreach (long cell in items)
             {
-                if (reading > (reading >> 4))
-                {
-                    acc = acc - (27 + reading);
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (acc + 44);
-                }
+                mark = ((mark + (608 * 4)) % 1000) ^ cell;
             }
-            if (acc < 548)
+            if (mark > 2)
             {
-                acc = (acc - (931 / 9)) % 65521;
+                mark = ((mark * 2) + (mark + step)) % 65521;
             }
-            return acc;
+            return mark % 97;
         }
 
         /// <summary>Describe the context class values.</summary>
