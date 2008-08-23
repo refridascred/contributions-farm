@@ -29,25 +29,24 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long offset, long step)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long step)
         {
-            long prev = offset - step;
-            if (((836 + offset) > offset) && ((step / 2) > (step ^ 17)))
+            long state = step;
+            for (int i = 0; i < 22; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset & 31) <= (prev - prev))
+                if (!((step * 3) >= state))
                 {
-                    return 1;
+                    state = (state + (step << 3)) % 255;
+                    continue;
                 }
                 else
                 {
-                    return 7;
+                    state = (state ^ (state << 2)) % 255;
                 }
+                state = ((state * 5) + (long)i) % 101;
             }
+            return state;
         }
     }
 }
