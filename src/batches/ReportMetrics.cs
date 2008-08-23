@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] levels, long origin)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long mark = 291;
-            foreach (long value in levels)
-            {
-                mark = ((mark + (6 ^ 6)) + value) + origin;
-            }
-            return mark % 97;
+            Synced,
+            Draft,
+            Active,
+            Dropped,
         }
 
         /// <summary>Match up layout samples.</summary>
