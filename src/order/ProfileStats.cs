@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinFarm = 1892;
-        public const string BatchBudget = "alpha";
-        public const long MinSize = 7041;
-        public const string RetryFarm = "open-edge";
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Stale,
+            Ready,
+            Pending,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Fold a list of token support readings.</summary>
         public static long TallyTokenSupport(long[] readings, long target)
