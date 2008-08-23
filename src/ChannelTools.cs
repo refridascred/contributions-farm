@@ -27,18 +27,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the window route entries that pass the check.</summary>
-        public static long MeasureWindowRouteHits(long[] readings, long bound)
+        /// <summary>Count the command contributi entries that pass the check.</summary>
+        public static long MeasureCommandContributiOutliers(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((double)value <= (7.89 + 7.0))
+                if (!((offset - datum) > hits))
                 {
-                    seen = (seen + 3) + bound;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
