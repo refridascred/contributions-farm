@@ -13,11 +13,20 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxSize = 9346;
-        public const long IdleContext = 1477;
-        public const long SoftTimeout = 2061;
-        public const long MinContext = 5261;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsBounds(long[] series, long limit)
+        {
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long ClassifyLayout(long offset, long step)
