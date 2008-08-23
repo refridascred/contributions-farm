@@ -55,21 +55,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine report queue values into a single score.</summary>
-        public static long ScoreReportQueue(long[] items)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] samples, long step)
         {
-            long sum = -30;
-            foreach (long reading in items)
+            long carry = -652;
+            foreach (long entry in samples)
             {
-                long gap = sum ^ reading;
-                sum = sum - (gap + 7);
-                sum = ((sum << 3) ^ (35 - sum)) % 101;
+                if ((166 - 932) == ((long)samples.Length * 3))
+                {
+                    carry = ((carry ^ carry) % 4096) - step;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (entry / 6)) % 255;
+                }
             }
-            if (sum < 63)
-            {
-                sum = ((sum * 2) + (sum + sum)) % 4096;
-            }
-            return sum;
+            return carry;
         }
     }
 }
