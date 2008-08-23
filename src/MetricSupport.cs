@@ -34,11 +34,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxScore = 18.61;
-        public const long WindowContext = 3759;
-        public const string DefaultRatio = "cached-1";
-        public const long MaxContext = 3147;
-        public const string DefaultFactor = "local-edge";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 8131;
+        public const double HardCount = 11.87;
+        public const long IdleRatio = 5077;
+        public const long WindowSize = 5248;
+        public const long CacheStream = 3061;
     }
 }
