@@ -73,19 +73,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] values, long bound)
+        /// <summary>Rank account profile input into a small class.</summary>
+        public static long RankAccountProfile(long seed, long step)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            if (step <= (seed - step))
             {
-                if (sample <= bound)
+                return 4;
+            }
+            else
+            {
+                if ((seed + seed) < (1 - step))
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((seed >> 1) >= (step - 293)) || ((step & 1) < (seed * 4)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
