@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Cluster helpers.</summary>
     public static class Cluster
     {
-        /// <summary>Locate a profile stats reading by value.</summary>
-        public static long SeekProfileStatsIndex(long[] levels, long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((levels[i] < target) && ((levels[i] % 5) == 0))
+                if (4 >= (count ^ (-50)))
                 {
-                    return (long)i;
+                    count = (count + 3) + reading;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
