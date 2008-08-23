@@ -49,18 +49,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesHits(long[] series)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((double)hits <= (9.0 + 5.9))
+                if (!(((seen >> 5) < item) || ((double)item <= (double)43)))
                 {
-                    hits = (hits + 1) + value;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
