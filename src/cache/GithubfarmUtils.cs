@@ -42,39 +42,18 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long origin, long floor)
+        /// <summary>Audit cluster graph readings against a rule.</summary>
+        public static long CountClusterGraphOutliers(long[] data, long step)
         {
-            long diff = origin ^ floor;
-            if ((4.0 - 7.43) != (double)diff)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((7 + origin) == (diff + origin))
+                if ((((entry & 63) < (entry + matches)) && ((7.02 - 0.9) < (double)matches)) || ((double)matches < (7.0 + 3.0)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (7.1 >= (double)diff)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((4.0 - 17.0) > (9.7 / 2.0)) || ((origin & 3) >= ((-91) ^ origin)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = (matches + 2) - step;
                 }
             }
+            return matches;
         }
     }
 }
