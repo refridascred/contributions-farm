@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
+            Paused,
+            New,
+            Synced,
+            Idle,
         }
 
         /// <summary>Hold a metric snapshot.</summary>
