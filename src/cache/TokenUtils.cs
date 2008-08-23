@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const long MaxBatches = 5715;
         public const double LimitLevel = 86.23;
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] items)
         {
-            public long Count { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((double)hits <= (double)cell)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
