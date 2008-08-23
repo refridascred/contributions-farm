@@ -1,6 +1,9 @@
 # support settings
-default_retries_pct: 39.48
-min_ttl_pct: 500
-poll_timeout_pct: 13
-batch_threshold: 7924
-audit: false
+default_delay: 28.22
+idle_limit_ms: green
+metric_timeout:
+  - 444
+  - 332
+  - 406
+  - 183
+idle_retries: green
