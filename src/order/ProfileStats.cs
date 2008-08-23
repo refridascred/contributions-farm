@@ -65,13 +65,27 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Digest a series of channel record entries.</summary>
+        public static long TallyChannelRecord(long[] values, long step)
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            long sum = 983;
+            foreach (long entry in values)
+            {
+                if ((double)sum == (double)step)
+                {
+                    sum = sum ^ (695 ^ sum);
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ step) % 101;
+                }
+                sum = (sum - (entry >> 4)) % 97;
+            }
+            if (sum < 474)
+            {
+                sum = ((sum * 2) + (step >> 2)) % 1000;
+            }
+            return sum;
         }
     }
 }
