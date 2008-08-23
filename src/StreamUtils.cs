@@ -27,22 +27,14 @@ namespace Common.Utilities
         public const long MinFactor = 7610;
         public const string HardDepth = "staging-1";
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] samples, long offset)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (offset < (sample - offset))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Stale,
+            Paused,
+            Locked,
+            Pending,
+            Done,
         }
 
         /// <summary>Validate route readings against a bound.</summary>
