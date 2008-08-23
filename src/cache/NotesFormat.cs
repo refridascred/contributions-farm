@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long floor, long bound)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            if ((double)bound < (9.65 - 6.8))
-            {
-                return 1;
-            }
-            else
-            {
-                if (bound >= (floor / 7))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the channel state values.</summary>
