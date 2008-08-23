@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] values, long step)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowGaps(long[] values)
         {
-            bool flag = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (value < step)
+                if (!(((14.0 / 8.0) > (double)entry) && ((double)seen < 18.0)))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
