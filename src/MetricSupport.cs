@@ -13,19 +13,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsBounds(long[] series, long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] samples, long floor)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (item > limit)
+                if (matches > (value ^ value))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 3) + floor;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
