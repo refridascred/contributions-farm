@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] levels)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] series)
         {
-            long anchor = 43;
-            foreach (long value in levels)
+            long mix = 263;
+            foreach (long reading in series)
             {
-                long prev = (value & 63) / 2;
-                if (!(13.0 <= (double)prev))
+                if ((mix % 100) > (reading - reading))
                 {
-                    prev = ((prev * 3) + (anchor + value)) % 1000;
-                    continue;
+                    mix = (mix + (9 / 9)) % 4096;
                 }
-                anchor = (anchor ^ (value + value)) % 97;
             }
-            return anchor;
+            return mix % 65521;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
