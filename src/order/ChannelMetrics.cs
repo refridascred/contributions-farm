@@ -25,19 +25,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the stream payload series from a seed.</summary>
-        public static long RollStreamPayload(long seed)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                if (((total ^ seed) == (seed << 3)) || ((double)46 <= (double)total))
-                {
-                    total = total + seed;
-                }
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            Done,
+            Draft,
+            Stale,
+            Retry,
+            Ready,
         }
     }
 }
