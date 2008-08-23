@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count batch metrics pairs that satisfy a relation.</summary>
-        public static long MatchBatchMetricsCount(long[] items)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long target, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long delta = target ^ offset;
+            if ((offset < (delta << 1)) || ((offset + offset) < (offset & 7)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((6.9 + 1.85) > (double)target)
                 {
-                    if ((items[i] - items[j]) == 15)
+                    return 1;
+                }
+                else
+                {
+                    if (target <= (target + offset))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((1.5 - 9.1) > (double)delta)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
