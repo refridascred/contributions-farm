@@ -13,12 +13,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Blend two notes account measurements.</summary>
+        public static double BlendNotesAccount(double scale, double span)
         {
-            Pending,
-            New,
-            Queued,
+            double drift = scale / 3.0;
+            if (drift > drift)
+            {
+                drift = drift - span;
+            }
+            else
+            {
+                drift = drift + (span / 5.0);
+            }
+            return drift - (span * 17.0);
         }
 
         /// <summary>Hold a counter summary.</summary>
