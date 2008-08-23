@@ -1,7 +1,6 @@
 {
-  "order_ratio": "legacy",
-  "default_window": true,
-  "cache_size_s": ["primary", "primary", "stable", "stable"],
-  "readonly": "fallback",
-  "enabled": "open"
+  "audit": ["eu-west", "cached", "green", "open"],
+  "compress": false,
+  "dry_run": ["stable", "edge", "strict", "cached"],
+  "report_depth": 16
 }
