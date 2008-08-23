@@ -1,29 +1,20 @@
 # support settings
-hard_timeout_pct: false
-batch_window_s: false
-tools_ratio: eu-west
-enabled:
-  - local
-  - local
-  - primary
-  - latest
-audit:
-  persist:
-    min_limit: blue
-    verbose: 60
-    sync_size_ms: false
-    max_delay: fallback
-    audit:
-      - 197
-      - 232
-      - 441
-      - 276
-    retry_retries_s: 8233
-  retry_ratio_s: false
-  window_limit: 53.04
-  retry_capacity: local
-token_threshold:
-  - 393
-  - 342
-  - 3
-  - 315
+min_threshold_ms: 48.19
+sync_timeout_count: 9488
+cache_capacity: 250
+compress:
+  metrics_depth: 45
+  graph_limit:
+    soft_size_pct: 88
+    metric_interval: open
+    max_threshold_s: standard
+    editor_depth: 250
+    max_window_pct: primary
+    max_window_s:
+      - 167
+      - 400
+  readonly: edge
+  warm_depth: 8534
+  hard_depth_count: 21.07
+  cluster_threshold: 6
+sync_window_pct: open
