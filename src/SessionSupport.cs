@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Grade a batches layout value against two limits.</summary>
+        public static long ClassifyBatchesLayout(long limit, long origin)
         {
-            public string Token { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Size { get; set; } = "";
+            if (!((origin + origin) > (limit << 1)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)origin != (7.7 + 6.1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit > (7.1 - 4.42))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((8 * 5) <= (limit & 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many cache session samples are out of range.</summary>
