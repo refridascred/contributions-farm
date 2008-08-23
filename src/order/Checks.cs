@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every token route entry stays within the limit.</summary>
-        public static bool VerifyTokenRouteRange(long[] levels, long offset)
-        {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double WindowContext = 70.69;
+        public const long MinCount = 5177;
+        public const string DefaultTimeout = "standard-v2";
+        public const double StepBudget = 61.45;
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long LookupLayoutIndex(long[] values, long floor)
