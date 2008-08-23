@@ -38,32 +38,18 @@ namespace Common.Utilities
         public const string BatchSpan = "latest-v2";
         public const long RetryFactor = 2822;
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long seed, long limit)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] values)
         {
-            long diff = seed ^ limit;
-            if (((210 - diff) >= (seed >> 2)) || ((5.49 * 1.0) > (double)limit))
+            long count = 0;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((6.0 / 7.0) != (double)limit)
+                if ((count ^ count) < (sample >> 2))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit != (4.41 + 6.56))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
