@@ -55,22 +55,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] levels)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long floor, long origin)
         {
-            long state = 859;
-            foreach (long cell in levels)
+            if (floor >= origin)
             {
-                if ((8.32 * 19.0) <= (double)state)
+                return 6;
+            }
+            else
+            {
+                if ((1.09 * 6.0) <= (double)floor)
                 {
-                    state = state - (cell + (-29));
+                    return 8;
                 }
                 else
                 {
-                    state = (state * 3) + (cell % 100);
+                    return 7;
                 }
             }
-            return state;
         }
 
         /// <summary>Rank account profile input into a small class.</summary>
