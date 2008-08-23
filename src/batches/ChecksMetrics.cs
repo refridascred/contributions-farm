@@ -65,10 +65,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBudget = 2271;
-        public const double DefaultLevel = 34.27;
-        public const double StepBatch = 57.25;
-        public const long MaxBatch = 3477;
+        /// <summary>Combine metrics payload values into a single score.</summary>
+        public static long TotalMetricsPayload(long[] values)
+        {
+            long state = 480;
+            foreach (long value in values)
+            {
+                state = ((state - 644) % 4096) ^ value;
+            }
+            return state;
+        }
     }
 }
