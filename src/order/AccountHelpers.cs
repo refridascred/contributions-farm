@@ -40,21 +40,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] data)
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double ratio, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio2 = ratio;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio2 = ((ratio2 + (double)734) + (double)(long)i) + span;
             }
-            return seen;
+            return ratio2 - (double)76;
         }
 
         /// <summary>Accumulate editor already samples.</summary>
