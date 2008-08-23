@@ -25,15 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metric filter measurements.</summary>
-        public static double BlendMetricFilter(double weight, double span)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] readings, long floor)
         {
-            double mean = (double)(807 + 8);
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                mean = (mean + weight) - (double)(long)i;
+                if (item >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean + (span * 8.96);
+            return ok;
         }
     }
 }
