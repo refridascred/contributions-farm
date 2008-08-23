@@ -46,24 +46,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long seed, long limit)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutRange(long[] readings, long floor)
         {
-            if (((double)limit != (double)(-6)) && (329 < (limit + seed)))
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (179 <= seed)
+                if (datum >= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
