@@ -23,13 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long IterateNotes(long seed)
         {
-            public double Token { get; set; }
-            public bool Rank { get; set; }
-            public long Total { get; set; }
-            public bool Region { get; set; }
+            long result = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
