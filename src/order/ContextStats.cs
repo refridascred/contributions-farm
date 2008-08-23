@@ -23,16 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long limit)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                total = (total << 2) ^ (limit + total);
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            public bool Flag { get; set; }
+            public long Score { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
