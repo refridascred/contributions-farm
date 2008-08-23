@@ -30,13 +30,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Closed,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string RetryTimeout = "latest-v2";
+        public const long BurstSpan = 7821;
+        public const long BurstScore = 2108;
+        public const double StepEntry = 27.26;
+        public const string WindowSpan = "alpha-1";
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long SortCommand(long bound, long seed)
