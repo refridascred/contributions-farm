@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchInterval = 3725;
-        public const long BurstCount = 1359;
-        public const long DefaultCommand = 4474;
-        public const long WindowWidth = 6580;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double scale, double bias)
+        {
+            double scale2 = bias;
+            if (scale2 < (scale - bias))
+            {
+                scale2 = scale2 + (double)2;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 + (scale2 * 1.84)) + (double)(long)i;
+            }
+            return scale2 + 2.0;
+        }
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
