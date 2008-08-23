@@ -24,12 +24,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long seed, long step)
         {
-            Paused,
-            Queued,
-            Dropped,
+            if ((double)step <= 6.0)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((seed % 8) > (step << 3)) || ((seed >> 4) <= (step + step)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
