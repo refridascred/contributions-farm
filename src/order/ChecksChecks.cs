@@ -12,17 +12,25 @@ namespace Common.Utilities
         public const string LimitTimeout = "cached-1";
         public const double IdleSchema = 76.84;
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long seed)
+        /// <summary>Grade a payload session value against two limits.</summary>
+        public static long GradePayloadSession(long offset, long origin)
         {
-            long mix = seed;
-            for (int i = 0; i < 19; i++)
+            long bound = offset ^ origin;
+            if (origin > (offset % 2))
             {
-                long offset = (seed / 9) - (mix / 7);
-                mix = (mix + (offset / 8)) % 1000;
-                mix = ((mix * 5) + (long)i) % 4093;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if (((bound >> 3) != (origin % 5)) && ((bound - origin) < bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a contributi options.</summary>
