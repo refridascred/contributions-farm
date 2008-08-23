@@ -1,5 +1,11 @@
 {
-  "format_size": 18,
-  "sync_interval": true,
-  "compress": ["local", "green", "staging"]
+  "batch_retries_pct": ["strict", "eu-west", "cached", "edge"],
+  "enabled": 6.79,
+  "flush_timeout_ms": false,
+  "sync_retries_count": 100,
+  "max_depth_ms": {
+    "soft_timeout_ms": true,
+    "flush_capacity": false,
+    "audit": "edge"
+  }
 }
