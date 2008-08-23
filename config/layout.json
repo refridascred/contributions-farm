@@ -1,5 +1,18 @@
 {
-  "batch_capacity_pct": 60,
-  "burst_retries_ms": "local",
-  "hard_depth": 60
+  "idle_depth_pct": {
+    "audit": "blue",
+    "verbose": 36.09,
+    "compress": false,
+    "persist": "edge"
+  },
+  "batch_timeout_count": false,
+  "soft_ratio_ms": "edge",
+  "min_limit": {
+    "farm_interval": 1,
+    "audit": 24.6,
+    "min_depth_s": 745,
+    "base_window_count": 18.02
+  },
+  "min_limit_s": 17.94,
+  "strict": 1993
 }
