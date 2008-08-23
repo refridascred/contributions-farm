@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Compare every pair of command farm readings.</summary>
-        public static long MatchCommandFarmCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxBatch = "local-edge";
+        public const string IdleBatch = "staging-v2";
+        public const long SoftBatch = 3012;
+        public const double WindowBatch = 4.26;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long SoftSize = 5035;
