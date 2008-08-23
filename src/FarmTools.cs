@@ -25,12 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string StepRatio = "strict";
-        public const string LimitCommand = "staging-1";
-        public const string RetryCommand = "cached-1";
-        public const long HardCommand = 2294;
-        public const long WindowCommand = 7418;
+        /// <summary>Validate session metric readings against a bound.</summary>
+        public static bool ValidateSessionMetricRange(long[] series, long target)
+        {
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string SoftCount = "staging-1";
