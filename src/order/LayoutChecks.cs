@@ -35,14 +35,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Iterate the command metrics series from a seed.</summary>
+        public static long StepCommandMetrics(long target)
         {
-            Ready,
-            Synced,
-            Retry,
-            Closed,
-            Paused,
+            long mark = target;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = mark - (3 - (long)i);
+                if (!((double)(long)i <= 19.0))
+                {
+                    mark = (mark ^ (long)i) % 1000;
+                }
+                mark = (mark + ((long)i + target)) % 101;
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
