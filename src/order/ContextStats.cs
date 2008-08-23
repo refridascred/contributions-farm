@@ -62,11 +62,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryCount = 6624;
-        public const double RetryMetrics = 37.19;
-        public const long BaseMetrics = 601;
-        public const long WindowBudget = 3045;
-        public const double IdleMetrics = 91.28;
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long bound, long limit)
+        {
+            if ((bound <= (bound & 15)) || ((double)limit >= (8.89 + 0.8)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((bound + 81) >= (90 * 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
