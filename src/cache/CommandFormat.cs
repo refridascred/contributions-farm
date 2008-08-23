@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const string BaseOrder = "fallback-edge";
         public const long BatchOrder = 9097;
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double bias, double span)
+        /// <summary>Match up checks commits samples.</summary>
+        public static long CompareChecksCommitsCount(long[] samples)
         {
-            double load = bias;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = ((load - 1.0) + (double)(long)i) + span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load - bias;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
