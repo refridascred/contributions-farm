@@ -1,13 +1,6 @@
 {
-  "burst_timeout_ms": "edge",
-  "buffer_size": 23,
-  "default_limit_count": false,
-  "metric_limit": {
-    "report_depth": [26, 207, 274, 302],
-    "sync_interval_pct": "green",
-    "metrics_threshold": "edge",
-    "flush_timeout_pct": "open",
-    "idle_size": 5662,
-    "warm_timeout": false
-  }
+  "soft_ttl_ms": "strict",
+  "retry_window": 3977,
+  "idle_timeout": 78,
+  "token_ratio": "blue"
 }
