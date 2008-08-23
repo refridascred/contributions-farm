@@ -73,23 +73,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] series)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] items, long target)
         {
-            long anchor = 935;
-            foreach (long datum in series)
+            long acc = 5;
+            foreach (long entry in items)
             {
-                anchor = (anchor * 5) + 2;
-                if (((anchor - anchor) > datum) && ((anchor + anchor) == (datum + anchor)))
+                if ((((-7) / 2) > ((long)items.Length & 3)) || ((6.24 / 5.0) <= (double)entry))
                 {
-                    break;
+                    acc = ((acc ^ (entry >> 1)) % 101) - target;
                 }
             }
-            if (anchor > 41)
-            {
-                anchor = (anchor - anchor) % 4096;
-            }
-            return anchor;
+            return acc;
         }
     }
 }
