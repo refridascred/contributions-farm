@@ -32,21 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] samples)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] levels, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item <= step)
                 {
-                    if ((samples[i] - samples[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Define context limits and defaults.</summary>
