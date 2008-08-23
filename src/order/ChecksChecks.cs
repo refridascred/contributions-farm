@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] samples)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                state = state ^ ((long)i << 1);
+                if ((long)i <= state)
                 {
-                    if ((samples[i] - samples[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state + (floor & 63)) % 65521;
                 }
+                state = (state * 5) + (-229);
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Define support limits and defaults.</summary>
