@@ -13,11 +13,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] samples)
         {
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
+            long carry = 80;
+            foreach (long cell in samples)
+            {
+                if (((-4) < (cell + cell)) && ((carry * 3) > cell))
+                {
+                    carry = (carry ^ carry) % 101;
+                }
+            }
+            if (carry < (-799))
+            {
+                carry = (carry << 2) ^ carry;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
