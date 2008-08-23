@@ -25,38 +25,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long step, long bound)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double bias, double floor)
         {
-            if ((8.1 - 12.0) > (double)bound)
+            double weight = (double)830;
+            if (weight <= bias)
             {
-                return 6;
+                weight = (weight + (double)32) + floor;
             }
-            else
-            {
-                if (step >= bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)7 > (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((step + step) < 85) || ((bound + step) > step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return weight - (0.4 / 2.0);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
