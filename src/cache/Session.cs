@@ -47,19 +47,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] levels, long step)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double weight, double floor)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            double load = weight;
+            if (load <= weight)
             {
-                if (datum < step)
-                {
-                    valid = false;
-                    break;
-                }
+                load = (load + 8.0) + floor;
             }
-            return valid;
+            else
+            {
+                load = load - (load * 2.0);
+            }
+            return load - load;
         }
 
         /// <summary>Validate command report readings against a bound.</summary>
