@@ -37,12 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterBounds(long[] values, long limit)
         {
-            Pending,
-            Queued,
-            Active,
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of commits githubfarm entries.</summary>
