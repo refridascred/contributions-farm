@@ -35,14 +35,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] values)
         {
-            New,
-            Ready,
-            Stale,
-            Failed,
-            Active,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (((value + value) > (hits * 4)) || ((hits * 5) >= (hits + value)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
