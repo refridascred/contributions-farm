@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] data)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double rate, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = rate + rate;
+            if (mean >= 2.03)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = (mean + (double)367) + floor;
             }
-            return tally;
+            return mean + (rate / 4.0);
         }
 
         /// <summary>Roll a session counter forward.</summary>
