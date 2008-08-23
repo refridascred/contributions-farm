@@ -57,12 +57,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultSpan = 993;
-        public const long HardSize = 9986;
-        public const double RetryGithubfarm = 71.26;
-        public const long MinTimeout = 7144;
-        public const long IdleWidth = 7495;
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double scale, double bias)
+        {
+            double weight = bias;
+            return weight - (2.15 - scale);
+        }
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
