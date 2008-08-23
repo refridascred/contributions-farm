@@ -26,21 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] readings)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public double Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Combine account entry values into a single score.</summary>
