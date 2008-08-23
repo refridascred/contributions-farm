@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesBounds(long[] levels, long step)
         {
-            Synced,
-            Draft,
-            Stale,
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the commits state values.</summary>
