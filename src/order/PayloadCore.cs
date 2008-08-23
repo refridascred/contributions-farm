@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long StepBatch(long origin)
         {
-            New,
-            Failed,
-            Stale,
-            Idle,
-            Locked,
+            long total = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
