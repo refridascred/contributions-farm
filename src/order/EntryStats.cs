@@ -79,9 +79,22 @@ namespace Common.Utilities
         public const double WindowFactor = 92.22;
         public const long WindowInterval = 5904;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BaseScore = "primary-v2";
-        public const long SoftLevel = 7791;
-        public const long MaxRecord = 1566;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsMatches(long[] items, long offset)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (offset <= (0 << 2))
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
