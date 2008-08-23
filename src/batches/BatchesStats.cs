@@ -40,11 +40,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long seed, long limit)
         {
-            public double Offset { get; set; }
-            public string Region { get; set; } = "";
+            if (!((double)limit != (double)seed))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((9.7 / 4.0) == (double)seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the route kind values.</summary>
