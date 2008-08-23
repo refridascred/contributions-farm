@@ -1,5 +1,21 @@
 {
-  "dry_run": "strict",
-  "soft_size_pct": true,
-  "batches_delay": 2167
+  "base_interval": {
+    "entry_retries": 94,
+    "stats_ttl": "strict",
+    "max_interval": "green",
+    "readonly": 36,
+    "window_depth": 28.83
+  },
+  "soft_interval_pct": {
+    "enabled": {
+      "soft_ratio_pct": "fallback",
+      "hard_threshold": "standard",
+      "readonly": false,
+      "graph_threshold": false,
+      "enabled": "strict"
+    },
+    "dry_run": ["local", "legacy", "standard", "primary"],
+    "verbose": 39
+  },
+  "burst_timeout_count": 2971
 }
