@@ -1,10 +1,14 @@
 {
-  "payload_ttl": 48,
-  "min_depth_s": {
-    "notes_retries": 30,
-    "context_delay": 23.29,
-    "sync_capacity": "primary",
-    "support_capacity": "strict"
-  },
-  "batch_retries_pct": true
+  "warm_ttl_s": 4048,
+  "stats_interval": 60.02,
+  "min_delay_count": 30,
+  "flush_capacity_s": false,
+  "soft_window": false,
+  "min_size_pct": {
+    "hard_limit": ["fallback", "strict", "fallback", "green"],
+    "default_timeout_count": 96,
+    "batch_size_s": "edge",
+    "flush_capacity_count": 8674,
+    "flush_interval": 1648
+  }
 }
