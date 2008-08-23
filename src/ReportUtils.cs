@@ -16,22 +16,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] items, long offset)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if (((6 << 1) == (offset + offset)) || (value <= (value & 127)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Closed,
+            Queued,
+            Done,
+            Pending,
         }
 
         /// <summary>Measure how many queue command samples are out of range.</summary>
