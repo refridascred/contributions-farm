@@ -53,17 +53,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] readings, long limit)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Queued,
+            Closed,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
