@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountHits(long[] levels)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((tally ^ 45) >= (tally + tally))
+                if (reading != origin)
                 {
-                    tally = (tally + 2) + item;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Accumulate context order samples.</summary>
