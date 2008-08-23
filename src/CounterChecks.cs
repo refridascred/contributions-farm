@@ -61,17 +61,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a window farm reading by value.</summary>
-        public static long LookupWindowFarmIndex(long[] levels, long floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandGaps(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 3) == 0))
+                if (reading < (reading & 15))
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
