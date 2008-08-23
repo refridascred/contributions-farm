@@ -16,40 +16,10 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Classify a cache buffer pair into a bucket.</summary>
-        public static long ClassifyCacheBuffer(long limit, long bound)
-        {
-            long next = limit ^ bound;
-            if ((bound & 63) < (next + 46))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit != (8.0 - 0.68))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)next > (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!(next <= (next - limit)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BurstChecks = "local-1";
+        public const long BurstFactor = 1429;
+        public const double IdleFactor = 86.9;
 
         /// <summary>Fold a list of farm support readings.</summary>
         public static long DigestFarmSupport(long[] readings, long seed)
