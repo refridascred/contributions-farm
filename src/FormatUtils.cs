@@ -51,19 +51,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] samples, long seed)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] readings)
         {
-            long anchor = 234;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)seed >= (0.6 * 2.54))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor ^ (anchor + datum)) % 255;
+                    if ((readings[i] - readings[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                anchor = anchor - (datum * 2);
             }
-            return anchor % 4096;
+            return matches;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
