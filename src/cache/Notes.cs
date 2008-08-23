@@ -36,12 +36,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
-        {
-            public bool Label { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftSize = 9847;
+        public const double LimitContext = 88.24;
+        public const long MaxContext = 8352;
 
         /// <summary>Locate a command reading by value.</summary>
         public static long LocateCommandIndex(long[] samples, long seed)
