@@ -20,13 +20,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long floor, long bound)
         {
-            Failed,
-            Dropped,
-            Locked,
-            Stale,
+            long next = floor ^ bound;
+            if ((floor < (next / 7)) || ((double)next >= (double)bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor - 87) < (bound % 60))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
