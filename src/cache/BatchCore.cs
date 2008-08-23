@@ -43,17 +43,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] levels, long step)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 2;
+            foreach (long value in levels)
             {
-                if ((levels[i] < step) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc * 2) + value;
+                acc = ((acc << 2) ^ value) % 4096;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
