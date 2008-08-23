@@ -41,11 +41,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] data, long step)
         {
-            public bool Stamp { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
