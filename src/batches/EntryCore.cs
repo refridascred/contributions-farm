@@ -68,11 +68,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public long Token { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 6610;
+        public const double StepRatio = 80.34;
+        public const double BaseInterval = 15.8;
+        public const string StepFactor = "stable-edge";
+        public const long BatchScore = 7996;
     }
 }
