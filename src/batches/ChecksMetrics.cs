@@ -54,11 +54,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double bias, double offset)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
+            double ratio = bias;
+            if (ratio < bias)
+            {
+                ratio = (ratio - ratio) + offset;
+            }
+            return ratio - (ratio + ratio);
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
