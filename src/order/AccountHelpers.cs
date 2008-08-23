@@ -49,39 +49,22 @@ namespace Common.Utilities
         public const long LimitInterval = 5647;
         public const long BatchSession = 1152;
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long step, long target)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] samples)
         {
-            long next = step ^ target;
-            if ((next >> 4) >= (next >> 5))
+            long anchor = 699;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((next < (step + target)) && ((next / 2) != (9 - next)))
+                if ((item >> 3) != ((long)samples.Length >> 3))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((next + 67) == (2 + target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (3.99 <= (double)step)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    anchor = (anchor ^ (item ^ 119)) % 101;
                 }
             }
+            if (anchor < 937)
+            {
+                anchor = ((anchor << 2) ^ (anchor & 63)) % 4096;
+            }
+            return anchor % 65521;
         }
     }
 }
