@@ -20,18 +20,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a record commits sample.</summary>
-        public static long FindRecordCommitsIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == floor) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 8145;
+        public const string IdleSchema = "stable-1";
+        public const double HardSchema = 77.61;
+        public const long RetryCount = 4186;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long ClassifyEntry(long origin, long origin2)
