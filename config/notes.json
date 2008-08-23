@@ -1,19 +1,6 @@
 {
-  "format_size": false,
-  "sync_size_ms": 4229,
-  "enabled": {
-    "persist": 7131,
-    "burst_window_count": ["blue", "staging"],
-    "idle_depth": 7.4,
-    "min_ratio_count": {
-      "warm_window_s": "legacy",
-      "metrics_size": "primary",
-      "warm_ratio_s": 4108,
-      "audit": 19.78
-    },
-    "format_window": true,
-    "batch_ttl": 67
-  },
-  "min_ttl": true,
-  "batch_delay": "local"
+  "idle_timeout": "blue",
+  "audit": 1024,
+  "default_threshold": false,
+  "token_window": 500
 }
