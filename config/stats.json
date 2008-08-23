@@ -1,12 +1,17 @@
 {
-  "persist": 3126,
-  "verbose": 33.7,
-  "idle_capacity_ms": {
-    "max_window": 500,
-    "min_window": "staging",
-    "base_depth_pct": 89.12,
-    "enabled": "cached",
-    "cache_ratio_ms": "edge"
+  "sync_retries_pct": {
+    "strict": 60,
+    "readonly": {
+      "window_window": "local",
+      "session_retries": false,
+      "context_depth": 6.96,
+      "sync_ratio": 500,
+      "verbose": true,
+      "poll_ttl": "blue"
+    },
+    "compress": "green",
+    "burst_delay": 250
   },
-  "batch_threshold_s": 20
+  "enabled": [76, 236, 158, 456],
+  "profile_capacity": 98.41
 }
