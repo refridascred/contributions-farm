@@ -1,6 +1,27 @@
 # entry settings
-verbose: 15.22
-warm_limit: false
-base_ttl_ms: green
-command_retries: 2355
-session_delay: strict
+account_limit:
+  idle_timeout_pct:
+    soft_ttl_pct: 2
+    readonly: 75
+    compress: 37.69
+  hard_retries: 1163
+  warm_depth_count:
+    compress: true
+    flush_delay: 3.24
+    audit: true
+    burst_depth_pct: false
+    entry_depth: true
+    queue_depth: true
+  strict: 529
+  audit: 7028
+enabled: latest
+idle_ttl_count:
+  poll_depth_s: 1468
+  token_limit: 76
+  idle_interval_s:
+    - eu-west
+    - staging
+    - staging
+  commits_delay: blue
+  idle_interval_pct: green
+flush_capacity_ms: latest
