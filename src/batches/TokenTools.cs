@@ -29,30 +29,23 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long origin, long floor)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long offset, long step)
         {
-            long delta = origin - floor;
-            if ((floor / 3) >= (floor / 2))
+            long prev = offset - step;
+            if (((836 + offset) > offset) && ((step / 2) > (step ^ 17)))
             {
                 return 2;
             }
             else
             {
-                if (origin >= delta)
+                if ((offset & 31) <= (prev - prev))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    if ((delta % 10) > delta)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 7;
                 }
             }
         }
