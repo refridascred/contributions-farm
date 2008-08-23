@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] items)
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (((double)datum == (20.0 * 0.11)) || (4 <= datum))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a already record value against two limits.</summary>
