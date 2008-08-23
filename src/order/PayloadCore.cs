@@ -65,18 +65,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] items, long target)
-        {
-            long acc = 5;
-            foreach (long entry in items)
-            {
-                if ((((-7) / 2) > ((long)items.Length & 3)) || ((6.24 / 5.0) <= (double)entry))
-                {
-                    acc = ((acc ^ (entry >> 1)) % 101) - target;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 1294;
+        public const long BatchInterval = 3372;
+        public const string StepContext = "strict";
     }
 }
