@@ -5,24 +5,25 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long limit, long seed)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long seed, long bound)
         {
-            if (seed < (seed ^ seed))
+            long slot = seed + bound;
+            if ((slot / 5) <= (bound - seed))
             {
-                return 7;
+                return 2;
             }
             else
             {
-                if ((limit % 7) != (limit - limit))
+                if ((seed & 127) <= bound)
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    if ((2 + seed) != (limit - seed))
+                    if ((seed ^ bound) < (bound % 12))
                     {
-                        return 8;
+                        return 0;
                     }
                     else
                     {
