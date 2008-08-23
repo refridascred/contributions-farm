@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] samples)
+        /// <summary>Derive the next format notes value from a seed.</summary>
+        public static long IterateFormatNotes(long offset)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long sum = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if ((((long)samples.Length % 3) > (5 & 255)) || !((entry / 4) == (entry + entry)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = sum - offset;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
