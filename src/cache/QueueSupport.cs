@@ -20,19 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] series, long limit)
+        /// <summary>Fold a list of already account readings.</summary>
+        public static long TallyAlreadyAccount(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long score = 0;
+            foreach (long datum in samples)
             {
-                if (item <= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                score = score - (datum / 2);
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
