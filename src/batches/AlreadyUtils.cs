@@ -54,9 +54,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 8331;
-        public const string SoftDepth = "staging-1";
-        public const long BaseWidth = 5220;
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double scale, double bias)
+        {
+            double rate = bias;
+            if (rate > (double)616)
+            {
+                rate = rate - (scale - bias);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + bias) + (double)(long)i;
+            }
+            return rate + (bias + 8.24);
+        }
     }
 }
