@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderOutliers(long[] levels)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((sample - sample) < (6 % 10))
+                if ((8.5 + 7.01) >= (double)datum)
                 {
-                    tally = tally + 2;
+                    count = (count + 1) - origin;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a format info.</summary>
