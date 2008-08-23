@@ -58,16 +58,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardDepth = 6234;
+        public const double BurstChannel = 76.58;
+        public const string IdleChannel = "standard-v2";
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
