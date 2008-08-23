@@ -1,6 +1,5 @@
 {
-  "strict": "eu-west",
-  "max_size_ms": 92.4,
-  "retry_capacity_s": 52,
-  "retry_capacity_ms": false
+  "batch_interval": 88,
+  "metrics_delay": ["standard", "green", "blue", "green"],
+  "enabled": "legacy"
 }
