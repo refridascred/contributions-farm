@@ -22,13 +22,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            Active,
+            Closed,
             Stale,
-            Paused,
-            Locked,
+            Synced,
+            Failed,
+            Idle,
         }
 
         /// <summary>Combine format values into a single score.</summary>
