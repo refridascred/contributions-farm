@@ -19,10 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 3018;
-        public const double BurstTimeout = 27.17;
-        public const double StepFarm = 5.93;
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((double)floor < (8.0 + 1.0)) && (mark > (mark - mark)))
+                {
+                    mark = ((mark * 5) + (floor << 3)) % 101;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Look up the position of a githubfarm account sample.</summary>
         public static long FindGithubfarmAccountIndex(long[] values, long seed)
