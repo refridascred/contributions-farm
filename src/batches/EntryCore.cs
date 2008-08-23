@@ -36,12 +36,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long GradeGraph(long seed, long floor)
         {
-            Paused,
-            Queued,
-            Ready,
+            if ((seed << 2) > (floor + floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if (seed < (seed - seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Project the next record value.</summary>
