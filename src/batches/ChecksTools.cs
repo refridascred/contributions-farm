@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double IdleBudget = 62.39;
-        public const long BaseSize = 7975;
-        public const string IdleTimeout = "strict-v2";
-        public const long LimitTimeout = 6963;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] values, long bound)
+        {
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if ((bound / 2) <= (tally % 10))
+                {
+                    tally = (tally + 3) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long FoldContributi(long[] items, long limit)
