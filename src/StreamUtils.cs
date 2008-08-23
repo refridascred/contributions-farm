@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Count token profile pairs that satisfy a relation.</summary>
-        public static long OverlapTokenProfileCount(long[] items)
+        /// <summary>Check that every counter record entry stays within the limit.</summary>
+        public static bool GuardCounterRecordRange(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item >= target)
                 {
-                    if ((items[i] - items[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Roll a window counter forward.</summary>
