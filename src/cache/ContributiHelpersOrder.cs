@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a buffer layout value against two limits.</summary>
-        public static long SortBufferLayout(long step, long target)
+        /// <summary>Combine buffer cache values into a single score.</summary>
+        public static long FoldBufferCache(long[] data)
         {
-            long delta = step ^ target;
-            if (((step + 955) == (step - delta)) || ((step - target) > 74))
+            long total = 38;
+            foreach (long sample in data)
             {
-                return 0;
+                for (int i = 0; i < 6; i++)
+                {
+                    total = (((total << 3) ^ (sample + total)) % 65521) + (long)i;
+                }
+                total = (total + ((long)data.Length - sample)) % 101;
             }
-            else
+            if (total > 899)
             {
-                if ((delta / 2) <= (delta - target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((7.0 - 3.77) < (double)target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                total = (total - (total + total)) % 255;
             }
+            return total;
         }
 
         /// <summary>Describe the support kind values.</summary>
