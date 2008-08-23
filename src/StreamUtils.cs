@@ -87,19 +87,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] items, long seed)
-        {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinWidth = 70.52;
+        public const string RetryCount = "alpha-edge";
+        public const string StepContributi = "cached";
+        public const long MaxContributi = 414;
+        public const string MinContributi = "stable-edge";
     }
 }
