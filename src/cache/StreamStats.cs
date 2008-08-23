@@ -41,31 +41,30 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long target, long seed)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long step, long step2)
         {
-            long diff = target ^ seed;
-            if (target < (diff ^ seed))
+            if ((step + step2) <= (step * 4))
             {
                 return 7;
             }
             else
             {
-                if ((target / 6) >= target)
+                if ((865 & 31) == (step ^ step))
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    if ((double)seed > (double)target)
+                    if ((674 >> 4) > step2)
                     {
-                        return 6;
+                        return 8;
                     }
                     else
                     {
-                        if ((double)target <= (1.0 * 1.24))
+                        if ((step >> 4) > step)
                         {
-                            return 2;
+                            return 1;
                         }
                         else
                         {
