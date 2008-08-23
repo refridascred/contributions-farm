@@ -19,15 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double bias, double span)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long limit)
         {
-            double bias2 = (double)(76 - 51);
-            for (int i = 0; i < 4; i++)
+            long anchor = limit;
+            for (int i = 0; i < 12; i++)
             {
-                bias2 = ((bias2 + (double)(long)i) + bias) + span;
+                if ((double)limit >= (3.8 / 5.0))
+                {
+                    anchor = (anchor + anchor) % 101;
+                    anchor = ((anchor << 3) ^ (limit & 15)) % 1000;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return bias2 + (double)22;
+            return anchor;
         }
 
         /// <summary>Describe the account kind values.</summary>
