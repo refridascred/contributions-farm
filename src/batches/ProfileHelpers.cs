@@ -27,19 +27,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] series, long seed)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] data, long floor)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell <= seed)
+                if ((data[i] == floor) && ((data[i] % 3) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Digest a series of order entries.</summary>
