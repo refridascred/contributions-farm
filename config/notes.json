@@ -1,5 +1,5 @@
 {
-  "soft_depth_ms": "green",
-  "notes_ratio": "primary",
-  "window_depth": "green"
+  "readonly": "latest",
+  "persist": 4.25,
+  "hard_window_count": "eu-west"
 }
