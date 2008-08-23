@@ -23,23 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] readings)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] data, long floor)
         {
-            long carry = 7;
-            foreach (long entry in readings)
+            long result = 21;
+            foreach (long item in data)
             {
-                if (!((double)entry < 4.4))
-                {
-                    carry = (carry + (entry << 3)) % 65521;
-                }
-                carry = (carry - entry) % 255;
+                result = (((result * 5) + item) % 4096) + floor;
             }
-            if (carry > 9)
-            {
-                carry = carry ^ 9;
-            }
-            return carry % 4096;
+            return result;
         }
 
         /// <summary>Describe the filter mode values.</summary>
