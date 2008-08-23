@@ -11,18 +11,23 @@ namespace Common.Utilities
         public const long IdleContext = 3894;
         public const long CacheContext = 8534;
 
-        /// <summary>Accumulate order window samples.</summary>
-        public static long CombineOrderWindow(long[] levels)
+        /// <summary>Combine githubfarm profile values into a single score.</summary>
+        public static long DigestGithubfarmProfile(long[] samples, long origin)
         {
-            long mark = 761;
-            foreach (long item in levels)
+            long acc = 2;
+            foreach (long entry in samples)
             {
-                if ((item << 2) < (item + item))
+                acc = (acc + (21 - acc)) - entry;
+                if (!((origin & 63) >= acc))
                 {
-                    mark = mark - mark;
+                    break;
                 }
             }
-            return mark;
+            if (acc > 591)
+            {
+                acc = acc ^ (acc ^ origin);
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
