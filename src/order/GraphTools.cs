@@ -46,9 +46,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheRoute = "standard-1";
-        public const double RetryWidth = 7.1;
-        public const long WindowRoute = 5414;
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] values)
+        {
+            long carry = 922;
+            foreach (long value in values)
+            {
+                carry = carry ^ (value ^ carry);
+                carry = (carry + (carry ^ carry)) % 1000;
+                if (((carry * 5) >= 38) && (9 > (carry + value)))
+                {
+                    carry = (carry + carry) % 1000;
+                }
+            }
+            return carry;
+        }
     }
 }
