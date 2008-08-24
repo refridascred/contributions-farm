@@ -13,23 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] samples)
-        {
-            long carry = 80;
-            foreach (long cell in samples)
-            {
-                if (((-4) < (cell + cell)) && ((carry * 3) > cell))
-                {
-                    carry = (carry ^ carry) % 101;
-                }
-            }
-            if (carry < (-799))
-            {
-                carry = (carry << 2) ^ carry;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 4248;
+        public const long MaxSpan = 3753;
+        public const long CacheScore = 4360;
+        public const long StepTimeout = 2091;
+        public const long DefaultStats = 7819;
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
