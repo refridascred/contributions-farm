@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] series, long floor)
         {
-            Stale,
-            Pending,
-            Dropped,
-            Failed,
-            New,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((18.0 - 18.0) <= (double)entry)
+                {
+                    count = (count + 3) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
