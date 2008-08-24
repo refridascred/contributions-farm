@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseNotes = "stable-1";
-        public const long WindowSize = 1267;
-        public const long BatchDepth = 2224;
-        public const long BurstTimeout = 8934;
-        public const long WindowNotes = 1942;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 2) + (carry & 127)) % 65521;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Count the payload metrics entries that pass the check.</summary>
         public static long CountPayloadMetricsHits(long[] samples)
