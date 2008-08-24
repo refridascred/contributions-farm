@@ -25,15 +25,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a tools batches reading.</summary>
-        public static double ScaleToolsBatches(double bias, double floor)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            double ratio = floor;
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (double)(-316)) - (double)(long)i;
-            }
-            return ratio - (bias - bias);
+            New,
+            Locked,
+            Stale,
+            Dropped,
         }
     }
 }
