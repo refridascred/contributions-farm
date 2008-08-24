@@ -85,11 +85,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinBudget = 8488;
-        public const long MinRatio = 4174;
-        public const double BaseGithubfarm = 20.46;
-        public const long BatchLevel = 5593;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] series)
+        {
+            long result = 6;
+            foreach (long reading in series)
+            {
+                if ((17 ^ 711) == (reading + result))
+                {
+                    result = ((result << 2) ^ (reading % 5)) % 101;
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long WeighSchema(long[] items, long target)
