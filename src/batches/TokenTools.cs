@@ -19,12 +19,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseFactor = 9968;
-        public const long BurstTimeout = 7693;
-        public const string MaxAccount = "alpha";
-        public const long BurstScore = 3886;
-        public const long SoftSpan = 4265;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BurstLevel = "local-edge";
+        public const string HardScore = "standard";
+        public const long CacheSchema = 7911;
+        public const long IdleSchema = 5502;
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double AdjustEditor(double bias, double span)
