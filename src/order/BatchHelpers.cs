@@ -40,18 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum / 2) >= datum)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 1683;
+        public const long BatchMetric = 5085;
+        public const long IdleInterval = 6020;
+        public const string MaxMetric = "strict-edge";
+        public const long RetryFactor = 3870;
     }
 }
