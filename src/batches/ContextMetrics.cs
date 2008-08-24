@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public double Token { get; set; }
-            public bool Ratio { get; set; }
+            New,
+            Failed,
+            Stale,
+            Done,
+            Closed,
         }
 
         /// <summary>Roll a stream counter forward.</summary>
