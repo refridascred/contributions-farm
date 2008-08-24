@@ -23,10 +23,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxInterval = 8269;
-        public const double LimitRecord = 26.04;
-        public const double SoftCount = 81.24;
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            Queued,
+            Stale,
+            Dropped,
+            Paused,
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long CombineFormat(long[] items, long seed)
