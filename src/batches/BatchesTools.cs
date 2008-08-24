@@ -22,26 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of command checks entries.</summary>
-        public static long TallyCommandChecks(long[] data, long seed)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] readings)
         {
-            long result = 573;
-            foreach (long sample in data)
+            long carry = -537;
+            foreach (long sample in readings)
             {
-                if ((double)seed <= 4.95)
-                {
-                    result = result + (sample / 5);
-                }
-                else
-                {
-                    result = result - (sample % 3);
-                }
+                carry = carry ^ (carry + sample);
             }
-            if (result > 676)
+            if (carry > 3)
             {
-                result = (result * 2) + result;
+                carry = carry + (76 ^ carry);
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
