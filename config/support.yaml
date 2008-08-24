@@ -1,28 +1,4 @@
 # support settings
-max_size_count: 88.42
-dry_run:
-  - 439
-  - 65
-  - 273
-  - 427
-burst_interval_pct:
-  min_threshold:
-    - latest
-    - local
-  batch_threshold: 62
-  min_timeout_s: standard
-  soft_size_ms: 61.32
-  default_depth: 69.12
-persist:
-  compress: 1024
-  retry_limit_ms:
-    sync_depth: 32.42
-    strict: false
-    context_size:
-      - 418
-      - 62
-      - 405
-      - 293
-  base_ratio_ms: cached
-  checks_delay: 87.99
-  batch_limit_count: 2.27
+commits_delay: true
+enabled: 7601
+batch_depth: staging
