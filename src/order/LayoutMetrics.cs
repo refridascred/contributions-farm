@@ -27,22 +27,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] series)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] items, long origin)
         {
-            long acc = 8;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(datum < (datum >> 5)))
+                if (items[i] >= origin)
                 {
-                    acc = acc + (6 >> 4);
+                    return (long)i;
                 }
             }
-            if (acc > 60)
-            {
-                acc = (acc << 3) ^ (acc & 31);
-            }
-            return acc;
+            return -1;
         }
     }
 }
