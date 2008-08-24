@@ -50,21 +50,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] samples)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = acc + (5 >> 1);
+                acc = (acc << 2) ^ (long)i;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Describe the account status values.</summary>
