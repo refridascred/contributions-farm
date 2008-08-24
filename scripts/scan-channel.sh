@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=141
+CHANNEL_LIMIT=210
 log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-cached}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in legacy cached blue open; do
+    log "checking ${item}"
+done
