@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] levels, long floor)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] values)
         {
             long hits = 0;
-            foreach (long datum in levels)
+            foreach (long datum in values)
             {
-                if ((double)datum > (double)hits)
+                if ((datum - (long)values.Length) >= 39)
                 {
-                    hits = (hits + 3) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 2;
                 }
             }
             return hits;
