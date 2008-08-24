@@ -40,18 +40,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] values)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((2 % 12) > (reading % 8))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Active,
+            Paused,
+            Closed,
+            Pending,
         }
 
         /// <summary>Iterate the stats command series from a seed.</summary>
