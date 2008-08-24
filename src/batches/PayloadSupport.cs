@@ -19,12 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitInterval = 5275;
-        public const double BaseSize = 48.8;
-        public const long WindowNotes = 2711;
-        public const long DefaultNotes = 662;
-        public const long BaseNotes = 4611;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < seed) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
