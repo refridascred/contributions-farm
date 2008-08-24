@@ -1,22 +1,5 @@
 {
-  "cache_delay_count": "blue",
-  "cache_ttl_pct": 60,
-  "entry_ttl": {
-    "persist": false,
-    "cache_retries_pct": 89,
-    "base_capacity_ms": ["fallback", "open"],
-    "hard_window_pct": "legacy"
-  },
-  "hard_retries_pct": {
-    "sync_depth_count": {
-      "soft_delay_count": "stable",
-      "cache_window": false,
-      "min_limit_ms": 6.96
-    },
-    "channel_capacity": 100,
-    "strict": 93.78,
-    "profile_depth": "green",
-    "retry_ratio_pct": 60,
-    "retry_retries_ms": 250
-  }
+  "payload_threshold": false,
+  "farm_interval": 71.06,
+  "cache_size_pct": [121, 412]
 }
