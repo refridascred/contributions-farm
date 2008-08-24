@@ -19,10 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BaseSpan = "staging-edge";
-        public const long BaseFilter = 4580;
-        public const long StepFilter = 3732;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BurstCounter = "latest-1";
+        public const long MinRatio = 5400;
+        public const long IdleCounter = 1199;
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
