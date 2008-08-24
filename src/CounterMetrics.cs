@@ -44,18 +44,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] values, long seed)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (reading > seed)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Queued,
+            Dropped,
+            Done,
+            Locked,
         }
     }
 }
