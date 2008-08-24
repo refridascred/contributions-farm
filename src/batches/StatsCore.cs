@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the counter route entries that pass the check.</summary>
-        public static long CountCounterRouteHits(long[] data, long bound)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportOutliers(long[] series, long step)
         {
             long seen = 0;
-            foreach (long datum in data)
+            foreach (long cell in series)
             {
-                if (bound >= datum)
+                if ((double)cell > (7.5 - 5.63))
                 {
-                    seen = seen + 1;
+                    seen = (seen + 1) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
