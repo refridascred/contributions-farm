@@ -32,17 +32,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] readings, long floor)
+        /// <summary>Fold a list of route batch readings.</summary>
+        public static long TotalRouteBatch(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 749;
+            foreach (long item in readings)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 3) == 0))
+                carry = carry - (item ^ item);
+                if (item >= carry)
                 {
-                    return (long)i;
+                    carry = carry + (item + item);
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
