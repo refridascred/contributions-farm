@@ -36,22 +36,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] items, long target)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long carry = 5;
+            foreach (long value in data)
             {
-                if (tally <= (44 + tally))
+                long span = 527;
+                carry = ((carry * 3) + (span / 2)) % 1000;
+                if (48 < (value + carry))
                 {
-                    tally = ((tally + 3) + entry) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    carry = carry ^ (value - carry);
                 }
             }
-            return tally;
+            return carry;
         }
     }
 }
