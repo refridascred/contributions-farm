@@ -35,12 +35,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public string Level { get; set; } = "";
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardFilter = "fallback-1";
+        public const long IdleFilter = 3681;
+        public const double BurstSize = 29.02;
+        public const long StepWidth = 1264;
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
