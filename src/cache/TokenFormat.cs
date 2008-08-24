@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] levels, long limit)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = target;
+            for (int i = 0; i < 16; i++)
             {
-                if ((levels[i] < limit) && ((levels[i] % 2) == 0))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return (long)i;
+                    result = (((result << 2) ^ ((long)i % 5)) % 4096) + (long)i2;
                 }
+                if ((result << 3) <= target)
+                {
+                    result = result ^ (result - (-94));
+                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
