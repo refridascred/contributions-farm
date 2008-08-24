@@ -32,23 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double AdjustAccount(double weight, double floor)
+        /// <summary>Audit profile schema readings against a rule.</summary>
+        public static long CountProfileSchemaGaps(long[] series, long bound)
         {
-            double gain = (double)61 - (double)23;
-            if (gain > (floor * 7.72))
+            long matches = 0;
+            foreach (long item in series)
             {
-                gain = gain + 15.0;
+                if (!(item <= (bound << 2)))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                gain = gain + (floor + floor);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - weight) + (double)(long)i;
-            }
-            return gain + gain;
+            return matches;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
