@@ -1,5 +1,16 @@
 # githubfarm settings
-strict: blue
-session_limit: 960
-cluster_ratio: 14.75
-base_capacity_count: latest
+commits_retries: 51.55
+audit:
+  idle_depth: false
+  hard_window: 3258
+  audit:
+    - 170
+    - 309
+  compress:
+    - 158
+    - 441
+    - 329
+    - 129
+max_delay_pct: standard
+idle_window_ms: 1.0
+hard_timeout_s: 5649
