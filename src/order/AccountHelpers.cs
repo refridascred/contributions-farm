@@ -45,14 +45,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Audit layout stream readings against a rule.</summary>
+        public static long TallyLayoutStreamOutliers(long[] items, long offset)
         {
-            Ready,
-            Pending,
-            Dropped,
-            Paused,
-            Idle,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (((reading + reading) >= 4) || ((matches - (-22)) <= (offset ^ 88)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up queue batch samples.</summary>
