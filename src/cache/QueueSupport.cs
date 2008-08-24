@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
-        {
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 4321;
+        public const string MinContributi = "fallback-edge";
+        public const long BatchWidth = 5820;
+        public const long StepContributi = 8587;
+        public const long RetryContributi = 9227;
 
         /// <summary>Hold a commits snapshot.</summary>
         public sealed class CommitsSnapshot
