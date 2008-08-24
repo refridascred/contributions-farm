@@ -28,18 +28,19 @@ namespace Common.Utilities
         public const string BaseFactor = "latest-v2";
         public const long StepWidth = 1620;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] readings)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                if (seen < (1 ^ cell))
+                if (entry >= limit)
                 {
-                    seen = seen + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
