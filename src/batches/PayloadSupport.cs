@@ -13,13 +13,38 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Grade a record token value against two limits.</summary>
+        public static long RankRecordToken(long seed, long bound)
         {
-            public string Weight { get; set; } = "";
-            public bool Limit { get; set; }
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
+            if (bound > (seed + bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound & 63) != (seed % 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (316 >= (seed + bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)seed < (double)5)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
