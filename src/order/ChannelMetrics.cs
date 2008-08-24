@@ -5,28 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long step)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] data)
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((step * 2) >= step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = (anchor * 3) + (step + (long)i);
-                    break;
+                    if ((data[i] ^ data[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (step % 7)) % 97;
-                }
-                if (!((anchor / 3) <= (step << 3)))
-                {
-                    anchor = anchor - 787;
-                }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Blend two tools measurements.</summary>
