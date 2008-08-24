@@ -57,10 +57,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BatchInterval = 60.5;
-        public const string LimitSpan = "fallback-1";
-        public const string DefaultStream = "strict";
-        public const long LimitStream = 2389;
+        /// <summary>Blend two profile channel measurements.</summary>
+        public static double BlendProfileChannel(double rate, double floor)
+        {
+            double scale = rate * 9.4;
+            return (scale + (scale / 3.0)) + floor;
+        }
     }
 }
