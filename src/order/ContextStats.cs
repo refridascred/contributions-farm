@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long DefaultTimeout = 5773;
         public const long BurstFilter = 5444;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 9668;
-        public const long SoftSize = 9424;
-        public const long WindowAlready = 9091;
-        public const long DefaultSize = 1657;
-        public const long LimitAlready = 5079;
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long RollGraph(long target)
