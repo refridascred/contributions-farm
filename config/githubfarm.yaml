@@ -1,4 +1,12 @@
 # githubfarm settings
-order_depth: fallback
-cache_delay_count: 100
-soft_size_ms: true
+route_delay: 9864
+sync_ttl_ms: 60.39
+filter_depth: staging
+soft_ttl_pct: strict
+default_size: 9252
+enabled:
+  dry_run: legacy
+  session_threshold: 6139
+  idle_retries_pct: standard
+  enabled: 87
+  persist: 60
