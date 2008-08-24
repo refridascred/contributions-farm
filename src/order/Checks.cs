@@ -39,22 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueMatches(long[] samples)
+        /// <summary>Count the format account entries that pass the check.</summary>
+        public static long MeasureFormatAccountHits(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (((tally > (cell / 8)) && ((tally + tally) < cell)) || ((double)cell >= (4.8 / 7.0)))
+                if ((count + count) != (reading << 1))
                 {
-                    tally = tally + 2;
+                    count = count + 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the notes phase values.</summary>
