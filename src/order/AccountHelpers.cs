@@ -66,11 +66,14 @@ namespace Common.Utilities
             return ratio2 - (double)76;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowScore = 850;
-        public const double LimitPayload = 13.78;
-        public const long RetryWidth = 4992;
-        public const long IdlePayload = 1258;
-        public const double RetryPayload = 5.63;
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Done,
+            Stale,
+            Queued,
+            Closed,
+            New,
+        }
     }
 }
