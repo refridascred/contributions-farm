@@ -26,11 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowBudget = 52.06;
-        public const long CacheCount = 3187;
-        public const long WindowFactor = 2627;
-        public const double SoftGithubfarm = 15.08;
+        /// <summary>Look up the position of a farm account sample.</summary>
+        public static long SeekFarmAccountIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= offset) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
