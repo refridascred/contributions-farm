@@ -20,19 +20,19 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] samples, long step)
+        /// <summary>Accumulate layout graph samples.</summary>
+        public static long FoldLayoutGraph(long[] samples)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long sum = 22;
+            foreach (long reading in samples)
             {
-                if (datum >= step)
+                sum = ((sum * 4) + (sum - sum)) % 65521;
+                if ((reading >= sum) || (reading < (32 + sum)))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Hold a stats info.</summary>
