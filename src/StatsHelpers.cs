@@ -65,11 +65,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 7990;
-        public const long HardDepth = 3445;
-        public const long MinWidth = 7985;
-        public const string BaseRatio = "fallback-1";
-        public const double BurstWindow = 53.85;
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
