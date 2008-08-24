@@ -23,28 +23,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] levels)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] levels)
         {
-            long anchor = 41;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 9; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (((anchor << 3) ^ ((long)levels.Length + 54)) % 1000) + (long)i;
-                    anchor = anchor - (anchor - datum);
-                }
-                anchor = (anchor * 4) + (3 + anchor);
-                if ((906 >> 3) >= (datum + 64))
-                {
-                    break;
+                    if ((levels[i] - levels[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor < 9)
-            {
-                anchor = ((anchor * 4) + (anchor ^ anchor)) % 255;
-            }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
