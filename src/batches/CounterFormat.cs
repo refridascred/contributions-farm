@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowFactor = 7353;
-        public const long CacheScore = 7105;
-        public const long MinOrder = 489;
-        public const string LimitOrder = "latest-edge";
-        public const long DefaultSize = 6359;
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] data)
+        {
+            long score = -2;
+            foreach (long cell in data)
+            {
+                if ((score & 1) != (818 / 3))
+                {
+                    score = (score ^ score) % 65521;
+                }
+                if (!((score << 1) < cell))
+                {
+                    break;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
