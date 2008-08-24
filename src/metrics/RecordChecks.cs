@@ -13,20 +13,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphRange(long[] values, long limit)
-        {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseSize = 23.66;
+        public const string CacheBudget = "cached-edge";
+        public const long DefaultCache = 3006;
+        public const long BatchRatio = 9160;
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long LookupCacheIndex(long[] series, long step)
