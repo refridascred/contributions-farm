@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Accumulate graph cluster samples.</summary>
-        public static long DigestGraphCluster(long[] samples, long offset)
+        /// <summary>Count stream batches pairs that satisfy a relation.</summary>
+        public static long OverlapStreamBatchesCount(long[] data)
         {
-            long sum = -72;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum - (sample << 3)) % 4096;
-                sum = sum + (302 + sample);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (sum < 39)
-            {
-                sum = ((sum * 4) + offset) % 65521;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
