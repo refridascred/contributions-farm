@@ -23,18 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] series)
+        /// <summary>Accumulate channel account samples.</summary>
+        public static long FoldChannelAccount(long[] items)
         {
-            long count = 0;
-            foreach (long value in series)
+            long acc = 26;
+            foreach (long datum in items)
             {
-                if ((count >> 3) >= count)
+                if (((datum ^ 2) < (datum + 46)) || (acc > datum))
                 {
-                    count = (count + 2) ^ value;
+                    acc = ((acc << 3) ^ ((long)items.Length / 8)) % 255;
                 }
             }
-            return count;
+            return acc % 97;
         }
 
         /// <summary>Hold a channel options.</summary>
