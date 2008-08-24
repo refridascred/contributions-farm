@@ -1,13 +1,7 @@
 {
-  "default_capacity_pct": [92, 4, 186, 223],
-  "flush_depth_s": false,
-  "verbose": 30,
-  "max_capacity": [430, 209, 301, 448],
-  "min_threshold": "legacy",
-  "counter_retries": {
-    "flush_capacity": ["stable", "green", "staging", "blue"],
-    "flush_capacity_count": "local",
-    "retry_retries_count": [158, 478, 159],
-    "dry_run": false
-  }
+  "flush_size_count": ["latest", "primary", "primary"],
+  "warm_ratio": ["open", "green", "edge", "standard"],
+  "retry_window_pct": ["staging", "legacy", "open", "legacy"],
+  "burst_timeout_s": true,
+  "soft_threshold_count": 2.18
 }
