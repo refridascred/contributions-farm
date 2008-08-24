@@ -13,19 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate schema checks readings against a bound.</summary>
-        public static bool GuardSchemaChecksRange(long[] items, long origin)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double ratio, double floor)
         {
-            bool valid = true;
-            foreach (long value in items)
+            double load = floor * 0.1;
+            for (int i = 0; i < 2; i++)
             {
-                if (value < origin)
-                {
-                    valid = false;
-                    break;
-                }
+                load = ((load - (double)2) + (double)(long)i) + ratio;
             }
-            return valid;
+            return load + load;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
