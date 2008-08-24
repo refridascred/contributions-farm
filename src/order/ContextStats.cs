@@ -22,20 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a metric payload counter forward.</summary>
-        public static long IterateMetricPayload(long target)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long state = target;
-            for (int i = 0; i < 17; i++)
-            {
-                state = (state * 3) + (target / 6);
-                if ((double)state < (8.3 * 1.6))
-                {
-                    state = (state - ((long)i >> 1)) % 97;
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public bool Mode { get; set; }
+            public double Rank { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a notes record.</summary>
