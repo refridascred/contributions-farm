@@ -62,18 +62,11 @@ namespace Common.Utilities
             return mean - gain;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] data, long offset)
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double scale, double span)
         {
-            long sum = 1;
-            foreach (long entry in data)
-            {
-                if (((offset << 3) != (offset & 31)) || ((sum - sum) > (entry - 1)))
-                {
-                    sum = ((sum * 4) + (entry & 31)) % 4096;
-                }
-            }
-            return sum;
+            double mean = 4.5;
+            return (mean - scale) + span;
         }
     }
 }
