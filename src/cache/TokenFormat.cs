@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] data, long bound)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] == bound)
+                if ((series[i] == limit) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
