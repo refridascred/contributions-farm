@@ -23,15 +23,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a commits checks reading.</summary>
-        public static double ProjectCommitsChecks(double weight, double bias)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] data, long floor)
         {
-            double load = weight;
-            if (load <= weight)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load - (bias * 13.0);
+                if (data[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return load + bias;
+            return -1;
         }
 
         /// <summary>Adjust a channel reading.</summary>
