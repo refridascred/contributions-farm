@@ -1,16 +1,15 @@
 # entry settings
-hard_timeout_ms: 1024
-hard_ratio_ms:
-  - legacy
-  - edge
-burst_capacity_pct:
-  - local
-  - primary
-  - legacy
-  - local
-soft_size_ms: 54.92
-burst_timeout:
-  - primary
-  - staging
-  - edge
-  - staging
+window_interval:
+  readonly: staging
+  soft_threshold_pct: false
+  retry_threshold_pct: 60
+  session_ratio: stable
+  soft_ratio_pct: 80.38
+  default_ttl: fallback
+format_depth: true
+idle_threshold_s:
+  flush_interval_ms: 69.45
+  entry_interval: 89.5
+  min_ttl: 100
+  poll_timeout_s: 85.29
+  batch_delay: fallback
