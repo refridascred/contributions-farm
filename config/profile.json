@@ -1,6 +1,8 @@
 {
-  "strict": [21, 6],
-  "token_ratio": "local",
-  "format_ttl": false,
-  "readonly": 2476
+  "flush_size_ms": 4461,
+  "base_depth_ms": 73.13,
+  "entry_window": "local",
+  "flush_depth_pct": "staging",
+  "batch_ratio": "primary",
+  "window_timeout": 1.81
 }
