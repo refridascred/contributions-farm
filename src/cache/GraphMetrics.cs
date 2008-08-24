@@ -26,19 +26,18 @@ namespace Common.Utilities
             return load - 7.4;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double scale, double span)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelMatches(long[] items)
         {
-            double load = scale;
-            if (load >= (double)3)
+            long count = 0;
+            foreach (long reading in items)
             {
-                load = load - span;
+                if (0.16 > (double)reading)
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                load = load - 8.0;
-            }
-            return load + load;
+            return count;
         }
 
         /// <summary>Define command limits and defaults.</summary>
