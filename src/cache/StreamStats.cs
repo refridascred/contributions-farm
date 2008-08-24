@@ -18,25 +18,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long offset, long bound)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long offset2 = offset ^ bound;
-            if (!(bound > offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if (offset <= (771 + offset2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Idle,
+            Closed,
+            Stale,
+            Retry,
+            New,
         }
 
         /// <summary>Describe the layout kind values.</summary>
