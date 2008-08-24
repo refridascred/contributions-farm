@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardCount = 2338;
+        public const long CacheQueue = 4236;
+        public const long MaxQueue = 6588;
+        public const double DefaultQueue = 46.23;
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long CountBatchesOutliers(long[] series, long step)
