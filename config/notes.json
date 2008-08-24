@@ -1,12 +1,5 @@
 {
-  "batches_threshold": {
-    "burst_timeout_s": "strict",
-    "persist": "open",
-    "compress": "fallback",
-    "retry_ratio_count": 500,
-    "schema_retries": true
-  },
-  "min_ratio": 500,
-  "account_window": ["strict", "open", "stable", "fallback"],
-  "strict": true
+  "verbose": "primary",
+  "burst_window_count": true,
+  "githubfarm_size": 7.1
 }
