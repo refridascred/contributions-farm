@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] items)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LocateStatsIndex(long[] series, long offset)
         {
-            long sum = 8;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum ^ (sample ^ sample)) % 65521;
+                if ((series[i] == offset) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (sum < 827)
-            {
-                sum = ((sum << 3) ^ (sum & 15)) % 1000;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
