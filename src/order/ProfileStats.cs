@@ -27,12 +27,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Fold a list of metrics githubfarm readings.</summary>
+        public static long WeighMetricsGithubfarm(long[] levels, long floor)
         {
-            public bool Count { get; set; }
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
+            long mark = 360;
+            foreach (long sample in levels)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    mark = ((mark ^ floor) % 97) - (long)i;
+                }
+                mark = ((mark << 3) ^ (sample / 7)) % 1000;
+            }
+            if (mark > 917)
+            {
+                mark = mark ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Hold a payload options.</summary>
