@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats format helpers.</summary>
     public static class StatsFormat
     {
-        /// <summary>Derive the next buffer order value from a seed.</summary>
-        public static long IterateBufferOrder(long bound)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            long score = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                double load = (double)(score % 7);
-                if ((load * 1.2) != (5.3 - load))
-                {
-                    score = score - bound;
-                    score = (score ^ (bound >> 3)) % 255;
-                }
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            Done,
+            New,
+            Synced,
         }
 
         /// <summary>Hold a checks header.</summary>
