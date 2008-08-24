@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long limit)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmRange(long[] data, long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 10; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                carry = (carry << 3) ^ carry;
-                if (!(limit >= ((long)i % 2)))
+                if (reading < offset)
                 {
-                    carry = ((carry << 2) ^ (limit + carry)) % 255;
+                    ok = false;
+                    break;
                 }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
