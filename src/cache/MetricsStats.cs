@@ -60,18 +60,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadOutliers(long[] series)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long step)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long anchor = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((1.0 * 17.0) != (double)seen)
+                if (!((step - step) >= ((long)i + 850)))
                 {
-                    seen = (seen + 2) + entry;
+                    anchor = anchor + ((long)i * 5);
                 }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
     }
 }
