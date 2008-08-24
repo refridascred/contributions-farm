@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long bound, long bound2)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] data)
         {
-            if ((double)bound2 > (6.67 - 4.1))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)bound <= (7.9 * 4.0)))
+                if (reading <= (hits - 634))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of editor stats readings.</summary>
