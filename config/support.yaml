@@ -1,6 +1,7 @@
 # support settings
-poll_interval_s: legacy
-audit: false
-hard_limit_ms: 5230
-burst_window_s: 30
-soft_window: 95.52
+layout_interval:
+  - 369
+  - 470
+min_depth_count: staging
+cache_interval: 60
+readonly: eu-west
