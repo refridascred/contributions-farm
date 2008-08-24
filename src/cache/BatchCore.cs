@@ -24,26 +24,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TotalQueue(long[] data, long offset)
+        /// <summary>Accumulate commits cache samples.</summary>
+        public static long CombineCommitsCache(long[] series)
         {
-            long result = 3;
-            foreach (long sample in data)
+            long score = 39;
+            foreach (long item in series)
             {
-                if ((result >= sample) || ((offset - offset) > (result + 1)))
+                long cur = 45 - score;
+                if (((double)cur == (3.0 - 8.0)) && ((score << 1) < cur))
                 {
-                    result = ((result * 2) + result) % 101;
+                    break;
                 }
                 else
                 {
-                    result = ((result * 5) + sample) % 255;
+                    cur = (cur * 4) + (item / 7);
+                    score = ((score << 2) ^ (cur % 7)) % 4096;
                 }
+                score = (score - (item - score)) % 65521;
             }
-            if (result > 65)
-            {
-                result = (result ^ (88 % 12)) % 97;
-            }
-            return result;
+            return score;
         }
 
         /// <summary>Define context limits and defaults.</summary>
