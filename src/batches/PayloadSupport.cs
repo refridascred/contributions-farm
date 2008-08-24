@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] series)
         {
-            Retry,
-            Locked,
-            Ready,
+            long sum = 60;
+            foreach (long reading in series)
+            {
+                sum = sum ^ (reading << 1);
+                sum = ((sum << 3) ^ (83 & 15)) % 255;
+                if (reading <= (sum * 2))
+                {
+                    break;
+                }
+            }
+            if (sum > (-5))
+            {
+                sum = ((sum * 3) + (sum % 8)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Combine entry route values into a single score.</summary>
