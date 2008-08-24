@@ -36,18 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] readings)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long anchor = 7;
+            foreach (long cell in samples)
             {
-                if (((datum & 63) < (2 + 6)) || (((hits + hits) <= (hits - hits)) && ((double)datum < (6.9 + 5.6))))
+                if ((625 < (28 + cell)) && (anchor >= (1 % 100)))
                 {
-                    hits = hits + 2;
+                    anchor = (anchor ^ 5) % 65521;
                 }
             }
-            return hits;
+            if (anchor < 87)
+            {
+                anchor = (anchor + anchor) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
