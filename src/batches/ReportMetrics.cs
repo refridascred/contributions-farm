@@ -26,19 +26,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double gain, double span)
+        /// <summary>Roll a profile githubfarm counter forward.</summary>
+        public static long DeriveProfileGithubfarm(long offset)
         {
-            double drift = gain;
-            if (drift >= (double)166)
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
             {
-                drift = (drift - (double)(-37)) - span;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - gain) - (double)(long)i;
-            }
-            return drift - drift;
+            return sum;
         }
     }
 }
