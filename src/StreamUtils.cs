@@ -68,11 +68,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinWidth = 70.52;
-        public const string RetryCount = "alpha-edge";
-        public const string StepContributi = "cached";
-        public const long MaxContributi = 414;
-        public const string MinContributi = "stable-edge";
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Closed,
+            Idle,
+            Pending,
+        }
     }
 }
