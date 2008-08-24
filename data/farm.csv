@@ -1,6 +1,6 @@
-id,region,state,level
-1,972,591,7
-2,204,blue,46.02
-3,83,339,4.32
-4,92,blue,18.7
-5,956,46.55,89.63
+id,active,level,owner
+1,481,43.24,862
+2,885,824,fallback
+3,41.75,latest,edge
+4,blue,fallback,538
+5,83.26,990,open
