@@ -11,19 +11,16 @@ namespace Common.Utilities
         public const long CacheSession = 2646;
         public const double HardSpan = 68.95;
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double weight, double floor)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long seed)
         {
-            double load = floor - floor;
-            if (load <= weight)
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
             {
-                load = load - load;
+                anchor = anchor ^ (seed / 6);
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            else
-            {
-                load = load - (8.2 - weight);
-            }
-            return load + 3.0;
+            return anchor;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
