@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double scale, double bias)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] levels, long offset)
         {
-            double scale2 = bias;
-            if (scale2 < (scale - bias))
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                scale2 = scale2 + (double)2;
+                if (sample < offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = (scale2 + (scale2 * 1.84)) + (double)(long)i;
-            }
-            return scale2 + 2.0;
+            return valid;
         }
 
         /// <summary>Describe the queue state values.</summary>
