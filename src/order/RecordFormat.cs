@@ -22,15 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] samples)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double rate, double span)
         {
-            long state = 514;
-            foreach (long reading in samples)
-            {
-                state = ((state + state) % 4096) ^ reading;
-            }
-            return state;
+            double weight = span;
+            return (weight + 1.9) + rate;
         }
 
         /// <summary>Combine buffer route values into a single score.</summary>
