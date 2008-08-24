@@ -23,10 +23,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultWindow = 63.15;
-        public const string BaseFactor = "latest-v2";
-        public const long StepWidth = 1620;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] data, long seed)
+        {
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (seen <= (seed - item))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool ValidateChannelLimits(long[] readings, long limit)
