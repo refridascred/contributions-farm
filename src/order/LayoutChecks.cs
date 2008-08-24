@@ -50,24 +50,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ProjectEntry(double scale, double offset)
-        {
-            double weight = (double)(40 + (-802));
-            if (weight <= offset)
-            {
-                weight = weight + (double)39;
-            }
-            else
-            {
-                weight = weight - weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - scale) + (double)(long)i;
-            }
-            return weight + (weight * 5.0);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 1571;
+        public const double HardCounter = 88.03;
+        public const double BurstInterval = 32.82;
+        public const long RetryRatio = 1349;
+        public const long BatchCounter = 5816;
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
