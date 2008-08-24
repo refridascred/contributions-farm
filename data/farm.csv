@@ -1,8 +1,9 @@
-id,count,label
-1,43.27,10.29
-2,23.94,local
-3,edge,46.86
-4,76.77,329
-5,open,open
-6,666,91.17
-7,73,969
+id,token,level,state
+1,fallback,607,579
+2,94.5,fallback,green
+3,latest,98.05,cached
+4,214,78.09,18.23
+5,896,7.28,52.98
+6,staging,964,82
+7,789,203,191
+8,staging,614,80.86
