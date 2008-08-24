@@ -46,27 +46,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Accumulate cluster window samples.</summary>
-        public static long DigestClusterWindow(long[] values)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] samples, long floor)
         {
-            long mix = 2;
-            foreach (long value in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix + (value % 24)) % 255;
-                if ((8 ^ mix) == (mix * 2))
+                if (samples[i] == floor)
                 {
-                    mix = mix - mix;
-                }
-                else
-                {
-                    mix = (mix * 4) + (value & 1);
-                }
-                if (((long)values.Length == (value - mix)) || ((value << 2) <= value))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
     }
 }
