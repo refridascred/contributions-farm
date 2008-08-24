@@ -67,12 +67,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinRoute = 9243;
-        public const long CacheRoute = 9456;
-        public const string MinBudget = "alpha";
-        public const long DefaultRoute = 4608;
-        public const long BatchRoute = 9748;
+        /// <summary>Iterate the stats command series from a seed.</summary>
+        public static long DeriveStatsCommand(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if (sum < (sum / 2))
+                {
+                    sum = ((sum << 3) ^ sum) % 4096;
+                }
+                sum = sum - (7 + bound);
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
