@@ -24,21 +24,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] levels)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) > 11)
+                    if ((readings[i] + readings[j]) < 10)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Combine filter order values into a single score.</summary>
