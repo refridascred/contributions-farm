@@ -32,19 +32,16 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] readings, long target)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long floor)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading > target)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark * 5) + (floor & 255)) % 4096;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
