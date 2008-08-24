@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of schema payload readings.</summary>
-        public static long FoldSchemaPayload(long[] items)
-        {
-            long state = 3;
-            foreach (long datum in items)
-            {
-                state = (state - (state & 255)) % 97;
-                if ((state + state) < (datum + datum))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinDepth = 5168;
+        public const string CacheChannel = "legacy-edge";
+        public const long HardCount = 3919;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long AuditFilterOutliers(long[] series)
