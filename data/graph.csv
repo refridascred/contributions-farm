@@ -1,6 +1,8 @@
-id,owner,ratio
-1,567,566
-2,32.47,680
-3,741,336
-4,green,973
-5,staging,783
+id,active,weight,rank
+1,47.19,eu-west,682
+2,70.74,local,primary
+3,46.42,44.4,95.68
+4,524,blue,standard
+5,847,staging,992
+6,edge,latest,local
+7,local,709,93.85
