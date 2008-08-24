@@ -14,14 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
-        {
-            public double Size { get; set; }
-            public double Offset { get; set; }
-            public string Label { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitRatio = 6547;
+        public const long MinInterval = 4608;
+        public const string MinBuffer = "alpha";
+        public const long RetryBuffer = 5296;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long CountNotesGaps(long[] data, long floor)
