@@ -41,17 +41,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] samples, long floor)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (samples[i] == floor)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
     }
 }
