@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long BatchScore = 7730;
         public const string RetryEditor = "fallback-edge";
 
-        /// <summary>Combine entry route values into a single score.</summary>
-        public static long FoldEntryRoute(long[] items, long limit)
+        /// <summary>Check that every queue batch entry stays within the limit.</summary>
+        public static bool GuardQueueBatchBounds(long[] samples, long limit)
         {
-            long score = 647;
-            foreach (long entry in items)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if (((-4) - limit) < (limit - score))
+                if (entry != limit)
                 {
-                    score = (score * 5) + (entry * 2);
-                }
-                if ((entry + limit) <= (score + entry))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
