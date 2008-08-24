@@ -1,10 +1,19 @@
 {
-  "readonly": 80,
-  "batch_threshold_pct": "latest",
-  "report_threshold": "edge",
-  "retry_depth": {
-    "farm_window": "strict",
-    "warm_interval_pct": true,
-    "route_retries": 352
-  }
+  "account_limit": {
+    "batch_threshold_count": 81.79,
+    "persist": {
+      "compress": ["eu-west", "legacy", "green", "local"],
+      "burst_threshold": 22,
+      "hard_ttl_s": [132, 143],
+      "cache_depth": 45
+    },
+    "min_window_s": [428, 318],
+    "warm_delay_ms": "staging",
+    "warm_retries_s": 26,
+    "retry_threshold_s": 37.51
+  },
+  "poll_ttl": 45,
+  "support_depth": 76.66,
+  "poll_timeout_pct": false,
+  "queue_retries": [223, 33]
 }
