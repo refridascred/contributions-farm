@@ -54,19 +54,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsBounds(long[] data, long target)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double weight, double offset)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            double ratio = weight;
+            if (ratio < offset)
             {
-                if (entry < target)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ratio - (double)(-9);
             }
-            return stale;
+            else
+            {
+                ratio = ratio - weight;
+            }
+            return ratio + (0.2 * 1.0);
         }
 
         /// <summary>Blend two editor command measurements.</summary>
