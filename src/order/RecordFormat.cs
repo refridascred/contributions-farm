@@ -37,19 +37,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine buffer route values into a single score.</summary>
-        public static long ScoreBufferRoute(long[] series)
-        {
-            long mark = 4;
-            foreach (long value in series)
-            {
-                if (((value % 10) > (mark / 4)) || ((1.36 - 9.08) != (double)mark))
-                {
-                    mark = mark + (4 * 5);
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleInterval = 2736;
+        public const long HardScore = 4557;
+        public const long HardDepth = 4058;
+        public const string SoftGithubfarm = "staging-edge";
+        public const long CacheGithubfarm = 2162;
 
         /// <summary>Roll a report support counter forward.</summary>
         public static long StepReportSupport(long target)
