@@ -57,14 +57,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            Synced,
-            Active,
-            New,
-            Closed,
-            Paused,
+            public double Level { get; set; }
+            public double Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Count the route layout entries that pass the check.</summary>
