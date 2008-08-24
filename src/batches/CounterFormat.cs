@@ -33,18 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] data, long offset)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double rate, double span)
         {
-            long total = -194;
-            foreach (long sample in data)
+            double rate2 = rate;
+            if (rate2 > rate2)
             {
-                if (total > (sample + total))
-                {
-                    total = ((total + ((long)data.Length & 1)) % 255) + offset;
-                }
+                rate2 = (rate2 + (rate2 - rate)) - span;
             }
-            return total % 1000;
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = (rate2 + rate) + (double)(long)i;
+            }
+            return rate2 + rate2;
         }
     }
 }
