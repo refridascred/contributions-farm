@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] series, long origin)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long state = 15;
-            foreach (long entry in series)
-            {
-                if ((14.0 / 6.0) == (double)state)
-                {
-                    state = ((state * 4) + (origin / 5)) % 255;
-                }
-                else
-                {
-                    state = (state + (entry + 256)) % 4096;
-                }
-            }
-            return state;
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
