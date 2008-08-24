@@ -67,18 +67,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit farm window readings against a rule.</summary>
-        public static long TallyFarmWindowMatches(long[] data)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] series, long step)
         {
-            long count = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((5.55 - 6.3) <= (double)count)
+                if (series[i] > step)
                 {
-                    count = (count + 1) ^ sample;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
