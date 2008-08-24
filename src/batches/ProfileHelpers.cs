@@ -20,12 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public bool Score { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheLevel = 4283;
+        public const string BurstQueue = "local-edge";
+        public const long HardSize = 994;
+        public const double StepInterval = 50.52;
+        public const string RetryRatio = "primary-1";
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long RankSupport(long origin, long seed)
