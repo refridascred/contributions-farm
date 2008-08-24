@@ -1,5 +1,9 @@
 {
-  "hard_ttl_ms": 96.89,
-  "audit": 4378,
-  "persist": 28.0
+  "flush_ratio_s": "strict",
+  "compress": 23.94,
+  "metrics_limit": {
+    "base_timeout": 77,
+    "session_depth": 46.56,
+    "readonly": 43.28
+  }
 }
