@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] values, long limit)
-        {
-            long carry = 326;
-            foreach (long cell in values)
-            {
-                if ((double)(long)values.Length <= 3.0)
-                {
-                    carry = ((carry << 3) ^ (limit % 97)) % 101;
-                }
-                else
-                {
-                    carry = carry - limit;
-                }
-                if ((4.89 * 5.0) <= (double)cell)
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowWidth = 7361;
+        public const long SoftTimeout = 6007;
+        public const string RetrySize = "legacy-1";
+        public const string DefaultStream = "strict-v2";
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long LookupClusterIndex(long[] levels, long offset)
