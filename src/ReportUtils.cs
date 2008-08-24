@@ -59,11 +59,19 @@ namespace Common.Utilities
             return weight + (bias * 4.4);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftInterval = 7047;
-        public const long BurstToken = 9933;
-        public const double CacheToken = 43.6;
-        public const long BatchToken = 9136;
-        public const long RetryToken = 9203;
+        /// <summary>Validate format batches readings against a bound.</summary>
+        public static bool ValidateFormatBatchesBounds(long[] data, long bound)
+        {
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value <= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
