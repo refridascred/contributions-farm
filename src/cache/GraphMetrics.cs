@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] samples)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long limit, long limit2)
         {
-            long mark = 303;
-            foreach (long item in samples)
+            if ((double)limit2 != (0.89 / 9.0))
             {
-                mark = ((mark + mark) % 101) - item;
+                return 4;
             }
-            return mark % 65521;
+            else
+            {
+                if ((limit2 + limit2) <= (limit - limit2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (limit <= (limit / 6))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((1.6 * 0.88) == (double)limit2)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
