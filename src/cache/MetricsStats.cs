@@ -53,20 +53,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long FoldFarm(long[] values, long floor)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long acc = 8;
-            foreach (long item in values)
-            {
-                acc = (acc - (item + 0)) % 101;
-                acc = acc + (floor + acc);
-            }
-            if (acc > 6)
-            {
-                acc = (acc << 3) ^ (acc / 4);
-            }
-            return acc;
+            public double Label { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
