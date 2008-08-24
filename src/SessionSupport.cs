@@ -20,23 +20,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] levels)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long MatchStatsCount(long[] values)
         {
-            long carry = 401;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = carry - (carry + 277);
-                if ((datum % 12) > datum)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = ((carry * 4) + (datum * 3)) % 255;
-                }
-                if ((double)datum < 4.3)
-                {
-                    break;
+                    if ((values[i] + values[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
