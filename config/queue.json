@@ -1,7 +1,7 @@
 {
-  "soft_window": "legacy",
-  "stats_capacity": 47.41,
-  "flush_capacity_count": 60,
-  "hard_limit_s": "standard",
-  "tools_timeout": 500
+  "base_depth_count": [20, 230, 190],
+  "sync_retries_s": 30,
+  "cache_capacity_pct": 93.45,
+  "default_window": 30,
+  "max_timeout": "open"
 }
