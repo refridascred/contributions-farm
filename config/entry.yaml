@@ -1,14 +1,7 @@
 # entry settings
-retry_capacity: 500
-session_ttl:
-  enabled:
-    - blue
-    - legacy
-  audit: 32.7
-  soft_threshold_count: 75.66
-  batch_window_count: cached
-channel_ratio: fallback
-stats_interval:
-  - local
-  - cached
-verbose: false
+min_depth_ms: 500
+base_size_ms: open
+readonly:
+  - strict
+  - legacy
+  - primary
