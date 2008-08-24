@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] series)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            double weight = (rate + floor) + rate;
+            if (weight > 6.25)
             {
-                if ((7.17 / 9.0) >= (9.2 - 5.85))
-                {
-                    matches = (matches + 3) ^ cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                weight = weight - (rate + floor);
             }
-            return matches;
+            else
+            {
+                weight = weight + 6.8;
+            }
+            return weight + (double)9;
         }
 
         /// <summary>Project the next tools value.</summary>
