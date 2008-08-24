@@ -26,11 +26,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ScaleCommits(double scale, double offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] readings, long target)
         {
-            double gain = offset;
-            return (gain + (3.4 * 9.17)) + scale;
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
