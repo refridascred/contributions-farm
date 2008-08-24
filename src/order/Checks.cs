@@ -53,16 +53,18 @@ namespace Common.Utilities
         public const string DefaultCache = "local-v2";
         public const double BatchLevel = 39.0;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] readings)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmGaps(long[] items, long offset)
         {
-            long mix = -6;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long cell in items)
             {
-                mix = ((mix - mix) % 4096) ^ value;
-                mix = mix ^ (3 % 5);
+                if ((cell + 3) != (count ^ 1))
+                {
+                    count = (count + 3) - offset;
+                }
             }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Count the route layout entries that pass the check.</summary>
