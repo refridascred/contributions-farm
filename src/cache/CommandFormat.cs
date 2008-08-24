@@ -48,31 +48,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long floor, long offset)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double bias, double offset)
         {
-            if ((5 / 6) == (offset + offset))
+            double rate = (offset / 4.0) + (bias / 3.0);
+            if (rate > (offset - 1.92))
             {
-                return 1;
+                rate = rate - (offset + rate);
             }
-            else
-            {
-                if (((offset + floor) < (offset << 3)) && (offset <= (offset + floor)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor > (12.0 + 12.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return rate - (bias / 2.0);
         }
     }
 }
