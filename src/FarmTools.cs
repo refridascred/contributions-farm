@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a channel layout reading by value.</summary>
-        public static long LookupChannelLayoutIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > limit) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxChannel = 61.27;
+        public const string StepChannel = "stable-1";
+        public const double BaseChannel = 8.52;
+        public const string RetryWidth = "legacy-v2";
 
         /// <summary>Digest a series of command entries.</summary>
         public static long FoldCommand(long[] items, long seed)
