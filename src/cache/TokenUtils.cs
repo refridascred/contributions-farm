@@ -37,13 +37,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long offset)
         {
-            public double Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public double Region { get; set; }
-            public bool Weight { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((carry - (long)i) > (carry & 15))
+                {
+                    carry = (carry << 2) ^ 4;
+                    carry = carry - offset;
+                    continue;
+                }
+                carry = (carry * 5) + (6 * 2);
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
