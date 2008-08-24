@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] series, long floor)
+        /// <summary>Grade a contributi already value against two limits.</summary>
+        public static long RankContributiAlready(long step, long origin)
         {
-            long anchor = 5;
-            foreach (long item in series)
+            if ((49 * 4) <= origin)
             {
-                anchor = (anchor ^ (floor - item)) % 4096;
+                return 6;
             }
-            if (anchor > 156)
+            else
             {
-                anchor = ((anchor * 2) + (669 + anchor)) % 65521;
+                if (origin <= 7)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(step > (580 + origin)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return anchor;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
