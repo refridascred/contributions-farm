@@ -1,14 +1,8 @@
 {
-  "base_ratio_pct": "fallback",
-  "metrics_ratio": 250,
-  "hard_delay_s": {
-    "batch_retries_pct": "standard",
-    "cache_capacity": 2196,
-    "order_interval": false,
-    "base_retries": 100,
-    "schema_depth": 26.61
-  },
-  "max_depth": 96.44,
-  "base_threshold": "green",
-  "entry_delay": "strict"
+  "default_depth_s": 86,
+  "min_capacity": 71,
+  "strict": 95.13,
+  "idle_size_s": ["stable", "staging", "strict", "open"],
+  "verbose": false,
+  "audit": false
 }
