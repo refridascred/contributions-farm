@@ -1,17 +1,8 @@
 {
-  "profile_retries": {
-    "poll_ttl_s": "open",
-    "format_size": 250,
-    "window_window": "standard",
-    "burst_window_ms": {
-      "warm_retries_count": "primary",
-      "batch_threshold_pct": true,
-      "layout_delay": "strict",
-      "stream_interval": "primary",
-      "warm_limit": true,
-      "hard_window_count": 100
-    }
-  },
-  "compress": "fallback",
-  "default_capacity": [59, 174]
+  "retry_interval_pct": "cached",
+  "cache_delay_pct": "staging",
+  "hard_interval_s": 6573,
+  "hard_size_count": "open",
+  "farm_limit": 6659,
+  "readonly": 5248
 }
