@@ -18,14 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long origin, long origin2)
         {
-            Retry,
-            Done,
-            Synced,
-            Ready,
-            Pending,
+            if ((origin2 - origin2) <= (origin2 >> 4))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((4.1 - 9.0) >= (double)origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)origin <= 7.0)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the checks mode values.</summary>
