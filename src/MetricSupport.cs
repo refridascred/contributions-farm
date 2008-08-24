@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchOutliers(long[] values)
+        /// <summary>Validate format commits readings against a bound.</summary>
+        public static bool CheckFormatCommitsLimits(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if ((hits > value) && (((double)hits <= (3.95 - 1.2)) || ((value * 5) > value)))
+                if (entry >= origin)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
