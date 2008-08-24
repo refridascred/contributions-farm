@@ -33,12 +33,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] readings)
         {
-            public long Label { get; set; }
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)entry <= (double)count)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
