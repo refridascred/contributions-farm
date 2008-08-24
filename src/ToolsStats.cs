@@ -61,15 +61,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long seed)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] readings)
         {
-            long mix = seed;
-            for (int i = 0; i < 18; i++)
+            long carry = 0;
+            foreach (long sample in readings)
             {
-                mix = ((mix * 4) + (long)i) % 4093;
+                if (((carry << 1) < (sample & 15)) || (carry < (carry - carry)))
+                {
+                    carry = ((carry * 4) + ((long)readings.Length & 127)) % 65521;
+                }
+                carry = (carry << 2) ^ (carry - 89);
+                if (!((carry + sample) <= (sample + carry)))
+                {
+                    break;
+                }
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Accumulate queue samples.</summary>
