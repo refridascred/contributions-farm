@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 4321;
-        public const string MinContributi = "fallback-edge";
-        public const long BatchWidth = 5820;
-        public const long StepContributi = 8587;
-        public const long RetryContributi = 9227;
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseSupport = 65.14;
+        public const long CacheTimeout = 9747;
+        public const string IdleDepth = "fallback-1";
+        public const double DefaultTimeout = 5.36;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool VerifyGraphRange(long[] readings, long limit)
