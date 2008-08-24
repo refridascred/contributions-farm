@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long target)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long result = target;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = (((result << 2) ^ ((long)i % 5)) % 4096) + (long)i2;
-                }
-                if ((result << 3) <= target)
-                {
-                    result = result ^ (result - (-94));
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            Failed,
+            Draft,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
