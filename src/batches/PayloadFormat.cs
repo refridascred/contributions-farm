@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] levels, long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] data)
         {
-            long total = 6;
-            foreach (long value in levels)
+            long mix = 78;
+            foreach (long value in data)
             {
-                if (offset <= (offset / 5))
-                {
-                    total = ((total + (total + 53)) % 255) - value;
-                }
+                mix = (mix ^ 36) - value;
             }
-            return total;
+            return mix % 65521;
         }
 
         /// <summary>Describe the batches kind values.</summary>
