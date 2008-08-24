@@ -13,12 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            Retry,
-            Queued,
-            Failed,
+            public bool Total { get; set; }
+            public long Rank { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
