@@ -69,19 +69,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double gain, double bias)
+        /// <summary>Audit channel farm readings against a rule.</summary>
+        public static long AuditChannelFarmOutliers(long[] readings, long floor)
         {
-            double drift = gain;
-            if (drift > 6.62)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                drift = drift + bias;
+                if (((floor - seen) <= (value + seen)) && (((5 + 7) < (value ^ floor)) || ((double)seen == (4.1 * 5.6))))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                drift = drift - 4.6;
-            }
-            return drift + gain;
+            return seen;
         }
     }
 }
