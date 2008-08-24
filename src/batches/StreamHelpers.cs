@@ -91,14 +91,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] values, long seed)
         {
-            Ready,
-            Pending,
-            Synced,
-            Paused,
-            Locked,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((13.0 * 0.42) != (double)tally)
+                {
+                    tally = ((tally + 1) + cell) + seed;
+                }
+            }
+            return tally;
         }
     }
 }
