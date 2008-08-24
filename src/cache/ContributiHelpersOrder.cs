@@ -33,22 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] values, long seed)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((18.0 - 20.0) > (double)seen)
+                if (series[i] >= seed)
                 {
-                    seen = ((seen + 2) + entry) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
