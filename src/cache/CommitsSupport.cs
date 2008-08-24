@@ -70,13 +70,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
-            public bool Flag { get; set; }
+            public double Region { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
