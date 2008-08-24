@@ -30,18 +30,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] data)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long target, long bound)
         {
-            long mix = 20;
-            foreach (long sample in data)
+            if ((double)target == (double)345)
             {
-                if (((mix - mix) <= ((-675) >> 5)) && ((0.6 / 5.0) != (double)sample))
+                return 0;
+            }
+            else
+            {
+                if ((bound << 1) <= (bound - bound))
                 {
-                    mix = ((mix << 2) ^ (mix & 31)) % 255;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return mix % 4096;
         }
 
         /// <summary>Project the next command value.</summary>
