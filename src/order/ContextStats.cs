@@ -22,13 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] series)
         {
-            public bool Mode { get; set; }
-            public double Rank { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((seen + sample) > (seen & 7))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a command schema figure with a bias.</summary>
