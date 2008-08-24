@@ -46,25 +46,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long floor)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long bound, long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
+            long offset = bound - seed;
+            if ((bound % 100) == (offset * 4))
             {
-                long delta = (floor - result) + result;
-                if ((double)result == (2.97 + 0.46))
+                return 5;
+            }
+            else
+            {
+                if (1 > (bound + seed))
                 {
-                    break;
+                    return 4;
                 }
                 else
                 {
-                    result = (result * 2) + (delta - delta);
-                    delta = delta ^ (floor & 1);
+                    if ((seed - 61) <= offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
         }
     }
 }
