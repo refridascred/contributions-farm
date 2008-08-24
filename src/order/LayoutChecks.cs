@@ -58,19 +58,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterLimits(long[] series, long limit)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            bool ready = true;
-            foreach (long datum in series)
-            {
-                if (datum < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
