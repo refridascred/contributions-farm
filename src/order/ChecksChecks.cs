@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a channel githubfarm counter forward.</summary>
-        public static long StepChannelGithubfarm(long step)
-        {
-            long mark = step;
-            for (int i = 0; i < 21; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinTimeout = "stable-1";
+        public const string BaseWindow = "staging";
+        public const string MinWindow = "open-edge";
+        public const long HardCount = 8087;
+        public const long WindowBudget = 9241;
 
         /// <summary>Adjust a command notes reading.</summary>
         public static double BlendCommandNotes(double gain, double offset)
