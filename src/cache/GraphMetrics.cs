@@ -42,17 +42,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a entry layout sample.</summary>
-        public static long LocateEntryLayoutIndex(long[] series, long floor)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= floor) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Paused,
+            Locked,
+            Idle,
+            Synced,
         }
 
         /// <summary>Audit graph order readings against a rule.</summary>
