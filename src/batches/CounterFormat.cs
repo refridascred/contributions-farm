@@ -48,16 +48,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long floor)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long floor, long offset)
         {
-            long total = floor;
-            for (int i = 0; i < 18; i++)
+            if ((9 - floor) == (floor - 9))
             {
-                total = ((total << 3) ^ (floor + total)) % 4096;
-                total = ((total * 5) + (long)i) % 1000;
+                return 7;
             }
-            return total;
+            else
+            {
+                if ((9.0 - 7.28) > (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset >= (floor + offset)) || ((6.79 - 8.2) == (double)floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (floor <= 903)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
