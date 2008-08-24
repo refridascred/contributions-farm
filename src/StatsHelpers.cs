@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit queue stream readings against a rule.</summary>
-        public static long TallyQueueStreamMatches(long[] values)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long CompareFormatCount(long[] levels)
         {
             long tally = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (865 < ((-6) + tally))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 1) + cell;
+                    if ((levels[i] + levels[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
