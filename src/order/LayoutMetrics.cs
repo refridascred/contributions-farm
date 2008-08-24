@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
+            public double Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Adjust a counter reading.</summary>
