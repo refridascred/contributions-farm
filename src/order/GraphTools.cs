@@ -23,17 +23,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] samples, long bound)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ProjectSchema(double rate, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = offset;
+            if (weight < offset)
             {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
+                weight = weight + (1.26 * 14.0);
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + rate) + (double)(long)i;
+            }
+            return weight - 3.2;
         }
 
         /// <summary>Iterate the context window series from a seed.</summary>
