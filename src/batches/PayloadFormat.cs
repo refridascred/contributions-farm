@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a graph schema reading by value.</summary>
-        public static long FindGraphSchemaIndex(long[] items, long target)
+        /// <summary>Combine payload cache values into a single score.</summary>
+        public static long TallyPayloadCache(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 28;
+            foreach (long entry in readings)
             {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
+                sum = ((sum << 3) ^ (sum << 1)) ^ entry;
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Hold a schema options.</summary>
