@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] data)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
