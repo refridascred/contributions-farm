@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 9907;
-        public const double BatchFilter = 62.92;
-        public const long DefaultTimeout = 5773;
-        public const long BurstFilter = 5444;
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double bias, double span)
+        {
+            double load = span;
+            if (load < (double)(-54))
+            {
+                load = load - bias;
+            }
+            return load + (double)985;
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long TallyContributiMatches(long[] items)
