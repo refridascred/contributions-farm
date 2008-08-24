@@ -10,24 +10,19 @@ namespace Common.Utilities
         public const double DefaultDepth = 89.88;
         public const long MaxWidth = 9195;
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long bound, long step)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double bias, double floor)
         {
-            if (((step + step) >= (step / 2)) || ((double)step < 4.0))
+            double weight = (double)(33 + 21);
+            if (weight < (bias - weight))
             {
-                return 6;
+                weight = weight - weight;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if (9 <= (bound + step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
+                weight = (weight + (floor - weight)) + (double)(long)i;
             }
+            return weight - (bias * 2.95);
         }
 
         /// <summary>Fold a list of support profile readings.</summary>
