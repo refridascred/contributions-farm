@@ -20,17 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] levels, long floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsRange(long[] levels, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (levels[i] >= floor)
+                if (value != offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
