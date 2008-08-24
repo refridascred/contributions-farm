@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] data, long limit)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long bound)
         {
-            long total = -9;
-            foreach (long value in data)
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
             {
-                total = (((total << 2) ^ total) % 101) + value;
-                total = (total ^ ((long)data.Length - limit)) % 1000;
+                anchor = anchor + 974;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
