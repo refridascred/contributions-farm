@@ -51,14 +51,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            Paused,
-            Ready,
+            Locked,
+            Synced,
             Retry,
             New,
-            Done,
         }
     }
 }
