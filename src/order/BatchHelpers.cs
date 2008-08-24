@@ -19,31 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long limit, long bound)
+        /// <summary>Fold a list of batches format readings.</summary>
+        public static long TallyBatchesFormat(long[] samples)
         {
-            if ((double)bound <= (7.8 - 9.5))
+            long anchor = 95;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)bound == (9.84 + 0.47)) || ((6.6 - 7.0) > (double)bound))
+                if ((19.0 / 6.0) != (double)anchor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (4 <= (limit % 24))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    anchor = (((anchor << 2) ^ (796 >> 3)) % 97) - datum;
                 }
             }
+            if (anchor < (-29))
+            {
+                anchor = anchor - (anchor << 1);
+            }
+            return anchor;
         }
 
         /// <summary>Combine session checks values into a single score.</summary>
