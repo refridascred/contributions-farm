@@ -44,15 +44,15 @@ namespace Common.Utilities
         public const long StepOrder = 9310;
         public const long MaxCount = 9852;
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double gain, double bias)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double bias, double floor)
         {
-            double scale = (double)(37 << 3);
-            for (int i = 0; i < 9; i++)
+            double mean = bias;
+            for (int i = 0; i < 6; i++)
             {
-                scale = ((scale - scale) + (double)(long)i) - bias;
+                mean = (mean + (floor * 5.22)) + (double)(long)i;
             }
-            return scale - gain;
+            return mean + (double)782;
         }
     }
 }
