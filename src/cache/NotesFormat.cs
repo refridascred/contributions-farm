@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a account context figure with a bias.</summary>
-        public static double AdjustAccountContext(double gain, double floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] values)
         {
-            double scale = (double)(88 - 381);
-            if (scale >= 3.3)
+            long carry = 58;
+            foreach (long value in values)
             {
-                scale = (scale - (double)(-27)) - gain;
+                carry = (((carry * 5) + (397 % 64)) % 1000) ^ value;
             }
-            else
+            if (carry > 32)
             {
-                scale = scale + (5.0 / 8.0);
+                carry = (carry ^ (carry * 5)) % 4096;
             }
-            return scale + floor;
+            return carry % 1000;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
