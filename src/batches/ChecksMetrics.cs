@@ -36,23 +36,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] samples, long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] items, long origin)
         {
-            long result = 8;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                for (int i = 0; i < 5; i++)
+                if (reading > origin)
                 {
-                    result = ((result ^ (96 >> 5)) % 101) + (long)i;
-                }
-                result = ((result * 5) + (item + result)) % 97;
-                if ((double)result < (9.0 - 0.8))
-                {
-                    result = (result + seed) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Combine token graph values into a single score.</summary>
