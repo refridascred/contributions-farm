@@ -28,12 +28,33 @@ namespace Common.Utilities
             return gain - rate;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleWidth = 397;
-        public const long CacheSize = 2703;
-        public const double MaxRatio = 52.79;
-        public const long StepOrder = 9310;
-        public const long MaxCount = 9852;
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long offset, long step)
+        {
+            long cur = offset + step;
+            if (3 <= cur)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)offset > (0.6 + 1.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((19.0 * 8.96) == (double)step) || ((2.75 - 7.9) == (double)offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a window reading.</summary>
         public static double BlendWindow(double bias, double floor)
