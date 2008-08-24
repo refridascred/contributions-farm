@@ -71,15 +71,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the payload support series from a seed.</summary>
-        public static long SeriesPayloadSupport(long limit)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double rate, double floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 9; i++)
+            double scale = 9.0 + (rate - 5.0);
+            if (scale > floor)
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                scale = scale + (double)(-79);
             }
-            return sum;
+            else
+            {
+                scale = scale - (rate * 9.6);
+            }
+            return scale + (scale + floor);
         }
     }
 }
