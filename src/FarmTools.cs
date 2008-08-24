@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long seed, long offset)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] items, long step)
         {
-            long next = seed - offset;
-            if (!((double)next >= (20.0 / 5.0)))
+            long anchor = 2;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset <= (761 + next))
+                if ((198 < (anchor % 64)) || (anchor > (8 & 15)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (40 <= (offset + seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    anchor = (((anchor - (42 ^ 492)) % 65521) + sample) + step;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
