@@ -24,18 +24,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmOutliers(long[] levels, long seed)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double scale, double span)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            double weight = scale / 7.0;
+            if (weight <= (span / 2.0))
             {
-                if ((reading + seed) == (reading ^ count))
-                {
-                    count = count + 3;
-                }
+                weight = weight + (weight / 7.0);
             }
-            return count;
+            return weight - scale;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
