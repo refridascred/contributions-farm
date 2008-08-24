@@ -1,11 +1,6 @@
 {
-  "burst_ttl_ms": {
-    "strict": "green",
-    "batch_size": 4647,
-    "retry_ttl_ms": 60
-  },
-  "verbose": 77,
-  "strict": 67.06,
-  "route_limit": [123, 286, 178],
-  "sync_ttl": false
+  "dry_run": true,
+  "flush_depth": true,
+  "soft_threshold_s": ["blue", "strict", "local"],
+  "verbose": false
 }
