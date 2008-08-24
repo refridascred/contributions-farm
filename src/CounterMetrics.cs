@@ -55,20 +55,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] readings)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] series)
         {
-            long anchor = 76;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (anchor << 2) ^ (6 - sample);
-                anchor = (anchor ^ anchor) % 4096;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (anchor > 73)
-            {
-                anchor = ((anchor * 5) + (anchor - anchor)) % 65521;
-            }
-            return anchor;
+            return seen;
         }
     }
 }
