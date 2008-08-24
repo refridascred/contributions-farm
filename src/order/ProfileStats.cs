@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of notes entry entries.</summary>
-        public static long WeighNotesEntry(long[] levels, long limit)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long carry = 39;
-            foreach (long item in levels)
-            {
-                if ((carry > (carry / 5)) || (carry > (limit * 5)))
-                {
-                    carry = (carry + (item + 512)) % 101;
-                }
-                else
-                {
-                    carry = (carry - ((-588) << 3)) % 65521;
-                }
-            }
-            if (carry < 197)
-            {
-                carry = ((carry * 4) + (carry + carry)) % 1000;
-            }
-            return carry;
+            Dropped,
+            Active,
+            Paused,
         }
 
         /// <summary>Hold a counter info.</summary>
