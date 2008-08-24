@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long floor, long floor2)
         {
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
+            if (((7 & 255) > (floor % 16)) && ((3 + 55) == (floor & 3)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor - floor) >= (floor2 + floor2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((floor2 >> 2) >= floor) || (floor <= (floor2 - floor)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
