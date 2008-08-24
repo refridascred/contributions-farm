@@ -35,23 +35,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] readings)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long anchor = 9;
-            foreach (long cell in readings)
-            {
-                long next = cell - (anchor - anchor);
-                if ((next >> 5) < next)
-                {
-                    next = (next ^ (2 + anchor)) % 97;
-                }
-                if ((anchor > (cell + cell)) && ((double)cell <= (4.3 * 3.7)))
-                {
-                    anchor = (anchor - (anchor / 9)) % 4096;
-                }
-            }
-            return anchor % 97;
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
