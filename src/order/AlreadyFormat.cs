@@ -48,23 +48,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Scale a channel order figure with a bias.</summary>
-        public static double ScaleChannelOrder(double gain, double offset)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            double weight = offset;
-            if (weight < 0.5)
-            {
-                weight = weight + 11.0;
-            }
-            else
-            {
-                weight = weight + offset;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - gain) - (double)(long)i;
-            }
-            return weight + offset;
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Roll a payload counter forward.</summary>
