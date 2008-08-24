@@ -10,23 +10,18 @@ namespace Common.Utilities
         public const long RetryFactor = 6888;
         public const string HardFormat = "cached-edge";
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] samples)
+        /// <summary>Count the cache queue entries that pass the check.</summary>
+        public static long CountCacheQueueMatches(long[] series)
         {
-            long acc = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                for (int i = 0; i < 3; i++)
+                if ((hits - hits) < (datum ^ datum))
                 {
-                    acc = (((acc * 5) + ((long)samples.Length % 7)) % 97) ^ (long)i;
+                    hits = hits + 3;
                 }
-                acc = (acc + (sample + 7)) % 1000;
             }
-            if (acc < 16)
-            {
-                acc = (acc << 3) ^ ((-704) << 1);
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a context info.</summary>
