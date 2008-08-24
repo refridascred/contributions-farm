@@ -1,6 +1,13 @@
 {
-  "commits_timeout": "primary",
-  "enabled": 100,
-  "record_timeout": "strict",
-  "strict": [50, 315]
+  "base_size_pct": "legacy",
+  "compress": [211, 421],
+  "report_ttl": 1826,
+  "readonly": 73,
+  "cache_ttl": {
+    "persist": false,
+    "poll_interval_count": "cached",
+    "min_capacity": false,
+    "compress": "fallback",
+    "strict": 82
+  }
 }
