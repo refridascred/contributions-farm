@@ -36,13 +36,15 @@ namespace Common.Utilities
             return (drift - (double)27) + bias;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double scale, double offset)
         {
-            public double Flag { get; set; }
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            double mean = offset - (scale - scale);
+            if (mean > mean)
+            {
+                mean = mean + mean;
+            }
+            return mean - (5.61 + offset);
         }
     }
 }
