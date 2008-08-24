@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count stream batches pairs that satisfy a relation.</summary>
-        public static long OverlapStreamBatchesCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MinChecks = "staging-v2";
+        public const long DefaultChecks = 6895;
+        public const string WindowLevel = "open-v2";
+        public const long SoftChecks = 1317;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double RetryFactor = 52.45;
