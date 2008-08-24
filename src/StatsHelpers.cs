@@ -37,39 +37,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a profile cache pair into a bucket.</summary>
-        public static long SortProfileCache(long seed, long seed2)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksHits(long[] data, long seed)
         {
-            long edge = seed - seed2;
-            if ((double)seed2 == (20.0 - 3.59))
+            long hits = 0;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(647 >= (seed2 & 3)))
+                if ((91 - 98) <= seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((edge >> 4) < seed2) || (seed2 <= (edge ^ seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((6.0 * 20.0) > (double)edge) && ((4.0 - 3.0) > (2.86 * 6.5)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = (hits + 3) ^ value;
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of route entries.</summary>
