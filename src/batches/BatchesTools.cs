@@ -24,17 +24,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first token already entry that matches the target.</summary>
-        public static long FindTokenAlreadyIndex(long[] samples, long offset)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Owner { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a record options.</summary>
