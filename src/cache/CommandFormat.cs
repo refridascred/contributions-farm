@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up layout profile samples.</summary>
-        public static long CompareLayoutProfileCount(long[] samples)
+        /// <summary>Iterate the queue counter series from a seed.</summary>
+        public static long IterateQueueCounter(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((6.72 - 6.8) >= (double)seed)
                 {
-                    if ((samples[i] ^ samples[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum * 3) + ((long)i << 2)) % 1000;
+                    sum = sum ^ (seed & 255);
                 }
+                if (7 >= (sum + sum))
+                {
+                    sum = sum + (sum - sum);
+                }
+                else
+                {
+                    sum = sum + (-65);
+                    sum = ((sum << 3) ^ seed) % 65521;
+                }
+                sum = ((sum * 5) + (seed + 21)) % 4096;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Blend two graph context measurements.</summary>
