@@ -75,18 +75,13 @@ namespace Common.Utilities
             return scale + ratio;
         }
 
-        /// <summary>Audit githubfarm already readings against a rule.</summary>
-        public static long TallyGithubfarmAlreadyHits(long[] series)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (!((double)matches != (0.33 / 9.0)))
-                {
-                    matches = (matches + 2) - reading;
-                }
-            }
-            return matches;
+            Paused,
+            Locked,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
