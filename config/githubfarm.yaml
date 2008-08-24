@@ -1,4 +1,7 @@
 # githubfarm settings
-contributi_retries: 60
-order_interval: 70.47
-entry_threshold: 100
+channel_size: 85
+cache_depth: 40
+max_timeout_s: staging
+burst_delay_s: 500
+min_ttl_count: staging
+schema_retries: 85
