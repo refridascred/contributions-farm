@@ -44,19 +44,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many support channel samples are out of range.</summary>
-        public static long TallySupportChannelOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)matches == (8.75 / 7.0))
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double HardFilter = 31.94;
+        public const long MinFilter = 9792;
+        public const long StepInterval = 1416;
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
