@@ -58,19 +58,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if (((seen / 6) <= (cell >> 4)) || !((6.14 - 1.04) < (double)cell))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultCommand = 6332;
+        public const long MinCommand = 9191;
+        public const double BatchCommand = 48.37;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionHits(long[] values)
