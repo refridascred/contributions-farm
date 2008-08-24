@@ -12,11 +12,23 @@ namespace Common.Utilities
         public const long BurstTimeout = 8934;
         public const long WindowNotes = 1942;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MaxQueue = "alpha-v2";
-        public const long BaseQueue = 4466;
-        public const string MinScore = "primary-v2";
-        public const long MinInterval = 861;
+        /// <summary>Count the payload metrics entries that pass the check.</summary>
+        public static long CountPayloadMetricsHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum & 7) != (271 >> 2))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long WindowTools = 7379;
