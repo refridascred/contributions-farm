@@ -62,19 +62,19 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Validate command report readings against a bound.</summary>
-        public static bool VerifyCommandReportBounds(long[] samples, long floor)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatBounds(long[] items, long step)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                if (datum > floor)
+                if (sample != step)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
     }
 }
