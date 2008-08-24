@@ -48,21 +48,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long step)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] items, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix - (step % 10)) % 4096;
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((items[i] > bound) && ((items[i] % 5) == 0))
                 {
-                    mix = (((mix << 3) ^ ((long)i / 5)) % 1000) + (long)i2;
+                    return (long)i;
                 }
-                mix = (mix + ((long)i & 3)) % 101;
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return -1;
         }
     }
 }
