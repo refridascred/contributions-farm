@@ -47,11 +47,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two profile channel measurements.</summary>
-        public static double BlendProfileChannel(double rate, double floor)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double SmoothGithubfarm(double scale, double span)
         {
-            double scale = rate * 9.4;
-            return (scale + (scale / 3.0)) + floor;
+            double bias = (double)(-87) + 8.3;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = ((bias - scale) + (double)(long)i) - span;
+            }
+            return bias - (scale * 17.0);
         }
     }
 }
