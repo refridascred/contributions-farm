@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
-        {
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string DefaultWidth = "open-1";
+        public const double RetryLayout = 91.05;
+        public const long IdleLayout = 486;
+        public const string MaxInterval = "alpha";
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
