@@ -1,5 +1,12 @@
 {
-  "batches_retries": 96,
-  "dry_run": false,
-  "hard_interval": 28.41
+  "max_capacity_ms": 1024,
+  "verbose": {
+    "dry_run": "stable",
+    "sync_retries_pct": "blue",
+    "context_threshold": false,
+    "batch_delay": true
+  },
+  "batch_ttl": "strict",
+  "retry_depth_count": 25,
+  "record_retries": 81.24
 }
