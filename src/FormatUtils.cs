@@ -22,17 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] data, long limit)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long limit, long limit2)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((limit2 / 2) < (limit2 ^ limit2)) || ((limit - limit) < limit2))
             {
-                if (data[i] <= limit)
+                return 5;
+            }
+            else
+            {
+                if (((limit + 262) < (limit2 << 1)) || ((double)limit < (3.6 + 8.87)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the checks mode values.</summary>
