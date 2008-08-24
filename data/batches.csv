@@ -1,9 +1,8 @@
-id,active,rank
-1,880,edge
-2,latest,fallback
-3,latest,906
-4,edge,strict
-5,87.61,746
-6,primary,437
-7,845,45.1
-8,legacy,27.02
+id,label,weight,ratio,rank
+1,641,strict,green,518
+2,eu-west,68.78,27.03,333
+3,343,88.81,615,226
+4,851,195,96,cached
+5,251,206,948,staging
+6,green,547,58.15,852
+7,45.03,strict,64,131
