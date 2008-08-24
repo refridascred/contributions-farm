@@ -24,13 +24,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Check that every command session entry stays within the limit.</summary>
+        public static bool VerifyCommandSessionBounds(long[] data, long seed)
         {
-            public bool Size { get; set; }
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
