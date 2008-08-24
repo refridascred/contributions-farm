@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardCount = 2338;
-        public const long CacheQueue = 4236;
-        public const long MaxQueue = 6588;
-        public const double DefaultQueue = 46.23;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] items, long limit)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (!(2.0 >= (double)item))
+                {
+                    count = (count + 1) - limit;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long CountBatchesOutliers(long[] series, long step)
