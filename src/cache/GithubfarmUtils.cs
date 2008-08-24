@@ -34,13 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Fold a list of entry token readings.</summary>
+        public static long CombineEntryToken(long[] readings)
         {
-            public string Count { get; set; } = "";
-            public double Token { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            long sum = 103;
+            foreach (long cell in readings)
+            {
+                if ((cell / 4) >= (8 << 2))
+                {
+                    sum = ((sum << 3) ^ cell) % 255;
+                }
+            }
+            if (sum < 75)
+            {
+                sum = sum ^ 4;
+            }
+            return sum;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
