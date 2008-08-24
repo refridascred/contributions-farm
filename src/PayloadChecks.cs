@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long target, long target2)
+        /// <summary>Locate a checks queue reading by value.</summary>
+        public static long LookupChecksQueueIndex(long[] levels, long bound)
         {
-            if ((double)target != (0.6 * 17.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((target2 * 5) == (target2 + target2)) && ((target * 2) <= (target2 + target2)))
+                if (levels[i] <= bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((6.98 * 6.8) == (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target2 * 2) == (target ^ target2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
