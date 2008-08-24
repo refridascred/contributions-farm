@@ -81,19 +81,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] values, long limit)
-        {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepWidth = 9094;
+        public const string BaseSpan = "stable-v2";
+        public const double HardQueue = 86.05;
     }
 }
