@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a buffer payload value against two limits.</summary>
-        public static long RankBufferPayload(long floor, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] series, long bound)
         {
-            if (((offset << 3) > (floor + offset)) || ((floor >> 3) == (offset - floor)))
+            long acc = 215;
+            foreach (long datum in series)
             {
-                return 5;
+                acc = ((acc - bound) % 4096) + datum;
             }
-            else
-            {
-                if ((offset / 9) >= offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset + floor) == (offset - floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset / 5) <= (offset % 97))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Define report limits and defaults.</summary>
