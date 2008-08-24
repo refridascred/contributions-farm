@@ -32,10 +32,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 7832;
-        public const long StepContext = 2457;
-        public const double CacheBudget = 34.03;
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= floor) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long ScoreReport(long[] samples, long step)
