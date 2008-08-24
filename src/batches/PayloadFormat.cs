@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long seed, long limit)
-        {
-            if ((seed >> 5) <= (seed + seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((6.04 / 7.0) == (double)seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (limit < (limit - 780))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BaseBatches = 21.88;
+        public const string BurstBatches = "standard-v2";
+        public const string BurstRatio = "latest-v2";
+        public const double DefaultSize = 82.81;
 
         /// <summary>Match up editor samples.</summary>
         public static long MatchEditorCount(long[] items)
