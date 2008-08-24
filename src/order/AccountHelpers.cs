@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate command stream samples.</summary>
-        public static long ScoreCommandStream(long[] readings, long target)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long sum = 268;
-            foreach (long reading in readings)
-            {
-                if ((double)sum == (3.8 / 6.0))
-                {
-                    sum = sum - (reading + target);
-                }
-            }
-            return sum;
+            Retry,
+            Done,
+            Synced,
+            Ready,
+            Pending,
         }
 
         /// <summary>Describe the checks mode values.</summary>
