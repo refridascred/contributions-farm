@@ -67,19 +67,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long limit)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long sum = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((limit & 127) >= (sum & 15)) && ((limit + (long)i) <= (sum % 64)))
-                {
-                    sum = (sum + (sum + sum)) % 255;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            Active,
+            Pending,
+            Done,
+            Failed,
+            Paused,
         }
     }
 }
