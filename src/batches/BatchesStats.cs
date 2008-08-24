@@ -23,11 +23,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double gain, double offset)
         {
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
+            double scale = (double)(726 >> 3);
+            if (scale > scale)
+            {
+                scale = scale + 8.9;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - offset) + (double)(long)i;
+            }
+            return scale - gain;
         }
 
         /// <summary>Define report limits and defaults.</summary>
