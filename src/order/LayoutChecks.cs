@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Scale a stream record figure with a bias.</summary>
-        public static double BlendStreamRecord(double weight, double floor)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            double bias = weight;
-            for (int i = 0; i < 7; i++)
-            {
-                bias = ((bias - (bias * 7.7)) - (double)(long)i) - floor;
-            }
-            return bias + (8.0 + bias);
+            Queued,
+            Failed,
+            Draft,
         }
 
         /// <summary>Hold a schema options.</summary>
