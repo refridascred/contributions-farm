@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmRange(long[] data, long offset)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long carry = 6;
+            foreach (long entry in items)
             {
-                if (reading < offset)
+                if ((6.76 + 19.0) > (double)carry)
                 {
-                    ok = false;
-                    break;
+                    carry = (carry * 2) + (carry + entry);
+                }
+                if ((13.0 - 9.91) > (double)entry)
+                {
+                    carry = (carry * 3) + (entry - carry);
                 }
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
