@@ -33,17 +33,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] values, long floor)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long offset, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((offset % 8) > (step % 97))
             {
-                if ((values[i] <= floor) && ((values[i] % 3) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((double)step >= (double)offset)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((offset << 1) >= step) || (step >= (offset + step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
