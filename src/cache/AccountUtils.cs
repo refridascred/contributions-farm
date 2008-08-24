@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((3.31 / 8.0) > (double)result) || ((double)2 >= (double)result))
-                {
-                    long gap = floor;
-                    result = (result + gap) % 255;
-                }
-                if (!(((double)floor != (double)result) && (((long)i - floor) < 89)))
-                {
-                    result = (result - (result << 3)) % 4096;
-                }
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstFilter = "stable-edge";
+        public const long CacheLevel = 4252;
+        public const long DefaultDepth = 4648;
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long IterateAccount(long limit)
