@@ -52,18 +52,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a counter batches reading by value.</summary>
-        public static long LocateCounterBatchesIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinDepth = 2155;
+        public const double MaxFilter = 98.16;
+        public const long BaseFilter = 7608;
+        public const double IdleLevel = 24.68;
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long SeekTokenIndex(long[] series, long target)
