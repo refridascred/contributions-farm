@@ -20,11 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double ratio, double floor)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            double rate = 7.6;
-            return (rate - floor) + ratio;
+            public string Rank { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Token { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a context info.</summary>
