@@ -41,12 +41,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Audit filter batches readings against a rule.</summary>
+        public static long MeasureFilterBatchesGaps(long[] data, long bound)
         {
-            public bool Offset { get; set; }
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (!((double)value == (1.4 - 16.0)))
+                {
+                    hits = (hits + 3) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
