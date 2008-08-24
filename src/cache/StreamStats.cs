@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] data, long seed)
         {
-            Failed,
-            Paused,
-            Closed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= seed) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
