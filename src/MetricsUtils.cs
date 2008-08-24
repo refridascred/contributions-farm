@@ -28,19 +28,10 @@ namespace Common.Utilities
             return drift + (rate + rate);
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] items, long origin)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (((double)seen >= (2.79 / 5.0)) && (97 > seen))
-                {
-                    seen = ((seen + 2) ^ entry) + origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 631;
+        public const double BaseFactor = 16.97;
+        public const long WindowBudget = 7624;
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
