@@ -16,32 +16,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long SeriesWindow(long target)
+        /// <summary>Match up buffer metric samples.</summary>
+        public static long MatchBufferMetricCount(long[] values)
         {
-            long result = target;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((target ^ result) >= (result % 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result * 5) + ((long)i - target);
-                    break;
+                    if ((values[i] - values[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    result = ((result << 3) ^ (target ^ target)) % 97;
-                }
-                if (((8.83 - 5.8) <= (double)(long)i) || (result > (result >> 4)))
-                {
-                    result = result + 64;
-                }
-                if (!((target & 63) != (result >> 5)))
-                {
-                    result = result - result;
-                }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Blend two payload measurements.</summary>
