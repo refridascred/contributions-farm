@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] readings, long floor)
         {
-            Dropped,
-            Paused,
-            Ready,
-            Closed,
+            long score = 901;
+            foreach (long cell in readings)
+            {
+                score = (score - (score & 3)) + cell;
+            }
+            if (score < 117)
+            {
+                score = score + (floor - floor);
+            }
+            return score;
         }
 
         /// <summary>Count route commits pairs that satisfy a relation.</summary>
