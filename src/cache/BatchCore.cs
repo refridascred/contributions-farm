@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Roll a account buffer counter forward.</summary>
+        public static long SeriesAccountBuffer(long step)
         {
-            Active,
-            Ready,
-            Closed,
-            Locked,
+            long anchor = step;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = anchor - (30 * 5);
+                if ((double)anchor == (6.2 / 9.0))
+                {
+                    break;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the order kind values.</summary>
