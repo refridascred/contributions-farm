@@ -10,23 +10,21 @@ namespace Common.Utilities
         public const long CacheLevel = 4252;
         public const long DefaultDepth = 4648;
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] levels)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] samples)
         {
-            long state = 537;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell >= (cell ^ state))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = (state ^ cell) % 1000;
+                    if ((samples[i] ^ samples[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                state = ((state << 3) ^ (57 & 7)) % 101;
             }
-            if (state > 3)
-            {
-                state = (state * 3) + state;
-            }
-            return state % 65521;
+            return hits;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
