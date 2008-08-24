@@ -1,30 +1,5 @@
 # githubfarm settings
-strict:
-  - 480
-  - 411
-  - 278
-cache_threshold:
-  - strict
-  - fallback
-  - legacy
-  - latest
-enabled:
-  batch_interval_count: 60
-  burst_ratio_s: 30
-  audit: 3.98
-  verbose:
-    dry_run:
-      - open
-      - standard
-      - fallback
-    base_timeout: local
-    already_window: 51
-    flush_retries_ms:
-      - 245
-      - 142
-      - 340
-    poll_depth_pct: eu-west
-    metrics_size: fallback
-cache_window: fallback
-flush_delay: green
-idle_capacity_ms: standard
+strict: blue
+session_limit: 960
+cluster_ratio: 14.75
+base_capacity_count: latest
