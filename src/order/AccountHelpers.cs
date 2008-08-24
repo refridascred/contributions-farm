@@ -92,27 +92,19 @@ namespace Common.Utilities
             return ratio2 - (double)76;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] samples, long target)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long FoldContributi(long[] levels, long limit)
         {
-            long mix = 38;
-            foreach (long value in samples)
+            long mix = 61;
+            foreach (long value in levels)
             {
-                if ((long)samples.Length <= (650 - target))
-                {
-                    mix = ((mix - (mix ^ target)) % 97) - value;
-                }
-                else
-                {
-                    mix = mix ^ mix;
-                }
-                mix = (mix - (mix % 7)) % 101;
+                mix = (mix - 8) + value;
             }
-            if (mix > 57)
+            if (mix > 85)
             {
-                mix = mix + mix;
+                mix = (mix - limit) % 97;
             }
-            return mix % 1000;
+            return mix;
         }
     }
 }
