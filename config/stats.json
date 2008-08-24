@@ -1,5 +1,25 @@
 {
-  "retry_window_pct": 96,
-  "batch_limit_count": "staging",
-  "warm_interval_pct": 60
+  "verbose": {
+    "audit": {
+      "min_threshold": false,
+      "batch_threshold": 83.28,
+      "session_capacity": "local",
+      "warm_limit": false
+    },
+    "farm_ttl": "strict",
+    "readonly": "legacy",
+    "warm_ratio": [277, 18, 458],
+    "format_delay": true,
+    "route_size": true
+  },
+  "compress": 500,
+  "support_capacity": {
+    "audit": "legacy",
+    "persist": 1024,
+    "base_depth_ms": 57.21,
+    "warm_ttl": "legacy",
+    "idle_window_ms": "blue",
+    "githubfarm_window": 6721
+  },
+  "cache_interval_ms": "stable"
 }
