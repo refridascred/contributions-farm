@@ -16,11 +16,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] data, long limit)
         {
-            public long Level { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
