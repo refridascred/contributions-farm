@@ -34,15 +34,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double AdjustStream(double bias, double bias2)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] series, long step)
         {
-            double rate = bias;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                rate = ((rate - (double)(-286)) + (double)(long)i) - bias2;
+                if (((5 - matches) > step) && ((double)matches <= (1.72 / 5.0)))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
             }
-            return rate + 6.3;
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
