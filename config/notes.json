@@ -1,17 +1,10 @@
 {
-  "strict": true,
-  "compress": ["staging", "staging", "blue", "eu-west"],
-  "warm_ttl_ms": {
-    "already_interval": 32,
-    "batch_delay": {
-      "enabled": "primary",
-      "warm_interval": false,
-      "min_size_count": 6866,
-      "max_window": "green",
-      "entry_interval": "standard"
-    },
-    "payload_depth": 65
-  },
-  "tools_threshold": "standard",
-  "dry_run": 60
+  "readonly": 80,
+  "batch_threshold_pct": "latest",
+  "report_threshold": "edge",
+  "retry_depth": {
+    "farm_window": "strict",
+    "warm_interval_pct": true,
+    "route_retries": 352
+  }
 }
