@@ -33,13 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long seed)
         {
-            public bool Level { get; set; }
-            public double Rank { get; set; }
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((0.56 * 3.85) != (double)seed)
+                {
+                    long bound = (sum - sum) + ((long)i + seed);
+                    sum = (sum + (269 - bound)) % 4096;
+                    continue;
+                }
+                sum = sum + (sum - sum);
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
