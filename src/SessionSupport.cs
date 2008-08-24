@@ -46,22 +46,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] values)
-        {
-            long total = 5;
-            foreach (long datum in values)
-            {
-                if ((total & 63) != (datum * 2))
-                {
-                    total = (total ^ 22) % 1000;
-                }
-            }
-            if (total < 72)
-            {
-                total = (total + (total - 584)) % 1000;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BaseAlready = "fallback-edge";
+        public const double BaseInterval = 22.98;
+        public const string IdleAlready = "standard";
     }
 }
