@@ -6,18 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=135
+BUFFER_LIMIT=235
 log "limit is ${BUFFER_LIMIT}"
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-mode="${1:-edge}"
+mode="${1:-local}"
 case "${mode}" in
-    legacy)
+    open)
         log "fast path"
         ;;
     *)
