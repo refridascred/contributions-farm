@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] levels)
         {
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public double Count { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (!(((0.9 / 6.0) < (double)entry) || ((entry / 3) < (long)levels.Length)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
