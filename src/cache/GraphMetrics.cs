@@ -48,36 +48,12 @@ namespace Common.Utilities
         public const long LimitCommand = 3207;
         public const double WindowCommand = 75.82;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] levels)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long score = 6;
-            foreach (long sample in levels)
-            {
-                score = score - (sample % 24);
-                if (sample <= ((long)levels.Length ^ 2))
-                {
-                    long diff = score;
-                    score = score + (diff + sample);
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score / 5)) % 65521;
-                }
-                if (((long)levels.Length + score) < sample)
-                {
-                    score = (score - (sample << 1)) % 4096;
-                }
-                else
-                {
-                    score = score ^ 588;
-                }
-                if ((score <= (score & 1)) || ((sample + score) >= (score + sample)))
-                {
-                    break;
-                }
-            }
-            return score % 1000;
+            Done,
+            Draft,
+            Idle,
         }
     }
 }
