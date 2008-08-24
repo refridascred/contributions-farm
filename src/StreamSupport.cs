@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] levels)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Queued,
+            Ready,
+            Synced,
         }
 
         /// <summary>Project the next format value.</summary>
