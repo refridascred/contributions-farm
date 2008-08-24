@@ -52,19 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double rate, double span)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            double rate2 = rate;
-            if (rate2 > rate2)
-            {
-                rate2 = (rate2 + (rate2 - rate)) - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 + rate) + (double)(long)i;
-            }
-            return rate2 + rate2;
+            Ready,
+            Pending,
+            Synced,
+            Locked,
         }
     }
 }
