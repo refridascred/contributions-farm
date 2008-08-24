@@ -26,12 +26,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            public long Flag { get; set; }
-            public bool Size { get; set; }
-            public long Level { get; set; }
+            public double Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
