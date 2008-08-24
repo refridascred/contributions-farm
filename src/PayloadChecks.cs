@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] levels)
+        /// <summary>Fold a list of format stream readings.</summary>
+        public static long TallyFormatStream(long[] samples, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 621;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state + (limit & 255)) % 97) + datum;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
