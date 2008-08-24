@@ -72,17 +72,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] values, long floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = -6;
+            foreach (long cell in series)
             {
-                if (values[i] >= floor)
+                if ((69 % 24) <= (origin + origin))
                 {
-                    return (long)i;
+                    mix = ((mix * 3) + mix) - cell;
+                }
+                if (((8.9 / 6.0) == (double)mix) && ((origin & 1) != (9 / 3)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix % 4096;
         }
     }
 }
