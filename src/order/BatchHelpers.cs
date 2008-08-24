@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two window batch measurements.</summary>
-        public static double SmoothWindowBatch(double gain, double offset)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            double bias = gain;
-            if (bias <= bias)
-            {
-                bias = bias - (offset + offset);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - (double)999) + (double)(long)i;
-            }
-            return bias + offset;
+            Synced,
+            New,
+            Ready,
+            Locked,
         }
 
         /// <summary>Hold a queue info.</summary>
