@@ -35,20 +35,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next batches format value.</summary>
-        public static double SmoothBatchesFormat(double weight, double bias)
-        {
-            double drift = (double)(-357) * 3.31;
-            if (drift > 0.2)
-            {
-                drift = (drift - bias) + weight;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + (double)6;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardRatio = 9602;
+        public const long DefaultStream = 5512;
+        public const long MaxCount = 9926;
+        public const long LimitLevel = 187;
+        public const long MaxFactor = 7660;
 
         /// <summary>Project the next channel value.</summary>
         public static double AdjustChannel(double weight, double bias)
