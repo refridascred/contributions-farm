@@ -18,23 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] levels)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] samples)
         {
-            long acc = 1;
-            foreach (long entry in levels)
+            long state = 514;
+            foreach (long reading in samples)
             {
-                acc = (acc * 5) + (acc * 3);
-                if ((double)entry >= (15.0 / 8.0))
-                {
-                    break;
-                }
+                state = ((state + state) % 4096) ^ reading;
             }
-            if (acc < 42)
-            {
-                acc = (acc - (acc - acc)) % 101;
-            }
-            return acc % 65521;
+            return state;
         }
 
         /// <summary>Accumulate batch samples.</summary>
