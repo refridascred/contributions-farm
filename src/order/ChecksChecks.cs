@@ -29,19 +29,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Validate queue metric readings against a bound.</summary>
-        public static bool ValidateQueueMetricBounds(long[] series, long floor)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Size { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
