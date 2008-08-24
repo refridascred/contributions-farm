@@ -35,19 +35,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if (cell < (count * 4))
-                {
-                    count = (count + 1) + bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetryScore = 4816;
+        public const long BaseWidth = 8732;
+        public const double BaseCache = 74.5;
+        public const double BatchCache = 3.08;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long FoldNotes(long[] data)
