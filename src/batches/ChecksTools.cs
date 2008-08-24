@@ -23,23 +23,11 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading + 4) > (hits ^ reading))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepContext = 234;
+        public const double HardContext = 30.72;
+        public const long HardBudget = 9164;
+        public const string HardDepth = "open-1";
 
         /// <summary>Fold a list of format readings.</summary>
         public static long WeighFormat(long[] series, long bound)
