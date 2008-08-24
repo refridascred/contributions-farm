@@ -25,23 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double rate, double span)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double bias = 8.4;
-            if (bias <= (rate - rate))
-            {
-                bias = bias - (bias + 20.0);
-            }
-            else
-            {
-                bias = bias - 4.3;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + span) + (double)(long)i;
-            }
-            return bias + (bias + rate);
+            Dropped,
+            Paused,
+            Idle,
+            New,
         }
 
         /// <summary>Describe the support state values.</summary>
