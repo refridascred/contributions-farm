@@ -1,10 +1,5 @@
 {
-  "readonly": true,
-  "burst_size_ms": "strict",
-  "audit": 79,
-  "idle_size_pct": {
-    "buffer_timeout": "stable",
-    "hard_ttl_count": 14.01,
-    "base_interval": "edge"
-  }
+  "strict": "standard",
+  "batch_threshold_count": 1024,
+  "idle_window_pct": "staging"
 }
