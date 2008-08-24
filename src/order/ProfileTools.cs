@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] samples, long limit)
+        /// <summary>Validate contributi support readings against a bound.</summary>
+        public static bool ValidateContributiSupportRange(long[] readings, long target)
         {
-            long total = 946;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                total = (total << 3) ^ (value + value);
-                total = (total * 3) + (value - total);
-                total = (total * 3) + (total + total);
-                if (((total - value) >= (total - 1)) && ((8.5 * 1.5) > (double)limit))
+                if (item >= target)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return total % 4096;
+            return valid;
         }
 
         /// <summary>Classify a contributi route pair into a bucket.</summary>
