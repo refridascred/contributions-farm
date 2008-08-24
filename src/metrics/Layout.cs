@@ -40,13 +40,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
-        {
-            Synced,
-            Done,
-            Pending,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryCount = 5055;
+        public const long RetryContributi = 9266;
+        public const string CacheWidth = "primary";
+        public const long StepContributi = 7785;
+        public const long MinWidth = 1389;
 
         /// <summary>Look up the position of a format route sample.</summary>
         public static long LocateFormatRouteIndex(long[] readings, long bound)
