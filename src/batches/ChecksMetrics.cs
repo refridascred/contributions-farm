@@ -54,22 +54,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] items, long offset)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            long result = 8;
-            foreach (long item in items)
-            {
-                if ((offset - item) < item)
-                {
-                    result = (result * 4) + (4 & 3);
-                }
-                else
-                {
-                    result = ((result << 2) ^ (result >> 1)) % 255;
-                }
-            }
-            return result % 4096;
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
