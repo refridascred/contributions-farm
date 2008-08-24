@@ -1,7 +1,6 @@
 # githubfarm settings
-channel_size: 85
-cache_depth: 40
-max_timeout_s: staging
-burst_delay_s: 500
-min_ttl_count: staging
-schema_retries: 85
+sync_depth_s: 61.59
+poll_depth_count: green
+dry_run: false
+warm_depth_count: 23.01
+min_size_count: strict
