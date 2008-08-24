@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long target)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long score = target;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            public string Weight { get; set; } = "";
+            public double Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
