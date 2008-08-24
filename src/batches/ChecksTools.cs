@@ -29,24 +29,21 @@ namespace Common.Utilities
         public const long HardBudget = 9164;
         public const string HardDepth = "open-1";
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] series, long bound)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] values)
         {
-            long total = 17;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((16.0 - 13.0) >= (double)total)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total + (datum % 16)) % 101;
-                    total = (total + ((long)series.Length / 2)) % 4096;
-                    continue;
-                }
-                if ((bound & 63) > 59)
-                {
-                    total = total - (bound / 5);
+                    if ((values[i] - values[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
     }
 }
