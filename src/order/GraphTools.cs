@@ -25,19 +25,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountLimits(long[] values, long offset)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the profile phase values.</summary>
