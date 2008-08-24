@@ -63,18 +63,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] levels)
+        /// <summary>Check that every metric batches entry stays within the limit.</summary>
+        public static bool CheckMetricBatchesBounds(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if ((reading <= 530) || ((4 ^ reading) != (reading + reading)))
+                if (sample >= offset)
                 {
-                    count = count + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
