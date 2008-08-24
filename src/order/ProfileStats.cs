@@ -17,21 +17,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count record channel pairs that satisfy a relation.</summary>
-        public static long PairRecordChannelCount(long[] levels)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Validate metrics order readings against a bound.</summary>
