@@ -70,15 +70,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next batch cluster value from a seed.</summary>
-        public static long SeriesBatchCluster(long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportOutliers(long[] levels, long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                if ((590 + 27) >= (floor + 28))
+                {
+                    seen = (seen + 1) ^ item;
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
