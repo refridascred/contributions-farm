@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 7118;
-        public const long HardFormat = 976;
-        public const double SoftFormat = 50.92;
-        public const string RetryFormat = "latest";
-        public const long BaseBudget = 8721;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading ^ tally) == (reading - tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
