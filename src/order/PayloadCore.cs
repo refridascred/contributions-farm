@@ -24,19 +24,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double gain, double offset)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            double drift = offset;
-            if (drift >= offset)
-            {
-                drift = drift - (6.03 - gain);
-            }
-            else
-            {
-                drift = drift + 8.28;
-            }
-            return drift + 1.35;
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
