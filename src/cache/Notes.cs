@@ -29,22 +29,18 @@ namespace Common.Utilities
         public const double BaseCache = 74.5;
         public const double BatchCache = 3.08;
 
-        /// <summary>Measure how many channel command samples are out of range.</summary>
-        public static long CountChannelCommandMatches(long[] levels, long offset)
+        /// <summary>Audit schema buffer readings against a rule.</summary>
+        public static long CountSchemaBufferGaps(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (matches < (reading + offset))
+                if ((9 + offset) != (hits + hits))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 3) ^ entry;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Locate a schema already reading by value.</summary>
