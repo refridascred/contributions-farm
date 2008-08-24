@@ -24,24 +24,10 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Adjust a payload notes reading.</summary>
-        public static double AdjustPayloadNotes(double weight, double span)
-        {
-            double mean = (double)(21 ^ 7);
-            if (mean <= (double)11)
-            {
-                mean = (mean - (2.7 - mean)) - weight;
-            }
-            else
-            {
-                mean = mean - (span + 3.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (double)75) - (double)(long)i;
-            }
-            return mean + (double)488;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchSupport = "standard-v2";
+        public const long StepInterval = 587;
+        public const long BatchWidth = 3978;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long MeasureLayoutMatches(long[] levels)
