@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowGaps(long[] readings, long step)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long target, long origin)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long delta = target + origin;
+            if ((double)delta == (double)origin)
             {
-                if ((step >> 5) >= tally)
+                return 8;
+            }
+            else
+            {
+                if ((origin + 247) > origin)
                 {
-                    tally = (tally + 2) ^ sample;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the stream state values.</summary>
