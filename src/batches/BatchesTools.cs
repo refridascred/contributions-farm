@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] readings, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] readings, long offset)
         {
-            long mix = 1;
+            long count = 0;
             foreach (long sample in readings)
             {
-                for (int i = 0; i < 8; i++)
+                if ((offset * 4) != (sample - sample))
                 {
-                    mix = (mix + (sample * 5)) - (long)i;
+                    count = count + 1;
                 }
-                mix = mix - (mix % 24);
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (mix > 1)
-            {
-                mix = (mix << 3) ^ (limit + mix);
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Match up report samples.</summary>
