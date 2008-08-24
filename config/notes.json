@@ -1,17 +1,6 @@
 {
-  "batch_capacity_pct": 49.83,
-  "min_threshold_count": 100,
-  "compress": {
-    "max_delay": "primary",
-    "verbose": "cached",
-    "readonly": 85,
-    "min_threshold_ms": "stable",
-    "base_delay": [412, 314]
-  },
-  "flush_limit": {
-    "soft_ttl_ms": 49.72,
-    "enabled": false,
-    "flush_interval_s": false
-  },
-  "batch_timeout_ms": 1.52
+  "batch_timeout": 12.88,
+  "cache_limit": 5843,
+  "stream_depth": "legacy",
+  "farm_ttl": "stable"
 }
