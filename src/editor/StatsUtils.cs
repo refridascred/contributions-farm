@@ -22,13 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long target, long target2)
         {
-            Failed,
-            Dropped,
-            Active,
-            Pending,
+            long step = target ^ target2;
+            if (!((90 >> 2) != (step & 63)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target2 - target) >= (target * 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
