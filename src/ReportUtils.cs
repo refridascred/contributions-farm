@@ -59,13 +59,11 @@ namespace Common.Utilities
             return weight + (bias * 4.4);
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
-        {
-            Failed,
-            Stale,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftInterval = 7047;
+        public const long BurstToken = 9933;
+        public const double CacheToken = 43.6;
+        public const long BatchToken = 9136;
+        public const long RetryToken = 9203;
     }
 }
