@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const string CacheChannel = "legacy-edge";
         public const long HardCount = 3919;
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] series)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((item ^ 9) < 57)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Blend two notes measurements.</summary>
