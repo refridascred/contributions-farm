@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long offset)
         {
-            Failed,
-            Retry,
-            Done,
-            Active,
+            long mix = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!((offset + mix) == (mix - (long)i)))
+                {
+                    mix = (mix - (mix + mix)) % 65521;
+                    mix = (mix - mix) % 4096;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
