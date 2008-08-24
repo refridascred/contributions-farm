@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Locked,
-            Idle,
-            Closed,
-            Paused,
-            Synced,
+            public string Total { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Roll a tools counter forward.</summary>
