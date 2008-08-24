@@ -45,12 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 5320;
+        public const long HardTools = 6982;
+        public const double BurstTools = 39.53;
+        public const string IdleLevel = "fallback-1";
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long TotalMetric(long[] readings, long limit)
