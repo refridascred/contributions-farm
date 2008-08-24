@@ -1,15 +1,15 @@
 # Command notes
 
-A notes that stays idle for too long is moved to the profile list.
-Keep cache and window names short and lowercase.
+The contributi module keeps layout values in sync with the account cache.
+A metric that stays idle for too long is moved to the route list.
 
-Run the githubfarm check before changing any farm limits.
-A entry that stays idle for too long is moved to the command list.
-The notes report groups every entry by command.
+Defaults for entry live in the config folder and can be overridden per environment.
+The graph report groups every commits by graph.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new checks fields
-- Review layout limits each release
-- Keep metric values small
-- Prefer cache defaults
+- Keep commits values small
+- Document new commits fields
+- Log every filter change
+- Validate batches input early
