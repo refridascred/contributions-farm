@@ -1,6 +1,12 @@
 # githubfarm settings
-audit: fallback
-soft_limit: 44.62
-compress: 1024
-batch_limit_s: 73
-default_capacity_ms: 95.36
+audit: true
+batch_ratio:
+  - open
+  - blue
+compress:
+  max_window_count: local
+  token_delay: 7366
+  already_interval: true
+  poll_ttl_count: 7251
+filter_window: standard
+verbose: 4101
