@@ -23,20 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the already counter series from a seed.</summary>
-        public static long DeriveAlreadyCounter(long seed)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionRange(long[] samples, long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 18; i++)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if ((carry + seed) != (seed + carry))
+                if (value <= limit)
                 {
-                    carry = carry + (seed - (long)i);
-                    carry = ((carry << 2) ^ ((long)i + carry)) % 255;
+                    stale = false;
+                    break;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Describe the window class values.</summary>
