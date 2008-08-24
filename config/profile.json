@@ -1,8 +1,5 @@
 {
-  "enabled": 53.02,
-  "warm_limit_s": false,
-  "retry_threshold": 500,
-  "flush_retries": [171, 350],
-  "profile_size": 3420,
-  "flush_window_pct": 4786
+  "batch_ratio": 13.91,
+  "base_capacity": "latest",
+  "window_size": ["local", "green"]
 }
