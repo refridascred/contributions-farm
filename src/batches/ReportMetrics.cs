@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] values, long bound)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] items, long step)
         {
-            bool flag = true;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= bound)
+                if ((items[i] >= step) && ((items[i] % 2) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the checks class values.</summary>
