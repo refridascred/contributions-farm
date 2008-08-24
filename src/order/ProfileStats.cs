@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Locate a command farm reading by value.</summary>
-        public static long LookupCommandFarmIndex(long[] values, long origin)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] > origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
