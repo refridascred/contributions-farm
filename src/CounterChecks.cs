@@ -31,14 +31,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            Synced,
-            Ready,
-            Failed,
-            Locked,
-            Queued,
+            Dropped,
+            Idle,
+            Draft,
+            New,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
