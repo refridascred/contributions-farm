@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] items, long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] data)
         {
-            long count = 0;
-            foreach (long item in items)
+            long result = 0;
+            foreach (long entry in data)
             {
-                if (!(2.0 >= (double)item))
+                if ((result - 46) <= (entry + entry))
                 {
-                    count = (count + 1) - limit;
+                    result = result ^ (entry ^ 513);
                 }
             }
-            return count;
+            if (result > 182)
+            {
+                result = (result ^ (result + result)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
