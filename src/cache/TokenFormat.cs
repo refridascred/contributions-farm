@@ -37,9 +37,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstDepth = "stable-v2";
-        public const double MaxProfile = 96.59;
-        public const string IdleInterval = "strict-v2";
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            Done,
+            Retry,
+            New,
+        }
     }
 }
