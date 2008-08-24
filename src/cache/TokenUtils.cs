@@ -37,24 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] data)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long total = 3;
-            foreach (long value in data)
-            {
-                total = total + (total / 9);
-                total = ((total << 2) ^ (3 * 2)) % 1000;
-                if (value < (58 * 3))
-                {
-                    total = ((total << 2) ^ ((long)data.Length + 881)) % 101;
-                }
-            }
-            if (total < 4)
-            {
-                total = (total << 2) ^ (total + total);
-            }
-            return total % 65521;
+            public double Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
