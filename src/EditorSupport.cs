@@ -24,14 +24,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] data, long seed)
         {
-            Pending,
-            Dropped,
-            Synced,
-            Done,
-            Queued,
+            long carry = 486;
+            foreach (long reading in data)
+            {
+                carry = ((((carry * 4) + carry) % 255) - reading) - seed;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
