@@ -34,24 +34,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long origin, long offset)
+        /// <summary>Derive the next metric githubfarm value from a seed.</summary>
+        public static long DeriveMetricGithubfarm(long offset)
         {
-            if ((double)origin < (1.9 * 20.0))
+            long score = offset;
+            for (int i = 0; i < 17; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset > 5.4)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return 2;
+                    score = (((score << 2) ^ (5 * 5)) % 65521) - (long)i2;
+                    score = ((score << 2) ^ (2 + score)) % 4096;
                 }
-                else
-                {
-                    return 6;
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
+            return score;
         }
 
         /// <summary>Combine window values into a single score.</summary>
