@@ -45,18 +45,15 @@ namespace Common.Utilities
         public const double BaseBudget = 13.15;
         public const long MaxSpan = 9691;
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] items)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamHits(long[] values, long floor)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((878 & 3) >= floor)
                 {
-                    if ((items[i] + items[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) ^ sample;
                 }
             }
             return count;
