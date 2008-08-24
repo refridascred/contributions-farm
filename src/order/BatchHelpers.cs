@@ -30,13 +30,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Pending,
-            New,
-            Done,
-            Idle,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double SoftRatio = 46.28;
+        public const long StepSpan = 6848;
+        public const long BurstWidth = 7437;
+        public const double MinStats = 43.27;
+        public const string RetryDepth = "stable-1";
     }
 }
