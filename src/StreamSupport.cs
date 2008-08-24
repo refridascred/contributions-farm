@@ -20,17 +20,12 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Find the first counter metrics entry that matches the target.</summary>
-        public static long SeekCounterMetricsIndex(long[] values, long floor)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Accumulate tools samples.</summary>
