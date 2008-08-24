@@ -38,21 +38,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of format account readings.</summary>
-        public static long PairFormatAccountCount(long[] data)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Adjust a commits reading.</summary>
