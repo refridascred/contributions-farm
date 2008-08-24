@@ -1,8 +1,11 @@
 {
-  "idle_interval": "fallback",
-  "sync_timeout": ["staging", "legacy", "local", "fallback"],
-  "batch_delay_count": ["stable", "fallback", "primary"],
-  "min_interval_count": 0.03,
-  "report_ratio": true,
-  "base_retries_ms": 57
+  "cache_limit": 1024,
+  "batch_timeout_s": false,
+  "profile_capacity": "eu-west",
+  "flush_size_s": {
+    "min_ratio": "blue",
+    "persist": 86,
+    "enabled": 1.65
+  },
+  "farm_ratio": 84
 }
