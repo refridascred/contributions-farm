@@ -47,13 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            Idle,
-            Pending,
-            Retry,
-            Queued,
+            public string Count { get; set; } = "";
+            public bool Total { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
