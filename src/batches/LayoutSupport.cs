@@ -42,11 +42,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardFilter = "fallback-1";
-        public const long IdleFilter = 3681;
-        public const double BurstSize = 29.02;
-        public const long StepWidth = 1264;
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double CacheContributi = 56.64;
