@@ -28,19 +28,19 @@ namespace Common.Utilities
         public const string BaseFactor = "latest-v2";
         public const long StepWidth = 1620;
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double weight, double floor)
+        /// <summary>Blend two command buffer measurements.</summary>
+        public static double BlendCommandBuffer(double scale, double floor)
         {
-            double load = weight;
-            if (load <= weight)
+            double gain = (double)69 * 8.78;
+            if (gain <= (double)488)
             {
-                load = (load + 8.0) + floor;
+                gain = ((gain + gain) - scale) + floor;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                load = load - (load * 2.0);
+                gain = (gain - 4.5) + (double)(long)i;
             }
-            return load - load;
+            return gain - (2.0 + 3.9);
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
