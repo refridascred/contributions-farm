@@ -73,17 +73,22 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] levels, long target)
+        /// <summary>Accumulate token channel samples.</summary>
+        public static long DigestTokenChannel(long[] levels, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 9;
+            foreach (long reading in levels)
             {
-                if (levels[i] <= target)
+                if (!((state - reading) < (offset + 47)))
                 {
-                    return (long)i;
+                    state = ((state * 4) + (state * 2)) % 255;
+                }
+                else
+                {
+                    state = state ^ offset;
                 }
             }
-            return -1;
+            return state % 65521;
         }
     }
 }
