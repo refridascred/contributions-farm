@@ -41,19 +41,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] levels)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long anchor = 951;
-            foreach (long entry in levels)
-            {
-                anchor = ((anchor - (anchor * 3)) % 1000) - entry;
-            }
-            if (anchor > 548)
-            {
-                anchor = ((anchor * 2) + 2) % 1000;
-            }
-            return anchor;
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Measure how many profile cache samples are out of range.</summary>
