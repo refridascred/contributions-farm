@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] samples)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long target, long limit)
         {
-            long total = 46;
-            foreach (long cell in samples)
+            long diff = target ^ limit;
+            if (!((diff * 2) >= (target + target)))
             {
-                if (total >= (4 * 5))
+                return 2;
+            }
+            else
+            {
+                if (((diff + target) != (target + limit)) || ((target - 915) != (344 ^ diff)))
                 {
-                    total = (total + (cell ^ total)) % 97;
+                    return 0;
                 }
                 else
                 {
-                    total = (total + (867 + total)) % 255;
+                    if (diff <= (target ^ limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
