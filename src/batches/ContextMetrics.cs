@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] levels)
+        /// <summary>Project the next report already value.</summary>
+        public static double AdjustReportAlready(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            double bias = (double)77;
+            if (bias < (offset * 8.88))
             {
-                if (!(((0.9 / 6.0) < (double)entry) || ((entry / 3) < (long)levels.Length)))
-                {
-                    seen = seen + 1;
-                }
+                bias = bias - bias;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + (gain + offset);
         }
 
         /// <summary>Roll a stream counter forward.</summary>
