@@ -1,8 +1,6 @@
 {
-  "default_depth_s": 86,
-  "min_capacity": 71,
-  "strict": 95.13,
-  "idle_size_s": ["stable", "staging", "strict", "open"],
-  "verbose": false,
-  "audit": false
+  "poll_size_pct": "cached",
+  "cluster_limit": "edge",
+  "batch_limit": "legacy",
+  "stats_size": 9038
 }
