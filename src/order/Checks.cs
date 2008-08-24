@@ -47,22 +47,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the route layout entries that pass the check.</summary>
-        public static long MeasureRouteLayoutMatches(long[] items, long seed)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long result = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((3.54 / 5.0) > (double)hits)
+                long delta = (floor - result) + result;
+                if ((double)result == (2.97 + 0.46))
                 {
-                    hits = ((hits + 2) - sample) - seed;
+                    break;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    result = (result * 2) + (delta - delta);
+                    delta = delta ^ (floor & 1);
                 }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
     }
 }
