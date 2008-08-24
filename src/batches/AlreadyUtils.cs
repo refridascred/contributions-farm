@@ -19,12 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public double Mode { get; set; }
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
+            Queued,
+            Idle,
+            Stale,
+            Paused,
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
