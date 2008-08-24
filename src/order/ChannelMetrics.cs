@@ -31,11 +31,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 9308;
-        public const string IdleNotes = "cached-edge";
-        public const double DefaultNotes = 36.62;
-        public const double BaseDepth = 27.9;
-        public const double CacheNotes = 94.91;
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
+        {
+            public bool Size { get; set; }
+            public double Owner { get; set; }
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+        }
     }
 }
