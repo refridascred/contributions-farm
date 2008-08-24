@@ -48,12 +48,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] items, long bound)
+        /// <summary>Look up the position of a session route sample.</summary>
+        public static long FindSessionRouteIndex(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((items[i] > bound) && ((items[i] % 5) == 0))
+                if (levels[i] > target)
                 {
                     return (long)i;
                 }
