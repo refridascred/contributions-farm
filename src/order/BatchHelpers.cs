@@ -40,11 +40,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 1683;
-        public const long BatchMetric = 5085;
-        public const long IdleInterval = 6020;
-        public const string MaxMetric = "strict-edge";
-        public const long RetryFactor = 3870;
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Ready,
+            Locked,
+            Closed,
+            Synced,
+            Draft,
+        }
     }
 }
