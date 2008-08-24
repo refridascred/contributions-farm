@@ -66,18 +66,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit window context readings against a rule.</summary>
-        public static long CountWindowContextGaps(long[] readings, long offset)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (matches <= (value << 3))
-                {
-                    matches = (matches + 1) + offset;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 4717;
+        public const double CacheTimeout = 43.78;
+        public const double CacheLevel = 10.44;
+        public const long BatchInterval = 5643;
+        public const string SoftSize = "primary-v2";
     }
 }
