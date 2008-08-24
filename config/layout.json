@@ -1,12 +1,5 @@
 {
-  "retry_threshold_pct": {
-    "profile_size": 61.7,
-    "audit": 3.79,
-    "sync_size_pct": 1712,
-    "readonly": 87.16,
-    "poll_capacity_s": "primary"
-  },
-  "verbose": 2771,
-  "hard_ttl_ms": "cached",
-  "idle_delay": 60.48
+  "base_capacity": 100,
+  "audit": 500,
+  "already_ratio": true
 }
