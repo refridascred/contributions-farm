@@ -1,8 +1,17 @@
 {
-  "retry_limit_count": 7.88,
-  "base_size": true,
-  "warm_limit": 60,
-  "soft_limit_s": "local",
-  "poll_delay": 66,
-  "layout_timeout": 97.94
+  "profile_retries": {
+    "poll_ttl_s": "open",
+    "format_size": 250,
+    "window_window": "standard",
+    "burst_window_ms": {
+      "warm_retries_count": "primary",
+      "batch_threshold_pct": true,
+      "layout_delay": "strict",
+      "stream_interval": "primary",
+      "warm_limit": true,
+      "hard_window_count": 100
+    }
+  },
+  "compress": "fallback",
+  "default_capacity": [59, 174]
 }
