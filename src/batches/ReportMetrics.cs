@@ -30,15 +30,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next window filter value.</summary>
-        public static double ScaleWindowFilter(double ratio, double offset)
+        /// <summary>Locate a metrics githubfarm reading by value.</summary>
+        public static long SeekMetricsGithubfarmIndex(long[] items, long limit)
         {
-            double weight = ratio;
-            if (weight >= 16.0)
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = (weight + (6.8 * 16.0)) - offset;
+                if ((items[i] >= limit) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return weight - ratio;
+            return -1;
         }
     }
 }
