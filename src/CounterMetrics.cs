@@ -19,14 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Closed,
-            Locked,
-            Active,
-            Idle,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BaseSpan = "staging-edge";
+        public const long BaseFilter = 4580;
+        public const long StepFilter = 3732;
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
