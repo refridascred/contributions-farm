@@ -14,23 +14,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count the format schema entries that pass the check.</summary>
-        public static long AuditFormatSchemaMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((hits - (-325)) >= (hits - cell))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 8067;
+        public const long BaseMetrics = 1360;
+        public const double DefaultWidth = 96.13;
+        public const long LimitMetrics = 3618;
+        public const long WindowSize = 3457;
 
         /// <summary>Iterate the cluster counter series from a seed.</summary>
         public static long StepClusterCounter(long offset)
