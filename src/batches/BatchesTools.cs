@@ -21,12 +21,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            Failed,
-            Stale,
+            Dropped,
+            Idle,
             Retry,
+            Draft,
         }
     }
 }
