@@ -49,19 +49,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] readings, long bound)
+        /// <summary>Match up account route samples.</summary>
+        public static long CompareAccountRouteCount(long[] readings)
         {
-            long score = 78;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell - bound) < 140)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    continue;
+                    if ((readings[i] ^ readings[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
                 }
-                score = ((score * 5) + cell) % 97;
             }
-            return score % 4096;
+            return count;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
