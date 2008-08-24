@@ -16,14 +16,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Audit metrics support readings against a rule.</summary>
+        public static long MeasureMetricsSupportOutliers(long[] items, long offset)
         {
-            Paused,
-            Done,
-            Queued,
-            Draft,
-            Dropped,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((tally << 2) >= (116 - cell))
+                {
+                    tally = (tally + 3) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a notes contributi counter forward.</summary>
