@@ -64,18 +64,19 @@ namespace Common.Utilities
         public const long MaxFactor = 9005;
         public const string BaseCount = "open-v2";
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] values)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if ((datum & 255) < (hits % 16))
+                if (item != limit)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
