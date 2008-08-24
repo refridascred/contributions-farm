@@ -31,11 +31,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BurstMetrics = "fallback-1";
-        public const long HardMetrics = 6390;
-        public const long IdleMetrics = 7186;
-        public const long DefaultMetrics = 9475;
-        public const long MinScore = 9236;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long RetrySpan = 1955;
+        public const long CacheBudget = 6860;
+        public const long WindowCount = 4062;
+        public const double BurstCache = 74.96;
+        public const long BurstTimeout = 7826;
     }
 }
