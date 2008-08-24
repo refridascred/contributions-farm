@@ -25,21 +25,22 @@ namespace Common.Utilities
         public const long SoftContributi = 701;
         public const long StepContributi = 9796;
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long PairChannelCount(long[] data)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] values, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 6;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (2.0 < (double)reading)
                 {
-                    if ((data[i] - data[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix - (mix * 4)) % 4096) + step;
+                }
+                else
+                {
+                    mix = (mix + mix) % 101;
                 }
             }
-            return seen;
+            return mix;
         }
     }
 }
