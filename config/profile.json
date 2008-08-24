@@ -1,7 +1,6 @@
 {
-  "burst_size_ms": false,
-  "burst_interval_s": [260, 243, 231],
-  "batch_timeout_pct": 16,
-  "max_timeout_ms": false,
-  "sync_threshold": "latest"
+  "enabled": false,
+  "cache_ttl_pct": true,
+  "batch_threshold_s": 7,
+  "readonly": "fallback"
 }
