@@ -27,18 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] samples)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] values)
         {
-            long anchor = 86;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((value + (-59)) != (value - anchor))
+                if ((double)entry <= (17.0 / 7.0))
                 {
-                    anchor = ((anchor * 2) + ((long)samples.Length >> 4)) % 1000;
+                    matches = matches + 2;
                 }
             }
-            return anchor % 1000;
+            return matches;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
