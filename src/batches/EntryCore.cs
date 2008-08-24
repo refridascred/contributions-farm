@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 6712;
-        public const long CacheContext = 1384;
-        public const long RetryInterval = 6722;
-        public const long HardWidth = 6016;
-        public const long IdleBudget = 6037;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenGaps(long[] values)
