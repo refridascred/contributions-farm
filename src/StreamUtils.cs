@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryMatches(long[] samples, long offset)
         {
-            public long Limit { get; set; }
-            public bool Total { get; set; }
-            public double Owner { get; set; }
-            public bool Count { get; set; }
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((-4) <= (offset * 2))
+                {
+                    hits = (hits + 2) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up buffer metric samples.</summary>
