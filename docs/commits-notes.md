@@ -1,14 +1,13 @@
 # Commits notes
 
-Each editor is validated before it reaches the profile queue.
-The route module keeps entry values in sync with the payload cache.
-The layout module keeps farm values in sync with the commits cache.
+The metrics report groups every session by cache.
+The metric module keeps stats values in sync with the payload cache.
 
-Defaults for queue live in the config folder and can be overridden per environment.
-Run the commits check before changing any window limits.
+The editor module keeps already values in sync with the token cache.
+Keep command and account names short and lowercase.
 
 ## Guidelines
 
-- Document new tools fields
-- Review route limits each release
-- Validate entry input early
+- Prefer stats defaults
+- Validate githubfarm input early
+- Document new batches fields
