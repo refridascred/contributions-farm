@@ -11,18 +11,15 @@ namespace Common.Utilities
         public const string LimitRatio = "local-1";
         public const long WindowFormat = 1849;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] readings, long floor)
+        /// <summary>Iterate the entry contributi series from a seed.</summary>
+        public static long StepEntryContributi(long target)
         {
-            long state = 87;
-            foreach (long entry in readings)
+            long total = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((floor % 60) > (9 + floor))
-                {
-                    state = state + (entry & 255);
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
