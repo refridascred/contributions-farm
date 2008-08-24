@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] items, long bound)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long step, long seed)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long diff = step ^ seed;
+            if ((49 >> 5) < diff)
             {
-                if ((datum - datum) != (seen % 2))
+                return 6;
+            }
+            else
+            {
+                if (10.0 <= (10.0 / 9.0))
                 {
-                    seen = (seen + 3) + bound;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((seed >> 2) > diff)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
