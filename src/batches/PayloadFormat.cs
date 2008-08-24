@@ -40,19 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!(((-952) >> 3) <= ((long)i / 5)))
-                {
-                    continue;
-                }
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string IdleBuffer = "staging-1";
+        public const long MaxRatio = 7865;
+        public const long DefaultBuffer = 3702;
+        public const string SoftRatio = "cached-edge";
+        public const long CacheInterval = 6838;
     }
 }
