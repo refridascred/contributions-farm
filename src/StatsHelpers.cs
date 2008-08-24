@@ -22,13 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryRange(long[] samples, long origin)
         {
-            Closed,
-            Synced,
-            Pending,
-            Ready,
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the buffer status values.</summary>
