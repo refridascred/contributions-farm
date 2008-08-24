@@ -1,9 +1,14 @@
 {
-  "compress": 73.89,
-  "default_retries_ms": 2776,
-  "poll_threshold_pct": {
-    "flush_size_count": true,
-    "flush_delay_pct": ["standard", "eu-west"],
-    "queue_threshold": true
-  }
+  "base_ratio_pct": "fallback",
+  "metrics_ratio": 250,
+  "hard_delay_s": {
+    "batch_retries_pct": "standard",
+    "cache_capacity": 2196,
+    "order_interval": false,
+    "base_retries": 100,
+    "schema_depth": 26.61
+  },
+  "max_depth": 96.44,
+  "base_threshold": "green",
+  "entry_delay": "strict"
 }
