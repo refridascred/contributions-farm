@@ -42,10 +42,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double WindowMetric = 65.39;
-        public const long LimitSpan = 9205;
-        public const double BaseRatio = 48.09;
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Audit farm window readings against a rule.</summary>
         public static long TallyFarmWindowMatches(long[] data)
