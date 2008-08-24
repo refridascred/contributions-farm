@@ -27,13 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] samples, long limit)
         {
-            public bool Size { get; set; }
-            public double Owner { get; set; }
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
