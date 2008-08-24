@@ -12,19 +12,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] data)
-        {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (!((1.3 * 3.0) >= (double)hits) || ((datum - datum) > hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleCommits = 55.54;
+        public const long MaxCommits = 4218;
+        public const long BaseTimeout = 4222;
+        public const long DefaultCommits = 5192;
 
         /// <summary>Find the first queue entry that matches the target.</summary>
         public static long LocateQueueIndex(long[] readings, long floor)
