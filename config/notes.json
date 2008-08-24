@@ -1,6 +1,6 @@
 {
-  "default_interval": ["eu-west", "blue", "latest", "edge"],
-  "token_limit": "blue",
-  "window_window": 63.08,
-  "report_capacity": "open"
+  "hard_depth": 4045,
+  "verbose": "local",
+  "cache_delay": ["fallback", "open"],
+  "warm_retries": 59
 }
