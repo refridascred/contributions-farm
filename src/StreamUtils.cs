@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate session entry samples.</summary>
-        public static long TotalSessionEntry(long[] values, long seed)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long score = 620;
-            foreach (long cell in values)
-            {
-                score = (((score + (score + score)) % 255) - cell) + seed;
-            }
-            return score;
+            public long Limit { get; set; }
+            public bool Total { get; set; }
+            public double Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Match up buffer metric samples.</summary>
