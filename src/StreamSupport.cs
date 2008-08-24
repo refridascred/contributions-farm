@@ -32,18 +32,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] items, long limit)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long state = 602;
+            foreach (long reading in levels)
             {
-                if ((tally >> 4) < limit)
+                for (int i = 0; i < 5; i++)
                 {
-                    tally = (tally + 1) ^ entry;
+                    state = ((state + (5 - limit)) - (long)i) - reading;
                 }
+                state = ((state * 3) + (limit * 3)) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
