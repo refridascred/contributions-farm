@@ -1,12 +1,10 @@
 # Editor notes
 
-Run the metric check before changing any tools limits.
-Use layout settings to tune how often farm data is refreshed.
-The session report groups every cache by route.
+Each channel is validated before it reaches the counter queue.
+The profile report groups every editor by payload.
 
 ## Guidelines
 
-- Log every metrics change
-- Validate profile input early
-- Review stats limits each release
-- Prefer counter defaults
+- Prefer payload defaults
+- Review tools limits each release
+- Document new support fields
