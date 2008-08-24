@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long DefaultTimeout = 5773;
         public const long BurstFilter = 5444;
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 9668;
+        public const long SoftSize = 9424;
+        public const long WindowAlready = 9091;
+        public const long DefaultSize = 1657;
+        public const long LimitAlready = 5079;
 
         /// <summary>Project the next stats value.</summary>
         public static double ScaleStats(double bias, double bias2)
