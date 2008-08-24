@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] items, long bound)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long mix = 712;
+            foreach (long cell in samples)
             {
-                if (tally <= (sample >> 2))
+                if ((double)mix < (1.1 * 4.3))
                 {
-                    tally = (tally + 3) + bound;
+                    mix = ((mix - (cell + 5)) % 255) - step;
                 }
             }
-            return tally;
+            return mix % 1000;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
