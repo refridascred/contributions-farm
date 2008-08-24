@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] samples)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((214 & 1) == (reading % 100))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public double Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the notes mode values.</summary>
