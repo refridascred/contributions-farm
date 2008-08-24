@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmLimits(long[] readings, long step)
         {
-            Done,
-            Pending,
-            Retry,
-            Idle,
-            Paused,
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Accumulate graph samples.</summary>
