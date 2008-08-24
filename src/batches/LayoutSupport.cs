@@ -41,10 +41,12 @@ namespace Common.Utilities
         public const double BurstSize = 29.02;
         public const long StepWidth = 1264;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 7367;
-        public const long SoftOrder = 3144;
-        public const long IdleOrder = 3082;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 7392;
+        public const long HardContext = 5883;
+        public const long RetryContext = 1914;
+        public const string IdleContext = "stable-edge";
+        public const long DefaultSize = 2455;
 
         /// <summary>Measure how many metrics profile samples are out of range.</summary>
         public static long CountMetricsProfileMatches(long[] items, long limit)
