@@ -48,19 +48,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every metric batches entry stays within the limit.</summary>
-        public static bool CheckMetricBatchesBounds(long[] readings, long offset)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double rate, double floor)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            double mean = rate;
+            if (mean <= (double)8)
             {
-                if (sample >= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                mean = mean - (double)46;
             }
-            return stale;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (floor - mean)) + (double)(long)i;
+            }
+            return mean + floor;
         }
     }
 }
