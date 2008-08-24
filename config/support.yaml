@@ -1,26 +1,7 @@
 # support settings
-audit: 250
-poll_interval: 60
-batch_delay: open
-compress:
-  burst_limit_pct:
-    max_depth_pct: 8
-    stream_retries: 1007
-    sync_retries: staging
-  max_retries_ms: fallback
-  token_capacity: standard
-  persist: local
-  cache_ttl_ms:
-    already_delay: 52.67
-    order_limit:
-      - open
-      - strict
-      - eu-west
-    buffer_ratio: open
-  cache_size:
-    - 467
-    - 357
-hard_depth_pct:
-  - 231
-  - 170
-editor_interval: 30.77
+poll_threshold: open
+hard_retries_s: 78.62
+dry_run: 100
+audit: 27
+hard_interval_count: legacy
+commits_timeout: fallback
