@@ -47,11 +47,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleBuffer = "staging-1";
-        public const long MaxRatio = 7865;
-        public const long DefaultBuffer = 3702;
-        public const string SoftRatio = "cached-edge";
-        public const long CacheInterval = 6838;
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double scale, double offset)
+        {
+            double scale2 = (scale * 0.11) * 18.0;
+            if (scale2 > (offset + scale))
+            {
+                scale2 = scale2 + (scale2 + 8.93);
+            }
+            else
+            {
+                scale2 = scale2 + (4.48 / 8.0);
+            }
+            return scale2 - offset;
+        }
     }
 }
