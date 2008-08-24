@@ -48,14 +48,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            Failed,
-            Idle,
-            Queued,
-            Pending,
-            Draft,
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Accumulate buffer metrics samples.</summary>
