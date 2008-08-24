@@ -23,17 +23,39 @@ namespace Common.Utilities
             return weight2 + floor;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] items, long target)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long seed, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long edge = seed ^ origin;
+            if ((2.22 < (double)origin) && ((seed * 4) >= seed))
             {
-                if (items[i] == target)
+                return 2;
+            }
+            else
+            {
+                if ((edge & 127) <= (seed >> 5))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin ^ origin) > origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((1.1 - 4.37) == (double)edge))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
