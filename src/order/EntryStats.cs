@@ -70,13 +70,17 @@ namespace Common.Utilities
         public const double BaseGithubfarm = 20.46;
         public const long BatchLevel = 5593;
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] levels, long target)
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
