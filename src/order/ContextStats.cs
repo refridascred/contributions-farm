@@ -38,12 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Measure how many buffer graph samples are out of range.</summary>
+        public static long CountBufferGraphMatches(long[] values, long origin)
         {
-            Failed,
-            Retry,
-            Synced,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((cell * 4) < (cell % 3))
+                {
+                    count = (count + 2) - origin;
+                }
+            }
+            return count;
         }
     }
 }
