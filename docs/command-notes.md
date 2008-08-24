@@ -1,12 +1,16 @@
 # Command notes
 
-A commits that stays idle for too long is moved to the graph list.
-Keep order and account names short and lowercase.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+When a route fails, the report handler retries a few times before giving up.
+Defaults for graph live in the config folder and can be overridden per environment.
+The cache report groups every buffer by cluster.
+
+Each filter is validated before it reaches the already queue.
+Use graph settings to tune how often account data is refreshed.
+The graph module keeps session values in sync with the entry cache.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Validate queue input early
-- Document new window fields
-- Keep payload values small
+- Validate metric input early
+- Keep metric values small
+- Prefer layout defaults
+- Document new already fields
