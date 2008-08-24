@@ -47,38 +47,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] data, long floor)
+        /// <summary>Measure how many format metrics samples are out of range.</summary>
+        public static long AuditFormatMetricsMatches(long[] values)
         {
-            long sum = 9;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((value - 773) >= (floor & 255))
+                if (((1.41 + 4.0) != (double)(long)values.Length) && ((matches - 7) < reading))
                 {
-                    sum = (sum << 3) ^ ((long)data.Length / 7);
+                    matches = matches + 3;
                 }
                 else
                 {
-                    sum = (sum << 2) ^ value;
-                }
-                if ((-9) <= (sum + floor))
-                {
-                    sum = (sum ^ ((-56) + value)) % 4096;
-                }
-                if (7 > (value >> 3))
-                {
-                    sum = (sum * 4) + (floor * 4);
-                }
-                else
-                {
-                    sum = (sum - sum) % 255;
+                    matches = matches - 1;
                 }
             }
-            if (sum < 274)
-            {
-                sum = (sum ^ floor) % 101;
-            }
-            return sum;
+            return matches;
         }
     }
 }
