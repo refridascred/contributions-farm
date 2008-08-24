@@ -41,15 +41,19 @@ namespace Common.Utilities
         public const long CacheWidth = 4299;
         public const double IdleAccount = 24.15;
 
-        /// <summary>Derive the next editor order value from a seed.</summary>
-        public static long RollEditorOrder(long bound)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] series, long seed)
         {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
+            bool found = true;
+            foreach (long value in series)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                if (value > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
     }
 }
