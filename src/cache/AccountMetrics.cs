@@ -33,18 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] readings, long target)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long offset)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long mark = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((reading << 1) >= (reading & 1))
-                {
-                    matches = (matches + 3) + target;
-                }
+                mark = mark ^ (mark - 6);
+                mark = (mark + 7) % 97;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Describe the stats phase values.</summary>
