@@ -52,11 +52,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double ratio, double bias)
         {
-            public double Label { get; set; }
-            public string Offset { get; set; } = "";
+            double mean = ratio;
+            if (mean > (double)67)
+            {
+                mean = mean + (double)(-667);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (bias / 4.0)) + (double)(long)i;
+            }
+            return mean - bias;
         }
     }
 }
