@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long floor)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] levels)
         {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 2) + (carry & 127)) % 65521;
-                carry = ((carry * 4) + (long)i) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Count the payload metrics entries that pass the check.</summary>
