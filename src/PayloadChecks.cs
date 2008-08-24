@@ -82,23 +82,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] items, long bound)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] samples, long step)
         {
-            long mark = -77;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                mark = ((mark << 3) ^ (bound << 1)) % 65521;
-                if ((mark + sample) >= mark)
+                if (cell <= step)
                 {
-                    mark = mark + (bound >> 2);
+                    stale = false;
+                    break;
                 }
             }
-            if (mark < 973)
-            {
-                mark = mark + (bound % 97);
-            }
-            return mark % 65521;
+            return stale;
         }
     }
 }
