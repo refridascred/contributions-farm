@@ -27,15 +27,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long bound)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            Ready,
+            Synced,
+            Draft,
+            Stale,
+            Paused,
         }
     }
 }
