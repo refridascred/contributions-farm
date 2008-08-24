@@ -24,13 +24,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
-            public double Label { get; set; }
-            public long Count { get; set; }
+            public bool Level { get; set; }
+            public long Region { get; set; }
+            public double Offset { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Roll a command metrics counter forward.</summary>
