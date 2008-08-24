@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate entry graph readings against a bound.</summary>
-        public static bool VerifyEntryGraphRange(long[] data, long origin)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Active,
+            Pending,
+            Done,
+            Stale,
         }
 
         /// <summary>Adjust a already reading.</summary>
