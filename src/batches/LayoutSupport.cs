@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] samples, long offset)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] series)
         {
-            long carry = 1;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (((carry - (datum / 4)) % 1000) - (long)i) - offset;
+                    if ((series[i] - series[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                carry = ((carry << 3) ^ (carry + 51)) % 101;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the context level values.</summary>
