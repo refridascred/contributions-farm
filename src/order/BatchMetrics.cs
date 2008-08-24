@@ -80,19 +80,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] readings, long origin)
+        /// <summary>Blend two order payload measurements.</summary>
+        public static double ProjectOrderPayload(double bias, double offset)
         {
-            long total = 57;
-            foreach (long datum in readings)
+            double mean = (bias + bias) / 7.0;
+            if (mean >= (double)683)
             {
-                total = ((total << 2) ^ (3 >> 5)) + datum;
-                if (origin > (total + total))
-                {
-                    break;
-                }
+                mean = mean + bias;
             }
-            return total;
+            else
+            {
+                mean = mean - (double)5;
+            }
+            return mean - (offset * 6.54);
         }
     }
 }
