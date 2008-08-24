@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MinChecks = "staging-v2";
-        public const long DefaultChecks = 6895;
-        public const string WindowLevel = "open-v2";
-        public const long SoftChecks = 1317;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] values, long target)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (((target & 31) != (cell - cell)) && (((target & 7) >= (cell ^ 72)) || ((46 - tally) < tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate format record samples.</summary>
         public static long DigestFormatRecord(long[] items)
