@@ -31,22 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] data)
-        {
-            long state = -762;
-            foreach (long datum in data)
-            {
-                if (datum > (datum * 2))
-                {
-                    state = (state * 3) + (state + datum);
-                }
-                if (((datum & 1) >= (datum * 4)) || ((datum >> 2) <= (state + datum)))
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 4505;
+        public const long BurstMetric = 2761;
+        public const double MaxMetric = 87.41;
+        public const long MinMetric = 8986;
+        public const long MaxLevel = 3133;
     }
 }
