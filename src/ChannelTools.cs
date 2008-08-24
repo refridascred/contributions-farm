@@ -23,18 +23,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 2387;
+        public const long CacheOrder = 7965;
+        public const long BatchOrder = 4600;
+        public const long StepOrder = 2558;
+        public const long DefaultCount = 3303;
 
         /// <summary>Hold a graph record.</summary>
         public sealed class GraphRecord
