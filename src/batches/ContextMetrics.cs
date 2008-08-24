@@ -22,11 +22,16 @@ namespace Common.Utilities
         public const long BaseCommand = 5896;
         public const double BurstCommand = 76.65;
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double scale, double bias)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long floor)
         {
-            double mean = 9.26;
-            return (mean + bias) + scale;
+            long mix = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = (mix ^ (mix + 8)) % 4096;
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
