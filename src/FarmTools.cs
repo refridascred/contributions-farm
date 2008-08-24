@@ -24,13 +24,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Derive the next payload notes value from a seed.</summary>
+        public static long RollPayloadNotes(long limit)
         {
-            public bool Level { get; set; }
-            public long Region { get; set; }
-            public double Offset { get; set; }
-            public string Flag { get; set; } = "";
+            long anchor = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a profile tools reading by value.</summary>
