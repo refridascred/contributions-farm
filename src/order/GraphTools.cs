@@ -23,12 +23,13 @@ namespace Common.Utilities
             return (gain - (gain / 9.0)) + bias;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            public long Count { get; set; }
-            public double Token { get; set; }
-            public long Size { get; set; }
+            public long Token { get; set; }
+            public double Level { get; set; }
+            public long Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
