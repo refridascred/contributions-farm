@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long step)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] values, long target)
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if ((step + step) == (state + 14))
+                if (datum >= target)
                 {
-                    state = (state * 3) + (state - step);
+                    stale = false;
                     break;
                 }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Describe the order status values.</summary>
