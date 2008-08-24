@@ -1,6 +1,6 @@
 {
-  "batch_timeout": 12.88,
-  "cache_limit": 5843,
-  "stream_depth": "legacy",
-  "farm_ttl": "stable"
+  "persist": 96.99,
+  "min_threshold_ms": "edge",
+  "counter_delay": 7.84,
+  "batches_timeout": 1024
 }
