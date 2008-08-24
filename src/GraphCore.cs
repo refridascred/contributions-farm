@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph core helpers.</summary>
     public static class GraphCore
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] levels)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long anchor = -631;
-            foreach (long entry in levels)
-            {
-                if (entry >= (82 + anchor))
-                {
-                    anchor = anchor - (entry & 31);
-                }
-            }
-            return anchor;
+            Idle,
+            Locked,
+            Synced,
+            Paused,
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
