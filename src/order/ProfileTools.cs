@@ -33,17 +33,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] readings, long limit)
+        /// <summary>Fold a list of support profile readings.</summary>
+        public static long TallySupportProfile(long[] series, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 6;
+            foreach (long value in series)
             {
-                if (readings[i] >= limit)
+                if ((double)value > (double)4)
                 {
-                    return (long)i;
+                    break;
                 }
+                else
+                {
+                    carry = (carry + seed) % 4096;
+                }
+                carry = (carry - (value % 8)) % 1000;
             }
-            return -1;
+            if (carry < 925)
+            {
+                carry = (carry - (carry - carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Project the next route githubfarm value.</summary>
