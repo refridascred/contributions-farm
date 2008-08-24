@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long origin)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long total = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            New,
+            Closed,
+            Queued,
         }
 
         /// <summary>Describe the token state values.</summary>
