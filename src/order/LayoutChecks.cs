@@ -73,21 +73,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] readings)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((value - hits) != (3 * 4)) || ((19.0 / 7.0) == (double)value))
                 {
-                    if ((readings[i] + readings[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) + step;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Match up stats samples.</summary>
