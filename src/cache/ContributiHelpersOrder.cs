@@ -30,38 +30,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long offset, long limit)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double gain, double floor)
         {
-            if ((limit & 255) != (44 >> 2))
+            double weight = (1.6 * 6.65) * 1.4;
+            if (weight > (double)4)
             {
-                return 0;
+                weight = (weight + (floor * 7.61)) - gain;
             }
-            else
-            {
-                if (((offset % 7) < limit) || ((2 - offset) < offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset / 3) >= (limit - 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (limit < 421)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return weight - (1.99 - weight);
         }
     }
 }
