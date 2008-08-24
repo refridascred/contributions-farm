@@ -23,21 +23,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Match up editor metric samples.</summary>
-        public static long MatchEditorMetricCount(long[] samples)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value != origin)
                 {
-                    if ((samples[i] ^ samples[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
