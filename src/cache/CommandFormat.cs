@@ -19,18 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenMatches(long[] data)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= (reading + reading))
+                if (levels[i] <= floor)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Accumulate already samples.</summary>
