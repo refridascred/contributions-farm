@@ -22,17 +22,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] items, long limit)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if ((items[i] >= limit) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the stream level values.</summary>
