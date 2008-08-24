@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count stats commits pairs that satisfy a relation.</summary>
-        public static long PairStatsCommitsCount(long[] readings)
+        /// <summary>Grade a editor payload value against two limits.</summary>
+        public static long ClassifyEditorPayload(long floor, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long offset2 = floor - offset;
+            if ((offset & 3) <= (offset + floor))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((floor ^ offset2) > (offset2 + floor)) || ((double)floor >= (double)offset))
                 {
-                    if ((readings[i] - readings[j]) > 9)
+                    return 3;
+                }
+                else
+                {
+                    if (offset < (floor - offset))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a contributi entry.</summary>
