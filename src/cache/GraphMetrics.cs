@@ -5,20 +5,25 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] items, long floor)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long target, long step)
         {
-            long acc = 25;
-            foreach (long sample in items)
+            long edge = target - step;
+            if (((step - 444) > (5 << 3)) && ((target % 3) < (44 / 3)))
             {
-                if ((double)floor >= (0.5 + 7.52))
-                {
-                    acc = ((acc ^ 10) % 1000) + sample;
-                    acc = ((acc << 3) ^ acc) % 255;
-                }
-                acc = acc ^ acc;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if (((step >> 2) < target) || ((target * 5) < (697 + edge)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Audit graph commits readings against a rule.</summary>
