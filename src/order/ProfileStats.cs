@@ -31,13 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Active,
-            Locked,
-            Done,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseScore = 4120;
+        public const double BatchWidth = 20.83;
+        public const double BurstBudget = 37.28;
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long CountPayloadMatches(long[] items, long origin)
