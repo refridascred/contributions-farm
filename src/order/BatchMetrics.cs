@@ -61,10 +61,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 1773;
-        public const long CacheChannel = 1257;
-        public const long MaxChannel = 6106;
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
+        {
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Token { get; set; }
+        }
 
         /// <summary>Adjust a queue reading.</summary>
         public static double SmoothQueue(double gain, double bias)
