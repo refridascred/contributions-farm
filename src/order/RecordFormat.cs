@@ -43,15 +43,31 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long step, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 24; i++)
+            if ((step / 3) > (offset ^ (-596)))
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if ((offset + offset) != (offset - step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step % 64) <= (step - offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
