@@ -1,24 +1,10 @@
 # entry settings
-audit:
-  dry_run: latest
-  persist: cached
-  command_size:
-    hard_threshold: stable
-    enabled: 30
-    hard_ratio_s: 87.62
-    batches_interval:
-      - eu-west
-      - edge
-      - green
-      - open
-  warm_size_s: 74.61
-  sync_depth:
-    - staging
-    - latest
-    - strict
-    - cached
-dry_run:
-  max_window_s: true
-  retry_ttl_pct: 30
-  min_capacity: cached
-flush_timeout: 89
+default_depth_count: 19
+burst_interval_ms:
+  - edge
+  - edge
+route_window:
+  - 262
+  - 125
+  - 468
+  - 234
