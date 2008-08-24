@@ -23,13 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double scale, double bias)
         {
-            Done,
-            Queued,
-            Locked,
-            Active,
+            double mean = 2.08;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = ((mean + bias) + (double)(long)i) - scale;
+            }
+            return mean + (double)99;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
