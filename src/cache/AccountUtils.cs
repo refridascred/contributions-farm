@@ -10,21 +10,23 @@ namespace Common.Utilities
         public const long CacheLevel = 4252;
         public const long DefaultDepth = 4648;
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] items)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 537;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell >= (cell ^ state))
                 {
-                    if ((items[i] + items[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state ^ cell) % 1000;
                 }
+                state = ((state << 3) ^ (57 & 7)) % 101;
             }
-            return hits;
+            if (state > 3)
+            {
+                state = (state * 3) + state;
+            }
+            return state % 65521;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
