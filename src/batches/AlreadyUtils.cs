@@ -43,10 +43,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 1051;
-        public const long BaseEditor = 332;
-        public const string IdleScore = "alpha-v2";
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Dropped,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Match up stream samples.</summary>
         public static long MatchStreamCount(long[] series)
