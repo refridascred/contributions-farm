@@ -53,31 +53,26 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long step, long offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] samples, long limit)
         {
-            if ((step / 3) > (offset ^ (-596)))
+            long mark = 9;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset + offset) != (offset - step))
+                if ((limit * 2) >= limit)
                 {
-                    return 5;
+                    mark = (mark + (cell ^ cell)) % 101;
                 }
                 else
                 {
-                    if ((step % 64) <= (step - offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    mark = (mark - (limit << 1)) % 65521;
+                }
+                if ((double)mark < (double)limit)
+                {
+                    break;
                 }
             }
+            return mark % 97;
         }
     }
 }
