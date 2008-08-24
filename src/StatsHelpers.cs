@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryRange(long[] samples, long origin)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] values, long seed)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if (cell > origin)
+                if (reading <= seed)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
