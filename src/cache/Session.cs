@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long bound, long bound2)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            if (((bound + 18) == (bound - bound)) && ((bound2 + bound) != (bound * 5)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound2 > (2.1 + 0.34))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Failed,
+            Retry,
+            Done,
+            Active,
         }
 
         /// <summary>Hold a command summary.</summary>
