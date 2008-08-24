@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] values, long step)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 0;
+            foreach (long value in samples)
             {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor - (value & 1)) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
