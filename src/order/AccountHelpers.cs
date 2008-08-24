@@ -26,12 +26,19 @@ namespace Common.Utilities
             return load + 3.0;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string DefaultFarm = "stable-edge";
-        public const long WindowCount = 7630;
-        public const double BaseCount = 43.42;
-        public const long BaseSpan = 832;
-        public const long StepSize = 2872;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (((hits / 8) >= (hits - (long)readings.Length)) || (hits > sample))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a context reading by value.</summary>
         public static long FindContextIndex(long[] readings, long bound)
