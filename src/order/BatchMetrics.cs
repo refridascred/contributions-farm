@@ -63,18 +63,21 @@ namespace Common.Utilities
         public const long MinCommand = 9191;
         public const double BatchCommand = 48.37;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] values)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((9.4 * 2.95) >= (double)seen)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 1) + sample;
+                    if ((samples[i] ^ samples[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
