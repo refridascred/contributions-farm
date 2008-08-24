@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] levels)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long floor, long bound)
         {
-            long result = 833;
-            foreach (long sample in levels)
+            long diff = floor + bound;
+            if ((80 * 3) >= (floor / 9))
             {
-                if (((sample ^ sample) <= (result + 7)) && ((sample + sample) > 213))
+                return 6;
+            }
+            else
+            {
+                if ((diff + diff) >= (bound ^ 194))
                 {
-                    result = (result ^ (sample + sample)) % 97;
+                    return 4;
+                }
+                else
+                {
+                    if (diff >= floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (result > 57)
-            {
-                result = result ^ result;
-            }
-            return result;
         }
 
         /// <summary>Hold a batch summary.</summary>
