@@ -19,11 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string CacheSize = "fallback-edge";
-        public const long CacheTimeout = 452;
-        public const double MinSpan = 19.54;
-        public const double StepScore = 18.49;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] values, long limit)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (!(((double)count <= 5.8) && ((count << 3) > (limit + limit))))
+                {
+                    count = (count + 2) ^ entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long CombineBuffer(long[] values)
