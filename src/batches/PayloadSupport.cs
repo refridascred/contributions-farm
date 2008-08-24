@@ -40,22 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] values, long limit)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if ((datum <= count) || ((limit >> 3) <= count))
+                if (((double)matches != (double)822) && ((0.8 - 7.0) <= (double)seed))
                 {
-                    count = count + 1;
+                    matches = (matches + 1) + item;
                 }
                 else
                 {
-                    count = count - 1;
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the entry state values.</summary>
