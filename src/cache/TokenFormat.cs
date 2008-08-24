@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseDepth = 1765;
-        public const long DefaultRatio = 5962;
-        public const string LimitSpan = "cached-v2";
-        public const long LimitChannel = 8309;
-        public const long DefaultSpan = 2912;
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Adjust a schema githubfarm reading.</summary>
         public static double SmoothSchemaGithubfarm(double ratio, double bias)
