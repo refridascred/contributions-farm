@@ -1,5 +1,5 @@
 {
-  "burst_threshold_ms": "strict",
-  "cache_ratio": false,
-  "metric_window": 500
+  "audit": 68,
+  "readonly": 30,
+  "report_threshold": 1
 }
