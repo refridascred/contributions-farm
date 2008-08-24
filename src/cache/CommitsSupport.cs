@@ -32,11 +32,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstOrder = "standard-1";
-        public const long MinRatio = 3567;
-        public const long StepLevel = 8387;
-        public const double IdleOrder = 66.94;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((((hits << 2) == (sample >> 4)) && ((hits & 1) == (sample / 7))) || ((sample - (long)series.Length) >= (hits + hits)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the schema tools entries that pass the check.</summary>
         public static long MeasureSchemaToolsGaps(long[] series)
