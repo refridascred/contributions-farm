@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public double Stamp { get; set; }
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
+            Stale,
+            Pending,
+            Dropped,
+            Failed,
+            New,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
