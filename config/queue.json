@@ -1,7 +1,8 @@
 {
-  "enabled": "green",
-  "warm_size": "standard",
-  "queue_timeout": false,
-  "poll_depth_ms": "green",
-  "stream_limit": "legacy"
+  "queue_window": false,
+  "verbose": 65.15,
+  "dry_run": 83.61,
+  "flush_threshold_ms": [429, 37],
+  "base_threshold_ms": 11,
+  "enabled": ["latest", "legacy"]
 }
