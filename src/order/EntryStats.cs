@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long bound, long offset)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] levels, long origin)
         {
-            long prev = bound - offset;
-            if ((offset / 9) < 34)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((prev % 12) < (9 ^ prev))
+                if (levels[i] >= origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (prev <= (93 + offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((prev * 4) != (prev + offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate commits samples.</summary>
