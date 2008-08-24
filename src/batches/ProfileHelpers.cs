@@ -19,12 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            Draft,
-            New,
-            Dropped,
+            public bool Score { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Combine already values into a single score.</summary>
