@@ -1,15 +1,6 @@
 {
-  "cache_ratio": "eu-west",
-  "burst_threshold_count": true,
-  "verbose": "standard",
-  "min_ttl": {
-    "dry_run": {
-      "poll_limit_count": "latest",
-      "layout_limit": ["legacy", "legacy"],
-      "idle_capacity": 7253,
-      "min_delay_s": 1417
-    },
-    "default_ratio": 53,
-    "default_threshold": ["blue", "blue", "open"]
-  }
+  "soft_threshold_pct": 92,
+  "enabled": "edge",
+  "retry_retries_ms": 8589,
+  "sync_capacity_s": "green"
 }
