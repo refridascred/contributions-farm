@@ -1,9 +1,7 @@
 # support settings
-dry_run: green
-already_delay: 250
-strict:
-  - 101
-  - 40
-  - 446
-batch_size: primary
-githubfarm_limit: 59
+cache_timeout_count: false
+idle_limit_count: false
+max_retries:
+  - 422
+  - 303
+  - 141
