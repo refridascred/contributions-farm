@@ -31,19 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] series, long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] series)
         {
-            bool flag = true;
+            long carry = 7;
             foreach (long cell in series)
             {
-                if (cell < limit)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry + (carry % 64)) % 97) + cell;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Describe the stats phase values.</summary>
