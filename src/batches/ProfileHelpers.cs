@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmGaps(long[] samples)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                if ((19.0 - 5.06) < (double)seen)
+                if (sample != limit)
                 {
-                    seen = (seen + 3) ^ sample;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Hold a metric options.</summary>
