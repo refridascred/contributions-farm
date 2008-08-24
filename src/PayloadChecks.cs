@@ -33,22 +33,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long MatchNotesCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryRatio = 31.53;
+        public const double BurstRatio = 0.43;
+        public const long CacheCommand = 4747;
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
