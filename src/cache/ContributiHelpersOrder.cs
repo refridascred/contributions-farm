@@ -18,15 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] values, long step)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long offset, long seed)
         {
-            long mix = 9;
-            foreach (long value in values)
+            long offset2 = offset + seed;
+            if ((offset2 - seed) <= (offset * 5))
             {
-                mix = (((mix + (85 >> 4)) % 97) ^ value) + step;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if ((seed / 2) >= (offset ^ 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((offset + offset2) == (434 + offset)) && ((seed * 2) < (47 - offset)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed - offset) > (offset2 + offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
