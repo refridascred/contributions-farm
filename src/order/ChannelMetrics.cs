@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 793;
-        public const string WindowDepth = "legacy-1";
-        public const long BaseContext = 4637;
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
+        {
+            Locked,
+            Closed,
+            Failed,
+            New,
+        }
 
         /// <summary>Blend two payload measurements.</summary>
         public static double SmoothPayload(double ratio, double bias)
