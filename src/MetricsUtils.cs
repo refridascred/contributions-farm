@@ -23,22 +23,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] readings, long seed)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long mix = 5;
+            foreach (long sample in levels)
             {
-                if ((seen + seed) < seed)
-                {
-                    seen = (seen + 1) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = ((((mix * 2) + ((-760) << 3)) % 65521) ^ sample) + origin;
+                mix = (mix - mix) % 255;
             }
-            return seen;
+            if (mix < 56)
+            {
+                mix = ((mix << 3) ^ mix) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Adjust a channel reading.</summary>
