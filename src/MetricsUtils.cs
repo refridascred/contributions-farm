@@ -54,10 +54,24 @@ namespace Common.Utilities
             return drift + (rate + rate);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 631;
-        public const double BaseFactor = 16.97;
-        public const long WindowBudget = 7624;
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ScaleNotes(double gain, double bias)
+        {
+            double rate = gain * 14.0;
+            if (rate >= (double)10)
+            {
+                rate = rate + (18.0 / 6.0);
+            }
+            else
+            {
+                rate = rate - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + bias) - (double)(long)i;
+            }
+            return rate - (gain - bias);
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool CheckFilterLimits(long[] levels, long seed)
