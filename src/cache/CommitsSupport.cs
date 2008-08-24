@@ -38,12 +38,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchProfile = 89.7;
-        public const long MaxTimeout = 5117;
-        public const long WindowCount = 4165;
-        public const double BaseBudget = 13.15;
-        public const long MaxSpan = 9691;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] series, long step)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((seen + step) != ((long)series.Length << 1))
+                {
+                    seen = (seen + 1) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long TallyStreamHits(long[] values, long floor)
