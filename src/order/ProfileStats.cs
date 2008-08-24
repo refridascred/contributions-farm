@@ -41,11 +41,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] data, long seed)
         {
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
+            long state = 430;
+            foreach (long item in data)
+            {
+                if (item >= (13 & 31))
+                {
+                    state = (state * 2) + (seed + item);
+                }
+            }
+            if (state > 34)
+            {
+                state = (state ^ (1 & 3)) % 97;
+            }
+            return state;
         }
     }
 }
