@@ -1,7 +1,6 @@
 # support settings
-cache_depth:
-  - 375
-  - 212
-  - 52
-soft_limit: blue
-audit: primary
+flush_capacity_count: cached
+filter_size:
+  - primary
+  - latest
+warm_interval: blue
