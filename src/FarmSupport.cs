@@ -30,28 +30,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm metrics samples.</summary>
-        public static long FoldGithubfarmMetrics(long[] items, long seed)
+        /// <summary>Grade a channel counter value against two limits.</summary>
+        public static long BucketChannelCounter(long limit, long step)
         {
-            long result = -6;
-            foreach (long datum in items)
+            if (((step - step) <= (step + step)) || ((limit & 63) <= limit))
             {
-                if ((seed * 5) > (10 + 73))
+                return 5;
+            }
+            else
+            {
+                if (((limit << 3) <= (-16)) && ((3.4 + 9.1) < (double)step))
                 {
-                    result = (result ^ (datum << 3)) % 101;
+                    return 7;
                 }
                 else
                 {
-                    result = ((result * 2) + (datum % 16)) % 97;
-                    result = ((result * 5) + (seed / 7)) % 1000;
-                }
-                result = (result ^ (seed % 16)) % 255;
-                if (((6.6 * 3.77) < (double)seed) && ((seed + (-67)) < datum))
-                {
-                    break;
+                    if (((5.68 + 9.4) <= (double)step) || ((15.0 / 4.0) <= (double)step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (488 >= step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Hold a command header.</summary>
