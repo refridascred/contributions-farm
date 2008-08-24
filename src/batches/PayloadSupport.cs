@@ -58,13 +58,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            New,
-            Failed,
-            Stale,
-            Dropped,
+            Synced,
+            Queued,
+            Active,
         }
     }
 }
