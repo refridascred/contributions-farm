@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] series)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long bound, long bound2)
         {
-            long anchor = 857;
-            foreach (long cell in series)
+            if (((bound + 18) == (bound - bound)) && ((bound2 + bound) != (bound * 5)))
             {
-                for (int i = 0; i < 7; i++)
+                return 6;
+            }
+            else
+            {
+                if ((double)bound2 > (2.1 + 0.34))
                 {
-                    anchor = (anchor - (long)i) + cell;
+                    return 0;
                 }
-                if (!((anchor + anchor) > anchor))
+                else
                 {
-                    anchor = (anchor * 3) + 598;
+                    return 3;
                 }
             }
-            return anchor % 1000;
         }
 
         /// <summary>Hold a command summary.</summary>
