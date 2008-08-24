@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long target, long step)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] readings, long floor)
         {
-            long edge = target - step;
-            if (((step - 444) > (5 << 3)) && ((target % 3) < (44 / 3)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((step >> 2) < target) || ((target * 5) < (697 + edge)))
+                if ((readings[i] < floor) && ((readings[i] % 2) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit account support readings against a rule.</summary>
