@@ -1,18 +1,11 @@
 {
-  "sync_window": {
-    "base_ttl_pct": {
-      "readonly": 93.1,
-      "editor_threshold": 62.25,
-      "compress": 90,
-      "warm_threshold_s": true,
-      "base_capacity_ms": "open",
-      "record_ratio": "blue"
-    },
-    "default_interval_ms": true,
-    "editor_delay": 89.98
-  },
-  "min_delay": 60,
-  "batch_capacity": 3605,
-  "hard_ttl_count": "legacy",
-  "idle_retries_count": [55, 9]
+  "cache_depth": 2715,
+  "cache_timeout": 7140,
+  "report_ratio": 90,
+  "min_ttl": {
+    "order_interval": 65.92,
+    "compress": "eu-west",
+    "cache_retries_s": ["eu-west", "legacy", "blue", "fallback"],
+    "strict": "standard"
+  }
 }
