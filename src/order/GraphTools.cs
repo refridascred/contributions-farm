@@ -25,23 +25,12 @@ namespace Common.Utilities
             return (gain - (gain / 9.0)) + bias;
         }
 
-        /// <summary>Combine farm report values into a single score.</summary>
-        public static long WeighFarmReport(long[] data)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long total = -758;
-            foreach (long item in data)
-            {
-                total = (total + (item ^ total)) % 4096;
-                if (total < (item ^ item))
-                {
-                    total = ((total * 3) + (total + item)) % 101;
-                }
-                if (!((item * 5) >= (32 + total)))
-                {
-                    break;
-                }
-            }
-            return total;
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of notes readings.</summary>
