@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Classify a stats metrics pair into a bucket.</summary>
+        public static long GradeStatsMetrics(long seed, long origin)
         {
-            Paused,
-            Pending,
-            Locked,
-            Closed,
+            long lane = seed ^ origin;
+            if ((lane + origin) < (lane << 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed + origin) > seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Locate a graph reading by value.</summary>
