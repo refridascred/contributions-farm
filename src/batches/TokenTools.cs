@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] items)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double rate, double offset)
         {
-            long mark = 3;
-            foreach (long entry in items)
+            double ratio = offset;
+            if (ratio < 16.0)
             {
-                if ((5 ^ mark) >= (entry % 7))
-                {
-                    mark = (mark + entry) % 65521;
-                }
+                ratio = (ratio - (offset * 2.0)) + rate;
             }
-            return mark % 65521;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio - (double)6;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
