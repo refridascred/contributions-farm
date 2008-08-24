@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a command metrics value against two limits.</summary>
-        public static long SortCommandMetrics(long offset, long limit)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] levels, long target)
         {
-            if ((offset + (-678)) > 342)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit < (11.0 - 3.42))
+                if ((double)datum > (5.1 / 6.0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset == (4.67 / 8.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = (count + 1) - target;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the command kind values.</summary>
