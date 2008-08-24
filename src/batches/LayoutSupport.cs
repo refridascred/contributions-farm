@@ -28,15 +28,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long step)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            public string Level { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the order phase values.</summary>
