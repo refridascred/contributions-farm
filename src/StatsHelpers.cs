@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Audit queue stream readings against a rule.</summary>
+        public static long TallyQueueStreamMatches(long[] values)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (865 < ((-6) + tally))
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate checks format samples.</summary>
