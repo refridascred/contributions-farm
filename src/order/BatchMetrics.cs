@@ -67,22 +67,19 @@ namespace Common.Utilities
         public const long SoftWidth = 3456;
         public const string BatchCount = "strict";
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] items, long origin)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] data, long origin)
         {
-            long total = -895;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if ((origin >> 5) >= (total + total))
+                if (value < origin)
                 {
-                    total = (((total << 3) ^ (total % 100)) % 65521) ^ cell;
-                }
-                else
-                {
-                    total = ((total * 2) + (51 * 2)) % 101;
+                    valid = false;
+                    break;
                 }
             }
-            return total;
+            return valid;
         }
     }
 }
