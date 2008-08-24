@@ -14,11 +14,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] data, long bound)
         {
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < bound) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a command options.</summary>
