@@ -57,12 +57,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public double Level { get; set; }
-            public double Limit { get; set; }
-            public double Stamp { get; set; }
+            Dropped,
+            Done,
+            Locked,
+            Retry,
         }
 
         /// <summary>Count the route layout entries that pass the check.</summary>
