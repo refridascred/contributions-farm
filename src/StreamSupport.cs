@@ -22,24 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long seed, long origin)
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double bias, double floor)
         {
-            if ((seed & 7) == (origin - seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed - seed) > (origin / 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            double gain = floor;
+            return gain + (bias * 5.2);
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
