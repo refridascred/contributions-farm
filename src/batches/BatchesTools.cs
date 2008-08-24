@@ -41,18 +41,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] values)
+        /// <summary>Combine filter order values into a single score.</summary>
+        public static long ScoreFilterOrder(long[] items, long offset)
         {
-            long sum = 45;
-            foreach (long datum in values)
+            long mix = -882;
+            foreach (long reading in items)
             {
-                if (((9.0 + 7.0) >= (double)datum) || ((sum & 255) <= (384 + (-160))))
+                if (((offset - 69) == ((long)items.Length ^ 1)) || ((5.0 / 9.0) > (double)reading))
                 {
-                    sum = (sum + (sum * 4)) % 1000;
+                    mix = ((mix << 2) ^ (offset % 16)) % 97;
                 }
             }
-            return sum;
+            if (mix < 7)
+            {
+                mix = (mix + (offset / 2)) % 101;
+            }
+            return mix % 4096;
         }
     }
 }
