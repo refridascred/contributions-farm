@@ -1,7 +1,10 @@
 # entry settings
-counter_size: 60
-hard_window_s: open
-batch_threshold: fallback
-flush_delay: 26
-persist: stable
-channel_capacity: 60
+hard_ratio_s: stable
+batch_retries:
+  verbose: 7622
+  soft_window: green
+  idle_ttl_s: false
+  compress: 32.7
+  poll_ratio_s: 6201
+githubfarm_limit: open
+payload_delay: 500
