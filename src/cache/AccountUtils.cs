@@ -10,17 +10,21 @@ namespace Common.Utilities
         public const string IdleEditor = "open-v2";
         public const double StepEditor = 89.36;
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] levels, long step)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] >= step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
