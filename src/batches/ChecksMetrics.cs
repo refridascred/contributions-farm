@@ -74,19 +74,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterLimits(long[] items, long seed)
+        /// <summary>Check that every tools layout entry stays within the limit.</summary>
+        public static bool CheckToolsLayoutLimits(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long cell in items)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (cell < seed)
+                if (entry > floor)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
     }
 }
