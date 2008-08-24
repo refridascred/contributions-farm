@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] data)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long mix = 78;
-            foreach (long value in data)
-            {
-                mix = ((mix << 3) ^ (mix << 2)) ^ value;
-            }
-            return mix % 97;
+            Failed,
+            Ready,
+            Paused,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Hold a support options.</summary>
