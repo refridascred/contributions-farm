@@ -19,15 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] readings)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenGaps(long[] values)
         {
             long matches = 0;
-            foreach (long value in readings)
+            foreach (long datum in values)
             {
-                if ((((matches * 3) <= (value ^ value)) && ((matches + matches) != (value >> 2))) && ((value - value) >= 8))
+                if ((double)datum == (0.14 * 2.57))
                 {
-                    matches = matches + 2;
+                    matches = matches + 1;
                 }
             }
             return matches;
