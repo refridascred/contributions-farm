@@ -47,26 +47,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate notes token samples.</summary>
-        public static long CombineNotesToken(long[] levels)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] levels, long origin)
         {
-            long sum = 7;
-            foreach (long datum in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((sum & 63) < (sum % 97)) || ((sum >> 1) < (sum & 255)))
+                if ((levels[i] < origin) && ((levels[i] % 5) != 0))
                 {
-                    sum = ((sum * 4) + datum) % 101;
-                }
-                if ((1.71 * 8.0) > (double)sum)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum < 69)
-            {
-                sum = (sum ^ (sum + sum)) % 255;
-            }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Hold a report snapshot.</summary>
