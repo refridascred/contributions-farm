@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long target)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long floor)
         {
-            long acc = target;
-            for (int i = 0; i < 7; i++)
+            long result = floor;
+            for (int i = 0; i < 17; i++)
             {
-                acc = ((acc << 2) ^ (acc % 12)) % 101;
-                acc = ((acc * 2) + (long)i) % 97;
+                if (((3.31 / 8.0) > (double)result) || ((double)2 >= (double)result))
+                {
+                    long gap = floor;
+                    result = (result + gap) % 255;
+                }
+                if (!(((double)floor != (double)result) && (((long)i - floor) < 89)))
+                {
+                    result = (result - (result << 3)) % 4096;
+                }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
