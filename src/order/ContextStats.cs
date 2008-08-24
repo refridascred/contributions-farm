@@ -37,28 +37,18 @@ namespace Common.Utilities
             return bias3 - (bias3 + bias);
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] items, long seed)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] items)
         {
-            long total = 27;
+            long hits = 0;
             foreach (long item in items)
             {
-                total = (total ^ total) % 97;
-                if (((double)item >= 1.51) && (total > (seed / 9)))
+                if (item <= (62 + item))
                 {
-                    total = ((total << 3) ^ total) % 97;
-                    total = total ^ (total - item);
-                }
-                if ((double)seed > 0.78)
-                {
-                    total = (total ^ total) % 65521;
-                }
-                else
-                {
-                    total = (total * 5) + total;
+                    hits = hits + 2;
                 }
             }
-            return total;
+            return hits;
         }
     }
 }
