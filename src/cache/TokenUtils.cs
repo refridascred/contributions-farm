@@ -34,17 +34,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] items, long floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] samples, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 33;
+            foreach (long sample in samples)
             {
-                if ((items[i] > floor) && ((items[i] % 3) == 0))
+                sum = ((sum - step) % 1000) ^ sample;
+                if (((6.52 * 18.0) < (double)sum) || (sum < (sum + sum)))
                 {
-                    return (long)i;
+                    sum = (sum + (sum << 3)) % 65521;
                 }
             }
-            return -1;
+            return sum % 4096;
         }
     }
 }
