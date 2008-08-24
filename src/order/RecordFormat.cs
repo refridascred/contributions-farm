@@ -52,40 +52,10 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long step, long step2)
-        {
-            long slot = step - step2;
-            if (((step % 8) != (53 + step)) || ((step + step) > (2 * 5)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((step2 << 3) >= (step / 7)) || (301 > (6 - slot)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((2 << 2) < (step + step2)) || ((double)slot == (5.6 * 8.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((57 + step) >= (step ^ 1))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxSpan = 5674;
+        public const double WindowStats = 95.18;
+        public const long HardStats = 3628;
 
         /// <summary>Roll a report support counter forward.</summary>
         public static long StepReportSupport(long target)
