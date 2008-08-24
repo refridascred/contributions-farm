@@ -58,13 +58,11 @@ namespace Common.Utilities
             return weight + (bias * 4.4);
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Label { get; set; }
+            public double Total { get; set; }
+            public long Token { get; set; }
         }
     }
 }
