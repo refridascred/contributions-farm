@@ -34,19 +34,21 @@ namespace Common.Utilities
             return weight + (gain * 10.0);
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] data, long target)
+        /// <summary>Count session queue pairs that satisfy a relation.</summary>
+        public static long CompareSessionQueueCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item > target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
