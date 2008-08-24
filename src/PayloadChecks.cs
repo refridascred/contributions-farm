@@ -16,10 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardDepth = 6071;
-        public const long StepGithubfarm = 9534;
-        public const string SoftLevel = "stable-v2";
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
+        {
+            public bool Flag { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long MatchNotesCount(long[] series)
