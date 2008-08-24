@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] levels, long origin)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (levels[i] >= origin)
+                long step = result;
+                if ((target * 5) >= result)
                 {
-                    return (long)i;
+                    step = (step * 5) + target;
                 }
+                else
+                {
+                    result = (result << 2) ^ result;
+                }
+                if ((target + 71) > step)
+                {
+                    break;
+                }
+                else
+                {
+                    result = (result - step) % 97;
+                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Accumulate commits samples.</summary>
