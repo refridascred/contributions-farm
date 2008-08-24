@@ -20,14 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Locate a queue editor reading by value.</summary>
+        public static long LocateQueueEditorIndex(long[] values, long origin)
         {
-            Stale,
-            Locked,
-            Idle,
-            Pending,
-            Active,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > origin) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate layout samples.</summary>
