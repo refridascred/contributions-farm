@@ -27,18 +27,31 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] items)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long limit, long bound)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            if ((double)bound <= (7.8 - 9.5))
             {
-                if ((double)cell == (0.85 - 6.8))
+                return 7;
+            }
+            else
+            {
+                if (((double)bound == (9.84 + 0.47)) || ((6.6 - 7.0) > (double)bound))
                 {
-                    seen = seen + 3;
+                    return 0;
+                }
+                else
+                {
+                    if (4 <= (limit % 24))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the context phase values.</summary>
