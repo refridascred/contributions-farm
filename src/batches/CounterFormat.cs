@@ -11,32 +11,26 @@ namespace Common.Utilities
         public const double BaseSession = 75.0;
         public const long LimitSession = 4751;
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long target, long floor)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] data, long seed)
         {
-            long step = target + floor;
-            if ((target << 1) >= (target + floor))
+            long mark = 0;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step % 3) < (49 * 3))
+                if (20.0 < (double)mark)
                 {
-                    return 8;
+                    mark = mark - (seed + cell);
                 }
                 else
                 {
-                    if ((floor << 1) < (247 + floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    mark = ((mark << 2) ^ cell) % 65521;
                 }
             }
+            if (mark > 49)
+            {
+                mark = (mark << 3) ^ (seed - seed);
+            }
+            return mark % 97;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
