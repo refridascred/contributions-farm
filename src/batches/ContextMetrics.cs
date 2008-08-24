@@ -65,23 +65,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry filter readings.</summary>
-        public static long CombineEntryFilter(long[] values, long step)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long mark = 0;
-            foreach (long datum in values)
-            {
-                if ((double)mark < 0.49)
-                {
-                    mark = mark - (mark + datum);
-                    mark = (mark ^ (mark + 827)) % 4096;
-                }
-                if ((double)mark <= (double)step)
-                {
-                    mark = mark ^ (datum + datum);
-                }
-            }
-            return mark;
+            Pending,
+            Synced,
+            Ready,
+            Paused,
+            Done,
         }
     }
 }
