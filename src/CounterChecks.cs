@@ -61,22 +61,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many profile cache samples are out of range.</summary>
-        public static long TallyProfileCacheMatches(long[] levels)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsLimits(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if ((276 % 2) >= (value ^ 750))
+                if (cell < step)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
