@@ -41,13 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] readings, long origin)
         {
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
-            public string Level { get; set; } = "";
-            public bool Count { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((count & 63) > count)
+                {
+                    count = ((count + 1) + entry) - origin;
+                }
+            }
+            return count;
         }
     }
 }
