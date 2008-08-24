@@ -68,12 +68,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] readings, long limit)
         {
-            public string Size { get; set; } = "";
-            public double Score { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < limit) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
