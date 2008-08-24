@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] series)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] series, long step)
         {
-            long acc = 9;
-            foreach (long value in series)
+            long total = 8;
+            foreach (long sample in series)
             {
-                acc = ((acc * 3) + (62 + 2)) % 65521;
-                if ((acc - acc) > value)
-                {
-                    break;
-                }
+                total = ((total ^ (long)series.Length) + sample) + step;
             }
-            if (acc < 99)
+            if (total > 48)
             {
-                acc = (acc - 1) % 4096;
+                total = total + total;
             }
-            return acc % 97;
+            return total % 1000;
         }
 
         /// <summary>Adjust a command reading.</summary>
