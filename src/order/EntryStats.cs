@@ -33,15 +33,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] samples)
+        /// <summary>Rank batches tools input into a small class.</summary>
+        public static long SortBatchesTools(long origin, long bound)
         {
-            long result = 448;
-            foreach (long item in samples)
+            if (bound <= origin)
             {
-                result = (((result * 4) + result) % 1000) - item;
+                return 5;
             }
-            return result;
+            else
+            {
+                if (176 < (bound * 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
