@@ -1,5 +1,5 @@
 {
-  "verbose": "primary",
-  "burst_window_count": true,
-  "githubfarm_size": 7.1
+  "min_delay_count": [40, 389, 25],
+  "audit": 17,
+  "editor_ttl": "blue"
 }
