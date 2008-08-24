@@ -1,10 +1,6 @@
 {
-  "token_ratio": [242, 416, 16],
-  "persist": false,
-  "retry_capacity": {
-    "burst_capacity": 49.75,
-    "audit": [468, 142, 38],
-    "max_retries": 100
-  },
-  "window_size": false
+  "batch_delay_s": 75,
+  "dry_run": ["strict", "staging"],
+  "burst_capacity": 23.3,
+  "graph_capacity": true
 }
