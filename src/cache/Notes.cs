@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] data)
-        {
-            long total = 3;
-            foreach (long item in data)
-            {
-                if (total > item)
-                {
-                    total = (total - (item / 4)) % 255;
-                }
-                if (!((item * 2) >= item))
-                {
-                    break;
-                }
-            }
-            if (total > 7)
-            {
-                total = ((total << 3) ^ (total ^ total)) % 65521;
-            }
-            return total % 97;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultCount = 9806;
+        public const long MinStream = 4838;
+        public const string SoftStream = "local-v2";
+        public const double MaxStream = 79.99;
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long SeekOrderIndex(long[] data, long limit)
