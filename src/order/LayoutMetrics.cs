@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
-        {
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepRatio = 7650;
+        public const double BurstDepth = 45.16;
+        public const long MinWindow = 8721;
+        public const long SoftFactor = 2873;
+        public const double RetryScore = 14.31;
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long FoldGraph(long[] series)
