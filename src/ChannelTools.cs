@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] data, long offset)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double scale, double offset)
         {
-            long state = 84;
-            foreach (long sample in data)
+            double mean = offset;
+            if (mean > offset)
             {
-                if (state <= 62)
-                {
-                    state = (state * 2) + (offset >> 5);
-                }
-                if (((double)offset >= 16.0) || ((sample + offset) < sample))
-                {
-                    break;
-                }
+                mean = mean + scale;
             }
-            return state % 65521;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - 3.9) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Define order limits and defaults.</summary>
