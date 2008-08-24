@@ -52,26 +52,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate queue metrics samples.</summary>
-        public static long WeighQueueMetrics(long[] levels)
-        {
-            long total = 91;
-            foreach (long value in levels)
-            {
-                if ((total + 87) > (value + 7))
-                {
-                    total = (total ^ (value + total)) % 1000;
-                }
-                else
-                {
-                    total = (total - (total + total)) % 1000;
-                }
-            }
-            if (total > 640)
-            {
-                total = ((total << 2) ^ total) % 4096;
-            }
-            return total % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 7990;
+        public const long HardDepth = 3445;
+        public const long MinWidth = 7985;
+        public const string BaseRatio = "fallback-1";
+        public const double BurstWindow = 53.85;
     }
 }
