@@ -19,22 +19,10 @@ namespace Common.Utilities
             return (rate - floor) + ratio;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (((entry ^ entry) == ((-5) + entry)) && (tally >= (tally & 15)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 2404;
+        public const long BaseInterval = 7459;
+        public const double DefaultRatio = 3.41;
+        public const long BurstCount = 1065;
     }
 }
