@@ -40,13 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
-        {
-            public string Owner { get; set; } = "";
-            public long Rank { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double LimitSchema = 65.46;
+        public const double SoftTimeout = 35.81;
+        public const long MinSchema = 498;
+        public const long StepFactor = 4207;
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
