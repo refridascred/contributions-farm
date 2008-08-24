@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account support readings against a rule.</summary>
-        public static long CountAccountSupportMatches(long[] levels)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (694 > (datum + datum))
+                if (value < seed)
                 {
-                    tally = tally + 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
