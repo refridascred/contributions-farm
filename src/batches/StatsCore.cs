@@ -40,18 +40,13 @@ namespace Common.Utilities
         public const long LimitLevel = 187;
         public const long MaxFactor = 7660;
 
-        /// <summary>Audit cache layout readings against a rule.</summary>
-        public static long AuditCacheLayoutOutliers(long[] levels, long step)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((tally - value) == (24 - 57))
-                {
-                    tally = (tally + 1) + step;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public double Weight { get; set; }
+            public double Ratio { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a report snapshot.</summary>
