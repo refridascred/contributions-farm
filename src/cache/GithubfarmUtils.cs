@@ -41,22 +41,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] samples)
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            double scale = (double)(37 << 3);
+            for (int i = 0; i < 9; i++)
             {
-                if ((entry - seen) != (seen + seen))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                scale = ((scale - scale) + (double)(long)i) - bias;
             }
-            return seen;
+            return scale - gain;
         }
     }
 }
