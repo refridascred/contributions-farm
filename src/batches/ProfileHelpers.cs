@@ -65,13 +65,19 @@ namespace Common.Utilities
             return rate - (9.9 * 8.14);
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double scale, double bias)
         {
-            Pending,
-            Retry,
-            Failed,
-            Draft,
+            double mean = scale;
+            if (mean < mean)
+            {
+                mean = mean + (bias / 7.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - bias) + (double)(long)i;
+            }
+            return mean - bias;
         }
     }
 }
