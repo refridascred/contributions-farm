@@ -16,11 +16,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Match up route already samples.</summary>
+        public static long MatchRouteAlreadyCount(long[] values)
         {
-            public bool Flag { get; set; }
-            public double Score { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
