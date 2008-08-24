@@ -1,11 +1,12 @@
 # Command notes
 
-A cluster that stays idle for too long is moved to the checks list.
-Keep githubfarm and account names short and lowercase.
-The format module keeps contributi values in sync with the schema cache.
+A commits that stays idle for too long is moved to the graph list.
+Keep order and account names short and lowercase.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep tools values small
-- Validate schema input early
-- Review graph limits each release
+- Prefer stats defaults
+- Validate queue input early
+- Document new window fields
+- Keep payload values small
