@@ -80,22 +80,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] series, long origin)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long mix = -6;
-            foreach (long cell in series)
-            {
-                if ((69 % 24) <= (origin + origin))
-                {
-                    mix = ((mix * 3) + mix) - cell;
-                }
-                if (((8.9 / 6.0) == (double)mix) && ((origin & 1) != (9 / 3)))
-                {
-                    break;
-                }
-            }
-            return mix % 4096;
+            Locked,
+            Idle,
+            Failed,
+            Paused,
         }
     }
 }
