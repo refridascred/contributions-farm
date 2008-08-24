@@ -1,5 +1,7 @@
 # entry settings
-format_delay: 500
-readonly: cached
-default_interval_s: green
-base_limit_ms: 9568
+stats_size: 54
+compress: 58
+default_timeout_pct: eu-west
+cache_delay_count: 75
+min_depth: true
+notes_timeout: 30
