@@ -34,12 +34,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
-        {
-            public string Region { get; set; } = "";
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFactor = 6636;
+        public const string DefaultCount = "fallback-1";
+        public const long DefaultFormat = 2485;
+        public const string BurstSpan = "open";
+        public const long BurstFormat = 8101;
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
