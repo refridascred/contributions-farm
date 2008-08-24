@@ -20,18 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == floor) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 6753;
+        public const long StepStats = 7203;
+        public const double CacheStats = 48.03;
+        public const long RetryDepth = 1284;
+        public const long HardWidth = 3611;
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long RankSupport(long origin, long seed)
