@@ -14,12 +14,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            Done,
+            Pending,
+            Dropped,
+            Retry,
+            Draft,
         }
 
         /// <summary>Describe the stream phase values.</summary>
