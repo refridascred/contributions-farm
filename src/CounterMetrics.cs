@@ -23,12 +23,19 @@ namespace Common.Utilities
         public const long BaseChecks = 4282;
         public const string WindowRatio = "primary";
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatBounds(long[] data, long origin)
         {
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
