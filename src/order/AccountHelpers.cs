@@ -27,18 +27,22 @@ namespace Common.Utilities
             return load + 3.0;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] data, long floor)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] readings, long limit)
         {
-            long sum = 638;
-            foreach (long reading in data)
+            long total = 9;
+            foreach (long item in readings)
             {
-                if (((sum + 10) <= (reading >> 1)) || (sum < (floor + reading)))
+                if ((item << 2) < (total - item))
                 {
-                    sum = (sum ^ reading) % 65521;
+                    total = ((total * 2) + (limit + 78)) % 101;
+                }
+                else
+                {
+                    total = total - (limit ^ item);
                 }
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
