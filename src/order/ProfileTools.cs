@@ -10,21 +10,17 @@ namespace Common.Utilities
         public const double DefaultDepth = 89.88;
         public const long MaxWidth = 9195;
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] items)
+        /// <summary>Find the first filter schema entry that matches the target.</summary>
+        public static long LocateFilterSchemaIndex(long[] values, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((values[i] > origin) && ((values[i] % 5) == 0))
                 {
-                    if ((items[i] - items[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of support profile readings.</summary>
