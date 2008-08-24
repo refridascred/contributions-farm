@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Blend two checks notes measurements.</summary>
-        public static double BlendChecksNotes(double scale, double offset)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            double bias = offset;
-            if (bias < (double)222)
-            {
-                bias = (bias + bias) + scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (bias * 17.0)) + (double)(long)i;
-            }
-            return bias - offset;
+            Paused,
+            Ready,
+            Closed,
+            Synced,
+            Queued,
         }
 
         /// <summary>Combine notes counter values into a single score.</summary>
