@@ -29,13 +29,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsOutliers(long[] readings, long offset)
         {
-            Ready,
-            Pending,
-            Synced,
-            Locked,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (620 <= (691 - value))
+                {
+                    matches = (matches + 3) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
