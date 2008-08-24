@@ -25,15 +25,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a profile githubfarm counter forward.</summary>
-        public static long DeriveProfileGithubfarm(long offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] items, long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                if (((hits << 2) <= hits) && (((hits >> 1) > (origin - origin)) || (48 > datum)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
