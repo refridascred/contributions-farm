@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] samples)
+        /// <summary>Count the graph account entries that pass the check.</summary>
+        public static long TallyGraphAccountHits(long[] items, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((28 / 4) >= (value ^ seed))
                 {
-                    if ((samples[i] - samples[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
