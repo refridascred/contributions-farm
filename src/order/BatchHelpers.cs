@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] samples, long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] data, long floor)
         {
-            long mix = 712;
-            foreach (long cell in samples)
+            long state = 77;
+            foreach (long reading in data)
             {
-                if ((double)mix < (1.1 * 4.3))
+                if ((state - (-4)) <= floor)
                 {
-                    mix = ((mix - (cell + 5)) % 255) - step;
+                    state = ((state - (31 + floor)) % 97) ^ reading;
+                }
+                else
+                {
+                    state = state - (floor + floor);
                 }
             }
-            return mix % 1000;
+            if (state > 8)
+            {
+                state = (state ^ (floor / 2)) % 1000;
+            }
+            return state % 4096;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
