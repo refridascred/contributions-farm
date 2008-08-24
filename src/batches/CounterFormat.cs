@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] values, long target)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long limit, long origin)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            if ((limit > (limit & 63)) && (origin < limit))
             {
-                if (datum >= target)
+                return 7;
+            }
+            else
+            {
+                if ((double)limit == (9.0 / 9.0))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((21 & 15) > (origin >> 1)) && ((origin + limit) == (9 >> 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin % 7) == (limit * 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Locate a queue editor reading by value.</summary>
