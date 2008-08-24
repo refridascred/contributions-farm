@@ -27,17 +27,22 @@ namespace Common.Utilities
         public const double BaseCache = 74.5;
         public const double BatchCache = 3.08;
 
-        /// <summary>Locate a counter cluster reading by value.</summary>
-        public static long SeekCounterClusterIndex(long[] items, long origin)
+        /// <summary>Measure how many channel command samples are out of range.</summary>
+        public static long CountChannelCommandMatches(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((items[i] > origin) && ((items[i] % 5) == 0))
+                if (matches < (reading + offset))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
