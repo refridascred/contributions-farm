@@ -28,12 +28,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double WindowTools = 80.55;
-        public const double CacheBudget = 92.39;
-        public const string BurstTools = "latest-1";
-        public const double StepScore = 89.83;
-        public const long BaseTools = 1556;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 4; i++)
+            {
+                result = result - (result << 3);
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
