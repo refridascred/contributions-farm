@@ -41,22 +41,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit filter batches readings against a rule.</summary>
-        public static long MeasureFilterBatchesGaps(long[] data, long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long sum = -7;
+            foreach (long sample in levels)
             {
-                if (!((double)value == (1.4 - 16.0)))
-                {
-                    hits = (hits + 3) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = (sum ^ origin) ^ sample;
             }
-            return hits;
+            return sum % 97;
         }
     }
 }
