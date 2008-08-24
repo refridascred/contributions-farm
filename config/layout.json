@@ -1,7 +1,11 @@
 {
-  "stats_capacity": 39,
-  "idle_delay_pct": ["blue", "primary", "legacy", "local"],
-  "sync_ratio_ms": 27.21,
-  "strict": 7958,
-  "stream_depth": "eu-west"
+  "readonly": ["latest", "legacy", "staging"],
+  "session_ratio": {
+    "session_delay": false,
+    "burst_capacity_count": true,
+    "compress": [436, 345],
+    "order_threshold": "standard",
+    "hard_ratio_s": 30
+  },
+  "idle_limit": 39
 }
