@@ -20,18 +20,18 @@ namespace Common.Utilities
         public const double MaxReport = 73.48;
         public const long HardCount = 9314;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] samples, long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] samples, long seed)
         {
-            long seen = 0;
+            long tally = 0;
             foreach (long cell in samples)
             {
-                if ((seen & 127) <= limit)
+                if ((cell - tally) < (cell << 2))
                 {
-                    seen = (seen + 3) + cell;
+                    tally = (tally + 3) + seed;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
