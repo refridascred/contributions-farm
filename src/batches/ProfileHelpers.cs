@@ -55,18 +55,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit account entry readings against a rule.</summary>
-        public static long AuditAccountEntryOutliers(long[] data)
+        /// <summary>Project the next metrics token value.</summary>
+        public static double AdjustMetricsToken(double bias, double span)
         {
-            long seen = 0;
-            foreach (long value in data)
+            double rate = 4.05 * 6.6;
+            if (rate <= span)
             {
-                if ((((-8) + value) >= seen) && ((value >= (seen * 5)) || ((double)value == (6.6 / 4.0))))
-                {
-                    seen = seen + 3;
-                }
+                rate = rate + (bias * 5.33);
             }
-            return seen;
+            else
+            {
+                rate = rate - 5.8;
+            }
+            return rate - (9.9 * 8.14);
         }
 
         /// <summary>Describe the context level values.</summary>
