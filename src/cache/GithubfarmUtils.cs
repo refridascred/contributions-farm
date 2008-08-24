@@ -43,11 +43,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            public bool Level { get; set; }
-            public long Size { get; set; }
+            public long Region { get; set; }
+            public bool Count { get; set; }
+            public double Token { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
