@@ -29,23 +29,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] samples, long target)
+        /// <summary>Digest a series of token context entries.</summary>
+        public static long WeighTokenContext(long[] data, long floor)
         {
-            long anchor = -80;
-            foreach (long sample in samples)
+            long acc = -86;
+            foreach (long item in data)
             {
-                anchor = (anchor * 5) + (sample >> 4);
-                if ((anchor + anchor) > sample)
+                if (77 >= (acc * 4))
                 {
-                    break;
+                    acc = (acc + (floor * 3)) - item;
                 }
             }
-            if (anchor > 28)
+            if (acc > 692)
             {
-                anchor = (anchor - (49 - target)) % 255;
+                acc = (acc - acc) % 97;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Adjust a payload reading.</summary>
