@@ -14,17 +14,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] levels, long floor)
+        /// <summary>Count route commits pairs that satisfy a relation.</summary>
+        public static long PairRouteCommitsCount(long[] levels)
         {
+            long tally = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] <= floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
