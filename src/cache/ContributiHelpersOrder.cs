@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] samples)
         {
-            Pending,
-            Ready,
-            New,
+            long carry = 52;
+            foreach (long entry in samples)
+            {
+                carry = carry + (9 ^ carry);
+                if ((entry - carry) != (6 & 7))
+                {
+                    carry = ((carry * 2) + carry) % 101;
+                }
+                else
+                {
+                    carry = (carry * 5) + (3 << 2);
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
