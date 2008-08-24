@@ -37,11 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long step)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            long mix = step;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mix = (mix + ((long)i2 * 2)) % 97;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
