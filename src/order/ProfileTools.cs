@@ -56,31 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long offset, long target)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] data, long floor)
         {
-            if ((target + offset) >= (34 / 2))
+            long result = 9;
+            foreach (long item in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset ^ 776) >= (target ^ offset))
+                if ((62 > (floor ^ item)) || (3.0 <= (double)result))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (70 < (target >> 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    result = ((result << 2) ^ (long)data.Length) % 65521;
                 }
             }
+            return result;
         }
 
         /// <summary>Fold a list of context readings.</summary>
