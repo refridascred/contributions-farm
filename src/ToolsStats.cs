@@ -20,10 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 2210;
-        public const double IdleLevel = 61.37;
-        public const long LimitTools = 4171;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] levels, long target)
+        {
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
