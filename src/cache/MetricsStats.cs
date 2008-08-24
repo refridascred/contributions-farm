@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Scale a command route figure with a bias.</summary>
-        public static double BlendCommandRoute(double gain, double bias)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] values, long seed)
         {
-            double mean = 4.4;
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                mean = ((mean - (double)591) - (double)(long)i) - gain;
+                if ((entry - tally) == (entry % 100))
+                {
+                    tally = (tally + 2) - seed;
+                }
             }
-            return mean - (bias / 7.0);
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
