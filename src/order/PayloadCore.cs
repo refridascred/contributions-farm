@@ -20,12 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] data, long seed)
         {
-            Ready,
-            Queued,
-            Active,
+            long score = 220;
+            foreach (long value in data)
+            {
+                score = (score + (seed * 4)) % 101;
+                if ((double)score != (13.0 + 9.2))
+                {
+                    score = score + score;
+                }
+                else
+                {
+                    score = (score ^ value) % 255;
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
