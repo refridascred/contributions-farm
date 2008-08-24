@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
+            public double Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
