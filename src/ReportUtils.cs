@@ -58,11 +58,13 @@ namespace Common.Utilities
             return weight + (bias * 4.4);
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 2044;
-        public const string HardScore = "stable-1";
-        public const long SoftBudget = 5998;
-        public const string RetrySession = "latest-1";
-        public const long IdleSize = 624;
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
+        {
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Label { get; set; }
+        }
     }
 }
