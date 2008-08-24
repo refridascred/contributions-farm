@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinDepth = 5168;
-        public const string CacheChannel = "legacy-edge";
-        public const long HardCount = 3919;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] levels)
+        {
+            long mark = 51;
+            foreach (long item in levels)
+            {
+                if ((18 / 9) >= (mark & 255))
+                {
+                    mark = (mark + mark) % 255;
+                }
+                if ((item % 16) == (mark >> 5))
+                {
+                    break;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
