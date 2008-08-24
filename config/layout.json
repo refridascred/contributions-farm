@@ -1,11 +1,5 @@
 {
-  "soft_delay": "blue",
-  "enabled": {
-    "payload_ttl": 58,
-    "retry_timeout_pct": [35, 434],
-    "cluster_ttl": "strict"
-  },
-  "compress": 1133,
-  "editor_depth": 47.31,
-  "default_window_pct": "cached"
+  "hard_ttl_ms": 96.89,
+  "audit": 4378,
+  "persist": 28.0
 }
