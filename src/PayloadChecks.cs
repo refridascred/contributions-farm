@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every entry buffer entry stays within the limit.</summary>
-        public static bool VerifyEntryBufferRange(long[] items, long offset)
+        /// <summary>Validate format schema readings against a bound.</summary>
+        public static bool VerifyFormatSchemaBounds(long[] samples, long floor)
         {
             bool flag = true;
-            foreach (long cell in items)
+            foreach (long reading in samples)
             {
-                if (cell < offset)
+                if (reading < floor)
                 {
                     flag = false;
                     break;
