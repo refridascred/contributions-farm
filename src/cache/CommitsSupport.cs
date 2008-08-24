@@ -49,19 +49,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamHits(long[] values, long floor)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((878 & 3) >= floor)
-                {
-                    count = (count + 3) ^ sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstOrder = "standard-1";
+        public const long MinRatio = 3567;
+        public const long StepLevel = 8387;
+        public const double IdleOrder = 66.94;
 
         /// <summary>Check that every metrics channel entry stays within the limit.</summary>
         public static bool VerifyMetricsChannelLimits(long[] levels, long step)
