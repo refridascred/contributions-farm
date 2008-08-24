@@ -44,18 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] values)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long score = 53;
-            foreach (long item in values)
-            {
-                if ((double)item >= 14.0)
-                {
-                    score = ((score << 3) ^ score) % 65521;
-                }
-            }
-            return score;
+            Pending,
+            Failed,
+            Dropped,
         }
     }
 }
