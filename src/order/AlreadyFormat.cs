@@ -53,19 +53,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double rate, double floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordOutliers(long[] readings)
         {
-            double rate2 = floor;
-            if (rate2 <= rate)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                rate2 = rate2 - (8.4 / 3.0);
+                if (!((5.0 < (double)seen) || (item <= (seen - 67))))
+                {
+                    seen = seen + 2;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = rate2 + (double)(long)i;
-            }
-            return rate2 - 7.38;
+            return seen;
         }
     }
 }
