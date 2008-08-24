@@ -27,21 +27,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long seed)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                long slot = (long)i;
-                if (slot > (acc + acc))
-                {
-                    acc = acc + seed;
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
