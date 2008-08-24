@@ -13,13 +13,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Locate a batches support reading by value.</summary>
+        public static long LookupBatchesSupportIndex(long[] items, long origin)
         {
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public double Region { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
