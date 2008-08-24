@@ -52,19 +52,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double ratio, double bias)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            double mean = ratio;
-            if (mean > (double)67)
-            {
-                mean = mean + (double)(-667);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (bias / 4.0)) + (double)(long)i;
-            }
-            return mean - bias;
+            public bool Region { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
