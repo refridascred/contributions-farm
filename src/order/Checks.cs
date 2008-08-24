@@ -12,10 +12,20 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultReport = "strict";
-        public const long BaseLevel = 9603;
-        public const long MinReport = 9265;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmRange(long[] values, long offset)
+        {
+            bool found = true;
+            foreach (long sample in values)
+            {
+                if (sample <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the format account entries that pass the check.</summary>
         public static long MeasureFormatAccountHits(long[] items)
