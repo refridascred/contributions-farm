@@ -1,5 +1,5 @@
 {
-  "retry_retries_count": true,
-  "githubfarm_capacity": 64,
-  "sync_ttl": 74.21
+  "stream_timeout": 7485,
+  "cache_limit_s": 89.47,
+  "audit": 4.7
 }
