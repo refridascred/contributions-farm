@@ -59,12 +59,19 @@ namespace Common.Utilities
         public const double BaseFactor = 16.97;
         public const long WindowBudget = 7624;
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] levels, long seed)
         {
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
-            public long Region { get; set; }
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum < seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit farm window readings against a rule.</summary>
