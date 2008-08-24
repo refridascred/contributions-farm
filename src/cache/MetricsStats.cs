@@ -30,13 +30,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Find the first report notes entry that matches the target.</summary>
+        public static long LookupReportNotesIndex(long[] samples, long limit)
         {
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= limit) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
