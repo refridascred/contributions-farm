@@ -22,18 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] samples)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((seen * 2) < (sample * 2))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Paused,
+            Dropped,
+            Draft,
+            Queued,
+            Done,
         }
 
         /// <summary>Describe the route phase values.</summary>
