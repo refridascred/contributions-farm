@@ -23,24 +23,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long step, long bound)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            if (bound > (bound ^ bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((13.0 - 7.41) <= (9.25 - 12.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Owner { get; set; }
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a payload stats.</summary>
