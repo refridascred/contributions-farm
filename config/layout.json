@@ -1,8 +1,23 @@
 {
-  "hard_interval_pct": 7844,
-  "compress": 19.23,
-  "flush_ttl_pct": 12,
-  "flush_delay_ms": "latest",
-  "farm_retries": "standard",
-  "flush_retries_count": 4340
+  "profile_limit": "blue",
+  "hard_capacity": "latest",
+  "base_window": {
+    "default_limit": {
+      "hard_delay": false,
+      "idle_limit_count": 8627,
+      "checks_delay": [44, 254, 472, 379],
+      "soft_threshold_pct": 372
+    },
+    "idle_window_ms": {
+      "tools_retries": "edge",
+      "cache_ratio_ms": false,
+      "soft_ratio": 8326
+    },
+    "context_capacity": "latest",
+    "filter_window": [402, 293, 237, 459],
+    "flush_ratio": 27,
+    "enabled": "standard"
+  },
+  "hard_threshold_count": ["standard", "cached"],
+  "default_limit_s": 166
 }
