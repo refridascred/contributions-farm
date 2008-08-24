@@ -38,38 +38,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long step, long target)
-        {
-            if ((target & 3) < (target + step))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((247 - 84) > target) || ((step & 1) == (target + target)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target >> 3) == (2 + 690))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((6.0 - 1.5) > 0.2)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string StepNotes = "open-v2";
+        public const long WindowNotes = 1325;
+        public const string BaseNotes = "alpha-edge";
+        public const double MinTimeout = 45.08;
     }
 }
