@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Format stats helpers.</summary>
     public static class FormatStats
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            Done,
-            New,
-            Queued,
+            public long Offset { get; set; }
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Project the next order value.</summary>
