@@ -20,17 +20,18 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] items, long step)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (items[i] <= step)
+                if (((entry / 5) >= (matches + matches)) && ((5.0 / 8.0) <= (double)entry))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Look up the position of a buffer command sample.</summary>
