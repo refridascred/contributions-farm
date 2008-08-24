@@ -74,19 +74,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every tools layout entry stays within the limit.</summary>
-        public static bool CheckToolsLayoutLimits(long[] items, long floor)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long bound, long step)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            if (((bound / 9) != (4 + step)) || ((double)step <= (1.0 / 6.0)))
             {
-                if (entry > floor)
+                return 8;
+            }
+            else
+            {
+                if ((step + 713) != (step * 3))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound ^ bound) < bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((bound << 3) == (step / 7)) || ((bound + 500) >= (step - bound)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
