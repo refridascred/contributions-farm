@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] series, long limit)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] readings, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 45;
+            foreach (long reading in readings)
             {
-                if ((series[i] == limit) && ((series[i] % 2) != 0))
+                if ((long)readings.Length < (total / 2))
                 {
-                    return (long)i;
+                    total = (((total ^ (total * 4)) % 97) - reading) + target;
                 }
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
