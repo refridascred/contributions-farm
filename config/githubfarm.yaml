@@ -1,25 +1,9 @@
 # githubfarm settings
-burst_delay_ms:
-  hard_timeout_count: 8.98
-  min_retries: 23.68
-  idle_interval_s: latest
-idle_interval_count:
-  - local
-  - strict
-record_threshold: 60
-persist:
-  - 159
-  - 48
-  - 473
-commits_depth:
-  cache_limit_pct:
-    - 265
-    - 373
-    - 108
-  filter_ratio:
-    - legacy
-    - latest
-  idle_capacity_ms: cached
-  min_interval_count: false
-  idle_delay: 20.15
-  default_delay_count: eu-west
+burst_threshold_pct:
+  - primary
+  - latest
+  - green
+  - latest
+audit: 48.64
+warm_size_s: standard
+token_ttl: 14.77
