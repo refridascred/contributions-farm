@@ -1,6 +1,4 @@
 # githubfarm settings
-idle_interval:
-  - 498
-  - 101
-soft_delay: 60
-cache_depth_count: 18.32
+base_size_ms: 1024
+burst_timeout_s: false
+default_threshold: primary
