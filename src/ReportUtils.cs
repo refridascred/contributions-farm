@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double gain, double bias)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long seed)
         {
-            double bias2 = (double)(41 + 218);
-            if (bias2 <= (gain / 9.0))
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
             {
-                bias2 = bias2 - bias;
+                anchor = (anchor + seed) % 101;
+                anchor = ((anchor * 2) + anchor) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 - bias2) + (double)(long)i;
-            }
-            return bias2 - (9.65 + bias2);
+            return anchor;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
