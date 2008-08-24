@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] values)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)hits < (8.03 + 2.0)) && ((7 * 4) < (bound >> 1)))
                 {
-                    if ((values[i] ^ values[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Fold a list of route command readings.</summary>
