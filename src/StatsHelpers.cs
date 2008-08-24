@@ -19,15 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate checks format samples.</summary>
-        public static long DigestChecksFormat(long[] items)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long mark = -1;
-            foreach (long reading in items)
-            {
-                mark = mark + (reading / 3);
-            }
-            return mark;
+            Closed,
+            Synced,
+            Pending,
+            Ready,
         }
 
         /// <summary>Describe the buffer status values.</summary>
