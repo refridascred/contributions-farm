@@ -34,14 +34,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] levels, long seed)
         {
-            Locked,
-            Dropped,
-            Paused,
-            Closed,
-            Pending,
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count already payload pairs that satisfy a relation.</summary>
