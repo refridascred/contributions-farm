@@ -19,12 +19,22 @@ namespace Common.Utilities
             return (rate - floor) + ratio;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] levels)
         {
-            public bool Level { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (((entry ^ entry) == ((-5) + entry)) && (tally >= (tally & 15)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
