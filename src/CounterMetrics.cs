@@ -32,11 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double scale, double offset)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            double drift = scale;
-            return (drift - scale) + offset;
+            Closed,
+            Locked,
+            Active,
+            Idle,
         }
 
         /// <summary>Hold a report info.</summary>
