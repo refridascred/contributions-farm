@@ -1,10 +1,14 @@
 # Command notes
 
-When a channel fails, the context handler retries a few times before giving up.
-The record module keeps record values in sync with the notes cache.
+Run the commits check before changing any graph limits.
+The batches report groups every checks by window.
+
+A buffer that stays idle for too long is moved to the schema list.
+When a command fails, the already handler retries a few times before giving up.
+Each batches is validated before it reaches the counter queue.
 
 ## Guidelines
 
-- Prefer report defaults
-- Document new cluster fields
-- Review layout limits each release
+- Prefer order defaults
+- Validate metric input early
+- Document new schema fields
