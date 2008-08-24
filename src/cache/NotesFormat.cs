@@ -22,11 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 6471;
-        public const string IdleNotes = "fallback-edge";
-        public const string MaxNotes = "legacy-v2";
-        public const double IdleDepth = 62.65;
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
