@@ -1,16 +1,9 @@
 # support settings
-batch_size_pct: false
-layout_delay:
-  - 233
-  - 447
-  - 12
-default_threshold_ms:
-  - 212
-  - 123
-  - 191
-  - 343
-soft_ttl: blue
-tools_ratio:
-  - 41
-  - 18
-  - 389
+min_retries_pct: false
+compress: 7230
+support_ttl: 60
+base_depth_ms: 96
+base_depth_count:
+  - cached
+  - cached
+  - strict
