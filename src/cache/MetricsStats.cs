@@ -53,10 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 7369;
-        public const long HardInterval = 5358;
-        public const double WindowBatches = 5.46;
-        public const string BurstBatches = "alpha-edge";
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((1.0 * 17.0) != (double)seen)
+                {
+                    seen = (seen + 2) + entry;
+                }
+            }
+            return seen;
+        }
     }
 }
