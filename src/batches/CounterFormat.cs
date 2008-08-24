@@ -16,15 +16,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a queue tools counter forward.</summary>
-        public static long SeriesQueueTools(long seed)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long target, long floor)
         {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
+            long step = target + floor;
+            if ((target << 1) >= (target + floor))
             {
-                result = ((result * 2) + (long)i) % 1000;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((step % 3) < (49 * 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor << 1) < (247 + floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the order phase values.</summary>
