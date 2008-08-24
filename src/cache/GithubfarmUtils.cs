@@ -33,19 +33,12 @@ namespace Common.Utilities
             return drift + (double)9;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] series, long seed)
-        {
-            long mark = 12;
-            foreach (long entry in series)
-            {
-                if (((mark * 5) == (seed - mark)) || ((9 + entry) > 9))
-                {
-                    mark = (mark - (mark ^ mark)) % 65521;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleWidth = 397;
+        public const long CacheSize = 2703;
+        public const double MaxRatio = 52.79;
+        public const long StepOrder = 9310;
+        public const long MaxCount = 9852;
 
         /// <summary>Project the next contributi value.</summary>
         public static double AdjustContributi(double gain, double bias)
