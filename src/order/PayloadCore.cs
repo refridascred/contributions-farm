@@ -16,40 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long limit, long floor)
-        {
-            long bound = limit ^ floor;
-            if ((limit - 9) >= (110 + floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound >= 18.0)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((17 > (limit + (-847))) && ((3.0 / 8.0) >= (double)limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((limit % 12) < (bound - limit)) || ((limit + 162) > 690))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitTimeout = 1339;
+        public const double DefaultBudget = 96.66;
+        public const double BatchToken = 36.72;
+        public const long LimitScore = 8592;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string BatchSpan = "local-edge";
