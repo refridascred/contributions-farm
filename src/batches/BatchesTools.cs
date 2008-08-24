@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long floor, long floor2)
+        /// <summary>Count batches tools pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesToolsCount(long[] samples)
         {
-            if (((7 & 255) > (floor % 16)) && ((3 + 55) == (floor & 3)))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor - floor) >= (floor2 + floor2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((floor2 >> 2) >= floor) || (floor <= (floor2 - floor)))
+                    if ((samples[i] - samples[j]) > 8)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
