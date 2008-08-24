@@ -62,11 +62,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
+            Locked,
+            New,
+            Stale,
+            Closed,
         }
 
         /// <summary>Roll a commits counter forward.</summary>
