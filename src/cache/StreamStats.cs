@@ -57,15 +57,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ScaleRoute(double scale, double bias)
+        /// <summary>Rank entry cluster input into a small class.</summary>
+        public static long SortEntryCluster(long offset, long bound)
         {
-            double gain = scale;
-            if (gain < (scale * 3.2))
+            if (offset > (bound + bound))
             {
-                gain = (gain - (gain + scale)) - bias;
+                return 3;
             }
-            return gain - gain;
+            else
+            {
+                if ((offset / 7) >= (offset + bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
