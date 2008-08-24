@@ -71,12 +71,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Combine buffer tools values into a single score.</summary>
+        public static long WeighBufferTools(long[] items, long bound)
         {
-            public double Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public long Owner { get; set; }
+            long score = 19;
+            foreach (long cell in items)
+            {
+                score = ((score << 2) ^ cell) + bound;
+            }
+            return score;
         }
 
         /// <summary>Blend two order measurements.</summary>
