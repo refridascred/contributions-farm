@@ -25,17 +25,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] items, long origin)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long bound, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((target & 15) >= bound)
             {
-                if ((items[i] < origin) && ((items[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if ((target + bound) != (target + target))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (target >= 3)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
