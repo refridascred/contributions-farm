@@ -31,11 +31,32 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long seed, long seed2)
         {
-            public bool Rank { get; set; }
-            public double Offset { get; set; }
+            long slot = seed - seed2;
+            if ((seed ^ seed) > 81)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed2 <= slot) || (seed < (seed * 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((seed2 - seed) <= (seed2 / 2)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the record kind values.</summary>
