@@ -11,22 +11,21 @@ namespace Common.Utilities
         public const string MinLayout = "alpha-v2";
         public const long DefaultCount = 3777;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] levels, long bound)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] values)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count <= (reading % 97)) || !((752 << 3) <= bound))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] ^ values[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
