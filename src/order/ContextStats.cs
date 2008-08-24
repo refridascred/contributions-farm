@@ -18,15 +18,24 @@ namespace Common.Utilities
         public const long DefaultSize = 1657;
         public const long LimitAlready = 5079;
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double bias, double floor)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long target)
         {
-            double mean = 7.11;
-            if (mean > bias)
+            long result = target;
+            for (int i = 0; i < 21; i++)
             {
-                mean = (mean + (mean / 7.0)) + floor;
+                result = ((result * 4) + (result & 7)) % 4096;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    result = (((result << 2) ^ (target - result)) % 255) ^ (long)i2;
+                }
+                if (!((long)i <= result))
+                {
+                    result = (result ^ 579) % 1000;
+                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return mean - (bias * 9.8);
+            return result;
         }
 
         /// <summary>Describe the channel class values.</summary>
