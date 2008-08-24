@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 8713;
-        public const string StepInterval = "strict";
-        public const string MaxTimeout = "strict-v2";
-        public const string BaseToken = "standard-v2";
-        public const long MinCount = 5355;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] items)
+        {
+            long sum = 8;
+            foreach (long sample in items)
+            {
+                sum = (sum ^ (sample ^ sample)) % 65521;
+            }
+            if (sum < 827)
+            {
+                sum = ((sum << 3) ^ (sum & 15)) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long SeriesMetrics(long seed)
