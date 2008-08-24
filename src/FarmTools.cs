@@ -24,15 +24,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Derive the next payload notes value from a seed.</summary>
-        public static long RollPayloadNotes(long limit)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double gain, double floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            double rate = gain;
+            return (rate - (gain + 7.92)) + floor;
         }
 
         /// <summary>Locate a profile tools reading by value.</summary>
