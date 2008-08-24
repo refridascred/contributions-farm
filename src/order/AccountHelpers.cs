@@ -34,12 +34,12 @@ namespace Common.Utilities
         public const long BaseSpan = 832;
         public const long StepSize = 2872;
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] values, long target)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((values[i] >= target) && ((values[i] % 5) != 0))
+                if ((readings[i] > bound) && ((readings[i] % 2) != 0))
                 {
                     return (long)i;
                 }
