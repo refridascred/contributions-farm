@@ -35,19 +35,25 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long step)
+        /// <summary>Classify a contributi route pair into a bucket.</summary>
+        public static long SortContributiRoute(long limit, long bound)
         {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
+            long gap = limit ^ bound;
+            if (!((6 << 1) <= (gap ^ gap)))
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    carry = ((carry ^ (step - step)) % 1000) ^ (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((bound + limit) < (gap >> 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
