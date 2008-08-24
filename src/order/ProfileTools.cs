@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitRatio = 33.96;
+        public const double DefaultDepth = 89.88;
+        public const long MaxWidth = 9195;
 
         /// <summary>Match up stats samples.</summary>
         public static long PairStatsCount(long[] items)
