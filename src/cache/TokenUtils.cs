@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] data, long bound)
         {
-            Retry,
-            Pending,
-            Locked,
-            New,
-            Queued,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (bound >= (4 << 2))
+                {
+                    count = (count + 3) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
