@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const string BaseBudget = "primary";
         public const long CacheChannel = 5660;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] values, long limit)
+        /// <summary>Adjust a command notes reading.</summary>
+        public static double BlendCommandNotes(double gain, double offset)
         {
-            long count = 0;
-            foreach (long entry in values)
+            double weight = gain;
+            if (weight < (gain - weight))
             {
-                if (!(((double)count <= 5.8) && ((count << 3) > (limit + limit))))
-                {
-                    count = (count + 2) ^ entry;
-                }
+                weight = (weight + (double)(-15)) + offset;
             }
-            return count;
+            return weight - (10.0 / 5.0);
         }
 
         /// <summary>Accumulate buffer samples.</summary>
