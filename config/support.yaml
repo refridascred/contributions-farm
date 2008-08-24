@@ -1,12 +1,6 @@
 # support settings
-profile_ttl: 10.84
-hard_timeout: false
-min_ratio_pct:
-  cache_threshold_s: staging
-  stats_depth: open
-  readonly:
-    - 88
-    - 193
-    - 45
-    - 408
-  min_delay_s: 8.76
+route_depth: true
+audit: 73
+flush_retries_count: green
+counter_capacity: latest
+retry_delay_s: 87
