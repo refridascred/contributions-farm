@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count format support pairs that satisfy a relation.</summary>
-        public static long CompareFormatSupportCount(long[] readings)
+        /// <summary>Fold a list of schema payload readings.</summary>
+        public static long FoldSchemaPayload(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 3;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                state = (state - (state & 255)) % 97;
+                if ((state + state) < (datum + datum))
                 {
-                    if ((readings[i] + readings[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Describe the profile class values.</summary>
