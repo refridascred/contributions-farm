@@ -38,22 +38,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] series, long step)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((seen + step) != ((long)series.Length << 1))
-                {
-                    seen = (seen + 1) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Done,
+            Failed,
+            Paused,
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
