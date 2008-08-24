@@ -53,32 +53,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long floor, long bound)
+        /// <summary>Validate commits counter readings against a bound.</summary>
+        public static bool CheckCommitsCounterBounds(long[] readings, long origin)
         {
-            long next = floor + bound;
-            if (((double)floor == (0.1 - 1.0)) && ((19.0 - 6.7) != (double)floor))
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((floor + bound) > (floor + floor)))
+                if (entry != origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor <= (double)next)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
