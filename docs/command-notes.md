@@ -1,15 +1,11 @@
 # Command notes
 
-When a format fails, the metrics handler retries a few times before giving up.
-Use stats settings to tune how often context data is refreshed.
-The payload report groups every command by metrics.
-
-The batches report groups every notes by cache.
-Run the token check before changing any farm limits.
+A cluster that stays idle for too long is moved to the checks list.
+Keep githubfarm and account names short and lowercase.
+The format module keeps contributi values in sync with the schema cache.
 
 ## Guidelines
 
-- Validate command input early
-- Log every notes change
-- Document new buffer fields
-- Prefer stats defaults
+- Keep tools values small
+- Validate schema input early
+- Review graph limits each release
