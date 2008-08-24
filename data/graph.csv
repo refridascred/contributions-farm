@@ -1,6 +1,8 @@
-id,count,ratio
-1,local,861
-2,stable,368
-3,22.45,62.42
-4,13.79,571
-5,434,93
+id,label,active,count,weight
+1,cached,219,3.33,89.26
+2,local,eu-west,19.48,262
+3,478,43.62,813,751
+4,90.03,64.23,56,standard
+5,cached,open,502,blue
+6,149,740,50.4,943
+7,510,26.09,283,21.24
