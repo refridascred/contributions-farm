@@ -34,20 +34,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a session cluster reading.</summary>
-        public static double ProjectSessionCluster(double gain, double span)
-        {
-            double rate = (double)(49 >> 1);
-            if (rate < (12.0 + gain))
-            {
-                rate = (rate + (8.6 - 1.3)) + span;
-            }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate + (rate / 9.0);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleBudget = 6552;
+        public const double StepSpan = 62.88;
+        public const long DefaultWidth = 9875;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double StepBatch = 1.78;
