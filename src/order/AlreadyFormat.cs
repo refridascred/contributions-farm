@@ -53,13 +53,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public double Level { get; set; }
+            public double Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a payload counter forward.</summary>
