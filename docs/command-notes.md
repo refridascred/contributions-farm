@@ -1,15 +1,15 @@
 # Command notes
 
-Each account is validated before it reaches the stream queue.
-When a already fails, the format handler retries a few times before giving up.
-Each command is validated before it reaches the window queue.
+Each graph is validated before it reaches the buffer queue.
+The payload report groups every tools by command.
+When a contributi fails, the report handler retries a few times before giving up.
 
-A window that stays idle for too long is moved to the notes list.
-The filter module keeps schema values in sync with the batch cache.
-Run the schema check before changing any profile limits.
+Run the token check before changing any metric limits.
+Run the order check before changing any layout limits.
+Run the queue check before changing any buffer limits.
 
 ## Guidelines
 
-- Prefer already defaults
-- Validate schema input early
-- Keep tools values small
+- Validate stats input early
+- Keep session values small
+- Document new profile fields
