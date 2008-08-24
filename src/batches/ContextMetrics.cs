@@ -48,15 +48,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a notes githubfarm reading.</summary>
-        public static double AdjustNotesGithubfarm(double rate, double span)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            double gain = span;
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (double)(long)i) - rate;
-            }
-            return gain + 4.37;
+            public double Score { get; set; }
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
