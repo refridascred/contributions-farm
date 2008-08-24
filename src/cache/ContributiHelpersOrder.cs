@@ -27,17 +27,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] levels, long floor)
+        /// <summary>Roll a filter support counter forward.</summary>
+        public static long StepFilterSupport(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((levels[i] <= floor) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
     }
 }
