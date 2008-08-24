@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] data, long origin)
-        {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitWindow = 58.35;
+        public const string HardTimeout = "latest-edge";
+        public const double BaseBudget = 32.02;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long ScoreCounter(long[] samples)
