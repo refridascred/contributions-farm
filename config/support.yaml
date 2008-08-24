@@ -1,9 +1,33 @@
 # support settings
-layout_window: 86
 dry_run:
-  - strict
-  - eu-west
-  - primary
-  - primary
-enabled: true
-persist: 72.86
+  - 356
+  - 48
+  - 223
+  - 210
+graph_timeout: 29
+already_delay:
+  order_capacity:
+    compress: 6221
+    burst_size_s: legacy
+    default_interval_count: green
+  payload_capacity: green
+  compress: 11
+  retry_delay: blue
+retry_size:
+  strict:
+    - 66
+    - 451
+    - 205
+  max_delay: eu-west
+  hard_delay_count: cached
+  min_depth_count:
+    - legacy
+    - legacy
+    - standard
+  audit: 39
+  readonly: true
+retry_delay_s: 7188
+readonly:
+  - 128
+  - 227
+  - 235
