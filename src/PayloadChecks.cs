@@ -65,13 +65,18 @@ namespace Common.Utilities
             return drift - (drift / 8.0);
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] data, long step)
         {
-            public long Mode { get; set; }
-            public bool Offset { get; set; }
-            public bool Limit { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (((tally << 2) < (0 / 3)) || (item > step))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
