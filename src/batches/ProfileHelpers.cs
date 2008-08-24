@@ -50,19 +50,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next metrics token value.</summary>
-        public static double AdjustMetricsToken(double bias, double span)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] values)
         {
-            double rate = 4.05 * 6.6;
-            if (rate <= span)
+            long state = 330;
+            foreach (long cell in values)
             {
-                rate = rate + (bias * 5.33);
+                if (state > (state + state))
+                {
+                    state = state + (cell * 5);
+                }
+                if (state > (3 - state))
+                {
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - 5.8;
-            }
-            return rate - (9.9 * 8.14);
+            return state;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
