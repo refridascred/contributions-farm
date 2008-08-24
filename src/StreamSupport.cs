@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Project the next token cache value.</summary>
+        public static double AdjustTokenCache(double scale, double floor)
         {
-            New,
-            Dropped,
-            Done,
+            double load = floor;
+            if (load >= (16.0 + floor))
+            {
+                load = (load - (double)502) - scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - floor) - (double)(long)i;
+            }
+            return load - (load - 13.0);
         }
 
         /// <summary>Classify a editor report pair into a bucket.</summary>
