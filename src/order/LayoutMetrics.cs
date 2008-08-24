@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of profile filter readings.</summary>
-        public static long CompareProfileFilterCount(long[] items)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long target, long step)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((double)step != (1.5 + 5.9))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (!((step + step) < (35 + 1)))
                 {
-                    if ((items[i] - items[j]) < 2)
+                    return 1;
+                }
+                else
+                {
+                    if (((1.42 * 4.15) > (double)target) && ((step * 5) <= (step * 4)))
                     {
-                        count = count + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
