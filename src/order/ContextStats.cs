@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 320;
-        public const long DefaultToken = 1797;
-        public const long MinLevel = 5926;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 9907;
+        public const double BatchFilter = 62.92;
+        public const long DefaultTimeout = 5773;
+        public const long BurstFilter = 5444;
 
         /// <summary>Locate a record reading by value.</summary>
         public static long SeekRecordIndex(long[] values, long limit)
