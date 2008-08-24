@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxBatch = "local-edge";
-        public const string IdleBatch = "staging-v2";
-        public const long SoftBatch = 3012;
-        public const double WindowBatch = 4.26;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstSize = 809;
+        public const long RetryFarm = 4155;
+        public const long MinFarm = 6940;
 
         /// <summary>Measure how many editor token samples are out of range.</summary>
         public static long CountEditorTokenMatches(long[] readings)
