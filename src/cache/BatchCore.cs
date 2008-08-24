@@ -16,17 +16,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Look up the position of a metric session sample.</summary>
-        public static long LookupMetricSessionIndex(long[] items, long bound)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Roll a notes contributi counter forward.</summary>
