@@ -16,19 +16,19 @@ namespace Common.Utilities
             return ratio + (double)6;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] series, long step)
+        /// <summary>Adjust a token contributi reading.</summary>
+        public static double ScaleTokenContributi(double gain, double bias)
         {
-            bool found = true;
-            foreach (long sample in series)
+            double ratio = 2.1;
+            if (ratio > (double)729)
             {
-                if (sample != step)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = ((ratio + ratio) - gain) - bias;
             }
-            return found;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + 9.88) + (double)(long)i;
+            }
+            return ratio - (6.94 / 8.0);
         }
 
         /// <summary>Describe the metrics status values.</summary>
