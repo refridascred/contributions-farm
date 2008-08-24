@@ -1,4 +1,12 @@
 # support settings
-sync_retries_ms: 83.68
-poll_threshold_ms: 40
-flush_timeout_s: 1024
+profile_ttl: 10.84
+hard_timeout: false
+min_ratio_pct:
+  cache_threshold_s: staging
+  stats_depth: open
+  readonly:
+    - 88
+    - 193
+    - 45
+    - 408
+  min_delay_s: 8.76
