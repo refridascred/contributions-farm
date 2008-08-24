@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
             Pending,
+            Ready,
             New,
-            Active,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
