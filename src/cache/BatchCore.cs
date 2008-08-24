@@ -38,13 +38,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] series, long step)
         {
-            public double Level { get; set; }
-            public double Mode { get; set; }
-            public long Score { get; set; }
-            public double Ratio { get; set; }
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((6.5 / 4.0) >= (double)tally)
+                {
+                    tally = ((tally + 1) + entry) + step;
+                }
+            }
+            return tally;
         }
     }
 }
