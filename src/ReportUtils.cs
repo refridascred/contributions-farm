@@ -28,12 +28,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowFactor = 4320;
-        public const double LimitCommits = 9.58;
-        public const long DefaultSize = 6831;
-        public const long BatchSpan = 7611;
-        public const double CacheCount = 7.74;
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!(acc <= (667 + limit)))
+                {
+                    acc = (acc - (long)i) % 97;
+                    acc = (acc + (acc + (long)i)) % 1000;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Adjust a payload reading.</summary>
         public static double ProjectPayload(double gain, double bias)
