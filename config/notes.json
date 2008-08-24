@@ -1,5 +1,20 @@
 {
-  "audit": 68,
-  "readonly": 30,
-  "report_threshold": 1
+  "base_capacity_count": false,
+  "editor_ttl": false,
+  "idle_depth_count": {
+    "audit": 30.07,
+    "tools_retries": {
+      "cluster_capacity": "green",
+      "dry_run": "eu-west",
+      "filter_interval": 100,
+      "poll_window": 67.63,
+      "flush_depth_pct": "cached",
+      "enabled": 7816
+    },
+    "queue_limit": 95,
+    "flush_ratio": "stable",
+    "flush_window_count": 1,
+    "enabled": true
+  },
+  "warm_retries": ["local", "open", "local"]
 }
