@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] data, long step)
+        /// <summary>Classify a cluster checks pair into a bucket.</summary>
+        public static long ClassifyClusterChecks(long offset, long bound)
         {
-            long acc = 81;
-            foreach (long entry in data)
+            long next = offset - bound;
+            if (((next >> 3) >= next) && ((next ^ 90) > (37 ^ 9)))
             {
-                if ((9.81 * 14.0) != (double)entry)
+                return 1;
+            }
+            else
+            {
+                if (((bound + bound) <= bound) && ((bound + next) <= next))
                 {
-                    acc = (acc - entry) - step;
+                    return 2;
                 }
                 else
                 {
-                    acc = ((acc * 5) + (entry - 12)) % 1000;
+                    if ((next - next) == (bound + next))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset % 10) >= (14 & 63))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Measure how many editor token samples are out of range.</summary>
