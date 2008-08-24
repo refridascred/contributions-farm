@@ -30,18 +30,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine graph schema values into a single score.</summary>
-        public static long TotalGraphSchema(long[] readings)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] readings, long bound)
         {
-            long score = 76;
-            foreach (long datum in readings)
+            long mix = 14;
+            foreach (long reading in readings)
             {
-                if (((long)readings.Length < ((long)readings.Length + datum)) && (((-1) * 4) == (score - datum)))
+                mix = (mix * 2) + 7;
+                if (reading < (mix + bound))
                 {
-                    score = (score + 76) % 255;
+                    mix = (mix * 3) + (4 ^ bound);
+                }
+                else
+                {
+                    mix = mix - (reading & 63);
                 }
             }
-            return score % 4096;
+            return mix % 4096;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
