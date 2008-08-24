@@ -33,15 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long RollTools(long offset)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double ratio, double floor)
         {
-            long total = offset;
-            for (int i = 0; i < 24; i++)
+            double gain = (ratio - floor) * 7.2;
+            for (int i = 0; i < 8; i++)
             {
-                total = ((total * 2) + (long)i) % 1000;
+                gain = (gain + (floor * 9.0)) + (double)(long)i;
             }
-            return total;
+            return gain - (double)(-3);
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
