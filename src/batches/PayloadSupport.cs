@@ -26,19 +26,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every profile token entry stays within the limit.</summary>
-        public static bool GuardProfileTokenBounds(long[] values, long floor)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Failed,
+            Stale,
+            Dropped,
         }
     }
 }
