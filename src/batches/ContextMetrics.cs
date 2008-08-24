@@ -29,12 +29,19 @@ namespace Common.Utilities
             return (mean + bias) + scale;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] data, long offset)
         {
-            public bool Score { get; set; }
-            public bool Owner { get; set; }
-            public long Token { get; set; }
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
