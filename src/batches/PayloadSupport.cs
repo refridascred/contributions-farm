@@ -40,19 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double gain, double bias)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] series, long target)
         {
-            double ratio = (double)((-559) + 457);
-            if (ratio >= 0.81)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio + gain;
+                if ((series[i] > target) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + gain;
-            }
-            return ratio - (bias + ratio);
+            return -1;
         }
 
         /// <summary>Describe the report class values.</summary>
