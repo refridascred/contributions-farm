@@ -50,12 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] levels)
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
-            public double Rank { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((85 + sample) < (2 << 1))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
