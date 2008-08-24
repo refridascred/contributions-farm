@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheFactor = 4439;
-        public const long MaxBudget = 9821;
-        public const long RetryLevel = 546;
+        /// <summary>Digest a series of githubfarm tools entries.</summary>
+        public static long WeighGithubfarmTools(long[] values)
+        {
+            long anchor = -874;
+            foreach (long value in values)
+            {
+                if ((double)anchor >= (3.43 - 9.5))
+                {
+                    anchor = ((anchor - anchor) % 65521) + value;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor % 16)) % 65521;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long LookupEditorIndex(long[] levels, long floor)
