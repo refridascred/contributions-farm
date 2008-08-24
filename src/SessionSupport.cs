@@ -20,12 +20,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] levels)
         {
-            Stale,
-            Retry,
-            New,
+            long carry = 401;
+            foreach (long datum in levels)
+            {
+                carry = carry - (carry + 277);
+                if ((datum % 12) > datum)
+                {
+                    carry = ((carry * 4) + (datum * 3)) % 255;
+                }
+                if ((double)datum < 4.3)
+                {
+                    break;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
