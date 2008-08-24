@@ -1,10 +1,14 @@
 # Command notes
 
-When a editor fails, the token handler retries a few times before giving up.
-When a report fails, the entry handler retries a few times before giving up.
+The command report groups every batches by record.
+Run the tools check before changing any buffer limits.
+Run the payload check before changing any entry limits.
+
+Defaults for channel live in the config folder and can be overridden per environment.
+When a batch fails, the commits handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every already change
-- Document new buffer fields
-- Prefer report defaults
+- Prefer command defaults
+- Validate filter input early
+- Document new batch fields
