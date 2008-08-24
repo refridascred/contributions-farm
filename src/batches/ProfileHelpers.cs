@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxBudget = 3011;
-        public const long BurstSpan = 550;
-        public const long CacheLevel = 9245;
-        public const string DefaultToken = "latest-v2";
-        public const long WindowScore = 5122;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BatchEntry = 6898;
