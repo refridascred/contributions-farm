@@ -37,18 +37,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the account metric entries that pass the check.</summary>
-        public static long MeasureAccountMetricOutliers(long[] levels)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((tally / 9) >= entry)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Draft,
+            Retry,
+            Idle,
+            New,
+            Stale,
         }
     }
 }
