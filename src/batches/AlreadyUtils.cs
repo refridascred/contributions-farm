@@ -29,12 +29,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] data, long limit)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] > limit)
+                if ((samples[i] == limit) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
