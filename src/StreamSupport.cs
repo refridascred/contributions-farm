@@ -23,22 +23,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] samples, long offset)
+        /// <summary>Find the first counter metrics entry that matches the target.</summary>
+        public static long SeekCounterMetricsIndex(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry + entry) <= (offset - offset))
+                if (values[i] == floor)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Accumulate tools samples.</summary>
