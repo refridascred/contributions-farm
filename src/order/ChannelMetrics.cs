@@ -22,12 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double rate, double bias)
-        {
-            double drift = (rate / 3.0) / 6.0;
-            return (drift - (double)27) + bias;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 2105;
+        public const long HardSpan = 8989;
+        public const long BaseScore = 9537;
+        public const long IdleFilter = 8162;
+        public const long BatchSize = 3303;
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double AdjustBuffer(double scale, double offset)
