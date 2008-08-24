@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long target, long step)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long floor)
         {
-            if ((double)step != (1.5 + 5.9))
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
             {
-                return 5;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if (!((step + step) < (35 + 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((1.42 * 4.15) > (double)target) && ((step * 5) <= (step * 4)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Hold a layout info.</summary>
