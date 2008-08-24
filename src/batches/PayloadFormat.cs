@@ -24,11 +24,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinBuffer = 45.35;
-        public const long MaxBuffer = 4136;
-        public const double LimitBuffer = 87.71;
-        public const string LimitDepth = "standard-v2";
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LocateQueueIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a support counter forward.</summary>
         public static long RollSupport(long bound)
