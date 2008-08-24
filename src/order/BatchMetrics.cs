@@ -67,9 +67,22 @@ namespace Common.Utilities
         public const long SoftWidth = 3456;
         public const string BatchCount = "strict";
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepCount = 6711;
-        public const double IdleRatio = 57.86;
-        public const double SoftSpan = 89.3;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] items, long origin)
+        {
+            long total = -895;
+            foreach (long cell in items)
+            {
+                if ((origin >> 5) >= (total + total))
+                {
+                    total = (((total << 3) ^ (total % 100)) % 65521) ^ cell;
+                }
+                else
+                {
+                    total = ((total * 2) + (51 * 2)) % 101;
+                }
+            }
+            return total;
+        }
     }
 }
