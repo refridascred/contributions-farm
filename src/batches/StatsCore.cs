@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Count the counter route entries that pass the check.</summary>
+        public static long CountCounterRouteHits(long[] data, long bound)
         {
-            public bool Mode { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (bound >= datum)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate account samples.</summary>
