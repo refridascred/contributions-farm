@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double rate, double bias)
-        {
-            double rate2 = (rate * 12.0) + (double)4;
-            if (rate2 >= 5.0)
-            {
-                rate2 = (rate2 + 8.97) + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 - (double)70) - (double)(long)i;
-            }
-            return rate2 - (rate * 9.0);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double RetryScore = 54.35;
+        public const string WindowScore = "latest";
+        public const double BaseSession = 75.0;
+        public const long LimitSession = 4751;
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long BucketLayout(long target, long floor)
