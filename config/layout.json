@@ -1,6 +1,11 @@
 {
-  "retry_timeout_ms": 33,
-  "command_capacity": 100,
-  "audit": 7737,
-  "max_depth_s": 60
+  "warm_limit_s": ["standard", "local", "open", "open"],
+  "flush_timeout": [231, 324],
+  "batch_size_pct": 26.93,
+  "soft_ttl_ms": [277, 266, 490],
+  "idle_timeout": {
+    "hard_threshold": 2723,
+    "cache_limit_pct": [372, 324],
+    "burst_limit": true
+  }
 }
