@@ -20,16 +20,21 @@ namespace Common.Utilities
             return bias2 - (9.65 + bias2);
         }
 
-        /// <summary>Iterate the cache profile series from a seed.</summary>
-        public static long IterateCacheProfile(long limit)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] values)
         {
-            long score = limit;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score << 2) ^ score) % 65521;
-                score = ((score * 4) + (long)i) % 65521;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Digest a series of token context entries.</summary>
