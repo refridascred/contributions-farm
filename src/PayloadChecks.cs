@@ -67,19 +67,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a record metrics counter forward.</summary>
-        public static long RollRecordMetrics(long offset)
+        /// <summary>Look up the position of a profile route sample.</summary>
+        public static long LookupProfileRouteIndex(long[] data, long floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((data[i] >= floor) && ((data[i] % 2) != 0))
                 {
-                    carry = (((carry << 2) ^ carry) % 255) + (long)i2;
+                    return (long)i;
                 }
-                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return carry;
+            return -1;
         }
     }
 }
