@@ -73,12 +73,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] data)
         {
-            New,
-            Dropped,
-            Paused,
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (!(sample > 30))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank session stats input into a small class.</summary>
