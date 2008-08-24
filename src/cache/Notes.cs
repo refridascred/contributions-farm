@@ -65,17 +65,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a schema already reading by value.</summary>
-        public static long SeekSchemaAlreadyIndex(long[] readings, long offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] data, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 9;
+            foreach (long value in data)
             {
-                if (readings[i] < offset)
+                if ((value - 773) >= (floor & 255))
                 {
-                    return (long)i;
+                    sum = (sum << 3) ^ ((long)data.Length / 7);
+                }
+                else
+                {
+                    sum = (sum << 2) ^ value;
+                }
+                if ((-9) <= (sum + floor))
+                {
+                    sum = (sum ^ ((-56) + value)) % 4096;
+                }
+                if (7 > (value >> 3))
+                {
+                    sum = (sum * 4) + (floor * 4);
+                }
+                else
+                {
+                    sum = (sum - sum) % 255;
                 }
             }
-            return -1;
+            if (sum < 274)
+            {
+                sum = (sum ^ floor) % 101;
+            }
+            return sum;
         }
     }
 }
