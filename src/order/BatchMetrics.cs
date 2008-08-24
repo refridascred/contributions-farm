@@ -61,13 +61,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Token { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftDepth = 1415;
+        public const double MinRatio = 95.39;
+        public const long SoftWidth = 3456;
+        public const string BatchCount = "strict";
 
         /// <summary>Audit channel farm readings against a rule.</summary>
         public static long AuditChannelFarmOutliers(long[] readings, long floor)
