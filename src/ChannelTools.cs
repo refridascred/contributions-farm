@@ -43,12 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            Done,
-            Pending,
-            Retry,
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
