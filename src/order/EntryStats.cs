@@ -56,29 +56,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long seed)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] samples)
         {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(result >= (seed << 2)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result * 3) + (3 % 3);
-                    result = ((result * 3) + (result & 255)) % 4096;
+                    if ((samples[i] + samples[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    result = (result * 4) + (seed + seed);
-                }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    result = (result - ((long)i2 & 255)) % 65521;
-                }
-                result = ((result * 4) + (result + seed)) % 97;
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
