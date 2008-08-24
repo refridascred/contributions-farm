@@ -1,6 +1,6 @@
-id,ratio,weight
-1,442,820
-2,39.76,staging
-3,742,open
-4,11.69,418
-5,369,689
+id,region,level
+1,665,262
+2,50.91,75.06
+3,green,41.3
+4,272,blue
+5,407,open
