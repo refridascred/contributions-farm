@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardDepth = 3913;
-        public const long MaxWidth = 4834;
-        public const string SoftRatio = "standard-v2";
-        public const string MaxFactor = "standard";
+        /// <summary>Find the first order stats entry that matches the target.</summary>
+        public static long FindOrderStatsIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a graph record figure with a bias.</summary>
         public static double BlendGraphRecord(double weight, double bias)
