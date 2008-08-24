@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const long DefaultTimeout = 8093;
         public const long RetryProfile = 4590;
 
-        /// <summary>Locate a batches support reading by value.</summary>
-        public static long LookupBatchesSupportIndex(long[] items, long origin)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a farm account sample.</summary>
