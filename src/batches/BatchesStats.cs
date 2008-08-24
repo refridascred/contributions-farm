@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] levels, long origin)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long mark = 0;
-            foreach (long entry in levels)
-            {
-                mark = ((mark << 3) ^ 43) % 255;
-                if (44 <= (mark + origin))
-                {
-                    mark = mark + (entry + origin);
-                }
-            }
-            return mark % 4096;
+            Stale,
+            Draft,
+            New,
         }
 
         /// <summary>Validate schema checks readings against a bound.</summary>
