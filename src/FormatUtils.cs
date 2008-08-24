@@ -14,21 +14,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] readings)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double gain, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = span;
+            if (weight < weight)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = (weight - (double)(-60)) + gain;
             }
-            return seen;
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight + (double)(-86);
         }
 
         /// <summary>Digest a series of window entries.</summary>
