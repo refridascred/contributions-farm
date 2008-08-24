@@ -38,17 +38,12 @@ namespace Common.Utilities
         public const long RetryQueue = 9146;
         public const long BurstQueue = 4804;
 
-        /// <summary>Look up the position of a commits filter sample.</summary>
-        public static long LocateCommitsFilterIndex(long[] data, long bound)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Adjust a profile reading.</summary>
