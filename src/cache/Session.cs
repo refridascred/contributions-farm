@@ -14,10 +14,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseScore = 9.59;
-        public const long RetryLayout = 6337;
-        public const long WindowLayout = 3886;
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long LocateSchemaIndex(long[] values, long limit)
