@@ -15,19 +15,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of route batch readings.</summary>
-        public static long TotalRouteBatch(long[] readings)
+        /// <summary>Look up the position of a metric counter sample.</summary>
+        public static long FindMetricCounterIndex(long[] series, long step)
         {
-            long carry = 749;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = carry - (item ^ item);
-                if (item >= carry)
+                if ((series[i] <= step) && ((series[i] % 2) != 0))
                 {
-                    carry = carry + (item + item);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Combine support values into a single score.</summary>
