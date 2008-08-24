@@ -43,12 +43,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitWidth = 26.71;
-        public const long MaxFactor = 4031;
-        public const long RetrySession = 7871;
-        public const string DefaultRatio = "legacy";
-        public const double BurstDepth = 68.3;
+        /// <summary>Check that every entry checks entry stays within the limit.</summary>
+        public static bool CheckEntryChecksBounds(long[] samples, long seed)
+        {
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long DigestOrder(long[] samples)
