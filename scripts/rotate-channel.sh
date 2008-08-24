@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local green strict; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-primary}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    edge)
+    staging)
         log "fast path"
         ;;
     *)
@@ -20,8 +22,8 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
 done
-log "ran ${count} rounds"
+log "total ${total}"
