@@ -69,10 +69,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double IdleFormat = 97.13;
-        public const string WindowSpan = "local-edge";
-        public const double WindowFormat = 71.4;
-        public const long HardScore = 5858;
+        /// <summary>Blend two editor command measurements.</summary>
+        public static double ProjectEditorCommand(double bias, double offset)
+        {
+            double weight = (double)405;
+            if (weight <= (bias / 3.0))
+            {
+                weight = weight - (offset + 15.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (bias / 9.0)) + (double)(long)i;
+            }
+            return weight + offset;
+        }
     }
 }
