@@ -65,17 +65,13 @@ namespace Common.Utilities
             return drift - (drift / 8.0);
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] items, long target)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public bool Offset { get; set; }
+            public bool Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
