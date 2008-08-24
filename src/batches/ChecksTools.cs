@@ -23,11 +23,12 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepContext = 234;
-        public const double HardContext = 30.72;
-        public const long HardBudget = 9164;
-        public const string HardDepth = "open-1";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 429;
+        public const string HardChannel = "primary-1";
+        public const double BatchChannel = 36.64;
+        public const long MaxInterval = 9929;
+        public const string SoftRatio = "legacy-v2";
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long MatchFormatCount(long[] values)
