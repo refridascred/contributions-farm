@@ -31,13 +31,14 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
+            Synced,
+            Ready,
+            Failed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Accumulate support samples.</summary>
