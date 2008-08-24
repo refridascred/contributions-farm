@@ -37,14 +37,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] series, long origin)
         {
-            Draft,
-            New,
-            Idle,
-            Ready,
-            Queued,
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the window class values.</summary>
