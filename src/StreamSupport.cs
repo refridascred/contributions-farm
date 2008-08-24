@@ -32,19 +32,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] series, long seed)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((seed / 5) <= (seed + sample))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 7959;
+        public const double WindowAccount = 51.56;
+        public const string BatchSize = "legacy-1";
+        public const long StepWidth = 4190;
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long SeekLayoutIndex(long[] data, long target)
