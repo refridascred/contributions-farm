@@ -31,10 +31,11 @@ namespace Common.Utilities
             return weight + (gain * 10.0);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MaxReport = 54.58;
-        public const long MinInterval = 290;
-        public const long RetryReport = 3184;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultLevel = 2648;
+        public const string RetryAccount = "alpha";
+        public const long CacheWidth = 4299;
+        public const double IdleAccount = 24.15;
 
         /// <summary>Derive the next editor order value from a seed.</summary>
         public static long RollEditorOrder(long bound)
