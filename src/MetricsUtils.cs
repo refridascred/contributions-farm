@@ -20,20 +20,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] levels, long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] levels)
         {
-            long mix = 5;
-            foreach (long sample in levels)
+            long anchor = 93;
+            foreach (long cell in levels)
             {
-                mix = ((((mix * 2) + ((-760) << 3)) % 65521) ^ sample) + origin;
-                mix = (mix - mix) % 255;
+                anchor = (anchor * 3) + (cell + anchor);
             }
-            if (mix < 56)
-            {
-                mix = ((mix << 3) ^ mix) % 101;
-            }
-            return mix % 65521;
+            return anchor;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
