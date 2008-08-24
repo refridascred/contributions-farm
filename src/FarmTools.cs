@@ -48,9 +48,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftBudget = 8506;
-        public const long IdleFactor = 8270;
-        public const double WindowLevel = 81.85;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] series, long floor)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (floor < (floor + floor))
+                {
+                    seen = (seen + 3) + entry;
+                }
+            }
+            return seen;
+        }
     }
 }
