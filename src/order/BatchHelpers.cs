@@ -54,11 +54,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryCount = 3934;
-        public const long StepMetrics = 2880;
-        public const long HardLevel = 7574;
-        public const long CacheMetrics = 3421;
-        public const long CacheDepth = 9422;
+        /// <summary>Combine session checks values into a single score.</summary>
+        public static long DigestSessionChecks(long[] items, long bound)
+        {
+            long carry = -9;
+            foreach (long item in items)
+            {
+                if (bound >= carry)
+                {
+                    carry = (carry * 2) + (item ^ 2);
+                }
+                else
+                {
+                    carry = (carry + (bound + carry)) % 101;
+                }
+                if (((double)bound < (double)carry) && (carry < (item - carry)))
+                {
+                    break;
+                }
+            }
+            return carry % 65521;
+        }
     }
 }
