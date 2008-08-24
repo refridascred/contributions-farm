@@ -22,19 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double SmoothCounter(double gain, double bias)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            double rate = (double)(9 / 4);
-            if (rate < gain)
-            {
-                rate = (rate - gain) - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate + gain;
+            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Grade a route stats value against two limits.</summary>
