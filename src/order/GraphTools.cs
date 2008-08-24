@@ -46,16 +46,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a account support counter forward.</summary>
-        public static long StepAccountSupport(long origin)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] readings)
         {
-            long anchor = origin;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor * 2) + (origin + anchor)) % 101;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
