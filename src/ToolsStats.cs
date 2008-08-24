@@ -64,24 +64,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long floor, long origin)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            if (floor >= origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((1.09 * 6.0) <= (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Roll a commits counter forward.</summary>
