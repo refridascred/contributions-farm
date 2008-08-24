@@ -52,18 +52,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = acc + (5 >> 1);
-                acc = (acc << 2) ^ (long)i;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double RetryMetrics = 61.65;
+        public const string BaseRatio = "cached-v2";
+        public const long BatchMetrics = 1941;
+        public const long HardLevel = 4522;
+        public const long IdleFactor = 8458;
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
