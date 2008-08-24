@@ -1,9 +1,7 @@
 {
-  "idle_window_count": 9210,
-  "warm_ratio": {
-    "base_interval": 0.15,
-    "burst_size_count": 55,
-    "readonly": 500
-  },
-  "strict": 7719
+  "soft_window": "legacy",
+  "stats_capacity": 47.41,
+  "flush_capacity_count": 60,
+  "hard_limit_s": "standard",
+  "tools_timeout": 500
 }
