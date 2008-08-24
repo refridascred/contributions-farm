@@ -1,23 +1,8 @@
 {
-  "profile_limit": "blue",
-  "hard_capacity": "latest",
-  "base_window": {
-    "default_limit": {
-      "hard_delay": false,
-      "idle_limit_count": 8627,
-      "checks_delay": [44, 254, 472, 379],
-      "soft_threshold_pct": 372
-    },
-    "idle_window_ms": {
-      "tools_retries": "edge",
-      "cache_ratio_ms": false,
-      "soft_ratio": 8326
-    },
-    "context_capacity": "latest",
-    "filter_window": [402, 293, 237, 459],
-    "flush_ratio": 27,
-    "enabled": "standard"
-  },
-  "hard_threshold_count": ["standard", "cached"],
-  "default_limit_s": 166
+  "warm_size": "stable",
+  "report_window": false,
+  "context_capacity": "stable",
+  "audit": "fallback",
+  "warm_ratio_s": 250,
+  "window_limit": 50
 }
