@@ -1,5 +1,7 @@
 {
-  "min_delay_count": [40, 389, 25],
-  "audit": 17,
-  "editor_ttl": "blue"
+  "retry_ratio": 37.85,
+  "farm_depth": "edge",
+  "tools_ratio": 1796,
+  "readonly": "green",
+  "idle_capacity_s": false
 }
