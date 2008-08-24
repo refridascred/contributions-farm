@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a command token counter forward.</summary>
-        public static long IterateCommandToken(long seed)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long acc = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!((8 - seed) <= ((long)i - seed)))
-                {
-                    acc = ((acc << 2) ^ (745 + seed)) % 255;
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
+            Active,
+            Ready,
+            Closed,
+            Locked,
         }
 
         /// <summary>Accumulate channel samples.</summary>
