@@ -39,17 +39,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] values, long seed)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < seed) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
+            public string Level { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
