@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit queue githubfarm readings against a rule.</summary>
-        public static long CountQueueGithubfarmMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)tally >= (5.0 / 2.0))
-                {
-                    tally = (tally + 1) - entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double LimitEditor = 46.98;
+        public const string IdleEditor = "open-v2";
+        public const double StepEditor = 89.36;
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
