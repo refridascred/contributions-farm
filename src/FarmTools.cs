@@ -24,10 +24,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchSupport = "standard-v2";
-        public const long StepInterval = 587;
-        public const long BatchWidth = 3978;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] series, long limit)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (((double)hits <= (double)9) || ((limit << 1) < hits))
+                {
+                    hits = (hits + 1) ^ reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long MeasureLayoutMatches(long[] levels)
