@@ -22,38 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long target, long origin)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            if (((target - origin) == (target << 2)) || ((target / 3) < target))
-            {
-                return 3;
-            }
-            else
-            {
-                if (4 < origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin - target) <= target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin & 127) > 6)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Ready,
+            New,
+            Idle,
+            Paused,
+            Queued,
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
