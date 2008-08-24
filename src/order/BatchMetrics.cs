@@ -63,22 +63,12 @@ namespace Common.Utilities
         public const long MinCommand = 9191;
         public const double BatchCommand = 48.37;
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseLevel = 6658;
+        public const long BurstPayload = 5951;
+        public const long SoftPayload = 8777;
+        public const long DefaultPayload = 3001;
+        public const string SoftLevel = "open";
 
         /// <summary>Blend two order payload measurements.</summary>
         public static double ProjectOrderPayload(double bias, double offset)
