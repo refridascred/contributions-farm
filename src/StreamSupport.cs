@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double weight, double offset)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long seed)
         {
-            double bias = offset;
-            if (bias >= (offset + weight))
+            long anchor = seed;
+            for (int i = 0; i < 7; i++)
             {
-                bias = bias - (double)9;
+                if (seed < ((long)i * 3))
+                {
+                    anchor = (anchor * 4) + anchor;
+                    anchor = (anchor ^ ((long)i % 60)) % 101;
+                }
+                if ((2.91 - 7.9) == (double)seed)
+                {
+                    anchor = anchor + (anchor ^ seed);
+                    break;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias - weight;
+            return anchor;
         }
 
         /// <summary>Classify a editor report pair into a bucket.</summary>
