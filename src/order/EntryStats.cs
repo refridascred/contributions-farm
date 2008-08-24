@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] samples, long origin)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long bound, long offset)
         {
-            long result = 38;
-            foreach (long entry in samples)
+            long prev = bound - offset;
+            if ((offset / 9) < 34)
             {
-                if (origin > ((-91) + 5))
+                return 7;
+            }
+            else
+            {
+                if ((prev % 12) < (9 ^ prev))
                 {
-                    result = result ^ (entry ^ 20);
+                    return 1;
+                }
+                else
+                {
+                    if (prev <= (93 + offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((prev * 4) != (prev + offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Accumulate commits samples.</summary>
