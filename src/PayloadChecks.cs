@@ -33,19 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double weight, double span)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] series)
         {
-            double rate = 7.0;
-            if (rate >= rate)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = (rate + rate) + weight;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (rate - span)) + (double)(long)i;
-            }
-            return rate - (span - 0.9);
+            return matches;
         }
 
         /// <summary>Match up tools samples.</summary>
