@@ -14,15 +14,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] levels)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] values, long limit)
         {
-            long carry = 103;
-            foreach (long value in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry ^ (value % 5)) % 1000;
+                if ((values[i] == limit) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Digest a series of window entries.</summary>
