@@ -16,13 +16,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] values, long target)
         {
-            public long Count { get; set; }
-            public bool Weight { get; set; }
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
+            long mark = -25;
+            foreach (long cell in values)
+            {
+                if (((target + 53) != (target & 1)) || (mark >= (mark & 1)))
+                {
+                    mark = ((mark ^ (2 << 2)) % 97) ^ cell;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Accumulate entry samples.</summary>
