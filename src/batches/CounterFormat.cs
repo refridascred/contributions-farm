@@ -24,12 +24,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a queue editor reading by value.</summary>
-        public static long LocateQueueEditorIndex(long[] values, long origin)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] data, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((values[i] > origin) && ((values[i] % 2) == 0))
+                if ((data[i] < step) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
