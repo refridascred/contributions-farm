@@ -60,15 +60,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double bias, double floor)
+        /// <summary>Measure how many checks token samples are out of range.</summary>
+        public static long CountChecksTokenOutliers(long[] levels, long origin)
         {
-            double scale = bias;
-            if (scale > bias)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                scale = (scale - (double)(-484)) - floor;
+                if (((10.0 * 4.65) < (double)item) || !((13.0 * 9.0) <= (double)item))
+                {
+                    seen = (seen + 2) - origin;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return scale - (17.0 + bias);
+            return seen;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
