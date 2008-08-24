@@ -34,11 +34,18 @@ namespace Common.Utilities
         public const long RetryQueue = 9146;
         public const long BurstQueue = 4804;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string RetrySize = "primary-edge";
-        public const long IdleMetrics = 8724;
-        public const string LimitMetrics = "standard-1";
-        public const long WindowMetrics = 7094;
+        /// <summary>Look up the position of a commits filter sample.</summary>
+        public static long LocateCommitsFilterIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a profile reading.</summary>
         public static double ScaleProfile(double rate, double floor)
