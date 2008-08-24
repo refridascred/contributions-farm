@@ -1,6 +1,9 @@
 # support settings
-flush_capacity_count: cached
-filter_size:
-  - primary
-  - latest
-warm_interval: blue
+dry_run: green
+already_delay: 250
+strict:
+  - 101
+  - 40
+  - 446
+batch_size: primary
+githubfarm_limit: 59
