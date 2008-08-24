@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] series, long bound)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] values, long target)
         {
-            long acc = 215;
-            foreach (long datum in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc - bound) % 4096) + datum;
+                if ((values[i] > target) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
