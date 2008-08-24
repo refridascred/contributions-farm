@@ -29,13 +29,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Draft,
-            Locked,
-            Done,
-            Ready,
+            public double Score { get; set; }
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
