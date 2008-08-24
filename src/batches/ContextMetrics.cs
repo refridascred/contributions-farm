@@ -68,14 +68,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] values, long limit)
         {
-            Idle,
-            Paused,
-            Queued,
-            Stale,
-            Closed,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of entry filter readings.</summary>
