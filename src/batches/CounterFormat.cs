@@ -16,17 +16,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] values, long origin)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Describe the order phase values.</summary>
