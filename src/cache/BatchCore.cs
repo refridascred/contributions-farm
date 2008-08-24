@@ -45,11 +45,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardTimeout = 7646;
-        public const long StepContext = 5154;
-        public const long DefaultDepth = 3177;
-        public const string WindowContext = "open-1";
-        public const long HardContext = 2544;
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public string Owner { get; set; } = "";
+        }
     }
 }
