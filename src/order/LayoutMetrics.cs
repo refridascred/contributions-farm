@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double weight, double bias)
+        /// <summary>Compare every pair of profile filter readings.</summary>
+        public static long CompareProfileFilterCount(long[] items)
         {
-            double ratio = (double)0 - weight;
-            if (ratio > ratio)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio + (double)447;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio - (weight - ratio);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (weight / 5.0)) + (double)(long)i;
-            }
-            return ratio + (ratio - bias);
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
