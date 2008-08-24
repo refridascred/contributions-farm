@@ -28,20 +28,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] data, long origin)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] series)
         {
-            long mix = 620;
-            foreach (long cell in data)
+            long acc = 8;
+            foreach (long datum in series)
             {
-                mix = ((mix ^ origin) % 101) + cell;
-                mix = (mix * 3) + (origin - mix);
-                if (mix < (mix >> 4))
+                if (!(datum < (datum >> 5)))
                 {
-                    break;
+                    acc = acc + (6 >> 4);
                 }
             }
-            return mix;
+            if (acc > 60)
+            {
+                acc = (acc << 3) ^ (acc & 31);
+            }
+            return acc;
         }
     }
 }
