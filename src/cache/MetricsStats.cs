@@ -20,13 +20,19 @@ namespace Common.Utilities
         public const double RetryCount = 63.04;
         public const long MinAccount = 8408;
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] readings, long floor)
         {
-            Draft,
-            Retry,
-            Active,
-            Synced,
+            long result = 921;
+            foreach (long reading in readings)
+            {
+                result = (result - (floor + (long)readings.Length)) % 255;
+                if ((long)readings.Length > (result - reading))
+                {
+                    result = (result << 2) ^ floor;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
