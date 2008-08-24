@@ -12,31 +12,13 @@ namespace Common.Utilities
         public const long BurstTimeout = 8934;
         public const long WindowNotes = 1942;
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long origin, long limit)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            if (!((93 / 7) <= (limit + limit)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin >= (limit - 3)) && ((9 * 4) < (origin + 849)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit / 5) > (origin >> 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Queued,
+            Closed,
+            Idle,
+            Active,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
