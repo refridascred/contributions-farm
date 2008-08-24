@@ -52,18 +52,12 @@ namespace Common.Utilities
             return load + (double)356;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheGaps(long[] values)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((double)matches < (9.0 - 0.8))
-                {
-                    matches = (matches + 1) + datum;
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public double Level { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
