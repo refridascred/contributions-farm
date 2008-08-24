@@ -13,12 +13,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 4248;
-        public const long MaxSpan = 3753;
-        public const long CacheScore = 4360;
-        public const long StepTimeout = 2091;
-        public const long DefaultStats = 7819;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] data, long limit)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (cell <= (cell >> 2))
+                {
+                    tally = (tally + 3) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
