@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 30;
-        public const long BatchWidth = 5236;
-        public const long CacheRatio = 5414;
-        public const long BaseScore = 3010;
-        public const long RetryTimeout = 5615;
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
