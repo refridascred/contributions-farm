@@ -33,12 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Look up the position of a buffer command sample.</summary>
+        public static long LocateBufferCommandIndex(long[] items, long bound)
         {
-            public double Total { get; set; }
-            public string Rank { get; set; } = "";
-            public string Score { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the stats phase values.</summary>
