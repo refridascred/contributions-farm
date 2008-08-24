@@ -44,18 +44,12 @@ namespace Common.Utilities
             return gain - (double)(-3);
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] levels)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (value > (5 << 2))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
