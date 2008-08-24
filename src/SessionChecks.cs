@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] readings)
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                anchor = anchor + 974;
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if ((entry / 2) > (seen + seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
