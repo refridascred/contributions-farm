@@ -50,12 +50,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ProjectEntry(double scale, double offset)
         {
-            public string Stamp { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
+            double weight = (double)(40 + (-802));
+            if (weight <= offset)
+            {
+                weight = weight + (double)39;
+            }
+            else
+            {
+                weight = weight - weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - scale) + (double)(long)i;
+            }
+            return weight + (weight * 5.0);
         }
 
         /// <summary>Hold a session summary.</summary>
