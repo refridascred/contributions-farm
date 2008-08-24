@@ -32,19 +32,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a editor entry counter forward.</summary>
-        public static long DeriveEditorEntry(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = (sum + (target + sum)) % 97;
-                sum = (sum << 3) ^ ((long)i + sum);
-                sum = sum + (sum - sum);
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinRecord = 25.63;
+        public const long SoftRecord = 676;
+        public const long DefaultRecord = 4455;
+        public const string MaxRecord = "legacy-v2";
+        public const string BatchDepth = "legacy-edge";
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long MatchRouteCount(long[] items)
