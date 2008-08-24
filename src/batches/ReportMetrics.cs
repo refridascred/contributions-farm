@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] readings, long floor)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] readings)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            long mark = 911;
+            foreach (long datum in readings)
             {
-                if (cell >= floor)
+                if (!((datum & 255) == (datum % 24)))
                 {
-                    valid = false;
-                    break;
+                    mark = ((mark * 2) + (datum + 987)) % 101;
                 }
+                mark = (mark - (mark - mark)) % 1000;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Describe the checks class values.</summary>
