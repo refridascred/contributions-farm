@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] values, long floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long seed, long limit)
         {
-            long acc = 527;
-            foreach (long sample in values)
+            if ((seed >> 5) <= (seed + seed))
             {
-                if (!((floor + 618) != (37 + acc)))
+                return 8;
+            }
+            else
+            {
+                if ((6.04 / 7.0) == (double)seed)
                 {
-                    acc = ((acc ^ (3 % 12)) % 97) + sample;
+                    return 6;
+                }
+                else
+                {
+                    if (limit < (limit - 780))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (acc < 4)
-            {
-                acc = (acc ^ (73 + floor)) % 97;
-            }
-            return acc % 97;
         }
 
         /// <summary>Match up editor samples.</summary>
