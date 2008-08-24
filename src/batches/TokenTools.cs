@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ratio - (double)6;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BurstLevel = "local-edge";
-        public const string HardScore = "standard";
-        public const long CacheSchema = 7911;
-        public const long IdleSchema = 5502;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((8.49 - 7.2) >= (double)sample)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long LimitDepth = 1685;
