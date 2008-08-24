@@ -76,19 +76,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Validate filter token readings against a bound.</summary>
-        public static bool VerifyFilterTokenBounds(long[] values, long floor)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
