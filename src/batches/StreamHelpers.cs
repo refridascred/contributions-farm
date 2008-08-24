@@ -76,12 +76,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Validate filter token readings against a bound.</summary>
+        public static bool VerifyFilterTokenBounds(long[] values, long floor)
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public bool Size { get; set; }
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the farm mode values.</summary>
