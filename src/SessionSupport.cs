@@ -46,13 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Stale,
-            Active,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double DefaultOrder = 86.08;
+        public const double IdleOrder = 41.69;
+        public const double WindowSpan = 27.64;
+        public const long CacheOrder = 1770;
+        public const double CacheDepth = 53.36;
     }
 }
