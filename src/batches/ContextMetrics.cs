@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a contributi commits reading.</summary>
-        public static double ScaleContributiCommits(double ratio, double offset)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] samples, long floor)
         {
-            double bias = (double)(560 - 66);
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = ((bias - offset) + (double)(long)i) + ratio;
+                if ((samples[i] > floor) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias - offset;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
