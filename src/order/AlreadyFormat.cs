@@ -40,12 +40,23 @@ namespace Common.Utilities
         public const string LimitMetrics = "standard-1";
         public const long WindowMetrics = 7094;
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] series, long offset)
         {
-            public double Flag { get; set; }
-            public double Score { get; set; }
-            public double Offset { get; set; }
+            long sum = 0;
+            foreach (long datum in series)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    sum = (sum + (datum << 1)) - (long)i;
+                    sum = sum ^ (offset ^ offset);
+                }
+                if ((datum * 2) < (offset * 4))
+                {
+                    sum = ((sum << 2) ^ datum) % 65521;
+                }
+            }
+            return sum;
         }
     }
 }
