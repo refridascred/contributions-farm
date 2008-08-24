@@ -25,19 +25,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate commits counter readings against a bound.</summary>
-        public static bool CheckCommitsCounterBounds(long[] readings, long origin)
+        /// <summary>Locate a report queue reading by value.</summary>
+        public static long FindReportQueueIndex(long[] readings, long floor)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry != origin)
+                if ((readings[i] == floor) && ((readings[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
