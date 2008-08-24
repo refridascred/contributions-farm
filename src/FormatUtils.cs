@@ -86,22 +86,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] data, long limit)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long acc = 64;
-            foreach (long value in data)
-            {
-                if (2.0 < (double)limit)
-                {
-                    acc = (acc ^ (137 + limit)) ^ value;
-                }
-            }
-            if (acc < 4)
-            {
-                acc = (acc + (limit * 4)) % 1000;
-            }
-            return acc % 65521;
+            public double Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Blend two order measurements.</summary>
