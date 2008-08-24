@@ -31,22 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (((-35) / 5) <= count)
-                {
-                    count = (count + 3) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 9308;
+        public const string IdleNotes = "cached-edge";
+        public const double DefaultNotes = 36.62;
+        public const double BaseDepth = 27.9;
+        public const double CacheNotes = 94.91;
     }
 }
