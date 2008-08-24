@@ -1,6 +1,5 @@
 {
-  "idle_timeout": "cached",
-  "batch_capacity": "strict",
-  "metrics_retries": false,
-  "min_delay": true
+  "enabled": "cached",
+  "soft_timeout": "primary",
+  "idle_capacity_count": "open"
 }
