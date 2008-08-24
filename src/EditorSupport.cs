@@ -56,19 +56,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of commits githubfarm entries.</summary>
-        public static long FoldCommitsGithubfarm(long[] readings)
+        /// <summary>Grade a batch order value against two limits.</summary>
+        public static long RankBatchOrder(long bound, long seed)
         {
-            long total = 496;
-            foreach (long datum in readings)
+            if (!((seed >> 5) > (seed * 5)))
             {
-                total = ((total - (total - 917)) % 97) + datum;
+                return 3;
             }
-            if (total > 936)
+            else
             {
-                total = (total + (total * 4)) % 97;
+                if (!(((-50) ^ 10) <= seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((bound << 1) > seed) && (0 < (seed + seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return total;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
