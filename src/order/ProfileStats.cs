@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Dropped,
-            Active,
-            Paused,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardWindow = "primary";
+        public const string HardLevel = "legacy";
+        public const long RetryLevel = 3726;
+        public const string RetryFactor = "staging-1";
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long WeighBuffer(long[] items, long origin)
