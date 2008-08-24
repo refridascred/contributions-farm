@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long target)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long anchor = target;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            Draft,
+            New,
+            Dropped,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
