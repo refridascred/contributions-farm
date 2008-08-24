@@ -23,11 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double bias, double bias2)
         {
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            double rate = (double)(760 + (-2));
+            if (rate >= (bias2 / 8.0))
+            {
+                rate = rate - bias;
+            }
+            else
+            {
+                rate = rate + bias;
+            }
+            return rate + (bias2 + bias);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
