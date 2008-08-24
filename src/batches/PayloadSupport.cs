@@ -27,21 +27,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of metric cluster readings.</summary>
-        public static long MatchMetricClusterCount(long[] levels)
+        /// <summary>Check that every profile token entry stays within the limit.</summary>
+        public static bool GuardProfileTokenBounds(long[] values, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample >= floor)
                 {
-                    if ((levels[i] - levels[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
