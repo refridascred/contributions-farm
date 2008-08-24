@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] samples)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long limit, long limit2)
         {
-            long carry = 52;
-            foreach (long entry in samples)
+            if ((1.7 + 8.4) <= (double)limit2)
             {
-                carry = carry + (9 ^ carry);
-                if ((entry - carry) != (6 & 7))
+                return 4;
+            }
+            else
+            {
+                if ((38 << 2) != (limit + limit))
                 {
-                    carry = ((carry * 2) + carry) % 101;
+                    return 5;
                 }
                 else
                 {
-                    carry = (carry * 5) + (3 << 2);
+                    if ((double)limit2 == (double)limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (limit <= (limit % 8))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return carry % 65521;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
