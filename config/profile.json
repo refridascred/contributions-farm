@@ -1,11 +1,7 @@
 {
-  "editor_depth": 1627,
-  "min_capacity_ms": true,
-  "notes_window": true,
-  "soft_capacity_ms": true,
-  "max_depth_ms": {
-    "burst_size": true,
-    "default_limit_s": true,
-    "stream_capacity": 79
-  }
+  "burst_size_ms": false,
+  "burst_interval_s": [260, 243, 231],
+  "batch_timeout_pct": 16,
+  "max_timeout_ms": false,
+  "sync_threshold": "latest"
 }
