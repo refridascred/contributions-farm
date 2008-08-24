@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the token schema entries that pass the check.</summary>
-        public static long TallyTokenSchemaGaps(long[] levels, long seed)
-        {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (!((sample + sample) >= seed))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheFactor = 4439;
+        public const long MaxBudget = 9821;
+        public const long RetryLevel = 546;
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long LookupEditorIndex(long[] levels, long floor)
