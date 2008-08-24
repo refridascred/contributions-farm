@@ -1,5 +1,7 @@
 {
-  "batch_ratio": 13.91,
-  "base_capacity": "latest",
-  "window_size": ["local", "green"]
+  "session_capacity": 250,
+  "cache_size": [114, 241],
+  "soft_size_count": "staging",
+  "enabled": "open",
+  "poll_threshold_pct": 250
 }
