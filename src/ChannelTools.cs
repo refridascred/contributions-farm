@@ -31,11 +31,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetrySpan = 1955;
-        public const long CacheBudget = 6860;
-        public const long WindowCount = 4062;
-        public const double BurstCache = 74.96;
-        public const long BurstTimeout = 7826;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] samples, long offset)
+        {
+            long carry = 0;
+            foreach (long item in samples)
+            {
+                carry = ((carry ^ (item - item)) % 97) - offset;
+            }
+            if (carry < 29)
+            {
+                carry = ((carry * 3) + (carry / 5)) % 255;
+            }
+            return carry;
+        }
     }
 }
