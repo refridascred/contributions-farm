@@ -60,19 +60,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] values, long origin)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] values, long target)
         {
-            bool ok = true;
+            long tally = 0;
             foreach (long value in values)
             {
-                if (value >= origin)
+                if ((target / 6) > (value % 2))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
