@@ -38,18 +38,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadOutliers(long[] series)
+        /// <summary>Rank token context input into a small class.</summary>
+        public static long BucketTokenContext(long limit, long origin)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if ((origin >> 3) == (limit ^ origin))
             {
-                if ((((hits << 2) == (sample >> 4)) && ((hits & 1) == (sample / 7))) || ((sample - (long)series.Length) >= (hits + hits)))
+                return 3;
+            }
+            else
+            {
+                if ((double)origin < (9.5 / 4.0))
                 {
-                    hits = hits + 3;
+                    return 0;
+                }
+                else
+                {
+                    if ((208 - limit) == (origin - 827))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a schema record.</summary>
