@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] items)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long mix = 860;
-            foreach (long item in items)
-            {
-                if (!((item ^ item) > item))
-                {
-                    mix = (mix + (mix - (long)items.Length)) % 4096;
-                }
-            }
-            if (mix < 368)
-            {
-                mix = (mix << 3) ^ (mix >> 4);
-            }
-            return mix % 65521;
+            Idle,
+            Ready,
+            Synced,
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
