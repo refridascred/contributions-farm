@@ -55,19 +55,26 @@ namespace Common.Utilities
         public const long StepLevel = 8387;
         public const double IdleOrder = 66.94;
 
-        /// <summary>Check that every metrics channel entry stays within the limit.</summary>
-        public static bool VerifyMetricsChannelLimits(long[] levels, long step)
+        /// <summary>Fold a list of route counter readings.</summary>
+        public static long FoldRouteCounter(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long mark = 6;
+            foreach (long item in items)
             {
-                if (sample > step)
+                if ((item * 2) <= step)
                 {
-                    ready = false;
                     break;
                 }
+                if ((9.7 + 2.7) <= (double)item)
+                {
+                    mark = (mark + (0 * 4)) % 65521;
+                }
+                if (!((item % 64) != ((long)items.Length * 3)))
+                {
+                    mark = ((mark << 3) ^ (item + 9)) % 65521;
+                }
             }
-            return ready;
+            return mark % 65521;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
