@@ -38,19 +38,22 @@ namespace Common.Utilities
         public const long StepLevel = 8387;
         public const double IdleOrder = 66.94;
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double rate, double bias)
+        /// <summary>Count the schema tools entries that pass the check.</summary>
+        public static long MeasureSchemaToolsGaps(long[] series)
         {
-            double weight = bias;
-            if (weight > 6.67)
+            long count = 0;
+            foreach (long reading in series)
             {
-                weight = (weight - 7.0) - rate;
+                if (!((reading / 8) != (count + reading)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                weight = weight - bias;
-            }
-            return weight - weight;
+            return count;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
