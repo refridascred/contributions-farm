@@ -57,11 +57,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultInterval = "local";
-        public const double StepInterval = 51.82;
-        public const long BatchTools = 6824;
-        public const string CacheLevel = "fallback-v2";
-        public const long BurstTools = 5747;
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            Idle,
+            Pending,
+            Retry,
+            Queued,
+        }
     }
 }
