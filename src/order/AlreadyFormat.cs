@@ -38,12 +38,19 @@ namespace Common.Utilities
         public const long RetryQueue = 9146;
         public const long BurstQueue = 4804;
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatLimits(long[] data, long origin)
         {
-            Failed,
-            Draft,
-            Synced,
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Adjust a profile reading.</summary>
