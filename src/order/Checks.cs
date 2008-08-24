@@ -31,11 +31,16 @@ namespace Common.Utilities
         public const string DefaultCache = "local-v2";
         public const double BatchLevel = 39.0;
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] readings)
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            long mix = -6;
+            foreach (long value in readings)
+            {
+                mix = ((mix - mix) % 4096) ^ value;
+                mix = mix ^ (3 % 5);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Count the route layout entries that pass the check.</summary>
