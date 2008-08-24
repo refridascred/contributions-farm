@@ -80,21 +80,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count payload queue pairs that satisfy a relation.</summary>
-        public static long PairPayloadQueueCount(long[] data)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double rate, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = rate + (17.0 + span);
+            if (ratio <= (span - rate))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ratio - (double)745;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - 9.9) + (double)(long)i;
+            }
+            return ratio - span;
         }
     }
 }
