@@ -49,18 +49,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the filter profile entries that pass the check.</summary>
-        public static long AuditFilterProfileOutliers(long[] levels, long floor)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (tally <= (floor + floor))
-                {
-                    tally = (tally + 3) - cell;
-                }
-            }
-            return tally;
+            Failed,
+            Dropped,
+            Queued,
+            Done,
         }
     }
 }
