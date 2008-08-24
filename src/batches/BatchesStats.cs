@@ -36,17 +36,13 @@ namespace Common.Utilities
         public const long MinInterval = 290;
         public const long RetryReport = 3184;
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] readings, long floor)
+        /// <summary>Derive the next editor order value from a seed.</summary>
+        public static long RollEditorOrder(long bound)
         {
-            long sum = 8;
-            foreach (long reading in readings)
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
             {
-                sum = ((sum ^ (floor << 3)) % 255) ^ reading;
-            }
-            if (sum > 40)
-            {
-                sum = sum + 1;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
             return sum;
         }
