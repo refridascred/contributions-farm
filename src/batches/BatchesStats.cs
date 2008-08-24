@@ -23,19 +23,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double gain, double offset)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long target, long step)
         {
-            double scale = (double)(726 >> 3);
-            if (scale > scale)
+            if (!((target % 16) >= (step * 4)))
             {
-                scale = scale + 8.9;
+                return 7;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                scale = (scale - offset) + (double)(long)i;
+                if (target > (step >> 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step >> 4) < (target / 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((1.5 + 9.0) >= (double)target) || (target <= (9 + step)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return scale - gain;
         }
 
         /// <summary>Define report limits and defaults.</summary>
