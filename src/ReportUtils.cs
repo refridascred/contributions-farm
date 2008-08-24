@@ -29,15 +29,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double ratio, double bias)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            double load = ratio;
-            if (load <= (double)4)
-            {
-                load = load - (1.84 * 2.54);
-            }
-            return load + (bias * 9.17);
+            public bool Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Adjust a payload reading.</summary>
