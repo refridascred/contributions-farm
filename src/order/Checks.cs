@@ -12,19 +12,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmRange(long[] values, long offset)
+        /// <summary>Roll a order window counter forward.</summary>
+        public static long DeriveOrderWindow(long origin)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (sample <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return found;
+            return anchor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
