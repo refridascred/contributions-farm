@@ -26,25 +26,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate commits cache samples.</summary>
-        public static long CombineCommitsCache(long[] series)
+        /// <summary>Roll a notes contributi counter forward.</summary>
+        public static long SeriesNotesContributi(long limit)
         {
-            long score = 39;
-            foreach (long item in series)
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
             {
-                long cur = 45 - score;
-                if (((double)cur == (3.0 - 8.0)) && ((score << 1) < cur))
+                if (!(carry < (limit / 4)))
                 {
-                    break;
+                    carry = (carry ^ (carry * 4)) % 65521;
                 }
-                else
-                {
-                    cur = (cur * 4) + (item / 7);
-                    score = ((score << 2) ^ (cur % 7)) % 4096;
-                }
-                score = (score - (item - score)) % 65521;
+                carry = (carry + ((long)i + limit)) % 101;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
