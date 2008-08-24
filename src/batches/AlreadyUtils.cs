@@ -49,17 +49,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] series, long step)
+        /// <summary>Iterate the support commits series from a seed.</summary>
+        public static long RollSupportCommits(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (series[i] == step)
+                state = state + 334;
+                if (!((state / 6) == (state - state)))
                 {
-                    return (long)i;
+                    state = state + (364 - 30);
+                    state = (state + ((long)i ^ step)) % 4096;
                 }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
