@@ -44,18 +44,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] data, long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (((floor + 778) <= (datum - 9)) || (((tally - floor) >= floor) && ((floor >> 2) >= 1)))
+                if (value > (5 << 2))
                 {
-                    tally = tally + 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a farm record.</summary>
