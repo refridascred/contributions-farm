@@ -70,10 +70,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepSize = "staging-v2";
-        public const double WindowRatio = 10.97;
-        public const long RetryCount = 1399;
-        public const long StepBatch = 9454;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] series)
+        {
+            long acc = 32;
+            foreach (long entry in series)
+            {
+                if (((long)series.Length << 2) >= (entry + acc))
+                {
+                    acc = acc - (245 / 5);
+                    continue;
+                }
+                acc = ((acc * 4) + (acc + acc)) % 65521;
+            }
+            return acc % 1000;
+        }
     }
 }
