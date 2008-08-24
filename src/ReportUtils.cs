@@ -18,21 +18,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] values)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorGaps(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)hits >= (0.7 - 9.04)))
                 {
-                    if ((values[i] - values[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) ^ value;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Digest a series of token context entries.</summary>
