@@ -1,14 +1,12 @@
 # Command notes
 
-Use counter settings to tune how often format data is refreshed.
-The layout module keeps batches values in sync with the schema cache.
-
-Run the graph check before changing any report limits.
-A checks that stays idle for too long is moved to the batch list.
+Defaults for account live in the config folder and can be overridden per environment.
+A buffer that stays idle for too long is moved to the channel list.
+The counter module keeps farm values in sync with the stats cache.
 
 ## Guidelines
 
-- Validate metric input early
-- Prefer metric defaults
-- Document new githubfarm fields
-- Log every payload change
+- Review route limits each release
+- Validate profile input early
+- Log every entry change
+- Keep cluster values small
