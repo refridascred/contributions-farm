@@ -46,22 +46,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the schema tools entries that pass the check.</summary>
-        public static long MeasureSchemaToolsGaps(long[] series)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!((reading / 8) != (count + reading)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public double Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
