@@ -1,8 +1,16 @@
 {
-  "cache_ratio_pct": [104, 85, 219, 438],
-  "filter_depth": true,
-  "hard_interval_s": "blue",
-  "hard_delay_pct": 99,
-  "strict": 12.44,
-  "persist": 32.68
+  "retry_window_ms": 41.78,
+  "base_window": ["staging", "latest"],
+  "booking_interval": {
+    "cache_limit": 93.4,
+    "poll_interval_s": {
+      "cache_depth_count": 7250,
+      "verbose": true,
+      "warm_capacity_ms": "green"
+    },
+    "default_interval": 23,
+    "profile_retries": 1.31
+  },
+  "burst_interval_ms": "open",
+  "profile_delay": "standard"
 }
