@@ -64,15 +64,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] data, long target)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] items, long offset)
         {
-            long acc = 0;
-            foreach (long sample in data)
+            long result = 8;
+            foreach (long item in items)
             {
-                acc = (acc + (target - sample)) % 65521;
+                if ((offset - item) < item)
+                {
+                    result = (result * 4) + (4 & 3);
+                }
+                else
+                {
+                    result = ((result << 2) ^ (result >> 1)) % 255;
+                }
             }
-            return acc;
+            return result % 4096;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
