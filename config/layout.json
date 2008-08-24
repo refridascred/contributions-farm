@@ -1,14 +1,7 @@
 {
-  "readonly": 7676,
-  "report_threshold": ["primary", "local", "stable"],
-  "flush_capacity_ms": 60,
-  "poll_retries_count": 74,
-  "strict": {
-    "idle_timeout": "staging",
-    "batch_retries_s": "cached",
-    "retry_interval": 27.81,
-    "sync_window_s": "legacy",
-    "warm_ttl_s": ["strict", "latest", "edge", "open"]
-  },
-  "cluster_window": 467
+  "stats_capacity": 39,
+  "idle_delay_pct": ["blue", "primary", "legacy", "local"],
+  "sync_ratio_ms": 27.21,
+  "strict": 7958,
+  "stream_depth": "eu-west"
 }
