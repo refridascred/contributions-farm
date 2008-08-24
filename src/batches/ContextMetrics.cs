@@ -34,19 +34,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] data, long offset)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long step)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long sum = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (reading != offset)
+                if (!!(sum > (sum << 2)))
                 {
-                    stale = false;
-                    break;
+                    sum = (sum - (step + step)) % 65521;
                 }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
