@@ -1,6 +1,12 @@
 {
-  "soft_threshold_pct": 92,
-  "enabled": "edge",
-  "retry_retries_ms": 8589,
-  "sync_capacity_s": "green"
+  "retry_threshold_pct": {
+    "profile_size": 61.7,
+    "audit": 3.79,
+    "sync_size_pct": 1712,
+    "readonly": 87.16,
+    "poll_capacity_s": "primary"
+  },
+  "verbose": 2771,
+  "hard_ttl_ms": "cached",
+  "idle_delay": 60.48
 }
