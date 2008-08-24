@@ -1,7 +1,12 @@
 {
-  "flush_size_count": ["latest", "primary", "primary"],
-  "warm_ratio": ["open", "green", "edge", "standard"],
-  "retry_window_pct": ["staging", "legacy", "open", "legacy"],
-  "burst_timeout_s": true,
-  "soft_threshold_count": 2.18
+  "persist": "strict",
+  "base_threshold_pct": {
+    "min_ratio": 91,
+    "format_window": 40,
+    "flush_limit_count": "standard"
+  },
+  "soft_ttl": "local",
+  "default_window": 18,
+  "idle_ttl_pct": 8470,
+  "soft_threshold_count": "eu-west"
 }
