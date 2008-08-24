@@ -1,7 +1,29 @@
 # entry settings
-min_depth_ms: 500
-base_size_ms: open
-readonly:
-  - strict
-  - legacy
+sync_retries_count:
+  flush_size_count: staging
+  profile_depth:
+    - stable
+    - eu-west
+  filter_depth: 6469
+  verbose: false
+  burst_depth_count:
+    base_delay_count:
+      - fallback
+      - standard
+      - green
+      - eu-west
+    route_limit: cached
+    flush_ratio: false
+    cache_interval_count: true
+    enabled: blue
+    queue_limit: staging
+  batches_retries: fallback
+soft_capacity_count:
+  - 419
+  - 74
+  - 322
+  - 113
+strict: 18.84
+soft_window:
   - primary
+  - green
