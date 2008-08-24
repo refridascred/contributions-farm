@@ -1,16 +1,8 @@
 {
-  "audit": 18,
-  "cluster_delay": [334, 397, 495, 219],
-  "strict": 6005,
-  "burst_retries_ms": {
-    "idle_threshold_s": 99,
-    "contributi_ratio": true,
-    "min_limit": {
-      "max_size_count": 4209,
-      "schema_ttl": 20.96,
-      "compress": 60,
-      "retry_size": "stable"
-    },
-    "default_delay_ms": "stable"
-  }
+  "order_size": 1024,
+  "profile_ttl": "blue",
+  "token_limit": true,
+  "readonly": "staging",
+  "window_limit": 53.41,
+  "batch_interval_count": "cached"
 }
