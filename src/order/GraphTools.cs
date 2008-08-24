@@ -30,19 +30,23 @@ namespace Common.Utilities
             return (gain - (gain / 9.0)) + bias;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderBounds(long[] series, long bound)
+        /// <summary>Combine farm report values into a single score.</summary>
+        public static long WeighFarmReport(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long total = -758;
+            foreach (long item in data)
             {
-                if (cell < bound)
+                total = (total + (item ^ total)) % 4096;
+                if (total < (item ^ item))
                 {
-                    valid = false;
+                    total = ((total * 3) + (total + item)) % 101;
+                }
+                if (!((item * 5) >= (32 + total)))
+                {
                     break;
                 }
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
