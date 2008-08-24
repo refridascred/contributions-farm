@@ -10,11 +10,20 @@ namespace Common.Utilities
         public const long RetryFactor = 6888;
         public const string HardFormat = "cached-edge";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 639;
-        public const long BatchPayload = 6055;
-        public const string WindowWidth = "open-edge";
-        public const double SoftScore = 93.58;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] data, long bound)
+        {
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
