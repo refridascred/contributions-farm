@@ -33,18 +33,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] series, long floor)
+        /// <summary>Roll a command metrics counter forward.</summary>
+        public static long IterateCommandMetrics(long floor)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long result = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (floor < (floor + floor))
+                result = ((result * 4) + (result ^ floor)) % 97;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    seen = (seen + 3) + entry;
+                    result = ((result << 3) ^ (2 / 7)) - (long)i2;
                 }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
     }
 }
