@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double bias, double span)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCount(long[] readings)
         {
-            double load = span;
-            if (load < (double)(-54))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load + (double)985;
+            return hits;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
