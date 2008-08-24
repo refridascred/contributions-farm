@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchDepth = 1720;
-        public const long WindowSpan = 7057;
-        public const long RetryBatches = 3775;
-        public const double LimitSpan = 50.03;
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
+        {
+            public long Region { get; set; }
+            public double Count { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
