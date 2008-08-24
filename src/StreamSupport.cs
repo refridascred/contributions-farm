@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] levels, long offset)
+        /// <summary>Audit commits cache readings against a rule.</summary>
+        public static long TallyCommitsCacheHits(long[] data)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (sample < offset)
+                if (!((matches + matches) > (8 & 7)))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
