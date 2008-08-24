@@ -30,18 +30,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextGaps(long[] data, long floor)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if (((double)floor < (6.58 / 3.0)) && !((double)seen == (2.88 + 0.87)))
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many profile cache samples are out of range.</summary>
