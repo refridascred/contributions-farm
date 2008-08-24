@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            Draft,
-            Active,
-            Pending,
-            Done,
-            Stale,
+            public string Owner { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many command context samples are out of range.</summary>
