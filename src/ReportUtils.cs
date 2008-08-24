@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double gain, double bias)
         {
-            public bool Total { get; set; }
-            public long Token { get; set; }
-            public long Label { get; set; }
-            public double Region { get; set; }
+            double bias2 = (double)(41 + 218);
+            if (bias2 <= (gain / 9.0))
+            {
+                bias2 = bias2 - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 - bias2) + (double)(long)i;
+            }
+            return bias2 - (9.65 + bias2);
         }
 
         /// <summary>Accumulate format record samples.</summary>
