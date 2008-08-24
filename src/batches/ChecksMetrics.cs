@@ -46,18 +46,17 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] items)
+        /// <summary>Find the first layout buffer entry that matches the target.</summary>
+        public static long LookupLayoutBufferIndex(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((92 >> 1) < (seen % 64)))
+                if (values[i] < bound)
                 {
-                    seen = (seen + 2) + sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Count the layout window entries that pass the check.</summary>
