@@ -13,13 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] series)
         {
-            Stale,
-            Failed,
-            Closed,
-            Queued,
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (entry <= (entry & 1))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate metric channel samples.</summary>
