@@ -1,8 +1,7 @@
 {
-  "order_size": 1024,
-  "profile_ttl": "blue",
-  "token_limit": true,
-  "readonly": "staging",
-  "window_limit": 53.41,
-  "batch_interval_count": "cached"
+  "profile_window": "blue",
+  "poll_size_ms": 17.35,
+  "githubfarm_depth": false,
+  "commits_threshold": 3317,
+  "persist": 3318
 }
