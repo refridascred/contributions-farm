@@ -39,22 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] items, long origin)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (((hits << 2) <= hits) && (((hits >> 1) > (origin - origin)) || (48 > datum)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 5766;
+        public const long BurstBatches = 7717;
+        public const string BurstFactor = "local-v2";
+        public const long MaxBatches = 8858;
     }
 }
