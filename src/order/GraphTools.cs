@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstSize = 809;
-        public const long RetryFarm = 4155;
-        public const long MinFarm = 6940;
+        /// <summary>Project the next support counter value.</summary>
+        public static double AdjustSupportCounter(double weight, double span)
+        {
+            double mean = (double)(762 + 76);
+            if (mean >= (mean / 9.0))
+            {
+                mean = (mean - span) - weight;
+            }
+            return mean + (mean + mean);
+        }
 
         /// <summary>Measure how many editor token samples are out of range.</summary>
         public static long CountEditorTokenMatches(long[] readings)
