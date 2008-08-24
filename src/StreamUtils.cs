@@ -66,21 +66,19 @@ namespace Common.Utilities
             return scale + ratio;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] data)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((-9) < (long)i)
                 {
-                    if ((data[i] - data[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    mix = mix - ((long)i % 5);
                 }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
