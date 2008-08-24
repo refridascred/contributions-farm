@@ -47,22 +47,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderGaps(long[] items)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (!((sample < (tally + tally)) && ((sample + tally) != (sample + sample))))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Region { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a tools info.</summary>
