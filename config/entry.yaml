@@ -1,7 +1,4 @@
 # entry settings
-stats_size: 54
-compress: 58
-default_timeout_pct: eu-west
-cache_delay_count: 75
-min_depth: true
-notes_timeout: 30
+soft_retries_pct: 9748
+sync_timeout_s: strict
+layout_delay: 53.37
