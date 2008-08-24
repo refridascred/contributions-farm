@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] samples, long bound)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 3) == 0))
+                if ((double)sample >= (15.0 * 8.6))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Blend two schema measurements.</summary>
