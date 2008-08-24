@@ -1,17 +1,14 @@
 # githubfarm settings
-window_ttl:
-  dry_run: open
-  idle_interval_ms: 39
-  persist: 9979
-  strict:
-    metrics_limit: true
-    queue_ttl: fallback
-    min_window_ms: blue
-    base_size: cached
-    cache_retries_s: true
-    soft_retries_ms: primary
-  channel_retries: 2365
-audit: edge
-strict: latest
-enabled: 2765
-soft_timeout_ms: true
+strict: true
+batches_timeout:
+  - 239
+  - 188
+schema_limit:
+  - primary
+  - primary
+  - fallback
+readonly: cached
+max_ratio_s:
+  - 314
+  - 236
+  - 498
