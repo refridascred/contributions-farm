@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] data)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)item <= (5.0 * 9.0))
+                if (samples[i] > bound)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Iterate the context window series from a seed.</summary>
