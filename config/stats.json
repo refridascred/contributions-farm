@@ -1,5 +1,22 @@
 {
-  "sync_size": 16.92,
-  "default_ratio_count": 1.27,
-  "batch_depth": "fallback"
+  "context_limit": 250,
+  "soft_delay_count": 68.72,
+  "hard_threshold": {
+    "compress": 30,
+    "order_limit": 40,
+    "counter_interval": {
+      "record_size": [312, 219],
+      "route_threshold": [112, 380, 5],
+      "context_ttl": 16.31,
+      "burst_ttl_s": false,
+      "sync_timeout": "strict"
+    },
+    "stream_timeout": 96.58
+  },
+  "stream_ratio": 49.17,
+  "burst_capacity_s": {
+    "route_size": [143, 446, 410, 166],
+    "warm_interval_s": 9490,
+    "persist": 60
+  }
 }
