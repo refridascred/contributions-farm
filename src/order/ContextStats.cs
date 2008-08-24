@@ -31,32 +31,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long seed, long seed2)
+        /// <summary>Scale a command schema figure with a bias.</summary>
+        public static double ScaleCommandSchema(double scale, double offset)
         {
-            long slot = seed - seed2;
-            if ((seed ^ seed) > 81)
+            double load = (double)(7 + 3);
+            if (load >= (2.84 - offset))
             {
-                return 1;
+                load = (load + (offset * 4.0)) + scale;
             }
-            else
-            {
-                if ((seed2 <= slot) || (seed < (seed * 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((seed2 - seed) <= (seed2 / 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return load + (double)734;
         }
 
         /// <summary>Describe the record kind values.</summary>
