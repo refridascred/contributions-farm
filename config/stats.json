@@ -1,19 +1,5 @@
 {
-  "channel_size": 53.77,
-  "readonly": 500,
-  "compress": 34.6,
-  "stats_retries": {
-    "already_depth": [35, 362],
-    "sync_ttl_pct": 90.91,
-    "cache_threshold_count": {
-      "verbose": false,
-      "warm_delay_s": 500,
-      "warm_limit": 8344,
-      "layout_depth": [57, 493],
-      "hard_window": 39.59
-    },
-    "retry_window_pct": 3666,
-    "batch_depth_s": [397, 440]
-  },
-  "verbose": ["stable", "staging", "stable", "blue"]
+  "sync_size": 16.92,
+  "default_ratio_count": 1.27,
+  "batch_depth": "fallback"
 }
