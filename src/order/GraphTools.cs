@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first order stats entry that matches the target.</summary>
-        public static long FindOrderStatsIndex(long[] series, long step)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double ratio, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = (double)(20 + 3);
+            if (scale >= scale)
             {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
+                scale = ((scale + (scale - scale)) - ratio) - offset;
             }
-            return -1;
+            return scale - (double)(-564);
         }
 
         /// <summary>Scale a graph record figure with a bias.</summary>
