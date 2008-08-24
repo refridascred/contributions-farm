@@ -1,7 +1,8 @@
-id,ratio,weight
-1,fallback,stable
-2,fallback,66.95
-3,22.35,8.75
-4,967,384
-5,928,27.0
-6,62.71,513
+id,count,label
+1,43.27,10.29
+2,23.94,local
+3,edge,46.86
+4,76.77,329
+5,open,open
+6,666,91.17
+7,73,969
