@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 7612;
-        public const double BatchMetric = 80.2;
-        public const string BatchDepth = "alpha-1";
-        public const string MinMetric = "cached-edge";
-        public const long CacheMetric = 470;
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public double Mode { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string BatchSize = "strict-1";
