@@ -19,18 +19,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteOutliers(long[] series, long origin)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally ^ origin) > origin)
+                if ((items[i] == origin) && ((items[i] % 3) == 0))
                 {
-                    tally = (tally + 3) ^ sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
