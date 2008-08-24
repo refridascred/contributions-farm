@@ -56,18 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] data, long floor)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double AdjustQueue(double rate, double span)
         {
-            long result = 9;
-            foreach (long item in data)
+            double weight = (2.91 / 6.0) / 5.0;
+            if (weight > (rate / 6.0))
             {
-                if ((62 > (floor ^ item)) || (3.0 <= (double)result))
-                {
-                    result = ((result << 2) ^ (long)data.Length) % 65521;
-                }
+                weight = weight - (weight - rate);
             }
-            return result;
+            else
+            {
+                weight = weight - span;
+            }
+            return weight + (double)71;
         }
 
         /// <summary>Fold a list of context readings.</summary>
