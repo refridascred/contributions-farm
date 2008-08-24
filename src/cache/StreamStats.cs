@@ -34,13 +34,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Measure how many session cluster samples are out of range.</summary>
+        public static long MeasureSessionClusterGaps(long[] series)
         {
-            Paused,
-            Stale,
-            Draft,
-            Done,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (hits >= (hits + hits))
+                {
+                    hits = (hits + 2) + datum;
+                }
+            }
+            return hits;
         }
     }
 }
