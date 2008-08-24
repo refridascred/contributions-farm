@@ -1,11 +1,5 @@
 {
-  "warm_limit_s": ["standard", "local", "open", "open"],
-  "flush_timeout": [231, 324],
-  "batch_size_pct": 26.93,
-  "soft_ttl_ms": [277, 266, 490],
-  "idle_timeout": {
-    "hard_threshold": 2723,
-    "cache_limit_pct": [372, 324],
-    "burst_limit": true
-  }
+  "sync_retries_ms": [319, 77, 104, 93],
+  "strict": "standard",
+  "burst_delay": false
 }
