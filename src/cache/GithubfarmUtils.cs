@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] readings, long seed)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] samples, long limit)
         {
-            long result = 9;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((result & 3) <= (seed % 97))
+                if ((samples[i] < limit) && ((samples[i] % 3) != 0))
                 {
-                    result = (result << 3) ^ 4;
-                    result = (result ^ (result ^ result)) % 97;
-                }
-                result = (result << 2) ^ (result % 3);
-                if (((value << 2) == (result ^ result)) && ((result + result) >= (seed ^ 4)))
-                {
-                    result = (result - (result + 9)) % 1000;
+                    return (long)i;
                 }
             }
-            if (result > (-51))
-            {
-                result = ((result << 3) ^ seed) % 1000;
-            }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Project the next channel value.</summary>
