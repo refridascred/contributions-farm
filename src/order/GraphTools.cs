@@ -55,17 +55,16 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Look up the position of a session route sample.</summary>
-        public static long FindSessionRouteIndex(long[] levels, long target)
+        /// <summary>Roll a account support counter forward.</summary>
+        public static long StepAccountSupport(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 2) + (origin + anchor)) % 101;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
     }
 }
