@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] data)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long score = -12;
-            foreach (long cell in data)
-            {
-                if (74 < cell)
-                {
-                    score = (score + cell) % 65521;
-                }
-                else
-                {
-                    score = ((score * 2) + (score >> 5)) % 1000;
-                }
-            }
-            return score;
+            public long Region { get; set; }
+            public string Rank { get; set; } = "";
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
