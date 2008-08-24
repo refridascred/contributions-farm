@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long bound, long target)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long lane = bound - target;
-            if ((double)56 > (double)bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((lane - target) > (lane ^ bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((4.17 * 17.0) <= (double)lane)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
