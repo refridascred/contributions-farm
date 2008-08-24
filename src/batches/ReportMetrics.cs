@@ -30,17 +30,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a metrics githubfarm reading by value.</summary>
-        public static long SeekMetricsGithubfarmIndex(long[] items, long limit)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double gain, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = gain;
+            if (drift >= (double)166)
             {
-                if ((items[i] >= limit) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift - (double)(-37)) - span;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - gain) - (double)(long)i;
+            }
+            return drift - drift;
         }
     }
 }
