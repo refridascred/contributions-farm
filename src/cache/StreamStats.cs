@@ -22,12 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double RetryTools = 33.68;
-        public const string HardTools = "primary-v2";
-        public const long LimitScore = 4099;
-        public const long BaseTools = 2468;
-        public const string CacheTools = "local-edge";
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] items, long bound)
+        {
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Grade a route stats value against two limits.</summary>
         public static long GradeRouteStats(long limit, long floor)
