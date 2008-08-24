@@ -1,9 +1,6 @@
 # support settings
-context_window:
-  hard_capacity_count: latest
-  idle_threshold: strict
-  min_timeout: true
-  base_limit_pct: true
-  min_window_count: true
-editor_ttl: cached
-queue_delay: open
+stream_depth: false
+soft_interval: 100
+cache_timeout: green
+graph_interval: 61
+warm_capacity_s: 16
