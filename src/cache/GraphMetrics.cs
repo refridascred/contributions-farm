@@ -25,18 +25,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] items)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] values, long step)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long mark = 32;
+            foreach (long entry in values)
             {
-                if (0.16 > (double)reading)
-                {
-                    count = count + 1;
-                }
+                mark = (((mark << 2) ^ 6) + entry) + step;
             }
-            return count;
+            return mark % 1000;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
