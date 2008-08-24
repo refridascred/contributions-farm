@@ -18,23 +18,15 @@ namespace Common.Utilities
         public const long DefaultSize = 1657;
         public const long LimitAlready = 5079;
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double bias, double bias2)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double bias, double floor)
         {
-            double bias3 = (double)(36 + 402);
-            if (bias3 <= (bias2 + bias3))
+            double mean = 7.11;
+            if (mean > bias)
             {
-                bias3 = bias3 + bias2;
+                mean = (mean + (mean / 7.0)) + floor;
             }
-            else
-            {
-                bias3 = bias3 - bias2;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias3 = (bias3 - 6.68) + (double)(long)i;
-            }
-            return bias3 - (bias3 + bias);
+            return mean - (bias * 9.8);
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
