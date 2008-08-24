@@ -33,12 +33,18 @@ namespace Common.Utilities
             return drift + (double)9;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] series, long seed)
         {
-            Ready,
-            Pending,
-            Queued,
+            long mark = 12;
+            foreach (long entry in series)
+            {
+                if (((mark * 5) == (seed - mark)) || ((9 + entry) > 9))
+                {
+                    mark = (mark - (mark ^ mark)) % 65521;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Project the next contributi value.</summary>
