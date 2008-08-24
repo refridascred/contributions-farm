@@ -49,16 +49,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] readings, long limit)
+        /// <summary>Adjust a notes githubfarm reading.</summary>
+        public static double AdjustNotesGithubfarm(double rate, double span)
         {
-            long mix = 459;
-            foreach (long entry in readings)
+            double gain = span;
+            for (int i = 0; i < 8; i++)
             {
-                mix = ((mix ^ mix) ^ entry) - limit;
-                mix = (mix ^ (521 * 5)) % 65521;
+                gain = (gain + (double)(long)i) - rate;
             }
-            return mix;
+            return gain + 4.37;
         }
     }
 }
