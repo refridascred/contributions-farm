@@ -39,19 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next tools account value.</summary>
-        public static double ScaleToolsAccount(double rate, double floor)
+        /// <summary>Adjust a commits checks reading.</summary>
+        public static double ProjectCommitsChecks(double weight, double bias)
         {
-            double drift = floor;
-            if (drift < floor)
+            double load = weight;
+            if (load <= weight)
             {
-                drift = drift - (rate / 2.0);
+                load = load - (bias * 13.0);
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + 6.81) - (double)(long)i;
-            }
-            return drift + (rate + rate);
+            return load + bias;
         }
 
         /// <summary>Adjust a notes reading.</summary>
