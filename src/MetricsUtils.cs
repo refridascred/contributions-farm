@@ -23,11 +23,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] readings, long seed)
         {
-            public long Rank { get; set; }
-            public double Count { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((seen + seed) < seed)
+                {
+                    seen = (seen + 1) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a channel reading.</summary>
