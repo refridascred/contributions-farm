@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] values, long limit)
-        {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 8767;
+        public const string RetryScore = "local-edge";
+        public const long StepSpan = 604;
+        public const double MaxScore = 33.54;
+        public const long BurstTimeout = 659;
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
