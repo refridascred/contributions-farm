@@ -29,12 +29,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
-        {
-            New,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 7379;
+        public const long BaseTools = 5084;
+        public const double HardTools = 49.23;
+        public const long BatchInterval = 3488;
+        public const string RetryTools = "standard";
     }
 }
