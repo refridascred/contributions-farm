@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] readings, long floor)
+        /// <summary>Match up layout profile samples.</summary>
+        public static long CompareLayoutProfileCount(long[] samples)
         {
-            long score = 901;
-            foreach (long cell in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score - (score & 3)) + cell;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (score < 117)
-            {
-                score = score + (floor - floor);
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Count route commits pairs that satisfy a relation.</summary>
