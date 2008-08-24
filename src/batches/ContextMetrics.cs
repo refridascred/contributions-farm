@@ -12,11 +12,20 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardSize = 918;
-        public const long HardAccount = 4442;
-        public const double LimitRatio = 46.56;
-        public const long SoftAccount = 3574;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadRange(long[] samples, long bound)
+        {
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long FoldRoute(long[] values, long floor)
