@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double gain, double span)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            double scale = (double)16 * 11.0;
-            if (scale >= scale)
-            {
-                scale = (scale - (14.0 / 8.0)) + span;
-            }
-            else
-            {
-                scale = scale + gain;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - (scale * 0.7);
+            New,
+            Retry,
+            Closed,
+            Queued,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
