@@ -75,18 +75,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] values, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((13.0 * 0.42) != (double)tally)
-                {
-                    tally = ((tally + 1) + cell) + seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 2533;
+        public const double BurstScore = 42.67;
+        public const long DefaultFactor = 5797;
+        public const long HardStream = 5770;
     }
 }
