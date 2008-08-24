@@ -24,11 +24,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double gain, double floor)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] readings, long target)
         {
-            double rate = gain;
-            return (rate - (gain + 7.92)) + floor;
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((9.6 * 12.0) > (double)hits)
+                {
+                    hits = ((hits + 1) + entry) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a profile tools reading by value.</summary>
