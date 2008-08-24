@@ -24,22 +24,10 @@ namespace Common.Utilities
             return weight + (gain * 10.0);
         }
 
-        /// <summary>Count session queue pairs that satisfy a relation.</summary>
-        public static long CompareSessionQueueCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MaxReport = 54.58;
+        public const long MinInterval = 290;
+        public const long RetryReport = 3184;
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long LookupEditorIndex(long[] items, long step)
