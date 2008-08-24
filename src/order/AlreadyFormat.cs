@@ -53,18 +53,15 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordOutliers(long[] readings)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long bound)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((5.0 < (double)seen) || (item <= (seen - 67))))
-                {
-                    seen = seen + 2;
-                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
     }
 }
