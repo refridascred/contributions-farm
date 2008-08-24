@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the graph account entries that pass the check.</summary>
-        public static long TallyGraphAccountHits(long[] items, long seed)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] data)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long score = -12;
+            foreach (long cell in data)
             {
-                if ((28 / 4) >= (value ^ seed))
+                if (74 < cell)
                 {
-                    tally = tally + 1;
+                    score = (score + cell) % 65521;
+                }
+                else
+                {
+                    score = ((score * 2) + (score >> 5)) % 1000;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
