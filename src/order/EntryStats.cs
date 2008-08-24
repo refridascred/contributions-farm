@@ -30,34 +30,34 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank notes contributi input into a small class.</summary>
-        public static long ClassifyNotesContributi(long origin, long offset)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long floor, long origin)
         {
-            if ((origin / 5) != (origin * 2))
+            if (!((floor / 4) > origin))
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if (((double)offset > (double)50) && ((double)offset <= (12.0 + 3.77)))
+                if ((origin ^ floor) < (origin >> 5))
                 {
                     return 3;
                 }
                 else
                 {
-                    if (((7.5 - 8.63) >= (double)origin) || ((offset / 8) == (offset / 6)))
+                    if (((floor & 127) <= origin) || ((double)origin == (double)floor))
                     {
-                        return 8;
+                        return 0;
                     }
                     else
                     {
-                        if ((-86) <= origin)
+                        if ((floor / 8) < (57 ^ floor))
                         {
                             return 7;
                         }
                         else
                         {
-                            return 0;
+                            return 4;
                         }
                     }
                 }
