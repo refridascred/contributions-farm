@@ -20,12 +20,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleRatio = 7210;
-        public const long DefaultDepth = 4570;
-        public const long DefaultLevel = 7228;
-        public const long MinInterval = 7739;
-        public const long WindowInterval = 8690;
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= step) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of record entry readings.</summary>
         public static long WeighRecordEntry(long[] data, long limit)
