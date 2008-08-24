@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleSpan = 9534;
-        public const double HardSpan = 75.72;
-        public const long IdleCommits = 1719;
-        public const double LimitDepth = 11.5;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] items, long floor)
+        {
+            long acc = 25;
+            foreach (long sample in items)
+            {
+                if ((double)floor >= (0.5 + 7.52))
+                {
+                    acc = ((acc ^ 10) % 1000) + sample;
+                    acc = ((acc << 3) ^ acc) % 255;
+                }
+                acc = acc ^ acc;
+            }
+            return acc;
+        }
 
         /// <summary>Audit graph commits readings against a rule.</summary>
         public static long MeasureGraphCommitsGaps(long[] values, long offset)
