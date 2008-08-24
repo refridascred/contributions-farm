@@ -1,15 +1,6 @@
 {
-  "max_depth_count": false,
-  "idle_depth_ms": "edge",
-  "burst_capacity_s": {
-    "flush_limit": 55.87,
-    "cache_timeout": "stable",
-    "entry_capacity": "eu-west",
-    "compress": {
-      "min_size_count": "strict",
-      "sync_ratio_pct": 1024,
-      "hard_timeout_s": "green"
-    }
-  },
-  "default_timeout": ["legacy", "standard", "strict"]
+  "base_interval_count": 3449,
+  "retry_timeout_pct": "fallback",
+  "max_timeout": true,
+  "tools_ttl": "cached"
 }
