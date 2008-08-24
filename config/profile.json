@@ -1,6 +1,23 @@
 {
-  "enabled": false,
-  "cache_ttl_pct": true,
-  "batch_threshold_s": 7,
-  "readonly": "fallback"
+  "githubfarm_timeout": {
+    "enabled": {
+      "poll_capacity": false,
+      "readonly": true,
+      "buffer_timeout": [90, 267, 396],
+      "max_timeout_s": "staging",
+      "base_retries_pct": 67.12,
+      "flush_interval_pct": "standard"
+    },
+    "burst_limit_pct": 49.27,
+    "farm_size": 1024
+  },
+  "sync_limit": 68.6,
+  "cluster_delay": {
+    "idle_interval": 60,
+    "verbose": "cached",
+    "max_limit_ms": ["stable", "primary", "staging"],
+    "burst_interval": "latest"
+  },
+  "max_limit": 37,
+  "checks_ratio": 93.49
 }
