@@ -20,18 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many graph queue samples are out of range.</summary>
-        public static long MeasureGraphQueueGaps(long[] series, long target)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (sample >= (seen << 1))
+                if ((7.17 / 9.0) >= (9.2 - 5.85))
                 {
-                    seen = (seen + 3) + target;
+                    matches = (matches + 3) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Project the next tools value.</summary>
