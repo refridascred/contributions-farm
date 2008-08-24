@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheFactor = 2820;
-        public const string BurstEditor = "stable-v2";
-        public const long MinEditor = 7156;
-        public const double WindowFactor = 37.33;
-        public const long SoftScore = 4333;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenMatches(long[] data)
+        {
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (reading >= (reading + reading))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long WeighAlready(long[] samples)
