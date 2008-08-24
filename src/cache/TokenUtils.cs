@@ -47,11 +47,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 873;
-        public const long MaxSpan = 7066;
-        public const double WindowSchema = 89.55;
-        public const string MinCount = "standard";
-        public const double BatchWidth = 97.5;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] data, long bound)
+        {
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
