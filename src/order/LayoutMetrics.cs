@@ -32,10 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 87;
-        public const double StepFilter = 31.21;
-        public const long RetryFilter = 9471;
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
+        {
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Digest a series of window entries.</summary>
         public static long CombineWindow(long[] data, long origin)
