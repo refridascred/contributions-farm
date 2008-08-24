@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const long RetryFactor = 6888;
         public const string HardFormat = "cached-edge";
 
-        /// <summary>Blend two stats editor measurements.</summary>
-        public static double ProjectStatsEditor(double ratio, double bias)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] data, long step)
         {
-            double drift = bias - bias;
-            return (drift + drift) + ratio;
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Check that every command session entry stays within the limit.</summary>
