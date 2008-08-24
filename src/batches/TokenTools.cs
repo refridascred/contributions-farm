@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] series, long floor)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((18.0 - 18.0) <= (double)entry)
-                {
-                    count = (count + 3) + floor;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
