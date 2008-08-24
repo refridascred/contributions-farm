@@ -73,15 +73,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine buffer tools values into a single score.</summary>
-        public static long WeighBufferTools(long[] items, long bound)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long score = 19;
-            foreach (long cell in items)
-            {
-                score = ((score << 2) ^ cell) + bound;
-            }
-            return score;
+            New,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Rank session stats input into a small class.</summary>
