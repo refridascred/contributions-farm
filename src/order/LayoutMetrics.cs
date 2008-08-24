@@ -13,20 +13,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long step)
+        /// <summary>Iterate the support cluster series from a seed.</summary>
+        public static long IterateSupportCluster(long step)
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
             {
-                mix = mix ^ ((long)i - step);
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mix = (mix - (step - (long)i2)) % 255;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Digest a series of window entries.</summary>
