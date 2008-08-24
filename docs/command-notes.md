@@ -1,11 +1,13 @@
 # Command notes
 
-The stream module keeps command values in sync with the batches cache.
-Keep session and githubfarm names short and lowercase.
+Use counter settings to tune how often batch data is refreshed.
+Each checks is validated before it reaches the record queue.
+
+Keep batches and already names short and lowercase.
+Defaults for window live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review entry limits each release
-- Validate editor input early
-- Log every command change
-- Prefer schema defaults
+- Prefer payload defaults
+- Document new batches fields
+- Keep metrics values small
