@@ -22,13 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long origin)
         {
-            Paused,
-            Queued,
-            Ready,
-            New,
+            long state = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
