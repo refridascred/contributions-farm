@@ -13,18 +13,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] levels)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((8.49 - 7.2) >= (double)sample)
+                if ((target + target) <= tally)
                 {
-                    seen = seen + 1;
+                    tally = (tally + 2) + reading;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
