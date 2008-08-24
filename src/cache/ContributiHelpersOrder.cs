@@ -36,22 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] values, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] values, long seed)
         {
-            long mark = 6;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((offset + datum) < mark)
+                if ((18.0 - 20.0) > (double)seen)
                 {
-                    mark = mark + (datum + mark);
+                    seen = ((seen + 2) + entry) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (mark < 610)
-            {
-                mark = ((mark << 2) ^ offset) % 97;
-            }
-            return mark;
+            return seen;
         }
     }
 }
