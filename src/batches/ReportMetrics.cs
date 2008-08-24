@@ -21,10 +21,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 5766;
-        public const long BurstBatches = 7717;
-        public const string BurstFactor = "local-v2";
-        public const long MaxBatches = 8858;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 1590;
+        public const long MaxBudget = 1659;
+        public const long BatchReport = 8271;
+        public const string DefaultRatio = "strict";
     }
 }
