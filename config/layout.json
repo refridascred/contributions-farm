@@ -1,5 +1,13 @@
 {
-  "context_ttl": 35.12,
-  "burst_delay_ms": 60,
-  "account_ttl": "stable"
+  "default_capacity_pct": [92, 4, 186, 223],
+  "flush_depth_s": false,
+  "verbose": 30,
+  "max_capacity": [430, 209, 301, 448],
+  "min_threshold": "legacy",
+  "counter_retries": {
+    "flush_capacity": ["stable", "green", "staging", "blue"],
+    "flush_capacity_count": "local",
+    "retry_retries_count": [158, 478, 159],
+    "dry_run": false
+  }
 }
