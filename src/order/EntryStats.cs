@@ -29,38 +29,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long floor, long origin)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] data, long offset)
         {
-            if (!((floor / 4) > origin))
+            long tally = 0;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin ^ floor) < (origin >> 5))
+                if ((offset - 629) == (tally + tally))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((floor & 127) <= origin) || ((double)origin == (double)floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor / 8) < (57 ^ floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = (tally + 1) + cell;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
