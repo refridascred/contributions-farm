@@ -63,13 +63,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyRange(long[] samples, long offset)
         {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
