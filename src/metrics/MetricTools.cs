@@ -11,10 +11,23 @@ namespace Common.Utilities
         public const double DefaultDepth = 76.34;
         public const string LimitCache = "standard";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 4408;
-        public const string CacheBudget = "staging";
-        public const string RetrySpan = "open-v2";
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((matches ^ 87) > (matches % 3))
+                {
+                    matches = (matches + 3) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyMatches(long[] items, long bound)
