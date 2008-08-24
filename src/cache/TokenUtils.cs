@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] data, long bound)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowGaps(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (bound >= (4 << 2))
+                if ((step >> 5) >= tally)
                 {
-                    count = (count + 3) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 2) ^ sample;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the stream state values.</summary>
