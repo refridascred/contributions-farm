@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Rank already notes input into a small class.</summary>
-        public static long SortAlreadyNotes(long bound, long limit)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long limit)
         {
-            long offset = bound + limit;
-            if ((offset + 5) <= (-4))
+            long mark = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
+                mark = ((mark * 5) + limit) % 4096;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((6 ^ bound) <= (limit & 7))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
