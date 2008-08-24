@@ -14,29 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next context stats value from a seed.</summary>
-        public static long DeriveContextStats(long limit)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long score = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((score / 6) == (579 - limit))
-                {
-                    score = score - ((long)i - 78);
-                    score = score - (limit << 1);
-                    break;
-                }
-                if (limit < score)
-                {
-                    score = (score ^ (limit + (long)i)) % 65521;
-                }
-                else
-                {
-                    score = (score + (limit + limit)) % 65521;
-                }
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
