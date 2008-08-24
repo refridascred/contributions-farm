@@ -36,12 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] values)
         {
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (tally < (tally / 4))
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next cluster value.</summary>
