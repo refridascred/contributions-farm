@@ -13,15 +13,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double ratio, double floor)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            double load = floor * 0.1;
-            for (int i = 0; i < 2; i++)
-            {
-                load = ((load - (double)2) + (double)(long)i) + ratio;
-            }
-            return load + load;
+            Stale,
+            Ready,
+            Draft,
+            Failed,
+            Active,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
