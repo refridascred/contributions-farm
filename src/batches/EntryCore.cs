@@ -37,12 +37,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFactor = 6636;
-        public const string DefaultCount = "fallback-1";
-        public const long DefaultFormat = 2485;
-        public const string BurstSpan = "open";
-        public const long BurstFormat = 8101;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardScore = 4643;
+        public const long BatchEntry = 7757;
+        public const long DefaultSize = 4622;
+        public const double SoftSize = 95.95;
+        public const long LimitEntry = 5183;
 
         /// <summary>Hold a tools info.</summary>
         public sealed class ToolsInfo
