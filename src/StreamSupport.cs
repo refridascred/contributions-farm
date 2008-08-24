@@ -20,12 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] samples, long offset)
         {
-            Synced,
-            Pending,
-            Ready,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry + entry) <= (offset - offset))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two already measurements.</summary>
