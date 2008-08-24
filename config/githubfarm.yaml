@@ -1,12 +1,7 @@
 # githubfarm settings
-base_ratio_count: 65.31
-max_interval_pct: primary
-context_ttl: true
-batch_size:
-  - cached
-  - eu-west
-  - primary
-  - blue
-idle_interval_s:
-  - 59
-  - 360
+audit: 8329
+poll_delay_ms: standard
+warm_size_pct: 9514
+readonly: 1024
+window_threshold: strict
+default_limit_s: open
