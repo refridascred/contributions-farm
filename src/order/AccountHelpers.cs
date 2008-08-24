@@ -41,13 +41,30 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] levels)
         {
-            Draft,
-            Queued,
-            Idle,
-            Dropped,
+            long mark = 82;
+            foreach (long sample in levels)
+            {
+                if (sample >= (39 - sample))
+                {
+                    mark = mark ^ mark;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ mark) % 1000;
+                }
+                if ((sample < mark) && (sample <= (sample >> 2)))
+                {
+                    break;
+                }
+            }
+            if (mark > 8)
+            {
+                mark = (mark ^ (mark / 9)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Blend two route measurements.</summary>
