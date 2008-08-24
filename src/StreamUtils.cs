@@ -44,15 +44,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double ratio, double floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] data, long bound)
         {
-            double scale = floor;
-            if (scale <= (floor / 4.0))
+            bool stale = true;
+            foreach (long entry in data)
             {
-                scale = scale + (double)(-6);
+                if (entry != bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return scale + ratio;
+            return stale;
         }
 
         /// <summary>Describe the notes level values.</summary>
