@@ -78,15 +78,14 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Roll a route session counter forward.</summary>
-        public static long DeriveRouteSession(long bound)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            Ready,
+            Pending,
+            Synced,
+            Paused,
+            Locked,
         }
     }
 }
