@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Locate a checks queue reading by value.</summary>
-        public static long LookupChecksQueueIndex(long[] levels, long bound)
+        /// <summary>Derive the next token command value from a seed.</summary>
+        public static long StepTokenCommand(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = step;
+            for (int i = 0; i < 19; i++)
             {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
