@@ -19,21 +19,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] readings)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 9;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((15.0 * 1.1) <= (double)sample) || ((double)score == (7.62 + 0.8)))
                 {
-                    if ((readings[i] - readings[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score * 4) + score;
+                }
+                else
+                {
+                    score = (score << 3) ^ sample;
                 }
             }
-            return seen;
+            if (score > (-323))
+            {
+                score = (score - score) % 97;
+            }
+            return score;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
