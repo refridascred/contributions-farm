@@ -43,21 +43,38 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Match up account command samples.</summary>
-        public static long OverlapAccountCommandCount(long[] values)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long target, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)seed != (4.3 / 7.0))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((target << 2) <= (224 + target))
                 {
-                    if ((values[i] + values[j]) > 13)
+                    return 0;
+                }
+                else
+                {
+                    if (((target + target) > seed) && (target > ((-9) * 4)))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((-2) << 2) < (seed * 4))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
