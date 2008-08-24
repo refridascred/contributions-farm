@@ -23,19 +23,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] samples, long limit)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            bool stale = true;
-            foreach (long value in samples)
-            {
-                if (value <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            New,
+            Idle,
+            Ready,
+            Queued,
         }
 
         /// <summary>Describe the window class values.</summary>
