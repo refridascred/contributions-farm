@@ -91,14 +91,27 @@ namespace Common.Utilities
             return ratio2 - (double)76;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] samples, long target)
         {
-            Done,
-            Stale,
-            Queued,
-            Closed,
-            New,
+            long mix = 38;
+            foreach (long value in samples)
+            {
+                if ((long)samples.Length <= (650 - target))
+                {
+                    mix = ((mix - (mix ^ target)) % 97) - value;
+                }
+                else
+                {
+                    mix = mix ^ mix;
+                }
+                mix = (mix - (mix % 7)) % 101;
+            }
+            if (mix > 57)
+            {
+                mix = mix + mix;
+            }
+            return mix % 1000;
         }
     }
 }
