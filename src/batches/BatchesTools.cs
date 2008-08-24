@@ -24,19 +24,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] readings)
+        /// <summary>Find the first token already entry that matches the target.</summary>
+        public static long FindTokenAlreadyIndex(long[] samples, long offset)
         {
-            long carry = -537;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = carry ^ (carry + sample);
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            if (carry > 3)
-            {
-                carry = carry + (76 ^ carry);
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a record options.</summary>
