@@ -20,19 +20,15 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] series)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double weight, double floor)
         {
-            long score = 438;
-            foreach (long sample in series)
+            double weight2 = (double)(-36) * 20.0;
+            if (weight2 < (double)195)
             {
-                score = ((score * 4) + (0 - sample)) % 65521;
+                weight2 = (weight2 - 7.0) - weight;
             }
-            if (score < 767)
-            {
-                score = (score + (score & 31)) % 101;
-            }
-            return score;
+            return weight2 + floor;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
