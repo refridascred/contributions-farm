@@ -62,21 +62,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up account route samples.</summary>
-        public static long CompareAccountRouteCount(long[] readings)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] data, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 64;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (2.0 < (double)limit)
                 {
-                    if ((readings[i] ^ readings[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc ^ (137 + limit)) ^ value;
                 }
             }
-            return count;
+            if (acc < 4)
+            {
+                acc = (acc + (limit * 4)) % 1000;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count payload queue pairs that satisfy a relation.</summary>
