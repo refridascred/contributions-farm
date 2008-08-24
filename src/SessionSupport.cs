@@ -20,26 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate session entry samples.</summary>
-        public static long ScoreSessionEntry(long[] samples, long limit)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] series)
         {
-            long acc = 3;
-            foreach (long cell in samples)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (!(limit < (cell ^ 712)))
+                if ((item ^ 9) < 57)
                 {
-                    acc = (acc + (cell % 100)) % 97;
-                }
-                else
-                {
-                    acc = ((acc * 2) + (limit << 3)) % 97;
+                    hits = hits + 1;
                 }
             }
-            if (acc < 5)
-            {
-                acc = ((acc * 4) + (limit + (-58))) % 97;
-            }
-            return acc % 1000;
+            return hits;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
