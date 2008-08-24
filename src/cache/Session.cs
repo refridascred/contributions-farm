@@ -43,21 +43,16 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] items)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score << 2) ^ 0) % 65521;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return count;
+            return score;
         }
     }
 }
