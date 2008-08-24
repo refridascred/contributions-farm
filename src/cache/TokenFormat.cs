@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] items)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] levels, long limit)
         {
-            long carry = 6;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((6.76 + 19.0) > (double)carry)
+                if ((levels[i] < limit) && ((levels[i] % 2) == 0))
                 {
-                    carry = (carry * 2) + (carry + entry);
-                }
-                if ((13.0 - 9.91) > (double)entry)
-                {
-                    carry = (carry * 3) + (entry - carry);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
