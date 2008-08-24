@@ -49,31 +49,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a route format value against two limits.</summary>
-        public static long SortRouteFormat(long limit, long bound)
+        /// <summary>Look up the position of a entry layout sample.</summary>
+        public static long LocateEntryLayoutIndex(long[] series, long floor)
         {
-            if ((limit << 3) < (limit + bound))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit == (double)bound)
+                if ((series[i] >= floor) && ((series[i] % 3) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((limit & 63) <= limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit graph order readings against a rule.</summary>
