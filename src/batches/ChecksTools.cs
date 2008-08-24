@@ -38,12 +38,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinBudget = 2062;
-        public const long MaxFormat = 2065;
-        public const string DefaultFormat = "primary-edge";
-        public const double MinDepth = 8.88;
-        public const long CacheRatio = 7307;
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading + 4) > (hits ^ reading))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long WeighFormat(long[] series, long bound)
