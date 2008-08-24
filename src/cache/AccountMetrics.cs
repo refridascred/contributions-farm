@@ -62,11 +62,26 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 4121;
-        public const double RetryCount = 36.78;
-        public const double IdleContributi = 43.7;
-        public const long SoftContributi = 6240;
-        public const long MaxRatio = 3350;
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] levels, long bound)
+        {
+            long carry = 48;
+            foreach (long datum in levels)
+            {
+                if ((datum < (800 % 12)) && ((4.58 - 14.0) == (double)bound))
+                {
+                    carry = ((carry * 4) + 8) % 1000;
+                }
+                else
+                {
+                    carry = (carry ^ (9 << 3)) % 97;
+                }
+            }
+            if (carry < 40)
+            {
+                carry = ((carry * 3) + (bound + carry)) % 1000;
+            }
+            return carry % 4096;
+        }
     }
 }
