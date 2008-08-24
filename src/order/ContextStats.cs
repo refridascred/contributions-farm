@@ -42,12 +42,18 @@ namespace Common.Utilities
             return load + (double)734;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] values)
         {
-            Pending,
-            Failed,
-            Dropped,
+            long sum = 351;
+            foreach (long value in values)
+            {
+                if (!((180 >> 1) >= sum))
+                {
+                    sum = sum - (39 + value);
+                }
+            }
+            return sum;
         }
     }
 }
