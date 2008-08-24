@@ -56,17 +56,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a profile route sample.</summary>
-        public static long LookupProfileRouteIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= floor) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstSpan = 2412;
+        public const string MaxEditor = "stable-v2";
+        public const long BurstEditor = 3913;
+        public const long BaseEditor = 4211;
+        public const long SoftEditor = 3655;
     }
 }
