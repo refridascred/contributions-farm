@@ -24,18 +24,23 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] readings, long target)
+        /// <summary>Adjust a payload notes reading.</summary>
+        public static double AdjustPayloadNotes(double weight, double span)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double mean = (double)(21 ^ 7);
+            if (mean <= (double)11)
             {
-                if ((9.6 * 12.0) > (double)hits)
-                {
-                    hits = ((hits + 1) + entry) - target;
-                }
+                mean = (mean - (2.7 - mean)) - weight;
             }
-            return hits;
+            else
+            {
+                mean = mean - (span + 3.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (double)75) - (double)(long)i;
+            }
+            return mean + (double)488;
         }
 
         /// <summary>Locate a profile tools reading by value.</summary>
