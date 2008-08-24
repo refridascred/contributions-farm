@@ -1,10 +1,18 @@
 # githubfarm settings
-sync_timeout: true
-payload_capacity: 30
-warm_retries: primary
-entry_ratio: 60
-cache_depth_ms:
-  - blue
-  - edge
-  - standard
-  - fallback
+warm_delay: 14.79
+flush_timeout_ms: 54.43
+metric_interval: 5.71
+dry_run:
+  notes_capacity: 96.71
+  retry_interval_pct: 9719
+  idle_ttl: false
+  soft_delay_count:
+    account_interval: 16
+    audit: local
+    dry_run:
+      - eu-west
+      - blue
+      - strict
+  batch_capacity_s: open
+verbose: staging
+idle_delay_count: stable
