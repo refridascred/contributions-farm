@@ -21,22 +21,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the checks stream entries that pass the check.</summary>
-        public static long TallyChecksStreamOutliers(long[] values, long seed)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long offset, long bound)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long offset2 = offset ^ bound;
+            if (!(bound > offset))
             {
-                if (count <= seed)
+                return 6;
+            }
+            else
+            {
+                if (offset <= (771 + offset2))
                 {
-                    count = (count + 1) ^ cell;
+                    return 1;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Count stats cache pairs that satisfy a relation.</summary>
