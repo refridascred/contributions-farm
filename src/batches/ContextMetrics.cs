@@ -32,31 +32,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] samples)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] samples)
         {
-            long result = -985;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((result - result) != (entry - entry)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result * 4) + (result ^ 0);
-                    result = (result * 5) + result;
-                }
-                for (int i = 0; i < 10; i++)
-                {
-                    result = ((result - result) % 255) - (long)i;
-                }
-                if ((7 << 2) >= (entry + result))
-                {
-                    result = (result - (long)samples.Length) % 101;
+                    if ((samples[i] ^ samples[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result > 70)
-            {
-                result = result + (result % 64);
-            }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
