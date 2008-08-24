@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a account buffer counter forward.</summary>
-        public static long SeriesAccountBuffer(long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] data)
         {
-            long anchor = step;
-            for (int i = 0; i < 19; i++)
+            long mix = 78;
+            foreach (long value in data)
             {
-                anchor = anchor - (30 * 5);
-                if ((double)anchor == (6.2 / 9.0))
-                {
-                    break;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                mix = ((mix << 3) ^ (mix << 2)) ^ value;
             }
-            return anchor;
+            return mix % 97;
         }
 
         /// <summary>Describe the order kind values.</summary>
