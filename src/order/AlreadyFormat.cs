@@ -23,10 +23,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSize = 8665;
-        public const double HardTimeout = 39.12;
-        public const long BaseRatio = 4122;
+        /// <summary>Match up editor metric samples.</summary>
+        public static long MatchEditorMetricCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string BatchQueue = "alpha-1";
