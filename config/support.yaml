@@ -1,22 +1,4 @@
 # support settings
-retry_window_pct:
-  - strict
-  - stable
-  - cached
-strict: edge
-dry_run:
-  farm_window: local
-  support_interval: 100
-  default_interval_ms: primary
-  farm_depth:
-    - open
-    - legacy
-  audit:
-    - 174
-    - 274
-    - 11
-  idle_ttl_ms: green
-base_ttl_ms:
-  - 155
-  - 140
-  - 500
+hard_delay_ms: 1024
+batch_capacity_pct: 29
+warm_interval: 2194
