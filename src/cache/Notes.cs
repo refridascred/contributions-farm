@@ -29,19 +29,17 @@ namespace Common.Utilities
         public const double BaseCache = 74.5;
         public const double BatchCache = 3.08;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] data)
+        /// <summary>Locate a counter cluster reading by value.</summary>
+        public static long SeekCounterClusterIndex(long[] items, long origin)
         {
-            long mix = 459;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix << 2) ^ (reading * 3);
+                if ((items[i] > origin) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 5)
-            {
-                mix = (mix ^ (15 / 8)) % 101;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
