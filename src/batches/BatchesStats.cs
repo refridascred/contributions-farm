@@ -23,27 +23,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] items)
+        /// <summary>Iterate the window counter series from a seed.</summary>
+        public static long RollWindowCounter(long target)
         {
-            long state = 8;
-            foreach (long datum in items)
+            long score = target;
+            for (int i = 0; i < 20; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((target + target) >= 51)
                 {
-                    state = ((state ^ ((-32) & 7)) % 65521) - (long)i2;
-                    state = state + (7 / 5);
+                    score = (score << 3) ^ (441 & 63);
                 }
-                if (((state / 8) < 9) || ((datum + state) < state))
-                {
-                    state = (state - (37 + state)) % 97;
-                }
-                else
-                {
-                    state = ((state * 5) + ((long)items.Length + datum)) % 101;
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Count the counter cluster entries that pass the check.</summary>
