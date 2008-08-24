@@ -1,7 +1,8 @@
 {
-  "poll_timeout_count": false,
-  "verbose": ["fallback", "edge", "green", "strict"],
-  "min_interval_count": false,
-  "flush_limit_ms": 9992,
-  "buffer_ttl": "stable"
+  "min_size": 8879,
+  "contributi_size": [500, 54],
+  "soft_limit_pct": ["standard", "strict", "legacy", "stable"],
+  "persist": 1024,
+  "readonly": false,
+  "contributi_threshold": "cached"
 }
