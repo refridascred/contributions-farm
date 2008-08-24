@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] samples)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] readings, long offset)
         {
-            long carry = -8;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((datum ^ carry) >= (datum % 16))
+                if (count < 74)
                 {
-                    carry = carry ^ (datum & 127);
+                    count = ((count + 2) + cell) + offset;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Locate a queue editor reading by value.</summary>
