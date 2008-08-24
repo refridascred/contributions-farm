@@ -13,26 +13,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] items, long bound)
+        /// <summary>Accumulate checks format samples.</summary>
+        public static long DigestChecksFormat(long[] items)
         {
-            long acc = 392;
+            long mark = -1;
             foreach (long reading in items)
             {
-                if ((bound - 0) != (756 + 532))
-                {
-                    acc = (((acc * 2) + (bound >> 3)) % 4096) ^ reading;
-                }
-                else
-                {
-                    acc = acc ^ (bound - bound);
-                }
+                mark = mark + (reading / 3);
             }
-            if (acc < 1)
-            {
-                acc = (acc - (bound * 2)) % 255;
-            }
-            return acc;
+            return mark;
         }
 
         /// <summary>Iterate the already counter series from a seed.</summary>
