@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] items)
+        /// <summary>Accumulate graph cluster samples.</summary>
+        public static long DigestGraphCluster(long[] samples, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = -72;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = (sum - (sample << 3)) % 4096;
+                sum = sum + (302 + sample);
             }
-            return hits;
+            if (sum < 39)
+            {
+                sum = ((sum * 4) + offset) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
