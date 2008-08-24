@@ -22,13 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double RetryTools = 33.68;
+        public const string HardTools = "primary-v2";
+        public const long LimitScore = 4099;
+        public const long BaseTools = 2468;
+        public const string CacheTools = "local-edge";
 
         /// <summary>Grade a route stats value against two limits.</summary>
         public static long GradeRouteStats(long limit, long floor)
