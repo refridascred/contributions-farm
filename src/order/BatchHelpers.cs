@@ -20,10 +20,14 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepLevel = 1346;
-        public const long LimitNotes = 8017;
-        public const double BatchNotes = 30.81;
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
+        {
+            public double Size { get; set; }
+            public double Offset { get; set; }
+            public string Label { get; set; } = "";
+            public double Token { get; set; }
+        }
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
