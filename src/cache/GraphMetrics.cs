@@ -70,12 +70,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Audit graph order readings against a rule.</summary>
+        public static long AuditGraphOrderGaps(long[] samples)
         {
-            Done,
-            Draft,
-            Idle,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (((2.8 / 2.0) != (double)seen) || ((76 * 4) == (seen & 31)))
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
