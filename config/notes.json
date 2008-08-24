@@ -1,12 +1,16 @@
 {
-  "compress": 1687,
-  "burst_ratio_ms": {
-    "retry_capacity_count": 250,
-    "githubfarm_delay": [490, 489],
-    "dry_run": "fallback",
-    "record_capacity": false
+  "max_size": {
+    "retry_ttl_pct": 5349,
+    "soft_capacity": 93,
+    "min_depth_ms": ["green", "standard"],
+    "enabled": 78.9
   },
-  "flush_size_pct": 8686,
-  "farm_retries": 80.51,
-  "retry_delay": 62
+  "max_capacity": [334, 380],
+  "compress": false,
+  "token_depth": {
+    "sync_timeout": 8089,
+    "batch_limit_s": 71,
+    "cache_depth": 68.85,
+    "strict": 26
+  }
 }
