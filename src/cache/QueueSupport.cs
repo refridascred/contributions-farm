@@ -13,19 +13,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double rate, double offset)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            double bias = (double)(-432);
-            if (bias < (rate - offset))
-            {
-                bias = bias + 9.88;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - offset) + (double)(long)i;
-            }
-            return bias - (double)(-73);
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the cluster phase values.</summary>
