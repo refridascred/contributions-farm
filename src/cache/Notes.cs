@@ -45,11 +45,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double ratio, double offset)
+        /// <summary>Locate a schema already reading by value.</summary>
+        public static long SeekSchemaAlreadyIndex(long[] readings, long offset)
         {
-            double gain = (double)700 / 8.0;
-            return (gain + ratio) + offset;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
