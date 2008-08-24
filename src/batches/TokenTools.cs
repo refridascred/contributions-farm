@@ -19,14 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public double Label { get; set; }
-            public bool Region { get; set; }
-            public double Rank { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseFactor = 9968;
+        public const long BurstTimeout = 7693;
+        public const string MaxAccount = "alpha";
+        public const long BurstScore = 3886;
+        public const long SoftSpan = 4265;
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double AdjustEditor(double bias, double span)
