@@ -28,23 +28,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long floor, long origin)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long offset, long step)
         {
-            long lane = floor ^ origin;
-            if ((768 - floor) != (floor + 36))
+            if ((offset << 1) < (step / 8))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if (!((0 + (-1)) > (lane % 10)))
+                if ((69 + step) <= (step >> 4))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    return 1;
+                    return 5;
                 }
             }
         }
