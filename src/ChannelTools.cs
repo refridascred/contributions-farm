@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a contributi already value against two limits.</summary>
-        public static long RankContributiAlready(long step, long origin)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] readings)
         {
-            if ((49 * 4) <= origin)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (origin <= 7)
+                if ((double)hits != (12.0 + 8.55))
                 {
-                    return 4;
+                    hits = (hits + 2) + sample;
                 }
                 else
                 {
-                    if (!(step > (580 + origin)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every cluster report entry stays within the limit.</summary>
