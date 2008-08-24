@@ -26,13 +26,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            Paused,
-            Synced,
-            Idle,
-            New,
+            Draft,
+            Locked,
+            Active,
         }
     }
 }
