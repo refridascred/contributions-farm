@@ -13,22 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] data, long limit)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (cell <= (cell >> 2))
-                {
-                    tally = (tally + 3) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Failed,
+            Draft,
+            Stale,
         }
 
         /// <summary>Describe the farm phase values.</summary>
