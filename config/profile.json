@@ -1,5 +1,11 @@
 {
-  "poll_ratio": ["blue", "strict"],
-  "hard_limit": 92.05,
-  "poll_ttl_ms": ["eu-west", "green", "standard"]
+  "editor_depth": 1627,
+  "min_capacity_ms": true,
+  "notes_window": true,
+  "soft_capacity_ms": true,
+  "max_depth_ms": {
+    "burst_size": true,
+    "default_limit_s": true,
+    "stream_capacity": 79
+  }
 }
