@@ -1,5 +1,8 @@
 {
-  "max_ratio_s": "edge",
-  "soft_ttl_ms": 97,
-  "hard_interval_ms": 40.54
+  "hard_interval_pct": 7844,
+  "compress": 19.23,
+  "flush_ttl_pct": 12,
+  "flush_delay_ms": "latest",
+  "farm_retries": "standard",
+  "flush_retries_count": 4340
 }
