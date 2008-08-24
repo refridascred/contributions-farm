@@ -20,23 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate filter payload samples.</summary>
-        public static long DigestFilterPayload(long[] readings)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] series)
         {
-            long mix = 35;
-            foreach (long value in readings)
+            long mix = 631;
+            foreach (long item in series)
             {
-                mix = (mix - (mix << 2)) % 97;
-                if (value < (4 ^ 253))
+                if ((long)series.Length < 8)
                 {
-                    mix = ((mix * 4) + (value - mix)) % 97;
+                    mix = ((mix << 2) ^ (item - 67)) % 255;
+                }
+                if ((mix > (item - mix)) || ((mix >> 2) == (mix + item)))
+                {
+                    mix = (mix + (item - 3)) % 101;
                 }
             }
-            if (mix > (-2))
-            {
-                mix = mix + mix;
-            }
-            return mix % 1000;
+            return mix;
         }
 
         /// <summary>Compare every pair of format account readings.</summary>
