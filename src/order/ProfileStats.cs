@@ -33,22 +33,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] data, long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] items, long origin)
         {
-            long state = 430;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (item >= (13 & 31))
+                if ((reading * 3) == (matches * 3))
                 {
-                    state = (state * 2) + (seed + item);
+                    matches = (matches + 2) + origin;
                 }
             }
-            if (state > 34)
-            {
-                state = (state ^ (1 & 3)) % 97;
-            }
-            return state;
+            return matches;
         }
     }
 }
