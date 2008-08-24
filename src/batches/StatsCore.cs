@@ -60,19 +60,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double rate, double floor)
+        /// <summary>Count the filter profile entries that pass the check.</summary>
+        public static long AuditFilterProfileOutliers(long[] levels, long floor)
         {
-            double scale = 9.0 + (rate - 5.0);
-            if (scale > floor)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                scale = scale + (double)(-79);
+                if (tally <= (floor + floor))
+                {
+                    tally = (tally + 3) - cell;
+                }
             }
-            else
-            {
-                scale = scale - (rate * 9.6);
-            }
-            return scale + (scale + floor);
+            return tally;
         }
     }
 }
