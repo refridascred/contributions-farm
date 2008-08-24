@@ -22,19 +22,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] values, long seed)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long limit, long seed)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long next = limit + seed;
+            if ((double)next < (9.0 * 4.96))
             {
-                if (reading <= seed)
+                return 0;
+            }
+            else
+            {
+                if ((double)next > 8.51)
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((seed - seed) <= (578 + next))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
