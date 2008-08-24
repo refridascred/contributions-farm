@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long seed)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] samples)
         {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
+            long mix = 5;
+            foreach (long value in samples)
             {
-                anchor = (anchor + seed) % 101;
-                anchor = ((anchor * 2) + anchor) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (((value + mix) != (mix * 4)) || ((value & 3) >= ((-840) << 3)))
+                {
+                    mix = ((mix * 3) + (3 & 7)) % 101;
+                }
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
