@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BurstSize = 62.25;
-        public const long MinProfile = 9223;
-        public const long LimitProfile = 5307;
-        public const string BurstInterval = "open";
-        public const string StepTimeout = "legacy";
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] data)
+        {
+            long total = 71;
+            foreach (long cell in data)
+            {
+                if (1 <= (total + cell))
+                {
+                    total = (total ^ (total / 6)) % 4096;
+                }
+            }
+            return total % 97;
+        }
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
