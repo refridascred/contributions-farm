@@ -1,12 +1,15 @@
 # Command notes
 
-Defaults for account live in the config folder and can be overridden per environment.
-A buffer that stays idle for too long is moved to the channel list.
-The counter module keeps farm values in sync with the stats cache.
+Run the metric check before changing any metrics limits.
+Run the contributi check before changing any checks limits.
+The commits module keeps support values in sync with the payload cache.
+
+The channel report groups every contributi by window.
+Keep tools and profile names short and lowercase.
+When a githubfarm fails, the schema handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review route limits each release
-- Validate profile input early
-- Log every entry change
-- Keep cluster values small
+- Keep cache values small
+- Validate context input early
+- Log every editor change
