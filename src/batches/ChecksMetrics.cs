@@ -19,17 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] readings, long seed)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine already values into a single score.</summary>
