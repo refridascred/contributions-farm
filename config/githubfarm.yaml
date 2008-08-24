@@ -1,9 +1,17 @@
 # githubfarm settings
-burst_threshold_pct:
-  - primary
-  - latest
-  - green
-  - latest
-audit: 48.64
-warm_size_s: standard
-token_ttl: 14.77
+window_ttl:
+  dry_run: open
+  idle_interval_ms: 39
+  persist: 9979
+  strict:
+    metrics_limit: true
+    queue_ttl: fallback
+    min_window_ms: blue
+    base_size: cached
+    cache_retries_s: true
+    soft_retries_ms: primary
+  channel_retries: 2365
+audit: edge
+strict: latest
+enabled: 2765
+soft_timeout_ms: true
