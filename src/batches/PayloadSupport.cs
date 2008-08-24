@@ -13,26 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] readings, long offset)
+        /// <summary>Combine entry route values into a single score.</summary>
+        public static long FoldEntryRoute(long[] items, long limit)
         {
-            long anchor = -498;
-            foreach (long sample in readings)
+            long score = 647;
+            foreach (long entry in items)
             {
-                if ((anchor + sample) >= (sample >> 5))
+                if (((-4) - limit) < (limit - score))
                 {
-                    anchor = (anchor ^ (offset + offset)) % 101;
+                    score = (score * 5) + (entry * 2);
                 }
-                if ((sample > (88 << 2)) && ((sample & 127) >= (offset - anchor)))
+                if ((entry + limit) <= (score + entry))
                 {
-                    anchor = ((anchor << 2) ^ (sample - (-48))) % 65521;
+                    break;
                 }
             }
-            if (anchor < 2)
-            {
-                anchor = anchor ^ (offset % 7);
-            }
-            return anchor;
+            return score;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
