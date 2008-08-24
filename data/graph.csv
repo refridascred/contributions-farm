@@ -1,7 +1,9 @@
-id,token,label
-1,primary,blue
-2,cached,992
-3,313,311
-4,green,34.4
-5,170,68.3
-6,green,306
+id,active,count
+1,73.47,fallback
+2,976,primary
+3,362,733
+4,legacy,961
+5,staging,638
+6,535,5
+7,green,green
+8,24.1,874
