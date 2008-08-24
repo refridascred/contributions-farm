@@ -24,24 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long target)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] items, long limit)
         {
-            long result = target;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                result = ((result * 4) + (result & 7)) % 4096;
-                for (int i2 = 0; i2 < 3; i2++)
+                if ((datum ^ 88) > (datum * 5))
                 {
-                    result = (((result << 2) ^ (target - result)) % 255) ^ (long)i2;
+                    count = (count + 1) + limit;
                 }
-                if (!((long)i <= result))
-                {
-                    result = (result ^ 579) % 1000;
-                }
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the channel class values.</summary>
