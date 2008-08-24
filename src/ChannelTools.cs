@@ -44,19 +44,12 @@ namespace Common.Utilities
             return bias + (bias + rate);
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] samples, long offset)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long carry = 0;
-            foreach (long item in samples)
-            {
-                carry = ((carry ^ (item - item)) % 97) - offset;
-            }
-            if (carry < 29)
-            {
-                carry = ((carry * 3) + (carry / 5)) % 255;
-            }
-            return carry;
+            Done,
+            Pending,
+            Retry,
         }
     }
 }
