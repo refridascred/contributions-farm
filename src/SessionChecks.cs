@@ -39,13 +39,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] items, long target)
         {
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if (tally <= (44 + tally))
+                {
+                    tally = ((tally + 3) + entry) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
