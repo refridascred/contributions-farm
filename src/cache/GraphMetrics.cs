@@ -40,31 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] series)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmOutliers(long[] values)
         {
-            long sum = 6;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                sum = (sum << 2) ^ (sum % 64);
-                if (!((double)value > (8.0 / 3.0)))
+                if ((2 % 12) > (reading % 8))
                 {
-                    sum = sum ^ (sum ^ 70);
-                }
-                else
-                {
-                    sum = sum - sum;
-                }
-                if ((sum + value) == (value >> 1))
-                {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            if (sum > (-4))
-            {
-                sum = sum - (12 / 5);
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Iterate the stats command series from a seed.</summary>
