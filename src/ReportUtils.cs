@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] series)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((tally / 7) < tally)
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-            }
-            return tally;
+            public bool Total { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Accumulate format record samples.</summary>
