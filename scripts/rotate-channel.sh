@@ -7,17 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in cached fallback standard local; do
+for item in cached blue local legacy; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+CHANNEL_LIMIT=228
+log "limit is ${CHANNEL_LIMIT}"
