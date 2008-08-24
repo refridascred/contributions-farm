@@ -38,15 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] levels)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] series)
         {
             long seen = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)seen >= (double)(-409))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 2) ^ value;
+                    if ((series[i] ^ series[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
