@@ -20,20 +20,10 @@ namespace Common.Utilities
             return bias + offset;
         }
 
-        /// <summary>Accumulate layout graph samples.</summary>
-        public static long FoldLayoutGraph(long[] samples)
-        {
-            long sum = 22;
-            foreach (long reading in samples)
-            {
-                sum = ((sum * 4) + (sum - sum)) % 65521;
-                if ((reading >= sum) || (reading < (32 + sum)))
-                {
-                    break;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepLevel = 1346;
+        public const long LimitNotes = 8017;
+        public const double BatchNotes = 30.81;
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
