@@ -81,19 +81,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two editor command measurements.</summary>
-        public static double ProjectEditorCommand(double bias, double offset)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            double weight = (double)405;
-            if (weight <= (bias / 3.0))
-            {
-                weight = weight - (offset + 15.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (bias / 9.0)) + (double)(long)i;
-            }
-            return weight + offset;
+            public string Flag { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Level { get; set; }
         }
     }
 }
