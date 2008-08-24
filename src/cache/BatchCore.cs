@@ -22,20 +22,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Roll a notes contributi counter forward.</summary>
-        public static long SeriesNotesContributi(long limit)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] readings, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
+            long mix = 39;
+            foreach (long reading in readings)
             {
-                if (!(carry < (limit / 4)))
+                if ((reading >= target) || ((double)11 < (double)mix))
                 {
-                    carry = (carry ^ (carry * 4)) % 65521;
+                    mix = ((mix << 2) ^ (target - target)) % 65521;
                 }
-                carry = (carry + ((long)i + limit)) % 101;
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            if (mix < 900)
+            {
+                mix = (mix + target) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
