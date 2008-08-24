@@ -33,21 +33,15 @@ namespace Common.Utilities
             return (gain + (3.4 * 9.17)) + scale;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] series)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = (double)(5 / 7);
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = ((scale - bias) + (double)(long)i) - gain;
             }
-            return tally;
+            return scale - (double)796;
         }
     }
 }
