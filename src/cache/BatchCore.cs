@@ -15,11 +15,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            public string Count { get; set; } = "";
-            public bool Offset { get; set; }
+            public bool Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Roll a notes contributi counter forward.</summary>
