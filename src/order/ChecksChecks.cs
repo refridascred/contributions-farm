@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] series, long origin)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (entry > (origin & 255))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Locked,
+            Paused,
+            Queued,
+            Retry,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
