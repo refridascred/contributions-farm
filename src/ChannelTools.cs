@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long origin)
+        /// <summary>Check that every cluster report entry stays within the limit.</summary>
+        public static bool GuardClusterReportRange(long[] values, long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 18; i++)
+            bool stale = true;
+            foreach (long value in values)
             {
-                if (((7.79 * 19.0) < (double)(long)i) && ((score + origin) >= (score - score)))
+                if (value > bound)
                 {
-                    score = (score - origin) % 101;
+                    stale = false;
+                    break;
                 }
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
