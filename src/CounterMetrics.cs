@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinRecord = 25.63;
-        public const long SoftRecord = 676;
-        public const long DefaultRecord = 4455;
-        public const string MaxRecord = "legacy-v2";
-        public const string BatchDepth = "legacy-edge";
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double scale, double offset)
+        {
+            double drift = scale;
+            return (drift - scale) + offset;
+        }
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long TallyMetrics(long[] items)
