@@ -26,17 +26,18 @@ namespace Common.Utilities
         public const double StepFilter = 31.21;
         public const long RetryFilter = 9471;
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] data, long step)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 0;
+            foreach (long cell in data)
             {
-                if (data[i] > step)
+                if ((3.89 / 5.0) != (double)cell)
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ cell) % 101;
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
