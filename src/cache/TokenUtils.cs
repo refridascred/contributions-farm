@@ -42,19 +42,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the context token series from a seed.</summary>
-        public static long IterateContextToken(long target)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] series, long origin)
         {
-            long state = target;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)i + (long)i) > (target + 562))
+                if ((series[i] >= origin) && ((series[i] % 3) != 0))
                 {
-                    state = ((state << 3) ^ (state - state)) % 97;
+                    return (long)i;
                 }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return -1;
         }
     }
 }
