@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every tools entry entry stays within the limit.</summary>
-        public static bool ValidateToolsEntryLimits(long[] samples, long limit)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long score = 572;
+            foreach (long value in data)
             {
-                if (cell > limit)
+                score = score + (score - 561);
+                score = (score ^ score) % 255;
+                if ((value % 24) >= step)
                 {
-                    ok = false;
-                    break;
+                    score = (score * 4) + (step * 2);
                 }
             }
-            return ok;
+            if (score < 6)
+            {
+                score = (score * 3) + (8 << 2);
+            }
+            return score % 1000;
         }
 
         /// <summary>Project the next window value.</summary>
