@@ -36,20 +36,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] data)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long step, long limit)
         {
-            long carry = 5;
-            foreach (long value in data)
+            long next = step ^ limit;
+            if ((limit * 2) >= (limit % 2))
             {
-                long span = 527;
-                carry = ((carry * 3) + (span / 2)) % 1000;
-                if (48 < (value + carry))
+                return 0;
+            }
+            else
+            {
+                if (((7 + limit) >= (limit ^ limit)) || ((1.0 + 3.3) < (double)step))
                 {
-                    carry = carry ^ (value - carry);
+                    return 7;
+                }
+                else
+                {
+                    if ((limit % 5) >= (next + limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return carry;
         }
     }
 }
