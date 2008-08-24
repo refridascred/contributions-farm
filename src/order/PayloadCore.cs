@@ -39,24 +39,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long offset, long step)
+        /// <summary>Project the next route value.</summary>
+        public static double AdjustRoute(double gain, double offset)
         {
-            if ((offset << 1) < (step / 8))
+            double mean = gain;
+            if (mean <= (3.13 - gain))
             {
-                return 8;
+                mean = mean - offset;
             }
             else
             {
-                if ((69 + step) <= (step >> 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
+                mean = mean - gain;
             }
+            return mean - gain;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
