@@ -29,18 +29,20 @@ namespace Common.Utilities
         public const double StepFilter = 31.21;
         public const long RetryFilter = 9471;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] data)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] data, long origin)
         {
-            long score = 0;
+            long mix = 620;
             foreach (long cell in data)
             {
-                if ((3.89 / 5.0) != (double)cell)
+                mix = ((mix ^ origin) % 101) + cell;
+                mix = (mix * 3) + (origin - mix);
+                if (mix < (mix >> 4))
                 {
-                    score = ((score << 3) ^ cell) % 101;
+                    break;
                 }
             }
-            return score;
+            return mix;
         }
     }
 }
