@@ -1,12 +1,29 @@
 # support settings
-flush_window: 55
-readonly:
-  - 276
-  - 295
-enabled: true
-sync_depth_pct: staging
-editor_delay:
-  - 253
-  - 29
-  - 349
-sync_threshold_pct: 250
+contributi_ratio: fallback
+metric_window: false
+batch_window_ms:
+  idle_size_s:
+    warm_depth_s: local
+    persist: standard
+    max_threshold: 30
+  persist: 739
+  batch_capacity_count: legacy
+  already_window:
+    compress: staging
+    enabled: staging
+    hard_retries_count:
+      - eu-west
+      - legacy
+      - local
+      - strict
+    session_capacity: 30
+  readonly:
+    - 74
+    - 63
+    - 255
+    - 351
+  schema_depth: local
+strict:
+  - primary
+  - cached
+  - edge
