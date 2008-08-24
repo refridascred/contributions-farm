@@ -34,19 +34,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] levels, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (reading > seed)
+                if ((((3 << 3) == (hits * 4)) && (((-8) - hits) > offset)) || (cell > (cell + 599)))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Count already payload pairs that satisfy a relation.</summary>
