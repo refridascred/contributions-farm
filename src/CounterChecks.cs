@@ -30,11 +30,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long MatchCommandCount(long[] levels)
         {
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many profile cache samples are out of range.</summary>
