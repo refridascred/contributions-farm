@@ -33,13 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileMatches(long[] samples)
         {
-            Pending,
-            Draft,
-            Synced,
-            Dropped,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((datum / 2) >= datum)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
