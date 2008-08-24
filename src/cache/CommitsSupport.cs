@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] items)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] data, long target)
         {
-            long mix = -9;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                mix = ((mix - (mix - mix)) % 97) ^ item;
+                if (reading >= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (mix > 654)
-            {
-                mix = ((mix * 3) + mix) % 4096;
-            }
-            return mix;
+            return ok;
         }
 
         /// <summary>Count the format schema entries that pass the check.</summary>
