@@ -1,7 +1,8 @@
 {
-  "base_interval_s": [40, 44, 427],
-  "soft_delay_s": "blue",
-  "hard_timeout_s": 9473,
-  "entry_delay": 2.47,
-  "batch_delay": 14
+  "default_delay_s": "stable",
+  "support_threshold": 77.83,
+  "enabled": 78.6,
+  "context_ratio": [263, 392, 213, 175],
+  "compress": 81.28,
+  "idle_threshold_pct": "fallback"
 }
