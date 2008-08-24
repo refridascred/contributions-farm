@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit graph buffer readings against a rule.</summary>
-        public static long CountGraphBufferOutliers(long[] readings, long step)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long mark = 3;
+            foreach (long entry in items)
             {
-                if (((step >> 4) > step) && (tally >= (step + 93)))
+                if ((5 ^ mark) >= (entry % 7))
                 {
-                    tally = (tally + 3) + reading;
+                    mark = (mark + entry) % 65521;
                 }
             }
-            return tally;
+            return mark % 65521;
         }
 
         /// <summary>Define account limits and defaults.</summary>
