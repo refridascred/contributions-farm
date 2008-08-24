@@ -42,21 +42,32 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] items)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long limit, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long step = limit ^ target;
+            if ((double)3 != (double)step)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((step + 91) >= (target << 3))
                 {
-                    if ((items[i] + items[j]) != 3)
+                    return 8;
+                }
+                else
+                {
+                    if ((limit << 3) < (38 >> 4))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
