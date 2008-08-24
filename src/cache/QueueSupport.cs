@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long StepContributi = 8587;
         public const long RetryContributi = 9227;
 
-        /// <summary>Count route tools pairs that satisfy a relation.</summary>
-        public static long PairRouteToolsCount(long[] readings)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphRange(long[] readings, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item != limit)
                 {
-                    if ((readings[i] + readings[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Define format limits and defaults.</summary>
