@@ -1,12 +1,8 @@
 # githubfarm settings
-audit: true
-batch_ratio:
-  - open
-  - blue
-compress:
-  max_window_count: local
-  token_delay: 7366
-  already_interval: true
-  poll_ttl_count: 7251
-filter_window: standard
-verbose: 4101
+warm_ttl: cached
+format_window: strict
+strict: staging
+soft_threshold_ms:
+  - 405
+  - 481
+max_ttl_s: 250
