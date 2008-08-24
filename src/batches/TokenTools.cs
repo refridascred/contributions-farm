@@ -20,22 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextHits(long[] series)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double gain, double span)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            double weight = span;
+            for (int i = 0; i < 3; i++)
             {
-                if ((hits * 3) < (hits ^ hits))
-                {
-                    hits = (hits + 2) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = ((weight + span) - (double)(long)i) - gain;
             }
-            return hits;
+            return weight + (weight - weight);
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
