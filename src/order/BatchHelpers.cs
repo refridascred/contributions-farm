@@ -19,11 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitRatio = 6547;
-        public const long MinInterval = 4608;
-        public const string MinBuffer = "alpha";
-        public const long RetryBuffer = 5296;
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
