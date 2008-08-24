@@ -20,18 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the cache window entries that pass the check.</summary>
-        public static long CountCacheWindowHits(long[] data)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((datum % 8) < datum)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Failed,
+            Active,
+            Dropped,
         }
 
         /// <summary>Match up contributi samples.</summary>
