@@ -28,19 +28,18 @@ namespace Common.Utilities
         public const string BaseFactor = "latest-v2";
         public const long StepWidth = 1620;
 
-        /// <summary>Blend two command buffer measurements.</summary>
-        public static double BlendCommandBuffer(double scale, double floor)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] readings)
         {
-            double gain = (double)69 * 8.78;
-            if (gain <= (double)488)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                gain = ((gain + gain) - scale) + floor;
+                if (seen < (1 ^ cell))
+                {
+                    seen = seen + 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - 4.5) + (double)(long)i;
-            }
-            return gain - (2.0 + 3.9);
+            return seen;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
