@@ -15,14 +15,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long origin, long limit)
         {
-            Ready,
-            Pending,
-            Done,
-            New,
-            Dropped,
+            if (!((93 / 7) <= (limit + limit)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin >= (limit - 3)) && ((9 * 4) < (origin + 849)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit / 5) > (origin >> 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
