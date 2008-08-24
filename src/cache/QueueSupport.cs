@@ -25,12 +25,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 2;
-        public const long SoftInterval = 8224;
-        public const double SoftSession = 69.57;
-        public const string DefaultLevel = "fallback-1";
-        public const long MaxRatio = 5869;
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
+        {
+            public bool Score { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long StepStats(long step)
