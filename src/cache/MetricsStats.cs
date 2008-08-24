@@ -27,17 +27,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first report notes entry that matches the target.</summary>
-        public static long LookupReportNotesIndex(long[] samples, long limit)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= limit) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Dropped,
+            Closed,
+            New,
         }
 
         /// <summary>Roll a profile counter forward.</summary>
