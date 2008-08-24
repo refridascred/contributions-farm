@@ -47,17 +47,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] levels, long step)
+        /// <summary>Accumulate farm already samples.</summary>
+        public static long WeighFarmAlready(long[] readings, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 3;
+            foreach (long item in readings)
             {
-                if (levels[i] <= step)
+                if (((59 - origin) >= (origin * 5)) && ((45 * 4) >= (origin << 1)))
                 {
-                    return (long)i;
+                    sum = (sum + (item + 64)) % 65521;
                 }
             }
-            return -1;
+            return sum % 97;
         }
     }
 }
