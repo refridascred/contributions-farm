@@ -28,12 +28,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] values, long floor)
         {
-            Ready,
-            Closed,
-            New,
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a tools record.</summary>
