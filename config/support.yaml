@@ -1,19 +1,5 @@
 # support settings
-record_delay: legacy
-default_size_count:
-  warm_timeout_count: fallback
-  dry_run:
-    - legacy
-    - open
-    - local
-    - strict
-  soft_delay_count:
-    - 475
-    - 407
-    - 494
-  max_limit_count:
-    - 245
-    - 470
-    - 386
-    - 148
-notes_interval: 14.85
+min_ttl_ms: false
+support_window: eu-west
+already_capacity: true
+sync_depth: 60
