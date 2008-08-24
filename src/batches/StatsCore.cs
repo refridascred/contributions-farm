@@ -55,19 +55,22 @@ namespace Common.Utilities
             return scale + (scale - 6.8);
         }
 
-        /// <summary>Project the next cache batch value.</summary>
-        public static double SmoothCacheBatch(double scale, double span)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] levels)
         {
-            double rate = span * 2.0;
-            if (rate > rate)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                rate = rate - 9.04;
+                if ((cell % 24) > (cell >> 1))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + scale) - (double)(long)i;
-            }
-            return rate - (rate / 9.0);
+            return matches;
         }
 
         /// <summary>Measure how many counter entry samples are out of range.</summary>
