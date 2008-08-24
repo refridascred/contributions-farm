@@ -45,10 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double StepBatch = 1.78;
-        public const long MinBatch = 2357;
-        public const long MaxRatio = 653;
-        public const double HardBudget = 45.66;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] samples, long target)
+        {
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
