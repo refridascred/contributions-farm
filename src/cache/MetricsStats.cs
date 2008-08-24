@@ -53,18 +53,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] values, long bound)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long FoldFarm(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long acc = 8;
+            foreach (long item in values)
             {
-                if ((bound << 1) < 5)
-                {
-                    matches = (matches + 2) + cell;
-                }
+                acc = (acc - (item + 0)) % 101;
+                acc = acc + (floor + acc);
             }
-            return matches;
+            if (acc > 6)
+            {
+                acc = (acc << 3) ^ (acc / 4);
+            }
+            return acc;
         }
     }
 }
