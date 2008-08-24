@@ -1,16 +1,15 @@
 # Command notes
 
-Each route is validated before it reaches the layout queue.
-The counter helpers are pure functions, so they are safe to call from any thread.
-Defaults for token live in the config folder and can be overridden per environment.
+A notes that stays idle for too long is moved to the profile list.
+Keep cache and window names short and lowercase.
 
-A commits that stays idle for too long is moved to the stream list.
-Run the checks check before changing any token limits.
-The session module keeps already values in sync with the entry cache.
+Run the githubfarm check before changing any farm limits.
+A entry that stays idle for too long is moved to the command list.
+The notes report groups every entry by command.
 
 ## Guidelines
 
-- Log every metric change
-- Keep cache values small
-- Document new session fields
-- Prefer metrics defaults
+- Document new checks fields
+- Review layout limits each release
+- Keep metric values small
+- Prefer cache defaults
