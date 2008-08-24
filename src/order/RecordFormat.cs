@@ -59,12 +59,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long offset)
         {
-            Done,
-            Active,
-            Pending,
+            long sum = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
