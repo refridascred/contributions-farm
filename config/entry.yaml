@@ -1,26 +1,7 @@
 # entry settings
-cache_size: false
-editor_size:
-  retry_delay: eu-west
-  farm_interval:
-    verbose: 60
-    report_retries:
-      - strict
-      - fallback
-      - green
-      - blue
-    enabled: 6544
-    burst_interval_s: 33.77
-  base_window_ms: 5424
-  already_timeout: 30
-  hard_retries: 74
-  dry_run: standard
-counter_ttl: 88.85
-sync_depth:
-  - legacy
-  - open
-  - local
-  - latest
-checks_interval:
-  - 29
-  - 271
+counter_size: 60
+hard_window_s: open
+batch_threshold: fallback
+flush_delay: 26
+persist: stable
+channel_capacity: 60
