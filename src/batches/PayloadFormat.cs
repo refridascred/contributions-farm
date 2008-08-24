@@ -27,26 +27,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] levels)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long acc = 342;
-            foreach (long reading in levels)
-            {
-                if (acc > (500 + acc))
-                {
-                    acc = (acc ^ (acc & 255)) % 65521;
-                }
-                if (407 > (795 - reading))
-                {
-                    break;
-                }
-            }
-            if (acc < 617)
-            {
-                acc = ((acc << 3) ^ (acc - acc)) % 65521;
-            }
-            return acc % 4096;
+            Dropped,
+            Draft,
+            Paused,
+            Stale,
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
