@@ -27,14 +27,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            Ready,
-            Synced,
-            Draft,
-            Stale,
-            Paused,
+            public bool Level { get; set; }
+            public double Rank { get; set; }
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
