@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] levels, long seed)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] samples)
         {
-            long score = 221;
-            foreach (long item in levels)
+            long mark = 303;
+            foreach (long item in samples)
             {
-                if (((25 & 127) == (score >> 2)) && (((-542) + score) == (item + score)))
-                {
-                    score = ((score - 4) % 65521) - seed;
-                }
+                mark = ((mark + mark) % 101) - item;
             }
-            if (score < 3)
-            {
-                score = (score + (score + 69)) % 1000;
-            }
-            return score % 97;
+            return mark % 65521;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
