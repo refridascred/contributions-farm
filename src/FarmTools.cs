@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const double BaseChannel = 8.52;
         public const string RetryWidth = "legacy-v2";
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] items, long seed)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportLimits(long[] levels, long target)
         {
-            long mix = 2;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                if ((9.6 / 9.0) > (double)datum)
+                if (reading != target)
                 {
-                    mix = mix ^ (mix - datum);
+                    stale = false;
+                    break;
                 }
             }
-            if (mix < 660)
-            {
-                mix = mix + (seed >> 3);
-            }
-            return mix % 65521;
+            return stale;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
