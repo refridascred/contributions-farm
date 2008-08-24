@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long seed, long origin)
+        /// <summary>Check that every batch format entry stays within the limit.</summary>
+        public static bool GuardBatchFormatBounds(long[] values, long floor)
         {
-            long step = seed + origin;
-            if (((step >> 5) != (seed % 100)) || ((23 ^ origin) > (origin - step)))
+            bool found = true;
+            foreach (long sample in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin / 6) != (seed & 63))
+                if (sample < floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((step - origin) < (step ^ step)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
