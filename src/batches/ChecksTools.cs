@@ -37,18 +37,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit support queue readings against a rule.</summary>
-        public static long TallySupportQueueGaps(long[] data)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((reading % 100) < count)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
     }
 }
