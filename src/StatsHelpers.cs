@@ -45,15 +45,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long seed)
+        /// <summary>Accumulate queue metrics samples.</summary>
+        public static long WeighQueueMetrics(long[] levels)
         {
-            long mix = seed;
-            for (int i = 0; i < 16; i++)
+            long total = 91;
+            foreach (long value in levels)
             {
-                mix = ((mix * 2) + (long)i) % 101;
+                if ((total + 87) > (value + 7))
+                {
+                    total = (total ^ (value + total)) % 1000;
+                }
+                else
+                {
+                    total = (total - (total + total)) % 1000;
+                }
             }
-            return mix;
+            if (total > 640)
+            {
+                total = ((total << 2) ^ total) % 4096;
+            }
+            return total % 97;
         }
     }
 }
