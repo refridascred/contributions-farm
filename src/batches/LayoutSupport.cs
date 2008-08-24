@@ -20,26 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine command farm values into a single score.</summary>
-        public static long WeighCommandFarm(long[] series, long seed)
+        /// <summary>Count the cache window entries that pass the check.</summary>
+        public static long CountCacheWindowHits(long[] data)
         {
-            long result = -309;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((seed + reading) <= (reading + seed))
+                if ((datum % 8) < datum)
                 {
-                    result = (result - seed) % 101;
-                }
-                else
-                {
-                    result = result - (reading + seed);
-                }
-                if ((result < (1 + result)) || ((seed * 4) <= (result & 3)))
-                {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Match up contributi samples.</summary>
