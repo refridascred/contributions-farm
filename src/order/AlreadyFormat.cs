@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] samples)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] items, long floor)
         {
-            long acc = 147;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((double)sample < (4.3 + 7.0))
+                if ((double)seen >= (4.0 + 8.1))
                 {
-                    acc = (acc ^ acc) % 65521;
+                    seen = ((seen + 1) - sample) - floor;
                 }
             }
-            if (acc < 993)
-            {
-                acc = (acc ^ (acc & 63)) % 1000;
-            }
-            return acc % 4096;
+            return seen;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
