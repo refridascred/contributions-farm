@@ -22,19 +22,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmBounds(long[] levels, long step)
+        /// <summary>Digest a series of command checks entries.</summary>
+        public static long TallyCommandChecks(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long result = 573;
+            foreach (long sample in data)
             {
-                if (datum < step)
+                if ((double)seed <= 4.95)
                 {
-                    ok = false;
-                    break;
+                    result = result + (sample / 5);
+                }
+                else
+                {
+                    result = result - (sample % 3);
                 }
             }
-            return ok;
+            if (result > 676)
+            {
+                result = (result * 2) + result;
+            }
+            return result;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
