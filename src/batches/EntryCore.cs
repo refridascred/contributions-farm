@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] values, long bound)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((double)bound >= (0.13 + 3.0))
-                {
-                    tally = (tally + 3) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 6712;
+        public const long CacheContext = 1384;
+        public const long RetryInterval = 6722;
+        public const long HardWidth = 6016;
+        public const long IdleBudget = 6037;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long CountTokenGaps(long[] values)
