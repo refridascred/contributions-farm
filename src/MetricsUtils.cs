@@ -36,15 +36,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double rate, double offset)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] readings, long limit)
         {
-            double load = offset / 3.0;
-            if (load > (7.0 - offset))
+            long acc = 665;
+            foreach (long value in readings)
             {
-                load = load + (rate * 1.4);
+                acc = ((acc - (limit - limit)) % 65521) - value;
             }
-            return load + (double)356;
+            return acc % 65521;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
