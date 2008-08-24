@@ -1,18 +1,8 @@
 {
-  "base_delay_count": 60,
-  "window_retries": ["staging", "eu-west", "local", "stable"],
-  "dry_run": {
-    "compress": 1,
-    "default_limit_count": "fallback",
-    "poll_timeout": {
-      "enabled": "staging",
-      "max_size_count": [103, 228, 325],
-      "readonly": true,
-      "base_ratio": "primary"
-    },
-    "base_depth_s": 60
-  },
-  "max_interval": 50,
-  "tools_retries": 60,
-  "max_ttl_s": 9014
+  "idle_interval": "fallback",
+  "sync_timeout": ["staging", "legacy", "local", "fallback"],
+  "batch_delay_count": ["stable", "fallback", "primary"],
+  "min_interval_count": 0.03,
+  "report_ratio": true,
+  "base_retries_ms": 57
 }
