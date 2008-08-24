@@ -48,19 +48,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] samples, long floor)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long floor)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long total = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (value > floor)
-                {
-                    stale = false;
-                    break;
-                }
+                total = ((total << 3) ^ (floor + total)) % 4096;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return stale;
+            return total;
         }
     }
 }
