@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 8795;
-        public const long SoftContributi = 2483;
-        public const long BatchCount = 2385;
-        public const string BaseContributi = "staging-edge";
-        public const long BurstContributi = 4987;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] data, long step)
+        {
+            long acc = 81;
+            foreach (long entry in data)
+            {
+                if ((9.81 * 14.0) != (double)entry)
+                {
+                    acc = (acc - entry) - step;
+                }
+                else
+                {
+                    acc = ((acc * 5) + (entry - 12)) % 1000;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Measure how many editor token samples are out of range.</summary>
         public static long CountEditorTokenMatches(long[] readings)
