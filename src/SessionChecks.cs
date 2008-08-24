@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] samples)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (12.0 > (double)entry)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            double ratio2 = span;
+            return (ratio2 + (double)1) + ratio;
         }
 
         /// <summary>Blend two commits measurements.</summary>
