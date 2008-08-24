@@ -46,17 +46,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] readings, long bound)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (readings[i] <= bound)
+                total = total + (70 & 1);
+                if (((step + (long)i) > 2) && ((double)total != (6.0 + 8.6)))
                 {
-                    return (long)i;
+                    total = total - (total >> 1);
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a payload stats.</summary>
