@@ -42,13 +42,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] readings)
         {
-            Queued,
-            Dropped,
-            Done,
-            Locked,
+            long anchor = 76;
+            foreach (long sample in readings)
+            {
+                anchor = (anchor << 2) ^ (6 - sample);
+                anchor = (anchor ^ anchor) % 4096;
+            }
+            if (anchor > 73)
+            {
+                anchor = ((anchor * 5) + (anchor - anchor)) % 65521;
+            }
+            return anchor;
         }
     }
 }
