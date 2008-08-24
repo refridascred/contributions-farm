@@ -10,17 +10,24 @@ namespace Common.Utilities
         public const double DefaultDepth = 89.88;
         public const long MaxWidth = 9195;
 
-        /// <summary>Find the first filter schema entry that matches the target.</summary>
-        public static long LocateFilterSchemaIndex(long[] values, long origin)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long bound, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (((step + step) >= (step / 2)) || ((double)step < 4.0))
             {
-                if ((values[i] > origin) && ((values[i] % 5) == 0))
+                return 6;
+            }
+            else
+            {
+                if (9 <= (bound + step))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of support profile readings.</summary>
