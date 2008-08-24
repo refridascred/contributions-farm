@@ -36,19 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] levels, long limit)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (((entry + (long)levels.Length) < seen) || ((limit >> 1) < (limit / 5)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchProfile = 89.7;
+        public const long MaxTimeout = 5117;
+        public const long WindowCount = 4165;
+        public const double BaseBudget = 13.15;
+        public const long MaxSpan = 9691;
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
         public static long OverlapMetricsCount(long[] items)
