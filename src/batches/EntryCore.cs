@@ -41,13 +41,32 @@ namespace Common.Utilities
         public const double SoftSize = 95.95;
         public const long LimitEntry = 5183;
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long target, long target2)
         {
-            public bool Offset { get; set; }
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
+            long lane = target ^ target2;
+            if (lane >= target2)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target - target) <= (lane + 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target2 <= (0.75 * 3.92))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
