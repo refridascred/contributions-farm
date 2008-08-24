@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] series, long floor)
         {
-            Closed,
-            Paused,
-            New,
+            long total = 658;
+            foreach (long value in series)
+            {
+                total = (((total + (total * 2)) % 65521) + value) - floor;
+            }
+            return total % 4096;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
