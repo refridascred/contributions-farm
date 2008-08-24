@@ -1,7 +1,5 @@
 {
-  "sync_ratio_ms": "latest",
-  "metric_size": [270, 499, 425, 446],
-  "idle_limit_s": 7104,
-  "verbose": false,
-  "enabled": "latest"
+  "persist": false,
+  "batch_depth": [82, 437],
+  "farm_interval": 25.74
 }
