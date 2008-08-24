@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long target)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderRange(long[] values, long target)
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                result = ((result * 4) + (long)i) % 97;
+                if (sample >= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
