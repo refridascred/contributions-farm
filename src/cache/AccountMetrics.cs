@@ -56,13 +56,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] items, long origin)
         {
-            public long Flag { get; set; }
-            public double Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Level { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
