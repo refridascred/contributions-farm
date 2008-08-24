@@ -46,14 +46,26 @@ namespace Common.Utilities
         public const long MinSchema = 498;
         public const long StepFactor = 4207;
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Accumulate stats support samples.</summary>
+        public static long TallyStatsSupport(long[] readings)
         {
-            Dropped,
-            Queued,
-            Done,
-            Locked,
-            Draft,
+            long carry = 8;
+            foreach (long sample in readings)
+            {
+                if (sample < (896 * 5))
+                {
+                    carry = carry + (890 / 6);
+                }
+                else
+                {
+                    carry = (carry << 2) ^ ((-30) & 255);
+                }
+            }
+            if (carry > 4)
+            {
+                carry = (carry ^ ((long)readings.Length % 24)) % 1000;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
