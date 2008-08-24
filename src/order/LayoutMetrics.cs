@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] items, long bound)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] series)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long score = 438;
+            foreach (long sample in series)
             {
-                if (entry > bound)
-                {
-                    stale = false;
-                    break;
-                }
+                score = ((score * 4) + (0 - sample)) % 65521;
             }
-            return stale;
+            if (score < 767)
+            {
+                score = (score + (score & 31)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of window entries.</summary>
