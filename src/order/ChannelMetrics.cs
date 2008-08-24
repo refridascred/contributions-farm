@@ -42,21 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] data)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public string Count { get; set; } = "";
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
