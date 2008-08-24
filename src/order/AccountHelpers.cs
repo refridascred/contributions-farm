@@ -27,22 +27,17 @@ namespace Common.Utilities
             return load + 3.0;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] readings, long limit)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LocateEntryIndex(long[] samples, long target)
         {
-            long total = 9;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((item << 2) < (total - item))
+                if ((samples[i] < target) && ((samples[i] % 2) == 0))
                 {
-                    total = ((total * 2) + (limit + 78)) % 101;
-                }
-                else
-                {
-                    total = total - (limit ^ item);
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
