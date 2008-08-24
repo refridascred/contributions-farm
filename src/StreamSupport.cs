@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public bool Region { get; set; }
-            public double Flag { get; set; }
+            New,
+            Dropped,
+            Done,
         }
 
         /// <summary>Classify a editor report pair into a bucket.</summary>
