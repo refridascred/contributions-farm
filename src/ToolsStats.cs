@@ -44,10 +44,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double HardFilter = 31.94;
-        public const long MinFilter = 9792;
-        public const long StepInterval = 1416;
+        /// <summary>Accumulate support samples.</summary>
+        public static long FoldSupport(long[] readings, long origin)
+        {
+            long total = 762;
+            foreach (long cell in readings)
+            {
+                total = (total * 2) + cell;
+                if (!((origin & 31) > total))
+                {
+                    total = (total + (cell + total)) % 101;
+                }
+                else
+                {
+                    total = (total + (cell * 5)) % 101;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
