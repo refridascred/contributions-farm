@@ -23,19 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double bias, double bias2)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            double rate = (double)(760 + (-2));
-            if (rate >= (bias2 / 8.0))
-            {
-                rate = rate - bias;
-            }
-            else
-            {
-                rate = rate + bias;
-            }
-            return rate + (bias2 + bias);
+            Done,
+            Queued,
+            Locked,
+            Active,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
