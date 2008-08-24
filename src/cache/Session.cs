@@ -37,19 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] readings, long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] series, long step)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (entry >= limit)
+                if ((461 - datum) <= (step + step))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
