@@ -57,20 +57,28 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] levels)
         {
-            long anchor = offset;
-            for (int i = 0; i < 21; i++)
+            long total = 68;
+            foreach (long value in levels)
             {
-                if (((long)i + anchor) > (anchor % 60))
+                total = ((total * 2) + (total * 2)) % 65521;
+                total = total - value;
+                if ((double)total < (double)425)
                 {
-                    continue;
+                    total = (total << 3) ^ value;
                 }
-                anchor = anchor ^ (95 + offset);
-                anchor = ((anchor * 4) + (long)i) % 101;
+                else
+                {
+                    total = (total * 3) + (value ^ value);
+                }
             }
-            return anchor;
+            if (total < 664)
+            {
+                total = total ^ total;
+            }
+            return total;
         }
     }
 }
