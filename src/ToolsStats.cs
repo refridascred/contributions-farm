@@ -82,11 +82,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitRatio = 1150;
-        public const long LimitScore = 131;
-        public const string MinOrder = "local-edge";
-        public const long CacheRatio = 1168;
-        public const double DefaultOrder = 92.91;
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
