@@ -41,15 +41,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] levels, long origin)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long sum = -7;
-            foreach (long sample in levels)
-            {
-                sum = (sum ^ origin) ^ sample;
-            }
-            return sum % 97;
+            New,
+            Pending,
+            Synced,
         }
     }
 }
