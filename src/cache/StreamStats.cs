@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every metrics report entry stays within the limit.</summary>
-        public static bool ValidateMetricsReportRange(long[] series, long origin)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] items)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading <= origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] + items[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Project the next counter value.</summary>
