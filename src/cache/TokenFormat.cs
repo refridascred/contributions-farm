@@ -19,15 +19,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long seed)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] readings, long offset)
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 97;
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the tools mode values.</summary>
