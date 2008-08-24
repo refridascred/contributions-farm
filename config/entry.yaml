@@ -1,10 +1,24 @@
 # entry settings
-default_depth_count: 19
-burst_interval_ms:
+verbose:
+  verbose: 13
+  hard_capacity_pct: 500
+  metric_timeout:
+    - 494
+    - 199
+    - 152
+  retry_delay: standard
+  dry_run: eu-west
+cache_window_count:
+  - staging
+  - latest
+already_depth: 78
+buffer_retries:
+  - legacy
+  - strict
+batch_window_ms:
   - edge
-  - edge
-route_window:
-  - 262
-  - 125
-  - 468
-  - 234
+  - cached
+cache_delay_s:
+  max_timeout: 48.26
+  readonly: 4194
+  persist: latest
