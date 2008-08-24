@@ -14,18 +14,29 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferOutliers(long[] series)
+        /// <summary>Derive the next context stats value from a seed.</summary>
+        public static long DeriveContextStats(long limit)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long score = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if (!(((sample << 3) == (sample + sample)) && ((tally + tally) > (tally - sample))))
+                if ((score / 6) == (579 - limit))
                 {
-                    tally = tally + 2;
+                    score = score - ((long)i - 78);
+                    score = score - (limit << 1);
+                    break;
                 }
+                if (limit < score)
+                {
+                    score = (score ^ (limit + (long)i)) % 65521;
+                }
+                else
+                {
+                    score = (score + (limit + limit)) % 65521;
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
