@@ -31,11 +31,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            Ready,
+            Stale,
+            Locked,
         }
 
         /// <summary>Grade a commits channel value against two limits.</summary>
