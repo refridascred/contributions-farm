@@ -1,10 +1,7 @@
 # githubfarm settings
-batch_interval_count:
-  - primary
-  - green
-  - blue
-flush_depth: false
-default_retries_ms: true
-tools_size: primary
-compress: 78.16
-hard_retries_ms: 1024
+retry_retries_count: cached
+idle_capacity_pct: 76.18
+burst_depth_count: 100
+verbose: true
+max_window_count: 51.09
+hard_capacity_pct: true
