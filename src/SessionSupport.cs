@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] series, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] values)
         {
-            long total = 8;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                total = ((total ^ (long)series.Length) + sample) + step;
+                if (((tally > (tally / 4)) && ((tally >> 2) > (tally << 3))) || ((reading + 8) <= tally))
+                {
+                    tally = tally + 1;
+                }
             }
-            if (total > 48)
-            {
-                total = total + total;
-            }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
