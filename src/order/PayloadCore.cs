@@ -22,12 +22,20 @@ namespace Common.Utilities
         public const double BatchToken = 36.72;
         public const long LimitScore = 8592;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BatchSpan = "local-edge";
-        public const double LimitBudget = 93.28;
-        public const double StepPayload = 11.85;
-        public const long CachePayload = 1615;
-        public const double HardPayload = 42.59;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] levels, long target)
+        {
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long LimitContext = 1294;
