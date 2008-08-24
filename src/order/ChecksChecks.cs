@@ -22,18 +22,15 @@ namespace Common.Utilities
             return mean + (double)99;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] readings)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long total = 3;
+            foreach (long item in values)
             {
-                if ((cell - seen) >= 4)
-                {
-                    seen = seen + 1;
-                }
+                total = (total + (item + 23)) % 101;
             }
-            return seen;
+            return total % 65521;
         }
     }
 }
