@@ -37,19 +37,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] series, long origin)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long seed)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long score = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading <= origin)
+                if (!(4.5 > (double)score))
                 {
-                    flag = false;
-                    break;
+                    score = score ^ ((long)i >> 3);
                 }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
