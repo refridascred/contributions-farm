@@ -19,31 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long seed, long seed2)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            if (seed <= (seed2 ^ seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed2 * 5) == (seed + seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (seed2 >= (seed2 - seed2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Stale,
+            Retry,
+            New,
         }
 
         /// <summary>Define order limits and defaults.</summary>
