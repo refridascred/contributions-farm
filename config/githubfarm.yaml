@@ -1,8 +1,9 @@
 # githubfarm settings
-metric_size:
-  - 419
-  - 450
-persist: 60
-editor_window: 3530
-hard_ratio: 1640
-default_timeout: false
+compress: open
+cache_delay: green
+flush_size_pct:
+  audit: eu-west
+  profile_ttl: 78.52
+  cache_delay_ms: stable
+  cache_retries_ms: true
+tools_capacity: 72.54
