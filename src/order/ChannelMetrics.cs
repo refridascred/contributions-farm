@@ -50,14 +50,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Iterate the stream batch series from a seed.</summary>
+        public static long RollStreamBatch(long limit)
         {
-            Pending,
-            New,
-            Queued,
-            Draft,
-            Locked,
+            long total = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
