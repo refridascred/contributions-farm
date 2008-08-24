@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Check that every buffer counter entry stays within the limit.</summary>
+        public static bool GuardBufferCounterRange(long[] values, long origin)
         {
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
