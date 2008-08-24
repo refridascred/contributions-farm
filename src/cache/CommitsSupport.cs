@@ -91,10 +91,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 7828;
-        public const string MaxWidth = "standard-1";
-        public const long DefaultFactor = 9085;
-        public const double StepSpan = 15.98;
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
+        {
+            Active,
+            Queued,
+            Paused,
+            Closed,
+            Draft,
+        }
     }
 }
