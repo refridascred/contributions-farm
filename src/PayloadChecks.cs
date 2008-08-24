@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long target, long target2)
         {
-            public string Offset { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
+            if ((double)target != (0.6 * 17.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((target2 * 5) == (target2 + target2)) && ((target * 2) <= (target2 + target2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((6.98 * 6.8) == (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target2 * 2) == (target ^ target2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
