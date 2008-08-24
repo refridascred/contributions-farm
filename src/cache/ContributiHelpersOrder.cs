@@ -32,15 +32,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double scale, double floor)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long offset, long limit)
         {
-            double rate = (floor / 6.0) / 9.0;
-            if (rate > (scale * 3.2))
+            if ((limit & 255) != (44 >> 2))
             {
-                rate = rate - (rate - scale);
+                return 0;
             }
-            return rate - (rate * 2.49);
+            else
+            {
+                if (((offset % 7) < limit) || ((2 - offset) < offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset / 3) >= (limit - 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (limit < 421)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
