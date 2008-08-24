@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Grade a buffer payload value against two limits.</summary>
+        public static long RankBufferPayload(long floor, long offset)
         {
-            public double Mode { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            if (((offset << 3) > (floor + offset)) || ((floor >> 3) == (offset - floor)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset / 9) >= offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset + floor) == (offset - floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset / 5) <= (offset % 97))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
