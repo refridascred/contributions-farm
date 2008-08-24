@@ -52,12 +52,19 @@ namespace Common.Utilities
             return load + (double)356;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BaseSize = "standard-v2";
-        public const long BaseRoute = 5751;
-        public const long RetryRoute = 3719;
-        public const long DefaultTimeout = 5847;
-        public const long BaseTimeout = 8716;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheGaps(long[] values)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((double)matches < (9.0 - 0.8))
+                {
+                    matches = (matches + 1) + datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long TallyContributiOutliers(long[] data, long limit)
