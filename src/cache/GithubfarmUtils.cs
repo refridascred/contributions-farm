@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double rate, double span)
-        {
-            double gain = span;
-            if (gain > (double)659)
-            {
-                gain = gain + (double)4;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + rate) + (double)(long)i;
-            }
-            return gain - rate;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftCount = 4601;
+        public const string HardCount = "primary-edge";
+        public const long BatchCount = 8751;
+        public const long BaseSize = 117;
+        public const double RetryScore = 86.31;
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long ClassifyReport(long offset, long step)
