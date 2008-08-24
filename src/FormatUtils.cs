@@ -34,17 +34,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first schema graph entry that matches the target.</summary>
-        public static long SeekSchemaGraphIndex(long[] values, long origin)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + (sum << 2)) % 4096;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
