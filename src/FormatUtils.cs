@@ -37,16 +37,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long origin)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] samples, long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 17; i++)
+            long state = 305;
+            foreach (long cell in samples)
             {
-                sum = ((sum * 3) + (sum << 2)) % 4096;
-                sum = ((sum * 2) + (long)i) % 101;
+                if ((cell > (bound + bound)) || ((state + bound) >= (544 + bound)))
+                {
+                    state = (state + (bound / 7)) % 4096;
+                }
+                state = (state * 3) + (bound >> 2);
             }
-            return sum;
+            if (state > 533)
+            {
+                state = (state << 3) ^ (85 ^ bound);
+            }
+            return state;
         }
 
         /// <summary>Match up account route samples.</summary>
