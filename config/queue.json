@@ -1,5 +1,7 @@
 {
-  "stream_timeout": 7485,
-  "cache_limit_s": 89.47,
-  "audit": 4.7
+  "retry_size_count": true,
+  "sync_window": 90.04,
+  "burst_threshold_count": "standard",
+  "session_size": true,
+  "retry_retries_pct": false
 }
