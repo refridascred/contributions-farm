@@ -17,12 +17,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
-        {
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowRoute = 30;
+        public const long BatchWidth = 5236;
+        public const long CacheRatio = 5414;
+        public const long BaseScore = 3010;
+        public const long RetryTimeout = 5615;
 
         /// <summary>Match up metrics samples.</summary>
         public static long CompareMetricsCount(long[] items)
