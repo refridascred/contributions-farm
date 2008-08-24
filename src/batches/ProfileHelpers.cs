@@ -20,12 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheLevel = 4283;
-        public const string BurstQueue = "local-edge";
-        public const long HardSize = 994;
-        public const double StepInterval = 50.52;
-        public const string RetryRatio = "primary-1";
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LocateCacheIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == floor) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long RankSupport(long origin, long seed)
