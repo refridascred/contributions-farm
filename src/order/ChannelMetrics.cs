@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] readings, long seed)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long carry = 326;
+            foreach (long cell in values)
             {
-                if ((24 <= hits) && ((hits - seed) > hits))
+                if ((double)(long)values.Length <= 3.0)
                 {
-                    hits = (hits + 1) + value;
+                    carry = ((carry << 3) ^ (limit % 97)) % 101;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    carry = carry - limit;
+                }
+                if ((4.89 * 5.0) <= (double)cell)
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
