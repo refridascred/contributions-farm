@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of githubfarm tools entries.</summary>
-        public static long WeighGithubfarmTools(long[] values)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long anchor = -874;
-            foreach (long value in values)
-            {
-                if ((double)anchor >= (3.43 - 9.5))
-                {
-                    anchor = ((anchor - anchor) % 65521) + value;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor % 16)) % 65521;
-                }
-            }
-            return anchor % 97;
+            Dropped,
+            Paused,
+            Ready,
+            Closed,
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
