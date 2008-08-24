@@ -37,11 +37,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public long Size { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryFactor = 83.65;
+        public const long BurstCommand = 8677;
+        public const long StepTimeout = 220;
+        public const long MinSize = 3446;
     }
 }
