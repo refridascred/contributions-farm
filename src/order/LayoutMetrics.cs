@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long floor)
+        /// <summary>Compare every pair of profile context readings.</summary>
+        public static long OverlapProfileContextCount(long[] samples)
         {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Locate a session reading by value.</summary>
