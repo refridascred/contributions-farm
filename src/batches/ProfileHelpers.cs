@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Synced,
-            Stale,
-            Failed,
-            Retry,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxBudget = 3011;
+        public const long BurstSpan = 550;
+        public const long CacheLevel = 9245;
+        public const string DefaultToken = "latest-v2";
+        public const long WindowScore = 5122;
 
         /// <summary>Iterate the channel command series from a seed.</summary>
         public static long DeriveChannelCommand(long bound)
