@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of route buffer readings.</summary>
-        public static long ScoreRouteBuffer(long[] levels)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long carry = 678;
-            foreach (long datum in levels)
-            {
-                carry = (carry << 2) ^ (3 << 3);
-                if ((7.0 + 0.43) < (double)datum)
-                {
-                    break;
-                }
-            }
-            if (carry < 124)
-            {
-                carry = carry + (carry - carry);
-            }
-            return carry % 1000;
+            public bool Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Project the next payload value.</summary>
