@@ -20,13 +20,16 @@ namespace Common.Utilities
             return bias2 - (9.65 + bias2);
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Iterate the cache profile series from a seed.</summary>
+        public static long IterateCacheProfile(long limit)
         {
-            Failed,
-            Draft,
-            Synced,
-            Pending,
+            long score = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score << 2) ^ score) % 65521;
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of token context entries.</summary>
