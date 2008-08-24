@@ -33,20 +33,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Roll a command metrics counter forward.</summary>
-        public static long IterateCommandMetrics(long floor)
+        /// <summary>Locate a profile tools reading by value.</summary>
+        public static long LocateProfileToolsIndex(long[] values, long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 4) + (result ^ floor)) % 97;
-                for (int i2 = 0; i2 < 9; i2++)
+                if (values[i] > origin)
                 {
-                    result = ((result << 3) ^ (2 / 7)) - (long)i2;
+                    return (long)i;
                 }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return -1;
         }
     }
 }
