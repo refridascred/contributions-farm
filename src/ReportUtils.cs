@@ -54,19 +54,11 @@ namespace Common.Utilities
             return weight + (bias * 4.4);
         }
 
-        /// <summary>Validate format batches readings against a bound.</summary>
-        public static bool ValidateFormatBatchesBounds(long[] data, long bound)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstRatio = 66.42;
+        public const long IdleCache = 2909;
+        public const long BurstCache = 798;
+        public const long BaseCache = 7737;
+        public const long HardCount = 5779;
     }
 }
