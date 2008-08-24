@@ -45,22 +45,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] series, long floor)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long seed)
         {
-            long sum = 9;
-            foreach (long datum in series)
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((floor - datum) == (floor / 6))
-                {
-                    sum = sum ^ (datum + 72);
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            if (sum > 48)
-            {
-                sum = ((sum << 3) ^ (sum / 5)) % 255;
-            }
-            return sum % 1000;
+            return mix;
         }
     }
 }
