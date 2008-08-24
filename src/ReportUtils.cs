@@ -55,11 +55,13 @@ namespace Common.Utilities
             return weight + (bias * 4.4);
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            public double Total { get; set; }
-            public long Token { get; set; }
+            public bool Score { get; set; }
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
