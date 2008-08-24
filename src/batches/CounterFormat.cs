@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token already entry stays within the limit.</summary>
-        public static bool GuardTokenAlreadyLimits(long[] values, long origin)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if (reading <= origin)
+                if (value < limit)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
     }
 }
