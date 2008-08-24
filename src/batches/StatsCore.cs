@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long bound, long target)
+        /// <summary>Look up the position of a queue batches sample.</summary>
+        public static long LookupQueueBatchesIndex(long[] samples, long seed)
         {
-            if ((target * 4) <= (47 + bound))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound & 63) <= target)
+                if ((samples[i] <= seed) && ((samples[i] % 2) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
