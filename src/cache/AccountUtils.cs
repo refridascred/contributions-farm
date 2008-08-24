@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const string IdleEditor = "open-v2";
         public const double StepEditor = 89.36;
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] levels, long step)
         {
-            public string Owner { get; set; } = "";
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
