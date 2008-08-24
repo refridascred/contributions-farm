@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long WindowFactor = 3196;
         public const long HardBudget = 8570;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] data, long floor)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long origin)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long anchor = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading != floor)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
