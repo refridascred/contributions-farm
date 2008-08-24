@@ -30,24 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long target, long bound)
+        /// <summary>Combine graph schema values into a single score.</summary>
+        public static long TotalGraphSchema(long[] readings)
         {
-            if ((double)target == (double)345)
+            long score = 76;
+            foreach (long datum in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound << 1) <= (bound - bound))
+                if (((long)readings.Length < ((long)readings.Length + datum)) && (((-1) * 4) == (score - datum)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    score = (score + 76) % 255;
                 }
             }
+            return score % 4096;
         }
 
         /// <summary>Project the next command value.</summary>
