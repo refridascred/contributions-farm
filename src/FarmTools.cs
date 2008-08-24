@@ -48,20 +48,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next profile session value from a seed.</summary>
-        public static long DeriveProfileSession(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((target + score) >= (score >> 1))
-                {
-                    score = (score ^ 39) % 97;
-                }
-                score = (score ^ (target ^ target)) % 97;
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftBudget = 8506;
+        public const long IdleFactor = 8270;
+        public const double WindowLevel = 81.85;
     }
 }
