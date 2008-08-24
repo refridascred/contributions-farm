@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Grade a route contributi value against two limits.</summary>
-        public static long BucketRouteContributi(long seed, long step)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            if ((step + 862) >= (seed >> 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step + 23) < step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((4 - step) <= (seed & 31))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
+            public double Mode { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
