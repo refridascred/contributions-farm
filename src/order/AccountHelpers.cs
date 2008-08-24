@@ -30,18 +30,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] readings)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (((hits / 8) >= (hits - (long)readings.Length)) || (hits > sample))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Ready,
+            Pending,
+            Dropped,
+            Paused,
+            Idle,
         }
 
         /// <summary>Describe the metrics class values.</summary>
