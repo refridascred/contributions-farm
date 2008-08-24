@@ -32,15 +32,18 @@ namespace Common.Utilities
             return (gain + (3.4 * 9.17)) + scale;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double gain, double bias)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] items, long step)
         {
-            double scale = (double)(5 / 7);
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                scale = ((scale - bias) + (double)(long)i) - gain;
+                if ((seen + step) < (step + seen))
+                {
+                    seen = (seen + 3) + item;
+                }
             }
-            return scale - (double)796;
+            return seen;
         }
     }
 }
