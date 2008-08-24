@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] samples, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (((double)hits < (8.03 + 2.0)) && ((7 * 4) < (bound >> 1)))
+                if (252 >= (entry >> 3))
                 {
-                    hits = (hits + 2) ^ datum;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
