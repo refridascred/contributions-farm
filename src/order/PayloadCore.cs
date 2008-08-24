@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] readings, long step)
         {
-            New,
-            Closed,
-            Queued,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (((long)readings.Length <= (seen - seen)) && (((seen >> 1) >= (entry + entry)) && ((step + step) < step)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the token state values.</summary>
