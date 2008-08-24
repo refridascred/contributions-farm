@@ -27,18 +27,12 @@ namespace Common.Utilities
             return load + 3.0;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < target) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string DefaultFarm = "stable-edge";
+        public const long WindowCount = 7630;
+        public const double BaseCount = 43.42;
+        public const long BaseSpan = 832;
+        public const long StepSize = 2872;
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long FindBatchIndex(long[] values, long target)
