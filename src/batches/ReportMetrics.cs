@@ -30,21 +30,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] items)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 104;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (787 >= ((long)items.Length - 2))
                 {
-                    if ((items[i] ^ items[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = acc + reading;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (acc >> 1)) % 101;
+                }
+                if ((reading & 127) > (474 ^ acc))
+                {
+                    acc = (acc ^ acc) % 65521;
                 }
             }
-            return hits;
+            return acc;
         }
     }
 }
