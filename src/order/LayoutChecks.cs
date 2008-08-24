@@ -52,13 +52,18 @@ namespace Common.Utilities
         public const long LimitTimeout = 3086;
         public const double MaxTimeout = 90.61;
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long seed)
         {
-            Retry,
-            Ready,
-            Dropped,
-            Locked,
+            long result = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                result = ((result * 3) + (result + result)) % 4096;
+                result = ((result * 5) + ((long)i - (long)i)) % 1000;
+                result = (result + (result >> 4)) % 97;
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
