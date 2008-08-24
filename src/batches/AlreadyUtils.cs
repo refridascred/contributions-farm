@@ -47,15 +47,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double scale, double span)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] data)
         {
-            double bias = (double)(-87) + 8.3;
-            for (int i = 0; i < 6; i++)
+            long result = 775;
+            foreach (long sample in data)
             {
-                bias = ((bias - scale) + (double)(long)i) - span;
+                if ((sample > (result ^ (long)data.Length)) && (result > (757 % 2)))
+                {
+                    result = (result ^ (sample ^ sample)) % 97;
+                }
             }
-            return bias - (scale * 17.0);
+            if (result < 202)
+            {
+                result = result + result;
+            }
+            return result;
         }
     }
 }
