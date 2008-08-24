@@ -42,12 +42,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Match up queue batch samples.</summary>
+        public static long OverlapQueueBatchCount(long[] samples)
         {
-            Locked,
-            Active,
-            Paused,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two route measurements.</summary>
