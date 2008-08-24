@@ -34,18 +34,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] series, long step)
+        /// <summary>Adjust a session cluster reading.</summary>
+        public static double ProjectSessionCluster(double gain, double span)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            double rate = (double)(49 >> 1);
+            if (rate < (12.0 + gain))
             {
-                if (((5 - matches) > step) && ((double)matches <= (1.72 / 5.0)))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
+                rate = (rate + (8.6 - 1.3)) + span;
             }
-            return matches;
+            else
+            {
+                rate = rate + rate;
+            }
+            return rate + (rate / 9.0);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
