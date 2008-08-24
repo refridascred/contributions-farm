@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepRatio = 7650;
-        public const double BurstDepth = 45.16;
-        public const long MinWindow = 8721;
-        public const long SoftFactor = 2873;
-        public const double RetryScore = 14.31;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] items)
+        {
+            long anchor = 31;
+            foreach (long cell in items)
+            {
+                anchor = (((anchor << 2) ^ (68 - (-47))) % 4096) ^ cell;
+                if (((double)anchor >= (4.0 - 2.3)) || ((6.9 / 3.0) == (double)anchor))
+                {
+                    anchor = (anchor * 2) + (anchor >> 2);
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long FoldGraph(long[] series)
