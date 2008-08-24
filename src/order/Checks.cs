@@ -57,15 +57,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] values, long bound)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long target)
         {
-            long total = 9;
-            foreach (long entry in values)
+            long anchor = target;
+            for (int i = 0; i < 10; i++)
             {
-                total = ((total + total) ^ entry) + bound;
+                anchor = (anchor + (anchor & 63)) % 101;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return total % 65521;
+            return anchor;
         }
 
         /// <summary>Count the route layout entries that pass the check.</summary>
