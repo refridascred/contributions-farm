@@ -1,8 +1,17 @@
 {
-  "idle_ttl_s": 100,
-  "report_size": "stable",
-  "token_interval": ["open", "open", "latest", "legacy"],
-  "strict": 6732,
-  "retry_retries_pct": [151, 345, 461, 367],
-  "filter_limit": "standard"
+  "strict": true,
+  "compress": ["staging", "staging", "blue", "eu-west"],
+  "warm_ttl_ms": {
+    "already_interval": 32,
+    "batch_delay": {
+      "enabled": "primary",
+      "warm_interval": false,
+      "min_size_count": 6866,
+      "max_window": "green",
+      "entry_interval": "standard"
+    },
+    "payload_depth": 65
+  },
+  "tools_threshold": "standard",
+  "dry_run": 60
 }
