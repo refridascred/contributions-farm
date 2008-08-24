@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long bound)
         {
-            Queued,
-            Failed,
-            Draft,
+            long state = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                state = ((state << 3) ^ (state << 2)) % 101;
+                state = state - (6 ^ 237);
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Hold a schema options.</summary>
