@@ -1,9 +1,15 @@
 {
-  "flush_ratio_s": "strict",
-  "compress": 23.94,
-  "metrics_limit": {
-    "base_timeout": 77,
-    "session_depth": 46.56,
-    "readonly": 43.28
-  }
+  "max_depth_count": false,
+  "idle_depth_ms": "edge",
+  "burst_capacity_s": {
+    "flush_limit": 55.87,
+    "cache_timeout": "stable",
+    "entry_capacity": "eu-west",
+    "compress": {
+      "min_size_count": "strict",
+      "sync_ratio_pct": 1024,
+      "hard_timeout_s": "green"
+    }
+  },
+  "default_timeout": ["legacy", "standard", "strict"]
 }
