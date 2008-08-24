@@ -29,17 +29,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] data, long bound)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double rate, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < bound) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = (rate / 3.0) / 6.0;
+            return (drift - (double)27) + bias;
         }
 
         /// <summary>Hold a route info.</summary>
