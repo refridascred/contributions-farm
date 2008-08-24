@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next token command value from a seed.</summary>
-        public static long StepTokenCommand(long step)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double rate, double span)
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
+            double rate2 = (double)(998 + 77);
+            if (rate2 <= (rate2 / 9.0))
             {
-                score = ((score * 5) + (long)i) % 1000;
+                rate2 = rate2 + rate;
             }
-            return score;
+            else
+            {
+                rate2 = rate2 - (15.0 - rate);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 - rate2) + (double)(long)i;
+            }
+            return rate2 - (span / 6.0);
         }
 
         /// <summary>Match up route already samples.</summary>
