@@ -34,17 +34,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long seed)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] values, long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 16; i++)
+            long score = 33;
+            foreach (long item in values)
             {
-                state = (state ^ (932 + 3)) % 65521;
-                state = state - (15 ^ 9);
-                state = ((state * 4) + (long)i) % 65521;
+                if (score < (score / 5))
+                {
+                    score = (((score ^ (score + 629)) % 4096) ^ item) + bound;
+                }
             }
-            return state;
+            return score;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
