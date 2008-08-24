@@ -57,23 +57,10 @@ namespace Common.Utilities
             return mean + weight;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double bias, double offset)
-        {
-            double gain = 8.0;
-            if (gain > (double)177)
-            {
-                gain = (gain + gain) + offset;
-            }
-            else
-            {
-                gain = gain - (double)162;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain - (bias - gain);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleFormat = 97.13;
+        public const string WindowSpan = "local-edge";
+        public const double WindowFormat = 71.4;
+        public const long HardScore = 5858;
     }
 }
