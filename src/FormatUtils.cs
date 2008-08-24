@@ -79,19 +79,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double rate, double span)
+        /// <summary>Rank session stats input into a small class.</summary>
+        public static long ClassifySessionStats(long step, long floor)
         {
-            double ratio = rate + (17.0 + span);
-            if (ratio <= (span - rate))
+            long offset = step + floor;
+            if (((538 + 90) <= (step ^ step)) || ((floor >> 5) != (step + floor)))
             {
-                ratio = ratio - (double)745;
+                return 2;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                ratio = (ratio - 9.9) + (double)(long)i;
+                if ((step + offset) == (offset + floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step < floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((step + floor) > ((-8) + step)) || ((7.65 + 3.54) <= (double)floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return ratio - span;
         }
     }
 }
