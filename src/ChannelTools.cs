@@ -20,18 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] values)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long origin)
         {
-            long total = 92;
-            foreach (long entry in values)
+            long score = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (entry >= (entry - entry))
+                if (((7.79 * 19.0) < (double)(long)i) && ((score + origin) >= (score - score)))
                 {
-                    total = total - (total * 3);
+                    score = (score - origin) % 101;
                 }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
