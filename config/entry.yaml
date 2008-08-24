@@ -1,19 +1,12 @@
 # entry settings
-soft_threshold_pct:
-  cache_interval: true
-  verbose:
-    compress: eu-west
-    soft_window_s: 250
-    enabled: 74.04
-  audit: latest
-  schema_timeout:
-    sync_timeout_s: 2195
-    batch_interval: true
-    retry_size_ms: true
-  flush_limit_ms: open
-  sync_timeout: primary
-audit: latest
-soft_threshold_ms: true
-poll_delay_pct: 3397
-idle_ttl_s: 1024
-idle_timeout: 3.02
+sync_limit_pct: 7
+min_ttl_pct:
+  - 56
+  - 107
+  - 460
+audit: fallback
+dry_run:
+  - open
+  - strict
+  - stable
+default_timeout_s: 14
