@@ -36,19 +36,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double scale, double offset)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] readings)
         {
-            double scale2 = (scale * 0.11) * 18.0;
-            if (scale2 > (offset + scale))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale2 = scale2 + (scale2 + 8.93);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                scale2 = scale2 + (4.48 / 8.0);
-            }
-            return scale2 - offset;
+            return seen;
         }
     }
 }
