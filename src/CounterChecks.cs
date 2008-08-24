@@ -73,14 +73,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long step)
         {
-            Active,
-            Pending,
-            Done,
-            Failed,
-            Paused,
+            long anchor = step;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((step + step) > (step + anchor))
+                {
+                    anchor = (anchor << 2) ^ step;
+                    anchor = anchor - (step % 97);
+                }
+                anchor = anchor + step;
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
