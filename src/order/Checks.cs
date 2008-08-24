@@ -27,23 +27,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the format account entries that pass the check.</summary>
-        public static long MeasureFormatAccountHits(long[] items)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((count + count) != (reading << 1))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepBudget = 2413;
+        public const long MaxContext = 8443;
+        public const long LimitInterval = 7293;
+        public const string StepContext = "strict-edge";
+        public const long IdleContext = 9976;
 
         /// <summary>Roll a token counter forward.</summary>
         public static long StepToken(long target)
