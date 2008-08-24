@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepFactor = "staging-edge";
-        public const long MaxBudget = 5557;
-        public const string MinLayout = "alpha-v2";
-        public const long DefaultCount = 3777;
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Paused,
+            Pending,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Compare every pair of commits readings.</summary>
         public static long CompareCommitsCount(long[] values)
