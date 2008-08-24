@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmOutliers(long[] series)
         {
-            Done,
-            Locked,
-            Stale,
-            Synced,
-            Retry,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((tally / 7) < tally)
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate format record samples.</summary>
