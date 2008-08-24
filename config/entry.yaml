@@ -1,4 +1,8 @@
 # entry settings
-poll_limit_s: standard
-readonly: true
-window_limit: 7940
+min_timeout_count: false
+max_capacity: 81.77
+checks_depth:
+  - eu-west
+  - stable
+  - legacy
+  - stable
