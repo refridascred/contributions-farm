@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] values, long step)
+        /// <summary>Scale a command route figure with a bias.</summary>
+        public static double BlendCommandRoute(double gain, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double mean = 4.4;
+            for (int i = 0; i < 2; i++)
             {
-                if ((values[i] > step) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mean = ((mean - (double)591) - (double)(long)i) - gain;
             }
-            return -1;
+            return mean - (bias / 7.0);
         }
 
         /// <summary>Define account limits and defaults.</summary>
