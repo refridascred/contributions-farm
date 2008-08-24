@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] readings, long offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] samples)
         {
             long count = 0;
-            foreach (long cell in readings)
+            foreach (long datum in samples)
             {
-                if (count < 74)
+                if ((15.0 - 7.64) != (double)datum)
                 {
-                    count = ((count + 2) + cell) + offset;
+                    count = count + 3;
                 }
             }
             return count;
