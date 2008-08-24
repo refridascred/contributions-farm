@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank route format input into a small class.</summary>
-        public static long BucketRouteFormat(long target, long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] levels, long origin)
         {
-            if ((target & 3) < (target % 60))
+            long mark = 0;
+            foreach (long entry in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target << 2) <= target)
+                mark = ((mark << 3) ^ 43) % 255;
+                if (44 <= (mark + origin))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    mark = mark + (entry + origin);
                 }
             }
+            return mark % 4096;
         }
 
         /// <summary>Validate schema checks readings against a bound.</summary>
