@@ -19,16 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double bias, double span)
-        {
-            double mean = span + (bias / 7.0);
-            if (mean > mean)
-            {
-                mean = mean - (mean * 3.25);
-            }
-            return mean + (double)0;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitInterval = 5275;
+        public const double BaseSize = 48.8;
+        public const long WindowNotes = 2711;
+        public const long DefaultNotes = 662;
+        public const long BaseNotes = 4611;
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
