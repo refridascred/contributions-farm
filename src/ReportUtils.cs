@@ -32,22 +32,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of token context entries.</summary>
-        public static long WeighTokenContext(long[] data, long floor)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double ratio, double bias)
         {
-            long acc = -86;
-            foreach (long item in data)
+            double load = ratio;
+            if (load <= (double)4)
             {
-                if (77 >= (acc * 4))
-                {
-                    acc = (acc + (floor * 3)) - item;
-                }
+                load = load - (1.84 * 2.54);
             }
-            if (acc > 692)
-            {
-                acc = (acc - acc) % 97;
-            }
-            return acc;
+            return load + (bias * 9.17);
         }
 
         /// <summary>Adjust a payload reading.</summary>
