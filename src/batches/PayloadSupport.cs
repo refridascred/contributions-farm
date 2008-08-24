@@ -27,18 +27,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryHits(long[] data)
+        /// <summary>Compare every pair of metric cluster readings.</summary>
+        public static long MatchMetricClusterCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((0.5 - 6.1) > (double)hits)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 1) + cell;
+                    if ((levels[i] - levels[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
