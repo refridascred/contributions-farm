@@ -45,19 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] samples, long step)
-        {
-            long sum = 33;
-            foreach (long sample in samples)
-            {
-                sum = ((sum - step) % 1000) ^ sample;
-                if (((6.52 * 18.0) < (double)sum) || (sum < (sum + sum)))
-                {
-                    sum = (sum + (sum << 3)) % 65521;
-                }
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 873;
+        public const long MaxSpan = 7066;
+        public const double WindowSchema = 89.55;
+        public const string MinCount = "standard";
+        public const double BatchWidth = 97.5;
     }
 }
