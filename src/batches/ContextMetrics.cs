@@ -25,15 +25,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long origin)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] samples)
         {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
+            long result = -985;
+            foreach (long entry in samples)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                if (!((result - result) != (entry - entry)))
+                {
+                    result = (result * 4) + (result ^ 0);
+                    result = (result * 5) + result;
+                }
+                for (int i = 0; i < 10; i++)
+                {
+                    result = ((result - result) % 255) - (long)i;
+                }
+                if ((7 << 2) >= (entry + result))
+                {
+                    result = (result - (long)samples.Length) % 101;
+                }
             }
-            return acc;
+            if (result > 70)
+            {
+                result = result + (result % 64);
+            }
+            return result % 1000;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
