@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] data, long offset)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] levels)
         {
-            long carry = 3;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((datum % 100) > 46) || ((carry << 3) <= (89 % 8)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry ^ (2 + carry)) % 255;
-                }
-                carry = (carry - carry) % 4096;
-                if ((long)data.Length <= (carry + offset))
-                {
-                    carry = (carry << 2) ^ (carry * 4);
-                }
-                else
-                {
-                    carry = carry ^ offset;
+                    if ((levels[i] - levels[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (carry < 314)
-            {
-                carry = ((carry << 2) ^ (offset + 697)) % 101;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Accumulate already samples.</summary>
