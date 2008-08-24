@@ -18,10 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 7513;
-        public const double BatchContext = 36.41;
-        public const long WindowContext = 7925;
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long seed, long origin)
+        {
+            if (!(seed <= (seed - 89)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed + origin) < 7)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin - seed) == (origin + origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((origin % 5) >= (origin / 3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long SeriesFormat(long step)
