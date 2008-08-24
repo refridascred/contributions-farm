@@ -21,11 +21,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BaseStream = 14.82;
-        public const long HardTimeout = 3897;
-        public const long SoftRatio = 117;
-        public const double StepStream = 91.26;
-        public const long BatchDepth = 6439;
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
+        {
+            Draft,
+            Ready,
+            Queued,
+        }
     }
 }
