@@ -13,11 +13,12 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleCommits = 55.54;
-        public const long MaxCommits = 4218;
-        public const long BaseTimeout = 4222;
-        public const long DefaultCommits = 5192;
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
+        {
+            public long Token { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Accumulate cache samples.</summary>
         public static long ScoreCache(long[] levels)
