@@ -42,22 +42,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchGaps(long[] values, long origin)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((hits & 15) <= (reading >> 2))
-                {
-                    hits = (hits + 2) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Failed,
+            Queued,
+            Active,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a channel options.</summary>
