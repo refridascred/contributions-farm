@@ -1,6 +1,9 @@
 # support settings
-route_depth: true
-audit: 73
-flush_retries_count: green
-counter_capacity: latest
-retry_delay_s: 87
+session_capacity: eu-west
+entry_interval: true
+retry_delay: local
+sync_capacity_pct:
+  - strict
+  - latest
+  - green
+  - cached
