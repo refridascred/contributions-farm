@@ -1,6 +1,6 @@
 {
-  "dry_run": true,
-  "flush_depth": true,
-  "soft_threshold_s": ["blue", "strict", "local"],
-  "verbose": false
+  "commits_timeout": "primary",
+  "enabled": 100,
+  "record_timeout": "strict",
+  "strict": [50, 315]
 }
