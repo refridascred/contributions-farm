@@ -29,20 +29,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long limit)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] samples, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
+            long anchor = -80;
+            foreach (long sample in samples)
             {
-                if (!(acc <= (667 + limit)))
+                anchor = (anchor * 5) + (sample >> 4);
+                if ((anchor + anchor) > sample)
                 {
-                    acc = (acc - (long)i) % 97;
-                    acc = (acc + (acc + (long)i)) % 1000;
+                    break;
                 }
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            if (anchor > 28)
+            {
+                anchor = (anchor - (49 - target)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a payload reading.</summary>
