@@ -29,16 +29,12 @@ namespace Common.Utilities
         public const string WindowSchema = "alpha-v2";
         public const long LimitLevel = 6083;
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstChannel = 21.78;
+        public const double IdleInterval = 84.52;
+        public const double DefaultChannel = 29.93;
+        public const double LimitCount = 47.9;
+        public const double IdleDepth = 38.82;
 
         /// <summary>Project the next batches value.</summary>
         public static double ScaleBatches(double bias, double offset)
