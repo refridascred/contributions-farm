@@ -52,12 +52,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long floor)
         {
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long state = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                state = ((state << 2) ^ floor) % 97;
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
