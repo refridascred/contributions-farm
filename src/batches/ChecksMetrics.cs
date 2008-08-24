@@ -73,38 +73,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long bound, long step)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksMatches(long[] values, long bound)
         {
-            if (((bound / 9) != (4 + step)) || ((double)step <= (1.0 / 6.0)))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step + 713) != (step * 3))
+                if ((double)bound > (2.0 - 1.75))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound ^ bound) < bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((bound << 3) == (step / 7)) || ((bound + 500) >= (step - bound)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    tally = (tally + 2) - value;
                 }
             }
+            return tally;
         }
     }
 }
