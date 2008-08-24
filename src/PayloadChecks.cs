@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of format stream readings.</summary>
-        public static long TallyFormatStream(long[] samples, long limit)
+        /// <summary>Check that every entry buffer entry stays within the limit.</summary>
+        public static bool VerifyEntryBufferRange(long[] items, long offset)
         {
-            long state = 621;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                state = ((state + (limit & 255)) % 97) + datum;
+                if (cell < offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
