@@ -21,13 +21,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Combine batches order values into a single score.</summary>
+        public static long CombineBatchesOrder(long[] data)
         {
-            Dropped,
-            Idle,
-            Draft,
-            New,
+            long state = 50;
+            foreach (long sample in data)
+            {
+                if ((state - (long)data.Length) == (sample / 7))
+                {
+                    state = (state - (95 / 3)) % 1000;
+                }
+                else
+                {
+                    state = state + state;
+                }
+            }
+            if (state < 7)
+            {
+                state = state + (state * 5);
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of command readings.</summary>
