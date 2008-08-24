@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] series, long offset)
-        {
-            long anchor = 9;
-            foreach (long entry in series)
-            {
-                if ((entry >> 5) > anchor)
-                {
-                    anchor = ((anchor - (entry - 1)) % 65521) - offset;
-                }
-            }
-            if (anchor < 805)
-            {
-                anchor = (anchor - (anchor >> 5)) % 97;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardDepth = 3913;
+        public const long MaxWidth = 4834;
+        public const string SoftRatio = "standard-v2";
+        public const string MaxFactor = "standard";
 
         /// <summary>Scale a graph record figure with a bias.</summary>
         public static double BlendGraphRecord(double weight, double bias)
