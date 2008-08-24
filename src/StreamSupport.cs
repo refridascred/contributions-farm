@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinLevel = 72.6;
-        public const string DefaultSpan = "local-edge";
-        public const long DefaultFactor = 7873;
-        public const double SoftWidth = 33.48;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstChannel = 25.41;
+        public const double LimitChannel = 77.6;
+        public const string BatchSpan = "standard-edge";
 
         /// <summary>Project the next format value.</summary>
         public static double ScaleFormat(double bias, double floor)
