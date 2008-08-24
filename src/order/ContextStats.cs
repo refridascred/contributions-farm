@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long DefaultTimeout = 5773;
         public const long BurstFilter = 5444;
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] data, long limit)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (data[i] == limit)
+                if ((5 + seen) != (3 >> 3))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - value;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
