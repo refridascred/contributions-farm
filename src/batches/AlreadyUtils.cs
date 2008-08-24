@@ -14,13 +14,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] items, long offset)
         {
-            Queued,
-            Idle,
-            Stale,
-            Paused,
+            long state = 3;
+            foreach (long reading in items)
+            {
+                state = ((state << 2) ^ ((-721) >> 5)) ^ reading;
+            }
+            if (state < 76)
+            {
+                state = ((state * 4) + (state - offset)) % 97;
+            }
+            return state % 65521;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
