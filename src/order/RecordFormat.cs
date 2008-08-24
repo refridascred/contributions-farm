@@ -72,18 +72,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] samples)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long offset)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long anchor = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((value % 2) >= 39)
+                if (((long)i + anchor) > (anchor % 60))
                 {
-                    count = count + 1;
+                    continue;
                 }
+                anchor = anchor ^ (95 + offset);
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
     }
 }
