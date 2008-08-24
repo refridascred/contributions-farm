@@ -12,23 +12,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double gain, double span)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            double scale = gain;
-            if (scale > (span / 4.0))
-            {
-                scale = scale - (double)65;
-            }
-            else
-            {
-                scale = scale - (scale + gain);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - (span * 5.0)) + (double)(long)i;
-            }
-            return scale - scale;
+            Active,
+            Idle,
+            New,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Locate a metric reading by value.</summary>
