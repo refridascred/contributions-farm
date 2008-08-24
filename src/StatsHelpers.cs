@@ -65,12 +65,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Locate a counter batches reading by value.</summary>
+        public static long LocateCounterBatchesIndex(long[] items, long target)
         {
-            Ready,
-            Queued,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
