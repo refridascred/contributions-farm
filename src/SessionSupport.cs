@@ -47,19 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double gain, double floor)
-        {
-            double drift = floor;
-            if (drift >= (double)71)
-            {
-                drift = (drift - drift) + gain;
-            }
-            else
-            {
-                drift = drift - (double)(-26);
-            }
-            return drift + (drift / 7.0);
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 4587;
+        public const string BatchLevel = "alpha-1";
+        public const long WindowSize = 3605;
+        public const long DefaultBudget = 2283;
+        public const long StepFactor = 759;
     }
 }
