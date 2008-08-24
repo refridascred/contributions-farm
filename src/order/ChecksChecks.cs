@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Locked,
-            Paused,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinChannel = "local-v2";
+        public const long RetryDepth = 7763;
+        public const long WindowChannel = 1088;
+        public const string BaseBudget = "primary";
+        public const long CacheChannel = 5660;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long MeasureBatchGaps(long[] values, long limit)
