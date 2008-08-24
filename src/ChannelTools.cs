@@ -20,11 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double LimitFormat = 96.71;
-        public const long WindowBudget = 926;
-        public const long DefaultFormat = 8986;
-        public const long CacheFormat = 8671;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] values)
+        {
+            long total = 92;
+            foreach (long entry in values)
+            {
+                if (entry >= (entry - entry))
+                {
+                    total = total - (total * 3);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long LookupReportIndex(long[] levels, long step)
