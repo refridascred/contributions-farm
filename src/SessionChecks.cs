@@ -32,14 +32,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
-        {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowBudget = 52.06;
+        public const long CacheCount = 3187;
+        public const long WindowFactor = 2627;
+        public const double SoftGithubfarm = 15.08;
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long CompareAlreadyCount(long[] samples)
