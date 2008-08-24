@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchBounds(long[] readings, long seed)
+        /// <summary>Rank route format input into a small class.</summary>
+        public static long BucketRouteFormat(long target, long floor)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            if ((target & 3) < (target % 60))
             {
-                if (cell < seed)
+                return 4;
+            }
+            else
+            {
+                if ((target << 2) <= target)
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return found;
         }
 
         /// <summary>Validate schema checks readings against a bound.</summary>
