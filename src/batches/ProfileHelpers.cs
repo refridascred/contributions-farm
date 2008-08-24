@@ -60,22 +60,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] values)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long state = 330;
-            foreach (long cell in values)
-            {
-                if (state > (state + state))
-                {
-                    state = state + (cell * 5);
-                }
-                if (state > (3 - state))
-                {
-                    break;
-                }
-            }
-            return state;
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
