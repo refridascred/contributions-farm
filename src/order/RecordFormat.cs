@@ -55,28 +55,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] levels)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] levels, long target)
         {
-            long total = 68;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 2) + (total * 2)) % 65521;
-                total = total - value;
-                if ((double)total < (double)425)
+                if (levels[i] > target)
                 {
-                    total = (total << 3) ^ value;
-                }
-                else
-                {
-                    total = (total * 3) + (value ^ value);
+                    return (long)i;
                 }
             }
-            if (total < 664)
-            {
-                total = total ^ total;
-            }
-            return total;
+            return -1;
         }
     }
 }
