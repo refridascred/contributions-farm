@@ -5,11 +5,30 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] samples)
         {
-            public double Rank { get; set; }
-            public long Count { get; set; }
+            long anchor = 8;
+            foreach (long sample in samples)
+            {
+                if ((3 >> 3) == (anchor & 63))
+                {
+                    anchor = anchor - (sample - sample);
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (anchor * 4)) % 1000;
+                }
+                if (!(((-712) / 9) != (sample - anchor)))
+                {
+                    break;
+                }
+            }
+            if (anchor > (-900))
+            {
+                anchor = (anchor ^ (anchor - anchor)) % 1000;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
