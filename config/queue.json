@@ -1,6 +1,27 @@
 {
-  "route_capacity": 65,
-  "retry_limit": 30,
-  "cache_limit_pct": 13,
-  "metrics_threshold": "open"
+  "max_size": 33.09,
+  "order_limit": {
+    "soft_size": {
+      "max_ratio_pct": "legacy",
+      "flush_capacity_s": 9840,
+      "default_depth_s": ["primary", "cached", "local"],
+      "enabled": true,
+      "cache_size": 43.02,
+      "min_retries": "strict"
+    },
+    "profile_size": true,
+    "readonly": true,
+    "persist": 38,
+    "sync_delay_pct": {
+      "soft_window_s": "local",
+      "buffer_ttl": 34,
+      "order_timeout": "blue",
+      "soft_timeout": 500,
+      "retry_window": 3723
+    },
+    "default_timeout": 81.84
+  },
+  "readonly": true,
+  "audit": "latest",
+  "strict": [15, 376, 75, 482]
 }
