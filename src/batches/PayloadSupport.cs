@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleCommand = 2396;
-        public const string DefaultFactor = "latest-v2";
-        public const long IdleSpan = 8702;
-        public const long MinBudget = 9139;
-        public const double StepDepth = 71.98;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((datum << 1) > (6 - datum))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double ProjectCommits(double bias, double span)
