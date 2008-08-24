@@ -25,19 +25,12 @@ namespace Common.Utilities
         public const long BaseScore = 3010;
         public const long RetryTimeout = 5615;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] levels, long limit)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Locked,
+            Done,
         }
 
         /// <summary>Fold a list of batches readings.</summary>
