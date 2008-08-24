@@ -1,36 +1,4 @@
 # githubfarm settings
-strict:
-  - latest
-  - edge
-  - standard
-  - stable
-idle_delay:
-  metrics_threshold:
-    githubfarm_interval: green
-    verbose:
-      - eu-west
-      - fallback
-    warm_limit_ms: fallback
-    cache_threshold_ms: 8729
-    soft_window_pct: 18.93
-    order_size:
-      - legacy
-      - strict
-      - edge
-      - local
-  readonly: 779
-  min_retries_pct: true
-  idle_interval_count:
-    default_size: legacy
-    retry_threshold: true
-    warm_delay_s: 6446
-    dry_run: false
-    strict: 15.0
-    audit:
-      - standard
-      - primary
-  cache_delay:
-    - cached
-    - strict
-hard_depth_ms: true
-tools_size: 54.47
+contributi_retries: 60
+order_interval: 70.47
+entry_threshold: 100
