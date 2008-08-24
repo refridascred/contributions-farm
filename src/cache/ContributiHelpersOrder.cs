@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long limit, long limit2)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] readings, long limit)
         {
-            if ((1.7 + 8.4) <= (double)limit2)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((38 << 2) != (limit + limit))
+                if (readings[i] >= limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit2 == (double)limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (limit <= (limit % 8))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
