@@ -48,12 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphOutliers(long[] values, long bound)
         {
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((bound << 1) < 5)
+                {
+                    matches = (matches + 2) + cell;
+                }
+            }
+            return matches;
         }
     }
 }
