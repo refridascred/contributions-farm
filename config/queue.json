@@ -1,5 +1,5 @@
 {
-  "strict": "standard",
-  "batch_threshold_count": 1024,
-  "idle_window_pct": "staging"
+  "retry_retries_count": true,
+  "githubfarm_capacity": 64,
+  "sync_ttl": 74.21
 }
