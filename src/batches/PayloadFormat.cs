@@ -23,18 +23,21 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] values)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] items)
         {
-            long result = 805;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)entry == (double)(-487))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = result + (result % 100);
+                    if ((items[i] ^ items[j]) == 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Describe the window status values.</summary>
