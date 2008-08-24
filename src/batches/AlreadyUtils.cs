@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string DefaultWidth = "open-1";
-        public const double RetryLayout = 91.05;
-        public const long IdleLayout = 486;
-        public const string MaxInterval = "alpha";
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] samples, long seed)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((20.0 + 7.2) <= (double)datum)
+                {
+                    hits = (hits + 1) + seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the token mode values.</summary>
         public enum TokenMode
