@@ -25,13 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] levels)
         {
-            Active,
-            Failed,
-            Done,
-            New,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next metric githubfarm value from a seed.</summary>
