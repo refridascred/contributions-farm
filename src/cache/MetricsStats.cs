@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] series)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long total = 3;
-            foreach (long datum in series)
-            {
-                total = (total + (datum ^ datum)) % 1000;
-            }
-            return total % 1000;
+            Dropped,
+            Closed,
+            New,
         }
 
         /// <summary>Combine support values into a single score.</summary>
