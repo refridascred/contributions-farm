@@ -1,4 +1,12 @@
 # support settings
-sync_ratio: legacy
-graph_threshold: true
-sync_interval_s: 1024
+flush_window: 55
+readonly:
+  - 276
+  - 295
+enabled: true
+sync_depth_pct: staging
+editor_delay:
+  - 253
+  - 29
+  - 349
+sync_threshold_pct: 250
