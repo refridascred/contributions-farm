@@ -1,7 +1,4 @@
 # entry settings
-hard_retries_count: edge
-strict: 2
-soft_size: true
-record_timeout: 8795
-batches_size: 30
-burst_size: 96.06
+readonly: primary
+persist: edge
+flush_threshold: 1024
