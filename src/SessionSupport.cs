@@ -20,21 +20,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long MatchStatsCount(long[] values)
+        /// <summary>Accumulate session entry samples.</summary>
+        public static long ScoreSessionEntry(long[] samples, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 3;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(limit < (cell ^ 712)))
                 {
-                    if ((values[i] + values[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc + (cell % 100)) % 97;
+                }
+                else
+                {
+                    acc = ((acc * 2) + (limit << 3)) % 97;
                 }
             }
-            return seen;
+            if (acc < 5)
+            {
+                acc = ((acc * 4) + (limit + (-58))) % 97;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
