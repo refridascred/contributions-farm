@@ -52,16 +52,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state << 2) ^ floor) % 97;
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MinSchema = "staging-1";
+        public const long MinDepth = 7446;
+        public const long HardSchema = 2613;
+        public const long LimitSchema = 9964;
+        public const long CacheTimeout = 8163;
     }
 }
