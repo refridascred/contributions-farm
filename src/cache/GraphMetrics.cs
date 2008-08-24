@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long IdleCommits = 1719;
         public const double LimitDepth = 11.5;
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double ratio, double span)
+        /// <summary>Audit graph commits readings against a rule.</summary>
+        public static long MeasureGraphCommitsGaps(long[] values, long offset)
         {
-            double load = 3.4 - span;
-            if (load < (0.56 * 5.98))
+            long hits = 0;
+            foreach (long value in values)
             {
-                load = load + ratio;
+                if ((offset ^ 788) <= hits)
+                {
+                    hits = (hits + 2) ^ value;
+                }
             }
-            else
-            {
-                load = load - span;
-            }
-            return load - 7.4;
+            return hits;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
