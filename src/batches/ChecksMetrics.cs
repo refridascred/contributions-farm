@@ -51,13 +51,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine token graph values into a single score.</summary>
-        public static long TotalTokenGraph(long[] values, long step)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] data, long target)
         {
-            long acc = 7;
-            foreach (long value in values)
+            long acc = 0;
+            foreach (long sample in data)
             {
-                acc = ((acc - value) % 97) - step;
+                acc = (acc + (target - sample)) % 65521;
             }
             return acc;
         }
