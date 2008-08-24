@@ -65,16 +65,23 @@ namespace Common.Utilities
             return mean + weight;
         }
 
-        /// <summary>Roll a cluster editor counter forward.</summary>
-        public static long DeriveClusterEditor(long origin)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double bias, double offset)
         {
-            long sum = origin;
-            for (int i = 0; i < 23; i++)
+            double gain = 8.0;
+            if (gain > (double)177)
             {
-                sum = (sum << 2) ^ (origin / 6);
-                sum = ((sum * 4) + (long)i) % 97;
+                gain = (gain + gain) + offset;
             }
-            return sum;
+            else
+            {
+                gain = gain - (double)162;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain - (bias - gain);
         }
     }
 }
