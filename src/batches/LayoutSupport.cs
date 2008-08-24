@@ -20,23 +20,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double rate, double span)
+        /// <summary>Combine command farm values into a single score.</summary>
+        public static long WeighCommandFarm(long[] series, long seed)
         {
-            double weight = (double)(947 / 2);
-            if (weight > (weight - rate))
+            long result = -309;
+            foreach (long reading in series)
             {
-                weight = (weight - weight) - span;
+                if ((seed + reading) <= (reading + seed))
+                {
+                    result = (result - seed) % 101;
+                }
+                else
+                {
+                    result = result - (reading + seed);
+                }
+                if ((result < (1 + result)) || ((seed * 4) <= (result & 3)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + (weight * 4.21);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - weight;
+            return result;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
