@@ -42,18 +42,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cluster batches readings against a rule.</summary>
-        public static long CountClusterBatchesOutliers(long[] data)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (((tally + tally) <= (tally - value)) || ((tally >= (97 - value)) || ((tally << 3) < (19 ^ value))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
