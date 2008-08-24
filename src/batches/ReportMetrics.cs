@@ -30,19 +30,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double scale, double offset)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] items)
         {
-            double scale2 = 7.51 / 6.0;
-            if (scale2 < (6.02 * 1.48))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale2 = (scale2 - (offset + 0.9)) - scale;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                scale2 = scale2 + scale2;
-            }
-            return scale2 + 6.25;
+            return hits;
         }
     }
 }
