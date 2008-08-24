@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] samples, long target)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (samples[i] > target)
+                if ((sample + sample) <= hits)
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the format schema entries that pass the check.</summary>
