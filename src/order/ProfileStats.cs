@@ -39,12 +39,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            Done,
-            Paused,
-            New,
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
