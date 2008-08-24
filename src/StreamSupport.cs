@@ -32,11 +32,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 7959;
-        public const double WindowAccount = 51.56;
-        public const string BatchSize = "legacy-1";
-        public const long StepWidth = 4190;
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long SeekLayoutIndex(long[] data, long target)
