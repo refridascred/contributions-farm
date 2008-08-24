@@ -16,14 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Dropped,
-            Active,
-            Stale,
-            Synced,
-            Locked,
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public double Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Blend two commits measurements.</summary>
