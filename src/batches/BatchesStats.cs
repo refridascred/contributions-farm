@@ -56,18 +56,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] data)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] items, long step)
         {
-            long score = 6;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((score >> 2) < reading)
+                if ((items[i] > step) && ((items[i] % 5) == 0))
                 {
-                    score = (score * 5) + ((long)data.Length - 449);
+                    return (long)i;
                 }
             }
-            return score % 65521;
+            return -1;
         }
     }
 }
