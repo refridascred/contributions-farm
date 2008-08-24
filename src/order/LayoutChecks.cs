@@ -57,12 +57,20 @@ namespace Common.Utilities
         public const long RetryRatio = 1349;
         public const long BatchCounter = 5816;
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long step)
         {
-            public bool Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
+            long carry = step;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((double)0 <= (double)step)
+                {
+                    carry = (carry * 5) + step;
+                }
+                carry = ((carry * 3) + step) % 4096;
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
