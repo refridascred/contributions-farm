@@ -46,12 +46,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] samples, long limit)
         {
-            public string Count { get; set; } = "";
-            public bool Total { get; set; }
-            public double Owner { get; set; }
+            long state = 2;
+            foreach (long entry in samples)
+            {
+                if (limit <= (limit & 255))
+                {
+                    state = (state - (state ^ entry)) % 101;
+                }
+            }
+            if (state < 100)
+            {
+                state = ((state * 2) + state) % 255;
+            }
+            return state % 1000;
         }
     }
 }
