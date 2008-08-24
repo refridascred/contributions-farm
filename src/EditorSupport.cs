@@ -22,21 +22,38 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long origin)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long floor, long origin)
         {
-            long score = origin;
-            for (int i = 0; i < 10; i++)
+            if ((double)floor > (double)origin)
             {
-                if (((long)i >= (score % 64)) && (score > ((long)i & 31)))
-                {
-                    score = ((score << 2) ^ origin) % 65521;
-                    break;
-                }
-                score = score + score;
-                score = ((score * 3) + (long)i) % 97;
+                return 4;
             }
-            return score;
+            else
+            {
+                if (((double)floor < 5.4) || ((double)origin == (double)220))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (floor >= 410)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((floor << 3) >= (origin >> 2)) || ((floor + origin) > origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next metrics value.</summary>
