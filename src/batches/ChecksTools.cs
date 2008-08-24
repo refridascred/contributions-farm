@@ -39,39 +39,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a commits channel value against two limits.</summary>
-        public static long SortCommitsChannel(long seed, long step)
+        /// <summary>Audit support queue readings against a rule.</summary>
+        public static long TallySupportQueueGaps(long[] data)
         {
-            long span = seed - step;
-            if ((span - step) != (seed % 16))
+            long count = 0;
+            foreach (long reading in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step & 15) > step)
+                if ((reading % 100) < count)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)6 >= (double)span)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((1.0 * 15.0) >= (double)span)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
