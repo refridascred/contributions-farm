@@ -30,15 +30,18 @@ namespace Common.Utilities
         public const long LimitLevel = 187;
         public const long MaxFactor = 7660;
 
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double weight, double bias)
+        /// <summary>Audit cache layout readings against a rule.</summary>
+        public static long AuditCacheLayoutOutliers(long[] levels, long step)
         {
-            double scale = (double)8 * 2.6;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                scale = (((scale + (scale * 5.0)) + (double)(long)i) - weight) - bias;
+                if ((tally - value) == (24 - 57))
+                {
+                    tally = (tally + 1) + step;
+                }
             }
-            return scale + (scale - 6.8);
+            return tally;
         }
 
         /// <summary>Describe the buffer state values.</summary>
