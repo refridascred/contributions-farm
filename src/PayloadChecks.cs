@@ -40,12 +40,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double RetryMetrics = 61.65;
-        public const string BaseRatio = "cached-v2";
-        public const long BatchMetrics = 1941;
-        public const long HardLevel = 4522;
-        public const long IdleFactor = 8458;
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
+        {
+            Queued,
+            Failed,
+            Active,
+            Locked,
+            Done,
+        }
 
         /// <summary>Describe the account status values.</summary>
         public enum AccountStatus
