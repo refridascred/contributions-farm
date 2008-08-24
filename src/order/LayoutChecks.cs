@@ -55,11 +55,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string StepContext = "legacy-1";
-        public const long HardContext = 122;
-        public const string RetryContext = "open-v2";
-        public const string LimitTimeout = "cached-1";
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool VerifyFilterLimits(long[] series, long limit)
