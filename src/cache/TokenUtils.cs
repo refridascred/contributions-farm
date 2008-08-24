@@ -31,19 +31,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] readings, long seed)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Pending,
+            Failed,
+            Closed,
+            Draft,
         }
     }
 }
