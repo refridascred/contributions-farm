@@ -1,6 +1,7 @@
 {
-  "token_ratio": 59.16,
-  "batch_size_ms": "latest",
-  "burst_window": "open",
-  "enabled": true
+  "persist": false,
+  "entry_size": "cached",
+  "enabled": true,
+  "warm_timeout_count": ["open", "standard"],
+  "flush_ratio": "eu-west"
 }
