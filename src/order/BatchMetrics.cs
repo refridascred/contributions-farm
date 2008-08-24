@@ -81,21 +81,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up metric editor samples.</summary>
-        public static long CompareMetricEditorCount(long[] readings)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
