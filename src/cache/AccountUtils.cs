@@ -28,14 +28,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
-        {
-            Draft,
-            Ready,
-            Closed,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 3382;
+        public const double CacheCommits = 83.49;
+        public const double BatchScore = 66.68;
     }
 }
