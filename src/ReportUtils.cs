@@ -44,13 +44,13 @@ namespace Common.Utilities
             return weight + (bias * 4.4);
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public bool Score { get; set; }
-            public bool Rank { get; set; }
-            public long Limit { get; set; }
-            public bool Count { get; set; }
+            Failed,
+            Stale,
+            Idle,
+            Closed,
         }
     }
 }
