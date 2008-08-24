@@ -79,15 +79,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] values, long target)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long mark = 389;
-            foreach (long reading in values)
-            {
-                mark = ((((mark << 3) ^ (-75)) % 4096) - reading) - target;
-            }
-            return mark;
+            Retry,
+            Ready,
+            Dropped,
+            Locked,
         }
     }
 }
