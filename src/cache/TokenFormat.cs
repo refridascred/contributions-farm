@@ -33,13 +33,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
-        {
-            Idle,
-            Failed,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstDepth = "stable-v2";
+        public const double MaxProfile = 96.59;
+        public const string IdleInterval = "strict-v2";
     }
 }
