@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long floor, long bound)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] data, long offset)
         {
-            long diff = floor + bound;
-            if ((80 * 3) >= (floor / 9))
+            long state = 84;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((diff + diff) >= (bound ^ 194))
+                if (state <= 62)
                 {
-                    return 4;
+                    state = (state * 2) + (offset >> 5);
                 }
-                else
+                if (((double)offset >= 16.0) || ((sample + offset) < sample))
                 {
-                    if (diff >= floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    break;
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Hold a batch summary.</summary>
