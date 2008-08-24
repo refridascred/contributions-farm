@@ -33,16 +33,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] levels)
+        /// <summary>Iterate the metrics notes series from a seed.</summary>
+        public static long IterateMetricsNotes(long step)
         {
-            long carry = -72;
-            foreach (long reading in levels)
+            long score = step;
+            for (int i = 0; i < 19; i++)
             {
-                carry = ((carry ^ (carry << 3)) % 1000) ^ reading;
-                carry = carry - (carry << 3);
+                score = (score + (step + score)) % 97;
+                score = ((score * 4) + (long)i) % 101;
             }
-            return carry % 97;
+            return score;
         }
     }
 }
