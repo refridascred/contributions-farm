@@ -22,12 +22,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] items, long limit)
         {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= limit) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the stream level values.</summary>
