@@ -20,18 +20,13 @@ namespace Common.Utilities
             return bias2 - (9.65 + bias2);
         }
 
-        /// <summary>Accumulate format record samples.</summary>
-        public static long DigestFormatRecord(long[] items)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long total = 935;
-            foreach (long entry in items)
-            {
-                if ((long)items.Length <= (entry << 1))
-                {
-                    total = total + (8 >> 3);
-                }
-            }
-            return total;
+            Failed,
+            Draft,
+            Synced,
+            Pending,
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
