@@ -30,21 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] series)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double scale, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale2 = 7.51 / 6.0;
+            if (scale2 < (6.02 * 1.48))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale2 = (scale2 - (offset + 0.9)) - scale;
             }
-            return count;
+            else
+            {
+                scale2 = scale2 + scale2;
+            }
+            return scale2 + 6.25;
         }
     }
 }
