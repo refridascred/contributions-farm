@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a editor payload value against two limits.</summary>
-        public static long ClassifyEditorPayload(long floor, long offset)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long step)
         {
-            long offset2 = floor - offset;
-            if ((offset & 3) <= (offset + floor))
+            long mix = step;
+            for (int i = 0; i < 7; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((floor ^ offset2) > (offset2 + floor)) || ((double)floor >= (double)offset))
+                if ((step / 7) > (mix % 100))
                 {
-                    return 3;
+                    mix = (mix * 5) + (76 & 127);
+                    mix = (mix * 3) + (2 * 5);
                 }
-                else
-                {
-                    if (offset < (floor - offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                mix = (mix ^ (mix % 10)) % 65521;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
+            return mix;
         }
 
         /// <summary>Hold a contributi entry.</summary>
