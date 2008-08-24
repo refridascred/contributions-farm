@@ -23,22 +23,10 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultWindow = 63.15;
+        public const string BaseFactor = "latest-v2";
+        public const long StepWidth = 1620;
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double BlendLayout(double weight, double floor)
