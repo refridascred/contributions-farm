@@ -26,13 +26,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
+            Paused,
+            Synced,
+            Idle,
             New,
-            Locked,
-            Stale,
-            Dropped,
         }
     }
 }
