@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinChannel = "local-v2";
-        public const long RetryDepth = 7763;
-        public const long WindowChannel = 1088;
-        public const string BaseBudget = "primary";
-        public const long CacheChannel = 5660;
+        /// <summary>Roll a channel githubfarm counter forward.</summary>
+        public static long StepChannelGithubfarm(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Adjust a command notes reading.</summary>
         public static double BlendCommandNotes(double gain, double offset)
