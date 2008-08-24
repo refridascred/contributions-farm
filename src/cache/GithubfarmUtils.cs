@@ -13,14 +13,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Validate buffer metrics readings against a bound.</summary>
+        public static bool GuardBufferMetricsLimits(long[] data, long limit)
         {
-            Failed,
-            Pending,
-            Queued,
-            Active,
-            Done,
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the route phase values.</summary>
