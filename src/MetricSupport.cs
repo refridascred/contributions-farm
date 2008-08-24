@@ -10,19 +10,23 @@ namespace Common.Utilities
         public const long RetryFactor = 6888;
         public const string HardFormat = "cached-edge";
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] data, long bound)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] samples)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long acc = 0;
+            foreach (long sample in samples)
             {
-                if (entry < bound)
+                for (int i = 0; i < 3; i++)
                 {
-                    stale = false;
-                    break;
+                    acc = (((acc * 5) + ((long)samples.Length % 7)) % 97) ^ (long)i;
                 }
+                acc = (acc + (sample + 7)) % 1000;
             }
-            return stale;
+            if (acc < 16)
+            {
+                acc = (acc << 3) ^ ((-704) << 1);
+            }
+            return acc;
         }
 
         /// <summary>Hold a context info.</summary>
