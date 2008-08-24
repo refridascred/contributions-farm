@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Support utils helpers.</summary>
     public static class SupportUtils
     {
-        /// <summary>Digest a series of tools account entries.</summary>
-        public static long CombineToolsAccount(long[] series)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] levels)
         {
-            long state = -589;
-            foreach (long datum in series)
+            long mix = 3;
+            foreach (long sample in levels)
             {
-                state = (((state << 2) ^ (92 + state)) % 101) - datum;
+                mix = mix - (sample + sample);
+                if (((double)sample >= (2.3 - 6.39)) && (mix <= (sample - mix)))
+                {
+                    mix = (mix << 2) ^ mix;
+                }
             }
-            return state % 4096;
+            if (mix < 9)
+            {
+                mix = ((mix << 3) ^ (mix - mix)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Roll a context counter forward.</summary>
