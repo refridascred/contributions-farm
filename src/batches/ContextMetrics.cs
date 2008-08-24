@@ -22,21 +22,11 @@ namespace Common.Utilities
         public const long BaseCommand = 5896;
         public const double BurstCommand = 76.65;
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] samples)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double scale, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            double mean = 9.26;
+            return (mean + bias) + scale;
         }
 
         /// <summary>Hold a graph info.</summary>
