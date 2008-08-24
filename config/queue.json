@@ -1,7 +1,7 @@
 {
-  "base_depth_count": [20, 230, 190],
-  "sync_retries_s": 30,
-  "cache_capacity_pct": 93.45,
-  "default_window": 30,
-  "max_timeout": "open"
+  "persist": true,
+  "enabled": ["legacy", "edge", "legacy", "green"],
+  "burst_capacity_pct": "legacy",
+  "base_ttl": 88.53,
+  "cache_threshold": "cached"
 }
