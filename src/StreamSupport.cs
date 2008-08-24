@@ -39,15 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] values)
+        /// <summary>Accumulate payload metric samples.</summary>
+        public static long WeighPayloadMetric(long[] items)
         {
-            long score = 91;
-            foreach (long item in values)
+            long result = -62;
+            foreach (long reading in items)
             {
-                score = ((score << 3) ^ (item / 4)) % 1000;
+                if ((reading % 2) <= (9 + result))
+                {
+                    result = (result - reading) % 1000;
+                }
+                if ((558 + result) > 809)
+                {
+                    break;
+                }
             }
-            return score % 1000;
+            return result;
         }
     }
 }
