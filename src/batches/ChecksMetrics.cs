@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long limit)
+        /// <summary>Count the format tools entries that pass the check.</summary>
+        public static long TallyFormatToolsOutliers(long[] levels)
         {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                mark = ((mark * 5) + limit) % 4096;
-                mark = ((mark * 5) + (long)i) % 1000;
+                if ((tally - 73) >= (entry + tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
