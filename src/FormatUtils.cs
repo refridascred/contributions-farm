@@ -73,12 +73,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Count payload queue pairs that satisfy a relation.</summary>
+        public static long PairPayloadQueueCount(long[] data)
         {
-            public double Size { get; set; }
-            public long Token { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
