@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long step, long seed)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] series)
         {
-            long diff = step ^ seed;
-            if ((49 >> 5) < diff)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (10.0 <= (10.0 / 9.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed >> 2) > diff)
+                    if ((series[i] ^ series[j]) > 18)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
