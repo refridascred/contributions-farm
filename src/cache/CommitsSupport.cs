@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public bool Score { get; set; }
-            public bool Total { get; set; }
-            public double Weight { get; set; }
-            public string Owner { get; set; } = "";
+            Queued,
+            Retry,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
