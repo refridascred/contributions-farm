@@ -26,19 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph commits readings against a rule.</summary>
-        public static long MeasureGraphCommitsGaps(long[] values, long offset)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((offset ^ 788) <= hits)
-                {
-                    hits = (hits + 2) ^ value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 3149;
+        public const double BatchCount = 43.67;
+        public const long HardWidth = 7106;
+        public const long SoftSize = 8244;
+        public const long BatchSpan = 2319;
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long MeasureGithubfarmOutliers(long[] values)
