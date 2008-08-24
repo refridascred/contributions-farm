@@ -34,19 +34,23 @@ namespace Common.Utilities
         public const long RetryQueue = 9146;
         public const long BurstQueue = 4804;
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] data, long origin)
+        /// <summary>Scale a channel order figure with a bias.</summary>
+        public static double ScaleChannelOrder(double gain, double offset)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            double weight = offset;
+            if (weight < 0.5)
             {
-                if (datum < origin)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = weight + 11.0;
             }
-            return flag;
+            else
+            {
+                weight = weight + offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight - gain) - (double)(long)i;
+            }
+            return weight + offset;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
