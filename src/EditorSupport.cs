@@ -22,38 +22,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long floor, long origin)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            if ((double)floor > (double)origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)floor < 5.4) || ((double)origin == (double)220))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (floor >= 410)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((floor << 3) >= (origin >> 2)) || ((floor + origin) > origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Dropped,
+            Synced,
+            Done,
+            Queued,
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
