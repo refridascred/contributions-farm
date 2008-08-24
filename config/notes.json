@@ -1,5 +1,12 @@
 {
-  "burst_delay": "cached",
-  "readonly": true,
-  "counter_threshold": "strict"
+  "batches_threshold": {
+    "burst_timeout_s": "strict",
+    "persist": "open",
+    "compress": "fallback",
+    "retry_ratio_count": 500,
+    "schema_retries": true
+  },
+  "min_ratio": 500,
+  "account_window": ["strict", "open", "stable", "fallback"],
+  "strict": true
 }
