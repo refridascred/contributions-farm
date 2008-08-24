@@ -25,28 +25,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] values, long floor)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long origin)
         {
-            long score = 543;
-            foreach (long entry in values)
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((8.8 <= (double)entry) || ((5 + floor) <= (entry & 1)))
-                {
-                    continue;
-                }
-                else
-                {
-                    score = score - (floor * 5);
-                }
-                score = (score * 5) + floor;
-                score = (score - entry) % 97;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            if (score > (-602))
-            {
-                score = ((score * 3) + floor) % 101;
-            }
-            return score % 4096;
+            return acc;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
