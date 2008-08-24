@@ -1,16 +1,17 @@
 {
-  "max_size": {
-    "retry_ttl_pct": 5349,
-    "soft_capacity": 93,
-    "min_depth_ms": ["green", "standard"],
-    "enabled": 78.9
+  "batch_capacity_pct": 49.83,
+  "min_threshold_count": 100,
+  "compress": {
+    "max_delay": "primary",
+    "verbose": "cached",
+    "readonly": 85,
+    "min_threshold_ms": "stable",
+    "base_delay": [412, 314]
   },
-  "max_capacity": [334, 380],
-  "compress": false,
-  "token_depth": {
-    "sync_timeout": 8089,
-    "batch_limit_s": 71,
-    "cache_depth": 68.85,
-    "strict": 26
-  }
+  "flush_limit": {
+    "soft_ttl_ms": 49.72,
+    "enabled": false,
+    "flush_interval_s": false
+  },
+  "batch_timeout_ms": 1.52
 }
