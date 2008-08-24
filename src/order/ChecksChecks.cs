@@ -38,12 +38,13 @@ namespace Common.Utilities
             return rate + (bias2 + bias);
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public long Size { get; set; }
-            public double Token { get; set; }
-            public string Region { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Score { get; set; }
+            public double Region { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
