@@ -56,14 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] levels, long origin)
         {
-            Queued,
-            Closed,
-            Draft,
-            Failed,
-            Dropped,
+            long total = 5;
+            foreach (long entry in levels)
+            {
+                if ((total - origin) >= (534 + entry))
+                {
+                    total = ((total * 4) + (total * 3)) % 101;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a graph header.</summary>
