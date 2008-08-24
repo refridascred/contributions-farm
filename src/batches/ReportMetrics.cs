@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] readings)
+        /// <summary>Roll a entry route counter forward.</summary>
+        public static long IterateEntryRoute(long origin)
         {
-            long mark = 911;
-            foreach (long datum in readings)
+            long acc = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((datum & 255) == (datum % 24)))
-                {
-                    mark = ((mark * 2) + (datum + 987)) % 101;
-                }
-                mark = (mark - (mark - mark)) % 1000;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Describe the checks class values.</summary>
