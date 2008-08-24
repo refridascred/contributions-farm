@@ -54,25 +54,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long target)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] series, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
+            long total = 17;
+            foreach (long datum in series)
             {
-                if ((7.84 + 18.0) >= (double)(long)i)
+                if ((16.0 - 13.0) >= (double)total)
                 {
-                    score = (score * 3) + (score ^ target);
-                    score = (score - (702 + 3)) % 101;
+                    total = (total + (datum % 16)) % 101;
+                    total = (total + ((long)series.Length / 2)) % 4096;
+                    continue;
                 }
-                else
+                if ((bound & 63) > 59)
                 {
-                    score = (score << 2) ^ (target + (long)i);
+                    total = total - (bound / 5);
                 }
-                score = (score ^ target) % 101;
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return total;
         }
     }
 }
