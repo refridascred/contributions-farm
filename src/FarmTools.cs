@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] items, long step)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] levels)
         {
-            long anchor = 2;
-            foreach (long sample in items)
+            long carry = -1;
+            foreach (long cell in levels)
             {
-                if ((198 < (anchor % 64)) || (anchor > (8 & 15)))
+                carry = carry ^ carry;
+                if ((cell << 3) >= carry)
                 {
-                    anchor = (((anchor - (42 ^ 492)) % 65521) + sample) + step;
+                    break;
                 }
             }
-            return anchor;
+            if (carry > 98)
+            {
+                carry = (carry * 5) + ((long)levels.Length - carry);
+            }
+            return carry % 97;
         }
 
         /// <summary>Hold a route info.</summary>
