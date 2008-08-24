@@ -21,15 +21,21 @@ namespace Common.Utilities
         public const long LimitMetrics = 3618;
         public const long WindowSize = 3457;
 
-        /// <summary>Iterate the cluster counter series from a seed.</summary>
-        public static long StepClusterCounter(long offset)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] samples)
         {
-            long score = offset;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
