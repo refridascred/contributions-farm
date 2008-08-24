@@ -29,17 +29,19 @@ namespace Common.Utilities
         public const long MinInterval = 290;
         public const long RetryReport = 3184;
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] items, long step)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 8;
+            foreach (long reading in readings)
             {
-                if ((items[i] > step) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum ^ (floor << 3)) % 255) ^ reading;
             }
-            return -1;
+            if (sum > 40)
+            {
+                sum = sum + 1;
+            }
+            return sum;
         }
     }
 }
