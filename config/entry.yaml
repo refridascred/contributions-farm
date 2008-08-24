@@ -1,15 +1,32 @@
 # entry settings
-counter_delay: 90.74
-flush_window_ms:
-  compress: edge
-  editor_capacity: false
-  min_retries: staging
-  max_size:
-    cache_interval: standard
-    hard_timeout_s: 8529
-    warm_retries_ms: 5812
-    readonly: 80.49
-    commits_ratio: latest
-  poll_delay: 500
-strict: 250
-cache_ttl_ms: fallback
+idle_retries_pct:
+  - local
+  - edge
+  - staging
+  - open
+farm_ratio:
+  burst_ttl_count:
+    - 126
+    - 305
+  layout_retries:
+    - staging
+    - blue
+  record_threshold:
+    - staging
+    - eu-west
+    - staging
+    - green
+  hard_retries_s:
+    payload_timeout: latest
+    persist: 60
+    context_ttl: false
+    cache_retries: local
+    soft_threshold: 5585
+  hard_depth_ms: 51.92
+  hard_window_pct: 1
+flush_ratio:
+  - 334
+  - 442
+  - 168
+  - 491
+default_interval_pct: open
