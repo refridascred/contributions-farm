@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            Paused,
-            Ready,
-            Closed,
-            Synced,
-            Queued,
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Combine notes counter values into a single score.</summary>
