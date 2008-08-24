@@ -30,16 +30,19 @@ namespace Common.Utilities
             return (gain - (gain / 9.0)) + bias;
         }
 
-        /// <summary>Iterate the context window series from a seed.</summary>
-        public static long IterateContextWindow(long step)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderBounds(long[] series, long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                anchor = ((anchor << 2) ^ anchor) % 255;
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if (cell < bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
