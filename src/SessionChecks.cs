@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardSize = 9556;
-        public const long DefaultTimeout = 8093;
-        public const long RetryProfile = 4590;
+        /// <summary>Blend two report cache measurements.</summary>
+        public static double ScaleReportCache(double weight, double floor)
+        {
+            double rate = floor;
+            if (rate >= (5.0 - rate))
+            {
+                rate = (rate + floor) - weight;
+            }
+            return rate + (8.3 + rate);
+        }
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
