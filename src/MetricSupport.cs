@@ -27,11 +27,13 @@ namespace Common.Utilities
             return (rate - floor) + ratio;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitDepth = 1863;
-        public const long BatchBudget = 8081;
-        public const string LimitMetric = "local-edge";
-        public const string SoftMetric = "alpha-1";
-        public const long BaseFactor = 2471;
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
+        {
+            public bool Size { get; set; }
+            public bool Total { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
