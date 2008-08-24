@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a cluster checks pair into a bucket.</summary>
-        public static long ClassifyClusterChecks(long offset, long bound)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] series, long seed)
         {
-            long next = offset - bound;
-            if (((next >> 3) >= next) && ((next ^ 90) > (37 ^ 9)))
+            long seen = 0;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound + bound) <= bound) && ((bound + next) <= next))
+                if (sample < (800 - seed))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((next - next) == (bound + next))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset % 10) >= (14 & 63))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many editor token samples are out of range.</summary>
