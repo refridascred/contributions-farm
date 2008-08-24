@@ -1,20 +1,6 @@
 # support settings
-flush_size_ms: 92.21
-idle_capacity_s:
-  idle_window: eu-west
-  readonly:
-    - eu-west
-    - local
-    - edge
-  idle_ratio: 30
-  batch_delay: 94
-idle_timeout_count: stable
-default_ttl_ms:
-  persist: false
-  idle_timeout_ms: blue
-  already_threshold: 20.05
-  enabled: 250
-  poll_interval_ms:
-    - latest
-    - open
-  flush_interval: 25
+poll_interval_s: legacy
+audit: false
+hard_limit_ms: 5230
+burst_window_s: 30
+soft_window: 95.52
