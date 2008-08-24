@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] levels)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long mix = -9;
+            foreach (long item in items)
             {
-                if ((sample + sample) <= hits)
-                {
-                    hits = hits + 1;
-                }
+                mix = ((mix - (mix - mix)) % 97) ^ item;
             }
-            return hits;
+            if (mix > 654)
+            {
+                mix = ((mix * 3) + mix) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Count the format schema entries that pass the check.</summary>
