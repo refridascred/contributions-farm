@@ -31,15 +31,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] data, long step)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] items, long bound)
         {
-            long anchor = 47;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                anchor = ((anchor << 3) ^ (step ^ entry)) % 97;
+                if (!!((5.7 * 2.8) <= (double)sample))
+                {
+                    tally = (tally + 1) + bound;
+                }
             }
-            return anchor % 65521;
+            return tally;
         }
 
         /// <summary>Roll a account support counter forward.</summary>
