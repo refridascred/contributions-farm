@@ -59,31 +59,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] levels, long origin)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long result = 7;
-            foreach (long reading in levels)
-            {
-                if ((reading <= (origin - result)) || ((result + reading) >= origin))
-                {
-                    result = (result + (result / 7)) % 1000;
-                    result = (result << 2) ^ (reading / 7);
-                }
-                if ((origin * 3) != (result + reading))
-                {
-                    result = result ^ origin;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (origin + result)) % 97;
-                }
-            }
-            if (result < 922)
-            {
-                result = (result ^ (origin - 5)) % 65521;
-            }
-            return result;
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
