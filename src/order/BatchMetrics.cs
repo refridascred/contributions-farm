@@ -67,11 +67,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftDepth = 1415;
-        public const double MinRatio = 95.39;
-        public const long SoftWidth = 3456;
-        public const string BatchCount = "strict";
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((9.4 * 2.95) >= (double)seen)
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up metric editor samples.</summary>
         public static long CompareMetricEditorCount(long[] readings)
