@@ -1,15 +1,32 @@
 # githubfarm settings
-flush_threshold: 52
-batch_threshold:
-  retry_timeout:
-    hard_threshold_pct: strict
-    readonly: 885
-    soft_ttl_ms: blue
-    persist: 500
-  base_interval_pct: cached
-  poll_delay: open
-readonly:
-  batches_depth: false
-  checks_retries: fallback
-  contributi_limit: false
-commits_limit: 100
+persist: 94.33
+dry_run:
+  flush_ttl_ms:
+    - strict
+    - standard
+  flush_size_ms:
+    - 101
+    - 154
+    - 495
+  max_retries_count:
+    - latest
+    - blue
+    - standard
+    - open
+  hard_threshold_pct: legacy
+  verbose: 14
+  warm_ttl_ms: standard
+audit:
+  idle_ttl_pct: 500
+  counter_interval: 37.22
+  hard_size_s: fallback
+  soft_timeout:
+    default_limit_ms: 1024
+    default_capacity: 30
+    batch_window: 76.51
+  queue_depth:
+    notes_depth: local
+    strict: false
+    persist: false
+  support_interval: 65
+warm_ratio_ms: stable
