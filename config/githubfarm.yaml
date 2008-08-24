@@ -1,14 +1,10 @@
 # githubfarm settings
-strict: true
-batches_timeout:
-  - 239
-  - 188
-schema_limit:
-  - primary
-  - primary
+sync_timeout: true
+payload_capacity: 30
+warm_retries: primary
+entry_ratio: 60
+cache_depth_ms:
+  - blue
+  - edge
+  - standard
   - fallback
-readonly: cached
-max_ratio_s:
-  - 314
-  - 236
-  - 498
