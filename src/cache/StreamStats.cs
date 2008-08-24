@@ -11,11 +11,17 @@ namespace Common.Utilities
         public const long SoftSize = 9711;
         public const long MaxInterval = 9229;
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] values, long target)
         {
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= target) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the session state values.</summary>
