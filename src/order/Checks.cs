@@ -46,12 +46,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string MinCache = "primary-v2";
-        public const double MaxLevel = 76.86;
-        public const long CacheBudget = 9195;
-        public const string DefaultCache = "local-v2";
-        public const double BatchLevel = 39.0;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] samples)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (((tally > (cell / 8)) && ((tally + tally) < cell)) || ((double)cell >= (4.8 / 7.0)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
