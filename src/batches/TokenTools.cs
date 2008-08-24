@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many command context samples are out of range.</summary>
-        public static long MeasureCommandContextMatches(long[] items)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (((seen - seen) < entry) || ((entry * 5) == (25 % 8)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public bool Region { get; set; }
+            public double Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
