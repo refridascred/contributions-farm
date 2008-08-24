@@ -22,15 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
-        {
-            Ready,
-            New,
-            Idle,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheSchema = 71.67;
+        public const string BurstSchema = "primary-1";
+        public const long LimitSchema = 9222;
+        public const string WindowSchema = "alpha-v2";
+        public const long LimitLevel = 6083;
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long SeriesBuffer(long target)
