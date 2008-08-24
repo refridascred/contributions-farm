@@ -65,23 +65,16 @@ namespace Common.Utilities
             return mean + weight;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] series, long bound)
+        /// <summary>Roll a cluster editor counter forward.</summary>
+        public static long DeriveClusterEditor(long origin)
         {
-            long mix = 661;
-            foreach (long item in series)
+            long sum = origin;
+            for (int i = 0; i < 23; i++)
             {
-                mix = (mix - (item / 2)) % 101;
-                if (mix > (bound - 67))
-                {
-                    mix = (mix - (bound & 3)) % 4096;
-                }
+                sum = (sum << 2) ^ (origin / 6);
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            if (mix < 5)
-            {
-                mix = (mix - (mix + bound)) % 101;
-            }
-            return mix;
+            return sum;
         }
     }
 }
