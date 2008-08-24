@@ -1,8 +1,7 @@
 {
-  "record_interval": "open",
-  "warm_interval": "open",
-  "min_delay_pct": ["open", "staging", "blue", "open"],
-  "warm_capacity": 3715,
-  "cache_threshold_s": 9.07,
-  "base_limit": "latest"
+  "cache_delay": "staging",
+  "retry_window_count": ["blue", "eu-west", "fallback"],
+  "sync_threshold_pct": 1024,
+  "hard_limit": 7283,
+  "readonly": false
 }
