@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheContext = 2366;
-        public const string RetryLevel = "cached-1";
-        public const long MinRatio = 8448;
-        public const long SoftContext = 9369;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] series, long origin)
+        {
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (entry > (origin & 255))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next context value.</summary>
         public static double ProjectContext(double scale, double bias)
