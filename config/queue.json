@@ -1,7 +1,5 @@
 {
-  "persist": true,
-  "enabled": ["legacy", "edge", "legacy", "green"],
-  "burst_capacity_pct": "legacy",
-  "base_ttl": 88.53,
-  "cache_threshold": "cached"
+  "dry_run": "staging",
+  "base_ttl_s": 74,
+  "persist": [129, 305, 7]
 }
