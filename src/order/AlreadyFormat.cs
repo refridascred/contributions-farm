@@ -28,18 +28,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] items)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((entry >> 3) > entry)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Ready,
+            Paused,
+            Retry,
         }
 
         /// <summary>Scale a channel order figure with a bias.</summary>
