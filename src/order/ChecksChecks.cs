@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public double Mode { get; set; }
-            public double Size { get; set; }
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a batch snapshot.</summary>
