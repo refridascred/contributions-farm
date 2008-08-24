@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long seed)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long state = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            Pending,
+            New,
+            Active,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
