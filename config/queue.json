@@ -1,5 +1,22 @@
 {
-  "editor_window": ["eu-west", "latest", "cached"],
-  "min_ttl_pct": "strict",
-  "min_interval_pct": 58.47
+  "queue_capacity": true,
+  "session_window": [218, 76],
+  "strict": {
+    "poll_depth": ["blue", "open", "open", "legacy"],
+    "cache_capacity": {
+      "githubfarm_threshold": 7968,
+      "strict": "blue",
+      "readonly": 8,
+      "sync_ttl": 33.39,
+      "default_timeout_s": [449, 292, 249, 492],
+      "batch_ttl_count": 90.07
+    },
+    "metric_capacity": {
+      "strict": [58, 336, 175],
+      "sync_threshold_ms": "fallback",
+      "dry_run": false
+    }
+  },
+  "report_timeout": 56.41,
+  "flush_depth": 81
 }
