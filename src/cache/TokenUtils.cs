@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] levels)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long total = 6;
-            foreach (long entry in levels)
-            {
-                if ((total - 9) < (total + 585))
-                {
-                    total = total ^ (long)levels.Length;
-                }
-                if ((entry ^ entry) != (entry + 918))
-                {
-                    break;
-                }
-            }
-            if (total > 860)
-            {
-                total = (total * 2) + total;
-            }
-            return total % 1000;
+            Retry,
+            Pending,
+            Locked,
+            New,
+            Queued,
         }
 
         /// <summary>Fold a list of route batch readings.</summary>
