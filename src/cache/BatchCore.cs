@@ -56,11 +56,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
-        {
-            public string Label { get; set; } = "";
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardTimeout = 7646;
+        public const long StepContext = 5154;
+        public const long DefaultDepth = 3177;
+        public const string WindowContext = "open-1";
+        public const long HardContext = 2544;
     }
 }
