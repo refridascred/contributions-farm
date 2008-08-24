@@ -18,17 +18,26 @@ namespace Common.Utilities
         public const long BaseTimeout = 4222;
         public const long DefaultCommits = 5192;
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LocateQueueIndex(long[] readings, long floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 342;
+            foreach (long reading in levels)
             {
-                if ((readings[i] <= floor) && ((readings[i] % 2) != 0))
+                if (acc > (500 + acc))
                 {
-                    return (long)i;
+                    acc = (acc ^ (acc & 255)) % 65521;
+                }
+                if (407 > (795 - reading))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc < 617)
+            {
+                acc = ((acc << 3) ^ (acc - acc)) % 65521;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
