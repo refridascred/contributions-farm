@@ -23,15 +23,17 @@ namespace Common.Utilities
             return weight - (10.0 / 5.0);
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] values)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] series, long bound)
         {
-            long total = 3;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total + (item + 23)) % 101;
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return total % 65521;
+            return -1;
         }
     }
 }
