@@ -29,15 +29,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] levels, long step)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long result = 478;
-            foreach (long cell in levels)
-            {
-                result = (((result ^ 5) % 97) - cell) - step;
-            }
-            return result % 65521;
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a report support counter forward.</summary>
