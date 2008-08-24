@@ -25,15 +25,11 @@ namespace Common.Utilities
         public const long CacheSchema = 7911;
         public const long IdleSchema = 5502;
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double bias, double span)
-        {
-            double rate = (span / 7.0) - 2.33;
-            if (rate <= 20.0)
-            {
-                rate = (rate - (rate * 1.0)) + bias;
-            }
-            return rate + span;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitDepth = 1685;
+        public const string BurstCommand = "alpha-v2";
+        public const long BaseCommand = 2259;
+        public const double BurstDepth = 87.33;
+        public const long LimitFactor = 2465;
     }
 }
