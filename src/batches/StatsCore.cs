@@ -57,18 +57,18 @@ namespace Common.Utilities
             return scale + (scale - 6.8);
         }
 
-        /// <summary>Combine batches support values into a single score.</summary>
-        public static long CombineBatchesSupport(long[] series)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] items)
         {
-            long carry = 721;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((sample <= ((-215) % 8)) && (((long)series.Length ^ (-71)) > (carry ^ sample)))
+                if (matches < (matches << 2))
                 {
-                    carry = ((carry << 2) ^ (carry * 3)) % 101;
+                    matches = (matches + 2) + item;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Adjust a command reading.</summary>
