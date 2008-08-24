@@ -1,15 +1,10 @@
 # entry settings
-retry_ttl: 68.22
-hard_ratio_pct: 5880
-flush_threshold_ms:
-  - 158
-  - 334
-  - 184
-graph_window:
-  - standard
-  - fallback
-  - eu-west
-warm_capacity_pct:
-  - staging
-  - cached
-  - latest
+retry_size_ms: 6
+readonly:
+  - 72
+  - 389
+  - 211
+warm_ttl_pct: true
+dry_run: open
+report_capacity: 4669
+batch_threshold: standard
