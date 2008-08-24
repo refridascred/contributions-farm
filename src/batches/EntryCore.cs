@@ -27,11 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public double Label { get; set; }
-            public bool Region { get; set; }
+            Retry,
+            Idle,
+            New,
+            Paused,
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
