@@ -1,6 +1,5 @@
 {
-  "soft_ttl": ["edge", "green", "strict", "edge"],
-  "token_threshold": 97.54,
-  "soft_size": [473, 340, 425, 234],
-  "burst_interval_pct": 24.89
+  "base_timeout_ms": true,
+  "enabled": 250,
+  "min_retries_count": 5411
 }
