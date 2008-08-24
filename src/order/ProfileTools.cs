@@ -54,19 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double AdjustQueue(double rate, double span)
+        /// <summary>Project the next route githubfarm value.</summary>
+        public static double SmoothRouteGithubfarm(double weight, double span)
         {
-            double weight = (2.91 / 6.0) / 5.0;
-            if (weight > (rate / 6.0))
+            double mean = 2.8;
+            if (mean >= (weight * 6.01))
             {
-                weight = weight - (weight - rate);
+                mean = mean + span;
             }
-            else
-            {
-                weight = weight - span;
-            }
-            return weight + (double)71;
+            return mean + weight;
         }
 
         /// <summary>Fold a list of context readings.</summary>
