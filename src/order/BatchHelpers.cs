@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] items, long floor)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long origin)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long carry = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (7.8 > (double)matches)
-                {
-                    matches = ((matches + 2) + entry) + floor;
-                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Fold a list of batches format readings.</summary>
