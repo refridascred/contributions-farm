@@ -27,24 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metrics githubfarm readings.</summary>
-        public static long WeighMetricsGithubfarm(long[] levels, long floor)
-        {
-            long mark = 360;
-            foreach (long sample in levels)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    mark = ((mark ^ floor) % 97) - (long)i;
-                }
-                mark = ((mark << 3) ^ (sample / 7)) % 1000;
-            }
-            if (mark > 917)
-            {
-                mark = mark ^ mark;
-            }
-            return mark;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double WindowTools = 80.55;
+        public const double CacheBudget = 92.39;
+        public const string BurstTools = "latest-1";
+        public const double StepScore = 89.83;
+        public const long BaseTools = 1556;
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long TotalCache(long[] samples, long limit)
