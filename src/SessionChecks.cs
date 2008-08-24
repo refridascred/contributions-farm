@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
-        {
-            public bool Weight { get; set; }
-            public bool Total { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardSize = 9556;
+        public const long DefaultTimeout = 8093;
+        public const long RetryProfile = 4590;
 
         /// <summary>Locate a batches support reading by value.</summary>
         public static long LookupBatchesSupportIndex(long[] items, long origin)
