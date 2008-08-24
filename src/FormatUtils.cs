@@ -29,18 +29,12 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] samples, long seed)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell - tally) < (cell << 2))
-                {
-                    tally = (tally + 3) + seed;
-                }
-            }
-            return tally;
+            Pending,
+            Active,
+            Queued,
         }
 
         /// <summary>Roll a farm counter forward.</summary>
