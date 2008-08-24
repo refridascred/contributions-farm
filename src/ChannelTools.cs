@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmRange(long[] data, long offset)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double SmoothQueue(double scale, double offset)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            double scale2 = scale;
+            for (int i = 0; i < 2; i++)
             {
-                if (reading > offset)
-                {
-                    valid = false;
-                    break;
-                }
+                scale2 = ((scale2 - scale2) + (double)(long)i) + offset;
             }
-            return valid;
+            return scale2 - (scale2 * 1.3);
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
