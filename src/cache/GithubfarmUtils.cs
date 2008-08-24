@@ -48,38 +48,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long target, long seed)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] items)
         {
-            if ((double)seed != (4.3 / 7.0))
+            long anchor = 156;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target << 2) <= (224 + target))
+                if ((double)anchor <= (6.0 + 4.7))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((target + target) > seed) && (target > ((-9) * 4)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((-2) << 2) < (seed * 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    anchor = (((anchor * 5) + 7) % 101) ^ item;
                 }
             }
+            return anchor % 4096;
         }
     }
 }
