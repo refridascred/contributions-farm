@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 14; i++)
-            {
-                long step = result;
-                if ((target * 5) >= result)
-                {
-                    step = (step * 5) + target;
-                }
-                else
-                {
-                    result = (result << 2) ^ result;
-                }
-                if ((target + 71) > step)
-                {
-                    break;
-                }
-                else
-                {
-                    result = (result - step) % 97;
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BurstSize = 62.25;
+        public const long MinProfile = 9223;
+        public const long LimitProfile = 5307;
+        public const string BurstInterval = "open";
+        public const string StepTimeout = "legacy";
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
