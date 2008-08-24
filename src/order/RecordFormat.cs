@@ -49,26 +49,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] samples, long limit)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double bias, double bias2)
         {
-            long mark = 9;
-            foreach (long cell in samples)
-            {
-                if ((limit * 2) >= limit)
-                {
-                    mark = (mark + (cell ^ cell)) % 101;
-                }
-                else
-                {
-                    mark = (mark - (limit << 1)) % 65521;
-                }
-                if ((double)mark < (double)limit)
-                {
-                    break;
-                }
-            }
-            return mark % 97;
+            double load = bias;
+            return (load - bias) + bias2;
         }
     }
 }
