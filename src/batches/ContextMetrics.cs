@@ -42,19 +42,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count the githubfarm account entries that pass the check.</summary>
-        public static long AuditGithubfarmAccountGaps(long[] samples)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] items)
         {
             long matches = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches + datum) <= 64)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((items[i] + items[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
