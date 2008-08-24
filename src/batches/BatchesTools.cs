@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] samples)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] readings, long limit)
         {
-            long score = 57;
-            foreach (long value in samples)
+            long mix = 1;
+            foreach (long sample in readings)
             {
-                if (((double)value != (17.0 * 3.58)) || ((value << 2) >= score))
+                for (int i = 0; i < 8; i++)
                 {
-                    score = (score + (value ^ score)) % 1000;
+                    mix = (mix + (sample * 5)) - (long)i;
                 }
+                mix = mix - (mix % 24);
             }
-            return score;
+            if (mix > 1)
+            {
+                mix = (mix << 3) ^ (limit + mix);
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
