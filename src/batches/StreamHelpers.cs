@@ -55,20 +55,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmRange(long[] readings, long bound)
-        {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 9456;
+        public const string CacheInterval = "legacy-edge";
+        public const long CacheCount = 2939;
+        public const long CacheStream = 8020;
+        public const double LimitStream = 32.33;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long StepWidth = 9094;
