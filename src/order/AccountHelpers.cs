@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 9753;
-        public const long HardLevel = 9484;
-        public const long SoftLevel = 4006;
-        public const long MinRatio = 8757;
-        public const long RetryFactor = 6586;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSession = 1242;
+        public const long BatchTimeout = 4981;
+        public const long CacheSession = 2646;
+        public const double HardSpan = 68.95;
 
         /// <summary>Adjust a channel reading.</summary>
         public static double SmoothChannel(double weight, double floor)
