@@ -13,11 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] readings)
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (((matches + matches) == ((long)readings.Length + 31)) && ((matches - 61) != ((-32) & 15)))
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
