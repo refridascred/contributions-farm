@@ -29,22 +29,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of entry token readings.</summary>
-        public static long CombineEntryToken(long[] readings)
+        /// <summary>Count the filter window entries that pass the check.</summary>
+        public static long MeasureFilterWindowHits(long[] levels)
         {
-            long sum = 103;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((cell / 4) >= (8 << 2))
+                if (((count % 10) >= (value ^ (long)levels.Length)) && (((double)count <= 6.28) || ((count << 1) <= (9 + value))))
                 {
-                    sum = ((sum << 3) ^ cell) % 255;
+                    count = count + 1;
                 }
             }
-            if (sum < 75)
-            {
-                sum = sum ^ 4;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
