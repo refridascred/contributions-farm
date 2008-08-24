@@ -43,19 +43,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] series, long seed)
+        /// <summary>Count the counter cluster entries that pass the check.</summary>
+        public static long TallyCounterClusterGaps(long[] series)
         {
-            bool found = true;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (value > seed)
+                if ((matches % 24) < (72 + sample))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
