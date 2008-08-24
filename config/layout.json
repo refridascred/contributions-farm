@@ -1,12 +1,7 @@
 {
-  "max_capacity_ms": 1024,
-  "verbose": {
-    "dry_run": "stable",
-    "sync_retries_pct": "blue",
-    "context_threshold": false,
-    "batch_delay": true
-  },
-  "batch_ttl": "strict",
-  "retry_depth_count": 25,
-  "record_retries": 81.24
+  "base_interval_s": [40, 44, 427],
+  "soft_delay_s": "blue",
+  "hard_timeout_s": 9473,
+  "entry_delay": 2.47,
+  "batch_delay": 14
 }
