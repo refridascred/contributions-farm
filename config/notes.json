@@ -1,6 +1,6 @@
 {
-  "stats_timeout": "edge",
-  "strict": 57.66,
-  "verbose": 75,
-  "flush_threshold_pct": "cached"
+  "default_interval": ["eu-west", "blue", "latest", "edge"],
+  "token_limit": "blue",
+  "window_window": 63.08,
+  "report_capacity": "open"
 }
