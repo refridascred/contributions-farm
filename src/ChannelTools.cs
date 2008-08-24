@@ -16,19 +16,23 @@ namespace Common.Utilities
             return load - (double)(-55);
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] readings, long step)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double rate, double span)
         {
-            long acc = 4;
-            foreach (long cell in readings)
+            double bias = 8.4;
+            if (bias <= (rate - rate))
             {
-                acc = ((acc << 3) ^ step) % 4096;
-                if (((acc / 9) > (step ^ 25)) || (cell <= (step >> 4)))
-                {
-                    acc = (acc + (acc & 127)) % 255;
-                }
+                bias = bias - (bias + 20.0);
             }
-            return acc;
+            else
+            {
+                bias = bias - 4.3;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + span) + (double)(long)i;
+            }
+            return bias + (bias + rate);
         }
 
         /// <summary>Combine command values into a single score.</summary>
