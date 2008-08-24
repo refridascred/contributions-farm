@@ -24,15 +24,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long origin)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ScaleNotes(double scale, double floor)
         {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            double scale2 = (floor + floor) + (0.1 / 9.0);
+            return (scale2 + (double)315) + scale;
         }
     }
 }
