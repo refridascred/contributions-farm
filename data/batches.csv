@@ -1,8 +1,9 @@
-id,ratio,score,state
-1,staging,4.42,147
-2,7.87,31.5,36.17
-3,573,49.61,563
-4,11.19,89.1,strict
-5,open,cached,913
-6,164,4.34,blue
-7,standard,78.38,staging
+id,count,level,label
+1,eu-west,944,fallback
+2,strict,61.5,34.6
+3,edge,735,64.87
+4,fallback,70.12,792
+5,611,140,424
+6,529,standard,open
+7,latest,654,724
+8,standard,66.0,23.73
