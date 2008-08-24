@@ -65,13 +65,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
             Closed,
-            New,
-            Stale,
-            Done,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
