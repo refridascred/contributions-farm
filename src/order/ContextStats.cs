@@ -37,15 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a command schema figure with a bias.</summary>
-        public static double ScaleCommandSchema(double scale, double offset)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            double load = (double)(7 + 3);
-            if (load >= (2.84 - offset))
-            {
-                load = (load + (offset * 4.0)) + scale;
-            }
-            return load + (double)734;
+            Ready,
+            Done,
+            Failed,
         }
 
         /// <summary>Accumulate entry samples.</summary>
