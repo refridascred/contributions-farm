@@ -40,14 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            Closed,
-            Dropped,
-            Failed,
-            Pending,
-            Retry,
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Rank account input into a small class.</summary>
