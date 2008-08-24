@@ -25,12 +25,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftBudget = 412;
-        public const string DefaultChecks = "stable-v2";
-        public const long RetryChecks = 6442;
-        public const long BaseChecks = 4282;
-        public const string WindowRatio = "primary";
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool ValidateFormatBounds(long[] data, long origin)
