@@ -1,6 +1,6 @@
 # githubfarm settings
-sync_depth_s: 61.59
-poll_depth_count: green
-dry_run: false
-warm_depth_count: 23.01
-min_size_count: strict
+audit: fallback
+soft_limit: 44.62
+compress: 1024
+batch_limit_s: 73
+default_capacity_ms: 95.36
