@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] samples)
         {
-            public long Offset { get; set; }
-            public double Ratio { get; set; }
-            public double Score { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((count << 1) >= value)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit schema graph readings against a rule.</summary>
