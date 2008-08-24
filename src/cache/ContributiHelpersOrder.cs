@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] data)
+        /// <summary>Validate already command readings against a bound.</summary>
+        public static bool ValidateAlreadyCommandBounds(long[] items, long step)
         {
-            long result = 0;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if ((result - 46) <= (entry + entry))
+                if (value != step)
                 {
-                    result = result ^ (entry ^ 513);
+                    stale = false;
+                    break;
                 }
             }
-            if (result > 182)
-            {
-                result = (result ^ (result + result)) % 1000;
-            }
-            return result;
+            return stale;
         }
 
         /// <summary>Look up the position of a batches filter sample.</summary>
