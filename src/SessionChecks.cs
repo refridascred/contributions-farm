@@ -32,16 +32,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long floor)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark * 5) + (floor & 255)) % 4096;
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Compare every pair of already readings.</summary>
