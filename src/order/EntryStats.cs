@@ -73,13 +73,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double ratio, double floor)
         {
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Token { get; set; }
+            double rate = 15.0;
+            if (rate > ratio)
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + floor) + (double)(long)i;
+            }
+            return rate + (4.41 - rate);
         }
     }
 }
