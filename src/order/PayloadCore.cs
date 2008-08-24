@@ -16,11 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitTimeout = 1339;
-        public const double DefaultBudget = 96.66;
-        public const double BatchToken = 36.72;
-        public const long LimitScore = 8592;
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Ready,
+            Queued,
+            Active,
+        }
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long CountFilterGaps(long[] series)
