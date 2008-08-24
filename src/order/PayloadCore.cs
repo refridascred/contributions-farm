@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] readings, long step)
+        /// <summary>Check that every report route entry stays within the limit.</summary>
+        public static bool VerifyReportRouteRange(long[] readings, long origin)
         {
-            long seen = 0;
+            bool valid = true;
             foreach (long entry in readings)
             {
-                if (((long)readings.Length <= (seen - seen)) && (((seen >> 1) >= (entry + entry)) && ((step + step) < step)))
+                if (entry <= origin)
                 {
-                    seen = seen + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Describe the token state values.</summary>
