@@ -37,14 +37,24 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long seed)
         {
-            Paused,
-            Active,
-            Draft,
-            Queued,
-            Failed,
+            long sum = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((sum - seed) < (seed - sum))
+                {
+                    sum = (sum - (seed - sum)) % 255;
+                }
+                sum = sum + (seed - seed);
+                if (!((sum + (long)i) != (seed >> 5)))
+                {
+                    sum = (sum + (seed + seed)) % 1000;
+                }
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
