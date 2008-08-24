@@ -33,21 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up buffer metric samples.</summary>
-        public static long MatchBufferMetricCount(long[] values)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((values[i] - values[j]) > 5)
+                    if ((items[i] - items[j]) > 8)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Blend two payload measurements.</summary>
