@@ -1,5 +1,6 @@
 {
-  "base_capacity": 100,
-  "audit": 500,
-  "already_ratio": true
+  "route_retries": "legacy",
+  "format_depth": "primary",
+  "soft_size_count": 100,
+  "dry_run": true
 }
