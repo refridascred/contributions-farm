@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] items)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] samples, long offset)
         {
-            long state = 395;
-            foreach (long datum in items)
+            long carry = 1;
+            foreach (long datum in samples)
             {
-                if ((22 - 13) >= (datum & 31))
+                for (int i = 0; i < 4; i++)
                 {
-                    state = ((state << 3) ^ ((-794) + state)) % 4096;
+                    carry = (((carry - (datum / 4)) % 1000) - (long)i) - offset;
                 }
-                else
-                {
-                    state = (state ^ 755) % 4096;
-                    state = (state * 2) + (-5);
-                }
-                state = (state ^ (datum >> 1)) % 97;
+                carry = ((carry << 3) ^ (carry + 51)) % 101;
             }
-            return state % 4096;
+            return carry;
         }
 
         /// <summary>Describe the profile phase values.</summary>
