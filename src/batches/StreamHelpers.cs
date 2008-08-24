@@ -64,12 +64,11 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
-        {
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MaxNotes = "fallback";
+        public const long DefaultNotes = 5711;
+        public const long MaxFactor = 9005;
+        public const string BaseCount = "open-v2";
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
