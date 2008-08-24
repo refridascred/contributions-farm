@@ -71,18 +71,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportOutliers(long[] levels, long floor)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((590 + 27) >= (floor + 28))
-                {
-                    seen = (seen + 1) ^ item;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
