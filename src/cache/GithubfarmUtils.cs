@@ -23,18 +23,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the filter window entries that pass the check.</summary>
-        public static long MeasureFilterWindowHits(long[] levels)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if (((count % 10) >= (value ^ (long)levels.Length)) && (((double)count <= 6.28) || ((count << 1) <= (9 + value))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Closed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Hold a cache snapshot.</summary>
