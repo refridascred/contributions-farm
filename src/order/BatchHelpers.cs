@@ -29,12 +29,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] data, long floor)
         {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((value >> 1) > value)
+                {
+                    hits = (hits + 1) + floor;
+                }
+            }
+            return hits;
         }
     }
 }
