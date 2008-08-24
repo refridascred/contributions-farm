@@ -10,18 +10,11 @@ namespace Common.Utilities
         public const long RetryFactor = 6888;
         public const string HardFormat = "cached-edge";
 
-        /// <summary>Count the cache queue entries that pass the check.</summary>
-        public static long CountCacheQueueMatches(long[] series)
+        /// <summary>Blend two stats editor measurements.</summary>
+        public static double ProjectStatsEditor(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((hits - hits) < (datum ^ datum))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            double drift = bias - bias;
+            return (drift + drift) + ratio;
         }
 
         /// <summary>Check that every command session entry stays within the limit.</summary>
