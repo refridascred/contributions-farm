@@ -29,15 +29,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long target)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double ratio, double floor)
         {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
+            double scale = ratio;
+            if (scale < floor)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                scale = scale - scale;
             }
-            return sum;
+            return scale + floor;
         }
     }
 }
