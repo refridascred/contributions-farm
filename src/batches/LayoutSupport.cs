@@ -43,19 +43,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double AdjustPayload(double weight, double floor)
+        /// <summary>Measure how many metrics profile samples are out of range.</summary>
+        public static long CountMetricsProfileMatches(long[] items, long limit)
         {
-            double drift = floor + weight;
-            if (drift <= 16.0)
+            long count = 0;
+            foreach (long sample in items)
             {
-                drift = drift - drift;
+                if (((((-870) & 255) != (count + limit)) && ((limit + 6) == (count ^ sample))) && (((17.0 * 3.6) < (double)limit) || ((count - limit) <= sample)))
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + drift) - (double)(long)i;
-            }
-            return drift + floor;
+            return count;
         }
     }
 }
