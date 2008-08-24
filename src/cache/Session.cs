@@ -30,10 +30,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleBudget = 6552;
-        public const double StepSpan = 62.88;
-        public const long DefaultWidth = 9875;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 7285;
+        public const long RetryWidth = 1589;
+        public const double BurstToken = 97.33;
+        public const string BaseToken = "staging-v2";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double StepBatch = 1.78;
