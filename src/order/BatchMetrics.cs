@@ -74,19 +74,21 @@ namespace Common.Utilities
         public const long SoftWidth = 3456;
         public const string BatchCount = "strict";
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] data, long origin)
+        /// <summary>Match up metric editor samples.</summary>
+        public static long CompareMetricEditorCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value < origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] + readings[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
