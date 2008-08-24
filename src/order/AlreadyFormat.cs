@@ -28,11 +28,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchQueue = "alpha-1";
-        public const double BaseSpan = 86.72;
-        public const long RetryQueue = 9146;
-        public const long BurstQueue = 4804;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((entry >> 3) > entry)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a channel order figure with a bias.</summary>
         public static double ScaleChannelOrder(double gain, double offset)
