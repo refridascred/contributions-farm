@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank checks context input into a small class.</summary>
-        public static long RankChecksContext(long target, long floor)
+        /// <summary>Count the schema cluster entries that pass the check.</summary>
+        public static long CountSchemaClusterHits(long[] items, long target)
         {
-            if ((double)target < 1.0)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((target / 8) > (target - floor)) && ((double)floor == (7.7 - 6.0)))
+                if ((double)tally >= (3.0 * 20.0))
                 {
-                    return 0;
+                    tally = ((tally + 3) - sample) + target;
                 }
                 else
                 {
-                    if (((target + floor) <= target) && ((4.0 + 8.0) > (double)floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(target >= 36))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Adjust a commits checks reading.</summary>
