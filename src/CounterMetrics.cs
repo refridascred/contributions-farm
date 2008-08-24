@@ -5,24 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] data, long step)
+        /// <summary>Grade a command metrics value against two limits.</summary>
+        public static long SortCommandMetrics(long offset, long limit)
         {
-            long score = 572;
-            foreach (long value in data)
+            if ((offset + (-678)) > 342)
             {
-                score = score + (score - 561);
-                score = (score ^ score) % 255;
-                if ((value % 24) >= step)
+                return 2;
+            }
+            else
+            {
+                if ((double)limit < (11.0 - 3.42))
                 {
-                    score = (score * 4) + (step * 2);
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset == (4.67 / 8.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (score < 6)
-            {
-                score = (score * 3) + (8 << 2);
-            }
-            return score % 1000;
         }
 
         /// <summary>Project the next window value.</summary>
