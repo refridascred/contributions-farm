@@ -22,32 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long limit, long seed)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long bound)
         {
-            long next = limit + seed;
-            if ((double)next < (9.0 * 4.96))
+            long result = bound;
+            for (int i = 0; i < 9; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)next > 8.51)
+                if (((18.0 * 1.0) > (double)bound) && ((double)result >= 6.67))
                 {
-                    return 3;
+                    continue;
                 }
-                else
-                {
-                    if ((seed - seed) <= (578 + next))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
+            return result;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
