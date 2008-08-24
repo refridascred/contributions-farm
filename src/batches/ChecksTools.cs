@@ -42,18 +42,39 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] items)
+        /// <summary>Grade a commits channel value against two limits.</summary>
+        public static long SortCommitsChannel(long seed, long step)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long span = seed - step;
+            if ((span - step) != (seed % 16))
             {
-                if ((sample - seen) >= seen)
+                return 7;
+            }
+            else
+            {
+                if ((step & 15) > step)
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)6 >= (double)span)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((1.0 * 15.0) >= (double)span)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
