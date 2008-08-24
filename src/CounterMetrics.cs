@@ -27,19 +27,27 @@ namespace Common.Utilities
             return (drift - scale) + offset;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] data, long seed)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long offset)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long total = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (entry != seed)
+                if (!(offset > (offset >> 2)))
                 {
-                    found = false;
-                    break;
+                    total = ((total * 5) + (68 - total)) % 1000;
                 }
+                else
+                {
+                    total = total + (long)i;
+                }
+                if ((total < (long)i) && ((6.0 + 12.0) != (double)offset))
+                {
+                    total = ((total * 4) + ((long)i / 8)) % 4096;
+                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Fold a list of command readings.</summary>
