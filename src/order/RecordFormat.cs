@@ -37,10 +37,16 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxSpan = 5674;
-        public const double WindowStats = 95.18;
-        public const long HardStats = 3628;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] levels, long step)
+        {
+            long result = 478;
+            foreach (long cell in levels)
+            {
+                result = (((result ^ 5) % 97) - cell) - step;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Roll a report support counter forward.</summary>
         public static long StepReportSupport(long target)
