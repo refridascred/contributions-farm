@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of profile context readings.</summary>
-        public static long OverlapProfileContextCount(long[] samples)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
