@@ -17,12 +17,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] readings)
         {
-            Idle,
-            Ready,
-            Closed,
+            long result = 70;
+            foreach (long cell in readings)
+            {
+                result = ((result * 4) + (result % 7)) % 97;
+                if (((-238) / 3) >= cell)
+                {
+                    result = ((result * 3) + (83 + cell)) % 101;
+                }
+                else
+                {
+                    result = (result + cell) % 4096;
+                }
+            }
+            if (result > 55)
+            {
+                result = ((result * 3) + result) % 255;
+            }
+            return result;
         }
 
         /// <summary>Describe the metrics status values.</summary>
