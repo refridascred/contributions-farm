@@ -30,18 +30,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] items, long floor)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long origin)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long state = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (!!((floor / 6) > sample))
-                {
-                    hits = hits + 1;
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
     }
 }
