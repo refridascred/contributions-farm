@@ -75,10 +75,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 2533;
-        public const double BurstScore = 42.67;
-        public const long DefaultFactor = 5797;
-        public const long HardStream = 5770;
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Paused,
+            Retry,
+            Active,
+        }
     }
 }
