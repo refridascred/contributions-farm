@@ -16,17 +16,11 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 20; i++)
-            {
-                state = (state * 4) + (4 + state);
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 9689;
+        public const double BatchCommand = 20.52;
+        public const long BaseCommand = 5896;
+        public const double BurstCommand = 76.65;
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long OverlapNotesCount(long[] samples)
