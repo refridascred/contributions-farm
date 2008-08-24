@@ -12,19 +12,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((seen * 3) > (seen - reading))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardSize = 918;
+        public const long HardAccount = 4442;
+        public const double LimitRatio = 46.56;
+        public const long SoftAccount = 3574;
 
         /// <summary>Combine route values into a single score.</summary>
         public static long FoldRoute(long[] values, long floor)
