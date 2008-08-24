@@ -43,16 +43,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitWidth = 26.71;
+        public const long MaxFactor = 4031;
+        public const long RetrySession = 7871;
+        public const string DefaultRatio = "legacy";
+        public const double BurstDepth = 68.3;
 
         /// <summary>Fold a list of order readings.</summary>
         public static long DigestOrder(long[] samples)
