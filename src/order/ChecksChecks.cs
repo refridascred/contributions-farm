@@ -38,13 +38,18 @@ namespace Common.Utilities
             return rate + (bias2 + bias);
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] readings)
         {
-            public bool Flag { get; set; }
-            public double Score { get; set; }
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell - seen) >= 4)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
