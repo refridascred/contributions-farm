@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long WeighPayload(long[] values, long origin)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] series)
         {
-            long total = 879;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (origin <= (origin / 7))
+                if ((-9) <= (matches + 891))
                 {
-                    total = total ^ (item - origin);
+                    matches = (matches + 3) + value;
                 }
-                total = (total * 5) + (item & 3);
-                if ((double)111 >= (double)origin)
+                else
                 {
-                    total = (total + (item % 8)) % 4096;
+                    matches = matches - 1;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
