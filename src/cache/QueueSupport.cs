@@ -25,11 +25,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 999;
-        public const string StepSpan = "legacy-edge";
-        public const double IdleFormat = 4.62;
-        public const double RetryFormat = 93.37;
-        public const double BurstTimeout = 1.2;
+        /// <summary>Adjust a tools batches reading.</summary>
+        public static double ScaleToolsBatches(double bias, double floor)
+        {
+            double ratio = floor;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (double)(-316)) - (double)(long)i;
+            }
+            return ratio - (bias - bias);
+        }
     }
 }
