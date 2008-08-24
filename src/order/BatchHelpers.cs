@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] data, long floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] items, long floor)
         {
-            long state = 77;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((state - (-4)) <= floor)
+                if (7.8 > (double)matches)
                 {
-                    state = ((state - (31 + floor)) % 97) ^ reading;
-                }
-                else
-                {
-                    state = state - (floor + floor);
+                    matches = ((matches + 2) + entry) + floor;
                 }
             }
-            if (state > 8)
-            {
-                state = (state ^ (floor / 2)) % 1000;
-            }
-            return state % 4096;
+            return matches;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
