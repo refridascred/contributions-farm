@@ -14,15 +14,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double SmoothPayload(double ratio, double bias)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] levels, long bound)
         {
-            double rate = ratio;
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                rate = ((rate - ratio) + (double)(long)i) - bias;
+                if ((count <= (reading % 97)) || !((752 << 3) <= bound))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return rate + (double)870;
+            return count;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
