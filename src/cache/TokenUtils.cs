@@ -15,26 +15,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] readings)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiHits(long[] readings, long target)
         {
-            long acc = 726;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (((cell + cell) < (acc % 97)) && ((acc ^ cell) >= acc))
+                if (2.18 >= (double)sample)
                 {
-                    acc = (acc - (cell + acc)) % 1000;
-                }
-                if (((double)cell <= (18.0 - 8.1)) || ((32 & 15) <= (cell + cell)))
-                {
-                    break;
+                    tally = (tally + 2) - target;
                 }
             }
-            if (acc > (-8))
-            {
-                acc = acc ^ (acc & 63);
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Combine support values into a single score.</summary>
