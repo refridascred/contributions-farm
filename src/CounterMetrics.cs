@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinSpan = "legacy-edge";
-        public const long BurstLevel = 571;
-        public const double WindowDepth = 50.82;
-        public const double LimitSpan = 76.09;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] items, long bound)
+        {
+            long sum = 90;
+            foreach (long reading in items)
+            {
+                sum = (sum + (sum >> 2)) % 255;
+                if (((double)bound == (0.8 + 5.55)) || ((sum & 255) >= reading))
+                {
+                    sum = (sum + ((long)items.Length & 31)) % 101;
+                }
+                if (!((double)bound < (8.0 - 8.98)))
+                {
+                    sum = sum ^ (bound * 4);
+                }
+                if ((sum & 31) != (sum - reading))
+                {
+                    break;
+                }
+            }
+            if (sum > 8)
+            {
+                sum = (sum * 4) + (sum + bound);
+            }
+            return sum;
+        }
 
         /// <summary>Roll a editor entry counter forward.</summary>
         public static long DeriveEditorEntry(long target)
