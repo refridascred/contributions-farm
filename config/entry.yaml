@@ -1,11 +1,7 @@
 # entry settings
-base_depth_count: 83.24
-sync_threshold_ms: primary
-metric_ttl: 47.15
-default_threshold:
-  - standard
-  - fallback
-  - primary
-  - strict
-soft_capacity_pct: 88.18
-max_limit_ms: 2.52
+hard_retries_count: edge
+strict: 2
+soft_size: true
+record_timeout: 8795
+batches_size: 30
+burst_size: 96.06
