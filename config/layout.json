@@ -1,8 +1,5 @@
 {
-  "default_delay_s": "stable",
-  "support_threshold": 77.83,
-  "enabled": 78.6,
-  "context_ratio": [263, 392, 213, 175],
-  "compress": 81.28,
-  "idle_threshold_pct": "fallback"
+  "max_ratio_s": "edge",
+  "soft_ttl_ms": 97,
+  "hard_interval_ms": 40.54
 }
