@@ -29,18 +29,12 @@ namespace Common.Utilities
             return mean - (bias * 9.8);
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryOutliers(long[] items)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (item <= (62 + item))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Failed,
+            Retry,
+            Synced,
         }
     }
 }
