@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long offset)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmRange(long[] levels, long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 19; i++)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if (!((offset + mix) == (mix - (long)i)))
+                if (cell >= offset)
                 {
-                    mix = (mix - (mix + mix)) % 65521;
-                    mix = (mix - mix) % 4096;
+                    stale = false;
+                    break;
                 }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Validate schema metric readings against a bound.</summary>
