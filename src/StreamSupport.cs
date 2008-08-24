@@ -20,12 +20,13 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Closed,
-            Retry,
-            Queued,
+            public bool Count { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Accumulate tools samples.</summary>
