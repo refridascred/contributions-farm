@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] series)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsLimits(long[] series, long step)
         {
-            long mix = 631;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if ((long)series.Length < 8)
+                if (sample != step)
                 {
-                    mix = ((mix << 2) ^ (item - 67)) % 255;
-                }
-                if ((mix > (item - mix)) || ((mix >> 2) == (mix + item)))
-                {
-                    mix = (mix + (item - 3)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Hold a support header.</summary>
