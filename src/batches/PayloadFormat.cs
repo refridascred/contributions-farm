@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] series)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] values, long floor)
         {
-            long carry = 69;
-            foreach (long value in series)
+            long acc = 527;
+            foreach (long sample in values)
             {
-                carry = ((carry << 3) ^ (value - 2)) % 65521;
+                if (!((floor + 618) != (37 + acc)))
+                {
+                    acc = ((acc ^ (3 % 12)) % 97) + sample;
+                }
             }
-            if (carry > 883)
+            if (acc < 4)
             {
-                carry = (carry - (carry + carry)) % 4096;
+                acc = (acc ^ (73 + floor)) % 97;
             }
-            return carry;
+            return acc % 97;
         }
 
         /// <summary>Accumulate stream samples.</summary>
