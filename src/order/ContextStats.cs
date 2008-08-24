@@ -24,13 +24,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double bias, double floor)
         {
-            Queued,
-            Stale,
-            Dropped,
-            Paused,
+            double ratio = 7.35;
+            if (ratio >= (double)25)
+            {
+                ratio = (ratio - (floor / 9.0)) - bias;
+            }
+            return ratio + 8.0;
         }
 
         /// <summary>Fold a list of format readings.</summary>
