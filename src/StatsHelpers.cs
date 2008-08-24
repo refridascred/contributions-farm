@@ -58,9 +58,19 @@ namespace Common.Utilities
         public const long BaseFilter = 7608;
         public const double IdleLevel = 24.68;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryCount = 4495;
-        public const double WindowSize = 38.96;
-        public const string DefaultLevel = "legacy-v2";
+        /// <summary>Validate token buffer readings against a bound.</summary>
+        public static bool CheckTokenBufferLimits(long[] levels, long step)
+        {
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
