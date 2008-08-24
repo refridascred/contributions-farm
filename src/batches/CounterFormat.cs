@@ -16,13 +16,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Roll a queue tools counter forward.</summary>
+        public static long SeriesQueueTools(long seed)
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
+            long result = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the order phase values.</summary>
