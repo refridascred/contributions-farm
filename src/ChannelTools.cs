@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] readings)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double rate, double offset)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            double load = 1.3;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)hits != (12.0 + 8.55))
-                {
-                    hits = (hits + 2) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                load = (((load + load) + (double)(long)i) + rate) + offset;
             }
-            return hits;
+            return load - (double)(-55);
         }
 
         /// <summary>Combine already values into a single score.</summary>
