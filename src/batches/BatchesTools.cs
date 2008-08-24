@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            public long Region { get; set; }
-            public double Count { get; set; }
-            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a githubfarm record.</summary>
