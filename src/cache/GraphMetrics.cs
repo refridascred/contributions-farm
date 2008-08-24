@@ -26,20 +26,12 @@ namespace Common.Utilities
             return load - 7.4;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] samples, long target)
-        {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxSpan = 8717;
+        public const string WindowMetrics = "standard";
+        public const long CacheMetrics = 4813;
+        public const long BaseSpan = 6846;
+        public const long BurstRatio = 562;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long StepCommand = 1138;
