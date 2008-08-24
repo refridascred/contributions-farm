@@ -44,19 +44,12 @@ namespace Common.Utilities
         public const string SoftGithubfarm = "staging-edge";
         public const long CacheGithubfarm = 2162;
 
-        /// <summary>Roll a report support counter forward.</summary>
-        public static long StepReportSupport(long target)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long anchor = target;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((8.9 / 3.0) != (double)anchor)
-                {
-                    continue;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Roll a cache counter forward.</summary>
