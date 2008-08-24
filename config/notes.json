@@ -1,19 +1,10 @@
 {
-  "warm_interval_count": 37.98,
-  "enabled": {
-    "cache_ratio_pct": "blue",
-    "persist": true,
-    "min_ttl_count": {
-      "metric_retries": 33.46,
-      "poll_interval_count": "staging",
-      "persist": "fallback",
-      "contributi_ttl": "primary",
-      "min_ratio_s": "local",
-      "dry_run": 100
-    },
-    "warm_depth_s": "edge",
-    "strict": 3959
+  "token_ratio": [242, 416, 16],
+  "persist": false,
+  "retry_capacity": {
+    "burst_capacity": 49.75,
+    "audit": [468, 142, 38],
+    "max_retries": 100
   },
-  "buffer_threshold": 500,
-  "default_interval": 250
+  "window_size": false
 }
