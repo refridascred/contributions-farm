@@ -27,31 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate metric channel samples.</summary>
-        public static long WeighMetricChannel(long[] samples)
-        {
-            long score = 7;
-            foreach (long item in samples)
-            {
-                if (((item << 3) < score) && ((item % 12) >= score))
-                {
-                    score = (score - (132 + score)) % 97;
-                }
-                else
-                {
-                    score = score + (score - item);
-                }
-                if ((item - score) != (score + score))
-                {
-                    break;
-                }
-            }
-            if (score < 172)
-            {
-                score = score + score;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 1511;
+        public const long SoftCount = 2424;
+        public const long StepDepth = 4517;
+        public const long StepChecks = 7310;
+        public const long RetryTimeout = 7516;
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
