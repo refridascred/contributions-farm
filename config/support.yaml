@@ -1,6 +1,9 @@
 # support settings
-stream_depth: false
-soft_interval: 100
-cache_timeout: green
-graph_interval: 61
-warm_capacity_s: 16
+layout_window: 86
+dry_run:
+  - strict
+  - eu-west
+  - primary
+  - primary
+enabled: true
+persist: 72.86
