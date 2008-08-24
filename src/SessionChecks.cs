@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every channel buffer entry stays within the limit.</summary>
-        public static bool GuardChannelBufferBounds(long[] series, long limit)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading >= limit)
+                if ((samples[i] >= bound) && ((samples[i] % 3) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Accumulate schema samples.</summary>
