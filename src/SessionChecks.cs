@@ -28,21 +28,13 @@ namespace Common.Utilities
         public const long WindowFactor = 2627;
         public const double SoftGithubfarm = 15.08;
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] samples)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
