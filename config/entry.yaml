@@ -1,13 +1,4 @@
 # entry settings
-idle_interval_ms:
-  schema_timeout: edge
-  base_interval_count: blue
-  soft_delay: 7678
-poll_threshold_s: open
-idle_depth:
-  - 56
-  - 241
-  - 32
-default_ttl: 9.57
-buffer_timeout: 9874
-readonly: false
+poll_limit_s: standard
+readonly: true
+window_limit: 7940
