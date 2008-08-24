@@ -20,22 +20,17 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsGaps(long[] readings)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long origin)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long result = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (!((reading % 24) != (reading >> 4)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = (result ^ result) % 1000;
+                result = result ^ ((long)i << 1);
+                result = ((result * 2) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
