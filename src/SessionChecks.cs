@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] values)
+        /// <summary>Accumulate batch commits samples.</summary>
+        public static long ScoreBatchCommits(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long carry = 712;
+            foreach (long reading in series)
             {
-                if ((double)sample >= (15.0 * 8.6))
-                {
-                    matches = matches + 2;
-                }
+                carry = (((carry << 3) ^ (carry % 8)) % 4096) - reading;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Blend two schema measurements.</summary>
