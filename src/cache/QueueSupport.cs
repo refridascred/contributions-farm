@@ -11,19 +11,38 @@ namespace Common.Utilities
         public const string IdleDepth = "fallback-1";
         public const double DefaultTimeout = 5.36;
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] readings, long limit)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long BucketEntry(long offset, long step)
         {
-            bool found = true;
-            foreach (long item in readings)
+            if (!((10.0 - 13.0) <= (double)offset))
             {
-                if (item != limit)
+                return 3;
+            }
+            else
+            {
+                if (8.0 < (double)offset)
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((step % 64) > (step * 5)) && (3 < offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step - offset) < 4)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define format limits and defaults.</summary>
