@@ -1,24 +1,5 @@
 # entry settings
-verbose:
-  verbose: 13
-  hard_capacity_pct: 500
-  metric_timeout:
-    - 494
-    - 199
-    - 152
-  retry_delay: standard
-  dry_run: eu-west
-cache_window_count:
-  - staging
-  - latest
-already_depth: 78
-buffer_retries:
-  - legacy
-  - strict
-batch_window_ms:
-  - edge
-  - cached
-cache_delay_s:
-  max_timeout: 48.26
-  readonly: 4194
-  persist: latest
+metrics_capacity: legacy
+warm_ratio: false
+hard_ttl_s: cached
+route_ttl: 4341
