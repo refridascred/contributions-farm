@@ -50,12 +50,32 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 1571;
-        public const double HardCounter = 88.03;
-        public const double BurstInterval = 32.82;
-        public const long RetryRatio = 1349;
-        public const long BatchCounter = 5816;
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long bound, long origin)
+        {
+            if (((double)bound <= (double)origin) && ((origin - bound) >= (bound ^ origin)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound >> 3) > (origin >> 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (origin <= bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next metric value from a seed.</summary>
         public static long StepMetric(long step)
