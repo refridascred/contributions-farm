@@ -12,21 +12,11 @@ namespace Common.Utilities
         public const long BurstTimeout = 8934;
         public const long WindowNotes = 1942;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] readings, long floor)
-        {
-            long carry = 4;
-            foreach (long entry in readings)
-            {
-                carry = ((carry - (7 % 24)) % 65521) + entry;
-                carry = ((carry << 3) ^ (70 >> 5)) % 255;
-            }
-            if (carry < 9)
-            {
-                carry = carry - (floor << 3);
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MaxQueue = "alpha-v2";
+        public const long BaseQueue = 4466;
+        public const string MinScore = "primary-v2";
+        public const long MinInterval = 861;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long WindowTools = 7379;
