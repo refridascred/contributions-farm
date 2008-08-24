@@ -37,12 +37,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardRatio = 9602;
-        public const long DefaultStream = 5512;
-        public const long MaxCount = 9926;
-        public const long LimitLevel = 187;
-        public const long MaxFactor = 7660;
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
+        {
+            Stale,
+            Draft,
+            Queued,
+            New,
+            Paused,
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long AuditContributiGaps(long[] series)
