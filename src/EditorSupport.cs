@@ -39,11 +39,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double bias, double offset)
         {
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
+            double ratio = 2.6;
+            if (ratio < (0.25 + bias))
+            {
+                ratio = (ratio - (7.18 - bias)) - offset;
+            }
+            return ratio - 6.7;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
