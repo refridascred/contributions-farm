@@ -65,18 +65,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] data, long step)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (((tally << 2) < (0 / 3)) || (item > step))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Closed,
+            New,
+            Stale,
+            Done,
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
