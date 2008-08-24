@@ -19,19 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double rate, double floor)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            double weight = (rate + floor) + rate;
-            if (weight > 6.25)
-            {
-                weight = weight - (rate + floor);
-            }
-            else
-            {
-                weight = weight + 6.8;
-            }
-            return weight + (double)9;
+            public double Mode { get; set; }
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
