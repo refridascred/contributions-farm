@@ -23,18 +23,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate channel account samples.</summary>
-        public static long FoldChannelAccount(long[] items)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long step, long seed)
         {
-            long acc = 26;
-            foreach (long datum in items)
+            long offset = step - seed;
+            if ((step % 100) >= (offset / 6))
             {
-                if (((datum ^ 2) < (datum + 46)) || (acc > datum))
+                return 4;
+            }
+            else
+            {
+                if ((6.91 - 8.0) <= (double)step)
                 {
-                    acc = ((acc << 3) ^ ((long)items.Length / 8)) % 255;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return acc % 97;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
