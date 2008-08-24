@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next support counter value.</summary>
-        public static double AdjustSupportCounter(double weight, double span)
-        {
-            double mean = (double)(762 + 76);
-            if (mean >= (mean / 9.0))
-            {
-                mean = (mean - span) - weight;
-            }
-            return mean + (mean + mean);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitContributi = 8795;
+        public const long SoftContributi = 2483;
+        public const long BatchCount = 2385;
+        public const string BaseContributi = "staging-edge";
+        public const long BurstContributi = 4987;
 
         /// <summary>Measure how many editor token samples are out of range.</summary>
         public static long CountEditorTokenMatches(long[] readings)
