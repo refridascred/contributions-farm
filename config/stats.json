@@ -1,12 +1,7 @@
 {
-  "max_threshold_s": false,
-  "min_timeout": "legacy",
-  "soft_capacity_ms": true,
-  "contributi_capacity": "blue",
-  "schema_ttl": 36.61,
-  "readonly": {
-    "enabled": "stable",
-    "compress": 60,
-    "default_capacity": ["cached", "latest"]
-  }
+  "poll_timeout_count": false,
+  "verbose": ["fallback", "edge", "green", "strict"],
+  "min_interval_count": false,
+  "flush_limit_ms": 9992,
+  "buffer_ttl": "stable"
 }
