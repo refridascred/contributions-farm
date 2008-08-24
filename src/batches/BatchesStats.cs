@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchBounds(long[] readings, long seed)
         {
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
