@@ -34,19 +34,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long step)
+        /// <summary>Count the session filter entries that pass the check.</summary>
+        public static long MeasureSessionFilterGaps(long[] samples)
         {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (!!(sum > (sum << 2)))
+                if (entry > (seen ^ seen))
                 {
-                    sum = (sum - (step + step)) % 65521;
+                    seen = seen + 1;
                 }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Adjust a notes githubfarm reading.</summary>
