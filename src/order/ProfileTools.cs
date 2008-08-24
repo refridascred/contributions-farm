@@ -23,10 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 8702;
-        public const long RetryWidth = 14;
-        public const long IdleLevel = 730;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 7513;
+        public const double BatchContext = 36.41;
+        public const long WindowContext = 7925;
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long SeriesFormat(long step)
