@@ -34,12 +34,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardScore = 4643;
-        public const long BatchEntry = 7757;
-        public const long DefaultSize = 4622;
-        public const double SoftSize = 95.95;
-        public const long LimitEntry = 5183;
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Locked,
+            Dropped,
+            Paused,
+            Closed,
+            Pending,
+        }
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long RankBatch(long target, long target2)
