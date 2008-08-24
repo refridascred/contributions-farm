@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] data, long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] samples)
         {
-            long anchor = 769;
-            foreach (long item in data)
+            long total = 46;
+            foreach (long cell in samples)
             {
-                anchor = ((anchor - (anchor - anchor)) ^ item) + seed;
+                if (total >= (4 * 5))
+                {
+                    total = (total + (cell ^ total)) % 97;
+                }
+                else
+                {
+                    total = (total + (867 + total)) % 255;
+                }
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
