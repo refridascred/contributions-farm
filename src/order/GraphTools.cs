@@ -42,24 +42,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long offset, long seed)
-        {
-            if (((offset / 5) <= offset) || ((offset << 3) > (offset % 16)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((5.21 / 8.0) >= (double)offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string CacheRoute = "standard-1";
+        public const double RetryWidth = 7.1;
+        public const long WindowRoute = 5414;
     }
 }
