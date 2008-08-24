@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public long Score { get; set; }
-            public double Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
+            public bool Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Project the next metric value.</summary>
