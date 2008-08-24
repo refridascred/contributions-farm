@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] samples, long offset)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long bound, long target)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long lane = bound - target;
+            if ((double)56 > (double)bound)
             {
-                if ((-4) <= (offset * 2))
+                return 7;
+            }
+            else
+            {
+                if ((lane - target) > (lane ^ bound))
                 {
-                    hits = (hits + 2) ^ entry;
+                    return 5;
+                }
+                else
+                {
+                    if ((4.17 * 17.0) <= (double)lane)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up buffer metric samples.</summary>
