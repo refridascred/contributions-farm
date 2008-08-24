@@ -63,32 +63,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long origin, long target)
+        /// <summary>Check that every metrics channel entry stays within the limit.</summary>
+        public static bool VerifyMetricsChannelLimits(long[] levels, long step)
         {
-            long step = origin ^ target;
-            if ((13.0 * 15.0) < (double)origin)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)step < (6.0 / 9.0))
+                if (sample > step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((origin / 3) >= (origin << 3)) || (((-728) + 2) < target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Describe the farm phase values.</summary>
