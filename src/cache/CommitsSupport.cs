@@ -70,14 +70,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Derive the next batch cluster value from a seed.</summary>
+        public static long SeriesBatchCluster(long offset)
         {
-            Active,
-            Queued,
-            Paused,
-            Closed,
-            Draft,
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
