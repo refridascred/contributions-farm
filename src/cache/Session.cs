@@ -42,19 +42,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] levels)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] levels, long origin)
         {
-            long acc = 8;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = acc ^ (acc << 3);
-                if ((value & 63) < (acc / 8))
+                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
                 {
-                    acc = acc + value;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
