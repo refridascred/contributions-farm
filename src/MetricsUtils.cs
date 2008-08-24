@@ -23,28 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a counter commits counter forward.</summary>
-        public static long SeriesCounterCommits(long limit)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long sum = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if (6.1 <= (double)limit)
-                {
-                    sum = sum + (sum + sum);
-                    sum = (sum * 4) + sum;
-                }
-                if ((double)(long)i >= (11.0 * 6.82))
-                {
-                    break;
-                }
-                else
-                {
-                    sum = ((sum * 5) + (sum ^ sum)) % 1000;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            public long Rank { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Adjust a channel reading.</summary>
