@@ -14,12 +14,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
-        {
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BaseScore = 9.59;
+        public const long RetryLayout = 6337;
+        public const long WindowLayout = 3886;
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long LocateSchemaIndex(long[] values, long limit)
