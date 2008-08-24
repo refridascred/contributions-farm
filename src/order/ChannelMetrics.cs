@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] data)
+        /// <summary>Grade a entry cluster value against two limits.</summary>
+        public static long BucketEntryCluster(long offset, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (((double)limit == (9.5 + 9.0)) || (342 >= offset))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (offset <= (94 - offset))
                 {
-                    if ((data[i] ^ data[j]) != 15)
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset != (13.0 / 2.0))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((limit * 4) > limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
