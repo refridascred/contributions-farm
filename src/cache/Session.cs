@@ -52,17 +52,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= origin) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double StepBatch = 1.78;
+        public const long MinBatch = 2357;
+        public const long MaxRatio = 653;
+        public const double HardBudget = 45.66;
     }
 }
