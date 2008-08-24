@@ -1,8 +1,8 @@
-id,weight,token,state
-1,768,586,83.86
-2,80.58,937,25
-3,11.91,535,840
-4,primary,39.44,green
-5,46.45,70.53,58.04
-6,467,latest,cached
-7,latest,687,latest
+id,owner,token,level,label
+1,standard,73.98,677,strict
+2,124,92.58,979,541
+3,39.52,legacy,edge,229
+4,536,585,702,legacy
+5,573,35.28,eu-west,953
+6,blue,6.85,edge,30.25
+7,202,50.63,blue,legacy
