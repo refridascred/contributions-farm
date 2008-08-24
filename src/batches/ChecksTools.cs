@@ -45,15 +45,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double gain, double offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] items)
         {
-            double gain2 = (offset * 3.42) - (1.74 * 9.69);
-            if (gain2 >= (gain2 - gain))
+            long seen = 0;
+            foreach (long sample in items)
             {
-                gain2 = gain2 + gain;
+                if ((sample - seen) >= seen)
+                {
+                    seen = seen + 3;
+                }
             }
-            return gain2 + 1.0;
+            return seen;
         }
     }
 }
