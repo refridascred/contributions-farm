@@ -1,15 +1,5 @@
 {
-  "min_ttl_count": "legacy",
-  "poll_window_count": 85,
-  "farm_timeout": false,
-  "base_limit": 250,
-  "flush_interval_s": "cached",
-  "flush_delay": {
-    "batches_retries": "latest",
-    "cache_ttl_ms": 8.72,
-    "editor_window": 91.03,
-    "soft_capacity": "local",
-    "batch_window": 40.02,
-    "verbose": 30
-  }
+  "editor_window": ["eu-west", "latest", "cached"],
+  "min_ttl_pct": "strict",
+  "min_interval_pct": 58.47
 }
