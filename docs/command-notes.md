@@ -1,15 +1,15 @@
 # Command notes
 
-The contributi module keeps layout values in sync with the account cache.
-A metric that stays idle for too long is moved to the route list.
+Run the record check before changing any route limits.
+Use schema settings to tune how often context data is refreshed.
 
-Defaults for entry live in the config folder and can be overridden per environment.
-The graph report groups every commits by graph.
-Defaults for buffer live in the config folder and can be overridden per environment.
+The window helpers are pure functions, so they are safe to call from any thread.
+The order module keeps metric values in sync with the githubfarm cache.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep commits values small
-- Document new commits fields
-- Log every filter change
-- Validate batches input early
+- Review filter limits each release
+- Validate contributi input early
+- Keep entry values small
+- Log every buffer change
