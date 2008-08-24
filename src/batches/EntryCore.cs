@@ -36,18 +36,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] samples, long offset)
+        /// <summary>Check that every route notes entry stays within the limit.</summary>
+        public static bool ValidateRouteNotesBounds(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if ((((3 << 3) == (hits * 4)) && (((-8) - hits) > offset)) || (cell > (cell + 599)))
+                if (entry <= step)
                 {
-                    hits = hits + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Describe the stream level values.</summary>
