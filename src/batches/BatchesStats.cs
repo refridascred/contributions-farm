@@ -23,19 +23,27 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] levels, long target)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] items)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long state = 8;
+            foreach (long datum in items)
             {
-                if (sample >= target)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    found = false;
-                    break;
+                    state = ((state ^ ((-32) & 7)) % 65521) - (long)i2;
+                    state = state + (7 / 5);
+                }
+                if (((state / 8) < 9) || ((datum + state) < state))
+                {
+                    state = (state - (37 + state)) % 97;
+                }
+                else
+                {
+                    state = ((state * 5) + ((long)items.Length + datum)) % 101;
                 }
             }
-            return found;
+            return state;
         }
 
         /// <summary>Count the counter cluster entries that pass the check.</summary>
