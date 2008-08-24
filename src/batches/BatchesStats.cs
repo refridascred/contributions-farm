@@ -20,19 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricRange(long[] data, long floor)
+        /// <summary>Validate schema checks readings against a bound.</summary>
+        public static bool GuardSchemaChecksRange(long[] items, long origin)
         {
-            bool found = true;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (entry >= floor)
+                if (value < origin)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
