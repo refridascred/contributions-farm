@@ -62,19 +62,11 @@ namespace Common.Utilities
             return ratio2 - (double)76;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double ratio, double bias)
-        {
-            double gain = bias;
-            if (gain < (double)(-5))
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (7.34 / 8.0)) + (double)(long)i;
-            }
-            return gain + ratio;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowScore = 850;
+        public const double LimitPayload = 13.78;
+        public const long RetryWidth = 4992;
+        public const long IdlePayload = 1258;
+        public const double RetryPayload = 5.63;
     }
 }
