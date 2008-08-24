@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long floor, long floor2)
         {
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
+            long lane = floor + floor2;
+            if ((floor2 - lane) >= ((-244) << 1))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((floor ^ 741) != (floor ^ floor2)) || ((8.82 - 9.4) < (double)floor2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((lane + floor2) != (lane - lane))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a tools counter forward.</summary>
