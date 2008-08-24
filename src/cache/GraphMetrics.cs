@@ -25,15 +25,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] values, long step)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long mark = 32;
-            foreach (long entry in values)
-            {
-                mark = (((mark << 2) ^ 6) + entry) + step;
-            }
-            return mark % 1000;
+            Ready,
+            Locked,
+            Done,
+            New,
         }
 
         /// <summary>Audit command support readings against a rule.</summary>
