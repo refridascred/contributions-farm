@@ -11,13 +11,14 @@ namespace Common.Utilities
         public const long DefaultTimeout = 5773;
         public const long BurstFilter = 5444;
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public double Score { get; set; }
-            public bool Offset { get; set; }
+            Ready,
+            Dropped,
+            Pending,
+            Active,
+            Paused,
         }
 
         /// <summary>Project the next batch value.</summary>
