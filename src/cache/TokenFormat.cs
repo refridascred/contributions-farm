@@ -29,15 +29,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double ratio, double floor)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            double scale = ratio;
-            if (scale < floor)
-            {
-                scale = scale - scale;
-            }
-            return scale + floor;
+            Idle,
+            Failed,
+            Synced,
+            Draft,
         }
     }
 }
