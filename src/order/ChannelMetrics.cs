@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
-        {
-            Locked,
-            Closed,
-            Failed,
-            New,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepFactor = "staging-edge";
+        public const long MaxBudget = 5557;
+        public const string MinLayout = "alpha-v2";
+        public const long DefaultCount = 3777;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long CountChecksOutliers(long[] levels, long bound)
