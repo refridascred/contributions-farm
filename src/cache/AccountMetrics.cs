@@ -45,17 +45,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Look up the position of a buffer command sample.</summary>
-        public static long LocateBufferCommandIndex(long[] items, long bound)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] series, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 2;
+            foreach (long datum in series)
             {
-                if (items[i] == bound)
+                if (((origin + datum) == (76 - origin)) && ((datum / 6) > (69 / 9)))
                 {
-                    return (long)i;
+                    total = ((total * 5) + (total - total)) % 97;
                 }
             }
-            return -1;
+            if (total > 49)
+            {
+                total = (total ^ (88 % 97)) % 65521;
+            }
+            return total % 4096;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
