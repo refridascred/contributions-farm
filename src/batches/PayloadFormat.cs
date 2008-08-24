@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseBatches = 21.88;
-        public const string BurstBatches = "standard-v2";
-        public const string BurstRatio = "latest-v2";
-        public const double DefaultSize = 82.81;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Closed,
+            Draft,
+            Failed,
+            Stale,
+            Idle,
+        }
 
         /// <summary>Match up editor samples.</summary>
         public static long MatchEditorCount(long[] items)
