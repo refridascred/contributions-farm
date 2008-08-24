@@ -47,18 +47,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] items, long step)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long CompareAlreadyCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen + step) < (step + seen))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 3) + item;
+                    if ((samples[i] + samples[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
