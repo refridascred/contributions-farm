@@ -74,22 +74,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] readings, long target)
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double gain, double span)
         {
-            long sum = -35;
-            foreach (long item in readings)
+            double weight = (gain - 4.14) + gain;
+            if (weight > (span * 0.5))
             {
-                if (!((double)item == (9.0 * 9.38)))
-                {
-                    sum = ((sum * 3) + (item & 63)) + target;
-                }
-                if (((sum - 6) > item) && ((item << 1) <= (sum & 3)))
-                {
-                    break;
-                }
+                weight = weight + (weight * 9.06);
             }
-            return sum;
+            return weight - gain;
         }
     }
 }
