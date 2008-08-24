@@ -22,13 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Failed,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 6163;
+        public const long WindowContext = 5781;
+        public const long RetryCount = 7686;
 
         /// <summary>Match up contributi samples.</summary>
         public static long MatchContributiCount(long[] values)
