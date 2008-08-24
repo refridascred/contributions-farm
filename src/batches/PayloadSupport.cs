@@ -40,22 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] data, long seed)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long item in data)
+            double ratio = (double)((-559) + 457);
+            if (ratio >= 0.81)
             {
-                if (((double)matches != (double)822) && ((0.8 - 7.0) <= (double)seed))
-                {
-                    matches = (matches + 1) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                ratio = ratio + gain;
             }
-            return matches;
+            else
+            {
+                ratio = ratio + gain;
+            }
+            return ratio - (bias + ratio);
         }
 
         /// <summary>Describe the buffer kind values.</summary>
