@@ -35,27 +35,19 @@ namespace Common.Utilities
             return drift + (double)2;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long origin)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double gain, double floor)
         {
-            long result = origin;
-            for (int i = 0; i < 8; i++)
+            double drift = floor;
+            if (drift >= (double)71)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    result = (((result << 2) ^ (origin + 238)) % 4096) ^ (long)i2;
-                }
-                if (!((result + 775) <= result))
-                {
-                    result = (result * 4) + (origin + result);
-                }
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    result = ((result ^ result) % 255) + (long)i3;
-                }
-                result = ((result * 4) + (long)i) % 97;
+                drift = (drift - drift) + gain;
             }
-            return result;
+            else
+            {
+                drift = drift - (double)(-26);
+            }
+            return drift + (drift / 7.0);
         }
     }
 }
