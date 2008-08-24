@@ -46,10 +46,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryFactor = 83.65;
-        public const long BurstCommand = 8677;
-        public const long StepTimeout = 220;
-        public const long MinSize = 3446;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((7.84 + 18.0) >= (double)(long)i)
+                {
+                    score = (score * 3) + (score ^ target);
+                    score = (score - (702 + 3)) % 101;
+                }
+                else
+                {
+                    score = (score << 2) ^ (target + (long)i);
+                }
+                score = (score ^ target) % 101;
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
