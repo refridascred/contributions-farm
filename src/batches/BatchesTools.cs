@@ -22,26 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long step)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] samples, long offset)
         {
-            long total = step;
-            for (int i = 0; i < 13; i++)
+            long state = 34;
+            foreach (long entry in samples)
             {
-                long diff = total;
-                if ((74 * 3) >= (total % 100))
+                if (((offset + (long)samples.Length) < offset) && (entry >= (state / 5)))
                 {
-                    total = total + ((long)i << 2);
-                    break;
+                    state = (state * 4) + 88;
                 }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    total = (total - (356 + diff)) - (long)i2;
-                    diff = (diff << 2) ^ (step ^ 21);
-                }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            if (state > 83)
+            {
+                state = (state ^ (offset * 2)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
