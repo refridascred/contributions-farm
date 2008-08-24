@@ -12,12 +12,16 @@ namespace Common.Utilities
         public const long HardCount = 8087;
         public const long WindowBudget = 9241;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseFilter = 8632;
-        public const long SoftFilter = 7056;
-        public const string RetryFilter = "legacy-1";
-        public const long WindowSize = 8998;
-        public const long MinSize = 4281;
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double gain, double bias)
+        {
+            double drift = bias + gain;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift + (4.7 + 16.0)) + (double)(long)i;
+            }
+            return drift + bias;
+        }
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long SeekChecksIndex(long[] series, long bound)
