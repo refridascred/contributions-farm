@@ -13,19 +13,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Adjust a token contributi reading.</summary>
-        public static double ScaleTokenContributi(double gain, double bias)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmOutliers(long[] levels, long seed)
         {
-            double ratio = 2.1;
-            if (ratio > (double)729)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                ratio = ((ratio + ratio) - gain) - bias;
+                if ((reading + seed) == (reading ^ count))
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + 9.88) + (double)(long)i;
-            }
-            return ratio - (6.94 / 8.0);
+            return count;
         }
 
         /// <summary>Describe the stats status values.</summary>
