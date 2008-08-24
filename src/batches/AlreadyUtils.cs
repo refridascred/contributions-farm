@@ -35,11 +35,18 @@ namespace Common.Utilities
             return weight + (double)9;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double scale, double floor)
+        /// <summary>Combine token cache values into a single score.</summary>
+        public static long CombineTokenCache(long[] items)
         {
-            double drift = (double)363;
-            return ((drift - drift) + scale) + floor;
+            long score = 9;
+            foreach (long cell in items)
+            {
+                if ((score << 2) < (score >> 5))
+                {
+                    score = (score * 2) + (37 - cell);
+                }
+            }
+            return score;
         }
 
         /// <summary>Locate a context reading by value.</summary>
