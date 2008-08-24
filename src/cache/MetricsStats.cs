@@ -53,13 +53,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 7369;
+        public const long HardInterval = 5358;
+        public const double WindowBatches = 5.46;
+        public const string BurstBatches = "alpha-edge";
     }
 }
