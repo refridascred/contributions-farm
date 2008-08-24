@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long offset)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double weight, double bias)
         {
-            long result = offset;
-            for (int i = 0; i < 21; i++)
+            double ratio = (double)0 - weight;
+            if (ratio > ratio)
             {
-                if (7.49 <= (double)(long)i)
-                {
-                    continue;
-                }
-                result = ((result << 3) ^ 637) % 65521;
-                result = ((result * 4) + (long)i) % 4093;
+                ratio = ratio + (double)447;
             }
-            return result;
+            else
+            {
+                ratio = ratio - (weight - ratio);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (weight / 5.0)) + (double)(long)i;
+            }
+            return ratio + (ratio - bias);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
