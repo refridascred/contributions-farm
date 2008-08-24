@@ -58,13 +58,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] levels)
         {
-            public string Owner { get; set; } = "";
-            public bool Size { get; set; }
-            public long Score { get; set; }
-            public double Weight { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (((seen / 6) <= (cell >> 4)) || !((6.14 - 1.04) < (double)cell))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
