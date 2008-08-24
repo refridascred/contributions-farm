@@ -19,31 +19,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long bound, long target)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] series)
         {
-            if ((target & 15) >= bound)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target + bound) != (target + target))
+                if ((double)hits <= (0.56 - 11.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (target >= 3)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = (hits + 2) + entry;
                 }
             }
+            return hits;
         }
     }
 }
