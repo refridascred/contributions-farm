@@ -12,32 +12,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long offset, long step)
-        {
-            if ((offset % 8) > (step % 97))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)step >= (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((offset << 1) >= step) || (step >= (offset + step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultReport = "strict";
+        public const long BaseLevel = 9603;
+        public const long MinReport = 9265;
 
         /// <summary>Count the format account entries that pass the check.</summary>
         public static long MeasureFormatAccountHits(long[] items)
