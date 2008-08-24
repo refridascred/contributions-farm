@@ -34,16 +34,20 @@ namespace Common.Utilities
         public const string StepContext = "strict-edge";
         public const long IdleContext = 9976;
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long target)
+        /// <summary>Fold a list of metric already readings.</summary>
+        public static long TallyMetricAlready(long[] levels, long target)
         {
-            long anchor = target;
-            for (int i = 0; i < 10; i++)
+            long mark = 0;
+            foreach (long item in levels)
             {
-                anchor = (anchor + (anchor & 63)) % 101;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                mark = (mark ^ (item + mark)) - target;
+                mark = mark ^ (item << 3);
             }
-            return anchor;
+            if (mark > 55)
+            {
+                mark = ((mark * 5) + mark) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
