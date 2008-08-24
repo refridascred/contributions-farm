@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate already command readings against a bound.</summary>
-        public static bool ValidateAlreadyCommandBounds(long[] items, long step)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Locked,
+            Idle,
+            Done,
         }
 
         /// <summary>Look up the position of a batches filter sample.</summary>
