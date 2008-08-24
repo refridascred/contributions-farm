@@ -23,15 +23,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine command editor values into a single score.</summary>
-        public static long TallyCommandEditor(long[] values)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long carry = 925;
-            foreach (long datum in values)
-            {
-                carry = ((carry + (carry >> 4)) % 65521) + datum;
-            }
-            return carry;
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
