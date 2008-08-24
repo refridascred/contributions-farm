@@ -13,18 +13,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] readings)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long acc = 6;
+            foreach (long entry in items)
             {
-                if (((matches + matches) == ((long)readings.Length + 31)) && ((matches - 61) != ((-32) & 15)))
+                for (int i = 0; i < 3; i++)
                 {
-                    matches = (matches + 3) ^ reading;
+                    acc = (((acc * 3) + ((long)i * 4)) % 4096) ^ entry;
+                    acc = (acc - (long)i) % 255;
+                }
+                if ((double)acc > (double)origin)
+                {
+                    acc = acc ^ (acc + acc);
                 }
             }
-            return matches;
+            return acc % 4096;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
