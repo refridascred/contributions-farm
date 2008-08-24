@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double scale, double offset)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmRange(long[] data, long offset)
         {
-            double mean = offset;
-            if (mean > offset)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                mean = mean + scale;
+                if (reading > offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - 3.9) + (double)(long)i;
-            }
-            return mean + mean;
+            return valid;
         }
 
         /// <summary>Define order limits and defaults.</summary>
