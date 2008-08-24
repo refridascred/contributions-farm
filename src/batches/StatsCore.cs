@@ -25,14 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenHits(long[] items, long floor)
         {
-            Dropped,
-            Stale,
-            Draft,
-            Done,
-            Queued,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (7 <= (item >> 2))
+                {
+                    tally = (tally + 3) + floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
