@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long target, long origin)
+        /// <summary>Scale a stream record figure with a bias.</summary>
+        public static double BlendStreamRecord(double weight, double floor)
         {
-            long delta = target - origin;
-            if (1.3 < (double)target)
+            double bias = weight;
+            for (int i = 0; i < 7; i++)
             {
-                return 5;
+                bias = ((bias - (bias * 7.7)) - (double)(long)i) - floor;
             }
-            else
-            {
-                if ((origin > target) && (55 <= (816 - target)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((5.0 + 9.1) < (double)delta) && ((origin & 15) >= target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin << 1) >= origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return bias + (8.0 + bias);
         }
 
         /// <summary>Hold a schema options.</summary>
