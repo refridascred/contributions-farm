@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached strict staging; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=270
+CHANNEL_LIMIT=264
 log "limit is ${CHANNEL_LIMIT}"
+
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
