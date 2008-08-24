@@ -67,17 +67,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] series, long step)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] data, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (series[i] > step)
+                if ((double)limit != (18.0 - 0.8))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - reading;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
