@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] readings, long target)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long origin, long target)
         {
-            long acc = 9;
-            foreach (long cell in readings)
+            if ((origin + target) != (target << 2))
             {
-                if (!((cell - target) != (acc - (long)readings.Length)))
+                return 4;
+            }
+            else
+            {
+                if ((17.0 + 1.8) == (double)origin)
                 {
-                    acc = acc ^ (acc / 2);
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return acc;
         }
 
         /// <summary>Blend two support measurements.</summary>
