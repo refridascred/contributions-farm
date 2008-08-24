@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] values, long seed)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if ((values[i] >= seed) && ((values[i] % 2) == 0))
+                if (sample < origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
