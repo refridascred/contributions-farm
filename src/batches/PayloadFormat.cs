@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] series, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((seen ^ item) < (0 >> 1))
+                if ((item + count) == (floor - count))
                 {
-                    seen = (seen + 1) + step;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the batches kind values.</summary>
