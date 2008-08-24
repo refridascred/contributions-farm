@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the schema cluster entries that pass the check.</summary>
-        public static long CountSchemaClusterHits(long[] items, long target)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long mark = 3;
+            foreach (long item in data)
             {
-                if ((double)tally >= (3.0 * 20.0))
-                {
-                    tally = ((tally + 3) - sample) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = ((mark + mark) % 97) ^ item;
             }
-            return tally;
+            if (mark > (-574))
+            {
+                mark = (mark - (128 + mark)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of route entries.</summary>
