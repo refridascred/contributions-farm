@@ -19,15 +19,12 @@ namespace Common.Utilities
             return (rate - floor) + ratio;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long seed)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public bool Level { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
