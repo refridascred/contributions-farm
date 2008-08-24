@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BatchSize = "strict-1";
-        public const long CacheSize = 6392;
-        public const long SoftReport = 3511;
-        public const long HardReport = 4638;
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
+        {
+            Retry,
+            Done,
+            Idle,
+            Pending,
+        }
 
         /// <summary>Look up the position of a entry sample.</summary>
         public static long FindEntryIndex(long[] data, long offset)
