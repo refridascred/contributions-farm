@@ -42,11 +42,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MinSchema = "staging-1";
-        public const long MinDepth = 7446;
-        public const long HardSchema = 2613;
-        public const long LimitSchema = 9964;
-        public const long CacheTimeout = 8163;
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
+        {
+            public double Level { get; set; }
+            public double Mode { get; set; }
+            public long Score { get; set; }
+            public double Ratio { get; set; }
+        }
     }
 }
