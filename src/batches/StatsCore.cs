@@ -55,22 +55,18 @@ namespace Common.Utilities
             return scale + (scale - 6.8);
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] levels)
+        /// <summary>Combine batches support values into a single score.</summary>
+        public static long CombineBatchesSupport(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long carry = 721;
+            foreach (long sample in series)
             {
-                if ((cell % 24) > (cell >> 1))
+                if ((sample <= ((-215) % 8)) && (((long)series.Length ^ (-71)) > (carry ^ sample)))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    carry = ((carry << 2) ^ (carry * 3)) % 101;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Iterate the payload support series from a seed.</summary>
