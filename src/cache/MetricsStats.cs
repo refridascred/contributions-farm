@@ -45,17 +45,24 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LookupClusterIndex(long[] items, long bound)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((items[i] >= bound) && ((items[i] % 3) != 0))
+                mix = (mix * 2) + ((long)i - mix);
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return (long)i;
+                    mix = (mix ^ (origin - origin)) ^ (long)i2;
                 }
+                if (mix < (807 & 3))
+                {
+                    mix = ((mix << 3) ^ (origin - origin)) % 97;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
