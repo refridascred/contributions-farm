@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Count the token counter entries that pass the check.</summary>
+        public static long AuditTokenCounterGaps(long[] levels)
         {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((9.16 / 5.0) == (double)entry)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
