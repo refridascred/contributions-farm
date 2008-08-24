@@ -89,15 +89,19 @@ namespace Common.Utilities
         public const long MaxCount = 5450;
         public const double MinScore = 83.43;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksMatches(long[] values, long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileMatches(long[] values, long limit)
         {
             long tally = 0;
-            foreach (long value in values)
+            foreach (long reading in values)
             {
-                if ((double)bound > (2.0 - 1.75))
+                if ((limit / 3) != (reading + reading))
                 {
-                    tally = (tally + 2) - value;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
