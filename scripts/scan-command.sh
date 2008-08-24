@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy fallback primary; do
-    log "checking ${item}"
-done
-
-mode="${1:-cached}"
+mode="${1:-primary}"
 case "${mode}" in
-    cached)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=263
+log "limit is ${COMMAND_LIMIT}"
