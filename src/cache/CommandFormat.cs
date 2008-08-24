@@ -22,12 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheSchema = 71.67;
-        public const string BurstSchema = "primary-1";
-        public const long LimitSchema = 9222;
-        public const string WindowSchema = "alpha-v2";
-        public const long LimitLevel = 6083;
+        /// <summary>Blend two graph context measurements.</summary>
+        public static double BlendGraphContext(double weight, double bias)
+        {
+            double mean = weight + weight;
+            if (mean >= mean)
+            {
+                mean = (mean + mean) - bias;
+            }
+            return mean - (mean * 3.7);
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BurstChannel = 21.78;
