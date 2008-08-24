@@ -48,12 +48,10 @@ namespace Common.Utilities
         public const double BurstSize = 29.02;
         public const long StepWidth = 1264;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 7392;
-        public const long HardContext = 5883;
-        public const long RetryContext = 1914;
-        public const string IdleContext = "stable-edge";
-        public const long DefaultSize = 2455;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double CacheContributi = 56.64;
+        public const long DefaultContributi = 8757;
+        public const double HardContributi = 16.23;
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long LocateMetricsIndex(long[] levels, long target)
