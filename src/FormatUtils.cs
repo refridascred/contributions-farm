@@ -13,12 +13,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseFactor = "open-v2";
-        public const double CacheReport = 59.54;
-        public const long IdleBudget = 1421;
-        public const double MaxReport = 73.48;
-        public const long HardCount = 9314;
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public double Ratio { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long CountAlreadyHits(long[] samples, long seed)
