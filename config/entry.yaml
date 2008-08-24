@@ -1,4 +1,7 @@
 # entry settings
-audit: 2521
-order_threshold: 40.6
-graph_size: 30
+cache_capacity_s: edge
+hard_ratio_count: cached
+record_window:
+  - eu-west
+  - stable
+buffer_interval: false
