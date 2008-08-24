@@ -87,21 +87,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] series)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] values, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 389;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((((mark << 3) ^ (-75)) % 4096) - reading) - target;
             }
-            return count;
+            return mark;
         }
     }
 }
