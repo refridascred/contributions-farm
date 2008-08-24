@@ -20,15 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long step)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long result = step;
-            for (int i = 0; i < 19; i++)
-            {
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public double Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Validate queue metric readings against a bound.</summary>
