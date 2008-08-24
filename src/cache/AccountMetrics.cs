@@ -35,21 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long PairWindowCount(long[] samples)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Queued,
+            Done,
+            Locked,
         }
 
         /// <summary>Describe the stats phase values.</summary>
