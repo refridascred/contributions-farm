@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double ratio, double bias)
+        /// <summary>Adjust a contributi commits reading.</summary>
+        public static double ScaleContributiCommits(double ratio, double offset)
         {
-            double rate = (double)442 + 6.42;
-            if (rate >= (bias + rate))
+            double bias = (double)(560 - 66);
+            for (int i = 0; i < 9; i++)
             {
-                rate = rate - ratio;
+                bias = ((bias - offset) + (double)(long)i) + ratio;
             }
-            else
-            {
-                rate = rate + 8.21;
-            }
-            return rate + (double)86;
+            return bias - offset;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
