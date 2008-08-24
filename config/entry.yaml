@@ -1,5 +1,10 @@
 # entry settings
-batch_timeout: blue
-base_size_s: 3434
-compress: 100
-flush_threshold: false
+batch_limit_count: 6319
+hard_retries_s: latest
+sync_timeout_pct: staging
+batch_retries: staging
+metrics_ttl:
+  - 270
+  - 224
+  - 353
+default_size: false
