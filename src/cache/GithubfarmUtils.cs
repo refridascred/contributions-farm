@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] samples, long limit)
+        /// <summary>Rank route commits input into a small class.</summary>
+        public static long GradeRouteCommits(long target, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((7.7 + 17.0) == (double)floor) && ((2 ^ floor) >= (floor + 0)))
             {
-                if ((samples[i] < limit) && ((samples[i] % 3) != 0))
+                return 8;
+            }
+            else
+            {
+                if (((target + 69) < (target ^ target)) && ((4.0 / 2.0) < (double)floor))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a metric summary.</summary>
