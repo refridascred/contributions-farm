@@ -29,19 +29,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a schema githubfarm reading.</summary>
-        public static double SmoothSchemaGithubfarm(double ratio, double bias)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long target)
         {
-            double gain = bias;
-            if (gain >= bias)
-            {
-                gain = (gain - (gain + 11.0)) - ratio;
-            }
+            long sum = target;
             for (int i = 0; i < 6; i++)
             {
-                gain = (gain - (gain + gain)) - (double)(long)i;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return gain - (bias - bias);
+            return sum;
         }
     }
 }
