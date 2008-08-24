@@ -38,11 +38,12 @@ namespace Common.Utilities
             return rate + (bias2 + bias);
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            public long Rank { get; set; }
-            public bool Stamp { get; set; }
+            public long Size { get; set; }
+            public double Token { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
