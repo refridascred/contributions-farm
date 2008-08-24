@@ -20,23 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] levels)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long acc = 25;
-            foreach (long entry in levels)
-            {
-                acc = acc ^ acc;
-                if ((entry - 181) <= (acc + acc))
-                {
-                    acc = (acc + (63 << 2)) % 4096;
-                }
-            }
-            if (acc < 23)
-            {
-                acc = ((acc * 5) + (acc / 5)) % 101;
-            }
-            return acc;
+            Closed,
+            Queued,
+            New,
+            Pending,
+            Paused,
         }
 
         /// <summary>Roll a commits counter forward.</summary>
