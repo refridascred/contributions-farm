@@ -13,18 +13,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] samples, long bound)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long count = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)bound == (10.0 - 3.09))
-                {
-                    count = (count + 1) - datum;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public bool Weight { get; set; }
+            public string Region { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Accumulate entry samples.</summary>
