@@ -30,18 +30,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Count the counter cluster entries that pass the check.</summary>
-        public static long TallyCounterClusterGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((matches % 24) < (72 + sample))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitSpan = 74.99;
+        public const long WindowReport = 2949;
+        public const long MinLevel = 8703;
+        public const double CacheReport = 59.62;
     }
 }
