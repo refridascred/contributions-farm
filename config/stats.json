@@ -1,8 +1,11 @@
 {
-  "retry_interval_pct": "cached",
-  "cache_delay_pct": "staging",
-  "hard_interval_s": 6573,
-  "hard_size_count": "open",
-  "farm_limit": 6659,
-  "readonly": 5248
+  "context_interval": 47.3,
+  "max_capacity_s": "edge",
+  "strict": false,
+  "min_ttl_s": {
+    "batch_capacity_pct": "staging",
+    "idle_size_ms": [403, 178, 185],
+    "soft_threshold": 55.02
+  },
+  "batch_window_s": 500
 }
