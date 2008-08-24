@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
-        {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseLevel = 9564;
+        public const double MaxScore = 96.25;
+        public const long LimitWidth = 1905;
+        public const long RetryTools = 3945;
+        public const long IdleTools = 8835;
 
         /// <summary>Combine notes counter values into a single score.</summary>
         public static long TotalNotesCounter(long[] readings, long seed)
