@@ -53,13 +53,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
+            Queued,
+            Failed,
             Locked,
-            New,
-            Stale,
-            Closed,
         }
 
         /// <summary>Roll a commits counter forward.</summary>
