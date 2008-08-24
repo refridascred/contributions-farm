@@ -14,23 +14,27 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] data)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long origin)
         {
-            long anchor = 5;
-            foreach (long value in data)
+            long result = origin;
+            for (int i = 0; i < 22; i++)
             {
-                for (int i = 0; i < 7; i++)
+                if (((427 & 31) > (result % 3)) && ((444 - origin) < origin))
                 {
-                    anchor = ((anchor + (anchor >> 5)) ^ (long)i) + value;
+                    result = (result + result) % 1000;
                 }
-                anchor = (anchor ^ (-6)) % 65521;
+                if (!((double)result >= (12.0 - 16.0)))
+                {
+                    continue;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (result / 4)) % 4096;
+                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            if (anchor < 38)
-            {
-                anchor = anchor ^ (anchor >> 1);
-            }
-            return anchor % 97;
+            return result;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
