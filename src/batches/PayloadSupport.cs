@@ -23,27 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of entry cache readings.</summary>
-        public static long WeighEntryCache(long[] data, long step)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] samples)
         {
-            long acc = 482;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                long edge = entry & 15;
-                if ((8.4 * 7.1) != (double)edge)
+                if ((seen * 2) < (sample * 2))
                 {
-                    edge = edge + (acc - 70);
-                }
-                if ((step + acc) > (acc + 126))
-                {
-                    acc = (acc - (-315)) % 1000;
-                }
-                else
-                {
-                    acc = (acc - (entry & 63)) % 97;
+                    seen = seen + 3;
                 }
             }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Describe the route phase values.</summary>
