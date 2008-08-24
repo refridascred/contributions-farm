@@ -67,15 +67,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double gain, double span)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long limit)
         {
-            double weight = (gain - 4.14) + gain;
-            if (weight > (span * 0.5))
+            long sum = limit;
+            for (int i = 0; i < 20; i++)
             {
-                weight = weight + (weight * 9.06);
+                if (((limit & 127) >= (sum & 15)) && ((limit + (long)i) <= (sum % 64)))
+                {
+                    sum = (sum + (sum + sum)) % 255;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return weight - gain;
+            return sum;
         }
     }
 }
