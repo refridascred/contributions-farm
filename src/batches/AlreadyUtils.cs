@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every payload format entry stays within the limit.</summary>
-        public static bool VerifyPayloadFormatBounds(long[] samples, long target)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (sample != target)
+                if ((214 & 1) == (reading % 100))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
