@@ -27,21 +27,16 @@ namespace Common.Utilities
         public const string MaxRecord = "legacy-v2";
         public const string BatchDepth = "legacy-edge";
 
-        /// <summary>Match up profile schema samples.</summary>
-        public static long PairProfileSchemaCount(long[] data)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 650;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (state << 2) ^ (34 - state);
+                state = state ^ (entry + 112);
             }
-            return seen;
+            return state % 97;
         }
 
         /// <summary>Describe the session mode values.</summary>
