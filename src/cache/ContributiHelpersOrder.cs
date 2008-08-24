@@ -23,18 +23,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesOutliers(long[] series, long step)
+        /// <summary>Look up the position of a batches filter sample.</summary>
+        public static long SeekBatchesFilterIndex(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value * 3) >= (step - step))
+                if (series[i] == limit)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
