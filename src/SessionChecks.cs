@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] readings, long floor)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] samples)
         {
-            long anchor = 744;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((22 << 1) <= (floor + anchor))
+                if (12.0 > (double)entry)
                 {
-                    anchor = ((anchor ^ (anchor / 6)) % 1000) + item;
+                    hits = hits + 1;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Blend two commits measurements.</summary>
