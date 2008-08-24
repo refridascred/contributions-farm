@@ -50,22 +50,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] levels)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if ((85 + sample) < (2 << 1))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Owner { get; set; } = "";
+            public bool Size { get; set; }
+            public long Score { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
