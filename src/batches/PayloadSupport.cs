@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] data)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (!((double)hits <= (4.9 + 14.0)))
+                if ((double)matches > (9.1 * 7.7))
                 {
-                    hits = (hits + 2) + cell;
+                    matches = (matches + 3) ^ cell;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the entry state values.</summary>
