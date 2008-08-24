@@ -34,28 +34,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] readings, long offset)
+        /// <summary>Find the first schema graph entry that matches the target.</summary>
+        public static long SeekSchemaGraphIndex(long[] values, long origin)
         {
-            long acc = 11;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                long count = 21 / 4;
-                if (offset > (count ^ offset))
+                if (values[i] <= origin)
                 {
-                    acc = ((acc * 2) + (acc & 3)) ^ value;
-                }
-                else
-                {
-                    count = count + (count / 8);
-                }
-                acc = ((acc << 3) ^ acc) % 65521;
-                if ((double)acc == (6.12 - 3.8))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
