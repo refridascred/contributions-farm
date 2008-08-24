@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine payload cache values into a single score.</summary>
-        public static long TallyPayloadCache(long[] readings)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] series)
         {
-            long sum = 28;
-            foreach (long entry in readings)
+            long carry = 69;
+            foreach (long value in series)
             {
-                sum = ((sum << 3) ^ (sum << 1)) ^ entry;
+                carry = ((carry << 3) ^ (value - 2)) % 65521;
             }
-            return sum % 4096;
+            if (carry > 883)
+            {
+                carry = (carry - (carry + carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Hold a schema options.</summary>
