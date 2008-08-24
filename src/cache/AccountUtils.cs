@@ -10,16 +10,18 @@ namespace Common.Utilities
         public const long CacheLevel = 4252;
         public const long DefaultDepth = 4648;
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsGaps(long[] data, long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                anchor = anchor ^ (limit % 3);
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if ((datum & 63) > datum)
+                {
+                    hits = (hits + 1) + target;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
