@@ -1,5 +1,17 @@
 {
-  "contributi_retries": "strict",
-  "cache_capacity_ms": false,
-  "cache_depth_ms": ["stable", "open", "latest"]
+  "max_delay": [386, 407],
+  "verbose": {
+    "retry_limit_s": 66,
+    "readonly": 43.76,
+    "audit": 2854,
+    "cache_window_count": 60.75
+  },
+  "warm_retries_pct": true,
+  "soft_window_pct": {
+    "verbose": "standard",
+    "max_depth": "eu-west",
+    "idle_retries_count": [164, 115, 38]
+  },
+  "burst_delay_ms": false,
+  "base_ratio_s": 21.01
 }
