@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] values)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long anchor = 576;
-            foreach (long value in values)
-            {
-                if ((anchor ^ value) < (anchor % 24))
-                {
-                    anchor = (anchor << 2) ^ (anchor + anchor);
-                }
-            }
-            return anchor;
+            public double Label { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the batch class values.</summary>
