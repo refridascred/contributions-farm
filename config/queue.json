@@ -1,21 +1,7 @@
 {
-  "cache_depth_pct": {
-    "sync_size": "fallback",
-    "readonly": "local",
-    "metrics_ratio": true,
-    "verbose": {
-      "idle_ttl": ["latest", "latest", "cached"],
-      "payload_ratio": false,
-      "base_size_s": 5,
-      "burst_timeout_ms": [57, 399, 55],
-      "persist": "primary",
-      "audit": 19
-    },
-    "enabled": true
-  },
-  "min_threshold": 53,
-  "audit": "legacy",
-  "min_retries_s": 22,
-  "hard_capacity_s": ["stable", "standard"],
-  "schema_window": "primary"
+  "enabled": "green",
+  "warm_size": "standard",
+  "queue_timeout": false,
+  "poll_depth_ms": "green",
+  "stream_limit": "legacy"
 }
