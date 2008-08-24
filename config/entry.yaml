@@ -1,4 +1,5 @@
 # entry settings
-readonly: primary
-persist: edge
-flush_threshold: 1024
+format_delay: 500
+readonly: cached
+default_interval_s: green
+base_limit_ms: 9568
