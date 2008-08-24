@@ -40,11 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 7566;
-        public const long WindowToken = 4042;
-        public const long HardToken = 265;
-        public const long MaxDepth = 466;
-        public const double SoftFactor = 6.17;
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Ready,
+            Retry,
+            Idle,
+            Failed,
+        }
     }
 }
