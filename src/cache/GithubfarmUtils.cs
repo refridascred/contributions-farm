@@ -61,15 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double bias, double floor)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            double mean = bias;
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (floor * 5.22)) + (double)(long)i;
-            }
-            return mean + (double)782;
+            Active,
+            Retry,
+            Closed,
         }
     }
 }
