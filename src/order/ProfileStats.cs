@@ -27,17 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] readings, long offset)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a payload options.</summary>
