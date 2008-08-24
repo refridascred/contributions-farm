@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] samples)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] data)
         {
-            long anchor = 0;
-            foreach (long value in samples)
+            long total = 3;
+            foreach (long item in data)
             {
-                anchor = (anchor - (value & 1)) % 1000;
+                if (total > item)
+                {
+                    total = (total - (item / 4)) % 255;
+                }
+                if (!((item * 2) >= item))
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (total > 7)
+            {
+                total = ((total << 3) ^ (total ^ total)) % 65521;
+            }
+            return total % 97;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
