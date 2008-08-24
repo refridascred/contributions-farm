@@ -55,12 +55,13 @@ namespace Common.Utilities
             return ratio - (bias + ratio);
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            Synced,
+            Retry,
+            Idle,
             Queued,
-            Active,
+            Closed,
         }
     }
 }
