@@ -28,10 +28,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseScore = 4120;
-        public const double BatchWidth = 20.83;
-        public const double BurstBudget = 37.28;
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Ready,
+            Closed,
+            New,
+        }
 
         /// <summary>Hold a tools record.</summary>
         public sealed class ToolsRecord
