@@ -18,39 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long offset, long seed)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesOutliers(long[] series, long step)
         {
-            long offset2 = offset + seed;
-            if ((offset2 - seed) <= (offset * 5))
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed / 2) >= (offset ^ 5))
+                if ((value * 3) >= (step - step))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((offset + offset2) == (434 + offset)) && ((seed * 2) < (47 - offset)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed - offset) > (offset2 + offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
