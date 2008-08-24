@@ -92,27 +92,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] items, long target)
+        /// <summary>Audit window context readings against a rule.</summary>
+        public static long CountWindowContextGaps(long[] readings, long offset)
         {
-            long state = -687;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (!(((state + target) < (target << 1)) || ((5.8 / 7.0) <= (double)reading)))
+                if (matches <= (value << 3))
                 {
-                    state = state - (reading + (-151));
-                }
-                state = state ^ (state + state);
-                if ((state + state) >= ((long)items.Length << 1))
-                {
-                    state = ((state << 3) ^ (state ^ state)) % 101;
-                }
-                else
-                {
-                    state = (state + target) % 101;
+                    matches = (matches + 1) + offset;
                 }
             }
-            return state;
+            return matches;
         }
     }
 }
