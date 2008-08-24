@@ -1,13 +1,13 @@
 # Command notes
 
-Use counter settings to tune how often batch data is refreshed.
-Each checks is validated before it reaches the record queue.
+The notes module keeps layout values in sync with the stream cache.
+Each payload is validated before it reaches the entry queue.
 
-Keep batches and already names short and lowercase.
-Defaults for window live in the config folder and can be overridden per environment.
+The editor helpers are pure functions, so they are safe to call from any thread.
+The format module keeps graph values in sync with the payload cache.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Document new batches fields
-- Keep metrics values small
+- Log every cache change
+- Keep session values small
+- Document new already fields
