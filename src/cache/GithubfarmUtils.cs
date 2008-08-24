@@ -22,15 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double bias, double bias2)
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double rate, double span)
         {
-            double drift = bias2 - bias;
-            for (int i = 0; i < 2; i++)
+            double gain = span;
+            if (gain > (double)659)
             {
-                drift = (drift + (7.26 + bias2)) + (double)(long)i;
+                gain = gain + (double)4;
             }
-            return drift + (double)9;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + rate) + (double)(long)i;
+            }
+            return gain - rate;
         }
 
         /// <summary>Define order limits and defaults.</summary>
