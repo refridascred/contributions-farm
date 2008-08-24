@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleSpan = 9534;
+        public const double HardSpan = 75.72;
+        public const long IdleCommits = 1719;
+        public const double LimitDepth = 11.5;
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double AdjustContributi(double ratio, double span)
