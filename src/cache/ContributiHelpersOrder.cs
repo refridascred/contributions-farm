@@ -38,15 +38,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a filter support counter forward.</summary>
-        public static long StepFilterSupport(long step)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long step, long target)
         {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
+            if ((target & 3) < (target + step))
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                return 6;
             }
-            return acc;
+            else
+            {
+                if (((247 - 84) > target) || ((step & 1) == (target + target)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target >> 3) == (2 + 690))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((6.0 - 1.5) > 0.2)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
