@@ -17,27 +17,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] levels, long seed)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferLimits(long[] samples, long bound)
         {
-            long carry = 1;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if (!(((834 % 5) == (seed / 3)) && (cell >= (carry + cell))))
+                if (sample < bound)
                 {
-                    carry = carry - (seed * 5);
-                    carry = ((carry << 2) ^ (cell ^ cell)) % 1000;
-                }
-                if ((double)cell < (8.1 - 1.0))
-                {
-                    carry = ((carry * 5) + seed) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            if (carry > 0)
-            {
-                carry = (carry ^ (long)levels.Length) % 1000;
-            }
-            return carry;
+            return valid;
         }
 
         /// <summary>Combine already values into a single score.</summary>
