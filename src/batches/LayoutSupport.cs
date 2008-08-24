@@ -41,10 +41,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double CacheContributi = 56.64;
-        public const long DefaultContributi = 8757;
-        public const double HardContributi = 16.23;
+        /// <summary>Blend two record measurements.</summary>
+        public static double ProjectRecord(double rate, double span)
+        {
+            double ratio = rate;
+            if (ratio < (20.0 / 5.0))
+            {
+                ratio = (ratio - rate) + span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (ratio + ratio)) + (double)(long)i;
+            }
+            return ratio + ratio;
+        }
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long LocateMetricsIndex(long[] levels, long target)
