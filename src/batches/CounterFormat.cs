@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long limit, long origin)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] samples)
         {
-            if ((limit > (limit & 63)) && (origin < limit))
+            long carry = -8;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit == (9.0 / 9.0))
+                if ((datum ^ carry) >= (datum % 16))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((21 & 15) > (origin >> 1)) && ((origin + limit) == (9 >> 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin % 7) == (limit * 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    carry = carry ^ (datum & 127);
                 }
             }
+            return carry;
         }
 
         /// <summary>Locate a queue editor reading by value.</summary>
