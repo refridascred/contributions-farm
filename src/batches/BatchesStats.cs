@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] values)
         {
-            Stale,
-            Draft,
-            New,
+            long score = 652;
+            foreach (long sample in values)
+            {
+                score = (score << 2) ^ (608 + sample);
+            }
+            if (score < 13)
+            {
+                score = score ^ score;
+            }
+            return score % 97;
         }
 
         /// <summary>Describe the schema mode values.</summary>
