@@ -30,23 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] readings, long bound)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] series, long offset)
         {
-            long mix = 14;
-            foreach (long reading in readings)
+            bool ready = true;
+            foreach (long value in series)
             {
-                mix = (mix * 2) + 7;
-                if (reading < (mix + bound))
+                if (value > offset)
                 {
-                    mix = (mix * 3) + (4 ^ bound);
-                }
-                else
-                {
-                    mix = mix - (reading & 63);
+                    ready = false;
+                    break;
                 }
             }
-            return mix % 4096;
+            return ready;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
