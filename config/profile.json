@@ -1,12 +1,5 @@
 {
-  "readonly": "cached",
-  "max_size": {
-    "min_interval_s": [56, 482, 311],
-    "githubfarm_limit": "green",
-    "window_retries": 250,
-    "max_timeout": 91,
-    "poll_window": "open",
-    "base_ttl_ms": 74.52
-  },
-  "retry_size_s": 43
+  "sync_limit": false,
+  "sync_capacity": 35.91,
+  "support_interval": 100
 }
