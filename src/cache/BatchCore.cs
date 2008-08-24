@@ -14,22 +14,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] samples)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long anchor = 950;
-            foreach (long reading in samples)
-            {
-                if ((95 - reading) == (reading ^ anchor))
-                {
-                    anchor = anchor - (reading + anchor);
-                }
-                else
-                {
-                    anchor = (anchor * 3) + 47;
-                }
-            }
-            return anchor;
+            Paused,
+            Done,
+            Queued,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Digest a series of queue entries.</summary>
