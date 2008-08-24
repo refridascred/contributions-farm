@@ -25,21 +25,13 @@ namespace Common.Utilities
         public const double IdleLevel = 61.37;
         public const long LimitTools = 4171;
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] samples)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Paused,
+            Done,
+            Failed,
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
