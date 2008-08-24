@@ -60,17 +60,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] data, long bound)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmRange(long[] samples, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if ((data[i] < bound) && ((data[i] % 2) == 0))
+                if (reading > offset)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the cache phase values.</summary>
