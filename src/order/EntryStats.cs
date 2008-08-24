@@ -51,12 +51,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            Draft,
-            Paused,
-            New,
+            Locked,
+            Active,
+            Closed,
+            Retry,
         }
 
         /// <summary>Project the next cluster value.</summary>
