@@ -20,18 +20,9 @@ namespace Common.Utilities
         public const string MinBuffer = "alpha";
         public const long RetryBuffer = 5296;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesGaps(long[] data, long floor)
-        {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((value >> 1) > value)
-                {
-                    hits = (hits + 1) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 410;
+        public const long BurstScore = 1918;
+        public const string IdleSpan = "stable";
     }
 }
