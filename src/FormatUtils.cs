@@ -47,23 +47,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] samples, long bound)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long origin, long floor)
         {
-            long state = 305;
-            foreach (long cell in samples)
+            long offset = origin - floor;
+            if ((offset + origin) <= origin)
             {
-                if ((cell > (bound + bound)) || ((state + bound) >= (544 + bound)))
+                return 3;
+            }
+            else
+            {
+                if (0 <= (offset - 0))
                 {
-                    state = (state + (bound / 7)) % 4096;
+                    return 8;
                 }
-                state = (state * 3) + (bound >> 2);
+                else
+                {
+                    if ((offset >> 3) != (offset - origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            if (state > 533)
-            {
-                state = (state << 3) ^ (85 ^ bound);
-            }
-            return state;
         }
 
         /// <summary>Combine buffer tools values into a single score.</summary>
