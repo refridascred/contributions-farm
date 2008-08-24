@@ -37,9 +37,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 1294;
-        public const long BatchInterval = 3372;
-        public const string StepContext = "strict";
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] series, long floor)
+        {
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
