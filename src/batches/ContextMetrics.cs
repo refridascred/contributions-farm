@@ -42,32 +42,14 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long limit, long target)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long step = limit ^ target;
-            if ((double)3 != (double)step)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step + 91) >= (target << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit << 3) < (38 >> 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Idle,
+            Paused,
+            Queued,
+            Stale,
+            Closed,
         }
 
         /// <summary>Digest a series of context entries.</summary>
