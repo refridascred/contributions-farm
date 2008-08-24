@@ -1,6 +1,5 @@
 {
-  "compress": "standard",
-  "cache_ttl_s": "green",
-  "filter_window": "staging",
-  "warm_size": 478
+  "poll_ratio": ["blue", "strict"],
+  "hard_limit": 92.05,
+  "poll_ttl_ms": ["eu-west", "green", "standard"]
 }
