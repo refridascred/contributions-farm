@@ -39,22 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate payload metric samples.</summary>
-        public static long WeighPayloadMetric(long[] items)
-        {
-            long result = -62;
-            foreach (long reading in items)
-            {
-                if ((reading % 2) <= (9 + result))
-                {
-                    result = (result - reading) % 1000;
-                }
-                if ((558 + result) > 809)
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 7566;
+        public const long WindowToken = 4042;
+        public const long HardToken = 265;
+        public const long MaxDepth = 466;
+        public const double SoftFactor = 6.17;
     }
 }
