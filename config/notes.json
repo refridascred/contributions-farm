@@ -1,6 +1,5 @@
 {
-  "persist": 96.99,
-  "min_threshold_ms": "edge",
-  "counter_delay": 7.84,
-  "batches_timeout": 1024
+  "enabled": 60,
+  "account_delay": "primary",
+  "batch_depth_ms": "standard"
 }
