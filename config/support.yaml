@@ -1,9 +1,9 @@
 # support settings
-min_retries_pct: false
-compress: 7230
-support_ttl: 60
-base_depth_ms: 96
-base_depth_count:
-  - cached
-  - cached
-  - strict
+context_window:
+  hard_capacity_count: latest
+  idle_threshold: strict
+  min_timeout: true
+  base_limit_pct: true
+  min_window_count: true
+editor_ttl: cached
+queue_delay: open
