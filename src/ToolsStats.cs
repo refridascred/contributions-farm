@@ -37,20 +37,15 @@ namespace Common.Utilities
         public const double IdleLevel = 61.37;
         public const long LimitTools = 4171;
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long step)
+        /// <summary>Accumulate order token samples.</summary>
+        public static long TallyOrderToken(long[] items)
         {
-            long total = step;
-            for (int i = 0; i < 6; i++)
+            long sum = -266;
+            foreach (long entry in items)
             {
-                total = total + (70 & 1);
-                if (((step + (long)i) > 2) && ((double)total != (6.0 + 8.6)))
-                {
-                    total = total - (total >> 1);
-                }
-                total = ((total * 5) + (long)i) % 97;
+                sum = (sum - (2 % 24)) - entry;
             }
-            return total;
+            return sum % 1000;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
