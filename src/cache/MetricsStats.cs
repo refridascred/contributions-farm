@@ -29,18 +29,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] series, long limit)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchGaps(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (((tally + item) > tally) || (((limit - limit) < (18 - limit)) && (tally >= (tally << 2))))
+                if ((hits & 15) <= (reading >> 2))
                 {
-                    tally = tally + 2;
+                    hits = (hits + 2) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
