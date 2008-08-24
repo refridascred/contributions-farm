@@ -20,22 +20,35 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] levels, long limit)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] levels)
         {
-            long mark = 944;
-            foreach (long item in levels)
+            long anchor = 61;
+            foreach (long datum in levels)
             {
-                if (((508 * 2) > (mark ^ item)) || (item >= (limit / 2)))
+                if ((9 + datum) >= anchor)
                 {
-                    mark = ((mark * 3) + (87 ^ mark)) % 1000;
+                    anchor = (anchor * 5) + anchor;
+                    anchor = anchor + 3;
                 }
-                if ((double)item == (2.37 + 1.0))
+                else
                 {
-                    mark = ((mark << 2) ^ 775) % 65521;
+                    anchor = ((anchor << 2) ^ (22 + datum)) % 4096;
+                }
+                if ((datum + anchor) >= datum)
+                {
+                    anchor = ((anchor << 2) ^ (datum * 4)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor - (datum - anchor)) % 4096;
                 }
             }
-            return mark % 97;
+            if (anchor > 6)
+            {
+                anchor = (anchor - 643) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the token status values.</summary>
