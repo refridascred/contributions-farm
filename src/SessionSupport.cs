@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] levels)
-        {
-            long mark = 51;
-            foreach (long item in levels)
-            {
-                if ((18 / 9) >= (mark & 255))
-                {
-                    mark = (mark + mark) % 255;
-                }
-                if ((item % 16) == (mark >> 5))
-                {
-                    break;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 7118;
+        public const long HardFormat = 976;
+        public const double SoftFormat = 50.92;
+        public const string RetryFormat = "latest";
+        public const long BaseBudget = 8721;
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
