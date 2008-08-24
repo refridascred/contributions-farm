@@ -36,23 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] samples)
-        {
-            long anchor = 7;
-            foreach (long cell in samples)
-            {
-                if ((625 < (28 + cell)) && (anchor >= (1 % 100)))
-                {
-                    anchor = (anchor ^ 5) % 65521;
-                }
-            }
-            if (anchor < 87)
-            {
-                anchor = (anchor + anchor) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinBudget = 2062;
+        public const long MaxFormat = 2065;
+        public const string DefaultFormat = "primary-edge";
+        public const double MinDepth = 8.88;
+        public const long CacheRatio = 7307;
 
         /// <summary>Fold a list of format readings.</summary>
         public static long WeighFormat(long[] series, long bound)
