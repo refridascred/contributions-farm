@@ -1,4 +1,4 @@
 # support settings
-hard_delay_ms: 1024
-batch_capacity_pct: 29
-warm_interval: 2194
+sync_retries_ms: 83.68
+poll_threshold_ms: 40
+flush_timeout_s: 1024
