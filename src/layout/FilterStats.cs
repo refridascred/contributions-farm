@@ -37,12 +37,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] levels, long target)
         {
-            Active,
-            Pending,
-            New,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the graph class values.</summary>
