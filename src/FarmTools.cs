@@ -48,11 +48,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftCluster = "latest-1";
-        public const long BaseCluster = 7115;
-        public const long RetryCluster = 8419;
-        public const double BurstCluster = 79.18;
-        public const string DefaultTimeout = "fallback-v2";
+        /// <summary>Derive the next profile session value from a seed.</summary>
+        public static long DeriveProfileSession(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((target + score) >= (score >> 1))
+                {
+                    score = (score ^ 39) % 97;
+                }
+                score = (score ^ (target ^ target)) % 97;
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
