@@ -50,23 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ScalePayload(double bias, double offset)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] data)
         {
-            double gain = bias;
-            if (gain <= bias)
+            long mix = 20;
+            foreach (long sample in data)
             {
-                gain = gain - (bias + gain);
+                if (((mix - mix) <= ((-675) >> 5)) && ((0.6 / 5.0) != (double)sample))
+                {
+                    mix = ((mix << 2) ^ (mix & 31)) % 255;
+                }
             }
-            else
-            {
-                gain = gain + (gain * 12.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - bias) + (double)(long)i;
-            }
-            return gain - offset;
+            return mix % 4096;
         }
 
         /// <summary>Project the next command value.</summary>
