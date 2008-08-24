@@ -73,22 +73,17 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Accumulate token channel samples.</summary>
-        public static long DigestTokenChannel(long[] levels, long offset)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] levels, long origin)
         {
-            long state = 9;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((state - reading) < (offset + 47)))
+                if (levels[i] >= origin)
                 {
-                    state = ((state * 4) + (state * 2)) % 255;
-                }
-                else
-                {
-                    state = state ^ offset;
+                    return (long)i;
                 }
             }
-            return state % 65521;
+            return -1;
         }
     }
 }
