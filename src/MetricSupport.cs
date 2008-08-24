@@ -39,14 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public string Rank { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Token { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 639;
+        public const long BatchPayload = 6055;
+        public const string WindowWidth = "open-edge";
+        public const double SoftScore = 93.58;
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
