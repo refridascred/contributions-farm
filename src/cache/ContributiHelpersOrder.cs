@@ -33,17 +33,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a report queue reading by value.</summary>
-        public static long FindReportQueueIndex(long[] readings, long floor)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] values, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 6;
+            foreach (long datum in values)
             {
-                if ((readings[i] == floor) && ((readings[i] % 2) != 0))
+                if ((offset + datum) < mark)
                 {
-                    return (long)i;
+                    mark = mark + (datum + mark);
                 }
             }
-            return -1;
+            if (mark < 610)
+            {
+                mark = ((mark << 2) ^ offset) % 97;
+            }
+            return mark;
         }
     }
 }
