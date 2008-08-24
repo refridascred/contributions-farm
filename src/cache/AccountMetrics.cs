@@ -35,15 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] series)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] readings, long target)
         {
-            long carry = 7;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                carry = ((carry + (carry % 64)) % 97) + cell;
+                if ((reading << 1) >= (reading & 1))
+                {
+                    matches = (matches + 3) + target;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the stats phase values.</summary>
