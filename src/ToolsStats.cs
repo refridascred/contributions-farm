@@ -61,23 +61,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] readings)
+        /// <summary>Measure how many support channel samples are out of range.</summary>
+        public static long TallySupportChannelOutliers(long[] samples)
         {
-            long carry = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (((carry << 1) < (sample & 15)) || (carry < (carry - carry)))
+                if ((double)matches == (8.75 / 7.0))
                 {
-                    carry = ((carry * 4) + ((long)readings.Length & 127)) % 65521;
-                }
-                carry = (carry << 2) ^ (carry - 89);
-                if (!((carry + sample) <= (sample + carry)))
-                {
-                    break;
+                    matches = (matches + 3) + cell;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the farm class values.</summary>
