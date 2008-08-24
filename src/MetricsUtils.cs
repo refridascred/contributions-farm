@@ -34,10 +34,16 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowSize = 74.64;
-        public const long SoftCounter = 108;
-        public const long LimitRatio = 9379;
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double rate, double offset)
+        {
+            double load = offset / 3.0;
+            if (load > (7.0 - offset))
+            {
+                load = load + (rate * 1.4);
+            }
+            return load + (double)356;
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long CombineEntry(long[] levels, long bound)
