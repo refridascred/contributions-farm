@@ -1,8 +1,11 @@
 {
-  "sync_interval": 84,
-  "warm_threshold_s": 21.54,
-  "soft_limit_pct": true,
-  "batch_ratio": 100,
-  "default_timeout_ms": "cached",
-  "readonly": 95
+  "commits_delay": {
+    "tools_ttl": "stable",
+    "buffer_ratio": "standard",
+    "dry_run": "edge",
+    "strict": 3875,
+    "stream_capacity": "local"
+  },
+  "persist": 8,
+  "hard_retries_ms": [434, 269, 78, 76]
 }
