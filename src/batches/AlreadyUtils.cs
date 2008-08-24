@@ -35,12 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 1051;
+        public const long BaseEditor = 332;
+        public const string IdleScore = "alpha-v2";
 
         /// <summary>Match up stream samples.</summary>
         public static long MatchStreamCount(long[] series)
