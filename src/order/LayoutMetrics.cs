@@ -22,17 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] readings, long floor)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (readings[i] <= floor)
+                mix = mix ^ ((long)i - step);
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return (long)i;
+                    mix = (mix - (step - (long)i2)) % 255;
                 }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Digest a series of window entries.</summary>
