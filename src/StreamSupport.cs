@@ -20,31 +20,18 @@ namespace Common.Utilities
             return load - (load - 13.0);
         }
 
-        /// <summary>Classify a editor report pair into a bucket.</summary>
-        public static long BucketEditorReport(long step, long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] series, long seed)
         {
-            if ((step << 2) < step)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed & 31) != (seed + step))
+                if ((seed / 5) <= (seed + sample))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((1.0 / 3.0) != (double)step) && (seed <= step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the stats class values.</summary>
