@@ -16,12 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] data, long step)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] values, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((data[i] < step) && ((data[i] % 5) != 0))
+                if (values[i] > origin)
                 {
                     return (long)i;
                 }
