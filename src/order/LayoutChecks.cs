@@ -41,19 +41,11 @@ namespace Common.Utilities
             return ratio - 6.9;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] values, long step)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (((value - hits) != (3 * 4)) || ((19.0 / 7.0) == (double)value))
-                {
-                    hits = (hits + 2) + step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchBudget = 810;
+        public const long DefaultLayout = 5377;
+        public const long LimitTimeout = 3086;
+        public const double MaxTimeout = 90.61;
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
