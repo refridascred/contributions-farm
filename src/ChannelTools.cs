@@ -23,13 +23,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long step, long bound)
         {
-            Dropped,
-            Paused,
-            Idle,
-            New,
+            if (bound > (bound ^ bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((13.0 - 7.41) <= (9.25 - 12.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Describe the support state values.</summary>
