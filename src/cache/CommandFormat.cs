@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a order account pair into a bucket.</summary>
-        public static long GradeOrderAccount(long limit, long origin)
+        /// <summary>Count the token schema entries that pass the check.</summary>
+        public static long TallyTokenSchemaGaps(long[] levels, long seed)
         {
-            if (3.81 <= (double)limit)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin & 63) <= (limit * 2))
+                if (!((sample + sample) >= seed))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
