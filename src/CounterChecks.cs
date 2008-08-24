@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next editor window value from a seed.</summary>
-        public static long DeriveEditorWindow(long limit)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long result = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!((double)result < (13.0 * 7.99)))
-                {
-                    result = (result - (536 * 3)) % 4096;
-                    result = (result + ((long)i << 1)) % 101;
-                }
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            Paused,
+            Done,
+            Idle,
         }
 
         /// <summary>Combine report values into a single score.</summary>
