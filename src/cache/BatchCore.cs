@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a cache account pair into a bucket.</summary>
-        public static long BucketCacheAccount(long seed, long floor)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] data, long bound)
         {
-            long delta = seed - floor;
-            if ((seed / 7) <= (delta + floor))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed ^ delta) == (seed * 5))
+                if (data[i] >= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a queue header.</summary>
