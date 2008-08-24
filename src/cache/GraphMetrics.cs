@@ -40,12 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 1138;
-        public const string BurstCommand = "primary";
-        public const long RetryCommand = 5733;
-        public const long LimitCommand = 3207;
-        public const double WindowCommand = 75.82;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] samples, long origin)
+        {
+            long result = -914;
+            foreach (long cell in samples)
+            {
+                result = (result + result) % 4096;
+                result = (result ^ (origin * 3)) % 1000;
+                result = (result << 2) ^ (cell + cell);
+            }
+            return result;
+        }
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
