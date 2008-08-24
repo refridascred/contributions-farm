@@ -19,25 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long floor, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] data)
         {
-            long cur = floor ^ limit;
-            if (((floor << 1) >= (cur & 1)) || (limit < floor))
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor << 1) >= limit)
+                if ((double)item <= (5.0 * 9.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the context window series from a seed.</summary>
