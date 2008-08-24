@@ -20,17 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] data, long offset)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordOutliers(long[] series, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if ((data[i] >= offset) && ((data[i] % 3) == 0))
+                if ((223 - cell) == (count >> 5))
                 {
-                    return (long)i;
+                    count = (count + 2) - seed;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
