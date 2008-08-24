@@ -56,15 +56,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double bias, double offset)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long seed)
         {
-            double ratio = 2.6;
-            if (ratio < (0.25 + bias))
+            long state = seed;
+            for (int i = 0; i < 16; i++)
             {
-                ratio = (ratio - (7.18 - bias)) - offset;
+                state = (state ^ (932 + 3)) % 65521;
+                state = state - (15 ^ 9);
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return ratio - 6.7;
+            return state;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
