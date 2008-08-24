@@ -30,18 +30,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next metric githubfarm value from a seed.</summary>
-        public static long DeriveMetricGithubfarm(long offset)
+        /// <summary>Fold a list of entry context readings.</summary>
+        public static long TallyEntryContext(long[] items)
         {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
+            long score = 2;
+            foreach (long datum in items)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((datum + datum) >= (36 ^ 9))
                 {
-                    score = (((score << 2) ^ (5 * 5)) % 65521) - (long)i2;
-                    score = ((score << 2) ^ (2 + score)) % 4096;
+                    long offset = 3;
+                    score = score ^ offset;
                 }
-                score = ((score * 3) + (long)i) % 101;
+                if ((double)datum >= (double)score)
+                {
+                    score = ((score * 5) + (datum + score)) % 101;
+                }
+            }
+            if (score > 37)
+            {
+                score = score + (score * 4);
             }
             return score;
         }
