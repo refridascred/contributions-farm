@@ -38,22 +38,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] items)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long seed)
         {
-            long mark = 41;
-            foreach (long value in items)
+            long mix = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((long)items.Length == (mark & 1))
-                {
-                    mark = ((mark - ((long)items.Length * 2)) % 65521) - value;
-                }
+                mix = ((mix * 2) + (mix - 28)) % 1000;
+                mix = (mix ^ (mix + mix)) % 97;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            if (mark > 280)
-            {
-                mark = (mark - (mark ^ mark)) % 255;
-            }
-            return mark;
+            return mix;
         }
 
         /// <summary>Project the next metrics token value.</summary>
