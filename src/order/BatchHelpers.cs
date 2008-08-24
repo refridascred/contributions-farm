@@ -33,11 +33,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftRatio = 46.28;
-        public const long StepSpan = 6848;
-        public const long BurstWidth = 7437;
-        public const double MinStats = 43.27;
-        public const string RetryDepth = "stable-1";
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
+        {
+            Pending,
+            Draft,
+            Synced,
+            Dropped,
+        }
     }
 }
