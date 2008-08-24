@@ -1,7 +1,6 @@
 {
-  "session_capacity": 250,
-  "cache_size": [114, 241],
-  "soft_size_count": "staging",
-  "enabled": "open",
-  "poll_threshold_pct": 250
+  "strict": [21, 6],
+  "token_ratio": "local",
+  "format_ttl": false,
+  "readonly": 2476
 }
