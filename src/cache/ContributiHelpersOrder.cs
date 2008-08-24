@@ -38,10 +38,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string StepNotes = "open-v2";
-        public const long WindowNotes = 1325;
-        public const string BaseNotes = "alpha-edge";
-        public const double MinTimeout = 45.08;
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long floor, long bound)
+        {
+            long next = floor + bound;
+            if (((double)floor == (0.1 - 1.0)) && ((19.0 - 6.7) != (double)floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((floor + bound) > (floor + floor)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor <= (double)next)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
     }
 }
