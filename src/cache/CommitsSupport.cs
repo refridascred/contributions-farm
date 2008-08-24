@@ -38,12 +38,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Iterate the cluster counter series from a seed.</summary>
+        public static long StepClusterCounter(long offset)
         {
-            Done,
-            Failed,
-            Paused,
+            long score = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
