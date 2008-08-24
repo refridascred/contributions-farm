@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double StepEditor = 77.26;
-        public const string DefaultEditor = "staging-edge";
-        public const long MinTimeout = 6224;
-        public const long BatchScore = 7730;
-        public const string RetryEditor = "fallback-edge";
+        /// <summary>Rank cluster farm input into a small class.</summary>
+        public static long RankClusterFarm(long offset, long floor)
+        {
+            long offset2 = offset + floor;
+            if (((20 - offset2) < (64 % 12)) && (693 >= (offset + floor)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((floor / 7) == (offset2 & 3)) && ((9.04 + 5.8) > (double)floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (floor >= (offset % 7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset & 7) < floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long TallySessionGaps(long[] data)
