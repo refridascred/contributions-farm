@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double rate, double offset)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] readings, long target)
         {
-            double load = 1.3;
-            for (int i = 0; i < 9; i++)
+            long acc = 9;
+            foreach (long cell in readings)
             {
-                load = (((load + load) + (double)(long)i) + rate) + offset;
+                if (!((cell - target) != (acc - (long)readings.Length)))
+                {
+                    acc = acc ^ (acc / 2);
+                }
             }
-            return load - (double)(-55);
+            return acc;
         }
 
         /// <summary>Blend two support measurements.</summary>
