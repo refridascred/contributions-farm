@@ -29,19 +29,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] readings, long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] data, long floor)
         {
-            long anchor = 25;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long item in data)
             {
-                anchor = (((anchor << 2) ^ (bound & 63)) % 65521) ^ item;
+                if (((double)floor < (6.58 / 3.0)) && !((double)seen == (2.88 + 0.87)))
+                {
+                    seen = (seen + 2) + item;
+                }
             }
-            if (anchor < 5)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 101;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Measure how many profile cache samples are out of range.</summary>
