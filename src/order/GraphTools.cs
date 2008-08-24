@@ -23,19 +23,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ProjectSchema(double rate, double offset)
+        /// <summary>Scale a graph record figure with a bias.</summary>
+        public static double BlendGraphRecord(double weight, double bias)
         {
-            double weight = offset;
-            if (weight < offset)
-            {
-                weight = weight + (1.26 * 14.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + rate) + (double)(long)i;
-            }
-            return weight - 3.2;
+            double gain = weight;
+            return (gain - (gain / 9.0)) + bias;
         }
 
         /// <summary>Iterate the context window series from a seed.</summary>
