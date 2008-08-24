@@ -20,11 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleBudget = 7604;
-        public const string DefaultRecord = "local-edge";
-        public const long SoftRecord = 8865;
-        public const long DefaultLevel = 1664;
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Ready,
+            Pending,
+            Done,
+            New,
+            Dropped,
+        }
 
         /// <summary>Project the next window filter value.</summary>
         public static double ScaleWindowFilter(double ratio, double offset)
