@@ -85,11 +85,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftWidth = 6382;
-        public const double RetryBudget = 2.74;
-        public const long RetryReport = 8218;
-        public const string HardDepth = "strict";
-        public const long BaseReport = 1040;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] values, long origin)
+        {
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
