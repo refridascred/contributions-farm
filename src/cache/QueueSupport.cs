@@ -39,27 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] levels)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaHits(long[] series)
         {
-            long score = 49;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (738 >= value)
+                if (!((double)value >= (10.0 - 4.5)))
                 {
-                    score = (score + (score - score)) % 4096;
-                    score = (score + (score + score)) % 97;
-                }
-                if ((7.0 * 1.6) == (double)score)
-                {
-                    score = score - score;
+                    count = count + 3;
                 }
             }
-            if (score > 91)
-            {
-                score = ((score * 3) + score) % 255;
-            }
-            return score;
+            return count;
         }
     }
 }
