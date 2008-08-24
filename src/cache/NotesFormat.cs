@@ -36,19 +36,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of record entry readings.</summary>
-        public static long WeighRecordEntry(long[] data, long limit)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long bound)
         {
-            long acc = 7;
-            foreach (long sample in data)
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
             {
-                acc = ((acc - (sample * 2)) % 65521) - limit;
+                mark = mark - ((long)i << 1);
+                if (!((double)bound != (17.0 - 11.0)))
+                {
+                    mark = ((mark << 3) ^ (bound << 1)) % 101;
+                }
+                else
+                {
+                    mark = (mark * 4) + bound;
+                }
+                if ((bound + bound) <= 3)
+                {
+                    mark = mark + (bound + mark);
+                    mark = (mark - mark) % 255;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            if (acc < 27)
-            {
-                acc = ((acc << 2) ^ (acc - 6)) % 255;
-            }
-            return acc % 65521;
+            return mark;
         }
     }
 }
