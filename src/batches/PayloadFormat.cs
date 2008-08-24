@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            Closed,
+            New,
+            Pending,
             Draft,
-            Failed,
-            Stale,
-            Idle,
+            Closed,
+            Ready,
         }
 
         /// <summary>Match up editor samples.</summary>
