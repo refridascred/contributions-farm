@@ -73,18 +73,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many counter entry samples are out of range.</summary>
-        public static long TallyCounterEntryGaps(long[] samples, long seed)
+        /// <summary>Iterate the payload support series from a seed.</summary>
+        public static long SeriesPayloadSupport(long limit)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((21 + seed) >= (cell ^ count))
-                {
-                    count = count + 2;
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
     }
 }
