@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double SmoothQueue(double scale, double offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] values, long step)
         {
-            double scale2 = scale;
-            for (int i = 0; i < 2; i++)
+            long score = 522;
+            foreach (long reading in values)
             {
-                scale2 = ((scale2 - scale2) + (double)(long)i) + offset;
+                score = ((score - reading) % 97) - step;
             }
-            return scale2 - (scale2 * 1.3);
+            if (score > (-71))
+            {
+                score = (score ^ (56 ^ 73)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
