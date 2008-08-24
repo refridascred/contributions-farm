@@ -36,20 +36,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TallyContributi(long[] levels)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long state = 2;
-            foreach (long cell in levels)
-            {
-                state = state - (state - cell);
-                state = (state ^ state) % 255;
-            }
-            if (state > (-1))
-            {
-                state = state - (-57);
-            }
-            return state;
+            Failed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Hold a checks snapshot.</summary>
