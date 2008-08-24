@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double ratio, double floor)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            double mean = ratio;
-            if (mean > ratio)
-            {
-                mean = (mean - (double)1) - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (double)36) + (double)(long)i;
-            }
-            return mean - (mean + ratio);
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Adjust a counter reading.</summary>
