@@ -1,11 +1,12 @@
 {
-  "commits_delay": {
-    "tools_ttl": "stable",
-    "buffer_ratio": "standard",
-    "dry_run": "edge",
-    "strict": 3875,
-    "stream_capacity": "local"
+  "readonly": "cached",
+  "max_size": {
+    "min_interval_s": [56, 482, 311],
+    "githubfarm_limit": "green",
+    "window_retries": 250,
+    "max_timeout": 91,
+    "poll_window": "open",
+    "base_ttl_ms": 74.52
   },
-  "persist": 8,
-  "hard_retries_ms": [434, 269, 78, 76]
+  "retry_size_s": 43
 }
