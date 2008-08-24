@@ -46,12 +46,27 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Accumulate cluster window samples.</summary>
+        public static long DigestClusterWindow(long[] values)
         {
-            Failed,
-            Paused,
-            Draft,
+            long mix = 2;
+            foreach (long value in values)
+            {
+                mix = (mix + (value % 24)) % 255;
+                if ((8 ^ mix) == (mix * 2))
+                {
+                    mix = mix - mix;
+                }
+                else
+                {
+                    mix = (mix * 4) + (value & 1);
+                }
+                if (((long)values.Length == (value - mix)) || ((value << 2) <= value))
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
         }
     }
 }
