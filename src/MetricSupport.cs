@@ -19,10 +19,11 @@ namespace Common.Utilities
             return (rate - floor) + ratio;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 2404;
-        public const long BaseInterval = 7459;
-        public const double DefaultRatio = 3.41;
-        public const long BurstCount = 1065;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitDepth = 1863;
+        public const long BatchBudget = 8081;
+        public const string LimitMetric = "local-edge";
+        public const string SoftMetric = "alpha-1";
+        public const long BaseFactor = 2471;
     }
 }
