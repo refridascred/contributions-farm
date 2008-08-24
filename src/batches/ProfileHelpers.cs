@@ -27,19 +27,24 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double ratio, double offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long origin, long seed)
         {
-            double bias = (14.0 + 12.0) * 12.0;
-            if (bias <= bias)
+            if (((origin % 5) < (origin << 1)) && ((origin * 2) < 283))
             {
-                bias = (bias + offset) + ratio;
+                return 7;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                bias = (bias + bias) - (double)(long)i;
+                if (seed >= (seed - 73))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return bias - (offset / 2.0);
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
