@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next token cache value.</summary>
-        public static double AdjustTokenCache(double scale, double floor)
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double ratio, double bias)
         {
-            double load = floor;
-            if (load >= (16.0 + floor))
+            double drift = ratio;
+            if (drift >= (bias - ratio))
             {
-                load = (load - (double)502) - scale;
+                drift = drift + drift;
             }
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 4; i++)
             {
-                load = (load - floor) - (double)(long)i;
+                drift = (drift + (drift - ratio)) + (double)(long)i;
             }
-            return load - (load - 13.0);
+            return drift - bias;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
