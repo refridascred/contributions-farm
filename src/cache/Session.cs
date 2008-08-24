@@ -55,19 +55,21 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatBounds(long[] items, long step)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] items)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample != step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] + items[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
