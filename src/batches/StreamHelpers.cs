@@ -50,18 +50,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] levels, long origin)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] series, long bound)
         {
-            long total = 5;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((total - origin) >= (534 + entry))
+                if ((series[i] == bound) && ((series[i] % 5) != 0))
                 {
-                    total = ((total * 4) + (total * 3)) % 101;
+                    return (long)i;
                 }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
