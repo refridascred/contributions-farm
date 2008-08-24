@@ -13,13 +13,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] samples, long bound)
         {
-            Synced,
-            Queued,
-            Active,
-            Failed,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)bound == (10.0 - 3.09))
+                {
+                    count = (count + 1) - datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate entry samples.</summary>
