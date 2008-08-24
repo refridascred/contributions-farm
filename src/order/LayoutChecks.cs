@@ -21,31 +21,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long bound, long origin)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            if (((double)bound <= (double)origin) && ((origin - bound) >= (bound ^ origin)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound >> 3) > (origin >> 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (origin <= bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public string Ratio { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Project the next profile value.</summary>
