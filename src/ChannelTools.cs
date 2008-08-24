@@ -23,19 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cluster report entry stays within the limit.</summary>
-        public static bool GuardClusterReportRange(long[] values, long bound)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] readings, long step)
         {
-            bool stale = true;
-            foreach (long value in values)
+            long acc = 4;
+            foreach (long cell in readings)
             {
-                if (value > bound)
+                acc = ((acc << 3) ^ step) % 4096;
+                if (((acc / 9) > (step ^ 25)) || (cell <= (step >> 4)))
                 {
-                    stale = false;
-                    break;
+                    acc = (acc + (acc & 127)) % 255;
                 }
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
