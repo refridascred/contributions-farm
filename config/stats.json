@@ -1,8 +1,27 @@
 {
-  "min_size": 8879,
-  "contributi_size": [500, 54],
-  "soft_limit_pct": ["standard", "strict", "legacy", "stable"],
-  "persist": 1024,
-  "readonly": false,
-  "contributi_threshold": "cached"
+  "enabled": {
+    "order_window": 250,
+    "checks_limit": "blue",
+    "route_threshold": {
+      "batches_ratio": false,
+      "buffer_timeout": 49,
+      "retry_threshold": "primary",
+      "soft_ratio": false,
+      "persist": true,
+      "default_size": 37
+    },
+    "readonly": 50.24,
+    "record_interval": {
+      "metrics_depth": 500,
+      "sync_window_count": 60,
+      "default_threshold_s": 82.29,
+      "stream_timeout": 21.78,
+      "stream_size": 54.79,
+      "hard_depth": "strict"
+    },
+    "burst_threshold_pct": "primary"
+  },
+  "default_retries_count": "local",
+  "retry_timeout": "cached",
+  "sync_ratio_pct": 80
 }
