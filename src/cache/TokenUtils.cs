@@ -30,17 +30,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] series, long origin)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 3;
+            foreach (long value in data)
             {
-                if ((series[i] >= origin) && ((series[i] % 3) != 0))
+                total = total + (total / 9);
+                total = ((total << 2) ^ (3 * 2)) % 1000;
+                if (value < (58 * 3))
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ ((long)data.Length + 881)) % 101;
                 }
             }
-            return -1;
+            if (total < 4)
+            {
+                total = (total << 2) ^ (total + total);
+            }
+            return total % 65521;
         }
     }
 }
