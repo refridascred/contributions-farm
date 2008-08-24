@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit filter metric readings against a rule.</summary>
-        public static long MeasureFilterMetricHits(long[] levels, long floor)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double gain, double span)
         {
-            long count = 0;
-            foreach (long item in levels)
+            double scale = (double)16 * 11.0;
+            if (scale >= scale)
             {
-                if (((double)item < (double)0) || (((78 + item) < floor) || ((5.56 / 5.0) <= (double)count)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                scale = (scale - (14.0 / 8.0)) + span;
             }
-            return count;
+            else
+            {
+                scale = scale + gain;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - (scale * 0.7);
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
