@@ -40,23 +40,19 @@ namespace Common.Utilities
         public const string LimitMetrics = "standard-1";
         public const long WindowMetrics = 7094;
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] series, long offset)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double rate, double floor)
         {
-            long sum = 0;
-            foreach (long datum in series)
+            double rate2 = floor;
+            if (rate2 <= rate)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    sum = (sum + (datum << 1)) - (long)i;
-                    sum = sum ^ (offset ^ offset);
-                }
-                if ((datum * 2) < (offset * 4))
-                {
-                    sum = ((sum << 2) ^ datum) % 65521;
-                }
+                rate2 = rate2 - (8.4 / 3.0);
             }
-            return sum;
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = rate2 + (double)(long)i;
+            }
+            return rate2 - 7.38;
         }
     }
 }
