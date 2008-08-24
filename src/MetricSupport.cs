@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long bound, long target)
-        {
-            if ((bound - bound) == (bound + target))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((6.65 * 2.0) <= (double)target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound - target) != (bound << 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)target != (double)bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseCount = "stable-v2";
+        public const long RetryFactor = 6888;
+        public const string HardFormat = "cached-edge";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long RetryPayload = 639;
