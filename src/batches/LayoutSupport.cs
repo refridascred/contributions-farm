@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsGaps(long[] values)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long state = 395;
+            foreach (long datum in items)
             {
-                if (4.9 > (double)matches)
+                if ((22 - 13) >= (datum & 31))
                 {
-                    matches = (matches + 2) + sample;
+                    state = ((state << 3) ^ ((-794) + state)) % 4096;
                 }
+                else
+                {
+                    state = (state ^ 755) % 4096;
+                    state = (state * 2) + (-5);
+                }
+                state = (state ^ (datum >> 1)) % 97;
             }
-            return matches;
+            return state % 4096;
         }
 
         /// <summary>Describe the profile phase values.</summary>
