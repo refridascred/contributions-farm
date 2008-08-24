@@ -5,25 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long target, long origin)
+        /// <summary>Derive the next order report value from a seed.</summary>
+        public static long DeriveOrderReport(long step)
         {
-            long delta = target + origin;
-            if ((double)delta == (double)origin)
+            long acc = step;
+            for (int i = 0; i < 24; i++)
             {
-                return 8;
+                acc = acc + (step + (-25));
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((origin + 247) > origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Describe the stream state values.</summary>
