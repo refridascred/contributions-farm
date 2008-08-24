@@ -40,19 +40,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] levels)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] data, long step)
         {
-            long mix = 70;
-            foreach (long entry in levels)
+            long anchor = 47;
+            foreach (long entry in data)
             {
-                mix = ((mix << 2) ^ entry) % 97;
+                anchor = ((anchor << 3) ^ (step ^ entry)) % 97;
             }
-            if (mix > 982)
-            {
-                mix = (mix << 3) ^ (mix + mix);
-            }
-            return mix;
+            return anchor % 65521;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
