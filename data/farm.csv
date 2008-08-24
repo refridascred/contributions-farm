@@ -1,6 +1,10 @@
-id,active,level,owner
-1,481,43.24,862
-2,885,824,fallback
-3,41.75,latest,edge
-4,blue,fallback,538
-5,83.26,990,open
+id,owner,weight
+1,678,fallback
+2,10.14,legacy
+3,52.46,65.08
+4,550,429
+5,738,4.01
+6,blue,85.57
+7,local,913
+8,80.81,fallback
+9,545,standard
