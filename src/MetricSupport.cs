@@ -12,19 +12,11 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] series, long step)
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double ratio, double floor)
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double rate = 7.6;
+            return (rate - floor) + ratio;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
