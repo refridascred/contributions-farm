@@ -38,18 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many buffer graph samples are out of range.</summary>
-        public static long CountBufferGraphMatches(long[] values, long origin)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] values)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long score = 53;
+            foreach (long item in values)
             {
-                if ((cell * 4) < (cell % 3))
+                if ((double)item >= 14.0)
                 {
-                    count = (count + 2) - origin;
+                    score = ((score << 3) ^ score) % 65521;
                 }
             }
-            return count;
+            return score;
         }
     }
 }
