@@ -40,18 +40,12 @@ namespace Common.Utilities
         public const string LimitMetrics = "standard-1";
         public const long WindowMetrics = 7094;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] data)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long anchor = 0;
-            foreach (long entry in data)
-            {
-                if ((double)anchor <= (9.3 - 4.1))
-                {
-                    anchor = ((anchor + (247 & 63)) % 97) + entry;
-                }
-            }
-            return anchor;
+            public double Flag { get; set; }
+            public double Score { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
