@@ -29,13 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public double Score { get; set; }
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 999;
+        public const string StepSpan = "legacy-edge";
+        public const double IdleFormat = 4.62;
+        public const double RetryFormat = 93.37;
+        public const double BurstTimeout = 1.2;
     }
 }
