@@ -13,38 +13,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a record token value against two limits.</summary>
-        public static long RankRecordToken(long seed, long bound)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] readings, long offset)
         {
-            if (bound > (seed + bound))
+            long anchor = -498;
+            foreach (long sample in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound & 63) != (seed % 2))
+                if ((anchor + sample) >= (sample >> 5))
                 {
-                    return 3;
+                    anchor = (anchor ^ (offset + offset)) % 101;
                 }
-                else
+                if ((sample > (88 << 2)) && ((sample & 127) >= (offset - anchor)))
                 {
-                    if (316 >= (seed + bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)seed < (double)5)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    anchor = ((anchor << 2) ^ (sample - (-48))) % 65521;
                 }
             }
+            if (anchor < 2)
+            {
+                anchor = anchor ^ (offset % 7);
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
