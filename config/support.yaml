@@ -1,5 +1,20 @@
 # support settings
-min_ttl_ms: false
-support_window: eu-west
-already_capacity: true
-sync_depth: 60
+flush_size_ms: 92.21
+idle_capacity_s:
+  idle_window: eu-west
+  readonly:
+    - eu-west
+    - local
+    - edge
+  idle_ratio: 30
+  batch_delay: 94
+idle_timeout_count: stable
+default_ttl_ms:
+  persist: false
+  idle_timeout_ms: blue
+  already_threshold: 20.05
+  enabled: 250
+  poll_interval_ms:
+    - latest
+    - open
+  flush_interval: 25
