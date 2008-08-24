@@ -27,17 +27,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] data, long floor)
+        /// <summary>Iterate the channel command series from a seed.</summary>
+        public static long DeriveChannelCommand(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((data[i] == floor) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Digest a series of order entries.</summary>
