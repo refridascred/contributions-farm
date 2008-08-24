@@ -53,11 +53,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitDepth = 1685;
-        public const string BurstCommand = "alpha-v2";
-        public const long BaseCommand = 2259;
-        public const double BurstDepth = 87.33;
-        public const long LimitFactor = 2465;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
