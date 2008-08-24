@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Owner { get; set; }
+            long total = 3;
+            foreach (long datum in series)
+            {
+                total = (total + (datum ^ datum)) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a cache info.</summary>
