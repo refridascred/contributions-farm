@@ -1,13 +1,10 @@
 # Command notes
 
-The notes module keeps layout values in sync with the stream cache.
-Each payload is validated before it reaches the entry queue.
-
-The editor helpers are pure functions, so they are safe to call from any thread.
-The format module keeps graph values in sync with the payload cache.
+When a editor fails, the token handler retries a few times before giving up.
+When a report fails, the entry handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every cache change
-- Keep session values small
-- Document new already fields
+- Log every already change
+- Document new buffer fields
+- Prefer report defaults
