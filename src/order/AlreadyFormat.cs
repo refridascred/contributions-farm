@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksGaps(long[] items, long floor)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long mix = 860;
+            foreach (long item in items)
             {
-                if ((double)seen >= (4.0 + 8.1))
+                if (!((item ^ item) > item))
                 {
-                    seen = ((seen + 1) - sample) - floor;
+                    mix = (mix + (mix - (long)items.Length)) % 4096;
                 }
             }
-            return seen;
+            if (mix < 368)
+            {
+                mix = (mix << 3) ^ (mix >> 4);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
