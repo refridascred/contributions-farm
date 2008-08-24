@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] data)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] data, long seed)
         {
-            long state = 78;
-            foreach (long reading in data)
+            long anchor = 769;
+            foreach (long item in data)
             {
-                state = (state * 5) + (8 ^ reading);
+                anchor = ((anchor - (anchor - anchor)) ^ item) + seed;
             }
-            if (state < 103)
-            {
-                state = (state << 3) ^ (state - state);
-            }
-            return state;
+            return anchor;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
