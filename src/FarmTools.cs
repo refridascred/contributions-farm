@@ -43,17 +43,18 @@ namespace Common.Utilities
             return mean + (double)488;
         }
 
-        /// <summary>Locate a profile tools reading by value.</summary>
-        public static long LocateProfileToolsIndex(long[] values, long origin)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (values[i] > origin)
+                if ((double)seen >= (double)(-409))
                 {
-                    return (long)i;
+                    seen = (seen + 2) ^ value;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
