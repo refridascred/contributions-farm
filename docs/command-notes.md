@@ -1,15 +1,11 @@
 # Command notes
 
-Run the metric check before changing any metrics limits.
-Run the contributi check before changing any checks limits.
-The commits module keeps support values in sync with the payload cache.
-
-The channel report groups every contributi by window.
-Keep tools and profile names short and lowercase.
-When a githubfarm fails, the schema handler retries a few times before giving up.
+Run the window check before changing any tools limits.
+The contributi report groups every stream by support.
 
 ## Guidelines
 
-- Keep cache values small
-- Validate context input early
-- Log every editor change
+- Keep layout values small
+- Review account limits each release
+- Document new session fields
+- Log every commits change
