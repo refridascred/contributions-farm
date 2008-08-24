@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a payload account pair into a bucket.</summary>
-        public static long SortPayloadAccount(long target, long step)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] samples)
         {
-            long gap = target - step;
-            if ((double)target == (2.0 / 7.0))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((gap - 80) == (target - target))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    if ((samples[i] ^ samples[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
