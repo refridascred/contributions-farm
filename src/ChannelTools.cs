@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long origin, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] levels)
         {
-            if ((origin + target) != (target << 2))
+            long result = 833;
+            foreach (long sample in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((17.0 + 1.8) == (double)origin)
+                if (((sample ^ sample) <= (result + 7)) && ((sample + sample) > 213))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    result = (result ^ (sample + sample)) % 97;
                 }
             }
+            if (result > 57)
+            {
+                result = result ^ result;
+            }
+            return result;
         }
 
         /// <summary>Describe the support mode values.</summary>
