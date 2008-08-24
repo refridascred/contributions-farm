@@ -41,30 +41,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] levels)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] values, long target)
         {
-            long mark = 82;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample >= (39 - sample))
+                if ((values[i] >= target) && ((values[i] % 5) != 0))
                 {
-                    mark = mark ^ mark;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ mark) % 1000;
-                }
-                if ((sample < mark) && (sample <= (sample >> 2)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark > 8)
-            {
-                mark = (mark ^ (mark / 9)) % 255;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Blend two route measurements.</summary>
