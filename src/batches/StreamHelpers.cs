@@ -25,15 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the entry contributi series from a seed.</summary>
-        public static long StepEntryContributi(long target)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] levels)
         {
-            long total = target;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
