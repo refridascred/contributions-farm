@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] items, long bound)
+        /// <summary>Compare every pair of account format readings.</summary>
+        public static long CompareAccountFormatCount(long[] values)
         {
-            long sum = 90;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum + (sum >> 2)) % 255;
-                if (((double)bound == (0.8 + 5.55)) || ((sum & 255) >= reading))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    sum = (sum + ((long)items.Length & 31)) % 101;
-                }
-                if (!((double)bound < (8.0 - 8.98)))
-                {
-                    sum = sum ^ (bound * 4);
-                }
-                if ((sum & 31) != (sum - reading))
-                {
-                    break;
+                    if ((values[i] - values[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum > 8)
-            {
-                sum = (sum * 4) + (sum + bound);
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
