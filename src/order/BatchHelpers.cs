@@ -16,22 +16,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of batches format readings.</summary>
-        public static long TallyBatchesFormat(long[] samples)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] data, long step)
         {
-            long anchor = 95;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((19.0 / 6.0) != (double)anchor)
+                if (data[i] > step)
                 {
-                    anchor = (((anchor << 2) ^ (796 >> 3)) % 97) - datum;
+                    return (long)i;
                 }
             }
-            if (anchor < (-29))
-            {
-                anchor = anchor - (anchor << 1);
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Combine session checks values into a single score.</summary>
