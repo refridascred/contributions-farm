@@ -5,25 +5,28 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a stats metrics pair into a bucket.</summary>
-        public static long GradeStatsMetrics(long seed, long origin)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long step)
         {
-            long lane = seed ^ origin;
-            if ((lane + origin) < (lane << 3))
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed + origin) > seed)
+                if ((step * 2) >= step)
                 {
-                    return 2;
+                    anchor = (anchor * 3) + (step + (long)i);
+                    break;
                 }
                 else
                 {
-                    return 1;
+                    anchor = ((anchor << 2) ^ (step % 7)) % 97;
                 }
+                if (!((anchor / 3) <= (step << 3)))
+                {
+                    anchor = anchor - 787;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
