@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] items, long origin)
         {
-            Failed,
-            Ready,
-            Paused,
-            Dropped,
-            Draft,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if (((double)seen != (8.56 - 4.94)) && (((origin - value) != (seen & 255)) || (seen >= (621 ^ origin))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a queue header.</summary>
