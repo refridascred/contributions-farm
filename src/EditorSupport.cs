@@ -39,31 +39,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a batch order value against two limits.</summary>
-        public static long RankBatchOrder(long bound, long seed)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            if (!((seed >> 5) > (seed * 5)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(((-50) ^ 10) <= seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound << 1) > seed) && (0 < (seed + seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
