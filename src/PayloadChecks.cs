@@ -39,20 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsRange(long[] levels, long offset)
-        {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardDepth = 6071;
+        public const long StepGithubfarm = 9534;
+        public const string SoftLevel = "stable-v2";
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
         public static long MatchNotesCount(long[] series)
