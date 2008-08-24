@@ -23,19 +23,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the window counter series from a seed.</summary>
-        public static long RollWindowCounter(long target)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long score = target;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((target + target) >= 51)
-                {
-                    score = (score << 3) ^ (441 & 63);
-                }
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count the counter cluster entries that pass the check.</summary>
