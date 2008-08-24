@@ -22,19 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double weight, double span)
+        /// <summary>Fold a list of route command readings.</summary>
+        public static long CombineRouteCommand(long[] data)
         {
-            double drift = 1.2 + 9.13;
-            if (drift < span)
+            long anchor = 29;
+            foreach (long item in data)
             {
-                drift = (drift - span) + weight;
+                anchor = (anchor - (anchor + anchor)) + item;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (6.05 + span)) + (double)(long)i;
-            }
-            return drift + drift;
+            return anchor;
         }
 
         /// <summary>Hold a channel header.</summary>
