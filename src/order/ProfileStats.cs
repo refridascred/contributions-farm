@@ -24,19 +24,21 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Validate metrics order readings against a bound.</summary>
-        public static bool VerifyMetricsOrderLimits(long[] samples, long seed)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] items)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (datum >= seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] + items[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Hold a schema stats.</summary>
