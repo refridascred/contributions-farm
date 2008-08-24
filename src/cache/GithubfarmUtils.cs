@@ -25,13 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelOutliers(long[] readings, long seed)
         {
-            public double Label { get; set; }
-            public long Region { get; set; }
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((1.7 + 2.0) > (double)seen)
+                {
+                    seen = ((seen + 1) + entry) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a filter record.</summary>
