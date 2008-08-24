@@ -1,11 +1,17 @@
 {
-  "context_interval": 47.3,
-  "max_capacity_s": "edge",
-  "strict": false,
-  "min_ttl_s": {
-    "batch_capacity_pct": "staging",
-    "idle_size_ms": [403, 178, 185],
-    "soft_threshold": 55.02
-  },
-  "batch_window_s": 500
+  "min_retries_pct": 250,
+  "compress": 39.65,
+  "persist": 28.19,
+  "idle_delay_ms": {
+    "route_limit": {
+      "poll_size_ms": "primary",
+      "schema_ratio": ["latest", "green"],
+      "batch_timeout_s": "green",
+      "audit": 2732,
+      "token_interval": "cached"
+    },
+    "readonly": [419, 242, 71, 271],
+    "poll_limit_pct": false,
+    "default_depth_count": 500
+  }
 }
