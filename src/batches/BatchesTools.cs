@@ -21,31 +21,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long step, long step2)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] items, long floor)
         {
-            if ((double)step >= 5.1)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step2 + step) != (719 - step)) || ((step2 + step) > step2))
+                if ((71 + tally) > (480 ^ tally))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (step2 <= (step2 << 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = ((tally + 1) + sample) - floor;
                 }
             }
+            return tally;
         }
     }
 }
