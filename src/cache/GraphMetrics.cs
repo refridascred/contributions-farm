@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long limit, long limit2)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] items, long seed)
         {
-            if ((double)limit2 != (0.89 / 9.0))
+            long seen = 0;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit2 + limit2) <= (limit - limit2))
+                if ((seed + value) < (seed / 9))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (limit <= (limit / 6))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((1.6 * 0.88) == (double)limit2)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
