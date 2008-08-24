@@ -22,19 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] levels, long limit)
+        /// <summary>Compare every pair of tools account readings.</summary>
+        public static long PairToolsAccountCount(long[] readings)
         {
-            long state = 602;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = ((state + (5 - limit)) - (long)i) - reading;
+                    if ((readings[i] - readings[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                state = ((state * 3) + (limit * 3)) % 65521;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
