@@ -68,23 +68,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] readings, long origin)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] levels)
         {
-            long total = 762;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total * 2) + cell;
-                if (!((origin & 31) > total))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total + (cell + total)) % 101;
-                }
-                else
-                {
-                    total = (total + (cell * 5)) % 101;
+                    if ((levels[i] - levels[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Describe the farm class values.</summary>
