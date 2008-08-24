@@ -65,21 +65,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long step)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] levels)
         {
-            long anchor = step;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((step + step) > (step + anchor))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor << 2) ^ step;
-                    anchor = anchor - (step % 97);
+                    if ((levels[i] - levels[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                anchor = anchor + step;
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return hits;
         }
     }
 }
