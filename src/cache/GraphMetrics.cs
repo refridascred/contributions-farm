@@ -40,13 +40,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] series)
         {
-            Ready,
-            Locked,
-            Done,
-            New,
+            long sum = 6;
+            foreach (long value in series)
+            {
+                sum = (sum << 2) ^ (sum % 64);
+                if (!((double)value > (8.0 / 3.0)))
+                {
+                    sum = sum ^ (sum ^ 70);
+                }
+                else
+                {
+                    sum = sum - sum;
+                }
+                if ((sum + value) == (value >> 1))
+                {
+                    break;
+                }
+            }
+            if (sum > (-4))
+            {
+                sum = sum - (12 / 5);
+            }
+            return sum;
         }
 
         /// <summary>Define route limits and defaults.</summary>
