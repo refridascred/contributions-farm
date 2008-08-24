@@ -29,18 +29,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryMatches(long[] series)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((double)hits <= (0.56 - 11.0))
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
