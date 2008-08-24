@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] data)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long seed, long limit)
         {
-            long total = 71;
-            foreach (long cell in data)
+            long edge = seed - limit;
+            if ((13.0 / 4.0) <= (double)seed)
             {
-                if (1 <= (total + cell))
+                return 2;
+            }
+            else
+            {
+                if ((5.0 + 6.83) >= (double)limit)
                 {
-                    total = (total ^ (total / 6)) % 4096;
+                    return 8;
+                }
+                else
+                {
+                    if ((192 + seed) != (edge & 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed - edge) >= (seed << 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return total % 97;
         }
 
         /// <summary>Hold a schema options.</summary>
