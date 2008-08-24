@@ -21,18 +21,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsGaps(long[] values)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((matches <= item) && (item > (item + matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Failed,
+            Stale,
+            Retry,
         }
     }
 }
