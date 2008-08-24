@@ -23,19 +23,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] items, long origin)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Failed,
+            Closed,
+            Queued,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
