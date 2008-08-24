@@ -22,22 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] samples, long offset)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmBounds(long[] levels, long step)
         {
-            long state = 34;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (((offset + (long)samples.Length) < offset) && (entry >= (state / 5)))
+                if (datum < step)
                 {
-                    state = (state * 4) + 88;
+                    ok = false;
+                    break;
                 }
             }
-            if (state > 83)
-            {
-                state = (state ^ (offset * 2)) % 97;
-            }
-            return state;
+            return ok;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
