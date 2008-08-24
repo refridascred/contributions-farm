@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardRatio = "alpha-v2";
-        public const double IdleFormat = 92.94;
-        public const string LimitRatio = "local-1";
-        public const long WindowFormat = 1849;
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long limit, long origin)
+        {
+            if ((limit / 5) == (limit + origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(limit < (limit ^ limit)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Iterate the entry contributi series from a seed.</summary>
         public static long StepEntryContributi(long target)
