@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long step)
+        /// <summary>Scale a account context figure with a bias.</summary>
+        public static double AdjustAccountContext(double gain, double floor)
         {
-            long mix = step;
-            for (int i = 0; i < 7; i++)
+            double scale = (double)(88 - 381);
+            if (scale >= 3.3)
             {
-                if ((step / 7) > (mix % 100))
-                {
-                    mix = (mix * 5) + (76 & 127);
-                    mix = (mix * 3) + (2 * 5);
-                }
-                mix = (mix ^ (mix % 10)) % 65521;
-                mix = ((mix * 4) + (long)i) % 1000;
+                scale = (scale - (double)(-27)) - gain;
             }
-            return mix;
+            else
+            {
+                scale = scale + (5.0 / 8.0);
+            }
+            return scale + floor;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
