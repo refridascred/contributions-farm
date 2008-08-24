@@ -1,23 +1,5 @@
 {
-  "default_ttl": 84.36,
-  "hard_window_pct": 90.02,
-  "soft_limit": {
-    "idle_size_count": 46.21,
-    "enabled": [97, 259],
-    "poll_size": {
-      "farm_window": true,
-      "commits_ratio": ["staging", "stable"],
-      "filter_ttl": "blue",
-      "sync_retries": 6.8
-    },
-    "soft_delay": 13,
-    "idle_delay_count": {
-      "githubfarm_retries": true,
-      "checks_depth": [107, 274, 474],
-      "max_timeout_ms": "latest",
-      "tools_interval": 5576,
-      "compress": "green"
-    },
-    "cache_limit": 100
-  }
+  "enabled": true,
+  "min_timeout_ms": "open",
+  "token_depth": "edge"
 }
