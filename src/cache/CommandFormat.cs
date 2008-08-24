@@ -37,18 +37,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsGaps(long[] values)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long target)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long acc = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)entry <= (17.0 / 7.0))
-                {
-                    matches = matches + 2;
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
