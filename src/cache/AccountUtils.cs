@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((count << 1) >= value)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 6521;
+        public const long SoftSpan = 4446;
+        public const long WindowInterval = 6962;
+        public const long WindowToken = 6535;
+        public const long MaxToken = 5020;
 
         /// <summary>Audit schema graph readings against a rule.</summary>
         public static long TallySchemaGraphHits(long[] items)
