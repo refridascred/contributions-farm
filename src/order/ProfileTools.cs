@@ -50,19 +50,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every entry checks entry stays within the limit.</summary>
-        public static bool CheckEntryChecksBounds(long[] samples, long seed)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long offset, long target)
         {
-            bool found = true;
-            foreach (long value in samples)
+            if ((target + offset) >= (34 / 2))
             {
-                if (value < seed)
+                return 4;
+            }
+            else
+            {
+                if ((offset ^ 776) >= (target ^ offset))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (70 < (target >> 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Fold a list of context readings.</summary>
