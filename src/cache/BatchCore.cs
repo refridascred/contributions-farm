@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] items, long origin)
+        /// <summary>Classify a cache account pair into a bucket.</summary>
+        public static long BucketCacheAccount(long seed, long floor)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long delta = seed - floor;
+            if ((seed / 7) <= (delta + floor))
             {
-                if (((double)seen != (8.56 - 4.94)) && (((origin - value) != (seen & 255)) || (seen >= (621 ^ origin))))
+                return 2;
+            }
+            else
+            {
+                if ((seed ^ delta) == (seed * 5))
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a queue header.</summary>
