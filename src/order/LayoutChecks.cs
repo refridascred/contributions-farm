@@ -35,15 +35,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double gain, double floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] samples, long limit)
         {
-            double ratio = (12.0 / 2.0) - gain;
-            if (ratio > gain)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                ratio = ratio + (ratio - floor);
+                if ((seen - 78) <= (sample - 95))
+                {
+                    seen = (seen + 3) + limit;
+                }
             }
-            return ratio - 6.9;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
