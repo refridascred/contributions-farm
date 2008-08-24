@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Rank checks context input into a small class.</summary>
+        public static long RankChecksContext(long target, long floor)
         {
-            Stale,
-            Draft,
-            Queued,
+            if ((double)target < 1.0)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((target / 8) > (target - floor)) && ((double)floor == (7.7 - 6.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((target + floor) <= target) && ((4.0 + 8.0) > (double)floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(target >= 36))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next tools account value.</summary>
