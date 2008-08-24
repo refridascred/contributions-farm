@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesHits(long[] data)
         {
-            Synced,
-            Ready,
-            Paused,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if (!((1.3 * 3.0) >= (double)hits) || ((datum - datum) > hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
