@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] readings, long target)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long limit)
         {
-            long total = 45;
-            foreach (long reading in readings)
+            long carry = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if ((long)readings.Length < (total / 2))
+                carry = (carry << 3) ^ carry;
+                if (!(limit >= ((long)i % 2)))
                 {
-                    total = (((total ^ (total * 4)) % 97) - reading) + target;
+                    carry = ((carry << 2) ^ (limit + carry)) % 255;
                 }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return total % 4096;
+            return carry;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
