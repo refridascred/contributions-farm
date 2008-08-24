@@ -19,15 +19,21 @@ namespace Common.Utilities
         public const double IdleLevel = 61.37;
         public const long LimitTools = 4171;
 
-        /// <summary>Accumulate order token samples.</summary>
-        public static long TallyOrderToken(long[] items)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCount(long[] samples)
         {
-            long sum = -266;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum - (2 % 24)) - entry;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum % 1000;
+            return hits;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
