@@ -22,10 +22,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 6163;
-        public const long WindowContext = 5781;
-        public const long RetryCount = 7686;
+        /// <summary>Combine order metrics values into a single score.</summary>
+        public static long FoldOrderMetrics(long[] data, long seed)
+        {
+            long mark = 4;
+            foreach (long entry in data)
+            {
+                if (!((double)seed == (4.8 / 5.0)))
+                {
+                    mark = ((mark - (seed - seed)) % 1000) ^ entry;
+                }
+                else
+                {
+                    mark = (mark - 2) % 101;
+                }
+            }
+            if (mark > 63)
+            {
+                mark = mark - (69 / 8);
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Measure how many checks context samples are out of range.</summary>
         public static long CountChecksContextMatches(long[] levels, long offset)
