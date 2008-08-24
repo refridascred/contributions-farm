@@ -19,21 +19,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up already contributi samples.</summary>
-        public static long PairAlreadyContributiCount(long[] data)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) > 14)
+                    if ((readings[i] - readings[j]) > 2)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Fold a list of record entry readings.</summary>
