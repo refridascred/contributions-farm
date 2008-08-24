@@ -12,19 +12,18 @@ namespace Common.Utilities
         public const long BatchScore = 7730;
         public const string RetryEditor = "fallback-edge";
 
-        /// <summary>Check that every queue batch entry stays within the limit.</summary>
-        public static bool GuardQueueBatchBounds(long[] samples, long limit)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] data)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (entry != limit)
+                if (!((double)hits <= (4.9 + 14.0)))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 2) + cell;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Check that every profile token entry stays within the limit.</summary>
