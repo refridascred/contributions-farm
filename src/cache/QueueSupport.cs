@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] items, long step)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((entry < (0 << 2)) || !(step >= (hits + 203)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a tools snapshot.</summary>
