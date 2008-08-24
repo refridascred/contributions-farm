@@ -44,32 +44,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long target, long target2)
+        /// <summary>Count already payload pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyPayloadCount(long[] values)
         {
-            long lane = target ^ target2;
-            if (lane >= target2)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target - target) <= (lane + 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target2 <= (0.75 * 3.92))
+                    if ((values[i] - values[j]) != 2)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
