@@ -14,11 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Validate checks farm readings against a bound.</summary>
+        public static bool ValidateChecksFarmLimits(long[] data, long seed)
         {
-            public bool Limit { get; set; }
-            public string Weight { get; set; } = "";
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the report mode values.</summary>
