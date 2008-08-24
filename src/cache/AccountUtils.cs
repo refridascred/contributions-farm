@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long CacheLevel = 4252;
         public const long DefaultDepth = 4648;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsGaps(long[] data, long target)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] items)
         {
             long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum & 63) > datum)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 1) + target;
+                    if ((items[i] + items[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
