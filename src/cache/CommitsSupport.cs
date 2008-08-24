@@ -21,21 +21,19 @@ namespace Common.Utilities
         public const long LimitMetrics = 3618;
         public const long WindowSize = 3457;
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] samples)
+        /// <summary>Project the next commits schema value.</summary>
+        public static double SmoothCommitsSchema(double rate, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate2 = rate;
+            if (rate2 < (6.0 - span))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate2 = rate2 + (rate2 * 2.7);
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                rate2 = rate2 + (double)(long)i;
+            }
+            return rate2 - 1.0;
         }
 
         /// <summary>Rank token context input into a small class.</summary>
