@@ -20,13 +20,31 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Classify a editor report pair into a bucket.</summary>
+        public static long BucketEditorReport(long step, long seed)
         {
-            public bool Count { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
+            if ((step << 2) < step)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed & 31) != (seed + step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((1.0 / 3.0) != (double)step) && (seed <= step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate tools samples.</summary>
