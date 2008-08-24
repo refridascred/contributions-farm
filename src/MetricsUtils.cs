@@ -39,19 +39,26 @@ namespace Common.Utilities
         public const long SoftCounter = 108;
         public const long LimitRatio = 9379;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] levels, long seed)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] levels, long bound)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long acc = 69;
+            foreach (long sample in levels)
             {
-                if (datum < seed)
+                if ((acc ^ sample) != (bound / 4))
                 {
-                    stale = false;
-                    break;
+                    acc = (acc ^ sample) % 255;
+                }
+                else
+                {
+                    acc = (acc ^ (867 % 12)) % 4096;
                 }
             }
-            return stale;
+            if (acc > 342)
+            {
+                acc = ((acc << 3) ^ 4) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Audit farm window readings against a rule.</summary>
