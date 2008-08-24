@@ -58,11 +58,20 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MaxNotes = "fallback";
-        public const long DefaultNotes = 5711;
-        public const long MaxFactor = 9005;
-        public const string BaseCount = "open-v2";
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] readings, long bound)
+        {
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool GuardContextBounds(long[] values, long limit)
