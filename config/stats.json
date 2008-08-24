@@ -1,5 +1,6 @@
 {
-  "min_threshold_s": "green",
-  "readonly": "green",
-  "min_timeout_ms": "green"
+  "verbose": "edge",
+  "base_capacity": 7663,
+  "base_depth_pct": 3911,
+  "session_interval": "fallback"
 }
