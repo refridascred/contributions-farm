@@ -20,15 +20,22 @@ namespace Common.Utilities
             return scale + floor;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsGaps(long[] readings)
         {
-            long state = limit;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                state = ((state * 4) + (long)i) % 97;
+                if (!((reading % 24) != (reading >> 4)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the stream level values.</summary>
