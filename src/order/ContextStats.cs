@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] readings)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
