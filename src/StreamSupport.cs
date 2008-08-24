@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit commits cache readings against a rule.</summary>
-        public static long TallyCommitsCacheHits(long[] data)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            double bias = offset;
+            if (bias >= (offset + weight))
             {
-                if (!((matches + matches) > (8 & 7)))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                bias = bias - (double)9;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias - weight;
         }
 
         /// <summary>Find the first counter metrics entry that matches the target.</summary>
