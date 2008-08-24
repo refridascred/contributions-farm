@@ -32,11 +32,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
