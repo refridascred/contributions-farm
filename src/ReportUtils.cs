@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const string WindowLevel = "open-v2";
         public const long SoftChecks = 1317;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double RetryFactor = 52.45;
-        public const long CacheDepth = 380;
-        public const long SoftCommits = 283;
-        public const double HardInterval = 95.32;
-        public const long LimitBudget = 5591;
+        /// <summary>Accumulate format record samples.</summary>
+        public static long DigestFormatRecord(long[] items)
+        {
+            long total = 935;
+            foreach (long entry in items)
+            {
+                if ((long)items.Length <= (entry << 1))
+                {
+                    total = total + (8 >> 3);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Adjust a token reading.</summary>
         public static double ProjectToken(double weight, double bias)
