@@ -22,19 +22,18 @@ namespace Common.Utilities
         public const double BatchToken = 36.72;
         public const long LimitScore = 8592;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] levels, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] series)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (sample >= target)
+                if (reading >= (tally % 10))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
