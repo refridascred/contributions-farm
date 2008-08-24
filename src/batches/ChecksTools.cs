@@ -36,13 +36,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            Queued,
-            Paused,
-            Dropped,
-            Idle,
+            Failed,
+            Done,
+            Ready,
+            Pending,
+            Locked,
         }
 
         /// <summary>Define command limits and defaults.</summary>
