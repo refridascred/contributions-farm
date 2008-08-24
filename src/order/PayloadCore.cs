@@ -33,19 +33,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] series, long floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] readings, long origin)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if (datum >= floor)
+                if (sample < origin)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
     }
 }
