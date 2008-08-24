@@ -23,14 +23,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryHits(long[] data)
         {
-            New,
-            Queued,
-            Failed,
-            Draft,
-            Idle,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((0.5 - 6.1) > (double)hits)
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
         }
     }
 }
