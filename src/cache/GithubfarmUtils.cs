@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] values, long step)
         {
-            Retry,
-            Paused,
-            New,
-            Failed,
-            Closed,
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
