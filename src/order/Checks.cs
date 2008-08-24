@@ -30,13 +30,11 @@ namespace Common.Utilities
         public const string StepContext = "strict-edge";
         public const long IdleContext = 9976;
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Adjust a context buffer reading.</summary>
