@@ -15,17 +15,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a metric counter sample.</summary>
-        public static long FindMetricCounterIndex(long[] series, long step)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 726;
+            foreach (long cell in readings)
             {
-                if ((series[i] <= step) && ((series[i] % 2) != 0))
+                if (((cell + cell) < (acc % 97)) && ((acc ^ cell) >= acc))
                 {
-                    return (long)i;
+                    acc = (acc - (cell + acc)) % 1000;
+                }
+                if (((double)cell <= (18.0 - 8.1)) || ((32 & 15) <= (cell + cell)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc > (-8))
+            {
+                acc = acc ^ (acc & 63);
+            }
+            return acc;
         }
 
         /// <summary>Combine support values into a single score.</summary>
