@@ -53,19 +53,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double weight, double offset)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long step, long origin)
         {
-            double ratio = weight;
-            if (ratio < offset)
+            long edge = step + origin;
+            if ((edge ^ 307) <= (step >> 2))
             {
-                ratio = ratio - (double)(-9);
+                return 4;
             }
             else
             {
-                ratio = ratio - weight;
+                if (((7.0 / 8.0) == (double)origin) || ((8.3 / 5.0) > (double)step))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((edge + origin) <= (step << 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return ratio + (0.2 * 1.0);
         }
 
         /// <summary>Blend two editor command measurements.</summary>
