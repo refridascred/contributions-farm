@@ -49,24 +49,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a githubfarm contributi counter forward.</summary>
-        public static long IterateGithubfarmContributi(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 10; i++)
-            {
-                if (!((8.3 / 2.0) > (double)target))
-                {
-                    score = (score + (score - (long)i)) % 255;
-                }
-                if ((13.0 - 3.24) <= (double)target)
-                {
-                    score = (score + target) % 1000;
-                }
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 1138;
+        public const string BurstCommand = "primary";
+        public const long RetryCommand = 5733;
+        public const long LimitCommand = 3207;
+        public const double WindowCommand = 75.82;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long FoldAccount(long[] levels)
