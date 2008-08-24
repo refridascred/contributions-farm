@@ -21,12 +21,31 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long step, long step2)
         {
-            Draft,
-            Ready,
-            Queued,
+            if ((double)step >= 5.1)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((step2 + step) != (719 - step)) || ((step2 + step) > step2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (step2 <= (step2 << 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
