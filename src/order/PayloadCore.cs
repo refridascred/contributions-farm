@@ -21,13 +21,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long ClassifyWindow(long floor, long origin)
         {
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
+            long lane = floor ^ origin;
+            if ((768 - floor) != (floor + 36))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((0 + (-1)) > (lane % 10)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Combine metric values into a single score.</summary>
