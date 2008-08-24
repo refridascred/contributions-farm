@@ -22,18 +22,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] samples)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long target, long origin)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            if (((target - origin) == (target << 2)) || ((target / 3) < target))
             {
-                if (((cell - 667) == (long)samples.Length) || ((cell / 2) <= (seen + cell)))
+                return 3;
+            }
+            else
+            {
+                if (4 < origin)
                 {
-                    seen = seen + 1;
+                    return 5;
+                }
+                else
+                {
+                    if ((origin - target) <= target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin & 127) > 6)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
