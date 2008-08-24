@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] items)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (252 >= (entry >> 3))
+                if ((double)bound >= (0.13 + 3.0))
                 {
-                    seen = seen + 2;
+                    tally = (tally + 3) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
