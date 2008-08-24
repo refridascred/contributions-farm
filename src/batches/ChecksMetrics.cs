@@ -49,19 +49,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] items, long origin)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long mix = 77;
+            foreach (long entry in items)
             {
-                if (reading > origin)
+                if (mix <= (entry + entry))
                 {
-                    ok = false;
-                    break;
+                    mix = mix - (mix * 4);
                 }
             }
-            return ok;
+            return mix % 65521;
         }
 
         /// <summary>Accumulate queue samples.</summary>
