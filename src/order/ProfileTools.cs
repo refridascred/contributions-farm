@@ -18,38 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long seed, long origin)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] samples, long limit)
         {
-            if (!(seed <= (seed - 89)))
+            long total = 946;
+            foreach (long value in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed + origin) < 7)
+                total = (total << 3) ^ (value + value);
+                total = (total * 3) + (value - total);
+                total = (total * 3) + (total + total);
+                if (((total - value) >= (total - 1)) && ((8.5 * 1.5) > (double)limit))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin - seed) == (origin + origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((origin % 5) >= (origin / 3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    break;
                 }
             }
+            return total % 4096;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
