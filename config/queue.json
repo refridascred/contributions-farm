@@ -1,8 +1,17 @@
 {
-  "idle_size_pct": 99,
-  "stats_capacity": false,
-  "default_delay": 64.89,
-  "persist": "edge",
-  "warm_delay": 60,
-  "sync_threshold_pct": 495
+  "cache_capacity_pct": {
+    "min_timeout": "legacy",
+    "report_delay": {
+      "batch_capacity": "primary",
+      "checks_ratio": 79.38,
+      "readonly": 6138,
+      "compress": "fallback",
+      "warm_delay_pct": "eu-west",
+      "max_ttl_ms": "staging"
+    },
+    "default_window_s": ["staging", "strict", "latest"],
+    "batch_threshold": "fallback"
+  },
+  "cluster_timeout": "staging",
+  "compress": "blue"
 }
