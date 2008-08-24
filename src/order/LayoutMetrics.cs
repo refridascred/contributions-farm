@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long offset)
         {
-            Queued,
-            Dropped,
-            Done,
-            Paused,
-            Idle,
+            long result = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                if (7.49 <= (double)(long)i)
+                {
+                    continue;
+                }
+                result = ((result << 3) ^ 637) % 65521;
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
