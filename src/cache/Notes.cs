@@ -49,19 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferRange(long[] values, long floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] data)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long mix = 459;
+            foreach (long reading in data)
             {
-                if (datum < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = (mix << 2) ^ (reading * 3);
             }
-            return ok;
+            if (mix < 5)
+            {
+                mix = (mix ^ (15 / 8)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
