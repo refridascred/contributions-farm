@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every checks queue entry stays within the limit.</summary>
-        public static bool ValidateChecksQueueBounds(long[] items, long seed)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] series)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample >= seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] - series[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Project the next entry value.</summary>
