@@ -43,11 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            Dropped,
-            Synced,
+            Retry,
+            Failed,
+            Idle,
             Draft,
         }
 
