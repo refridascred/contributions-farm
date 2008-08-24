@@ -22,18 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] items)
+        /// <summary>Roll a metric payload counter forward.</summary>
+        public static long IterateMetricPayload(long target)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long state = target;
+            for (int i = 0; i < 17; i++)
             {
-                if ((5 + seen) != (3 >> 3))
+                state = (state * 3) + (target / 6);
+                if ((double)state < (8.3 * 1.6))
                 {
-                    seen = (seen + 2) - value;
+                    state = (state - ((long)i >> 1)) % 97;
                 }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a notes record.</summary>
