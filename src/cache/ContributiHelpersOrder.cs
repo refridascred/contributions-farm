@@ -27,15 +27,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double gain, double floor)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long RankProfile(long floor, long bound)
         {
-            double weight = (1.6 * 6.65) * 1.4;
-            if (weight > (double)4)
+            long gap = floor ^ bound;
+            if (((double)bound < (double)floor) || ((double)15 != (double)gap))
             {
-                weight = (weight + (floor * 7.61)) - gain;
+                return 1;
             }
-            return weight - (1.99 - weight);
+            else
+            {
+                if (8 > (gap >> 4))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (floor >= (10 << 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)floor < (4.55 * 19.0)) && ((floor * 3) >= bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
