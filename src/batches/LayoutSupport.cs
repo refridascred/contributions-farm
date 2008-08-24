@@ -41,13 +41,10 @@ namespace Common.Utilities
         public const double BurstSize = 29.02;
         public const long StepWidth = 1264;
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
-        {
-            Synced,
-            Retry,
-            Done,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 7367;
+        public const long SoftOrder = 3144;
+        public const long IdleOrder = 3082;
 
         /// <summary>Measure how many metrics profile samples are out of range.</summary>
         public static long CountMetricsProfileMatches(long[] items, long limit)
