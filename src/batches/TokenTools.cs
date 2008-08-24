@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long step)
+        /// <summary>Validate entry graph readings against a bound.</summary>
+        public static bool VerifyEntryGraphRange(long[] data, long origin)
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((double)step >= 6.2)
+                if (entry > origin)
                 {
-                    state = (state + (step / 3)) % 4096;
+                    valid = false;
+                    break;
                 }
-                state = ((state * 4) + (long)i) % 97;
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
