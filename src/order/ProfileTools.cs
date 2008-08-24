@@ -33,25 +33,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a contributi route pair into a bucket.</summary>
-        public static long SortContributiRoute(long limit, long bound)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] readings, long limit)
         {
-            long gap = limit ^ bound;
-            if (!((6 << 1) <= (gap ^ gap)))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound + limit) < (gap >> 3))
+                if (readings[i] >= limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next route githubfarm value.</summary>
