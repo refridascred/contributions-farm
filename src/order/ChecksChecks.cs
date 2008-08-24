@@ -12,16 +12,12 @@ namespace Common.Utilities
         public const long HardCount = 8087;
         public const long WindowBudget = 9241;
 
-        /// <summary>Adjust a command notes reading.</summary>
-        public static double BlendCommandNotes(double gain, double offset)
-        {
-            double weight = gain;
-            if (weight < (gain - weight))
-            {
-                weight = (weight + (double)(-15)) + offset;
-            }
-            return weight - (10.0 / 5.0);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseFilter = 8632;
+        public const long SoftFilter = 7056;
+        public const string RetryFilter = "legacy-1";
+        public const long WindowSize = 8998;
+        public const long MinSize = 4281;
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long SeekChecksIndex(long[] series, long bound)
