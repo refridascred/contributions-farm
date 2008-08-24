@@ -34,32 +34,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long origin, long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] levels)
         {
-            long cur = origin ^ seed;
-            if ((cur + origin) <= (origin + cur))
+            long mix = 49;
+            foreach (long item in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((6.35 - 9.28) == (double)seed))
+                if ((mix + item) != (586 % 3))
                 {
-                    return 6;
+                    mix = ((mix * 5) + (item >> 2)) % 255;
                 }
                 else
                 {
-                    if (seed <= (seed / 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    mix = (mix - item) % 97;
                 }
             }
+            return mix;
         }
 
         /// <summary>Digest a series of support entries.</summary>
