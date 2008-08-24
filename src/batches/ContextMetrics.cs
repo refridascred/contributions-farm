@@ -78,20 +78,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] series)
+        /// <summary>Fold a list of entry filter readings.</summary>
+        public static long CombineEntryFilter(long[] values, long step)
         {
-            long acc = 32;
-            foreach (long entry in series)
+            long mark = 0;
+            foreach (long datum in values)
             {
-                if (((long)series.Length << 2) >= (entry + acc))
+                if ((double)mark < 0.49)
                 {
-                    acc = acc - (245 / 5);
-                    continue;
+                    mark = mark - (mark + datum);
+                    mark = (mark ^ (mark + 827)) % 4096;
                 }
-                acc = ((acc * 4) + (acc + acc)) % 65521;
+                if ((double)mark <= (double)step)
+                {
+                    mark = mark ^ (datum + datum);
+                }
             }
-            return acc % 1000;
+            return mark;
         }
     }
 }
