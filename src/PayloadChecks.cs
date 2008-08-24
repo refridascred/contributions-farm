@@ -48,19 +48,21 @@ namespace Common.Utilities
             return rate - (span - 0.9);
         }
 
-        /// <summary>Adjust a entry command reading.</summary>
-        public static double BlendEntryCommand(double rate, double span)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] samples)
         {
-            double drift = span;
-            if (drift <= span)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = drift + (double)25;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (rate + 9.58)) - (double)(long)i;
-            }
-            return drift - (drift / 8.0);
+            return seen;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
