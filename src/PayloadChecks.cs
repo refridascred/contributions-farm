@@ -73,19 +73,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] samples, long step)
+        /// <summary>Roll a record metrics counter forward.</summary>
+        public static long RollRecordMetrics(long offset)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long carry = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell <= step)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    stale = false;
-                    break;
+                    carry = (((carry << 2) ^ carry) % 255) + (long)i2;
                 }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return stale;
+            return carry;
         }
     }
 }
