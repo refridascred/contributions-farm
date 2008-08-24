@@ -44,31 +44,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long target, long limit)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] data, long floor)
         {
-            if ((target - target) <= (413 + target))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((833 - target) > (target * 2))
+                if (((floor + 778) <= (datum - 9)) || (((tally - floor) >= floor) && ((floor >> 2) >= 1)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (limit <= (limit >> 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a farm record.</summary>
