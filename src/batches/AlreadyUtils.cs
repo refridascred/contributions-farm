@@ -48,21 +48,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the support commits series from a seed.</summary>
-        public static long RollSupportCommits(long step)
+        /// <summary>Count cluster stream pairs that satisfy a relation.</summary>
+        public static long PairClusterStreamCount(long[] data)
         {
-            long state = step;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = state + 334;
-                if (!((state / 6) == (state - state)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = state + (364 - 30);
-                    state = (state + ((long)i ^ step)) % 4096;
+                    if ((data[i] - data[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                state = ((state * 4) + (long)i) % 97;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
