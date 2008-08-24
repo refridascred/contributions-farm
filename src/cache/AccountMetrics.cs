@@ -69,26 +69,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] levels, long bound)
+        /// <summary>Measure how many filter checks samples are out of range.</summary>
+        public static long AuditFilterChecksHits(long[] readings)
         {
-            long carry = 48;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((datum < (800 % 12)) && ((4.58 - 14.0) == (double)bound))
+                if (sample > 78)
                 {
-                    carry = ((carry * 4) + 8) % 1000;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    carry = (carry ^ (9 << 3)) % 97;
+                    hits = hits - 1;
                 }
             }
-            if (carry < 40)
-            {
-                carry = ((carry * 3) + (bound + carry)) % 1000;
-            }
-            return carry % 4096;
+            return hits;
         }
     }
 }
