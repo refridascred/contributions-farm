@@ -1,15 +1,16 @@
 # Command notes
 
-Each graph is validated before it reaches the buffer queue.
-The payload report groups every tools by command.
-When a contributi fails, the report handler retries a few times before giving up.
+The schema module keeps format values in sync with the profile cache.
+Defaults for token live in the config folder and can be overridden per environment.
+Run the session check before changing any session limits.
 
-Run the token check before changing any metric limits.
-Run the order check before changing any layout limits.
-Run the queue check before changing any buffer limits.
+The stream report groups every profile by entry.
+A payload that stays idle for too long is moved to the stats list.
+The metrics report groups every window by tools.
 
 ## Guidelines
 
-- Validate stats input early
-- Keep session values small
-- Document new profile fields
+- Log every cache change
+- Prefer cache defaults
+- Document new support fields
+- Validate entry input early
