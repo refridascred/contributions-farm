@@ -77,11 +77,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] readings, long origin)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            long total = 57;
+            foreach (long datum in readings)
+            {
+                total = ((total << 2) ^ (3 >> 5)) + datum;
+                if (origin > (total + total))
+                {
+                    break;
+                }
+            }
+            return total;
         }
     }
 }
