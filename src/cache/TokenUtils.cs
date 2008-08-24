@@ -23,25 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long step, long seed)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long offset = step - seed;
-            if ((step % 100) >= (offset / 6))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((6.91 - 8.0) <= (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Idle,
+            Ready,
+            Closed,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
