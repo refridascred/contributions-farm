@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] samples, long floor)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((item + count) == (floor - count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
