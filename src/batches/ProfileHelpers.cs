@@ -70,12 +70,13 @@ namespace Common.Utilities
             return rate - (9.9 * 8.14);
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            Synced,
-            Queued,
             Pending,
+            Retry,
+            Failed,
+            Draft,
         }
     }
 }
