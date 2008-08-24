@@ -47,11 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 4587;
-        public const string BatchLevel = "alpha-1";
-        public const long WindowSize = 3605;
-        public const long DefaultBudget = 2283;
-        public const long StepFactor = 759;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] values)
+        {
+            long total = 5;
+            foreach (long datum in values)
+            {
+                if ((total & 63) != (datum * 2))
+                {
+                    total = (total ^ 22) % 1000;
+                }
+            }
+            if (total < 72)
+            {
+                total = (total + (total - 584)) % 1000;
+            }
+            return total % 1000;
+        }
     }
 }
