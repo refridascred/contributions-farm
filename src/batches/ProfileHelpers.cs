@@ -25,16 +25,10 @@ namespace Common.Utilities
         public const string DefaultToken = "latest-v2";
         public const long WindowScore = 5122;
 
-        /// <summary>Iterate the channel command series from a seed.</summary>
-        public static long DeriveChannelCommand(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 6898;
+        public const double LimitRatio = 9.49;
+        public const long WindowEntry = 7435;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long WeighOrder(long[] data)
