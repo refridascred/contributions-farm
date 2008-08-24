@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] values)
+        /// <summary>Fold a list of route buffer readings.</summary>
+        public static long ScoreRouteBuffer(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 678;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                carry = (carry << 2) ^ (3 << 3);
+                if ((7.0 + 0.43) < (double)datum)
                 {
-                    if ((values[i] ^ values[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            if (carry < 124)
+            {
+                carry = carry + (carry - carry);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
