@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long seed, long limit)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmRange(long[] series, long bound)
         {
-            long edge = seed - limit;
-            if ((13.0 / 4.0) <= (double)seed)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((5.0 + 6.83) >= (double)limit)
+                if (entry > bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((192 + seed) != (edge & 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed - edge) >= (seed << 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a order header.</summary>
