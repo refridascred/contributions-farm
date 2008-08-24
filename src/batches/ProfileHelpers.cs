@@ -26,15 +26,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] items)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double ratio, double offset)
         {
-            long mark = 280;
-            foreach (long datum in items)
+            double bias = (14.0 + 12.0) * 12.0;
+            if (bias <= bias)
             {
-                mark = (((mark * 5) + (mark & 3)) % 4096) ^ datum;
+                bias = (bias + offset) + ratio;
             }
-            return mark;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + bias) - (double)(long)i;
+            }
+            return bias - (offset / 2.0);
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
