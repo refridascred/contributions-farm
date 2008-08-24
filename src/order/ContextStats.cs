@@ -21,15 +21,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double bias, double floor)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double bias, double bias2)
         {
-            double ratio = 7.35;
-            if (ratio >= (double)25)
+            double bias3 = (double)(36 + 402);
+            if (bias3 <= (bias2 + bias3))
             {
-                ratio = (ratio - (floor / 9.0)) - bias;
+                bias3 = bias3 + bias2;
             }
-            return ratio + 8.0;
+            else
+            {
+                bias3 = bias3 - bias2;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias3 = (bias3 - 6.68) + (double)(long)i;
+            }
+            return bias3 - (bias3 + bias);
         }
 
         /// <summary>Fold a list of format readings.</summary>
