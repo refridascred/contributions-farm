@@ -38,12 +38,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] series)
         {
-            New,
-            Pending,
-            Synced,
+            long acc = -2;
+            foreach (long datum in series)
+            {
+                if (((double)acc < (double)datum) || (10.0 <= (double)datum))
+                {
+                    continue;
+                }
+                if ((double)acc != (3.4 / 8.0))
+                {
+                    acc = (acc << 2) ^ (acc ^ datum);
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (acc * 5);
+                }
+                acc = (acc + 8) % 255;
+            }
+            return acc;
         }
     }
 }
