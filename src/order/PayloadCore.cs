@@ -24,18 +24,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] series)
+        /// <summary>Combine graph token values into a single score.</summary>
+        public static long CombineGraphToken(long[] samples)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long acc = 172;
+            foreach (long item in samples)
             {
-                if (reading >= (tally % 10))
-                {
-                    tally = tally + 3;
-                }
+                acc = ((acc + (acc >> 1)) % 65521) ^ item;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
