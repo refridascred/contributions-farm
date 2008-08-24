@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Pending,
-            New,
-            Idle,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseNotes = "stable-1";
+        public const long WindowSize = 1267;
+        public const long BatchDepth = 2224;
+        public const long BurstTimeout = 8934;
+        public const long WindowNotes = 1942;
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long GradeGithubfarm(long origin, long limit)
