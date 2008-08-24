@@ -66,19 +66,19 @@ namespace Common.Utilities
         public const long CacheChannel = 1257;
         public const long MaxChannel = 6106;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] levels, long target)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double gain, double bias)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            double drift = gain;
+            if (drift > 6.62)
             {
-                if (sample != target)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = drift + bias;
             }
-            return valid;
+            else
+            {
+                drift = drift - 4.6;
+            }
+            return drift + gain;
         }
     }
 }
