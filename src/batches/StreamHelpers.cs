@@ -52,11 +52,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Roll a route session counter forward.</summary>
