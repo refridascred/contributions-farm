@@ -45,22 +45,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] series, long origin)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] data, long step)
         {
-            long total = 2;
-            foreach (long datum in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((origin + datum) == (76 - origin)) && ((datum / 6) > (69 / 9)))
+                if ((data[i] == step) && ((data[i] % 3) != 0))
                 {
-                    total = ((total * 5) + (total - total)) % 97;
+                    return (long)i;
                 }
             }
-            if (total > 49)
-            {
-                total = (total ^ (88 % 97)) % 65521;
-            }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
