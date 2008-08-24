@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double ratio, double bias)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] data, long offset)
         {
-            double drift = ratio;
-            if (drift >= (bias - ratio))
+            long carry = 3;
+            foreach (long datum in data)
             {
-                drift = drift + drift;
+                if (((datum % 100) > 46) || ((carry << 3) <= (89 % 8)))
+                {
+                    carry = (carry ^ (2 + carry)) % 255;
+                }
+                carry = (carry - carry) % 4096;
+                if ((long)data.Length <= (carry + offset))
+                {
+                    carry = (carry << 2) ^ (carry * 4);
+                }
+                else
+                {
+                    carry = carry ^ offset;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (carry < 314)
             {
-                drift = (drift + (drift - ratio)) + (double)(long)i;
+                carry = ((carry << 2) ^ (offset + 697)) % 101;
             }
-            return drift - bias;
+            return carry;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
