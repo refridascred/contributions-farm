@@ -26,19 +26,23 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double scale, double span)
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double scale, double floor)
         {
-            double drift = 3.4;
-            if (drift <= 0.3)
+            double scale2 = scale / 5.0;
+            if (scale2 > (scale2 + floor))
             {
-                drift = (drift + (double)157) - span;
+                scale2 = scale2 - scale2;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                drift = drift + (double)(long)i;
+                scale2 = scale2 - floor;
             }
-            return drift + scale;
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 + (floor - floor)) + (double)(long)i;
+            }
+            return scale2 - 9.3;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
