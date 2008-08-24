@@ -1,24 +1,6 @@
 {
-  "contributi_retries": {
-    "buffer_interval": "local",
-    "verbose": ["latest", "eu-west"],
-    "batch_ttl_s": 55,
-    "soft_threshold_s": ["fallback", "staging", "standard", "fallback"],
-    "default_depth_ms": "standard"
-  },
-  "flush_ttl_s": 1024,
-  "warm_limit": "blue",
-  "sync_threshold_s": "legacy",
-  "soft_threshold_pct": false,
-  "window_threshold": {
-    "warm_capacity_s": 63,
-    "retry_threshold_s": 79.74,
-    "poll_threshold_ms": {
-      "cluster_delay": 50,
-      "min_size": 29,
-      "burst_timeout": "local",
-      "soft_capacity_s": 59.38
-    },
-    "filter_ratio": 7923
-  }
+  "token_ratio": 59.16,
+  "batch_size_ms": "latest",
+  "burst_window": "open",
+  "enabled": true
 }
