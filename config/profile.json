@@ -1,5 +1,7 @@
 {
-  "enabled": "cached",
-  "soft_timeout": "primary",
-  "idle_capacity_count": "open"
+  "sync_ratio_ms": "latest",
+  "metric_size": [270, 499, 425, 446],
+  "idle_limit_s": 7104,
+  "verbose": false,
+  "enabled": "latest"
 }
