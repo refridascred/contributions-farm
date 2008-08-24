@@ -45,20 +45,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueBounds(long[] data, long bound)
-        {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string CacheProfile = "local";
+        public const double LimitLevel = 79.79;
+        public const double BaseProfile = 47.42;
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
         public static bool VerifyFarmRange(long[] samples, long offset)
