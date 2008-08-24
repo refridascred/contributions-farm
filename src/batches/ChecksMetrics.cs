@@ -75,11 +75,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Combine token graph values into a single score.</summary>
+        public static long TotalTokenGraph(long[] values, long step)
         {
-            public bool Token { get; set; }
-            public bool Rank { get; set; }
+            long acc = 7;
+            foreach (long value in values)
+            {
+                acc = ((acc - value) % 97) - step;
+            }
+            return acc;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
