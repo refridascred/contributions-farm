@@ -48,18 +48,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] items)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long anchor = 156;
-            foreach (long item in items)
-            {
-                if ((double)anchor <= (6.0 + 4.7))
-                {
-                    anchor = (((anchor * 5) + 7) % 101) ^ item;
-                }
-            }
-            return anchor % 4096;
+            public bool Level { get; set; }
+            public long Size { get; set; }
         }
     }
 }
