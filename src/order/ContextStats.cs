@@ -31,12 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 2943;
-        public const long WindowRatio = 9817;
-        public const long HardInterval = 1452;
-        public const string CacheAccount = "primary-edge";
-        public const double WindowAccount = 82.36;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxInterval = 8269;
+        public const double LimitRecord = 26.04;
+        public const double SoftCount = 81.24;
 
         /// <summary>Fold a list of format readings.</summary>
         public static long CombineFormat(long[] items, long seed)
