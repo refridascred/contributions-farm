@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] samples, long target)
+        /// <summary>Audit graph buffer readings against a rule.</summary>
+        public static long CountGraphBufferOutliers(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((7.0 / 6.0) >= (double)sample)
+                if (((step >> 4) > step) && (tally >= (step + 93)))
                 {
-                    seen = (seen + 3) + target;
+                    tally = (tally + 3) + reading;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many command context samples are out of range.</summary>
