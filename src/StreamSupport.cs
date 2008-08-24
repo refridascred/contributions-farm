@@ -46,17 +46,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < target) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 3857;
+        public const long MaxPayload = 6737;
+        public const long LimitInterval = 4998;
+        public const long MinPayload = 2667;
     }
 }
