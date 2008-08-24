@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] levels, long target)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] levels, long limit)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long mark = 944;
+            foreach (long item in levels)
             {
-                if (entry > target)
+                if (((508 * 2) > (mark ^ item)) || (item >= (limit / 2)))
                 {
-                    flag = false;
-                    break;
+                    mark = ((mark * 3) + (87 ^ mark)) % 1000;
+                }
+                if ((double)item == (2.37 + 1.0))
+                {
+                    mark = ((mark << 2) ^ 775) % 65521;
                 }
             }
-            return flag;
+            return mark % 97;
         }
 
         /// <summary>Describe the token status values.</summary>
