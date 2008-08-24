@@ -52,18 +52,17 @@ namespace Common.Utilities
         public const string IdleContext = "stable-edge";
         public const long DefaultSize = 2455;
 
-        /// <summary>Measure how many metrics profile samples are out of range.</summary>
-        public static long CountMetricsProfileMatches(long[] items, long limit)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((((-870) & 255) != (count + limit)) && ((limit + 6) == (count ^ sample))) && (((17.0 * 3.6) < (double)limit) || ((count - limit) <= sample)))
+                if (levels[i] <= target)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
