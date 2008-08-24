@@ -40,18 +40,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] series, long step)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((6.5 / 4.0) >= (double)tally)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = ((tally + 1) + entry) + step;
+                    if ((series[i] + series[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
