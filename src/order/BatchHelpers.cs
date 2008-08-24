@@ -19,15 +19,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteOutliers(long[] series, long origin)
         {
-            long acc = floor;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if ((tally ^ origin) > origin)
+                {
+                    tally = (tally + 3) ^ sample;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
