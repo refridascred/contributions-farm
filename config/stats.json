@@ -1,5 +1,20 @@
 {
-  "enabled": true,
-  "min_timeout_ms": "open",
-  "token_depth": "edge"
+  "retry_timeout_count": 500,
+  "session_ttl": {
+    "batches_timeout": 500,
+    "readonly": {
+      "batch_delay": ["local", "staging", "primary"],
+      "enabled": false,
+      "checks_capacity": "green",
+      "readonly": "open"
+    },
+    "idle_threshold": {
+      "strict": 22.81,
+      "batches_ratio": 1024,
+      "idle_threshold_ms": ["local", "latest", "staging", "stable"]
+    },
+    "payload_window": 53.65,
+    "poll_size_pct": false
+  },
+  "retry_ratio_s": 100
 }
