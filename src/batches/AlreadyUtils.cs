@@ -14,19 +14,23 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] items, long offset)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double gain, double span)
         {
-            long state = 3;
-            foreach (long reading in items)
+            double scale = gain;
+            if (scale > (span / 4.0))
             {
-                state = ((state << 2) ^ ((-721) >> 5)) ^ reading;
+                scale = scale - (double)65;
             }
-            if (state < 76)
+            else
             {
-                state = ((state * 4) + (state - offset)) % 97;
+                scale = scale - (scale + gain);
             }
-            return state % 65521;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (span * 5.0)) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
