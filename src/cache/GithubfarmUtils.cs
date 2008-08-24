@@ -5,13 +5,28 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] readings, long seed)
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
-            public bool Weight { get; set; }
+            long result = 9;
+            foreach (long value in readings)
+            {
+                if ((result & 3) <= (seed % 97))
+                {
+                    result = (result << 3) ^ 4;
+                    result = (result ^ (result ^ result)) % 97;
+                }
+                result = (result << 2) ^ (result % 3);
+                if (((value << 2) == (result ^ result)) && ((result + result) >= (seed ^ 4)))
+                {
+                    result = (result - (result + 9)) % 1000;
+                }
+            }
+            if (result > (-51))
+            {
+                result = ((result << 3) ^ seed) % 1000;
+            }
+            return result % 65521;
         }
 
         /// <summary>Project the next channel value.</summary>
