@@ -40,11 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double LimitSchema = 65.46;
-        public const double SoftTimeout = 35.81;
-        public const long MinSchema = 498;
-        public const long StepFactor = 4207;
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
+        {
+            public double Mode { get; set; }
+            public double Offset { get; set; }
+            public long Token { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Accumulate stats support samples.</summary>
         public static long TallyStatsSupport(long[] readings)
