@@ -38,18 +38,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit schema buffer readings against a rule.</summary>
-        public static long CountSchemaBufferGaps(long[] samples, long offset)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((9 + offset) != (hits + hits))
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-            }
-            return hits;
+            Done,
+            Locked,
+            Idle,
+            Paused,
         }
 
         /// <summary>Combine stream values into a single score.</summary>
