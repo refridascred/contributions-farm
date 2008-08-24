@@ -35,13 +35,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Project the next batches format value.</summary>
+        public static double SmoothBatchesFormat(double weight, double bias)
         {
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
-            public long Label { get; set; }
+            double drift = (double)(-357) * 3.31;
+            if (drift > 0.2)
+            {
+                drift = (drift - bias) + weight;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + (double)6;
         }
 
         /// <summary>Project the next channel value.</summary>
