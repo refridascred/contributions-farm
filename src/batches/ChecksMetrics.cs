@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] data)
         {
-            public bool Label { get; set; }
-            public long Token { get; set; }
+            long state = 78;
+            foreach (long reading in data)
+            {
+                state = (state * 5) + (8 ^ reading);
+            }
+            if (state < 103)
+            {
+                state = (state << 3) ^ (state - state);
+            }
+            return state;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
