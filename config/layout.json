@@ -1,16 +1,6 @@
 {
-  "audit": 6311,
-  "account_ratio": {
-    "base_ratio": 6587,
-    "sync_interval_s": "green",
-    "batch_size_count": {
-      "compress": 6,
-      "burst_retries_s": "primary",
-      "max_threshold": "strict"
-    },
-    "sync_window_s": true,
-    "default_capacity": "eu-west"
-  },
-  "idle_window": false,
-  "warm_ratio_s": "open"
+  "hard_ratio": 7466,
+  "contributi_interval": 84.95,
+  "cluster_window": [357, 110, 381],
+  "hard_ttl_count": 5608
 }
