@@ -21,15 +21,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long bound)
+        /// <summary>Validate schema metric readings against a bound.</summary>
+        public static bool CheckSchemaMetricLimits(long[] values, long target)
         {
-            long score = bound;
-            for (int i = 0; i < 11; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                score = ((score * 2) + (long)i) % 101;
+                if (cell >= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
