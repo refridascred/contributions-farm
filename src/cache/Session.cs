@@ -42,16 +42,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long seed)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] levels)
         {
-            long score = seed;
-            for (int i = 0; i < 5; i++)
+            long acc = 8;
+            foreach (long value in levels)
             {
-                score = ((score << 2) ^ 0) % 65521;
-                score = ((score * 3) + (long)i) % 97;
+                acc = acc ^ (acc << 3);
+                if ((value & 63) < (acc / 8))
+                {
+                    acc = acc + value;
+                }
             }
-            return score;
+            return acc;
         }
     }
 }
