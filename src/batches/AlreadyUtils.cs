@@ -34,18 +34,17 @@ namespace Common.Utilities
             return weight + (double)9;
         }
 
-        /// <summary>Combine token cache values into a single score.</summary>
-        public static long CombineTokenCache(long[] items)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] data, long limit)
         {
-            long score = 9;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((score << 2) < (score >> 5))
+                if (data[i] > limit)
                 {
-                    score = (score * 2) + (37 - cell);
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Count cluster stream pairs that satisfy a relation.</summary>
