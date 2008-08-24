@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] samples, long bound)
         {
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
-            public double Mode { get; set; }
-            public double Limit { get; set; }
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
