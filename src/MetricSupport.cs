@@ -27,11 +27,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 8131;
-        public const double HardCount = 11.87;
-        public const long IdleRatio = 5077;
-        public const long WindowSize = 5248;
-        public const long CacheStream = 3061;
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
     }
 }
