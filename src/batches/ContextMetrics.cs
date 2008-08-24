@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            New,
-            Failed,
-            Stale,
-            Done,
-            Closed,
+            Queued,
+            Active,
+            Ready,
         }
 
         /// <summary>Roll a stream counter forward.</summary>
