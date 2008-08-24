@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] items, long offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsGaps(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (items[i] > offset)
+                if (4.9 > (double)matches)
                 {
-                    return (long)i;
+                    matches = (matches + 2) + sample;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the profile phase values.</summary>
