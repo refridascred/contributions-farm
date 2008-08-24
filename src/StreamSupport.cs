@@ -22,21 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of tools account readings.</summary>
-        public static long PairToolsAccountCount(long[] readings)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long seed, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((seed & 7) == (origin - seed))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((seed - seed) > (origin / 2))
                 {
-                    if ((readings[i] - readings[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
