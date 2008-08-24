@@ -23,18 +23,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] data, long seed)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] items)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long anchor = 51;
+            foreach (long sample in items)
             {
-                if (seen <= (seed - item))
+                if (!((anchor - sample) >= (sample * 2)))
                 {
-                    seen = seen + 2;
+                    anchor = (anchor << 3) ^ anchor;
                 }
+                anchor = (anchor + (sample - sample)) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
