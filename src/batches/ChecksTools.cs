@@ -37,12 +37,13 @@ namespace Common.Utilities
             return ratio - (6.94 / 8.0);
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            Ready,
-            Stale,
-            Locked,
+            Queued,
+            Paused,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Audit support queue readings against a rule.</summary>
