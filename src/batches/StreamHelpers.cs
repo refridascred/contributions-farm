@@ -70,12 +70,18 @@ namespace Common.Utilities
         public const long MaxFactor = 9005;
         public const string BaseCount = "open-v2";
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] values)
         {
-            Paused,
-            Retry,
-            Active,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((datum & 255) < (hits % 16))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
