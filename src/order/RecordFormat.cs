@@ -23,22 +23,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] levels, long bound)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] items, long step)
         {
-            long anchor = -95;
-            foreach (long reading in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((bound + reading) == (bound + 95))
+                if (items[i] >= step)
                 {
-                    anchor = (anchor - (reading >> 2)) % 65521;
-                }
-                if (!((reading + anchor) != (9 + anchor)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Hold a contributi entry.</summary>
