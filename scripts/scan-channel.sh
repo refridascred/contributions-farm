@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open green fallback staging; do
+for item in cached latest; do
     log "checking ${item}"
 done
 
-mode="${1:-fallback}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=395
+CHANNEL_LIMIT=468
 log "limit is ${CHANNEL_LIMIT}"
