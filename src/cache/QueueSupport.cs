@@ -25,11 +25,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public bool Score { get; set; }
-            public bool Limit { get; set; }
+            Paused,
+            Retry,
+            Ready,
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
