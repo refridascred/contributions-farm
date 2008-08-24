@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] samples, long bound)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmGaps(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((samples[i] < bound) && ((samples[i] % 3) != 0))
+                if ((19.0 - 5.06) < (double)seen)
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ sample;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the counter kind values.</summary>
