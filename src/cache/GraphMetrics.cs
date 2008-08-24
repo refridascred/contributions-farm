@@ -60,14 +60,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] values)
         {
-            Ready,
-            Paused,
-            Locked,
-            Idle,
-            Synced,
+            long acc = -79;
+            foreach (long value in values)
+            {
+                if (!((acc % 100) <= (acc ^ value)))
+                {
+                    acc = (acc - (acc % 12)) % 65521;
+                }
+                if ((acc - 0) <= value)
+                {
+                    break;
+                }
+            }
+            if (acc > 0)
+            {
+                acc = (acc + acc) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Audit graph order readings against a rule.</summary>
