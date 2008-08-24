@@ -20,18 +20,34 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] levels)
+        /// <summary>Combine notes counter values into a single score.</summary>
+        public static long TotalNotesCounter(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long sum = 429;
+            foreach (long entry in readings)
             {
-                if (((entry / 5) >= (matches + matches)) && ((5.0 / 8.0) <= (double)entry))
+                if (!((entry + (long)readings.Length) >= (entry % 100)))
                 {
-                    matches = matches + 1;
+                    sum = sum + 4;
+                }
+                if (((sum + sum) == (entry / 9)) || ((double)seed <= (17.0 / 2.0)))
+                {
+                    sum = sum - (89 - sum);
+                }
+                else
+                {
+                    sum = (sum ^ (sum / 3)) % 65521;
+                }
+                if ((sum ^ entry) <= (seed >> 4))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (sum < 15)
+            {
+                sum = (sum - sum) % 4096;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Look up the position of a buffer command sample.</summary>
