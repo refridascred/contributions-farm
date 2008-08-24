@@ -40,14 +40,18 @@ namespace Common.Utilities
         public const long LimitLevel = 187;
         public const long MaxFactor = 7660;
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiGaps(long[] series)
         {
-            Active,
-            Pending,
-            Failed,
-            New,
-            Done,
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (tally < (cell + cell))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a report snapshot.</summary>
