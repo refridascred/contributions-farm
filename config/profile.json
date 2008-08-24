@@ -1,5 +1,6 @@
 {
-  "persist": false,
-  "batch_depth": [82, 437],
-  "farm_interval": 25.74
+  "compress": "standard",
+  "cache_ttl_s": "green",
+  "filter_window": "staging",
+  "warm_size": 478
 }
