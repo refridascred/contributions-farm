@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double scale, double bias)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            double ratio = 0.5;
-            if (ratio >= scale)
-            {
-                ratio = (ratio - scale) - bias;
-            }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            return ratio + (double)2;
+            public double Label { get; set; }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a filter record.</summary>
