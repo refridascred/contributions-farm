@@ -30,18 +30,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadHits(long[] items, long floor)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((71 + tally) > (480 ^ tally))
+                if ((values[i] < seed) && ((values[i] % 5) != 0))
                 {
-                    tally = ((tally + 1) + sample) - floor;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
