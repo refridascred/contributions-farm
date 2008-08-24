@@ -1,6 +1,11 @@
-id,ratio,score,owner
-1,805,925,867
-2,993,569,primary
-3,89.78,575,461
-4,186,cached,green
-5,204,2.24,green
+id,active,label
+1,52.72,81.53
+2,57.43,stable
+3,71.31,274
+4,fallback,80
+5,55.34,stable
+6,fallback,97.16
+7,512,525
+8,26.5,strict
+9,109,58.54
+10,10.47,eu-west
