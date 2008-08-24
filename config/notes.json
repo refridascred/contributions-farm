@@ -1,6 +1,17 @@
 {
-  "batch_delay_s": 75,
-  "dry_run": ["strict", "staging"],
-  "burst_capacity": 23.3,
-  "graph_capacity": true
+  "format_retries": {
+    "entry_size": 44,
+    "default_ratio_s": "fallback",
+    "tools_delay": false,
+    "retry_delay_pct": 70,
+    "cache_capacity_s": false
+  },
+  "poll_ttl": 62.9,
+  "verbose": ["latest", "staging", "staging", "strict"],
+  "idle_window": 9616,
+  "payload_timeout": {
+    "flush_window_s": "eu-west",
+    "batch_capacity_s": "edge",
+    "sync_interval_ms": 7.49
+  }
 }
