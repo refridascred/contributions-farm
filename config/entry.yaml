@@ -1,12 +1,10 @@
 # entry settings
-sync_limit_pct: 7
-min_ttl_pct:
-  - 56
-  - 107
-  - 460
-audit: fallback
-dry_run:
-  - open
-  - strict
-  - stable
-default_timeout_s: 14
+verbose:
+  - edge
+  - cached
+  - latest
+  - staging
+farm_ttl: cached
+flush_window_count: true
+batch_ttl_s: 4998
+min_timeout_count: true
