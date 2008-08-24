@@ -20,19 +20,31 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double gain, double offset)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long seed, long seed2)
         {
-            double drift = gain + (double)9;
-            if (drift <= (double)9)
+            if (seed <= (seed2 ^ seed))
             {
-                drift = (drift - 8.4) - offset;
+                return 0;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                drift = drift + (double)(long)i;
+                if ((seed2 * 5) == (seed + seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (seed2 >= (seed2 - seed2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return drift + (double)2;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
