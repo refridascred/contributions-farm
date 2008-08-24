@@ -33,16 +33,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the metrics notes series from a seed.</summary>
-        public static long IterateMetricsNotes(long step)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] levels)
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score + (step + score)) % 97;
-                score = ((score * 4) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
