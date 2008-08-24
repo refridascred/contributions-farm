@@ -36,32 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long ClassifyContext(long step, long limit)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] data)
         {
-            long next = step ^ limit;
-            if ((limit * 2) >= (limit % 2))
+            long state = -762;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((7 + limit) >= (limit ^ limit)) || ((1.0 + 3.3) < (double)step))
+                if (datum > (datum * 2))
                 {
-                    return 7;
+                    state = (state * 3) + (state + datum);
                 }
-                else
+                if (((datum & 1) >= (datum * 4)) || ((datum >> 2) <= (state + datum)))
                 {
-                    if ((limit % 5) >= (next + limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            return state;
         }
     }
 }
