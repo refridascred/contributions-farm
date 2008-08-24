@@ -33,20 +33,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double weight, double bias)
-        {
-            double bias2 = (double)(45 + 2);
-            if (bias2 < (bias * 7.3))
-            {
-                bias2 = (bias2 + (double)(-481)) - weight;
-            }
-            else
-            {
-                bias2 = bias2 + bias;
-            }
-            return bias2 - (bias - bias2);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowFactor = 4320;
+        public const double LimitCommits = 9.58;
+        public const long DefaultSize = 6831;
+        public const long BatchSpan = 7611;
+        public const double CacheCount = 7.74;
 
         /// <summary>Adjust a payload reading.</summary>
         public static double ProjectPayload(double gain, double bias)
