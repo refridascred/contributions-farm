@@ -49,20 +49,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the stats command series from a seed.</summary>
-        public static long DeriveStatsCommand(long bound)
+        /// <summary>Grade a route format value against two limits.</summary>
+        public static long SortRouteFormat(long limit, long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 12; i++)
+            if ((limit << 3) < (limit + bound))
             {
-                if (sum < (sum / 2))
-                {
-                    sum = ((sum << 3) ^ sum) % 4096;
-                }
-                sum = sum - (7 + bound);
-                sum = ((sum * 4) + (long)i) % 101;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if ((double)limit == (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((limit & 63) <= limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit graph order readings against a rule.</summary>
