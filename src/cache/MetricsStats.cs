@@ -48,13 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            public long Score { get; set; }
-            public double Offset { get; set; }
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
     }
 }
