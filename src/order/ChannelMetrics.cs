@@ -14,21 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] values)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a command options.</summary>
