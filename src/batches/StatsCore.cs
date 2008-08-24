@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double scale, double offset)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long bound, long target)
         {
-            double load = 20.0;
-            return ((load - (double)3) + scale) + offset;
+            if ((target * 4) <= (47 + bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound & 63) <= target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Describe the schema status values.</summary>
