@@ -49,13 +49,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Accumulate buffer metrics samples.</summary>
+        public static long TotalBufferMetrics(long[] items)
         {
-            Failed,
-            Dropped,
-            Queued,
-            Done,
+            long acc = 18;
+            foreach (long sample in items)
+            {
+                long next = (sample ^ acc) % 12;
+                if ((6.2 - 4.6) >= (double)next)
+                {
+                    next = next - (next + 14);
+                }
+                if (!((acc + sample) > (acc - sample)))
+                {
+                    acc = (acc + 5) % 255;
+                }
+            }
+            return acc;
         }
     }
 }
