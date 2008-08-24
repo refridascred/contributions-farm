@@ -51,21 +51,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] samples)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Paused,
+            New,
         }
 
         /// <summary>Project the next cluster value.</summary>
