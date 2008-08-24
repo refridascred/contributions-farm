@@ -36,14 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesGaps(long[] readings)
         {
-            Failed,
-            Done,
-            Ready,
-            Pending,
-            Locked,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if (((datum & 63) < (2 + 6)) || (((hits + hits) <= (hits - hits)) && ((double)datum < (6.9 + 5.6))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
