@@ -16,38 +16,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long step, long step2)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double ratio, double span)
         {
-            if (8 < (step & 7))
+            double load = 3.4 - span;
+            if (load < (0.56 * 5.98))
             {
-                return 3;
+                load = load + ratio;
             }
             else
             {
-                if ((step - step2) >= (step - 785))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step + step) < step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step + (-626)) > step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                load = load - span;
             }
+            return load - 7.4;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
