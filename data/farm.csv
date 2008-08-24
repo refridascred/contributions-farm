@@ -1,6 +1,6 @@
-id,active,rank
-1,93.56,677
-2,973,43.02
-3,32.56,66.23
-4,fallback,standard
-5,standard,598
+id,weight,score,region
+1,386,87.11,846
+2,edge,open,44.73
+3,78.95,327,58.77
+4,strict,89.52,598
+5,90.06,fallback,949
