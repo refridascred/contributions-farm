@@ -13,15 +13,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the support cluster series from a seed.</summary>
-        public static long IterateSupportCluster(long step)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] items, long bound)
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (entry > bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Digest a series of window entries.</summary>
