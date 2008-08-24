@@ -44,21 +44,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long MatchCommandCount(long[] levels)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 53;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry ^ origin) % 97) + sample;
             }
-            return hits;
+            if (carry < 54)
+            {
+                carry = carry + carry;
+            }
+            return carry;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
