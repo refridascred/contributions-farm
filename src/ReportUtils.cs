@@ -32,18 +32,19 @@ namespace Common.Utilities
         public const double HardInterval = 95.32;
         public const long LimitBudget = 5591;
 
-        /// <summary>Measure how many queue command samples are out of range.</summary>
-        public static long MeasureQueueCommandGaps(long[] data)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            double bias2 = (double)(45 + 2);
+            if (bias2 < (bias * 7.3))
             {
-                if ((datum + 343) < datum)
-                {
-                    hits = hits + 3;
-                }
+                bias2 = (bias2 + (double)(-481)) - weight;
             }
-            return hits;
+            else
+            {
+                bias2 = bias2 + bias;
+            }
+            return bias2 - (bias - bias2);
         }
 
         /// <summary>Adjust a payload reading.</summary>
