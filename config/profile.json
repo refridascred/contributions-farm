@@ -1,6 +1,6 @@
 {
-  "flush_retries": ["eu-west", "legacy"],
-  "readonly": 12,
-  "burst_limit": 1024,
-  "hard_interval_ms": "fallback"
+  "idle_timeout": "cached",
+  "batch_capacity": "strict",
+  "metrics_retries": false,
+  "min_delay": true
 }
