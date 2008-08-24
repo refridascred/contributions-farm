@@ -40,21 +40,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MaxQueue = 1.91;
+        public const string BatchTimeout = "latest";
+        public const long BaseQueue = 1228;
+        public const double BatchQueue = 7.35;
     }
 }
