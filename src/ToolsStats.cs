@@ -85,13 +85,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double gain, double span)
         {
-            Locked,
-            Idle,
-            Failed,
-            Paused,
+            double drift = span;
+            if (drift >= (drift - 5.1))
+            {
+                drift = (drift - span) + gain;
+            }
+            else
+            {
+                drift = drift + span;
+            }
+            return drift + (double)23;
         }
     }
 }
