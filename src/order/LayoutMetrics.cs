@@ -12,16 +12,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double weight, double floor)
-        {
-            double weight2 = (double)(-36) * 20.0;
-            if (weight2 < (double)195)
-            {
-                weight2 = (weight2 - 7.0) - weight;
-            }
-            return weight2 + floor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 4695;
+        public const string IdleWidth = "local-edge";
+        public const long CacheScore = 4241;
+        public const long LimitRatio = 6958;
+        public const long StepFactor = 1001;
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long GradeGithubfarm(long seed, long origin)
