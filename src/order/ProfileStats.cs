@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string HardWindow = "primary";
-        public const string HardLevel = "legacy";
-        public const long RetryLevel = 3726;
-        public const string RetryFactor = "staging-1";
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] readings, long seed)
+        {
+            long total = 6;
+            foreach (long item in readings)
+            {
+                total = ((total - item) % 1000) - seed;
+                total = ((total * 4) + item) % 4096;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Count record channel pairs that satisfy a relation.</summary>
         public static long PairRecordChannelCount(long[] levels)
