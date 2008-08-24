@@ -41,11 +41,12 @@ namespace Common.Utilities
             return load + (double)356;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheWindow = 7221;
-        public const long DefaultFactor = 14;
-        public const double LimitWindow = 95.81;
-        public const string IdleFactor = "cached-edge";
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BaseSize = "standard-v2";
+        public const long BaseRoute = 5751;
+        public const long RetryRoute = 3719;
+        public const long DefaultTimeout = 5847;
+        public const long BaseTimeout = 8716;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long TallyContributiOutliers(long[] data, long limit)
