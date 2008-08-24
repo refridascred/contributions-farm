@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] samples)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long mix = 5;
-            foreach (long value in samples)
-            {
-                if (((value + mix) != (mix * 4)) || ((value & 3) >= ((-840) << 3)))
-                {
-                    mix = ((mix * 3) + (3 & 7)) % 101;
-                }
-            }
-            return mix;
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
