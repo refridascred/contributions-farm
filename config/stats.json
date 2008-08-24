@@ -1,6 +1,5 @@
 {
-  "verbose": "edge",
-  "base_capacity": 7663,
-  "base_depth_pct": 3911,
-  "session_interval": "fallback"
+  "retry_window_pct": 96,
+  "batch_limit_count": "staging",
+  "warm_interval_pct": 60
 }
