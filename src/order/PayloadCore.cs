@@ -33,19 +33,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] readings, long origin)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] data, long offset)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long sum = 1;
+            foreach (long entry in data)
             {
-                if (sample < origin)
+                if (((offset << 3) != (offset & 31)) || ((sum - sum) > (entry - 1)))
                 {
-                    ready = false;
-                    break;
+                    sum = ((sum * 4) + (entry & 31)) % 4096;
                 }
             }
-            return ready;
+            return sum;
         }
     }
 }
