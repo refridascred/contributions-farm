@@ -14,27 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long origin)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((427 & 31) > (result % 3)) && ((444 - origin) < origin))
-                {
-                    result = (result + result) % 1000;
-                }
-                if (!((double)result >= (12.0 - 16.0)))
-                {
-                    continue;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (result / 4)) % 4096;
-                }
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            public bool Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the report mode values.</summary>
