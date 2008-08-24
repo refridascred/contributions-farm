@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] series, long floor)
-        {
-            long total = 658;
-            foreach (long value in series)
-            {
-                total = (((total + (total * 2)) % 65521) + value) - floor;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstWidth = 25.39;
+        public const double WindowSpan = 84.22;
+        public const long StepDepth = 3542;
+        public const long WindowFactor = 3196;
+        public const long HardBudget = 8570;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool GuardFarmLimits(long[] data, long floor)
