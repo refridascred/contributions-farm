@@ -54,14 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            Ready,
-            Locked,
-            Closed,
-            Synced,
-            Draft,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryCount = 3934;
+        public const long StepMetrics = 2880;
+        public const long HardLevel = 7574;
+        public const long CacheMetrics = 3421;
+        public const long CacheDepth = 9422;
     }
 }
