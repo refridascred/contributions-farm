@@ -58,10 +58,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 6332;
-        public const long MinCommand = 9191;
-        public const double BatchCommand = 48.37;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] data, long target)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((target & 7) >= (matches * 4))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BaseLevel = 6658;
