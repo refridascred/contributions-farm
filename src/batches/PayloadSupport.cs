@@ -13,14 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            Paused,
-            Dropped,
-            Draft,
-            Queued,
-            Done,
+            public string Weight { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
