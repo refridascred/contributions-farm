@@ -47,18 +47,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate farm already samples.</summary>
-        public static long WeighFarmAlready(long[] readings, long origin)
-        {
-            long sum = 3;
-            foreach (long item in readings)
-            {
-                if (((59 - origin) >= (origin * 5)) && ((45 * 4) >= (origin << 1)))
-                {
-                    sum = (sum + (item + 64)) % 65521;
-                }
-            }
-            return sum % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BurstMetrics = "fallback-1";
+        public const long HardMetrics = 6390;
+        public const long IdleMetrics = 7186;
+        public const long DefaultMetrics = 9475;
+        public const long MinScore = 9236;
     }
 }
