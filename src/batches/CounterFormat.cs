@@ -39,38 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long floor, long offset)
+        /// <summary>Check that every token already entry stays within the limit.</summary>
+        public static bool GuardTokenAlreadyLimits(long[] values, long origin)
         {
-            if ((9 - floor) == (floor - 9))
+            bool ok = true;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((9.0 - 7.28) > (double)offset)
+                if (reading <= origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset >= (floor + offset)) || ((6.79 - 8.2) == (double)floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (floor <= 903)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
