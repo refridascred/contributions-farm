@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count report commits pairs that satisfy a relation.</summary>
-        public static long OverlapReportCommitsCount(long[] samples)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Closed,
+            Paused,
+            New,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
