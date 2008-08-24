@@ -54,11 +54,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphOutliers(long[] items, long origin)
         {
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((origin + item) > item)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
