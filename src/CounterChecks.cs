@@ -13,12 +13,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            Failed,
             Draft,
-            Stale,
+            Queued,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Combine batches order values into a single score.</summary>
