@@ -45,11 +45,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 5320;
-        public const long HardTools = 6982;
-        public const double BurstTools = 39.53;
-        public const string IdleLevel = "fallback-1";
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public bool Score { get; set; }
+            public bool Owner { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long TotalMetric(long[] readings, long limit)
