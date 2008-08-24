@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate batch commits samples.</summary>
-        public static long ScoreBatchCommits(long[] series)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] data, long limit)
         {
-            long carry = 712;
-            foreach (long reading in series)
+            long total = -9;
+            foreach (long value in data)
             {
-                carry = (((carry << 3) ^ (carry % 8)) % 4096) - reading;
+                total = (((total << 2) ^ total) % 101) + value;
+                total = (total ^ ((long)data.Length - limit)) % 1000;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
