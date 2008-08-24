@@ -1,5 +1,8 @@
 {
-  "base_timeout_ms": true,
-  "enabled": 250,
-  "min_retries_count": 5411
+  "sync_interval": 84,
+  "warm_threshold_s": 21.54,
+  "soft_limit_pct": true,
+  "batch_ratio": 100,
+  "default_timeout_ms": "cached",
+  "readonly": 95
 }
