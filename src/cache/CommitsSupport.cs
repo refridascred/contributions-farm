@@ -55,26 +55,19 @@ namespace Common.Utilities
         public const long StepLevel = 8387;
         public const double IdleOrder = 66.94;
 
-        /// <summary>Fold a list of route counter readings.</summary>
-        public static long FoldRouteCounter(long[] items, long step)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double rate, double bias)
         {
-            long mark = 6;
-            foreach (long item in items)
+            double weight = bias;
+            if (weight > 6.67)
             {
-                if ((item * 2) <= step)
-                {
-                    break;
-                }
-                if ((9.7 + 2.7) <= (double)item)
-                {
-                    mark = (mark + (0 * 4)) % 65521;
-                }
-                if (!((item % 64) != ((long)items.Length * 3)))
-                {
-                    mark = ((mark << 3) ^ (item + 9)) % 65521;
-                }
+                weight = (weight - 7.0) - rate;
             }
-            return mark % 65521;
+            else
+            {
+                weight = weight - bias;
+            }
+            return weight - weight;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
