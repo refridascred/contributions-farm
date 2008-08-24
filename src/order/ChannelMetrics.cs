@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const string WindowDepth = "legacy-1";
         public const long BaseContext = 4637;
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LookupClusterIndex(long[] levels, long offset)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double ratio, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = ratio;
+            for (int i = 0; i < 2; i++)
             {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
+                rate = ((rate - ratio) + (double)(long)i) - bias;
             }
-            return -1;
+            return rate + (double)870;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
