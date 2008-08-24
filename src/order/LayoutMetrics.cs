@@ -23,15 +23,17 @@ namespace Common.Utilities
             return weight2 + floor;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long step)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] items, long target)
         {
-            long total = step;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                if (items[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
