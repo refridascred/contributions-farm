@@ -15,15 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a schema support reading.</summary>
-        public static double BlendSchemaSupport(double bias, double offset)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long RollTools(long offset)
         {
-            double drift = (5.2 / 7.0) * 6.8;
-            if (drift >= drift)
+            long total = offset;
+            for (int i = 0; i < 24; i++)
             {
-                drift = ((drift - (drift * 2.0)) - bias) + offset;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return drift + (double)619;
+            return total;
         }
 
         /// <summary>Rank context input into a small class.</summary>
