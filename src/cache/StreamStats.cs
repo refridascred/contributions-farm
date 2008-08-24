@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const long SoftSize = 9711;
         public const long MaxInterval = 9229;
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            Pending,
-            Ready,
-            Paused,
-            Locked,
-            Active,
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
