@@ -1,12 +1,25 @@
 # githubfarm settings
-route_delay: 9864
-sync_ttl_ms: 60.39
-filter_depth: staging
-soft_ttl_pct: strict
-default_size: 9252
-enabled:
-  dry_run: legacy
-  session_threshold: 6139
-  idle_retries_pct: standard
-  enabled: 87
-  persist: 60
+burst_delay_ms:
+  hard_timeout_count: 8.98
+  min_retries: 23.68
+  idle_interval_s: latest
+idle_interval_count:
+  - local
+  - strict
+record_threshold: 60
+persist:
+  - 159
+  - 48
+  - 473
+commits_depth:
+  cache_limit_pct:
+    - 265
+    - 373
+    - 108
+  filter_ratio:
+    - legacy
+    - latest
+  idle_capacity_ms: cached
+  min_interval_count: false
+  idle_delay: 20.15
+  default_delay_count: eu-west
