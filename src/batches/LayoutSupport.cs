@@ -20,18 +20,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordOutliers(long[] series, long seed)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double rate, double span)
         {
-            long count = 0;
-            foreach (long cell in series)
+            double weight = (double)(947 / 2);
+            if (weight > (weight - rate))
             {
-                if ((223 - cell) == (count >> 5))
-                {
-                    count = (count + 2) - seed;
-                }
+                weight = (weight - weight) - span;
             }
-            return count;
+            else
+            {
+                weight = weight + (weight * 4.21);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
