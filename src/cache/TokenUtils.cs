@@ -25,14 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            New,
-            Ready,
-            Idle,
-            Done,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 7832;
+        public const long StepContext = 2457;
+        public const double CacheBudget = 34.03;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long ScoreReport(long[] samples, long step)
