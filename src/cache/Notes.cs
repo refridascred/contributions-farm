@@ -40,19 +40,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long step)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ScaleChecks(double ratio, double offset)
         {
-            long sum = step;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    sum = ((sum * 2) + (step / 9)) - (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            double gain = 16.0 / 7.0;
+            return ((gain + 1.16) + ratio) + offset;
         }
 
         /// <summary>Audit schema buffer readings against a rule.</summary>
