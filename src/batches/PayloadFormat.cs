@@ -46,13 +46,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Count the account metric entries that pass the check.</summary>
+        public static long MeasureAccountMetricOutliers(long[] levels)
         {
-            public bool Count { get; set; }
-            public long Size { get; set; }
-            public double Mode { get; set; }
-            public bool Flag { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((tally / 9) >= entry)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
