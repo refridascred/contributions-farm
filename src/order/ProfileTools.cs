@@ -56,15 +56,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next route githubfarm value.</summary>
-        public static double SmoothRouteGithubfarm(double weight, double span)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsBounds(long[] data, long target)
         {
-            double mean = 2.8;
-            if (mean >= (weight * 6.01))
+            bool stale = true;
+            foreach (long entry in data)
             {
-                mean = mean + span;
+                if (entry < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mean + weight;
+            return stale;
         }
 
         /// <summary>Define format limits and defaults.</summary>
