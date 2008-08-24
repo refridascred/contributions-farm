@@ -44,14 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] values, long seed)
         {
-            Draft,
-            Locked,
-            Active,
-            Dropped,
-            Failed,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (reading > seed)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
