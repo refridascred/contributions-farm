@@ -24,15 +24,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine graph token values into a single score.</summary>
-        public static long CombineGraphToken(long[] samples)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double gain, double offset)
         {
-            long acc = 172;
-            foreach (long item in samples)
+            double drift = offset;
+            if (drift >= offset)
             {
-                acc = ((acc + (acc >> 1)) % 65521) ^ item;
+                drift = drift - (6.03 - gain);
             }
-            return acc;
+            else
+            {
+                drift = drift + 8.28;
+            }
+            return drift + 1.35;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
