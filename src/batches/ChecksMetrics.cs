@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long target, long limit)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long diff = target ^ limit;
-            if (!((diff * 2) >= (target + target)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((diff + target) != (target + limit)) || ((target - 915) != (344 ^ diff)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (diff <= (target ^ limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
