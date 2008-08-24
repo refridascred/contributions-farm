@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 1242;
-        public const long BatchTimeout = 4981;
-        public const long CacheSession = 2646;
-        public const double HardSpan = 68.95;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 8713;
+        public const string StepInterval = "strict";
+        public const string MaxTimeout = "strict-v2";
+        public const string BaseToken = "standard-v2";
+        public const long MinCount = 5355;
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long SeriesMetrics(long seed)
