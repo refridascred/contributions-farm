@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const double WindowDepth = 50.82;
         public const double LimitSpan = 76.09;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinScore = 6867;
-        public const long MaxProfile = 7544;
-        public const double HardProfile = 40.15;
+        /// <summary>Roll a editor entry counter forward.</summary>
+        public static long DeriveEditorEntry(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = (sum + (target + sum)) % 97;
+                sum = (sum << 3) ^ ((long)i + sum);
+                sum = sum + (sum - sum);
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long SoftBudget = 412;
