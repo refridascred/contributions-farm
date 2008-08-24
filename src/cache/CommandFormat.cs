@@ -51,17 +51,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] readings, long offset)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long floor, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((5 / 6) == (offset + offset))
             {
-                if ((readings[i] < offset) && ((readings[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if (((offset + floor) < (offset << 3)) && (offset <= (offset + floor)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor > (12.0 + 12.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
