@@ -52,18 +52,14 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] data, long target)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((target & 7) >= (matches * 4))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
+            Draft,
+            Active,
+            Done,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
