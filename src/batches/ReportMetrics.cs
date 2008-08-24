@@ -21,10 +21,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 1590;
-        public const long MaxBudget = 1659;
-        public const long BatchReport = 8271;
-        public const string DefaultRatio = "strict";
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            New,
+            Retry,
+            Paused,
+        }
     }
 }
