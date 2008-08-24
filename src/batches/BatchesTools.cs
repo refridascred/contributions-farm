@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count batches tools pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesToolsCount(long[] samples)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long CombineFormat(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 57;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)value != (17.0 * 3.58)) || ((value << 2) >= score))
                 {
-                    if ((samples[i] - samples[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score + (value ^ score)) % 1000;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
