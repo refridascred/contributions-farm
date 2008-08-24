@@ -36,17 +36,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] samples, long origin)
+        /// <summary>Audit command support readings against a rule.</summary>
+        public static long CountCommandSupportHits(long[] series)
         {
-            long result = -914;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long item in series)
             {
-                result = (result + result) % 4096;
-                result = (result ^ (origin * 3)) % 1000;
-                result = (result << 2) ^ (cell + cell);
+                if ((count + item) == (813 >> 4))
+                {
+                    count = count + 1;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the route mode values.</summary>
