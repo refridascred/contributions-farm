@@ -1,8 +1,6 @@
 # githubfarm settings
-warm_ttl: cached
-format_window: strict
-strict: staging
-soft_threshold_ms:
-  - 405
-  - 481
-max_ttl_s: 250
+idle_interval:
+  - 498
+  - 101
+soft_delay: 60
+cache_depth_count: 18.32
