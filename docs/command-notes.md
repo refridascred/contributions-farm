@@ -1,11 +1,13 @@
 # Command notes
 
-Keep route and metric names short and lowercase.
-Use commits settings to tune how often farm data is refreshed.
+Run the stats check before changing any farm limits.
+Each payload is validated before it reaches the editor queue.
+
+A channel that stays idle for too long is moved to the payload list.
+The entry module keeps tools values in sync with the layout cache.
 
 ## Guidelines
 
-- Prefer already defaults
-- Review githubfarm limits each release
-- Keep window values small
-- Document new record fields
+- Keep filter values small
+- Review entry limits each release
+- Validate graph input early
