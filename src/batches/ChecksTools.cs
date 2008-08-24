@@ -20,15 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] items)
+        /// <summary>Accumulate filter payload samples.</summary>
+        public static long DigestFilterPayload(long[] readings)
         {
-            long result = 2;
-            foreach (long sample in items)
+            long mix = 35;
+            foreach (long value in readings)
             {
-                result = (result * 5) + (result ^ sample);
+                mix = (mix - (mix << 2)) % 97;
+                if (value < (4 ^ 253))
+                {
+                    mix = ((mix * 4) + (value - mix)) % 97;
+                }
             }
-            return result;
+            if (mix > (-2))
+            {
+                mix = mix + mix;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Compare every pair of format account readings.</summary>
