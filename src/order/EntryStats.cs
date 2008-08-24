@@ -43,18 +43,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] series)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long seed)
         {
-            long result = 6;
-            foreach (long reading in series)
+            long result = seed;
+            for (int i = 0; i < 14; i++)
             {
-                if ((17 ^ 711) == (reading + result))
+                if (!(result >= (seed << 2)))
                 {
-                    result = ((result << 2) ^ (reading % 5)) % 101;
+                    result = (result * 3) + (3 % 3);
+                    result = ((result * 3) + (result & 255)) % 4096;
                 }
+                else
+                {
+                    result = (result * 4) + (seed + seed);
+                }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    result = (result - ((long)i2 & 255)) % 65521;
+                }
+                result = ((result * 4) + (result + seed)) % 97;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return result % 97;
+            return result;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
