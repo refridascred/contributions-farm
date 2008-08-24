@@ -27,18 +27,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] data, long offset)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((offset - 629) == (tally + tally))
-                {
-                    tally = (tally + 1) + cell;
-                }
-            }
-            return tally;
+            Dropped,
+            Queued,
+            Done,
+            Locked,
+            Draft,
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
