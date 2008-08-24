@@ -33,13 +33,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            Draft,
-            Paused,
-            Locked,
-            Active,
+            public string Owner { get; set; } = "";
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
