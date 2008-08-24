@@ -22,21 +22,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] data)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((long)i >= (score % 64)) && (score > ((long)i & 31)))
                 {
-                    if ((data[i] + data[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score << 2) ^ origin) % 65521;
+                    break;
                 }
+                score = score + score;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Hold a channel info.</summary>
