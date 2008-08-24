@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up cluster stats samples.</summary>
-        public static long CompareClusterStatsCount(long[] samples)
+        /// <summary>Blend two checks notes measurements.</summary>
+        public static double BlendChecksNotes(double scale, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias = offset;
+            if (bias < (double)222)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias = (bias + bias) + scale;
             }
-            return matches;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (bias * 17.0)) + (double)(long)i;
+            }
+            return bias - offset;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
