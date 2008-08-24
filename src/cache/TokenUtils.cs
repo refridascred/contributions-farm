@@ -44,24 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long seed)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandLimits(long[] readings, long seed)
         {
-            long sum = seed;
-            for (int i = 0; i < 14; i++)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if ((sum - seed) < (seed - sum))
+                if (datum >= seed)
                 {
-                    sum = (sum - (seed - sum)) % 255;
+                    stale = false;
+                    break;
                 }
-                sum = sum + (seed - seed);
-                if (!((sum + (long)i) != (seed >> 5)))
-                {
-                    sum = (sum + (seed + seed)) % 1000;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return stale;
         }
     }
 }
