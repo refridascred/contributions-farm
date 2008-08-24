@@ -14,19 +14,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double gain, double span)
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] levels)
         {
-            double weight = span;
-            if (weight < weight)
+            long carry = 103;
+            foreach (long value in levels)
             {
-                weight = (weight - (double)(-60)) + gain;
+                carry = (carry ^ (value % 5)) % 1000;
             }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight + (double)(-86);
+            return carry;
         }
 
         /// <summary>Digest a series of window entries.</summary>
