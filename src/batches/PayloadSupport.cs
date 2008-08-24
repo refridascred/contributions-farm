@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank cluster farm input into a small class.</summary>
-        public static long RankClusterFarm(long offset, long floor)
-        {
-            long offset2 = offset + floor;
-            if (((20 - offset2) < (64 % 12)) && (693 >= (offset + floor)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((floor / 7) == (offset2 & 3)) && ((9.04 + 5.8) > (double)floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (floor >= (offset % 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset & 7) < floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 2396;
+        public const string DefaultFactor = "latest-v2";
+        public const long IdleSpan = 8702;
+        public const long MinBudget = 9139;
+        public const double StepDepth = 71.98;
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double ProjectCommits(double bias, double span)
