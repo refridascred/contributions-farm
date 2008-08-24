@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] values, long step)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] values)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long anchor = 576;
+            foreach (long value in values)
             {
-                if (sample > step)
+                if ((anchor ^ value) < (anchor % 24))
                 {
-                    ready = false;
-                    break;
+                    anchor = (anchor << 2) ^ (anchor + anchor);
                 }
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
