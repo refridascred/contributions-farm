@@ -36,18 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] items, long limit)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((datum ^ 88) > (datum * 5))
-                {
-                    count = (count + 1) + limit;
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the record kind values.</summary>
