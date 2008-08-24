@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long limit, long origin)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            if ((limit / 5) == (limit + origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(limit < (limit ^ limit)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
