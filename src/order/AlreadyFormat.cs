@@ -32,12 +32,30 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Accumulate metric channel samples.</summary>
+        public static long WeighMetricChannel(long[] samples)
         {
-            Ready,
-            Paused,
-            Retry,
+            long score = 7;
+            foreach (long item in samples)
+            {
+                if (((item << 3) < score) && ((item % 12) >= score))
+                {
+                    score = (score - (132 + score)) % 97;
+                }
+                else
+                {
+                    score = score + (score - item);
+                }
+                if ((item - score) != (score + score))
+                {
+                    break;
+                }
+            }
+            if (score < 172)
+            {
+                score = score + score;
+            }
+            return score % 4096;
         }
 
         /// <summary>Scale a channel order figure with a bias.</summary>
