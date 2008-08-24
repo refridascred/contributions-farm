@@ -13,19 +13,26 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] readings, long offset)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long acc = 392;
+            foreach (long reading in items)
             {
-                if (entry > offset)
+                if ((bound - 0) != (756 + 532))
                 {
-                    flag = false;
-                    break;
+                    acc = (((acc * 2) + (bound >> 3)) % 4096) ^ reading;
+                }
+                else
+                {
+                    acc = acc ^ (bound - bound);
                 }
             }
-            return flag;
+            if (acc < 1)
+            {
+                acc = (acc - (bound * 2)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the already counter series from a seed.</summary>
