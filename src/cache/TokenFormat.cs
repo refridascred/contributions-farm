@@ -23,17 +23,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] readings, long offset)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 5;
+            foreach (long value in data)
             {
-                if (readings[i] > offset)
+                for (int i = 0; i < 7; i++)
                 {
-                    return (long)i;
+                    anchor = ((anchor + (anchor >> 5)) ^ (long)i) + value;
                 }
+                anchor = (anchor ^ (-6)) % 65521;
             }
-            return -1;
+            if (anchor < 38)
+            {
+                anchor = anchor ^ (anchor >> 1);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
