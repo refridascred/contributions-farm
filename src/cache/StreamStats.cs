@@ -23,24 +23,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a route stats value against two limits.</summary>
-        public static long GradeRouteStats(long limit, long floor)
+        /// <summary>Count the checks stream entries that pass the check.</summary>
+        public static long TallyChecksStreamOutliers(long[] values, long seed)
         {
-            if ((floor << 3) >= 7)
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (((limit << 2) > 345) || (floor <= (limit << 3)))
+                if (count <= seed)
                 {
-                    return 2;
+                    count = (count + 1) ^ cell;
                 }
                 else
                 {
-                    return 6;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Count stats cache pairs that satisfy a relation.</summary>
