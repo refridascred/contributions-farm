@@ -1,8 +1,18 @@
 {
-  "queue_window": false,
-  "verbose": 65.15,
-  "dry_run": 83.61,
-  "flush_threshold_ms": [429, 37],
-  "base_threshold_ms": 11,
-  "enabled": ["latest", "legacy"]
+  "base_delay_count": 60,
+  "window_retries": ["staging", "eu-west", "local", "stable"],
+  "dry_run": {
+    "compress": 1,
+    "default_limit_count": "fallback",
+    "poll_timeout": {
+      "enabled": "staging",
+      "max_size_count": [103, 228, 325],
+      "readonly": true,
+      "base_ratio": "primary"
+    },
+    "base_depth_s": 60
+  },
+  "max_interval": 50,
+  "tools_retries": 60,
+  "max_ttl_s": 9014
 }
