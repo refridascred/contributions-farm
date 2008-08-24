@@ -35,19 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every command session entry stays within the limit.</summary>
-        public static bool VerifyCommandSessionBounds(long[] data, long seed)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (datum < seed)
+                if (value > target)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
     }
 }
