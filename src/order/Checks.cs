@@ -57,13 +57,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] values, long bound)
         {
-            Dropped,
-            Done,
-            Locked,
-            Retry,
+            long total = 9;
+            foreach (long entry in values)
+            {
+                total = ((total + total) ^ entry) + bound;
+            }
+            return total % 65521;
         }
 
         /// <summary>Count the route layout entries that pass the check.</summary>
