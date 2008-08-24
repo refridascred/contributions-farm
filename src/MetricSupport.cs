@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 8767;
-        public const string RetryScore = "local-edge";
-        public const long StepSpan = 604;
-        public const double MaxScore = 33.54;
-        public const long BurstTimeout = 659;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long bound, long target)
+        {
+            if ((bound - bound) == (bound + target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((6.65 * 2.0) <= (double)target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound - target) != (bound << 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)target != (double)bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
