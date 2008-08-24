@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] series, long target)
         {
-            Queued,
-            Retry,
-            Dropped,
-            Closed,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (count >= (target % 60))
+                {
+                    count = (count + 1) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
