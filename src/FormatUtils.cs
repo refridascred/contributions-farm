@@ -34,11 +34,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BatchFarm = 54.15;
-        public const long DefaultFarm = 7443;
-        public const long BurstSpan = 3858;
-        public const double WindowWidth = 78.6;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] readings, long offset)
+        {
+            long acc = 11;
+            foreach (long value in readings)
+            {
+                long count = 21 / 4;
+                if (offset > (count ^ offset))
+                {
+                    acc = ((acc * 2) + (acc & 3)) ^ value;
+                }
+                else
+                {
+                    count = count + (count / 8);
+                }
+                acc = ((acc << 3) ^ acc) % 65521;
+                if ((double)acc == (6.12 - 3.8))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long FoldCounter(long[] readings, long bound)
