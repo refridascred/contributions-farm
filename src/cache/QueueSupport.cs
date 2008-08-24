@@ -13,17 +13,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] levels, long limit)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double rate, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double bias = (double)(-432);
+            if (bias < (rate - offset))
             {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
+                bias = bias + 9.88;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - offset) + (double)(long)i;
+            }
+            return bias - (double)(-73);
         }
 
         /// <summary>Describe the cluster phase values.</summary>
