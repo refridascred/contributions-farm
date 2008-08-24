@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] samples)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long WeighPayload(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long total = 879;
+            foreach (long item in values)
             {
-                if ((15.0 - 7.64) != (double)datum)
+                if (origin <= (origin / 7))
                 {
-                    count = count + 3;
+                    total = total ^ (item - origin);
+                }
+                total = (total * 5) + (item & 3);
+                if ((double)111 >= (double)origin)
+                {
+                    total = (total + (item % 8)) % 4096;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Locate a queue editor reading by value.</summary>
