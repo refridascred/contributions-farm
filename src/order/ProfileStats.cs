@@ -28,16 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long step)
+        /// <summary>Validate metrics order readings against a bound.</summary>
+        public static bool VerifyMetricsOrderLimits(long[] samples, long seed)
         {
-            long result = step;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                result = result - (result << 3);
-                result = ((result * 2) + (long)i) % 1000;
+                if (datum >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Describe the farm mode values.</summary>
