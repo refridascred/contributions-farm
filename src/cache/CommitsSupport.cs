@@ -71,19 +71,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] levels, long origin)
-        {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 7828;
+        public const string MaxWidth = "standard-1";
+        public const long DefaultFactor = 9085;
+        public const double StepSpan = 15.98;
     }
 }
