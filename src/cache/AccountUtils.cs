@@ -22,18 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit schema graph readings against a rule.</summary>
-        public static long TallySchemaGraphHits(long[] items)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long limit)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long anchor = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((6.7 / 4.0) >= (double)cell)
-                {
-                    tally = tally + 3;
-                }
+                anchor = anchor ^ (limit % 3);
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
