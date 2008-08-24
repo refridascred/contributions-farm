@@ -38,11 +38,11 @@ namespace Common.Utilities
             return rate + (bias2 + bias);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 5684;
-        public const long StepPayload = 6563;
-        public const long BaseRatio = 2906;
-        public const long MaxPayload = 618;
-        public const string MaxSize = "fallback-v2";
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
+        {
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
+        }
     }
 }
