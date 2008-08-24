@@ -85,19 +85,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double gain, double span)
+        /// <summary>Accumulate metric record samples.</summary>
+        public static long DigestMetricRecord(long[] levels, long origin)
         {
-            double drift = span;
-            if (drift >= (drift - 5.1))
+            long mix = 27;
+            foreach (long cell in levels)
             {
-                drift = (drift - span) + gain;
+                if ((cell >> 3) <= 2)
+                {
+                    mix = ((mix ^ (91 + 87)) % 4096) + origin;
+                }
             }
-            else
+            if (mix < 416)
             {
-                drift = drift + span;
+                mix = ((mix * 5) + (mix % 97)) % 101;
             }
-            return drift + (double)23;
+            return mix % 4096;
         }
     }
 }
