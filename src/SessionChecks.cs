@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] readings)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry / 2) > (seen + seen))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Weight { get; set; }
+            public bool Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a githubfarm options.</summary>
