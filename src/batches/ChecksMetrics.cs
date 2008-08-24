@@ -53,19 +53,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Count the layout window entries that pass the check.</summary>
-        public static long AuditLayoutWindowHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (count >= (count >> 5))
-                {
-                    count = (count + 1) ^ item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxRatio = 4436;
+        public const double LimitQueue = 45.0;
+        public const long DefaultQueue = 5095;
+        public const long MaxCount = 5450;
+        public const double MinScore = 83.43;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long CountChecksMatches(long[] values, long bound)
