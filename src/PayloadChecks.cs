@@ -38,14 +38,14 @@ namespace Common.Utilities
         public const double BurstRatio = 0.43;
         public const long CacheCommand = 4747;
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            Queued,
+            Dropped,
             Failed,
-            Active,
             Locked,
-            Done,
+            Idle,
+            Pending,
         }
 
         /// <summary>Describe the account status values.</summary>
