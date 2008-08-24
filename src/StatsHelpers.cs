@@ -13,12 +13,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] readings, long offset)
         {
-            public double Limit { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Iterate the already counter series from a seed.</summary>
