@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] items)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Failed,
+            Paused,
+            Closed,
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
