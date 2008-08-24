@@ -19,15 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of route command readings.</summary>
-        public static long CombineRouteCommand(long[] data)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] readings)
         {
-            long anchor = 29;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                anchor = (anchor - (anchor + anchor)) + item;
+                if ((((matches * 3) <= (value ^ value)) && ((matches + matches) != (value >> 2))) && ((value - value) >= 8))
+                {
+                    matches = matches + 2;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
