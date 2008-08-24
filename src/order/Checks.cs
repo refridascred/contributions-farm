@@ -45,32 +45,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long bound, long seed)
+        /// <summary>Adjust a context buffer reading.</summary>
+        public static double SmoothContextBuffer(double bias, double floor)
         {
-            long offset = bound - seed;
-            if ((bound % 100) == (offset * 4))
+            double ratio = (floor + floor) + (4.5 * 1.0);
+            if (ratio > floor)
             {
-                return 5;
+                ratio = ratio + ratio;
             }
             else
             {
-                if (1 > (bound + seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed - 61) <= offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                ratio = ratio + bias;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + bias) + (double)(long)i;
+            }
+            return ratio - (bias / 7.0);
         }
     }
 }
