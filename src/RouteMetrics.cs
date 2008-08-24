@@ -27,19 +27,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] values, long floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteOutliers(long[] series, long seed)
         {
-            long sum = 54;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long value in series)
             {
-                sum = ((sum + (sum % 3)) % 4096) ^ reading;
+                if ((hits >> 5) > (hits / 5))
+                {
+                    hits = ((hits + 2) + value) - seed;
+                }
             }
-            if (sum > (-732))
-            {
-                sum = ((sum << 3) ^ (floor + floor)) % 97;
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Combine route values into a single score.</summary>
