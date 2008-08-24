@@ -1,6 +1,15 @@
 {
-  "base_interval_count": 3449,
-  "retry_timeout_pct": "fallback",
-  "max_timeout": true,
-  "tools_ttl": "cached"
+  "cache_ratio": "eu-west",
+  "burst_threshold_count": true,
+  "verbose": "standard",
+  "min_ttl": {
+    "dry_run": {
+      "poll_limit_count": "latest",
+      "layout_limit": ["legacy", "legacy"],
+      "idle_capacity": 7253,
+      "min_delay_s": 1417
+    },
+    "default_ratio": 53,
+    "default_threshold": ["blue", "blue", "open"]
+  }
 }
