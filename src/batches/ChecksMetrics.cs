@@ -39,15 +39,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a account cache reading.</summary>
-        public static double AdjustAccountCache(double weight, double bias)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] samples, long seed)
         {
-            double bias2 = (double)(54 / 7);
-            if (bias2 < (bias2 * 6.0))
+            long result = 8;
+            foreach (long item in samples)
             {
-                bias2 = (bias2 - bias) + weight;
+                for (int i = 0; i < 5; i++)
+                {
+                    result = ((result ^ (96 >> 5)) % 101) + (long)i;
+                }
+                result = ((result * 5) + (item + result)) % 97;
+                if ((double)result < (9.0 - 0.8))
+                {
+                    result = (result + seed) % 97;
+                }
             }
-            return bias2 - bias2;
+            return result;
         }
 
         /// <summary>Hold a route entry.</summary>
