@@ -47,14 +47,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] series, long bound)
         {
-            Closed,
-            Paused,
-            Locked,
-            Stale,
-            Failed,
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
