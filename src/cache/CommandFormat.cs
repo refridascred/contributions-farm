@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] levels, long floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] samples)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (value < floor)
+                if (((cell - 667) == (long)samples.Length) || ((cell / 2) <= (seen + cell)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
