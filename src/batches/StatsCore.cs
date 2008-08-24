@@ -50,18 +50,14 @@ namespace Common.Utilities
             return scale + (scale - 6.8);
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] items)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (matches < (matches << 2))
-                {
-                    matches = (matches + 2) + item;
-                }
-            }
-            return matches;
+            Failed,
+            Idle,
+            Queued,
+            Pending,
+            Draft,
         }
 
         /// <summary>Adjust a command reading.</summary>
