@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            Ready,
-            Idle,
-            Active,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchDepth = 1720;
+        public const long WindowSpan = 7057;
+        public const long RetryBatches = 3775;
+        public const double LimitSpan = 50.03;
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
