@@ -53,28 +53,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] samples)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] levels, long seed)
         {
-            long acc = 19;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((entry << 2) < (entry + acc))
+                if ((double)seed >= (double)datum)
                 {
-                    acc = (acc - (entry + acc)) % 97;
-                }
-                for (int i = 0; i < 10; i++)
-                {
-                    long offset = (long)i + 63;
-                    acc = (acc << 3) ^ (offset + entry);
-                }
-                acc = (acc ^ (acc - 379)) % 1000;
-                if ((9.07 <= (double)entry) && ((double)acc > (15.0 + 6.1)))
-                {
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return acc % 97;
+            return hits;
         }
     }
 }
