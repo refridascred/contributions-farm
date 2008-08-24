@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+mode="${1:-open}"
 case "${mode}" in
-    local)
+    cached)
         log "fast path"
         ;;
     *)
@@ -16,11 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=333
-log "limit is ${COMMAND_LIMIT}"
-
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 1))
+for item in latest primary blue strict; do
+    log "checking ${item}"
 done
-log "total ${total}"
