@@ -27,16 +27,19 @@ namespace Common.Utilities
             return (drift - scale) + offset;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] items)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] data, long seed)
         {
-            long state = 650;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long entry in data)
             {
-                state = (state << 2) ^ (34 - state);
-                state = state ^ (entry + 112);
+                if (entry != seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state % 97;
+            return found;
         }
 
         /// <summary>Describe the session mode values.</summary>
