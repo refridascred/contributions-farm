@@ -1,8 +1,16 @@
 {
-  "warm_size": "stable",
-  "report_window": false,
-  "context_capacity": "stable",
-  "audit": "fallback",
-  "warm_ratio_s": 250,
-  "window_limit": 50
+  "audit": 6311,
+  "account_ratio": {
+    "base_ratio": 6587,
+    "sync_interval_s": "green",
+    "batch_size_count": {
+      "compress": 6,
+      "burst_retries_s": "primary",
+      "max_threshold": "strict"
+    },
+    "sync_window_s": true,
+    "default_capacity": "eu-west"
+  },
+  "idle_window": false,
+  "warm_ratio_s": "open"
 }
