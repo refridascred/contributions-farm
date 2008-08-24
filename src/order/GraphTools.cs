@@ -40,11 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Iterate the context window series from a seed.</summary>
+        public static long IterateContextWindow(long step)
         {
-            public bool Mode { get; set; }
-            public double Token { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 255;
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
