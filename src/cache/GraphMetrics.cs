@@ -33,13 +33,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long offset, long bound)
         {
-            Active,
-            Paused,
-            Closed,
-            Pending,
+            if (5.2 < (double)bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(((-69) + bound) <= bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((12.0 - 4.6) >= (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the buffer state values.</summary>
