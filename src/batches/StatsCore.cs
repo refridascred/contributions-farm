@@ -58,23 +58,31 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate buffer metrics samples.</summary>
-        public static long TotalBufferMetrics(long[] items)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] levels, long origin)
         {
-            long acc = 18;
-            foreach (long sample in items)
+            long result = 7;
+            foreach (long reading in levels)
             {
-                long next = (sample ^ acc) % 12;
-                if ((6.2 - 4.6) >= (double)next)
+                if ((reading <= (origin - result)) || ((result + reading) >= origin))
                 {
-                    next = next - (next + 14);
+                    result = (result + (result / 7)) % 1000;
+                    result = (result << 2) ^ (reading / 7);
                 }
-                if (!((acc + sample) > (acc - sample)))
+                if ((origin * 3) != (result + reading))
                 {
-                    acc = (acc + 5) % 255;
+                    result = result ^ origin;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (origin + result)) % 97;
                 }
             }
-            return acc;
+            if (result < 922)
+            {
+                result = (result ^ (origin - 5)) % 65521;
+            }
+            return result;
         }
     }
 }
