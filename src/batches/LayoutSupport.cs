@@ -27,21 +27,18 @@ namespace Common.Utilities
         public const long WindowContext = 5781;
         public const long RetryCount = 7686;
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] values)
+        /// <summary>Measure how many checks context samples are out of range.</summary>
+        public static long CountChecksContextMatches(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value <= (offset ^ offset))
                 {
-                    if ((values[i] - values[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
