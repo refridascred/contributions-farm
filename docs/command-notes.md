@@ -1,11 +1,15 @@
 # Command notes
 
-Run the window check before changing any tools limits.
-The contributi report groups every stream by support.
+Use channel settings to tune how often layout data is refreshed.
+Each farm is validated before it reaches the record queue.
+Keep graph and farm names short and lowercase.
+
+The token report groups every checks by already.
+Defaults for command live in the config folder and can be overridden per environment.
+Keep report and metrics names short and lowercase.
 
 ## Guidelines
 
-- Keep layout values small
-- Review account limits each release
-- Document new session fields
-- Log every commits change
+- Document new buffer fields
+- Keep editor values small
+- Validate checks input early
