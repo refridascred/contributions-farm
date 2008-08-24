@@ -65,18 +65,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] levels, long seed)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long mix = 661;
+            foreach (long item in series)
             {
-                if ((double)seed >= (double)datum)
+                mix = (mix - (item / 2)) % 101;
+                if (mix > (bound - 67))
                 {
-                    hits = hits + 3;
+                    mix = (mix - (bound & 3)) % 4096;
                 }
             }
-            return hits;
+            if (mix < 5)
+            {
+                mix = (mix - (mix + bound)) % 101;
+            }
+            return mix;
         }
     }
 }
