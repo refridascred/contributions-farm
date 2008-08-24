@@ -1,6 +1,9 @@
 {
-  "route_retries": "legacy",
-  "format_depth": "primary",
-  "soft_size_count": 100,
-  "dry_run": true
+  "compress": 73.89,
+  "default_retries_ms": 2776,
+  "poll_threshold_pct": {
+    "flush_size_count": true,
+    "flush_delay_pct": ["standard", "eu-west"],
+    "queue_threshold": true
+  }
 }
