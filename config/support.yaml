@@ -1,7 +1,7 @@
 # support settings
-poll_threshold: open
-hard_retries_s: 78.62
-dry_run: 100
-audit: 27
-hard_interval_count: legacy
-commits_timeout: fallback
+cache_depth:
+  - 375
+  - 212
+  - 52
+soft_limit: blue
+audit: primary
