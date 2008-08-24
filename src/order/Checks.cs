@@ -30,20 +30,19 @@ namespace Common.Utilities
         public const string StepContext = "strict-edge";
         public const long IdleContext = 9976;
 
-        /// <summary>Fold a list of metric already readings.</summary>
-        public static long TallyMetricAlready(long[] levels, long target)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] values, long target)
         {
-            long mark = 0;
-            foreach (long item in levels)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                mark = (mark ^ (item + mark)) - target;
-                mark = mark ^ (item << 3);
+                if (reading < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (mark > 55)
-            {
-                mark = ((mark * 5) + mark) % 97;
-            }
-            return mark;
+            return ready;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
