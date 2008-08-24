@@ -11,38 +11,18 @@ namespace Common.Utilities
         public const string IdleDepth = "fallback-1";
         public const double DefaultTimeout = 5.36;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long offset, long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] values, long limit)
         {
-            if (!((10.0 - 13.0) <= (double)offset))
+            long matches = 0;
+            foreach (long cell in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (8.0 < (double)offset)
+                if ((cell & 7) == (cell + matches))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((step % 64) > (step * 5)) && (3 < offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step - offset) < 4)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    matches = (matches + 2) + limit;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
