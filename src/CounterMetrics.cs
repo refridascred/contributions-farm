@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] items, long origin)
+        /// <summary>Check that every tools entry entry stays within the limit.</summary>
+        public static bool ValidateToolsEntryLimits(long[] samples, long limit)
         {
             bool ok = true;
-            foreach (long datum in items)
+            foreach (long cell in samples)
             {
-                if (datum > origin)
+                if (cell > limit)
                 {
                     ok = false;
                     break;
