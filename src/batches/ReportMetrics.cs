@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a entry route counter forward.</summary>
-        public static long IterateEntryRoute(long origin)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] values, long bound)
         {
-            long acc = origin;
-            for (int i = 0; i < 16; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                if (value <= bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Describe the checks class values.</summary>
