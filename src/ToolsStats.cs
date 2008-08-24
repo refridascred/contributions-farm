@@ -32,19 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile schema readings against a rule.</summary>
-        public static long CountProfileSchemaGaps(long[] series, long bound)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (!(item <= (bound << 2)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 2210;
+        public const double IdleLevel = 61.37;
+        public const long LimitTools = 4171;
 
         /// <summary>Iterate the channel series from a seed.</summary>
         public static long RollChannel(long step)
