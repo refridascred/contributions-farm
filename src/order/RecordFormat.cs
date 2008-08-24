@@ -50,13 +50,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            Draft,
-            Pending,
-            Idle,
             Done,
+            Active,
+            Pending,
         }
     }
 }
