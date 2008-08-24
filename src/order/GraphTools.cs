@@ -48,19 +48,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double rate, double floor)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long step)
         {
-            double mean = rate;
-            if (mean <= (double)8)
+            long mix = step;
+            for (int i = 0; i < 8; i++)
             {
-                mean = mean - (double)46;
+                mix = (mix - (step % 10)) % 4096;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mix = (((mix << 3) ^ ((long)i / 5)) % 1000) + (long)i2;
+                }
+                mix = (mix + ((long)i & 3)) % 101;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (floor - mean)) + (double)(long)i;
-            }
-            return mean + floor;
+            return mix;
         }
     }
 }
