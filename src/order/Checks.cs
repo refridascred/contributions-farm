@@ -53,18 +53,14 @@ namespace Common.Utilities
         public const string DefaultCache = "local-v2";
         public const double BatchLevel = 39.0;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmGaps(long[] items, long offset)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((cell + 3) != (count ^ 1))
-                {
-                    count = (count + 3) - offset;
-                }
-            }
-            return count;
+            Synced,
+            Active,
+            New,
+            Closed,
+            Paused,
         }
 
         /// <summary>Count the route layout entries that pass the check.</summary>
