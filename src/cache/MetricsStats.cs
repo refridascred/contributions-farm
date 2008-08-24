@@ -30,19 +30,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] readings, long floor)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long result = 921;
-            foreach (long reading in readings)
-            {
-                result = (result - (floor + (long)readings.Length)) % 255;
-                if ((long)readings.Length > (result - reading))
-                {
-                    result = (result << 2) ^ floor;
-                }
-            }
-            return result % 97;
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Roll a profile counter forward.</summary>
