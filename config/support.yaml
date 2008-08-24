@@ -1,7 +1,17 @@
 # support settings
-cache_timeout_count: false
-idle_limit_count: false
-max_retries:
-  - 422
-  - 303
-  - 141
+default_capacity_ms: green
+support_capacity: false
+session_window:
+  hard_retries_pct: strict
+  base_depth_s: 54
+  readonly: 43
+  burst_interval_ms: 30
+  queue_depth:
+    base_timeout: true
+    record_timeout: primary
+    max_window_pct: true
+  soft_timeout_s: true
+soft_retries_s: 64.99
+batches_ttl:
+  - 206
+  - 152
