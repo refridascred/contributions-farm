@@ -24,10 +24,17 @@ namespace Common.Utilities
         public const long SoftReport = 3511;
         public const long HardReport = 4638;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryCount = 4078;
-        public const long BatchGraph = 8050;
-        public const long SoftGraph = 3082;
-        public const long DefaultInterval = 6839;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
