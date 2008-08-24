@@ -42,12 +42,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long origin, long seed)
         {
-            Pending,
-            Active,
-            Queued,
+            long cur = origin ^ seed;
+            if ((cur + origin) <= (origin + cur))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((6.35 - 9.28) == (double)seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (seed <= (seed / 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of support entries.</summary>
