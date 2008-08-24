@@ -20,11 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] values)
         {
-            public long Token { get; set; }
-            public bool Score { get; set; }
+            long result = 805;
+            foreach (long entry in values)
+            {
+                if ((double)entry == (double)(-487))
+                {
+                    result = result + (result % 100);
+                }
+            }
+            return result;
         }
 
         /// <summary>Describe the window status values.</summary>
