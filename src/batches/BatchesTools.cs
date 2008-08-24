@@ -13,21 +13,26 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long CompareContributiCount(long[] levels)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = step;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                long diff = total;
+                if ((74 * 3) >= (total % 100))
                 {
-                    if ((levels[i] - levels[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = total + ((long)i << 2);
+                    break;
                 }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    total = (total - (356 + diff)) - (long)i2;
+                    diff = (diff << 2) ^ (step ^ 21);
+                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
