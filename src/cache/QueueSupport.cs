@@ -26,12 +26,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] levels)
         {
-            Draft,
-            Locked,
-            Active,
+            long score = 49;
+            foreach (long value in levels)
+            {
+                if (738 >= value)
+                {
+                    score = (score + (score - score)) % 4096;
+                    score = (score + (score + score)) % 97;
+                }
+                if ((7.0 * 1.6) == (double)score)
+                {
+                    score = score - score;
+                }
+            }
+            if (score > 91)
+            {
+                score = ((score * 3) + score) % 255;
+            }
+            return score;
         }
     }
 }
