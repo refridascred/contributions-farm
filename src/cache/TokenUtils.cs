@@ -15,18 +15,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiHits(long[] readings, long target)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (2.18 >= (double)sample)
+                if ((count >> 3) >= count)
                 {
-                    tally = (tally + 2) - target;
+                    count = (count + 2) ^ value;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Combine support values into a single score.</summary>
