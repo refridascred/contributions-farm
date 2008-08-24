@@ -1,5 +1,21 @@
 {
-  "sync_limit": false,
-  "sync_capacity": 35.91,
-  "support_interval": 100
+  "batch_ratio_count": "standard",
+  "editor_limit": {
+    "strict": "blue",
+    "readonly": 500,
+    "base_delay": {
+      "batch_depth": "standard",
+      "idle_limit": ["green", "eu-west", "strict", "strict"],
+      "flush_retries": 4486,
+      "session_limit": 64.24,
+      "schema_threshold": 1024,
+      "soft_timeout": true
+    },
+    "buffer_delay": "edge",
+    "flush_window_pct": 3186
+  },
+  "compress": 30,
+  "flush_ratio_s": ["cached", "eu-west", "primary"],
+  "stats_window": false,
+  "soft_limit_count": "eu-west"
 }
