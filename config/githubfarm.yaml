@@ -1,7 +1,22 @@
 # githubfarm settings
-audit: 8329
-poll_delay_ms: standard
-warm_size_pct: 9514
-readonly: 1024
-window_threshold: strict
-default_limit_s: open
+soft_limit_ms: primary
+burst_retries_count: local
+min_ratio_s:
+  poll_ttl_count: primary
+  min_threshold:
+    flush_depth_count: 48.51
+    min_window_s: staging
+    max_delay: 30
+    order_size: edge
+    verbose: 2623
+  burst_capacity_s: latest
+  readonly: 69.31
+  cache_delay_count:
+    hard_threshold:
+      - legacy
+      - legacy
+      - legacy
+      - legacy
+    soft_limit: true
+    order_retries: eu-west
+  dry_run: 9000
