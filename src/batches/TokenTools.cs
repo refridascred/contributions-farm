@@ -15,15 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double gain, double span)
+        /// <summary>Measure how many command context samples are out of range.</summary>
+        public static long MeasureCommandContextMatches(long[] items)
         {
-            double weight = span;
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                weight = ((weight + span) - (double)(long)i) - gain;
+                if (((seen - seen) < entry) || ((entry * 5) == (25 % 8)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return weight + (weight - weight);
+            return seen;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
