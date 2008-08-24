@@ -1,9 +1,28 @@
 # support settings
-session_capacity: eu-west
-entry_interval: true
-retry_delay: local
-sync_capacity_pct:
-  - strict
-  - latest
-  - green
-  - cached
+batch_ratio_pct:
+  context_ratio:
+    - 286
+    - 267
+    - 486
+    - 53
+  graph_ratio: blue
+  idle_limit_count:
+    - primary
+    - strict
+  layout_delay: local
+  hard_interval_count:
+    soft_window_s: local
+    buffer_window: 4481
+    hard_threshold_count: 94.09
+    hard_ttl_ms: 11
+    stream_size: cached
+    persist: open
+persist: true
+idle_retries: 1124
+audit:
+  cache_limit_pct: 69
+  sync_depth_pct: 60.74
+  soft_interval_pct: open
+  schema_depth: green
+  compress: false
+  persist: false
