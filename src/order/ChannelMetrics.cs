@@ -27,19 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] samples, long limit)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Idle,
+            Failed,
+            Active,
+            Stale,
         }
     }
 }
