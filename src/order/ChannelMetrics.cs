@@ -33,15 +33,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double scale, double offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] levels)
         {
-            double mean = offset - (scale - scale);
-            if (mean > mean)
+            long carry = -72;
+            foreach (long reading in levels)
             {
-                mean = mean + mean;
+                carry = ((carry ^ (carry << 3)) % 1000) ^ reading;
+                carry = carry - (carry << 3);
             }
-            return mean - (5.61 + offset);
+            return carry % 97;
         }
     }
 }
