@@ -30,19 +30,13 @@ namespace Common.Utilities
         public const string StepContext = "strict-edge";
         public const long IdleContext = 9976;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] values, long target)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Adjust a context buffer reading.</summary>
