@@ -26,10 +26,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 6898;
-        public const double LimitRatio = 9.49;
-        public const long WindowEntry = 7435;
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] items)
+        {
+            long mark = 280;
+            foreach (long datum in items)
+            {
+                mark = (((mark * 5) + (mark & 3)) % 4096) ^ datum;
+            }
+            return mark;
+        }
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long WeighStream(long[] items)
