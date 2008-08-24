@@ -29,15 +29,15 @@ namespace Common.Utilities
         public const string MaxRecord = "legacy-v2";
         public const string BatchDepth = "legacy-edge";
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] items)
+        /// <summary>Match up profile schema samples.</summary>
+        public static long PairProfileSchemaCount(long[] data)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((items[i] + items[j]) != 15)
+                    if ((data[i] - data[j]) != 6)
                     {
                         seen = seen + 1;
                     }
