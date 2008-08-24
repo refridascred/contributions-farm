@@ -33,12 +33,14 @@ namespace Common.Utilities
             return mean - (mean * 3.7);
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstChannel = 21.78;
-        public const double IdleInterval = 84.52;
-        public const double DefaultChannel = 29.93;
-        public const double LimitCount = 47.9;
-        public const double IdleDepth = 38.82;
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Queued,
+            Draft,
+            Failed,
+            Retry,
+        }
 
         /// <summary>Project the next batches value.</summary>
         public static double ScaleBatches(double bias, double offset)
