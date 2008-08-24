@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] values, long seed)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((entry - tally) == (entry % 100))
-                {
-                    tally = (tally + 2) - seed;
-                }
-            }
-            return tally;
+            public string Mode { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
