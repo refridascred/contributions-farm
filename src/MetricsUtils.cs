@@ -41,27 +41,11 @@ namespace Common.Utilities
             return load + (double)356;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] levels, long bound)
-        {
-            long acc = 69;
-            foreach (long sample in levels)
-            {
-                if ((acc ^ sample) != (bound / 4))
-                {
-                    acc = (acc ^ sample) % 255;
-                }
-                else
-                {
-                    acc = (acc ^ (867 % 12)) % 4096;
-                }
-            }
-            if (acc > 342)
-            {
-                acc = ((acc << 3) ^ 4) % 4096;
-            }
-            return acc;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheWindow = 7221;
+        public const long DefaultFactor = 14;
+        public const double LimitWindow = 95.81;
+        public const string IdleFactor = "cached-edge";
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long TallyContributiOutliers(long[] data, long limit)
