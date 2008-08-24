@@ -16,11 +16,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double ratio, double span)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            double ratio2 = span;
-            return (ratio2 + (double)1) + ratio;
+            Dropped,
+            Active,
+            Stale,
+            Synced,
+            Locked,
         }
 
         /// <summary>Blend two commits measurements.</summary>
