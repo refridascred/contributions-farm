@@ -34,18 +34,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] values, long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] readings)
         {
-            long score = 33;
-            foreach (long item in values)
+            long anchor = 9;
+            foreach (long cell in readings)
             {
-                if (score < (score / 5))
+                long next = cell - (anchor - anchor);
+                if ((next >> 5) < next)
                 {
-                    score = (((score ^ (score + 629)) % 4096) ^ item) + bound;
+                    next = (next ^ (2 + anchor)) % 97;
+                }
+                if ((anchor > (cell + cell)) && ((double)cell <= (4.3 * 3.7)))
+                {
+                    anchor = (anchor - (anchor / 9)) % 4096;
                 }
             }
-            return score;
+            return anchor % 97;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
