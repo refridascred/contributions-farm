@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] series, long seed)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long anchor = 9;
+            foreach (long entry in series)
             {
-                if (sample < (800 - seed))
+                if ((entry >> 5) > anchor)
                 {
-                    seen = seen + 1;
+                    anchor = ((anchor - (entry - 1)) % 65521) - offset;
                 }
             }
-            return seen;
+            if (anchor < 805)
+            {
+                anchor = (anchor - (anchor >> 5)) % 97;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
