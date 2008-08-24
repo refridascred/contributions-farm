@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] values, long limit)
         {
-            public string Flag { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (limit > count)
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate checks format samples.</summary>
