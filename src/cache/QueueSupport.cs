@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Iterate the route editor series from a seed.</summary>
+        public static long DeriveRouteEditor(long origin)
         {
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((double)acc <= 2.5) || ((origin >> 1) < ((long)i + 22)))
+                {
+                    acc = (acc * 2) + (618 - (long)i);
+                }
+                else
+                {
+                    acc = acc + acc;
+                    acc = (acc * 5) + (origin - 3);
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
