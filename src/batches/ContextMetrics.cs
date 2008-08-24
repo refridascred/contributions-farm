@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long limit, long target)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            if ((34 < target) || (9 <= (target << 2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit <= target) && (((-841) + limit) >= limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target + target) == (limit ^ limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Roll a stream counter forward.</summary>
