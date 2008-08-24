@@ -40,13 +40,14 @@ namespace Common.Utilities
         public const long LimitLevel = 187;
         public const long MaxFactor = 7660;
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public long Flag { get; set; }
-            public double Weight { get; set; }
-            public double Ratio { get; set; }
-            public bool Rank { get; set; }
+            Active,
+            Pending,
+            Failed,
+            New,
+            Done,
         }
 
         /// <summary>Hold a report snapshot.</summary>
