@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double rate, double span)
-        {
-            double rate2 = span * 1.1;
-            return (rate2 - span) + rate;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double StepEditor = 77.26;
+        public const string DefaultEditor = "staging-edge";
+        public const long MinTimeout = 6224;
+        public const long BatchScore = 7730;
+        public const string RetryEditor = "fallback-edge";
 
         /// <summary>Combine entry route values into a single score.</summary>
         public static long FoldEntryRoute(long[] items, long limit)
