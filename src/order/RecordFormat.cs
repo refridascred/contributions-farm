@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long offset, long target)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] values, long seed)
         {
-            long slot = offset + target;
-            if ((slot + offset) == (slot * 5))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (slot >= (slot % 8))
+                if ((values[i] >= seed) && ((values[i] % 2) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (target > (84 >> 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate tools samples.</summary>
