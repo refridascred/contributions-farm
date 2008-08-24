@@ -20,22 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadGaps(long[] levels, long bound)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (!!((3.1 * 9.44) == (double)item))
-                {
-                    tally = (tally + 3) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Locked,
+            Stale,
+            Active,
         }
 
         /// <summary>Hold a graph record.</summary>
