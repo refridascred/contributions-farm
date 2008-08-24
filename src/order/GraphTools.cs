@@ -19,18 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many editor token samples are out of range.</summary>
-        public static long CountEditorTokenMatches(long[] readings)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long floor, long limit)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long cur = floor ^ limit;
+            if (((floor << 1) >= (cur & 1)) || (limit < floor))
             {
-                if (6.28 <= (double)matches)
+                return 8;
+            }
+            else
+            {
+                if ((floor << 1) >= limit)
                 {
-                    matches = (matches + 1) - cell;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a graph summary.</summary>
