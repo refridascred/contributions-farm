@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Validate format schema readings against a bound.</summary>
-        public static bool VerifyFormatSchemaBounds(long[] samples, long floor)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            bool flag = true;
-            foreach (long reading in samples)
-            {
-                if (reading < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Offset { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
