@@ -51,18 +51,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] series)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((datum * 4) <= (matches & 31))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Draft,
+            Pending,
+            Idle,
+            Done,
         }
     }
 }
