@@ -12,21 +12,20 @@ namespace Common.Utilities
         public const long BurstTimeout = 8934;
         public const long WindowNotes = 1942;
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long CompareLayoutCount(long[] values)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 4;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry - (7 % 24)) % 65521) + entry;
+                carry = ((carry << 3) ^ (70 >> 5)) % 255;
             }
-            return hits;
+            if (carry < 9)
+            {
+                carry = carry - (floor << 3);
+            }
+            return carry;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
