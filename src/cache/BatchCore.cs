@@ -22,22 +22,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] readings, long target)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double scale, double span)
         {
-            long mix = 39;
-            foreach (long reading in readings)
+            double drift = 3.4;
+            if (drift <= 0.3)
             {
-                if ((reading >= target) || ((double)11 < (double)mix))
-                {
-                    mix = ((mix << 2) ^ (target - target)) % 65521;
-                }
+                drift = (drift + (double)157) - span;
             }
-            if (mix < 900)
+            for (int i = 0; i < 7; i++)
             {
-                mix = (mix + target) % 4096;
+                drift = drift + (double)(long)i;
             }
-            return mix;
+            return drift + scale;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
