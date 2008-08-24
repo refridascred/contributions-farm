@@ -1,9 +1,10 @@
 # githubfarm settings
-compress: open
-cache_delay: green
-flush_size_pct:
-  audit: eu-west
-  profile_ttl: 78.52
-  cache_delay_ms: stable
-  cache_retries_ms: true
-tools_capacity: 72.54
+batch_interval_count:
+  - primary
+  - green
+  - blue
+flush_depth: false
+default_retries_ms: true
+tools_size: primary
+compress: 78.16
+hard_retries_ms: 1024
