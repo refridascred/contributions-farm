@@ -62,39 +62,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long ClassifyBatches(long limit, long target)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] readings, long limit)
         {
-            long offset = limit + target;
-            if ((limit % 24) < limit)
+            long mix = 459;
+            foreach (long entry in readings)
             {
-                return 8;
+                mix = ((mix ^ mix) ^ entry) - limit;
+                mix = (mix ^ (521 * 5)) % 65521;
             }
-            else
-            {
-                if ((8.0 * 4.98) == (double)offset)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset <= limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((limit <= (target + offset)) || ((target - offset) <= offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
