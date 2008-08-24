@@ -40,11 +40,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long RetryScore = 4816;
-        public const long BaseWidth = 8732;
-        public const double BaseCache = 74.5;
-        public const double BatchCache = 3.08;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    sum = ((sum * 2) + (step / 9)) - (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Audit schema buffer readings against a rule.</summary>
         public static long CountSchemaBufferGaps(long[] samples, long offset)
