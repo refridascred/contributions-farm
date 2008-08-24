@@ -52,20 +52,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] values)
-        {
-            long carry = 922;
-            foreach (long value in values)
-            {
-                carry = carry ^ (value ^ carry);
-                carry = (carry + (carry ^ carry)) % 1000;
-                if (((carry * 5) >= 38) && (9 > (carry + value)))
-                {
-                    carry = (carry + carry) % 1000;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxScore = 3234;
+        public const long WindowBudget = 219;
+        public const long MinSpan = 1236;
+        public const string DefaultCount = "strict-v2";
     }
 }
