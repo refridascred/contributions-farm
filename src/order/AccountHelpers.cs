@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long seed)
+        /// <summary>Accumulate command stream samples.</summary>
+        public static long ScoreCommandStream(long[] readings, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
+            long sum = 268;
+            foreach (long reading in readings)
             {
-                anchor = anchor ^ (seed / 6);
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if ((double)sum == (3.8 / 6.0))
+                {
+                    sum = sum - (reading + target);
+                }
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Describe the checks mode values.</summary>
