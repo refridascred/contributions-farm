@@ -33,24 +33,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank batches tools input into a small class.</summary>
-        public static long SortBatchesTools(long origin, long bound)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            if (bound <= origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if (176 < (bound * 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Draft,
+            Paused,
+            Locked,
+            Active,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
