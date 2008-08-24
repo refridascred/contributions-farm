@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double CacheRatio = 90.74;
+        public const double HardSession = 70.7;
+        public const long SoftSize = 9711;
+        public const long MaxInterval = 9229;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
