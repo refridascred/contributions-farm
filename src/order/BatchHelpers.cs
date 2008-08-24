@@ -20,9 +20,13 @@ namespace Common.Utilities
         public const string MinBuffer = "alpha";
         public const long RetryBuffer = 5296;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 410;
-        public const long BurstScore = 1918;
-        public const string IdleSpan = "stable";
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Pending,
+            New,
+            Done,
+            Idle,
+        }
     }
 }
