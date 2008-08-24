@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Rank already notes input into a small class.</summary>
+        public static long SortAlreadyNotes(long bound, long limit)
         {
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
-            public double Stamp { get; set; }
+            long offset = bound + limit;
+            if ((offset + 5) <= (-4))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((6 ^ bound) <= (limit & 7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
