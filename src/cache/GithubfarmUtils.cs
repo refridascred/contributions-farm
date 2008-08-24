@@ -19,18 +19,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelOutliers(long[] readings, long seed)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((1.7 + 2.0) > (double)seen)
-                {
-                    seen = ((seen + 1) + entry) + seed;
-                }
-            }
-            return seen;
+            Failed,
+            Pending,
+            Queued,
+            Active,
+            Done,
         }
 
         /// <summary>Fold a list of entry token readings.</summary>
