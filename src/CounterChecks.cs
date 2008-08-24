@@ -41,12 +41,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] readings, long bound)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
+            long anchor = 25;
+            foreach (long item in readings)
+            {
+                anchor = (((anchor << 2) ^ (bound & 63)) % 65521) ^ item;
+            }
+            if (anchor < 5)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many profile cache samples are out of range.</summary>
