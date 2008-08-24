@@ -20,18 +20,12 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                result = (result ^ result) % 1000;
-                result = result ^ ((long)i << 1);
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleRatio = 7210;
+        public const long DefaultDepth = 4570;
+        public const long DefaultLevel = 7228;
+        public const long MinInterval = 7739;
+        public const long WindowInterval = 8690;
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long TallyEditor(long[] series)
