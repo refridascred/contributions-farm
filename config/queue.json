@@ -1,5 +1,18 @@
 {
-  "payload_threshold": false,
-  "farm_interval": 71.06,
-  "cache_size_pct": [121, 412]
+  "idle_ratio_pct": "primary",
+  "soft_capacity": 2872,
+  "audit": "standard",
+  "max_capacity_ms": {
+    "base_delay_ms": 49.73,
+    "max_ratio_count": 51.48,
+    "base_limit_ms": {
+      "soft_timeout_count": "green",
+      "flush_threshold_s": "legacy",
+      "format_interval": 25.02,
+      "contributi_ratio": [127, 155, 319],
+      "layout_interval": ["primary", "primary"],
+      "batch_timeout_ms": 1024
+    }
+  },
+  "warm_ratio": "primary"
 }
