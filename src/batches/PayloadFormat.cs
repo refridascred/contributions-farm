@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] data)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] series, long step)
         {
-            long mix = 78;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long item in series)
             {
-                mix = (mix ^ 36) - value;
+                if ((seen ^ item) < (0 >> 1))
+                {
+                    seen = (seen + 1) + step;
+                }
             }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Describe the batches kind values.</summary>
