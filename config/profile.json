@@ -1,15 +1,10 @@
 {
-  "warm_threshold_count": false,
-  "verbose": 28,
-  "cache_depth": "primary",
-  "retry_delay_pct": false,
-  "poll_ratio": 500,
-  "enabled": {
-    "cluster_retries": [55, 378, 475, 293],
-    "hard_limit_pct": 3666,
-    "readonly": 17.06,
-    "context_size": 2501,
-    "idle_interval_pct": 36,
-    "audit": "fallback"
-  }
+  "batch_timeout": false,
+  "counter_ttl": {
+    "persist": 30.66,
+    "sync_retries": 7953,
+    "cache_interval": "local"
+  },
+  "idle_size": 34,
+  "soft_threshold_s": 46
 }
