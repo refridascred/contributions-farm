@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmLimits(long[] readings, long step)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double gain, double span)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            double ratio = span;
+            for (int i = 0; i < 3; i++)
             {
-                if (reading >= step)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = ((ratio + span) + (double)(long)i) + gain;
             }
-            return ok;
+            return ratio + (double)6;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
