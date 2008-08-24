@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Queued,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinLevel = 72.6;
+        public const string DefaultSpan = "local-edge";
+        public const long DefaultFactor = 7873;
+        public const double SoftWidth = 33.48;
 
         /// <summary>Project the next format value.</summary>
         public static double ScaleFormat(double bias, double floor)
