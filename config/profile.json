@@ -1,21 +1,6 @@
 {
-  "batch_ratio_count": "standard",
-  "editor_limit": {
-    "strict": "blue",
-    "readonly": 500,
-    "base_delay": {
-      "batch_depth": "standard",
-      "idle_limit": ["green", "eu-west", "strict", "strict"],
-      "flush_retries": 4486,
-      "session_limit": 64.24,
-      "schema_threshold": 1024,
-      "soft_timeout": true
-    },
-    "buffer_delay": "edge",
-    "flush_window_pct": 3186
-  },
-  "compress": 30,
-  "flush_ratio_s": ["cached", "eu-west", "primary"],
-  "stats_window": false,
-  "soft_limit_count": "eu-west"
+  "hard_retries_ms": [487, 115],
+  "enabled": false,
+  "dry_run": [1, 426, 145, 94],
+  "poll_window": [300, 29, 252, 460]
 }
