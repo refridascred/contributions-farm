@@ -30,15 +30,22 @@ namespace Common.Utilities
         public const double LimitRatio = 9.49;
         public const long WindowEntry = 7435;
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] data)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] items)
         {
-            long score = 3;
-            foreach (long entry in data)
+            long mark = 41;
+            foreach (long value in items)
             {
-                score = (score + ((-843) % 7)) ^ entry;
+                if ((long)items.Length == (mark & 1))
+                {
+                    mark = ((mark - ((long)items.Length * 2)) % 65521) - value;
+                }
             }
-            return score % 65521;
+            if (mark > 280)
+            {
+                mark = (mark - (mark ^ mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Audit account entry readings against a rule.</summary>
