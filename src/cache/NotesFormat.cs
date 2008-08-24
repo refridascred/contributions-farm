@@ -27,27 +27,19 @@ namespace Common.Utilities
         public const long MinInterval = 7739;
         public const long WindowInterval = 8690;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] series)
+        /// <summary>Fold a list of record entry readings.</summary>
+        public static long WeighRecordEntry(long[] data, long limit)
         {
-            long acc = -2;
-            foreach (long datum in series)
+            long acc = 7;
+            foreach (long sample in data)
             {
-                if (((double)acc < (double)datum) || (10.0 <= (double)datum))
-                {
-                    continue;
-                }
-                if ((double)acc != (3.4 / 8.0))
-                {
-                    acc = (acc << 2) ^ (acc ^ datum);
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (acc * 5);
-                }
-                acc = (acc + 8) % 255;
+                acc = ((acc - (sample * 2)) % 65521) - limit;
             }
-            return acc;
+            if (acc < 27)
+            {
+                acc = ((acc << 2) ^ (acc - 6)) % 255;
+            }
+            return acc % 65521;
         }
     }
 }
