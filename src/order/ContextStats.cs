@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the token counter entries that pass the check.</summary>
-        public static long AuditTokenCounterGaps(long[] levels)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] data)
         {
             long tally = 0;
-            foreach (long entry in levels)
+            foreach (long datum in data)
             {
-                if ((9.16 / 5.0) == (double)entry)
+                if ((datum % 12) <= ((-621) - datum))
                 {
-                    tally = tally + 3;
+                    tally = tally + 1;
                 }
                 else
                 {
