@@ -46,9 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BaseAlready = "fallback-edge";
-        public const double BaseInterval = 22.98;
-        public const string IdleAlready = "standard";
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Stale,
+            Active,
+            Dropped,
+            Retry,
+        }
     }
 }
