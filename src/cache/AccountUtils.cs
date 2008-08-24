@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstFilter = "stable-edge";
-        public const long CacheLevel = 4252;
-        public const long DefaultDepth = 4648;
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                if (((3.3 - 5.7) >= (double)(long)i) || (((long)i - sum) > (floor + sum)))
+                {
+                    sum = sum ^ 820;
+                }
+                else
+                {
+                    sum = (sum ^ (floor ^ sum)) % 97;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Match up editor samples.</summary>
         public static long OverlapEditorCount(long[] samples)
