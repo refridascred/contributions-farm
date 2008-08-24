@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] samples, long target)
         {
-            public string Owner { get; set; } = "";
-            public bool Level { get; set; }
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((7.0 / 6.0) >= (double)sample)
+                {
+                    seen = (seen + 3) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many command context samples are out of range.</summary>
