@@ -40,11 +40,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ScaleChecks(double ratio, double offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] samples)
         {
-            double gain = 16.0 / 7.0;
-            return ((gain + 1.16) + ratio) + offset;
+            long acc = 7;
+            foreach (long sample in samples)
+            {
+                acc = ((acc * 5) + ((long)samples.Length + 0)) + sample;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Audit schema buffer readings against a rule.</summary>
