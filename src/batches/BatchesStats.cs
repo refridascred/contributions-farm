@@ -35,11 +35,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultLevel = 2648;
-        public const string RetryAccount = "alpha";
-        public const long CacheWidth = 4299;
-        public const double IdleAccount = 24.15;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] levels, long target)
+        {
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool ValidateContributiBounds(long[] series, long seed)
