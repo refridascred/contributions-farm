@@ -1,5 +1,18 @@
 # githubfarm settings
-warm_threshold_ms: strict
-verbose: latest
-max_window_count: 43.86
-layout_ratio: 893
+notes_size: stable
+verbose:
+  sync_delay: 37.27
+  min_size_count:
+    warm_ratio_ms:
+      - 96
+      - 350
+      - 237
+    max_limit_s: 2285
+    cache_ttl: 98.07
+  route_size: 68.7
+  queue_timeout: 82.17
+  context_ttl: legacy
+  account_delay: standard
+hard_ratio_pct:
+  - 430
+  - 46
