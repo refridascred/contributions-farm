@@ -13,12 +13,14 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 549;
-        public const string BatchAccount = "local-v2";
-        public const long WindowFactor = 7542;
-        public const double RetryCount = 63.04;
-        public const long MinAccount = 8408;
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Synced,
+            Queued,
+            Active,
+            Failed,
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long TotalEntry(long[] readings, long floor)
