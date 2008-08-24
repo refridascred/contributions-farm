@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double gain, double span)
+        /// <summary>Count notes record pairs that satisfy a relation.</summary>
+        public static long MatchNotesRecordCount(long[] levels)
         {
-            double ratio = span;
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ((ratio + span) + (double)(long)i) + gain;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return ratio + (double)6;
+            return seen;
         }
 
         /// <summary>Adjust a token contributi reading.</summary>
