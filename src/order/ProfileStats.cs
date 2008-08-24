@@ -11,23 +11,21 @@ namespace Common.Utilities
         public const long RetryLevel = 3726;
         public const string RetryFactor = "staging-1";
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] items, long origin)
+        /// <summary>Count record channel pairs that satisfy a relation.</summary>
+        public static long PairRecordChannelCount(long[] levels)
         {
-            long acc = 6;
-            foreach (long entry in items)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (((acc * 3) + ((long)i * 4)) % 4096) ^ entry;
-                    acc = (acc - (long)i) % 255;
-                }
-                if ((double)acc > (double)origin)
-                {
-                    acc = acc ^ (acc + acc);
+                    if ((levels[i] + levels[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return acc % 4096;
+            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
