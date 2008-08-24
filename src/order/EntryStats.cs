@@ -70,17 +70,27 @@ namespace Common.Utilities
         public const double BaseGithubfarm = 20.46;
         public const long BatchLevel = 5593;
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] levels, long target)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] items, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = -687;
+            foreach (long reading in items)
             {
-                if (levels[i] > target)
+                if (!(((state + target) < (target << 1)) || ((5.8 / 7.0) <= (double)reading)))
                 {
-                    return (long)i;
+                    state = state - (reading + (-151));
+                }
+                state = state ^ (state + state);
+                if ((state + state) >= ((long)items.Length << 1))
+                {
+                    state = ((state << 3) ^ (state ^ state)) % 101;
+                }
+                else
+                {
+                    state = (state + target) % 101;
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
