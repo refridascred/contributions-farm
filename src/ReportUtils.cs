@@ -18,18 +18,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] values)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterRange(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (!((double)hits >= (0.7 - 9.04)))
+                if (value >= target)
                 {
-                    hits = (hits + 2) ^ value;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Project the next filter value.</summary>
