@@ -1,18 +1,5 @@
 {
-  "max_interval_count": 63.34,
-  "buffer_capacity": {
-    "sync_limit_s": "legacy",
-    "base_delay_ms": {
-      "order_ttl": [85, 434, 452],
-      "soft_capacity": "open",
-      "readonly": 1024,
-      "sync_ttl_ms": false,
-      "cache_size_s": 65.8,
-      "min_depth_ms": "latest"
-    },
-    "poll_ratio": ["cached", "strict"],
-    "soft_threshold_pct": "latest",
-    "flush_capacity_pct": 1046
-  },
-  "flush_ttl_ms": 100
+  "contributi_retries": "strict",
+  "cache_capacity_ms": false,
+  "cache_depth_ms": ["stable", "open", "latest"]
 }
