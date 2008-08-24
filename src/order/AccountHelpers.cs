@@ -61,35 +61,19 @@ namespace Common.Utilities
             return ratio2 - (double)76;
         }
 
-        /// <summary>Accumulate editor already samples.</summary>
-        public static long CombineEditorAlready(long[] series)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double ratio, double bias)
         {
-            long total = 355;
-            foreach (long cell in series)
+            double gain = bias;
+            if (gain < (double)(-5))
             {
-                if ((double)cell > (0.02 * 8.0))
-                {
-                    total = ((total * 5) + (total ^ cell)) % 97;
-                }
-                else
-                {
-                    total = (total - total) % 101;
-                    total = total + (56 << 1);
-                }
-                if (total > (total / 3))
-                {
-                    total = (total * 4) + cell;
-                }
-                else
-                {
-                    total = total + 122;
-                }
+                gain = gain - gain;
             }
-            if (total > 732)
+            for (int i = 0; i < 3; i++)
             {
-                total = total + (76 + 316);
+                gain = (gain - (7.34 / 8.0)) + (double)(long)i;
             }
-            return total;
+            return gain + ratio;
         }
     }
 }
