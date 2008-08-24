@@ -41,19 +41,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double bias, double bias2)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] values)
         {
-            double drift = 11.0;
-            if (drift <= (double)8)
+            long score = 91;
+            foreach (long item in values)
             {
-                drift = drift + drift;
+                score = ((score << 3) ^ (item / 4)) % 1000;
             }
-            else
-            {
-                drift = drift - (bias2 + bias);
-            }
-            return drift - (bias2 + 8.34);
+            return score % 1000;
         }
     }
 }
