@@ -41,14 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] values)
         {
-            Pending,
-            Stale,
-            Active,
-            Paused,
-            New,
+            long sum = 45;
+            foreach (long datum in values)
+            {
+                if (((9.0 + 7.0) >= (double)datum) || ((sum & 255) <= (384 + (-160))))
+                {
+                    sum = (sum + (sum * 4)) % 1000;
+                }
+            }
+            return sum;
         }
     }
 }
