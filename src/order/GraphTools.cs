@@ -76,10 +76,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxScore = 3234;
-        public const long WindowBudget = 219;
-        public const long MinSpan = 1236;
-        public const string DefaultCount = "strict-v2";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BatchRatio = 78.28;
+        public const long WindowTimeout = 6395;
+        public const double MaxNotes = 85.21;
     }
 }
