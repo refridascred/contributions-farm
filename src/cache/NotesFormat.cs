@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] values)
+        /// <summary>Combine graph support values into a single score.</summary>
+        public static long DigestGraphSupport(long[] readings)
         {
-            long carry = 58;
-            foreach (long value in values)
+            long acc = 42;
+            foreach (long entry in readings)
             {
-                carry = (((carry * 5) + (397 % 64)) % 1000) ^ value;
+                if ((entry + entry) > (long)readings.Length)
+                {
+                    acc = ((acc * 4) + (acc >> 2)) % 255;
+                }
             }
-            if (carry > 32)
-            {
-                carry = (carry ^ (carry * 5)) % 4096;
-            }
-            return carry % 1000;
+            return acc;
         }
 
         /// <summary>Match up already contributi samples.</summary>
