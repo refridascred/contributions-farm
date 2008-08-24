@@ -5,31 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of format already entries.</summary>
-        public static long ScoreFormatAlready(long[] levels)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] levels)
         {
-            long score = 2;
-            foreach (long value in levels)
+            long total = 6;
+            foreach (long entry in levels)
             {
-                if (!((double)score >= 4.19))
+                if ((total - 9) < (total + 585))
                 {
-                    score = (score - (score * 2)) % 97;
-                    score = (score ^ 54) % 255;
+                    total = total ^ (long)levels.Length;
                 }
-                if (((score + score) > (value / 6)) && ((double)value != (5.35 * 0.6)))
+                if ((entry ^ entry) != (entry + 918))
                 {
-                    score = ((score * 3) + ((long)levels.Length - score)) % 4096;
-                }
-                else
-                {
-                    score = (score * 3) + score;
+                    break;
                 }
             }
-            if (score > 16)
+            if (total > 860)
             {
-                score = ((score << 2) ^ (score / 5)) % 65521;
+                total = (total * 2) + total;
             }
-            return score % 65521;
+            return total % 1000;
         }
 
         /// <summary>Fold a list of route batch readings.</summary>
