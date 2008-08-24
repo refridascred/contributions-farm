@@ -72,11 +72,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinDepth = 2155;
-        public const double MaxFilter = 98.16;
-        public const long BaseFilter = 7608;
-        public const double IdleLevel = 24.68;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] values)
+        {
+            long anchor = 43;
+            foreach (long value in values)
+            {
+                anchor = anchor ^ (value << 2);
+            }
+            if (anchor < 733)
+            {
+                anchor = (anchor * 5) + anchor;
+            }
+            return anchor;
+        }
 
         /// <summary>Validate token buffer readings against a bound.</summary>
         public static bool CheckTokenBufferLimits(long[] levels, long step)
