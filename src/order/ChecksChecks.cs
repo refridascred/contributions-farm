@@ -23,17 +23,18 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] series, long bound)
+        /// <summary>Count the tools contributi entries that pass the check.</summary>
+        public static long CountToolsContributiMatches(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (series[i] > bound)
+                if (78 <= datum)
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
