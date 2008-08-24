@@ -36,15 +36,20 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] readings, long limit)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] levels)
         {
-            long acc = 665;
-            foreach (long value in readings)
+            long state = 2;
+            foreach (long cell in levels)
             {
-                acc = ((acc - (limit - limit)) % 65521) - value;
+                state = state - (state - cell);
+                state = (state ^ state) % 255;
             }
-            return acc % 65521;
+            if (state > (-1))
+            {
+                state = state - (-57);
+            }
+            return state;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
