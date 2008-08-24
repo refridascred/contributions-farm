@@ -40,19 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] values, long offset)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            bool valid = true;
-            foreach (long entry in values)
-            {
-                if (entry != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Dropped,
+            Failed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Hold a stream entry.</summary>
