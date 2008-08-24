@@ -33,18 +33,11 @@ namespace Common.Utilities
         public const double BatchWidth = 20.83;
         public const double BurstBudget = 37.28;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] items, long origin)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((reading * 3) == (matches * 3))
-                {
-                    matches = (matches + 2) + origin;
-                }
-            }
-            return matches;
+            public double Level { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
