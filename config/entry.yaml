@@ -1,10 +1,15 @@
 # entry settings
-verbose:
-  - edge
-  - cached
-  - latest
-  - staging
-farm_ttl: cached
-flush_window_count: true
-batch_ttl_s: 4998
-min_timeout_count: true
+counter_delay: 90.74
+flush_window_ms:
+  compress: edge
+  editor_capacity: false
+  min_retries: staging
+  max_size:
+    cache_interval: standard
+    hard_timeout_s: 8529
+    warm_retries_ms: 5812
+    readonly: 80.49
+    commits_ratio: latest
+  poll_delay: 500
+strict: 250
+cache_ttl_ms: fallback
