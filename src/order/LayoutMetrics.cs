@@ -27,22 +27,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] samples)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long step)
         {
-            long anchor = 5;
-            foreach (long datum in samples)
+            long total = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((anchor % 100) >= anchor)
-                {
-                    anchor = ((anchor ^ (anchor % 16)) % 4096) ^ datum;
-                }
-                else
-                {
-                    anchor = anchor + anchor;
-                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return total;
         }
     }
 }
