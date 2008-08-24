@@ -20,36 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] levels)
-        {
-            long anchor = 61;
-            foreach (long datum in levels)
-            {
-                if ((9 + datum) >= anchor)
-                {
-                    anchor = (anchor * 5) + anchor;
-                    anchor = anchor + 3;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (22 + datum)) % 4096;
-                }
-                if ((datum + anchor) >= datum)
-                {
-                    anchor = ((anchor << 2) ^ (datum * 4)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor - (datum - anchor)) % 4096;
-                }
-            }
-            if (anchor > 6)
-            {
-                anchor = (anchor - 643) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheLevel = 35.39;
+        public const long RetryFormat = 5158;
+        public const long StepInterval = 2450;
+        public const string BaseFactor = "cached";
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
