@@ -48,11 +48,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double gain, double offset)
         {
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
+            double gain2 = (offset * 3.42) - (1.74 * 9.69);
+            if (gain2 >= (gain2 - gain))
+            {
+                gain2 = gain2 + gain;
+            }
+            return gain2 + 1.0;
         }
     }
 }
