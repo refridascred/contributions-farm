@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitWindow = 58.35;
-        public const string HardTimeout = "latest-edge";
-        public const double BaseBudget = 32.02;
+        /// <summary>Count report commits pairs that satisfy a relation.</summary>
+        public static long OverlapReportCommitsCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long ScoreCounter(long[] samples)
