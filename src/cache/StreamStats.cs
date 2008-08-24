@@ -57,24 +57,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank entry cluster input into a small class.</summary>
-        public static long SortEntryCluster(long offset, long bound)
+        /// <summary>Count stats cache pairs that satisfy a relation.</summary>
+        public static long CompareStatsCacheCount(long[] samples)
         {
-            if (offset > (bound + bound))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset / 7) >= (offset + bound))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    if ((samples[i] ^ samples[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
     }
 }
