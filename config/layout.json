@@ -1,23 +1,6 @@
 {
-  "cache_capacity_count": 1024,
-  "strict": "strict",
-  "sync_delay_ms": ["primary", "blue", "local", "green"],
-  "format_timeout": {
-    "min_delay_count": "eu-west",
-    "idle_limit": 57,
-    "enabled": 20.11
-  },
-  "burst_window_ms": {
-    "base_limit_ms": true,
-    "layout_threshold": "open",
-    "readonly": {
-      "entry_timeout": "local",
-      "burst_timeout_ms": "stable",
-      "audit": 74.76,
-      "base_capacity": false
-    },
-    "farm_timeout": false,
-    "warm_timeout_ms": "cached",
-    "persist": "standard"
-  }
+  "retry_timeout_ms": 33,
+  "command_capacity": 100,
+  "audit": 7737,
+  "max_depth_s": 60
 }
