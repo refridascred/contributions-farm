@@ -1,6 +1,5 @@
 {
-  "hard_ratio": 7466,
-  "contributi_interval": 84.95,
-  "cluster_window": [357, 110, 381],
-  "hard_ttl_count": 5608
+  "context_ttl": 35.12,
+  "burst_delay_ms": 60,
+  "account_ttl": "stable"
 }
