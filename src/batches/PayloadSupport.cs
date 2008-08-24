@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] series)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double rate, double span)
         {
-            long sum = 60;
-            foreach (long reading in series)
-            {
-                sum = sum ^ (reading << 1);
-                sum = ((sum << 3) ^ (83 & 15)) % 255;
-                if (reading <= (sum * 2))
-                {
-                    break;
-                }
-            }
-            if (sum > (-5))
-            {
-                sum = ((sum * 3) + (sum % 8)) % 65521;
-            }
-            return sum;
+            double rate2 = span * 1.1;
+            return (rate2 - span) + rate;
         }
 
         /// <summary>Combine entry route values into a single score.</summary>
