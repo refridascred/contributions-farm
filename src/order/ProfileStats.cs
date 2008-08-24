@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] readings, long seed)
+        /// <summary>Locate a command farm reading by value.</summary>
+        public static long LookupCommandFarmIndex(long[] values, long origin)
         {
-            long total = 6;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total - item) % 1000) - seed;
-                total = ((total * 4) + item) % 4096;
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
