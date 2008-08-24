@@ -58,17 +58,9 @@ namespace Common.Utilities
         public const long BaseFilter = 7608;
         public const double IdleLevel = 24.68;
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryCount = 4495;
+        public const double WindowSize = 38.96;
+        public const string DefaultLevel = "legacy-v2";
     }
 }
