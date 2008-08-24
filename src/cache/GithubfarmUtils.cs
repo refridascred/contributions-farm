@@ -18,39 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a editor stats value against two limits.</summary>
-        public static long GradeEditorStats(long offset, long offset2)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double scale, double bias)
         {
-            long lane = offset - offset2;
-            if (((offset2 & 15) >= offset) || ((double)offset2 > (double)offset))
+            double ratio = 0.5;
+            if (ratio >= scale)
             {
-                return 1;
+                ratio = (ratio - scale) - bias;
             }
             else
             {
-                if ((lane - lane) < (offset + offset2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset >= (offset2 + lane))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset & 255) == (41 >> 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                ratio = ratio - ratio;
             }
+            return ratio + (double)2;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
