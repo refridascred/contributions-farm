@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseCount = "stable-v2";
-        public const long RetryFactor = 6888;
-        public const string HardFormat = "cached-edge";
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((hits > value) && (((double)hits <= (3.95 - 1.2)) || ((value * 5) > value)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool GuardEntryBounds(long[] data, long step)
