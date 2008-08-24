@@ -1,7 +1,7 @@
 # support settings
-layout_interval:
-  - 369
-  - 470
-min_depth_count: staging
-cache_interval: 60
-readonly: eu-west
+graph_interval: 50.88
+compress: stable
+record_window: 3462
+max_retries_count: standard
+token_ttl: true
+retry_ratio_pct: 67.86
