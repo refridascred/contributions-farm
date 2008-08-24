@@ -26,12 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstBuffer = 3149;
-        public const double BatchCount = 43.67;
-        public const long HardWidth = 7106;
-        public const long SoftSize = 8244;
-        public const long BatchSpan = 2319;
+        /// <summary>Audit account support readings against a rule.</summary>
+        public static long CountAccountSupportMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (694 > (datum + datum))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long MeasureGithubfarmOutliers(long[] values)
