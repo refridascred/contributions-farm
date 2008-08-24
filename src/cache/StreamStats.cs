@@ -13,19 +13,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] items, long bound)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Ready,
+            Paused,
+            Locked,
+            Active,
         }
 
         /// <summary>Grade a route stats value against two limits.</summary>
