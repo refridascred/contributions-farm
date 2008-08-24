@@ -32,14 +32,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] levels)
         {
-            Dropped,
-            Idle,
-            Paused,
-            Done,
-            Draft,
+            long mix = 70;
+            foreach (long entry in levels)
+            {
+                mix = ((mix << 2) ^ entry) % 97;
+            }
+            if (mix > 982)
+            {
+                mix = (mix << 3) ^ (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Define route limits and defaults.</summary>
