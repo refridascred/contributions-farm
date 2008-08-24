@@ -23,17 +23,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] items, long floor)
+        /// <summary>Combine command editor values into a single score.</summary>
+        public static long TallyCommandEditor(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 925;
+            foreach (long datum in values)
             {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
+                carry = ((carry + (carry >> 4)) % 65521) + datum;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
