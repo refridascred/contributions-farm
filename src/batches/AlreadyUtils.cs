@@ -47,22 +47,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] data)
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] series)
         {
-            long result = 775;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample > (result ^ (long)data.Length)) && (result > (757 % 2)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result ^ (sample ^ sample)) % 97;
+                    if ((series[i] + series[j]) > 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result < 202)
-            {
-                result = result + result;
-            }
-            return result;
+            return tally;
         }
     }
 }
