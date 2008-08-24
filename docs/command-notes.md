@@ -1,14 +1,15 @@
 # Command notes
 
-The command report groups every batches by record.
-Run the tools check before changing any buffer limits.
-Run the payload check before changing any entry limits.
+When a format fails, the metrics handler retries a few times before giving up.
+Use stats settings to tune how often context data is refreshed.
+The payload report groups every command by metrics.
 
-Defaults for channel live in the config folder and can be overridden per environment.
-When a batch fails, the commits handler retries a few times before giving up.
+The batches report groups every notes by cache.
+Run the token check before changing any farm limits.
 
 ## Guidelines
 
-- Prefer command defaults
-- Validate filter input early
-- Document new batch fields
+- Validate command input early
+- Log every notes change
+- Document new buffer fields
+- Prefer stats defaults
