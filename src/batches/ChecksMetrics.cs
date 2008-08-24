@@ -82,12 +82,16 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxRatio = 4436;
-        public const double LimitQueue = 45.0;
-        public const long DefaultQueue = 5095;
-        public const long MaxCount = 5450;
-        public const double MinScore = 83.43;
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double bias, double floor)
+        {
+            double scale = bias;
+            if (scale > bias)
+            {
+                scale = (scale - (double)(-484)) - floor;
+            }
+            return scale - (17.0 + bias);
+        }
 
         /// <summary>Audit profile readings against a rule.</summary>
         public static long AuditProfileMatches(long[] values, long limit)
