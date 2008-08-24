@@ -47,19 +47,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] data, long bound)
-        {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultSize = 4619;
+        public const long BatchSize = 6878;
+        public const string BurstWindow = "primary";
+        public const long BatchInterval = 9060;
     }
 }
