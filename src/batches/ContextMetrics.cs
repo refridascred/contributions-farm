@@ -62,14 +62,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long limit, long target)
         {
-            Pending,
-            Synced,
-            Ready,
-            Paused,
-            Done,
+            long offset = limit + target;
+            if ((limit % 24) < limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((8.0 * 4.98) == (double)offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (offset <= limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((limit <= (target + offset)) || ((target - offset) <= offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
