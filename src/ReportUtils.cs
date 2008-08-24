@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] values, long target)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (((target & 31) != (cell - cell)) && (((target & 7) >= (cell ^ 72)) || ((46 - tally) < tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Done,
+            Locked,
+            Stale,
+            Synced,
+            Retry,
         }
 
         /// <summary>Accumulate format record samples.</summary>
