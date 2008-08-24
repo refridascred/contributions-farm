@@ -20,15 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double gain, double offset)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricRange(long[] data, long floor)
         {
-            double weight = gain;
-            if (weight > (weight / 8.0))
+            bool found = true;
+            foreach (long entry in data)
             {
-                weight = (weight - (double)77) - offset;
+                if (entry >= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return weight + (gain * 10.0);
+            return found;
         }
 
         /// <summary>Define account limits and defaults.</summary>
