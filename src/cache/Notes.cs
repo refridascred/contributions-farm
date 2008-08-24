@@ -38,13 +38,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] data, long step)
         {
-            Done,
-            Locked,
-            Idle,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many format metrics samples are out of range.</summary>
