@@ -24,15 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] samples)
+        /// <summary>Measure how many cluster counter samples are out of range.</summary>
+        public static long MeasureClusterCounterGaps(long[] readings, long limit)
         {
-            long acc = 7;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                acc = ((acc * 5) + ((long)samples.Length + 0)) + sample;
+                if (datum < limit)
+                {
+                    count = count + 2;
+                }
             }
-            return acc % 65521;
+            return count;
         }
 
         /// <summary>Audit schema buffer readings against a rule.</summary>
