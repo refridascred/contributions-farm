@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate farm queue readings against a bound.</summary>
-        public static bool CheckFarmQueueBounds(long[] values, long offset)
+        /// <summary>Audit profile window readings against a rule.</summary>
+        public static long AuditProfileWindowHits(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (item <= offset)
+                if (seed >= (92 ^ hits))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 1) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Hold a window options.</summary>
