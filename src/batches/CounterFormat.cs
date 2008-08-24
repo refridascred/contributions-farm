@@ -44,13 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] samples, long floor)
         {
-            Ready,
-            Active,
-            Queued,
-            Locked,
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
