@@ -44,19 +44,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit command support readings against a rule.</summary>
-        public static long CountCommandSupportHits(long[] series)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((count + item) == (813 >> 4))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinRoute = 9243;
+        public const long CacheRoute = 9456;
+        public const string MinBudget = "alpha";
+        public const long DefaultRoute = 4608;
+        public const long BatchRoute = 9748;
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
