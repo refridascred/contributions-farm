@@ -47,10 +47,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultSize = 4619;
-        public const long BatchSize = 6878;
-        public const string BurstWindow = "primary";
-        public const long BatchInterval = 9060;
+        /// <summary>Iterate the context token series from a seed.</summary>
+        public static long IterateContextToken(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((long)i + (long)i) > (target + 562))
+                {
+                    state = ((state << 3) ^ (state - state)) % 97;
+                }
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
