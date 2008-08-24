@@ -67,18 +67,9 @@ namespace Common.Utilities
         public const long SoftWidth = 3456;
         public const string BatchCount = "strict";
 
-        /// <summary>Audit channel farm readings against a rule.</summary>
-        public static long AuditChannelFarmOutliers(long[] readings, long floor)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (((floor - seen) <= (value + seen)) && (((5 + 7) < (value ^ floor)) || ((double)seen == (4.1 * 5.6))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepCount = 6711;
+        public const double IdleRatio = 57.86;
+        public const double SoftSpan = 89.3;
     }
 }
