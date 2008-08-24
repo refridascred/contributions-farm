@@ -16,10 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleSize = 2716;
-        public const string LimitScore = "cached-v2";
-        public const string IdleTools = "standard";
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
+        {
+            public long Level { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long RetryScore = 4816;
