@@ -1,8 +1,28 @@
 # entry settings
-min_timeout_count: false
-max_capacity: 81.77
-checks_depth:
-  - eu-west
+burst_delay_pct:
+  - open
   - stable
+  - cached
+poll_timeout_s: 72.52
+sync_limit:
+  persist: 1024
+  warm_delay: 28
+  hard_threshold_s: 8005
+warm_capacity_count:
+  - strict
   - legacy
-  - stable
+  - standard
+  - green
+filter_ratio:
+  token_capacity: fallback
+  persist: 55
+  tools_ratio: 250
+  burst_ratio:
+    - 45
+    - 477
+  batches_ratio: 28.55
+  already_limit:
+    - local
+    - eu-west
+    - open
+    - stable
