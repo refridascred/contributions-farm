@@ -35,17 +35,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] data, long offset)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Ready,
+            Closed,
+            Queued,
+            Locked,
         }
     }
 }
