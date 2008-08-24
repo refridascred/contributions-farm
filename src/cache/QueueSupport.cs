@@ -32,18 +32,15 @@ namespace Common.Utilities
         public const string DefaultLevel = "fallback-1";
         public const long MaxRatio = 5869;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaHits(long[] series)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long step)
         {
-            long count = 0;
-            foreach (long value in series)
+            long sum = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (!((double)value >= (10.0 - 4.5)))
-                {
-                    count = count + 3;
-                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
     }
 }
