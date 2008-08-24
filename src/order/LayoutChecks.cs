@@ -77,20 +77,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long step)
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double gain, double floor)
         {
-            long carry = step;
-            for (int i = 0; i < 12; i++)
+            double ratio = (12.0 / 2.0) - gain;
+            if (ratio > gain)
             {
-                if ((double)0 <= (double)step)
-                {
-                    carry = (carry * 5) + step;
-                }
-                carry = ((carry * 3) + step) % 4096;
-                carry = ((carry * 4) + (long)i) % 1000;
+                ratio = ratio + (ratio - floor);
             }
-            return carry;
+            return ratio - 6.9;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
