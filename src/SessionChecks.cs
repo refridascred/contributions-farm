@@ -31,11 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 4505;
-        public const long BurstMetric = 2761;
-        public const double MaxMetric = 87.41;
-        public const long MinMetric = 8986;
-        public const long MaxLevel = 3133;
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
