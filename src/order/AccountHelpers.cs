@@ -63,21 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up queue batch samples.</summary>
-        public static long OverlapQueueBatchCount(long[] samples)
+        /// <summary>Fold a list of farm schema readings.</summary>
+        public static long DigestFarmSchema(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 1;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((11.0 - 4.55) <= (double)mark)
                 {
-                    if ((samples[i] + samples[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark - (70 & 127)) ^ entry;
                 }
             }
-            return matches;
+            return mark % 1000;
         }
 
         /// <summary>Blend two route measurements.</summary>
