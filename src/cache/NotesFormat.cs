@@ -22,12 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public long Offset { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 6471;
+        public const string IdleNotes = "fallback-edge";
+        public const string MaxNotes = "legacy-v2";
+        public const double IdleDepth = 62.65;
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
