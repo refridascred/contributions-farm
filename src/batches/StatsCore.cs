@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenHits(long[] items, long floor)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (7 <= (item >> 2))
-                {
-                    tally = (tally + 3) + floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultProfile = 8294;
+        public const double MinProfile = 16.7;
+        public const long BurstProfile = 299;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long HardRatio = 9602;
