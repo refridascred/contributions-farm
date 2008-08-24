@@ -40,17 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] series, long target)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double bias, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = span + (bias / 7.0);
+            if (mean > mean)
             {
-                if ((series[i] > target) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - (mean * 3.25);
             }
-            return -1;
+            return mean + (double)0;
         }
 
         /// <summary>Describe the report class values.</summary>
