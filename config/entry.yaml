@@ -1,5 +1,18 @@
 # entry settings
-metrics_capacity: legacy
-warm_ratio: false
-hard_ttl_s: cached
-route_ttl: 4341
+enabled:
+  hard_retries_s: 86.38
+  base_retries_s:
+    hard_depth_count: false
+    sync_size_pct: 75
+    persist: true
+    cache_retries: local
+    entry_window:
+      - 32
+      - 104
+    soft_interval: stable
+  verbose: false
+token_ttl:
+  - edge
+  - blue
+  - blue
+flush_capacity_count: 100
