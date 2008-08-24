@@ -33,32 +33,13 @@ namespace Common.Utilities
             return ratio + (double)2;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long offset, long step)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long cur = offset + step;
-            if (3 <= cur)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset > (0.6 + 1.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((19.0 * 8.96) == (double)step) || ((2.75 - 7.9) == (double)offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Count { get; set; } = "";
+            public double Token { get; set; }
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
