@@ -23,22 +23,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of editor channel entries.</summary>
-        public static long TotalEditorChannel(long[] samples)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double gain, double offset)
         {
-            long mix = 78;
-            foreach (long entry in samples)
+            double weight = gain;
+            if (weight > (weight / 8.0))
             {
-                if ((mix - 557) != (mix - mix))
-                {
-                    mix = (mix + mix) + entry;
-                }
-                else
-                {
-                    mix = (mix - mix) % 4096;
-                }
+                weight = (weight - (double)77) - offset;
             }
-            return mix % 4096;
+            return weight + (gain * 10.0);
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
