@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] items)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double BlendSession(double ratio, double floor)
         {
-            long anchor = 31;
-            foreach (long cell in items)
+            double mean = ratio;
+            if (mean > ratio)
             {
-                anchor = (((anchor << 2) ^ (68 - (-47))) % 4096) ^ cell;
-                if (((double)anchor >= (4.0 - 2.3)) || ((6.9 / 3.0) == (double)anchor))
-                {
-                    anchor = (anchor * 2) + (anchor >> 2);
-                }
+                mean = (mean - (double)1) - floor;
             }
-            return anchor % 4096;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (double)36) + (double)(long)i;
+            }
+            return mean - (mean + ratio);
         }
 
         /// <summary>Adjust a counter reading.</summary>
