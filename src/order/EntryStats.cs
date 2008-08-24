@@ -62,11 +62,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 4717;
-        public const double CacheTimeout = 43.78;
-        public const double CacheLevel = 10.44;
-        public const long BatchInterval = 5643;
-        public const string SoftSize = "primary-v2";
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
+        {
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Token { get; set; }
+        }
     }
 }
