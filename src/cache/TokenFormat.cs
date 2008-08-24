@@ -14,19 +14,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate checks farm readings against a bound.</summary>
-        public static bool ValidateChecksFarmLimits(long[] data, long seed)
+        /// <summary>Compare every pair of editor stats readings.</summary>
+        public static long PairEditorStatsCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample != seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Describe the report mode values.</summary>
