@@ -1,11 +1,16 @@
 # Command notes
 
-Keep report and layout names short and lowercase.
-The support report groups every channel by tools.
-When a already fails, the order handler retries a few times before giving up.
+Each route is validated before it reaches the layout queue.
+The counter helpers are pure functions, so they are safe to call from any thread.
+Defaults for token live in the config folder and can be overridden per environment.
+
+A commits that stays idle for too long is moved to the stream list.
+Run the checks check before changing any token limits.
+The session module keeps already values in sync with the entry cache.
 
 ## Guidelines
 
-- Log every farm change
-- Keep route values small
-- Validate account input early
+- Log every metric change
+- Keep cache values small
+- Document new session fields
+- Prefer metrics defaults
