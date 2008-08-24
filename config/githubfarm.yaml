@@ -1,16 +1,12 @@
 # githubfarm settings
-warm_timeout_pct: 3519
-audit: 97.96
-poll_retries: 5144
-flush_size_s:
-  retry_retries_ms: false
-  stream_ttl:
-    dry_run: latest
-    burst_limit_s: 15
-    readonly: cached
-    stats_ratio:
-      - 481
-      - 20
-      - 148
-    filter_capacity: 5377
-  poll_capacity_s: true
+base_ratio_count: 65.31
+max_interval_pct: primary
+context_ttl: true
+batch_size:
+  - cached
+  - eu-west
+  - primary
+  - blue
+idle_interval_s:
+  - 59
+  - 360
