@@ -27,39 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long RankProfile(long floor, long bound)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long gap = floor ^ bound;
-            if (((double)bound < (double)floor) || ((double)15 != (double)gap))
-            {
-                return 1;
-            }
-            else
-            {
-                if (8 > (gap >> 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (floor >= (10 << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)floor < (4.55 * 19.0)) && ((floor * 3) >= bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Failed,
+            Closed,
         }
     }
 }
