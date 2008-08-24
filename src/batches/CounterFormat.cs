@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] data)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long step)
         {
-            long score = -2;
-            foreach (long cell in data)
+            long state = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((score & 1) != (818 / 3))
+                if ((step + step) == (state + 14))
                 {
-                    score = (score ^ score) % 65521;
-                }
-                if (!((score << 1) < cell))
-                {
+                    state = (state * 3) + (state - step);
                     break;
                 }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return score % 97;
+            return state;
         }
 
         /// <summary>Describe the order status values.</summary>
