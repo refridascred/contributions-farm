@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long origin)
+        /// <summary>Roll a command token counter forward.</summary>
+        public static long IterateCommandToken(long seed)
         {
-            long state = origin;
-            for (int i = 0; i < 10; i++)
+            long acc = seed;
+            for (int i = 0; i < 22; i++)
             {
-                state = ((state * 4) + (long)i) % 97;
+                if (!((8 - seed) <= ((long)i - seed)))
+                {
+                    acc = ((acc << 2) ^ (745 + seed)) % 255;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Accumulate channel samples.</summary>
