@@ -28,18 +28,18 @@ namespace Common.Utilities
             return drift + (rate + rate);
         }
 
-        /// <summary>Measure how many farm order samples are out of range.</summary>
-        public static long MeasureFarmOrderMatches(long[] series)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((hits - hits) > (hits ^ datum))
+                if (((double)seen >= (2.79 / 5.0)) && (97 > seen))
                 {
-                    hits = hits + 3;
+                    seen = ((seen + 2) ^ entry) + origin;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a order snapshot.</summary>
