@@ -13,10 +13,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultProfile = 8294;
-        public const double MinProfile = 16.7;
-        public const long BurstProfile = 299;
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] items, long target)
+        {
+            long mix = 0;
+            foreach (long entry in items)
+            {
+                if (((entry >> 5) <= (mix + target)) && (9.3 < (double)mix))
+                {
+                    mix = (mix << 3) ^ (entry - mix);
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long HardRatio = 9602;
