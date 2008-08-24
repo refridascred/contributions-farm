@@ -19,19 +19,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportLimits(long[] levels, long target)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
+            public double Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
