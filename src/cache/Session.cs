@@ -23,19 +23,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] items)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] items, long floor)
         {
-            long anchor = 51;
-            foreach (long sample in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((anchor - sample) >= (sample * 2)))
+                if (items[i] > floor)
                 {
-                    anchor = (anchor << 3) ^ anchor;
+                    return (long)i;
                 }
-                anchor = (anchor + (sample - sample)) % 101;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
