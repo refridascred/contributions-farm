@@ -34,18 +34,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] series, long step)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double AdjustStream(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            double rate = bias;
+            for (int i = 0; i < 5; i++)
             {
-                if ((461 - datum) <= (step + step))
-                {
-                    matches = matches + 2;
-                }
+                rate = ((rate - (double)(-286)) + (double)(long)i) - bias2;
             }
-            return matches;
+            return rate + 6.3;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
