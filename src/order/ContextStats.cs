@@ -11,17 +11,13 @@ namespace Common.Utilities
         public const long DefaultTimeout = 5773;
         public const long BurstFilter = 5444;
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] values, long limit)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public double Score { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Project the next batch value.</summary>
