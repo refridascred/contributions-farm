@@ -20,23 +20,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] data, long seed)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long origin, long step)
         {
-            long score = 220;
-            foreach (long value in data)
+            if (!((double)origin < (7.9 / 2.0)))
             {
-                score = (score + (seed * 4)) % 101;
-                if ((double)score != (13.0 + 9.2))
+                return 0;
+            }
+            else
+            {
+                if ((origin + origin) < step)
                 {
-                    score = score + score;
+                    return 6;
                 }
                 else
                 {
-                    score = (score ^ value) % 255;
+                    if ((double)origin < (9.86 / 7.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return score % 97;
         }
 
         /// <summary>Project the next route value.</summary>
