@@ -12,11 +12,33 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleFactor = 3145;
-        public const double RetryScore = 38.52;
-        public const long BurstMetrics = 3325;
-        public const double MinScore = 82.61;
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long origin, long step)
+        {
+            long edge = origin + step;
+            if ((origin + origin) == (edge - (-3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((edge - origin) <= (origin / 6)) && ((432 + edge) <= origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((5.78 * 1.8) >= (double)edge) && ((edge / 7) <= (step & 1)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
