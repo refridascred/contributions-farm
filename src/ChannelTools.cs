@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] items, long offset)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long total = 5;
-            foreach (long sample in items)
-            {
-                if ((sample <= (total & 63)) && ((offset - sample) < (offset - 22)))
-                {
-                    total = total ^ (801 + 7);
-                }
-            }
-            return total;
+            Active,
+            Closed,
+            New,
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
