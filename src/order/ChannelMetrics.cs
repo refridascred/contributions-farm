@@ -13,15 +13,12 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] readings, long limit)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long result = 687;
-            foreach (long sample in readings)
-            {
-                result = ((result * 3) + (limit + result)) - sample;
-            }
-            return result;
+            Retry,
+            Draft,
+            New,
         }
 
         /// <summary>Iterate the stream batch series from a seed.</summary>
