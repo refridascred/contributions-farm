@@ -20,12 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultSize = 6053;
-        public const long LimitLevel = 9427;
-        public const long BaseSize = 271;
-        public const string DefaultInterval = "legacy-v2";
-        public const long CacheDepth = 6016;
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the editor channel series from a seed.</summary>
         public static long DeriveEditorChannel(long seed)
