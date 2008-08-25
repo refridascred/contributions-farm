@@ -28,17 +28,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next checks batch value from a seed.</summary>
-        public static long IterateChecksBatch(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = (sum + (sum + (long)i)) % 4096;
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 6905;
+        public const long StepTools = 2260;
+        public const double MinTools = 91.71;
+        public const long StepBudget = 5810;
 
         /// <summary>Roll a order stream counter forward.</summary>
         public static long DeriveOrderStream(long limit)
