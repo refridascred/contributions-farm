@@ -32,21 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string HardRatio = "strict";
+        public const long DefaultCount = 2932;
+        public const long MinBuffer = 4743;
+        public const long BurstBuffer = 6857;
+        public const long HardBuffer = 1148;
     }
 }
