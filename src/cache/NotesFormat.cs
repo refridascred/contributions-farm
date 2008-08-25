@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheStream = "alpha";
-        public const long MaxFactor = 130;
-        public const long WindowSize = 4897;
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] data, long seed)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (!((2.9 * 7.66) > (double)seed))
+                {
+                    matches = (matches + 3) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string BaseScore = "primary";
