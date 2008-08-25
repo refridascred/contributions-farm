@@ -34,36 +34,21 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] data)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] readings)
         {
-            long sum = 333;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((32 >= (value + value)) || ((sum / 3) > value))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    long diff = (value / 8) >> 4;
-                    sum = sum - diff;
-                    continue;
-                }
-                if ((sum < (value - 60)) && ((double)sum > (8.26 - 17.0)))
-                {
-                    sum = ((sum * 2) + (sum / 4)) % 1000;
-                }
-                else
-                {
-                    sum = sum ^ (sum + value);
-                }
-                if ((399 / 4) == (sum / 8))
-                {
-                    break;
+                    if ((readings[i] + readings[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum < 812)
-            {
-                sum = (sum - (sum + sum)) % 1000;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Adjust a tools reading.</summary>
