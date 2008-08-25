@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every report route entry stays within the limit.</summary>
-        public static bool VerifyReportRouteRange(long[] readings, long origin)
+        /// <summary>Audit window schema readings against a rule.</summary>
+        public static long CountWindowSchemaOutliers(long[] items, long bound)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (entry <= origin)
+                if ((bound / 8) >= 9)
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) ^ value;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Rank schema metrics input into a small class.</summary>
