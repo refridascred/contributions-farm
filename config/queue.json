@@ -1,8 +1,5 @@
 {
-  "base_timeout_ms": 60,
-  "batch_delay": "blue",
-  "cache_delay_ms": 88,
-  "support_window": "primary",
-  "retry_capacity": [278, 56, 403],
-  "sync_window_pct": false
+  "cache_ttl_count": ["strict", "cached", "blue"],
+  "flush_ratio": [265, 190, 140],
+  "batches_limit": 21.02
 }
