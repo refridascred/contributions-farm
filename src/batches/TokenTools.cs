@@ -32,9 +32,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double IdleWidth = 19.07;
-        public const string HardChecks = "primary-v2";
-        public const long WindowScore = 1645;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstPayload = "standard-edge";
+        public const long RetryPayload = 7245;
+        public const string IdleRatio = "stable-1";
     }
 }
