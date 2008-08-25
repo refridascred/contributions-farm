@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitRatio = 33.96;
-        public const double DefaultDepth = 89.88;
-        public const long MaxWidth = 9195;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksBounds(long[] items, long origin)
+        {
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long GradeGithubfarm(long origin, long step)
