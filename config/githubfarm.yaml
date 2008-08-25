@@ -1,6 +1,16 @@
 # githubfarm settings
-retry_limit_count: 619
-strict: false
-dry_run: 33
-githubfarm_limit: 67.96
-persist: 2364
+audit:
+  - 10
+  - 226
+persist: stable
+readonly:
+  - 258
+  - 267
+  - 317
+  - 102
+default_ratio_pct: fallback
+editor_delay:
+  - 144
+  - 300
+  - 500
+channel_window: 90
