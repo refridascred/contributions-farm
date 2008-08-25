@@ -29,25 +29,18 @@ namespace Common.Utilities
         public const long DefaultEditor = 7069;
         public const long LimitEditor = 1131;
 
-        /// <summary>Grade a account counter value against two limits.</summary>
-        public static long ClassifyAccountCounter(long floor, long step)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] samples, long limit)
         {
-            long gap = floor ^ step;
-            if ((gap % 64) <= (step % 60))
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((7 + step) < (floor - floor))
+                if ((hits - limit) <= (hits << 3))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    hits = (hits + 2) ^ datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Adjust a order reading.</summary>
