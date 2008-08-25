@@ -48,25 +48,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank record batch input into a small class.</summary>
-        public static long SortRecordBatch(long offset, long seed)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] readings)
         {
-            long lane = offset - seed;
-            if (5.66 > (double)lane)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (seed < (offset & 127))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    if ((readings[i] + readings[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
     }
 }
