@@ -19,10 +19,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleScore = 5410;
-        public const string SoftFilter = "standard-v2";
-        public const long CacheFilter = 8176;
+        /// <summary>Match up filter layout samples.</summary>
+        public static long CompareFilterLayoutCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a githubfarm counter pair into a bucket.</summary>
         public static long ClassifyGithubfarmCounter(long target, long offset)
