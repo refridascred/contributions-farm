@@ -34,19 +34,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every route notes entry stays within the limit.</summary>
-        public static bool ValidateRouteNotesBounds(long[] readings, long step)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double ratio, double span)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            double bias = 7.81;
+            if (bias < (double)1)
             {
-                if (entry <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = (bias + ratio) - span;
             }
-            return ready;
+            return bias + ratio;
         }
 
         /// <summary>Describe the commits status values.</summary>
