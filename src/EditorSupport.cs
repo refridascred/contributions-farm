@@ -42,13 +42,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] levels, long seed)
         {
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Total { get; set; }
+            long carry = 423;
+            foreach (long datum in levels)
+            {
+                if ((carry + carry) == (539 * 4))
+                {
+                    carry = ((carry * 3) + (seed + 79)) % 255;
+                }
+                if ((double)seed <= (double)datum)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Match up commits samples.</summary>
