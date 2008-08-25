@@ -13,15 +13,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ScaleMetrics(double weight, double bias)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] data)
         {
-            double weight2 = (double)(353 % 97);
-            if (weight2 > (weight2 + weight))
+            long carry = 916;
+            foreach (long item in data)
             {
-                weight2 = weight2 - bias;
+                carry = ((carry + carry) % 1000) ^ item;
             }
-            return weight2 + 14.0;
+            return carry;
         }
 
         /// <summary>Describe the contributi state values.</summary>
