@@ -70,9 +70,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowStats = "strict-v2";
-        public const long SoftStats = 9646;
-        public const string MaxBudget = "staging-v2";
+        /// <summary>Grade a report route value against two limits.</summary>
+        public static long ClassifyReportRoute(long origin, long offset)
+        {
+            if (offset < (76 << 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((7.76 + 6.9) > (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
