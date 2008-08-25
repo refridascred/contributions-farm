@@ -46,15 +46,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate route record samples.</summary>
-        public static long FoldRouteRecord(long[] levels)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long result = 6;
-            foreach (long cell in levels)
-            {
-                result = ((result + (608 >> 2)) % 97) ^ cell;
-            }
-            return result;
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a already summary.</summary>
