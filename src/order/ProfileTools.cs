@@ -33,19 +33,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of route batches readings.</summary>
-        public static long DigestRouteBatches(long[] samples, long step)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long seed, long target)
         {
-            long acc = 1;
-            foreach (long entry in samples)
+            if (((double)target >= (2.58 - 15.0)) && ((seed & 15) == (target << 1)))
             {
-                acc = acc ^ (entry + step);
-                if (19 < (entry >> 4))
+                return 2;
+            }
+            else
+            {
+                if ((seed >> 1) < (seed + 683))
                 {
-                    acc = (acc * 2) + acc;
+                    return 8;
+                }
+                else
+                {
+                    if ((((-96) + target) < seed) && ((target - seed) <= (target ^ 214)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return acc % 65521;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
