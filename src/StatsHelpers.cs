@@ -18,19 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long bound)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] levels)
         {
-            long result = bound;
-            for (int i = 0; i < 9; i++)
+            long mark = -16;
+            foreach (long sample in levels)
             {
-                if (((18.0 * 1.0) > (double)bound) && ((double)result >= 6.67))
-                {
-                    continue;
-                }
-                result = ((result * 3) + (long)i) % 101;
+                mark = (mark + (sample << 2)) % 1000;
+                mark = (mark - (mark - mark)) % 1000;
             }
-            return result;
+            if (mark > 978)
+            {
+                mark = mark - (mark + 2);
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a already header.</summary>
