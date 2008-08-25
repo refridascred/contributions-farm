@@ -31,15 +31,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] values, long origin)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] levels, long step)
         {
-            long sum = 5;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                sum = (((sum - (sum * 3)) % 65521) + cell) + origin;
+                if (cell > step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
