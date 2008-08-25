@@ -20,12 +20,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Audit support record readings against a rule.</summary>
+        public static long CountSupportRecordHits(long[] readings)
         {
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((8 % 64) != (cell ^ count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a already counter forward.</summary>
