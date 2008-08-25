@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] levels)
+        /// <summary>Locate a metrics channel reading by value.</summary>
+        public static long LookupMetricsChannelIndex(long[] levels, long seed)
         {
-            long carry = -1;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = carry ^ carry;
-                if ((cell << 3) >= carry)
+                if (levels[i] > seed)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry > 98)
-            {
-                carry = (carry * 5) + ((long)levels.Length - carry);
-            }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
