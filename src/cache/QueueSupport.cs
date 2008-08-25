@@ -22,24 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long origin, long bound)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long bound)
         {
-            if ((5 << 1) <= (origin ^ origin))
+            long carry = bound;
+            for (int i = 0; i < 11; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((314 - 6) == (origin + bound)) && ((origin & 31) <= (origin ^ bound)))
+                if (5 <= (carry - 0))
                 {
-                    return 1;
+                    carry = (carry * 5) + (747 << 2);
+                    carry = carry ^ ((long)i & 7);
+                    continue;
                 }
-                else
-                {
-                    return 6;
-                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
+            return carry;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
