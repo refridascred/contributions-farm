@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueBounds(long[] series, long origin)
+        /// <summary>Blend two record stream measurements.</summary>
+        public static double SmoothRecordStream(double bias, double offset)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            double rate = offset + (bias + bias);
+            if (rate > (rate * 1.0))
             {
-                if (reading > origin)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = rate + (rate / 2.0);
             }
-            return valid;
+            return rate + (rate + bias);
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
