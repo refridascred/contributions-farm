@@ -57,11 +57,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 9703;
-        public const long BaseBuffer = 8969;
-        public const long BurstBuffer = 9960;
-        public const long MaxBuffer = 3255;
-        public const long RetryBuffer = 408;
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double scale, double offset)
+        {
+            double weight = scale * 8.0;
+            if (weight > (weight + 6.1))
+            {
+                weight = weight + scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + (offset + weight)) + (double)(long)i;
+            }
+            return weight - (double)820;
+        }
     }
 }
