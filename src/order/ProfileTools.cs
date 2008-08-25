@@ -55,10 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BaseLevel = "fallback-edge";
-        public const long BurstFactor = 9115;
-        public const string MaxMetric = "fallback";
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LookupChecksIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next session value.</summary>
         public static double ScaleSession(double weight, double span)
