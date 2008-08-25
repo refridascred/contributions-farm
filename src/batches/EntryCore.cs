@@ -64,13 +64,19 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] readings, long floor)
         {
-            Locked,
-            Synced,
-            Retry,
-            New,
+            long sum = 85;
+            foreach (long datum in readings)
+            {
+                sum = ((sum * 5) + floor) % 101;
+                if ((datum % 5) != (datum ^ 0))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
     }
 }
