@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long bound)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long carry = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = ((carry << 3) ^ (bound + (-59))) % 65521;
-                if (!((bound / 6) <= 8))
-                {
-                    carry = (carry ^ ((long)i ^ bound)) % 255;
-                    continue;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            Synced,
+            Retry,
+            Locked,
+            Pending,
         }
 
         /// <summary>Hold a buffer stats.</summary>
