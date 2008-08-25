@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the context payload series from a seed.</summary>
-        public static long SeriesContextPayload(long seed)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] readings, long seed)
         {
-            long sum = seed;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (seed < ((long)i - seed))
+                if (readings[i] > seed)
                 {
-                    long matches = seed;
-                    sum = (sum + (seed - matches)) % 101;
+                    return (long)i;
                 }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
