@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Digest a series of metrics order entries.</summary>
+        public static long ScoreMetricsOrder(long[] values)
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            long result = 5;
+            foreach (long reading in values)
+            {
+                result = (result + reading) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
