@@ -27,18 +27,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] items)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long step)
         {
-            long mix = 77;
-            foreach (long entry in items)
+            long result = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (mix <= (entry + entry))
-                {
-                    mix = mix - (mix * 4);
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return mix % 65521;
+            return result;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
