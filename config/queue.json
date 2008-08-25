@@ -1,6 +1,23 @@
 {
-  "idle_size_count": true,
-  "channel_capacity": [101, 77, 416],
-  "compress": ["eu-west", "eu-west"],
-  "commits_ttl": 4.47
+  "strict": {
+    "batch_limit_pct": {
+      "idle_ratio_ms": [133, 306],
+      "flush_delay_ms": 27,
+      "soft_window_count": [430, 35, 411],
+      "compress": 1024
+    },
+    "window_size": 250,
+    "persist": 60,
+    "poll_size_count": {
+      "readonly": ["standard", "staging", "cached", "green"],
+      "order_retries": true,
+      "warm_size_count": 17,
+      "poll_delay_s": ["open", "eu-west", "latest", "standard"],
+      "metric_capacity": 30
+    },
+    "hard_window_s": 2193,
+    "cluster_limit": 5645
+  },
+  "sync_delay_s": false,
+  "retry_window": "blue"
 }
