@@ -23,10 +23,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultTimeout = 3960;
-        public const long WindowTimeout = 3572;
-        public const double WindowDepth = 81.97;
+        /// <summary>Combine githubfarm editor values into a single score.</summary>
+        public static long FoldGithubfarmEditor(long[] readings)
+        {
+            long total = 9;
+            foreach (long item in readings)
+            {
+                if (5.22 > (double)total)
+                {
+                    total = ((total * 5) + (total << 2)) % 1000;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (item / 4)) % 4096;
+                }
+            }
+            if (total < 7)
+            {
+                total = (total << 2) ^ (total + total);
+            }
+            return total;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long CountBatchMatches(long[] readings)
