@@ -24,15 +24,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long offset)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long anchor = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            Idle,
+            Queued,
+            Synced,
         }
 
         /// <summary>Locate a account reading by value.</summary>
