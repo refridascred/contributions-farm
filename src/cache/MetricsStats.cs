@@ -65,24 +65,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long origin)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long mix = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = (mix * 2) + ((long)i - mix);
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mix = (mix ^ (origin - origin)) ^ (long)i2;
-                }
-                if (mix < (807 & 3))
-                {
-                    mix = ((mix << 3) ^ (origin - origin)) % 97;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            Queued,
+            Draft,
+            Stale,
+            Failed,
+            Done,
         }
 
         /// <summary>Locate a format reading by value.</summary>
