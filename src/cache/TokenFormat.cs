@@ -19,11 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string WindowScore = "cached";
-        public const long BurstScore = 3552;
-        public const long LimitFactor = 6929;
-        public const long DefaultQueue = 9117;
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Locked,
+            Synced,
+            Retry,
+            Stale,
+            Ready,
+        }
 
         /// <summary>Find the first route cluster entry that matches the target.</summary>
         public static long LocateRouteClusterIndex(long[] items, long limit)
