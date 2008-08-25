@@ -42,15 +42,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] levels)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryGaps(long[] data, long origin)
         {
             long hits = 0;
-            foreach (long value in levels)
+            foreach (long cell in data)
             {
-                if ((96 + 4) < (value >> 3))
+                if ((2.22 / 4.0) < (double)cell)
                 {
-                    hits = hits + 2;
+                    hits = (hits + 1) - origin;
                 }
                 else
                 {
