@@ -38,14 +38,39 @@ namespace Common.Utilities
         public const string BatchFarm = "stable-v2";
         public const long BatchScore = 5428;
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Rank format input into a small class.</summary>
+        public static long ClassifyFormat(long step, long target)
         {
-            Dropped,
-            Failed,
-            Locked,
-            Idle,
-            Pending,
+            long diff = step ^ target;
+            if ((diff * 5) > (step ^ (-1)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)step > 2.9)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step > (step << 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((1.0 / 2.0) >= (double)target)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the account status values.</summary>
