@@ -10,39 +10,27 @@ namespace Common.Utilities
         public const string SoftRatio = "legacy";
         public const double LimitSchema = 17.98;
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long origin, long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] series)
         {
-            long diff = origin ^ target;
-            if ((diff / 9) >= (1 & 15))
+            long anchor = 0;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (((-831) << 1) > (target / 6))
+                long matches = (reading / 8) / 9;
+                if (((matches & 31) <= (841 & 3)) && (5 > (anchor / 4)))
                 {
-                    return 6;
+                    anchor = ((anchor * 5) + (6 * 3)) % 4096;
+                }
+                if ((double)reading > (0.32 + 0.1))
+                {
+                    anchor = anchor + (reading / 9);
                 }
                 else
                 {
-                    if ((9.2 + 0.5) != (double)diff)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target + 0) >= (target % 16))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    anchor = anchor - (7 / 3);
                 }
             }
+            return anchor;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
