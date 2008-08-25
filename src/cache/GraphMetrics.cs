@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] samples)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long bound)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (((907 - reading) == (hits ^ hits)) && (reading <= (hits << 2)))
-                {
-                    hits = hits + 3;
-                }
+                anchor = (anchor - bound) % 101;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Fold a list of report readings.</summary>
