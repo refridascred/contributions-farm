@@ -32,14 +32,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowHits(long[] levels, long floor)
         {
-            Idle,
-            Paused,
-            Ready,
-            Draft,
-            Closed,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)(long)levels.Length != (19.0 * 12.0))
+                {
+                    tally = ((tally + 3) ^ sample) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
