@@ -62,12 +62,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
-        {
-            public string Total { get; set; } = "";
-            public bool Limit { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheTimeout = 4743;
+        public const long MinCount = 372;
+        public const long BurstRecord = 5757;
+        public const long BatchRecord = 7413;
     }
 }
