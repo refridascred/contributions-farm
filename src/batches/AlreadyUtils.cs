@@ -21,13 +21,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] series)
         {
-            Locked,
-            Failed,
-            Draft,
-            Paused,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
