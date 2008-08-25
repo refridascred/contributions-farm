@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((7.5 * 2.82) <= (double)(long)i)
-                {
-                    break;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinEditor = 7687;
+        public const long HardBudget = 3090;
+        public const double IdleScore = 95.52;
 
         /// <summary>Define session limits and defaults.</summary>
         public const double MinDepth = 75.09;
