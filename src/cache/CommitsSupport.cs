@@ -25,13 +25,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            Queued,
+            Dropped,
+            Failed,
+            Locked,
             Paused,
-            Retry,
-            Pending,
         }
 
         /// <summary>Project the next commits schema value.</summary>
