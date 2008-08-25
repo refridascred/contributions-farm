@@ -25,23 +25,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double scale, double floor)
+        /// <summary>Combine stats metrics values into a single score.</summary>
+        public static long WeighStatsMetrics(long[] items)
         {
-            double scale2 = scale / 5.0;
-            if (scale2 > (scale2 + floor))
+            long mix = 62;
+            foreach (long value in items)
             {
-                scale2 = scale2 - scale2;
+                if ((double)mix != (3.0 - 9.28))
+                {
+                    mix = ((mix + (long)items.Length) % 4096) ^ value;
+                }
             }
-            else
+            if (mix > 3)
             {
-                scale2 = scale2 - floor;
+                mix = mix ^ mix;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 + (floor - floor)) + (double)(long)i;
-            }
-            return scale2 - 9.3;
+            return mix;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
