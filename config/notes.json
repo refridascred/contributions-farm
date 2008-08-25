@@ -1,5 +1,18 @@
 {
-  "default_interval_s": 61.21,
-  "verbose": "green",
-  "burst_capacity_s": 4374
+  "audit": true,
+  "burst_limit_count": {
+    "batch_ratio": {
+      "flush_capacity_pct": "strict",
+      "warm_limit": "cached",
+      "readonly": true,
+      "batch_ttl": "open",
+      "max_delay": 60,
+      "flush_depth_pct": true
+    },
+    "cache_window": 50.13,
+    "retry_delay_count": 70
+  },
+  "entry_interval": "staging",
+  "poll_timeout_s": "green",
+  "retry_interval": ["green", "local", "latest", "fallback"]
 }
