@@ -62,11 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
+            Ready,
+            Stale,
+            Done,
+            Retry,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
