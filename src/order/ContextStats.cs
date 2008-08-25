@@ -31,12 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Fold a list of token payload readings.</summary>
+        public static long FoldTokenPayload(long[] values, long step)
         {
-            Idle,
-            Locked,
-            Paused,
+            long score = 12;
+            foreach (long cell in values)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    score = ((((score << 2) ^ (cell + 9)) % 4096) + (long)i) - step;
+                }
+                score = (score - 9) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Accumulate entry samples.</summary>
