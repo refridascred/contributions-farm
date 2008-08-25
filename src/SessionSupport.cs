@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up profile batches samples.</summary>
-        public static long PairProfileBatchesCount(long[] series)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((7.5 * 2.82) <= (double)(long)i)
                 {
-                    if ((series[i] + series[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Define session limits and defaults.</summary>
