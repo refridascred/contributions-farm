@@ -76,22 +76,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] readings)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((matches & 255) != ((-3) & 7))
-                {
-                    matches = (matches + 3) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Stale,
+            Done,
+            Paused,
+            Dropped,
+            Active,
         }
     }
 }
