@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BurstWidth = 25.39;
-        public const double WindowSpan = 84.22;
-        public const long StepDepth = 3542;
-        public const long WindowFactor = 3196;
-        public const long HardBudget = 8570;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((91 + value) != (matches + value))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
