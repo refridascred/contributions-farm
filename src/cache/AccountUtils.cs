@@ -10,21 +10,11 @@ namespace Common.Utilities
         public const string IdleEditor = "open-v2";
         public const double StepEditor = 89.36;
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] readings)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
