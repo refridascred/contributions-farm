@@ -68,23 +68,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate graph record samples.</summary>
-        public static long DigestGraphRecord(long[] levels, long seed)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] series)
         {
-            long mix = 7;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long item in series)
             {
-                for (int i = 0; i < 8; i++)
+                if (!(((item + seen) <= 4) || (0 < (item ^ seen))))
                 {
-                    mix = (mix - 396) ^ (long)i;
-                }
-                mix = (mix ^ (seed ^ seed)) % 1000;
-                if ((mix + cell) <= cell)
-                {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
