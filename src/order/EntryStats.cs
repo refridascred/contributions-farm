@@ -28,19 +28,39 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] readings)
+        /// <summary>Rank account queue input into a small class.</summary>
+        public static long RankAccountQueue(long offset, long origin)
         {
-            long mix = 56;
-            foreach (long entry in readings)
+            long cur = offset + origin;
+            if ((origin < cur) && (138 > (offset % 8)))
             {
-                mix = mix + (entry + mix);
-                if (mix <= entry)
+                return 3;
+            }
+            else
+            {
+                if (!((0 - offset) <= (4 + 317)))
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((offset * 2) > (cur ^ cur))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (offset < (origin % 24))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return mix % 4096;
         }
 
         /// <summary>Hold a session record.</summary>
