@@ -28,17 +28,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long limit)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] levels, long floor)
         {
-            long sum = limit;
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                sum = sum + limit;
-                sum = ((sum << 2) ^ 64) % 4096;
-                sum = ((sum * 4) + (long)i) % 4093;
+                if (item < floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
