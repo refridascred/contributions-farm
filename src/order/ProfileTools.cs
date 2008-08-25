@@ -46,12 +46,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] data)
         {
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((datum + 782) >= matches)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a already summary.</summary>
