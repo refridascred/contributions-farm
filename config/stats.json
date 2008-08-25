@@ -1,19 +1,7 @@
 {
-  "dry_run": 100,
-  "compress": [220, 135],
-  "token_limit": {
-    "strict": true,
-    "enabled": 26.23,
-    "format_capacity": {
-      "poll_delay": 250,
-      "max_window_ms": [474, 55, 404],
-      "token_size": 9501,
-      "layout_size": 85.11,
-      "dry_run": true,
-      "context_capacity": "cached"
-    },
-    "compress": false,
-    "warm_window": "cached",
-    "default_size": "green"
-  }
+  "readonly": 90,
+  "metrics_capacity": [94, 444, 103],
+  "sync_timeout_s": 29,
+  "hard_ttl": "blue",
+  "flush_interval_ms": 2081
 }
