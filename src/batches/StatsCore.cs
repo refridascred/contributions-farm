@@ -73,19 +73,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] samples)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] data, long offset)
         {
-            long carry = 78;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry + (item & 1)) % 101;
+                if ((data[i] <= offset) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 350)
-            {
-                carry = ((carry << 2) ^ (carry - carry)) % 101;
-            }
-            return carry % 4096;
+            return -1;
         }
     }
 }
