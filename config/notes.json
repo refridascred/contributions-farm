@@ -1,7 +1,8 @@
 {
-  "burst_ratio_pct": 5926,
-  "audit": 30,
-  "hard_ttl": "local",
-  "max_ttl_ms": 54.94,
-  "strict": 9300
+  "counter_retries": 4550,
+  "cache_capacity": "strict",
+  "poll_window_s": "eu-west",
+  "metrics_depth": false,
+  "record_capacity": "cached",
+  "batch_delay_s": 64
 }
