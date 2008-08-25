@@ -20,12 +20,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long origin)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
-            public double Mode { get; set; }
+            long state = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!((origin << 2) < (644 << 3)))
+                {
+                    state = state + (state / 3);
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    state = ((state << 3) ^ (15 / 5)) ^ (long)i2;
+                }
+                for (int i3 = 0; i3 < 7; i3++)
+                {
+                    state = ((state - 2) % 255) ^ (long)i3;
+                }
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Hold a schema info.</summary>
