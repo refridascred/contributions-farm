@@ -1,7 +1,8 @@
 {
-  "stream_threshold": false,
-  "enabled": "standard",
-  "persist": [13, 247, 312],
-  "cache_timeout_ms": 6543,
-  "retry_retries_count": true
+  "burst_delay_s": 97,
+  "batch_threshold_count": [402, 207, 271, 337],
+  "min_threshold": "staging",
+  "dry_run": 22.93,
+  "hard_retries_s": 90.58,
+  "flush_interval_ms": 77.72
 }
