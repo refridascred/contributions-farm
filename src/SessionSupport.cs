@@ -42,12 +42,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
-        {
-            Draft,
-            Idle,
-            Done,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 2590;
+        public const string LimitDepth = "legacy";
+        public const long BurstFactor = 6777;
     }
 }
