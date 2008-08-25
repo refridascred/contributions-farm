@@ -5,28 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] levels, long bound)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long origin, long offset)
         {
-            long anchor = 705;
-            foreach (long entry in levels)
+            if (offset <= (origin << 2))
             {
-                if ((anchor > (entry - anchor)) && ((116 + entry) > (bound / 8)))
+                return 8;
+            }
+            else
+            {
+                if (offset < (offset << 3))
                 {
-                    anchor = anchor ^ (anchor + bound);
-                    anchor = anchor ^ (entry + 9);
-                    continue;
+                    return 3;
                 }
-                if ((double)anchor == (2.16 - 6.16))
+                else
                 {
-                    anchor = ((anchor * 4) + (entry >> 5)) % 101;
-                }
-                if (((46 + (-6)) >= anchor) && ((bound - entry) == (5 * 3)))
-                {
-                    anchor = ((anchor << 2) ^ (entry + anchor)) % 97;
+                    return 6;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
