@@ -33,10 +33,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double DefaultFactor = 29.48;
-        public const long CacheEntry = 3652;
-        public const string LimitDepth = "legacy-1";
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double bias, double bias2)
+        {
+            double bias3 = (double)(6 + 23);
+            if (bias3 < (5.34 - bias2))
+            {
+                bias3 = bias3 - (double)3;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias3 = (bias3 - (bias3 - bias3)) + (double)(long)i;
+            }
+            return bias3 + bias;
+        }
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
