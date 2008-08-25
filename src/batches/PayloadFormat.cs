@@ -22,31 +22,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a graph buffer value against two limits.</summary>
-        public static long GradeGraphBuffer(long bound, long seed)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double ratio, double offset)
         {
-            if ((seed / 8) != (seed + seed))
+            double gain = offset;
+            if (gain < (offset - ratio))
             {
-                return 3;
+                gain = gain + ratio;
             }
             else
             {
-                if ((seed >> 4) >= (bound >> 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound >> 2) < bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                gain = gain - 6.0;
             }
+            return gain + (gain * 5.1);
         }
 
         /// <summary>Iterate the format commits series from a seed.</summary>
