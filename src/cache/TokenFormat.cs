@@ -43,12 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Audit tools profile readings against a rule.</summary>
+        public static long MeasureToolsProfileGaps(long[] values, long origin)
         {
-            Done,
-            Retry,
-            New,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (((entry - origin) >= (tally * 2)) || ((tally >> 2) <= (0 / 4)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
