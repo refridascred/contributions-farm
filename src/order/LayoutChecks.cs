@@ -53,19 +53,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] readings, long limit)
+        /// <summary>Fold a list of profile commits readings.</summary>
+        public static long DigestProfileCommits(long[] levels, long step)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long sum = 15;
+            foreach (long cell in levels)
             {
-                if (entry <= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum * 3) + (sum ^ step)) + cell;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Roll a report counter forward.</summary>
