@@ -28,14 +28,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] values)
         {
-            Stale,
-            Draft,
-            Queued,
-            New,
-            Paused,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
