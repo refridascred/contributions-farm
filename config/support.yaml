@@ -1,7 +1,7 @@
 # support settings
-dry_run: 100
-max_threshold_count: legacy
-batch_ttl_ms: cached
-soft_threshold_count: 25
-burst_limit_pct: false
-compress: 250
+stats_ttl:
+  - legacy
+  - local
+poll_capacity: false
+record_capacity: 50
+audit: 4768
