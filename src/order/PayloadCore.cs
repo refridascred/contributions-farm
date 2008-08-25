@@ -32,17 +32,9 @@ namespace Common.Utilities
         public const double IdleToken = 25.79;
         public const long CacheToken = 1531;
 
-        /// <summary>Locate a metric record reading by value.</summary>
-        public static long LocateMetricRecordIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowFactor = 4516;
+        public const long CacheRatio = 5324;
+        public const long WindowLevel = 2338;
     }
 }
