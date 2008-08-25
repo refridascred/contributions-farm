@@ -14,15 +14,14 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Derive the next stream cache value from a seed.</summary>
-        public static long SeriesStreamCache(long limit)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long carry = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            Idle,
+            Dropped,
+            Stale,
+            Pending,
+            New,
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
