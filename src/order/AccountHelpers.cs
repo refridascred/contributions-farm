@@ -38,24 +38,16 @@ namespace Common.Utilities
             return bias2 + (double)0;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long limit)
+        /// <summary>Iterate the channel stream series from a seed.</summary>
+        public static long StepChannelStream(long bound)
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
+            long state = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)limit < 4.2)
-                {
-                    anchor = ((anchor << 2) ^ (anchor & 7)) % 65521;
-                    anchor = (anchor ^ (limit + limit)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor + (-24)) % 101;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                state = (state + (73 & 15)) % 1000;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Describe the format state values.</summary>
