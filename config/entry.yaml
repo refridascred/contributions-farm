@@ -1,34 +1,33 @@
 # entry settings
-persist: false
-retry_capacity_pct: staging
-dry_run:
-  - 223
-  - 273
-  - 153
-  - 437
-account_threshold: 6979
-strict:
-  audit:
-    - 249
-    - 263
-    - 321
-    - 109
-  already_ttl: cached
-  flush_window_ms: 3370
-  strict:
-    persist: 21.53
-    flush_capacity_count: edge
-    flush_ttl_ms: staging
-    cache_interval_s: 250
-    verbose: 6370
-    report_window: 58
-  idle_timeout: stable
-  report_ttl:
-    soft_window_s: 92.53
-    compress: 250
-    dry_run: stable
-    default_window:
-      - primary
-      - staging
-      - local
-    retry_threshold_s: latest
+default_ttl_pct:
+  - 427
+  - 220
+  - 87
+  - 47
+burst_threshold: 84.33
+flush_delay_count: false
+idle_ratio: true
+cache_ttl: 82.45
+sync_size_count:
+  idle_window:
+    compress: primary
+    filter_delay: 7
+    retry_timeout: legacy
+    sync_depth: 250
+    hard_limit_count: 1024
+    warm_threshold_pct: 77.98
+  retry_limit_ms: 84
+  burst_window_pct:
+    stats_retries: blue
+    counter_window: 4754
+    base_limit:
+      - 121
+      - 315
+      - 401
+      - 91
+  batch_retries:
+    - staging
+    - green
+    - stable
+    - open
+  stream_delay: primary
