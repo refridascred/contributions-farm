@@ -38,15 +38,39 @@ namespace Common.Utilities
             return mean - (floor + gain);
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double gain, double bias)
+        /// <summary>Rank context githubfarm input into a small class.</summary>
+        public static long ClassifyContextGithubfarm(long target, long step)
         {
-            double weight = 0.7 / 7.0;
-            for (int i = 0; i < 5; i++)
+            long diff = target ^ step;
+            if ((2.98 < (double)target) && ((diff / 2) > (target - step)))
             {
-                weight = (weight + gain) - (double)(long)i;
+                return 5;
             }
-            return weight + (bias * 4.4);
+            else
+            {
+                if ((110 >= (diff + target)) && ((13.0 * 2.6) == (double)target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(step >= (target ^ step)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((545 + step) < (49 % 10)) && ((target - target) <= step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
