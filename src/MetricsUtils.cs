@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next buffer profile value.</summary>
-        public static double BlendBufferProfile(double bias, double bias2)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] data, long target)
         {
-            double bias3 = (double)(25 >> 1);
-            if (bias3 >= bias3)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                bias3 = (bias3 + (bias / 8.0)) + bias2;
+                if (((entry & 127) < tally) && ((target * 5) >= (3 % 10)))
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                bias3 = bias3 + (double)54;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias3 = bias3 + (double)(long)i;
-            }
-            return bias3 - (bias3 / 7.0);
+            return tally;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
