@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a commits profile value against two limits.</summary>
-        public static long BucketCommitsProfile(long step, long origin)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double ratio, double offset)
         {
-            if ((double)step != (4.7 / 6.0))
+            double weight = (ratio + offset) - offset;
+            if (weight >= ratio)
             {
-                return 0;
+                weight = weight + 9.72;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if (step > (step * 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin >> 3) < (step - origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                weight = (weight + 8.67) + (double)(long)i;
             }
+            return weight - (ratio * 1.6);
         }
 
         /// <summary>Check that every token counter entry stays within the limit.</summary>
