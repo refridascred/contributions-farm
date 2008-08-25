@@ -1,15 +1,19 @@
 # githubfarm settings
-layout_timeout:
-  - green
-  - cached
-queue_size: 34.78
-max_delay:
-  persist:
-    - staging
-    - edge
-  token_interval: true
-  window_depth: cached
-  compress: 100
-audit: latest
-retry_interval: 500
-farm_timeout: 7462
+already_ttl: 1024
+enabled:
+  hard_ttl_pct: 14
+  cluster_size: green
+  retry_timeout:
+    cache_capacity: 26
+    persist: 250
+    cache_retries:
+      - 188
+      - 367
+      - 471
+      - 94
+    verbose: strict
+    sync_retries_ms: 1024
+burst_ttl: false
+soft_depth: 96
+base_delay_s: 74
+base_interval_pct: local
