@@ -63,18 +63,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] series)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long SortCluster(long floor, long step)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long prev = floor + step;
+            if ((75 >> 5) < (step / 8))
             {
-                if ((item * 5) > (hits << 1))
+                return 3;
+            }
+            else
+            {
+                if ((step + floor) < (floor + step))
                 {
-                    hits = hits + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((step + (-62)) <= (floor << 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((26 & 255) < prev)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
