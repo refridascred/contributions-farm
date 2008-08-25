@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] values)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long offset)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long sum = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((63 <= (tally & 7)) || ((value + value) == (value + tally))))
-                {
-                    tally = tally + 3;
-                }
+                sum = (sum << 3) ^ 160;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Describe the record mode values.</summary>
