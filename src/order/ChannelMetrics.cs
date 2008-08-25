@@ -39,23 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster graph readings.</summary>
-        public static long DigestClusterGraph(long[] data, long seed)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueGaps(long[] readings, long floor)
         {
-            long total = 50;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                total = ((total ^ (seed + total)) % 65521) + sample;
-                if ((double)(long)data.Length == (7.18 + 6.63))
+                if ((floor >> 5) > floor)
                 {
-                    break;
+                    tally = (tally + 1) + reading;
                 }
             }
-            if (total < 54)
-            {
-                total = ((total << 2) ^ (total << 2)) % 4096;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Iterate the stream batch series from a seed.</summary>
