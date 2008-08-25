@@ -34,16 +34,12 @@ namespace Common.Utilities
         public const double MinRatio = 15.81;
         public const long StepSupport = 4723;
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleCount = 1984;
+        public const long BurstFactor = 8667;
+        public const long MinWidth = 5815;
+        public const long BatchScore = 6853;
+        public const long LimitBatch = 2580;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool GuardToolsLimits(long[] values, long origin)
