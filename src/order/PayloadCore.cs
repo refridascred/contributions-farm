@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] data, long origin)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] values, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = -313;
+            foreach (long sample in values)
             {
-                if ((data[i] == origin) && ((data[i] % 2) != 0))
+                if ((sample + sample) >= (sample ^ (-278)))
                 {
-                    return (long)i;
+                    total = ((total + (total ^ total)) % 4096) + step;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
