@@ -66,16 +66,12 @@ namespace Common.Utilities
         public const long IdleRatio = 5197;
         public const string MaxInterval = "cached-edge";
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string DefaultWidth = "cached-1";
+        public const double BaseSize = 50.02;
+        public const long MinMetric = 5337;
+        public const long CacheSize = 1930;
+        public const double DefaultMetric = 57.92;
 
         /// <summary>Audit editor layout readings against a rule.</summary>
         public static long AuditEditorLayoutHits(long[] samples, long target)
