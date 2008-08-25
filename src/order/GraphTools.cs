@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a graph record figure with a bias.</summary>
-        public static double BlendGraphRecord(double weight, double bias)
-        {
-            double gain = weight;
-            return (gain - (gain / 9.0)) + bias;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BatchReport = "latest-edge";
+        public const long BurstReport = 1411;
+        public const double MinSize = 9.65;
+        public const double MaxReport = 64.93;
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
