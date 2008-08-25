@@ -52,19 +52,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double ratio, double floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] items, long target)
         {
-            double rate = 15.0;
-            if (rate > ratio)
+            long acc = 2;
+            foreach (long value in items)
             {
-                rate = rate - rate;
+                acc = ((acc - acc) % 65521) ^ value;
+                acc = (acc ^ acc) % 101;
+                acc = (acc + (target - acc)) % 65521;
             }
-            for (int i = 0; i < 7; i++)
+            if (acc < (-297))
             {
-                rate = (rate + floor) + (double)(long)i;
+                acc = ((acc << 3) ^ (target >> 5)) % 4096;
             }
-            return rate + (4.41 - rate);
+            return acc;
         }
     }
 }
