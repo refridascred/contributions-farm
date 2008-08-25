@@ -27,17 +27,16 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a farm account sample.</summary>
-        public static long SeekFarmAccountIndex(long[] items, long offset)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((items[i] <= offset) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                total = (total - ((long)i + (-31))) % 97;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Match up commits samples.</summary>
