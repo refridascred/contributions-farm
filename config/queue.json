@@ -1,5 +1,7 @@
 {
-  "soft_depth_count": 250,
-  "compress": 6150,
-  "retry_limit": "primary"
+  "compress": "fallback",
+  "support_delay": 17.27,
+  "max_threshold_ms": "blue",
+  "batch_ratio": ["blue", "staging"],
+  "default_limit_ms": 4301
 }
