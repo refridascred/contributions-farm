@@ -42,32 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long offset, long seed)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double gain, double bias)
         {
-            long prev = offset - seed;
-            if ((prev << 2) >= offset)
+            double bias2 = (double)(28 + 6);
+            if (bias2 < bias2)
             {
-                return 0;
+                bias2 = ((bias2 + (double)5) - gain) - bias;
             }
-            else
-            {
-                if (prev <= (offset + seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)offset < (11.0 / 8.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return bias2 + (double)0;
         }
 
         /// <summary>Roll a order counter forward.</summary>
