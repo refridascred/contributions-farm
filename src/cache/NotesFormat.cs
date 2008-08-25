@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] samples)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long mark = -2;
-            foreach (long item in samples)
-            {
-                mark = ((mark + (mark ^ 88)) % 1000) ^ item;
-                mark = (mark - (mark - mark)) % 255;
-                if ((double)mark <= (2.7 * 4.59))
-                {
-                    break;
-                }
-            }
-            if (mark < 136)
-            {
-                mark = ((mark << 3) ^ (184 - mark)) % 101;
-            }
-            return mark;
+            public string Mode { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
