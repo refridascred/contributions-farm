@@ -23,18 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelMatches(long[] samples, long target)
+        /// <summary>Count the channel queue entries that pass the check.</summary>
+        public static long TallyChannelQueueHits(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (target >= tally)
+                if (!((matches - offset) > (matches << 3)) || ((offset << 2) < matches))
                 {
-                    tally = (tally + 2) + sample;
+                    matches = (matches + 2) ^ value;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
