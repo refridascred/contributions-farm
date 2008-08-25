@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double HardEntry = 75.35;
+        public const long BurstCount = 4770;
+        public const double HardDepth = 23.0;
+        public const long LimitEntry = 7387;
+        public const long BaseWidth = 8398;
 
         /// <summary>Match up stream stats samples.</summary>
         public static long OverlapStreamStatsCount(long[] items)
