@@ -24,12 +24,14 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public double Count { get; set; }
+            Queued,
+            Locked,
+            Pending,
+            Active,
+            Dropped,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
