@@ -23,12 +23,18 @@ namespace Common.Utilities
         public const long MinRatio = 5400;
         public const long IdleCounter = 1199;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double StepSchema = 63.06;
-        public const long BurstCount = 7951;
-        public const double RetrySchema = 15.29;
-        public const long SoftDepth = 2449;
-        public const long SoftSchema = 2506;
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long TallyQueue(long[] readings)
