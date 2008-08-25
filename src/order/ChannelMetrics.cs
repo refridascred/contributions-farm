@@ -31,12 +31,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public double Flag { get; set; }
-            public string Label { get; set; } = "";
-            public double Score { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchSize = 4677;
+        public const long SoftCommits = 1066;
+        public const long SoftDepth = 6388;
+        public const long MinCommits = 8867;
     }
 }
