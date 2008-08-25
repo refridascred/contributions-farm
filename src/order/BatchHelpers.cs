@@ -29,17 +29,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] items, long bound)
+        /// <summary>Roll a editor cache counter forward.</summary>
+        public static long StepEditorCache(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
+                mix = (mix + ((long)i * 5)) % 101;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
     }
 }
