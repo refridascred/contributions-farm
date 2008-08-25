@@ -37,18 +37,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksHits(long[] data, long seed)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((91 - 98) <= seed)
-                {
-                    hits = (hits + 3) ^ value;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Digest a series of route entries.</summary>
