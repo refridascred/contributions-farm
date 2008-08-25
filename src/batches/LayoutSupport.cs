@@ -68,19 +68,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate cluster token readings against a bound.</summary>
-        public static bool GuardClusterTokenRange(long[] items, long origin)
-        {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftWidth = "staging";
+        public const long BatchEditor = 9448;
+        public const long BaseTimeout = 4821;
+        public const string MaxEditor = "strict-edge";
+        public const string WindowEditor = "alpha";
     }
 }
