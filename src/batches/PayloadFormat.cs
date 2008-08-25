@@ -50,18 +50,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] data)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            double mean = scale;
+            for (int i = 0; i < 6; i++)
             {
-                if ((hits << 3) == (datum >> 3))
-                {
-                    hits = hits + 3;
-                }
+                mean = ((mean + mean) + (double)(long)i) + floor;
             }
-            return hits;
+            return mean + (double)501;
         }
 
         /// <summary>Iterate the format commits series from a seed.</summary>
