@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] items)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long acc = 5;
-            foreach (long item in items)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    acc = (acc + (item + (long)i)) % 255;
-                }
-                if (((double)5 == (double)acc) && ((double)acc >= (0.81 - 4.0)))
-                {
-                    acc = acc - (item << 3);
-                }
-            }
-            if (acc > 936)
-            {
-                acc = (acc * 4) + (acc << 2);
-            }
-            return acc;
+            Pending,
+            Closed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Audit stats channel readings against a rule.</summary>
