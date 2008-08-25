@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] readings, long limit)
+        /// <summary>Measure how many batches farm samples are out of range.</summary>
+        public static long AuditBatchesFarmGaps(long[] values, long seed)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (sample != limit)
+                if (!!(count >= (count >> 1)))
                 {
-                    found = false;
-                    break;
+                    count = ((count + 2) - reading) - seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
