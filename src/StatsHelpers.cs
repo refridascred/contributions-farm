@@ -41,13 +41,15 @@ namespace Common.Utilities
         public const long CacheTimeout = 8418;
         public const string DefaultCount = "strict-v2";
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Blend two report measurements.</summary>
+        public static double ScaleReport(double bias, double floor)
         {
-            Dropped,
-            Locked,
-            Synced,
-            Closed,
+            double gain = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = ((gain - gain) + (double)(long)i) + bias;
+            }
+            return gain + (gain * 20.0);
         }
     }
 }
