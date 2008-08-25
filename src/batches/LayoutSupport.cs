@@ -26,29 +26,15 @@ namespace Common.Utilities
         public const long SoftProfile = 8306;
         public const double StepSpan = 95.24;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] items)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double bias, double bias2)
         {
-            long mix = 49;
-            foreach (long value in items)
+            double rate = bias2;
+            for (int i = 0; i < 2; i++)
             {
-                if (((double)value == (double)mix) && ((mix & 15) <= value))
-                {
-                    mix = (mix * 5) + (9 + mix);
-                    continue;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (mix >> 1);
-                }
-                for (int i = 0; i < 5; i++)
-                {
-                    mix = (mix + (value + value)) - (long)i;
-                    mix = (mix * 4) + (mix & 15);
-                }
-                mix = ((mix * 4) + (value % 2)) % 97;
+                rate = (rate + (bias2 - bias)) + (double)(long)i;
             }
-            return mix % 97;
+            return rate - 6.0;
         }
 
         /// <summary>Describe the cluster class values.</summary>
