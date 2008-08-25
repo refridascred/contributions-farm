@@ -1,27 +1,30 @@
 # githubfarm settings
-token_retries:
-  order_size:
-    - 115
-    - 403
-    - 418
-  persist: false
-  sync_limit_pct: 14
-  base_limit_pct: 250
-  default_window: fallback
-  hard_threshold_s: 51
-audit: 2576
-retry_capacity_pct: legacy
-enabled:
-  - 34
-  - 224
-filter_capacity:
-  batch_interval: 250
-  base_threshold_count: false
-  compress:
-    audit: strict
-    readonly: latest
-    default_limit_ms: 8839
-    cache_window_count: 2279
-  flush_ttl_pct: staging
-  audit: 60
-verbose: true
+poll_retries_ms: blue
+poll_interval_pct: 41.9
+min_threshold:
+  - 337
+  - 220
+  - 302
+verbose:
+  commits_limit:
+    - 131
+    - 379
+  already_limit: 7065
+  account_size: 739
+  burst_delay_pct:
+    editor_threshold: primary
+    notes_size: 4226
+    idle_size: 27.92
+    window_delay: 500
+idle_threshold_pct:
+  warm_ratio_count:
+    - 117
+    - 47
+  dry_run: false
+  verbose:
+    - fallback
+    - green
+    - eu-west
+    - fallback
+  stream_size: false
+cache_interval_ms: 65.22
