@@ -39,19 +39,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double ratio, double bias)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] samples)
         {
-            double ratio2 = bias;
-            if (ratio2 >= (1.07 + ratio))
+            long state = -614;
+            foreach (long item in samples)
             {
-                ratio2 = ratio2 - (ratio2 - ratio2);
+                state = (state + (32 - item)) % 101;
+                if ((6.2 + 0.7) <= (double)item)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (state < 2)
             {
-                ratio2 = (ratio2 + (bias + ratio)) + (double)(long)i;
+                state = state + state;
             }
-            return ratio2 + (ratio / 7.0);
+            return state % 4096;
         }
     }
 }
