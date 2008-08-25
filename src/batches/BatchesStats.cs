@@ -26,14 +26,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public bool Weight { get; set; }
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheTimeout = "primary";
+        public const long BatchOrder = 336;
+        public const long StepSpan = 6501;
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long RollLayout(long bound)
