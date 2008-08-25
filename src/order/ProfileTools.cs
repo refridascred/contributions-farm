@@ -25,19 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheBounds(long[] levels, long step)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (cell > step)
+                if ((6.81 * 4.79) >= (double)matches)
                 {
-                    ready = false;
-                    break;
+                    matches = ((matches + 1) + datum) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Fold a list of route batches readings.</summary>
