@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MaxCommits = "cached";
-        public const double DefaultSpan = 51.78;
-        public const long MaxLevel = 5775;
-        public const double BatchCommits = 45.26;
-        public const double StepInterval = 89.45;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] levels, long origin)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((origin > (origin - cell)) || ((6.54 + 2.87) > (double)origin))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double BaseNotes = 65.71;
