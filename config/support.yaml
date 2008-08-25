@@ -1,28 +1,10 @@
 # support settings
-account_depth: 8605
-warm_ttl:
-  - 44
-  - 75
-  - 137
-  - 127
-editor_ttl: 90
-dry_run: latest
-base_delay_ms:
-  report_timeout: 7576
-  soft_ratio_ms:
-    max_capacity_count: cached
-    format_timeout: 53.2
-    flush_threshold_pct: 60
-  window_delay:
-    - standard
-    - legacy
-    - blue
-  soft_timeout_s:
-    retry_ttl_pct: green
-    burst_delay: true
-    strict:
-      - latest
-      - cached
-    cache_limit_ms: 78
-    compress: open
-    batches_threshold: false
+sync_timeout_count: false
+cache_interval:
+  default_ttl_pct: 850
+  checks_ttl: strict
+  token_window: 930
+  flush_size: 250
+  enabled: 18
+  soft_ratio_ms: 3915
+enabled: false
