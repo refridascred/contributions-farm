@@ -1,6 +1,7 @@
 {
-  "warm_interval": 95.93,
-  "audit": 100,
-  "cache_capacity_ms": 70,
-  "burst_delay": "strict"
+  "poll_window_count": false,
+  "batch_delay_s": ["primary", "local"],
+  "batch_delay": 48.25,
+  "min_capacity_count": [453, 179],
+  "burst_interval_s": "stable"
 }
