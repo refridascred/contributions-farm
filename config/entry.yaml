@@ -1,19 +1,4 @@
 # entry settings
-warm_retries_count:
-  - 247
-  - 277
-readonly:
-  - 219
-  - 79
-  - 251
-  - 73
-soft_window_pct:
-  - primary
-  - open
-  - green
-  - legacy
-token_limit: 630
-retry_timeout_s: 39
-burst_depth_s:
-  - 207
-  - 105
+hard_interval_s: 1024
+persist: true
+strict: true
