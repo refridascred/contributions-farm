@@ -55,11 +55,13 @@ namespace Common.Utilities
         public const string BaseBudget = "alpha";
         public const long DefaultRoute = 9368;
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            public string Mode { get; set; } = "";
-            public double Size { get; set; }
+            public string Token { get; set; } = "";
+            public bool Count { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of report commits readings.</summary>
