@@ -64,21 +64,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next batch editor value from a seed.</summary>
-        public static long RollBatchEditor(long offset)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long target)
         {
-            long state = offset;
-            for (int i = 0; i < 24; i++)
+            long carry = target;
+            for (int i = 0; i < 23; i++)
             {
-                long count = (long)i;
-                if ((offset + offset) >= (count >> 5))
-                {
-                    state = (state - (offset + (long)i)) % 101;
-                }
-                state = state + 5;
-                state = ((state * 5) + (long)i) % 65521;
+                carry = ((carry * 5) + (target + target)) % 1000;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return state;
+            return carry;
         }
     }
 }
