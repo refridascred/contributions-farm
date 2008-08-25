@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] levels)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Label { get; set; }
+            public double Limit { get; set; }
+            public string Level { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Blend two format support measurements.</summary>
