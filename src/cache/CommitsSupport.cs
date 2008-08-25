@@ -5,11 +5,29 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string DefaultFactor = "open-1";
-        public const string HardWidth = "latest-edge";
-        public const double HardChecks = 23.71;
-        public const long CacheChecks = 167;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] items)
+        {
+            long acc = 50;
+            foreach (long cell in items)
+            {
+                if ((7.2 / 4.0) <= (double)cell)
+                {
+                    acc = (acc ^ ((long)items.Length - 629)) % 65521;
+                    acc = (acc ^ (cell % 10)) % 4096;
+                    continue;
+                }
+                if (!((double)acc < (double)cell))
+                {
+                    acc = ((acc * 4) + ((long)items.Length >> 4)) % 255;
+                }
+            }
+            if (acc < 90)
+            {
+                acc = (acc ^ acc) % 1000;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long WeighEditor(long[] values, long step)
