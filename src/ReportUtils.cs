@@ -22,10 +22,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 3961;
-        public const long BaseRatio = 6809;
-        public const long StepMetrics = 7236;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long bound, long limit)
+        {
+            if (limit < bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if (limit > (bound & 7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((bound + bound) <= ((-758) >> 4)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two format measurements.</summary>
         public static double ProjectFormat(double gain, double floor)
