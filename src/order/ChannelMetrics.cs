@@ -20,15 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double bias, double offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] series, long offset)
         {
-            double weight = (double)(272 + (-67));
-            if (weight >= (double)3)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                weight = (weight + (18.0 + offset)) + bias;
+                if (reading != offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return weight - (9.8 / 9.0);
+            return ready;
         }
 
         /// <summary>Grade a layout githubfarm value against two limits.</summary>
