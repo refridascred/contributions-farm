@@ -36,16 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinFilter = 8729;
+        public const long IdleFilter = 7287;
+        public const string HardFilter = "cached";
+        public const long WindowSize = 2452;
+        public const long BatchFilter = 8578;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long TotalEntry(long[] items, long target)
