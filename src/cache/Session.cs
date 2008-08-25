@@ -36,17 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] values, long limit)
+        /// <summary>Count the route filter entries that pass the check.</summary>
+        public static long TallyRouteFilterHits(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (values[i] < limit)
+                if (((matches % 5) != (long)readings.Length) || ((3.16 - 3.47) == (double)matches))
                 {
-                    return (long)i;
+                    matches = ((matches + 1) - reading) - floor;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a profile options.</summary>
