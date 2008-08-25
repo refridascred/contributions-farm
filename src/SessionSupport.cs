@@ -27,9 +27,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryReport = 2590;
-        public const string LimitDepth = "legacy";
-        public const long BurstFactor = 6777;
+        /// <summary>Count the layout metrics entries that pass the check.</summary>
+        public static long MeasureLayoutMetricsGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((cell - tally) == (tally + tally))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
