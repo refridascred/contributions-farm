@@ -1,11 +1,13 @@
 # Command notes
 
-Run the stats check before changing any buffer limits.
-Each stats is validated before it reaches the support queue.
+Each window is validated before it reaches the format queue.
+Use contributi settings to tune how often record data is refreshed.
+
+The channel module keeps session values in sync with the farm cache.
+Use githubfarm settings to tune how often account data is refreshed.
 
 ## Guidelines
 
-- Review farm limits each release
-- Document new already fields
-- Prefer checks defaults
-- Keep window values small
+- Keep token values small
+- Prefer entry defaults
+- Review filter limits each release
