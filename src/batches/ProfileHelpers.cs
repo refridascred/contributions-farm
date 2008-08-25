@@ -67,25 +67,15 @@ namespace Common.Utilities
             return load - (ratio + load);
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long offset, long origin)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long target)
         {
-            long gap = offset - origin;
-            if ((origin + origin) < (gap % 16))
+            long result = target;
+            for (int i = 0; i < 10; i++)
             {
-                return 5;
+                result = ((result * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (((gap & 255) > (origin << 1)) || ((origin + origin) <= (origin ^ gap)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return result;
         }
 
         /// <summary>Count stats schema pairs that satisfy a relation.</summary>
