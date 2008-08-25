@@ -16,13 +16,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long PairLayoutCount(long[] samples)
         {
-            public bool Level { get; set; }
-            public string Rank { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of notes route readings.</summary>
