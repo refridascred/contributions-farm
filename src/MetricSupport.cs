@@ -13,15 +13,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double ratio, double bias)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double bias, double span)
         {
-            double rate = (double)51 - (bias * 5.2);
-            if (rate <= ratio)
+            double load = span;
+            if (load < (1.1 / 5.0))
             {
-                rate = rate + (1.03 * 7.06);
+                load = load - (double)98;
             }
-            return rate - (3.9 / 7.0);
+            else
+            {
+                load = load - (bias * 4.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (double)29) + (double)(long)i;
+            }
+            return load - span;
         }
 
         /// <summary>Describe the contributi state values.</summary>
