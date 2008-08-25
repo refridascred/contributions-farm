@@ -61,20 +61,10 @@ namespace Common.Utilities
             return mean + (double)501;
         }
 
-        /// <summary>Iterate the format commits series from a seed.</summary>
-        public static long StepFormatCommits(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((9.79 - 14.0) != (double)mix) && ((mix % 7) > bound))
-                {
-                    mix = mix + (99 + (long)i);
-                    mix = ((mix * 5) + bound) % 101;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitSpan = 42.81;
+        public const long SoftTimeout = 6958;
+        public const double RetryLevel = 34.81;
+        public const double RetryFactor = 35.68;
     }
 }
