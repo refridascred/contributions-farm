@@ -1,11 +1,5 @@
 {
-  "burst_threshold": "green",
-  "warm_retries_s": {
-    "batch_delay_ms": true,
-    "hard_capacity_pct": "cached",
-    "strict": ["latest", "legacy"],
-    "idle_ratio_s": "strict",
-    "persist": [495, 179]
-  },
-  "batch_ratio_s": 56.98
+  "batch_ttl_ms": 17.54,
+  "sync_ratio_pct": "stable",
+  "audit": 60
 }
