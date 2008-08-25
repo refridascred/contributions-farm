@@ -20,13 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Count the account entry entries that pass the check.</summary>
+        public static long TallyAccountEntryHits(long[] data)
         {
-            Active,
-            Stale,
-            Failed,
-            Done,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((6.22 + 5.45) < (double)entry)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a graph report figure with a bias.</summary>
