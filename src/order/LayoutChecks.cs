@@ -24,21 +24,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count cache farm pairs that satisfy a relation.</summary>
-        public static long MatchCacheFarmCount(long[] data)
+        /// <summary>Roll a cluster batches counter forward.</summary>
+        public static long DeriveClusterBatches(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = (mix + (step / 3)) % 4096;
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
