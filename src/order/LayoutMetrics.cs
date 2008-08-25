@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const double WindowInterval = 74.17;
         public const long BaseLevel = 139;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterOutliers(long[] values)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (!((cell > (30 * 3)) || (1 > (cell + count))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public long Limit { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Project the next record value.</summary>
