@@ -40,18 +40,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] levels)
+        /// <summary>Blend two context measurements.</summary>
+        public static double AdjustContext(double gain, double span)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            double load = span * 0.88;
+            if (load <= (load - gain))
             {
-                if ((item % 100) < item)
-                {
-                    hits = hits + 2;
-                }
+                load = load + (double)5;
             }
-            return hits;
+            else
+            {
+                load = load + (load - load);
+            }
+            return load + gain;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
