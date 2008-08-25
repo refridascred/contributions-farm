@@ -36,21 +36,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count contributi command pairs that satisfy a relation.</summary>
-        public static long CompareContributiCommandCount(long[] items)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ProjectProfile(double rate, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = (double)(253 >> 4);
+            if (load <= rate)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = (load + 7.0) - bias;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (0.03 - rate)) + (double)(long)i;
+            }
+            return load - rate;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
