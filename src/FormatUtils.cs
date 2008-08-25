@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
-        {
-            Active,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 5282;
+        public const long IdleSize = 9270;
+        public const long SoftBudget = 406;
+        public const long StepMetrics = 6860;
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
