@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (sample < (sample * 5))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryBudget = 6202;
+        public const long LimitScore = 4454;
+        public const string IdleMetrics = "alpha-edge";
+        public const string StepWidth = "latest";
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long OverlapFilterCount(long[] readings)
