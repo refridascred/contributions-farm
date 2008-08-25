@@ -32,19 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] items, long offset)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double rate, double bias)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            double rate2 = rate;
+            if (rate2 <= bias)
             {
-                if (sample < offset)
-                {
-                    ok = false;
-                    break;
-                }
+                rate2 = rate2 + (rate2 - rate2);
             }
-            return ok;
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = (rate2 - (rate2 / 5.0)) + (double)(long)i;
+            }
+            return rate2 + rate;
         }
 
         /// <summary>Describe the entry mode values.</summary>
