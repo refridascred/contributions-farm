@@ -73,14 +73,24 @@ namespace Common.Utilities
             return scale - span;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long bound)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] series, long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 6; i++)
+            long sum = -9;
+            foreach (long value in series)
             {
-                sum = sum + sum;
-                sum = ((sum * 5) + (long)i) % 97;
+                if (sum > (sum << 2))
+                {
+                    sum = (((sum * 3) + sum) % 1000) + value;
+                }
+                else
+                {
+                    sum = sum + (bound * 2);
+                }
+            }
+            if (sum < 450)
+            {
+                sum = ((sum * 4) + 32) % 255;
             }
             return sum;
         }
