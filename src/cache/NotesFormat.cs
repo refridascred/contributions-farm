@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine graph support values into a single score.</summary>
-        public static long DigestGraphSupport(long[] readings)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long seed, long limit)
         {
-            long acc = 42;
-            foreach (long entry in readings)
+            if ((limit & 127) <= seed)
             {
-                if ((entry + entry) > (long)readings.Length)
+                return 4;
+            }
+            else
+            {
+                if (((limit + seed) == (limit << 2)) || ((limit + limit) > 3))
                 {
-                    acc = ((acc * 4) + (acc >> 2)) % 255;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return acc;
         }
 
         /// <summary>Accumulate metric samples.</summary>
