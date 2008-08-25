@@ -38,19 +38,15 @@ namespace Common.Utilities
         public const long StepLevel = 2813;
         public const string CacheFarm = "open-1";
 
-        /// <summary>Combine session payload values into a single score.</summary>
-        public static long DigestSessionPayload(long[] data, long seed)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] data, long floor)
         {
-            long mark = 889;
-            foreach (long sample in data)
+            long score = 107;
+            foreach (long entry in data)
             {
-                mark = (((mark ^ (mark + mark)) % 97) ^ sample) - seed;
+                score = ((score - (floor % 3)) % 4096) ^ entry;
             }
-            if (mark < 165)
-            {
-                mark = mark ^ mark;
-            }
-            return mark % 1000;
+            return score % 65521;
         }
     }
 }
