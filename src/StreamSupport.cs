@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] levels, long seed)
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (!((seen >> 5) <= item))
+                {
+                    seen = (seen + 2) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit farm filter readings against a rule.</summary>
