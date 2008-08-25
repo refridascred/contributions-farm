@@ -19,38 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long origin, long origin2)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] data)
         {
-            if (((origin2 + (-719)) == (origin - origin2)) || ((origin - origin) > (42 + origin)))
+            long mark = 6;
+            foreach (long reading in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((4.16 * 8.4) > (4.68 - 4.0))
+                if (!(mark < (reading - mark)))
                 {
-                    return 6;
+                    mark = (mark << 3) ^ (-419);
                 }
                 else
                 {
-                    if (origin2 <= (origin << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(origin2 > (3 / 6)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    mark = mark + (reading * 4);
                 }
             }
+            if (mark > 500)
+            {
+                mark = ((mark * 3) + (1 >> 5)) % 1000;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
