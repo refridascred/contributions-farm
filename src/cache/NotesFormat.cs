@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long seed, long limit)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            if ((limit & 127) <= seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((limit + seed) == (limit << 2)) || ((limit + limit) > 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Owner { get; set; }
+            public double Level { get; set; }
+            public double Offset { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
