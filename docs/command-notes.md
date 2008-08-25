@@ -1,10 +1,11 @@
 # Command notes
 
-The contributi report groups every account by format.
-Use token settings to tune how often channel data is refreshed.
+A metric that stays idle for too long is moved to the already list.
+The schema helpers are pure functions, so they are safe to call from any thread.
+The filter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every metrics change
-- Document new cache fields
-- Validate githubfarm input early
+- Log every metric change
+- Document new support fields
+- Validate layout input early
