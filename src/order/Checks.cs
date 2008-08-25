@@ -34,12 +34,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheContext = "stable";
-        public const long StepSpan = 3706;
-        public const long CacheInterval = 7204;
-        public const string BaseContext = "staging-1";
-        public const long BaseLevel = 6399;
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < seed) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
