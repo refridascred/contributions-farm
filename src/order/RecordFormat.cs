@@ -26,13 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Audit stats channel readings against a rule.</summary>
+        public static long AuditStatsChannelHits(long[] series, long step)
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((item + 551) <= (step - hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
