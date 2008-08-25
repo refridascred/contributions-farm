@@ -5,24 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the route editor series from a seed.</summary>
-        public static long DeriveRouteEditor(long origin)
+        /// <summary>Grade a command stats value against two limits.</summary>
+        public static long ClassifyCommandStats(long bound, long bound2)
         {
-            long acc = origin;
-            for (int i = 0; i < 9; i++)
+            long bound3 = bound - bound2;
+            if ((bound + bound2) > (bound - bound2))
             {
-                if (((double)acc <= 2.5) || ((origin >> 1) < ((long)i + 22)))
+                return 3;
+            }
+            else
+            {
+                if ((8.03 * 1.0) != (double)bound3)
                 {
-                    acc = (acc * 2) + (618 - (long)i);
+                    return 2;
                 }
                 else
                 {
-                    acc = acc + acc;
-                    acc = (acc * 5) + (origin - 3);
+                    if ((149 - bound) == (bound3 + bound3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((bound >> 1) > (bound << 3)) && ((double)bound3 > (2.0 / 2.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
-                acc = ((acc * 4) + (long)i) % 97;
             }
-            return acc;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
