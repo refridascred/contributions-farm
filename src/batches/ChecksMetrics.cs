@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the format tools entries that pass the check.</summary>
-        public static long TallyFormatToolsOutliers(long[] levels)
+        /// <summary>Check that every commits window entry stays within the limit.</summary>
+        public static bool ValidateCommitsWindowLimits(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if ((tally - 73) >= (entry + tally))
+                if (sample > seed)
                 {
-                    tally = tally + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Hold a profile entry.</summary>
