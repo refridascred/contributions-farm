@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate record context readings against a bound.</summary>
-        public static bool VerifyRecordContextBounds(long[] series, long offset)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Locked,
+            Queued,
+            Closed,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
