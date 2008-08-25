@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftSession = 19.13;
-        public const long LimitSession = 40;
-        public const string WindowSession = "staging-1";
-        public const long IdleSession = 1080;
+        /// <summary>Digest a series of farm record entries.</summary>
+        public static long TallyFarmRecord(long[] values)
+        {
+            long result = 681;
+            foreach (long value in values)
+            {
+                result = result - (value - result);
+                if (result <= (result % 24))
+                {
+                    result = (result << 3) ^ (result + value);
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long FindGraphIndex(long[] levels, long floor)
