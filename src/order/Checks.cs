@@ -43,23 +43,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long StepPayload(long offset)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if (((offset % 5) >= (offset % 16)) || ((carry + offset) > (carry - carry)))
-                {
-                    carry = ((carry * 5) + offset) % 4096;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (18 << 2);
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Active,
+            Done,
+            Stale,
         }
 
         /// <summary>Adjust a batch queue reading.</summary>
