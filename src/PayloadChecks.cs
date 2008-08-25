@@ -34,33 +34,12 @@ namespace Common.Utilities
         public const string BatchFarm = "stable-v2";
         public const long BatchScore = 5428;
 
-        /// <summary>Classify a profile layout pair into a bucket.</summary>
-        public static long ClassifyProfileLayout(long limit, long bound)
-        {
-            long slot = limit + bound;
-            if ((double)slot == (8.68 * 2.9))
-            {
-                return 5;
-            }
-            else
-            {
-                if (506 >= bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (1 > (bound * 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitBudget = 3572;
+        public const long RetryFilter = 555;
+        public const double RetryCount = 15.55;
+        public const long MaxFilter = 1198;
+        public const string BaseCount = "legacy-1";
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
