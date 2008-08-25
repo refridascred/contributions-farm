@@ -1,8 +1,9 @@
-id,active,token,state,owner
-1,26.76,572,8,20.58
-2,948,60.06,edge,strict
-3,blue,51.28,264,273
-4,202,91.56,latest,906
-5,556,strict,cached,9.6
-6,eu-west,fallback,64.15,35.43
-7,staging,22,49.92,legacy
+id,active,state,weight
+1,939,341,761
+2,fallback,primary,local
+3,850,917,73.54
+4,23,blue,999
+5,41.07,857,58.57
+6,559,stable,36.64
+7,22.45,369,358
+8,stable,latest,fallback
