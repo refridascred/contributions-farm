@@ -29,18 +29,19 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountGaps(long[] series, long limit)
+        /// <summary>Check that every queue tools entry stays within the limit.</summary>
+        public static bool GuardQueueToolsLimits(long[] series, long step)
         {
-            long matches = 0;
+            bool ready = true;
             foreach (long value in series)
             {
-                if ((double)matches < (double)limit)
+                if (value <= step)
                 {
-                    matches = (matches + 3) + value;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Locate a record reading by value.</summary>
