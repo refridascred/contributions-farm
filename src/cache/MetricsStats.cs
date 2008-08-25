@@ -19,21 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] items)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheRange(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading > floor)
                 {
-                    if ((items[i] - items[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
