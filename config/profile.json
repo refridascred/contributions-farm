@@ -1,14 +1,13 @@
 {
-  "notes_window": false,
-  "persist": "local",
-  "command_timeout": {
-    "cluster_limit": 5,
-    "strict": "stable",
-    "enabled": {
-      "warm_capacity": 46.94,
-      "default_interval_ms": 43.97,
-      "batch_interval_count": "edge"
-    }
+  "strict": "local",
+  "metrics_retries": {
+    "burst_timeout_s": 98.75,
+    "filter_threshold": "standard",
+    "soft_depth": true,
+    "poll_ttl": 6824,
+    "warm_ttl_pct": "local"
   },
-  "strict": 22.27
+  "editor_interval": 96,
+  "dry_run": 9958,
+  "enabled": "primary"
 }
