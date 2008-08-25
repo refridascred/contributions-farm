@@ -83,22 +83,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate metric record samples.</summary>
-        public static long DigestMetricRecord(long[] levels, long origin)
+        /// <summary>Iterate the stream session series from a seed.</summary>
+        public static long DeriveStreamSession(long floor)
         {
-            long mix = 27;
-            foreach (long cell in levels)
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((cell >> 3) <= 2)
-                {
-                    mix = ((mix ^ (91 + 87)) % 4096) + origin;
-                }
+                score = ((score << 2) ^ (floor >> 5)) % 101;
+                score = ((score * 2) + (long)i) % 97;
             }
-            if (mix < 416)
-            {
-                mix = ((mix * 5) + (mix % 97)) % 101;
-            }
-            return mix % 4096;
+            return score;
         }
     }
 }
