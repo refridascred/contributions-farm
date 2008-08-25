@@ -19,12 +19,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long origin, long target)
         {
-            Pending,
-            Draft,
-            Idle,
+            long diff = origin ^ target;
+            if ((diff / 9) >= (1 & 15))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((-831) << 1) > (target / 6))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((9.2 + 0.5) != (double)diff)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target + 0) >= (target % 16))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
