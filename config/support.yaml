@@ -1,16 +1,17 @@
 # support settings
-compress:
-  burst_retries: eu-west
-  retry_ttl_ms: latest
-  flush_window_ms: 38.93
-  profile_window:
-    - 184
-    - 52
-    - 106
-  min_size: 3596
-  order_ratio: 50
-base_ttl_count:
-  - 111
-  - 18
-  - 126
-format_ttl: 250
+support_limit:
+  warm_ratio: false
+  min_retries_count: 1024
+  buffer_retries: staging
+  readonly: 57.82
+  base_threshold: true
+  dry_run: 1.07
+idle_interval: 7490
+order_ratio:
+  - 110
+  - 16
+burst_delay:
+  - strict
+  - strict
+metric_ratio: 95.67
+burst_ratio_s: 38
