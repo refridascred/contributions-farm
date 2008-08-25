@@ -10,20 +10,11 @@ namespace Common.Utilities
         public const long MaxFactor = 130;
         public const long WindowSize = 4897;
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] data, long limit)
-        {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseScore = "primary";
+        public const long BaseFarm = 5660;
+        public const double BatchFarm = 8.47;
+        public const double DefaultFarm = 47.63;
 
         /// <summary>Grade a report already value against two limits.</summary>
         public static long RankReportAlready(long bound, long limit)
