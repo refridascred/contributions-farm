@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportLimits(long[] readings, long bound)
+        /// <summary>Derive the next githubfarm cluster value from a seed.</summary>
+        public static long IterateGithubfarmCluster(long origin)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (reading > bound)
-                {
-                    valid = false;
-                    break;
-                }
+                sum = (sum - (sum - (long)i)) % 4096;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
