@@ -44,12 +44,18 @@ namespace Common.Utilities
             return gain - (double)(-3);
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] samples)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public double Total { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (hits > (hits & 1))
+                {
+                    hits = (hits + 3) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the support level values.</summary>
