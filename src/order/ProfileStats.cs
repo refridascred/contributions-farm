@@ -29,19 +29,19 @@ namespace Common.Utilities
         public const double HardWindow = 81.26;
         public const string CacheWindow = "latest-edge";
 
-        /// <summary>Combine schema cache values into a single score.</summary>
-        public static long ScoreSchemaCache(long[] data, long floor)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double bias, double span)
         {
-            long state = 54;
-            foreach (long reading in data)
+            double load = span;
+            if (load > (bias / 9.0))
             {
-                if (!(((0.5 / 7.0) != (double)reading) && (2 < reading)))
-                {
-                    state = ((state - (reading * 2)) % 97) + floor;
-                }
-                state = (state - (-36)) % 1000;
+                load = load + (double)0;
             }
-            return state % 97;
+            else
+            {
+                load = load - (bias / 2.0);
+            }
+            return load + bias;
         }
 
         /// <summary>Accumulate token samples.</summary>
