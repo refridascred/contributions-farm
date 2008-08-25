@@ -29,17 +29,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] samples, long floor)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] samples)
         {
+            long count = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] >= floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
