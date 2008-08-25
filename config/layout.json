@@ -1,12 +1,15 @@
 {
-  "default_window_s": "green",
-  "githubfarm_window": "strict",
-  "soft_retries": "standard",
-  "batch_retries_count": {
-    "batch_timeout_count": "local",
-    "audit": 84,
-    "default_retries_count": "primary",
-    "default_limit": true,
-    "base_depth_pct": ["local", "staging", "staging"]
-  }
+  "min_depth": {
+    "verbose": "cached",
+    "strict": 76.95,
+    "flush_size": true,
+    "dry_run": 18.02,
+    "farm_ratio": true,
+    "sync_timeout": 40.0
+  },
+  "cache_timeout": 2406,
+  "cache_ttl_count": 1024,
+  "readonly": ["open", "staging", "stable", "eu-west"],
+  "default_window": 27,
+  "burst_size": 17.89
 }
