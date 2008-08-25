@@ -66,15 +66,21 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double gain, double bias)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] readings)
         {
-            double drift = (double)(95 - 7);
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = (((drift - drift) + (double)(long)i) - gain) - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return drift + 0.3;
+            return count;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
