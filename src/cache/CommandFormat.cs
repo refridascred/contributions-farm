@@ -20,19 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate account metric readings against a bound.</summary>
-        public static bool CheckAccountMetricRange(long[] items, long target)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Queued,
+            Closed,
         }
 
         /// <summary>Describe the context status values.</summary>
