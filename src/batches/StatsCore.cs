@@ -14,18 +14,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] items, long target)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long mix = 0;
-            foreach (long entry in items)
-            {
-                if (((entry >> 5) <= (mix + target)) && (9.3 < (double)mix))
-                {
-                    mix = (mix << 3) ^ (entry - mix);
-                }
-            }
-            return mix;
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
