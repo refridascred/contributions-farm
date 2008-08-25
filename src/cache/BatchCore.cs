@@ -51,15 +51,14 @@ namespace Common.Utilities
         public const double HardLevel = 16.07;
         public const long CacheBatch = 68;
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long limit)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            Queued,
+            Draft,
+            Ready,
+            Dropped,
+            Failed,
         }
     }
 }
