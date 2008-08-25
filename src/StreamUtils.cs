@@ -50,19 +50,21 @@ namespace Common.Utilities
         public const double LimitLevel = 79.79;
         public const double BaseProfile = 47.42;
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] samples, long offset)
+        /// <summary>Count notes farm pairs that satisfy a relation.</summary>
+        public static long CompareNotesFarmCount(long[] items)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] + items[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Describe the cache phase values.</summary>
