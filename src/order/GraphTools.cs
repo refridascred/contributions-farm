@@ -77,20 +77,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] levels)
         {
-            long result = floor;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                result = (result + result) % 4096;
-                if ((floor ^ result) >= (result - 78))
+                if ((double)seen <= (9.4 * 8.7))
                 {
-                    result = (result - (floor << 1)) % 4096;
+                    seen = (seen + 1) + value;
                 }
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return seen;
         }
     }
 }
