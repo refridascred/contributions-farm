@@ -47,13 +47,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long bound)
         {
-            public string Label { get; set; } = "";
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = sum - (bound + sum);
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
