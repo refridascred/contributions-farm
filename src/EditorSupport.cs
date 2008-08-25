@@ -78,18 +78,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the stream layout entries that pass the check.</summary>
-        public static long AuditStreamLayoutHits(long[] data, long seed)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((92 + item) != (8 % 8))
-                {
-                    seen = (seen + 2) - seed;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
