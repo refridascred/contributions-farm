@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] data)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!((((long)i + (long)i) < (sum * 5)) || ((double)810 <= (double)sum)))
                 {
-                    if ((data[i] ^ data[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum << 2) ^ (88 & 7);
                 }
+                if (!(((long)i ^ seed) <= ((long)i ^ (long)i)))
+                {
+                    sum = (sum - ((-5) >> 1)) % 97;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
