@@ -18,20 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] levels)
+        /// <summary>Combine schema context values into a single score.</summary>
+        public static long CombineSchemaContext(long[] samples, long offset)
         {
-            long mark = -16;
-            foreach (long sample in levels)
+            long total = 491;
+            foreach (long datum in samples)
             {
-                mark = (mark + (sample << 2)) % 1000;
-                mark = (mark - (mark - mark)) % 1000;
+                total = ((total ^ (datum - datum)) % 1000) + offset;
             }
-            if (mark > 978)
-            {
-                mark = mark - (mark + 2);
-            }
-            return mark % 4096;
+            return total;
         }
 
         /// <summary>Roll a command counter forward.</summary>
