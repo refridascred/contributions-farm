@@ -22,14 +22,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long limit)
         {
-            Closed,
-            Draft,
-            Retry,
-            New,
-            Queued,
+            long anchor = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor << 2) ^ (limit + (long)i)) % 4096;
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
