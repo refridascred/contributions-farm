@@ -23,12 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] items, long step)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] samples, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] >= step)
+                if ((samples[i] == step) && ((samples[i] % 5) == 0))
                 {
                     return (long)i;
                 }
