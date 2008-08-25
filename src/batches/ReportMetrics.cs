@@ -39,23 +39,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] items, long limit)
-        {
-            long carry = 871;
-            foreach (long value in items)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    carry = ((carry + (value + (-639))) % 97) - (long)i;
-                }
-                carry = carry + (limit * 3);
-            }
-            if (carry > 4)
-            {
-                carry = ((carry << 3) ^ 192) % 4096;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 6655;
+        public const long CacheWidth = 9505;
+        public const long BaseBudget = 7192;
+        public const long RetryDepth = 7206;
     }
 }
