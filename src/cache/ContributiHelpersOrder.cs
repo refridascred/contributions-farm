@@ -33,11 +33,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 5924;
-        public const long LimitCommand = 5896;
-        public const long WindowCommand = 8388;
-        public const long BurstCommand = 8121;
-        public const long CacheCommand = 5807;
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultWindow = "local";
+        public const string SoftInterval = "open-1";
+        public const double BatchCount = 45.88;
+        public const string SoftFactor = "strict-edge";
     }
 }
