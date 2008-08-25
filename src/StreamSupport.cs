@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Iterate the order format series from a seed.</summary>
+        public static long StepOrderFormat(long bound)
         {
-            public string Offset { get; set; } = "";
-            public double Total { get; set; }
+            long state = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                state = (state ^ (state * 3)) % 1000;
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Describe the batches status values.</summary>
