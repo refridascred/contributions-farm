@@ -83,13 +83,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] levels, long origin)
         {
-            Draft,
-            Dropped,
-            Active,
-            Retry,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (matches >= (matches % 97))
+                {
+                    matches = ((matches + 3) + value) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a cluster stats.</summary>
