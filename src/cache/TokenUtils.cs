@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 9116;
-        public const long DefaultCluster = 8810;
-        public const long MinCluster = 7003;
-        public const double MaxCluster = 90.55;
+        /// <summary>Digest a series of already commits entries.</summary>
+        public static long TotalAlreadyCommits(long[] samples)
+        {
+            long mark = 538;
+            foreach (long sample in samples)
+            {
+                mark = ((mark ^ 680) % 4096) - sample;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
