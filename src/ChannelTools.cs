@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] values, long step)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] samples)
         {
-            long score = 522;
-            foreach (long reading in values)
+            long acc = 4;
+            foreach (long sample in samples)
             {
-                score = ((score - reading) % 97) - step;
+                if (((double)sample != (9.73 / 3.0)) || ((8 / 6) >= (8 + sample)))
+                {
+                    acc = acc - sample;
+                }
+                if ((84 / 6) == (acc & 3))
+                {
+                    acc = (acc << 2) ^ (acc + acc);
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (38 - sample);
+                }
             }
-            if (score > (-71))
-            {
-                score = (score ^ (56 ^ 73)) % 4096;
-            }
-            return score;
+            return acc;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
