@@ -43,21 +43,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] levels)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = 8.8;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = ((ratio - ratio) + (double)(long)i) - span;
             }
-            return seen;
+            return ratio - bias;
         }
 
         /// <summary>Accumulate metric record samples.</summary>
