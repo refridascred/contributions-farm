@@ -5,28 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] samples, long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] values)
         {
-            long score = 28;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long value in values)
             {
-                score = score + (limit ^ sample);
-                score = (score + (limit / 9)) % 1000;
-                if ((score <= (sample + sample)) && (((long)samples.Length - score) > (score - sample)))
+                if (!((63 <= (tally & 7)) || ((value + value) == (value + tally))))
                 {
-                    score = (score << 3) ^ (291 * 5);
-                }
-                else
-                {
-                    score = ((score * 2) + (limit << 3)) % 255;
+                    tally = tally + 3;
                 }
             }
-            if (score > 825)
-            {
-                score = score ^ (65 * 5);
-            }
-            return score % 4096;
+            return tally;
         }
 
         /// <summary>Hold a graph options.</summary>
