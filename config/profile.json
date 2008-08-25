@@ -1,8 +1,12 @@
 {
-  "layout_retries": 60,
-  "audit": "stable",
-  "verbose": 41.39,
-  "stats_capacity": "blue",
-  "max_window_ms": 100,
-  "warm_timeout_pct": "fallback"
+  "filter_depth": 94.3,
+  "burst_delay": false,
+  "cache_limit_s": 35.34,
+  "min_capacity": {
+    "base_size_ms": "latest",
+    "poll_limit_count": 81,
+    "idle_depth_s": 80,
+    "stats_delay": "blue",
+    "idle_timeout": 19
+  }
 }
