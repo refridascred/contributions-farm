@@ -30,18 +30,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] data)
+        /// <summary>Digest a series of profile counter entries.</summary>
+        public static long DigestProfileCounter(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long carry = 40;
+            foreach (long entry in readings)
             {
-                if ((cell + 10) == (65 >> 1))
+                if ((780 / 2) != ((long)readings.Length * 3))
                 {
-                    count = count + 3;
+                    continue;
                 }
+                carry = ((carry ^ 8) % 65521) - entry;
             }
-            return count;
+            return carry;
         }
     }
 }
