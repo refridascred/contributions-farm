@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the support notes entries that pass the check.</summary>
-        public static long MeasureSupportNotesHits(long[] samples)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count % 16) > (8 - 1))
+                if (items[i] < seed)
                 {
-                    count = (count + 2) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
