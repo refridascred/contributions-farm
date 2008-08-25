@@ -37,14 +37,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double weight, double offset)
         {
-            New,
-            Stale,
-            Ready,
-            Draft,
-            Retry,
+            double load = (double)31 + (3.0 + offset);
+            if (load <= (load - weight))
+            {
+                load = load - weight;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (load + weight)) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Check that every report cache entry stays within the limit.</summary>
