@@ -40,10 +40,13 @@ namespace Common.Utilities
             return mean + (double)501;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitSpan = 42.81;
-        public const long SoftTimeout = 6958;
-        public const double RetryLevel = 34.81;
-        public const double RetryFactor = 35.68;
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
+        {
+            Ready,
+            Pending,
+            New,
+            Active,
+        }
     }
 }
