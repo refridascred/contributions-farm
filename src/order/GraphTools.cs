@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a support window sample.</summary>
-        public static long LookupSupportWindowIndex(long[] data, long bound)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] levels, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 365;
+            foreach (long datum in levels)
             {
-                if ((data[i] == bound) && ((data[i] % 3) != 0))
+                if (((floor + datum) != (datum & 3)) && (carry <= (datum << 3)))
                 {
-                    return (long)i;
+                    carry = (carry << 3) ^ (datum + floor);
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
