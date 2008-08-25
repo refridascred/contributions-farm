@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const long LimitEntry = 7387;
         public const long BaseWidth = 8398;
 
-        /// <summary>Match up stream stats samples.</summary>
-        public static long OverlapStreamStatsCount(long[] items)
+        /// <summary>Measure how many graph checks samples are out of range.</summary>
+        public static long TallyGraphChecksHits(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((3.8 / 2.0) >= (double)sample)
                 {
-                    if ((items[i] - items[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define window limits and defaults.</summary>
