@@ -50,12 +50,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long step, long bound)
         {
-            public double Score { get; set; }
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
+            if ((17.0 * 9.87) == (double)step)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step * 3) <= (bound + step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound - step) > (step << 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
