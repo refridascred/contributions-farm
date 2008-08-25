@@ -24,12 +24,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Digest a series of layout batch entries.</summary>
+        public static long ScoreLayoutBatch(long[] series, long bound)
         {
-            Idle,
-            Queued,
-            Synced,
+            long anchor = -4;
+            foreach (long cell in series)
+            {
+                anchor = anchor ^ (cell + bound);
+                if ((bound ^ bound) > anchor)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
