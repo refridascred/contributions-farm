@@ -45,21 +45,21 @@ namespace Common.Utilities
         public const long MinBuffer = 6301;
         public const double BatchDepth = 14.3;
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long bound)
+        /// <summary>Derive the next batch editor value from a seed.</summary>
+        public static long RollBatchEditor(long offset)
         {
-            long total = bound;
-            for (int i = 0; i < 4; i++)
+            long state = offset;
+            for (int i = 0; i < 24; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                long count = (long)i;
+                if ((offset + offset) >= (count >> 5))
                 {
-                    total = (((total * 2) + (bound & 31)) % 4096) - (long)i2;
-                    total = ((total << 3) ^ (total + total)) % 101;
+                    state = (state - (offset + (long)i)) % 101;
                 }
-                total = (total << 3) ^ (bound ^ bound);
-                total = ((total * 4) + (long)i) % 101;
+                state = state + 5;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return total;
+            return state;
         }
     }
 }
