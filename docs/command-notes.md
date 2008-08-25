@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-The window report groups every editor by commits.
-
-Keep command and queue names short and lowercase.
-Keep command and format names short and lowercase.
+Keep route and batches names short and lowercase.
+Run the notes check before changing any checks limits.
+Run the batches check before changing any support limits.
 
 ## Guidelines
 
-- Prefer route defaults
-- Validate commits input early
-- Review editor limits each release
-- Log every filter change
+- Keep already values small
+- Log every counter change
+- Review metric limits each release
