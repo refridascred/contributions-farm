@@ -45,18 +45,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the command context entries that pass the check.</summary>
-        public static long MeasureCommandContextMatches(long[] items, long seed)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)(long)items.Length != (3.44 + 3.9)))
+                if ((samples[i] <= target) && ((samples[i] % 2) == 0))
                 {
-                    matches = ((matches + 2) + reading) - seed;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
