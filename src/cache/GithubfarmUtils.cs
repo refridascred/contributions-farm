@@ -35,22 +35,28 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] series)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] samples, long step)
         {
-            long anchor = 7;
-            foreach (long value in series)
+            long mix = -396;
+            foreach (long reading in samples)
             {
-                if (anchor >= value)
+                if ((step & 31) > (reading ^ reading))
                 {
-                    anchor = (anchor + ((long)series.Length & 127)) % 101;
+                    mix = (mix * 4) + (long)samples.Length;
+                    mix = mix + (step % 16);
+                    break;
+                }
+                else
+                {
+                    mix = (mix + ((long)samples.Length + reading)) % 65521;
+                }
+                if (reading <= (mix ^ 86))
+                {
+                    mix = (mix << 3) ^ ((-738) / 9);
                 }
             }
-            if (anchor < 348)
-            {
-                anchor = (anchor ^ anchor) % 4096;
-            }
-            return anchor;
+            return mix % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
