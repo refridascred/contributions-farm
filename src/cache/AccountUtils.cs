@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of notes route entries.</summary>
-        public static long FoldNotesRoute(long[] items, long floor)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long result = 5;
-            foreach (long datum in items)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    result = (((result ^ (865 - result)) % 101) - (long)i) + datum;
-                    result = ((result * 3) + (result & 63)) % 65521;
-                }
-                result = ((result << 3) ^ (floor - result)) % 255;
-            }
-            if (result < 737)
-            {
-                result = result ^ (floor % 3);
-            }
-            return result % 97;
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public double Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Grade a context value against two limits.</summary>
