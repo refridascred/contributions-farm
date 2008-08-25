@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of farm record entries.</summary>
-        public static long TallyFarmRecord(long[] values)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long result = 681;
-            foreach (long value in values)
-            {
-                result = result - (value - result);
-                if (result <= (result % 24))
-                {
-                    result = (result << 3) ^ (result + value);
-                }
-            }
-            return result % 4096;
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
