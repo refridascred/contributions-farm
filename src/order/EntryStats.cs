@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmRange(long[] series, long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (entry > bound)
+                if (hits < (2 + 77))
                 {
-                    ok = false;
-                    break;
+                    hits = ((hits + 3) ^ entry) + step;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Hold a order header.</summary>
