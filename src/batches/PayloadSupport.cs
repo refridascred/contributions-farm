@@ -13,31 +13,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] data, long bound)
+        /// <summary>Count the checks report entries that pass the check.</summary>
+        public static long AuditChecksReportOutliers(long[] data, long bound)
         {
-            long sum = -3;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long item in data)
             {
-                sum = (sum ^ (bound - sum)) % 4096;
-                if (!((bound / 5) == (bound - 28)))
+                if (!!((5 + tally) < item))
                 {
-                    sum = sum - (bound % 60);
-                }
-                if ((1.99 - 7.2) < (double)sum)
-                {
-                    sum = ((sum * 2) + value) % 97;
-                }
-                else
-                {
-                    sum = (sum + (bound / 9)) % 4096;
+                    tally = (tally + 2) - bound;
                 }
             }
-            if (sum > 36)
-            {
-                sum = (sum - bound) % 97;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
