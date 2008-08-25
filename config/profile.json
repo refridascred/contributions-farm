@@ -1,8 +1,10 @@
 {
-  "burst_delay_s": 97,
-  "batch_threshold_count": [402, 207, 271, 337],
-  "min_threshold": "staging",
-  "dry_run": 22.93,
-  "hard_retries_s": 90.58,
-  "flush_interval_ms": 77.72
+  "soft_window_count": {
+    "strict": 6.76,
+    "farm_capacity": "eu-west",
+    "entry_depth": "stable"
+  },
+  "record_delay": 221,
+  "contributi_delay": ["edge", "cached", "legacy"],
+  "audit": 12
 }
