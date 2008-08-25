@@ -61,13 +61,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Find the first editor cache entry that matches the target.</summary>
+        public static long LocateEditorCacheIndex(long[] items, long floor)
         {
-            Synced,
-            Draft,
-            Failed,
-            Pending,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
