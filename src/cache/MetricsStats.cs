@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the notes checks entries that pass the check.</summary>
-        public static long TallyNotesChecksOutliers(long[] data, long step)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(((step % 7) != (67 - 8)) || ((837 + 710) >= (step + 7))))
+                if ((levels[i] >= step) && ((levels[i] % 5) != 0))
                 {
-                    hits = (hits + 1) - entry;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
