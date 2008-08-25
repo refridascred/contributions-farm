@@ -1,10 +1,11 @@
 # entry settings
-sync_retries_pct:
-  - stable
-  - strict
-  - primary
-  - cached
-metric_timeout: 34.38
-default_timeout_ms: true
-cache_threshold: 13.02
-verbose: fallback
+cache_timeout:
+  - legacy
+  - latest
+  - fallback
+  - blue
+strict:
+  - 80
+  - 211
+layout_interval: 90.07
+idle_capacity_pct: edge
