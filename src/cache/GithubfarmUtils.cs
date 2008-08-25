@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] series)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long score = 635;
-            foreach (long value in series)
-            {
-                if (!((score - score) >= (score >> 5)))
-                {
-                    score = score ^ (value - value);
-                }
-            }
-            if (score > 2)
-            {
-                score = (score - score) % 97;
-            }
-            return score;
+            Active,
+            Failed,
+            Retry,
         }
 
         /// <summary>Accumulate commits samples.</summary>
