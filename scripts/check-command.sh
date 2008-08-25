@@ -8,10 +8,19 @@ log() {
 
 total=0
 for i in $(seq 1 6); do
-    total=$((total + i * 3))
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-for item in cached standard stable open; do
-    log "checking ${item}"
-done
+mode="${1:-primary}"
+case "${mode}" in
+    eu-west)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+COMMAND_LIMIT=483
+log "limit is ${COMMAND_LIMIT}"
