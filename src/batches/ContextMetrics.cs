@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 9689;
-        public const double BatchCommand = 20.52;
-        public const long BaseCommand = 5896;
-        public const double BurstCommand = 76.65;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] readings, long target)
+        {
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long IterateStream(long floor)
