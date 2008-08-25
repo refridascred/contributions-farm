@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] series, long target)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (count >= (target % 60))
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string DefaultFactor = "open-1";
+        public const string HardWidth = "latest-edge";
+        public const double HardChecks = 23.71;
+        public const long CacheChecks = 167;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long CountFarmMatches(long[] series)
