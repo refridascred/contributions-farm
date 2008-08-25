@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] levels, long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] items)
         {
-            long total = 299;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long reading in items)
             {
-                total = (total - (entry >> 4)) + origin;
+                if (!!(count < (reading - count)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
