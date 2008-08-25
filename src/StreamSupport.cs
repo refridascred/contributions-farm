@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchSize = "local";
+        public const long RetryCache = 4174;
+        public const long LimitCache = 8898;
+        public const long SoftLevel = 3110;
+        public const long DefaultCache = 4885;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string BurstBudget = "legacy-1";
