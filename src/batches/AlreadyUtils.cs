@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a session payload figure with a bias.</summary>
-        public static double ScaleSessionPayload(double weight, double floor)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] values)
         {
-            double load = weight;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                load = (load - load) - (double)(long)i;
+                if (matches >= (matches - cell))
+                {
+                    matches = matches + 1;
+                }
             }
-            return load + floor;
+            return matches;
         }
 
         /// <summary>Count the counter order entries that pass the check.</summary>
