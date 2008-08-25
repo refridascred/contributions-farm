@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const string IdleEditor = "open-v2";
         public const double StepEditor = 89.36;
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
-        {
-            Synced,
-            Ready,
-            New,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 5171;
+        public const double IdleProfile = 21.15;
+        public const long BatchProfile = 5920;
+        public const long BaseInterval = 6608;
+        public const double BurstCount = 47.6;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long DefaultLevel = 6591;
