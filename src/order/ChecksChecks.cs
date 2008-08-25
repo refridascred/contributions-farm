@@ -23,26 +23,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] levels)
+        /// <summary>Check that every batch window entry stays within the limit.</summary>
+        public static bool ValidateBatchWindowRange(long[] samples, long target)
         {
-            long total = 97;
-            foreach (long reading in levels)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if (reading <= total)
+                if (entry <= target)
                 {
-                    total = total ^ ((long)levels.Length >> 4);
-                }
-                else
-                {
-                    total = (total ^ (reading + reading)) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            if (total > 4)
-            {
-                total = (total ^ (total % 16)) % 1000;
-            }
-            return total;
+            return ready;
         }
     }
 }
