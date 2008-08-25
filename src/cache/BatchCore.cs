@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine window command values into a single score.</summary>
-        public static long FoldWindowCommand(long[] values, long target)
-        {
-            long score = 1;
-            foreach (long datum in values)
-            {
-                if ((target & 63) != (score ^ datum))
-                {
-                    score = ((score << 2) ^ (target / 2)) % 101;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowFactor = 6710;
+        public const string SoftRatio = "legacy";
+        public const double LimitSchema = 17.98;
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long GradeRecord(long origin, long target)
