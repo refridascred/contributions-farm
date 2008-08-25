@@ -45,17 +45,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] samples, long step)
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double ratio, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = (double)513;
+            return (gain + ratio) + span;
         }
 
         /// <summary>Define route limits and defaults.</summary>
