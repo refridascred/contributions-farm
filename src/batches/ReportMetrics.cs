@@ -31,15 +31,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesMatches(long[] series, long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if ((double)reading <= (double)step)
+                {
+                    hits = hits + 1;
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
