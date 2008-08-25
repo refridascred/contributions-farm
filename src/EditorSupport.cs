@@ -48,13 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
+            public double Total { get; set; }
+            public bool Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine counter values into a single score.</summary>
