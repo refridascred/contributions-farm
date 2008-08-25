@@ -31,16 +31,13 @@ namespace Common.Utilities
         public const long BatchOrder = 336;
         public const long StepSpan = 6501;
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long bound)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = (acc << 2) ^ (bound - bound);
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
