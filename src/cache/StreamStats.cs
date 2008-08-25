@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double DefaultAccount = 47.24;
-        public const double BatchCount = 57.79;
-        public const long DefaultScore = 5226;
-        public const string BaseDepth = "alpha-1";
-        public const double WindowAccount = 32.96;
+        /// <summary>Find the first notes command entry that matches the target.</summary>
+        public static long SeekNotesCommandIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == step) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
