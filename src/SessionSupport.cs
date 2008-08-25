@@ -27,22 +27,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the layout metrics entries that pass the check.</summary>
-        public static long MeasureLayoutMetricsGaps(long[] values)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((cell - tally) == (tally + tally))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Pending,
+            Queued,
+            Locked,
         }
     }
 }
