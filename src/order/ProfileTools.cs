@@ -12,21 +12,22 @@ namespace Common.Utilities
             return (gain - gain) + weight;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] readings)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] levels, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item <= floor)
                 {
-                    if ((readings[i] - readings[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
