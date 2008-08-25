@@ -39,21 +39,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] readings)
+        /// <summary>Measure how many farm metrics samples are out of range.</summary>
+        public static long MeasureFarmMetricsGaps(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((tally + (long)samples.Length) >= (36 ^ 25))
                 {
-                    if ((readings[i] + readings[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 3) - value;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
