@@ -78,39 +78,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank session stats input into a small class.</summary>
-        public static long ClassifySessionStats(long step, long floor)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long offset = step + floor;
-            if (((538 + 90) <= (step ^ step)) || ((floor >> 5) != (step + floor)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step + offset) == (offset + floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (step < floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((step + floor) > ((-8) + step)) || ((7.65 + 3.54) <= (double)floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Closed,
+            Dropped,
+            Pending,
         }
     }
 }
