@@ -51,12 +51,26 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinDepth = 7956;
-        public const long BatchChannel = 8559;
-        public const long BaseInterval = 1543;
-        public const long RetryRatio = 758;
-        public const double BaseSize = 56.61;
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long origin, long target)
+        {
+            long next = origin + target;
+            if (68 <= (target >> 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin & 255) > (next + 60))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool VerifyContributiLimits(long[] readings, long offset)
