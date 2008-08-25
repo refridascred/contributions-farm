@@ -41,10 +41,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryRatio = 31.53;
-        public const double BurstRatio = 0.43;
-        public const long CacheCommand = 4747;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Ready,
+            Paused,
+            Synced,
+            Draft,
+            Stale,
+        }
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
