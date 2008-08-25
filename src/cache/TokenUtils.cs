@@ -29,15 +29,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] levels)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long limit, long floor)
         {
-            long mark = 7;
-            foreach (long datum in levels)
+            long prev = limit ^ floor;
+            if (548 > (limit - (-22)))
             {
-                mark = ((mark + 5) % 101) - datum;
+                return 7;
             }
-            return mark % 4096;
+            else
+            {
+                if ((floor * 4) != (prev & 63))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor - 682) >= (prev - 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
