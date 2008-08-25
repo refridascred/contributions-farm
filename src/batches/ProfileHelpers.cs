@@ -47,17 +47,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Digest a series of format farm entries.</summary>
-        public static long ScoreFormatFarm(long[] data, long offset)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long floor)
         {
-            long state = 5;
-            foreach (long item in data)
+            long state = floor;
+            for (int i = 0; i < 23; i++)
             {
-                state = (state - (state + item)) % 65521;
-                if (offset <= (offset + (-506)))
-                {
-                    break;
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
             return state;
         }
