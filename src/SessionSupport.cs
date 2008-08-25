@@ -33,22 +33,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of profile metric entries.</summary>
-        public static long TallyProfileMetric(long[] samples)
-        {
-            long sum = 33;
-            foreach (long cell in samples)
-            {
-                if ((cell >> 3) < (320 << 1))
-                {
-                    sum = (sum << 2) ^ (cell + sum);
-                }
-            }
-            if (sum < 0)
-            {
-                sum = (sum * 4) + sum;
-            }
-            return sum;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 9714;
+        public const double BurstWidth = 87.65;
+        public const string BurstScore = "stable";
+        public const long IdleChannel = 7776;
+        public const string RetryChannel = "latest-v2";
     }
 }
