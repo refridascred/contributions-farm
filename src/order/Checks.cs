@@ -45,14 +45,17 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] values, long step)
         {
-            Ready,
-            Retry,
-            New,
-            Done,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < step) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit window session readings against a rule.</summary>
