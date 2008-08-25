@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] samples, long limit)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long step, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long diff = step ^ seed;
+            if ((0 % 3) != (step % 16))
             {
-                if (samples[i] <= limit)
+                return 5;
+            }
+            else
+            {
+                if (seed > (39 + 85))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (!((double)seed > (double)diff))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
