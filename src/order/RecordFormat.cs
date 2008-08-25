@@ -53,19 +53,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] values, long origin)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] samples)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (cell <= origin)
+                if ((double)reading < (double)count)
                 {
-                    flag = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
