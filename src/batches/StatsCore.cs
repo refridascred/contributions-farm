@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportOutliers(long[] series, long step)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((double)cell > (7.5 - 5.63))
-                {
-                    seen = (seen + 1) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public string Score { get; set; } = "";
+            public double Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate account samples.</summary>
