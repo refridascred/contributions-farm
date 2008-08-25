@@ -19,21 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of editor stats readings.</summary>
-        public static long PairEditorStatsCount(long[] samples)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the report mode values.</summary>
