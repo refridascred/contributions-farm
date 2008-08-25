@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a batches format counter forward.</summary>
-        public static long StepBatchesFormat(long bound)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long sum = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!(((321 + sum) > sum) || ((bound * 3) > bound)))
-                {
-                    sum = (sum ^ bound) % 1000;
-                }
-                sum = (sum << 2) ^ sum;
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            public long Level { get; set; }
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
