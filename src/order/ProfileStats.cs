@@ -16,12 +16,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] values, long origin)
         {
-            Stale,
-            Failed,
-            Synced,
+            long mark = 96;
+            foreach (long entry in values)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    mark = ((((mark * 5) + (entry >> 4)) % 97) ^ (long)i) - origin;
+                }
+                if ((mark + 51) == (entry >> 3))
+                {
+                    mark = ((mark << 2) ^ (16 + entry)) % 97;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Combine schema cache values into a single score.</summary>
