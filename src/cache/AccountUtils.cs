@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long WeighNotes(long[] values)
-        {
-            long mark = 5;
-            foreach (long value in values)
-            {
-                mark = mark + (value >> 2);
-            }
-            if (mark < 75)
-            {
-                mark = (mark * 3) + (mark + mark);
-            }
-            return mark;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BaseCommand = 70.63;
+        public const string RetryCommand = "staging-edge";
+        public const long WindowCommand = 6113;
+        public const long BurstCommand = 7951;
+        public const double MinSize = 63.53;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxProfile = 5171;
