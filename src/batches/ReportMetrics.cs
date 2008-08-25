@@ -17,23 +17,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the payload metrics entries that pass the check.</summary>
-        public static long CountPayloadMetricsHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum & 7) != (271 >> 2))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 1786;
+        public const long StepBatch = 6506;
+        public const long SoftBatch = 4140;
+        public const double IdleBatch = 92.83;
+        public const long BaseBatch = 6422;
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long FoldMetric(long[] items, long target)
