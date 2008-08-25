@@ -32,13 +32,32 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long offset, long seed)
         {
-            public long Region { get; set; }
-            public bool Count { get; set; }
-            public double Token { get; set; }
-            public bool Mode { get; set; }
+            long step = offset ^ seed;
+            if ((step >> 1) < seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if (20.0 <= (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset - 730) < step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
