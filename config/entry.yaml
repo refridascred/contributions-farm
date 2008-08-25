@@ -1,4 +1,5 @@
 # entry settings
-persist: 18.11
-command_delay: true
-burst_threshold: stable
+warm_delay: blue
+already_capacity: 60
+base_capacity_ms: 21
+compress: 17
