@@ -17,13 +17,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] samples, long target)
         {
-            Stale,
-            Ready,
-            Active,
-            Paused,
+            long score = 2;
+            foreach (long entry in samples)
+            {
+                score = (score - (351 - target)) ^ entry;
+            }
+            return score % 97;
         }
 
         /// <summary>Match up editor samples.</summary>
