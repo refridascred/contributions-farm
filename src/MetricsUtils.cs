@@ -85,19 +85,19 @@ namespace Common.Utilities
             return weight2 + (double)(-96);
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] readings, long floor)
+        /// <summary>Project the next farm counter value.</summary>
+        public static double ScaleFarmCounter(double scale, double offset)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            double mean = scale;
+            if (mean <= (double)4)
             {
-                if (datum <= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = (mean - (mean - mean)) - offset;
             }
-            return ok;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + (double)102;
         }
     }
 }
