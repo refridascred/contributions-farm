@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseLayout = 53.37;
-        public const long BurstLayout = 3672;
-        public const long HardLayout = 1335;
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long TotalStream(long[] levels, long step)
