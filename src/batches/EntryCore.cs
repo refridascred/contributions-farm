@@ -53,15 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double weight, double bias)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long bound)
         {
-            double ratio = bias;
-            if (ratio < (ratio * 1.24))
+            long mark = bound;
+            for (int i = 0; i < 15; i++)
             {
-                ratio = (ratio - (bias / 4.0)) - weight;
+                mark = ((mark << 3) ^ (bound - 66)) % 101;
+                mark = mark ^ bound;
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return ratio - bias;
+            return mark;
         }
 
         /// <summary>Digest a series of stream githubfarm entries.</summary>
