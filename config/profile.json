@@ -1,8 +1,7 @@
 {
-  "poll_timeout_count": false,
-  "route_window": "green",
-  "payload_limit": ["edge", "latest", "staging", "open"],
-  "dry_run": false,
-  "min_interval_count": "primary",
-  "strict": [438, 377, 208, 195]
+  "stream_threshold": false,
+  "enabled": "standard",
+  "persist": [13, 247, 312],
+  "cache_timeout_ms": 6543,
+  "retry_retries_count": true
 }
