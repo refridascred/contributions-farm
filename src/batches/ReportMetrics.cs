@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] series)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double gain, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = (double)462 / 5.0;
+            if (mean >= mean)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = (mean + (span + mean)) - gain;
             }
-            return tally;
+            return mean + mean;
         }
 
         /// <summary>Combine farm notes values into a single score.</summary>
