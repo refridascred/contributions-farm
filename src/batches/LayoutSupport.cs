@@ -65,11 +65,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftWidth = "staging";
-        public const long BatchEditor = 9448;
-        public const long BaseTimeout = 4821;
-        public const string MaxEditor = "strict-edge";
-        public const string WindowEditor = "alpha";
+        /// <summary>Look up the position of a graph metrics sample.</summary>
+        public static long FindGraphMetricsIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < step) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
