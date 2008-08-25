@@ -47,17 +47,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long seed)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long mix = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = ((mix * 2) + (mix - 28)) % 1000;
-                mix = (mix ^ (mix + mix)) % 97;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            Done,
+            Paused,
+            New,
+            Stale,
+            Retry,
         }
 
         /// <summary>Hold a support info.</summary>
