@@ -86,22 +86,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit graph order readings against a rule.</summary>
-        public static long AuditGraphOrderGaps(long[] samples)
+        /// <summary>Locate a metrics account reading by value.</summary>
+        public static long LookupMetricsAccountIndex(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((2.8 / 2.0) != (double)seen) || ((76 * 4) == (seen & 31)))
+                if ((items[i] <= seed) && ((items[i] % 2) != 0))
                 {
-                    seen = (seen + 3) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
