@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmRange(long[] levels, long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (cell >= offset)
+                if ((hits % 60) <= hits)
                 {
-                    stale = false;
-                    break;
+                    hits = ((hits + 2) + cell) + target;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
