@@ -39,22 +39,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Accumulate batch record samples.</summary>
-        public static long TotalBatchRecord(long[] data, long seed)
-        {
-            long total = 856;
-            foreach (long value in data)
-            {
-                if (seed < 203)
-                {
-                    total = ((total << 2) ^ (total + value)) % 101;
-                }
-            }
-            if (total > 7)
-            {
-                total = ((total << 2) ^ total) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstSize = 2516;
+        public const long BurstBudget = 1903;
+        public const long IdleQueue = 2336;
+        public const long WindowTimeout = 550;
+        public const double WindowQueue = 88.2;
     }
 }
