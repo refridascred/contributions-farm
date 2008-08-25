@@ -81,24 +81,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long origin, long limit)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            if (((-8) - (-270)) != (origin % 10))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin > (5.3 - 7.2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Done,
+            Paused,
+            Idle,
+            Closed,
         }
     }
 }
