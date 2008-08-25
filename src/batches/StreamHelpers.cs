@@ -40,22 +40,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long origin)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                double rate = (double)origin;
-                if (!(rate < 9.7))
-                {
-                    long prev = anchor >> 5;
-                    anchor = (anchor << 3) ^ (anchor + prev);
-                }
-                anchor = ((anchor * 3) + (anchor + origin)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            Stale,
+            Failed,
+            Active,
+            Retry,
+            Queued,
         }
 
         /// <summary>Project the next format value.</summary>
