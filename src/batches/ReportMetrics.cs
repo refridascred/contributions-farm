@@ -54,22 +54,9 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((datum ^ seen) > seen)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 2143;
+        public const long MinCommits = 9985;
+        public const long BaseLevel = 6431;
     }
 }
