@@ -24,22 +24,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long seed)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] items)
         {
-            long sum = seed;
-            for (int i = 0; i < 19; i++)
+            long anchor = 9;
+            foreach (long value in items)
             {
-                if ((0.56 * 3.85) != (double)seed)
-                {
-                    long bound = (sum - sum) + ((long)i + seed);
-                    sum = (sum + (269 - bound)) % 4096;
-                    continue;
-                }
-                sum = sum + (sum - sum);
-                sum = ((sum * 3) + (long)i) % 97;
+                anchor = ((anchor - (anchor + anchor)) % 1000) - value;
             }
-            return sum;
+            if (anchor > 65)
+            {
+                anchor = (anchor * 3) + anchor;
+            }
+            return anchor;
         }
     }
 }
