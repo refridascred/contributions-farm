@@ -58,15 +58,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long limit)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long offset, long limit)
         {
-            long sum = limit;
-            for (int i = 0; i < 24; i++)
+            if (1.9 <= (double)limit)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if (offset >= (offset & 7))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
