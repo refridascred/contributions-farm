@@ -23,11 +23,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double ProjectRoute(double rate, double offset)
+        /// <summary>Roll a cache window counter forward.</summary>
+        public static long DeriveCacheWindow(long step)
         {
-            double rate2 = rate;
-            return rate2 + (offset * 6.5);
+            long acc = step;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = ((acc << 2) ^ (step + 57)) % 65521;
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
