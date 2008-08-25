@@ -46,32 +46,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long step, long origin)
+        /// <summary>Accumulate route record samples.</summary>
+        public static long FoldRouteRecord(long[] levels)
         {
-            long edge = step + origin;
-            if ((edge ^ 307) <= (step >> 2))
+            long result = 6;
+            foreach (long cell in levels)
             {
-                return 4;
+                result = ((result + (608 >> 2)) % 97) ^ cell;
             }
-            else
-            {
-                if (((7.0 / 8.0) == (double)origin) || ((8.3 / 5.0) > (double)step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((edge + origin) <= (step << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Hold a already summary.</summary>
