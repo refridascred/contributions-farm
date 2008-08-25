@@ -71,19 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterLimits(long[] levels, long seed)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] levels)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (datum != seed)
+                if (!(((tally & 15) != (tally * 4)) || (entry >= tally)))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
