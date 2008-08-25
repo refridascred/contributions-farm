@@ -22,19 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] values)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((791 + hits) <= (hits << 3))
-                {
-                    hits = (hits + 2) ^ cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MinDepth = 75.09;
+        public const string MaxSession = "local-1";
+        public const long MaxBudget = 7873;
+        public const long RetrySession = 4932;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long RetryReport = 2590;
