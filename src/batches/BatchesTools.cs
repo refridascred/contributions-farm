@@ -40,22 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine filter order values into a single score.</summary>
-        public static long ScoreFilterOrder(long[] items, long offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] values, long bound)
         {
-            long mix = -882;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if (((offset - 69) == ((long)items.Length ^ 1)) || ((5.0 / 9.0) > (double)reading))
+                if (sample < bound)
                 {
-                    mix = ((mix << 2) ^ (offset % 16)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            if (mix < 7)
-            {
-                mix = (mix + (offset / 2)) % 101;
-            }
-            return mix % 4096;
+            return found;
         }
     }
 }
