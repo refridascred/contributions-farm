@@ -1,25 +1,4 @@
 # githubfarm settings
-command_timeout:
-  sync_depth_pct: green
-  verbose: 73
-  audit: cached
-  default_delay_pct: latest
-max_interval_s: 72.18
-idle_timeout_count:
-  report_ratio: 4808
-  sync_timeout: 66
-  retry_delay:
-    dry_run: 13.51
-    strict: 49
-    commits_ttl: blue
-  queue_size: false
-  strict: true
-enabled:
-  metric_threshold: local
-  flush_interval: false
-  contributi_size: 30
-  hard_threshold:
-    - staging
-    - latest
-flush_size_s: standard
-farm_interval: 96.27
+audit: 30
+stream_threshold: 30
+persist: strict
