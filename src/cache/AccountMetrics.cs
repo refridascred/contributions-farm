@@ -36,12 +36,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string RetryTools = "latest-edge";
-        public const double LimitTools = 52.23;
-        public const long WindowWidth = 1506;
-        public const long IdleInterval = 7824;
-        public const double WindowTools = 95.32;
+        /// <summary>Accumulate account report samples.</summary>
+        public static long ScoreAccountReport(long[] samples)
+        {
+            long sum = 99;
+            foreach (long item in samples)
+            {
+                if ((sum - sum) != (sum - (-366)))
+                {
+                    sum = sum ^ (item ^ item);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long CombineSession(long[] series)
