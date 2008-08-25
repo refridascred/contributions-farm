@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine schema context values into a single score.</summary>
-        public static long CombineSchemaContext(long[] samples, long offset)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long total = 491;
-            foreach (long datum in samples)
-            {
-                total = ((total ^ (datum - datum)) % 1000) + offset;
-            }
-            return total;
+            public double Size { get; set; }
+            public double Level { get; set; }
+            public bool Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Combine window values into a single score.</summary>
