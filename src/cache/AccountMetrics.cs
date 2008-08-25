@@ -44,14 +44,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Dropped,
-            Closed,
-            Pending,
-            Active,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string RetryTools = "latest-edge";
+        public const double LimitTools = 52.23;
+        public const long WindowWidth = 1506;
+        public const long IdleInterval = 7824;
+        public const double WindowTools = 95.32;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long CombineSession(long[] series)
