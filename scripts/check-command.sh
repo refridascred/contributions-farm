@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-for item in primary stable edge fallback; do
+for item in strict blue; do
     log "checking ${item}"
 done
 
-mode="${1:-open}"
+COMMAND_LIMIT=357
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-local}"
 case "${mode}" in
-    primary)
+    blue)
         log "fast path"
         ;;
     *)
