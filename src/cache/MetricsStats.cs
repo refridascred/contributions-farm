@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] samples, long offset)
+        /// <summary>Rank cache queue input into a small class.</summary>
+        public static long RankCacheQueue(long origin, long bound)
         {
-            long count = 0;
-            foreach (long item in samples)
+            if ((-35) <= (bound - bound))
             {
-                if ((81 + count) != (item - count))
+                return 4;
+            }
+            else
+            {
+                if (bound < (origin + bound))
                 {
-                    count = (count + 3) + offset;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (!((double)bound >= 0.7))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
