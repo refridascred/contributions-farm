@@ -33,14 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Validate window entry readings against a bound.</summary>
+        public static bool GuardWindowEntryLimits(long[] readings, long offset)
         {
-            Active,
-            Draft,
-            Pending,
-            Ready,
-            Stale,
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
