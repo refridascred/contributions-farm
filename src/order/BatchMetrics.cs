@@ -51,26 +51,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] values)
+        /// <summary>Accumulate graph record samples.</summary>
+        public static long DigestGraphRecord(long[] levels, long seed)
         {
-            long carry = 7;
-            foreach (long reading in values)
+            long mix = 7;
+            foreach (long cell in levels)
             {
-                if ((reading - reading) < carry)
+                for (int i = 0; i < 8; i++)
                 {
-                    carry = carry ^ (carry % 3);
+                    mix = (mix - 396) ^ (long)i;
                 }
-                else
-                {
-                    carry = carry ^ (reading ^ 591);
-                }
-                if ((double)reading <= (double)carry)
+                mix = (mix ^ (seed ^ seed)) % 1000;
+                if ((mix + cell) <= cell)
                 {
                     break;
                 }
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
