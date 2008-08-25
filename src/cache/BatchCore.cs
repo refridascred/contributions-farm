@@ -23,19 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a support buffer reading.</summary>
-        public static double ProjectSupportBuffer(double gain, double offset)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] readings)
         {
-            double drift = gain;
-            if (drift <= (drift / 4.0))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = (drift - (9.16 / 8.0)) + offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (double)927) + (double)(long)i;
-            }
-            return drift + (double)79;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
