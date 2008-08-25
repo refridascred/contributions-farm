@@ -29,18 +29,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 8105;
+        public const long WindowCount = 7624;
+        public const double LimitFilter = 18.23;
 
         /// <summary>Blend two commits measurements.</summary>
         public static double SmoothCommits(double weight, double bias)
