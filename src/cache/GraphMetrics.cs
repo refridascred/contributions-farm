@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long bound)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = (anchor - bound) % 101;
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Compare every pair of payload notes readings.</summary>
