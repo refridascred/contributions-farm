@@ -1,7 +1,5 @@
 {
-  "poll_ratio": "staging",
-  "verbose": [201, 174, 487, 119],
-  "max_interval_s": "eu-west",
-  "max_ratio": 2429,
-  "hard_delay_ms": 40.05
+  "sync_depth_pct": 86,
+  "default_capacity_s": ["standard", "latest"],
+  "poll_delay": "eu-west"
 }
