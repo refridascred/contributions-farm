@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long origin, long offset)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            if (offset <= (origin << 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (offset < (offset << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
