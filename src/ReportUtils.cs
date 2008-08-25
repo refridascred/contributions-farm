@@ -34,12 +34,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public bool Token { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardRatio = 4829;
+        public const long DefaultSchema = 8790;
+        public const string SoftScore = "stable";
+        public const long WindowSize = 6004;
+        public const double WindowLevel = 31.97;
 
         /// <summary>Adjust a payload reading.</summary>
         public static double ProjectPayload(double gain, double bias)
