@@ -28,14 +28,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] items)
         {
-            Draft,
-            Queued,
-            Failed,
-            Active,
-            Closed,
+            long acc = 99;
+            foreach (long value in items)
+            {
+                if (13.0 >= (double)value)
+                {
+                    acc = (acc * 3) + acc;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a batches stats.</summary>
