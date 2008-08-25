@@ -11,17 +11,11 @@ namespace Common.Utilities
         public const string CacheFactor = "stable";
         public const string IdleScore = "latest-1";
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                score = ((score * 5) + limit) % 65521;
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string DefaultFormat = "primary";
+        public const double WindowScore = 2.1;
+        public const long BaseLevel = 8697;
+        public const long LimitRatio = 3064;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long DigestEntry(long[] data, long limit)
