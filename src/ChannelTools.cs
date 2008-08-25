@@ -41,24 +41,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long origin, long seed)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] series, long origin)
         {
-            if ((double)seed < (2.5 - 8.01))
+            long mark = 3;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (590 > (origin / 4))
+                mark = ((mark - mark) % 4096) - sample;
+                if (((mark * 3) > mark) || ((8 & 127) >= (origin << 1)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    mark = (mark * 3) + (origin & 63);
                 }
             }
+            if (mark > 712)
+            {
+                mark = ((mark << 2) ^ origin) % 65521;
+            }
+            return mark;
         }
     }
 }
