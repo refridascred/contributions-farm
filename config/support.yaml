@@ -1,16 +1,9 @@
 # support settings
-batch_delay: blue
-verbose:
-  warm_limit_count: 759
-  record_capacity: false
-  max_ratio:
-    - 215
-    - 79
-    - 90
-    - 426
-  burst_limit: 87.69
-  default_interval_pct:
-    - open
-    - green
-  max_retries_s: staging
-min_ratio_ms: 178
+strict: 60
+soft_retries: 25.02
+max_ratio_pct:
+  warm_depth: true
+  filter_size: open
+  poll_window_s: eu-west
+  layout_timeout: 100
+base_depth_pct: true
