@@ -1,5 +1,5 @@
 {
-  "cache_ttl_count": ["strict", "cached", "blue"],
-  "flush_ratio": [265, 190, 140],
-  "batches_limit": 21.02
+  "sync_interval": [2, 236],
+  "cache_depth": 91.33,
+  "already_ratio": 8077
 }
