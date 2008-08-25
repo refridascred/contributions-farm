@@ -10,11 +10,17 @@ namespace Common.Utilities
         public const long DefaultDepth = 4700;
         public const double WindowChecks = 1.65;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MaxPayload = 3.68;
-        public const long BatchBudget = 1408;
-        public const long SoftCount = 3393;
-        public const string HardPayload = "standard-1";
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = carry - (822 >> 5);
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
