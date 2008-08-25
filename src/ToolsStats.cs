@@ -24,26 +24,10 @@ namespace Common.Utilities
         public const string RetrySchema = "staging-v2";
         public const long SoftSchema = 4320;
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long origin, long target)
-        {
-            long next = origin + target;
-            if (68 <= (target >> 2))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin & 255) > (next + 60))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepFactor = 26.68;
+        public const long MinChecks = 5443;
+        public const double SoftCount = 55.4;
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksOutliers(long[] readings, long seed)
