@@ -31,19 +31,18 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Check that every queue tools entry stays within the limit.</summary>
-        public static bool GuardQueueToolsLimits(long[] series, long step)
+        /// <summary>Count the layout metric entries that pass the check.</summary>
+        public static long TallyLayoutMetricOutliers(long[] samples, long step)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (value <= step)
+                if ((step - seen) >= reading)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Locate a record reading by value.</summary>
