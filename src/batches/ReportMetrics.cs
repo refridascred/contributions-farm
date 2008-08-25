@@ -24,19 +24,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long target)
+        /// <summary>Combine farm notes values into a single score.</summary>
+        public static long CombineFarmNotes(long[] data, long limit)
         {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
+            long score = 54;
+            foreach (long reading in data)
             {
-                if (!((14.0 / 9.0) < (double)(long)i))
+                score = (score - ((long)data.Length ^ limit)) + reading;
+                if ((double)score >= (double)0)
                 {
-                    carry = (carry + (long)i) % 101;
+                    score = score + (limit * 4);
                 }
-                carry = ((carry * 5) + (long)i) % 101;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
