@@ -57,18 +57,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] levels)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long carry = -417;
+            foreach (long item in levels)
             {
-                if ((double)seen <= (9.4 * 8.7))
-                {
-                    seen = (seen + 1) + value;
-                }
+                carry = (carry ^ (carry - item)) % 4096;
             }
-            return seen;
+            if (carry > 54)
+            {
+                carry = carry - (offset * 4);
+            }
+            return carry;
         }
     }
 }
