@@ -35,15 +35,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a report account figure with a bias.</summary>
-        public static double SmoothReportAccount(double bias, double bias2)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            double ratio = bias2;
-            if (ratio <= (ratio - bias2))
-            {
-                ratio = ratio + bias2;
-            }
-            return ratio + bias;
+            Pending,
+            Idle,
+            Queued,
+            Synced,
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
