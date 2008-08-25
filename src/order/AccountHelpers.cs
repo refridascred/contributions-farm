@@ -54,17 +54,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a filter session sample.</summary>
-        public static long SeekFilterSessionIndex(long[] series, long limit)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Closed,
+            Locked,
+            Active,
+            Done,
         }
     }
 }
