@@ -65,14 +65,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] data)
         {
-            Active,
-            Stale,
-            New,
-            Dropped,
-            Queued,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((entry * 4) <= (tally + entry))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
