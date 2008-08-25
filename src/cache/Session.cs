@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] values, long target)
+        /// <summary>Find the first counter farm entry that matches the target.</summary>
+        public static long SeekCounterFarmIndex(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits % 60) <= hits)
+                if ((samples[i] >= origin) && ((samples[i] % 5) == 0))
                 {
-                    hits = ((hits + 2) + cell) + target;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
