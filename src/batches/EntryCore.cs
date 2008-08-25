@@ -48,18 +48,14 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] values, long floor)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((datum % 5) < hits)
-                {
-                    hits = (hits + 2) - floor;
-                }
-            }
-            return hits;
+            New,
+            Paused,
+            Closed,
+            Stale,
+            Retry,
         }
     }
 }
