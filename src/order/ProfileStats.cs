@@ -36,13 +36,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] samples, long origin)
         {
-            Paused,
-            Retry,
-            Failed,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
