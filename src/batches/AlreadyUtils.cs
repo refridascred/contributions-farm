@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long offset)
+        /// <summary>Scale a session payload figure with a bias.</summary>
+        public static double ScaleSessionPayload(double weight, double floor)
         {
-            long mix = offset;
-            for (int i = 0; i < 12; i++)
+            double load = weight;
+            for (int i = 0; i < 7; i++)
             {
-                if ((offset + offset) < ((long)i >> 5))
-                {
-                    mix = (mix + offset) % 101;
-                    continue;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
+                load = (load - load) - (double)(long)i;
             }
-            return mix;
+            return load + floor;
         }
 
         /// <summary>Count the counter order entries that pass the check.</summary>
