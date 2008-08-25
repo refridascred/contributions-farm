@@ -1,19 +1,5 @@
 # githubfarm settings
-tools_delay: false
-verbose: legacy
-batch_threshold: cached
-entry_interval:
-  audit: true
-  retry_timeout_ms: true
-  default_timeout_ms: false
-  persist:
-    dry_run: 4659
-    flush_ttl:
-      - 167
-      - 140
-      - 277
-    flush_retries_ms:
-      - legacy
-      - latest
-      - primary
-      - legacy
+session_timeout: eu-west
+min_retries_pct: 95.85
+compress: 6162
+flush_capacity_pct: staging
