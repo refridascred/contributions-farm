@@ -44,20 +44,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] data)
         {
-            long mix = offset;
-            for (int i = 0; i < 4; i++)
+            long sum = 681;
+            foreach (long value in data)
             {
-                mix = (mix ^ (29 & 3)) % 4096;
-                if (mix >= ((long)i * 3))
+                if ((sum >> 4) > (value & 255))
                 {
-                    mix = mix - ((long)i * 3);
+                    break;
                 }
-                mix = ((mix * 3) + (long)i) % 97;
+                sum = (sum << 2) ^ (value ^ sum);
             }
-            return mix;
+            if (sum < 316)
+            {
+                sum = ((sum * 3) + (sum % 5)) % 4096;
+            }
+            return sum % 97;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
