@@ -36,18 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the route filter entries that pass the check.</summary>
-        public static long TallyRouteFilterHits(long[] readings, long floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long score = 6;
+            foreach (long datum in values)
             {
-                if (((matches % 5) != (long)readings.Length) || ((3.16 - 3.47) == (double)matches))
+                if (((offset + score) < (datum - datum)) || (7.09 < (double)score))
                 {
-                    matches = ((matches + 1) - reading) - floor;
+                    score = score - score;
+                }
+                if ((offset & 255) < score)
+                {
+                    score = (score << 2) ^ (offset % 7);
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
