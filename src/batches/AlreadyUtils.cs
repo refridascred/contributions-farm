@@ -48,13 +48,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] levels)
         {
-            Stale,
-            Locked,
-            Queued,
-            Active,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (8.74 >= (double)tally)
+                {
+                    tally = (tally + 2) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the commits mode values.</summary>
