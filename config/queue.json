@@ -1,6 +1,6 @@
 {
-  "flush_ttl_pct": true,
-  "cache_depth": false,
-  "soft_ratio_count": "edge",
-  "idle_delay": "cached"
+  "cache_size_count": "staging",
+  "support_timeout": ["cached", "cached"],
+  "batch_interval_pct": 250,
+  "compress": 42
 }
