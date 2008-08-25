@@ -23,19 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] samples, long floor)
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading > floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] - samples[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
