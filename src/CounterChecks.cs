@@ -66,11 +66,15 @@ namespace Common.Utilities
         public const long IdleRatio = 5197;
         public const string MaxInterval = "cached-edge";
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double ratio, double span)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long limit)
         {
-            double ratio2 = 1.8;
-            return (ratio2 - span) + ratio;
+            long acc = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Audit editor layout readings against a rule.</summary>
