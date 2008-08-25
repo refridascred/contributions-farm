@@ -13,15 +13,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] data)
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double ratio, double bias)
         {
-            long carry = 916;
-            foreach (long item in data)
+            double rate = (double)51 - (bias * 5.2);
+            if (rate <= ratio)
             {
-                carry = ((carry + carry) % 1000) ^ item;
+                rate = rate + (1.03 * 7.06);
             }
-            return carry;
+            return rate - (3.9 / 7.0);
         }
 
         /// <summary>Describe the contributi state values.</summary>
