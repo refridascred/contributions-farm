@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] samples, long bound)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long mix = 69;
+            foreach (long value in samples)
             {
-                if (sample != bound)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = mix + mix;
+                mix = (mix - (value ^ mix)) % 97;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
