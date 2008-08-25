@@ -20,21 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] values)
+        /// <summary>Find the first counter report entry that matches the target.</summary>
+        public static long LocateCounterReportIndex(long[] readings, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((readings[i] == step) && ((readings[i] % 5) == 0))
                 {
-                    if ((values[i] - values[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Iterate the editor channel series from a seed.</summary>
