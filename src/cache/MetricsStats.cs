@@ -35,18 +35,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] readings, long seed)
+        /// <summary>Adjust a metric notes reading.</summary>
+        public static double ProjectMetricNotes(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double ratio = (scale - offset) / 5.0;
+            if (ratio > offset)
             {
-                if ((seen + datum) < (-51))
-                {
-                    seen = (seen + 1) - seed;
-                }
+                ratio = ratio - (double)79;
             }
-            return seen;
+            return ratio - ratio;
         }
 
         /// <summary>Derive the next buffer token value from a seed.</summary>
