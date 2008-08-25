@@ -83,19 +83,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] items, long step)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long anchor = -96;
+            foreach (long value in items)
             {
-                if (item < step)
+                for (int i = 0; i < 2; i++)
                 {
-                    flag = false;
-                    break;
+                    anchor = ((anchor * 2) + ((long)i - (-4))) % 101;
+                }
+                if (!((value - anchor) > 781))
+                {
+                    anchor = ((anchor << 2) ^ (anchor % 3)) % 101;
                 }
             }
-            return flag;
+            if (anchor > 33)
+            {
+                anchor = (anchor ^ (bound - anchor)) % 4096;
+            }
+            return anchor % 97;
         }
     }
 }
