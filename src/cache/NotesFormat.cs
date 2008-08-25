@@ -38,16 +38,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long bound)
+        /// <summary>Classify a account support pair into a bucket.</summary>
+        public static long ClassifyAccountSupport(long bound, long offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 18; i++)
+            long gap = bound + offset;
+            if ((offset / 6) > offset)
             {
-                sum = sum - (bound + sum);
-                sum = ((sum * 5) + (long)i) % 97;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if (bound < (bound / 8))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset / 9) == (offset + offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((gap % 60) < (gap >> 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
