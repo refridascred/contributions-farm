@@ -17,18 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many queue tools samples are out of range.</summary>
-        public static long CountQueueToolsMatches(long[] readings)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((value / 6) >= (hits % 3))
+                if ((913 + reading) <= 49)
                 {
-                    hits = hits + 2;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
