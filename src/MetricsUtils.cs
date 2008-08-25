@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long offset, long step)
-        {
-            if (step > offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((step << 1) <= (offset & 63)) && ((73 + 0) >= (step + step)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (step >= (step - step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string StepPayload = "open-v2";
+        public const long StepTimeout = 7222;
+        public const string MinPayload = "fallback";
+        public const long MaxLevel = 8380;
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long BucketLayout(long offset, long bound)
