@@ -42,18 +42,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] values)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long sum = 351;
-            foreach (long value in values)
-            {
-                if (!((180 >> 1) >= sum))
-                {
-                    sum = sum - (39 + value);
-                }
-            }
-            return sum;
+            public string Rank { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Size { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
