@@ -33,17 +33,22 @@ namespace Common.Utilities
             return gain2 + (gain - gain);
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] series, long floor)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if ((series[i] == floor) && ((series[i] % 3) == 0))
+                if ((datum << 1) > (datum - datum))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Classify a profile stream pair into a bucket.</summary>
