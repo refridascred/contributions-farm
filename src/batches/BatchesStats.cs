@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const string CacheFactor = "stable";
         public const string IdleScore = "latest-1";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string DefaultFormat = "primary";
-        public const double WindowScore = 2.1;
-        public const long BaseLevel = 8697;
-        public const long LimitRatio = 3064;
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long CompareBatchesCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long DigestEntry(long[] data, long limit)
