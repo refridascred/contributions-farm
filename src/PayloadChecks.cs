@@ -20,12 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLevel = 3856;
-        public const long SoftLayout = 3517;
-        public const double StepRatio = 42.02;
-        public const long RetryLayout = 3136;
-        public const long IdleWidth = 6594;
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
+        {
+            Pending,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BaseFarm = 8573;
