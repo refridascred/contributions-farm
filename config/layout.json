@@ -1,19 +1,13 @@
 {
-  "batches_window": {
-    "profile_limit": "staging",
-    "max_timeout": "blue",
-    "filter_limit": "edge",
-    "max_retries_count": 77.2,
-    "strict": {
-      "farm_depth": true,
-      "max_window_pct": 9541,
-      "compress": 250,
-      "min_timeout": "blue",
-      "audit": "blue"
-    }
+  "poll_size_pct": {
+    "base_limit_s": "standard",
+    "audit": 32.9,
+    "filter_delay": true,
+    "base_threshold_ms": 250
   },
-  "retry_timeout": 250,
-  "max_ttl_s": ["local", "open", "strict", "local"],
-  "idle_ttl_pct": "legacy",
-  "default_capacity_s": 74
+  "hard_window_pct": 100,
+  "max_limit_pct": 6549,
+  "buffer_delay": 56.86,
+  "flush_timeout_ms": 507,
+  "idle_retries_pct": true
 }
