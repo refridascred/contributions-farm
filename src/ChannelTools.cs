@@ -26,16 +26,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of account context readings.</summary>
-        public static long ScoreAccountContext(long[] data)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] data)
         {
-            long carry = 3;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long cell in data)
             {
-                carry = (carry << 2) ^ datum;
-                carry = (carry - (datum - carry)) % 65521;
+                if ((cell + 10) == (65 >> 1))
+                {
+                    count = count + 3;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
