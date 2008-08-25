@@ -29,24 +29,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a stream metric pair into a bucket.</summary>
-        public static long RankStreamMetric(long limit, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] levels)
         {
-            if ((double)step == (9.76 / 3.0))
+            long hits = 0;
+            foreach (long item in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((step / 4) >= limit))
+                if ((item % 100) < item)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a window header.</summary>
