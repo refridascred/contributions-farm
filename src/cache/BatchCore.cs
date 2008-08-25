@@ -33,15 +33,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long step)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long carry = step;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            Synced,
+            Failed,
+            Paused,
+            Active,
+            Stale,
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
