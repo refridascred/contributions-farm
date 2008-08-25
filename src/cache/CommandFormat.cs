@@ -41,11 +41,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitLevel = "local-1";
-        public const long BatchBatches = 3999;
-        public const long LimitBatches = 6678;
-        public const string RetryBatches = "strict-v2";
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
+        {
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Grade a batches value against two limits.</summary>
         public static long ClassifyBatches(long offset, long seed)
