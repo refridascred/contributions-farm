@@ -44,19 +44,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] values)
-        {
-            long score = 4;
-            foreach (long cell in values)
-            {
-                if ((6.26 * 2.86) < (double)score)
-                {
-                    score = (((score << 2) ^ (score & 3)) % 1000) - cell;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstScore = 771;
+        public const long SoftFarm = 4607;
+        public const long StepLevel = 2813;
+        public const string CacheFarm = "open-1";
 
         /// <summary>Combine session payload values into a single score.</summary>
         public static long DigestSessionPayload(long[] data, long seed)
