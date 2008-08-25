@@ -51,12 +51,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 1284;
-        public const long BurstBatch = 6185;
-        public const long IdleScore = 3382;
-        public const string WindowBatch = "local";
-        public const long WindowSpan = 787;
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
+        {
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long CountLayoutOutliers(long[] readings)
