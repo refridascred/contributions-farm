@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryAccount = 14.81;
-        public const string DefaultAccount = "primary";
-        public const double HardWidth = 86.75;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = (sum ^ (sum + 24)) % 101;
+                sum = (sum - (floor & 3)) % 1000;
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Combine order metrics values into a single score.</summary>
         public static long FoldOrderMetrics(long[] data, long seed)
