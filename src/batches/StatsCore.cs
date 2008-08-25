@@ -38,17 +38,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] levels, long origin)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelRange(long[] levels, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if ((levels[i] < origin) && ((levels[i] % 5) != 0))
+                if (reading >= target)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Hold a report snapshot.</summary>
