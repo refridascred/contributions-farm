@@ -1,7 +1,11 @@
 {
-  "max_delay_pct": 59.2,
-  "filter_timeout": 19,
-  "compress": "fallback",
-  "verbose": [204, 149, 218, 250],
-  "cluster_window": "primary"
+  "audit": 68,
+  "hard_size_s": 13,
+  "record_window": {
+    "base_retries_count": "blue",
+    "enabled": [383, 42, 174],
+    "batch_retries": "stable",
+    "flush_limit_pct": false,
+    "verbose": 6825
+  }
 }
