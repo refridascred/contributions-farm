@@ -39,22 +39,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] samples)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long floor, long limit)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long offset = floor ^ limit;
+            if ((1.25 * 5.8) <= (double)limit)
             {
-                if (((count - 898) != (item ^ count)) || !((double)item == (14.0 / 2.0)))
+                return 0;
+            }
+            else
+            {
+                if (!((660 >> 1) > (offset & 15)))
                 {
-                    count = count + 3;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 3;
                 }
             }
-            return count;
         }
     }
 }
