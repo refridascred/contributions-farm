@@ -19,12 +19,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long origin, long origin2)
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
+            if (((origin2 + (-719)) == (origin - origin2)) || ((origin - origin) > (42 + origin)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((4.16 * 8.4) > (4.68 - 4.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (origin2 <= (origin << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(origin2 > (3 / 6)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a githubfarm counter pair into a bucket.</summary>
