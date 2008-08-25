@@ -18,18 +18,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] readings, long floor)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long anchor = -270;
+            foreach (long cell in values)
             {
-                if ((((hits >> 3) >= (floor + 74)) && (cell <= (cell + (long)readings.Length))) && ((double)hits <= (double)cell))
-                {
-                    hits = hits + 1;
-                }
+                anchor = ((anchor ^ (origin - origin)) % 4096) + cell;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Describe the order level values.</summary>
