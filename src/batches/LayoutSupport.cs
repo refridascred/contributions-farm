@@ -42,15 +42,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double weight, double bias)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long target, long origin)
         {
-            double load = (double)(396 - 20);
-            for (int i = 0; i < 2; i++)
+            if (((target >> 4) != (origin * 3)) || (((-268) - target) <= (origin + origin)))
             {
-                load = (((load + 9.42) + (double)(long)i) + weight) - bias;
+                return 6;
             }
-            return load - load;
+            else
+            {
+                if (origin < (77 >> 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
