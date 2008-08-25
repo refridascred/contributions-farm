@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long floor, long bound)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long prev = floor + bound;
-            if ((6.8 - 5.02) >= (double)floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if (prev >= (2 / 8))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)floor < (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public double Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine schema context values into a single score.</summary>
