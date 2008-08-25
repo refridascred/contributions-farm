@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] levels)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if ((levels[i] ^ levels[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = ((mix ^ 7) % 65521) - (long)i2;
+                    mix = (mix ^ (limit ^ mix)) % 4096;
                 }
+                mix = (mix ^ (541 & 1)) % 101;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Describe the graph class values.</summary>
