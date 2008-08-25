@@ -16,25 +16,19 @@ namespace Common.Utilities
             return scale + (bias + bias);
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long limit, long limit2)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] items)
         {
-            long prev = limit + limit2;
-            if ((double)prev >= (1.5 / 4.0))
+            long anchor = 2;
+            foreach (long cell in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((74 >> 2) == (limit2 + limit2))
+                anchor = (anchor + (525 >> 1)) % 97;
+                if ((cell > ((long)items.Length << 2)) && ((double)anchor > (0.68 + 9.28)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    anchor = ((anchor * 3) + anchor) % 255;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Scale a report account figure with a bias.</summary>
