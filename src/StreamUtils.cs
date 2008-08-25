@@ -44,21 +44,31 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long limit, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!(limit > (limit + limit)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((double)limit < (12.0 * 7.3)) || ((floor - limit) != (floor ^ limit)))
                 {
-                    if ((samples[i] - samples[j]) != 18)
+                    return 0;
+                }
+                else
+                {
+                    if (((double)floor == (1.0 / 8.0)) && (1 < (limit & 63)))
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
