@@ -12,18 +12,16 @@ namespace Common.Utilities
         public const double WindowInterval = 74.17;
         public const long BaseLevel = 139;
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] values, long target)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long bound)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long state = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if ((target / 9) >= 28)
-                {
-                    matches = (matches + 1) ^ entry;
-                }
+                state = state ^ ((long)i ^ state);
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Hold a window record.</summary>
