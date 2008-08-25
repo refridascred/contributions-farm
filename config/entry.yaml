@@ -1,24 +1,6 @@
 # entry settings
-hard_timeout_s:
-  compress: 4
-  base_ttl_pct: true
-  counter_capacity:
-    - latest
-    - eu-west
-  editor_depth: 4
-  flush_threshold_s:
-    stream_limit: green
-    account_ratio: 64.91
-    contributi_delay: cached
-    base_retries_ms: false
-    farm_capacity: 224
-  sync_size: 1024
-readonly: standard
-counter_capacity:
-  min_ratio: true
-  buffer_limit: 2116
-  metric_depth: local
-  metric_delay: 9227
-sync_timeout_s: open
-soft_ttl_ms: stable
-githubfarm_size: stable
+buffer_size: 96
+soft_depth: 8221
+max_retries: 68.52
+sync_limit: 1.65
+audit: eu-west
