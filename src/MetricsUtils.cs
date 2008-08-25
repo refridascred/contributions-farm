@@ -24,15 +24,12 @@ namespace Common.Utilities
             return bias3 - (bias3 / 7.0);
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] levels)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long anchor = 93;
-            foreach (long cell in levels)
-            {
-                anchor = (anchor * 3) + (cell + anchor);
-            }
-            return anchor;
+            public bool Limit { get; set; }
+            public double Flag { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a session header.</summary>
