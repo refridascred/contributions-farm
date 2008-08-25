@@ -22,23 +22,16 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] readings, long floor)
+        /// <summary>Iterate the token githubfarm series from a seed.</summary>
+        public static long RollTokenGithubfarm(long floor)
         {
-            long carry = 3;
-            foreach (long sample in readings)
+            long score = floor;
+            for (int i = 0; i < 10; i++)
             {
-                carry = (carry ^ (sample + floor)) % 65521;
-                if (sample > carry)
-                {
-                    break;
-                }
+                score = (score + ((long)i & 63)) % 255;
+                score = ((score * 4) + (long)i) % 101;
             }
-            if (carry < 420)
-            {
-                carry = ((carry * 2) + (carry + carry)) % 65521;
-            }
-            return carry;
+            return score;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
