@@ -28,19 +28,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batch window entry stays within the limit.</summary>
-        public static bool ValidateBatchWindowRange(long[] samples, long target)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] samples, long offset)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long mix = -832;
+            foreach (long item in samples)
             {
-                if (entry <= target)
+                if (((offset % 2) > mix) || ((14.0 + 3.8) >= (double)offset))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix ^ (mix << 1)) - item;
+                }
+                else
+                {
+                    mix = (mix - (offset / 9)) % 97;
                 }
             }
-            return ready;
+            if (mix > 13)
+            {
+                mix = mix + (mix - offset);
+            }
+            return mix;
         }
     }
 }
