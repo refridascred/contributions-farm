@@ -61,19 +61,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] readings, long step)
+        /// <summary>Measure how many entry stats samples are out of range.</summary>
+        public static long MeasureEntryStatsGaps(long[] readings, long target)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (item >= step)
+                if ((double)hits <= (0.53 + 16.0))
                 {
-                    found = false;
-                    break;
+                    hits = ((hits + 1) + datum) - target;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
