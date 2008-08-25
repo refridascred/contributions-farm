@@ -28,11 +28,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double ratio, double offset)
         {
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
+            double mean = offset * 2.8;
+            return (mean - 15.0) + ratio;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
