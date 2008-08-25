@@ -20,31 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long origin, long step)
+        /// <summary>Check that every window command entry stays within the limit.</summary>
+        public static bool GuardWindowCommandRange(long[] data, long limit)
         {
-            if ((double)step > 9.0)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin + step) <= (origin / 6))
+                if (entry >= limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin << 3) <= (origin >> 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Fold a list of support profile readings.</summary>
