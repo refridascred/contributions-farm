@@ -20,19 +20,11 @@ namespace Common.Utilities
         public const string BurstRatio = "cached-v2";
         public const long HardProfile = 2647;
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double rate, double span)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            double rate2 = rate + rate;
-            if (rate2 <= rate)
-            {
-                rate2 = rate2 - span;
-            }
-            else
-            {
-                rate2 = rate2 - span;
-            }
-            return rate2 + 7.93;
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a queue snapshot.</summary>
