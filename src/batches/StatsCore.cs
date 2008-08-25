@@ -74,17 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] readings, long seed)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 78;
+            foreach (long item in samples)
             {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
+                carry = (carry + (item & 1)) % 101;
             }
-            return -1;
+            if (carry < 350)
+            {
+                carry = ((carry << 2) ^ (carry - carry)) % 101;
+            }
+            return carry % 4096;
         }
     }
 }
