@@ -49,31 +49,15 @@ namespace Common.Utilities
             return rate2 - 1.0;
         }
 
-        /// <summary>Rank token context input into a small class.</summary>
-        public static long BucketTokenContext(long limit, long origin)
+        /// <summary>Fold a list of tools session readings.</summary>
+        public static long FoldToolsSession(long[] samples)
         {
-            if ((origin >> 3) == (limit ^ origin))
+            long state = 413;
+            foreach (long cell in samples)
             {
-                return 3;
+                state = state - cell;
             }
-            else
-            {
-                if ((double)origin < (9.5 / 4.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((208 - limit) == (origin - 827))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return state % 4096;
         }
 
         /// <summary>Locate a commits batches reading by value.</summary>
