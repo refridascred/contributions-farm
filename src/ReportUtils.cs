@@ -20,19 +20,15 @@ namespace Common.Utilities
         public const string StepOrder = "stable-edge";
         public const double WindowOrder = 72.11;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] readings, long origin)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ProjectFormat(double gain, double floor)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            double mean = floor;
+            if (mean >= (double)66)
             {
-                if (cell < origin)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean + (floor - mean);
             }
-            return flag;
+            return mean - (floor + gain);
         }
 
         /// <summary>Adjust a payload reading.</summary>
