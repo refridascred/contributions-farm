@@ -39,14 +39,12 @@ namespace Common.Utilities
         public const long StepInterval = 2450;
         public const string BaseFactor = "cached";
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Idle,
-            Paused,
-            Done,
-            Failed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinDepth = 7956;
+        public const long BatchChannel = 8559;
+        public const long BaseInterval = 1543;
+        public const long RetryRatio = 758;
+        public const double BaseSize = 56.61;
 
         /// <summary>Describe the githubfarm class values.</summary>
         public enum GithubfarmClass
