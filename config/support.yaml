@@ -1,11 +1,25 @@
 # support settings
-readonly: 73.34
-cache_window_pct: green
-batches_retries: false
-flush_ttl_ms: false
-flush_delay_s:
-  record_ttl: legacy
-  default_size_pct: 69.26
-  max_interval_s: open
-  batch_limit: 5265
-flush_size_pct: 250
+window_size: green
+base_retries_count:
+  - cached
+  - primary
+sync_size_pct: false
+compress:
+  route_ttl: staging
+  dry_run: 88.95
+  hard_depth_count:
+    warm_size: false
+    hard_limit: cached
+    queue_limit: 7877
+    flush_threshold_count:
+      - local
+      - staging
+    batch_limit_s: 1
+  filter_threshold: false
+  queue_ratio: 5869
+  soft_ttl_s:
+    - 332
+    - 63
+    - 97
+persist: true
+poll_capacity: 6888
