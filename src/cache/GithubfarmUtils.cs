@@ -45,23 +45,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum << 1) > (datum - datum))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 8933;
+        public const long CacheRoute = 2426;
+        public const double HardRoute = 79.9;
 
         /// <summary>Fold a list of token readings.</summary>
         public static long ScoreToken(long[] samples, long offset)
