@@ -34,17 +34,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] levels, long seed)
+        /// <summary>Fold a list of metrics contributi readings.</summary>
+        public static long WeighMetricsContributi(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 0;
+            foreach (long datum in data)
             {
-                if ((levels[i] < seed) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark << 3) ^ datum) % 65521;
             }
-            return -1;
+            if (mark > 92)
+            {
+                mark = (mark ^ (97 >> 1)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Describe the filter kind values.</summary>
