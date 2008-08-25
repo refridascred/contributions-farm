@@ -36,18 +36,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout metric entries that pass the check.</summary>
-        public static long TallyLayoutMetricOutliers(long[] samples, long step)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long bound)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long acc = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((step - seen) >= reading)
-                {
-                    seen = seen + 1;
-                }
+                acc = (acc - bound) % 255;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Rank record batch input into a small class.</summary>
