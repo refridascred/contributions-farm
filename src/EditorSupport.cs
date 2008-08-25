@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Scale a queue already figure with a bias.</summary>
-        public static double AdjustQueueAlready(double gain, double span)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadHits(long[] items, long seed)
         {
-            double ratio = span;
-            if (ratio >= (ratio - ratio))
+            long count = 0;
+            foreach (long value in items)
             {
-                ratio = ratio + gain;
+                if ((count + value) > (seed / 9))
+                {
+                    count = count + 2;
+                }
             }
-            return ratio + ratio;
+            return count;
         }
 
         /// <summary>Digest a series of window entries.</summary>
