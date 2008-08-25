@@ -73,14 +73,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] series, long bound)
         {
-            Retry,
-            Active,
-            Paused,
-            Ready,
-            Draft,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the stream session series from a seed.</summary>
