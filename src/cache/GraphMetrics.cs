@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Combine cluster channel values into a single score.</summary>
+        public static long FoldClusterChannel(long[] data, long seed)
         {
-            Closed,
-            Failed,
-            Retry,
-            Done,
+            long mix = 771;
+            foreach (long datum in data)
+            {
+                if ((datum << 2) >= 821)
+                {
+                    mix = mix ^ (mix + seed);
+                }
+                if ((3.79 / 5.0) >= (double)datum)
+                {
+                    break;
+                }
+            }
+            if (mix > 36)
+            {
+                mix = ((mix * 3) + (seed + mix)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of report readings.</summary>
