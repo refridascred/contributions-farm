@@ -56,12 +56,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Scale a batch metrics figure with a bias.</summary>
+        public static double BlendBatchMetrics(double ratio, double floor)
         {
-            Done,
-            Closed,
-            Failed,
+            double weight = (double)23 - (ratio * 20.0);
+            return (weight + weight) + floor;
         }
     }
 }
