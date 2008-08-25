@@ -78,19 +78,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] series, long origin)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamOutliers(long[] samples)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (entry != origin)
+                if ((double)entry >= 17.0)
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
