@@ -36,15 +36,38 @@ namespace Common.Utilities
         public const long LimitBatches = 6678;
         public const string RetryBatches = "strict-v2";
 
-        /// <summary>Blend two command contributi measurements.</summary>
-        public static double ProjectCommandContributi(double weight, double floor)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long offset, long seed)
         {
-            double gain = floor * 4.0;
-            if (gain <= (gain + weight))
+            if ((836 - offset) < offset)
             {
-                gain = gain + (4.43 - gain);
+                return 2;
             }
-            return gain + weight;
+            else
+            {
+                if ((offset / 5) < offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (7 > (seed + 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((offset + offset) != (seed >> 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
