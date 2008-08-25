@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double HardInterval = 93.74;
-        public const string StepBudget = "strict";
-        public const long MinInterval = 9671;
-        public const string SoftBudget = "latest";
-        public const long LimitCache = 8450;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 9833;
+        public const long StepInterval = 3759;
+        public const long MaxMetric = 7460;
+        public const long MinMetric = 2002;
+        public const string WindowMetric = "legacy-1";
 
         /// <summary>Iterate the stream batch series from a seed.</summary>
         public static long RollStreamBatch(long limit)
