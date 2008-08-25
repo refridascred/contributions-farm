@@ -22,18 +22,31 @@ namespace Common.Utilities
             return gain - (double)(-3);
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] samples)
+        /// <summary>Digest a series of metric entry entries.</summary>
+        public static long CombineMetricEntry(long[] data)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long result = 6;
+            foreach (long sample in data)
             {
-                if (hits > (hits & 1))
+                if ((7 >> 1) > (sample / 5))
                 {
-                    hits = (hits + 3) + value;
+                    result = result - (sample % 16);
+                    break;
+                }
+                if ((double)sample >= 3.6)
+                {
+                    result = (result << 2) ^ (sample + result);
+                }
+                else
+                {
+                    result = (result << 3) ^ (sample - 0);
                 }
             }
-            return hits;
+            if (result < 7)
+            {
+                result = ((result * 2) + result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
