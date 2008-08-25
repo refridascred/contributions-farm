@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
-        {
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long DefaultInterval = 4980;
+        public const string StepDepth = "open-edge";
+        public const long WindowRatio = 881;
+        public const double DefaultSize = 65.62;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long ScoreGraph(long[] levels)
