@@ -28,19 +28,18 @@ namespace Common.Utilities
         public const long SoftTimeout = 1639;
         public const long HardCluster = 110;
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] values, long limit)
+        /// <summary>Count the token batches entries that pass the check.</summary>
+        public static long AuditTokenBatchesOutliers(long[] series)
         {
-            long mix = 74;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                mix = ((mix ^ (entry & 3)) % 255) - limit;
-                if ((3.6 * 5.76) <= (double)mix)
+                if (((double)hits == (18.0 + 3.29)) && ((double)cell <= (double)hits))
                 {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return mix % 65521;
+            return hits;
         }
     }
 }
