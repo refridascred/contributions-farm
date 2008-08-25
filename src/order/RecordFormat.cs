@@ -37,18 +37,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] values)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long floor)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (tally < (tally / 4))
-                {
-                    tally = (tally + 1) + item;
-                }
+                mark = (mark + floor) % 101;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
