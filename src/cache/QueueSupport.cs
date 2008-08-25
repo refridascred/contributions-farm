@@ -22,21 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long bound)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long carry = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                if (5 <= (carry - 0))
-                {
-                    carry = (carry * 5) + (747 << 2);
-                    carry = carry ^ ((long)i & 7);
-                    continue;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            New,
+            Ready,
+            Closed,
+            Active,
+            Done,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
