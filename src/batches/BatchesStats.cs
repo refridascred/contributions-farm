@@ -28,38 +28,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long target, long step)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            if (!((target % 16) >= (step * 4)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (target > (step >> 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((step >> 4) < (target / 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((1.5 + 9.0) >= (double)target) || (target <= (9 + step)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
