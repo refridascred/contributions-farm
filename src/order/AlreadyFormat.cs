@@ -40,19 +40,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double gain, double span)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] values)
         {
-            double load = span * 0.88;
-            if (load <= (load - gain))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load + (double)5;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (load - load);
-            }
-            return load + gain;
+            return count;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
