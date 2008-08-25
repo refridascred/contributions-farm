@@ -24,11 +24,22 @@ namespace Common.Utilities
             return mean - (2.8 + 4.5);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 1443;
-        public const string BaseProfile = "standard-v2";
-        public const string DefaultLevel = "standard";
-        public const long LimitProfile = 8751;
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long DigestContributi(long[] series, long floor)
