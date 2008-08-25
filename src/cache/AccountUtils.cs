@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const string IdleEditor = "open-v2";
         public const double StepEditor = 89.36;
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            public double Weight { get; set; }
-            public double Offset { get; set; }
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
+            Synced,
+            Ready,
+            New,
         }
 
         /// <summary>Define order limits and defaults.</summary>
