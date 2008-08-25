@@ -33,32 +33,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long origin, long offset)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] samples, long floor)
         {
-            long bound = origin ^ offset;
-            if ((0.99 / 9.0) == (double)bound)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)origin <= 4.9) || ((double)bound <= (double)219))
+                if (item <= floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound + origin) >= (offset * 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Fold a list of account context readings.</summary>
