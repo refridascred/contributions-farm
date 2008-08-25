@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public string Region { get; set; } = "";
-            public double Weight { get; set; }
-            public long Offset { get; set; }
+            Dropped,
+            Paused,
+            Locked,
+            Retry,
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
