@@ -13,14 +13,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            Stale,
-            Ready,
-            Draft,
-            Failed,
+            Paused,
             Active,
+            Queued,
+            Locked,
+            Closed,
         }
 
         /// <summary>Hold a batches info.</summary>
