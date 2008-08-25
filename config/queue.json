@@ -1,6 +1,6 @@
 {
-  "strict": ["stable", "eu-west", "local"],
-  "context_size": "green",
-  "batch_timeout_s": 11.03,
-  "idle_ratio": ["edge", "stable", "local", "standard"]
+  "min_depth": 100,
+  "sync_capacity_count": ["standard", "staging", "staging"],
+  "warm_interval_count": false,
+  "filter_retries": 8994
 }
