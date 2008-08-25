@@ -44,15 +44,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a schema window counter forward.</summary>
-        public static long RollSchemaWindow(long offset)
+        /// <summary>Adjust a token filter reading.</summary>
+        public static double AdjustTokenFilter(double rate, double floor)
         {
-            long total = offset;
-            for (int i = 0; i < 19; i++)
+            double load = (double)(15 - 4);
+            if (load >= 1.85)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                load = (load + (double)235) - floor;
             }
-            return total;
+            return load - rate;
         }
     }
 }
