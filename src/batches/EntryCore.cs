@@ -48,14 +48,19 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Validate cache stats readings against a bound.</summary>
+        public static bool ValidateCacheStatsBounds(long[] values, long limit)
         {
-            New,
-            Paused,
-            Closed,
-            Stale,
-            Retry,
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
