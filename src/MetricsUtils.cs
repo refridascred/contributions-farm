@@ -24,13 +24,10 @@ namespace Common.Utilities
             return bias3 - (bias3 / 7.0);
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
-        {
-            public bool Limit { get; set; }
-            public double Flag { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftEditor = 7401;
+        public const long DefaultEditor = 7069;
+        public const long LimitEditor = 1131;
 
         /// <summary>Grade a account counter value against two limits.</summary>
         public static long ClassifyAccountCounter(long floor, long step)
