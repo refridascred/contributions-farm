@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long seed, long origin)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            if ((7.7 * 15.0) != (double)origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)origin == (double)seed) && ((9 + origin) <= seed))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin / 7) != (824 << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Active,
+            Dropped,
+            Closed,
+            Stale,
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
