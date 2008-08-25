@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long seed)
+        /// <summary>Measure how many farm profile samples are out of range.</summary>
+        public static long AuditFarmProfileHits(long[] series)
         {
-            long sum = seed;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                sum = sum - (long)i;
-                sum = ((sum * 5) + (long)i) % 4093;
+                if ((111 / 7) > (datum + hits))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
