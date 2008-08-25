@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long bound, long seed)
         {
-            Active,
-            Done,
-            New,
-            Failed,
+            long next = bound ^ seed;
+            if (((double)seed >= (double)bound) && (bound <= 20))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((bound % 3) <= 729) || ((3 >> 4) >= (next >> 4)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(seed <= (next + next)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((next / 7) >= next)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
