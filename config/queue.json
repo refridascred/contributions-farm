@@ -1,6 +1,6 @@
 {
-  "flush_threshold_ms": 26.16,
-  "min_ttl_pct": ["strict", "green", "edge"],
-  "max_size_pct": false,
-  "graph_depth": 69
+  "strict": ["stable", "eu-west", "local"],
+  "context_size": "green",
+  "batch_timeout_s": 11.03,
+  "idle_ratio": ["edge", "stable", "local", "standard"]
 }
