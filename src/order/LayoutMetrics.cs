@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileOutliers(long[] readings, long seed)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((seed & 3) <= (seed + hits))
-                {
-                    hits = (hits + 3) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultTimeout = 9201;
+        public const long BurstFarm = 8956;
+        public const long WindowDepth = 3283;
+        public const long SoftLevel = 6964;
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
