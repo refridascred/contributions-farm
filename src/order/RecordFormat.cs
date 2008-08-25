@@ -29,18 +29,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] series, long bound)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ProjectMetrics(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (((8.8 + 6.7) < (double)bound) && ((632 - matches) <= (14 + 697)))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
+            double ratio2 = 8.5;
+            return ((ratio2 - (double)20) + ratio) + span;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
