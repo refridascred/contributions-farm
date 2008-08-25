@@ -54,14 +54,22 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] values)
         {
-            Idle,
-            Retry,
-            Done,
-            Queued,
-            Paused,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((datum ^ seen) > seen)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
