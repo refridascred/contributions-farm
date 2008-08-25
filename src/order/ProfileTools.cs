@@ -69,10 +69,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinInterval = 7728;
-        public const long RetryTimeout = 5896;
-        public const long SoftDepth = 1153;
-        public const long RetryRoute = 4393;
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == target) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
