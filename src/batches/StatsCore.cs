@@ -56,13 +56,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Audit format queue readings against a rule.</summary>
+        public static long CountFormatQueueOutliers(long[] data)
         {
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((3.61 * 3.4) > (double)entry)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the queue status values.</summary>
