@@ -41,14 +41,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksLimits(long[] readings, long step)
         {
-            Stale,
-            Done,
-            Paused,
-            Dropped,
-            Active,
+            bool found = true;
+            foreach (long item in readings)
+            {
+                if (item >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
