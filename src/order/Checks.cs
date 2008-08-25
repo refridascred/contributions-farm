@@ -45,17 +45,23 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] values, long step)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long StepPayload(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((values[i] < step) && ((values[i] % 3) != 0))
+                if (((offset % 5) >= (offset % 16)) || ((carry + offset) > (carry - carry)))
                 {
-                    return (long)i;
+                    carry = ((carry * 5) + offset) % 4096;
                 }
+                else
+                {
+                    carry = (carry << 3) ^ (18 << 2);
+                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Audit window session readings against a rule.</summary>
