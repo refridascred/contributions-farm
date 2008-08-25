@@ -13,31 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long offset, long limit)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            if ((double)limit <= (double)31)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset >= (1.0 - 8.5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit >> 2) >= (limit + offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a graph buffer value against two limits.</summary>
