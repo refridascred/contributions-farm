@@ -82,18 +82,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamOutliers(long[] samples)
+        /// <summary>Count the stream layout entries that pass the check.</summary>
+        public static long AuditStreamLayoutHits(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((double)entry >= 17.0)
+                if ((92 + item) != (8 % 8))
                 {
-                    hits = hits + 2;
+                    seen = (seen + 2) - seed;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
