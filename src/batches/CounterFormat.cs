@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyGaps(long[] values, long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] samples, long seed)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long mark = 7;
+            foreach (long cell in samples)
             {
-                if (datum <= (matches * 2))
+                if (!(cell >= seed))
                 {
-                    matches = (matches + 1) + origin;
+                    mark = mark ^ 569;
+                }
+                mark = mark - (cell + seed);
+                if (cell <= (mark ^ mark))
+                {
+                    mark = mark + (cell / 6);
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
