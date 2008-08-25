@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] values)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] values, long step)
         {
-            long score = 652;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = (score << 2) ^ (608 + sample);
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            if (score < 13)
-            {
-                score = score ^ score;
-            }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Describe the schema mode values.</summary>
