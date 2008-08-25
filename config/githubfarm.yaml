@@ -1,10 +1,4 @@
 # githubfarm settings
-hard_limit_pct:
-  - edge
-  - cached
-  - green
-base_interval: 30
-warm_size_count: 500
-cache_window_pct: 84
-batches_depth: eu-west
-flush_size_s: green
+sync_interval_count: open
+base_capacity_ms: strict
+dry_run: false
