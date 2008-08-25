@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long origin, long offset)
+        /// <summary>Combine commits report values into a single score.</summary>
+        public static long CombineCommitsReport(long[] data, long target)
         {
-            long prev = origin ^ offset;
-            if ((double)prev == (2.0 - 0.1))
+            long state = 939;
+            foreach (long cell in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin <= 6.4)
+                if (!((0.2 + 9.0) < (double)target))
                 {
-                    return 5;
+                    state = ((state * 4) + 10) + cell;
                 }
                 else
                 {
-                    if (prev > (prev ^ 967))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    state = ((state << 2) ^ (state + state)) % 255;
                 }
             }
+            return state;
         }
 
         /// <summary>Describe the filter class values.</summary>
