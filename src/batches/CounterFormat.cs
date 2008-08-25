@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] samples, long seed)
-        {
-            long mark = 7;
-            foreach (long cell in samples)
-            {
-                if (!(cell >= seed))
-                {
-                    mark = mark ^ 569;
-                }
-                mark = mark - (cell + seed);
-                if (cell <= (mark ^ mark))
-                {
-                    mark = mark + (cell / 6);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MaxCommits = "cached";
+        public const double DefaultSpan = 51.78;
+        public const long MaxLevel = 5775;
+        public const double BatchCommits = 45.26;
+        public const double StepInterval = 89.45;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double BaseNotes = 65.71;
