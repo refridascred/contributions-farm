@@ -48,18 +48,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] readings, long seed)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches ^ seed) < (reading - matches))
+                if (readings[i] >= bound)
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
