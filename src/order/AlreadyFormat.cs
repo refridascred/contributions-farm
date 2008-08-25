@@ -63,15 +63,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long bound)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            Active,
+            Stale,
+            New,
+            Dropped,
+            Queued,
         }
     }
 }
