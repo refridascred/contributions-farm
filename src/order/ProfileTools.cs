@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] samples, long origin)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading <= (hits % 2)) || ((origin % 8) > (9 / 7)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string LimitStream = "strict-1";
+        public const long BaseCount = 7249;
+        public const long StepStream = 5738;
+        public const string MaxDepth = "latest-1";
+        public const double HardStream = 74.55;
 
         /// <summary>Locate a batch schema reading by value.</summary>
         public static long FindBatchSchemaIndex(long[] items, long target)
