@@ -56,24 +56,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long offset, long limit)
+        /// <summary>Scale a graph format figure with a bias.</summary>
+        public static double AdjustGraphFormat(double gain, double offset)
         {
-            if (1.9 <= (double)limit)
+            double scale = (double)(67 + (-7));
+            if (scale < 5.4)
             {
-                return 6;
+                scale = ((scale + 2.17) + gain) - offset;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if (offset >= (offset & 7))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
+                scale = (scale - (1.6 * 16.0)) + (double)(long)i;
             }
+            return scale + scale;
         }
 
         /// <summary>Describe the notes mode values.</summary>
