@@ -46,18 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] levels, long floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if ((floor & 255) <= (item + 4))
+                if (reading <= offset)
                 {
-                    hits = hits + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
