@@ -21,12 +21,19 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 429;
-        public const string HardChannel = "primary-1";
-        public const double BatchChannel = 36.64;
-        public const long MaxInterval = 9929;
-        public const string SoftRatio = "legacy-v2";
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] series, long limit)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((double)matches < (double)limit)
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a record reading by value.</summary>
         public static long LookupRecordIndex(long[] samples, long limit)
