@@ -32,13 +32,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            public long Mode { get; set; }
             public double Weight { get; set; }
-            public double Label { get; set; }
-            public long Count { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Describe the format state values.</summary>
