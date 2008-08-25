@@ -1,6 +1,6 @@
 {
-  "cache_limit": "latest",
-  "retry_depth_pct": ["blue", "local", "blue", "green"],
-  "readonly": "cached",
-  "flush_ttl_s": "stable"
+  "max_timeout": "stable",
+  "session_limit": 897,
+  "idle_capacity_s": "local",
+  "warm_delay": [41, 197, 321, 141]
 }
