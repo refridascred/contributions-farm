@@ -53,19 +53,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] readings, long origin)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] data, long floor)
         {
-            long carry = 53;
-            foreach (long sample in readings)
+            long sum = 9;
+            foreach (long sample in data)
             {
-                carry = ((carry ^ origin) % 97) + sample;
+                sum = ((sum - (sample * 3)) % 1000) - floor;
+                if (!(7.95 <= (double)sum))
+                {
+                    sum = (sum ^ (sample & 127)) % 255;
+                }
             }
-            if (carry < 54)
-            {
-                carry = carry + carry;
-            }
-            return carry;
+            return sum % 97;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
