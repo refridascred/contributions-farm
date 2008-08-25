@@ -22,12 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Combine support context values into a single score.</summary>
+        public static long ScoreSupportContext(long[] readings, long offset)
         {
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
-            public long Limit { get; set; }
+            long mark = 6;
+            foreach (long datum in readings)
+            {
+                if (((offset + offset) >= offset) && ((5.5 / 2.0) > (double)offset))
+                {
+                    mark = mark - datum;
+                }
+                mark = mark ^ (offset % 8);
+                if (((datum >> 5) < (offset + 143)) || (((long)readings.Length << 1) >= datum))
+                {
+                    mark = ((mark * 2) + offset) % 97;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
