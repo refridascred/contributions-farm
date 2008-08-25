@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long floor)
+        /// <summary>Adjust a format layout reading.</summary>
+        public static double ScaleFormatLayout(double scale, double bias)
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
+            double weight = (double)(238 + (-524));
+            if (weight <= (weight / 4.0))
             {
-                sum = (sum - (floor >> 2)) % 97;
-                sum = ((sum * 3) + (long)i) % 97;
+                weight = weight - (bias * 4.0);
             }
-            return sum;
+            else
+            {
+                weight = weight - 5.26;
+            }
+            return weight - scale;
         }
 
         /// <summary>Define session limits and defaults.</summary>
