@@ -28,16 +28,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long floor)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long limit)
         {
-            long mix = floor;
-            for (int i = 0; i < 19; i++)
+            long sum = limit;
+            for (int i = 0; i < 8; i++)
             {
-                mix = (mix ^ (mix + 8)) % 4096;
-                mix = ((mix * 4) + (long)i) % 1000;
+                sum = sum + limit;
+                sum = ((sum << 2) ^ 64) % 4096;
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Count the session filter entries that pass the check.</summary>
