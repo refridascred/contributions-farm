@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] values)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long origin, long step)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long slot = origin ^ step;
+            if (slot < origin)
             {
-                if (matches >= (matches - cell))
+                return 6;
+            }
+            else
+            {
+                if (((49 + origin) < (slot << 1)) && ((double)origin < (4.6 - 2.39)))
                 {
-                    matches = matches + 1;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
