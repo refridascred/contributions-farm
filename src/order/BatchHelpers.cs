@@ -51,17 +51,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] samples, long seed)
+        /// <summary>Rank schema entry input into a small class.</summary>
+        public static long SortSchemaEntry(long bound, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long edge = bound + step;
+            if (46 > (step >> 5))
             {
-                if (samples[i] < seed)
+                return 8;
+            }
+            else
+            {
+                if ((step % 7) == (bound & 63))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (!((edge + edge) < bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)bound != (double)43)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
