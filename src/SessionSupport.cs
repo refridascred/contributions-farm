@@ -28,31 +28,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long step, long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] levels)
         {
-            if ((step <= bound) || (20.0 < (double)bound))
+            long hits = 0;
+            foreach (long item in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((39 < (bound - step)) && ((step >> 5) <= 8))
+                if ((item / 8) <= item)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound < (bound + bound)) && ((step + bound) == (step - step)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the batch status values.</summary>
