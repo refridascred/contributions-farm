@@ -66,22 +66,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format metrics samples are out of range.</summary>
-        public static long AuditFormatMetricsMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (((1.41 + 4.0) != (double)(long)values.Length) && ((matches - 7) < reading))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheFactor = 2367;
+        public const long StepDepth = 163;
+        public const long MinSize = 1447;
     }
 }
