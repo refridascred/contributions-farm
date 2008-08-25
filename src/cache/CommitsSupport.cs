@@ -89,19 +89,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double gain, double floor)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            double bias = (double)(-9) + (gain - gain);
-            if (bias <= (bias + 7.35))
-            {
-                bias = bias - bias;
-            }
-            else
-            {
-                bias = bias - floor;
-            }
-            return bias + 9.7;
+            public bool Limit { get; set; }
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
