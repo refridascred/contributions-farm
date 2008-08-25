@@ -24,13 +24,12 @@ namespace Common.Utilities
         public const string SoftFilter = "standard-v2";
         public const long CacheFilter = 8176;
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public long Score { get; set; }
-            public bool Size { get; set; }
+            public double Owner { get; set; }
+            public double Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
