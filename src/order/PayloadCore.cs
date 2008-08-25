@@ -20,17 +20,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a checks command reading by value.</summary>
-        public static long SeekChecksCommandIndex(long[] samples, long target)
+        /// <summary>Digest a series of checks filter entries.</summary>
+        public static long TotalChecksFilter(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 1;
+            foreach (long entry in items)
             {
-                if (samples[i] == target)
+                if (entry >= (1 - (-59)))
                 {
-                    return (long)i;
+                    state = (state - state) % 97;
                 }
+                else
+                {
+                    state = state - entry;
+                }
+                if (!(entry <= (-126)))
+                {
+                    state = ((state << 3) ^ (state - state)) % 255;
+                    state = (state ^ (444 >> 5)) % 101;
+                }
+                state = ((state << 3) ^ (state - entry)) % 97;
             }
-            return -1;
+            if (state > 28)
+            {
+                state = ((state * 3) + (state + 5)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
