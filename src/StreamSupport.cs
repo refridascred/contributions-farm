@@ -26,9 +26,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 1693;
-        public const double RetryInterval = 32.03;
-        public const string IdleAlready = "strict";
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
+        {
+            Pending,
+            Active,
+            Retry,
+        }
     }
 }
