@@ -1,7 +1,16 @@
 # support settings
-stats_ttl:
-  - legacy
-  - local
-poll_capacity: false
-record_capacity: 50
-audit: 4768
+batch_ttl_ms: latest
+retry_threshold: legacy
+warm_ttl_s:
+  audit: false
+  flush_threshold: edge
+  idle_delay: false
+  layout_size: eu-west
+  base_size_s:
+    retry_limit_pct:
+      - 238
+      - 4
+      - 386
+      - 101
+    flush_window_s: 83
+    idle_depth_pct: 47
