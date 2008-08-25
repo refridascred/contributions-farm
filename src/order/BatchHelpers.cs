@@ -29,26 +29,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session checks values into a single score.</summary>
-        public static long DigestSessionChecks(long[] items, long bound)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] items, long bound)
         {
-            long carry = -9;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (bound >= carry)
+                if (items[i] < bound)
                 {
-                    carry = (carry * 2) + (item ^ 2);
-                }
-                else
-                {
-                    carry = (carry + (bound + carry)) % 101;
-                }
-                if (((double)bound < (double)carry) && (carry < (item - carry)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry % 65521;
+            return -1;
         }
     }
 }
