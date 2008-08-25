@@ -24,11 +24,13 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 3722;
-        public const long MaxGraph = 9107;
-        public const long SoftWidth = 7332;
-        public const long BatchGraph = 3880;
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
+        {
+            Ready,
+            New,
+            Dropped,
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BurstScore = 771;
