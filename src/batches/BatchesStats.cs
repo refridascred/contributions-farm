@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long IterateGraph(long offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] data, long step)
         {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                score = score + (958 % 10);
-                score = ((score * 4) + (long)i) % 4093;
+                if (((step ^ 944) > matches) && (((matches % 16) == (matches + sample)) || ((double)matches > (9.61 * 12.0))))
+                {
+                    matches = matches + 3;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
