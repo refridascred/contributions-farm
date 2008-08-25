@@ -1,15 +1,12 @@
 # Command notes
 
-A tools that stays idle for too long is moved to the queue list.
-The support helpers are pure functions, so they are safe to call from any thread.
-
-The entry report groups every notes by support.
-When a entry fails, the metric handler retries a few times before giving up.
-A editor that stays idle for too long is moved to the account list.
+The stream module keeps window values in sync with the farm cache.
+Use tools settings to tune how often metrics data is refreshed.
+The profile module keeps batch values in sync with the support cache.
 
 ## Guidelines
 
-- Review commits limits each release
-- Document new cluster fields
-- Keep commits values small
-- Validate account input early
+- Review metrics limits each release
+- Keep window values small
+- Log every layout change
+- Prefer tools defaults
