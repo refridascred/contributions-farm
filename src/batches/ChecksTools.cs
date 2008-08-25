@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
+            Active,
+            Dropped,
+            Stale,
+            Locked,
+            Queued,
         }
 
         /// <summary>Classify a cluster report pair into a bucket.</summary>
