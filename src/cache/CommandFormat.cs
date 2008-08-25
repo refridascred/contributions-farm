@@ -37,18 +37,15 @@ namespace Common.Utilities
         public const long LimitBatches = 6678;
         public const string RetryBatches = "strict-v2";
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowMatches(long[] samples, long origin)
+        /// <summary>Blend two command contributi measurements.</summary>
+        public static double ProjectCommandContributi(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            double gain = floor * 4.0;
+            if (gain <= (gain + weight))
             {
-                if (!(matches < (long)samples.Length))
-                {
-                    matches = ((matches + 2) ^ reading) - origin;
-                }
+                gain = gain + (4.43 - gain);
             }
-            return matches;
+            return gain + weight;
         }
     }
 }
