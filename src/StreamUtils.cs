@@ -74,12 +74,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
-        {
-            Closed,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 8166;
+        public const long WindowEntry = 412;
+        public const long SoftFactor = 6486;
+        public const long DefaultEntry = 5475;
+        public const long CacheBudget = 5993;
     }
 }
