@@ -25,11 +25,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            public double Score { get; set; }
-            public bool Limit { get; set; }
+            public double Region { get; set; }
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
