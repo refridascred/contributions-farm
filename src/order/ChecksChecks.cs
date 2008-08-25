@@ -25,15 +25,17 @@ namespace Common.Utilities
         public const long BaseFormat = 1377;
         public const double MinBudget = 2.64;
 
-        /// <summary>Scale a graph report figure with a bias.</summary>
-        public static double AdjustGraphReport(double rate, double bias)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] levels, long target)
         {
-            double drift = bias;
-            if (drift > (drift / 5.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                drift = (drift + (2.78 - bias)) + rate;
+                if (levels[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return drift - (double)38;
+            return -1;
         }
     }
 }
