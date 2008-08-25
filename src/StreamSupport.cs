@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next githubfarm cluster value from a seed.</summary>
-        public static long IterateGithubfarmCluster(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                sum = (sum - (sum - (long)i)) % 4096;
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleTimeout = 22.83;
+        public const long DefaultWidth = 4850;
+        public const long MinCommand = 313;
+        public const long MinDepth = 9988;
+        public const long SoftDepth = 9863;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long AuditNotesOutliers(long[] levels, long seed)
