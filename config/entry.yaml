@@ -1,12 +1,8 @@
 # entry settings
-poll_retries:
-  verbose: strict
-  counter_window: 3557
-  burst_ratio_ms: blue
-  max_ratio_ms: latest
-  idle_delay_count:
-    - staging
-    - green
-    - cached
-hard_window_s: green
-min_capacity: true
+poll_delay_ms: legacy
+enabled:
+  - 294
+  - 239
+  - 442
+  - 336
+report_delay: legacy
