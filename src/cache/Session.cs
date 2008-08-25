@@ -33,10 +33,19 @@ namespace Common.Utilities
             return (weight2 + (6.35 - weight2)) + span;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseRatio = 9808;
-        public const string RetryDepth = "standard-v2";
-        public const double BaseFormat = 61.91;
-        public const long BurstTimeout = 4351;
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double ratio, double bias)
+        {
+            double ratio2 = bias;
+            if (ratio2 >= (1.07 + ratio))
+            {
+                ratio2 = ratio2 - (ratio2 - ratio2);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 + (bias + ratio)) + (double)(long)i;
+            }
+            return ratio2 + (ratio / 7.0);
+        }
     }
 }
