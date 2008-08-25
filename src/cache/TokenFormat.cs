@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long bound)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long step)
         {
-            long total = bound;
-            for (int i = 0; i < 4; i++)
+            long total = step;
+            for (int i = 0; i < 6; i++)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                if (total > (long)i)
+                {
+                    total = (total ^ (58 + total)) % 97;
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    total = (((total * 2) + step) % 65521) ^ (long)i2;
+                }
+                total = ((total * 3) + (long)i) % 101;
             }
             return total;
         }
