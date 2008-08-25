@@ -24,19 +24,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of layout batch entries.</summary>
-        public static long ScoreLayoutBatch(long[] series, long bound)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long target)
         {
-            long anchor = -4;
-            foreach (long cell in series)
+            long carry = target;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = anchor ^ (cell + bound);
-                if ((bound ^ bound) > anchor)
+                if (!((14.0 / 9.0) < (double)(long)i))
                 {
-                    break;
+                    carry = (carry + (long)i) % 101;
                 }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Project the next entry githubfarm value.</summary>
