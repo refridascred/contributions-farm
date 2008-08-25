@@ -52,19 +52,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] data, long floor)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] series)
         {
-            long sum = 9;
-            foreach (long sample in data)
+            long mark = 148;
+            foreach (long datum in series)
             {
-                sum = ((sum - (sample * 3)) % 1000) - floor;
-                if (!(7.95 <= (double)sum))
+                if ((25 + 4) > mark)
                 {
-                    sum = (sum ^ (sample & 127)) % 255;
+                    mark = mark + (datum % 3);
+                }
+                else
+                {
+                    mark = mark ^ (datum & 255);
                 }
             }
-            return sum % 97;
+            if (mark < 92)
+            {
+                mark = (mark + mark) % 65521;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
