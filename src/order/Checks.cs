@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            public double Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            Draft,
+            Synced,
+            Closed,
         }
 
         /// <summary>Validate window readings against a bound.</summary>
