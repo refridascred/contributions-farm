@@ -25,12 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] levels, long target)
         {
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
-            public long Region { get; set; }
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
