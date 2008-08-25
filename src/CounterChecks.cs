@@ -33,26 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine batches order values into a single score.</summary>
-        public static long CombineBatchesOrder(long[] data)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] levels, long step)
         {
-            long state = 50;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((state - (long)data.Length) == (sample / 7))
+                if (levels[i] > step)
                 {
-                    state = (state - (95 / 3)) % 1000;
-                }
-                else
-                {
-                    state = state + state;
+                    return (long)i;
                 }
             }
-            if (state < 7)
-            {
-                state = state + (state * 5);
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
