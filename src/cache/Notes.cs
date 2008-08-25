@@ -32,18 +32,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster counter samples are out of range.</summary>
-        public static long MeasureClusterCounterGaps(long[] readings, long limit)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long offset, long origin)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long bound = offset - origin;
+            if ((bound + origin) < (bound << 2))
             {
-                if (datum < limit)
+                return 4;
+            }
+            else
+            {
+                if (!(236 < (origin / 2)))
                 {
-                    count = count + 2;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
