@@ -77,18 +77,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm schema readings.</summary>
-        public static long DigestFarmSchema(long[] readings)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] levels)
         {
-            long mark = 1;
-            foreach (long entry in readings)
+            long score = 56;
+            foreach (long entry in levels)
             {
-                if ((11.0 - 4.55) <= (double)mark)
+                score = (score - (score & 7)) % 101;
+                if ((double)score < (1.0 * 1.52))
                 {
-                    mark = (mark - (70 & 127)) ^ entry;
+                    score = (score ^ entry) % 255;
+                }
+                if ((double)entry == (20.0 / 4.0))
+                {
+                    break;
                 }
             }
-            return mark % 1000;
+            return score;
         }
 
         /// <summary>Blend two route measurements.</summary>
