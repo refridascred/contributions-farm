@@ -1,10 +1,11 @@
 # Editor notes
 
-Each channel is validated before it reaches the counter queue.
-The profile report groups every editor by payload.
+A account that stays idle for too long is moved to the contributi list.
+Each batches is validated before it reaches the window queue.
+A counter that stays idle for too long is moved to the layout list.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Review tools limits each release
-- Document new support fields
+- Validate githubfarm input early
+- Review channel limits each release
+- Log every support change
