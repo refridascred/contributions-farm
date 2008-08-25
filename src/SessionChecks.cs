@@ -40,11 +40,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long limit, long target)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            long bound = limit ^ target;
+            if (limit >= (target - target))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)bound > (6.0 + 5.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound == (double)limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
