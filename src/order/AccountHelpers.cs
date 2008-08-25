@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            Ready,
-            Draft,
-            Locked,
-            Closed,
-            Synced,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 8585;
+        public const double BatchPayload = 70.17;
+        public const long BasePayload = 8777;
+        public const long MinLevel = 8449;
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long ClassifySession(long origin, long origin2)
