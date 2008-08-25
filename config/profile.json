@@ -1,8 +1,5 @@
 {
-  "contributi_retries": false,
-  "enabled": "staging",
-  "strict": 81,
-  "batches_ttl": 250,
-  "warm_threshold": 58,
-  "commits_delay": 500
+  "idle_capacity_pct": 6027,
+  "filter_timeout": "blue",
+  "hard_threshold_pct": false
 }
