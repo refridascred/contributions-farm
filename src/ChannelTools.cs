@@ -27,18 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] data, long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (!!((9.62 / 7.0) == (double)limit))
+                if (sample <= (matches & 127))
                 {
-                    tally = (tally + 3) - item;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
