@@ -26,19 +26,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] samples, long offset)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long step)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long carry = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry > offset)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
