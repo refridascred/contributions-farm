@@ -1,8 +1,21 @@
 {
-  "counter_retries": 4550,
-  "cache_capacity": "strict",
-  "poll_window_s": "eu-west",
-  "metrics_depth": false,
-  "record_capacity": "cached",
-  "batch_delay_s": 64
+  "cache_depth": 3280,
+  "burst_delay": "fallback",
+  "flush_ratio": {
+    "format_window": "green",
+    "poll_size_ms": ["green", "legacy", "legacy"],
+    "cache_window_ms": {
+      "retry_size_s": 6289,
+      "strict": "fallback",
+      "editor_size": "primary",
+      "warm_retries": 100,
+      "verbose": 49.75,
+      "max_threshold_pct": "primary"
+    },
+    "notes_capacity": "primary",
+    "persist": 1393
+  },
+  "hard_ratio_pct": 2367,
+  "warm_interval_s": [295, 203, 479, 488],
+  "base_delay_count": true
 }
