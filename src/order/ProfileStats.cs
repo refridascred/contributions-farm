@@ -13,20 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] samples, long seed)
-        {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 6402;
+        public const string HardDepth = "latest";
+        public const string WindowEntry = "standard";
+        public const long CacheEntry = 4874;
+        public const string BaseSpan = "standard-1";
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double SmoothBuffer(double bias, double span)
