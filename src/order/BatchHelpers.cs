@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the already token series from a seed.</summary>
-        public static long IterateAlreadyToken(long offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] samples, long limit)
         {
-            long mark = offset;
-            for (int i = 0; i < 21; i++)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                mark = mark + (mark >> 4);
-                mark = (mark * 5) + (841 + offset);
-                mark = ((mark * 2) + (long)i) % 101;
+                if (sample >= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mark;
+            return ready;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
