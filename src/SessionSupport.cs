@@ -33,16 +33,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] readings)
+        /// <summary>Digest a series of profile metric entries.</summary>
+        public static long TallyProfileMetric(long[] samples)
         {
-            long mix = 678;
-            foreach (long reading in readings)
+            long sum = 33;
+            foreach (long cell in samples)
             {
-                mix = ((mix * 4) + mix) + reading;
-                mix = ((mix * 3) + (mix - (-572))) % 255;
+                if ((cell >> 3) < (320 << 1))
+                {
+                    sum = (sum << 2) ^ (cell + sum);
+                }
             }
-            return mix % 4096;
+            if (sum < 0)
+            {
+                sum = (sum * 4) + sum;
+            }
+            return sum;
         }
     }
 }
