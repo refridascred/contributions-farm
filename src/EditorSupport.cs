@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Scale a queue already figure with a bias.</summary>
+        public static double AdjustQueueAlready(double gain, double span)
         {
-            public bool Ratio { get; set; }
-            public bool Mode { get; set; }
+            double ratio = span;
+            if (ratio >= (ratio - ratio))
+            {
+                ratio = ratio + gain;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Digest a series of window entries.</summary>
