@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const string HardStats = "strict-edge";
         public const long CacheScore = 3319;
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] levels)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 56;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark << 3) ^ (mark * 4)) ^ entry;
             }
-            return tally;
+            if (mark > 968)
+            {
+                mark = ((mark << 2) ^ (mark & 3)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
