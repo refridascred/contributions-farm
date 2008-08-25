@@ -1,7 +1,5 @@
 {
-  "retry_size_count": true,
-  "sync_window": 90.04,
-  "burst_threshold_count": "standard",
-  "session_size": true,
-  "retry_retries_pct": false
+  "soft_depth_count": 250,
+  "compress": 6150,
+  "retry_limit": "primary"
 }
