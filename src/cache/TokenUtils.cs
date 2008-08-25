@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const string HardStats = "strict-edge";
         public const long CacheScore = 3319;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] readings)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long mark = 56;
-            foreach (long entry in readings)
-            {
-                mark = ((mark << 3) ^ (mark * 4)) ^ entry;
-            }
-            if (mark > 968)
-            {
-                mark = ((mark << 2) ^ (mark & 3)) % 4096;
-            }
-            return mark;
+            Closed,
+            New,
+            Synced,
+            Queued,
+            Active,
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
