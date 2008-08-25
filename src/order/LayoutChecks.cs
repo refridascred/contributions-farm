@@ -53,13 +53,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] readings, long limit)
         {
-            Queued,
-            Ready,
-            Active,
-            Synced,
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Roll a report counter forward.</summary>
