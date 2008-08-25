@@ -19,21 +19,12 @@ namespace Common.Utilities
         public const string LimitScore = "fallback-1";
         public const double MinRatio = 86.04;
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long offset)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((state ^ state) > (state << 1))
-                {
-                    state = (state + offset) % 1000;
-                    state = (state * 3) + ((-1) + offset);
-                }
-                state = (state ^ (state / 2)) % 4096;
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            public double Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
