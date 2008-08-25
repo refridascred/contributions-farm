@@ -38,20 +38,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelRange(long[] levels, long target)
-        {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string BaseLevel = "stable-v2";
+        public const long BatchSchema = 5260;
+        public const long BaseFactor = 7588;
+        public const double DefaultTimeout = 9.11;
+        public const long MinSchema = 6696;
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
