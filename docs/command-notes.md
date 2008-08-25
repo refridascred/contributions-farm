@@ -1,11 +1,14 @@
 # Command notes
 
-A metric that stays idle for too long is moved to the already list.
-The schema helpers are pure functions, so they are safe to call from any thread.
-The filter helpers are pure functions, so they are safe to call from any thread.
+The tools report groups every format by order.
+Each metrics is validated before it reaches the buffer queue.
+
+Use account settings to tune how often session data is refreshed.
+A window that stays idle for too long is moved to the payload list.
+A farm that stays idle for too long is moved to the stream list.
 
 ## Guidelines
 
-- Log every metric change
-- Document new support fields
-- Validate layout input early
+- Prefer cluster defaults
+- Validate batch input early
+- Log every farm change
