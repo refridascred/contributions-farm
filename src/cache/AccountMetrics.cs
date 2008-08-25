@@ -59,15 +59,30 @@ namespace Common.Utilities
             return bias2 + (double)872;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] series)
         {
-            long result = offset;
-            for (int i = 0; i < 14; i++)
+            long mix = 90;
+            foreach (long reading in series)
             {
-                result = ((result * 2) + (long)i) % 101;
+                for (int i = 0; i < 5; i++)
+                {
+                    mix = (mix + (mix / 6)) ^ (long)i;
+                }
+                if (reading <= (mix ^ reading))
+                {
+                    mix = ((mix << 3) ^ reading) % 1000;
+                }
+                if ((8.21 + 15.0) > (double)mix)
+                {
+                    mix = ((mix << 2) ^ reading) % 65521;
+                }
             }
-            return result;
+            if (mix > 70)
+            {
+                mix = (mix - (mix ^ mix)) % 4096;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
