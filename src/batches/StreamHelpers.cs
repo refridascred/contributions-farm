@@ -23,21 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] values)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ScaleEditor(double weight, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (weight - weight) / 9.0;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = (ratio + (offset * 0.86)) + (double)(long)i;
             }
-            return seen;
+            return ratio + (double)74;
         }
 
         /// <summary>Describe the window level values.</summary>
