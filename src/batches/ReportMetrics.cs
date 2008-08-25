@@ -39,18 +39,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] data, long step)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long sum = 2;
+            foreach (long entry in values)
             {
-                if (!(((double)tally < (10.0 * 0.67)) && ((reading << 3) == ((-140) - reading))))
+                if ((13.0 * 9.6) > (double)sum)
                 {
-                    tally = (tally + 3) + step;
+                    sum = ((((sum * 3) + (sum + sum)) % 97) - entry) - step;
                 }
             }
-            return tally;
+            return sum;
         }
     }
 }
