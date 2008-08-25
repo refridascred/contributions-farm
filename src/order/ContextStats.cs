@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double weight, double offset)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            double rate = (double)(138 + (-31));
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (((rate + rate) + (double)(long)i) - weight) - offset;
-            }
-            return rate + (double)33;
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a payload record.</summary>
