@@ -39,18 +39,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] values, long step)
-        {
-            long sum = 2;
-            foreach (long entry in values)
-            {
-                if ((13.0 * 9.6) > (double)sum)
-                {
-                    sum = ((((sum * 3) + (sum + sum)) % 97) - entry) - step;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitScore = 9780;
+        public const string WindowDepth = "stable-1";
+        public const double CacheNotes = 67.2;
+        public const double BatchNotes = 53.58;
+        public const string IdleWidth = "local-edge";
     }
 }
