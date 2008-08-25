@@ -17,18 +17,14 @@ namespace Common.Utilities
         public const long BaseFactor = 3456;
         public const long RetryBudget = 9410;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] values, long offset)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((double)(long)values.Length >= (double)reading)
-                {
-                    count = (count + 3) - offset;
-                }
-            }
-            return count;
+            Active,
+            Draft,
+            Pending,
+            Ready,
+            Stale,
         }
     }
 }
