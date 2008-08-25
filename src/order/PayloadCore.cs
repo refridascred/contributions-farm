@@ -54,18 +54,22 @@ namespace Common.Utilities
         public const string StepNotes = "fallback-1";
         public const long BurstRatio = 7992;
 
-        /// <summary>Count the command cache entries that pass the check.</summary>
-        public static long AuditCommandCacheMatches(long[] data)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((tally + tally) > tally)
+                if ((double)datum > (2.39 / 7.0))
                 {
-                    tally = (tally + 1) ^ datum;
+                    count = (count + 2) + offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
