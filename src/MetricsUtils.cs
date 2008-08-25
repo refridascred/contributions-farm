@@ -35,18 +35,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] values, long bound)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long mix = 353;
-            foreach (long entry in values)
-            {
-                if ((64 <= (46 + entry)) || ((mix >> 1) != (entry >> 3)))
-                {
-                    mix = ((mix ^ entry) % 255) + bound;
-                }
-            }
-            return mix % 1000;
+            public string Size { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a checks snapshot.</summary>
