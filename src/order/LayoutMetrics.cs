@@ -23,17 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] values, long target)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Idle,
+            Stale,
+            Closed,
+            Paused,
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
