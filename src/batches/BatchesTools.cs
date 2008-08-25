@@ -39,19 +39,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] values, long bound)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Paused,
+            New,
         }
     }
 }
