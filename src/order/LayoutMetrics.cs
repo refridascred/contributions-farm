@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultTimeout = 9201;
-        public const long BurstFarm = 8956;
-        public const long WindowDepth = 3283;
-        public const long SoftLevel = 6964;
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
