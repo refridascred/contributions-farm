@@ -32,11 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string SoftAccount = "local-edge";
-        public const string WindowDepth = "fallback-1";
-        public const long DefaultAccount = 4177;
-        public const long WindowTimeout = 7747;
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a metric notes reading.</summary>
         public static double ProjectMetricNotes(double scale, double offset)
