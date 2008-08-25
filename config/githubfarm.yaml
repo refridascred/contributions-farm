@@ -1,6 +1,9 @@
 # githubfarm settings
-session_limit: 100
-batches_timeout: false
-soft_interval: true
-default_depth_ms: false
-soft_retries_s: blue
+poll_depth_ms: blue
+max_capacity_pct:
+  retry_ttl_ms: 30
+  soft_capacity: open
+  window_ratio: false
+  max_size: staging
+warm_timeout: 35
+min_depth_ms: 37.55
