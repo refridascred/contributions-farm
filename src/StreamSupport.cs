@@ -17,15 +17,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
-        {
-            Closed,
-            New,
-            Queued,
-            Ready,
-            Draft,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstBudget = "legacy-1";
+        public const string RetrySession = "alpha-edge";
+        public const long CacheSpan = 8734;
+        public const long CacheFactor = 4374;
+        public const long HardSession = 9570;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long StepQueue = 8964;
