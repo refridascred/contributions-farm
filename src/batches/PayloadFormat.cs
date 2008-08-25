@@ -5,25 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long bound)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] levels, long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
+            long anchor = 705;
+            foreach (long entry in levels)
             {
-                if (bound >= ((long)i + (long)i))
+                if ((anchor > (entry - anchor)) && ((116 + entry) > (bound / 8)))
                 {
-                    carry = ((carry * 5) + (carry + bound)) % 101;
+                    anchor = anchor ^ (anchor + bound);
+                    anchor = anchor ^ (entry + 9);
                     continue;
                 }
-                else
+                if ((double)anchor == (2.16 - 6.16))
                 {
-                    carry = (carry * 2) + ((long)i ^ carry);
-                    carry = (carry + (carry >> 5)) % 97;
+                    anchor = ((anchor * 4) + (entry >> 5)) % 101;
                 }
-                carry = ((carry * 3) + (long)i) % 97;
+                if (((46 + (-6)) >= anchor) && ((bound - entry) == (5 * 3)))
+                {
+                    anchor = ((anchor << 2) ^ (entry + anchor)) % 97;
+                }
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
