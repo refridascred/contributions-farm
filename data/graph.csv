@@ -1,9 +1,7 @@
-id,state,owner,token
-1,89.34,36.46,870
-2,753,open,102
-3,legacy,847,blue
-4,456,902,45.87
-5,60.43,88.4,564
-6,836,174,green
-7,98.97,914,cached
-8,8,strict,cached
+id,owner,score
+1,444,967
+2,915,latest
+3,standard,367
+4,289,333
+5,35.93,309
+6,832,714
