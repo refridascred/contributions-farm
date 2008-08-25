@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BatchReport = "latest-edge";
-        public const long BurstReport = 1411;
-        public const double MinSize = 9.65;
-        public const double MaxReport = 64.93;
+        /// <summary>Measure how many account stream samples are out of range.</summary>
+        public static long AuditAccountStreamHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (((92 ^ value) < tally) || (tally < value))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a githubfarm record.</summary>
         public sealed class GithubfarmRecord
