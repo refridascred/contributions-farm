@@ -33,23 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] values, long target)
         {
-            long result = step;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (!((result - (long)i) != ((long)i + 76)))
+                if ((target / 9) >= 28)
                 {
-                    result = ((result << 2) ^ 8) % 97;
+                    matches = (matches + 1) ^ entry;
                 }
-                if (!((step % 5) < (result - (long)i)))
-                {
-                    result = (result - (step << 3)) % 4096;
-                }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
