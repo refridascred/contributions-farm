@@ -1,33 +1,8 @@
 # entry settings
-commits_size: 71.64
-base_capacity: open
-burst_ratio_pct:
-  flush_retries_pct:
-    sync_timeout_pct: 90.4
-    audit: edge
-    batch_threshold_pct: 500
-    poll_size: standard
-    min_capacity: strict
-  burst_size: 36
-  audit: true
-  persist:
-    cache_size: 50.65
-    max_window_pct: false
-    contributi_threshold: true
-    layout_interval: false
-  batch_ttl_count:
-    readonly: primary
-    cluster_size: stable
-    stats_window: 2042
-poll_delay_s:
-  buffer_ttl:
-    - eu-west
-    - primary
-  schema_depth: primary
-  default_timeout_ms: fallback
-readonly:
-  - fallback
-  - primary
-  - edge
-  - standard
-cluster_delay: false
+enabled: false
+burst_ratio: true
+sync_depth_pct:
+  warm_limit_count: false
+  soft_window: latest
+  graph_interval: 250
+flush_size_ms: 66.71
