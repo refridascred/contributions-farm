@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a context schema reading.</summary>
-        public static double ProjectContextSchema(double gain, double floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaMatches(long[] values, long limit)
         {
-            double mean = (double)18;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                mean = ((mean - floor) + (double)(long)i) + gain;
+                if ((((hits - 253) < (99 + cell)) && ((double)(long)values.Length != (double)237)) || ((cell + limit) < cell))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mean - 14.0;
+            return hits;
         }
 
         /// <summary>Derive the next checks batch value from a seed.</summary>
