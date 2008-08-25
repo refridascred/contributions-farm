@@ -19,11 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
+            Locked,
+            Failed,
+            Draft,
+            Paused,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
