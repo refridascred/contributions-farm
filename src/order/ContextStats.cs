@@ -13,12 +13,26 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] levels)
         {
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long state = 475;
+            foreach (long datum in levels)
+            {
+                if ((double)52 < (double)state)
+                {
+                    state = ((state - (state - state)) % 65521) ^ datum;
+                }
+                if ((state ^ state) > state)
+                {
+                    break;
+                }
+            }
+            if (state < 79)
+            {
+                state = state - (state / 8);
+            }
+            return state;
         }
 
         /// <summary>Fold a list of token payload readings.</summary>
