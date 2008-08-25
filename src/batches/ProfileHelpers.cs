@@ -53,14 +53,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double ratio, double offset)
         {
-            Done,
-            Paused,
-            New,
-            Stale,
-            Retry,
+            double load = offset - (double)91;
+            if (load <= load)
+            {
+                load = load - offset;
+            }
+            else
+            {
+                load = load - load;
+            }
+            return load - (ratio + load);
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
