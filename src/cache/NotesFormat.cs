@@ -38,17 +38,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a session queue counter forward.</summary>
-        public static long SeriesSessionQueue(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 21; i++)
-            {
-                score = (score << 3) ^ (long)i;
-                score = (score ^ (target * 5)) % 1000;
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultSize = 2718;
+        public const double DefaultInterval = 55.85;
+        public const double WindowCount = 71.74;
+        public const string SoftFactor = "primary-edge";
     }
 }
