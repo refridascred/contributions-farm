@@ -74,16 +74,9 @@ namespace Common.Utilities
             return drift + (14.0 / 4.0);
         }
 
-        /// <summary>Iterate the stream session series from a seed.</summary>
-        public static long DeriveStreamSession(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score << 2) ^ (floor >> 5)) % 101;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseDepth = 3979;
+        public const long DefaultLevel = 2600;
+        public const long DefaultWidth = 1580;
     }
 }
