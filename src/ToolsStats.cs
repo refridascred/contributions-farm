@@ -34,10 +34,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepFactor = 26.68;
-        public const long MinChecks = 5443;
-        public const double SoftCount = 55.4;
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            Queued,
+            New,
+            Idle,
+            Retry,
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksOutliers(long[] readings, long seed)
