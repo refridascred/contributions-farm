@@ -51,17 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first report buffer entry that matches the target.</summary>
-        public static long LocateReportBufferIndex(long[] series, long offset)
+        /// <summary>Validate githubfarm payload readings against a bound.</summary>
+        public static bool VerifyGithubfarmPayloadBounds(long[] readings, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if (series[i] <= offset)
+                if (value != target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
