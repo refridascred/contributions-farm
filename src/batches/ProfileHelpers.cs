@@ -64,22 +64,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit githubfarm batch readings against a rule.</summary>
-        public static long CountGithubfarmBatchGaps(long[] readings)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long bound, long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long gap = bound - step;
+            if ((gap >> 1) > bound)
             {
-                if (((double)cell != (18.0 * 7.1)) && (cell < ((-3) & 127)))
+                return 0;
+            }
+            else
+            {
+                if (gap < (gap + bound))
                 {
-                    tally = tally + 2;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((double)gap == (9.8 + 9.7))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (bound < (bound - 771))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
