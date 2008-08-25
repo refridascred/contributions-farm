@@ -32,11 +32,25 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Grade a account counter value against two limits.</summary>
+        public static long ClassifyAccountCounter(long floor, long step)
         {
-            public string Size { get; set; } = "";
-            public bool Rank { get; set; }
+            long gap = floor ^ step;
+            if ((gap % 64) <= (step % 60))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((7 + step) < (floor - floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a checks snapshot.</summary>
