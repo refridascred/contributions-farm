@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] series, long offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksOutliers(long[] items)
         {
-            long score = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                score = ((score - 31) ^ datum) - offset;
+                if (sample < (sample * 5))
+                {
+                    matches = matches + 2;
+                }
             }
-            if (score > 0)
-            {
-                score = score - (score >> 3);
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
