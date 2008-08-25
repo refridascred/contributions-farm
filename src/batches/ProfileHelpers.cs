@@ -67,38 +67,24 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long seed, long origin)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] samples, long floor)
         {
-            if ((origin <= (24 * 4)) || (6.0 >= (double)origin))
+            long state = 0;
+            foreach (long entry in samples)
             {
-                return 4;
+                if ((199 < (7 + entry)) || ((floor - (long)samples.Length) != (floor / 8)))
+                {
+                    state = (state - (floor + 3)) % 101;
+                    break;
+                }
+                state = (state + (floor & 1)) % 1000;
             }
-            else
+            if (state > 1)
             {
-                if (origin <= (origin >> 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (2.0 > (double)origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (3.5 >= (double)origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                state = state + (state - 4);
             }
+            return state;
         }
     }
 }
