@@ -32,18 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report buffer samples are out of range.</summary>
-        public static long AuditReportBufferGaps(long[] values, long bound)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (((seen & 127) >= (bound % 3)) && ((seen >> 1) <= (cell + seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Synced,
+            Active,
+            Idle,
+            Locked,
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
