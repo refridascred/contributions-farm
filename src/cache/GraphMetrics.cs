@@ -41,31 +41,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long offset, long bound)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            if (5.2 < (double)bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(((-69) + bound) <= bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((12.0 - 4.6) >= (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Grade a route value against two limits.</summary>
