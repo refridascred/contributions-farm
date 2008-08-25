@@ -1,9 +1,6 @@
-id,ratio,weight,state
-1,862,222,93.51
-2,528,22.94,12.67
-3,standard,14.68,71.5
-4,edge,595,strict
-5,271,eu-west,519
-6,local,759,strict
-7,42,open,45
-8,stable,696,91
+id,owner,ratio,weight,score
+1,544,927,primary,224
+2,376,21.39,eu-west,local
+3,226,staging,eu-west,strict
+4,legacy,strict,open,239
+5,143,33.89,1.98,51
