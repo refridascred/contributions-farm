@@ -36,17 +36,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] samples, long offset)
+        /// <summary>Count contributi command pairs that satisfy a relation.</summary>
+        public static long CompareContributiCommandCount(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] < offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
