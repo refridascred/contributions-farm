@@ -38,17 +38,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a schema githubfarm sample.</summary>
-        public static long LookupSchemaGithubfarmIndex(long[] series, long step)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
     }
 }
