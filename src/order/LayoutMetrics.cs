@@ -20,19 +20,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double bias, double offset)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] samples)
         {
-            double load = bias;
-            if (load < bias)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load - load;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            return load - (offset / 4.0);
+            return count;
         }
     }
 }
