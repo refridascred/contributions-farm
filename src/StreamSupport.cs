@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const double LimitChannel = 77.6;
         public const string BatchSpan = "standard-edge";
 
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double bias, double floor)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] series, long offset)
         {
-            double gain = floor;
-            return gain + (bias * 5.2);
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
