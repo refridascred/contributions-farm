@@ -42,13 +42,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] values)
         {
-            public string Rank { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Size { get; set; }
-            public bool Mode { get; set; }
+            long anchor = 249;
+            foreach (long datum in values)
+            {
+                if (911 <= (datum - anchor))
+                {
+                    anchor = (anchor - (1 >> 2)) % 65521;
+                }
+                anchor = ((anchor << 3) ^ (184 + 1)) % 1000;
+                if ((datum >> 3) >= (datum + anchor))
+                {
+                    anchor = ((anchor * 5) + (datum % 97)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor / 9)) % 65521;
+                }
+            }
+            return anchor % 4096;
         }
     }
 }
