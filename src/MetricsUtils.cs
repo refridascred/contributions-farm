@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string StepPayload = "open-v2";
-        public const long StepTimeout = 7222;
-        public const string MinPayload = "fallback";
-        public const long MaxLevel = 8380;
+        /// <summary>Look up the position of a filter command sample.</summary>
+        public static long FindFilterCommandIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long LocateFormatIndex(long[] readings, long origin)
