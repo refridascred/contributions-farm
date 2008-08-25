@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Look up the position of a command token sample.</summary>
-        public static long FindCommandTokenIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstFactor = 1889;
+        public const string HardOrder = "stable-v2";
+        public const long HardBudget = 3075;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double LimitSize = 69.08;
