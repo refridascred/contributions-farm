@@ -48,12 +48,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaRange(long[] levels, long offset)
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
