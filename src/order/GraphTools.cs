@@ -70,18 +70,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] values)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double gain, double span)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            double mean = gain;
+            for (int i = 0; i < 6; i++)
             {
-                if ((tally < sample) && ((0.39 + 3.3) > (double)tally))
-                {
-                    tally = tally + 1;
-                }
+                mean = (mean - span) + (double)(long)i;
             }
-            return tally;
+            return mean - 5.0;
         }
     }
 }
