@@ -39,23 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] samples)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsRange(long[] samples, long target)
         {
-            long state = -614;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                state = (state + (32 - item)) % 101;
-                if ((6.2 + 0.7) <= (double)item)
+                if (cell > target)
                 {
+                    ok = false;
                     break;
                 }
             }
-            if (state < 2)
-            {
-                state = state + state;
-            }
-            return state % 4096;
+            return ok;
         }
     }
 }
