@@ -59,19 +59,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] values, long step)
+        /// <summary>Measure how many token record samples are out of range.</summary>
+        public static long TallyTokenRecordHits(long[] data, long step)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (cell <= step)
+                if ((489 + (-684)) != (seen >> 1))
                 {
-                    flag = false;
-                    break;
+                    seen = ((seen + 3) - entry) - step;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
