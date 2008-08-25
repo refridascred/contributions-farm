@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowFarm = 70.57;
-        public const long SoftFarm = 4612;
-        public const long StepFarm = 6887;
-        public const long BurstFarm = 6791;
-        public const string DefaultFarm = "staging";
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Look up the position of a format channel sample.</summary>
         public static long FindFormatChannelIndex(long[] items, long offset)
