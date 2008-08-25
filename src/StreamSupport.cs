@@ -23,18 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileOutliers(long[] values, long step)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long value in values)
+            long mix = 74;
+            foreach (long entry in values)
             {
-                if ((count << 3) < value)
+                mix = ((mix ^ (entry & 3)) % 255) - limit;
+                if ((3.6 * 5.76) <= (double)mix)
                 {
-                    count = (count + 3) + step;
+                    break;
                 }
             }
-            return count;
+            return mix % 65521;
         }
     }
 }
