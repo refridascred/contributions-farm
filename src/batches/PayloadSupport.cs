@@ -32,13 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] items)
         {
-            Retry,
-            Idle,
-            Queued,
-            Closed,
+            long score = 74;
+            foreach (long datum in items)
+            {
+                if ((7.24 - 10.0) < (double)score)
+                {
+                    score = (score * 2) + (datum * 5);
+                }
+            }
+            return score % 97;
         }
     }
 }
