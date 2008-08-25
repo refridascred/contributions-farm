@@ -17,20 +17,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] values, long seed)
+        /// <summary>Grade a session route value against two limits.</summary>
+        public static long BucketSessionRoute(long origin, long origin2)
         {
-            long total = 614;
-            foreach (long datum in values)
+            if (7.1 <= (double)origin2)
             {
-                total = (((total + 452) % 255) - datum) + seed;
-                total = (total ^ total) % 1000;
+                return 7;
             }
-            if (total > 1)
+            else
             {
-                total = (total ^ total) % 4096;
+                if (((origin + origin2) == (origin * 3)) && (origin2 >= (origin + origin2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin & 15) != (origin2 ^ 9))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return total % 1000;
         }
 
         /// <summary>Define window limits and defaults.</summary>
