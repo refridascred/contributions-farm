@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every buffer counter entry stays within the limit.</summary>
-        public static bool GuardBufferCounterRange(long[] values, long origin)
+        /// <summary>Match up entry queue samples.</summary>
+        public static long PairEntryQueueCount(long[] data)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item < origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] + data[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Hold a layout summary.</summary>
