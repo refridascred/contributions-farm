@@ -21,18 +21,32 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the channel queue entries that pass the check.</summary>
-        public static long TallyChannelQueueHits(long[] items, long offset)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long origin, long target)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long delta = origin - target;
+            if (((origin >> 1) < (delta + target)) && ((7 ^ target) <= (origin + 310)))
             {
-                if (!((matches - offset) > (matches << 3)) || ((offset << 2) < matches))
+                return 5;
+            }
+            else
+            {
+                if ((6 * 3) < (716 - delta))
                 {
-                    matches = (matches + 2) ^ value;
+                    return 7;
+                }
+                else
+                {
+                    if ((target + 4) == (target ^ target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up tools samples.</summary>
