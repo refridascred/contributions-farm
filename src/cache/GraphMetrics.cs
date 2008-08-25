@@ -102,22 +102,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] readings, long seed)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)tally >= (4.59 - 0.37))
-                {
-                    tally = ((tally + 3) - datum) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchWidth = "standard-edge";
+        public const long DefaultBuffer = 9129;
+        public const double BurstBuffer = 62.12;
+        public const long RetryBuffer = 5387;
     }
 }
