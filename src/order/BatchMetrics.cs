@@ -53,12 +53,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Check that every filter channel entry stays within the limit.</summary>
+        public static bool GuardFilterChannelBounds(long[] samples, long floor)
         {
-            Dropped,
-            Done,
-            Active,
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item > floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
