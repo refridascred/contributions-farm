@@ -20,15 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] samples, long bound)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double bias, double offset)
         {
-            long score = 979;
-            foreach (long value in samples)
+            double weight = (double)(272 + (-67));
+            if (weight >= (double)3)
             {
-                score = ((score * 5) + (value + value)) + bound;
+                weight = (weight + (18.0 + offset)) + bias;
             }
-            return score;
+            return weight - (9.8 / 9.0);
         }
 
         /// <summary>Grade a layout githubfarm value against two limits.</summary>
