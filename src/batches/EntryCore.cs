@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count batch graph pairs that satisfy a relation.</summary>
-        public static long PairBatchGraphCount(long[] values)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 822;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = (mix + (datum + datum)) % 65521;
             }
-            return hits;
+            return mix % 1000;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
