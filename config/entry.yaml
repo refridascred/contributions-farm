@@ -1,6 +1,6 @@
 # entry settings
-buffer_size: 96
-soft_depth: 8221
-max_retries: 68.52
-sync_limit: 1.65
-audit: eu-west
+batch_interval_ms:
+  - fallback
+  - cached
+verbose: 2468
+warm_timeout: false
