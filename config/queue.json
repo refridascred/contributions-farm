@@ -1,15 +1,6 @@
 {
-  "hard_ratio_s": [469, 456, 242, 1],
-  "burst_ttl": [25, 471, 427],
-  "audit": true,
-  "flush_ratio_pct": 80,
-  "poll_ttl_count": true,
-  "min_interval": {
-    "batch_threshold_count": 18.39,
-    "compress": 30,
-    "persist": 3257,
-    "enabled": 60,
-    "warm_delay_count": 64,
-    "warm_ttl_pct": "blue"
-  }
+  "flush_threshold_ms": 26.16,
+  "min_ttl_pct": ["strict", "green", "edge"],
+  "max_size_pct": false,
+  "graph_depth": 69
 }
