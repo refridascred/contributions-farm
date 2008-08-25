@@ -29,12 +29,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public bool Token { get; set; }
+            Paused,
+            Active,
+            Closed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Audit stream report readings against a rule.</summary>
