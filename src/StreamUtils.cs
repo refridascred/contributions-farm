@@ -45,10 +45,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string CacheProfile = "local";
-        public const double LimitLevel = 79.79;
-        public const double BaseProfile = 47.42;
+        /// <summary>Roll a account order counter forward.</summary>
+        public static long StepAccountOrder(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = mix + floor;
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Count notes farm pairs that satisfy a relation.</summary>
         public static long CompareNotesFarmCount(long[] items)
