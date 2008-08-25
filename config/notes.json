@@ -1,14 +1,6 @@
 {
-  "batch_delay_count": {
-    "base_ttl_ms": 11.78,
-    "readonly": 6.84,
-    "githubfarm_capacity": {
-      "format_ttl": "standard",
-      "retry_retries_ms": "edge",
-      "burst_threshold_ms": false
-    },
-    "dry_run": [345, 444, 343, 232]
-  },
-  "support_timeout": 86.63,
-  "min_timeout_ms": 26
+  "default_timeout_s": 82.04,
+  "burst_threshold_count": false,
+  "hard_delay_ms": ["standard", "latest", "local"],
+  "graph_ttl": false
 }
