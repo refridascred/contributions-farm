@@ -19,15 +19,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double scale, double floor)
+        /// <summary>Locate a counter record reading by value.</summary>
+        public static long FindCounterRecordIndex(long[] levels, long limit)
         {
-            double rate = (double)(8 * 2);
-            if (rate > (floor - scale))
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate + floor;
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return rate + (floor * 7.31);
+            return -1;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
