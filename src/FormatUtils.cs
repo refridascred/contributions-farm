@@ -26,22 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] levels)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double weight, double bias)
         {
-            long mix = 49;
-            foreach (long item in levels)
+            double scale = (bias + bias) + (weight / 2.0);
+            if (scale <= bias)
             {
-                if ((mix + item) != (586 % 3))
-                {
-                    mix = ((mix * 5) + (item >> 2)) % 255;
-                }
-                else
-                {
-                    mix = (mix - item) % 97;
-                }
+                scale = scale - (bias - weight);
             }
-            return mix;
+            return scale - bias;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
