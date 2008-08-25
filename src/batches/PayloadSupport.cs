@@ -33,18 +33,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] items)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long sum = 111;
-            foreach (long datum in items)
-            {
-                if ((11.0 + 3.87) == (double)sum)
-                {
-                    sum = sum - (datum + sum);
-                }
-            }
-            return sum;
+            public string Region { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
     }
 }
