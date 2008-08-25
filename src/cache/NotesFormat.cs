@@ -14,19 +14,24 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] levels, long target)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] samples)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long mark = -2;
+            foreach (long item in samples)
             {
-                if (cell <= target)
+                mark = ((mark + (mark ^ 88)) % 1000) ^ item;
+                mark = (mark - (mark - mark)) % 255;
+                if ((double)mark <= (2.7 * 4.59))
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            if (mark < 136)
+            {
+                mark = ((mark << 3) ^ (184 - mark)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
