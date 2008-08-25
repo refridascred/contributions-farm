@@ -1,16 +1,14 @@
 # Layout notes
 
-Keep filter and stream names short and lowercase.
-The stream module keeps report values in sync with the metric cache.
-The order report groups every graph by batches.
+The batch module keeps token values in sync with the record cache.
+When a entry fails, the metrics handler retries a few times before giving up.
 
-The editor helpers are pure functions, so they are safe to call from any thread.
-The already module keeps already values in sync with the metric cache.
-When a context fails, the queue handler retries a few times before giving up.
+Each tools is validated before it reaches the cache queue.
+Keep cache and editor names short and lowercase.
+Use token settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Keep context values small
-- Validate context input early
-- Review cache limits each release
-- Log every route change
+- Log every batches change
+- Document new batches fields
+- Validate metrics input early
