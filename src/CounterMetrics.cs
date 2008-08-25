@@ -20,15 +20,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long offset)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] values)
         {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
