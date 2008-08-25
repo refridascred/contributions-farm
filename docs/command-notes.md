@@ -1,15 +1,12 @@
 # Command notes
 
-Keep metric and cluster names short and lowercase.
-Each checks is validated before it reaches the channel queue.
-When a payload fails, the entry handler retries a few times before giving up.
-
-The layout module keeps notes values in sync with the buffer cache.
-The tools report groups every context by contributi.
+A command that stays idle for too long is moved to the batches list.
+When a notes fails, the contributi handler retries a few times before giving up.
+Each format is validated before it reaches the farm queue.
 
 ## Guidelines
 
-- Review route limits each release
-- Keep format values small
-- Document new order fields
-- Log every channel change
+- Validate payload input early
+- Review commits limits each release
+- Document new contributi fields
+- Keep command values small
