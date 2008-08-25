@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] samples)
+        /// <summary>Classify a stats context pair into a bucket.</summary>
+        public static long GradeStatsContext(long floor, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((4.6 * 1.86) <= (double)floor)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((7.54 / 8.0) == (double)floor)
                 {
-                    if ((samples[i] - samples[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
