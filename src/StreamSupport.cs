@@ -17,12 +17,18 @@ namespace Common.Utilities
         public const long SoftTimeout = 1639;
         public const long HardCluster = 110;
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Measure how many checks command samples are out of range.</summary>
+        public static long MeasureChecksCommandMatches(long[] levels)
         {
-            Done,
-            Queued,
-            Closed,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((count << 2) != (574 + sample))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
