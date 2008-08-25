@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 8311;
-        public const string MaxBatch = "strict-v2";
-        public const long IdleBatch = 6243;
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterOutliers(long[] values, long target)
