@@ -54,18 +54,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] samples)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] values)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((double)reading < (double)count)
+                if ((1.0 / 7.0) > (double)reading)
                 {
-                    count = count + 2;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
