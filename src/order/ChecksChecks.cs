@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const long HardCount = 8087;
         public const long WindowBudget = 9241;
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double gain, double bias)
+        /// <summary>Audit stats batch readings against a rule.</summary>
+        public static long AuditStatsBatchGaps(long[] values, long step)
         {
-            double drift = bias + gain;
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                drift = (drift + (4.7 + 16.0)) + (double)(long)i;
+                if (cell <= (16 + matches))
+                {
+                    matches = (matches + 2) - step;
+                }
             }
-            return drift + bias;
+            return matches;
         }
 
         /// <summary>Count the tools contributi entries that pass the check.</summary>
