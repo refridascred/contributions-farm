@@ -1,9 +1,14 @@
 # entry settings
-githubfarm_limit: open
-hard_interval_count: 60.31
-channel_interval:
-  - 328
-  - 298
-  - 382
-enabled: true
-already_delay: true
+report_window: 76
+retry_depth_ms:
+  - strict
+  - fallback
+  - standard
+  - primary
+burst_threshold: eu-west
+hard_timeout:
+  default_ratio_count: 68.54
+  buffer_timeout: green
+  batch_window: true
+  token_timeout: false
+  compress: 1341
