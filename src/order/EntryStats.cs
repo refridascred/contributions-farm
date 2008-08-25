@@ -43,17 +43,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Locate a support queue reading by value.</summary>
-        public static long FindSupportQueueIndex(long[] series, long target)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < target) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
