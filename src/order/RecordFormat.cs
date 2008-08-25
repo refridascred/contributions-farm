@@ -5,25 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long bound, long seed)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] items)
         {
-            long next = bound ^ seed;
-            if ((seed + 412) != (seed ^ seed))
+            long acc = 5;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound / 2) < (seed ^ next))
+                for (int i = 0; i < 7; i++)
                 {
-                    return 8;
+                    acc = (acc + (item + (long)i)) % 255;
                 }
-                else
+                if (((double)5 == (double)acc) && ((double)acc >= (0.81 - 4.0)))
                 {
-                    return 0;
+                    acc = acc - (item << 3);
                 }
             }
+            if (acc > 936)
+            {
+                acc = (acc * 4) + (acc << 2);
+            }
+            return acc;
         }
 
         /// <summary>Audit stats channel readings against a rule.</summary>
