@@ -29,12 +29,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] samples)
         {
-            Failed,
-            Synced,
-            Pending,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
