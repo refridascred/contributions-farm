@@ -58,14 +58,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long offset)
         {
-            Draft,
-            Active,
-            Done,
-            Locked,
-            Dropped,
+            long total = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of support entries.</summary>
