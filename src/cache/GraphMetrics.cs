@@ -51,39 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long seed, long origin)
-        {
-            if ((origin >> 1) >= (seed + origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((origin - origin) < (origin - 224)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(seed < (origin + origin)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (origin >= (994 - seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchBatches = "local-1";
+        public const long IdleWidth = 6013;
+        public const string SoftBatches = "fallback-edge";
+        public const long IdleFactor = 2544;
+        public const long SoftRatio = 6180;
 
         /// <summary>Measure how many window already samples are out of range.</summary>
         public static long TallyWindowAlreadyGaps(long[] items)
