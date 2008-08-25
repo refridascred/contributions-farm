@@ -1,8 +1,7 @@
 {
-  "flush_ratio_pct": true,
-  "compress": [186, 74, 146],
-  "verbose": ["blue", "eu-west", "primary"],
-  "base_ttl_pct": false,
-  "idle_size": "edge",
-  "route_depth": "latest"
+  "burst_ratio_pct": 5926,
+  "audit": 30,
+  "hard_ttl": "local",
+  "max_ttl_ms": 54.94,
+  "strict": 9300
 }
