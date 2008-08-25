@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BaseCommand = 70.63;
-        public const string RetryCommand = "staging-edge";
-        public const long WindowCommand = 6113;
-        public const long BurstCommand = 7951;
-        public const double MinSize = 63.53;
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
+        {
+            Draft,
+            Active,
+            Ready,
+            New,
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long BucketContext(long target, long bound)
