@@ -47,18 +47,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] data)
+        /// <summary>Count profile commits pairs that satisfy a relation.</summary>
+        public static long MatchProfileCommitsCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)entry != (0.79 / 3.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((levels[i] ^ levels[j]) > 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Digest a series of profile buffer entries.</summary>
