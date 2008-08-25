@@ -33,12 +33,12 @@ namespace Common.Utilities
             return gain2 + (gain - gain);
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] values, long bound)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] series, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] > bound) && ((values[i] % 3) != 0))
+                if ((series[i] == floor) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
