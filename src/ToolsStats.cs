@@ -44,19 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] readings, long offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] readings, long seed)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (cell != offset)
+                if ((matches ^ seed) < (reading - matches))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Adjust a notes reading.</summary>
