@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadHits(long[] items, long seed)
+        /// <summary>Count queue commits pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCommitsCount(long[] readings)
         {
             long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count + value) > (seed / 9))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 2;
+                    if ((readings[i] + readings[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
