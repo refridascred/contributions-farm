@@ -47,19 +47,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double ratio, double offset)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] samples, long step)
         {
-            double load = offset - (double)91;
-            if (load <= load)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                load = load - offset;
+                if (entry <= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            return load - (ratio + load);
+            return ready;
         }
 
         /// <summary>Audit githubfarm batch readings against a rule.</summary>
