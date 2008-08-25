@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the cluster editor series from a seed.</summary>
-        public static long RollClusterEditor(long origin)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] items)
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
+            long carry = 4;
+            foreach (long cell in items)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                if ((((-534) + carry) != (cell - carry)) && ((7 + 483) >= (carry - cell)))
+                {
+                    carry = (carry - (cell - 463)) % 65521;
+                }
+                else
+                {
+                    carry = (carry - carry) % 101;
+                }
             }
-            return total;
+            if (carry < 127)
+            {
+                carry = ((carry << 3) ^ carry) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
