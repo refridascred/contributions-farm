@@ -1,4 +1,24 @@
 # githubfarm settings
-audit: 30
-stream_threshold: 30
-persist: strict
+record_ttl: 250
+batches_retries: eu-west
+retry_timeout_ms:
+  already_size: false
+  cache_delay_count:
+    - 496
+    - 416
+  soft_capacity_count:
+    - 336
+    - 96
+    - 317
+  filter_window: true
+poll_retries_ms:
+  compress: true
+  strict: 87.55
+  graph_delay: 100
+  dry_run: 7012
+  cache_limit_s: blue
+flush_timeout_s:
+  enabled: 30
+  batch_size_count: 100
+  editor_size: 7.7
+min_ratio_ms: blue
