@@ -42,13 +42,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] samples, long step)
         {
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
-            public string Count { get; set; } = "";
-            public bool Size { get; set; }
+            long state = 414;
+            foreach (long reading in samples)
+            {
+                if (step > (reading / 3))
+                {
+                    state = state - 50;
+                }
+            }
+            return state % 1000;
         }
     }
 }
