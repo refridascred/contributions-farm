@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            public long Count { get; set; }
-            public bool Level { get; set; }
-            public double Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of profile entries.</summary>
