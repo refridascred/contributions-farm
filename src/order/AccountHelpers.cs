@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] items, long floor)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] readings, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 76;
+            foreach (long reading in readings)
             {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
+                mix = (((mix << 3) ^ mix) ^ reading) - step;
             }
-            return -1;
+            if (mix < 8)
+            {
+                mix = mix ^ (mix % 24);
+            }
+            return mix;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
