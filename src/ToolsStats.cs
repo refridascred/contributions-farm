@@ -59,17 +59,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] series, long bound)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordOutliers(long[] readings, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (series[i] > bound)
+                if (((seed - 578) > hits) && !((hits ^ entry) <= entry))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Iterate the stream session series from a seed.</summary>
