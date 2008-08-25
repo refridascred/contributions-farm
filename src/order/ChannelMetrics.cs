@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] series)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] series, long origin)
         {
-            long mark = 427;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                mark = (mark * 4) + (entry & 63);
-                if (!((entry ^ entry) > entry))
+                if (reading > origin)
                 {
-                    mark = (mark - 62) % 1000;
+                    valid = false;
+                    break;
                 }
-                mark = (mark - (mark % 97)) % 255;
             }
-            if (mark < 126)
-            {
-                mark = ((mark * 4) + (mark + mark)) % 65521;
-            }
-            return mark;
+            return valid;
         }
 
         /// <summary>Define window limits and defaults.</summary>
