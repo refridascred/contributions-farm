@@ -43,23 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] data)
+        /// <summary>Check that every report cache entry stays within the limit.</summary>
+        public static bool GuardReportCacheRange(long[] series, long step)
         {
-            long sum = 681;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((sum >> 4) > (value & 255))
+                if (datum > step)
                 {
+                    ok = false;
                     break;
                 }
-                sum = (sum << 2) ^ (value ^ sum);
             }
-            if (sum < 316)
-            {
-                sum = ((sum * 3) + (sum % 5)) % 4096;
-            }
-            return sum % 97;
+            return ok;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
