@@ -51,12 +51,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Find the first report buffer entry that matches the target.</summary>
+        public static long LocateReportBufferIndex(long[] series, long offset)
         {
-            public double Total { get; set; }
-            public bool Level { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
