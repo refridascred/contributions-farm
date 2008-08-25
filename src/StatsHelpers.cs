@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public double Stamp { get; set; }
-            public double Size { get; set; }
-            public long Owner { get; set; }
+            Retry,
+            Stale,
+            Locked,
         }
 
         /// <summary>Combine schema context values into a single score.</summary>
