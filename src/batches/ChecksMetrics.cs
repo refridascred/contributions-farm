@@ -40,20 +40,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphRange(long[] levels, long target)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry < target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 717;
+        public const string SoftRoute = "staging";
+        public const long CacheCount = 4120;
+        public const string BaseBudget = "alpha";
+        public const long DefaultRoute = 9368;
 
         /// <summary>Hold a support stats.</summary>
         public sealed class SupportStats
