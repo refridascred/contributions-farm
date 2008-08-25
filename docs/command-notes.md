@@ -1,14 +1,14 @@
 # Command notes
 
-A context that stays idle for too long is moved to the layout list.
-The route module keeps already values in sync with the report cache.
+Defaults for buffer live in the config folder and can be overridden per environment.
+The window report groups every editor by commits.
 
-Run the schema check before changing any githubfarm limits.
-Keep report and profile names short and lowercase.
+Keep command and queue names short and lowercase.
+Keep command and format names short and lowercase.
 
 ## Guidelines
 
-- Log every token change
-- Document new schema fields
-- Prefer graph defaults
-- Review command limits each release
+- Prefer route defaults
+- Validate commits input early
+- Review editor limits each release
+- Log every filter change
