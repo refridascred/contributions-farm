@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyHits(long[] data, long seed)
+        /// <summary>Adjust a context schema reading.</summary>
+        public static double ProjectContextSchema(double gain, double floor)
         {
-            long count = 0;
-            foreach (long item in data)
+            double mean = (double)18;
+            for (int i = 0; i < 5; i++)
             {
-                if (seed >= count)
-                {
-                    count = (count + 3) + item;
-                }
+                mean = ((mean - floor) + (double)(long)i) + gain;
             }
-            return count;
+            return mean - 14.0;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
