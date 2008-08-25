@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultFilter = "fallback-v2";
-        public const long WindowFilter = 1790;
-        public const string MaxInterval = "legacy-v2";
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Queued,
+            Paused,
+            Retry,
+            Pending,
+        }
 
         /// <summary>Project the next commits schema value.</summary>
         public static double SmoothCommitsSchema(double rate, double span)
