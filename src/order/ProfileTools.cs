@@ -53,19 +53,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] data)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((datum + 782) >= matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BaseLevel = "fallback-edge";
+        public const long BurstFactor = 9115;
+        public const string MaxMetric = "fallback";
 
         /// <summary>Hold a already summary.</summary>
         public sealed class AlreadySummary
