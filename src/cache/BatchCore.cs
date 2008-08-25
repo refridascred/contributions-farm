@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardFactor = 3928;
-        public const double StepFactor = 88.86;
-        public const long MaxOrder = 7088;
-        public const long DefaultFactor = 9265;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((seen + seen) <= (75 + seen))
+                {
+                    seen = (seen + 1) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long ScoreQueue(long[] series)
