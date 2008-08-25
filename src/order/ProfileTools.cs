@@ -20,19 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every window command entry stays within the limit.</summary>
-        public static bool GuardWindowCommandRange(long[] data, long limit)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Count { get; set; }
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
