@@ -59,15 +59,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many window already samples are out of range.</summary>
-        public static long TallyWindowAlreadyGaps(long[] items)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] samples)
         {
             long tally = 0;
-            foreach (long cell in items)
+            foreach (long reading in samples)
             {
-                if ((double)cell > 11.0)
+                if ((((tally & 1) != (reading * 2)) || ((tally + tally) >= (tally + (long)samples.Length))) && ((((long)samples.Length % 16) != (reading / 6)) && ((35 % 24) < (reading / 6))))
                 {
-                    tally = tally + 2;
+                    tally = tally + 3;
                 }
                 else
                 {
