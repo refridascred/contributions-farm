@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 2108;
-        public const double HardScore = 2.97;
-        public const long BurstCount = 214;
-        public const string BaseEditor = "fallback";
-        public const string BatchSize = "open";
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] values, long limit)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((matches - limit) > item)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double StepRatio = 22.15;
