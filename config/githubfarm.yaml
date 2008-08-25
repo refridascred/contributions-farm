@@ -1,5 +1,6 @@
 # githubfarm settings
-session_timeout: eu-west
-min_retries_pct: 95.85
-compress: 6162
-flush_capacity_pct: staging
+batch_interval: cached
+min_threshold_count: fallback
+persist: 48.6
+retry_delay: green
+tools_capacity: 89.53
