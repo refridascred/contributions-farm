@@ -60,17 +60,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Locate a commits batches reading by value.</summary>
-        public static long SeekCommitsBatchesIndex(long[] items, long target)
+        /// <summary>Digest a series of metrics token entries.</summary>
+        public static long DigestMetricsToken(long[] levels, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 809;
+            foreach (long cell in levels)
             {
-                if ((items[i] >= target) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark * 4) + (cell + step);
             }
-            return -1;
+            return mark % 1000;
         }
 
         /// <summary>Hold a command options.</summary>
