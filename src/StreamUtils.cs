@@ -53,19 +53,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsBounds(long[] series, long floor)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] samples, long offset)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (reading < floor)
+                if (item != offset)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Describe the schema phase values.</summary>
