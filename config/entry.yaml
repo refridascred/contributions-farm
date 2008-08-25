@@ -1,12 +1,19 @@
 # entry settings
-token_size: 86
-warm_delay_count: 22.77
-soft_interval_count:
-  strict: eu-west
-  compress: 250
-  sync_ratio:
-    - 332
-    - 52
-    - 391
-  order_size: primary
-  burst_interval: 26.74
+already_depth: 8627
+batch_window_s: blue
+max_ttl:
+  poll_retries: true
+  compress: 4094
+  sync_limit_ms: 26.63
+  cache_timeout_count: strict
+  stats_limit:
+    soft_retries: 63.64
+    flush_capacity_pct: 5230
+    commits_timeout:
+      - fallback
+      - cached
+      - standard
+  report_capacity:
+    - fallback
+    - local
+    - green
