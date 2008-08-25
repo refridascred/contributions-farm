@@ -50,27 +50,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] values)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] samples, long target)
         {
-            long anchor = 249;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (911 <= (datum - anchor))
+                if ((6.0 / 6.0) < (3.35 + 9.31))
                 {
-                    anchor = (anchor - (1 >> 2)) % 65521;
-                }
-                anchor = ((anchor << 3) ^ (184 + 1)) % 1000;
-                if ((datum >> 3) >= (datum + anchor))
-                {
-                    anchor = ((anchor * 5) + (datum % 97)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor + (anchor / 9)) % 65521;
+                    hits = ((hits + 2) - reading) - target;
                 }
             }
-            return anchor % 4096;
+            return hits;
         }
     }
 }
