@@ -1,4 +1,8 @@
 # support settings
-hard_depth_ms: 90.25
-stream_retries: 1024
-hard_threshold: true
+dry_run: 56
+max_limit_ms:
+  - 124
+  - 26
+burst_timeout_s: 24
+soft_interval_s: primary
+persist: open
