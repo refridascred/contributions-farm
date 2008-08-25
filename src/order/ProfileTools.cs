@@ -10,22 +10,29 @@ namespace Common.Utilities
         public const double DefaultDepth = 89.88;
         public const long MaxWidth = 9195;
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long origin, long floor)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long origin, long step)
         {
-            if ((origin + origin) != (origin ^ origin))
+            if ((double)step > 9.0)
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if ((floor ^ floor) <= (760 * 2))
+                if ((origin + step) <= (origin / 6))
                 {
-                    return 8;
+                    return 2;
                 }
                 else
                 {
-                    return 6;
+                    if ((origin << 3) <= (origin >> 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
