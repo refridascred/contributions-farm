@@ -67,24 +67,9 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] samples, long floor)
-        {
-            long state = 0;
-            foreach (long entry in samples)
-            {
-                if ((199 < (7 + entry)) || ((floor - (long)samples.Length) != (floor / 8)))
-                {
-                    state = (state - (floor + 3)) % 101;
-                    break;
-                }
-                state = (state + (floor & 1)) % 1000;
-            }
-            if (state > 1)
-            {
-                state = state + (state - 4);
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MaxBudget = "latest-v2";
+        public const string WindowWidth = "fallback-edge";
+        public const double HardBudget = 68.91;
     }
 }
