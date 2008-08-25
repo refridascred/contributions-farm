@@ -12,15 +12,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Roll a order window counter forward.</summary>
-        public static long DeriveOrderWindow(long origin)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] samples, long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if (sample < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Define context limits and defaults.</summary>
