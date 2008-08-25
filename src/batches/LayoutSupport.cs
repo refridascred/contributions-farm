@@ -54,18 +54,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the layout contributi entries that pass the check.</summary>
-        public static long TallyLayoutContributiOutliers(long[] samples, long bound)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long limit)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long sum = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((((5.02 * 10.0) < (double)matches) && (bound >= (datum - 9))) && (((datum + 5) <= (datum + matches)) && ((matches >> 2) < matches)))
-                {
-                    matches = matches + 2;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
