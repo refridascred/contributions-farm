@@ -1,7 +1,6 @@
 {
-  "burst_threshold_s": 30,
-  "burst_ttl": "legacy",
-  "batch_depth_pct": 2922,
-  "audit": true,
-  "readonly": "edge"
+  "context_ttl": [137, 328],
+  "batch_ttl": 87.16,
+  "farm_ttl": true,
+  "default_depth_pct": "fallback"
 }
