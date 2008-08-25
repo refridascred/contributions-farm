@@ -26,18 +26,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaHits(long[] readings, long floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long state = 7;
+            foreach (long item in samples)
             {
-                if ((floor > (matches + matches)) || ((datum - matches) > (matches & 31)))
+                if (((state + state) > item) || ((9.5 - 5.26) <= (double)target))
                 {
-                    matches = matches + 1;
+                    long slot = 874;
+                    state = state - (slot + state);
+                    continue;
+                }
+                if ((item + item) > (state + item))
+                {
+                    state = state ^ (state ^ state);
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
