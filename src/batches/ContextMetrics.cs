@@ -37,12 +37,28 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftRatio = 2430;
-        public const long MinWidth = 4040;
-        public const string DefaultDepth = "strict-v2";
-        public const long HardToken = 4003;
-        public const string MaxScore = "primary-1";
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] series)
+        {
+            long state = 6;
+            foreach (long value in series)
+            {
+                state = ((state * 3) + (value % 100)) % 1000;
+                if ((double)state <= (5.3 + 10.0))
+                {
+                    state = (state ^ value) % 65521;
+                }
+                if ((58 > ((long)series.Length & 31)) && ((7 % 2) <= (state + state)))
+                {
+                    break;
+                }
+            }
+            if (state < 11)
+            {
+                state = (state - 201) % 1000;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Measure how many token record samples are out of range.</summary>
         public static long TallyTokenRecordHits(long[] data, long step)
