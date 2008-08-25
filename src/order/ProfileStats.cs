@@ -23,18 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > target) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitWindow = 84.17;
+        public const double BaseWindow = 67.57;
+        public const double HardWindow = 81.26;
+        public const string CacheWindow = "latest-edge";
 
         /// <summary>Combine schema cache values into a single score.</summary>
         public static long ScoreSchemaCache(long[] data, long floor)
