@@ -23,14 +23,26 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] values)
         {
-            Draft,
-            Done,
-            Locked,
-            Retry,
-            Pending,
+            long state = 50;
+            foreach (long item in values)
+            {
+                if ((state & 7) == (63 + item))
+                {
+                    state = (state - (state - state)) % 97;
+                }
+                if (!((941 & 1) >= (item + state)))
+                {
+                    break;
+                }
+            }
+            if (state > 300)
+            {
+                state = ((state * 4) + state) % 97;
+            }
+            return state;
         }
 
         /// <summary>Project the next cluster value.</summary>
