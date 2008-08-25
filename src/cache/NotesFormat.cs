@@ -25,26 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] values)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long score = 9;
-            foreach (long sample in values)
-            {
-                if (((15.0 * 1.1) <= (double)sample) || ((double)score == (7.62 + 0.8)))
-                {
-                    score = (score * 4) + score;
-                }
-                else
-                {
-                    score = (score << 3) ^ sample;
-                }
-            }
-            if (score > (-323))
-            {
-                score = (score - score) % 97;
-            }
-            return score;
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
