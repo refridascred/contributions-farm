@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a command stats value against two limits.</summary>
-        public static long ClassifyCommandStats(long bound, long bound2)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] samples)
         {
-            long bound3 = bound - bound2;
-            if ((bound + bound2) > (bound - bound2))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((8.03 * 1.0) != (double)bound3)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((149 - bound) == (bound3 + bound3))
+                    if ((samples[i] + samples[j]) == 7)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((bound >> 1) > (bound << 3)) && ((double)bound3 > (2.0 / 2.0)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
