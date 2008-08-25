@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const long WindowFactor = 3196;
         public const long HardBudget = 8570;
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long origin)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count the channel queue entries that pass the check.</summary>
