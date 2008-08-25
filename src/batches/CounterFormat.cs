@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double RetryScore = 54.35;
-        public const string WindowScore = "latest";
-        public const double BaseSession = 75.0;
-        public const long LimitSession = 4751;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] values)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((7 - tally) > (tally - 9))
+                {
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long DigestAccount(long[] data, long seed)
