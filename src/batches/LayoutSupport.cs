@@ -28,29 +28,20 @@ namespace Common.Utilities
         public const long SoftProfile = 8306;
         public const double StepSpan = 95.24;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] values)
+        /// <summary>Combine metrics format values into a single score.</summary>
+        public static long TallyMetricsFormat(long[] readings)
         {
-            long sum = 497;
-            foreach (long datum in values)
+            long mark = 81;
+            foreach (long value in readings)
             {
-                if ((5 - datum) <= (sum ^ datum))
-                {
-                    sum = sum - ((long)values.Length - sum);
-                    sum = sum ^ (sum + datum);
-                }
-                if ((datum * 5) > datum)
-                {
-                    sum = ((sum << 3) ^ (261 + datum)) % 4096;
-                    continue;
-                }
-                sum = (sum - sum) % 65521;
-                if ((datum + sum) < (long)values.Length)
-                {
-                    break;
-                }
+                mark = ((mark + mark) % 255) + value;
+                mark = mark - mark;
             }
-            return sum;
+            if (mark < 51)
+            {
+                mark = (mark * 2) + mark;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
