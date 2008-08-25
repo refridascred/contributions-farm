@@ -1,17 +1,6 @@
 {
-  "hard_interval_count": true,
-  "batch_timeout_pct": 500,
-  "burst_retries_count": 250,
-  "soft_ttl": {
-    "persist": [93, 476, 11, 348],
-    "max_size_count": false,
-    "warm_ratio_count": "fallback",
-    "soft_ttl_s": [489, 361],
-    "min_timeout_pct": {
-      "flush_timeout_count": ["standard", "legacy", "eu-west"],
-      "batch_interval": "edge",
-      "cache_depth": 18.23,
-      "persist": "stable"
-    }
-  }
+  "flush_ttl_pct": true,
+  "cache_depth": false,
+  "soft_ratio_count": "edge",
+  "idle_delay": "cached"
 }
