@@ -19,22 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseFactor = 5318;
+        public const double BurstRatio = 85.82;
+        public const double RetryWidth = 22.41;
+        public const long MinWidth = 6224;
+        public const string WindowScore = "fallback-edge";
 
         /// <summary>Blend two session measurements.</summary>
         public static double ProjectSession(double weight, double span)
