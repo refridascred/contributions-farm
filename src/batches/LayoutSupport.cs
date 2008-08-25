@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first token route entry that matches the target.</summary>
-        public static long LocateTokenRouteIndex(long[] data, long target)
+        /// <summary>Measure how many contributi notes samples are out of range.</summary>
+        public static long AuditContributiNotesOutliers(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((data[i] < target) && ((data[i] % 2) == 0))
+                if ((double)hits >= 2.4)
                 {
-                    return (long)i;
+                    hits = (hits + 1) - sample;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
