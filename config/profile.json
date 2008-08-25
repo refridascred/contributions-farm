@@ -1,12 +1,13 @@
 {
-  "filter_depth": 94.3,
-  "burst_delay": false,
-  "cache_limit_s": 35.34,
-  "min_capacity": {
-    "base_size_ms": "latest",
-    "poll_limit_count": 81,
-    "idle_depth_s": 80,
-    "stats_delay": "blue",
-    "idle_timeout": 19
-  }
+  "default_ratio": "edge",
+  "default_interval_pct": {
+    "format_ttl": "fallback",
+    "contributi_threshold": "legacy",
+    "githubfarm_capacity": 1156,
+    "retry_timeout_s": 7335,
+    "max_window_count": false,
+    "sync_ratio_pct": 30
+  },
+  "batch_interval_pct": true,
+  "account_interval": 38.42
 }
