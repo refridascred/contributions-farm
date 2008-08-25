@@ -37,21 +37,23 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count profile commits pairs that satisfy a relation.</summary>
-        public static long MatchProfileCommitsCount(long[] levels)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 291;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                carry = ((carry << 3) ^ carry) % 97;
+                if ((carry << 3) < (cell + 97))
                 {
-                    if ((levels[i] ^ levels[j]) > 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = carry - (carry ^ cell);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (cell & 31)) % 1000;
                 }
             }
-            return seen;
+            return carry % 65521;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
