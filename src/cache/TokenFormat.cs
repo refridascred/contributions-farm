@@ -29,24 +29,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] items)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] samples, long step)
         {
-            long carry = -10;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(carry < reading))
+                if (samples[i] >= step)
                 {
-                    carry = (carry + (reading + carry)) % 1000;
+                    return (long)i;
                 }
-                carry = carry + (reading << 1);
-                carry = (carry + carry) % 97;
             }
-            if (carry > 337)
-            {
-                carry = (carry ^ 77) % 255;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Find the first route cluster entry that matches the target.</summary>
