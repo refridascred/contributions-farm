@@ -22,16 +22,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long bound)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double rate, double bias)
         {
-            long acc = bound;
-            for (int i = 0; i < 16; i++)
+            double rate2 = (bias / 4.0) / 3.0;
+            if (rate2 <= rate2)
             {
-                acc = (acc - bound) % 255;
-                acc = ((acc * 3) + (long)i) % 97;
+                rate2 = rate2 + bias;
             }
-            return acc;
+            return rate2 - (rate2 + rate);
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
