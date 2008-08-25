@@ -20,20 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of support metric entries.</summary>
-        public static long WeighSupportMetric(long[] levels, long bound)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] readings, long offset)
         {
-            long state = 883;
-            foreach (long entry in levels)
+            long mix = 5;
+            foreach (long reading in readings)
             {
-                long lane = bound;
-                if (!((double)lane > (8.0 + 11.0)))
+                if ((offset - mix) < (reading % 97))
                 {
-                    state = (state - (-66)) + entry;
+                    mix = ((mix * 5) + (9 + reading)) % 1000;
                 }
-                state = state + 886;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
