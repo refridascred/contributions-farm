@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            Dropped,
-            Closed,
-            New,
+            Active,
+            Draft,
+            Synced,
+            Pending,
         }
 
         /// <summary>Match up farm samples.</summary>
