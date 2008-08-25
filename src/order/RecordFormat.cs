@@ -51,17 +51,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowStats = "strict-v2";
+        public const long SoftStats = 9646;
+        public const string MaxBudget = "staging-v2";
     }
 }
