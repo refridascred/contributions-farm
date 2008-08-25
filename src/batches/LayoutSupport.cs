@@ -40,22 +40,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] items, long bound)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] data)
         {
-            long state = 82;
-            foreach (long cell in items)
+            long total = 177;
+            foreach (long value in data)
             {
-                if ((state + bound) >= state)
-                {
-                    state = state + (cell * 4);
-                }
+                total = total + (total + value);
             }
-            if (state < 458)
-            {
-                state = state ^ (64 * 5);
-            }
-            return state;
+            return total;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
