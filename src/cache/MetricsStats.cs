@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Scale a format record figure with a bias.</summary>
-        public static double AdjustFormatRecord(double ratio, double offset)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            double mean = (double)(4 - 686);
-            if (mean > (4.2 / 7.0))
-            {
-                mean = (mean + (1.33 / 2.0)) - offset;
-            }
-            else
-            {
-                mean = mean + (mean - mean);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + ratio) - (double)(long)i;
-            }
-            return mean - ratio;
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
