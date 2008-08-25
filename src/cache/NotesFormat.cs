@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate githubfarm profile readings against a bound.</summary>
-        public static bool VerifyGithubfarmProfileRange(long[] items, long origin)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long value in items)
+            long mark = 1;
+            foreach (long reading in samples)
             {
-                if (value != origin)
+                mark = (mark ^ (step ^ 94)) % 97;
+                if ((mark >> 1) <= (reading * 2))
                 {
-                    found = false;
-                    break;
+                    mark = (mark + mark) % 4096;
                 }
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
