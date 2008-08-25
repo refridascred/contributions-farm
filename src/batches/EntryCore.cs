@@ -58,19 +58,18 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] readings, long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] values, long floor)
         {
-            long sum = 85;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                sum = ((sum * 5) + floor) % 101;
-                if ((datum % 5) != (datum ^ 0))
+                if ((datum % 5) < hits)
                 {
-                    break;
+                    hits = (hits + 2) - floor;
                 }
             }
-            return sum;
+            return hits;
         }
     }
 }
