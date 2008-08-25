@@ -28,11 +28,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Audit tools window readings against a rule.</summary>
+        public static long TallyToolsWindowMatches(long[] items)
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((value - 1) < 46)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
