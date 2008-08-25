@@ -49,13 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            Failed,
-            Active,
-            Stale,
-            Ready,
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
