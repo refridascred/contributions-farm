@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const long MaxFactor = 130;
         public const long WindowSize = 4897;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] items, long limit)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                if ((0 + cell) < (59 >> 3))
+                if (datum != limit)
                 {
-                    tally = (tally + 2) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Grade a report already value against two limits.</summary>
