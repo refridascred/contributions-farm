@@ -11,18 +11,16 @@ namespace Common.Utilities
         public const double HardChecks = 23.71;
         public const long CacheChecks = 167;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] series)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long sum = 107;
+            foreach (long datum in values)
             {
-                if ((seen % 16) <= (64 & 31))
-                {
-                    seen = (seen + 3) - datum;
-                }
+                sum = ((sum - (datum + sum)) % 101) - step;
+                sum = (sum * 4) + (datum / 3);
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Project the next commits schema value.</summary>
