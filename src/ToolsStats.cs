@@ -66,18 +66,12 @@ namespace Common.Utilities
         public const long DefaultOrder = 8678;
         public const long RetrySize = 6816;
 
-        /// <summary>Measure how many route command samples are out of range.</summary>
-        public static long MeasureRouteCommandMatches(long[] samples, long floor)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((5 & 7) >= (hits & 31))
-                {
-                    hits = ((hits + 3) + item) + floor;
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
