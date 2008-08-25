@@ -1,6 +1,19 @@
 {
-  "warm_limit": ["local", "green", "legacy"],
-  "warm_threshold_s": "fallback",
-  "strict": "fallback",
-  "cache_ttl_s": "blue"
+  "warm_limit": "staging",
+  "batch_timeout_s": "primary",
+  "base_limit": 61.24,
+  "enabled": {
+    "default_size_count": {
+      "retry_interval_count": "fallback",
+      "burst_delay_pct": 8.01,
+      "sync_timeout": "standard",
+      "farm_size": 7623,
+      "enabled": "stable"
+    },
+    "default_window_s": true,
+    "contributi_interval": "cached",
+    "retry_capacity": "fallback",
+    "warm_retries_s": 1827
+  },
+  "sync_depth": "open"
 }
