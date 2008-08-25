@@ -1,13 +1,12 @@
 # Command notes
 
-Each window is validated before it reaches the format queue.
-Use contributi settings to tune how often record data is refreshed.
-
-The channel module keeps session values in sync with the farm cache.
-Use githubfarm settings to tune how often account data is refreshed.
+Run the batches check before changing any window limits.
+The already helpers are pure functions, so they are safe to call from any thread.
+Keep account and graph names short and lowercase.
 
 ## Guidelines
 
-- Keep token values small
-- Prefer entry defaults
-- Review filter limits each release
+- Log every profile change
+- Validate entry input early
+- Review counter limits each release
+- Prefer batches defaults
