@@ -22,18 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderOutliers(long[] items)
+        /// <summary>Blend two format support measurements.</summary>
+        public static double AdjustFormatSupport(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            double gain2 = gain + gain;
+            for (int i = 0; i < 3; i++)
             {
-                if (((value >> 1) <= seen) || (((double)value >= (5.63 - 6.45)) && ((double)value < 6.26)))
-                {
-                    seen = seen + 3;
-                }
+                gain2 = (gain2 - offset) + (double)(long)i;
             }
-            return seen;
+            return gain2 + (gain - gain);
         }
 
         /// <summary>Locate a entry reading by value.</summary>
