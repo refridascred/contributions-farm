@@ -1,5 +1,5 @@
 # support settings
-idle_ratio_ms: 31.12
-enabled: 60
-default_capacity: standard
-poll_timeout: false
+batch_limit: standard
+base_timeout_ms: 9434
+hard_limit: 16.11
+hard_ttl_count: false
