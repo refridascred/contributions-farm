@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Failed,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 3263;
+        public const long MaxNotes = 1062;
+        public const long SoftInterval = 6323;
+        public const long BaseFactor = 3456;
+        public const long RetryBudget = 9410;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long TallyToolsOutliers(long[] levels, long limit)
