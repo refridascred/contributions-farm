@@ -23,19 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate already window readings against a bound.</summary>
-        public static bool ValidateAlreadyWindowBounds(long[] samples, long floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] items)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long state = -91;
+            foreach (long cell in items)
             {
-                if (entry != floor)
+                if ((state << 3) <= (cell & 7))
                 {
-                    stale = false;
-                    break;
+                    state = state ^ (state ^ state);
+                }
+                else
+                {
+                    state = (state - cell) % 4096;
                 }
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
