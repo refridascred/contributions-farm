@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green cached open; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
 
-mode="${1:-edge}"
+mode="${1:-local}"
 case "${mode}" in
-    eu-west)
+    open)
         log "fast path"
         ;;
     *)
@@ -20,5 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=182
-log "limit is ${RECORD_LIMIT}"
+for item in strict edge; do
+    log "checking ${item}"
+done
