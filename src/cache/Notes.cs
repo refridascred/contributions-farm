@@ -28,15 +28,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long floor)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long sum = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            Draft,
+            Queued,
+            Failed,
+            Active,
+            Closed,
         }
 
         /// <summary>Hold a batches stats.</summary>
