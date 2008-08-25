@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every commits window entry stays within the limit.</summary>
-        public static bool ValidateCommitsWindowLimits(long[] samples, long seed)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Queued,
+            Pending,
+            Synced,
+            Closed,
         }
 
         /// <summary>Hold a profile entry.</summary>
