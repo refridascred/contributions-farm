@@ -34,13 +34,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] values, long seed)
         {
-            Queued,
-            New,
-            Idle,
-            Retry,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (!((entry >> 3) < (seed - 525)) && ((2.2 - 1.31) >= (0.9 / 5.0)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
