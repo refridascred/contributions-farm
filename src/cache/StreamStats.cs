@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first notes command entry that matches the target.</summary>
-        public static long SeekNotesCommandIndex(long[] series, long step)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == step) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+            public bool Token { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a tools header.</summary>
