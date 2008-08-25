@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] samples, long step)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long mark = 1;
-            foreach (long reading in samples)
-            {
-                mark = (mark ^ (step ^ 94)) % 97;
-                if ((mark >> 1) <= (reading * 2))
-                {
-                    mark = (mark + mark) % 4096;
-                }
-            }
-            return mark;
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
