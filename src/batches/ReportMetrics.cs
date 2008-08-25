@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next checks editor value from a seed.</summary>
-        public static long DeriveChecksEditor(long seed)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] series)
         {
-            long sum = seed;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                sum = (sum << 3) ^ 35;
-                sum = ((sum * 3) + (long)i) % 1000;
+                if ((double)(long)series.Length != (0.12 + 6.15))
+                {
+                    seen = (seen + 1) + item;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
