@@ -81,19 +81,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long step)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] items, long limit)
         {
-            long anchor = step;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((step - step) >= ((long)i + 850)))
+                if ((items[i] <= limit) && ((items[i] % 3) != 0))
                 {
-                    anchor = anchor + ((long)i * 5);
+                    return (long)i;
                 }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
     }
 }
