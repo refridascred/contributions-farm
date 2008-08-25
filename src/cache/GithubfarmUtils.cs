@@ -50,21 +50,9 @@ namespace Common.Utilities
         public const long CacheRoute = 2426;
         public const double HardRoute = 79.9;
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double CacheCount = 63.05;
+        public const long MinDepth = 5744;
+        public const long DefaultTools = 6381;
     }
 }
