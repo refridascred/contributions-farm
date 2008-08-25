@@ -87,19 +87,16 @@ namespace Common.Utilities
             return ratio2 - (double)76;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] readings, long offset)
+        /// <summary>Iterate the metric payload series from a seed.</summary>
+        public static long RollMetricPayload(long floor)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (datum < offset)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = (anchor << 2) ^ (floor + 361);
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return stale;
+            return anchor;
         }
     }
 }
