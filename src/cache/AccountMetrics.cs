@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] samples)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long anchor = -2;
-            foreach (long cell in samples)
-            {
-                if (!((2.3 + 10.0) <= (double)anchor))
-                {
-                    anchor = (anchor - (anchor - anchor)) % 4096;
-                }
-                anchor = anchor + (cell + cell);
-            }
-            return anchor;
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a schema info.</summary>
