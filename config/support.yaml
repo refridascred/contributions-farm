@@ -1,10 +1,7 @@
 # support settings
-sync_timeout_count: false
-cache_interval:
-  default_ttl_pct: 850
-  checks_ttl: strict
-  token_window: 930
-  flush_size: 250
-  enabled: 18
-  soft_ratio_ms: 3915
-enabled: false
+dry_run: 100
+max_threshold_count: legacy
+batch_ttl_ms: cached
+soft_threshold_count: 25
+burst_limit_pct: false
+compress: 250
