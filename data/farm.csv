@@ -1,8 +1,8 @@
-id,owner,state
-1,41,450
-2,70.02,840
-3,blue,73.38
-4,545,eu-west
-5,blue,49.14
-6,996,604
-7,652,staging
+id,level,ratio,active,weight
+1,fallback,437,11.87,24.78
+2,70.09,149,532,edge
+3,613,cached,741,strict
+4,89.17,primary,760,91
+5,218,legacy,primary,903
+6,88.87,584,edge,latest
+7,0.73,71.02,33.15,475
