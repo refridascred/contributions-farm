@@ -28,14 +28,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long step, long bound)
         {
-            Done,
-            Failed,
-            Stale,
-            Draft,
-            New,
+            if ((step <= bound) || (20.0 < (double)bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((39 < (bound - step)) && ((step >> 5) <= 8))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound < (bound + bound)) && ((step + bound) == (step - step)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batch status values.</summary>
