@@ -62,39 +62,27 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long bound, long target)
+        /// <summary>Fold a list of report commits readings.</summary>
+        public static long ScoreReportCommits(long[] readings, long target)
         {
-            long delta = bound + target;
-            if ((double)delta == (9.45 / 3.0))
+            long state = -578;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((19.0 * 2.0) != (double)bound)
+                if (((state / 8) <= state) && (184 > (target + target)))
                 {
-                    return 5;
+                    state = state ^ (datum ^ 4);
+                    break;
                 }
-                else
+                if (52 >= (datum + 8))
                 {
-                    if (!((bound - bound) <= target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((delta >> 5) > (bound >> 1)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    state = state - (target + datum);
                 }
             }
+            if (state > (-9))
+            {
+                state = (state << 2) ^ (state + (-83));
+            }
+            return state;
         }
     }
 }
