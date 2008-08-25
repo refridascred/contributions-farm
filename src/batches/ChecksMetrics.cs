@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitRatio = 5564;
-        public const double RetryLevel = 78.61;
-        public const long HardFactor = 5099;
-        public const long StepFactor = 6387;
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            New,
+            Locked,
+            Stale,
+            Closed,
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
