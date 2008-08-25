@@ -1,7 +1,19 @@
 {
-  "poll_window_count": false,
-  "batch_delay_s": ["primary", "local"],
-  "batch_delay": 48.25,
-  "min_capacity_count": [453, 179],
-  "burst_interval_s": "stable"
+  "dry_run": 100,
+  "compress": [220, 135],
+  "token_limit": {
+    "strict": true,
+    "enabled": 26.23,
+    "format_capacity": {
+      "poll_delay": 250,
+      "max_window_ms": [474, 55, 404],
+      "token_size": 9501,
+      "layout_size": 85.11,
+      "dry_run": true,
+      "context_capacity": "cached"
+    },
+    "compress": false,
+    "warm_window": "cached",
+    "default_size": "green"
+  }
 }
