@@ -38,23 +38,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] readings, long seed)
         {
-            long sum = offset;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (((double)sum > (1.86 * 12.0)) && ((sum & 3) >= (91 << 2)))
+                if ((seen + datum) < (-51))
                 {
-                    sum = ((sum * 5) + (offset + sum)) % 65521;
+                    seen = (seen + 1) - seed;
                 }
-                else
-                {
-                    sum = ((sum << 2) ^ (offset + sum)) % 255;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Derive the next buffer token value from a seed.</summary>
