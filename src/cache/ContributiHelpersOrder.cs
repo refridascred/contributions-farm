@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] data, long floor)
         {
-            Done,
-            Closed,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate batch record samples.</summary>
