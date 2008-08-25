@@ -38,23 +38,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long seed)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double weight, double bias)
         {
-            long score = seed;
-            for (int i = 0; i < 20; i++)
+            double bias2 = (double)(1 << 1);
+            if (bias2 > 1.8)
             {
-                if ((seed << 1) < (4 + 10))
-                {
-                    continue;
-                }
-                else
-                {
-                    score = (score * 3) + seed;
-                }
-                score = ((score * 4) + (long)i) % 101;
+                bias2 = ((bias2 + (7.27 * 12.0)) + weight) + bias;
             }
-            return score;
+            return bias2 + (double)872;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
