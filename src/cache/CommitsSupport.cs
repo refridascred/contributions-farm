@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] samples, long bound)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (samples[i] <= bound)
+                if ((seen % 16) <= (64 & 31))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - datum;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Project the next commits schema value.</summary>
