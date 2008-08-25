@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksBounds(long[] items, long origin)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (cell > origin)
+                if ((count + value) >= (value + value))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) + limit;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Accumulate profile samples.</summary>
