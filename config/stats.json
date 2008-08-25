@@ -1,7 +1,13 @@
 {
-  "commits_size": "strict",
-  "support_delay": 9966,
-  "hard_ratio_pct": "standard",
-  "compress": "cached",
-  "base_ratio_ms": 60
+  "layout_interval": 72.4,
+  "enabled": {
+    "support_delay": 3112,
+    "poll_threshold": false,
+    "burst_window_ms": "staging",
+    "entry_timeout": 500,
+    "route_threshold": "edge"
+  },
+  "checks_size": 18,
+  "cache_ttl_ms": true,
+  "route_retries": [355, 155, 492]
 }
