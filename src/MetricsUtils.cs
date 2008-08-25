@@ -53,14 +53,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long target, long offset)
         {
-            Stale,
-            Done,
-            Ready,
-            Dropped,
-            Active,
+            long step = target ^ offset;
+            if ((step & 15) >= offset)
+            {
+                return 2;
+            }
+            else
+            {
+                if (target < (offset ^ offset))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset ^ step) > (offset - offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target & 255) <= offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
