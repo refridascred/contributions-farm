@@ -54,38 +54,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long seed, long offset)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            if (seed <= (seed ^ seed))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((14.0 - 1.9) > (double)seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset % 5) != (offset * 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (5 <= (offset + offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Active,
+            Retry,
+            Closed,
         }
 
         /// <summary>Describe the queue class values.</summary>
