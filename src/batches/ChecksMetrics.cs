@@ -59,12 +59,22 @@ namespace Common.Utilities
         public const string BaseBudget = "alpha";
         public const long DefaultRoute = 9368;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 8057;
-        public const long IdleTimeout = 7243;
-        public const long WindowFactor = 7161;
-        public const double MaxAlready = 51.55;
-        public const string DefaultTimeout = "cached-1";
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of report commits readings.</summary>
         public static long ScoreReportCommits(long[] readings, long target)
