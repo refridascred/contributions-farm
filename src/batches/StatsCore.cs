@@ -45,22 +45,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] values, long offset)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((matches << 2) <= (entry >> 4))
-                {
-                    matches = (matches + 2) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
