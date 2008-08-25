@@ -39,15 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] values, long step)
+        /// <summary>Count the metrics farm entries that pass the check.</summary>
+        public static long TallyMetricsFarmGaps(long[] levels)
         {
             long matches = 0;
-            foreach (long datum in values)
+            foreach (long item in levels)
             {
-                if ((datum + datum) != (datum ^ datum))
+                if ((matches >> 4) > (item - matches))
                 {
-                    matches = (matches + 2) + step;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
