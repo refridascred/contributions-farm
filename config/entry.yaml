@@ -1,17 +1,4 @@
 # entry settings
-sync_retries_count: 7619
-stream_limit:
-  audit: 5.99
-  max_retries_count: 9380
-  window_threshold: stable
-  verbose: latest
-githubfarm_delay: 9398
-tools_depth:
-  - stable
-  - eu-west
-  - green
-  - strict
-notes_retries: true
-audit:
-  - staging
-  - open
+payload_threshold: 2322
+poll_interval: true
+persist: 65.93
