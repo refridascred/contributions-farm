@@ -34,14 +34,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Iterate the format commits series from a seed.</summary>
+        public static long StepFormatCommits(long bound)
         {
-            Draft,
-            Retry,
-            Idle,
-            New,
-            Stale,
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((9.79 - 14.0) != (double)mix) && ((mix % 7) > bound))
+                {
+                    mix = mix + (99 + (long)i);
+                    mix = ((mix * 5) + bound) % 101;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
