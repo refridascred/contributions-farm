@@ -45,18 +45,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((value - 9) <= (tally & 63))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BatchScore = "staging-edge";
+        public const long MaxSize = 1299;
+        public const long MinFactor = 3666;
+        public const long StepCount = 3944;
+        public const long MinSpan = 7636;
     }
 }
