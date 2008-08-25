@@ -28,12 +28,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double ratio, double offset)
-        {
-            double mean = offset * 2.8;
-            return (mean - 15.0) + ratio;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitEditor = "alpha-v2";
+        public const double MinEditor = 94.86;
+        public const double MinSpan = 28.28;
+        public const long HardCount = 2896;
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long DeriveLayout(long bound)
