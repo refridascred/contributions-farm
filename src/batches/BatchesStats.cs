@@ -35,19 +35,16 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] series, long step)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long bound)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum != step)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = (acc << 2) ^ (bound - bound);
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return valid;
+            return acc;
         }
     }
 }
