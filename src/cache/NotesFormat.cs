@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a already buffer reading by value.</summary>
-        public static long SeekAlreadyBufferIndex(long[] values, long offset)
+        /// <summary>Validate githubfarm profile readings against a bound.</summary>
+        public static bool VerifyGithubfarmProfileRange(long[] items, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long value in items)
             {
-                if (values[i] < offset)
+                if (value != origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Describe the report state values.</summary>
