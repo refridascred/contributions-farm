@@ -51,19 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order format entry stays within the limit.</summary>
-        public static bool CheckOrderFormatBounds(long[] samples, long offset)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long floor)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long result = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (sample < offset)
-                {
-                    valid = false;
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return valid;
+            return result;
         }
     }
 }
