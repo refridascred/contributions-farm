@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportGaps(long[] items, long step)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((9.6 - 8.69) < (double)step)
+                if ((reading <= (hits % 2)) || ((origin % 8) > (9 / 7)))
                 {
-                    count = (count + 3) - reading;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
