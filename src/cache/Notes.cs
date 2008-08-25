@@ -28,18 +28,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] levels)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long floor)
         {
-            long result = 77;
-            foreach (long entry in levels)
+            long sum = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((0.2 * 1.0) < (double)result)
-                {
-                    result = ((result * 4) + (result & 255)) ^ entry;
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return result % 4096;
+            return sum;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
