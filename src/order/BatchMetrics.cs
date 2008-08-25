@@ -36,15 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long SeriesContext(long offset)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] items, long offset)
         {
-            long total = offset;
-            for (int i = 0; i < 24; i++)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                total = ((total * 2) + (long)i) % 97;
+                if (cell >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Digest a series of support entries.</summary>
