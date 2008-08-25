@@ -17,14 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Measure how many queue tools samples are out of range.</summary>
+        public static long CountQueueToolsMatches(long[] readings)
         {
-            Paused,
-            Active,
-            Queued,
-            Locked,
-            Closed,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((value / 6) >= (hits % 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
