@@ -76,27 +76,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of report commits readings.</summary>
-        public static long ScoreReportCommits(long[] readings, long target)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long bound)
         {
-            long state = -578;
-            foreach (long datum in readings)
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (((state / 8) <= state) && (184 > (target + target)))
-                {
-                    state = state ^ (datum ^ 4);
-                    break;
-                }
-                if (52 >= (datum + 8))
-                {
-                    state = state - (target + datum);
-                }
+                sum = (sum ^ (38 & 31)) % 1000;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            if (state > (-9))
-            {
-                state = (state << 2) ^ (state + (-83));
-            }
-            return state;
+            return sum;
         }
     }
 }
