@@ -14,16 +14,10 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Blend two format support measurements.</summary>
-        public static double AdjustFormatSupport(double gain, double offset)
-        {
-            double gain2 = gain + gain;
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 - offset) + (double)(long)i;
-            }
-            return gain2 + (gain - gain);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultTimeout = 3960;
+        public const long WindowTimeout = 3572;
+        public const double WindowDepth = 81.97;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long CountBatchMatches(long[] readings)
