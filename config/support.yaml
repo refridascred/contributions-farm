@@ -1,6 +1,10 @@
 # support settings
-default_limit: fallback
-sync_ratio_ms: cached
-support_ttl: true
-sync_delay_pct: strict
-verbose: stable
+base_depth_s: 10
+enabled:
+  - 136
+  - 471
+  - 293
+max_interval_pct: edge
+persist: primary
+window_ratio: 6.19
+readonly: strict
