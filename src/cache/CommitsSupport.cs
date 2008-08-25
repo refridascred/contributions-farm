@@ -23,13 +23,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] items)
         {
-            Dropped,
-            Failed,
-            Locked,
-            Paused,
+            long acc = -8;
+            foreach (long value in items)
+            {
+                acc = (((acc * 5) + (10 + acc)) % 255) - value;
+                acc = (acc - (acc / 7)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Project the next commits schema value.</summary>
