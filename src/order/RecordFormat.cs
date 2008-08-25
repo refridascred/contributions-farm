@@ -39,12 +39,19 @@ namespace Common.Utilities
         public const double MinRatio = 15.81;
         public const long StepSupport = 4723;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleCount = 1984;
-        public const long BurstFactor = 8667;
-        public const long MinWidth = 5815;
-        public const long BatchScore = 6853;
-        public const long LimitBatch = 2580;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor << 3) ^ (anchor + (long)i)) % 97;
+                anchor = (anchor ^ anchor) % 97;
+                anchor = (anchor << 2) ^ ((long)i + floor);
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool GuardToolsLimits(long[] values, long origin)
