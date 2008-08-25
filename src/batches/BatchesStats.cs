@@ -41,17 +41,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= origin) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 7049;
+        public const long StepBuffer = 9144;
+        public const long BurstBuffer = 3456;
     }
 }
