@@ -16,12 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] data, long step)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] values, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] > step)
+                if (values[i] == seed)
                 {
                     return (long)i;
                 }
