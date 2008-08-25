@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] readings, long offset)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public double Mode { get; set; }
+            public bool Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Digest a series of entry session entries.</summary>
