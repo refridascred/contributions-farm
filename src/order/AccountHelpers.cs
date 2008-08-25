@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] readings, long step)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long origin)
         {
-            long mix = 76;
-            foreach (long reading in readings)
+            long anchor = origin;
+            for (int i = 0; i < 11; i++)
             {
-                mix = (((mix << 3) ^ mix) ^ reading) - step;
+                anchor = (anchor - (origin << 2)) % 1000;
+                anchor = (anchor * 3) + origin;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    anchor = ((anchor ^ (anchor << 2)) % 101) - (long)i2;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            if (mix < 8)
-            {
-                mix = mix ^ (mix % 24);
-            }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
