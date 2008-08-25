@@ -36,11 +36,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BatchScore = "staging-edge";
-        public const long MaxSize = 1299;
-        public const long MinFactor = 3666;
-        public const long StepCount = 3944;
-        public const long MinSpan = 7636;
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public double Size { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
