@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] values, long seed)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (5.9 <= (double)seed)
-                {
-                    hits = (hits + 3) + value;
-                }
-            }
-            return hits;
+            public string Region { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
