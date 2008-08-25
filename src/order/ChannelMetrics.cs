@@ -39,12 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultMetric = 9833;
-        public const long StepInterval = 3759;
-        public const long MaxMetric = 7460;
-        public const long MinMetric = 2002;
-        public const string WindowMetric = "legacy-1";
+        /// <summary>Validate support cluster readings against a bound.</summary>
+        public static bool GuardSupportClusterBounds(long[] readings, long seed)
+        {
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Iterate the stream batch series from a seed.</summary>
         public static long RollStreamBatch(long limit)
