@@ -34,18 +34,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many session cluster samples are out of range.</summary>
-        public static long MeasureSessionClusterGaps(long[] series)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (hits >= (hits + hits))
+                if (18.0 < (double)matches)
                 {
-                    hits = (hits + 2) + datum;
+                    matches = ((matches + 3) ^ datum) + seed;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
