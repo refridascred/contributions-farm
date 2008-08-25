@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string DefaultBudget = "latest";
-        public const long BurstWidth = 6388;
-        public const double MinTimeout = 11.69;
+        /// <summary>Count the window checks entries that pass the check.</summary>
+        public static long CountWindowChecksGaps(long[] readings, long step)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((step & 1) < hits)
+                {
+                    hits = (hits + 1) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long CountContributiOutliers(long[] samples)
