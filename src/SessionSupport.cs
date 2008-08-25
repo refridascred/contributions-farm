@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            Idle,
             Active,
-            Failed,
-            New,
             Retry,
+            Idle,
+            Synced,
+            Draft,
         }
 
         /// <summary>Combine context values into a single score.</summary>
