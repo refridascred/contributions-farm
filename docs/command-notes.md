@@ -1,16 +1,11 @@
 # Command notes
 
-The already module keeps batches values in sync with the account cache.
-Run the githubfarm check before changing any route limits.
-Keep record and filter names short and lowercase.
-
-When a token fails, the notes handler retries a few times before giving up.
-Run the stream check before changing any session limits.
-A layout that stays idle for too long is moved to the checks list.
+The payload module keeps window values in sync with the graph cache.
+The schema module keeps schema values in sync with the schema cache.
+When a contributi fails, the counter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every entry change
-- Review order limits each release
-- Validate metrics input early
-- Document new stream fields
+- Keep batches values small
+- Document new layout fields
+- Validate schema input early
