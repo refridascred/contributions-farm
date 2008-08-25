@@ -26,17 +26,18 @@ namespace Common.Utilities
         public const long MinWidth = 6224;
         public const string WindowScore = "fallback-edge";
 
-        /// <summary>Locate a cache support reading by value.</summary>
-        public static long LookupCacheSupportIndex(long[] values, long target)
+        /// <summary>Count the buffer notes entries that pass the check.</summary>
+        public static long CountBufferNotesOutliers(long[] samples, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((values[i] >= target) && ((values[i] % 3) != 0))
+                if ((limit % 7) < (value - 60))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
