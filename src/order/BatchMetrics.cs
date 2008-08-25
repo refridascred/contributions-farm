@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheFormat = "stable-v2";
-        public const long SoftFactor = 9986;
-        public const long BurstWidth = 9515;
-        public const string CacheScore = "cached-1";
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (((-9) < count) && ((count - count) < (item % 60)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long StepProfile = 7110;
