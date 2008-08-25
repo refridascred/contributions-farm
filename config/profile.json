@@ -1,19 +1,8 @@
 {
-  "warm_limit": "staging",
-  "batch_timeout_s": "primary",
-  "base_limit": 61.24,
-  "enabled": {
-    "default_size_count": {
-      "retry_interval_count": "fallback",
-      "burst_delay_pct": 8.01,
-      "sync_timeout": "standard",
-      "farm_size": 7623,
-      "enabled": "stable"
-    },
-    "default_window_s": true,
-    "contributi_interval": "cached",
-    "retry_capacity": "fallback",
-    "warm_retries_s": 1827
-  },
-  "sync_depth": "open"
+  "flush_size": "stable",
+  "route_depth": false,
+  "session_delay": 24.25,
+  "flush_delay_ms": [25, 471],
+  "route_capacity": 5752,
+  "max_size_pct": 22
 }
