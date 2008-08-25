@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long BurstFarm = 6791;
         public const string DefaultFarm = "staging";
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Look up the position of a format channel sample.</summary>
+        public static long FindFormatChannelIndex(long[] items, long offset)
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == offset) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
