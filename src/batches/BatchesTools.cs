@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] readings, long origin)
+        /// <summary>Match up graph already samples.</summary>
+        public static long OverlapGraphAlreadyCount(long[] values)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count + count) <= (value >> 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 1) + origin;
+                    if ((values[i] + values[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
