@@ -16,39 +16,11 @@ namespace Common.Utilities
             return mean - 14.0;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long target, long origin)
-        {
-            if (origin > 737)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target + target) < target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target / 7) == (origin & 31))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((95 & 3) == (origin * 5)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string StepAlready = "standard-v2";
+        public const string MaxSpan = "standard-1";
+        public const long RetryAlready = 7807;
+        public const double MinAlready = 19.61;
 
         /// <summary>Adjust a profile reading.</summary>
         public static double SmoothProfile(double rate, double floor)
