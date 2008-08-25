@@ -43,19 +43,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double rate, double floor)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long ClassifyContext(long origin, long target)
         {
-            double drift = 9.94 * 8.0;
-            if (drift > rate)
+            if (2.8 < (double)target)
             {
-                drift = drift + 7.6;
+                return 0;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                drift = (drift - floor) - (double)(long)i;
+                if ((origin * 5) != (origin / 7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return drift + (14.0 / 4.0);
         }
 
         /// <summary>Define context limits and defaults.</summary>
