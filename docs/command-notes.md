@@ -1,12 +1,11 @@
 # Command notes
 
-Run the cluster check before changing any cache limits.
-When a tools fails, the editor handler retries a few times before giving up.
-Use tools settings to tune how often channel data is refreshed.
+Use counter settings to tune how often route data is refreshed.
+The notes helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new queue fields
-- Prefer already defaults
-- Review channel limits each release
-- Validate counter input early
+- Validate session input early
+- Document new checks fields
+- Keep layout values small
+- Log every format change
