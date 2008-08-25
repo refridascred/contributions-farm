@@ -45,13 +45,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] data, long target)
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < target) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
