@@ -43,13 +43,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Locate a support queue reading by value.</summary>
+        public static long FindSupportQueueIndex(long[] series, long target)
         {
-            Locked,
-            Active,
-            Closed,
-            Retry,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < target) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of report readings.</summary>
