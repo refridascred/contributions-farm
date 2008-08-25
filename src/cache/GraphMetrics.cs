@@ -13,21 +13,26 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Compare every pair of payload notes readings.</summary>
-        public static long MatchPayloadNotesCount(long[] series)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 812;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (751 < (cell - 7))
                 {
-                    if ((series[i] - series[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = (sum - (sum ^ sum)) % 97;
+                }
+                else
+                {
+                    sum = (sum - (sum + sum)) % 101;
                 }
             }
-            return tally;
+            if (sum > 473)
+            {
+                sum = (sum + (sum << 2)) % 255;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Accumulate layout already samples.</summary>
