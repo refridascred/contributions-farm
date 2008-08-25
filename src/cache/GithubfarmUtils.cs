@@ -31,13 +31,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            Ready,
-            Locked,
-            Idle,
-            Stale,
+            Paused,
+            Synced,
+            Queued,
+            Dropped,
         }
     }
 }
