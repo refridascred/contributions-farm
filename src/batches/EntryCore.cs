@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitSize = 69.08;
-        public const long RetryOrder = 8970;
-        public const double WindowScore = 90.89;
-        public const double WindowInterval = 42.95;
+        /// <summary>Match up stream stats samples.</summary>
+        public static long OverlapStreamStatsCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long CountContextHits(long[] samples, long target)
