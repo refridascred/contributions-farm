@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string WindowDepth = "legacy-edge";
-        public const long DefaultCommits = 9541;
-        public const long MinDepth = 1603;
-        public const long MaxCount = 6607;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitFactor = 3.63;
+        public const string BurstSession = "open";
+        public const string StepSession = "latest";
+        public const string SoftSession = "local";
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long BucketGithubfarm(long step, long target)
