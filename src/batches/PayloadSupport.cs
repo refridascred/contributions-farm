@@ -40,16 +40,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a cache window counter forward.</summary>
-        public static long DeriveCacheWindow(long step)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double gain, double offset)
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
+            double load = 3.49 - (double)7;
+            if (load <= gain)
             {
-                acc = ((acc << 2) ^ (step + 57)) % 65521;
-                acc = ((acc * 5) + (long)i) % 4093;
+                load = (load + (double)156) - offset;
             }
-            return acc;
+            return load + (gain * 5.6);
         }
     }
 }
