@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandHits(long[] items)
+        /// <summary>Look up the position of a layout queue sample.</summary>
+        public static long LookupLayoutQueueIndex(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!!(count < (reading - count)))
+                if ((values[i] > offset) && ((values[i] % 3) != 0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
