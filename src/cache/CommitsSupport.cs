@@ -96,12 +96,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double scale, double span)
         {
-            Active,
-            Done,
-            Pending,
+            double weight = scale;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + 0.69) + (double)(long)i;
+            }
+            return weight + (4.0 + span);
         }
     }
 }
