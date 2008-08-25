@@ -65,12 +65,19 @@ namespace Common.Utilities
         public const long BurstFactor = 9115;
         public const string MaxMetric = "fallback";
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double weight, double span)
         {
-            public string Flag { get; set; } = "";
-            public string Label { get; set; } = "";
-            public double Level { get; set; }
+            double scale = weight;
+            if (scale < (span * 13.0))
+            {
+                scale = scale - span;
+            }
+            else
+            {
+                scale = scale + (scale + 2.2);
+            }
+            return scale - weight;
         }
     }
 }
