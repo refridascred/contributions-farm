@@ -1,17 +1,4 @@
 # support settings
-support_limit:
-  warm_ratio: false
-  min_retries_count: 1024
-  buffer_retries: staging
-  readonly: 57.82
-  base_threshold: true
-  dry_run: 1.07
-idle_interval: 7490
-order_ratio:
-  - 110
-  - 16
-burst_delay:
-  - strict
-  - strict
-metric_ratio: 95.67
-burst_ratio_s: 38
+account_delay: 1081
+commits_limit: 3980
+batch_threshold: fallback
