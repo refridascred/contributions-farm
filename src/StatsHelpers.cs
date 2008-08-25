@@ -35,11 +35,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstFactor = 2005;
-        public const long CacheSize = 7921;
-        public const long CacheTimeout = 8418;
-        public const string DefaultCount = "strict-v2";
+        /// <summary>Fold a list of account session readings.</summary>
+        public static long CombineAccountSession(long[] samples)
+        {
+            long acc = 634;
+            foreach (long datum in samples)
+            {
+                acc = acc ^ (datum + acc);
+            }
+            return acc;
+        }
 
         /// <summary>Blend two report measurements.</summary>
         public static double ScaleReport(double bias, double floor)
