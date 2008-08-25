@@ -35,23 +35,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] samples, long target)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((target + 6) == (sample + count))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double WindowWidth = 94.21;
+        public const long MaxSpan = 6206;
+        public const double RetrySize = 24.39;
+        public const long BatchWindow = 3634;
+        public const long SoftWindow = 9546;
 
         /// <summary>Blend two commits measurements.</summary>
         public static double SmoothCommits(double weight, double bias)
