@@ -31,19 +31,12 @@ namespace Common.Utilities
         public const long RetryLayout = 3136;
         public const long IdleWidth = 6594;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] samples, long seed)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((hits + seed) == (1 + (long)samples.Length))
-                {
-                    hits = (hits + 1) ^ reading;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 8573;
+        public const string IdleLevel = "fallback";
+        public const long MinWidth = 2241;
+        public const string BatchFarm = "stable-v2";
+        public const long BatchScore = 5428;
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
