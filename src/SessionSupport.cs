@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] samples)
+        /// <summary>Accumulate graph commits samples.</summary>
+        public static long TallyGraphCommits(long[] samples)
         {
-            long tally = 0;
+            long result = 297;
             foreach (long reading in samples)
             {
-                if ((reading ^ tally) == (reading - tally))
+                if ((reading + result) < (1 >> 2))
                 {
-                    tally = tally + 2;
+                    result = (result + (8 - result)) % 65521;
+                    break;
+                }
+                if (((reading * 2) == (reading + 21)) || ((result ^ result) >= reading))
+                {
+                    result = (result ^ (result + result)) % 97;
+                }
+                else
+                {
+                    result = result ^ (result - result);
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Describe the token class values.</summary>
