@@ -14,11 +14,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 3759;
-        public const long RetryFactor = 7536;
-        public const string BurstRatio = "cached-v2";
-        public const long HardProfile = 2647;
+        /// <summary>Audit command notes readings against a rule.</summary>
+        public static long TallyCommandNotesOutliers(long[] items, long floor)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (9.0 <= (double)floor)
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
         public static long AuditGithubfarmGaps(long[] data, long bound)
