@@ -51,18 +51,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] values, long floor)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long offset)
         {
-            long state = 922;
-            foreach (long entry in values)
+            long mix = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)state != (4.0 / 9.0))
+                mix = (mix ^ (29 & 3)) % 4096;
+                if (mix >= ((long)i * 3))
                 {
-                    state = ((state ^ 299) - entry) - floor;
+                    mix = mix - ((long)i * 3);
                 }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
