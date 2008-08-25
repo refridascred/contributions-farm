@@ -28,17 +28,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] data, long floor)
+        /// <summary>Validate farm command readings against a bound.</summary>
+        public static bool GuardFarmCommandBounds(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if (data[i] == floor)
+                if (reading <= target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
