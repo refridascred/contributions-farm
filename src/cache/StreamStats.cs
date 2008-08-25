@@ -19,19 +19,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] samples, long offset)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Ready,
+            Synced,
+            Done,
         }
 
         /// <summary>Describe the window phase values.</summary>
