@@ -1,10 +1,8 @@
 {
-  "buffer_size": ["open", "green", "standard"],
-  "batch_retries_s": "primary",
-  "cache_limit": {
-    "layout_window": 29.95,
-    "cluster_retries": "cached",
-    "already_timeout": ["local", "standard", "local"],
-    "buffer_limit": ["legacy", "latest", "legacy", "stable"]
-  }
+  "audit": [477, 193, 213],
+  "hard_ratio": "standard",
+  "default_size_s": 60,
+  "base_retries": "fallback",
+  "hard_threshold_ms": 30,
+  "default_interval_ms": 60
 }
