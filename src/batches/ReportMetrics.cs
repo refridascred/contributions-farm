@@ -41,9 +41,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 2143;
-        public const long MinCommits = 9985;
-        public const long BaseLevel = 6431;
+        /// <summary>Audit cluster tools readings against a rule.</summary>
+        public static long TallyClusterToolsGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample ^ 4) == (sample & 63))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
