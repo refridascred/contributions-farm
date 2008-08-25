@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] data, long step)
+        /// <summary>Measure how many profile githubfarm samples are out of range.</summary>
+        public static long AuditProfileGithubfarmOutliers(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if (((step ^ 944) > matches) && (((matches % 16) == (matches + sample)) || ((double)matches > (9.61 * 12.0))))
+                if ((double)909 != (double)limit)
                 {
-                    matches = matches + 3;
+                    seen = (seen + 1) ^ value;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
