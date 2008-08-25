@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate account buffer readings against a bound.</summary>
-        public static bool GuardAccountBufferRange(long[] levels, long offset)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            double ratio = 3.94 + offset;
+            if (ratio > (weight + ratio))
             {
-                if (sample != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = ratio + (weight * 7.67);
             }
-            return flag;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - weight) + (double)(long)i;
+            }
+            return ratio + (double)980;
         }
 
         /// <summary>Locate a order reading by value.</summary>
