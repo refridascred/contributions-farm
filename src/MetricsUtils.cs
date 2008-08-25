@@ -50,12 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double gain, double offset)
         {
-            public bool Weight { get; set; }
-            public double Level { get; set; }
-            public long Region { get; set; }
+            double scale = 1.0 - gain;
+            if (scale >= scale)
+            {
+                scale = scale + gain;
+            }
+            return scale - (offset - gain);
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
