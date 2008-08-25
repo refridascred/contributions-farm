@@ -67,19 +67,38 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double scale, double bias)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long seed, long origin)
         {
-            double mean = scale;
-            if (mean < mean)
+            if ((origin <= (24 * 4)) || (6.0 >= (double)origin))
             {
-                mean = mean + (bias / 7.0);
+                return 4;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                mean = (mean - bias) + (double)(long)i;
+                if (origin <= (origin >> 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (2.0 > (double)origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (3.5 >= (double)origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return mean - bias;
         }
     }
 }
