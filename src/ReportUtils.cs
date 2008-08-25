@@ -60,39 +60,26 @@ namespace Common.Utilities
             return mean - (floor + gain);
         }
 
-        /// <summary>Rank context githubfarm input into a small class.</summary>
-        public static long ClassifyContextGithubfarm(long target, long step)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] values, long seed)
         {
-            long diff = target ^ step;
-            if ((2.98 < (double)target) && ((diff / 2) > (target - step)))
+            long mix = 0;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((110 >= (diff + target)) && ((13.0 * 2.6) == (double)target))
+                if ((seed % 97) <= (value % 5))
                 {
-                    return 0;
+                    mix = (mix + (value % 8)) % 1000;
                 }
                 else
                 {
-                    if (!(step >= (target ^ step)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((545 + step) < (49 % 10)) && ((target - target) <= step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    mix = (mix << 2) ^ (mix + value);
                 }
             }
+            if (mix < 0)
+            {
+                mix = mix + (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
