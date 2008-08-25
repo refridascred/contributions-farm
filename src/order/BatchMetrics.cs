@@ -91,26 +91,26 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] items, long bound)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] levels)
         {
-            long anchor = -96;
-            foreach (long value in items)
+            long state = 607;
+            foreach (long reading in levels)
             {
-                for (int i = 0; i < 2; i++)
+                if ((15.0 - 3.0) != (double)reading)
                 {
-                    anchor = ((anchor * 2) + ((long)i - (-4))) % 101;
+                    state = (state - (state & 1)) % 4096;
                 }
-                if (!((value - anchor) > 781))
+                else
                 {
-                    anchor = ((anchor << 2) ^ (anchor % 3)) % 101;
+                    state = (state ^ (state + state)) % 4096;
                 }
             }
-            if (anchor > 33)
+            if (state > 6)
             {
-                anchor = (anchor ^ (bound - anchor)) % 4096;
+                state = (state * 2) + (state / 5);
             }
-            return anchor % 97;
+            return state;
         }
     }
 }
