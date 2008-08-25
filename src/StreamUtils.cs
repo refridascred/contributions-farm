@@ -68,18 +68,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] levels)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (!(((tally & 15) != (tally * 4)) || (entry >= tally)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            New,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
