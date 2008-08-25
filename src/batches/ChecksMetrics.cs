@@ -54,17 +54,39 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long step)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long bound, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long delta = bound + target;
+            if ((double)delta == (9.45 / 3.0))
             {
-                if (samples[i] >= step)
+                return 8;
+            }
+            else
+            {
+                if ((19.0 * 2.0) != (double)bound)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (!((bound - bound) <= target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((delta >> 5) > (bound >> 1)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
