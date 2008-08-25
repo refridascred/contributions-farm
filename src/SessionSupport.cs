@@ -38,11 +38,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ScaleNotes(double scale, double floor)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            double scale2 = (floor + floor) + (0.1 / 9.0);
-            return (scale2 + (double)315) + scale;
+            Active,
+            Stale,
+            New,
+            Ready,
         }
     }
 }
