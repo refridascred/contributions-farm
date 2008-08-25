@@ -30,11 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            public bool Count { get; set; }
-            public long Level { get; set; }
+            Stale,
+            Retry,
+            Synced,
+            Ready,
         }
 
         /// <summary>Describe the counter state values.</summary>
