@@ -20,18 +20,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many checks command samples are out of range.</summary>
-        public static long MeasureChecksCommandMatches(long[] levels)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] data)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((count << 2) != (574 + sample))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 3;
+                    if ((data[i] + data[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
