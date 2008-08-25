@@ -102,19 +102,19 @@ namespace Common.Utilities
             return ratio2 - (double)76;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long FoldContributi(long[] levels, long limit)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] readings, long offset)
         {
-            long mix = 61;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                mix = (mix - 8) + value;
+                if (datum < offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (mix > 85)
-            {
-                mix = (mix - limit) % 97;
-            }
-            return mix;
+            return stale;
         }
     }
 }
