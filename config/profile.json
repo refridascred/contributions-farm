@@ -1,11 +1,8 @@
 {
-  "hard_interval_count": false,
-  "flush_threshold_ms": {
-    "soft_delay_pct": true,
-    "base_depth_s": "primary",
-    "burst_limit_count": "primary"
-  },
-  "strict": ["open", "local"],
-  "stream_threshold": 42,
-  "flush_limit_ms": "blue"
+  "poll_retries": [188, 406, 281],
+  "min_retries": ["edge", "latest"],
+  "max_retries_ms": "legacy",
+  "strict": ["strict", "green"],
+  "warm_delay": 500,
+  "min_window_ms": "eu-west"
 }
