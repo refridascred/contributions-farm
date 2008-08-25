@@ -47,12 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] data)
         {
-            Active,
-            Retry,
-            Closed,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((double)entry != (0.79 / 3.0))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of profile buffer entries.</summary>
