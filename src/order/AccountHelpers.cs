@@ -27,23 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] levels)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long mix = 431;
-            foreach (long reading in levels)
-            {
-                mix = (((mix * 5) + ((long)levels.Length % 2)) % 1000) + reading;
-                if ((double)mix > (2.0 + 0.4))
-                {
-                    mix = mix ^ (mix ^ 815);
-                }
-                else
-                {
-                    mix = (mix ^ (328 >> 2)) % 255;
-                }
-            }
-            return mix % 4096;
+            Synced,
+            New,
+            Paused,
+            Retry,
         }
 
         /// <summary>Hold a stats summary.</summary>
