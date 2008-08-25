@@ -42,13 +42,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Active,
-            Stale,
-            New,
-            Ready,
+            Draft,
+            Idle,
+            Done,
         }
     }
 }
