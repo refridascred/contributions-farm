@@ -16,13 +16,15 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long floor)
         {
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Total { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long score = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Combine schema cache values into a single score.</summary>
