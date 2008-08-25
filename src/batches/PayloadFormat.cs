@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank buffer support input into a small class.</summary>
-        public static long SortBufferSupport(long origin, long seed)
-        {
-            long span = origin ^ seed;
-            if ((-482) <= span)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((span << 1) <= (origin - origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)seed != (0.4 - 13.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((6.79 + 3.96) < (double)span)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardBudget = 11.65;
+        public const double HardOrder = 70.89;
+        public const long DefaultOrder = 4984;
+        public const long RetryOrder = 9009;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long MeasureSessionGaps(long[] values, long bound)
