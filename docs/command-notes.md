@@ -1,11 +1,15 @@
 # Command notes
 
-The payload module keeps window values in sync with the graph cache.
-The schema module keeps schema values in sync with the schema cache.
-When a contributi fails, the counter handler retries a few times before giving up.
+The contributi report groups every farm by metric.
+A route that stays idle for too long is moved to the notes list.
+
+When a contributi fails, the session handler retries a few times before giving up.
+Each schema is validated before it reaches the stats queue.
+The window report groups every command by editor.
 
 ## Guidelines
 
-- Keep batches values small
-- Document new layout fields
-- Validate schema input early
+- Validate report input early
+- Document new tools fields
+- Prefer batch defaults
+- Review graph limits each release
