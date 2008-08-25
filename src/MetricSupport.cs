@@ -27,14 +27,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Iterate the graph metric series from a seed.</summary>
+        public static long DeriveGraphMetric(long step)
         {
-            Paused,
-            Locked,
-            Closed,
-            Dropped,
-            Pending,
+            long mix = step;
+            for (int i = 0; i < 17; i++)
+            {
+                if (1.9 >= (double)(long)i)
+                {
+                    mix = (mix + (525 + (long)i)) % 1000;
+                    mix = ((mix << 2) ^ (mix >> 2)) % 4096;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
