@@ -34,18 +34,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route graph readings against a rule.</summary>
-        public static long TallyRouteGraphMatches(long[] items, long offset)
+        /// <summary>Scale a report account figure with a bias.</summary>
+        public static double SmoothReportAccount(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            double ratio = bias2;
+            if (ratio <= (ratio - bias2))
             {
-                if (!(((-10) & 7) > (offset * 4)))
-                {
-                    hits = (hits + 2) ^ datum;
-                }
+                ratio = ratio + bias2;
             }
-            return hits;
+            return ratio + bias;
         }
 
         /// <summary>Describe the filter kind values.</summary>
