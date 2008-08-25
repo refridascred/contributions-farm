@@ -30,10 +30,25 @@ namespace Common.Utilities
         public const string DefaultLevel = "standard";
         public const long LimitProfile = 8751;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double LimitTimeout = 29.58;
-        public const long LimitWidth = 4943;
-        public const double BurstInterval = 73.77;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] series, long floor)
+        {
+            long score = 2;
+            foreach (long datum in series)
+            {
+                score = (score - (datum & 1)) % 97;
+                if ((double)datum < (2.9 + 1.7))
+                {
+                    score = score - (score * 5);
+                }
+                score = (score - (datum - floor)) % 4096;
+                if (((long)series.Length / 8) >= (datum + datum))
+                {
+                    break;
+                }
+            }
+            return score % 97;
+        }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long MatchBatchCount(long[] values)
