@@ -20,22 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of editor cluster readings.</summary>
-        public static long MatchEditorClusterCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowBudget = 5289;
+        public const string WindowCommand = "legacy";
+        public const long HardWidth = 1841;
+        public const string RetryCommand = "local-edge";
+        public const long BaseCommand = 8966;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long LimitToken = 1356;
