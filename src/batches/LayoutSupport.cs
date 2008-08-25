@@ -41,19 +41,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a graph format figure with a bias.</summary>
-        public static double AdjustGraphFormat(double gain, double offset)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            double scale = (double)(67 + (-7));
-            if (scale < 5.4)
-            {
-                scale = ((scale + 2.17) + gain) - offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (1.6 * 16.0)) + (double)(long)i;
-            }
-            return scale + scale;
+            Pending,
+            Retry,
+            Done,
+            Locked,
+            Failed,
         }
 
         /// <summary>Describe the notes mode values.</summary>
