@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] data, long bound)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] series, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if (data[i] >= bound)
+                if (item < step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
