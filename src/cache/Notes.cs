@@ -58,20 +58,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long DeriveNotes(long limit)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long result = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                long step = (long)i;
-                if ((limit << 3) >= step)
-                {
-                    result = result - (step << 1);
-                }
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            Active,
+            Pending,
+            Stale,
+            Draft,
+            Idle,
         }
     }
 }
