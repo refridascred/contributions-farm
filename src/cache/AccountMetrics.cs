@@ -20,18 +20,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] items, long bound)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)item < (8.2 - 8.85))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 3) - bound;
+                    if ((samples[i] + samples[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a schema info.</summary>
