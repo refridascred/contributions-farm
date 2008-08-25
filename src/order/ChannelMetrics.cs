@@ -20,11 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinInterval = 2038;
-        public const long LimitSize = 7172;
-        public const long MinWidth = 5462;
-        public const long MinWindow = 3520;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] values, long step)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((68 * 5) < value)
+                {
+                    count = (count + 2) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
