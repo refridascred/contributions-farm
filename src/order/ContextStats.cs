@@ -32,12 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public bool Owner { get; set; }
+            New,
+            Locked,
+            Paused,
+            Active,
         }
 
         /// <summary>Describe the graph kind values.</summary>
