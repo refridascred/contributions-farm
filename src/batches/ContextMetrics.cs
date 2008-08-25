@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long bound, long seed)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long next = bound ^ seed;
-            if (((double)seed >= (double)bound) && (bound <= 20))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((bound % 3) <= 729) || ((3 >> 4) >= (next >> 4)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(seed <= (next + next)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((next / 7) >= next)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
