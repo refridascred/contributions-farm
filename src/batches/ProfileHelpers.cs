@@ -47,15 +47,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] samples, long seed)
         {
-            long state = floor;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                if (!(item < (matches + matches)) || ((matches + seed) >= 8))
+                {
+                    matches = matches + 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Audit githubfarm batch readings against a rule.</summary>
