@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two report cache measurements.</summary>
-        public static double ScaleReportCache(double weight, double floor)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] levels)
         {
-            double rate = floor;
-            if (rate >= (5.0 - rate))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate + floor) - weight;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate + (8.3 + rate);
+            return seen;
         }
 
         /// <summary>Hold a already record.</summary>
