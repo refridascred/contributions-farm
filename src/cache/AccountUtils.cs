@@ -45,15 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double ratio, double span)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelOutliers(long[] samples, long origin)
         {
-            double bias = span + ratio;
-            if (bias > 3.5)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                bias = bias + (bias * 9.1);
+                if (datum <= (61 << 2))
+                {
+                    count = (count + 3) + origin;
+                }
             }
-            return bias - bias;
+            return count;
         }
     }
 }
