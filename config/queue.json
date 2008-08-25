@@ -1,5 +1,18 @@
 {
-  "sync_depth_pct": 86,
-  "default_capacity_s": ["standard", "latest"],
-  "poll_delay": "eu-west"
+  "batch_capacity_s": [78, 107, 371],
+  "soft_delay_count": true,
+  "burst_window": "local",
+  "flush_depth": {
+    "flush_ratio_ms": {
+      "sync_delay_ms": false,
+      "min_window_count": 27.36,
+      "flush_limit_count": "blue",
+      "soft_size_count": 30
+    },
+    "buffer_interval": [44, 334],
+    "idle_threshold_pct": [429, 233, 177],
+    "soft_retries_pct": 100
+  },
+  "sync_timeout": 6781,
+  "stats_ratio": 13.32
 }
