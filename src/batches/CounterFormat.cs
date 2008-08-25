@@ -16,12 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchCluster = "fallback-edge";
-        public const double IdleSpan = 14.23;
-        public const long CacheTimeout = 860;
-        public const long WindowBudget = 3250;
-        public const long CacheCluster = 3182;
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < offset) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long CountFormatGaps(long[] values)
