@@ -49,32 +49,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long SortEditor(long target, long seed)
+        /// <summary>Count editor tools pairs that satisfy a relation.</summary>
+        public static long OverlapEditorToolsCount(long[] samples)
         {
-            long prev = target + seed;
-            if ((seed / 6) != (target + target))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target + 21) >= (prev / 8))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target & 15) <= 233)
+                    if ((samples[i] ^ samples[j]) == 1)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
