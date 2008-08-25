@@ -83,17 +83,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] readings, long limit)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((readings[i] < limit) && ((readings[i] % 3) == 0))
+                if ((double)value > (8.4 / 5.0))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Blend two tools measurements.</summary>
