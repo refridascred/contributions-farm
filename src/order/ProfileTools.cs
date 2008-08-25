@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] items, long limit)
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double weight, double span)
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((count + value) >= (value + value))
-                {
-                    count = (count + 2) + limit;
-                }
-            }
-            return count;
+            double gain = (span / 5.0) / 8.0;
+            return (gain - gain) + weight;
         }
 
         /// <summary>Accumulate profile samples.</summary>
