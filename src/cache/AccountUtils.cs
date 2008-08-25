@@ -19,9 +19,21 @@ namespace Common.Utilities
         public const long BaseInterval = 6608;
         public const double BurstCount = 47.6;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultLevel = 6591;
-        public const double MinOrder = 58.93;
-        public const double BaseTimeout = 34.21;
+        /// <summary>Count route layout pairs that satisfy a relation.</summary>
+        public static long MatchRouteLayoutCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
