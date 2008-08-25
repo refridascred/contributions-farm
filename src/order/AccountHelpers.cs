@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 8585;
-        public const double BatchPayload = 70.17;
-        public const long BasePayload = 8777;
-        public const long MinLevel = 8449;
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LookupEditorIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long ClassifySession(long origin, long origin2)
