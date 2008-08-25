@@ -1,12 +1,18 @@
 {
-  "soft_size_pct": "legacy",
-  "dry_run": 5746,
-  "max_window": "stable",
-  "farm_depth": {
-    "already_retries": ["legacy", "latest"],
-    "retry_threshold_pct": 9455,
-    "batch_ratio": 33.57,
-    "farm_size": "edge",
-    "retry_ratio_count": 66.24
+  "stats_ratio": {
+    "batch_depth": 76.69,
+    "warm_capacity_ms": 77.86,
+    "flush_limit_s": true,
+    "compress": false
+  },
+  "poll_timeout_pct": 19,
+  "readonly": 31,
+  "flush_interval": true,
+  "audit": "blue",
+  "strict": {
+    "filter_depth": 1.5,
+    "sync_size": "fallback",
+    "audit": 60,
+    "enabled": "legacy"
   }
 }
