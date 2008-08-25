@@ -31,12 +31,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] values, long bound)
         {
-            Failed,
-            Draft,
-            Synced,
+            long mix = 353;
+            foreach (long entry in values)
+            {
+                if ((64 <= (46 + entry)) || ((mix >> 1) != (entry >> 3)))
+                {
+                    mix = ((mix ^ entry) % 255) + bound;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
