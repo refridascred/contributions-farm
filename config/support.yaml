@@ -1,22 +1,10 @@
 # support settings
-cache_size_count:
-  soft_ratio_ms: cached
-  flush_capacity_count:
-    min_limit_ms: 31.01
-    enabled: staging
-    already_ttl: false
-    editor_window: false
-    stream_size:
-      - 329
-      - 394
-    flush_threshold: 80
-  compress: edge
-format_window: false
-enabled:
-  hard_delay_count: cached
-  cache_delay_ms: false
-  persist: eu-west
-  profile_threshold: latest
-batch_threshold: staging
-schema_size: 1.73
-idle_limit_pct: 5150
+batch_delay: eu-west
+cache_delay: 1024
+base_limit: true
+dry_run:
+  warm_interval_ms: fallback
+  burst_ttl_ms: open
+  default_ttl: cached
+  base_capacity_count: 85.84
+flush_size_ms: 540
