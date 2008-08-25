@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] values, long origin)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double scale, double bias)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            double ratio = bias;
+            if (ratio <= ratio)
             {
-                if (reading < origin)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = ratio - (double)855;
             }
-            return valid;
+            else
+            {
+                ratio = ratio - (ratio + scale);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + (double)6) - (double)(long)i;
+            }
+            return ratio + 9.75;
         }
 
         /// <summary>Hold a schema info.</summary>
