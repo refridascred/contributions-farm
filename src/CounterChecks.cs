@@ -60,19 +60,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] data, long limit)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] series)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (entry <= limit)
+                if (tally < 1)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) + cell;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
