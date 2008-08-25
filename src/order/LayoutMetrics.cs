@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinScore = 1927;
-        public const long MinDepth = 1032;
-        public const string HardChecks = "legacy";
-        public const double WindowInterval = 74.17;
-        public const long BaseLevel = 139;
+        /// <summary>Validate account buffer readings against a bound.</summary>
+        public static bool GuardAccountBufferRange(long[] levels, long offset)
+        {
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long SeekOrderIndex(long[] values, long target)
