@@ -13,19 +13,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate support cluster readings against a bound.</summary>
-        public static bool GuardSupportClusterBounds(long[] readings, long seed)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long result = 687;
+            foreach (long sample in readings)
             {
-                if (datum > seed)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result * 3) + (limit + result)) - sample;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Iterate the stream batch series from a seed.</summary>
