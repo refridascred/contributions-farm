@@ -14,22 +14,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] series)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowHits(long[] values, long bound)
         {
-            long mix = 2;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (((reading << 3) > reading) || ((mix / 7) <= (reading ^ mix)))
+                if (((count * 2) > (count % 7)) || (datum > (bound % 7)))
                 {
-                    mix = (mix ^ (reading ^ reading)) % 255;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (272 & 1);
+                    count = count + 3;
                 }
             }
-            return mix % 97;
+            return count;
         }
 
         /// <summary>Combine batches order values into a single score.</summary>
