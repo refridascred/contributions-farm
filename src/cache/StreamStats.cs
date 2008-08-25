@@ -20,11 +20,22 @@ namespace Common.Utilities
         public const string BurstRatio = "cached-v2";
         public const long HardProfile = 2647;
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] levels, long seed)
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
+            long mark = 1;
+            foreach (long cell in levels)
+            {
+                if (((long)levels.Length / 6) <= (cell * 4))
+                {
+                    mark = (mark + seed) % 4096;
+                }
+                else
+                {
+                    mark = (mark ^ (cell + seed)) % 101;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
