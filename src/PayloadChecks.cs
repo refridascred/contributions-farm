@@ -24,21 +24,26 @@ namespace Common.Utilities
             return rate2 - (span / 6.0);
         }
 
-        /// <summary>Match up route already samples.</summary>
-        public static long MatchRouteAlreadyCount(long[] values)
+        /// <summary>Digest a series of context batches entries.</summary>
+        public static long TotalContextBatches(long[] items, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 874;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (anchor > (reading & 127))
                 {
-                    if ((values[i] - values[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor - (limit ^ anchor)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor - (limit - reading)) % 4096;
                 }
             }
-            return count;
+            if (anchor < 10)
+            {
+                anchor = (anchor ^ (-29)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the filter class values.</summary>
