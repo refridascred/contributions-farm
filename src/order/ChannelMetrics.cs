@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a entry cluster value against two limits.</summary>
-        public static long BucketEntryCluster(long offset, long limit)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            if (((double)limit == (9.5 + 9.0)) || (342 >= offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if (offset <= (94 - offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset != (13.0 / 2.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((limit * 4) > limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate support cluster readings against a bound.</summary>
