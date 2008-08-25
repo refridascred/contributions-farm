@@ -20,22 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] values, long step)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long value in values)
+            long score = 979;
+            foreach (long value in samples)
             {
-                if ((68 * 5) < value)
-                {
-                    count = (count + 2) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = ((score * 5) + (value + value)) + bound;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
