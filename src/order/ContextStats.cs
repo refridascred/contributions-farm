@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] data)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long target, long limit)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            if ((double)target <= 18.0)
             {
-                if ((datum % 12) <= ((-621) - datum))
+                return 1;
+            }
+            else
+            {
+                if ((target << 2) >= 763)
                 {
-                    tally = tally + 1;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((limit - limit) != (limit + target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a payload record.</summary>
