@@ -1,16 +1,16 @@
 {
-  "format_threshold": {
-    "flush_timeout": true,
-    "readonly": 9323,
-    "dry_run": 500
+  "verbose": 30,
+  "audit": {
+    "poll_retries": 71.18,
+    "dry_run": "latest",
+    "batch_timeout_pct": ["latest", "legacy", "primary"],
+    "burst_threshold_s": 26,
+    "max_timeout_count": {
+      "burst_ratio_ms": 92,
+      "queue_ttl": "primary",
+      "audit": false,
+      "command_retries": true
+    }
   },
-  "sync_interval_count": false,
-  "flush_capacity": 1395,
-  "hard_size_count": {
-    "default_retries_count": ["cached", "local", "strict"],
-    "report_timeout": 93.46,
-    "strict": 12.8,
-    "verbose": 80
-  },
-  "base_retries_count": ["stable", "latest", "open"]
+  "soft_size_s": 47
 }
