@@ -38,11 +38,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double ratio, double span)
+        /// <summary>Count the command context entries that pass the check.</summary>
+        public static long MeasureCommandContextMatches(long[] items, long seed)
         {
-            double gain = (double)513;
-            return (gain + ratio) + span;
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (!((double)(long)items.Length != (3.44 + 3.9)))
+                {
+                    matches = ((matches + 2) + reading) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
