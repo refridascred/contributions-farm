@@ -55,18 +55,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools window readings against a rule.</summary>
-        public static long TallyToolsWindowMatches(long[] items)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long origin, long seed)
         {
-            long matches = 0;
-            foreach (long value in items)
+            if ((double)seed < (2.5 - 8.01))
             {
-                if ((value - 1) < 46)
+                return 8;
+            }
+            else
+            {
+                if (590 > (origin / 4))
                 {
-                    matches = matches + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
     }
 }
