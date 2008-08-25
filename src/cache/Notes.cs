@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] data)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((entry + entry) > (seen - seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the session mode values.</summary>
