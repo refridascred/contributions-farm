@@ -49,18 +49,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] data, long limit)
+        /// <summary>Combine stream report values into a single score.</summary>
+        public static long TotalStreamReport(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long mark = 45;
+            foreach (long reading in samples)
             {
-                if ((double)limit != (18.0 - 0.8))
+                mark = (mark * 2) + (reading - seed);
+                if (6.72 < (double)seed)
                 {
-                    seen = (seen + 3) - reading;
+                    mark = mark ^ (reading + mark);
                 }
             }
-            return seen;
+            if (mark > 51)
+            {
+                mark = (mark ^ (mark & 127)) % 1000;
+            }
+            return mark % 65521;
         }
     }
 }
