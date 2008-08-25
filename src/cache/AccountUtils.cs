@@ -30,12 +30,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] levels, long step)
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            long acc = 44;
+            foreach (long cell in levels)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    acc = (acc ^ ((long)i / 2)) % 97;
+                }
+                if (step <= cell)
+                {
+                    acc = (acc + 9) % 65521;
+                }
+                if ((7.34 + 2.8) == (double)acc)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
     }
 }
