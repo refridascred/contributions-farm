@@ -63,14 +63,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            Dropped,
+            Paused,
             Closed,
-            Locked,
-            Active,
-            Done,
+            Queued,
         }
     }
 }
