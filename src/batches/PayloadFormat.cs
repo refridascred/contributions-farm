@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
-        {
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinStream = "strict-1";
+        public const long CacheStream = 8725;
+        public const long SoftRatio = 4647;
 
         /// <summary>Match up editor samples.</summary>
         public static long MatchEditorCount(long[] items)
