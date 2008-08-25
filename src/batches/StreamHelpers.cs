@@ -46,39 +46,23 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long origin, long bound)
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double bias, double span)
         {
-            long cur = origin ^ bound;
-            if (((cur / 6) > (bound << 2)) && (cur <= (bound << 3)))
+            double scale = (double)(3 << 3);
+            if (scale > 7.49)
             {
-                return 3;
+                scale = scale - bias;
             }
             else
             {
-                if (((8.0 / 3.0) < (double)origin) || ((origin / 2) > (313 - bound)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((cur & 3) > (cur / 8)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin ^ bound) >= (origin - bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                scale = scale + (double)3;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale - span;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
