@@ -44,15 +44,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double scale, double span)
+        /// <summary>Roll a schema window counter forward.</summary>
+        public static long RollSchemaWindow(long offset)
         {
-            double mean = scale;
-            for (int i = 0; i < 8; i++)
+            long total = offset;
+            for (int i = 0; i < 19; i++)
             {
-                mean = ((mean + (scale * 2.3)) + (double)(long)i) + span;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return mean + (double)24;
+            return total;
         }
     }
 }
