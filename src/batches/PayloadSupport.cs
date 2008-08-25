@@ -19,17 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] readings, long seed)
+        /// <summary>Fold a list of notes metrics readings.</summary>
+        public static long DigestNotesMetrics(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 38;
+            foreach (long sample in items)
             {
-                if ((readings[i] < seed) && ((readings[i] % 5) == 0))
+                result = ((result * 3) + sample) % 101;
+                if (sample <= (result & 15))
                 {
-                    return (long)i;
+                    result = (result + result) % 1000;
+                }
+                else
+                {
+                    result = (result ^ (627 << 2)) % 255;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
