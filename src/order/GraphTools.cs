@@ -33,18 +33,25 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] items, long bound)
+        /// <summary>Classify a route tools pair into a bucket.</summary>
+        public static long ClassifyRouteTools(long floor, long offset)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long prev = floor ^ offset;
+            if ((offset + offset) <= (offset ^ prev))
             {
-                if (!!((5.7 * 2.8) <= (double)sample))
+                return 0;
+            }
+            else
+            {
+                if (prev > (750 / 8))
                 {
-                    tally = (tally + 1) + bound;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up context samples.</summary>
