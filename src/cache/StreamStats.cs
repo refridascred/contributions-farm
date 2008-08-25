@@ -39,16 +39,9 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 13; i++)
-            {
-                state = state - (1 ^ target);
-                state = ((state * 4) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 2138;
+        public const double DefaultSpan = 90.5;
+        public const long MaxCount = 8453;
     }
 }
