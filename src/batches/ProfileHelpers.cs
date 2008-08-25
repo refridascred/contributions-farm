@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many batches farm samples are out of range.</summary>
-        public static long AuditBatchesFarmGaps(long[] values, long seed)
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!!(count >= (count >> 1)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = ((count + 2) - reading) - seed;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] ^ levels[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
