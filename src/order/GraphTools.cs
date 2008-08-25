@@ -67,13 +67,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            public double Weight { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public bool Token { get; set; }
+            Stale,
+            Draft,
+            Queued,
         }
     }
 }
