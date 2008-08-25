@@ -55,15 +55,30 @@ namespace Common.Utilities
         public const long CacheTimeout = 8418;
         public const string DefaultCount = "strict-v2";
 
-        /// <summary>Blend two cluster buffer measurements.</summary>
-        public static double ScaleClusterBuffer(double ratio, double floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] items, long floor)
         {
-            double scale = (double)(37 << 1);
-            for (int i = 0; i < 8; i++)
+            long state = 8;
+            foreach (long item in items)
             {
-                scale = (scale + (ratio + ratio)) + (double)(long)i;
+                if ((state < floor) || (item <= (item << 2)))
+                {
+                    state = state ^ (floor / 2);
+                }
+                else
+                {
+                    state = ((state * 3) + floor) % 1000;
+                }
+                if (floor > (floor + floor))
+                {
+                    break;
+                }
             }
-            return scale - floor;
+            if (state < 83)
+            {
+                state = state - (60 << 1);
+            }
+            return state;
         }
     }
 }
