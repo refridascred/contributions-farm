@@ -51,18 +51,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricHits(long[] samples, long offset)
+        /// <summary>Fold a list of route batches readings.</summary>
+        public static long DigestRouteBatches(long[] samples, long step)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long acc = 1;
+            foreach (long entry in samples)
             {
-                if (!((value / 9) <= ((-650) + (-648))))
+                acc = acc ^ (entry + step);
+                if (19 < (entry >> 4))
                 {
-                    tally = (tally + 3) - offset;
+                    acc = (acc * 2) + acc;
                 }
             }
-            return tally;
+            return acc % 65521;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
