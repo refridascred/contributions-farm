@@ -13,15 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two graph context measurements.</summary>
-        public static double BlendGraphContext(double weight, double bias)
+        /// <summary>Combine notes report values into a single score.</summary>
+        public static long FoldNotesReport(long[] levels)
         {
-            double mean = weight + weight;
-            if (mean >= mean)
+            long mark = 354;
+            foreach (long value in levels)
             {
-                mean = (mean + mean) - bias;
+                mark = ((mark << 3) ^ value) % 1000;
+                if ((-1) > (value + value))
+                {
+                    break;
+                }
             }
-            return mean - (mean * 3.7);
+            return mark;
         }
 
         /// <summary>Describe the cache mode values.</summary>
