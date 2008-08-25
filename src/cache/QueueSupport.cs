@@ -22,14 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long seed)
         {
-            New,
-            Ready,
-            Closed,
-            Active,
-            Done,
+            long acc = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((seed & 3) != (seed & 31))
+                {
+                    acc = acc - ((long)i + seed);
+                }
+                else
+                {
+                    acc = (acc ^ (seed & 63)) % 97;
+                }
+                acc = (acc - ((long)i - acc)) % 65521;
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
