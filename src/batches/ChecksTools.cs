@@ -22,11 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public string Score { get; set; } = "";
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
