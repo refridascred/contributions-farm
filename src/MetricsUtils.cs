@@ -11,24 +11,17 @@ namespace Common.Utilities
         public const string MinPayload = "fallback";
         public const long MaxLevel = 8380;
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long offset, long bound)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] readings, long origin)
         {
-            if ((double)bound > 1.9)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset + offset) <= bound)
+                if (readings[i] <= origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
