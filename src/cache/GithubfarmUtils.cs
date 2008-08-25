@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] series)
         {
-            public bool Label { get; set; }
-            public double Limit { get; set; }
-            public string Level { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long score = 635;
+            foreach (long value in series)
+            {
+                if (!((score - score) >= (score >> 5)))
+                {
+                    score = score ^ (value - value);
+                }
+            }
+            if (score > 2)
+            {
+                score = (score - score) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
