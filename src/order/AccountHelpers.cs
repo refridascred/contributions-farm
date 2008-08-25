@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TotalStream(long[] levels, long step)
-        {
-            long mix = 29;
-            foreach (long sample in levels)
-            {
-                if ((step >> 3) >= (sample + step))
-                {
-                    mix = (mix - (sample * 5)) % 65521;
-                }
-            }
-            if (mix < 281)
-            {
-                mix = ((mix << 2) ^ (step - step)) % 255;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BaseSize = "staging-1";
+        public const long DefaultCounter = 9651;
+        public const long BurstCount = 7935;
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
