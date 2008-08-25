@@ -37,11 +37,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BaseChannel = "stable-1";
-        public const long MinChannel = 1318;
-        public const long MaxFactor = 690;
-        public const long MaxWidth = 6303;
-        public const long WindowChannel = 6592;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
     }
 }
