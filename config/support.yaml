@@ -1,17 +1,4 @@
 # support settings
-flush_window_ms: strict
-verbose: true
-hard_ratio_pct: stable
-profile_capacity:
-  buffer_interval: legacy
-  batch_window_s: 1024
-  max_threshold_count: 500
-  metric_ttl:
-    session_timeout: primary
-    queue_limit: blue
-    audit: eu-west
-  max_limit:
-    - stable
-    - fallback
-    - eu-west
-    - standard
+hard_depth_ms: 90.25
+stream_retries: 1024
+hard_threshold: true
