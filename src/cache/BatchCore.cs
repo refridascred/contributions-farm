@@ -32,10 +32,25 @@ namespace Common.Utilities
         public const long BatchBuffer = 4181;
         public const long BatchLevel = 9448;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MaxQueue = 1.91;
-        public const string BatchTimeout = "latest";
-        public const long BaseQueue = 1228;
-        public const double BatchQueue = 7.35;
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long floor, long bound)
+        {
+            long span = floor ^ bound;
+            if (((floor * 2) > (bound + bound)) && ((6.0 * 4.0) <= (double)span))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)floor <= (7.3 * 6.6)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
