@@ -62,11 +62,17 @@ namespace Common.Utilities
             return mean - gain;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double scale, double span)
+        /// <summary>Locate a metric record reading by value.</summary>
+        public static long LocateMetricRecordIndex(long[] samples, long seed)
         {
-            double mean = 4.5;
-            return (mean - scale) + span;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
