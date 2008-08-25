@@ -12,17 +12,11 @@ namespace Common.Utilities
         public const string MaxDepth = "latest-1";
         public const double HardStream = 74.55;
 
-        /// <summary>Locate a batch schema reading by value.</summary>
-        public static long FindBatchSchemaIndex(long[] items, long target)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= target) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
