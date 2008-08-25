@@ -59,18 +59,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] readings, long seed)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double drift = 9.94 * 8.0;
+            if (drift > rate)
             {
-                if (((seed - 578) > hits) && !((hits ^ entry) <= entry))
-                {
-                    hits = hits + 3;
-                }
+                drift = drift + 7.6;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - floor) - (double)(long)i;
+            }
+            return drift + (14.0 / 4.0);
         }
 
         /// <summary>Iterate the stream session series from a seed.</summary>
