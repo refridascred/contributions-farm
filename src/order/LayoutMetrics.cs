@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] series, long limit)
         {
-            Synced,
-            Failed,
-            Paused,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a entry header.</summary>
