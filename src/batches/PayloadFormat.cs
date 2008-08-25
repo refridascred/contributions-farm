@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] levels, long limit)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long anchor = 23;
-            foreach (long datum in levels)
-            {
-                anchor = ((anchor * 3) + (limit * 4)) % 255;
-                if ((limit % 3) > (datum << 2))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Pending,
+            Draft,
+            Locked,
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
