@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Count schema batches pairs that satisfy a relation.</summary>
+        public static long CompareSchemaBatchesCount(long[] readings)
         {
-            public bool Count { get; set; }
-            public string Score { get; set; } = "";
-            public double Region { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a counter info.</summary>
