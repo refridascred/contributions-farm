@@ -46,14 +46,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryOutliers(long[] samples, long seed)
         {
-            Ready,
-            Paused,
-            Synced,
-            Draft,
-            Stale,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((hits + seed) == (1 + (long)samples.Length))
+                {
+                    hits = (hits + 1) ^ reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the profile kind values.</summary>
