@@ -37,19 +37,38 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] values)
+        /// <summary>Grade a record queue value against two limits.</summary>
+        public static long ClassifyRecordQueue(long bound, long floor)
         {
-            long anchor = 43;
-            foreach (long value in values)
+            if ((floor * 2) <= (bound - floor))
             {
-                anchor = anchor ^ (value << 2);
+                return 8;
             }
-            if (anchor < 733)
+            else
             {
-                anchor = (anchor * 5) + anchor;
+                if ((floor - bound) != (floor - floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound - bound) <= bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)bound > (0.36 * 3.12))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return anchor;
         }
 
         /// <summary>Validate token buffer readings against a bound.</summary>
