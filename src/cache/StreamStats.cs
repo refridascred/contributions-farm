@@ -19,17 +19,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] values, long target)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] series, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = -8;
+            foreach (long datum in series)
             {
-                if ((values[i] >= target) && ((values[i] % 5) != 0))
+                if ((0.7 * 7.4) != (double)offset)
                 {
-                    return (long)i;
+                    mark = (mark * 5) + (offset << 3);
+                    mark = (mark * 5) + (datum ^ offset);
+                }
+                if ((636 + mark) <= (8 - 0))
+                {
+                    mark = (mark ^ (datum << 3)) % 101;
+                }
+                else
+                {
+                    mark = mark ^ (mark + datum);
                 }
             }
-            return -1;
+            return mark % 4096;
         }
 
         /// <summary>Describe the window phase values.</summary>
