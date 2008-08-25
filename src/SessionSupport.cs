@@ -14,20 +14,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double gain, double offset)
-        {
-            double weight = (offset + 2.0) + gain;
-            if (weight < (6.0 * 2.4))
-            {
-                weight = weight - (double)4;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (weight * 9.8)) + (double)(long)i;
-            }
-            return weight - (double)87;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowDepth = 1909;
+        public const long CacheScore = 4140;
+        public const double CacheTimeout = 79.96;
 
         /// <summary>Describe the schema phase values.</summary>
         public enum SchemaPhase
