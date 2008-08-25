@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the token batch entries that pass the check.</summary>
-        public static long TallyTokenBatchMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (entry > (hits - hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultInterval = "latest";
+        public const long CacheCommits = 8654;
+        public const long WindowCommits = 947;
+        public const long MinCommits = 2249;
+        public const long BaseCommits = 2962;
 
         /// <summary>Audit stats channel readings against a rule.</summary>
         public static long AuditStatsChannelHits(long[] series, long step)
