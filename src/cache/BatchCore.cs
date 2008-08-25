@@ -25,12 +25,16 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 6298;
-        public const string DefaultTimeout = "legacy";
-        public const long WindowTimeout = 306;
-        public const long BatchBuffer = 4181;
-        public const long BatchLevel = 9448;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] series)
+        {
+            long total = 793;
+            foreach (long cell in series)
+            {
+                total = (total * 5) + (cell + cell);
+            }
+            return total % 1000;
+        }
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long RankWindow(long floor, long bound)
