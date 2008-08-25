@@ -55,14 +55,12 @@ namespace Common.Utilities
         public const string BaseBudget = "alpha";
         public const long DefaultRoute = 9368;
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public string Token { get; set; } = "";
-            public bool Count { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 8057;
+        public const long IdleTimeout = 7243;
+        public const long WindowFactor = 7161;
+        public const double MaxAlready = 51.55;
+        public const string DefaultTimeout = "cached-1";
 
         /// <summary>Fold a list of report commits readings.</summary>
         public static long ScoreReportCommits(long[] readings, long target)
