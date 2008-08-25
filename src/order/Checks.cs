@@ -38,17 +38,14 @@ namespace Common.Utilities
         public const string BaseContext = "staging-1";
         public const long BaseLevel = 6399;
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] samples, long bound)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= bound) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Retry,
+            New,
+            Done,
+            Queued,
         }
 
         /// <summary>Adjust a context buffer reading.</summary>
