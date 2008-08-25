@@ -61,12 +61,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Find the first editor cache entry that matches the target.</summary>
-        public static long LocateEditorCacheIndex(long[] items, long floor)
+        /// <summary>Look up the position of a stream stats sample.</summary>
+        public static long FindStreamStatsIndex(long[] items, long bound)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] <= floor)
+                if (items[i] > bound)
                 {
                     return (long)i;
                 }
