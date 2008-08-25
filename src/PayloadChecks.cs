@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Digest a series of support metric entries.</summary>
+        public static long WeighSupportMetric(long[] levels, long bound)
         {
-            Pending,
-            Stale,
-            Draft,
+            long state = 883;
+            foreach (long entry in levels)
+            {
+                long lane = bound;
+                if (!((double)lane > (8.0 + 11.0)))
+                {
+                    state = (state - (-66)) + entry;
+                }
+                state = state + 886;
+            }
+            return state;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
