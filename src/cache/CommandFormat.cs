@@ -13,14 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Validate account metric readings against a bound.</summary>
+        public static bool CheckAccountMetricRange(long[] items, long target)
         {
-            Pending,
-            Queued,
-            Locked,
-            Done,
-            Retry,
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the filter kind values.</summary>
