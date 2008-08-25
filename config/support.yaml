@@ -1,5 +1,11 @@
 # support settings
-batch_limit: standard
-base_timeout_ms: 9434
-hard_limit: 16.11
-hard_ttl_count: false
+readonly: 73.34
+cache_window_pct: green
+batches_retries: false
+flush_ttl_ms: false
+flush_delay_s:
+  record_ttl: legacy
+  default_size_pct: 69.26
+  max_interval_s: open
+  batch_limit: 5265
+flush_size_pct: 250
