@@ -28,19 +28,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double scale, double floor)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] items)
         {
-            double rate = scale;
-            if (rate >= (double)348)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate + (7.3 * 2.0)) - floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            return rate - (double)0;
+            return seen;
         }
     }
 }
