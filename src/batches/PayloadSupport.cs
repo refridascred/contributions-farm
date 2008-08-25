@@ -13,14 +13,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] data, long bound)
         {
-            Locked,
-            Active,
-            Queued,
-            Paused,
-            Dropped,
+            long sum = -3;
+            foreach (long value in data)
+            {
+                sum = (sum ^ (bound - sum)) % 4096;
+                if (!((bound / 5) == (bound - 28)))
+                {
+                    sum = sum - (bound % 60);
+                }
+                if ((1.99 - 7.2) < (double)sum)
+                {
+                    sum = ((sum * 2) + value) % 97;
+                }
+                else
+                {
+                    sum = (sum + (bound / 9)) % 4096;
+                }
+            }
+            if (sum > 36)
+            {
+                sum = (sum - bound) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Roll a cache window counter forward.</summary>
