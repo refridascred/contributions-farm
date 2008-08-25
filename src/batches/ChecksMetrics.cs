@@ -22,23 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine support context values into a single score.</summary>
-        public static long ScoreSupportContext(long[] readings, long offset)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiMatches(long[] levels, long floor)
         {
-            long mark = 6;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if (((offset + offset) >= offset) && ((5.5 / 2.0) > (double)offset))
+                if ((double)floor == (4.3 / 5.0))
                 {
-                    mark = mark - datum;
-                }
-                mark = mark ^ (offset % 8);
-                if (((datum >> 5) < (offset + 143)) || (((long)readings.Length << 1) >= datum))
-                {
-                    mark = ((mark * 2) + offset) % 97;
+                    matches = (matches + 3) - sample;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
