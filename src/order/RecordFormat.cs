@@ -39,22 +39,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double IdleCount = 68.24;
+        public const long DefaultDepth = 1757;
+        public const long MinBuffer = 6301;
+        public const double BatchDepth = 14.3;
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long IterateContributi(long bound)
