@@ -21,15 +21,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the stream batch series from a seed.</summary>
-        public static long RollStreamBatch(long limit)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public double Flag { get; set; }
+            public string Label { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
