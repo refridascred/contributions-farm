@@ -1,5 +1,18 @@
 {
-  "record_depth": "stable",
-  "readonly": true,
-  "dry_run": true
+  "session_ratio": 89.14,
+  "soft_ratio_s": {
+    "idle_window": 36.96,
+    "batch_interval": 5053,
+    "retry_ttl_count": "edge",
+    "base_retries": {
+      "poll_capacity_s": [12, 81, 341],
+      "burst_window": false,
+      "hard_threshold_count": 40.06,
+      "warm_size_ms": ["fallback", "eu-west"],
+      "soft_interval_count": false
+    },
+    "soft_interval_s": "local",
+    "readonly": 100
+  },
+  "batch_interval_ms": "primary"
 }
