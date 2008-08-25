@@ -20,23 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double rate, double floor)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            double rate2 = floor;
-            if (rate2 < rate2)
-            {
-                rate2 = (rate2 - (double)399) - rate;
-            }
-            else
-            {
-                rate2 = rate2 + (0.7 / 6.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 + rate2) + (double)(long)i;
-            }
-            return rate2 - (floor * 2.8);
+            public bool Level { get; set; }
+            public string Rank { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of notes route readings.</summary>
