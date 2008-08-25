@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            Ready,
             Draft,
-            Closed,
-            Paused,
-            Stale,
+            Ready,
+            Retry,
+            Failed,
         }
 
         /// <summary>Rank record input into a small class.</summary>
