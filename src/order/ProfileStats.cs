@@ -25,19 +25,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] values, long floor)
+        /// <summary>Roll a format tools counter forward.</summary>
+        public static long StepFormatTools(long floor)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long mix = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (sample <= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Describe the command level values.</summary>
