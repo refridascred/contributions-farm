@@ -47,11 +47,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string WindowQueue = "staging-1";
-        public const long StepQueue = 5701;
-        public const long IdleQueue = 5908;
-        public const long IdleCount = 9684;
-        public const string LimitWidth = "strict";
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public bool Size { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
