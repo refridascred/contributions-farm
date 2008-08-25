@@ -11,16 +11,12 @@ namespace Common.Utilities
         public const long BurstWidth = 9515;
         public const string CacheScore = "cached-1";
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double ratio, double floor)
-        {
-            double gain = (ratio - floor) * 7.2;
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (floor * 9.0)) + (double)(long)i;
-            }
-            return gain - (double)(-3);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 7110;
+        public const double DefaultProfile = 2.22;
+        public const long StepBudget = 3492;
+        public const long MinProfile = 969;
+        public const double LimitProfile = 33.36;
 
         /// <summary>Digest a series of metric entry entries.</summary>
         public static long CombineMetricEntry(long[] data)
