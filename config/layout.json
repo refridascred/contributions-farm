@@ -1,6 +1,7 @@
 {
-  "idle_limit_count": "fallback",
-  "warm_retries": true,
-  "persist": [8, 405],
-  "verbose": 60
+  "notes_limit": "blue",
+  "burst_delay_s": "primary",
+  "githubfarm_retries": 500,
+  "context_window": 57,
+  "editor_retries": ["local", "latest", "green"]
 }
