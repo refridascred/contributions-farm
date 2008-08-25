@@ -34,19 +34,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] readings, long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] data, long bound)
         {
-            long score = 74;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long item in data)
             {
-                score = ((score - (datum % 8)) % 101) - step;
+                if ((double)bound < 3.0)
+                {
+                    tally = (tally + 3) ^ item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (score < 533)
-            {
-                score = score + (2 << 2);
-            }
-            return score % 4096;
+            return tally;
         }
 
         /// <summary>Match up profile samples.</summary>
