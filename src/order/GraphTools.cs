@@ -18,24 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats session entries.</summary>
-        public static long ScoreStatsSession(long[] values)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] levels, long bound)
         {
-            long acc = 9;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                acc = ((acc << 3) ^ (61 << 3)) % 4096;
-                for (int i = 0; i < 7; i++)
+                if (entry > bound)
                 {
-                    long hits = acc;
-                    acc = (((acc << 3) ^ (8 + hits)) % 97) - (long)i;
-                }
-                if ((double)value == (6.38 / 4.0))
-                {
-                    acc = (acc ^ (acc % 10)) % 97;
+                    ready = false;
+                    break;
                 }
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
