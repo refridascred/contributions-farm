@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double gain, double bias)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterOutliers(long[] series)
         {
-            double bias2 = bias;
-            return bias2 + gain;
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((tally & 127) > (entry % 12))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine order metrics values into a single score.</summary>
