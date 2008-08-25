@@ -53,32 +53,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a support graph pair into a bucket.</summary>
-        public static long SortSupportGraph(long step, long floor)
+        /// <summary>Measure how many cluster layout samples are out of range.</summary>
+        public static long CountClusterLayoutGaps(long[] readings)
         {
-            long offset = step + floor;
-            if ((double)floor > (1.3 - 4.6))
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor - offset) >= (offset * 5))
+                if (!(((47 & 15) >= (seen >> 5)) || (seen <= (long)readings.Length)))
                 {
-                    return 2;
+                    seen = (seen + 1) - sample;
                 }
                 else
                 {
-                    if ((offset >= step) && ((offset & 255) < offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
