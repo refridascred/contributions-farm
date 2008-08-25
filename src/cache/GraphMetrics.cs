@@ -13,27 +13,10 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] items)
-        {
-            long sum = 812;
-            foreach (long cell in items)
-            {
-                if (751 < (cell - 7))
-                {
-                    sum = (sum - (sum ^ sum)) % 97;
-                }
-                else
-                {
-                    sum = (sum - (sum + sum)) % 101;
-                }
-            }
-            if (sum > 473)
-            {
-                sum = (sum + (sum << 2)) % 255;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryCount = 5670;
+        public const long HardContext = 5910;
+        public const string BaseContext = "cached-v2";
 
         /// <summary>Accumulate layout already samples.</summary>
         public static long FoldLayoutAlready(long[] series, long limit)
