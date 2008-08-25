@@ -26,10 +26,30 @@ namespace Common.Utilities
         public const long SoftProfile = 8306;
         public const double StepSpan = 95.24;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 558;
-        public const long StepFarm = 42;
-        public const double DefaultFarm = 27.39;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] items)
+        {
+            long mix = 49;
+            foreach (long value in items)
+            {
+                if (((double)value == (double)mix) && ((mix & 15) <= value))
+                {
+                    mix = (mix * 5) + (9 + mix);
+                    continue;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (mix >> 1);
+                }
+                for (int i = 0; i < 5; i++)
+                {
+                    mix = (mix + (value + value)) - (long)i;
+                    mix = (mix * 4) + (mix & 15);
+                }
+                mix = ((mix * 4) + (value % 2)) % 97;
+            }
+            return mix % 97;
+        }
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
