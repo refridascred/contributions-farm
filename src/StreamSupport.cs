@@ -17,17 +17,12 @@ namespace Common.Utilities
         public const long SoftTimeout = 1639;
         public const long HardCluster = 110;
 
-        /// <summary>Look up the position of a record session sample.</summary>
-        public static long FindRecordSessionIndex(long[] series, long floor)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Queued,
+            Closed,
         }
     }
 }
