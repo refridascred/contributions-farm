@@ -65,17 +65,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a graph metrics sample.</summary>
-        public static long FindGraphMetricsIndex(long[] levels, long step)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((levels[i] < step) && ((levels[i] % 2) != 0))
+                if ((matches & 255) != ((-3) & 7))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
