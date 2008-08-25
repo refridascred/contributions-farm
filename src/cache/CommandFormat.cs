@@ -20,12 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            Ready,
-            Queued,
-            Closed,
+            public bool Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Validate farm command readings against a bound.</summary>
