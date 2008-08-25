@@ -19,13 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public bool Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public double Region { get; set; }
-            public long Label { get; set; }
+            Active,
+            Paused,
+            Synced,
+            Idle,
         }
 
         /// <summary>Combine stats values into a single score.</summary>
