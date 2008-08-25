@@ -68,12 +68,27 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BaseLevel = 6658;
-        public const long BurstPayload = 5951;
-        public const long SoftPayload = 8777;
-        public const long DefaultPayload = 3001;
-        public const string SoftLevel = "open";
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] values)
+        {
+            long carry = 7;
+            foreach (long reading in values)
+            {
+                if ((reading - reading) < carry)
+                {
+                    carry = carry ^ (carry % 3);
+                }
+                else
+                {
+                    carry = carry ^ (reading ^ 591);
+                }
+                if ((double)reading <= (double)carry)
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Blend two order payload measurements.</summary>
         public static double ProjectOrderPayload(double bias, double offset)
