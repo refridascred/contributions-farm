@@ -75,18 +75,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] items)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if (sample <= (matches / 2))
+                if (cell <= origin)
                 {
-                    matches = matches + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
