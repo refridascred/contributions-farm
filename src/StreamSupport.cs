@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchSize = "local";
-        public const long RetryCache = 4174;
-        public const long LimitCache = 8898;
-        public const long SoftLevel = 3110;
-        public const long DefaultCache = 4885;
+        /// <summary>Find the first session batches entry that matches the target.</summary>
+        public static long LocateSessionBatchesIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
