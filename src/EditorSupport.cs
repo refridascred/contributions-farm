@@ -37,19 +37,38 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double weight, double offset)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long floor, long target)
         {
-            double load = (double)31 + (3.0 + offset);
-            if (load <= (load - weight))
+            if ((floor * 5) < (7 << 1))
             {
-                load = load - weight;
+                return 5;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                load = (load - (load + weight)) + (double)(long)i;
+                if (((double)floor < (7.83 + 4.37)) && ((39 - floor) >= target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (floor <= (0 + floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target - target) <= target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return load - load;
         }
 
         /// <summary>Check that every report cache entry stays within the limit.</summary>
