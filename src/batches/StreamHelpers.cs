@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] levels, long step)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            double bias = offset;
+            if (bias >= offset)
             {
-                if ((9 < (cell + seen)) || ((cell + step) >= seen))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias = (bias + bias) + gain;
             }
-            return seen;
+            else
+            {
+                bias = bias - (double)684;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - offset) + (double)(long)i;
+            }
+            return bias + (bias / 5.0);
         }
 
         /// <summary>Adjust a editor reading.</summary>
