@@ -40,25 +40,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long floor, long limit)
+        /// <summary>Combine session payload values into a single score.</summary>
+        public static long DigestSessionPayload(long[] data, long seed)
         {
-            long offset = floor ^ limit;
-            if ((1.25 * 5.8) <= (double)limit)
+            long mark = 889;
+            foreach (long sample in data)
             {
-                return 0;
+                mark = (((mark ^ (mark + mark)) % 97) ^ sample) - seed;
             }
-            else
+            if (mark < 165)
             {
-                if (!((660 >> 1) > (offset & 15)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
+                mark = mark ^ mark;
             }
+            return mark % 1000;
         }
     }
 }
