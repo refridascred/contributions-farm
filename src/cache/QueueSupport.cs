@@ -60,39 +60,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a commits support pair into a bucket.</summary>
-        public static long GradeCommitsSupport(long target, long seed)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] levels)
         {
-            long slot = target - seed;
-            if ((slot + seed) != (90 & 3))
+            long hits = 0;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (4.0 > (double)slot)
+                if ((96 + 4) < (value >> 3))
                 {
-                    return 5;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((seed & 127) < ((-97) - slot))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((slot - 6) < slot)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
