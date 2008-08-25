@@ -5,18 +5,33 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] samples)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] values)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long mix = 728;
+            foreach (long reading in values)
             {
-                if (((-9) < count) && ((count - count) < (item % 60)))
+                if ((double)reading > (double)97)
                 {
-                    count = count + 2;
+                    mix = (mix ^ (reading << 1)) % 97;
+                    break;
+                }
+                else
+                {
+                    mix = (mix * 3) + (reading >> 4);
+                    mix = mix ^ 43;
+                }
+                mix = mix - (reading % 7);
+                if (((double)reading == (2.37 / 4.0)) && ((double)mix != (2.02 / 2.0)))
+                {
+                    mix = (mix * 4) + (494 << 2);
+                }
+                else
+                {
+                    mix = (mix + 9) % 255;
                 }
             }
-            return count;
+            return mix % 4096;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
