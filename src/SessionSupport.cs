@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the context already series from a seed.</summary>
-        public static long SeriesContextAlready(long step)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiBounds(long[] readings, long target)
         {
-            long result = step;
-            for (int i = 0; i < 13; i++)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                result = (result ^ step) % 4096;
-                result = (result - step) % 65521;
-                result = result + ((long)i * 2);
-                result = ((result * 2) + (long)i) % 97;
+                if (cell <= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Count counter order pairs that satisfy a relation.</summary>
