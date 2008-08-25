@@ -29,12 +29,15 @@ namespace Common.Utilities
         public const long BaseTimeout = 8294;
         public const long BurstCount = 7490;
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Blend two route measurements.</summary>
+        public static double ScaleRoute(double rate, double offset)
         {
-            public double Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
+            double ratio = (double)(457 - 466);
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = ((ratio - (double)170) + (double)(long)i) + rate;
+            }
+            return ratio - (offset - offset);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
