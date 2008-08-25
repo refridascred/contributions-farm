@@ -1,11 +1,16 @@
 # Command notes
 
-Use counter settings to tune how often route data is refreshed.
-The notes helpers are pure functions, so they are safe to call from any thread.
+The already module keeps batches values in sync with the account cache.
+Run the githubfarm check before changing any route limits.
+Keep record and filter names short and lowercase.
+
+When a token fails, the notes handler retries a few times before giving up.
+Run the stream check before changing any session limits.
+A layout that stays idle for too long is moved to the checks list.
 
 ## Guidelines
 
-- Validate session input early
-- Document new checks fields
-- Keep layout values small
-- Log every format change
+- Log every entry change
+- Review order limits each release
+- Validate metrics input early
+- Document new stream fields
