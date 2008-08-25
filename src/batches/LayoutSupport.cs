@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many report session samples are out of range.</summary>
-        public static long AuditReportSessionGaps(long[] data, long bound)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long bound)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((matches + (long)data.Length) >= matches)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    matches = ((matches + 1) - reading) + bound;
+                    anchor = (anchor - (bound - (long)i2)) % 101;
                 }
+                anchor = (anchor << 3) ^ (41 - anchor);
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
