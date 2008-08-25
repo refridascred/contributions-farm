@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmOutliers(long[] values)
         {
-            long state = bound;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                state = ((state << 3) ^ (state << 2)) % 101;
-                state = state - (6 ^ 237);
-                state = ((state * 5) + (long)i) % 65521;
+                if ((reading / 9) <= (9 ^ count))
+                {
+                    count = count + 3;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Hold a schema options.</summary>
