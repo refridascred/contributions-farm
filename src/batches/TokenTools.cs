@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaMatches(long[] values, long limit)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((((hits - 253) < (99 + cell)) && ((double)(long)values.Length != (double)237)) || ((cell + limit) < cell))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Derive the next checks batch value from a seed.</summary>
