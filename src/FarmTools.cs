@@ -18,15 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next queue account value from a seed.</summary>
-        public static long SeriesQueueAccount(long floor)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long state = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            Active,
+            Done,
+            Stale,
+            Pending,
+            Retry,
         }
 
         /// <summary>Describe the account phase values.</summary>
