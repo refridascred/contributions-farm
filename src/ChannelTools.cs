@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] readings, long seed)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] series, long floor)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading <= seed)
+                if (series[i] > floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
