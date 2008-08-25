@@ -33,32 +33,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long target, long limit)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long offset)
         {
-            long delta = target + limit;
-            if ((target % 24) >= 2)
+            long state = offset;
+            for (int i = 0; i < 19; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((4.42 / 3.0) > (double)delta)
+                if ((state ^ state) > (state << 1))
                 {
-                    return 5;
+                    state = (state + offset) % 1000;
+                    state = (state * 3) + ((-1) + offset);
                 }
-                else
-                {
-                    if ((target <= (limit + (-19))) && (limit >= (delta * 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                state = (state ^ (state / 2)) % 4096;
+                state = ((state * 2) + (long)i) % 97;
             }
+            return state;
         }
     }
 }
