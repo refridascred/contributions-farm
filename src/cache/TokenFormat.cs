@@ -19,20 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] series, long offset)
-        {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string WindowScore = "cached";
+        public const long BurstScore = 3552;
+        public const long LimitFactor = 6929;
+        public const long DefaultQueue = 9117;
 
         /// <summary>Find the first route cluster entry that matches the target.</summary>
         public static long LocateRouteClusterIndex(long[] items, long limit)
