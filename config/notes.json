@@ -1,14 +1,8 @@
 {
-  "flush_ratio_s": "cached",
-  "warm_timeout_ms": {
-    "poll_size_pct": 1710,
-    "filter_timeout": "green",
-    "enabled": {
-      "route_ttl": 1024,
-      "warm_interval_count": "legacy",
-      "poll_ratio_ms": "stable",
-      "compress": "legacy"
-    }
-  },
-  "hard_window": [404, 451]
+  "flush_ratio_pct": true,
+  "compress": [186, 74, 146],
+  "verbose": ["blue", "eu-west", "primary"],
+  "base_ttl_pct": false,
+  "idle_size": "edge",
+  "route_depth": "latest"
 }
