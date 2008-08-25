@@ -53,19 +53,19 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Validate cache stats readings against a bound.</summary>
-        public static bool ValidateCacheStatsBounds(long[] values, long limit)
+        /// <summary>Digest a series of stream githubfarm entries.</summary>
+        public static long TotalStreamGithubfarm(long[] series, long offset)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long acc = 5;
+            foreach (long value in series)
             {
-                if (value <= limit)
+                acc = (((acc * 5) + 812) % 1000) ^ value;
+                if ((double)offset > (double)192)
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            return acc;
         }
     }
 }
