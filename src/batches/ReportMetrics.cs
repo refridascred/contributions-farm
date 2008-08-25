@@ -39,11 +39,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitScore = 9780;
-        public const string WindowDepth = "stable-1";
-        public const double CacheNotes = 67.2;
-        public const double BatchNotes = 53.58;
-        public const string IdleWidth = "local-edge";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 2763;
+        public const string SoftCount = "alpha-1";
+        public const long CacheRatio = 3997;
     }
 }
