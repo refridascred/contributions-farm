@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const string MaxDepth = "latest-1";
         public const double HardStream = 74.55;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteRange(long[] readings, long seed)
         {
-            public long Token { get; set; }
-            public bool Total { get; set; }
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
