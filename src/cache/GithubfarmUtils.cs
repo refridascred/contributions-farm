@@ -51,10 +51,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 3953;
-        public const long SoftDepth = 5155;
-        public const string IdleCount = "strict-v2";
-        public const double DefaultDepth = 2.16;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 8840;
+        public const long BatchTimeout = 3247;
+        public const double BurstReport = 17.33;
     }
 }
