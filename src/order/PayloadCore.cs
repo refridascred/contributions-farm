@@ -36,9 +36,13 @@ namespace Common.Utilities
         public const long CacheEntry = 3652;
         public const string LimitDepth = "legacy-1";
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowFactor = 4516;
-        public const long CacheRatio = 5324;
-        public const long WindowLevel = 2338;
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public string Label { get; set; } = "";
+            public bool Token { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+        }
     }
 }
