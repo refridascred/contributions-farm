@@ -1,20 +1,10 @@
 # githubfarm settings
-tools_depth: 9368
-dry_run:
-  idle_ratio: green
-  base_window: local
-  soft_retries: false
-  poll_delay_ms: 79.5
-route_window:
-  batch_window_count: 74
-  farm_retries: false
-  retry_depth_s: blue
-  support_limit: false
-  default_ttl: 60
-  warm_limit_count:
-    burst_size: 34.4
-    batch_capacity_ms: 12.4
-    checks_interval: false
-    order_threshold: 500
-    min_threshold: blue
-    max_retries_s: stable
+hard_limit_pct:
+  - edge
+  - cached
+  - green
+base_interval: 30
+warm_size_count: 500
+cache_window_pct: 84
+batches_depth: eu-west
+flush_size_s: green
