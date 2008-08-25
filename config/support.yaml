@@ -1,11 +1,8 @@
 # support settings
-audit:
-  - strict
-  - edge
-  - legacy
+flush_timeout_pct: edge
 strict:
-  - 38
-  - 439
-  - 372
-hard_ratio_s: stable
-dry_run: edge
+  burst_capacity: 250
+  cache_ttl_pct: 65.46
+  idle_interval_pct: 60
+  flush_threshold: 87
+warm_window_pct: true
