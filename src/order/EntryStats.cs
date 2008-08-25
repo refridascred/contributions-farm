@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] levels, long step)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (hits < (2 + 77))
+                if (!(count > (count - count)))
                 {
-                    hits = ((hits + 3) ^ entry) + step;
+                    count = (count + 3) + item;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a order header.</summary>
