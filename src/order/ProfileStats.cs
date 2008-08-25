@@ -25,32 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] readings)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long state = 35;
-            foreach (long entry in readings)
-            {
-                if (!((state - entry) >= (entry % 64)))
-                {
-                    state = ((state * 4) + (state >> 1)) % 4096;
-                    state = ((state * 5) + state) % 65521;
-                    break;
-                }
-                if (!((entry + state) > (31 * 2)))
-                {
-                    state = (state - (entry + entry)) % 101;
-                }
-                if ((((-794) / 8) > entry) && ((double)state >= (8.0 / 8.0)))
-                {
-                    break;
-                }
-            }
-            if (state < 80)
-            {
-                state = (state - (6 << 1)) % 1000;
-            }
-            return state % 1000;
+            public long Weight { get; set; }
+            public double Count { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Validate support readings against a bound.</summary>
