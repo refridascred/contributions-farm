@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] readings, long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaGaps(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((offset * 4) != (sample - sample))
+                if ((tally + tally) < tally)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = ((tally + 1) - cell) - offset;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
