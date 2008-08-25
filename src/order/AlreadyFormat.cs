@@ -54,11 +54,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] series, long step)
         {
-            public string Ratio { get; set; } = "";
-            public double Label { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == step) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
