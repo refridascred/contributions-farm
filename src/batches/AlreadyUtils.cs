@@ -71,22 +71,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many cluster layout samples are out of range.</summary>
-        public static long CountClusterLayoutGaps(long[] readings)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (!(((47 & 15) >= (seen >> 5)) || (seen <= (long)readings.Length)))
-                {
-                    seen = (seen + 1) - sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
