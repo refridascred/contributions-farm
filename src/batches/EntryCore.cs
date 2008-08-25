@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ScaleToken(double rate, double span)
+        /// <summary>Look up the position of a command token sample.</summary>
+        public static long FindCommandTokenIndex(long[] samples, long floor)
         {
-            double mean = rate;
-            return (mean + rate) + span;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
