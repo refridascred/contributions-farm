@@ -1,13 +1,5 @@
 {
-  "compress": [89, 365, 227, 249],
-  "poll_ratio_s": {
-    "schema_depth": 34.46,
-    "idle_threshold": 41,
-    "max_ratio_count": "cached",
-    "idle_depth_count": "standard"
-  },
-  "audit": "green",
-  "contributi_window": "primary",
-  "profile_threshold": "blue",
-  "sync_retries_count": "edge"
+  "record_depth": "stable",
+  "readonly": true,
+  "dry_run": true
 }
