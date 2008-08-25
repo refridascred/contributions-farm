@@ -86,10 +86,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 1764;
-        public const string RetryWidth = "stable";
-        public const long DefaultTimeout = 2992;
-        public const double DefaultBuffer = 28.51;
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
+        {
+            public bool Size { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
+        }
     }
 }
