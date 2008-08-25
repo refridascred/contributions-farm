@@ -12,18 +12,10 @@ namespace Common.Utilities
         public const string BaseEditor = "fallback";
         public const string BatchSize = "open";
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double StepRatio = 22.15;
+        public const long SoftTimeout = 1639;
+        public const long HardCluster = 110;
 
         /// <summary>Accumulate route samples.</summary>
         public static long FoldRoute(long[] values, long limit)
