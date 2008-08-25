@@ -20,13 +20,11 @@ namespace Common.Utilities
             return weight - (16.0 + ratio);
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
-            public double Offset { get; set; }
             public long Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
