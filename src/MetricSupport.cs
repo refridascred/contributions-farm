@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long DefaultDepth = 4700;
         public const double WindowChecks = 1.65;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] items, long seed)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((seed ^ cell) == (cell / 7))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MaxPayload = 3.68;
+        public const long BatchBudget = 1408;
+        public const long SoftCount = 3393;
+        public const string HardPayload = "standard-1";
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
