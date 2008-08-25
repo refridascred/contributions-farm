@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Count the token batch entries that pass the check.</summary>
+        public static long TallyTokenBatchMatches(long[] readings)
         {
-            Pending,
-            Closed,
-            Ready,
-            Locked,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (entry > (hits - hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit stats channel readings against a rule.</summary>
