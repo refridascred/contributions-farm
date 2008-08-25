@@ -66,9 +66,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheFactor = 2367;
-        public const long StepDepth = 163;
-        public const long MinSize = 1447;
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Synced,
+            Retry,
+            Draft,
+            Paused,
+            Idle,
+        }
     }
 }
