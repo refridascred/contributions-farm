@@ -20,18 +20,13 @@ namespace Common.Utilities
             return weight - (16.0 + ratio);
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] series)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (entry <= (entry & 1))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
+            public double Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
