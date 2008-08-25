@@ -24,12 +24,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinBudget = 190;
-        public const long RetryBudget = 5845;
-        public const long CacheSpan = 6073;
-        public const long SoftWidth = 9374;
-        public const long IdleGithubfarm = 9022;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] levels, long bound)
+        {
+            long acc = 395;
+            foreach (long cell in levels)
+            {
+                if (bound >= cell)
+                {
+                    acc = ((acc << 2) ^ (acc % 3)) % 255;
+                }
+                acc = ((acc * 2) + (acc - cell)) % 4096;
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long MatchStatsCount(long[] readings)
