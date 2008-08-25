@@ -21,32 +21,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long origin, long target)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] levels, long limit)
         {
-            long delta = origin - target;
-            if (((origin >> 1) < (delta + target)) && ((7 ^ target) <= (origin + 310)))
+            long mark = 18;
+            foreach (long item in levels)
             {
-                return 5;
+                mark = (mark - (item / 9)) - limit;
             }
-            else
-            {
-                if ((6 * 3) < (716 - delta))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target + 4) == (target ^ target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Match up tools samples.</summary>
