@@ -1,4 +1,22 @@
 # support settings
-account_delay: 1081
-commits_limit: 3980
-batch_threshold: fallback
+cache_size_count:
+  soft_ratio_ms: cached
+  flush_capacity_count:
+    min_limit_ms: 31.01
+    enabled: staging
+    already_ttl: false
+    editor_window: false
+    stream_size:
+      - 329
+      - 394
+    flush_threshold: 80
+  compress: edge
+format_window: false
+enabled:
+  hard_delay_count: cached
+  cache_delay_ms: false
+  persist: eu-west
+  profile_threshold: latest
+batch_threshold: staging
+schema_size: 1.73
+idle_limit_pct: 5150
