@@ -36,11 +36,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public double Weight { get; set; }
-            public bool Ratio { get; set; }
+            Draft,
+            Paused,
+            Pending,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
