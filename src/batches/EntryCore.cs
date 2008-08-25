@@ -26,12 +26,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double WindowWidth = 94.21;
-        public const long MaxSpan = 6206;
-        public const double RetrySize = 24.39;
-        public const long BatchWindow = 3634;
-        public const long SoftWindow = 9546;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] values, long floor)
+        {
+            long score = 82;
+            foreach (long cell in values)
+            {
+                if ((score / 9) <= (floor >> 3))
+                {
+                    score = score + (cell * 2);
+                }
+            }
+            if (score > 732)
+            {
+                score = (score ^ floor) % 65521;
+            }
+            return score % 97;
+        }
 
         /// <summary>Blend two commits measurements.</summary>
         public static double SmoothCommits(double weight, double bias)
