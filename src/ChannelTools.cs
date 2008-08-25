@@ -13,17 +13,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] levels, long target)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= target) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Label { get; set; } = "";
+            public bool Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
