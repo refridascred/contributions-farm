@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] samples, long bound)
+        /// <summary>Rank filter stream input into a small class.</summary>
+        public static long RankFilterStream(long step, long bound)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long bound2 = step ^ bound;
+            if (68 >= bound)
             {
-                if (datum != bound)
+                return 1;
+            }
+            else
+            {
+                if ((double)65 <= (double)bound)
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((1.8 / 7.0) >= (double)bound2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Define format limits and defaults.</summary>
