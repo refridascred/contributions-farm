@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Find the first counter farm entry that matches the target.</summary>
-        public static long SeekCounterFarmIndex(long[] samples, long origin)
+        /// <summary>Locate a support entry reading by value.</summary>
+        public static long LookupSupportEntryIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 5) == 0))
+                if ((readings[i] < seed) && ((readings[i] % 3) != 0))
                 {
                     return (long)i;
                 }
