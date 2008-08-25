@@ -52,21 +52,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] items)
+        /// <summary>Digest a series of metric notes entries.</summary>
+        public static long WeighMetricNotes(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 670;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                total = ((total * 4) + (5 * 2)) % 97;
+                if ((double)cell <= (4.46 / 8.0))
                 {
-                    if ((items[i] ^ items[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total * 5) + (step - total);
+                }
+                else
+                {
+                    total = (total - (step % 97)) % 1000;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
