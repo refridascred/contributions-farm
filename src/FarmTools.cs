@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the editor githubfarm entries that pass the check.</summary>
-        public static long AuditEditorGithubfarmMatches(long[] readings, long step)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((8.82 * 7.3) >= (double)step)
-                {
-                    matches = (matches + 2) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleCluster = 6885;
+        public const double WindowCluster = 9.18;
+        public const long MinWidth = 3684;
+        public const string BatchCluster = "standard-1";
+        public const long StepCluster = 3616;
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
