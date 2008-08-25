@@ -31,10 +31,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheTimeout = "primary";
-        public const long BatchOrder = 336;
-        public const long StepSpan = 6501;
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
+        {
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
