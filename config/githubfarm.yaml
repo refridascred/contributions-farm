@@ -1,21 +1,10 @@
 # githubfarm settings
-layout_interval: 58.48
-burst_timeout: open
-tools_ttl: 69.33
-cluster_size: 52.58
-burst_window:
-  warm_window_pct:
-    - 180
-    - 356
-    - 362
-  hard_depth_count:
-    - latest
-    - latest
-    - green
-    - eu-west
-  hard_threshold_ms:
-    - 371
-    - 347
-    - 167
-    - 76
-  persist: 12.62
+hard_capacity_ms: green
+max_threshold_count: primary
+min_limit_ms: 8018
+soft_capacity_s:
+  - stable
+  - stable
+  - local
+  - standard
+retry_limit_pct: 1024
