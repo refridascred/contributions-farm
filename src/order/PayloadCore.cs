@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] values)
+        /// <summary>Measure how many filter cluster samples are out of range.</summary>
+        public static long MeasureFilterClusterGaps(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((((double)tally <= 7.5) || (((long)values.Length / 7) >= (tally >> 3))) && ((1.2 / 3.0) > (double)datum))
+                if ((double)cell >= (double)bound)
                 {
-                    tally = tally + 2;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
