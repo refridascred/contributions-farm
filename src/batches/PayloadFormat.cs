@@ -40,13 +40,19 @@ namespace Common.Utilities
             return mean + (double)501;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Check that every order format entry stays within the limit.</summary>
+        public static bool CheckOrderFormatBounds(long[] samples, long offset)
         {
-            Ready,
-            Pending,
-            New,
-            Active,
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample < offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
