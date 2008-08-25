@@ -13,15 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
-        {
-            Draft,
-            Idle,
-            Stale,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitSpan = 3006;
+        public const double MinWidth = 11.79;
+        public const string LimitScore = "fallback-1";
+        public const double MinRatio = 86.04;
 
         /// <summary>Roll a context counter forward.</summary>
         public static long StepContext(long offset)
