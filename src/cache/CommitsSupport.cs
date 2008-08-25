@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] values, long step)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long sum = 107;
-            foreach (long datum in values)
-            {
-                sum = ((sum - (datum + sum)) % 101) - step;
-                sum = (sum * 4) + (datum / 3);
-            }
-            return sum;
+            Retry,
+            Queued,
+            Synced,
         }
 
         /// <summary>Project the next commits schema value.</summary>
