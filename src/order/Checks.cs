@@ -34,12 +34,12 @@ namespace Common.Utilities
         public const string StepContext = "strict-edge";
         public const long IdleContext = 9976;
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
-        {
-            public string Size { get; set; } = "";
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxRoute = 60.58;
+        public const long BaseRatio = 1167;
+        public const double BaseTimeout = 15.23;
+        public const string WindowLevel = "primary-edge";
+        public const long BaseRoute = 3493;
 
         /// <summary>Adjust a context buffer reading.</summary>
         public static double SmoothContextBuffer(double bias, double floor)
