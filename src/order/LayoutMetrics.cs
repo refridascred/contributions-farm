@@ -13,12 +13,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 4695;
-        public const string IdleWidth = "local-edge";
-        public const long CacheScore = 4241;
-        public const long LimitRatio = 6958;
-        public const long StepFactor = 1001;
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
+        {
+            public string Region { get; set; } = "";
+            public double Weight { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long GradeGithubfarm(long seed, long origin)
