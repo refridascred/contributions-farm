@@ -26,22 +26,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] values, long floor)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long limit, long target)
         {
-            long score = 82;
-            foreach (long cell in values)
+            if (!((0 % 8) == (target * 2)))
             {
-                if ((score / 9) <= (floor >> 3))
+                return 6;
+            }
+            else
+            {
+                if ((double)limit != (16.0 - 5.4))
                 {
-                    score = score + (cell * 2);
+                    return 0;
+                }
+                else
+                {
+                    if ((limit - target) <= limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (score > 732)
-            {
-                score = (score ^ floor) % 65521;
-            }
-            return score % 97;
         }
 
         /// <summary>Blend two commits measurements.</summary>
