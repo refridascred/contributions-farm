@@ -86,15 +86,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long step)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            Synced,
+            Done,
+            New,
         }
     }
 }
