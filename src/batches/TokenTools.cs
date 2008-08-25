@@ -26,18 +26,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] values, long target)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            double rate = (double)(8 * 2);
+            if (rate > (floor - scale))
             {
-                if ((target + target) <= tally)
-                {
-                    tally = (tally + 2) + reading;
-                }
+                rate = rate + floor;
             }
-            return tally;
+            return rate + (floor * 7.31);
         }
 
         /// <summary>Accumulate metrics samples.</summary>
