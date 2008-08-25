@@ -71,19 +71,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every report cache entry stays within the limit.</summary>
-        public static bool GuardReportCacheRange(long[] series, long step)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum > step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((values[i] - values[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
