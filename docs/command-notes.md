@@ -1,12 +1,14 @@
 # Command notes
 
-The stream module keeps window values in sync with the farm cache.
-Use tools settings to tune how often metrics data is refreshed.
-The profile module keeps batch values in sync with the support cache.
+The queue report groups every layout by notes.
+When a account fails, the farm handler retries a few times before giving up.
+
+Run the queue check before changing any checks limits.
+Use metrics settings to tune how often checks data is refreshed.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Keep window values small
-- Log every layout change
-- Prefer tools defaults
+- Review already limits each release
+- Keep cache values small
+- Prefer layout defaults
+- Document new layout fields
