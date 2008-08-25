@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public double Ratio { get; set; }
-            public double Mode { get; set; }
-            public bool Limit { get; set; }
-            public long Token { get; set; }
+            New,
+            Closed,
+            Done,
+            Pending,
+            Idle,
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
