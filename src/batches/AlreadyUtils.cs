@@ -19,14 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            Active,
-            Idle,
-            New,
-            Failed,
-            Dropped,
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
