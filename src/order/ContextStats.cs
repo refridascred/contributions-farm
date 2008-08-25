@@ -25,22 +25,14 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] items, long offset)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long total = 50;
-            foreach (long sample in items)
-            {
-                if (!((total * 5) > (offset + sample)))
-                {
-                    total = (total * 4) + offset;
-                }
-                else
-                {
-                    total = (total + offset) % 101;
-                }
-            }
-            return total;
+            Draft,
+            Done,
+            Locked,
+            Retry,
+            Pending,
         }
 
         /// <summary>Project the next cluster value.</summary>
