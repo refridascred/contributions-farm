@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] samples)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Draft,
+            Failed,
         }
 
         /// <summary>Define order limits and defaults.</summary>
