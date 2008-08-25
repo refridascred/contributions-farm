@@ -71,14 +71,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long DeriveNotes(long limit)
         {
-            Synced,
-            Retry,
-            Draft,
-            Paused,
-            Idle,
+            long result = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                long step = (long)i;
+                if ((limit << 3) >= step)
+                {
+                    result = result - (step << 1);
+                }
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
