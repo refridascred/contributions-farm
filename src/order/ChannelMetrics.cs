@@ -39,15 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long origin)
+        /// <summary>Fold a list of cluster graph readings.</summary>
+        public static long DigestClusterGraph(long[] data, long seed)
         {
-            long state = origin;
-            for (int i = 0; i < 12; i++)
+            long total = 50;
+            foreach (long sample in data)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                total = ((total ^ (seed + total)) % 65521) + sample;
+                if ((double)(long)data.Length == (7.18 + 6.63))
+                {
+                    break;
+                }
             }
-            return state;
+            if (total < 54)
+            {
+                total = ((total << 2) ^ (total << 2)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Iterate the stream batch series from a seed.</summary>
