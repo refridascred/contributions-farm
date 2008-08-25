@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const long BurstMetrics = 3325;
         public const double MinScore = 82.61;
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            Stale,
-            Done,
-            Locked,
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
