@@ -43,12 +43,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            public long Flag { get; set; }
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
             public double Rank { get; set; }
-            public string Limit { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Roll a payload counter forward.</summary>
