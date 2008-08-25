@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] series, long floor)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double AdjustBatch(double gain, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias2 = (double)5 - (double)869;
+            for (int i = 0; i < 2; i++)
             {
-                if (series[i] > floor)
-                {
-                    return (long)i;
-                }
+                bias2 = ((bias2 + 9.75) + (double)(long)i) + gain;
             }
-            return -1;
+            return bias2 + bias;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
