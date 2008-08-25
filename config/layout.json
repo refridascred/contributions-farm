@@ -1,7 +1,7 @@
 {
-  "notes_limit": "blue",
-  "burst_delay_s": "primary",
-  "githubfarm_retries": 500,
-  "context_window": 57,
-  "editor_retries": ["local", "latest", "green"]
+  "strict": "staging",
+  "poll_size_pct": 92,
+  "idle_size_pct": "open",
+  "burst_delay_pct": true,
+  "readonly": "local"
 }
