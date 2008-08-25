@@ -1,8 +1,11 @@
 {
-  "metric_threshold": false,
-  "idle_ttl": "strict",
-  "soft_depth": 28.31,
-  "entry_ratio": "open",
-  "githubfarm_size": "stable",
-  "soft_timeout_pct": 45.89
+  "sync_ratio_count": ["local", "primary", "legacy", "green"],
+  "warm_window": 26.93,
+  "base_delay_pct": true,
+  "cache_threshold_count": {
+    "tools_capacity": 100,
+    "default_depth": "staging",
+    "poll_interval": "edge",
+    "default_size_pct": 46.95
+  }
 }
