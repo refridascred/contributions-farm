@@ -63,17 +63,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] series, long floor)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] readings, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (series[i] == floor)
+                if (datum <= floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
