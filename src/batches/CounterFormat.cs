@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many farm profile samples are out of range.</summary>
-        public static long AuditFarmProfileHits(long[] series)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long carry = 776;
+            foreach (long datum in values)
             {
-                if ((111 / 7) > (datum + hits))
+                carry = ((carry << 3) ^ datum) % 255;
+                if ((carry - datum) != (datum / 5))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return carry % 65521;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
