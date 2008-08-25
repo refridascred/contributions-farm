@@ -30,22 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the metrics farm entries that pass the check.</summary>
-        public static long TallyMetricsFarmGaps(long[] levels)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] items)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long mark = -99;
+            foreach (long cell in items)
             {
-                if ((matches >> 4) > (item - matches))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark - (27 & 63)) % 1000) + cell;
             }
-            return matches;
+            if (mark < 7)
+            {
+                mark = ((mark << 3) ^ mark) % 97;
+            }
+            return mark;
         }
     }
 }
