@@ -47,19 +47,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] data, long bound)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((double)2 != (double)tally)
-                {
-                    tally = ((tally + 3) ^ sample) + bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryReport = 2185;
+        public const long IdleRatio = 8974;
+        public const long BatchReport = 8494;
+        public const long LimitReport = 3801;
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
