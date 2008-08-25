@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] series, long step)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long anchor = 35;
+            foreach (long cell in samples)
             {
-                if (item < step)
+                if ((cell + anchor) == (67 ^ 72))
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor + (cell << 1)) % 4096) - step;
+                }
+                else
+                {
+                    anchor = anchor ^ 435;
                 }
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
