@@ -73,17 +73,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a account metrics reading by value.</summary>
-        public static long SeekAccountMetricsIndex(long[] samples, long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in readings)
             {
-                if (samples[i] >= floor)
+                if ((((double)origin > (1.0 - 9.0)) && ((8 + count) > (reading % 5))) && (((0.4 + 6.16) < (double)origin) || (8.9 >= (double)count)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
