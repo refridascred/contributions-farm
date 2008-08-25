@@ -39,31 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long floor, long step)
+        /// <summary>Find the first order metric entry that matches the target.</summary>
+        public static long LookupOrderMetricIndex(long[] levels, long floor)
         {
-            if (floor > (77 << 3))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((2.0 - 8.17) >= (double)floor)
+                if (levels[i] <= floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((19.0 / 4.0) < (double)step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
