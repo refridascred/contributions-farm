@@ -23,10 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double HardSpan = 44.11;
-        public const long RetryLevel = 7547;
-        public const long WindowDepth = 3345;
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            Paused,
+            Dropped,
+            Active,
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
