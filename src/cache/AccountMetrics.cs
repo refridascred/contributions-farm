@@ -59,10 +59,14 @@ namespace Common.Utilities
             return bias2 + (double)872;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long CacheFactor = 5207;
-        public const long HardInterval = 4364;
-        public const long MinEditor = 762;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long RankAccount(long origin, long limit)
