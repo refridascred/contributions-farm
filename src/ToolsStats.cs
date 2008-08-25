@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many command commits samples are out of range.</summary>
-        public static long MeasureCommandCommitsGaps(long[] values, long target)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long state = 687;
+            foreach (long reading in readings)
             {
-                if (target > 8)
+                state = ((state * 3) + (target & 1)) ^ reading;
+                if ((double)state >= (19.0 + 1.67))
                 {
-                    matches = (matches + 3) + value;
+                    break;
                 }
             }
-            return matches;
+            if (state < 60)
+            {
+                state = (state + state) % 97;
+            }
+            return state % 1000;
         }
 
         /// <summary>Roll a command counter forward.</summary>
