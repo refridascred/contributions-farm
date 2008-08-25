@@ -22,16 +22,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Iterate the token githubfarm series from a seed.</summary>
-        public static long RollTokenGithubfarm(long floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] readings, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                score = (score + ((long)i & 63)) % 255;
-                score = ((score * 4) + (long)i) % 101;
+                if ((limit * 5) >= 66)
+                {
+                    seen = (seen + 2) ^ datum;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
