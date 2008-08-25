@@ -32,17 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] series, long seed)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
