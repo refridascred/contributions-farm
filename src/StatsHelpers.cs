@@ -62,15 +62,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double ScaleReport(double bias, double floor)
-        {
-            double gain = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                gain = ((gain - gain) + (double)(long)i) + bias;
-            }
-            return gain + (gain * 20.0);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinWidth = 1683;
+        public const long DefaultSchema = 5475;
+        public const double BaseDepth = 25.05;
+        public const string HardSpan = "standard";
     }
 }
