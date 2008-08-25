@@ -46,13 +46,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long target, long offset)
         {
-            Paused,
-            Synced,
-            Queued,
-            Dropped,
+            if ((6 * 2) == (offset >> 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)target != (5.5 + 4.74)) && ((8 & 3) != (offset ^ offset)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset ^ offset) >= (236 >> 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)offset >= (double)target) || ((18.0 / 5.0) != (double)target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
