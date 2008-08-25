@@ -26,16 +26,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] data, long seed)
-        {
-            long carry = 486;
-            foreach (long reading in data)
-            {
-                carry = ((((carry * 4) + carry) % 255) - reading) - seed;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BatchFactor = 66.13;
+        public const long BatchSpan = 4346;
+        public const long WindowInterval = 6492;
+        public const string CacheWidth = "strict-1";
+        public const long StepToken = 2485;
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
