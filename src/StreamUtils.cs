@@ -62,21 +62,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count notes farm pairs that satisfy a relation.</summary>
-        public static long CompareNotesFarmCount(long[] items)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterLimits(long[] levels, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum != seed)
                 {
-                    if ((items[i] + items[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
