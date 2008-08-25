@@ -45,17 +45,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] data, long step)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] < step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the already kind values.</summary>
