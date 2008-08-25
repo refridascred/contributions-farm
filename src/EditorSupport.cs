@@ -27,25 +27,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long ClassifyBatches(long target, long bound)
+        /// <summary>Look up the position of a format tools sample.</summary>
+        public static long LocateFormatToolsIndex(long[] readings, long origin)
         {
-            long prev = target - bound;
-            if ((prev + 11) <= (bound / 4))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (47 <= prev)
+                if (readings[i] >= origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine command values into a single score.</summary>
