@@ -72,10 +72,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleInterval = 6365;
-        public const long DefaultOrder = 8678;
-        public const long RetrySize = 6816;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (2.41 > (double)matches)
+                {
+                    matches = (matches + 2) ^ item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
