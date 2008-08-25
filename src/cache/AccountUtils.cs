@@ -12,12 +12,25 @@ namespace Common.Utilities
         public const long BurstCommand = 7951;
         public const double MinSize = 63.53;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 5171;
-        public const double IdleProfile = 21.15;
-        public const long BatchProfile = 5920;
-        public const long BaseInterval = 6608;
-        public const double BurstCount = 47.6;
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long target, long bound)
+        {
+            if (bound > (bound * 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((target - bound) >= (bound + bound)) && ((12.0 * 3.0) > (double)bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Count route layout pairs that satisfy a relation.</summary>
         public static long MatchRouteLayoutCount(long[] items)
