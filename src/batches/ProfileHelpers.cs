@@ -85,11 +85,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitRatio = 6622;
-        public const string IdleWidth = "staging";
-        public const long BatchRoute = 2817;
-        public const double StepRoute = 76.95;
-        public const long CacheRoute = 2176;
+        /// <summary>Locate a account metrics reading by value.</summary>
+        public static long SeekAccountMetricsIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
