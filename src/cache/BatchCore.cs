@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
-        {
-            public bool Rank { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardFactor = 3928;
+        public const double StepFactor = 88.86;
+        public const long MaxOrder = 7088;
+        public const long DefaultFactor = 9265;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long ScoreQueue(long[] series)
