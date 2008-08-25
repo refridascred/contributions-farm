@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph support helpers.</summary>
     public static class GraphSupport
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long target)
         {
-            public string Size { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
-            public bool Offset { get; set; }
+            long result = target;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Define format limits and defaults.</summary>
