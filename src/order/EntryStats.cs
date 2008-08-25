@@ -28,18 +28,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit farm contributi readings against a rule.</summary>
-        public static long MeasureFarmContributiHits(long[] readings, long bound)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((bound >> 4) >= bound)
-                {
-                    hits = (hits + 1) ^ reading;
-                }
-            }
-            return hits;
+            Done,
+            Closed,
+            Pending,
         }
 
         /// <summary>Describe the context status values.</summary>
