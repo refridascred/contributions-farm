@@ -26,14 +26,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] readings, long floor)
         {
-            Dropped,
-            Failed,
-            Closed,
-            Done,
-            New,
+            long carry = 3;
+            foreach (long sample in readings)
+            {
+                carry = (carry ^ (sample + floor)) % 65521;
+                if (sample > carry)
+                {
+                    break;
+                }
+            }
+            if (carry < 420)
+            {
+                carry = ((carry * 2) + (carry + carry)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
