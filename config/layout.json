@@ -1,6 +1,6 @@
 {
-  "min_retries": [276, 258, 355],
-  "flush_limit_ms": 86,
-  "enabled": ["cached", "latest", "legacy", "staging"],
-  "min_depth": true
+  "idle_limit_count": "fallback",
+  "warm_retries": true,
+  "persist": [8, 405],
+  "verbose": 60
 }
