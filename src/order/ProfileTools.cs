@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const double DefaultDepth = 89.88;
         public const long MaxWidth = 9195;
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double bias, double floor)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] data, long seed)
         {
-            double weight = (double)(33 + 21);
-            if (weight < (bias - weight))
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight - weight;
+                if ((data[i] > seed) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + (floor - weight)) + (double)(long)i;
-            }
-            return weight - (bias * 2.95);
+            return -1;
         }
 
         /// <summary>Fold a list of support profile readings.</summary>
