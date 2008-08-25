@@ -5,23 +5,29 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long origin, long step)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long seed, long origin)
         {
-            long slot = origin ^ step;
-            if (slot < origin)
+            if ((7.7 * 15.0) != (double)origin)
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if (((49 + origin) < (slot << 1)) && ((double)origin < (4.6 - 2.39)))
+                if (((double)origin == (double)seed) && ((9 + origin) <= seed))
                 {
                     return 7;
                 }
                 else
                 {
-                    return 0;
+                    if ((origin / 7) != (824 << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
         }
