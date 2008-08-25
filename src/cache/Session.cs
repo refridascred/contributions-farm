@@ -37,22 +37,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutHits(long[] samples)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if (9.08 < (5.7 - 17.0))
+                if (cell < floor)
                 {
-                    matches = (matches + 1) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
