@@ -1,8 +1,6 @@
 {
-  "poll_retries": [188, 406, 281],
-  "min_retries": ["edge", "latest"],
-  "max_retries_ms": "legacy",
-  "strict": ["strict", "green"],
-  "warm_delay": 500,
-  "min_window_ms": "eu-west"
+  "queue_delay": "fallback",
+  "compress": false,
+  "flush_ttl_s": 50.06,
+  "base_interval_ms": "eu-west"
 }
