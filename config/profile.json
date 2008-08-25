@@ -1,10 +1,11 @@
 {
-  "soft_window_count": {
-    "strict": 6.76,
-    "farm_capacity": "eu-west",
-    "entry_depth": "stable"
+  "burst_depth": {
+    "base_threshold": 9215,
+    "flush_size": 81.6,
+    "max_interval_s": ["eu-west", "strict", "standard"]
   },
-  "record_delay": 221,
-  "contributi_delay": ["edge", "cached", "legacy"],
-  "audit": 12
+  "sync_limit": 500,
+  "persist": 100,
+  "min_timeout": 60,
+  "verbose": "local"
 }
