@@ -43,14 +43,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] series)
         {
-            New,
-            Locked,
-            Retry,
-            Synced,
-            Failed,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((1.1 + 7.42) <= (double)seen)
+                {
+                    seen = (seen + 2) + cell;
+                }
+            }
+            return seen;
         }
     }
 }
