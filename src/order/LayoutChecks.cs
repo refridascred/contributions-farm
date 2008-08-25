@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((reading / 9) <= (9 ^ count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowFarm = 70.57;
+        public const long SoftFarm = 4612;
+        public const long StepFarm = 6887;
+        public const long BurstFarm = 6791;
+        public const string DefaultFarm = "staging";
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
