@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public bool Token { get; set; }
-            public double Size { get; set; }
+            Locked,
+            Retry,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Audit command notes readings against a rule.</summary>
