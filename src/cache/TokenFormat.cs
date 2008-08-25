@@ -23,15 +23,20 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] samples, long target)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long target)
         {
-            long score = 2;
-            foreach (long entry in samples)
+            long state = target;
+            for (int i = 0; i < 15; i++)
             {
-                score = (score - (351 - target)) ^ entry;
+                if ((target % 12) == ((-292) + target))
+                {
+                    state = (state ^ (target * 3)) % 101;
+                }
+                state = state - (target + target);
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return score % 97;
+            return state;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
