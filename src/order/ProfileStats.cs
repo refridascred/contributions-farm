@@ -12,12 +12,38 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long seed, long origin)
         {
-            public bool Total { get; set; }
-            public long Level { get; set; }
-            public long Score { get; set; }
+            if ((origin + origin) > seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((-847) - origin) <= seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(9 > origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (seed < 91)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate support readings against a bound.</summary>
