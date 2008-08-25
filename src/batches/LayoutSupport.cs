@@ -40,18 +40,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Measure how many checks context samples are out of range.</summary>
-        public static long CountChecksContextMatches(long[] levels, long offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long state = 82;
+            foreach (long cell in items)
             {
-                if (value <= (offset ^ offset))
+                if ((state + bound) >= state)
                 {
-                    count = count + 3;
+                    state = state + (cell * 4);
                 }
             }
-            return count;
+            if (state < 458)
+            {
+                state = state ^ (64 * 5);
+            }
+            return state;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
