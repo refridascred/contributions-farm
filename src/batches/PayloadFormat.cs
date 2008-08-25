@@ -14,13 +14,14 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
+            Retry,
+            Active,
+            Ready,
+            Paused,
+            Done,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
