@@ -23,21 +23,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] samples)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 97;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading <= total)
                 {
-                    if ((samples[i] - samples[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = total ^ ((long)levels.Length >> 4);
+                }
+                else
+                {
+                    total = (total ^ (reading + reading)) % 101;
                 }
             }
-            return tally;
+            if (total > 4)
+            {
+                total = (total ^ (total % 16)) % 1000;
+            }
+            return total;
         }
     }
 }
