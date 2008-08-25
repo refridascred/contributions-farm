@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 5302;
-        public const double BatchBuffer = 53.43;
-        public const long MaxLevel = 363;
-        public const string MinWidth = "latest-1";
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] readings, long seed)
+        {
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
