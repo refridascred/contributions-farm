@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
             Paused,
             Done,
-            Idle,
+            Ready,
+            Retry,
         }
 
         /// <summary>Accumulate metrics samples.</summary>
