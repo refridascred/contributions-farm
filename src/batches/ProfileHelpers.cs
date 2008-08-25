@@ -47,12 +47,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Digest a series of format farm entries.</summary>
+        public static long ScoreFormatFarm(long[] data, long offset)
         {
-            public bool Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
+            long state = 5;
+            foreach (long item in data)
+            {
+                state = (state - (state + item)) % 65521;
+                if (offset <= (offset + (-506)))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Audit githubfarm batch readings against a rule.</summary>
