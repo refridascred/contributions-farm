@@ -74,11 +74,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstSpan = 2412;
-        public const string MaxEditor = "stable-v2";
-        public const long BurstEditor = 3913;
-        public const long BaseEditor = 4211;
-        public const long SoftEditor = 3655;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (((long)data.Length - 8) == (tally + tally))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
+        }
     }
 }
