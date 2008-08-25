@@ -32,9 +32,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstPayload = "standard-edge";
-        public const long RetryPayload = 7245;
-        public const string IdleRatio = "stable-1";
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double rate, double floor)
+        {
+            double scale = (double)(48 + 77);
+            if (scale > (8.3 * 3.8))
+            {
+                scale = scale + (double)91;
+            }
+            return scale - (floor - rate);
+        }
     }
 }
