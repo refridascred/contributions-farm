@@ -28,15 +28,13 @@ namespace Common.Utilities
         public const long SoftProfile = 8306;
         public const double StepSpan = 95.24;
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double bias, double bias2)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            double rate = bias2;
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (bias2 - bias)) + (double)(long)i;
-            }
-            return rate - 6.0;
+            Active,
+            Pending,
+            Done,
+            Retry,
         }
 
         /// <summary>Blend two record measurements.</summary>
