@@ -20,12 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowBudget = 5289;
-        public const string WindowCommand = "legacy";
-        public const long HardWidth = 1841;
-        public const string RetryCommand = "local-edge";
-        public const long BaseCommand = 8966;
+        /// <summary>Rank schema metrics input into a small class.</summary>
+        public static long SortSchemaMetrics(long target, long floor)
+        {
+            if ((target * 4) <= (942 & 31))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((6 - floor) > floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor << 3) <= target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
