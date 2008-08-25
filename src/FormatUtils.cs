@@ -44,32 +44,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long origin, long floor)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long bound)
         {
-            long offset = origin - floor;
-            if ((offset + origin) <= origin)
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (0 <= (offset - 0))
+                if (((-52) % 16) >= (bound ^ (long)i))
                 {
-                    return 8;
+                    long gap = ((long)i - 987) + 8;
+                    anchor = (anchor - gap) % 101;
                 }
                 else
                 {
-                    if ((offset >> 3) != (offset - origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    anchor = (anchor + ((long)i >> 1)) % 1000;
+                    anchor = (anchor - ((-40) + 1)) % 4096;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
