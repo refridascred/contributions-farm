@@ -20,15 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Retry,
-            New,
-            Failed,
-            Stale,
-            Done,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 2489;
+        public const long MinLevel = 6075;
+        public const long SoftSchema = 5583;
+        public const long MaxSchema = 8422;
+        public const long BurstTimeout = 8313;
 
         /// <summary>Digest a series of profile counter entries.</summary>
         public static long DigestProfileCounter(long[] readings)
