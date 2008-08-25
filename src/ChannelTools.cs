@@ -30,19 +30,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of profile counter entries.</summary>
-        public static long DigestProfileCounter(long[] readings)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] levels, long bound)
         {
-            long carry = 40;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((780 / 2) != ((long)readings.Length * 3))
+                if ((levels[i] < bound) && ((levels[i] % 5) == 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                carry = ((carry ^ 8) % 65521) - entry;
             }
-            return carry;
+            return -1;
         }
     }
 }
