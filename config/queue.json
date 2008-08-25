@@ -1,26 +1,13 @@
 {
-  "min_ratio": [234, 13, 214, 460],
-  "record_window": {
-    "idle_capacity": 54.99,
-    "readonly": true,
-    "idle_ttl_ms": "open",
-    "idle_capacity_pct": {
-      "editor_capacity": ["local", "cached", "legacy", "local"],
-      "compress": 89.35,
-      "hard_ttl_s": true,
-      "persist": "local",
-      "cluster_capacity": 37.57,
-      "max_retries_ms": true
-    }
+  "githubfarm_threshold": 45,
+  "dry_run": {
+    "dry_run": "local",
+    "cache_interval": 51.67,
+    "strict": 0.64,
+    "default_capacity": "primary",
+    "route_limit": true,
+    "idle_capacity_pct": [411, 121]
   },
-  "filter_limit": {
-    "min_ratio": ["latest", "legacy"],
-    "profile_limit": 1.41,
-    "sync_depth_s": 5,
-    "max_ratio_ms": false,
-    "route_ttl": 28.7
-  },
-  "readonly": false,
-  "soft_threshold_count": "fallback",
-  "burst_ttl_pct": [327, 186]
+  "context_capacity": 82.85,
+  "farm_retries": [279, 47, 276]
 }
