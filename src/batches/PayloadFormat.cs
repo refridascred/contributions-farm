@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            Pending,
-            Draft,
-            Locked,
+            public bool Token { get; set; }
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a payload snapshot.</summary>
