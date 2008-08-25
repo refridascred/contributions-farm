@@ -34,17 +34,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] items, long target)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long step)
         {
-            long sum = 1;
-            foreach (long datum in items)
+            long sum = step;
+            for (int i = 0; i < 13; i++)
             {
-                sum = ((sum - (target + target)) % 65521) - datum;
-            }
-            if (sum < (-730))
-            {
-                sum = (sum + (target + sum)) % 97;
+                sum = sum + (sum + step);
+                sum = (sum + step) % 1000;
+                sum = ((sum * 4) + (long)i) % 97;
             }
             return sum;
         }
