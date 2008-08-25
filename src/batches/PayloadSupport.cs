@@ -32,17 +32,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a support command reading by value.</summary>
-        public static long LookupSupportCommandIndex(long[] series, long origin)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double ProjectRoute(double rate, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate2 = rate;
+            return rate2 + (offset * 6.5);
         }
     }
 }
