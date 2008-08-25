@@ -1,11 +1,34 @@
 # entry settings
-compress: latest
-base_threshold_pct: eu-west
-burst_ttl_s: 98
-default_threshold_ms:
-  cache_delay_ms: edge
-  soft_size_pct: 7939
-  persist: 100
-  min_interval_pct: false
-  poll_retries_pct: 5
-  batches_capacity: 3261
+persist: false
+retry_capacity_pct: staging
+dry_run:
+  - 223
+  - 273
+  - 153
+  - 437
+account_threshold: 6979
+strict:
+  audit:
+    - 249
+    - 263
+    - 321
+    - 109
+  already_ttl: cached
+  flush_window_ms: 3370
+  strict:
+    persist: 21.53
+    flush_capacity_count: edge
+    flush_ttl_ms: staging
+    cache_interval_s: 250
+    verbose: 6370
+    report_window: 58
+  idle_timeout: stable
+  report_ttl:
+    soft_window_s: 92.53
+    compress: 250
+    dry_run: stable
+    default_window:
+      - primary
+      - staging
+      - local
+    retry_threshold_s: latest
