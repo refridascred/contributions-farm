@@ -13,13 +13,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Derive the next profile entry value from a seed.</summary>
+        public static long IterateProfileEntry(long offset)
         {
-            public string Label { get; set; } = "";
-            public bool Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public double Flag { get; set; }
+            long score = offset;
+            for (int i = 0; i < 24; i++)
+            {
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of window entries.</summary>
