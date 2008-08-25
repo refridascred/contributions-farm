@@ -79,15 +79,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double scale, double span)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double gain, double floor)
         {
-            double weight = scale;
-            for (int i = 0; i < 9; i++)
+            double bias = (double)(-9) + (gain - gain);
+            if (bias <= (bias + 7.35))
             {
-                weight = (weight + 0.69) + (double)(long)i;
+                bias = bias - bias;
             }
-            return weight + (4.0 + span);
+            else
+            {
+                bias = bias - floor;
+            }
+            return bias + 9.7;
         }
     }
 }
