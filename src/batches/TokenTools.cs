@@ -16,11 +16,39 @@ namespace Common.Utilities
             return mean - 14.0;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 7242;
-        public const long StepBudget = 5077;
-        public const long HardDepth = 4324;
-        public const long MaxSize = 3257;
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long target, long origin)
+        {
+            if (origin > 737)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target + target) < target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target / 7) == (origin & 31))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((95 & 3) == (origin * 5)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a profile reading.</summary>
         public static double SmoothProfile(double rate, double floor)
