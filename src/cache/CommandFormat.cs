@@ -43,15 +43,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] samples, long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                if (!(matches < (long)samples.Length))
+                {
+                    matches = ((matches + 2) ^ reading) - origin;
+                }
             }
-            return state;
+            return matches;
         }
     }
 }
