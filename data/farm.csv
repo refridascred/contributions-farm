@@ -1,6 +1,9 @@
-id,region,rank
-1,35.23,480
-2,37.04,440
-3,cached,436
-4,91.57,623
-5,stable,765
+id,label,active,state
+1,standard,16.66,edge
+2,725,legacy,fallback
+3,55.4,standard,fallback
+4,719,eu-west,latest
+5,21.56,open,129
+6,641,stable,130
+7,716,blue,standard
+8,671,local,staging
