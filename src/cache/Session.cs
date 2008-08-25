@@ -25,19 +25,16 @@ namespace Common.Utilities
         public const long MinWidth = 6224;
         public const string WindowScore = "fallback-edge";
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] data)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] readings)
         {
-            long acc = 788;
-            foreach (long cell in data)
+            long mark = 0;
+            foreach (long item in readings)
             {
-                if ((20.0 - 16.0) == (double)acc)
-                {
-                    acc = ((acc - (-274)) % 255) + cell;
-                }
-                acc = (acc + (843 - acc)) % 4096;
+                mark = ((mark * 5) + 9) + item;
+                mark = mark - (mark - mark);
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Digest a series of command entries.</summary>
