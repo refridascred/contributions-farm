@@ -34,19 +34,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of metrics contributi readings.</summary>
-        public static long WeighMetricsContributi(long[] data)
+        /// <summary>Audit route graph readings against a rule.</summary>
+        public static long TallyRouteGraphMatches(long[] items, long offset)
         {
-            long mark = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                mark = ((mark << 3) ^ datum) % 65521;
+                if (!(((-10) & 7) > (offset * 4)))
+                {
+                    hits = (hits + 2) ^ datum;
+                }
             }
-            if (mark > 92)
-            {
-                mark = (mark ^ (97 >> 1)) % 65521;
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the filter kind values.</summary>
