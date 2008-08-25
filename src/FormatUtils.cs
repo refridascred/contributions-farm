@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            Active,
+            Locked,
+            Queued,
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
