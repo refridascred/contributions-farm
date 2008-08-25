@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] values, long floor)
+        /// <summary>Measure how many checks already samples are out of range.</summary>
+        public static long TallyChecksAlreadyGaps(long[] items, long target)
         {
-            bool found = true;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if (item != floor)
+                if ((item + seen) < (target << 1))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
