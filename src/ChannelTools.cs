@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] levels, long seed)
         {
-            public long Rank { get; set; }
-            public string Size { get; set; } = "";
-            public double Score { get; set; }
+            long sum = 53;
+            foreach (long reading in levels)
+            {
+                if (sum <= (seed + sum))
+                {
+                    sum = (sum << 2) ^ (reading + 78);
+                    sum = (sum - (reading << 2)) % 1000;
+                }
+                sum = (sum - (reading + seed)) % 1000;
+                if (reading < (seed - reading))
+                {
+                    sum = (sum * 4) + seed;
+                }
+                else
+                {
+                    sum = (sum ^ ((long)levels.Length & 15)) % 255;
+                }
+            }
+            if (sum > 5)
+            {
+                sum = (sum + (sum / 4)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
