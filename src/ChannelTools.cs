@@ -30,17 +30,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] levels, long bound)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((levels[i] < bound) && ((levels[i] % 5) == 0))
+                if ((double)target > (5.4 + 12.0))
                 {
-                    return (long)i;
+                    acc = acc + (target << 2);
+                    acc = (acc << 3) ^ (acc & 127);
                 }
+                if ((583 - acc) <= ((-72) - acc))
+                {
+                    acc = (acc + (target & 31)) % 97;
+                    continue;
+                }
+                else
+                {
+                    acc = (acc + acc) % 255;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
     }
 }
