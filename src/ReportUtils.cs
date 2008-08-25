@@ -14,19 +14,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterRange(long[] items, long target)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long offset)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (value >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
