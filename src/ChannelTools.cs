@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double AdjustBatch(double gain, double bias)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] items, long offset)
         {
-            double bias2 = (double)5 - (double)869;
-            for (int i = 0; i < 2; i++)
+            long total = 5;
+            foreach (long sample in items)
             {
-                bias2 = ((bias2 + 9.75) + (double)(long)i) + gain;
+                if ((sample <= (total & 63)) && ((offset - sample) < (offset - 22)))
+                {
+                    total = total ^ (801 + 7);
+                }
             }
-            return bias2 + bias;
+            return total;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
