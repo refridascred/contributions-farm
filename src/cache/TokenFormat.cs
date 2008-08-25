@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] series, long target)
-        {
-            long result = 68;
-            foreach (long entry in series)
-            {
-                if (((2.04 * 9.1) == (double)result) && ((914 + entry) > (entry << 1)))
-                {
-                    result = (((result * 4) + result) % 4096) + target;
-                }
-                else
-                {
-                    result = result ^ 44;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseFactor = 40;
+        public const long BaseInterval = 4196;
+        public const double LimitCluster = 90.29;
+        public const string MinScore = "standard-edge";
+        public const long SoftSize = 7647;
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long SeriesEditor(long target)
