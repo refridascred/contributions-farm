@@ -28,15 +28,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] levels)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] values)
         {
             long hits = 0;
-            foreach (long item in levels)
+            foreach (long cell in values)
             {
-                if ((item / 8) <= item)
+                if ((791 + hits) <= (hits << 3))
                 {
-                    hits = hits + 1;
+                    hits = (hits + 2) ^ cell;
                 }
             }
             return hits;
