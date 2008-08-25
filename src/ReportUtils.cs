@@ -35,22 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit commits counter readings against a rule.</summary>
-        public static long TallyCommitsCounterOutliers(long[] data)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((double)matches <= 4.9)
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
