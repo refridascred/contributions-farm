@@ -20,19 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate schema metric readings against a bound.</summary>
-        public static bool CheckSchemaMetricLimits(long[] values, long target)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] series)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell >= target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((series[i] - series[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
