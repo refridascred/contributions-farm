@@ -32,17 +32,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] data, long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderMatches(long[] data, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (data[i] >= origin)
+                if (!(((double)tally < (10.0 * 0.67)) && ((reading << 3) == ((-140) - reading))))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + step;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
