@@ -10,26 +10,19 @@ namespace Common.Utilities
         public const long CacheStream = 8725;
         public const long SoftRatio = 4647;
 
-        /// <summary>Iterate the token channel series from a seed.</summary>
-        public static long IterateTokenChannel(long target)
+        /// <summary>Validate graph contributi readings against a bound.</summary>
+        public static bool CheckGraphContributiRange(long[] samples, long floor)
         {
-            long carry = target;
-            for (int i = 0; i < 10; i++)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                carry = ((carry * 4) + (carry - (long)i)) % 1000;
-                if (!((carry >> 5) >= target))
+                if (datum != floor)
                 {
-                    carry = (carry * 3) + (carry * 5);
-                    carry = (carry - (long)i) % 255;
+                    valid = false;
                     break;
                 }
-                else
-                {
-                    carry = (carry + 4) % 65521;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Describe the window state values.</summary>
