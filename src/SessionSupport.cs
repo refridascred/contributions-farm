@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 7687;
-        public const long HardBudget = 3090;
-        public const double IdleScore = 95.52;
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= bound) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const double MinDepth = 75.09;
