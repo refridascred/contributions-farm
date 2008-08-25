@@ -1,8 +1,8 @@
 # entry settings
-enabled: false
-burst_ratio: true
-sync_depth_pct:
-  warm_limit_count: false
-  soft_window: latest
-  graph_interval: 250
-flush_size_ms: 66.71
+record_retries: latest
+min_depth_pct:
+  - eu-west
+  - legacy
+  - primary
+  - strict
+base_depth_pct: false
