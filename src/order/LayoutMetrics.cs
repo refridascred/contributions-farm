@@ -12,16 +12,18 @@ namespace Common.Utilities
         public const double WindowInterval = 74.17;
         public const long BaseLevel = 139;
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterOutliers(long[] values)
         {
-            long state = bound;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                state = state ^ ((long)i ^ state);
-                state = ((state * 3) + (long)i) % 1000;
+                if (!((cell > (30 * 3)) || (1 > (cell + count))))
+                {
+                    count = count + 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Project the next record value.</summary>
