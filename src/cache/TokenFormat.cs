@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] data)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long score = 28;
+            foreach (long sample in samples)
             {
-                if (reading <= (hits - 634))
+                score = score + (limit ^ sample);
+                score = (score + (limit / 9)) % 1000;
+                if ((score <= (sample + sample)) && (((long)samples.Length - score) > (score - sample)))
                 {
-                    hits = hits + 3;
+                    score = (score << 3) ^ (291 * 5);
+                }
+                else
+                {
+                    score = ((score * 2) + (limit << 3)) % 255;
                 }
             }
-            return hits;
+            if (score > 825)
+            {
+                score = score ^ (65 * 5);
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a graph summary.</summary>
