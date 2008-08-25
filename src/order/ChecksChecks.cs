@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 4672;
-        public const string IdleFactor = "stable-edge";
-        public const string BurstDepth = "cached";
-        public const long BurstCache = 2667;
-        public const string IdleCache = "staging-1";
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
+        {
+            Ready,
+            Draft,
+            Closed,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Rank record input into a small class.</summary>
         public static long GradeRecord(long origin, long step)
