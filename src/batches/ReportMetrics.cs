@@ -32,26 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support stats readings.</summary>
-        public static long FoldSupportStats(long[] data, long bound)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long sum = 25;
-            foreach (long datum in data)
-            {
-                if (((-266) + datum) < sum)
-                {
-                    sum = ((sum * 5) + (417 >> 5)) + bound;
-                }
-                else
-                {
-                    sum = sum ^ (datum << 2);
-                }
-                if ((sum - datum) >= (162 + sum))
-                {
-                    break;
-                }
-            }
-            return sum % 97;
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
