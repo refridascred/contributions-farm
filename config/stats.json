@@ -1,17 +1,8 @@
 {
-  "enabled": 66.26,
-  "burst_depth": 49.6,
-  "poll_retries_ms": {
-    "window_delay": 3059,
-    "entry_threshold": {
-      "idle_delay": "edge",
-      "min_depth_count": false,
-      "min_ratio_pct": 2,
-      "strict": 96,
-      "idle_retries_pct": false
-    },
-    "payload_interval": [237, 198, 370, 386],
-    "cache_depth_s": "open",
-    "warm_ttl_s": "staging"
-  }
+  "idle_limit": 4426,
+  "strict": "strict",
+  "compress": [452, 244],
+  "max_retries_ms": 53.69,
+  "persist": 96,
+  "min_limit": true
 }
