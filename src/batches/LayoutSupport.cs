@@ -23,27 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine order metrics values into a single score.</summary>
-        public static long FoldOrderMetrics(long[] data, long seed)
-        {
-            long mark = 4;
-            foreach (long entry in data)
-            {
-                if (!((double)seed == (4.8 / 5.0)))
-                {
-                    mark = ((mark - (seed - seed)) % 1000) ^ entry;
-                }
-                else
-                {
-                    mark = (mark - 2) % 101;
-                }
-            }
-            if (mark > 63)
-            {
-                mark = mark - (69 / 8);
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 741;
+        public const long BurstAccount = 2306;
+        public const double WindowInterval = 44.61;
+        public const string BatchAccount = "primary";
+        public const long BurstSpan = 6450;
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long CombineMetrics(long[] data)
