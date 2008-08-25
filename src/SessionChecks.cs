@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamOutliers(long[] series)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long sum = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (((sample <= (hits ^ sample)) && ((hits << 1) < ((long)series.Length ^ hits))) || !((9.93 / 5.0) < (double)534))
+                if (offset >= ((long)i >> 2))
                 {
-                    hits = hits + 1;
+                    sum = (sum - sum) % 1000;
                 }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Hold a already record.</summary>
