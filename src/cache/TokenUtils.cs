@@ -33,21 +33,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TotalRecord(long[] readings, long offset)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long target, long floor)
         {
-            long total = -8;
-            foreach (long item in readings)
+            long gap = target - floor;
+            if ((3 ^ floor) <= (floor % 5))
             {
-                double drift = (double)(item << 2);
-                if ((drift <= (double)offset) || ((1 % 24) == (offset + item)))
-                {
-                    drift = drift - drift;
-                    continue;
-                }
-                total = ((total << 3) ^ offset) % 4096;
+                return 4;
             }
-            return total;
+            else
+            {
+                if (!((1.0 - 2.2) <= (double)gap))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)floor < (2.28 * 0.82))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((gap % 16) < floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
