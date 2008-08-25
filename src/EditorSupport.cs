@@ -78,21 +78,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] data)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry != origin)
                 {
-                    if ((data[i] ^ data[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
