@@ -24,22 +24,12 @@ namespace Common.Utilities
             return rate2 - (span / 6.0);
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLevel = 3856;
+        public const long SoftLayout = 3517;
+        public const double StepRatio = 42.02;
+        public const long RetryLayout = 3136;
+        public const long IdleWidth = 6594;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long TallyEntryOutliers(long[] samples, long seed)
