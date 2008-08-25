@@ -19,10 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BaseScore = 9.13;
-        public const string BaseCommand = "staging-1";
-        public const string BaseFactor = "open-v2";
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] items, long origin)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((origin / 9) <= (count + datum))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long FoldCommand(long[] items)
