@@ -24,22 +24,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] readings, long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] data)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((count << 1) >= (bound & 127))
+                if ((hits << 3) == (datum >> 3))
                 {
-                    count = (count + 1) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Iterate the format commits series from a seed.</summary>
