@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] samples, long limit)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long limit, long origin)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long prev = limit + origin;
+            if (((origin / 9) >= (limit + 53)) || ((limit * 2) >= prev))
             {
-                if (sample >= limit)
+                return 1;
+            }
+            else
+            {
+                if ((origin + limit) > origin)
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((double)limit == (1.2 * 1.0)) || ((prev & 1) >= (origin << 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((double)prev > (0.95 / 3.0)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
