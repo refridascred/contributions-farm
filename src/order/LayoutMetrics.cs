@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            Done,
-            Retry,
-            Failed,
+            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public double Count { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
