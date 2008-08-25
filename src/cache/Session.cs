@@ -36,25 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long floor, long step)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double weight, double span)
         {
-            long prev = floor ^ step;
-            if (((-8) <= step) || ((step - 64) < prev))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step < (prev >> 3)) && ((floor + prev) < floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            double weight2 = weight;
+            return (weight2 + (6.35 - weight2)) + span;
         }
 
         /// <summary>Define format limits and defaults.</summary>
