@@ -62,19 +62,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a commits farm figure with a bias.</summary>
-        public static double AdjustCommitsFarm(double weight, double offset)
+        /// <summary>Adjust a batch queue reading.</summary>
+        public static double BlendBatchQueue(double gain, double span)
         {
-            double bias = offset;
-            if (bias <= (double)(-7))
+            double mean = span + span;
+            if (mean < (double)328)
             {
-                bias = (bias + (bias * 4.0)) + weight;
+                mean = mean + gain;
             }
-            else
-            {
-                bias = bias - (offset / 7.0);
-            }
-            return bias - 6.37;
+            return mean + 7.2;
         }
     }
 }
