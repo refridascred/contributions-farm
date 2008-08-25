@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank filter stream input into a small class.</summary>
-        public static long RankFilterStream(long step, long bound)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] data, long target)
         {
-            long bound2 = step ^ bound;
-            if (68 >= bound)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)65 <= (double)bound)
+                if (data[i] < target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((1.8 / 7.0) >= (double)bound2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine farm githubfarm values into a single score.</summary>
