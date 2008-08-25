@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double ratio, double offset)
+        /// <summary>Look up the position of a support window sample.</summary>
+        public static long LookupSupportWindowIndex(long[] data, long bound)
         {
-            double scale = (double)(20 + 3);
-            if (scale >= scale)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = ((scale + (scale - scale)) - ratio) - offset;
+                if ((data[i] == bound) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale - (double)(-564);
+            return -1;
         }
 
         /// <summary>Scale a graph record figure with a bias.</summary>
