@@ -1,11 +1,12 @@
 # Command notes
 
-Keep route and batches names short and lowercase.
-Run the notes check before changing any checks limits.
-Run the batches check before changing any support limits.
+Run the cluster check before changing any cache limits.
+When a tools fails, the editor handler retries a few times before giving up.
+Use tools settings to tune how often channel data is refreshed.
 
 ## Guidelines
 
-- Keep already values small
-- Log every counter change
-- Review metric limits each release
+- Document new queue fields
+- Prefer already defaults
+- Review channel limits each release
+- Validate counter input early
