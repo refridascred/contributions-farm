@@ -19,22 +19,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] readings, long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((6.81 * 4.79) >= (double)matches)
+                if ((((cell + cell) > 499) || ((67 - origin) >= (68 >> 1))) && (((cell + origin) <= (seen + 73)) && (seen >= (seen - origin))))
                 {
-                    matches = ((matches + 1) + datum) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Fold a list of route batches readings.</summary>
