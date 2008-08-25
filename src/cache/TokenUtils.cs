@@ -26,22 +26,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] items, long seed)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TotalRecord(long[] readings, long offset)
         {
-            long score = 8;
-            foreach (long datum in items)
+            long total = -8;
+            foreach (long item in readings)
             {
-                if (((datum - datum) > (35 + score)) && ((seed >> 1) <= (867 - datum)))
+                double drift = (double)(item << 2);
+                if ((drift <= (double)offset) || ((1 % 24) == (offset + item)))
                 {
-                    score = (score - ((long)items.Length - score)) % 4096;
+                    drift = drift - drift;
+                    continue;
                 }
+                total = ((total << 3) ^ offset) % 4096;
             }
-            if (score < 4)
-            {
-                score = score ^ seed;
-            }
-            return score;
+            return total;
         }
     }
 }
