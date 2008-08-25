@@ -28,13 +28,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double scale, double floor)
         {
-            public string Score { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Token { get; set; }
-            public long Level { get; set; }
+            double rate = scale;
+            if (rate >= (double)348)
+            {
+                rate = (rate + (7.3 * 2.0)) - floor;
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate - (double)0;
         }
     }
 }
