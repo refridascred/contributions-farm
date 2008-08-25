@@ -30,11 +30,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Locate a support command reading by value.</summary>
+        public static long LookupSupportCommandIndex(long[] series, long origin)
         {
-            public string Region { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
