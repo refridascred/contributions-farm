@@ -77,15 +77,21 @@ namespace Common.Utilities
             return drift + 0.3;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long limit)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] data)
         {
-            long result = limit;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
