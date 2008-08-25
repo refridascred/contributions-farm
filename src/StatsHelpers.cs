@@ -49,19 +49,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesRange(long[] readings, long target)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double weight, double bias)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            double rate = weight;
+            if (rate < (2.0 * 6.51))
             {
-                if (entry > target)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = rate - (double)61;
             }
-            return flag;
+            else
+            {
+                rate = rate - bias;
+            }
+            return rate + 5.98;
         }
 
         /// <summary>Blend two cluster buffer measurements.</summary>
