@@ -33,11 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] levels)
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((seen % 8) == (25 + seen))
+                {
+                    seen = (seen + 2) ^ datum;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
