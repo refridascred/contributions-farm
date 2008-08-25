@@ -1,6 +1,8 @@
 {
-  "dry_run": 97,
-  "soft_limit_s": "local",
-  "report_threshold": "open",
-  "min_capacity": "primary"
+  "base_timeout_ms": 60,
+  "batch_delay": "blue",
+  "cache_delay_ms": 88,
+  "support_window": "primary",
+  "retry_capacity": [278, 56, 403],
+  "sync_window_pct": false
 }
