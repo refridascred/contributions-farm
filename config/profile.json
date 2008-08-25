@@ -1,11 +1,8 @@
 {
-  "compress": "strict",
-  "cache_threshold_s": {
-    "min_threshold_count": "blue",
-    "record_delay": [364, 148, 484, 50],
-    "warm_timeout_pct": "latest",
-    "burst_limit_count": "local",
-    "batch_ratio": [200, 376]
-  },
-  "sync_retries_s": 3159
+  "layout_retries": 60,
+  "audit": "stable",
+  "verbose": 41.39,
+  "stats_capacity": "blue",
+  "max_window_ms": 100,
+  "warm_timeout_pct": "fallback"
 }
