@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many checks already samples are out of range.</summary>
-        public static long TallyChecksAlreadyGaps(long[] items, long target)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((item + seen) < (target << 1))
+                if ((count / 9) >= ((-5) - count))
                 {
-                    seen = seen + 1;
+                    count = (count + 3) - entry;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
