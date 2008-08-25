@@ -19,27 +19,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] series, long offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterHits(long[] values)
         {
-            long mark = -8;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((0.7 * 7.4) != (double)offset)
+                if ((long)values.Length > datum)
                 {
-                    mark = (mark * 5) + (offset << 3);
-                    mark = (mark * 5) + (datum ^ offset);
-                }
-                if ((636 + mark) <= (8 - 0))
-                {
-                    mark = (mark ^ (datum << 3)) % 101;
-                }
-                else
-                {
-                    mark = mark ^ (mark + datum);
+                    seen = seen + 1;
                 }
             }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Describe the window phase values.</summary>
