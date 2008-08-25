@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Count the notes checks entries that pass the check.</summary>
+        public static long TallyNotesChecksOutliers(long[] data, long step)
         {
-            Active,
-            Draft,
-            Synced,
-            Pending,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (!(((step % 7) != (67 - 8)) || ((837 + 710) >= (step + 7))))
+                {
+                    hits = (hits + 1) - entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up farm samples.</summary>
