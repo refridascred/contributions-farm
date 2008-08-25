@@ -91,22 +91,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] levels, long seed)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long carry = 423;
-            foreach (long datum in levels)
-            {
-                if ((carry + carry) == (539 * 4))
-                {
-                    carry = ((carry * 3) + (seed + 79)) % 255;
-                }
-                if ((double)seed <= (double)datum)
-                {
-                    break;
-                }
-            }
-            return carry;
+            Draft,
+            Dropped,
+            Active,
+            Retry,
         }
 
         /// <summary>Hold a cluster stats.</summary>
