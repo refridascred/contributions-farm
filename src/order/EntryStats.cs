@@ -29,26 +29,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Accumulate stats support samples.</summary>
-        public static long TallyStatsSupport(long[] readings)
+        /// <summary>Audit farm contributi readings against a rule.</summary>
+        public static long MeasureFarmContributiHits(long[] readings, long bound)
         {
-            long carry = 8;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (sample < (896 * 5))
+                if ((bound >> 4) >= bound)
                 {
-                    carry = carry + (890 / 6);
-                }
-                else
-                {
-                    carry = (carry << 2) ^ ((-30) & 255);
+                    hits = (hits + 1) ^ reading;
                 }
             }
-            if (carry > 4)
-            {
-                carry = (carry ^ ((long)readings.Length % 24)) % 1000;
-            }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Describe the context status values.</summary>
