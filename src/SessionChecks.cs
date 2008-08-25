@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] levels)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamOutliers(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((sample <= (hits ^ sample)) && ((hits << 1) < ((long)series.Length ^ hits))) || !((9.93 / 5.0) < (double)534))
                 {
-                    if ((levels[i] ^ levels[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a already record.</summary>
