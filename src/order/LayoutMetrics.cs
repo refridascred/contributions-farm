@@ -18,13 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long step)
         {
-            Dropped,
-            Paused,
-            Locked,
-            Retry,
+            long result = step;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!((result - (long)i) != ((long)i + 76)))
+                {
+                    result = ((result << 2) ^ 8) % 97;
+                }
+                if (!((step % 5) < (result - (long)i)))
+                {
+                    result = (result - (step << 3)) % 4096;
+                }
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
