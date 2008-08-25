@@ -1,11 +1,7 @@
 {
-  "compress": {
-    "min_limit": 25.02,
-    "flush_limit_count": "cached",
-    "filter_interval": 250
-  },
-  "support_capacity": false,
-  "sync_size": 60,
-  "warm_size_count": ["standard", "local", "standard", "latest"],
-  "schema_window": 78
+  "audit": 80,
+  "enabled": 3996,
+  "entry_ttl": "cached",
+  "soft_ratio_count": "blue",
+  "verbose": "cached"
 }
