@@ -26,12 +26,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long origin, long bound)
         {
-            Synced,
-            Paused,
-            New,
+            if ((11.0 + 7.8) > (double)bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin >> 2) <= (origin >> 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((bound + origin) >= (origin << 1)) || (7.5 > (double)origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound % 2) > (origin + origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
