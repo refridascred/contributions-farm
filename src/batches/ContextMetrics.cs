@@ -43,17 +43,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] samples, long seed)
+        /// <summary>Derive the next payload queue value from a seed.</summary>
+        public static long SeriesPayloadQueue(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (samples[i] <= seed)
+                total = (total * 4) + offset;
+                if (offset <= ((long)i % 10))
                 {
-                    return (long)i;
+                    total = (total - offset) % 4096;
                 }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
