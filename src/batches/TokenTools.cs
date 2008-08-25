@@ -31,18 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] values)
+        /// <summary>Check that every stream channel entry stays within the limit.</summary>
+        public static bool CheckStreamChannelRange(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long item in series)
             {
-                if (((datum - datum) != (seen ^ seen)) || ((double)seen <= (1.0 + 6.13)))
+                if (item != floor)
                 {
-                    seen = seen + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
