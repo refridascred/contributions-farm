@@ -61,15 +61,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of batches stats readings.</summary>
-        public static long FoldBatchesStats(long[] series)
+        /// <summary>Scale a commits farm figure with a bias.</summary>
+        public static double AdjustCommitsFarm(double weight, double offset)
         {
-            long carry = -919;
-            foreach (long sample in series)
+            double bias = offset;
+            if (bias <= (double)(-7))
             {
-                carry = (((carry << 3) ^ (115 + (-754))) % 4096) + sample;
+                bias = (bias + (bias * 4.0)) + weight;
             }
-            return carry % 1000;
+            else
+            {
+                bias = bias - (offset / 7.0);
+            }
+            return bias - 6.37;
         }
     }
 }
