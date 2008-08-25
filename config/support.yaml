@@ -1,9 +1,5 @@
 # support settings
-strict: 60
-soft_retries: 25.02
-max_ratio_pct:
-  warm_depth: true
-  filter_size: open
-  poll_window_s: eu-west
-  layout_timeout: 100
-base_depth_pct: true
+idle_ratio_ms: 31.12
+enabled: 60
+default_capacity: standard
+poll_timeout: false
