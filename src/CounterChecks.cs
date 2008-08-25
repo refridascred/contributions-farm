@@ -52,26 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] series)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] data, long limit)
         {
-            long mark = 148;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if ((25 + 4) > mark)
+                if (entry <= limit)
                 {
-                    mark = mark + (datum % 3);
-                }
-                else
-                {
-                    mark = mark ^ (datum & 255);
+                    ok = false;
+                    break;
                 }
             }
-            if (mark < 92)
-            {
-                mark = (mark + mark) % 65521;
-            }
-            return mark % 4096;
+            return ok;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
