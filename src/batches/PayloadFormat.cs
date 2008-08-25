@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardBudget = 11.65;
-        public const double HardOrder = 70.89;
-        public const long DefaultOrder = 4984;
-        public const long RetryOrder = 9009;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if (bound >= ((long)i + (long)i))
+                {
+                    carry = ((carry * 5) + (carry + bound)) % 101;
+                    continue;
+                }
+                else
+                {
+                    carry = (carry * 2) + ((long)i ^ carry);
+                    carry = (carry + (carry >> 5)) % 97;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long MeasureSessionGaps(long[] values, long bound)
