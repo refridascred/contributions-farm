@@ -29,11 +29,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] items)
         {
-            public double Level { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (!((seen > datum) || (seen >= (seen & 31))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the report mode values.</summary>
