@@ -47,32 +47,15 @@ namespace Common.Utilities
         public const double MinRatio = 15.81;
         public const long StepSupport = 4723;
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long limit, long seed)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long floor)
         {
-            long next = limit + seed;
-            if ((double)next < (double)seed)
+            long state = floor;
+            for (int i = 0; i < 17; i++)
             {
-                return 4;
+                state = ((state * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (((double)limit != (4.0 / 6.0)) && (0 < (limit % 100)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((next < (limit - seed)) && (seed >= ((-851) - seed)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
