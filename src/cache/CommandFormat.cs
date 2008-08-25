@@ -16,13 +16,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] samples)
         {
-            Done,
-            Closed,
-            Stale,
-            New,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
