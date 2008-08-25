@@ -45,11 +45,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchSpan = 2101;
-        public const string BurstProfile = "local-v2";
-        public const long IdleLevel = 6237;
-        public const double DefaultProfile = 0.16;
-        public const double MaxCount = 75.07;
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == step) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
