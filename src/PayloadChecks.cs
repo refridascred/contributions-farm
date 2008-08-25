@@ -71,17 +71,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= offset) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 9703;
+        public const long BaseBuffer = 8969;
+        public const long BurstBuffer = 9960;
+        public const long MaxBuffer = 3255;
+        public const long RetryBuffer = 408;
     }
 }
