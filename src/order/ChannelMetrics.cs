@@ -31,10 +31,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchSize = 4677;
-        public const long SoftCommits = 1066;
-        public const long SoftDepth = 6388;
-        public const long MinCommits = 8867;
+        /// <summary>Grade a layout githubfarm value against two limits.</summary>
+        public static long SortLayoutGithubfarm(long seed, long seed2)
+        {
+            long diff = seed ^ seed2;
+            if ((double)seed2 > (6.39 / 2.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((diff >> 2) <= (diff / 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
