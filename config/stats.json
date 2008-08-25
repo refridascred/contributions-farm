@@ -1,8 +1,7 @@
 {
-  "dry_run": 27,
-  "flush_ttl_count": true,
-  "schema_limit": 0.87,
-  "compress": 250,
-  "verbose": "staging",
-  "order_interval": 86.17
+  "flush_window_s": 86.39,
+  "batch_size": 5764,
+  "persist": "standard",
+  "githubfarm_timeout": ["latest", "eu-west"],
+  "batch_capacity_ms": ["latest", "stable"]
 }
