@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
-        {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 8311;
+        public const string MaxBatch = "strict-v2";
+        public const long IdleBatch = 6243;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterOutliers(long[] values, long target)
