@@ -29,12 +29,25 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 1511;
-        public const long SoftCount = 2424;
-        public const long StepDepth = 4517;
-        public const long StepChecks = 7310;
-        public const long RetryTimeout = 7516;
+        /// <summary>Classify a stream metric pair into a bucket.</summary>
+        public static long RankStreamMetric(long limit, long step)
+        {
+            if ((double)step == (9.76 / 3.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((step / 4) >= limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
