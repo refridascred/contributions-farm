@@ -23,11 +23,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] data, long limit)
         {
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
+            long anchor = 33;
+            foreach (long reading in data)
+            {
+                if (((-5) - anchor) >= (reading - anchor))
+                {
+                    anchor = anchor - (58 * 4);
+                }
+            }
+            if (anchor < 63)
+            {
+                anchor = ((anchor << 2) ^ (limit ^ limit)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
