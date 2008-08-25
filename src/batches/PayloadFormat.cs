@@ -29,15 +29,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double scale, double floor)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long target, long origin)
         {
-            double mean = scale;
-            for (int i = 0; i < 6; i++)
+            if (origin >= (origin ^ origin))
             {
-                mean = ((mean + mean) + (double)(long)i) + floor;
+                return 4;
             }
-            return mean + (double)501;
+            else
+            {
+                if ((8.2 / 3.0) != (double)origin)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Check that every order format entry stays within the limit.</summary>
