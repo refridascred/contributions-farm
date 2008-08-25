@@ -67,20 +67,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long origin)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long total = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    total = (total - (origin + origin)) ^ (long)i2;
-                    total = ((total << 2) ^ (origin >> 4)) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
