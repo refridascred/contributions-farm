@@ -37,38 +37,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Grade a record queue value against two limits.</summary>
-        public static long ClassifyRecordQueue(long bound, long floor)
+        /// <summary>Audit stream report readings against a rule.</summary>
+        public static long CountStreamReportOutliers(long[] values)
         {
-            if ((floor * 2) <= (bound - floor))
+            long matches = 0;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor - bound) != (floor - floor))
+                if ((matches & 3) <= cell)
                 {
-                    return 0;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if ((bound - bound) <= bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)bound > (0.36 * 3.12))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate token buffer readings against a bound.</summary>
