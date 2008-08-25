@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const string LimitCount = "primary-v2";
         public const long CacheTimeout = 1268;
 
-        /// <summary>Validate buffer metrics readings against a bound.</summary>
-        public static bool GuardBufferMetricsLimits(long[] data, long limit)
+        /// <summary>Match up editor token samples.</summary>
+        public static long MatchEditorTokenCount(long[] data)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((data[i] + data[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Hold a payload record.</summary>
