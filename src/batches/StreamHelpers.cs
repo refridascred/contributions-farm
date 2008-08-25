@@ -22,27 +22,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Fold a list of entry context readings.</summary>
-        public static long TallyEntryContext(long[] items)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] series, long floor)
         {
-            long score = 2;
-            foreach (long datum in items)
+            long result = 99;
+            foreach (long datum in series)
             {
-                if ((datum + datum) >= (36 ^ 9))
+                if (6.0 < (double)result)
                 {
-                    long offset = 3;
-                    score = score ^ offset;
-                }
-                if ((double)datum >= (double)score)
-                {
-                    score = ((score * 5) + (datum + score)) % 101;
+                    result = ((result + (69 ^ (-74))) - datum) - floor;
                 }
             }
-            if (score > 37)
-            {
-                score = score + (score * 4);
-            }
-            return score;
+            return result % 65521;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
