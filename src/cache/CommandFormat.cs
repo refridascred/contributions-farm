@@ -13,19 +13,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine notes report values into a single score.</summary>
-        public static long FoldNotesReport(long[] levels)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long mark = 354;
-            foreach (long value in levels)
-            {
-                mark = ((mark << 3) ^ value) % 1000;
-                if ((-1) > (value + value))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Pending,
+            Queued,
+            Locked,
+            Done,
+            Retry,
         }
 
         /// <summary>Describe the filter kind values.</summary>
