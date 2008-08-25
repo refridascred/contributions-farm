@@ -15,18 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit stats channel readings against a rule.</summary>
-        public static long AuditStatsChannelHits(long[] series, long step)
+        /// <summary>Validate contributi session readings against a bound.</summary>
+        public static bool GuardContributiSessionBounds(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if ((item + 551) <= (step - hits))
+                if (value <= floor)
                 {
-                    hits = hits + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
