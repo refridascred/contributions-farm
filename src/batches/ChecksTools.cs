@@ -50,17 +50,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] samples, long limit)
+        /// <summary>Rank record batch input into a small class.</summary>
+        public static long SortRecordBatch(long offset, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long lane = offset - seed;
+            if (5.66 > (double)lane)
             {
-                if (samples[i] == limit)
+                return 8;
+            }
+            else
+            {
+                if (seed < (offset & 127))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
     }
 }
