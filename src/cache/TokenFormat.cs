@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long offset)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 6; i++)
+            long total = bound;
+            for (int i = 0; i < 4; i++)
             {
-                sum = (sum << 3) ^ 160;
-                sum = ((sum * 4) + (long)i) % 4093;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Combine route values into a single score.</summary>
