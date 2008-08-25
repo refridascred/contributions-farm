@@ -25,12 +25,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            Closed,
-            Pending,
-            Queued,
+            public long Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a cache snapshot.</summary>
