@@ -1,9 +1,5 @@
 {
-  "default_delay_count": {
-    "retry_delay": 250,
-    "warm_window": 1,
-    "batch_retries": 1024
-  },
-  "base_capacity_pct": [176, 361, 197],
-  "route_ttl": 7258
+  "poll_ratio_s": "cached",
+  "strict": "stable",
+  "sync_limit": 13
 }
