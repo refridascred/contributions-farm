@@ -36,17 +36,31 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] samples, long origin)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long offset, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((bound - offset) > 90)
             {
-                if (samples[i] >= origin)
+                return 7;
+            }
+            else
+            {
+                if ((9.66 * 6.23) < (5.7 - 9.92))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound >> 4) == (5 / 8))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
