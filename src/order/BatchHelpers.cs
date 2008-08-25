@@ -20,15 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate token batches samples.</summary>
-        public static long FoldTokenBatches(long[] values, long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] readings, long floor)
         {
-            long anchor = 760;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                anchor = ((anchor ^ (seed & 1)) % 1000) - entry;
+                if ((((hits >> 3) >= (floor + 74)) && (cell <= (cell + (long)readings.Length))) && ((double)hits <= (double)cell))
+                {
+                    hits = hits + 1;
+                }
             }
-            return anchor % 4096;
+            return hits;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
