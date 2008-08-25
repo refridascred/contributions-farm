@@ -25,22 +25,10 @@ namespace Common.Utilities
         public const long SoftProfile = 8306;
         public const double StepSpan = 95.24;
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 558;
+        public const long StepFarm = 42;
+        public const double DefaultFarm = 27.39;
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
