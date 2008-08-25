@@ -54,13 +54,18 @@ namespace Common.Utilities
         public const string StepNotes = "fallback-1";
         public const long BurstRatio = 7992;
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Count the command cache entries that pass the check.</summary>
+        public static long AuditCommandCacheMatches(long[] data)
         {
-            public string Label { get; set; } = "";
-            public bool Token { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((tally + tally) > tally)
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+            }
+            return tally;
         }
     }
 }
