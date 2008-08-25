@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryOutliers(long[] series)
+        /// <summary>Roll a checks farm counter forward.</summary>
+        public static long DeriveChecksFarm(long target)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long sum = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((entry - hits) != (0 % 24))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Scale a context account figure with a bias.</summary>
