@@ -19,31 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank schema metrics input into a small class.</summary>
-        public static long SortSchemaMetrics(long target, long floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] items, long limit)
         {
-            if ((target * 4) <= (942 & 31))
+            bool valid = true;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((6 - floor) > floor))
+                if (sample >= limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor << 3) <= target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the counter class values.</summary>
