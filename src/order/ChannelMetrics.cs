@@ -25,18 +25,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == step) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinInterval = 2038;
+        public const long LimitSize = 7172;
+        public const long MinWidth = 5462;
+        public const long MinWindow = 3520;
 
         /// <summary>Hold a githubfarm summary.</summary>
         public sealed class GithubfarmSummary
