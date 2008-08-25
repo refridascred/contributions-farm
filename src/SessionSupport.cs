@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] readings, long target)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Active,
+            Failed,
+            New,
+            Retry,
         }
 
         /// <summary>Count counter order pairs that satisfy a relation.</summary>
