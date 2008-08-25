@@ -40,20 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long RollFilter(long offset)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long origin, long bound)
         {
-            long score = offset;
-            for (int i = 0; i < 19; i++)
+            if ((5 << 1) <= (origin ^ origin))
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    score = (score ^ (offset & 127)) % 65521;
-                    score = (score << 2) ^ ((long)i2 & 31);
-                }
-                score = ((score * 2) + (long)i) % 65521;
+                return 7;
             }
-            return score;
+            else
+            {
+                if (((314 - 6) == (origin + bound)) && ((origin & 31) <= (origin ^ bound)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Scale a batch metrics figure with a bias.</summary>
