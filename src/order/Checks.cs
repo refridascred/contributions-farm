@@ -35,10 +35,18 @@ namespace Common.Utilities
         public const string BaseContext = "staging-1";
         public const long BaseLevel = 6399;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 2718;
-        public const long DefaultLayout = 5534;
-        public const long CacheTimeout = 2854;
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= bound) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a context buffer reading.</summary>
         public static double SmoothContextBuffer(double bias, double floor)
