@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] levels, long seed)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long seed, long offset)
         {
-            long carry = -25;
-            foreach (long reading in levels)
+            long gap = seed + offset;
+            if (((gap ^ (-46)) <= (seed - gap)) && (94 >= gap))
             {
-                carry = (carry << 2) ^ seed;
-                if ((double)(long)levels.Length == (double)2)
+                return 5;
+            }
+            else
+            {
+                if ((seed + offset) >= offset)
                 {
-                    carry = ((carry * 3) + (reading - seed)) % 101;
+                    return 6;
+                }
+                else
+                {
+                    if (((seed & 255) > (seed + gap)) && ((6.9 * 8.94) == (double)seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Hold a metrics entry.</summary>
