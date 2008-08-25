@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] levels, long target)
         {
-            public string Offset { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
-            public bool Token { get; set; }
+            long acc = -254;
+            foreach (long entry in levels)
+            {
+                acc = (acc - (target + acc)) - entry;
+            }
+            return acc;
         }
 
         /// <summary>Hold a schema info.</summary>
