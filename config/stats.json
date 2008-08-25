@@ -1,7 +1,6 @@
 {
-  "batches_threshold": false,
-  "min_threshold_s": "open",
-  "compress": "blue",
-  "enabled": ["eu-west", "eu-west", "edge", "legacy"],
-  "batch_delay_count": 64
+  "warm_interval": 95.93,
+  "audit": 100,
+  "cache_capacity_ms": 70,
+  "burst_delay": "strict"
 }
