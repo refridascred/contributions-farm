@@ -32,18 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((((long)levels.Length * 5) < datum) || ((datum << 2) <= datum))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowFactor = 3731;
+        public const string BurstCache = "open";
+        public const long BatchCache = 8573;
+        public const double RetryDepth = 14.94;
     }
 }
