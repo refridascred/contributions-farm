@@ -26,38 +26,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long origin, long bound)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] levels, long limit)
         {
-            if ((11.0 + 7.8) > (double)bound)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin >> 2) <= (origin >> 4))
+                if ((tally / 6) >= (limit ^ datum))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound + origin) >= (origin << 1)) || (7.5 > (double)origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound % 2) > (origin + origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
