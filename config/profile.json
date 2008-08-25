@@ -1,11 +1,5 @@
 {
-  "burst_depth": {
-    "base_threshold": 9215,
-    "flush_size": 81.6,
-    "max_interval_s": ["eu-west", "strict", "standard"]
-  },
-  "sync_limit": 500,
-  "persist": 100,
-  "min_timeout": 60,
-  "verbose": "local"
+  "audit": 71,
+  "min_depth": 100,
+  "readonly": 3.71
 }
