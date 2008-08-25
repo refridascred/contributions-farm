@@ -32,11 +32,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            Draft,
+            Active,
+            Synced,
+            Closed,
         }
 
         /// <summary>Describe the counter state values.</summary>
