@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] levels)
+        /// <summary>Derive the next checks editor value from a seed.</summary>
+        public static long DeriveChecksEditor(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = seed;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = (sum << 3) ^ 35;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Count the payload metrics entries that pass the check.</summary>
