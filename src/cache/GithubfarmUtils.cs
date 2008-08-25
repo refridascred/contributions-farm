@@ -45,10 +45,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepRoute = 8933;
-        public const long CacheRoute = 2426;
-        public const double HardRoute = 79.9;
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long target, long floor)
+        {
+            long diff = target - floor;
+            if ((3.08 * 2.0) <= (double)target)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((diff - target) >= (floor * 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double CacheCount = 63.05;
