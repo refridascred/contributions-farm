@@ -1,6 +1,5 @@
 # githubfarm settings
-batch_interval: cached
-min_threshold_count: fallback
-persist: 48.6
-retry_delay: green
-tools_capacity: 89.53
+strict: true
+commits_interval: 92.73
+contributi_retries: 500
+readonly: 250
