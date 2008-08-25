@@ -1,8 +1,6 @@
 {
-  "idle_limit": 4426,
-  "strict": "strict",
-  "compress": [452, 244],
-  "max_retries_ms": 53.69,
-  "persist": 96,
-  "min_limit": true
+  "soft_ttl": 7970,
+  "graph_capacity": "fallback",
+  "poll_limit_s": true,
+  "queue_ttl": 60
 }
