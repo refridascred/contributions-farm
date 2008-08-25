@@ -38,15 +38,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a token filter reading.</summary>
-        public static double AdjustTokenFilter(double rate, double floor)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long target)
         {
-            double load = (double)(15 - 4);
-            if (load >= 1.85)
+            long state = target;
+            for (int i = 0; i < 13; i++)
             {
-                load = (load + (double)235) - floor;
+                state = state - (1 ^ target);
+                state = ((state * 4) + (long)i) % 97;
             }
-            return load - rate;
+            return state;
         }
     }
 }
