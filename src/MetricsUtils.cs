@@ -45,18 +45,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate token context samples.</summary>
-        public static long DigestTokenContext(long[] readings, long step)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long state = 4;
-            foreach (long sample in readings)
-            {
-                if (((state + 40) != (sample - (-200))) || ((4.2 * 0.4) > (double)sample))
-                {
-                    state = ((state << 3) ^ state) + step;
-                }
-            }
-            return state;
+            public bool Size { get; set; }
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Project the next farm counter value.</summary>
