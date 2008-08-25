@@ -49,18 +49,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstFactor = 2005;
+        public const long CacheSize = 7921;
+        public const long CacheTimeout = 8418;
+        public const string DefaultCount = "strict-v2";
 
         /// <summary>Blend two cluster buffer measurements.</summary>
         public static double ScaleClusterBuffer(double ratio, double floor)
