@@ -20,12 +20,18 @@ namespace Common.Utilities
             return weight - scale;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseWidth = "alpha-1";
-        public const long LimitFactor = 5864;
-        public const long HardSession = 4718;
-        public const double RetryDepth = 53.02;
-        public const double MaxFactor = 62.4;
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LookupAlreadyIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= offset) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
