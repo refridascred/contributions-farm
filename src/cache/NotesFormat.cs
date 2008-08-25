@@ -35,11 +35,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Grade a report already value against two limits.</summary>
+        public static long RankReportAlready(long bound, long limit)
         {
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            if (limit < (7 % 10))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)limit > 6.4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((bound / 5) >= (limit + limit)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
