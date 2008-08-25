@@ -1,6 +1,17 @@
 {
-  "max_timeout": "stable",
-  "session_limit": 897,
-  "idle_capacity_s": "local",
-  "warm_delay": [41, 197, 321, 141]
+  "enabled": 66.26,
+  "burst_depth": 49.6,
+  "poll_retries_ms": {
+    "window_delay": 3059,
+    "entry_threshold": {
+      "idle_delay": "edge",
+      "min_depth_count": false,
+      "min_ratio_pct": 2,
+      "strict": 96,
+      "idle_retries_pct": false
+    },
+    "payload_interval": [237, 198, 370, 386],
+    "cache_depth_s": "open",
+    "warm_ttl_s": "staging"
+  }
 }
