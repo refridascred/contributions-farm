@@ -27,29 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long target)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] data, long limit)
         {
-            long acc = target;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((double)target > (5.4 + 12.0))
+                if (!!((9.62 / 7.0) == (double)limit))
                 {
-                    acc = acc + (target << 2);
-                    acc = (acc << 3) ^ (acc & 127);
+                    tally = (tally + 3) - item;
                 }
-                if ((583 - acc) <= ((-72) - acc))
-                {
-                    acc = (acc + (target & 31)) % 97;
-                    continue;
-                }
-                else
-                {
-                    acc = (acc + acc) % 255;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return tally;
         }
     }
 }
