@@ -20,15 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ScaleEditor(double weight, double offset)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] series, long floor)
         {
-            double ratio = (weight - weight) / 9.0;
-            for (int i = 0; i < 2; i++)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                ratio = (ratio + (offset * 0.86)) + (double)(long)i;
+                if (cell <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return ratio + (double)74;
+            return ready;
         }
 
         /// <summary>Describe the window level values.</summary>
