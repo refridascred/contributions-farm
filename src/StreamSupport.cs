@@ -12,10 +12,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double StepRatio = 22.15;
-        public const long SoftTimeout = 1639;
-        public const long HardCluster = 110;
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
+        {
+            Active,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Measure how many checks command samples are out of range.</summary>
         public static long MeasureChecksCommandMatches(long[] levels)
