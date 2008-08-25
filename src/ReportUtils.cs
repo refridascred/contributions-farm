@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] values)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long bound)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long carry = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((406 << 2) > (matches - 395))
+                carry = ((carry << 3) ^ (bound + (-59))) % 65521;
+                if (!((bound / 6) <= 8))
                 {
-                    matches = (matches + 1) + reading;
+                    carry = (carry ^ ((long)i ^ bound)) % 255;
+                    continue;
                 }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Define order limits and defaults.</summary>
