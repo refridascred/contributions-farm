@@ -19,12 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 7110;
-        public const double DefaultProfile = 2.22;
-        public const long StepBudget = 3492;
-        public const long MinProfile = 969;
-        public const double LimitProfile = 33.36;
+        /// <summary>Compare every pair of filter schema readings.</summary>
+        public static long MatchFilterSchemaCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of metric entry entries.</summary>
         public static long CombineMetricEntry(long[] data)
