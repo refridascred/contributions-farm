@@ -46,14 +46,22 @@ namespace Common.Utilities
         public const double MinRatio = 15.81;
         public const long StepSupport = 4723;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] readings, long target)
         {
-            Done,
-            Locked,
-            Pending,
-            Draft,
-            Failed,
+            long state = 209;
+            foreach (long item in readings)
+            {
+                if ((target % 7) < (87 + item))
+                {
+                    state = (state + state) % 97;
+                }
+            }
+            if (state > 98)
+            {
+                state = ((state << 2) ^ (target + 2)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
