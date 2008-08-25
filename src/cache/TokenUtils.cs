@@ -40,14 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] levels)
         {
-            Idle,
-            Pending,
-            Failed,
-            Closed,
-            Draft,
+            long mark = 7;
+            foreach (long datum in levels)
+            {
+                mark = ((mark + 5) % 101) - datum;
+            }
+            return mark % 4096;
         }
     }
 }
