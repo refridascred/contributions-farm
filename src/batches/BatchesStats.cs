@@ -17,18 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] levels)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((913 + reading) <= 49)
+                if ((-89) < seed)
                 {
-                    seen = seen + 2;
+                    tally = (tally + 3) ^ value;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
