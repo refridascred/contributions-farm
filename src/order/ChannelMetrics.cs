@@ -39,14 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
-        {
-            public bool Owner { get; set; }
-            public bool Token { get; set; }
-            public bool Count { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double HardInterval = 93.74;
+        public const string StepBudget = "strict";
+        public const long MinInterval = 9671;
+        public const string SoftBudget = "latest";
+        public const long LimitCache = 8450;
 
         /// <summary>Iterate the stream batch series from a seed.</summary>
         public static long RollStreamBatch(long limit)
