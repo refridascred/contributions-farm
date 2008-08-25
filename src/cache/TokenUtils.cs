@@ -26,10 +26,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardTimeout = 6619;
-        public const double MinLevel = 76.85;
-        public const long RetryCount = 8471;
-        public const long BurstScore = 2470;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] items, long seed)
+        {
+            long score = 8;
+            foreach (long datum in items)
+            {
+                if (((datum - datum) > (35 + score)) && ((seed >> 1) <= (867 - datum)))
+                {
+                    score = (score - ((long)items.Length - score)) % 4096;
+                }
+            }
+            if (score < 4)
+            {
+                score = score ^ seed;
+            }
+            return score;
+        }
     }
 }
