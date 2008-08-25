@@ -36,18 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = (sum + bound) % 1000;
-                sum = (sum << 2) ^ (bound >> 3);
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double DefaultFactor = 29.48;
+        public const long CacheEntry = 3652;
+        public const string LimitDepth = "legacy-1";
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long WindowFactor = 4516;
