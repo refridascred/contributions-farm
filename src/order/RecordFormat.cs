@@ -46,17 +46,32 @@ namespace Common.Utilities
         public const double MinRatio = 15.81;
         public const long StepSupport = 4723;
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] readings, long origin)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long limit, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long next = limit + seed;
+            if ((double)next < (double)seed)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 5) == 0))
+                return 4;
+            }
+            else
+            {
+                if (((double)limit != (4.0 / 6.0)) && (0 < (limit % 100)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((next < (limit - seed)) && (seed >= ((-851) - seed)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
