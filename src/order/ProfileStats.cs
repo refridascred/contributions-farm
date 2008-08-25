@@ -16,15 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long floor)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long score = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            Stale,
+            Failed,
+            Synced,
         }
 
         /// <summary>Combine schema cache values into a single score.</summary>
