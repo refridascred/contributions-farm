@@ -1,14 +1,5 @@
 {
-  "verbose": 92.03,
-  "cache_ttl_pct": 76,
-  "cache_retries_pct": true,
-  "audit": 3,
-  "soft_capacity_count": "legacy",
-  "max_timeout_pct": {
-    "queue_window": 67,
-    "batch_interval": 3736,
-    "batch_ttl_s": 171,
-    "token_capacity": "primary",
-    "soft_depth": 8
-  }
+  "sync_ratio_count": "cached",
+  "dry_run": "edge",
+  "cache_limit": 56
 }
