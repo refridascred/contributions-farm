@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 132;
-        public const double BaseNotes = 12.99;
-        public const double StepRatio = 11.85;
-        public const long MaxDepth = 327;
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long IterateSupport(long bound)
