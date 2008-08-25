@@ -28,13 +28,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmGaps(long[] levels)
         {
-            Queued,
-            Draft,
-            Failed,
-            Retry,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (14 <= (hits ^ cell))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Project the next batches value.</summary>
