@@ -55,19 +55,15 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Check that every filter channel entry stays within the limit.</summary>
-        public static bool GuardFilterChannelBounds(long[] samples, long floor)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double gain, double bias)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            double drift = (double)(95 - 7);
+            for (int i = 0; i < 7; i++)
             {
-                if (item > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = (((drift - drift) + (double)(long)i) - gain) - bias;
             }
-            return valid;
+            return drift + 0.3;
         }
 
         /// <summary>Roll a already counter forward.</summary>
