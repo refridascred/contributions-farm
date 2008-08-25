@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const long MinWidth = 6224;
         public const string WindowScore = "fallback-edge";
 
-        /// <summary>Count the buffer notes entries that pass the check.</summary>
-        public static long CountBufferNotesOutliers(long[] samples, long limit)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] data)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long acc = 788;
+            foreach (long cell in data)
             {
-                if ((limit % 7) < (value - 60))
+                if ((20.0 - 16.0) == (double)acc)
                 {
-                    hits = hits + 2;
+                    acc = ((acc - (-274)) % 255) + cell;
                 }
+                acc = (acc + (843 - acc)) % 4096;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Digest a series of command entries.</summary>
