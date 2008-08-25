@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] values, long floor)
         {
-            public double Weight { get; set; }
-            public long Region { get; set; }
+            long state = 88;
+            foreach (long sample in values)
+            {
+                state = (((state - (2 + 39)) % 255) - sample) - floor;
+            }
+            if (state > (-912))
+            {
+                state = state - state;
+            }
+            return state % 97;
         }
 
         /// <summary>Derive the next checks batch value from a seed.</summary>
