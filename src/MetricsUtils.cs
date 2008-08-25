@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long OverlapNotesCount(long[] series)
+        /// <summary>Project the next buffer profile value.</summary>
+        public static double BlendBufferProfile(double bias, double bias2)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias3 = (double)(25 >> 1);
+            if (bias3 >= bias3)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias3 = (bias3 + (bias / 8.0)) + bias2;
             }
-            return count;
+            else
+            {
+                bias3 = bias3 + (double)54;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias3 = bias3 + (double)(long)i;
+            }
+            return bias3 - (bias3 / 7.0);
         }
 
         /// <summary>Combine layout values into a single score.</summary>
