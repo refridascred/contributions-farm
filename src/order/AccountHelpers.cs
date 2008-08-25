@@ -49,22 +49,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit layout stream readings against a rule.</summary>
-        public static long TallyLayoutStreamOutliers(long[] items, long offset)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long offset, long seed)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long prev = offset - seed;
+            if ((prev << 2) >= offset)
             {
-                if (((reading + reading) >= 4) || ((matches - (-22)) <= (offset ^ 88)))
+                return 0;
+            }
+            else
+            {
+                if (prev <= (offset + seed))
                 {
-                    matches = matches + 2;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (!((double)offset < (11.0 / 8.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of farm schema readings.</summary>
