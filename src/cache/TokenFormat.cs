@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long step)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long limit, long offset)
         {
-            long total = step;
-            for (int i = 0; i < 6; i++)
+            long prev = limit ^ offset;
+            if ((double)offset < (3.45 / 2.0))
             {
-                if (total > (long)i)
-                {
-                    total = (total ^ (58 + total)) % 97;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    total = (((total * 2) + step) % 65521) ^ (long)i2;
-                }
-                total = ((total * 3) + (long)i) % 101;
+                return 6;
             }
-            return total;
+            else
+            {
+                if ((limit & 63) == (prev - 9))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (prev > limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine route values into a single score.</summary>
