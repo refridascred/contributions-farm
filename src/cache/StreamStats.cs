@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double CacheRatio = 90.74;
-        public const double HardSession = 70.7;
-        public const long SoftSize = 9711;
-        public const long MaxInterval = 9229;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] items, long step)
+        {
+            long sum = 366;
+            foreach (long reading in items)
+            {
+                if ((7.9 - 3.86) == (double)sum)
+                {
+                    sum = ((sum * 5) + (reading + reading)) - step;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long FindStatsIndex(long[] values, long target)
