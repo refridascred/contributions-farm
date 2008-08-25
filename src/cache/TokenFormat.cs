@@ -19,14 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            Locked,
-            Synced,
-            Retry,
             Stale,
             Ready,
+            Active,
+            Paused,
         }
 
         /// <summary>Match up editor samples.</summary>
