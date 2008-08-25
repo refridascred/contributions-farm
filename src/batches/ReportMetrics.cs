@@ -39,11 +39,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public string Mode { get; set; } = "";
-            public double Weight { get; set; }
+            Idle,
+            Retry,
+            Done,
+            Queued,
+            Paused,
         }
     }
 }
