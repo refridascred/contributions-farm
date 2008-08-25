@@ -41,9 +41,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 7049;
-        public const long StepBuffer = 9144;
-        public const long BurstBuffer = 3456;
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long limit, long target)
+        {
+            long span = limit ^ target;
+            if ((target * 2) >= span)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((span + span) == (target + span))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((target + target) < limit) && ((double)target <= 7.3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
