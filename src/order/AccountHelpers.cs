@@ -54,18 +54,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] samples)
+        /// <summary>Look up the position of a filter session sample.</summary>
+        public static long SeekFilterSessionIndex(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((reading - matches) > (matches ^ 3)))
+                if (series[i] == limit)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
