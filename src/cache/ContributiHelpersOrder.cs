@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitRatio = 6738;
+        public const long BaseCount = 7814;
+        public const long IdleEditor = 3845;
+        public const long MinEditor = 651;
+        public const long CacheBudget = 5118;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long TallyEntryOutliers(long[] series)
