@@ -24,10 +24,11 @@ namespace Common.Utilities
         public const string BaseCommand = "staging-1";
         public const string BaseFactor = "open-v2";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowFactor = 3731;
-        public const string BurstCache = "open";
-        public const long BatchCache = 8573;
-        public const double RetryDepth = 14.94;
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
+        {
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
