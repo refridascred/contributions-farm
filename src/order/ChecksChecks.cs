@@ -26,18 +26,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the tools contributi entries that pass the check.</summary>
-        public static long CountToolsContributiMatches(long[] items)
+        /// <summary>Find the first payload editor entry that matches the target.</summary>
+        public static long LocatePayloadEditorIndex(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (78 <= datum)
+                if ((levels[i] < seed) && ((levels[i] % 2) != 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
