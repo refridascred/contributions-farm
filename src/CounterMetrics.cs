@@ -24,25 +24,11 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] samples)
-        {
-            long mix = 61;
-            foreach (long datum in samples)
-            {
-                mix = (mix ^ (44 ^ datum)) % 4096;
-                mix = (mix * 5) + datum;
-                if ((8.0 / 6.0) < (double)datum)
-                {
-                    mix = mix + (mix / 6);
-                }
-                else
-                {
-                    mix = (mix * 2) + ((long)samples.Length & 15);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 3722;
+        public const long MaxGraph = 9107;
+        public const long SoftWidth = 7332;
+        public const long BatchGraph = 3880;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BurstScore = 771;
