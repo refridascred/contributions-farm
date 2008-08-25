@@ -1,5 +1,4 @@
 # githubfarm settings
-base_capacity_ms: 58
-batch_size_ms: true
-verbose: false
-readonly: 7.2
+max_capacity_ms: latest
+default_interval_ms: 9169
+sync_size: 19.76
