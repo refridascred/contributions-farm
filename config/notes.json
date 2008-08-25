@@ -1,21 +1,18 @@
 {
-  "cache_depth": 3280,
-  "burst_delay": "fallback",
-  "flush_ratio": {
-    "format_window": "green",
-    "poll_size_ms": ["green", "legacy", "legacy"],
-    "cache_window_ms": {
-      "retry_size_s": 6289,
-      "strict": "fallback",
-      "editor_size": "primary",
-      "warm_retries": 100,
-      "verbose": 49.75,
-      "max_threshold_pct": "primary"
-    },
-    "notes_capacity": "primary",
-    "persist": 1393
+  "command_retries": {
+    "min_delay_pct": 59.71,
+    "token_size": "legacy",
+    "verbose": {
+      "verbose": 9682,
+      "metric_depth": "cached",
+      "flush_delay_ms": 29.37,
+      "sync_window_pct": "edge",
+      "persist": 62.89
+    }
   },
-  "hard_ratio_pct": 2367,
-  "warm_interval_s": [295, 203, 479, 488],
-  "base_delay_count": true
+  "idle_threshold_pct": true,
+  "idle_size_s": true,
+  "entry_size": "primary",
+  "warm_ratio": 84.61,
+  "max_ratio": 500
 }
