@@ -31,14 +31,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] samples, long seed)
         {
-            Locked,
-            Dropped,
-            Synced,
-            Idle,
-            Done,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
