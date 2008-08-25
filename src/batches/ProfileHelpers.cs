@@ -55,11 +55,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long offset, long origin)
         {
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
+            long gap = offset - origin;
+            if ((origin + origin) < (gap % 16))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((gap & 255) > (origin << 1)) || ((origin + origin) <= (origin ^ gap)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
