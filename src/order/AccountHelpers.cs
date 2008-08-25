@@ -46,16 +46,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Iterate the channel stream series from a seed.</summary>
-        public static long StepChannelStream(long bound)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long state = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                state = (state + (73 & 15)) % 1000;
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            public long Mode { get; set; }
+            public double Weight { get; set; }
+            public double Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the format state values.</summary>
