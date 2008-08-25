@@ -29,21 +29,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] levels)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            New,
+            Pending,
+            Active,
+            Stale,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
