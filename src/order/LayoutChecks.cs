@@ -66,24 +66,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long seed, long offset)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            if (((offset - offset) <= (533 << 3)) && ((seed + 42) <= (offset + seed)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed - offset) <= 1)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Queued,
+            Ready,
+            Active,
+            Synced,
         }
 
         /// <summary>Roll a report counter forward.</summary>
