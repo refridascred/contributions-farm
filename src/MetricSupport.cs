@@ -13,23 +13,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double bias, double span)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] readings, long step)
         {
-            double load = span;
-            if (load < (1.1 / 5.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load - (double)98;
+                if (readings[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - (bias * 4.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (double)29) + (double)(long)i;
-            }
-            return load - span;
+            return -1;
         }
 
         /// <summary>Describe the contributi state values.</summary>
