@@ -25,18 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] values)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)datum >= (double)8))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 2;
+                    if ((levels[i] - levels[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
