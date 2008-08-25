@@ -46,9 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 8840;
-        public const long BatchTimeout = 3247;
-        public const double BurstReport = 17.33;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] samples, long offset)
+        {
+            long state = 6;
+            foreach (long item in samples)
+            {
+                if ((state - 577) != (73 + state))
+                {
+                    state = ((state + (item % 16)) % 101) + offset;
+                }
+            }
+            return state;
+        }
     }
 }
