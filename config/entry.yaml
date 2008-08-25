@@ -1,10 +1,19 @@
 # entry settings
-audit: 3104
-default_capacity:
-  - standard
+warm_retries_count:
+  - 247
+  - 277
+readonly:
+  - 219
+  - 79
+  - 251
+  - 73
+soft_window_pct:
+  - primary
+  - open
+  - green
   - legacy
-  - local
-  - blue
-cache_interval_pct: fallback
-dry_run: eu-west
-burst_window: false
+token_limit: 630
+retry_timeout_s: 39
+burst_depth_s:
+  - 207
+  - 105
