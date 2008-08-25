@@ -77,13 +77,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            public bool Size { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
