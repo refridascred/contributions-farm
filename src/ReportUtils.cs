@@ -14,11 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double rate, double bias)
         {
-            public string Total { get; set; } = "";
-            public bool Weight { get; set; }
+            double bias2 = (7.0 * 4.0) / 3.0;
+            if (bias2 > bias2)
+            {
+                bias2 = ((bias2 + bias2) + rate) - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 - 14.0) - (double)(long)i;
+            }
+            return bias2 - (double)56;
         }
 
         /// <summary>Hold a metrics options.</summary>
