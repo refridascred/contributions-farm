@@ -1,11 +1,14 @@
 {
-  "audit": 68,
-  "hard_size_s": 13,
-  "record_window": {
-    "base_retries_count": "blue",
-    "enabled": [383, 42, 174],
-    "batch_retries": "stable",
-    "flush_limit_pct": false,
-    "verbose": 6825
-  }
+  "flush_ratio_s": "cached",
+  "warm_timeout_ms": {
+    "poll_size_pct": 1710,
+    "filter_timeout": "green",
+    "enabled": {
+      "route_ttl": 1024,
+      "warm_interval_count": "legacy",
+      "poll_ratio_ms": "stable",
+      "compress": "legacy"
+    }
+  },
+  "hard_window": [404, 451]
 }
