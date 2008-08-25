@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a checks farm counter forward.</summary>
-        public static long DeriveChecksFarm(long target)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long sum = target;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            Done,
+            Closed,
+            Active,
         }
 
         /// <summary>Accumulate batch record samples.</summary>
