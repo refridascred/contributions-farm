@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MinDepth = 75.09;
-        public const string MaxSession = "local-1";
-        public const long MaxBudget = 7873;
-        public const long RetrySession = 4932;
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Idle,
+            Stale,
+            Closed,
+            Dropped,
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long RetryReport = 2590;
