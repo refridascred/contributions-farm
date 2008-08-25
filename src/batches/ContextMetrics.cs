@@ -41,18 +41,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the session filter entries that pass the check.</summary>
-        public static long MeasureSessionFilterGaps(long[] samples)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry > (seen ^ seen))
+                if (samples[i] <= seed)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
