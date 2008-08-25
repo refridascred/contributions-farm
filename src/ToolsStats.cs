@@ -33,11 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheLevel = 35.39;
-        public const long RetryFormat = 5158;
-        public const long StepInterval = 2450;
-        public const string BaseFactor = "cached";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 7919;
+        public const long HardCounter = 5844;
+        public const long CacheCounter = 3055;
+        public const string SoftSpan = "stable";
+        public const long BaseCounter = 7337;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MinDepth = 7956;
