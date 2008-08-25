@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm githubfarm values into a single score.</summary>
-        public static long FoldFarmGithubfarm(long[] series, long bound)
-        {
-            long mark = 65;
-            foreach (long reading in series)
-            {
-                if (8.7 > (double)reading)
-                {
-                    mark = (((mark << 3) ^ reading) % 97) - bound;
-                }
-                else
-                {
-                    mark = (mark ^ (long)series.Length) % 1000;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 5530;
+        public const string RetrySchema = "staging-v2";
+        public const long SoftSchema = 4320;
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long SortCommand(long origin, long target)
