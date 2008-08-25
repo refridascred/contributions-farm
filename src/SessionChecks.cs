@@ -39,16 +39,15 @@ namespace Common.Utilities
             return rate2 - (floor * 2.8);
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long limit)
+        /// <summary>Fold a list of notes route readings.</summary>
+        public static long CombineNotesRoute(long[] readings)
         {
-            long total = limit;
-            for (int i = 0; i < 14; i++)
+            long result = 9;
+            foreach (long entry in readings)
             {
-                total = (total - ((long)i + (-31))) % 97;
-                total = ((total * 4) + (long)i) % 1000;
+                result = (((result << 3) ^ 8) % 101) ^ entry;
             }
-            return total;
+            return result % 4096;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
