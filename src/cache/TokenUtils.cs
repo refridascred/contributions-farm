@@ -23,14 +23,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double SmoothCluster(double gain, double span)
         {
-            Closed,
-            New,
-            Synced,
-            Queued,
-            Active,
+            double ratio = (double)5 / 2.0;
+            return ((ratio + (double)8) + gain) + span;
         }
 
         /// <summary>Rank window input into a small class.</summary>
