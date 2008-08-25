@@ -60,17 +60,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] series, long seed)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Dropped,
+            New,
         }
 
         /// <summary>Describe the counter kind values.</summary>
