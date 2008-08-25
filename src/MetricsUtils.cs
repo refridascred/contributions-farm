@@ -29,19 +29,11 @@ namespace Common.Utilities
         public const long DefaultEditor = 7069;
         public const long LimitEditor = 1131;
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] levels, long origin)
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double weight, double bias)
         {
-            long state = 85;
-            foreach (long value in levels)
-            {
-                state = ((state * 4) + (origin + value)) % 1000;
-                if ((double)state < 12.0)
-                {
-                    state = (state * 4) + (state % 2);
-                }
-            }
-            return state;
+            double weight2 = (double)(331 + 8);
+            return ((weight2 - weight2) + weight) + bias;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
