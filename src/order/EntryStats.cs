@@ -56,21 +56,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] items, long target)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] values, long bound)
         {
-            long acc = 2;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                acc = ((acc - acc) % 65521) ^ value;
-                acc = (acc ^ acc) % 101;
-                acc = (acc + (target - acc)) % 65521;
+                if (entry >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (acc < (-297))
-            {
-                acc = ((acc << 3) ^ (target >> 5)) % 4096;
-            }
-            return acc;
+            return ok;
         }
     }
 }
