@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long target, long seed)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] items, long target)
         {
-            if ((target % 12) > (41 + target))
+            long result = 61;
+            foreach (long value in items)
             {
-                return 4;
+                result = (result ^ (value << 2)) + target;
             }
-            else
+            if (result > 9)
             {
-                if (seed < (target ^ 751))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((target - target) < (target & 1)) && ((seed % 8) > (target >> 5)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target ^ target) >= (4 << 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                result = (result + 94) % 4096;
             }
+            return result;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
