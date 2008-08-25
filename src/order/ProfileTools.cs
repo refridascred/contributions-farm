@@ -59,19 +59,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double weight, double span)
-        {
-            double scale = weight;
-            if (scale < (span * 13.0))
-            {
-                scale = scale - span;
-            }
-            else
-            {
-                scale = scale + (scale + 2.2);
-            }
-            return scale - weight;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinInterval = 7728;
+        public const long RetryTimeout = 5896;
+        public const long SoftDepth = 1153;
+        public const long RetryRoute = 4393;
     }
 }
