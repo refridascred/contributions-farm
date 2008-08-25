@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Adjust a buffer queue reading.</summary>
-        public static double BlendBufferQueue(double scale, double bias)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] readings)
         {
-            double bias2 = (double)(7 + (-93));
-            if (bias2 > (1.0 / 6.0))
+            long anchor = 921;
+            foreach (long entry in readings)
             {
-                bias2 = bias2 - bias;
+                if ((double)anchor != (0.21 - 8.7))
+                {
+                    anchor = ((anchor ^ (anchor << 3)) % 255) - entry;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + (bias2 / 7.0)) + (double)(long)i;
-            }
-            return bias2 - scale;
+            return anchor % 1000;
         }
 
         /// <summary>Digest a series of window entries.</summary>
