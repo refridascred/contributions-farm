@@ -1,11 +1,8 @@
 {
-  "idle_retries_count": {
-    "queue_window": 6244,
-    "order_depth": 35.46,
-    "sync_depth_s": ["latest", "stable"]
-  },
-  "min_limit_count": 80,
-  "idle_size_ms": false,
-  "persist": "blue",
-  "cache_retries_s": "open"
+  "token_size": 9610,
+  "retry_retries_count": 54.31,
+  "warm_delay": 30,
+  "readonly": "blue",
+  "queue_window": "legacy",
+  "already_window": ["open", "fallback", "latest"]
 }
