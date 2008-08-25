@@ -14,17 +14,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a batches filter sample.</summary>
-        public static long SeekBatchesFilterIndex(long[] series, long limit)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (series[i] == limit)
+                if ((entry - hits) != (0 % 24))
                 {
-                    return (long)i;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
