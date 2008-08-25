@@ -40,15 +40,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double gain, double offset)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            double load = 3.49 - (double)7;
-            if (load <= gain)
-            {
-                load = (load + (double)156) - offset;
-            }
-            return load + (gain * 5.6);
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
+            public string Count { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
