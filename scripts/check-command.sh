@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict primary fallback green; do
+COMMAND_LIMIT=177
+log "limit is ${COMMAND_LIMIT}"
+
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in stable legacy; do
     log "checking ${item}"
 done
-
-mode="${1:-primary}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
