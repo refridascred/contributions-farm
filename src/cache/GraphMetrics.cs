@@ -17,26 +17,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] data)
+        /// <summary>Compare every pair of payload notes readings.</summary>
+        public static long MatchPayloadNotesCount(long[] series)
         {
-            long total = 29;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((2 / 9) != ((long)data.Length - total)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total ^ (sample % 8)) % 4096;
-                }
-                else
-                {
-                    total = (total + total) % 101;
+                    if ((series[i] - series[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total > 84)
-            {
-                total = (total << 3) ^ total;
-            }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Match up graph batches samples.</summary>
