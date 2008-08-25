@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LookupGraphIndex(long[] readings, long step)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double weight, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = (double)(138 + (-31));
+            for (int i = 0; i < 2; i++)
             {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
+                rate = (((rate + rate) + (double)(long)i) - weight) - offset;
             }
-            return -1;
+            return rate + (double)33;
         }
 
         /// <summary>Hold a payload record.</summary>
