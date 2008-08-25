@@ -41,20 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the graph metric series from a seed.</summary>
-        public static long DeriveGraphMetric(long step)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long mix = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if (1.9 >= (double)(long)i)
-                {
-                    mix = (mix + (525 + (long)i)) % 1000;
-                    mix = ((mix << 2) ^ (mix >> 2)) % 4096;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            Active,
+            Failed,
+            Ready,
         }
     }
 }
