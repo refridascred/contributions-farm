@@ -47,21 +47,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] readings)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
