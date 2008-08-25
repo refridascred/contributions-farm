@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] series, long origin)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a layout summary.</summary>
