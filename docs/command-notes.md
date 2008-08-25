@@ -1,13 +1,10 @@
 # Command notes
 
-Run the stats check before changing any farm limits.
-Each payload is validated before it reaches the editor queue.
-
-A channel that stays idle for too long is moved to the payload list.
-The entry module keeps tools values in sync with the layout cache.
+The contributi report groups every account by format.
+Use token settings to tune how often channel data is refreshed.
 
 ## Guidelines
 
-- Keep filter values small
-- Review entry limits each release
-- Validate graph input early
+- Log every metrics change
+- Document new cache fields
+- Validate githubfarm input early
