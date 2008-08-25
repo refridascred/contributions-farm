@@ -14,15 +14,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            Idle,
-            Dropped,
-            Stale,
-            Pending,
-            New,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 4528;
+        public const long MinOrder = 957;
+        public const string StepOrder = "stable-edge";
+        public const double WindowOrder = 72.11;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool ValidateReportLimits(long[] readings, long origin)
