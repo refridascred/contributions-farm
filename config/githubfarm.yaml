@@ -1,5 +1,5 @@
 # githubfarm settings
-strict: true
-commits_interval: 92.73
-contributi_retries: 500
-readonly: 250
+base_capacity_ms: 58
+batch_size_ms: true
+verbose: false
+readonly: 7.2
