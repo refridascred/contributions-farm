@@ -74,18 +74,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] readings, long offset)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] readings, long seed)
         {
-            long anchor = 542;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (offset <= (anchor & 7))
+                if (readings[i] > seed)
                 {
-                    anchor = (anchor - (anchor - datum)) % 97;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
