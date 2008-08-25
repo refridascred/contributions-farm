@@ -73,19 +73,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two order payload measurements.</summary>
-        public static double ProjectOrderPayload(double bias, double offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] items, long step)
         {
-            double mean = (bias + bias) / 7.0;
-            if (mean >= (double)683)
+            bool flag = true;
+            foreach (long item in items)
             {
-                mean = mean + bias;
+                if (item < step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (double)5;
-            }
-            return mean - (offset * 6.54);
+            return flag;
         }
     }
 }
