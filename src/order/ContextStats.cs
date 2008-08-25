@@ -19,16 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long floor)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] data)
         {
-            long mark = floor;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark << 3) ^ (floor ^ floor);
-                mark = ((mark * 4) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Fold a list of token payload readings.</summary>
