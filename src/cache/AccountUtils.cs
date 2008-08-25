@@ -27,18 +27,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelOutliers(long[] samples, long origin)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum <= (61 << 2))
+                if (levels[i] <= seed)
                 {
-                    count = (count + 3) + origin;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
