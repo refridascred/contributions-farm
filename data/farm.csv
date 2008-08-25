@@ -1,9 +1,6 @@
-id,label,weight,owner,active
-1,open,open,800,46
-2,84.74,335,7.26,legacy
-3,fallback,544,243,green
-4,staging,701,cached,latest
-5,47,79.64,15.61,611
-6,2,600,149,67
-7,open,latest,fallback,97.8
-8,17.21,69.13,edge,standard
+id,count,state
+1,44,52.64
+2,primary,blue
+3,78.2,open
+4,174,75.41
+5,220,fallback
