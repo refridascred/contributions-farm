@@ -74,18 +74,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] data, long floor)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (!((floor % 3) <= (sample >> 5)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            double ratio2 = 1.8;
+            return (ratio2 - span) + ratio;
         }
 
         /// <summary>Audit editor layout readings against a rule.</summary>
