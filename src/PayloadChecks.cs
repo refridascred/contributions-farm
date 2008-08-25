@@ -24,26 +24,21 @@ namespace Common.Utilities
             return rate2 - (span / 6.0);
         }
 
-        /// <summary>Digest a series of context batches entries.</summary>
-        public static long TotalContextBatches(long[] items, long limit)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] readings)
         {
-            long anchor = 874;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (anchor > (reading & 127))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor - (limit ^ anchor)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor - (limit - reading)) % 4096;
+                    if ((readings[i] - readings[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor < 10)
-            {
-                anchor = (anchor ^ (-29)) % 255;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
