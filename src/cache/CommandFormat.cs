@@ -16,12 +16,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public bool Offset { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double HardRatio = 30.31;
+        public const long StepBudget = 1295;
+        public const long RetryChecks = 4059;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string LimitLevel = "local-1";
