@@ -46,32 +46,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long limit, long target)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double weight, double offset)
         {
-            long span = limit ^ target;
-            if ((target * 2) >= span)
+            double drift = (double)(12 & 3);
+            if (drift < offset)
             {
-                return 0;
+                drift = (drift - (drift / 5.0)) - weight;
             }
-            else
-            {
-                if ((span + span) == (target + span))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((target + target) < limit) && ((double)target <= 7.3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return drift + (double)11;
         }
     }
 }
