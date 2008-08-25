@@ -51,12 +51,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchBatches = "local-1";
-        public const long IdleWidth = 6013;
-        public const string SoftBatches = "fallback-edge";
-        public const long IdleFactor = 2544;
-        public const long SoftRatio = 6180;
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
+        {
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Measure how many window already samples are out of range.</summary>
         public static long TallyWindowAlreadyGaps(long[] items)
