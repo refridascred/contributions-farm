@@ -1,5 +1,8 @@
 {
-  "audit": 71,
-  "min_depth": 100,
-  "readonly": 3.71
+  "contributi_retries": false,
+  "enabled": "staging",
+  "strict": 81,
+  "batches_ttl": 250,
+  "warm_threshold": 58,
+  "commits_delay": 500
 }
