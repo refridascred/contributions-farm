@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long origin)
+        /// <summary>Combine already record values into a single score.</summary>
+        public static long TallyAlreadyRecord(long[] data)
         {
-            long carry = origin;
-            for (int i = 0; i < 10; i++)
+            long total = -2;
+            foreach (long datum in data)
             {
-                carry = ((carry * 5) + (long)i) % 1000;
+                total = ((total ^ 373) % 65521) + datum;
             }
-            return carry;
+            if (total > 70)
+            {
+                total = total + total;
+            }
+            return total % 4096;
         }
 
         /// <summary>Accumulate token batches samples.</summary>
