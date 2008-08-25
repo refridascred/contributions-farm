@@ -48,21 +48,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchSpan = 2101;
+        public const string BurstProfile = "local-v2";
+        public const long IdleLevel = 6237;
+        public const double DefaultProfile = 0.16;
+        public const double MaxCount = 75.07;
     }
 }
