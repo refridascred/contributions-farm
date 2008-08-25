@@ -1,6 +1,11 @@
 {
-  "max_timeout_s": 2900,
-  "audit": true,
-  "compress": "legacy",
-  "base_size_pct": "eu-west"
+  "compress": "strict",
+  "cache_threshold_s": {
+    "min_threshold_count": "blue",
+    "record_delay": [364, 148, 484, 50],
+    "warm_timeout_pct": "latest",
+    "burst_limit_count": "local",
+    "batch_ratio": [200, 376]
+  },
+  "sync_retries_s": 3159
 }
