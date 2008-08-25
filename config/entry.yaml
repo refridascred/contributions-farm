@@ -1,6 +1,6 @@
 # entry settings
-compress: true
-dry_run: 13.11
-retry_retries_count: 64.43
-persist: 1295
-burst_capacity_ms: green
+flush_timeout_ms: 38
+burst_ttl_count: 20
+cache_interval_ms: 43
+batch_capacity: 80.08
+max_window: 80.11
