@@ -38,39 +38,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a account support pair into a bucket.</summary>
-        public static long ClassifyAccountSupport(long bound, long offset)
+        /// <summary>Roll a session queue counter forward.</summary>
+        public static long SeriesSessionQueue(long target)
         {
-            long gap = bound + offset;
-            if ((offset / 6) > offset)
+            long score = target;
+            for (int i = 0; i < 21; i++)
             {
-                return 8;
+                score = (score << 3) ^ (long)i;
+                score = (score ^ (target * 5)) % 1000;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (bound < (bound / 8))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset / 9) == (offset + offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((gap % 60) < (gap >> 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return score;
         }
     }
 }
