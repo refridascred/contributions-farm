@@ -34,21 +34,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up graph batches samples.</summary>
-        public static long MatchGraphBatchesCount(long[] readings)
+        /// <summary>Accumulate layout already samples.</summary>
+        public static long FoldLayoutAlready(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 22;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((item << 1) < 0) || ((sum ^ (-558)) >= (item + limit)))
                 {
-                    if ((readings[i] + readings[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum * 3) + (sum + sum);
                 }
             }
-            return matches;
+            if (sum < 937)
+            {
+                sum = sum ^ (limit + 207);
+            }
+            return sum;
         }
 
         /// <summary>Hold a route entry.</summary>
