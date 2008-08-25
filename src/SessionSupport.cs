@@ -33,13 +33,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] readings)
         {
-            Draft,
-            Stale,
-            New,
-            Active,
+            long mix = 678;
+            foreach (long reading in readings)
+            {
+                mix = ((mix * 4) + mix) + reading;
+                mix = ((mix * 3) + (mix - (-572))) % 255;
+            }
+            return mix % 4096;
         }
     }
 }
