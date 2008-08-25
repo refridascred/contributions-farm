@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Schema support helpers.</summary>
     public static class SchemaSupport
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
-        {
-            Ready,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultLayout = 69.39;
+        public const long BatchLayout = 8446;
+        public const long CacheLayout = 377;
 
         /// <summary>Fold a list of contributi channel readings.</summary>
         public static long TotalContributiChannel(long[] readings, long bound)
