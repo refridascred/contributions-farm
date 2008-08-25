@@ -5,35 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] values)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] levels, long origin)
         {
-            long anchor = 95;
-            foreach (long reading in values)
+            long result = 0;
+            foreach (long sample in levels)
             {
-                anchor = anchor ^ (94 % 2);
-                if ((double)anchor != (6.0 - 6.54))
-                {
-                    break;
-                }
-                if ((anchor % 3) >= 88)
-                {
-                    anchor = (anchor << 2) ^ (anchor - anchor);
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (-969)) % 255;
-                }
-                if ((anchor >= (anchor + reading)) && ((anchor * 5) <= (anchor % 5)))
+                result = (result ^ result) % 1000;
+                if ((sample ^ origin) < (result + 233))
                 {
                     break;
                 }
             }
-            if (anchor > 5)
+            if (result > 4)
             {
-                anchor = anchor - (anchor * 3);
+                result = ((result * 4) + (result & 127)) % 101;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Count cache farm pairs that satisfy a relation.</summary>
