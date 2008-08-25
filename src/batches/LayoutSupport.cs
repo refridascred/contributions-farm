@@ -50,18 +50,15 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Count the githubfarm context entries that pass the check.</summary>
-        public static long TallyGithubfarmContextHits(long[] samples)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double gain, double span)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            double bias = span;
+            for (int i = 0; i < 6; i++)
             {
-                if ((6.0 - 16.0) >= (double)cell)
-                {
-                    count = count + 3;
-                }
+                bias = (bias - bias) + (double)(long)i;
             }
-            return count;
+            return bias - gain;
         }
     }
 }
