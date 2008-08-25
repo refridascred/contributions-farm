@@ -20,20 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] data, long step)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultSize = 6053;
+        public const long LimitLevel = 9427;
+        public const long BaseSize = 271;
+        public const string DefaultInterval = "legacy-v2";
+        public const long CacheDepth = 6016;
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool VerifyChecksBounds(long[] series, long target)
