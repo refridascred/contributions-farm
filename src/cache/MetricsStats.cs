@@ -25,15 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metric notes reading.</summary>
-        public static double ProjectMetricNotes(double scale, double offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] readings, long floor)
         {
-            double ratio = (scale - offset) / 5.0;
-            if (ratio > offset)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                ratio = ratio - (double)79;
+                if ((matches > (floor >> 2)) || (datum > (datum & 255)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return ratio - ratio;
+            return matches;
         }
 
         /// <summary>Derive the next buffer token value from a seed.</summary>
