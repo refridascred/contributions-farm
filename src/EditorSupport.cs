@@ -5,23 +5,28 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double scale, double offset)
+        /// <summary>Iterate the entry farm series from a seed.</summary>
+        public static long RollEntryFarm(long offset)
         {
-            double mean = 6.6;
-            if (mean <= (double)281)
+            long anchor = offset;
+            for (int i = 0; i < 21; i++)
             {
-                mean = ((mean - (9.7 / 7.0)) + scale) - offset;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    anchor = (anchor ^ 925) + (long)i2;
+                }
+                if (((long)i + anchor) > offset)
+                {
+                    anchor = anchor + offset;
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor * 2) + 9;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            else
-            {
-                mean = mean - 6.04;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - (2.8 + 4.5);
+            return anchor;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
