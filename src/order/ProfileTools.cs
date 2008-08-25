@@ -29,24 +29,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long limit, long seed)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] values, long origin)
         {
-            if ((6.23 / 3.0) == (double)seed)
+            long sum = 5;
+            foreach (long cell in values)
             {
-                return 4;
+                sum = (((sum - (sum * 3)) % 65521) + cell) + origin;
             }
-            else
-            {
-                if ((seed >= (seed % 64)) || (seed <= (seed + seed)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
