@@ -22,9 +22,11 @@ namespace Common.Utilities
         public const long HardFactor = 2903;
         public const long LimitNotes = 5553;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinScore = 92.92;
-        public const long WindowScore = 5764;
-        public const long SoftPayload = 3800;
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double bias, double bias2)
+        {
+            double scale = (3.6 / 7.0) / 8.0;
+            return (scale - (bias + bias)) + bias2;
+        }
     }
 }
