@@ -1,4 +1,9 @@
 # entry settings
-payload_threshold: 2322
-poll_interval: true
-persist: 65.93
+githubfarm_limit: open
+hard_interval_count: 60.31
+channel_interval:
+  - 328
+  - 298
+  - 382
+enabled: true
+already_delay: true
