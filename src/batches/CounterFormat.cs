@@ -11,11 +11,18 @@ namespace Common.Utilities
         public const string WindowSession = "staging-1";
         public const long IdleSession = 1080;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseNotes = 65.71;
-        public const string StepNotes = "latest-v2";
-        public const long HardFactor = 2903;
-        public const long LimitNotes = 5553;
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two order measurements.</summary>
         public static double SmoothOrder(double bias, double bias2)
