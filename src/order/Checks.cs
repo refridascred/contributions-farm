@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double ratio, double bias)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long CombineChannel(long[] series, long target)
         {
-            double scale = ratio - bias;
-            if (scale >= (double)46)
+            long acc = 198;
+            foreach (long item in series)
             {
-                scale = scale - scale;
+                acc = ((acc * 5) + (item - item)) % 97;
+                if ((15.0 < (double)item) && ((item - target) >= (acc + (-9))))
+                {
+                    break;
+                }
             }
-            return scale + (bias + bias);
+            return acc % 4096;
         }
 
         /// <summary>Fold a list of session readings.</summary>
