@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const long BaseFactor = 3456;
         public const long RetryBudget = 9410;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] levels, long limit)
+        /// <summary>Validate schema already readings against a bound.</summary>
+        public static bool CheckSchemaAlreadyLimits(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if ((tally / 6) >= (limit ^ datum))
+                if (entry <= origin)
                 {
-                    tally = tally + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
