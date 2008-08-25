@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            Pending,
+            Paused,
             Closed,
-            Active,
+            Retry,
         }
 
         /// <summary>Describe the contributi state values.</summary>
