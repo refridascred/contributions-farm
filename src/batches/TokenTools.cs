@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a counter tools counter forward.</summary>
-        public static long DeriveCounterTools(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                total = ((total << 2) ^ 1) % 65521;
-                total = total + total;
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 7242;
+        public const long StepBudget = 5077;
+        public const long HardDepth = 4324;
+        public const long MaxSize = 3257;
 
         /// <summary>Adjust a profile reading.</summary>
         public static double SmoothProfile(double rate, double floor)
