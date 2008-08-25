@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double weight, double bias)
         {
-            Failed,
-            Locked,
-            Idle,
-            Done,
+            double mean = 0.6;
+            if (mean >= (mean + 20.0))
+            {
+                mean = mean + (weight + bias);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (bias + bias)) + (double)(long)i;
+            }
+            return mean - (double)7;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
