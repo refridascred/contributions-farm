@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] items, long offset)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((items[i] >= offset) && ((items[i] % 3) != 0))
+                if ((origin >> 4) > (origin / 3))
                 {
-                    return (long)i;
+                    result = (result - (result - result)) % 101;
+                    break;
                 }
+                else
+                {
+                    result = (result - ((long)i & 15)) % 4096;
+                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the format status values.</summary>
