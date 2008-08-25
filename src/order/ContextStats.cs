@@ -18,14 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            Dropped,
-            Synced,
-            New,
-            Pending,
-            Draft,
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public double Level { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Digest a series of command entries.</summary>
