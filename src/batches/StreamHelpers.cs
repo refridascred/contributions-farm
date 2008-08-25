@@ -45,19 +45,39 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double rate, double bias)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long origin, long bound)
         {
-            double load = (double)(253 >> 4);
-            if (load <= rate)
+            long cur = origin ^ bound;
+            if (((cur / 6) > (bound << 2)) && (cur <= (bound << 3)))
             {
-                load = (load + 7.0) - bias;
+                return 3;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                load = (load - (0.03 - rate)) + (double)(long)i;
+                if (((8.0 / 3.0) < (double)origin) || ((origin / 2) > (313 - bound)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((cur & 3) > (cur / 8)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin ^ bound) >= (origin - bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return load - rate;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
