@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long origin, long offset)
         {
-            Stale,
-            Active,
-            Ready,
+            long prev = origin ^ offset;
+            if ((double)prev == (2.0 - 0.1))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)origin <= 6.4)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (prev > (prev ^ 967))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the filter class values.</summary>
