@@ -29,17 +29,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first route cluster entry that matches the target.</summary>
-        public static long LocateRouteClusterIndex(long[] items, long limit)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((items[i] == limit) && ((items[i] % 5) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
