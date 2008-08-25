@@ -44,31 +44,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long limit, long floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsBounds(long[] series, long floor)
         {
-            if (!(limit > (limit + limit)))
+            bool flag = true;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)limit < (12.0 * 7.3)) || ((floor - limit) != (floor ^ limit)))
+                if (reading < floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)floor == (1.0 / 8.0)) && (1 < (limit & 63)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
