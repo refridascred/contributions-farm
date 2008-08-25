@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long floor, long target)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] readings, long origin)
         {
-            if ((double)target < (19.0 - 7.62))
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((8 - floor) != (floor * 5))
+                if ((count + count) <= (value >> 2))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    count = (count + 1) + origin;
                 }
             }
+            return count;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
