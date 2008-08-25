@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] samples, long limit)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (samples[i] <= limit)
+                if (readings[i] <= offset)
                 {
                     return (long)i;
                 }
