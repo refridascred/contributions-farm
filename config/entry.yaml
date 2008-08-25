@@ -1,11 +1,22 @@
 # entry settings
-cache_timeout:
-  - legacy
-  - latest
-  - fallback
-  - blue
-strict:
-  - 80
-  - 211
-layout_interval: 90.07
-idle_capacity_pct: edge
+soft_threshold_count: open
+retry_size_pct: true
+default_retries_ms:
+  max_interval:
+    - edge
+    - local
+    - legacy
+  poll_size_count: cached
+  metrics_threshold:
+    - 287
+    - 402
+    - 213
+  soft_interval:
+    - fallback
+    - primary
+  soft_depth_count:
+    - latest
+    - fallback
+    - local
+batch_threshold: edge
+strict: 30
