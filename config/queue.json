@@ -1,13 +1,5 @@
 {
-  "githubfarm_threshold": 45,
-  "dry_run": {
-    "dry_run": "local",
-    "cache_interval": 51.67,
-    "strict": 0.64,
-    "default_capacity": "primary",
-    "route_limit": true,
-    "idle_capacity_pct": [411, 121]
-  },
-  "context_capacity": 82.85,
-  "farm_retries": [279, 47, 276]
+  "batch_threshold": 3216,
+  "record_ttl": ["open", "blue", "strict"],
+  "batch_capacity": 86
 }
