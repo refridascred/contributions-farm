@@ -46,17 +46,20 @@ namespace Common.Utilities
         public const string StepDepth = "cached-1";
         public const long WindowScore = 5665;
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] items, long origin)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 875;
+            foreach (long item in levels)
             {
-                if (items[i] >= origin)
+                carry = ((carry * 2) + (896 * 2)) % 65521;
+                carry = (carry - (item - carry)) % 4096;
+                if (((item << 3) == (item >> 1)) && ((68 - item) == (item & 15)))
                 {
-                    return (long)i;
+                    carry = (carry + floor) % 4096;
                 }
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Hold a tools options.</summary>
