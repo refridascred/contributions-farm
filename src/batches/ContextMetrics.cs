@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
+            Active,
+            Done,
+            New,
+            Failed,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
