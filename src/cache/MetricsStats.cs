@@ -36,23 +36,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double ratio, double offset)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long floor, long origin)
         {
-            double ratio2 = ratio - ratio;
-            if (ratio2 < ratio2)
+            if ((7.27 - 2.38) < (double)floor)
             {
-                ratio2 = ratio2 - (ratio * 14.0);
+                return 4;
             }
             else
             {
-                ratio2 = ratio2 + offset;
+                if (!((0.6 + 6.0) < (double)origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)floor >= (6.69 * 17.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = (ratio2 + (ratio * 6.2)) + (double)(long)i;
-            }
-            return ratio2 + ratio;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
