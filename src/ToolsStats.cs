@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] data, long target)
+        /// <summary>Measure how many command commits samples are out of range.</summary>
+        public static long MeasureCommandCommitsGaps(long[] values, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (data[i] < target)
+                if (target > 8)
                 {
-                    return (long)i;
+                    matches = (matches + 3) + value;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
