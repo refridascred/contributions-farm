@@ -1,7 +1,8 @@
-id,token,score,region,state
-1,latest,edge,strict,edge
-2,eu-west,384,713,398
-3,fallback,979,89.75,66.98
-4,strict,90,standard,799
-5,717,273,green,92.46
-6,12,659,790,405
+id,count,score
+1,211,660
+2,89.67,259
+3,primary,69.53
+4,staging,740
+5,24.16,local
+6,335,stable
+7,open,66.45
