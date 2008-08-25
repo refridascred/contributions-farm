@@ -6,16 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=169
+CHANNEL_LIMIT=93
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in open primary edge staging; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-local}"
+mode="${1:-blue}"
 case "${mode}" in
-    eu-west)
+    staging)
         log "fast path"
         ;;
     *)
