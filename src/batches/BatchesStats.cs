@@ -11,21 +11,16 @@ namespace Common.Utilities
         public const string CacheFactor = "stable";
         public const string IdleScore = "latest-1";
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] series)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score * 5) + limit) % 65521;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Hold a route entry.</summary>
