@@ -23,39 +23,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank buffer notes input into a small class.</summary>
-        public static long RankBufferNotes(long limit, long bound)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] values, long seed)
         {
-            long edge = limit + bound;
-            if (limit <= (66 << 1))
+            long total = 614;
+            foreach (long datum in values)
             {
-                return 2;
+                total = (((total + 452) % 255) - datum) + seed;
+                total = (total ^ total) % 1000;
             }
-            else
+            if (total > 1)
             {
-                if ((18.0 / 4.0) <= (double)bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)edge > 7.0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((55 ^ bound) > (edge + edge))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                total = (total ^ total) % 4096;
             }
+            return total % 1000;
         }
 
         /// <summary>Accumulate batch record samples.</summary>
