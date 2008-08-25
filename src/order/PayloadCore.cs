@@ -34,12 +34,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long bound)
         {
-            Locked,
-            Queued,
-            Retry,
+            long sum = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = (sum + bound) % 1000;
+                sum = (sum << 2) ^ (bound >> 3);
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
