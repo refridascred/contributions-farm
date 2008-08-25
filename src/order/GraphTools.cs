@@ -53,32 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a githubfarm counter pair into a bucket.</summary>
-        public static long ClassifyGithubfarmCounter(long target, long offset)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long slot = target + offset;
-            if (((0 / 4) == (target % 10)) && ((6.86 - 14.0) >= (double)slot))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset >= (target - offset)) || ((80 ^ offset) >= (target + offset)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target << 1) > slot)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public bool Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
