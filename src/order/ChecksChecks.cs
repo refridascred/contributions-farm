@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] samples)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value == (double)3)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Weight { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
