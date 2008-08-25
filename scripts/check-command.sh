@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local cached strict legacy; do
+for item in edge primary staging green; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=356
+COMMAND_LIMIT=319
 log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 2))
+count=0
+while [ "${count}" -lt 8 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
