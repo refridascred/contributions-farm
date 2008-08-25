@@ -1,7 +1,5 @@
 {
-  "batch_timeout": true,
-  "cache_limit_s": 99,
-  "batch_retries": "green",
-  "dry_run": 500,
-  "max_delay_ms": 51
+  "retry_retries": ["fallback", "legacy"],
+  "hard_threshold": 73.31,
+  "window_ttl": "staging"
 }
