@@ -6,9 +6,9 @@ namespace Common.Utilities
     public static class AccountHelpers
     {
         /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseLayout = 45.61;
-        public const long IdleLayout = 5021;
-        public const long BurstLayout = 165;
+        public const double BaseLayout = 53.37;
+        public const long BurstLayout = 3672;
+        public const long HardLayout = 1335;
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long OverlapGraphCount(long[] values)
