@@ -25,12 +25,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long limit)
         {
-            Paused,
-            Retry,
-            Ready,
+            long result = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                result = (result - (result & 255)) % 255;
+                result = (result + result) % 101;
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a schema githubfarm sample.</summary>
