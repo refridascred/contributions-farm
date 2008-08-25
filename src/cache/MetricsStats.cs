@@ -57,11 +57,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryContext = 1170;
-        public const long MinContext = 9254;
-        public const double MaxDepth = 73.02;
-        public const long BurstLevel = 3017;
+        /// <summary>Derive the next buffer token value from a seed.</summary>
+        public static long StepBufferToken(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                state = ((state * 2) + ((long)i * 2)) % 65521;
+                state = (state - (state * 5)) % 4096;
+                if (((long)i + state) >= (seed ^ state))
+                {
+                    state = (state + ((long)i & 127)) % 65521;
+                }
+                else
+                {
+                    state = (state - (490 % 7)) % 4096;
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Locate a format reading by value.</summary>
         public static long FindFormatIndex(long[] items, long limit)
