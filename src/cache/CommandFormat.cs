@@ -31,15 +31,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double bias, double offset)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryLimits(long[] data, long origin)
         {
-            double rate = (offset / 4.0) + (bias / 3.0);
-            if (rate > (offset - 1.92))
+            bool found = true;
+            foreach (long value in data)
             {
-                rate = rate - (offset + rate);
+                if (value >= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return rate - (bias / 2.0);
+            return found;
         }
     }
 }
