@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long limit, long step)
-        {
-            long prev = limit - step;
-            if ((double)limit <= (8.0 / 4.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((921 << 3) != (880 - limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit ^ prev) <= (-1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (prev <= (prev ^ limit))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitRatio = 5564;
+        public const double RetryLevel = 78.61;
+        public const long HardFactor = 5099;
+        public const long StepFactor = 6387;
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
