@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
-        {
-            public double Label { get; set; }
-            public string Offset { get; set; } = "";
-            public double Mode { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BatchFilter = "stable-edge";
+        public const string BaseFilter = "open-v2";
+        public const long CacheFilter = 4020;
+        public const long BaseInterval = 4093;
+        public const string BurstFilter = "cached-v2";
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
