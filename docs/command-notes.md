@@ -1,12 +1,15 @@
 # Command notes
 
-A farm that stays idle for too long is moved to the batches list.
-When a queue fails, the buffer handler retries a few times before giving up.
-Defaults for already live in the config folder and can be overridden per environment.
+Each profile is validated before it reaches the filter queue.
+Keep context and format names short and lowercase.
+
+Defaults for support live in the config folder and can be overridden per environment.
+When a filter fails, the report handler retries a few times before giving up.
+A contributi that stays idle for too long is moved to the channel list.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Keep report values small
-- Log every context change
-- Validate batches input early
+- Document new metric fields
+- Validate notes input early
+- Prefer order defaults
+- Keep record values small
