@@ -19,11 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            public string Mode { get; set; } = "";
-            public bool Score { get; set; }
+            Done,
+            Failed,
+            Stale,
+            Draft,
+            New,
         }
 
         /// <summary>Blend two notes measurements.</summary>
