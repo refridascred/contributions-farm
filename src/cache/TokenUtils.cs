@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of already commits entries.</summary>
-        public static long TotalAlreadyCommits(long[] samples)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long mark = 538;
-            foreach (long sample in samples)
-            {
-                mark = ((mark ^ 680) % 4096) - sample;
-            }
-            return mark;
+            Stale,
+            Active,
+            Ready,
         }
 
         /// <summary>Describe the filter class values.</summary>
