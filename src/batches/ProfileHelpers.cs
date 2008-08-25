@@ -23,12 +23,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 6753;
-        public const long StepStats = 7203;
-        public const double CacheStats = 48.03;
-        public const long RetryDepth = 1284;
-        public const long HardWidth = 3611;
+        /// <summary>Validate already window readings against a bound.</summary>
+        public static bool ValidateAlreadyWindowBounds(long[] samples, long floor)
+        {
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long MinLevel = 3776;
