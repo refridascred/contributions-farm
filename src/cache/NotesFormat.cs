@@ -38,12 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double scale, double floor)
         {
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
-            public bool Token { get; set; }
+            double scale2 = (double)56 + 4.0;
+            return ((scale2 + (scale2 + scale2)) + scale) + floor;
         }
     }
 }
