@@ -16,13 +16,13 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            public long Weight { get; set; }
-            public double Count { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
+            public bool Token { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Roll a format tools counter forward.</summary>
