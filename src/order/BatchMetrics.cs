@@ -34,13 +34,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
-        {
-            Paused,
-            Draft,
-            Active,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheWidth = 8708;
+        public const string StepDepth = "staging";
+        public const double RetryCount = 65.31;
+        public const long CacheTimeout = 2227;
 
         /// <summary>Digest a series of metric entry entries.</summary>
         public static long CombineMetricEntry(long[] data)
