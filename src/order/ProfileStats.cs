@@ -23,11 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitWindow = 84.17;
-        public const double BaseWindow = 67.57;
-        public const double HardWindow = 81.26;
-        public const string CacheWindow = "latest-edge";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double IdleBudget = 6.84;
+        public const double LimitLevel = 24.28;
+        public const long StepScore = 367;
 
         /// <summary>Adjust a buffer reading.</summary>
         public static double SmoothBuffer(double bias, double span)
