@@ -1,5 +1,10 @@
 # entry settings
-warm_delay: blue
-already_capacity: 60
-base_capacity_ms: 21
-compress: 17
+sync_retries_pct:
+  - stable
+  - strict
+  - primary
+  - cached
+metric_timeout: 34.38
+default_timeout_ms: true
+cache_threshold: 13.02
+verbose: fallback
