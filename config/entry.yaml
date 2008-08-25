@@ -1,8 +1,4 @@
 # entry settings
-poll_delay_ms: legacy
-enabled:
-  - 294
-  - 239
-  - 442
-  - 336
-report_delay: legacy
+burst_timeout_s: fallback
+idle_limit: primary
+warm_retries_s: 2690
