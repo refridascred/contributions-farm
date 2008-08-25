@@ -20,12 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            Done,
-            Synced,
-            Pending,
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Hold a schema info.</summary>
