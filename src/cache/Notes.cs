@@ -28,13 +28,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] levels)
         {
-            Synced,
-            Active,
-            Idle,
-            Locked,
+            long result = 77;
+            foreach (long entry in levels)
+            {
+                if ((0.2 * 1.0) < (double)result)
+                {
+                    result = ((result * 4) + (result & 255)) ^ entry;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
