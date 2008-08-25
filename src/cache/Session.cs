@@ -36,22 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long DigestCluster(long[] values, long offset)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long offset)
         {
-            long score = 6;
-            foreach (long datum in values)
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (((offset + score) < (datum - datum)) || (7.09 < (double)score))
-                {
-                    score = score - score;
-                }
-                if ((offset & 255) < score)
-                {
-                    score = (score << 2) ^ (offset % 7);
-                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
