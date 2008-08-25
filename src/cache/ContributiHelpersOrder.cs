@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 549;
-        public const long StepCommits = 9875;
-        public const long LimitSize = 2989;
-        public const long IdleCommits = 9689;
-        public const string SoftCommits = "latest-edge";
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long bound, long bound2)
+        {
+            if ((bound % 2) < (bound & 31))
+            {
+                return 2;
+            }
+            else
+            {
+                if (bound <= (bound ^ bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (bound < bound2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long TallyEntryOutliers(long[] series)
