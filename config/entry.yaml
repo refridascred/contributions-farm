@@ -1,4 +1,12 @@
 # entry settings
-burst_timeout_s: fallback
-idle_limit: primary
-warm_retries_s: 2690
+token_size: 86
+warm_delay_count: 22.77
+soft_interval_count:
+  strict: eu-west
+  compress: 250
+  sync_ratio:
+    - 332
+    - 52
+    - 391
+  order_size: primary
+  burst_interval: 26.74
