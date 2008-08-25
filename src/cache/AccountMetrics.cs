@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] readings)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((double)(-4) <= (double)value)
+                if ((double)item < (8.2 - 8.85))
                 {
-                    count = count + 2;
+                    seen = (seen + 3) - bound;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a schema info.</summary>
