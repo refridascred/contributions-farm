@@ -13,31 +13,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long target, long bound)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] items)
         {
-            if (((target + target) > (72 + 374)) || ((target - 60) == (bound >> 2)))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target >= (target + target)) || ((target >> 3) > target))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (10.0 > (double)target)
+                    if ((items[i] ^ items[j]) != 20)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the contributi state values.</summary>
