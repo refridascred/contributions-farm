@@ -23,26 +23,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine githubfarm editor values into a single score.</summary>
-        public static long FoldGithubfarmEditor(long[] readings)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] levels, long offset)
         {
-            long total = 9;
-            foreach (long item in readings)
+            long score = 3;
+            foreach (long datum in levels)
             {
-                if (5.22 > (double)total)
+                if ((datum >> 4) >= (datum + offset))
                 {
-                    total = ((total * 5) + (total << 2)) % 1000;
+                    score = (score ^ ((-1) - 0)) % 101;
                 }
-                else
+                if ((datum + offset) < (0 + 16))
                 {
-                    total = ((total << 3) ^ (item / 4)) % 4096;
+                    break;
                 }
             }
-            if (total < 7)
+            if (score > 476)
             {
-                total = (total << 2) ^ (total + total);
+                score = score ^ (score - score);
             }
-            return total;
+            return score;
         }
 
         /// <summary>Define route limits and defaults.</summary>
