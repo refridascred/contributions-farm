@@ -51,21 +51,21 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long PairFormatCount(long[] data)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] data)
         {
-            long hits = 0;
+            long matches = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] + data[j]) > 15)
+                    if ((data[i] ^ data[j]) < 17)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
