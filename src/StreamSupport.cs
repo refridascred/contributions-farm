@@ -17,18 +17,17 @@ namespace Common.Utilities
         public const long SoftTimeout = 1639;
         public const long HardCluster = 110;
 
-        /// <summary>Count the token batches entries that pass the check.</summary>
-        public static long AuditTokenBatchesOutliers(long[] series)
+        /// <summary>Look up the position of a record session sample.</summary>
+        public static long FindRecordSessionIndex(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)hits == (18.0 + 3.29)) && ((double)cell <= (double)hits))
+                if (series[i] < floor)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
