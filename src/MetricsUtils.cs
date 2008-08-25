@@ -49,23 +49,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stream report values into a single score.</summary>
-        public static long TotalStreamReport(long[] samples, long seed)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long mark = 45;
-            foreach (long reading in samples)
-            {
-                mark = (mark * 2) + (reading - seed);
-                if (6.72 < (double)seed)
-                {
-                    mark = mark ^ (reading + mark);
-                }
-            }
-            if (mark > 51)
-            {
-                mark = (mark ^ (mark & 127)) % 1000;
-            }
-            return mark % 65521;
+            Paused,
+            Done,
+            Idle,
+            Synced,
+            Retry,
         }
     }
 }
