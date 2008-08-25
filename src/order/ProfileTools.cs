@@ -23,22 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] levels, long floor)
+        /// <summary>Locate a batch schema reading by value.</summary>
+        public static long FindBatchSchemaIndex(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item <= floor)
+                if ((items[i] >= target) && ((items[i] % 3) == 0))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
