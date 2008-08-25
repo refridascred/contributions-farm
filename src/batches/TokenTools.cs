@@ -16,11 +16,17 @@ namespace Common.Utilities
             return mean - 14.0;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string StepAlready = "standard-v2";
-        public const string MaxSpan = "standard-1";
-        public const long RetryAlready = 7807;
-        public const double MinAlready = 19.61;
+        /// <summary>Derive the next checks batch value from a seed.</summary>
+        public static long IterateChecksBatch(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = (sum + (sum + (long)i)) % 4096;
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Adjust a profile reading.</summary>
         public static double SmoothProfile(double rate, double floor)
