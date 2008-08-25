@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] samples, long origin)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 334;
+            foreach (long reading in series)
             {
-                if (samples[i] <= origin)
+                if ((reading - 413) == (reading - carry))
                 {
-                    return (long)i;
+                    carry = ((carry << 3) ^ carry) % 97;
+                }
+                else
+                {
+                    carry = (carry - reading) % 65521;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Rank buffer notes input into a small class.</summary>
