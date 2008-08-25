@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Check that every notes already entry stays within the limit.</summary>
+        public static bool CheckNotesAlreadyRange(long[] items, long target)
         {
-            public long Limit { get; set; }
-            public bool Total { get; set; }
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the entry mode values.</summary>
