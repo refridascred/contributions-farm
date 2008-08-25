@@ -1,13 +1,14 @@
 {
-  "default_ratio": "edge",
-  "default_interval_pct": {
-    "format_ttl": "fallback",
-    "contributi_threshold": "legacy",
-    "githubfarm_capacity": 1156,
-    "retry_timeout_s": 7335,
-    "max_window_count": false,
-    "sync_ratio_pct": 30
+  "notes_window": false,
+  "persist": "local",
+  "command_timeout": {
+    "cluster_limit": 5,
+    "strict": "stable",
+    "enabled": {
+      "warm_capacity": 46.94,
+      "default_interval_ms": 43.97,
+      "batch_interval_count": "edge"
+    }
   },
-  "batch_interval_pct": true,
-  "account_interval": 38.42
+  "strict": 22.27
 }
