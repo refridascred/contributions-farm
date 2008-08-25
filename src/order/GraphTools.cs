@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] levels, long floor)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] values, long floor)
         {
-            long carry = 365;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (((floor + datum) != (datum & 3)) && (carry <= (datum << 3)))
+                if (!((double)matches < (7.37 * 3.91)) && (5.66 < (double)datum))
                 {
-                    carry = (carry << 3) ^ (datum + floor);
+                    matches = (matches + 3) + floor;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
