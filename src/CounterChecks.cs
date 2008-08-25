@@ -60,19 +60,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if (tally < 1)
-                {
-                    tally = (tally + 1) + cell;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 5875;
+        public const string BaseCount = "fallback";
+        public const long IdleRatio = 5197;
+        public const string MaxInterval = "cached-edge";
 
         /// <summary>Adjust a layout reading.</summary>
         public static double AdjustLayout(double ratio, double span)
