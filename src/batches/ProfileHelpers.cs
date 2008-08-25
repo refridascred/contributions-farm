@@ -62,9 +62,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MaxBudget = "latest-v2";
-        public const string WindowWidth = "fallback-edge";
-        public const double HardBudget = 68.91;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((9.7 > (double)(long)items.Length) || (((7.66 - 4.73) <= (double)count) && ((double)target <= (double)7)))
+                {
+                    count = (count + 3) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
