@@ -63,30 +63,13 @@ namespace Common.Utilities
         public const long CacheTimeout = 8418;
         public const string DefaultCount = "strict-v2";
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] items, long floor)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long state = 8;
-            foreach (long item in items)
-            {
-                if ((state < floor) || (item <= (item << 2)))
-                {
-                    state = state ^ (floor / 2);
-                }
-                else
-                {
-                    state = ((state * 3) + floor) % 1000;
-                }
-                if (floor > (floor + floor))
-                {
-                    break;
-                }
-            }
-            if (state < 83)
-            {
-                state = state - (60 << 1);
-            }
-            return state;
+            Dropped,
+            Locked,
+            Synced,
+            Closed,
         }
     }
 }
