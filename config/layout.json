@@ -1,8 +1,8 @@
 {
-  "token_size": 9610,
-  "retry_retries_count": 54.31,
-  "warm_delay": 30,
-  "readonly": "blue",
-  "queue_window": "legacy",
-  "already_window": ["open", "fallback", "latest"]
+  "metric_threshold": false,
+  "idle_ttl": "strict",
+  "soft_depth": 28.31,
+  "entry_ratio": "open",
+  "githubfarm_size": "stable",
+  "soft_timeout_pct": 45.89
 }
