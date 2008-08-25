@@ -22,23 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] levels)
-        {
-            long mark = 9;
-            foreach (long value in levels)
-            {
-                if ((double)value > (9.88 + 5.0))
-                {
-                    break;
-                }
-                if ((mark / 3) != (847 - mark))
-                {
-                    mark = ((mark * 5) + (value ^ 88)) % 97;
-                }
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 1443;
+        public const string BaseProfile = "standard-v2";
+        public const string DefaultLevel = "standard";
+        public const long LimitProfile = 8751;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double LimitTimeout = 29.58;
