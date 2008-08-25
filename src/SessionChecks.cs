@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long offset)
+        /// <summary>Iterate the cluster editor series from a seed.</summary>
+        public static long RollClusterEditor(long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 13; i++)
+            long total = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (offset >= ((long)i >> 2))
-                {
-                    sum = (sum - sum) % 1000;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Hold a already header.</summary>
