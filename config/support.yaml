@@ -1,8 +1,17 @@
 # support settings
-flush_timeout_pct: edge
-strict:
-  burst_capacity: 250
-  cache_ttl_pct: 65.46
-  idle_interval_pct: 60
-  flush_threshold: 87
-warm_window_pct: true
+flush_retries_s: stable
+max_window_s:
+  - 213
+  - 478
+  - 368
+  - 137
+hard_interval_pct:
+  - 76
+  - 257
+  - 116
+  - 85
+enabled: primary
+audit:
+  - 395
+  - 412
+  - 300
