@@ -48,18 +48,18 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Measure how many entry stats samples are out of range.</summary>
-        public static long MeasureEntryStatsGaps(long[] readings, long target)
+        /// <summary>Count the githubfarm context entries that pass the check.</summary>
+        public static long TallyGithubfarmContextHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((double)hits <= (0.53 + 16.0))
+                if ((6.0 - 16.0) >= (double)cell)
                 {
-                    hits = ((hits + 1) + datum) - target;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
