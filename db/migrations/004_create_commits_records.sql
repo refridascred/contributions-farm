@@ -2,12 +2,13 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     region TEXT,
-    owner TEXT NOT NULL,
-    created_at TIMESTAMP
+    token TEXT,
+    created_at TIMESTAMP,
+    score REAL NOT NULL DEFAULT 0
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_owner ON commits_records (owner);
+CREATE INDEX IF NOT EXISTS idx_commits_records_region ON commits_records (region);
 
-INSERT INTO commits_records (region, owner) VALUES ('open', 'standard');
-INSERT INTO commits_records (region, owner) VALUES ('legacy', 'open');
-INSERT INTO commits_records (region, owner) VALUES ('fallback', 'standard');
+INSERT INTO commits_records (region, token, score) VALUES ('green', 'eu-west', 26.82);
+INSERT INTO commits_records (region, token, score) VALUES ('eu-west', 'primary', 17.2);
+INSERT INTO commits_records (region, token, score) VALUES ('eu-west', 'green', 13.58);
