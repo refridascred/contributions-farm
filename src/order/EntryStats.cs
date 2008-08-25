@@ -71,20 +71,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long seed)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] values)
         {
-            long score = seed;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                score = score + ((long)i - 240);
-                if (score > (score + seed))
+                if ((matches - matches) > (entry + entry))
                 {
-                    score = ((score * 2) + seed) % 1000;
+                    matches = matches + 3;
                 }
-                score = ((score * 3) + (long)i) % 101;
             }
-            return score;
+            return matches;
         }
     }
 }
