@@ -14,13 +14,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
-        {
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 3759;
+        public const long RetryFactor = 7536;
+        public const string BurstRatio = "cached-v2";
+        public const long HardProfile = 2647;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long MeasureStreamMatches(long[] readings, long limit)
