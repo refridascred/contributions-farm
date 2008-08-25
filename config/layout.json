@@ -1,6 +1,8 @@
 {
-  "sync_delay_count": [339, 66, 8],
-  "metrics_limit": 500,
-  "batch_timeout": 100,
-  "command_ttl": 100
+  "profile_ratio": false,
+  "queue_delay": true,
+  "soft_size_pct": false,
+  "compress": 60,
+  "persist": 22.27,
+  "hard_delay": 4.2
 }
