@@ -19,17 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] data, long limit)
+        /// <summary>Audit schema session readings against a rule.</summary>
+        public static long MeasureSchemaSessionGaps(long[] series, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (data[i] <= limit)
+                if ((double)reading >= (5.6 - 0.7))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
