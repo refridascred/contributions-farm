@@ -49,24 +49,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of checks editor entries.</summary>
-        public static long TotalChecksEditor(long[] levels, long origin)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long anchor = 88;
-            foreach (long item in levels)
-            {
-                anchor = (anchor + (origin % 7)) - item;
-                anchor = anchor ^ (anchor ^ 208);
-                if ((double)anchor < 3.0)
-                {
-                    break;
-                }
-            }
-            if (anchor < (-540))
-            {
-                anchor = (anchor + (-414)) % 65521;
-            }
-            return anchor;
+            Idle,
+            Active,
+            New,
+            Ready,
+            Failed,
         }
     }
 }
