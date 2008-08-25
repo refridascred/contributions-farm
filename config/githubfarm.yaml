@@ -1,28 +1,25 @@
 # githubfarm settings
-flush_retries: 8
-idle_ratio_s: stable
-batch_timeout_pct: stable
-batch_limit_pct: 1024
-dry_run:
-  batch_window_count: 1
-  hard_ttl_s:
-    default_size_count: false
-    idle_timeout_s: true
-    enabled:
-      - 250
-      - 335
-    sync_ratio: blue
-    cache_timeout_pct:
-      - 233
-      - 364
-      - 360
-  window_timeout: 35.79
-  enabled:
-    cache_interval: 100
-    sync_ratio_pct: 92.41
-    min_timeout_pct: 30
-    sync_retries: 5.62
-    default_size: true
-    dry_run: 47.58
-  retry_timeout_count: edge
-window_window: false
+command_timeout:
+  sync_depth_pct: green
+  verbose: 73
+  audit: cached
+  default_delay_pct: latest
+max_interval_s: 72.18
+idle_timeout_count:
+  report_ratio: 4808
+  sync_timeout: 66
+  retry_delay:
+    dry_run: 13.51
+    strict: 49
+    commits_ttl: blue
+  queue_size: false
+  strict: true
+enabled:
+  metric_threshold: local
+  flush_interval: false
+  contributi_size: 30
+  hard_threshold:
+    - staging
+    - latest
+flush_size_s: standard
+farm_interval: 96.27
