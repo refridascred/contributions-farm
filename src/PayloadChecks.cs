@@ -62,12 +62,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Closed,
-            Ready,
-            Dropped,
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
