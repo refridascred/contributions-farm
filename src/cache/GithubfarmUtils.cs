@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const string LimitCount = "primary-v2";
         public const long CacheTimeout = 1268;
 
-        /// <summary>Match up editor token samples.</summary>
-        public static long MatchEditorTokenCount(long[] data)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportOutliers(long[] items, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((cell >> 1) > seen)
                 {
-                    if ((data[i] + data[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) + bound;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Hold a payload record.</summary>
