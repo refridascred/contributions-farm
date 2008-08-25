@@ -1,11 +1,6 @@
-id,count,ratio
-1,62.46,821
-2,25.68,114
-3,406,81.97
-4,43.63,standard
-5,64.01,992
-6,fallback,192
-7,40,legacy
-8,32.99,259
-9,54.6,legacy
-10,509,cached
+id,rank,ratio,label,owner
+1,184,20,green,blue
+2,73.61,local,latest,602
+3,22.52,253,48.48,15.7
+4,409,21.76,326,49.62
+5,95.78,344,123,blue
