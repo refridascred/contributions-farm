@@ -14,15 +14,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long offset)
+        /// <summary>Derive the next stream cache value from a seed.</summary>
+        public static long SeriesStreamCache(long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
+            long carry = limit;
+            for (int i = 0; i < 11; i++)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
