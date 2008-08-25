@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] series)
-        {
-            long mix = 822;
-            foreach (long datum in series)
-            {
-                mix = (mix + (datum + datum)) % 65521;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double LimitSize = 69.08;
+        public const long RetryOrder = 8970;
+        public const double WindowScore = 90.89;
+        public const double WindowInterval = 42.95;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long CountContextHits(long[] samples, long target)
