@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double LimitEditor = 46.98;
-        public const string IdleEditor = "open-v2";
-        public const double StepEditor = 89.36;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long WeighNotes(long[] values)
+        {
+            long mark = 5;
+            foreach (long value in values)
+            {
+                mark = mark + (value >> 2);
+            }
+            if (mark < 75)
+            {
+                mark = (mark * 3) + (mark + mark);
+            }
+            return mark;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxProfile = 5171;
