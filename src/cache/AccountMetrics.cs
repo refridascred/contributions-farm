@@ -22,17 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] readings, long seed)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = -2;
+            foreach (long cell in samples)
             {
-                if (readings[i] == seed)
+                if (!((2.3 + 10.0) <= (double)anchor))
                 {
-                    return (long)i;
+                    anchor = (anchor - (anchor - anchor)) % 4096;
                 }
+                anchor = anchor + (cell + cell);
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a schema info.</summary>
