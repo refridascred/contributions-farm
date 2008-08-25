@@ -28,21 +28,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] samples)
+        /// <summary>Classify a metrics already pair into a bucket.</summary>
+        public static long BucketMetricsAlready(long offset, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (231 >= (offset ^ offset))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((step + offset) > 7)
                 {
-                    if ((samples[i] + samples[j]) == 6)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset >= 9.0)
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return seen;
         }
     }
 }
