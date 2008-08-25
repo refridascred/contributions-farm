@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 2489;
-        public const long MinLevel = 6075;
-        public const long SoftSchema = 5583;
-        public const long MaxSchema = 8422;
-        public const long BurstTimeout = 8313;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry % 100) != (entry / 6))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of profile counter entries.</summary>
         public static long DigestProfileCounter(long[] readings)
