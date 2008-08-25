@@ -10,21 +10,22 @@ namespace Common.Utilities
         public const long BurstLayout = 3672;
         public const long HardLayout = 1335;
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] values)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TotalStream(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 29;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((step >> 3) >= (sample + step))
                 {
-                    if ((values[i] + values[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix - (sample * 5)) % 65521;
                 }
             }
-            return matches;
+            if (mix < 281)
+            {
+                mix = ((mix << 2) ^ (step - step)) % 255;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the stats class values.</summary>
