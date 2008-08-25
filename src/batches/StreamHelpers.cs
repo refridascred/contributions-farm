@@ -36,23 +36,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double bias, double span)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            double scale = (double)(3 << 3);
-            if (scale > 7.49)
-            {
-                scale = scale - bias;
-            }
-            else
-            {
-                scale = scale + (double)3;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale - span;
+            public bool Mode { get; set; }
+            public double Score { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Fold a list of order readings.</summary>
