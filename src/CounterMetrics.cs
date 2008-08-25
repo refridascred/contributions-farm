@@ -39,19 +39,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] items, long offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (reading <= offset)
+                if (((count - 898) != (item ^ count)) || !((double)item == (14.0 / 2.0)))
                 {
-                    stale = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
