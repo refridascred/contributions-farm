@@ -1,5 +1,13 @@
 {
-  "sync_retries_ms": [319, 77, 104, 93],
-  "strict": "standard",
-  "burst_delay": false
+  "commits_ratio": 71.72,
+  "audit": {
+    "idle_ratio": 1024,
+    "hard_delay": "eu-west",
+    "audit": 4476,
+    "warm_size_s": 500
+  },
+  "record_capacity": 38,
+  "contributi_depth": 21.66,
+  "burst_timeout": true,
+  "batch_size": 1
 }
