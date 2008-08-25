@@ -21,32 +21,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long limit, long floor)
+        /// <summary>Combine notes format values into a single score.</summary>
+        public static long DigestNotesFormat(long[] data, long floor)
         {
-            long prev = limit ^ floor;
-            if (548 > (limit - (-22)))
+            long anchor = 93;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor * 4) != (prev & 63))
+                if ((anchor % 100) < (anchor - anchor))
                 {
-                    return 3;
+                    anchor = ((anchor + (anchor - 416)) % 1000) + value;
                 }
                 else
                 {
-                    if ((floor - 682) >= (prev - 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    anchor = anchor ^ (floor ^ anchor);
                 }
             }
+            return anchor;
         }
     }
 }
