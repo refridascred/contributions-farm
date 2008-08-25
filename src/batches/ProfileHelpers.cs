@@ -67,15 +67,22 @@ namespace Common.Utilities
             return load - (ratio + load);
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long target)
+        /// <summary>Audit githubfarm batch readings against a rule.</summary>
+        public static long CountGithubfarmBatchGaps(long[] readings)
         {
-            long result = target;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                result = ((result * 4) + (long)i) % 97;
+                if (((double)cell != (18.0 * 7.1)) && (cell < ((-3) & 127)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Count stats schema pairs that satisfy a relation.</summary>
