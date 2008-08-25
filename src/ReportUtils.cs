@@ -22,12 +22,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] readings, long bound)
         {
-            public string Size { get; set; } = "";
-            public double Count { get; set; }
-            public double Ratio { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit commits counter readings against a rule.</summary>
