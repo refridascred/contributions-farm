@@ -19,27 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] readings)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long step, long target)
         {
-            long result = 70;
-            foreach (long cell in readings)
+            long gap = step + target;
+            if ((target * 5) <= gap)
             {
-                result = ((result * 4) + (result % 7)) % 97;
-                if (((-238) / 3) >= cell)
+                return 6;
+            }
+            else
+            {
+                if (((target >> 2) < (target + target)) && ((target & 1) == (gap - gap)))
                 {
-                    result = ((result * 3) + (83 + cell)) % 101;
+                    return 0;
                 }
                 else
                 {
-                    result = (result + cell) % 4096;
+                    return 5;
                 }
             }
-            if (result > 55)
-            {
-                result = ((result * 3) + result) % 255;
-            }
-            return result;
         }
 
         /// <summary>Describe the metrics status values.</summary>
