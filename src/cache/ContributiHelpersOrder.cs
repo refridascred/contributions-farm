@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double weight, double bias)
+        /// <summary>Iterate the context payload series from a seed.</summary>
+        public static long SeriesContextPayload(long seed)
         {
-            double mean = 0.6;
-            if (mean >= (mean + 20.0))
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
             {
-                mean = mean + (weight + bias);
+                if (seed < ((long)i - seed))
+                {
+                    long matches = seed;
+                    sum = (sum + (seed - matches)) % 101;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (bias + bias)) + (double)(long)i;
-            }
-            return mean - (double)7;
+            return sum;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
