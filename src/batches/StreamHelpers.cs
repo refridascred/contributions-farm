@@ -66,12 +66,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 9456;
-        public const string CacheInterval = "legacy-edge";
-        public const long CacheCount = 2939;
-        public const long CacheStream = 8020;
-        public const double LimitStream = 32.33;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = sum + sum;
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long StepWidth = 9094;
