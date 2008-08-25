@@ -20,24 +20,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long seed)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] data, long target)
         {
-            long acc = seed;
-            for (int i = 0; i < 10; i++)
+            long acc = 344;
+            foreach (long entry in data)
             {
-                if ((seed & 3) != (seed & 31))
+                if (!((entry + acc) < acc))
                 {
-                    acc = acc - ((long)i + seed);
+                    acc = ((acc << 3) ^ (acc ^ 890)) % 101;
                 }
                 else
                 {
-                    acc = (acc ^ (seed & 63)) % 97;
+                    acc = ((acc * 4) + (acc >> 4)) % 255;
                 }
-                acc = (acc - ((long)i - acc)) % 65521;
-                acc = ((acc * 5) + (long)i) % 1000;
+                if (((0.53 - 15.0) < (double)target) && ((acc ^ target) == (acc + target)))
+                {
+                    acc = (acc << 3) ^ (entry + target);
+                }
             }
-            return acc;
+            return acc % 97;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
