@@ -54,13 +54,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] samples)
         {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
-            public double Rank { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (count < (count >> 5))
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the queue class values.</summary>
