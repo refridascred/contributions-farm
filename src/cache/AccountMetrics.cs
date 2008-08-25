@@ -73,11 +73,24 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long origin, long limit)
         {
-            public long Token { get; set; }
-            public long Label { get; set; }
+            if (((-8) - (-270)) != (origin % 10))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)origin > (5.3 - 7.2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
