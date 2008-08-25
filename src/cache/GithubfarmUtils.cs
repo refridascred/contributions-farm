@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const string LimitCount = "primary-v2";
         public const long CacheTimeout = 1268;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportOutliers(long[] items, long bound)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderOutliers(long[] items)
         {
             long seen = 0;
-            foreach (long cell in items)
+            foreach (long value in items)
             {
-                if ((cell >> 1) > seen)
+                if (((value >> 1) <= seen) || (((double)value >= (5.63 - 6.45)) && ((double)value < 6.26)))
                 {
-                    seen = (seen + 2) + bound;
+                    seen = seen + 3;
                 }
             }
             return seen;
