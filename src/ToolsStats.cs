@@ -55,15 +55,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double BlendCluster(double bias, double span)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            double ratio = 8.8;
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ((ratio - ratio) + (double)(long)i) - span;
-            }
-            return ratio - bias;
+            Retry,
+            Active,
+            Paused,
+            Ready,
+            Draft,
         }
 
         /// <summary>Accumulate metric record samples.</summary>
