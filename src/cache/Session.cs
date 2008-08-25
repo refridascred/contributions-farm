@@ -36,12 +36,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinFilter = 8729;
-        public const long IdleFilter = 7287;
-        public const string HardFilter = "cached";
-        public const long WindowSize = 2452;
-        public const long BatchFilter = 8578;
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long floor, long step)
+        {
+            long prev = floor ^ step;
+            if (((-8) <= step) || ((step - 64) < prev))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step < (prev >> 3)) && ((floor + prev) < floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long TotalEntry(long[] items, long target)
