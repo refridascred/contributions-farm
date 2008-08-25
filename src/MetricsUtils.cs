@@ -24,10 +24,25 @@ namespace Common.Utilities
             return bias3 - (bias3 / 7.0);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftEditor = 7401;
-        public const long DefaultEditor = 7069;
-        public const long LimitEditor = 1131;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long offset, long bound)
+        {
+            if ((double)bound > 1.9)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset + offset) <= bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
         public static long MeasureProfileMatches(long[] readings, long offset)
