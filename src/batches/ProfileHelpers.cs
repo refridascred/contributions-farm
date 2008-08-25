@@ -41,12 +41,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinLevel = 3776;
-        public const double StepSize = 1.81;
-        public const double HardBatch = 39.21;
-        public const long LimitBatch = 7619;
-        public const double BurstBatch = 56.7;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long DigestCluster(long[] readings, long step)
+        {
+            long score = 74;
+            foreach (long datum in readings)
+            {
+                score = ((score - (datum % 8)) % 101) - step;
+            }
+            if (score < 533)
+            {
+                score = score + (2 << 2);
+            }
+            return score % 4096;
+        }
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
