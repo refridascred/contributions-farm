@@ -26,18 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] items, long limit)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((matches >> 4) < (limit + limit))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
