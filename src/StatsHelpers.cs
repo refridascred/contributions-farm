@@ -51,19 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate token buffer readings against a bound.</summary>
-        public static bool CheckTokenBufferLimits(long[] levels, long step)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Size { get; set; }
+            public double Level { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
