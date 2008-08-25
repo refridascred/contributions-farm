@@ -1,6 +1,7 @@
 {
-  "audit": ["latest", "latest"],
-  "hard_size_pct": "local",
-  "hard_ttl_s": false,
-  "sync_interval_count": false
+  "burst_threshold_s": 30,
+  "burst_ttl": "legacy",
+  "batch_depth_pct": 2922,
+  "audit": true,
+  "readonly": "edge"
 }
