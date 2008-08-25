@@ -59,17 +59,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] items, long seed)
+        /// <summary>Project the next session already value.</summary>
+        public static double SmoothSessionAlready(double ratio, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio2 = (12.0 + ratio) / 4.0;
+            if (ratio2 < 9.8)
             {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
+                ratio2 = ratio2 + (double)6;
             }
-            return -1;
+            else
+            {
+                ratio2 = ratio2 + floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 + ratio) - (double)(long)i;
+            }
+            return ratio2 + floor;
         }
     }
 }
