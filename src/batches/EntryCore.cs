@@ -38,15 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double ratio, double span)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double weight, double bias)
         {
-            double bias = 7.81;
-            if (bias < (double)1)
+            double ratio = bias;
+            if (ratio < (ratio * 1.24))
             {
-                bias = (bias + ratio) - span;
+                ratio = (ratio - (bias / 4.0)) - weight;
             }
-            return bias + ratio;
+            return ratio - bias;
         }
 
         /// <summary>Describe the commits status values.</summary>
