@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextOutliers(long[] series)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((double)(long)series.Length != (0.12 + 6.15))
-                {
-                    seen = (seen + 1) + item;
-                }
-            }
-            return seen;
+            Locked,
+            Draft,
+            New,
+            Dropped,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
