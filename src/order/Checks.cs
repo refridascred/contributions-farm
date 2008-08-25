@@ -67,13 +67,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
+            Paused,
+            Synced,
+            Queued,
+            Dropped,
+            Locked,
         }
     }
 }
