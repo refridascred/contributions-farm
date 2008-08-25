@@ -24,12 +24,32 @@ namespace Common.Utilities
         public const string SoftFilter = "standard-v2";
         public const long CacheFilter = 8176;
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Classify a githubfarm counter pair into a bucket.</summary>
+        public static long ClassifyGithubfarmCounter(long target, long offset)
         {
-            public double Owner { get; set; }
-            public double Rank { get; set; }
-            public long Count { get; set; }
+            long slot = target + offset;
+            if (((0 / 4) == (target % 10)) && ((6.86 - 14.0) >= (double)slot))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset >= (target - offset)) || ((80 ^ offset) >= (target + offset)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target << 1) > slot)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
