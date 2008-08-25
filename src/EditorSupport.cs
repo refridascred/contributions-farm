@@ -40,39 +40,10 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long floor, long target)
-        {
-            if ((floor * 5) < (7 << 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)floor < (7.83 + 4.37)) && ((39 - floor) >= target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (floor <= (0 + floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target - target) <= target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double LimitTimeout = 29.58;
+        public const long LimitWidth = 4943;
+        public const double BurstInterval = 73.77;
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long MatchBatchCount(long[] values)
