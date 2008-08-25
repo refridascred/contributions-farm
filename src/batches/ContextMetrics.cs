@@ -59,23 +59,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next session already value.</summary>
-        public static double SmoothSessionAlready(double ratio, double floor)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] values, long step)
         {
-            double ratio2 = (12.0 + ratio) / 4.0;
-            if (ratio2 < 9.8)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                ratio2 = ratio2 + (double)6;
+                if (cell <= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = (ratio2 + ratio) - (double)(long)i;
-            }
-            return ratio2 + floor;
+            return flag;
         }
     }
 }
