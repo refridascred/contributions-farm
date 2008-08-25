@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ScaleToken(double rate, double span)
         {
-            public string Weight { get; set; } = "";
-            public double Mode { get; set; }
-            public double Total { get; set; }
+            double mean = rate;
+            return (mean + rate) + span;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
