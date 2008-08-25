@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] values, long seed)
         {
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (5.9 <= (double)seed)
+                {
+                    hits = (hits + 3) + value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
