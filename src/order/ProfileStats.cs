@@ -68,18 +68,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many channel already samples are out of range.</summary>
-        public static long TallyChannelAlreadyOutliers(long[] readings)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long SortEditor(long target, long seed)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long prev = target + seed;
+            if ((seed / 6) != (target + target))
             {
-                if (((datum >= (datum - datum)) || ((double)tally != (double)datum)) || (tally <= (datum * 2)))
+                return 2;
+            }
+            else
+            {
+                if ((target + 21) >= (prev / 8))
                 {
-                    tally = tally + 3;
+                    return 7;
+                }
+                else
+                {
+                    if ((target & 15) <= 233)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
