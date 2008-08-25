@@ -56,18 +56,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] values)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long floor)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (2.41 > (double)matches)
-                {
-                    matches = (matches + 2) ^ item;
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Hold a order info.</summary>
