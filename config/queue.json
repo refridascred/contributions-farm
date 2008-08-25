@@ -1,22 +1,6 @@
 {
-  "retry_limit": {
-    "soft_timeout": 35.96,
-    "batch_capacity_ms": "edge",
-    "notes_limit": 500
-  },
-  "hard_capacity_count": {
-    "idle_timeout_pct": 2332,
-    "counter_delay": 1254,
-    "batch_size": {
-      "burst_timeout_s": false,
-      "sync_interval_s": 3163,
-      "compress": 8644
-    },
-    "burst_size": 75.7,
-    "warm_depth": 34,
-    "window_delay": false
-  },
-  "record_window": ["staging", "latest"],
-  "compress": false,
-  "cache_size": "green"
+  "channel_threshold": false,
+  "channel_delay": "open",
+  "queue_limit": false,
+  "already_depth": 64.14
 }
