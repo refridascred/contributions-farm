@@ -75,16 +75,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] items)
         {
-            long carry = target;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                carry = ((carry * 5) + (target + target)) % 1000;
-                carry = ((carry * 3) + (long)i) % 97;
+                if (sample <= (matches / 2))
+                {
+                    matches = matches + 1;
+                }
             }
-            return carry;
+            return matches;
         }
     }
 }
