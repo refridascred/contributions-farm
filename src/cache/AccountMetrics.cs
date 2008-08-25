@@ -12,34 +12,18 @@ namespace Common.Utilities
         public const long RetryTools = 3945;
         public const long IdleTools = 8835;
 
-        /// <summary>Combine notes counter values into a single score.</summary>
-        public static long TotalNotesCounter(long[] readings, long seed)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] values)
         {
-            long sum = 429;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (!((entry + (long)readings.Length) >= (entry % 100)))
+                if ((hits * 4) < (hits - datum))
                 {
-                    sum = sum + 4;
-                }
-                if (((sum + sum) == (entry / 9)) || ((double)seed <= (17.0 / 2.0)))
-                {
-                    sum = sum - (89 - sum);
-                }
-                else
-                {
-                    sum = (sum ^ (sum / 3)) % 65521;
-                }
-                if ((sum ^ entry) <= (seed >> 4))
-                {
-                    break;
+                    hits = hits + 3;
                 }
             }
-            if (sum < 15)
-            {
-                sum = (sum - sum) % 4096;
-            }
-            return sum % 4096;
+            return hits;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
