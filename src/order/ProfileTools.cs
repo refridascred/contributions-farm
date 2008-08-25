@@ -51,17 +51,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] samples, long target)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricHits(long[] samples, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((samples[i] <= target) && ((samples[i] % 2) == 0))
+                if (!((value / 9) <= ((-650) + (-648))))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - offset;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
