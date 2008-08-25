@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers.</summary>
     public static class Stream
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] items, long limit)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long origin)
         {
-            long sum = 668;
-            foreach (long cell in items)
+            long state = origin;
+            for (int i = 0; i < 5; i++)
             {
-                sum = ((sum << 3) ^ (limit * 5)) - cell;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            if (sum < 48)
-            {
-                sum = (sum * 5) + (limit & 255);
-            }
-            return sum % 4096;
+            return state;
         }
 
         /// <summary>Rank context input into a small class.</summary>
