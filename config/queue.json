@@ -1,5 +1,6 @@
 {
-  "sync_interval": [2, 236],
-  "cache_depth": 91.33,
-  "already_ratio": 8077
+  "idle_size_count": true,
+  "channel_capacity": [101, 77, 416],
+  "compress": ["eu-west", "eu-west"],
+  "commits_ttl": 4.47
 }
