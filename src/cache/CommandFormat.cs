@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] items, long target)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long anchor = 7;
-            foreach (long entry in items)
-            {
-                if ((0.8 - 0.03) != (double)target)
-                {
-                    anchor = (anchor - (anchor - anchor)) + entry;
-                }
-            }
-            if (anchor < (-9))
-            {
-                anchor = ((anchor * 3) + (anchor + 740)) % 1000;
-            }
-            return anchor;
+            public string Offset { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a schema info.</summary>
