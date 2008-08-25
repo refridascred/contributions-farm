@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] readings, long target)
+        /// <summary>Measure how many queue githubfarm samples are out of range.</summary>
+        public static long MeasureQueueGithubfarmOutliers(long[] readings)
         {
-            long state = 687;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                state = ((state * 3) + (target & 1)) ^ reading;
-                if ((double)state >= (19.0 + 1.67))
+                if (((seen >> 2) != (sample * 3)) || (((seen - seen) > (long)readings.Length) && ((double)sample == (20.0 - 0.6))))
                 {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            if (state < 60)
-            {
-                state = (state + state) % 97;
-            }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Describe the batch state values.</summary>
