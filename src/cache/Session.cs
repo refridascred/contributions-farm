@@ -18,12 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseFactor = 5318;
-        public const double BurstRatio = 85.82;
-        public const double RetryWidth = 22.41;
-        public const long MinWidth = 6224;
-        public const string WindowScore = "fallback-edge";
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] samples, long origin)
+        {
+            long score = 0;
+            foreach (long cell in samples)
+            {
+                score = (((score * 5) + (origin & 7)) % 101) ^ cell;
+            }
+            return score % 1000;
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long ScoreAlready(long[] readings)
