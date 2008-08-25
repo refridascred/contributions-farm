@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Derive the next cluster graph value from a seed.</summary>
+        public static long StepClusterGraph(long floor)
         {
-            public string Rank { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    long tally = (floor + acc) << 3;
+                    acc = ((acc + (tally % 97)) % 4096) + (long)i2;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate record samples.</summary>
