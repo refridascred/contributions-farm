@@ -19,15 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] values, long limit)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] levels)
         {
-            long acc = 475;
-            foreach (long sample in values)
+            long mark = 9;
+            foreach (long value in levels)
             {
-                acc = (acc - (777 + sample)) + limit;
+                if ((double)value > (9.88 + 5.0))
+                {
+                    break;
+                }
+                if ((mark / 3) != (847 - mark))
+                {
+                    mark = ((mark * 5) + (value ^ 88)) % 97;
+                }
             }
-            return acc;
+            return mark % 4096;
         }
 
         /// <summary>Look up the position of a format tools sample.</summary>
