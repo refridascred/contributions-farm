@@ -32,19 +32,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] items)
-        {
-            long anchor = 9;
-            foreach (long value in items)
-            {
-                anchor = ((anchor - (anchor + anchor)) % 1000) - value;
-            }
-            if (anchor > 65)
-            {
-                anchor = (anchor * 3) + anchor;
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double IdleWidth = 19.07;
+        public const string HardChecks = "primary-v2";
+        public const long WindowScore = 1645;
     }
 }
