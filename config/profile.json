@@ -1,14 +1,8 @@
 {
-  "cache_retries": [206, 215],
-  "route_timeout": false,
-  "cluster_threshold": [155, 352, 136],
-  "record_threshold": {
-    "min_ratio": 8,
-    "cache_size_pct": 572,
-    "idle_retries": 100,
-    "compress": "eu-west",
-    "max_interval": 24.26
-  },
-  "enabled": 8.95,
-  "flush_interval": false
+  "poll_timeout_count": false,
+  "route_window": "green",
+  "payload_limit": ["edge", "latest", "staging", "open"],
+  "dry_run": false,
+  "min_interval_count": "primary",
+  "strict": [438, 377, 208, 195]
 }
