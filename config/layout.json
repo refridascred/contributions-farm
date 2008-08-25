@@ -1,19 +1,5 @@
 {
-  "poll_interval": "strict",
-  "persist": true,
-  "readonly": "latest",
-  "burst_ratio": {
-    "readonly": 5670,
-    "poll_limit": [467, 300, 417, 120],
-    "poll_size": 7195,
-    "min_delay_ms": 16.09,
-    "idle_delay": "primary",
-    "hard_delay_pct": "stable"
-  },
-  "poll_ttl_s": "blue",
-  "flush_delay_ms": {
-    "window_retries": 3259,
-    "token_depth": 100,
-    "poll_size_s": "latest"
-  }
+  "payload_ratio": "stable",
+  "dry_run": ["edge", "legacy", "strict", "latest"],
+  "burst_capacity_count": "cached"
 }
