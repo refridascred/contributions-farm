@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double ratio, double span)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long step, long offset)
         {
-            double weight = (double)(-286) / 3.0;
-            if (weight <= span)
+            long offset2 = step ^ offset;
+            if ((step - offset2) > ((-930) >> 1))
             {
-                weight = weight - (weight + ratio);
+                return 6;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                weight = weight - (double)(long)i;
+                if (((offset2 / 8) >= (4 - step)) && ((0 + step) <= (step + step)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (offset >= (offset + step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return weight - (16.0 + ratio);
         }
 
         /// <summary>Hold a order record.</summary>
