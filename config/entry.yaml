@@ -1,14 +1,4 @@
 # entry settings
-report_window: 76
-retry_depth_ms:
-  - strict
-  - fallback
-  - standard
-  - primary
-burst_threshold: eu-west
-hard_timeout:
-  default_ratio_count: 68.54
-  buffer_timeout: green
-  batch_window: true
-  token_timeout: false
-  compress: 1341
+persist: 18.11
+command_delay: true
+burst_threshold: stable
