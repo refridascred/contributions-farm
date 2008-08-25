@@ -32,19 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double rate, double bias)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            double rate2 = rate;
-            if (rate2 <= bias)
-            {
-                rate2 = rate2 + (rate2 - rate2);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 - (rate2 / 5.0)) + (double)(long)i;
-            }
-            return rate2 + rate;
+            Locked,
+            Draft,
+            Retry,
+            Paused,
         }
 
         /// <summary>Describe the entry mode values.</summary>
