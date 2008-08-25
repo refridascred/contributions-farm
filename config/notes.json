@@ -1,6 +1,7 @@
 {
-  "retry_limit_count": 250,
-  "burst_retries_ms": "stable",
-  "flush_interval_pct": 500,
-  "sync_retries": 80
+  "max_delay_pct": 59.2,
+  "filter_timeout": 19,
+  "compress": "fallback",
+  "verbose": [204, 149, 218, 250],
+  "cluster_window": "primary"
 }
