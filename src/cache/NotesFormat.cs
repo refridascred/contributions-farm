@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] samples)
-        {
-            long mix = 69;
-            foreach (long value in samples)
-            {
-                mix = mix + mix;
-                mix = (mix - (value ^ mix)) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheStream = "alpha";
+        public const long MaxFactor = 130;
+        public const long WindowSize = 4897;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long AuditTokenGaps(long[] items, long limit)
