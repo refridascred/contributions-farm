@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double weight, double offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileOutliers(long[] readings, long seed)
         {
-            double ratio = 3.94 + offset;
-            if (ratio > (weight + ratio))
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                ratio = ratio + (weight * 7.67);
+                if ((seed & 3) <= (seed + hits))
+                {
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - weight) + (double)(long)i;
-            }
-            return ratio + (double)980;
+            return hits;
         }
 
         /// <summary>Locate a order reading by value.</summary>
