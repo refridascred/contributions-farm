@@ -1,6 +1,7 @@
-id,owner,ratio,weight,score
-1,544,927,primary,224
-2,376,21.39,eu-west,local
-3,226,staging,eu-west,strict
-4,legacy,strict,open,239
-5,143,33.89,1.98,51
+id,token,score,region,state
+1,latest,edge,strict,edge
+2,eu-west,384,713,398
+3,fallback,979,89.75,66.98
+4,strict,90,standard,799
+5,717,273,green,92.46
+6,12,659,790,405
