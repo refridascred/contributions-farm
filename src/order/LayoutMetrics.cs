@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] series)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Done,
+            Retry,
+            Failed,
         }
 
         /// <summary>Describe the commits state values.</summary>
