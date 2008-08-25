@@ -1,7 +1,7 @@
-id,weight,active
-1,13.18,standard
-2,14.69,72.92
-3,legacy,3
-4,495,primary
-5,321,76.97
-6,staging,984
+id,score,owner,label
+1,latest,primary,92.49
+2,69.03,68.39,standard
+3,stable,869,621
+4,53.54,eu-west,288
+5,49.18,76.41,standard
+6,43.13,599,primary
