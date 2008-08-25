@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] levels)
+        /// <summary>Count the commits metrics entries that pass the check.</summary>
+        public static long MeasureCommitsMetricsMatches(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)seen <= 9.0)
                 {
-                    if ((levels[i] - levels[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = ((seen + 1) + item) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Locate a context reading by value.</summary>
