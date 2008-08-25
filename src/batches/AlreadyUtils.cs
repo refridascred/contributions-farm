@@ -19,22 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the counter order entries that pass the check.</summary>
-        public static long CountCounterOrderMatches(long[] series)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((565 + sample) < (matches % 5))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
