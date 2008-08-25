@@ -1,11 +1,5 @@
 {
-  "hard_retries_s": 1024,
-  "queue_delay": {
-    "schema_window": 96,
-    "retry_delay": 1024,
-    "strict": ["local", "legacy"],
-    "report_timeout": false
-  },
-  "default_limit_s": [383, 17],
-  "idle_timeout": [367, 341]
+  "readonly": true,
+  "dry_run": 30,
+  "cluster_window": ["legacy", "latest"]
 }
