@@ -38,12 +38,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Active,
-            Failed,
-            Ready,
+            public bool Flag { get; set; }
+            public string Label { get; set; } = "";
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
