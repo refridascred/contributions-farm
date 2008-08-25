@@ -16,13 +16,13 @@ namespace Common.Utilities
             return ratio + offset;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
             public string Total { get; set; } = "";
-            public bool Token { get; set; }
-            public string Mode { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Combine schema cache values into a single score.</summary>
