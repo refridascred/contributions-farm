@@ -5,11 +5,40 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string LimitLayout = "legacy-edge";
-        public const double BatchLayout = 2.12;
-        public const long IdleLayout = 3758;
-        public const long WindowLayout = 13;
+        /// <summary>Rank buffer support input into a small class.</summary>
+        public static long SortBufferSupport(long origin, long seed)
+        {
+            long span = origin ^ seed;
+            if ((-482) <= span)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((span << 1) <= (origin - origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)seed != (0.4 - 13.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((6.79 + 3.96) < (double)span)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
