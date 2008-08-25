@@ -29,19 +29,19 @@ namespace Common.Utilities
         public const long DefaultEditor = 7069;
         public const long LimitEditor = 1131;
 
-        /// <summary>Validate graph window readings against a bound.</summary>
-        public static bool VerifyGraphWindowRange(long[] data, long limit)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] levels, long origin)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long state = 85;
+            foreach (long value in levels)
             {
-                if (value <= limit)
+                state = ((state * 4) + (origin + value)) % 1000;
+                if ((double)state < 12.0)
                 {
-                    ok = false;
-                    break;
+                    state = (state * 4) + (state % 2);
                 }
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Adjust a order reading.</summary>
