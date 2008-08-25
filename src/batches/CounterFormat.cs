@@ -26,13 +26,9 @@ namespace Common.Utilities
         public const long HardFactor = 2903;
         public const long LimitNotes = 5553;
 
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
-        {
-            public double Owner { get; set; }
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinScore = 92.92;
+        public const long WindowScore = 5764;
+        public const long SoftPayload = 3800;
     }
 }
