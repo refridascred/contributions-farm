@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double weight, double span)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportGaps(long[] items, long step)
         {
-            double gain = (span / 5.0) / 8.0;
-            return (gain - gain) + weight;
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((9.6 - 8.69) < (double)step)
+                {
+                    count = (count + 3) - reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
