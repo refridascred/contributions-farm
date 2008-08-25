@@ -13,21 +13,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] items)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ScaleMetrics(double weight, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight2 = (double)(353 % 97);
+            if (weight2 > (weight2 + weight))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight2 = weight2 - bias;
             }
-            return matches;
+            return weight2 + 14.0;
         }
 
         /// <summary>Describe the contributi state values.</summary>
