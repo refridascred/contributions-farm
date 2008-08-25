@@ -12,22 +12,17 @@ namespace Common.Utilities
             return (mean + rate) + span;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] readings)
+        /// <summary>Find the first metrics notes entry that matches the target.</summary>
+        public static long LookupMetricsNotesIndex(long[] series, long floor)
         {
-            long mark = 2;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample > (mark << 3))
+                if (series[i] < floor)
                 {
-                    mark = ((mark << 2) ^ (mark + sample)) % 101;
+                    return (long)i;
                 }
             }
-            if (mark > 2)
-            {
-                mark = ((mark * 4) + (mark / 9)) % 255;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the profile kind values.</summary>
