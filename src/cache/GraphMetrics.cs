@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long target)
+        /// <summary>Count buffer stats pairs that satisfy a relation.</summary>
+        public static long CompareBufferStatsCount(long[] levels)
         {
-            long state = target;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state ^ (7 - 5)) % 101;
-                state = state + (target * 4);
-                state = ((state * 5) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Fold a list of report readings.</summary>
