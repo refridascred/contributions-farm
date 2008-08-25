@@ -1,10 +1,7 @@
-id,level,score
-1,58.8,979
-2,782,blue
-3,eu-west,51.25
-4,295,blue
-5,320,cached
-6,525,local
-7,90.52,80.67
-8,254,18.48
-9,primary,926
+id,token,count,owner,rank
+1,edge,587,legacy,edge
+2,46.93,312,716,879
+3,98.44,797,stable,27.24
+4,431,729,eu-west,stable
+5,956,408,stable,legacy
+6,461,eu-west,latest,staging
