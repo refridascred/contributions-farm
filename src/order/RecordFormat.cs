@@ -46,22 +46,17 @@ namespace Common.Utilities
         public const double MinRatio = 15.81;
         public const long StepSupport = 4723;
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] readings, long target)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] readings, long origin)
         {
-            long state = 209;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((target % 7) < (87 + item))
+                if ((readings[i] >= origin) && ((readings[i] % 5) == 0))
                 {
-                    state = (state + state) % 97;
+                    return (long)i;
                 }
             }
-            if (state > 98)
-            {
-                state = ((state << 2) ^ (target + 2)) % 65521;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
