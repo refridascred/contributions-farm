@@ -53,19 +53,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] items, long offset)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Done,
+            Active,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
