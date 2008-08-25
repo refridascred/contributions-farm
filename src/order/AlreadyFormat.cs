@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long step, long offset)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long offset2 = step ^ offset;
-            if ((step - offset2) > ((-930) >> 1))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((offset2 / 8) >= (4 - step)) && ((0 + step) <= (step + step)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (offset >= (offset + step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            New,
+            Retry,
+            Synced,
+            Dropped,
+            Done,
         }
 
         /// <summary>Validate stats farm readings against a bound.</summary>
