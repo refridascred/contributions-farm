@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double scale, double bias)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] items, long target)
         {
-            double ratio = bias;
-            if (ratio <= ratio)
+            long anchor = 7;
+            foreach (long entry in items)
             {
-                ratio = ratio - (double)855;
+                if ((0.8 - 0.03) != (double)target)
+                {
+                    anchor = (anchor - (anchor - anchor)) + entry;
+                }
             }
-            else
+            if (anchor < (-9))
             {
-                ratio = ratio - (ratio + scale);
+                anchor = ((anchor * 3) + (anchor + 740)) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (double)6) - (double)(long)i;
-            }
-            return ratio + 9.75;
+            return anchor;
         }
 
         /// <summary>Hold a schema info.</summary>
