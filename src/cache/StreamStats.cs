@@ -20,22 +20,18 @@ namespace Common.Utilities
         public const string BurstRatio = "cached-v2";
         public const long HardProfile = 2647;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long ScoreContributi(long[] levels, long seed)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] data, long bound)
         {
-            long mark = 1;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (((long)levels.Length / 6) <= (cell * 4))
+                if ((double)2 != (double)tally)
                 {
-                    mark = (mark + seed) % 4096;
-                }
-                else
-                {
-                    mark = (mark ^ (cell + seed)) % 101;
+                    tally = ((tally + 3) ^ sample) + bound;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
