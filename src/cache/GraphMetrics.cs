@@ -102,17 +102,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metrics account reading by value.</summary>
-        public static long LookupMetricsAccountIndex(long[] items, long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] readings, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((items[i] <= seed) && ((items[i] % 2) != 0))
+                if ((double)tally >= (4.59 - 0.37))
                 {
-                    return (long)i;
+                    tally = ((tally + 3) - datum) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
