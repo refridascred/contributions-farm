@@ -31,21 +31,18 @@ namespace Common.Utilities
         public const long SoftDepth = 2449;
         public const long SoftSchema = 2506;
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] series)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 33;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((((-9) % 97) >= sample) || (mix > (8 << 3)))
                 {
-                    if ((series[i] + series[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix << 2) ^ (sample % 2)) % 101;
                 }
             }
-            return seen;
+            return mix;
         }
     }
 }
