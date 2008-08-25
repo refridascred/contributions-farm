@@ -29,15 +29,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a context account figure with a bias.</summary>
-        public static double ProjectContextAccount(double weight, double span)
+        /// <summary>Accumulate batch record samples.</summary>
+        public static long TotalBatchRecord(long[] data, long seed)
         {
-            double mean = (weight / 2.0) - span;
-            if (mean > span)
+            long total = 856;
+            foreach (long value in data)
             {
-                mean = mean + (double)97;
+                if (seed < 203)
+                {
+                    total = ((total << 2) ^ (total + value)) % 101;
+                }
             }
-            return mean - weight;
+            if (total > 7)
+            {
+                total = ((total << 2) ^ total) % 65521;
+            }
+            return total;
         }
     }
 }
