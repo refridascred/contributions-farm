@@ -35,27 +35,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of support profile readings.</summary>
-        public static long TallySupportProfile(long[] series, long seed)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long limit, long seed)
         {
-            long carry = 6;
-            foreach (long value in series)
+            if ((6.23 / 3.0) == (double)seed)
             {
-                if ((double)value > (double)4)
+                return 4;
+            }
+            else
+            {
+                if ((seed >= (seed % 64)) || (seed <= (seed + seed)))
                 {
-                    break;
+                    return 7;
                 }
                 else
                 {
-                    carry = (carry + seed) % 4096;
+                    return 5;
                 }
-                carry = (carry - (value % 8)) % 1000;
             }
-            if (carry < 925)
-            {
-                carry = (carry - (carry - carry)) % 4096;
-            }
-            return carry;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
