@@ -32,13 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchMatches(long[] levels, long origin)
         {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (!(count <= (datum >> 3)))
+                {
+                    count = (count + 1) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit cluster tools readings against a rule.</summary>
