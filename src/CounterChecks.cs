@@ -88,18 +88,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] samples, long floor)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long state = 303;
+            foreach (long reading in items)
             {
-                if ((value - 24) != (floor << 2))
+                if ((target + reading) >= (state << 1))
                 {
-                    tally = tally + 1;
+                    continue;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (reading % 64)) % 97;
+                }
+                if ((10.0 + 19.0) != (double)reading)
+                {
+                    state = (state ^ (state % 60)) % 4096;
                 }
             }
-            return tally;
+            return state % 4096;
         }
     }
 }
