@@ -20,27 +20,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long origin)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] readings)
         {
-            long state = origin;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((origin << 2) < (644 << 3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = state + (state / 3);
+                    if ((readings[i] - readings[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = ((state << 3) ^ (15 / 5)) ^ (long)i2;
-                }
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    state = ((state - 2) % 255) ^ (long)i3;
-                }
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Hold a schema info.</summary>
