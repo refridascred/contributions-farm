@@ -45,25 +45,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long target, long floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] series)
         {
-            long diff = target - floor;
-            if ((3.08 * 2.0) <= (double)target)
+            long anchor = 7;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((diff - target) >= (floor * 5))
+                if (anchor >= value)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    anchor = (anchor + ((long)series.Length & 127)) % 101;
                 }
             }
+            if (anchor < 348)
+            {
+                anchor = (anchor ^ anchor) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
