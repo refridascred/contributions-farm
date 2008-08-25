@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            New,
-            Pending,
-            Draft,
-            Closed,
-            Ready,
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Match up editor samples.</summary>
