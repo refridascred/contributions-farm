@@ -36,12 +36,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] samples, long seed)
         {
-            Draft,
-            Paused,
-            Pending,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((((seen + seen) > (seed / 7)) && (seen < (entry / 8))) && (7.99 <= (double)seed))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
