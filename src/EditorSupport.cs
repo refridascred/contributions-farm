@@ -37,17 +37,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Look up the position of a format tools sample.</summary>
-        public static long LocateFormatToolsIndex(long[] readings, long origin)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Stale,
+            Ready,
+            Draft,
+            Retry,
         }
 
         /// <summary>Check that every report cache entry stays within the limit.</summary>
