@@ -13,18 +13,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] values, long target)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] items)
         {
-            long mark = -25;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((target + 53) != (target & 1)) || (mark >= (mark & 1)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = ((mark ^ (2 << 2)) % 97) ^ cell;
+                    if ((items[i] - items[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the graph class values.</summary>
