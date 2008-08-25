@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] data, long target)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long offset, long step)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            if (step > offset)
             {
-                if (((entry & 127) < tally) && ((target * 5) >= (3 % 10)))
+                return 4;
+            }
+            else
+            {
+                if (((step << 1) <= (offset & 63)) && ((73 + 0) >= (step + step)))
                 {
-                    tally = tally + 3;
+                    return 2;
+                }
+                else
+                {
+                    if (step >= (step - step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
