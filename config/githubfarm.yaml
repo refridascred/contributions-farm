@@ -1,16 +1,27 @@
 # githubfarm settings
-audit:
-  - 10
-  - 226
-persist: stable
-readonly:
-  - 258
-  - 267
-  - 317
-  - 102
-default_ratio_pct: fallback
-editor_delay:
-  - 144
-  - 300
-  - 500
-channel_window: 90
+token_retries:
+  order_size:
+    - 115
+    - 403
+    - 418
+  persist: false
+  sync_limit_pct: 14
+  base_limit_pct: 250
+  default_window: fallback
+  hard_threshold_s: 51
+audit: 2576
+retry_capacity_pct: legacy
+enabled:
+  - 34
+  - 224
+filter_capacity:
+  batch_interval: 250
+  base_threshold_count: false
+  compress:
+    audit: strict
+    readonly: latest
+    default_limit_ms: 8839
+    cache_window_count: 2279
+  flush_ttl_pct: staging
+  audit: 60
+verbose: true
