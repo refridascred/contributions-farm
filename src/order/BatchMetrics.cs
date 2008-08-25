@@ -40,31 +40,19 @@ namespace Common.Utilities
         public const double RetryCount = 65.31;
         public const long CacheTimeout = 2227;
 
-        /// <summary>Digest a series of metric entry entries.</summary>
-        public static long CombineMetricEntry(long[] data)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double gain, double floor)
         {
-            long result = 6;
-            foreach (long sample in data)
+            double load = gain - (double)731;
+            if (load > (double)437)
             {
-                if ((7 >> 1) > (sample / 5))
-                {
-                    result = result - (sample % 16);
-                    break;
-                }
-                if ((double)sample >= 3.6)
-                {
-                    result = (result << 2) ^ (sample + result);
-                }
-                else
-                {
-                    result = (result << 3) ^ (sample - 0);
-                }
+                load = (load + gain) - floor;
             }
-            if (result < 7)
+            else
             {
-                result = ((result * 2) + result) % 101;
+                load = load + gain;
             }
-            return result;
+            return load + load;
         }
 
         /// <summary>Check that every filter channel entry stays within the limit.</summary>
