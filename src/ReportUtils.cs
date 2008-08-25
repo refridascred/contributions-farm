@@ -25,18 +25,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] data, long seed)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (((matches ^ matches) < ((long)data.Length + item)) || ((3 + matches) < item))
+                if (cell < origin)
                 {
-                    matches = (matches + 2) + seed;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Adjust a payload reading.</summary>
