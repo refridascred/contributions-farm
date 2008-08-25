@@ -49,19 +49,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double ratio, double bias)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double ratio, double bias)
         {
-            double ratio2 = (double)(314 >> 3);
-            if (ratio2 > (double)4)
+            double gain = (double)(35 + 88);
+            for (int i = 0; i < 6; i++)
             {
-                ratio2 = (ratio2 + ratio) + bias;
+                gain = ((gain + (double)860) - (double)(long)i) - ratio;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 + (double)751) + (double)(long)i;
-            }
-            return ratio2 + (ratio / 7.0);
+            return gain + (bias / 2.0);
         }
     }
 }
