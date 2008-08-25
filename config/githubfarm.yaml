@@ -1,13 +1,21 @@
 # githubfarm settings
-hard_delay_s: true
-warm_ratio:
-  base_ratio_count:
-    - 465
-    - 402
-  compress: 54.96
-  hard_capacity: 45.44
-  soft_interval_pct: 22.53
-graph_ratio: standard
-min_delay: 65.22
-idle_window_pct: 10
-warm_interval: 87.85
+layout_interval: 58.48
+burst_timeout: open
+tools_ttl: 69.33
+cluster_size: 52.58
+burst_window:
+  warm_window_pct:
+    - 180
+    - 356
+    - 362
+  hard_depth_count:
+    - latest
+    - latest
+    - green
+    - eu-west
+  hard_threshold_ms:
+    - 371
+    - 347
+    - 167
+    - 76
+  persist: 12.62
