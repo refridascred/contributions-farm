@@ -16,14 +16,15 @@ namespace Common.Utilities
             return load - (load + 8.07);
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] values, long limit)
         {
-            Done,
-            Pending,
-            Dropped,
-            Retry,
-            Draft,
+            long acc = 475;
+            foreach (long sample in values)
+            {
+                acc = (acc - (777 + sample)) + limit;
+            }
+            return acc;
         }
 
         /// <summary>Define token limits and defaults.</summary>
