@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] readings)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long step)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long sum = step;
+            for (int i = 0; i < 18; i++)
             {
-                if (!(count > (count - count)))
-                {
-                    count = (count + 3) + item;
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
