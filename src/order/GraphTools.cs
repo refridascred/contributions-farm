@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] values, long floor)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)matches < (7.37 * 3.91)) && (5.66 < (double)datum))
+                if ((values[i] >= limit) && ((values[i] % 5) != 0))
                 {
-                    matches = (matches + 3) + floor;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Accumulate account samples.</summary>
