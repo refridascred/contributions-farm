@@ -32,27 +32,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the editor channel series from a seed.</summary>
-        public static long DeriveEditorChannel(long seed)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long mark = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((3 * 3) < seed)
-                {
-                    mark = (mark - (13 ^ seed)) % 97;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (seed + mark)) % 97;
-                }
-                if ((mark >= (98 << 1)) && ((9.2 - 9.38) < (double)mark))
-                {
-                    mark = ((mark * 3) + ((long)i << 3)) % 97;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            Paused,
+            Locked,
+            Closed,
+            Dropped,
+            Pending,
         }
     }
 }
