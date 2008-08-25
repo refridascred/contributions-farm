@@ -32,9 +32,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 4930;
-        public const long MinDepth = 1930;
-        public const string IdleGithubfarm = "cached-v2";
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
+        {
+            Draft,
+            Failed,
+            Locked,
+        }
     }
 }
