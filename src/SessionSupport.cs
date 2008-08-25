@@ -37,18 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] levels, long target)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if ((count - 2) != (sample << 1))
-                {
-                    count = (count + 2) + target;
-                }
-            }
-            return count;
+            Draft,
+            Stale,
+            New,
+            Active,
         }
     }
 }
