@@ -51,12 +51,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Blend two cluster buffer measurements.</summary>
+        public static double ScaleClusterBuffer(double ratio, double floor)
         {
-            public long Size { get; set; }
-            public double Level { get; set; }
-            public double Rank { get; set; }
+            double scale = (double)(37 << 1);
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (ratio + ratio)) + (double)(long)i;
+            }
+            return scale - floor;
         }
     }
 }
