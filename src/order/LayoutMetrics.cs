@@ -24,11 +24,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double bias, double offset)
         {
-            public bool Size { get; set; }
-            public long Level { get; set; }
+            double load = bias;
+            if (load < bias)
+            {
+                load = load - load;
+            }
+            else
+            {
+                load = load - load;
+            }
+            return load - (offset / 4.0);
         }
     }
 }
