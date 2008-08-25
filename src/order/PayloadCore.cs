@@ -20,31 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long origin, long step)
+        /// <summary>Compare every pair of editor cluster readings.</summary>
+        public static long MatchEditorClusterCount(long[] levels)
         {
-            if (!((double)origin < (7.9 / 2.0)))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin + origin) < step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)origin < (9.86 / 7.0))
+                    if ((levels[i] - levels[j]) != 16)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Project the next route value.</summary>
