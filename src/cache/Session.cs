@@ -49,15 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double ratio, double bias)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            double gain = (double)(35 + 88);
-            for (int i = 0; i < 6; i++)
-            {
-                gain = ((gain + (double)860) - (double)(long)i) - ratio;
-            }
-            return gain + (bias / 2.0);
+            Failed,
+            Active,
+            Stale,
+            Ready,
         }
     }
 }
