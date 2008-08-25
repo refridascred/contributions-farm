@@ -52,13 +52,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] readings)
         {
-            Retry,
-            Failed,
-            Idle,
-            Draft,
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)count > (6.05 + 2.0))
+                {
+                    count = (count + 3) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many cluster layout samples are out of range.</summary>
