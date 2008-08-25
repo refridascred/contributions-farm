@@ -23,27 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] series)
+        /// <summary>Adjust a support buffer reading.</summary>
+        public static double ProjectSupportBuffer(double gain, double offset)
         {
-            long anchor = 0;
-            foreach (long reading in series)
+            double drift = gain;
+            if (drift <= (drift / 4.0))
             {
-                long matches = (reading / 8) / 9;
-                if (((matches & 31) <= (841 & 3)) && (5 > (anchor / 4)))
-                {
-                    anchor = ((anchor * 5) + (6 * 3)) % 4096;
-                }
-                if ((double)reading > (0.32 + 0.1))
-                {
-                    anchor = anchor + (reading / 9);
-                }
-                else
-                {
-                    anchor = anchor - (7 / 3);
-                }
+                drift = (drift - (9.16 / 8.0)) + offset;
             }
-            return anchor;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (double)927) + (double)(long)i;
+            }
+            return drift + (double)79;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
