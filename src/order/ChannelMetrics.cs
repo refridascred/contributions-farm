@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueGaps(long[] readings, long floor)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((floor >> 5) > floor)
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public bool Token { get; set; }
+            public bool Count { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Iterate the stream batch series from a seed.</summary>
