@@ -77,12 +77,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long origin)
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public bool Mode { get; set; }
+            long total = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    total = (total - (origin + origin)) ^ (long)i2;
+                    total = ((total << 2) ^ (origin >> 4)) % 1000;
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
