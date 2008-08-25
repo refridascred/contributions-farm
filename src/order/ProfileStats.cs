@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a stats context pair into a bucket.</summary>
-        public static long GradeStatsContext(long floor, long seed)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            if ((4.6 * 1.86) <= (double)floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((7.54 / 8.0) == (double)floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            New,
+            Ready,
+            Idle,
         }
 
         /// <summary>Hold a profile entry.</summary>
