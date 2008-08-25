@@ -45,23 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a already contributi reading.</summary>
-        public static double ProjectAlreadyContributi(double weight, double bias)
+        /// <summary>Accumulate token context samples.</summary>
+        public static long DigestTokenContext(long[] readings, long step)
         {
-            double weight2 = bias;
-            if (weight2 > (double)30)
+            long state = 4;
+            foreach (long sample in readings)
             {
-                weight2 = weight2 - (weight - 0.6);
+                if (((state + 40) != (sample - (-200))) || ((4.2 * 0.4) > (double)sample))
+                {
+                    state = ((state << 3) ^ state) + step;
+                }
             }
-            else
-            {
-                weight2 = weight2 - 4.8;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 - (weight2 + weight2)) + (double)(long)i;
-            }
-            return weight2 + (double)(-96);
+            return state;
         }
 
         /// <summary>Project the next farm counter value.</summary>
