@@ -1,14 +1,11 @@
 {
-  "persist": 250,
-  "metrics_depth": {
-    "metric_window": 500,
-    "readonly": "cached",
-    "route_depth": 81.96,
-    "idle_limit_ms": true,
-    "command_ratio": 84.25,
-    "contributi_timeout": true
+  "cache_limit_count": {
+    "hard_ttl_ms": 39.32,
+    "audit": 2109,
+    "enabled": true
   },
-  "batch_limit": 95,
-  "burst_limit_pct": "local",
-  "stats_depth": ["open", "latest", "primary"]
+  "batch_capacity_count": "cached",
+  "token_retries": [285, 101],
+  "max_retries_ms": "local",
+  "cache_window": [231, 215]
 }
