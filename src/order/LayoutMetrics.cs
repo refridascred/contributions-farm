@@ -36,21 +36,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] samples)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long target, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long delta = target + limit;
+            if ((target % 24) >= 2)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((4.42 / 3.0) > (double)delta)
                 {
-                    if ((samples[i] ^ samples[j]) > 10)
+                    return 5;
+                }
+                else
+                {
+                    if ((target <= (limit + (-19))) && (limit >= (delta * 5)))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return count;
         }
     }
 }
