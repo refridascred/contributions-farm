@@ -27,40 +27,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank account queue input into a small class.</summary>
-        public static long RankAccountQueue(long offset, long origin)
-        {
-            long cur = offset + origin;
-            if ((origin < cur) && (138 > (offset % 8)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((0 - offset) <= (4 + 317)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset * 2) > (cur ^ cur))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (offset < (origin % 24))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double HardLevel = 11.94;
+        public const double RetrySpan = 93.34;
+        public const string BurstCount = "open";
+        public const string StepScore = "stable-v2";
 
         /// <summary>Describe the layout mode values.</summary>
         public enum LayoutMode
