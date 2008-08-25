@@ -64,22 +64,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of profile buffer entries.</summary>
-        public static long DigestProfileBuffer(long[] samples, long origin)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long mark = 69;
-            foreach (long value in samples)
-            {
-                if (7.79 >= (double)value)
-                {
-                    mark = (mark * 5) + (origin ^ mark);
-                }
-            }
-            if (mark > 404)
-            {
-                mark = ((mark << 2) ^ (365 >> 2)) % 101;
-            }
-            return mark % 65521;
+            public string Ratio { get; set; } = "";
+            public double Label { get; set; }
         }
     }
 }
