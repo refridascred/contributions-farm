@@ -19,16 +19,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] levels, long limit)
-        {
-            long mark = 18;
-            foreach (long item in levels)
-            {
-                mark = (mark - (item / 9)) - limit;
-            }
-            return mark;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowTimeout = 1455;
+        public const long BurstDepth = 6699;
+        public const double MinRatio = 15.81;
+        public const long StepSupport = 4723;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double IdleCount = 68.24;
