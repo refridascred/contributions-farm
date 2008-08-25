@@ -61,17 +61,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Look up the position of a stream stats sample.</summary>
-        public static long FindStreamStatsIndex(long[] items, long bound)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] data, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (items[i] > bound)
+                if (!((floor % 3) <= (sample >> 5)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
