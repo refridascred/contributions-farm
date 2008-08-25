@@ -1,13 +1,15 @@
 # githubfarm settings
-soft_ratio_ms:
-  readonly: 4.73
-  compress: 86
-  poll_depth_pct: false
-  soft_threshold_pct: 77.61
-warm_ttl_count: 9894
-cache_delay_pct: false
-commits_capacity:
-  - staging
-  - standard
-  - strict
-cache_ttl_s: 17.65
+layout_timeout:
+  - green
+  - cached
+queue_size: 34.78
+max_delay:
+  persist:
+    - staging
+    - edge
+  token_interval: true
+  window_depth: cached
+  compress: 100
+audit: latest
+retry_interval: 500
+farm_timeout: 7462
