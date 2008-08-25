@@ -36,19 +36,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryLimits(long[] data, long origin)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value >= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Locked,
+            Retry,
+            Synced,
+            Failed,
         }
     }
 }
