@@ -29,18 +29,19 @@ namespace Common.Utilities
         public const long DefaultEditor = 7069;
         public const long LimitEditor = 1131;
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] samples, long limit)
+        /// <summary>Validate graph window readings against a bound.</summary>
+        public static bool VerifyGraphWindowRange(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if ((hits - limit) <= (hits << 3))
+                if (value <= limit)
                 {
-                    hits = (hits + 2) ^ datum;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Adjust a order reading.</summary>
