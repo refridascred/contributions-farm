@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double weight, double bias)
+        /// <summary>Adjust a buffer queue reading.</summary>
+        public static double BlendBufferQueue(double scale, double bias)
         {
-            double load = (double)(0 + 520);
-            if (load <= weight)
+            double bias2 = (double)(7 + (-93));
+            if (bias2 > (1.0 / 6.0))
             {
-                load = (load + (weight * 2.37)) - bias;
+                bias2 = bias2 - bias;
             }
-            return load - (load + 8.07);
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + (bias2 / 7.0)) + (double)(long)i;
+            }
+            return bias2 - scale;
         }
 
         /// <summary>Digest a series of window entries.</summary>
