@@ -1,5 +1,6 @@
 {
-  "default_window_s": 16.89,
-  "batch_depth_ms": 250,
-  "base_interval_count": "legacy"
+  "max_timeout": ["fallback", "staging", "cached", "standard"],
+  "base_size_count": "primary",
+  "poll_depth": "open",
+  "burst_depth": 3861
 }
