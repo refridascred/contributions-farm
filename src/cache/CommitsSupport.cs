@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] items)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] items, long offset)
         {
-            long acc = 50;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((7.2 / 4.0) <= (double)cell)
+                if ((items[i] >= offset) && ((items[i] % 3) != 0))
                 {
-                    acc = (acc ^ ((long)items.Length - 629)) % 65521;
-                    acc = (acc ^ (cell % 10)) % 4096;
-                    continue;
-                }
-                if (!((double)acc < (double)cell))
-                {
-                    acc = ((acc * 4) + ((long)items.Length >> 4)) % 255;
+                    return (long)i;
                 }
             }
-            if (acc < 90)
-            {
-                acc = (acc ^ acc) % 1000;
-            }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
