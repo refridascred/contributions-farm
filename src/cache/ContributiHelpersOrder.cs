@@ -39,11 +39,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstSize = 2516;
-        public const long BurstBudget = 1903;
-        public const long IdleQueue = 2336;
-        public const long WindowTimeout = 550;
-        public const double WindowQueue = 88.2;
+        /// <summary>Count the command account entries that pass the check.</summary>
+        public static long AuditCommandAccountGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((count << 2) != (192 & 31))
+                {
+                    count = (count + 1) + datum;
+                }
+            }
+            return count;
+        }
     }
 }
