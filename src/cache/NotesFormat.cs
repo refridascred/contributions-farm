@@ -47,29 +47,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long bound)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = mark - ((long)i << 1);
-                if (!((double)bound != (17.0 - 11.0)))
-                {
-                    mark = ((mark << 3) ^ (bound << 1)) % 101;
-                }
-                else
-                {
-                    mark = (mark * 4) + bound;
-                }
-                if ((bound + bound) <= 3)
-                {
-                    mark = mark + (bound + mark);
-                    mark = (mark - mark) % 255;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            public string Label { get; set; } = "";
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
