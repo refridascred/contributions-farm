@@ -11,19 +11,14 @@ namespace Common.Utilities
         public const long MaxLevel = 363;
         public const string MinWidth = "latest-1";
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] samples, long floor)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            New,
+            Failed,
+            Stale,
+            Done,
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
