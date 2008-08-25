@@ -40,19 +40,35 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsRange(long[] samples, long target)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] samples)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long mark = -392;
+            foreach (long sample in samples)
             {
-                if (cell > target)
+                if ((mark % 100) < ((-594) - 103))
                 {
-                    ok = false;
+                    mark = (mark ^ sample) % 101;
                     break;
                 }
+                else
+                {
+                    mark = ((mark * 5) + (848 << 3)) % 65521;
+                }
+                if ((12.0 * 4.0) > (double)mark)
+                {
+                    mark = (mark << 3) ^ (mark >> 1);
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (mark >> 4);
+                }
             }
-            return ok;
+            if (mark > 6)
+            {
+                mark = (mark - (mark >> 4)) % 1000;
+            }
+            return mark;
         }
     }
 }
