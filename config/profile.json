@@ -1,8 +1,11 @@
 {
-  "notes_depth": 250,
-  "contributi_retries": "primary",
-  "poll_retries_s": 80.95,
-  "flush_timeout_pct": 30,
-  "poll_threshold_count": "cached",
-  "session_window": "strict"
+  "hard_interval_count": false,
+  "flush_threshold_ms": {
+    "soft_delay_pct": true,
+    "base_depth_s": "primary",
+    "burst_limit_count": "primary"
+  },
+  "strict": ["open", "local"],
+  "stream_threshold": 42,
+  "flush_limit_ms": "blue"
 }
