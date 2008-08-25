@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes already entry stays within the limit.</summary>
-        public static bool CheckNotesAlreadyRange(long[] items, long target)
+        /// <summary>Derive the next queue account value from a seed.</summary>
+        public static long SeriesQueueAccount(long floor)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long state = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (entry >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Describe the entry mode values.</summary>
