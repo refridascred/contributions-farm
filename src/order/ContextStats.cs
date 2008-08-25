@@ -28,19 +28,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of token payload readings.</summary>
-        public static long FoldTokenPayload(long[] values, long step)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] items, long offset)
         {
-            long score = 12;
-            foreach (long cell in values)
+            long total = 50;
+            foreach (long sample in items)
             {
-                for (int i = 0; i < 9; i++)
+                if (!((total * 5) > (offset + sample)))
                 {
-                    score = ((((score << 2) ^ (cell + 9)) % 4096) + (long)i) - step;
+                    total = (total * 4) + offset;
                 }
-                score = (score - 9) % 65521;
+                else
+                {
+                    total = (total + offset) % 101;
+                }
             }
-            return score;
+            return total;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
