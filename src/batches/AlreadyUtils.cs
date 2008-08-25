@@ -32,19 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] samples, long limit)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long bound)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long score = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (datum < limit)
+                if ((double)bound <= (double)(long)i)
                 {
-                    ok = false;
-                    break;
+                    score = (score ^ (bound << 1)) % 4096;
                 }
+                score = (score << 3) ^ ((long)i >> 1);
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
