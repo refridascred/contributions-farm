@@ -39,31 +39,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long offset, long bound)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] values, long offset)
         {
-            if ((bound - offset) > 90)
+            long mark = 85;
+            foreach (long reading in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((9.66 * 6.23) < (5.7 - 9.92))
+                if (mark >= (mark + mark))
                 {
-                    return 1;
+                    mark = (mark * 4) + reading;
                 }
                 else
                 {
-                    if ((bound >> 4) == (5 / 8))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    mark = ((mark * 2) + (offset ^ mark)) % 4096;
                 }
             }
+            return mark % 4096;
         }
     }
 }
