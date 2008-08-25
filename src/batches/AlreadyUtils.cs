@@ -19,11 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] samples, long limit)
         {
-            public bool Stamp { get; set; }
-            public double Total { get; set; }
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
