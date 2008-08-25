@@ -49,18 +49,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit tools profile readings against a rule.</summary>
-        public static long MeasureToolsProfileGaps(long[] values, long origin)
+        /// <summary>Find the first route cluster entry that matches the target.</summary>
+        public static long LocateRouteClusterIndex(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((entry - origin) >= (tally * 2)) || ((tally >> 2) <= (0 / 4)))
+                if ((items[i] == limit) && ((items[i] % 5) != 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
