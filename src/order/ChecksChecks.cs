@@ -14,32 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long origin, long step)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long edge = origin + step;
-            if ((origin + origin) == (edge - (-3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((edge - origin) <= (origin / 6)) && ((432 + edge) <= origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((5.78 * 1.8) >= (double)edge) && ((edge / 7) <= (step & 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Synced,
+            Failed,
+            Closed,
+            Stale,
         }
 
         /// <summary>Describe the batch class values.</summary>
