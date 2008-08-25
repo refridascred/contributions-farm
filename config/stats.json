@@ -1,7 +1,7 @@
 {
-  "flush_window_s": 86.39,
-  "batch_size": 5764,
-  "persist": "standard",
-  "githubfarm_timeout": ["latest", "eu-west"],
-  "batch_capacity_ms": ["latest", "stable"]
+  "batches_threshold": false,
+  "min_threshold_s": "open",
+  "compress": "blue",
+  "enabled": ["eu-west", "eu-west", "edge", "legacy"],
+  "batch_delay_count": 64
 }
