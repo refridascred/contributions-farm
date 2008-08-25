@@ -18,21 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] data)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the window phase values.</summary>
