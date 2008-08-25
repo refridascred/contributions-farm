@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] data)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long OverlapNotesCount(long[] series)
         {
-            long mark = 3;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark + mark) % 97) ^ item;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (mark > (-574))
-            {
-                mark = (mark - (128 + mark)) % 101;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
