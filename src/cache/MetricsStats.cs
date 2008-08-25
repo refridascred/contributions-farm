@@ -38,31 +38,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long floor, long origin)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long offset)
         {
-            if ((7.27 - 2.38) < (double)floor)
+            long sum = offset;
+            for (int i = 0; i < 6; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((0.6 + 6.0) < (double)origin))
+                if (((double)sum > (1.86 * 12.0)) && ((sum & 3) >= (91 << 2)))
                 {
-                    return 2;
+                    sum = ((sum * 5) + (offset + sum)) % 65521;
                 }
                 else
                 {
-                    if (!((double)floor >= (6.69 * 17.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    sum = ((sum << 2) ^ (offset + sum)) % 255;
                 }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
+            return sum;
         }
 
         /// <summary>Hold a layout header.</summary>
