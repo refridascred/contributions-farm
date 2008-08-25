@@ -1,5 +1,14 @@
 {
-  "idle_capacity_pct": 6027,
-  "filter_timeout": "blue",
-  "hard_threshold_pct": false
+  "verbose": 92.03,
+  "cache_ttl_pct": 76,
+  "cache_retries_pct": true,
+  "audit": 3,
+  "soft_capacity_count": "legacy",
+  "max_timeout_pct": {
+    "queue_window": 67,
+    "batch_interval": 3736,
+    "batch_ttl_s": 171,
+    "token_capacity": "primary",
+    "soft_depth": 8
+  }
 }
