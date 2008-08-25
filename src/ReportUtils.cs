@@ -49,15 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double gain, double floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] items)
         {
-            double mean = floor;
-            if (mean >= (double)66)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                mean = mean + (floor - mean);
+                if (((3 / 8) >= (tally << 2)) && ((tally > (579 / 8)) && ((double)tally <= (double)0)))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mean - (floor + gain);
+            return tally;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
