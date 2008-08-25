@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 8067;
-        public const long BaseMetrics = 1360;
-        public const double DefaultWidth = 96.13;
-        public const long LimitMetrics = 3618;
-        public const long WindowSize = 3457;
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next commits schema value.</summary>
         public static double SmoothCommitsSchema(double rate, double span)
