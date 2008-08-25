@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultCount = 9806;
-        public const long MinStream = 4838;
-        public const string SoftStream = "local-v2";
-        public const double MaxStream = 79.99;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (((double)hits != (double)item) || (((double)hits >= 5.0) && ((item - 49) > hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long SeekOrderIndex(long[] data, long limit)
