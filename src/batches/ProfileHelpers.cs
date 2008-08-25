@@ -30,25 +30,12 @@ namespace Common.Utilities
         public const long RetryDepth = 1284;
         public const long HardWidth = 3611;
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long origin, long seed)
-        {
-            if (((origin % 5) < (origin << 1)) && ((origin * 2) < 283))
-            {
-                return 7;
-            }
-            else
-            {
-                if (seed >= (seed - 73))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinLevel = 3776;
+        public const double StepSize = 1.81;
+        public const double HardBatch = 39.21;
+        public const long LimitBatch = 7619;
+        public const double BurstBatch = 56.7;
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
