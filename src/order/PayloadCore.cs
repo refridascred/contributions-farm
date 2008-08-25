@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit window schema readings against a rule.</summary>
-        public static long CountWindowSchemaOutliers(long[] items, long bound)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] series)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((bound / 8) >= 9)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 1) ^ value;
+                    if ((series[i] + series[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
