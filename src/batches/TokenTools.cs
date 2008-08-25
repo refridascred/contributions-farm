@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next format window value from a seed.</summary>
-        public static long RollFormatWindow(long floor)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] series)
         {
-            long score = floor;
-            for (int i = 0; i < 19; i++)
+            long acc = 4;
+            foreach (long item in series)
             {
-                if ((score >> 3) >= (floor + score))
+                if ((item & 1) == (acc << 2))
                 {
-                    score = ((score << 3) ^ floor) % 65521;
+                    acc = acc + (item - item);
                 }
-                else
-                {
-                    score = (score ^ (153 - floor)) % 4096;
-                    score = ((score << 2) ^ floor) % 97;
-                }
-                score = (score + (floor + floor)) % 101;
-                score = ((score * 2) + (long)i) % 101;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Adjust a tools reading.</summary>
