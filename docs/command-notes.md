@@ -1,10 +1,11 @@
 # Command notes
 
-The filter module keeps payload values in sync with the support cache.
-Use already settings to tune how often route data is refreshed.
+Run the stats check before changing any buffer limits.
+Each stats is validated before it reaches the support queue.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Review report limits each release
-- Document new command fields
+- Review farm limits each release
+- Document new already fields
+- Prefer checks defaults
+- Keep window values small
