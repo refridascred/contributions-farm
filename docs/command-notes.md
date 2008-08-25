@@ -1,12 +1,14 @@
 # Command notes
 
-Run the batches check before changing any window limits.
-The already helpers are pure functions, so they are safe to call from any thread.
-Keep account and graph names short and lowercase.
+A context that stays idle for too long is moved to the layout list.
+The route module keeps already values in sync with the report cache.
+
+Run the schema check before changing any githubfarm limits.
+Keep report and profile names short and lowercase.
 
 ## Guidelines
 
-- Log every profile change
-- Validate entry input early
-- Review counter limits each release
-- Prefer batches defaults
+- Log every token change
+- Document new schema fields
+- Prefer graph defaults
+- Review command limits each release
