@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadRange(long[] series, long offset)
         {
-            public bool Token { get; set; }
-            public bool Weight { get; set; }
-            public string Size { get; set; } = "";
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first route cluster entry that matches the target.</summary>
