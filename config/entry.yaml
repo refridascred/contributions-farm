@@ -1,18 +1,6 @@
 # entry settings
-soft_window_s: 72
-base_threshold_count:
-  cache_ratio_count: 48.14
-  soft_depth_ms: 1768
-  batch_window:
-    - strict
-    - primary
-    - latest
-  base_depth_ms: 100
-farm_ttl: standard
-min_size_ms:
-  - 401
-  - 99
-format_capacity:
-  - 253
-  - 338
-batch_window_ms: strict
+contributi_limit: green
+idle_threshold: 51.98
+min_timeout_pct: 22
+strict: open
+persist: legacy
