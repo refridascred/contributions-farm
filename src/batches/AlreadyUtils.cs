@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] samples, long seed)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long offset)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long mix = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((20.0 + 7.2) <= (double)datum)
+                if ((offset + offset) < ((long)i >> 5))
                 {
-                    hits = (hits + 1) + seed;
+                    mix = (mix + offset) % 101;
+                    continue;
                 }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
