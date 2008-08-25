@@ -21,21 +21,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] series)
+        /// <summary>Scale a graph report figure with a bias.</summary>
+        public static double AdjustGraphReport(double rate, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = bias;
+            if (drift > (drift / 5.0))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = (drift + (2.78 - bias)) + rate;
             }
-            return seen;
+            return drift - (double)38;
         }
     }
 }
