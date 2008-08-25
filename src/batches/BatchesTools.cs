@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryBuffer = "standard-v2";
+        public const long SoftSpan = 5322;
+        public const long StepBuffer = 2365;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long RetryNotes = 3263;
