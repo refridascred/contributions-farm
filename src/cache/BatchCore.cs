@@ -52,25 +52,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long floor, long bound)
-        {
-            long span = floor ^ bound;
-            if (((floor * 2) > (bound + bound)) && ((6.0 * 4.0) <= (double)span))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((double)floor <= (7.3 * 6.6)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitFactor = 9827;
+        public const long RetryEntry = 9048;
+        public const long BaseBudget = 6073;
+        public const double MaxEntry = 61.59;
+        public const double BaseEntry = 50.23;
     }
 }
