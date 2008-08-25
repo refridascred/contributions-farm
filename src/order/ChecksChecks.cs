@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinTimeout = "stable-1";
-        public const string BaseWindow = "staging";
-        public const string MinWindow = "open-edge";
-        public const long HardCount = 8087;
-        public const long WindowBudget = 9241;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] readings, long step)
+        {
+            long score = 71;
+            foreach (long reading in readings)
+            {
+                score = (((score ^ score) % 97) - reading) - step;
+            }
+            if (score > 9)
+            {
+                score = (score + (score * 4)) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
