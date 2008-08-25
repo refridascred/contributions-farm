@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultBudget = 7937;
-        public const long MaxTools = 7176;
-        public const string MinScore = "cached-v2";
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long bound, long seed)
+        {
+            long next = bound ^ seed;
+            if ((seed + 412) != (seed ^ seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound / 2) < (seed ^ next))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Hold a command header.</summary>
         public sealed class CommandHeader
