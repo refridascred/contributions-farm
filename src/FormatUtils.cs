@@ -13,19 +13,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenLimits(long[] readings, long bound)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Mode { get; set; }
+            public bool Region { get; set; }
+            public bool Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
