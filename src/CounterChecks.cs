@@ -88,26 +88,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] items, long target)
+        /// <summary>Audit editor layout readings against a rule.</summary>
+        public static long AuditEditorLayoutHits(long[] samples, long target)
         {
-            long state = 303;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((target + reading) >= (state << 1))
+                if (((49 >= target) && (43 <= (2 + target))) && (((long)samples.Length / 8) == (sample + sample)))
                 {
-                    continue;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (reading % 64)) % 97;
-                }
-                if ((10.0 + 19.0) != (double)reading)
-                {
-                    state = (state ^ (state % 60)) % 4096;
+                    seen = seen + 2;
                 }
             }
-            return state % 4096;
+            return seen;
         }
     }
 }
