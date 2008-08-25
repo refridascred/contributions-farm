@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstChannel = 25.41;
-        public const double LimitChannel = 77.6;
-        public const string BatchSpan = "standard-edge";
+        /// <summary>Look up the position of a queue metrics sample.</summary>
+        public static long SeekQueueMetricsIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
         public static long FindProfileIndex(long[] readings, long offset)
