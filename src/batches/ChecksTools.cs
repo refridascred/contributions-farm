@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long seed)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double weight, double floor)
         {
-            long sum = seed;
-            for (int i = 0; i < 20; i++)
+            double scale = weight;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((((long)i + (long)i) < (sum * 5)) || ((double)810 <= (double)sum)))
-                {
-                    sum = (sum << 2) ^ (88 & 7);
-                }
-                if (!(((long)i ^ seed) <= ((long)i ^ (long)i)))
-                {
-                    sum = (sum - ((-5) >> 1)) % 97;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
+                scale = ((scale + weight) + (double)(long)i) + floor;
             }
-            return sum;
+            return scale - (weight / 3.0);
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
