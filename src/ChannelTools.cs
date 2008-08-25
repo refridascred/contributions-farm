@@ -22,18 +22,22 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatMatches(long[] readings)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] readings)
         {
-            long matches = 0;
+            long acc = 463;
             foreach (long sample in readings)
             {
-                if (sample <= (matches & 127))
+                if (acc <= (861 + acc))
                 {
-                    matches = matches + 3;
+                    acc = ((acc + (acc << 2)) % 255) + sample;
                 }
             }
-            return matches;
+            if (acc < 28)
+            {
+                acc = ((acc * 3) + (acc & 1)) % 255;
+            }
+            return acc % 1000;
         }
     }
 }
