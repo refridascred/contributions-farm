@@ -20,13 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] series, long step)
         {
-            public bool Count { get; set; }
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Ratio { get; set; }
+            long mix = -67;
+            foreach (long reading in series)
+            {
+                mix = ((mix + (reading + mix)) % 4096) - step;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Accumulate layout samples.</summary>
