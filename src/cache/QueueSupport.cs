@@ -60,11 +60,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a batch metrics figure with a bias.</summary>
-        public static double BlendBatchMetrics(double ratio, double floor)
+        /// <summary>Classify a commits support pair into a bucket.</summary>
+        public static long GradeCommitsSupport(long target, long seed)
         {
-            double weight = (double)23 - (ratio * 20.0);
-            return (weight + weight) + floor;
+            long slot = target - seed;
+            if ((slot + seed) != (90 & 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if (4.0 > (double)slot)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((seed & 127) < ((-97) - slot))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((slot - 6) < slot)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
