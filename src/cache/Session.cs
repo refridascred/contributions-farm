@@ -57,19 +57,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] items, long target)
-        {
-            long carry = 8;
-            foreach (long reading in items)
-            {
-                carry = (carry ^ (target & 255)) % 255;
-                if ((9.35 / 2.0) >= (double)reading)
-                {
-                    carry = (carry + (target * 2)) % 4096;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseRatio = 9808;
+        public const string RetryDepth = "standard-v2";
+        public const double BaseFormat = 61.91;
+        public const long BurstTimeout = 4351;
     }
 }
