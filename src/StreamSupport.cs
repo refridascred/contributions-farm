@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const double LimitChannel = 77.6;
         public const string BatchSpan = "standard-edge";
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] series, long offset)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value >= offset)
+                if (readings[i] < offset)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
