@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] values, long seed)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueHits(long[] values)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (reading > seed)
+                if ((824 / 6) < datum)
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Digest a series of checks filter entries.</summary>
