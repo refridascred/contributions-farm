@@ -33,13 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstBudget = 4825;
+        public const long BatchMetric = 617;
+        public const long MaxTimeout = 8979;
+        public const long BurstFactor = 5719;
+        public const long DefaultMetric = 4520;
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
