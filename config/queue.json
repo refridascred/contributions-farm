@@ -1,5 +1,8 @@
 {
-  "batch_threshold": 3216,
-  "record_ttl": ["open", "blue", "strict"],
-  "batch_capacity": 86
+  "sync_capacity_pct": 74.17,
+  "idle_delay_s": 9545,
+  "min_interval": "open",
+  "batches_interval": ["cached", "cached", "cached"],
+  "flush_ratio_s": false,
+  "batch_capacity": [182, 184, 349, 356]
 }
