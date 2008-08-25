@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] levels, long floor)
         {
-            public bool Weight { get; set; }
-            public long Count { get; set; }
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank record input into a small class.</summary>
