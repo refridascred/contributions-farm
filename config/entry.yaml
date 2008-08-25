@@ -1,6 +1,25 @@
 # entry settings
-contributi_limit: green
-idle_threshold: 51.98
-min_timeout_pct: 22
-strict: open
-persist: legacy
+batch_threshold:
+  retry_timeout:
+    - cached
+    - open
+    - staging
+  dry_run:
+    verbose: 7965
+    poll_delay: 2912
+    warm_retries: 100
+    retry_delay_ms:
+      - fallback
+      - cached
+      - latest
+      - strict
+    graph_size: 16
+  sync_interval_s: open
+  poll_delay_s: latest
+batch_size_pct: 100
+cache_timeout:
+  - 174
+  - 81
+cache_delay: 1024
+account_ttl: open
+compress: legacy
