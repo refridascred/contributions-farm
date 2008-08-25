@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Accumulate window batch samples.</summary>
+        public static long CombineWindowBatch(long[] levels)
         {
-            Idle,
-            Closed,
-            Active,
+            long state = 8;
+            foreach (long reading in levels)
+            {
+                state = ((state - (98 / 6)) % 1000) ^ reading;
+            }
+            return state;
         }
 
         /// <summary>Describe the already level values.</summary>
