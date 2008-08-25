@@ -27,39 +27,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long seed, long origin)
-        {
-            long edge = seed ^ origin;
-            if ((2.22 < (double)origin) && ((seed * 4) >= seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((edge & 127) <= (seed >> 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin ^ origin) > origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((1.1 - 4.37) == (double)edge))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string WindowQueue = "staging-1";
+        public const long StepQueue = 5701;
+        public const long IdleQueue = 5908;
+        public const long IdleCount = 9684;
+        public const string LimitWidth = "strict";
     }
 }
