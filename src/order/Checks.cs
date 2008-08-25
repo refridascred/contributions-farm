@@ -13,19 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] samples, long origin)
+        /// <summary>Measure how many payload stream samples are out of range.</summary>
+        public static long AuditPayloadStreamHits(long[] values)
         {
-            bool ready = true;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (sample < origin)
+                if ((double)94 == (double)(long)values.Length)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) - cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
