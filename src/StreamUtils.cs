@@ -45,16 +45,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a account order counter forward.</summary>
-        public static long StepAccountOrder(long floor)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] samples)
         {
-            long mix = floor;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = mix + floor;
-                mix = ((mix * 2) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Count notes farm pairs that satisfy a relation.</summary>
