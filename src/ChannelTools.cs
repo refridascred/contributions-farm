@@ -27,12 +27,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long origin, long offset)
         {
-            Locked,
-            Stale,
-            Active,
+            long bound = origin ^ offset;
+            if ((0.99 / 9.0) == (double)bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)origin <= 4.9) || ((double)bound <= (double)219))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound + origin) >= (offset * 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit tools window readings against a rule.</summary>
