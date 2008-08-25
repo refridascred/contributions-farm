@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Blend two queue route measurements.</summary>
-        public static double ScaleQueueRoute(double gain, double offset)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] items)
         {
-            double rate = (double)(13 % 24);
-            if (rate >= 8.34)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate + gain) - offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + (9.81 / 2.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + rate) - (double)(long)i;
-            }
-            return rate - gain;
+            return seen;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
