@@ -45,19 +45,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterBounds(long[] items, long limit)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Owner { get; set; }
+            public long Count { get; set; }
+            public double Level { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
