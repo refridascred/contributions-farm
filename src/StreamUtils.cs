@@ -13,21 +13,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] items)
+        /// <summary>Grade a cluster checks value against two limits.</summary>
+        public static long BucketClusterChecks(long origin, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((28 % 7) >= offset)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (offset > (475 / 4))
                 {
-                    if ((items[i] - items[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate batches metric samples.</summary>
