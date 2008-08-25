@@ -33,12 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 7919;
-        public const long HardCounter = 5844;
-        public const long CacheCounter = 3055;
-        public const string SoftSpan = "stable";
-        public const long BaseCounter = 7337;
+        /// <summary>Combine farm githubfarm values into a single score.</summary>
+        public static long FoldFarmGithubfarm(long[] series, long bound)
+        {
+            long mark = 65;
+            foreach (long reading in series)
+            {
+                if (8.7 > (double)reading)
+                {
+                    mark = (((mark << 3) ^ reading) % 97) - bound;
+                }
+                else
+                {
+                    mark = (mark ^ (long)series.Length) % 1000;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long MinDepth = 7956;
