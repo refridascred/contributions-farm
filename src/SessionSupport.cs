@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Iterate the context already series from a seed.</summary>
+        public static long SeriesContextAlready(long step)
         {
-            public double Total { get; set; }
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
+            long result = step;
+            for (int i = 0; i < 13; i++)
+            {
+                result = (result ^ step) % 4096;
+                result = (result - step) % 65521;
+                result = result + ((long)i * 2);
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
