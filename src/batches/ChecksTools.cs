@@ -30,21 +30,14 @@ namespace Common.Utilities
         public const long MaxInterval = 9929;
         public const string SoftRatio = "legacy-v2";
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] values)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Stale,
+            Idle,
+            Pending,
+            Closed,
+            Queued,
         }
     }
 }
