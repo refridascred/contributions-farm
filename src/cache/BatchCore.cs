@@ -46,15 +46,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Synced,
-            Failed,
-            Paused,
-            Active,
-            Stale,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string LimitBatch = "open-1";
+        public const double HardLevel = 16.07;
+        public const long CacheBatch = 68;
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long StepMetrics(long limit)
