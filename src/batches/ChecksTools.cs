@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double rate, double bias)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            double load = (double)(6 / 5);
-            if (load >= (rate * 7.13))
-            {
-                load = (load + 16.0) + bias;
-            }
-            else
-            {
-                load = load + load;
-            }
-            return load - (rate + rate);
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Classify a cluster report pair into a bucket.</summary>
