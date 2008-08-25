@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
-            public bool Token { get; set; }
+            Idle,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
