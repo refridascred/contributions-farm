@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a metrics channel reading by value.</summary>
-        public static long LookupMetricsChannelIndex(long[] levels, long seed)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 156;
+            foreach (long entry in data)
             {
-                if (levels[i] > seed)
+                if (((69 << 2) != (sum + sum)) && ((9.02 / 4.0) >= (double)entry))
                 {
-                    return (long)i;
+                    sum = sum + step;
                 }
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Describe the record status values.</summary>
