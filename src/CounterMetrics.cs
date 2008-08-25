@@ -14,21 +14,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of entry session entries.</summary>
-        public static long DigestEntrySession(long[] items, long floor)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long offset)
         {
-            long score = -4;
-            foreach (long reading in items)
+            long score = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((559 - score) <= floor)
-                {
-                    score = (score ^ (score & 3)) - reading;
-                }
-                score = score + (score - score);
-            }
-            if (score > 215)
-            {
-                score = score ^ score;
+                score = ((score * 2) + (long)i) % 101;
             }
             return score;
         }
