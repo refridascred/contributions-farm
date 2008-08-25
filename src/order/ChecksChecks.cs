@@ -25,12 +25,14 @@ namespace Common.Utilities
         public const long BurstMetrics = 3325;
         public const double MinScore = 82.61;
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
+            Dropped,
+            New,
+            Failed,
+            Queued,
+            Idle,
         }
     }
 }
