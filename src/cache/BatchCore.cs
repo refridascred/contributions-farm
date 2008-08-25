@@ -25,23 +25,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Combine stats metrics values into a single score.</summary>
-        public static long WeighStatsMetrics(long[] items)
-        {
-            long mix = 62;
-            foreach (long value in items)
-            {
-                if ((double)mix != (3.0 - 9.28))
-                {
-                    mix = ((mix + (long)items.Length) % 4096) ^ value;
-                }
-            }
-            if (mix > 3)
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 6298;
+        public const string DefaultTimeout = "legacy";
+        public const long WindowTimeout = 306;
+        public const long BatchBuffer = 4181;
+        public const long BatchLevel = 9448;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double MaxQueue = 1.91;
