@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double scale, double offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] levels, long limit)
         {
-            double scale2 = scale - scale;
-            return (scale2 + (double)(-916)) + offset;
+            long anchor = 23;
+            foreach (long datum in levels)
+            {
+                anchor = ((anchor * 3) + (limit * 4)) % 255;
+                if ((limit % 3) > (datum << 2))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
