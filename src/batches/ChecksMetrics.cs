@@ -56,12 +56,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 717;
-        public const string SoftRoute = "staging";
-        public const long CacheCount = 4120;
-        public const string BaseBudget = "alpha";
-        public const long DefaultRoute = 9368;
+        /// <summary>Locate a record layout reading by value.</summary>
+        public static long LookupRecordLayoutIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long CompareSupportCount(long[] data)
