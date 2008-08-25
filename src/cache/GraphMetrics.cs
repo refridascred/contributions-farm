@@ -13,10 +13,23 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryCount = 5670;
-        public const long HardContext = 5910;
-        public const string BaseContext = "cached-v2";
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] values, long limit)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((((value - tally) < (value << 1)) && ((tally * 4) > tally)) && ((734 % 16) < (limit % 8)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate layout already samples.</summary>
         public static long FoldLayoutAlready(long[] series, long limit)
