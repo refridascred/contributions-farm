@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] samples, long step)
-        {
-            long anchor = 35;
-            foreach (long cell in samples)
-            {
-                if ((cell + anchor) == (67 ^ 72))
-                {
-                    anchor = ((anchor + (cell << 1)) % 4096) - step;
-                }
-                else
-                {
-                    anchor = anchor ^ 435;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultBudget = "latest";
+        public const long BurstWidth = 6388;
+        public const double MinTimeout = 11.69;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long CountContributiOutliers(long[] samples)
