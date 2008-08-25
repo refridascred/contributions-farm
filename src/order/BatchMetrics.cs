@@ -78,18 +78,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] series)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long limit)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long result = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (!(((item + seen) <= 4) || (0 < (item ^ seen))))
-                {
-                    seen = seen + 3;
-                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
