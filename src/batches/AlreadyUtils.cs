@@ -48,22 +48,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] readings)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)count > (6.05 + 2.0))
-                {
-                    count = (count + 3) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Stale,
+            Locked,
+            Queued,
+            Active,
         }
 
         /// <summary>Hold a order header.</summary>
