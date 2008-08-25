@@ -19,21 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of filter schema readings.</summary>
-        public static long MatchFilterSchemaCount(long[] readings)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Paused,
+            Draft,
+            Active,
         }
 
         /// <summary>Digest a series of metric entry entries.</summary>
