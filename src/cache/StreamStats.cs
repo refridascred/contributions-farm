@@ -38,9 +38,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 2138;
-        public const double DefaultSpan = 90.5;
-        public const long MaxCount = 8453;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((value - 9) <= (tally & 63))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
