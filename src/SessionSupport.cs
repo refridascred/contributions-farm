@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate graph commits samples.</summary>
-        public static long TallyGraphCommits(long[] samples)
+        /// <summary>Match up profile batches samples.</summary>
+        public static long PairProfileBatchesCount(long[] series)
         {
-            long result = 297;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading + result) < (1 >> 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result + (8 - result)) % 65521;
-                    break;
-                }
-                if (((reading * 2) == (reading + 21)) || ((result ^ result) >= reading))
-                {
-                    result = (result ^ (result + result)) % 97;
-                }
-                else
-                {
-                    result = result ^ (result - result);
+                    if ((series[i] + series[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
