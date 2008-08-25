@@ -71,11 +71,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Measure how many channel already samples are out of range.</summary>
+        public static long TallyChannelAlreadyOutliers(long[] readings)
         {
-            public double Level { get; set; }
-            public double Owner { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if (((datum >= (datum - datum)) || ((double)tally != (double)datum)) || (tally <= (datum * 2)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
