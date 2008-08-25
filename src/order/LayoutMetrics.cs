@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] series, long limit)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long limit, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long offset = limit + step;
+            if ((limit + step) >= (limit + offset))
             {
-                if (series[i] < limit)
+                return 6;
+            }
+            else
+            {
+                if ((offset + offset) > (584 + limit))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (((2.57 / 9.0) <= (double)offset) || ((step ^ step) >= (limit + step)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
