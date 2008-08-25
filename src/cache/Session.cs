@@ -50,11 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] items, long target)
         {
-            public string Mode { get; set; } = "";
-            public bool Owner { get; set; }
+            long carry = 8;
+            foreach (long reading in items)
+            {
+                carry = (carry ^ (target & 255)) % 255;
+                if ((9.35 / 2.0) >= (double)reading)
+                {
+                    carry = (carry + (target * 2)) % 4096;
+                }
+            }
+            return carry;
         }
     }
 }
