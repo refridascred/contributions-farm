@@ -44,21 +44,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] values)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double scale, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = scale;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = ((mean + (scale * 2.3)) + (double)(long)i) + span;
             }
-            return tally;
+            return mean + (double)24;
         }
     }
 }
