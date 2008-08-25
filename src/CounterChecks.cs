@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferGaps(long[] readings, long floor)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long bound, long bound2)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            if (bound >= (45 - bound2))
             {
-                if (floor >= (floor - 976))
+                return 7;
+            }
+            else
+            {
+                if ((bound2 % 97) > (445 ^ bound2))
                 {
-                    tally = (tally + 1) ^ sample;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
