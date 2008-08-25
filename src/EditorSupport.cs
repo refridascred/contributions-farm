@@ -27,12 +27,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BatchFactor = 66.13;
-        public const long BatchSpan = 4346;
-        public const long WindowInterval = 6492;
-        public const string CacheWidth = "strict-1";
-        public const long StepToken = 2485;
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long target, long bound)
+        {
+            long prev = target - bound;
+            if ((prev + 11) <= (bound / 4))
+            {
+                return 3;
+            }
+            else
+            {
+                if (47 <= prev)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
