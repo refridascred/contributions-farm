@@ -21,19 +21,11 @@ namespace Common.Utilities
         public const double IdleBatch = 92.83;
         public const long BaseBatch = 6422;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] items, long target)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long carry = 4;
-            foreach (long item in items)
-            {
-                carry = (carry - ((-241) ^ item)) + target;
-            }
-            if (carry < 89)
-            {
-                carry = (carry - (carry * 2)) % 1000;
-            }
-            return carry % 1000;
+            public string Mode { get; set; } = "";
+            public double Weight { get; set; }
         }
     }
 }
