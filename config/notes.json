@@ -1,18 +1,11 @@
 {
-  "audit": true,
-  "burst_limit_count": {
-    "batch_ratio": {
-      "flush_capacity_pct": "strict",
-      "warm_limit": "cached",
-      "readonly": true,
-      "batch_ttl": "open",
-      "max_delay": 60,
-      "flush_depth_pct": true
-    },
-    "cache_window": 50.13,
-    "retry_delay_count": 70
+  "hard_retries_s": 1024,
+  "queue_delay": {
+    "schema_window": 96,
+    "retry_delay": 1024,
+    "strict": ["local", "legacy"],
+    "report_timeout": false
   },
-  "entry_interval": "staging",
-  "poll_timeout_s": "green",
-  "retry_interval": ["green", "local", "latest", "fallback"]
+  "default_limit_s": [383, 17],
+  "idle_timeout": [367, 341]
 }
