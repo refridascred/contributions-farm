@@ -25,18 +25,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] readings, long floor)
+        /// <summary>Derive the next tools queue value from a seed.</summary>
+        public static long SeriesToolsQueue(long offset)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long mark = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((matches > (floor >> 2)) || (datum > (datum & 255)))
-                {
-                    matches = matches + 2;
-                }
+                mark = (mark - (long)i) % 1000;
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Derive the next buffer token value from a seed.</summary>
