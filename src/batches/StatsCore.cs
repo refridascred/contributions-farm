@@ -72,14 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] readings, long offset)
         {
-            Stale,
-            Draft,
-            Paused,
-            Locked,
-            Queued,
+            long anchor = 542;
+            foreach (long datum in readings)
+            {
+                if (offset <= (anchor & 7))
+                {
+                    anchor = (anchor - (anchor - datum)) % 97;
+                }
+            }
+            return anchor;
         }
     }
 }
