@@ -41,11 +41,21 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Match up graph batches samples.</summary>
+        public static long MatchGraphBatchesCount(long[] readings)
         {
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
