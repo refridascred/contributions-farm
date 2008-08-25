@@ -44,17 +44,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] data, long origin)
         {
-            long sum = step;
-            for (int i = 0; i < 13; i++)
+            long acc = 21;
+            foreach (long datum in data)
             {
-                sum = sum + (sum + step);
-                sum = (sum + step) % 1000;
-                sum = ((sum * 4) + (long)i) % 97;
+                acc = ((acc ^ acc) - datum) - origin;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Define token limits and defaults.</summary>
