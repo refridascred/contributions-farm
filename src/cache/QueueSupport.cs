@@ -41,15 +41,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long step)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long score = step;
-            for (int i = 0; i < 4; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            Done,
+            Closed,
+            Failed,
         }
     }
 }
