@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] readings, long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] samples)
         {
-            long score = 71;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                score = (((score ^ score) % 97) - reading) - step;
+                if ((double)value == (double)3)
+                {
+                    matches = matches + 2;
+                }
             }
-            if (score > 9)
-            {
-                score = (score + (score * 4)) % 65521;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Count the account entry entries that pass the check.</summary>
