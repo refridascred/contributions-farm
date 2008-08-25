@@ -68,12 +68,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            New,
-            Idle,
-            Stale,
+            Active,
+            Pending,
+            Queued,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
