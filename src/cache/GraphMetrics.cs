@@ -85,17 +85,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] items, long seed)
+        /// <summary>Measure how many window already samples are out of range.</summary>
+        public static long TallyWindowAlreadyGaps(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (items[i] <= seed)
+                if ((double)cell > 11.0)
                 {
-                    return (long)i;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
