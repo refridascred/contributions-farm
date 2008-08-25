@@ -51,38 +51,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a profile stream pair into a bucket.</summary>
-        public static long ClassifyProfileStream(long limit, long limit2)
-        {
-            if ((limit2 - 0) == (2 + limit))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit2 + limit) >= (limit2 / 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit >> 3) > (609 / 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)limit == (14.0 + 6.38)) || ((445 * 4) == (limit - (-377))))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 3953;
+        public const long SoftDepth = 5155;
+        public const string IdleCount = "strict-v2";
+        public const double DefaultDepth = 2.16;
     }
 }
