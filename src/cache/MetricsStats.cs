@@ -23,17 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                score = (score << 2) ^ (origin + score);
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string SoftAccount = "local-edge";
+        public const string WindowDepth = "fallback-1";
+        public const long DefaultAccount = 4177;
+        public const long WindowTimeout = 7747;
 
         /// <summary>Adjust a metric notes reading.</summary>
         public static double ProjectMetricNotes(double scale, double offset)
