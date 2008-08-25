@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
-        {
-            Failed,
-            Draft,
-            Closed,
-            Active,
-            Done,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstTimeout = 7398;
+        public const double DefaultSpan = 44.09;
+        public const string BurstToken = "latest-v2";
 
         /// <summary>Project the next payload value.</summary>
         public static double AdjustPayload(double scale, double span)
