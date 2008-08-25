@@ -27,10 +27,13 @@ namespace Common.Utilities
         public const string RetryCommand = "local-edge";
         public const long BaseCommand = 8966;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 1356;
-        public const double IdleToken = 25.79;
-        public const long CacheToken = 1531;
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Locked,
+            Queued,
+            Retry,
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long WindowFactor = 4516;
