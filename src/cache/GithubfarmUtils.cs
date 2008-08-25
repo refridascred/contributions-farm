@@ -46,30 +46,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long target, long offset)
+        /// <summary>Classify a profile stream pair into a bucket.</summary>
+        public static long ClassifyProfileStream(long limit, long limit2)
         {
-            if ((6 * 2) == (offset >> 5))
+            if ((limit2 - 0) == (2 + limit))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if (((double)target != (5.5 + 4.74)) && ((8 & 3) != (offset ^ offset)))
+                if ((limit2 + limit) >= (limit2 / 3))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    if ((offset ^ offset) >= (236 >> 2))
+                    if ((limit >> 3) > (609 / 4))
                     {
-                        return 6;
+                        return 7;
                     }
                     else
                     {
-                        if (((double)offset >= (double)target) || ((18.0 / 5.0) != (double)target))
+                        if (((double)limit == (14.0 + 6.38)) || ((445 * 4) == (limit - (-377))))
                         {
-                            return 3;
+                            return 6;
                         }
                         else
                         {
