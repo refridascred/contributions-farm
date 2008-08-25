@@ -22,11 +22,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 4528;
-        public const long MinOrder = 957;
-        public const string StepOrder = "stable-edge";
-        public const double WindowOrder = 72.11;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 3961;
+        public const long BaseRatio = 6809;
+        public const long StepMetrics = 7236;
 
         /// <summary>Blend two format measurements.</summary>
         public static double ProjectFormat(double gain, double floor)
