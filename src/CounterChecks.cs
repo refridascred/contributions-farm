@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] data, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferGaps(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (reading > limit)
+                if (floor >= (floor - 976))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) ^ sample;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
