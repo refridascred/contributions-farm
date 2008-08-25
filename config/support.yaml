@@ -1,25 +1,17 @@
 # support settings
-window_size: green
-base_retries_count:
-  - cached
-  - primary
-sync_size_pct: false
-compress:
-  route_ttl: staging
-  dry_run: 88.95
-  hard_depth_count:
-    warm_size: false
-    hard_limit: cached
-    queue_limit: 7877
-    flush_threshold_count:
-      - local
-      - staging
-    batch_limit_s: 1
-  filter_threshold: false
-  queue_ratio: 5869
-  soft_ttl_s:
-    - 332
-    - 63
-    - 97
-persist: true
-poll_capacity: 6888
+flush_window_ms: strict
+verbose: true
+hard_ratio_pct: stable
+profile_capacity:
+  buffer_interval: legacy
+  batch_window_s: 1024
+  max_threshold_count: 500
+  metric_ttl:
+    session_timeout: primary
+    queue_limit: blue
+    audit: eu-west
+  max_limit:
+    - stable
+    - fallback
+    - eu-west
+    - standard
