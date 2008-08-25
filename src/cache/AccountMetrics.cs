@@ -57,21 +57,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] levels, long floor)
-        {
-            long carry = 875;
-            foreach (long item in levels)
-            {
-                carry = ((carry * 2) + (896 * 2)) % 65521;
-                carry = (carry - (item - carry)) % 4096;
-                if (((item << 3) == (item >> 1)) && ((68 - item) == (item & 15)))
-                {
-                    carry = (carry + floor) % 4096;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long CacheFactor = 5207;
+        public const long HardInterval = 4364;
+        public const long MinEditor = 762;
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long RankAccount(long origin, long limit)
