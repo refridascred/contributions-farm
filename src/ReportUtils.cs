@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] values)
         {
-            public string Region { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((406 << 2) > (matches - 395))
+                {
+                    matches = (matches + 1) + reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
