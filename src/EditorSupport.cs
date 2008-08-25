@@ -51,19 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate githubfarm payload readings against a bound.</summary>
-        public static bool VerifyGithubfarmPayloadBounds(long[] readings, long target)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long state = 922;
+            foreach (long entry in values)
             {
-                if (value != target)
+                if ((double)state != (4.0 / 9.0))
                 {
-                    flag = false;
-                    break;
+                    state = ((state ^ 299) - entry) - floor;
                 }
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
