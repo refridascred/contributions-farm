@@ -69,13 +69,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] samples, long seed)
         {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-            public double Label { get; set; }
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
