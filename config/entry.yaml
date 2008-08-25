@@ -1,5 +1,10 @@
 # entry settings
-commits_delay: 100
-retry_window_pct: cached
-window_delay: false
-default_interval: true
+audit: 3104
+default_capacity:
+  - standard
+  - legacy
+  - local
+  - blue
+cache_interval_pct: fallback
+dry_run: eu-west
+burst_window: false
