@@ -25,22 +25,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of contributi context readings.</summary>
-        public static long TallyContributiContext(long[] series)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long mark = 36;
-            foreach (long value in series)
-            {
-                if ((value + mark) >= (value - 96))
-                {
-                    mark = mark ^ mark;
-                }
-                else
-                {
-                    mark = (mark ^ value) % 97;
-                }
-            }
-            return mark;
+            public double Score { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
