@@ -1,22 +1,9 @@
 # entry settings
-soft_threshold_count: open
-retry_size_pct: true
-default_retries_ms:
-  max_interval:
-    - edge
-    - local
-    - legacy
-  poll_size_count: cached
-  metrics_threshold:
-    - 287
-    - 402
-    - 213
-  soft_interval:
-    - fallback
-    - primary
-  soft_depth_count:
-    - latest
-    - fallback
-    - local
-batch_threshold: edge
-strict: 30
+poll_ttl_count: true
+idle_timeout_s: 1910
+cache_ttl: 58
+batch_retries_ms:
+  - stable
+  - cached
+  - local
+poll_delay_ms: 500
