@@ -31,16 +31,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Roll a editor cache counter forward.</summary>
-        public static long StepEditorCache(long step)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] data, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix + ((long)i * 5)) % 101;
-                mix = ((mix * 4) + (long)i) % 1000;
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
