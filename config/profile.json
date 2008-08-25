@@ -1,8 +1,10 @@
 {
-  "flush_size": "stable",
-  "route_depth": false,
-  "session_delay": 24.25,
-  "flush_delay_ms": [25, 471],
-  "route_capacity": 5752,
-  "max_size_pct": 22
+  "buffer_size": ["open", "green", "standard"],
+  "batch_retries_s": "primary",
+  "cache_limit": {
+    "layout_window": 29.95,
+    "cluster_retries": "cached",
+    "already_timeout": ["local", "standard", "local"],
+    "buffer_limit": ["legacy", "latest", "legacy", "stable"]
+  }
 }
