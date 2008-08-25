@@ -26,24 +26,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] samples, long target)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] series)
         {
-            long state = 7;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((state + state) > item) || ((9.5 - 5.26) <= (double)target))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    long slot = 874;
-                    state = state - (slot + state);
-                    continue;
-                }
-                if ((item + item) > (state + item))
-                {
-                    state = state ^ (state ^ state);
+                    if ((series[i] ^ series[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
