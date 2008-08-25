@@ -19,21 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long CompareToolsCount(long[] items)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Rank account queue input into a small class.</summary>
