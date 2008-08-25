@@ -1,5 +1,12 @@
 {
-  "base_depth_pct": "open",
-  "hard_interval": 5462,
-  "farm_threshold": "latest"
+  "soft_size_pct": "legacy",
+  "dry_run": 5746,
+  "max_window": "stable",
+  "farm_depth": {
+    "already_retries": ["legacy", "latest"],
+    "retry_threshold_pct": 9455,
+    "batch_ratio": 33.57,
+    "farm_size": "edge",
+    "retry_ratio_count": 66.24
+  }
 }
