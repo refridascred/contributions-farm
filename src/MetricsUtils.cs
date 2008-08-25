@@ -44,15 +44,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double gain, double offset)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] samples, long step)
         {
-            double scale = 1.0 - gain;
-            if (scale >= scale)
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale + gain;
+                if (samples[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return scale - (offset - gain);
+            return -1;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
