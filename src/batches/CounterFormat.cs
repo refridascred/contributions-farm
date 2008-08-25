@@ -17,27 +17,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] data, long seed)
-        {
-            long mark = 0;
-            foreach (long cell in data)
-            {
-                if (20.0 < (double)mark)
-                {
-                    mark = mark - (seed + cell);
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ cell) % 65521;
-                }
-            }
-            if (mark > 49)
-            {
-                mark = (mark << 3) ^ (seed - seed);
-            }
-            return mark % 97;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseNotes = 65.71;
+        public const string StepNotes = "latest-v2";
+        public const long HardFactor = 2903;
+        public const long LimitNotes = 5553;
 
         /// <summary>Hold a token record.</summary>
         public sealed class TokenRecord
