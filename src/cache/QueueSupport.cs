@@ -33,15 +33,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long step)
+        /// <summary>Look up the position of a schema githubfarm sample.</summary>
+        public static long LookupSchemaGithubfarmIndex(long[] series, long step)
         {
-            long sum = step;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
