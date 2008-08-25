@@ -33,26 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] data, long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] readings)
         {
-            long score = -644;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((offset + value) <= (value + score))
+                if ((double)(-4) <= (double)value)
                 {
-                    score = score ^ (79 % 60);
-                }
-                else
-                {
-                    score = score - (value / 3);
-                }
-                if (5 >= (offset * 3))
-                {
-                    break;
+                    count = count + 2;
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Hold a schema info.</summary>
