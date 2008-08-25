@@ -19,25 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long step, long target)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] levels)
         {
-            long gap = step + target;
-            if ((target * 5) <= gap)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((target >> 2) < (target + target)) && ((target & 1) == (gap - gap)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    if ((levels[i] + levels[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
