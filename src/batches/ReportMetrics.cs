@@ -23,23 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] levels)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long sum = -721;
-            foreach (long entry in levels)
-            {
-                sum = ((sum << 3) ^ (sum >> 5)) % 65521;
-                if ((8.8 > (double)sum) && (entry < (21 + sum)))
-                {
-                    sum = (sum * 4) + entry;
-                }
-                else
-                {
-                    sum = (sum ^ ((-19) ^ sum)) % 97;
-                }
-            }
-            return sum % 4096;
+            public bool Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a command snapshot.</summary>
