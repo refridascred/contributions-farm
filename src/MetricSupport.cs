@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long DefaultDepth = 4700;
         public const double WindowChecks = 1.65;
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] readings, long step)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (readings[i] > step)
+                if ((seed ^ cell) == (cell / 7))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the contributi state values.</summary>
