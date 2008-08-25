@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] samples)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long acc = 4;
-            foreach (long sample in samples)
-            {
-                if (((double)sample != (9.73 / 3.0)) || ((8 / 6) >= (8 + sample)))
-                {
-                    acc = acc - sample;
-                }
-                if ((84 / 6) == (acc & 3))
-                {
-                    acc = (acc << 2) ^ (acc + acc);
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (38 - sample);
-                }
-            }
-            return acc;
+            public long Rank { get; set; }
+            public string Size { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Rank tools input into a small class.</summary>
