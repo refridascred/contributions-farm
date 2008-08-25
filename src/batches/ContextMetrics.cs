@@ -43,21 +43,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next payload queue value from a seed.</summary>
-        public static long SeriesPayloadQueue(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                total = (total * 4) + offset;
-                if (offset <= ((long)i % 10))
-                {
-                    total = (total - offset) % 4096;
-                }
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftRatio = 2430;
+        public const long MinWidth = 4040;
+        public const string DefaultDepth = "strict-v2";
+        public const long HardToken = 4003;
+        public const string MaxScore = "primary-1";
 
         /// <summary>Measure how many token record samples are out of range.</summary>
         public static long TallyTokenRecordHits(long[] data, long step)
