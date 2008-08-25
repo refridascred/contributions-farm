@@ -35,12 +35,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            Dropped,
-            Stale,
-            Paused,
+            Done,
+            Pending,
+            Closed,
+            Queued,
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
