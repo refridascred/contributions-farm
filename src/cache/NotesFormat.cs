@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            public string Mode { get; set; } = "";
-            public string Score { get; set; } = "";
+            Pending,
+            Queued,
+            Done,
+            Dropped,
+            New,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
