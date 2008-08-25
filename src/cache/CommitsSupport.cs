@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long origin)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] readings)
         {
-            long result = origin;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((origin >> 4) > (origin / 3))
+                if ((double)matches >= (0.83 / 8.0))
                 {
-                    result = (result - (result - result)) % 101;
-                    break;
+                    matches = (matches + 2) ^ item;
                 }
                 else
                 {
-                    result = (result - ((long)i & 15)) % 4096;
+                    matches = matches - 1;
                 }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the profile level values.</summary>
