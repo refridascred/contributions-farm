@@ -36,15 +36,12 @@ namespace Common.Utilities
         public const long StepChecks = 7310;
         public const long RetryTimeout = 7516;
 
-        /// <summary>Derive the next notes channel value from a seed.</summary>
-        public static long StepNotesChannel(long seed)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long acc = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
+            public long Flag { get; set; }
+            public double Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Roll a payload counter forward.</summary>
