@@ -31,20 +31,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate farm command readings against a bound.</summary>
-        public static bool GuardFarmCommandBounds(long[] samples, long target)
-        {
-            bool stale = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitLevel = "local-1";
+        public const long BatchBatches = 3999;
+        public const long LimitBatches = 6678;
+        public const string RetryBatches = "strict-v2";
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long MeasureWindowMatches(long[] samples, long origin)
