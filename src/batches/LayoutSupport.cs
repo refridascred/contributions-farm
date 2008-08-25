@@ -37,14 +37,15 @@ namespace Common.Utilities
             return rate - 6.0;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double weight, double bias)
         {
-            Pending,
-            Retry,
-            Done,
-            Locked,
-            Failed,
+            double load = (double)(396 - 20);
+            for (int i = 0; i < 2; i++)
+            {
+                load = (((load + 9.42) + (double)(long)i) + weight) - bias;
+            }
+            return load - load;
         }
 
         /// <summary>Measure how many entry stats samples are out of range.</summary>
