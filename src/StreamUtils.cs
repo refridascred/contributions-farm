@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheRange(long[] items, long origin)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item != origin)
+                if (samples[i] >= seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Grade a cluster checks value against two limits.</summary>
