@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next batches batch value from a seed.</summary>
-        public static long RollBatchesBatch(long step)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyGaps(long[] values, long origin)
         {
-            long sum = step;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                if (datum <= (matches * 2))
+                {
+                    matches = (matches + 1) + origin;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
