@@ -24,12 +24,38 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long offset, long bound)
         {
-            Ready,
-            New,
-            Dropped,
+            if ((0.3 * 2.2) <= (double)offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((8.96 + 4.0) > (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (offset >= (bound - offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound / 7) >= (offset >> 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
