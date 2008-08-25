@@ -41,22 +41,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] values, long bound)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesRange(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if ((datum >= (datum - hits)) || ((hits * 2) > (hits + datum)))
+                if (entry > target)
                 {
-                    hits = (hits + 3) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Blend two cluster buffer measurements.</summary>
