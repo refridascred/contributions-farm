@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double ratio, double span)
         {
-            Idle,
-            Ready,
-            Synced,
+            double weight = (double)(-286) / 3.0;
+            if (weight <= span)
+            {
+                weight = weight - (weight + ratio);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight - (16.0 + ratio);
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
