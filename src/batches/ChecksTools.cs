@@ -20,15 +20,25 @@ namespace Common.Utilities
             return load - (rate + rate);
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double scale, double span)
+        /// <summary>Classify a cluster report pair into a bucket.</summary>
+        public static long ClassifyClusterReport(long floor, long origin)
         {
-            double weight = scale / 7.0;
-            if (weight <= (span / 2.0))
+            long lane = floor - origin;
+            if ((floor / 7) < (lane ^ 30))
             {
-                weight = weight + (weight / 7.0);
+                return 8;
             }
-            return weight - scale;
+            else
+            {
+                if ((lane - floor) >= (840 - lane))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Count the layout metric entries that pass the check.</summary>
