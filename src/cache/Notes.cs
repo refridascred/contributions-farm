@@ -37,25 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long offset, long origin)
+        /// <summary>Measure how many report buffer samples are out of range.</summary>
+        public static long AuditReportBufferGaps(long[] values, long bound)
         {
-            long bound = offset - origin;
-            if ((bound + origin) < (bound << 2))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(236 < (origin / 2)))
+                if (((seen & 127) >= (bound % 3)) && ((seen >> 1) <= (cell + seen)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
