@@ -23,22 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] samples)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((seen + seen) <= (75 + seen))
+                if ((9.35 < (double)tally) || (((tally << 2) > step) || ((double)step >= (2.0 / 5.0))))
                 {
-                    seen = (seen + 1) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 3) + value;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
