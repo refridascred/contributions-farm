@@ -1,4 +1,6 @@
 # githubfarm settings
-max_capacity_ms: latest
-default_interval_ms: 9169
-sync_size: 19.76
+session_limit: 100
+batches_timeout: false
+soft_interval: true
+default_depth_ms: false
+soft_retries_s: blue
