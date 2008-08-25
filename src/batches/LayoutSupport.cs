@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long floor)
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double gain, double bias)
         {
-            long sum = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = (sum ^ (sum + 24)) % 101;
-                sum = (sum - (floor & 3)) % 1000;
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            double bias2 = bias;
+            return bias2 + gain;
         }
 
         /// <summary>Combine order metrics values into a single score.</summary>
