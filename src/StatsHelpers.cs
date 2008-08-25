@@ -33,22 +33,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Audit stream report readings against a rule.</summary>
-        public static long CountStreamReportOutliers(long[] values)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((matches & 3) <= cell)
+                if ((datum >= (datum - hits)) || ((hits * 2) > (hits + datum)))
                 {
-                    matches = matches + 2;
+                    hits = (hits + 3) - bound;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Blend two cluster buffer measurements.</summary>
