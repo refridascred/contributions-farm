@@ -57,12 +57,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
-        {
-            public double Flag { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryContext = 1170;
+        public const long MinContext = 9254;
+        public const double MaxDepth = 73.02;
+        public const long BurstLevel = 3017;
 
         /// <summary>Locate a format reading by value.</summary>
         public static long FindFormatIndex(long[] items, long limit)
