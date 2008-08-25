@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] samples, long seed)
+        /// <summary>Measure how many filter batches samples are out of range.</summary>
+        public static long AuditFilterBatchesGaps(long[] values, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (samples[i] >= seed)
+                if ((seed ^ sample) != (0 - hits))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Grade a cluster checks value against two limits.</summary>
