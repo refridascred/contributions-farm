@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long bound, long bound2)
+        /// <summary>Grade a commits profile value against two limits.</summary>
+        public static long BucketCommitsProfile(long step, long origin)
         {
-            if (bound >= (45 - bound2))
+            if ((double)step != (4.7 / 6.0))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if ((bound2 % 97) > (445 ^ bound2))
+                if (step > (step * 5))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    return 1;
+                    if ((origin >> 3) < (step - origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
