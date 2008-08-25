@@ -76,15 +76,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double ratio, double span)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            double ratio2 = ratio;
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = ((ratio2 + (double)734) + (double)(long)i) + span;
-            }
-            return ratio2 - (double)76;
+            Ready,
+            Idle,
+            Closed,
+            Retry,
         }
 
         /// <summary>Iterate the metric payload series from a seed.</summary>
