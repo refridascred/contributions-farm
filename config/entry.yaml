@@ -1,5 +1,5 @@
 # entry settings
-strict: 100
-account_size: legacy
-verbose: true
-idle_limit_s: 48
+commits_delay: 100
+retry_window_pct: cached
+window_delay: false
+default_interval: true
