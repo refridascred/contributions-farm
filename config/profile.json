@@ -1,6 +1,18 @@
 {
-  "queue_delay": "fallback",
-  "compress": false,
-  "flush_ttl_s": 50.06,
-  "base_interval_ms": "eu-west"
+  "sync_depth_count": ["edge", "latest"],
+  "soft_threshold_s": "stable",
+  "min_interval": true,
+  "schema_capacity": true,
+  "poll_ratio": {
+    "idle_size_count": 4813,
+    "base_threshold_pct": [463, 174, 222],
+    "max_size_count": "edge"
+  },
+  "cache_ttl_ms": {
+    "cache_depth": 33.45,
+    "batch_delay": "eu-west",
+    "window_depth": 250,
+    "record_delay": 45.31,
+    "base_size_s": true
+  }
 }
