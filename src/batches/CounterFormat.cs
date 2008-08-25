@@ -27,19 +27,24 @@ namespace Common.Utilities
         public const long WindowBudget = 3250;
         public const long CacheCluster = 3182;
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double rate, double span)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long floor, long bound)
         {
-            double load = (span - rate) + rate;
-            if (load >= load)
+            if ((bound - bound) < (49 << 1))
             {
-                load = load - rate;
+                return 3;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                load = (load - (load * 1.0)) + (double)(long)i;
+                if ((bound - floor) <= (bound % 100))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return load + rate;
         }
     }
 }
