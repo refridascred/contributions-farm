@@ -70,23 +70,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] levels)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long limit)
         {
-            long score = 56;
-            foreach (long entry in levels)
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
             {
-                score = (score - (score & 7)) % 101;
-                if ((double)score < (1.0 * 1.52))
+                if ((double)limit < 4.2)
                 {
-                    score = (score ^ entry) % 255;
+                    anchor = ((anchor << 2) ^ (anchor & 7)) % 65521;
+                    anchor = (anchor ^ (limit + limit)) % 101;
                 }
-                if ((double)entry == (20.0 / 4.0))
+                else
                 {
-                    break;
+                    anchor = (anchor + (-24)) % 101;
                 }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Blend two route measurements.</summary>
