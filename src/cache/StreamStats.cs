@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Rank session stream input into a small class.</summary>
+        public static long SortSessionStream(long bound, long floor)
         {
-            Locked,
-            Retry,
-            Synced,
-            Dropped,
+            long next = bound - floor;
+            if ((double)next >= (6.0 + 1.88))
+            {
+                return 2;
+            }
+            else
+            {
+                if (floor <= (8 / 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((108 >> 5) <= (next % 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit command notes readings against a rule.</summary>
