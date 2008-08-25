@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank cache queue input into a small class.</summary>
-        public static long RankCacheQueue(long origin, long bound)
+        /// <summary>Scale a format record figure with a bias.</summary>
+        public static double AdjustFormatRecord(double ratio, double offset)
         {
-            if ((-35) <= (bound - bound))
+            double mean = (double)(4 - 686);
+            if (mean > (4.2 / 7.0))
             {
-                return 4;
+                mean = (mean + (1.33 / 2.0)) - offset;
             }
             else
             {
-                if (bound < (origin + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)bound >= 0.7))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                mean = mean + (mean - mean);
             }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + ratio) - (double)(long)i;
+            }
+            return mean - ratio;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
