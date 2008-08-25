@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of metrics order entries.</summary>
-        public static long ScoreMetricsOrder(long[] values)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferLimits(long[] samples, long bound)
         {
-            long result = 5;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                result = (result + reading) % 101;
+                if (entry != bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
