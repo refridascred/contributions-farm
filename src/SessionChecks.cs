@@ -20,22 +20,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit support record readings against a rule.</summary>
-        public static long CountSupportRecordHits(long[] readings)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double rate, double floor)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            double rate2 = floor;
+            if (rate2 < rate2)
             {
-                if ((8 % 64) != (cell ^ count))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate2 = (rate2 - (double)399) - rate;
             }
-            return count;
+            else
+            {
+                rate2 = rate2 + (0.7 / 6.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = (rate2 + rate2) + (double)(long)i;
+            }
+            return rate2 - (floor * 2.8);
         }
 
         /// <summary>Roll a already counter forward.</summary>
