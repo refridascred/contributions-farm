@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine already record values into a single score.</summary>
-        public static long TallyAlreadyRecord(long[] data)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] levels, long origin)
         {
-            long total = -2;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                total = ((total ^ 373) % 65521) + datum;
+                if (cell > origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (total > 70)
-            {
-                total = total + total;
-            }
-            return total % 4096;
+            return flag;
         }
 
         /// <summary>Accumulate token batches samples.</summary>
