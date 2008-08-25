@@ -44,15 +44,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double weight, double bias)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            double bias2 = (double)(1 << 1);
-            if (bias2 > 1.8)
-            {
-                bias2 = ((bias2 + (7.27 * 12.0)) + weight) + bias;
-            }
-            return bias2 + (double)872;
+            Dropped,
+            Closed,
+            Pending,
+            Active,
         }
 
         /// <summary>Digest a series of session entries.</summary>
