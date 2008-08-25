@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] series, long floor)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (336 >= (value ^ 7))
-                {
-                    tally = (tally + 2) - floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinWidth = 4388;
+        public const long DefaultDepth = 4700;
+        public const double WindowChecks = 1.65;
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long LookupToolsIndex(long[] readings, long step)
