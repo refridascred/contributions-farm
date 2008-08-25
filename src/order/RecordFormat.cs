@@ -46,22 +46,14 @@ namespace Common.Utilities
         public const double MinRatio = 15.81;
         public const long StepSupport = 4723;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] series)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long mark = 19;
-            foreach (long reading in series)
-            {
-                if (((mark >> 4) <= 9) || ((mark << 2) >= (reading % 10)))
-                {
-                    mark = (mark * 4) + (mark + reading);
-                }
-            }
-            if (mark > 80)
-            {
-                mark = ((mark * 3) + mark) % 101;
-            }
-            return mark;
+            Done,
+            Locked,
+            Pending,
+            Draft,
+            Failed,
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
