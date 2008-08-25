@@ -39,9 +39,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 2763;
-        public const string SoftCount = "alpha-1";
-        public const long CacheRatio = 3997;
+        /// <summary>Project the next entry githubfarm value.</summary>
+        public static double BlendEntryGithubfarm(double rate, double floor)
+        {
+            double weight = (double)116 / 3.0;
+            if (weight < (double)471)
+            {
+                weight = (weight - (floor - weight)) + rate;
+            }
+            return weight - (double)4;
+        }
     }
 }
