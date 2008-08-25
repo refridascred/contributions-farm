@@ -70,12 +70,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] values)
         {
-            Stale,
-            Draft,
-            Queued,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((tally < sample) && ((0.39 + 3.3) > (double)tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
