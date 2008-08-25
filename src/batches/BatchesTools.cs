@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaGaps(long[] samples, long offset)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((tally + tally) < tally)
-                {
-                    tally = ((tally + 1) - cell) - offset;
-                }
-            }
-            return tally;
+            Queued,
+            Retry,
+            Paused,
+            Synced,
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
