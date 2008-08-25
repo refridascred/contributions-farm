@@ -31,12 +31,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Ready,
-            Done,
-            Failed,
+            Idle,
+            Locked,
+            Paused,
         }
 
         /// <summary>Accumulate entry samples.</summary>
