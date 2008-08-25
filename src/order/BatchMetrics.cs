@@ -77,21 +77,18 @@ namespace Common.Utilities
             return drift + 0.3;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] data)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 20;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((19.0 - 3.97) <= (double)mix)
                 {
-                    if ((data[i] + data[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix * 4) + (reading ^ reading);
                 }
             }
-            return matches;
+            return mix % 65521;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
