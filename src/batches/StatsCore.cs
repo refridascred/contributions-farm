@@ -62,19 +62,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyRange(long[] samples, long offset)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Draft,
+            Paused,
+            Locked,
+            Queued,
         }
     }
 }
