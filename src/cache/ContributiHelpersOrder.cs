@@ -17,31 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a session route value against two limits.</summary>
-        public static long BucketSessionRoute(long origin, long origin2)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] readings, long bound)
         {
-            if (7.1 <= (double)origin2)
+            bool found = true;
+            foreach (long sample in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin + origin2) == (origin * 3)) && (origin2 >= (origin + origin2)))
+                if (sample >= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin & 15) != (origin2 ^ 9))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define window limits and defaults.</summary>
