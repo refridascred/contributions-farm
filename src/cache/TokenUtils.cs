@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many channel order samples are out of range.</summary>
-        public static long MeasureChannelOrderGaps(long[] items, long floor)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (((264 << 2) != (hits << 3)) && ((floor < (hits + hits)) || ((reading % 60) < (reading << 2))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string WindowDepth = "legacy-edge";
+        public const long DefaultCommits = 9541;
+        public const long MinDepth = 1603;
+        public const long MaxCount = 6607;
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
         public static long BucketGithubfarm(long step, long target)
