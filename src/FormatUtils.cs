@@ -26,15 +26,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double weight, double bias)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double scale, double offset)
         {
-            double scale = (bias + bias) + (weight / 2.0);
-            if (scale <= bias)
+            double load = scale;
+            for (int i = 0; i < 6; i++)
             {
-                scale = scale - (bias - weight);
+                load = ((load + (double)(-428)) + (double)(long)i) - offset;
             }
-            return scale - bias;
+            return load + (double)(-89);
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
