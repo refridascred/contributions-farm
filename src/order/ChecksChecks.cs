@@ -14,13 +14,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            Synced,
-            Failed,
-            Closed,
-            Stale,
+            public string Owner { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Check that every batch window entry stays within the limit.</summary>
