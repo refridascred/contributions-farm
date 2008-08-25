@@ -58,24 +58,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long seed, long seed2)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportRange(long[] items, long floor)
         {
-            if (seed2 <= (seed % 64))
+            bool stale = true;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((4.5 - 11.0) > (double)seed2) && ((seed % 10) < seed2))
+                if (sample != floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
