@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] readings)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double gain, double span)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            double weight = gain;
+            if (weight > (1.0 - 6.3))
             {
-                if ((double)matches >= (0.83 / 8.0))
-                {
-                    matches = (matches + 2) ^ item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                weight = weight + (8.0 + span);
             }
-            return matches;
+            else
+            {
+                weight = weight - span;
+            }
+            return weight - (weight * 9.0);
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
