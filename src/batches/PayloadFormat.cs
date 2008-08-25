@@ -30,13 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            Stale,
-            Retry,
-            Synced,
-            Ready,
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the counter state values.</summary>
