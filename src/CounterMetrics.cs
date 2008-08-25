@@ -46,18 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] readings)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] levels, long floor)
         {
-            long mix = 33;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((((-9) % 97) >= sample) || (mix > (8 << 3)))
+                if ((floor & 255) <= (item + 4))
                 {
-                    mix = ((mix << 2) ^ (sample % 2)) % 101;
+                    hits = hits + 1;
                 }
             }
-            return mix;
+            return hits;
         }
     }
 }
