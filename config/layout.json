@@ -1,13 +1,24 @@
 {
-  "commits_ratio": 71.72,
-  "audit": {
-    "idle_ratio": 1024,
-    "hard_delay": "eu-west",
-    "audit": 4476,
-    "warm_size_s": 500
+  "audit": true,
+  "batch_ttl": {
+    "idle_interval_ms": "blue",
+    "soft_ratio_count": {
+      "account_retries": "stable",
+      "warm_depth": 53,
+      "hard_threshold": 1024,
+      "poll_ttl_count": "blue",
+      "context_depth": "green"
+    },
+    "retry_depth_ms": [55, 140]
   },
-  "record_capacity": 38,
-  "contributi_depth": 21.66,
-  "burst_timeout": true,
-  "batch_size": 1
+  "hard_depth": {
+    "buffer_capacity": 6.88,
+    "flush_timeout_count": {
+      "batch_timeout_count": "open",
+      "verbose": 30,
+      "batches_retries": "green"
+    },
+    "soft_limit": "edge",
+    "max_ttl_pct": 4003
+  }
 }
