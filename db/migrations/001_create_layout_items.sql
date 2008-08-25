@@ -2,14 +2,13 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     state TEXT NOT NULL DEFAULT 'new',
+    region TEXT,
+    active INTEGER NOT NULL DEFAULT 1,
     weight REAL,
-    token TEXT,
-    score REAL NOT NULL DEFAULT 0,
-    level INTEGER
+    rank INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_weight ON layout_items (weight);
+CREATE INDEX IF NOT EXISTS idx_layout_items_rank ON layout_items (rank);
 
-INSERT INTO layout_items (state, weight, token, score, level) VALUES ('open', 49.24, 'cached', 23.9, 54);
-INSERT INTO layout_items (state, weight, token, score, level) VALUES ('standard', 91.59, 'green', 96.36, 41);
-INSERT INTO layout_items (state, weight, token, score, level) VALUES ('edge', 81.16, 'primary', 51.18, 3);
+INSERT INTO layout_items (state, region, active, weight, rank) VALUES ('local', 'open', 30, 78.41, 2);
+INSERT INTO layout_items (state, region, active, weight, rank) VALUES ('open', 'standard', 29, 66.18, 48);
