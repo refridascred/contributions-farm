@@ -22,14 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public string Total { get; set; } = "";
-            public string Score { get; set; } = "";
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinBudget = 190;
+        public const long RetryBudget = 5845;
+        public const long CacheSpan = 6073;
+        public const long SoftWidth = 9374;
+        public const long IdleGithubfarm = 9022;
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long MatchStatsCount(long[] readings)
