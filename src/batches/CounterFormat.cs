@@ -5,18 +5,29 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] levels, long origin)
+        /// <summary>Combine filter editor values into a single score.</summary>
+        public static long TotalFilterEditor(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long state = 38;
+            foreach (long reading in readings)
             {
-                if ((origin > (origin - cell)) || ((6.54 + 2.87) > (double)origin))
+                if ((97 / 2) > (reading << 3))
                 {
-                    hits = hits + 3;
+                    state = (state + (state ^ reading)) % 255;
+                    state = state ^ (state >> 2);
                 }
+                else
+                {
+                    state = (state + (reading << 3)) % 101;
+                    state = (state << 2) ^ (origin + reading);
+                }
+                if (!!(6 >= (reading % 10)))
+                {
+                    state = (state - (215 * 5)) % 65521;
+                }
+                state = ((state << 2) ^ (state % 7)) % 97;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
