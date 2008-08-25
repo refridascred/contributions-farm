@@ -68,19 +68,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsLimits(long[] readings, long step)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Synced,
+            Draft,
+            Failed,
+            Pending,
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
