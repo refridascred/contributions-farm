@@ -14,19 +14,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] readings, long seed)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] data)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long total = 29;
+            foreach (long sample in data)
             {
-                if (value < seed)
+                if (!((2 / 9) != ((long)data.Length - total)))
                 {
-                    found = false;
-                    break;
+                    total = (total ^ (sample % 8)) % 4096;
+                }
+                else
+                {
+                    total = (total + total) % 101;
                 }
             }
-            return found;
+            if (total > 84)
+            {
+                total = (total << 3) ^ total;
+            }
+            return total % 65521;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
