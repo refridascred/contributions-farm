@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double ratio, double bias)
         {
-            Draft,
-            Synced,
-            Closed,
+            double scale = ratio - bias;
+            if (scale >= (double)46)
+            {
+                scale = scale - scale;
+            }
+            return scale + (bias + bias);
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
