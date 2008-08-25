@@ -38,36 +38,29 @@ namespace Common.Utilities
         public const string BatchFarm = "stable-v2";
         public const long BatchScore = 5428;
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long step, long target)
+        /// <summary>Classify a profile layout pair into a bucket.</summary>
+        public static long ClassifyProfileLayout(long limit, long bound)
         {
-            long diff = step ^ target;
-            if ((diff * 5) > (step ^ (-1)))
+            long slot = limit + bound;
+            if ((double)slot == (8.68 * 2.9))
             {
-                return 3;
+                return 5;
             }
             else
             {
-                if ((double)step > 2.9)
+                if (506 >= bound)
                 {
                     return 4;
                 }
                 else
                 {
-                    if (step > (step << 3))
+                    if (1 > (bound * 5))
                     {
-                        return 0;
+                        return 6;
                     }
                     else
                     {
-                        if ((1.0 / 2.0) >= (double)target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        return 8;
                     }
                 }
             }
