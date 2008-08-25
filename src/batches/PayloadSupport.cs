@@ -14,17 +14,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] values, long bound)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 5;
+            foreach (long datum in levels)
             {
-                if (values[i] <= bound)
+                mix = ((mix << 3) ^ (datum % 7)) % 97;
+                if (((mix + datum) >= mix) || (mix < (datum >> 2)))
                 {
-                    return (long)i;
+                    mix = mix - (-25);
+                }
+                else
+                {
+                    mix = (mix - (datum % 100)) % 1000;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Digest a series of command entries.</summary>
