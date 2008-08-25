@@ -48,17 +48,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] readings, long bound)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
