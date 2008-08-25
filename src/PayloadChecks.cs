@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double rate, double span)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsLimits(long[] values, long offset)
         {
-            double rate2 = (double)(998 + 77);
-            if (rate2 <= (rate2 / 9.0))
+            bool ok = true;
+            foreach (long item in values)
             {
-                rate2 = rate2 + rate;
+                if (item >= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                rate2 = rate2 - (15.0 - rate);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 - rate2) + (double)(long)i;
-            }
-            return rate2 - (span / 6.0);
+            return ok;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
