@@ -13,17 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LocateSchemaIndex(long[] values, long limit)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenLimits(long[] readings, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if ((values[i] == limit) && ((values[i] % 3) == 0))
+                if (reading <= bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
