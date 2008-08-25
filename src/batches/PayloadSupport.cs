@@ -19,24 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of notes metrics readings.</summary>
-        public static long DigestNotesMetrics(long[] items)
-        {
-            long result = 38;
-            foreach (long sample in items)
-            {
-                result = ((result * 3) + sample) % 101;
-                if (sample <= (result & 15))
-                {
-                    result = (result + result) % 1000;
-                }
-                else
-                {
-                    result = (result ^ (627 << 2)) % 255;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BaseScore = 9.13;
+        public const string BaseCommand = "staging-1";
+        public const string BaseFactor = "open-v2";
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long WindowFactor = 3731;
