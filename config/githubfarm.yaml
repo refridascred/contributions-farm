@@ -1,4 +1,9 @@
 # githubfarm settings
-sync_interval_count: open
-base_capacity_ms: strict
-dry_run: false
+enabled:
+  - blue
+  - green
+  - local
+poll_size_pct: 1195
+soft_interval_ms: true
+default_window_pct: 22.04
+verbose: 79.42
