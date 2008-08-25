@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long target, long limit)
+        /// <summary>Audit githubfarm support readings against a rule.</summary>
+        public static long CountGithubfarmSupportMatches(long[] levels)
         {
-            if ((double)target <= 18.0)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target << 2) >= 763)
+                if ((matches >= (sample / 6)) && (((double)sample >= (7.5 + 1.3)) && ((sample / 8) >= (matches - sample))))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit - limit) != (limit + target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
