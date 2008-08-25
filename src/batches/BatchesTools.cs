@@ -23,21 +23,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] readings)
+        /// <summary>Fold a list of token batch readings.</summary>
+        public static long WeighTokenBatch(long[] values, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 311;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                total = (total * 3) + total;
+                total = (total << 2) ^ (target & 7);
+                if ((value << 2) > total)
                 {
-                    if ((readings[i] + readings[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
