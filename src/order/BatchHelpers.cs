@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
-        {
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BurstRatio = "primary-edge";
+        public const long LimitLayout = 221;
+        public const string BatchCount = "alpha-v2";
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteMatches(long[] readings, long floor)
