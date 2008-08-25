@@ -37,15 +37,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long step)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmRange(long[] samples, long offset)
         {
-            long result = step;
-            for (int i = 0; i < 24; i++)
+            bool found = true;
+            foreach (long item in samples)
             {
-                result = ((result * 5) + (long)i) % 97;
+                if (item <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Define route limits and defaults.</summary>
