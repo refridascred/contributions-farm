@@ -30,18 +30,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] data, long floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (floor <= (floor / 9))
+                if ((seen << 2) > 0)
                 {
-                    tally = (tally + 3) + entry;
+                    seen = ((seen + 2) - value) - origin;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
