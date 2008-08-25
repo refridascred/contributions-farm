@@ -96,15 +96,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double gain, double span)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long floor)
         {
-            double mean = gain;
-            for (int i = 0; i < 6; i++)
+            long result = floor;
+            for (int i = 0; i < 14; i++)
             {
-                mean = (mean - span) + (double)(long)i;
+                result = (result + result) % 4096;
+                if ((floor ^ result) >= (result - 78))
+                {
+                    result = (result - (floor << 1)) % 4096;
+                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return mean - 5.0;
+            return result;
         }
     }
 }
