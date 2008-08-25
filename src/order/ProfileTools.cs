@@ -10,17 +10,24 @@ namespace Common.Utilities
         public const double DefaultDepth = 89.88;
         public const long MaxWidth = 9195;
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] data, long seed)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long origin, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((origin + origin) != (origin ^ origin))
             {
-                if ((data[i] > seed) && ((data[i] % 2) != 0))
+                return 7;
+            }
+            else
+            {
+                if ((floor ^ floor) <= (760 * 2))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of support profile readings.</summary>
