@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetryStats = 15.57;
-        public const long BaseStats = 639;
-        public const string WindowStats = "cached-edge";
-        public const string HardStats = "strict-edge";
-        public const long CacheScore = 3319;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 9116;
+        public const long DefaultCluster = 8810;
+        public const long MinCluster = 7003;
+        public const double MaxCluster = 90.55;
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
