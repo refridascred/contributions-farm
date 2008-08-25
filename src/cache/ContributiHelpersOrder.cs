@@ -38,13 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] values, long step)
         {
-            public double Ratio { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((datum + datum) != (datum ^ datum))
+                {
+                    matches = (matches + 2) + step;
+                }
+            }
+            return matches;
         }
     }
 }
