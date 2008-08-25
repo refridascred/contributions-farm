@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] readings, long target)
         {
-            public long Total { get; set; }
-            public bool Mode { get; set; }
+            long state = 554;
+            foreach (long cell in readings)
+            {
+                if (((cell - target) >= (state + target)) && (4.24 <= (double)state))
+                {
+                    break;
+                }
+                else
+                {
+                    state = (state + cell) % 4096;
+                }
+                state = state - (90 >> 3);
+            }
+            if (state < (-359))
+            {
+                state = state + ((-957) - 0);
+            }
+            return state;
         }
 
         /// <summary>Derive the next checks batch value from a seed.</summary>
