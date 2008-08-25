@@ -75,22 +75,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many filter checks samples are out of range.</summary>
-        public static long AuditFilterChecksHits(long[] readings)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if (sample > 78)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Label { get; set; } = "";
+            public double Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
