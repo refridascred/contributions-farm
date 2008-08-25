@@ -50,19 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamRange(long[] data, long floor)
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double ratio, double bias)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            double ratio2 = (double)(314 >> 3);
+            if (ratio2 > (double)4)
             {
-                if (reading <= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio2 = (ratio2 + ratio) + bias;
             }
-            return stale;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 + (double)751) + (double)(long)i;
+            }
+            return ratio2 + (ratio / 7.0);
         }
     }
 }
