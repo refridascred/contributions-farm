@@ -1,5 +1,15 @@
 {
-  "payload_ratio": "stable",
-  "dry_run": ["edge", "legacy", "strict", "latest"],
-  "burst_capacity_count": "cached"
+  "base_ratio_pct": {
+    "verbose": 36,
+    "sync_size": "local",
+    "schema_retries": 86,
+    "entry_ratio": true,
+    "default_capacity": 500,
+    "batch_depth": 7347
+  },
+  "cache_window_pct": 36,
+  "compress": 3416,
+  "dry_run": ["legacy", "staging", "blue"],
+  "record_retries": 11,
+  "base_size_count": "local"
 }
