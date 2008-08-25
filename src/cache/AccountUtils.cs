@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Draft,
-            Active,
-            Ready,
-            New,
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Grade a context value against two limits.</summary>
