@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
+            Failed,
             Paused,
-            Dropped,
-            Active,
+            Synced,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
