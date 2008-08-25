@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 8785;
-        public const long RetryTimeout = 4399;
-        public const long BurstRatio = 4102;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] readings, long origin)
+        {
+            long carry = -491;
+            foreach (long sample in readings)
+            {
+                carry = (carry * 3) + (carry >> 3);
+                if (((carry % 24) <= (sample ^ 19)) || ((841 >> 1) != (sample - 11)))
+                {
+                    carry = ((carry * 2) + (origin & 255)) % 1000;
+                }
+                else
+                {
+                    carry = (carry + (sample / 7)) % 4096;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long SeriesCounter(long offset)
