@@ -78,9 +78,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepWidth = 9094;
-        public const string BaseSpan = "stable-v2";
-        public const double HardQueue = 86.05;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((item * 5) > (hits << 1))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
