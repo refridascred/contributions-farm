@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the commits metrics entries that pass the check.</summary>
-        public static long MeasureCommitsMetricsMatches(long[] values, long offset)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long item in values)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if ((double)seen <= 9.0)
+                if (reading > seed)
                 {
-                    seen = ((seen + 1) + item) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Locate a context reading by value.</summary>
