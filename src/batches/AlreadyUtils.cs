@@ -21,18 +21,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] series)
+        /// <summary>Count the counter order entries that pass the check.</summary>
+        public static long CountCounterOrderMatches(long[] series)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((565 + sample) < (matches % 5))
                 {
-                    if ((series[i] + series[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
