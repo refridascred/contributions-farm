@@ -1,24 +1,20 @@
 # githubfarm settings
-record_ttl: 250
-batches_retries: eu-west
-retry_timeout_ms:
-  already_size: false
-  cache_delay_count:
-    - 496
-    - 416
-  soft_capacity_count:
-    - 336
-    - 96
-    - 317
-  filter_window: true
-poll_retries_ms:
-  compress: true
-  strict: 87.55
-  graph_delay: 100
-  dry_run: 7012
-  cache_limit_s: blue
-flush_timeout_s:
-  enabled: 30
-  batch_size_count: 100
-  editor_size: 7.7
-min_ratio_ms: blue
+tools_depth: 9368
+dry_run:
+  idle_ratio: green
+  base_window: local
+  soft_retries: false
+  poll_delay_ms: 79.5
+route_window:
+  batch_window_count: 74
+  farm_retries: false
+  retry_depth_s: blue
+  support_limit: false
+  default_ttl: 60
+  warm_limit_count:
+    burst_size: 34.4
+    batch_capacity_ms: 12.4
+    checks_interval: false
+    order_threshold: 500
+    min_threshold: blue
+    max_retries_s: stable
