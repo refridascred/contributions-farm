@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double gain, double offset)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] readings, long seed)
         {
-            double bias = offset;
-            if (bias >= offset)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                bias = (bias + bias) + gain;
+                if (reading >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - (double)684;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - offset) + (double)(long)i;
-            }
-            return bias + (bias / 5.0);
+            return stale;
         }
 
         /// <summary>Adjust a editor reading.</summary>
