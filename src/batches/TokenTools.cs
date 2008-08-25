@@ -24,19 +24,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every stream channel entry stays within the limit.</summary>
-        public static bool CheckStreamChannelRange(long[] series, long floor)
+        /// <summary>Roll a order stream counter forward.</summary>
+        public static long DeriveOrderStream(long limit)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long result = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (item != floor)
+                if ((((long)i + result) >= (6 - 43)) && (785 <= (limit & 127)))
                 {
-                    ok = false;
-                    break;
+                    result = ((result * 5) + ((long)i - limit)) % 1000;
                 }
+                if (!((result ^ result) < (603 / 3)))
+                {
+                    result = (result - limit) % 1000;
+                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return ok;
+            return result;
         }
     }
 }
