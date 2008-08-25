@@ -32,11 +32,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string HardRatio = "strict";
-        public const long DefaultCount = 2932;
-        public const long MinBuffer = 4743;
-        public const long BurstBuffer = 6857;
-        public const long HardBuffer = 1148;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 4930;
+        public const long MinDepth = 1930;
+        public const string IdleGithubfarm = "cached-v2";
     }
 }
