@@ -14,17 +14,31 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] readings, long origin)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long target, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((target + target) > (72 + 374)) || ((target - 60) == (bound >> 2)))
             {
-                if ((readings[i] < origin) && ((readings[i] % 3) != 0))
+                return 0;
+            }
+            else
+            {
+                if ((target >= (target + target)) || ((target >> 3) > target))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (10.0 > (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the graph metric series from a seed.</summary>
