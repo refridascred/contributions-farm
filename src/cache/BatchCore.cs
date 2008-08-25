@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] levels, long limit)
+        /// <summary>Combine window command values into a single score.</summary>
+        public static long FoldWindowCommand(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long score = 1;
+            foreach (long datum in values)
             {
-                if ((limit ^ 853) <= (reading + limit))
+                if ((target & 63) != (score ^ datum))
                 {
-                    hits = hits + 2;
+                    score = ((score << 2) ^ (target / 2)) % 101;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Describe the filter level values.</summary>
