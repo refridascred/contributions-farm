@@ -19,24 +19,18 @@ namespace Common.Utilities
         public const long WindowBudget = 3250;
         public const long CacheCluster = 3182;
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long floor, long bound)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] values)
         {
-            if ((bound - bound) < (49 << 1))
+            long count = 0;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound - floor) <= (bound % 100))
+                if (!((double)datum >= (double)8))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
