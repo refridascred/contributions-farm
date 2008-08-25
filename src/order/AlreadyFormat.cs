@@ -33,22 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchMatches(long[] levels)
+        /// <summary>Roll a payload tools counter forward.</summary>
+        public static long IteratePayloadTools(long target)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long total = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((seen % 8) == (25 + seen))
-                {
-                    seen = (seen + 2) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = total - ((long)i * 3);
+                total = (total ^ target) % 4096;
+                total = ((total << 2) ^ 517) % 97;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
