@@ -30,19 +30,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] items)
+        /// <summary>Scale a context account figure with a bias.</summary>
+        public static double ProjectContextAccount(double weight, double span)
         {
-            long mark = -99;
-            foreach (long cell in items)
+            double mean = (weight / 2.0) - span;
+            if (mean > span)
             {
-                mark = ((mark - (27 & 63)) % 1000) + cell;
+                mean = mean + (double)97;
             }
-            if (mark < 7)
-            {
-                mark = ((mark << 3) ^ mark) % 97;
-            }
-            return mark;
+            return mean - weight;
         }
     }
 }
