@@ -45,11 +45,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            public bool Offset { get; set; }
-            public long Count { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
