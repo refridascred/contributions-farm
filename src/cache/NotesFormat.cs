@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Locate a already buffer reading by value.</summary>
+        public static long SeekAlreadyBufferIndex(long[] values, long offset)
         {
-            public double Owner { get; set; }
-            public double Level { get; set; }
-            public double Offset { get; set; }
-            public double Ratio { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
