@@ -29,11 +29,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define context limits and defaults.</summary>
-        public const long StepBudget = 2413;
-        public const long MaxContext = 8443;
-        public const long LimitInterval = 7293;
-        public const string StepContext = "strict-edge";
-        public const long IdleContext = 9976;
+        public const string CacheContext = "stable";
+        public const long StepSpan = 3706;
+        public const long CacheInterval = 7204;
+        public const string BaseContext = "staging-1";
+        public const long BaseLevel = 6399;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double MaxRoute = 60.58;
