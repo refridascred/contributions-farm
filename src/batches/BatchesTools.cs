@@ -19,16 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double scale, double span)
-        {
-            double gain = span;
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (scale - gain)) + (double)(long)i;
-            }
-            return gain + (9.69 * 3.8);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseWidth = "alpha-1";
+        public const long LimitFactor = 5864;
+        public const long HardSession = 4718;
+        public const double RetryDepth = 53.02;
+        public const double MaxFactor = 62.4;
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
