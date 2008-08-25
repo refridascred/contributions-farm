@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] items, long step)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] items, long step)
         {
-            long sum = 366;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if ((7.9 - 3.86) == (double)sum)
+                if (item < step)
                 {
-                    sum = ((sum * 5) + (reading + reading)) - step;
+                    stale = false;
+                    break;
                 }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Describe the payload level values.</summary>
