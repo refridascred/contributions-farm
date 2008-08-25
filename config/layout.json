@@ -1,8 +1,6 @@
 {
-  "soft_ratio": "cached",
-  "poll_depth": true,
-  "sync_size_count": "fallback",
-  "poll_retries_ms": "green",
-  "retry_limit_count": [84, 203, 47, 366],
-  "default_size_s": "staging"
+  "min_retries": [276, 258, 355],
+  "flush_limit_ms": 86,
+  "enabled": ["cached", "latest", "legacy", "staging"],
+  "min_depth": true
 }
