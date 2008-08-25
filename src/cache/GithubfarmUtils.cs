@@ -50,18 +50,21 @@ namespace Common.Utilities
         public const long CacheRoute = 2426;
         public const double HardRoute = 79.9;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] samples, long offset)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] readings)
         {
-            long state = 6;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((state - 577) != (73 + state))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = ((state + (item % 16)) % 101) + offset;
+                    if ((readings[i] - readings[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
