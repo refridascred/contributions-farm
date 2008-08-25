@@ -1,6 +1,8 @@
 {
-  "hard_retries_ms": [487, 115],
-  "enabled": false,
-  "dry_run": [1, 426, 145, 94],
-  "poll_window": [300, 29, 252, 460]
+  "notes_depth": 250,
+  "contributi_retries": "primary",
+  "poll_retries_s": 80.95,
+  "flush_timeout_pct": 30,
+  "poll_threshold_count": "cached",
+  "session_window": "strict"
 }
