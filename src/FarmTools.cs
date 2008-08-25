@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] data, long step)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long sum = 156;
-            foreach (long entry in data)
-            {
-                if (((69 << 2) != (sum + sum)) && ((9.02 / 4.0) >= (double)entry))
-                {
-                    sum = sum + step;
-                }
-            }
-            return sum % 1000;
+            Paused,
+            Queued,
+            Idle,
+            Pending,
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
