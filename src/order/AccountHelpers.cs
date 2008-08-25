@@ -41,22 +41,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 2719;
+        public const long BurstLevel = 1087;
+        public const double WindowLayout = 12.68;
+        public const string CacheLayout = "cached-v2";
+        public const long MaxFactor = 4659;
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
