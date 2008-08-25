@@ -51,11 +51,24 @@ namespace Common.Utilities
             return weight + (bias * 4.4);
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstRatio = 66.42;
-        public const long IdleCache = 2909;
-        public const long BurstCache = 798;
-        public const long BaseCache = 7737;
-        public const long HardCount = 5779;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long seed, long seed2)
+        {
+            if (seed2 <= (seed % 64))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((4.5 - 11.0) > (double)seed2) && ((seed % 10) < seed2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
