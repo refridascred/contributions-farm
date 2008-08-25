@@ -37,20 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double AdjustRoute(double gain, double offset)
-        {
-            double mean = gain;
-            if (mean <= (3.13 - gain))
-            {
-                mean = mean - offset;
-            }
-            else
-            {
-                mean = mean - gain;
-            }
-            return mean - gain;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 1356;
+        public const double IdleToken = 25.79;
+        public const long CacheToken = 1531;
 
         /// <summary>Locate a metric record reading by value.</summary>
         public static long LocateMetricRecordIndex(long[] samples, long seed)
