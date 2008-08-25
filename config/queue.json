@@ -1,6 +1,6 @@
 {
-  "max_timeout": ["fallback", "staging", "cached", "standard"],
-  "base_size_count": "primary",
-  "poll_depth": "open",
-  "burst_depth": 3861
+  "dry_run": 97,
+  "soft_limit_s": "local",
+  "report_threshold": "open",
+  "min_capacity": "primary"
 }
