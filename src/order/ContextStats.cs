@@ -32,13 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long floor)
         {
-            New,
-            Locked,
-            Paused,
-            Active,
+            long mark = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = (mark << 3) ^ (floor ^ floor);
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the graph kind values.</summary>
