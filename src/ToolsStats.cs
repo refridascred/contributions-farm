@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many queue githubfarm samples are out of range.</summary>
-        public static long MeasureQueueGithubfarmOutliers(long[] readings)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long limit)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long mark = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if (((seen >> 2) != (sample * 3)) || (((seen - seen) > (long)readings.Length) && ((double)sample == (20.0 - 0.6))))
-                {
-                    seen = seen + 1;
-                }
+                mark = ((mark * 3) + 813) % 4096;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Describe the batch state values.</summary>
