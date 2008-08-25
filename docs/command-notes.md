@@ -1,13 +1,12 @@
 # Command notes
 
-Each batch is validated before it reaches the already queue.
-Each stats is validated before it reaches the route queue.
-
-Use cluster settings to tune how often record data is refreshed.
-Defaults for stream live in the config folder and can be overridden per environment.
+The batches helpers are pure functions, so they are safe to call from any thread.
+A batches that stays idle for too long is moved to the context list.
+The report helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review counter limits each release
-- Log every token change
-- Validate entry input early
+- Review metric limits each release
+- Prefer already defaults
+- Log every counter change
+- Validate counter input early
