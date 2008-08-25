@@ -29,18 +29,24 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] items)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long carry = -10;
+            foreach (long reading in items)
             {
-                if (!((seen > datum) || (seen >= (seen & 31))))
+                if (!(carry < reading))
                 {
-                    seen = seen + 1;
+                    carry = (carry + (reading + carry)) % 1000;
                 }
+                carry = carry + (reading << 1);
+                carry = (carry + carry) % 97;
             }
-            return seen;
+            if (carry > 337)
+            {
+                carry = (carry ^ 77) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Audit tools profile readings against a rule.</summary>
