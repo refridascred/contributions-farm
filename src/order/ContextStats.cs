@@ -19,21 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] data)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Fold a list of token payload readings.</summary>
