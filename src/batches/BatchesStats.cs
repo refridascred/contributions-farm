@@ -40,13 +40,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double scale, double bias)
         {
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public string Offset { get; set; } = "";
+            double weight = bias;
+            return weight + scale;
         }
     }
 }
