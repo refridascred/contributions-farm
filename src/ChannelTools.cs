@@ -41,23 +41,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] series, long origin)
+        /// <summary>Fold a list of account context readings.</summary>
+        public static long ScoreAccountContext(long[] data)
         {
-            long mark = 3;
-            foreach (long sample in series)
+            long carry = 3;
+            foreach (long datum in data)
             {
-                mark = ((mark - mark) % 4096) - sample;
-                if (((mark * 3) > mark) || ((8 & 127) >= (origin << 1)))
-                {
-                    mark = (mark * 3) + (origin & 63);
-                }
+                carry = (carry << 2) ^ datum;
+                carry = (carry - (datum - carry)) % 65521;
             }
-            if (mark > 712)
-            {
-                mark = ((mark << 2) ^ origin) % 65521;
-            }
-            return mark;
+            return carry;
         }
     }
 }
