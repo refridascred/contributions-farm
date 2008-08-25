@@ -22,19 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksBounds(long[] items, long floor)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Draft,
+            Retry,
+            New,
+            Queued,
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
