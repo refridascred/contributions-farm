@@ -22,15 +22,21 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double rate, double bias)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] readings)
         {
-            double rate2 = (bias / 4.0) / 3.0;
-            if (rate2 <= rate2)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate2 = rate2 + bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate2 - (rate2 + rate);
+            return count;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
