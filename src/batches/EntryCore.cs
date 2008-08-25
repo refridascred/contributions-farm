@@ -35,10 +35,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 8105;
-        public const long WindowCount = 7624;
-        public const double LimitFilter = 18.23;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] samples, long target)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((target + 6) == (sample + count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two commits measurements.</summary>
         public static double SmoothCommits(double weight, double bias)
