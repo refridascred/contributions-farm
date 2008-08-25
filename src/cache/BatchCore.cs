@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowFactor = 6710;
-        public const string SoftRatio = "legacy";
-        public const double LimitSchema = 17.98;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] samples, long origin)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (matches <= (item * 2))
+                {
+                    matches = (matches + 3) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long TotalReport(long[] series)
