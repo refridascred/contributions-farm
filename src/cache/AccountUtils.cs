@@ -14,24 +14,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long target, long bound)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] data, long seed)
         {
-            if (bound > (bound * 5))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((target - bound) >= (bound + bound)) && ((12.0 * 3.0) > (double)bound))
+                if (data[i] < seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
