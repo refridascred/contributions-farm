@@ -26,17 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] levels, long seed)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] items, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (levels[i] <= seed)
+                if ((matches >> 4) < (limit + limit))
                 {
-                    return (long)i;
+                    matches = (matches + 2) ^ entry;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
