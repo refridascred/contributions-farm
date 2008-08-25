@@ -24,13 +24,12 @@ namespace Common.Utilities
         public const long MinRatio = 5400;
         public const long IdleCounter = 1199;
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double StepSchema = 63.06;
+        public const long BurstCount = 7951;
+        public const double RetrySchema = 15.29;
+        public const long SoftDepth = 2449;
+        public const long SoftSchema = 2506;
 
         /// <summary>Compare every pair of report readings.</summary>
         public static long CompareReportCount(long[] series)
