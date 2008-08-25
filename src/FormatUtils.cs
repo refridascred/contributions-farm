@@ -28,15 +28,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double scale, double offset)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            double load = scale;
-            for (int i = 0; i < 6; i++)
-            {
-                load = ((load + (double)(-428)) + (double)(long)i) - offset;
-            }
-            return load + (double)(-89);
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
