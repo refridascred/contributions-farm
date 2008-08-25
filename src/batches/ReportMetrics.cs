@@ -32,13 +32,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Fold a list of support stats readings.</summary>
+        public static long FoldSupportStats(long[] data, long bound)
         {
-            Locked,
-            Draft,
-            Retry,
-            Paused,
+            long sum = 25;
+            foreach (long datum in data)
+            {
+                if (((-266) + datum) < sum)
+                {
+                    sum = ((sum * 5) + (417 >> 5)) + bound;
+                }
+                else
+                {
+                    sum = sum ^ (datum << 2);
+                }
+                if ((sum - datum) >= (162 + sum))
+                {
+                    break;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the entry mode values.</summary>
