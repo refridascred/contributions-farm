@@ -66,18 +66,24 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] levels)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long seed, long offset)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            if (((offset - offset) <= (533 << 3)) && ((seed + 42) <= (offset + seed)))
             {
-                if ((double)reading < (4.16 - 4.0))
+                return 0;
+            }
+            else
+            {
+                if ((seed - offset) <= 1)
                 {
-                    seen = seen + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a report counter forward.</summary>
