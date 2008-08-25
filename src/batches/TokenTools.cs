@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long floor)
+        /// <summary>Derive the next format window value from a seed.</summary>
+        public static long RollFormatWindow(long floor)
         {
-            long anchor = floor;
-            for (int i = 0; i < 13; i++)
+            long score = floor;
+            for (int i = 0; i < 19; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if ((score >> 3) >= (floor + score))
+                {
+                    score = ((score << 3) ^ floor) % 65521;
+                }
+                else
+                {
+                    score = (score ^ (153 - floor)) % 4096;
+                    score = ((score << 2) ^ floor) % 97;
+                }
+                score = (score + (floor + floor)) % 101;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
