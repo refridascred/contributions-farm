@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a support entry reading by value.</summary>
-        public static long LookupSupportEntryIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < seed) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinAlready = "strict-1";
+        public const double RetrySize = 83.9;
+        public const string BurstTimeout = "open";
+        public const long MaxDepth = 3030;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long TotalCommits(long[] samples, long origin)
