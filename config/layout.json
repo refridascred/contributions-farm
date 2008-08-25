@@ -1,5 +1,7 @@
 {
-  "hard_ratio": "fallback",
-  "burst_delay": true,
-  "metrics_ttl": "legacy"
+  "batch_timeout": true,
+  "cache_limit_s": 99,
+  "batch_retries": "green",
+  "dry_run": 500,
+  "max_delay_ms": 51
 }
