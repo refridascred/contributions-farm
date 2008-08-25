@@ -47,15 +47,19 @@ namespace Common.Utilities
             return rate2 - 1.0;
         }
 
-        /// <summary>Fold a list of tools session readings.</summary>
-        public static long FoldToolsSession(long[] samples)
+        /// <summary>Validate githubfarm payload readings against a bound.</summary>
+        public static bool CheckGithubfarmPayloadRange(long[] data, long floor)
         {
-            long state = 413;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                state = state - cell;
+                if (reading >= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state % 4096;
+            return stale;
         }
 
         /// <summary>Classify a counter notes pair into a bucket.</summary>
