@@ -26,11 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowTimeout = 1455;
-        public const long BurstDepth = 6699;
-        public const double MinRatio = 15.81;
-        public const long StepSupport = 4723;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordMatches(long[] series, long bound)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (((8.8 + 6.7) < (double)bound) && ((632 - matches) <= (14 + 697)))
+                {
+                    matches = (matches + 3) ^ datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long SeriesCounter(long floor)
