@@ -31,32 +31,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long offset, long seed)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long step = offset ^ seed;
-            if ((step >> 1) < seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if (20.0 <= (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset - 730) < step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Ready,
+            Locked,
+            Idle,
+            Stale,
         }
     }
 }
