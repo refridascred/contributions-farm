@@ -27,22 +27,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string LimitWidth = "primary-v2";
+        public const long StepQueue = 1844;
+        public const long IdleSize = 5964;
+        public const long CacheQueue = 1217;
 
         /// <summary>Fold a list of notes route readings.</summary>
         public static long CombineNotesRoute(long[] readings)
