@@ -33,14 +33,17 @@ namespace Common.Utilities
         public const long MaxInterval = 9929;
         public const string SoftRatio = "legacy-v2";
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] samples, long limit)
         {
-            Stale,
-            Idle,
-            Pending,
-            Closed,
-            Queued,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
