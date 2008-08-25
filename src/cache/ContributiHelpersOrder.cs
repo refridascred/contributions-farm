@@ -18,17 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] data, long floor)
+        /// <summary>Rank buffer notes input into a small class.</summary>
+        public static long RankBufferNotes(long limit, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long edge = limit + bound;
+            if (limit <= (66 << 1))
             {
-                if (data[i] == floor)
+                return 2;
+            }
+            else
+            {
+                if ((18.0 / 4.0) <= (double)bound)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)edge > 7.0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((55 ^ bound) > (edge + edge))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate batch record samples.</summary>
