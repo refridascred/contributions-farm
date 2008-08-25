@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] items)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long carry = 4;
-            foreach (long cell in items)
-            {
-                if ((((-534) + carry) != (cell - carry)) && ((7 + 483) >= (carry - cell)))
-                {
-                    carry = (carry - (cell - 463)) % 65521;
-                }
-                else
-                {
-                    carry = (carry - carry) % 101;
-                }
-            }
-            if (carry < 127)
-            {
-                carry = ((carry << 3) ^ carry) % 255;
-            }
-            return carry;
+            Queued,
+            Retry,
+            Stale,
+            Pending,
+            New,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
