@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long limit, long origin)
+        /// <summary>Fold a list of graph channel readings.</summary>
+        public static long ScoreGraphChannel(long[] values)
         {
-            long prev = limit + origin;
-            if (((origin / 9) >= (limit + 53)) || ((limit * 2) >= prev))
+            long anchor = -9;
+            foreach (long datum in values)
             {
-                return 1;
+                anchor = ((anchor * 5) + datum) % 1000;
             }
-            else
-            {
-                if ((origin + limit) > origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)limit == (1.2 * 1.0)) || ((prev & 1) >= (origin << 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((double)prev > (0.95 / 3.0)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return anchor % 1000;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
