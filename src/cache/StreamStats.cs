@@ -24,22 +24,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] levels)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long mark = -344;
-            foreach (long cell in levels)
-            {
-                if (!((double)cell == (7.7 + 2.0)))
-                {
-                    mark = mark - (cell % 60);
-                }
-            }
-            if (mark > 48)
-            {
-                mark = (mark + (mark + mark)) % 4096;
-            }
-            return mark;
+            Dropped,
+            Failed,
+            Closed,
+            Done,
+            New,
         }
 
         /// <summary>Measure how many session cluster samples are out of range.</summary>
