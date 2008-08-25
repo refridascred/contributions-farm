@@ -1,16 +1,15 @@
 # Command notes
 
-When a already fails, the counter handler retries a few times before giving up.
-Run the record check before changing any profile limits.
-A profile that stays idle for too long is moved to the account list.
+When a counter fails, the graph handler retries a few times before giving up.
+Each metrics is validated before it reaches the entry queue.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
-Defaults for queue live in the config folder and can be overridden per environment.
-Defaults for report live in the config folder and can be overridden per environment.
-The farm report groups every support by record.
+Each counter is validated before it reaches the checks queue.
+A metrics that stays idle for too long is moved to the route list.
+Use command settings to tune how often graph data is refreshed.
 
 ## Guidelines
 
-- Log every graph change
-- Review schema limits each release
-- Validate payload input early
-- Keep token values small
+- Validate graph input early
+- Prefer contributi defaults
+- Review filter limits each release
