@@ -23,18 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] series)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((seen + sample) > (seen & 7))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the graph kind values.</summary>
