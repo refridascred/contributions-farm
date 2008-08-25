@@ -46,20 +46,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double rate, double span)
-        {
-            double ratio = rate;
-            if (ratio < (20.0 / 5.0))
-            {
-                ratio = (ratio - rate) + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (ratio + ratio)) + (double)(long)i;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitAlready = "strict-edge";
+        public const long SoftAlready = 8802;
+        public const string MaxScore = "strict-v2";
 
         /// <summary>Find the first notes entry that matches the target.</summary>
         public static long LocateNotesIndex(long[] levels, long origin)
