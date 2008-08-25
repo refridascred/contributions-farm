@@ -46,11 +46,23 @@ namespace Common.Utilities
         public const double MinRatio = 15.81;
         public const long StepSupport = 4723;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double IdleCount = 68.24;
-        public const long DefaultDepth = 1757;
-        public const long MinBuffer = 6301;
-        public const double BatchDepth = 14.3;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] series)
+        {
+            long mark = 19;
+            foreach (long reading in series)
+            {
+                if (((mark >> 4) <= 9) || ((mark << 2) >= (reading % 10)))
+                {
+                    mark = (mark * 4) + (mark + reading);
+                }
+            }
+            if (mark > 80)
+            {
+                mark = ((mark * 3) + mark) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Derive the next batch editor value from a seed.</summary>
         public static long RollBatchEditor(long offset)
