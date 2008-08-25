@@ -77,17 +77,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= limit) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 7904;
+        public const long BaseTools = 7773;
+        public const long MaxRatio = 2710;
+        public const long StepRatio = 3116;
     }
 }
