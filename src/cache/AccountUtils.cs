@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] samples)
         {
-            Locked,
-            Closed,
-            Dropped,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (!((tally << 3) < (tally - tally)))
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up stream samples.</summary>
