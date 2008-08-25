@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the order format series from a seed.</summary>
-        public static long StepOrderFormat(long bound)
+        /// <summary>Count the support notes entries that pass the check.</summary>
+        public static long MeasureSupportNotesHits(long[] samples)
         {
-            long state = bound;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                state = (state ^ (state * 3)) % 1000;
-                state = ((state * 4) + (long)i) % 1000;
+                if ((count % 16) > (8 - 1))
+                {
+                    count = (count + 2) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
