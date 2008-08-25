@@ -68,22 +68,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next context metrics value from a seed.</summary>
-        public static long IterateContextMetrics(long floor)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long seed, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
+            if ((origin >> 1) >= (seed + origin))
             {
-                mark = (mark * 4) + (-20);
-                if (floor >= 94)
-                {
-                    mark = ((mark * 4) + 85) % 255;
-                    mark = ((mark << 2) ^ (floor >> 4)) % 1000;
-                }
-                mark = (mark << 2) ^ (floor - floor);
-                mark = ((mark * 4) + (long)i) % 1000;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if (!((origin - origin) < (origin - 224)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(seed < (origin + origin)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (origin >= (994 - seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a metrics account reading by value.</summary>
