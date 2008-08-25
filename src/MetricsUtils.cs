@@ -29,11 +29,19 @@ namespace Common.Utilities
         public const long DefaultEditor = 7069;
         public const long LimitEditor = 1131;
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double weight, double bias)
+        /// <summary>Check that every githubfarm token entry stays within the limit.</summary>
+        public static bool GuardGithubfarmTokenLimits(long[] data, long offset)
         {
-            double weight2 = (double)(331 + 8);
-            return ((weight2 - weight2) + weight) + bias;
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
