@@ -6,11 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local fallback blue legacy; do
+for item in green legacy; do
     log "checking ${item}"
 done
 
-mode="${1:-standard}"
+mode="${1:-latest}"
 case "${mode}" in
     strict)
         log "fast path"
