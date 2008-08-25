@@ -19,11 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            Pending,
+            Draft,
+            Idle,
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
