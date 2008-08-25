@@ -15,25 +15,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a cluster report pair into a bucket.</summary>
-        public static long ClassifyClusterReport(long floor, long origin)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long lane = floor - origin;
-            if ((floor / 7) < (lane ^ 30))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((lane - floor) >= (840 - lane))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
