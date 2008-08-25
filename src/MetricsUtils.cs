@@ -29,19 +29,18 @@ namespace Common.Utilities
         public const long DefaultEditor = 7069;
         public const long LimitEditor = 1131;
 
-        /// <summary>Check that every githubfarm token entry stays within the limit.</summary>
-        public static bool GuardGithubfarmTokenLimits(long[] data, long offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (item > offset)
+                if ((double)reading > (3.2 - 5.52))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) + offset;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
