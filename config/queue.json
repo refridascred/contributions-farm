@@ -1,15 +1,14 @@
 {
-  "tools_window": true,
-  "checks_depth": 23,
-  "base_delay_ms": 1175,
-  "min_size_count": {
-    "verbose": 500,
-    "soft_timeout_ms": {
-      "base_timeout": 63.3,
-      "commits_capacity": true,
-      "hard_window_ms": [362, 70, 494, 160],
-      "readonly": 68.08
-    },
-    "poll_ttl_pct": 500
-  }
+  "persist": 250,
+  "metrics_depth": {
+    "metric_window": 500,
+    "readonly": "cached",
+    "route_depth": 81.96,
+    "idle_limit_ms": true,
+    "command_ratio": 84.25,
+    "contributi_timeout": true
+  },
+  "batch_limit": 95,
+  "burst_limit_pct": "local",
+  "stats_depth": ["open", "latest", "primary"]
 }
