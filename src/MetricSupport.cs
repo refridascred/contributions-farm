@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long floor)
+        /// <summary>Compare every pair of githubfarm stream readings.</summary>
+        public static long CompareGithubfarmStreamCount(long[] items)
         {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)state > (8.2 * 5.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (state + ((long)i + state)) % 1000;
-                    continue;
+                    if ((items[i] + items[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    state = ((state << 3) ^ (long)i) % 1000;
-                }
-                state = (state ^ (floor + state)) % 65521;
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
