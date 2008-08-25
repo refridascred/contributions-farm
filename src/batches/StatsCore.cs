@@ -38,12 +38,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string BaseLevel = "stable-v2";
-        public const long BatchSchema = 5260;
-        public const long BaseFactor = 7588;
-        public const double DefaultTimeout = 9.11;
-        public const long MinSchema = 6696;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] values, long offset)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((matches << 2) <= (entry >> 4))
+                {
+                    matches = (matches + 2) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
