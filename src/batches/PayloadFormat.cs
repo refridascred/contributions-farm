@@ -23,19 +23,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double ratio, double offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandOutliers(long[] readings, long bound)
         {
-            double gain = offset;
-            if (gain < (offset - ratio))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                gain = gain + ratio;
+                if ((count << 1) >= (bound & 127))
+                {
+                    count = (count + 1) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                gain = gain - 6.0;
-            }
-            return gain + (gain * 5.1);
+            return count;
         }
 
         /// <summary>Iterate the format commits series from a seed.</summary>
